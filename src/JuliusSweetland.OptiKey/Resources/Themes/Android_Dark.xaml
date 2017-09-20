@@ -39,13 +39,6 @@
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Black}" />
 
-            <SolidColorBrush x:Key="KeyHasImageForegroundBrush" Color="{StaticResource Transparent}" />
-            <SolidColorBrush x:Key="KeyHasImageBorderBrush" Color="{StaticResource Transparent}" />
-            <SolidColorBrush x:Key="KeyHasImageBackgroundBrush" Color="{StaticResource Transparent}" />
-            <SolidColorBrush x:Key="KeyHasImageHoverForegroundBrush" Color="{StaticResource Black}" />
-            <SolidColorBrush x:Key="KeyHasImageSelectionProgressBrush" Color="{StaticResource Black}" />
-            <StaticResource x:Key="KeyHasImageSelectionBackground" ResourceKey="Transparent"/>
-
             <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Blue"/>
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Blue}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
@@ -114,12 +107,11 @@
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
-                    <!--If there is text, but no symbol and no image then always display the text-->
+                    <!--If there is text, but no symbol then always display the text-->
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
                             <Condition Binding="{Binding Path=HasText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
                             <Condition Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
-                            <Condition Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
                         </MultiDataTrigger.Conditions>
                         <MultiDataTrigger.Setters>
                             <Setter Property="Visibility" Value="Visible" />
@@ -165,11 +157,6 @@
                         <Setter Property="Text" Value="{Binding Path=ShiftDownText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
 
-                    <!--Key has an image-->
-                    <DataTrigger Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
-                        <Setter Property="Foreground" Value="{StaticResource KeyHasImageForegroundBrush}" />
-                    </DataTrigger>
-
                     <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
@@ -201,16 +188,10 @@
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
-                    <!--Is there a symbol to display and no image underneath-->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="Visibility" Value="Visible" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
+                    <!--Is there a symbol to display-->
+                    <DataTrigger Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
+                        <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
 
                     <!--Collapse symbol to promote key's Text if there is Text and the key is current-->
                     <MultiDataTrigger>
@@ -231,39 +212,6 @@
                         </MultiDataTrigger.Conditions>
                         <MultiDataTrigger.Setters>
                             <Setter Property="Visibility" Value="Collapsed" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
-
-                    <!--Show symbol if there is an image and the key is current-->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=IsCurrent, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="Visibility" Value="Visible" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
-
-                    <!-- ...or if there's an image and the key is progressing -->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=SelectionInProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="Visibility" Value="Visible" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
-
-                    <!-- ...or if there's an image and the key is in a key down state of Down -->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="{x:Static enums:KeyDownStates.Down}" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="Visibility" Value="Visible" />
                         </MultiDataTrigger.Setters>
                     </MultiDataTrigger>
 
@@ -347,17 +295,6 @@
                         <Setter Property="Visibility" Value="Hidden" />
                     </Trigger>
 
-                    <!--Key has an image and no symbol-->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="Fill" Value="{StaticResource KeyHasImageSelectionProgressBrush}" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
-
                     <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="Visibility" Value="Hidden" />
@@ -385,6 +322,11 @@
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
+                    <!--This key has a Background Colour Override-->
+                    <DataTrigger Binding="{Binding Path=HasBackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
+                        <Setter Property="Background" Value="{Binding Path=BackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
+                    </DataTrigger>
+
                     <!--This key is in a key down state of On-->
                     <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="{x:Static enums:KeyDownStates.Down}">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDownStateIsDownBorderBrush}" />
@@ -397,30 +339,22 @@
                         <Setter Property="Background" Value="{StaticResource KeyDownStateIsLockedDownBackgroundBrush}" />
                     </DataTrigger>
 
-                    <!--This key has an image-->
-                    <DataTrigger Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
-                        <Setter Property="Background" Value="{StaticResource KeyHasImageBackgroundBrush}" />
-                        <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
-                            <Setter.Value>
-                                <Storyboard>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                          Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBorder}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                                          Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{StaticResource KeyHasImageSelectionBackground}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </Setter.Value>
-                        </Setter>
-                    </DataTrigger>
-
                     <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
                         <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
                     </DataTrigger>
+
+                    <!--Key is disabled and has a Disabled Background Colour Override-->
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding Path=HasDisabledBackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
+                            <Condition Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter Property="Background" Value="{Binding Path=DisabledBackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
                 </Style.Triggers>
             </Style>
 
@@ -443,18 +377,6 @@
                     <DataTrigger Binding="{Binding Path=IsCurrent, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
                         <Setter Property="Visibility" Value="Visible" />
                     </DataTrigger>
-
-                    <!--Key has an image and no symbol-->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True"/>
-                            <Condition Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="BorderBrush" Value="{StaticResource KeyHasImageHoverForegroundBrush}" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
                 </Style.Triggers>
             </Style>
 

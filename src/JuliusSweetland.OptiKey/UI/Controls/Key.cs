@@ -333,6 +333,37 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(HasImageProperty, value); }
         }
 
+        public static readonly DependencyProperty BackgroundColourOverrideProperty =
+            DependencyProperty.Register("BackgroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush BackgroundColourOverride
+        {
+            get { return (Brush)GetValue(BackgroundColourOverrideProperty); }
+            set { SetValue(BackgroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledBackgroundColourOverrideProperty =
+            DependencyProperty.Register("DisabledBackgroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush DisabledBackgroundColourOverride
+        {
+            get { return (Brush)GetValue(DisabledBackgroundColourOverrideProperty); }
+            set { SetValue(DisabledBackgroundColourOverrideProperty, value); }
+        }
+
+        private static void OnBackgroundColourChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var senderAsKey = sender as Key;
+            if (senderAsKey != null && senderAsKey.PropertyChanged != null)
+            {
+                senderAsKey.OnPropertyChanged("HasBackgroundColourOverride");
+                senderAsKey.OnPropertyChanged("HasDisabledBackgroundColourOverride");
+            }
+        }
+
+        public bool HasBackgroundColourOverride { get { return BackgroundColourOverride != null; } }
+        public bool HasDisabledBackgroundColourOverride { get { return DisabledBackgroundColourOverride != null; } }
+
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
