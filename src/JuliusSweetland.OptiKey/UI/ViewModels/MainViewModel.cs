@@ -124,8 +124,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             get { return keyboard; }
             set
             {
-                Log.InfoFormat("Keyboard changed to {0}", value);
+                keyboard?.OnExit(); // previous keyboard
                 SetProperty(ref keyboard, value);
+                keyboard?.OnEnter(); // new keyboard
+                Log.InfoFormat("Keyboard changed to {0}", value);                
             }
         }
 
