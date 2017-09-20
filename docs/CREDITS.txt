@@ -107,6 +107,8 @@ d.moncada for their custom caret tutorial which inspired the CaretElement text b
 
 michaelnoonan (and any other contributors) for the Windows Input Simulator (http://inputsimulator.codeplex.com/)
 
+Korean dictionary "Frequency of modern Korean usage" in 2005, by "National Institute of Korean Language"
+
 My wife Kate for keeping a convincing "tell me more" face on every time I talk about this too much.
 
 Thank you.
