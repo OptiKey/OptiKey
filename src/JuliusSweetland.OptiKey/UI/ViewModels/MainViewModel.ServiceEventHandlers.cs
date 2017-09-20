@@ -7,6 +7,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
@@ -14,18 +15,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
     public partial class MainViewModel
     {
-        public void AttachServiceEventHandlers()
+        public void AttachErrorNotifyingServiceHandlers()
         {
-            Log.Info("AttachServiceEventHandlers called.");
+            Log.Info("AttachErrorNotifyingServiceHandlers called.");
 
             if (errorNotifyingServices != null)
             {
                 errorNotifyingServices.ForEach(s => s.Error += HandleServiceError);
             }
 
-            inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
+            Log.Info("AttachErrorNotifyingServiceHandlers complete.");
+        }
 
-            inputService.CurrentPosition += (o, tuple) =>
+        private void SetupInputServiceEventHandlers()
+        {
+            Log.Info("SetupInputServiceEventHandlers called.");
+
+            inputServicePointsPerSecondHandler = (o, value) => { PointsPerSecond = value; };
+
+            inputServiceCurrentPositionHandler = (o, tuple) =>
             {
                 CurrentPositionPoint = tuple.Item1;
                 CurrentPositionKey = tuple.Item2;
@@ -37,7 +45,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            inputService.SelectionProgress += (o, progress) =>
+            inputServiceSelectionProgressHandler = (o, progress) =>
             {
                 if (progress.Item1 == null
                     && progress.Item2 == 0)
@@ -47,19 +55,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 else if (progress.Item1 != null)
                 {
                     if (SelectionMode == SelectionModes.Key
-                        && progress.Item1.Value.KeyValue != null)
+                        && progress.Item1.KeyValue != null)
                     {
-                        keyStateService.KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
+                        keyStateService.KeySelectionProgress[progress.Item1.KeyValue] =
                             new NotifyingProxy<double>(progress.Item2);
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
-                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2);
+                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Point, progress.Item2);
                     }
                 }
             };
 
-            inputService.Selection += (o, value) =>
+            inputServiceSelectionHandler = (o, value) =>
             {
                 Log.Info("Selection event received from InputService.");
 
@@ -75,8 +83,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (KeySelection != null)
                     {
-                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", value.KeyValue.Value);
-                        KeySelection(this, value.KeyValue.Value);
+                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", value.KeyValue);
+                        KeySelection(this, value.KeyValue);
                     }
                 }
                 else if (SelectionMode == SelectionModes.Point)
@@ -94,15 +102,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            inputService.SelectionResult += (o, tuple) =>
+            inputServiceSelectionResultHandler = (o, tuple) =>
             {
                 Log.Info("SelectionResult event received from InputService.");
 
                 var points = tuple.Item1;
-                var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
-                    ? new KeyValue (tuple.Item2, tuple.Item3 )
-                    : (KeyValue?)null;
-                var multiKeySelection = tuple.Item4;
+                var singleKeyValue = tuple.Item2;
+                var multiKeySelection = tuple.Item3;
 
                 SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
 
@@ -117,32 +123,137 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
+            Log.Info("SetupInputServiceEventHandlers complete.");
+        }
+
+        public void AttachInputServiceEventHandlers()
+        {
+            Log.Info("AttachInputServiceEventHandlers called.");
+            
+            inputService.PointsPerSecond += inputServicePointsPerSecondHandler;
+            inputService.CurrentPosition += inputServiceCurrentPositionHandler;
+            inputService.SelectionProgress += inputServiceSelectionProgressHandler;
+            inputService.Selection += inputServiceSelectionHandler;
+            inputService.SelectionResult += inputServiceSelectionResultHandler;
+
             inputService.PointToKeyValueMap = pointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
+
+            Log.Info("AttachInputServiceEventHandlers complete.");
         }
         
-        private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
+
+        public void DetachInputServiceEventHandlers()
         {
-            //Single key
-            if (singleKeyValue != null)
+            Log.Info("DetachInputServiceEventHandlers called.");
+            
+            inputService.PointsPerSecond -= inputServicePointsPerSecondHandler;
+            inputService.CurrentPosition -= inputServiceCurrentPositionHandler;
+            inputService.SelectionProgress -= inputServiceSelectionProgressHandler;
+            inputService.Selection -= inputServiceSelectionHandler;
+            inputService.SelectionResult -= inputServiceSelectionResultHandler;
+
+            Log.Info("DetachInputServiceEventHandlers complete.");
+
+        }
+        
+	private void ProcessChangeKeyboardKeyValue(ChangeKeyboardKeyValue keyValue)
+        {
+            var currentKeyboard = Keyboard;
+
+            Action backAction;
+            if (keyValue.Replace)
             {
-                Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'", 
-                    singleKeyValue.Value.String.ToPrintableString(), singleKeyValue.Value.FunctionKey);
-
-                keyStateService.ProgressKeyDownState(singleKeyValue.Value);
-
-                if (!string.IsNullOrEmpty(singleKeyValue.Value.String))
+                var navigableKeyboard = Keyboard as IBackAction;
+                if (navigableKeyboard != null && navigableKeyboard.BackAction != null)
                 {
-                    //Single key string
-                    keyboardOutputService.ProcessSingleKeyText(singleKeyValue.Value.String);
+                    backAction = navigableKeyboard.BackAction;
                 }
-
-                if (singleKeyValue.Value.FunctionKey != null)
+                else
                 {
-                    //Single key function key
-                    HandleFunctionKeySelectionResult(singleKeyValue.Value);
+                    backAction = () => { }; 
                 }
             }
+            else
+            {
+                Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                backAction = () =>
+                {
+                    reinstateModifiers();
+                    Keyboard = currentKeyboard;
+
+                    if (!(currentKeyboard is DynamicKeyboard))
+                    {
+                        mainWindowManipulationService.ResizeDockToFull();
+                    }
+
+                    // Clear the keyboard when leaving keyboard.
+                    // (proper scratchpad functionality not supported in dynamic keyboards presently
+                    keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+
+                };
+            }
+
+            Action<double> resizeAction = size =>
+            {
+                mainWindowManipulationService.ResizeDockToSpecificHeight(size, false);
+            };
+
+            if (keyValue.BuiltInKeyboard.HasValue)
+            {
+                SetKeyboardFromEnum(keyValue.BuiltInKeyboard.Value, mainWindowManipulationService, backAction);
+            }
+            else
+            {
+                Keyboard = new DynamicKeyboard(backAction, resizeAction, keyValue.KeyboardFilename);
+            }
+        }
+        
+        private void ProcessBasicKeyValue(KeyValue singleKeyValue)
+        {
+            Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'",
+                singleKeyValue.String.ToPrintableString(), singleKeyValue.FunctionKey);
+          
+            keyStateService.ProgressKeyDownState(singleKeyValue);
+
+            if (!string.IsNullOrEmpty(singleKeyValue.String)
+                && singleKeyValue.FunctionKey != null)
+            {
+                HandleStringAndFunctionKeySelectionResult(singleKeyValue);
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(singleKeyValue.String))
+                {
+                    //Single key string
+                    keyboardOutputService.ProcessSingleKeyText(singleKeyValue.String);
+                }
+
+                if (singleKeyValue.FunctionKey != null)
+                {
+                    //Single key function key
+                    HandleFunctionKeySelectionResult(singleKeyValue);
+                }          
+            }
+        }
+      
+	private void KeySelectionResult(KeyValue singleKeyValue, List<string> multiKeySelection)
+        {
+            // Pass single key to appropriate processing function
+            if (singleKeyValue != null)
+            {
+                ChangeKeyboardKeyValue kv_link = singleKeyValue as ChangeKeyboardKeyValue;
+
+                if (kv_link != null)
+                {
+                    ProcessChangeKeyboardKeyValue(kv_link);
+                }
+                else 
+                {
+                    ProcessBasicKeyValue(singleKeyValue);
+                }
+            }
+            
             
             //Multi key selection
             if (multiKeySelection != null
@@ -150,6 +261,106 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 Log.InfoFormat("KeySelectionResult received with '{0}' multiKeySelection results", multiKeySelection.Count);
                 keyboardOutputService.ProcessMultiKeyTextAndSuggestions(multiKeySelection);
+            }
+        }
+
+        private void HandleStringAndFunctionKeySelectionResult(KeyValue singleKeyValue)
+        {
+            var currentKeyboard = Keyboard;
+
+            switch (singleKeyValue.FunctionKey.Value)
+            {
+                case FunctionKeys.CommuniKate:
+                    switch (singleKeyValue.String)
+                    {
+                        case "spelling.obf":
+                            Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                            if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                            {
+                                Log.Info("Changing keyboard to ConversationAlpha.");
+                                Action conversationAlphaBackAction = () =>
+                                {
+                                    Settings.Default.UsingCommuniKateKeyboardLayout = true;
+                                    Keyboard = currentKeyboard;
+                                };
+                                Keyboard = new ConversationAlpha1(conversationAlphaBackAction);
+                            }
+                            else
+                            {
+                                Log.Info("Changing keyboard to Alpha.");
+                                Keyboard = new Alpha1();
+                            }
+                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                            break;
+
+                        case "numbers.obf":
+                            if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                            {
+                                Log.Info("Changing keyboard to ConversationNumericAndSymbols.");
+                                Action BackAction = () =>
+                                {
+                                    Keyboard = currentKeyboard;
+                                };
+                                Keyboard = new ConversationNumericAndSymbols(BackAction);
+                            }
+                            else
+                            {
+                                Log.Info("Changing keyboard to Numeric And Symbols.");
+                                Keyboard = new NumericAndSymbols1();
+                            }
+                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                            break;
+
+                        case "computercontrol.obf":
+                            if (mainWindowManipulationService.WindowState != WindowStates.Maximised)
+                            {
+                                Log.Info("Changing keyboard to Mouse.");
+                                Action BackAction = () =>
+                                {
+                                    Keyboard = currentKeyboard;
+                                };
+                                Keyboard = new Mouse(BackAction);
+                                Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                            }
+                            break;
+
+                        default:
+                            if (string.IsNullOrEmpty(Settings.Default.CommuniKateKeyboardCurrentContext))
+                            {
+                                Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
+                                Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
+                                Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
+                                Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                            }
+                            else if (Settings.Default.CommuniKateKeyboardPrevious1Context == singleKeyValue.String)
+                            {
+                                Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateKeyboardPrevious2Context;
+                                Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateKeyboardPrevious3Context;
+                                Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateKeyboardPrevious4Context;
+                                Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                            }
+                            else
+                            {
+                                Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateKeyboardPrevious3Context;
+                                Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateKeyboardPrevious2Context;
+                                Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateKeyboardPrevious1Context;
+                                Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateKeyboardCurrentContext;
+                            }
+
+                            if (singleKeyValue.String.Contains("+"))
+                            {
+                                keyboardOutputService.ProcessSingleKeyText(
+                                    singleKeyValue.String.Split('+').ToList().ElementAt(0));
+                                Settings.Default.CommuniKateKeyboardCurrentContext = 
+                                    singleKeyValue.String.Split('+').ToList().ElementAt(1);
+                            }
+                            else { Settings.Default.CommuniKateKeyboardCurrentContext = singleKeyValue.String; }
+
+                            Log.InfoFormat("CommuniKate keyboard page changed to {0}.",
+                                Settings.Default.CommuniKateKeyboardCurrentContext);
+                            break;
+                    }
+                    break;
             }
         }
 
@@ -164,6 +375,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.Alpha1Keyboard:
+                    if (Settings.Default.EnableCommuniKateKeyboardLayout)
+                    {
+                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                        Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                    }
                     Log.Info("Changing keyboard to Alpha1.");
                     Keyboard = new Alpha1();
                     break;
@@ -182,7 +402,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else
                     {
+                        Log.Error("Keyboard doesn't have back action, going back to initial keyboard instead");
                         Keyboard = new Alpha1();
+                        if (Settings.Default.EnableCommuniKateKeyboardLayout)
+                        {
+                            Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                            Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
+                            Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
+                            Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
+                            Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                        }
+                      
+                        InitialiseKeyboard(this.mainWindowManipulationService);                     
                     }
                     break;
 
@@ -244,22 +476,41 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     break;
 
+                case FunctionKeys.CommuniKateKeyboard:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                    Settings.Default.UsingCommuniKateKeyboardLayout = true;
+                    Log.Info("Changing keyboard to CommuniKate.");
+                    Keyboard = new Alpha1();
+                    break;
+
                 case FunctionKeys.ConversationAlpha1Keyboard:
+                    if (Settings.Default.EnableCommuniKateKeyboardLayout)
+                    {
+                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                        Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                    }
                     Log.Info("Changing keyboard to ConversationAlpha1.");
                     var opacityBeforeConversationAlpha1 = mainWindowManipulationService.GetOpacity();
-                    Action conversationAlpha1BackAction =
-                        currentKeyboard is ConversationAlpha2
-                            ? ((ConversationAlpha2)currentKeyboard).BackAction
-                            : currentKeyboard is ConversationNumericAndSymbols
-                                ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
-                                : () =>
-                                {
-                                    Log.Info("Restoring window size.");
-                                    mainWindowManipulationService.Restore();
-                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha1);
-                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha1);
-                                    Keyboard = currentKeyboard;
-                                };
+                    Action conversationAlpha1BackAction = currentKeyboard is ConversationAlpha2
+                        ? ((ConversationAlpha2)currentKeyboard).BackAction
+                        : currentKeyboard is ConversationNumericAndSymbols
+                            ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                            : currentKeyboard is SimplifiedConversationAlpha
+                                ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
+                                : currentKeyboard is ConversationConfirm
+                                    ? ((ConversationConfirm)currentKeyboard).BackAction
+                                    : () =>
+                                    {
+                                        Log.Info("Restoring window size.");
+                                        mainWindowManipulationService.Restore();
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha1);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha1);
+                                        Keyboard = currentKeyboard;
+                                    };
                     Keyboard = new ConversationAlpha1(conversationAlpha1BackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
@@ -270,20 +521,49 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.ConversationAlpha2Keyboard:
                     Log.Info("Changing keyboard to ConversationAlpha2.");
                     var opacityBeforeConversationAlpha2 = mainWindowManipulationService.GetOpacity();
-                    Action conversationAlpha2BackAction =
-                        currentKeyboard is ConversationAlpha1
-                            ? ((ConversationAlpha1)currentKeyboard).BackAction
-                            : currentKeyboard is ConversationNumericAndSymbols
-                                ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
-                                : () =>
-                                {
-                                    Log.Info("Restoring window size.");
-                                    mainWindowManipulationService.Restore();
-                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha2);
-                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha2);
-                                    Keyboard = currentKeyboard;
-                                };
+                    Action conversationAlpha2BackAction = currentKeyboard is ConversationAlpha1
+                        ? ((ConversationAlpha1)currentKeyboard).BackAction
+                        : currentKeyboard is ConversationNumericAndSymbols
+                            ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                            : currentKeyboard is SimplifiedConversationAlpha
+                                ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
+                                : currentKeyboard is ConversationConfirm
+                                    ? ((ConversationConfirm)currentKeyboard).BackAction
+                                    : () =>
+                                    {
+                                        Log.Info("Restoring window size.");
+                                        mainWindowManipulationService.Restore();
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha2);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha2);
+                                        Keyboard = currentKeyboard;
+                                    };
                     Keyboard = new ConversationAlpha2(conversationAlpha2BackAction);
+                    Log.Info("Maximising window.");
+                    mainWindowManipulationService.Maximise();
+                    Log.InfoFormat("Setting opacity to 1 (fully opaque)");
+                    mainWindowManipulationService.SetOpacity(1);
+                    break;
+
+                case FunctionKeys.ConversationConfirmKeyboard:
+                    Log.Info("Changing keyboard to ConversationConfirm.");
+                    var opacityBeforeConversationConfirm = mainWindowManipulationService.GetOpacity();
+                    Action conversationConfirmBackAction = currentKeyboard is ConversationAlpha1
+                        ? ((ConversationAlpha1)currentKeyboard).BackAction
+                        : currentKeyboard is ConversationAlpha2
+                            ? ((ConversationAlpha2)currentKeyboard).BackAction
+                            : currentKeyboard is SimplifiedConversationAlpha
+                                ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
+                                : currentKeyboard is ConversationNumericAndSymbols
+                                    ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                                    : () =>
+                                    {
+                                        Log.Info("Restoring window size.");
+                                        mainWindowManipulationService.Restore();
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationConfirm);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationConfirm);
+                                        Keyboard = currentKeyboard;
+                                    };
+                    Keyboard = new ConversationConfirm(conversationConfirmBackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
                     Log.InfoFormat("Setting opacity to 1 (fully opaque)");
@@ -293,17 +573,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.ConversationNumericAndSymbolsKeyboard:
                     Log.Info("Changing keyboard to ConversationNumericAndSymbols.");
                     var opacityBeforeConversationNumericAndSymbols = mainWindowManipulationService.GetOpacity();
-                    Action conversationNumericAndSymbolsBackAction =
-                        currentKeyboard is ConversationAlpha1
+                    Action conversationNumericAndSymbolsBackAction = currentKeyboard is ConversationConfirm
+                        ? ((ConversationConfirm)currentKeyboard).BackAction
+                        : currentKeyboard is ConversationAlpha1
                             ? ((ConversationAlpha1)currentKeyboard).BackAction
-                            : () => 
-                                {
-                                    Log.Info("Restoring window size.");
-                                    mainWindowManipulationService.Restore();
-                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationNumericAndSymbols);
-                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationNumericAndSymbols);
-                                    Keyboard = currentKeyboard;
-                                };
+                            : currentKeyboard is ConversationAlpha2
+                                ? ((ConversationAlpha2)currentKeyboard).BackAction
+                                : currentKeyboard is SimplifiedConversationAlpha
+                                    ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
+                                    : () =>
+                                    {
+                                        Log.Info("Restoring window size.");
+                                        mainWindowManipulationService.Restore();
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationNumericAndSymbols);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationNumericAndSymbols);
+                                        Keyboard = currentKeyboard;
+                                    };
                     Keyboard = new ConversationNumericAndSymbols(conversationNumericAndSymbolsBackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
@@ -328,6 +613,95 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.Currencies2Keyboard:
                     Log.Info("Changing keyboard to Currencies2.");
                     Keyboard = new Currencies2();
+                    break;
+
+                case FunctionKeys.DynamicKeyboard:
+                    {
+                        Log.Info("Changing keyboard to DynamicKeyboard.");
+
+                        var currentKeyboard2 = Keyboard;
+
+                        Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        Action backAction = () =>
+                        {
+                            Keyboard = currentKeyboard2;
+
+                            reinstateModifiers();
+
+                            // Clear the scratchpad when leaving keyboard
+                            // (proper scratchpad functionality not supported in dynamic keyboards presently
+                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                        };
+
+                        int pageIndex = 0;
+                        if (Keyboard is DynamicKeyboardSelector)
+                        {
+                            var kb = Keyboard as DynamicKeyboardSelector;
+                            backAction = kb.BackAction;
+                            pageIndex = kb.PageIndex + 1;
+                        }
+                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
+                    }
+                    break;
+
+
+                case FunctionKeys.DynamicKeyboardPrev:
+                    {
+                        Log.Info("Changing keyboard to prev DynamicKeyboard.");
+
+                        Action backAction;
+                        var currentKeyboard2 = Keyboard;
+                        int pageIndex = 0;
+                        if (Keyboard is DynamicKeyboardSelector)
+                        {
+                            var kb = Keyboard as DynamicKeyboardSelector;
+                            backAction = kb.BackAction;
+                            pageIndex = kb.PageIndex - 1;
+                        }
+                        else
+                        {
+                            Log.Error("Unexpectedly entering DynamicKeyboardPrev from somewhere other than DynamicKeyboard");
+                            backAction = () =>
+                            {
+                                Keyboard = currentKeyboard2;
+                            };
+                        }
+                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
+                    }
+                    break;
+
+            case FunctionKeys.DynamicKeyboardNext:
+                {
+                    Log.Info("Changing keyboard to next DynamicKeyboard.");
+
+                    Action backAction;
+                    var currentKeyboard2 = Keyboard;
+                    int pageIndex = 0;
+                    if (Keyboard is DynamicKeyboardSelector)
+                    {
+                        var kb = Keyboard as DynamicKeyboardSelector;
+                        backAction = kb.BackAction;
+                        pageIndex = kb.PageIndex + 1;
+                    }
+                    else
+                    {
+                        Log.Error("Unexpectedly entering DynamicKeyboardNext from somewhere other than DynamicKeyboard");
+                        backAction = () =>
+                        {
+                            Keyboard = currentKeyboard2;
+                        };
+                    }
+                    Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
+                }
+                break;
+
+                case FunctionKeys.CzechCzechRepublic:
+                    Log.Info("Changing keyboard language to CzechCzechRepublic.");
+                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
+                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.CzechCzechRepublic;
+                    InputService.RequestResume();
+                    Log.Info("Changing keyboard to Menu.");
+                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
                     break;
 
                 case FunctionKeys.DanishDenmark:
@@ -612,35 +986,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.MouseKeyboard:
-                    Log.Info("Changing keyboard to Mouse.");
-                    Action backAction;
-                    if (keyStateService.SimulateKeyStrokes
-                        && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                     {
-                        var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
-                        backAction = () =>
+                        Log.Info("Changing keyboard to Mouse.");
+                        Action backAction;
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                         {
-                            restoreModifierStates();
-                            Keyboard = currentKeyboard;
-                        };
-                    }
-                    else
-                    {
-                        backAction = () => Keyboard = currentKeyboard;
-                    }
-                    Keyboard = new Mouse(backAction);
-                    //Reinstate mouse keyboard docked state (if docked)
-                    if (Settings.Default.MainWindowState == WindowStates.Docked)
-                    {
-                        if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full
-                            && Settings.Default.MainWindowDockSize != DockSizes.Full)
-                        {
-                            mainWindowManipulationService.ResizeDockToFull();
+                            var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
+                            backAction = () =>
+                            {
+                                restoreModifierStates();
+                                Keyboard = currentKeyboard;
+                            };
                         }
-                        else if (Settings.Default.MouseKeyboardDockSize == DockSizes.Collapsed
-                            && Settings.Default.MainWindowDockSize != DockSizes.Collapsed)
+                        else
                         {
-                            mainWindowManipulationService.ResizeDockToCollapsed();
+                            backAction = () => Keyboard = currentKeyboard;
+                        }
+                        Keyboard = new Mouse(backAction);
+                        //Reinstate mouse keyboard docked state (if docked)
+                        if (Settings.Default.MainWindowState == WindowStates.Docked)
+                        {
+                            if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full
+                                && Settings.Default.MainWindowDockSize != DockSizes.Full)
+                            {
+                                mainWindowManipulationService.ResizeDockToFull();
+                            }
+                            else if (Settings.Default.MouseKeyboardDockSize == DockSizes.Collapsed
+                                && Settings.Default.MainWindowDockSize != DockSizes.Collapsed)
+                            {
+                                mainWindowManipulationService.ResizeDockToCollapsed();
+                            }
                         }
                     }
                     break;
@@ -1022,6 +1398,52 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         ResetAndCleanupAfterMouseAction();
                     }, suppressMagnification: true);
                     break;
+
+                    case FunctionKeys.MouseScrollToTop:
+
+                        var currentPoint = mouseOutputService.GetCursorPosition();
+                        Log.InfoFormat("Mouse scroll to top selected at point ({0},{1}).", currentPoint.X, currentPoint.Y);
+                        Action<Point?> performScroll = point =>
+                        {
+                            if (point != null)
+                            {
+                                Action<Point> simulateScrollToTop = fp =>
+                                {
+                                    Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
+                                    mouseOutputService.MoveAndScrollWheelUp(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                                };
+                                lastMouseActionStateManager.LastMouseAction = () => simulateScrollToTop(point.Value);
+                                simulateScrollToTop(point.Value);
+                            }
+                        };
+                        performScroll(currentPoint);
+                        ResetAndCleanupAfterMouseAction();
+
+                        break;
+
+                    case FunctionKeys.MouseScrollToBottom:
+
+                        var currentPointScroll = mouseOutputService.GetCursorPosition();
+                        Log.InfoFormat("Mouse scroll to top selected at point ({0},{1}).", currentPointScroll.X, currentPointScroll.Y);
+                        Action<Point?> performScrollDown = point =>
+                        {
+                            if (point != null)
+                            {
+                                Action<Point> simulateScrollToBottom = fp =>
+                                {
+                                    Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
+                                    mouseOutputService.MoveAndScrollWheelDown(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                                };
+                                lastMouseActionStateManager.LastMouseAction = () => simulateScrollToBottom(point.Value);
+                                simulateScrollToBottom(point.Value);
+                            }
+                        };
+                        performScrollDown(currentPointScroll);
+                        ResetAndCleanupAfterMouseAction();
+
+                        break;
 
                 case FunctionKeys.MouseMoveTo:
                     Log.Info("Mouse move to selected.");
@@ -1478,6 +1900,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
                     break;
 
+                case FunctionKeys.ConversationConfirmYes:
+                    var speechStartedYes = audioService.SpeakNewOrInterruptCurrentSpeech(
+                        Resources.YES,
+                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                        Settings.Default.SpeechVolume,
+                        Settings.Default.SpeechRate,
+                        Settings.Default.SpeechVoice);
+                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedYes ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
+                case FunctionKeys.ConversationConfirmNo:
+                    var speechStartedNo = audioService.SpeakNewOrInterruptCurrentSpeech(
+                        Resources.NO,
+                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                        Settings.Default.SpeechVolume,
+                        Settings.Default.SpeechRate,
+                        Settings.Default.SpeechVoice);
+                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedNo ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
                 case FunctionKeys.TurkishTurkey:
                     Log.Info("Changing keyboard language to TurkishTurkey.");
                     InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
@@ -1485,6 +1927,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     InputService.RequestResume();
                     Log.Info("Changing keyboard to Menu.");
                     Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    break;
+
+                case FunctionKeys.WebBrowsingKeyboard:
+                    Log.Info("Changing keyboard to WebBrowsing.");
+                    Keyboard = new WebBrowsing();
                     break;
 
                 case FunctionKeys.YesQuestionResult:

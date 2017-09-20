@@ -4,8 +4,11 @@ using System.Windows.Input;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Observables.PointSources;
+using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.UI.ViewModels;
 using log4net;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
@@ -23,8 +26,12 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly IDictionaryService dictionaryService;
         private readonly IInputService inputService;
         private readonly IKeyStateService keyStateService;
+        private readonly IPointSource defaultPointSource;
+        private readonly IPointSource manualModePointSource;
         private readonly InteractionRequest<NotificationWithServicesAndState> managementWindowRequest;
         private readonly ICommand managementWindowRequestCommand;
+        private readonly ICommand toggleManualModeCommand;
+        private readonly ICommand backCommand;
         private readonly ICommand quitCommand;
 
         public MainWindow(
@@ -40,11 +47,16 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             this.inputService = inputService;
             this.keyStateService = keyStateService;
 
+            defaultPointSource = inputService.PointSource;
+            manualModePointSource = new MousePositionSource(Settings.Default.PointTtl) { State = RunningStates.Paused };
+
             managementWindowRequest = new InteractionRequest<NotificationWithServicesAndState>();
             managementWindowRequestCommand = new DelegateCommand(RequestManagementWindow);
+            toggleManualModeCommand = new DelegateCommand(ToggleManualMode, () => !(defaultPointSource is MousePositionSource));
             quitCommand = new DelegateCommand(Quit);
+            backCommand = new DelegateCommand(Back);
 
-            //Setup key binding (Alt-M and Shift-Alt-M) to open settings
+            //Setup key binding (Alt+M and Shift+Alt+M) to open settings
             InputBindings.Add(new KeyBinding
             {
                 Command = managementWindowRequestCommand,
@@ -58,6 +70,20 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Key = Key.M
             });
 
+            //Setup key binding (Alt+Enter and Shift+Alt+Enter) to open settings
+            InputBindings.Add(new KeyBinding
+            {
+                Command = toggleManualModeCommand,
+                Modifiers = ModifierKeys.Alt,
+                Key = Key.Enter
+            });
+            InputBindings.Add(new KeyBinding
+            {
+                Command = toggleManualModeCommand,
+                Modifiers = ModifierKeys.Shift | ModifierKeys.Alt,
+                Key = Key.Enter
+            });
+
             Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
         }
 
@@ -65,10 +91,14 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         public InteractionRequest<NotificationWithServicesAndState> ManagementWindowRequest { get { return managementWindowRequest; } }
         public ICommand ManagementWindowRequestCommand { get { return managementWindowRequestCommand; } }
+        public ICommand ToggleManualModeCommand { get { return toggleManualModeCommand; } }
         public ICommand QuitCommand { get { return quitCommand; } }
+        public ICommand BackCommand { get { return backCommand; } }
 
         private void RequestManagementWindow()
         {
+            Log.Info("RequestManagementWindow called.");
+
             var modalManagementWindow = WindowManipulationService != null &&
                                         WindowManipulationService.WindowState == WindowStates.Maximised;
 
@@ -92,6 +122,29 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                     }
                     restoreModifierStates();
                 });
+
+            Log.Info("RequestManagementWindow complete.");
+        }
+
+        private void ToggleManualMode()
+        {
+            Log.Info("ToggleManualMode called.");
+
+            var mainViewModel = MainView.DataContext as MainViewModel;
+            if (mainViewModel != null)
+            {
+                inputService.RequestSuspend();
+                mainViewModel.DetachInputServiceEventHandlers();
+                var changingToManualMode = inputService.PointSource == defaultPointSource;
+                inputService.PointSource = changingToManualMode ? manualModePointSource : defaultPointSource;
+                mainViewModel.AttachInputServiceEventHandlers();
+                mainViewModel.RaiseToastNotification(Properties.Resources.MANUAL_MODE_CHANGED,
+                    changingToManualMode ? Properties.Resources.MANUAL_MODE_ENABLED : Properties.Resources.MANUAL_MODE_DISABLED, 
+                    NotificationTypes.Normal, () => inputService.RequestResume());
+                mainViewModel.ManualModeEnabled = changingToManualMode;
+            }
+
+            Log.Info("ToggleManualMode complete.");
         }
 
         private void Quit()
@@ -100,6 +153,15 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             {
                 Application.Current.Shutdown();
             }
+        }
+
+        private void Back()
+        {
+            var mainViewModel = MainView.DataContext as MainViewModel;
+            if (null != mainViewModel)
+            {
+                mainViewModel.BackFromKeyboard();   
+            }            
         }
     }
 }

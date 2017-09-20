@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Diagnostics;
+using Microsoft.Win32;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -19,11 +21,12 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
-using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
-using NBug.Core.UI;
+using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
+using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Octokit;
+using presage;
 using Application = System.Windows.Application;
 
 namespace JuliusSweetland.OptiKey
@@ -38,6 +41,7 @@ namespace JuliusSweetland.OptiKey
         private const string GazeTrackerUdpRegex = @"^STREAM_DATA\s(?<instanceTime>\d+)\s(?<x>-?\d+(\.[0-9]+)?)\s(?<y>-?\d+(\.[0-9]+)?)";
         private const string GitHubRepoName = "optikey";
         private const string GitHubRepoOwner = "optikey";
+        private const string ExpectedMaryTTSLocationSuffix = @"\bin\marytts-server.bat";
 
         #endregion
 
@@ -93,17 +97,17 @@ namespace JuliusSweetland.OptiKey
                 {
                     Source = new Uri(Settings.Default.Theme, UriKind.Relative)
                 };
-                
+
                 var previousThemes = Resources.MergedDictionaries
                     .OfType<ThemeResourceDictionary>()
                     .ToList();
-                    
+
                 //N.B. Add replacement before removing the previous as having no applicable resource
                 //dictionary can result in the first element not being rendered (usually the first key).
                 Resources.MergedDictionaries.Add(themeDictionary);
                 previousThemes.ForEach(rd => Resources.MergedDictionaries.Remove(rd));
             };
-            
+
             Settings.Default.OnPropertyChanges(settings => settings.Theme).Subscribe(_ => applyTheme());
         }
 
@@ -119,7 +123,7 @@ namespace JuliusSweetland.OptiKey
 
                 //Apply theme
                 applyTheme();
-                
+
                 //Define MainViewModel before services so I can setup a delegate to call into the MainViewModel
                 //This is to work around the fact that the MainViewModel is created after the services.
                 MainViewModel mainViewModel = null;
@@ -131,10 +135,17 @@ namespace JuliusSweetland.OptiKey
                     }
                 };
 
+                CleanupAndPrepareCommuniKateInitialState();
+
+                ValidateDynamicKeyboardLocation();
+
+                var presageInstallationProblem = PresageInstallationProblemsDetected();
+
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
-                IDictionaryService dictionaryService = new DictionaryService(Settings.Default.AutoCompleteMethod);
+                
+                IDictionaryService dictionaryService = new DictionaryService(Settings.Default.SuggestionMethod);
                 IPublishService publishService = new PublishService();
                 ISuggestionStateService suggestionService = new SuggestionStateService();
                 ICalibrationService calibrationService = CreateCalibrationService();
@@ -149,7 +160,6 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(publishService);
                 errorNotifyingServices.Add(inputService);
 
-                //Release keys on application exit
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
 
                 //Compose UI
@@ -158,7 +168,10 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(mainWindowManipulationService);
                 mainWindow.WindowManipulationService = mainWindowManipulationService;
 
-                mainViewModel = new MainViewModel(
+				//Subscribing to the on closing events.
+				mainWindow.Closing += dictionaryService.OnAppClosing;
+
+				mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
@@ -166,7 +179,12 @@ namespace JuliusSweetland.OptiKey
                 mainWindow.MainView.DataContext = mainViewModel;
 
                 //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
-                Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
+                Action postMainViewLoaded = () =>
+                {
+                    mainViewModel.AttachErrorNotifyingServiceHandlers();
+                    mainViewModel.AttachInputServiceEventHandlers();
+                };
+
                 if(mainWindow.MainView.IsLoaded)
                 {
                     postMainViewLoaded();
@@ -179,6 +197,7 @@ namespace JuliusSweetland.OptiKey
                         postMainViewLoaded();
                         mainWindow.MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
                     };
+					
                     mainWindow.MainView.Loaded += loadedHandler;
                 }
 
@@ -191,16 +210,21 @@ namespace JuliusSweetland.OptiKey
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
                     await ShowSplashScreen(inputService, audioService, mainViewModel);
+                    await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
+                    await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService, audioService, mainViewModel);
+
                     inputService.RequestResume(); //Start the input service
+
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
+
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
                 {
                     sizeAndPositionInitialised(null, null);
                 }
                 else
                 {
-                    mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;    
+                    mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;
                 }
             }
             catch (Exception ex)
@@ -210,11 +234,104 @@ namespace JuliusSweetland.OptiKey
             }
         }
 
+        private static bool PresageInstallationProblemsDetected()
+        {
+            if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+            {
+                //1.Check the install path to detect if the wrong bitness of Presage is installed
+                string presagePath = null;
+                string presageStartMenuFolder = null;
+                string osBitness = DiagnosticInfo.OperatingSystemBitness;
+
+                try
+                {
+                    presagePath = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "", string.Empty).ToString();
+                    presageStartMenuFolder = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "Start Menu Folder", string.Empty).ToString();
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorFormat("Caught exception: {0}", ex);
+                }
+
+                Log.InfoFormat("Presage path: {0} | Presage start menu folder: {1} | OS bitness: {2}", presagePath, presageStartMenuFolder, osBitness);
+
+                if (string.IsNullOrEmpty(presagePath)
+                    || string.IsNullOrEmpty(presageStartMenuFolder))
+                {
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Invalid Presage installation detected (path(s) missing). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    return true;
+                }
+
+                if (presageStartMenuFolder != "presage-0.9.2~beta20150909"
+                    && presageStartMenuFolder != "presage-0.9.1")
+                {
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Invalid Presage installation detected (valid version not detected). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    return true;
+                }
+
+                if ((osBitness == "64-Bit" && presagePath != @"C:\Program Files (x86)\presage")
+                    || (osBitness == "32-Bit" && presagePath != @"C:\Program Files\presage"))
+                {
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    return true;
+                }
+
+                if (!Directory.Exists(presagePath))
+                {
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Invalid Presage installation detected (install directory does not exist). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    return true;
+                }
+
+                //2.Attempt to construct a Presage object, which can fail for a few reasons, including BadImageFormatExceptions (64-bit version installed)
+                Presage presageTestInstance = null;
+                try
+                {
+                    //Test Presage constructor call for DllNotFoundException or BadImageFormatException
+                    presageTestInstance = new Presage(() => "", () => "");
+                }
+                catch (Exception ex)
+                {
+                    //If the installed version of Presage is the wrong format (i.e. 64 bit) then a BadImageFormatException can occur.
+                    //If Presage has been deleted, corrupted, or another problem, then a DllLoadException can occur.
+                    //These causes an additional problem as the Presage object will probably be non-deterministically
+                    //finalised, which will cause this exception again and crash OptiKey. The workaround is to suppress finalisation 
+                    //if an object is available (which it generally won't be!), or to warn the user and react.
+
+                    //Set the suggestion method to NGram so that the IDictionaryService can be instantiated without crashing OptiKey
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Settings.Default.Save(); //Save as OptiKey can crash as soon as the finaliser is called by the GC
+                    Log.Error("Presage failed to bootstrap - attempting to suppress finalisation. The suggestion method has been changed to NGram", ex);
+
+                    //Attempt to suppress finalisation on the presage instance, or just warn the user
+                    if (presageTestInstance != null)
+                    {
+                        GC.SuppressFinalize(presageTestInstance);
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            OptiKey.Properties.Resources.PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE,
+                            OptiKey.Properties.Resources.PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE,
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
         #endregion
 
-        #region Create Main Window Manipulation Service
+		#region Create Main Window Manipulation Service
 
-        private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
+		    private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
         {
             return new WindowManipulationService(
                 mainWindow,
@@ -458,6 +575,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiEyeTracker4C:
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
+                case PointsSources.TobiiPcEyeGoPlus:
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
@@ -510,6 +628,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiEyeTracker4C:
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
+                case PointsSources.TobiiPcEyeGoPlus:
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
@@ -548,21 +667,21 @@ namespace JuliusSweetland.OptiKey
                        Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime,
                        Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
-                        : null, 
+                        : null,
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
-                       pointSource.Sequence);
+                       pointSource);
                     break;
 
                 case TriggerSources.KeyboardKeyDownsUps:
                     keySelectionTriggerSource = new KeyboardKeyDownUpSource(
                         Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey,
-                        pointSource.Sequence);
+                        pointSource);
                     break;
 
                 case TriggerSources.MouseButtonDownUps:
                     keySelectionTriggerSource = new MouseButtonDownUpSource(
                         Settings.Default.KeySelectionTriggerMouseDownUpButton,
-                        pointSource.Sequence);
+                        pointSource);
                     break;
 
                 default:
@@ -580,19 +699,19 @@ namespace JuliusSweetland.OptiKey
                         Settings.Default.PointSelectionTriggerFixationCompleteTime,
                         Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
                         Settings.Default.PointSelectionTriggerFixationRadiusInPixels,
-                        pointSource.Sequence);
+                        pointSource);
                     break;
 
                 case TriggerSources.KeyboardKeyDownsUps:
                     pointSelectionTriggerSource = new KeyboardKeyDownUpSource(
                         Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey,
-                        pointSource.Sequence);
+                        pointSource);
                     break;
 
                 case TriggerSources.MouseButtonDownUps:
                     pointSelectionTriggerSource = new MouseButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerMouseDownUpButton,
-                        pointSource.Sequence);
+                        pointSource);
                     break;
 
                 default:
@@ -608,9 +727,9 @@ namespace JuliusSweetland.OptiKey
         }
 
         #endregion
-        
+
         #region Log Diagnostic Info
-        
+
         private static void LogDiagnosticInfo()
         {
             Log.InfoFormat("Assembly version: {0}", DiagnosticInfo.AssemblyVersion);
@@ -630,7 +749,7 @@ namespace JuliusSweetland.OptiKey
             Log.InfoFormat("OS service pack: {0}", DiagnosticInfo.OperatingSystemServicePack);
             Log.InfoFormat("OS bitness: {0}", DiagnosticInfo.OperatingSystemBitness);
         }
-        
+
         #endregion
 
         #region Show Splash Screen
@@ -692,8 +811,8 @@ namespace JuliusSweetland.OptiKey
                 inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 mainViewModel.RaiseToastNotification(
-                    OptiKey.Properties.Resources.OPTIKEY_DESCRIPTION, 
-                    message.ToString(), 
+                    OptiKey.Properties.Resources.OPTIKEY_DESCRIPTION,
+                    message.ToString(),
                     NotificationTypes.Normal,
                     () =>
                         {
@@ -749,7 +868,11 @@ namespace JuliusSweetland.OptiKey
                                 mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
                                     string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, latestRelease.TagName),
                                     NotificationTypes.Normal,
-                                    () => taskCompletionSource.SetResult(true));
+                                     () =>
+                                     {
+                                         inputService.RequestResume();
+                                         taskCompletionSource.SetResult(true);
+                                     });
                             }
                             else
                             {
@@ -797,6 +920,213 @@ namespace JuliusSweetland.OptiKey
                     publishService.ReleaseAllDownKeys();
                 }
             };
+        }
+
+        #endregion
+
+        #region Validate Dynamic Keyboard Location
+
+        private static string GetDefaultUserKeyboardFolder()
+        {
+            const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Keyboards\";
+
+            var applicationDataPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                ApplicationDataSubPath);
+            Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists                        
+            return applicationDataPath;
+        }
+
+        private static void ValidateDynamicKeyboardLocation()
+        {
+            if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation))
+            {
+                // First time we set to APPDATA location, user may move through settings later
+                Settings.Default.DynamicKeyboardsLocation = GetDefaultUserKeyboardFolder(); ;
+            }
+        }
+
+        #endregion
+        #region Clean Up Extracted CommuniKate Files If Staged For Deletion
+
+        private static void CleanupAndPrepareCommuniKateInitialState()
+        {
+            if (Settings.Default.EnableCommuniKateKeyboardLayout)
+            {
+                if (Settings.Default.CommuniKateStagedForDeletion)
+                {
+                    Log.Info("Deleting previously unpacked CommuniKate pageset.");
+                    string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\CommuniKate\";
+                    var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
+                    if (Directory.Exists(path))
+                    {
+                        Directory.Delete(path, true);
+                    }
+                    Log.Info("Previously unpacked CommuniKate pageset deleted successfully.");
+                }
+                Settings.Default.CommuniKateStagedForDeletion = false;
+                
+                Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
+                Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
+                Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
+                Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+            }
+        }
+
+        #endregion
+
+        #region Attempt To Start/Stop Mary TTS Service Automatically
+
+        private static async Task<bool> AttemptToStartMaryTTSService(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
+            if (Settings.Default.MaryTTSEnabled)
+            {
+                Process proc = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        UseShellExecute = true,
+                        WindowStyle = ProcessWindowStyle.Minimized, // cannot close it if set to hidden
+                        CreateNoWindow = true
+                    }
+                };
+
+                if (!File.Exists(Settings.Default.MaryTTSLocation))
+                {
+                    Log.InfoFormat("Failed to started MaryTTS (setting MaryTTSLocation does represent an existing file). " +
+                        "Disabling MaryTTS and using System Voice '{0}' instead.", Settings.Default.SpeechVoice);
+                    Settings.Default.MaryTTSEnabled = false;
+
+                    mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                        string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                        NotificationTypes.Error, () =>
+                        {
+                            inputService.RequestResume();
+                            taskCompletionSource.SetResult(false);
+                        });
+                }
+                else if (Settings.Default.MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix))
+                {
+                    proc.StartInfo.FileName = Settings.Default.MaryTTSLocation;
+
+                    Log.InfoFormat("Trying to start MaryTTS from '{0}'.", proc.StartInfo.FileName);
+                    try
+                    {
+                        proc.Start();
+                    }
+                    catch (Exception ex)
+                    {
+                        var errorMsg = string.Format(
+                            "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.", 
+                            Settings.Default.SpeechVoice);
+                        Log.Error(errorMsg, ex);
+                        Settings.Default.MaryTTSEnabled = false;
+
+                        inputService.RequestSuspend();
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                        mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                            string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                            NotificationTypes.Error, () =>
+                            {
+                                inputService.RequestResume();
+                                taskCompletionSource.SetResult(false);
+                            });
+                    }
+
+                    if (proc.StartTime <= DateTime.Now && !proc.HasExited)
+                    {
+                        Log.InfoFormat("Started MaryTTS at {0}.", proc.StartTime);
+                        proc.CloseOnApplicationExit(Log, "MaryTTS");
+                        taskCompletionSource.SetResult(true);
+                    }
+                    else
+                    {
+                        var errorMsg = string.Format(
+                            "Failed to started MaryTTS (server not running). Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+
+                        if (proc.HasExited)
+                        {
+                            errorMsg = string.Format(
+                            "Failed to started MaryTTS (server was closed). Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+                        }
+
+                        Log.Error(errorMsg);
+                        Settings.Default.MaryTTSEnabled = false;
+
+                        inputService.RequestSuspend();
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                        mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                            string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                            NotificationTypes.Error, () =>
+                            {
+                                inputService.RequestResume();
+                                taskCompletionSource.SetResult(false);
+                            });
+                    }
+                }
+                else
+                {
+                    Log.InfoFormat("Failed to started MaryTTS (setting MaryTTSLocation does not end in the expected suffix '{0}'). " +
+                        "Disabling MaryTTS and using System Voice '{1}' instead.", ExpectedMaryTTSLocationSuffix, Settings.Default.SpeechVoice);
+                    Settings.Default.MaryTTSEnabled = false;
+
+                    mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                        string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                        NotificationTypes.Error, () =>
+                        {
+                            inputService.RequestResume();
+                            taskCompletionSource.SetResult(false);
+                        });
+                }
+            }
+            else
+            {
+                taskCompletionSource.SetResult(true);
+            }
+            
+            return await taskCompletionSource.Task;
+        }
+
+        #endregion
+
+        #region Alert If Presage Bitness Or Bootstrap Or Version Failure
+
+        private static async Task<bool> AlertIfPresageBitnessOrBootstrapOrVersionFailure(
+            bool presageInstallationProblem, IInputService inputService, IAudioService audioService,  MainViewModel mainViewModel)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
+            if (presageInstallationProblem)
+            {
+                Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                Log.Error("Invalid Presage installation, or problem starting Presage. Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                inputService.RequestSuspend();
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.PRESAGE_UNAVAILABLE,
+                    string.Format(OptiKey.Properties.Resources.USING_DEFAULT_SUGGESTION_METHOD,
+                        Settings.Default.SuggestionMethod),
+                    NotificationTypes.Error, () =>
+                    {
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(false);
+                    });
+            }
+            else 
+            {
+                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+                {
+                    Log.Info("Presage installation validated.");
+                }
+                taskCompletionSource.SetResult(true);
+            }
+
+            return await taskCompletionSource.Task;
         }
 
         #endregion

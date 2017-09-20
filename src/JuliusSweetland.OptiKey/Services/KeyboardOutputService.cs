@@ -28,8 +28,9 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Dictionary<bool, KeyboardOutputServiceState> state = new Dictionary<bool, KeyboardOutputServiceState>();
 
         private string text;
-        private string lastTextChange;
-        private bool lastTextChangeWasSuggestion;
+        private string lastProcessedText;
+        private bool lastProcessedTextWasSuggestion;
+        private bool lastProcessedTextWasMultiKey;
         private bool suppressNextAutoSpace = true;
         private bool keyboardIsShiftAware;
         private bool shiftStateSetAutomatically;
@@ -57,6 +58,7 @@ namespace JuliusSweetland.OptiKey.Services
             ReactToKeyboardIsShiftAwareChanges();
             ReactToSuppressAutoCapitaliseIntelligentlyChanges();
             AutoPressShiftIfAppropriate();
+            GenerateSuggestions(true);
         }
 
         #endregion
@@ -82,8 +84,6 @@ namespace JuliusSweetland.OptiKey.Services
         public void ProcessFunctionKey(FunctionKeys functionKey)
         {
             Log.DebugFormat("Processing captured function key '{0}'", functionKey);
-
-            lastTextChangeWasSuggestion = false;
 
             switch (functionKey)
             {
@@ -113,7 +113,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         StoreLastProcessedText(null);
-                        GenerateAutoCompleteSuggestions();
+                        GenerateSuggestions(true);
 
                         Log.Debug("Suppressing next auto space.");
                         suppressNextAutoSpace = true;
@@ -123,12 +123,14 @@ namespace JuliusSweetland.OptiKey.Services
                         //Scratchpad is empty, but publish 1 backspace anyway, as per the behaviour for 'BackOne'
                         PublishKeyPress(FunctionKeys.BackOne);
                     }
+
+                    lastProcessedTextWasSuggestion = false;
                     break;
 
                 case FunctionKeys.BackOne:
-                    var backOneCount = string.IsNullOrEmpty(lastTextChange)
-                        ? 1 //Default to removing one character if no lastTextChange
-                        : lastTextChange.Length;
+                    var backOneCount = string.IsNullOrEmpty(lastProcessedText)
+                        ? 1 //Default to removing one character if no lastProcessedText
+                        : lastProcessedText.Length;
 
                     var textChangedByBackOne = false;
 
@@ -179,9 +181,9 @@ namespace JuliusSweetland.OptiKey.Services
                             //Removing more than one character - only decrement removed string
                             dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
                         }
-                        else if (!string.IsNullOrEmpty(lastTextChange)
-                            && lastTextChange.Length == 1
-                            && !char.IsWhiteSpace(lastTextChange[0]))
+                        else if (!string.IsNullOrEmpty(lastProcessedText)
+                            && lastProcessedText.Length == 1
+                            && !char.IsWhiteSpace(lastProcessedText[0]))
                         {
                             dictionaryService.DecrementEntryUsageCount(Text.InProgressWord(Text.Length)); //We are removing a non-whitespace character - decrement the in progress word
                             dictionaryService.IncrementEntryUsageCount(textAfterBackOne.InProgressWord(Text.Length)); //And increment the in progress word that is left after the removal
@@ -203,10 +205,11 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     StoreLastProcessedText(null);
-                    GenerateAutoCompleteSuggestions();
+                    GenerateSuggestions(false);
 
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
+                    lastProcessedTextWasSuggestion = false;
                     break;
 
                 case FunctionKeys.ClearScratchpad:
@@ -216,45 +219,140 @@ namespace JuliusSweetland.OptiKey.Services
                     AutoPressShiftIfAppropriate();
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
+                    lastProcessedTextWasSuggestion = false;
+                    GenerateSuggestions(false);
+                    break;
+
+                case FunctionKeys.ConversationConfirmYes:
+                    Text = null;
+                    StoreLastProcessedText(null);
+                    ClearSuggestions();
+                    AutoPressShiftIfAppropriate();
+                    Log.Debug("Suppressing next auto space.");
+                    suppressNextAutoSpace = true;
+                    Text = Resources.YES;
+                    break;
+
+                case FunctionKeys.ConversationConfirmNo:
+                    Text = null;
+                    StoreLastProcessedText(null);
+                    ClearSuggestions();
+                    AutoPressShiftIfAppropriate();
+                    Log.Debug("Suppressing next auto space.");
+                    suppressNextAutoSpace = true;
+                    Text = Resources.NO;
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaClear:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaABCDEFGHI:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "ABCDEFGHI";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaJKLMNOPQR:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "JKLMNOPQR";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaSTUVWXYZ:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "STUVWXYZ";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaABC:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "ABC";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaDEF:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "DEF";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaGHI:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "GHI";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaJKL:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "JKL";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaMNO:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "MNO";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaPQR:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "PQR";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaSTU:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "STU";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaVWX:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "VWX";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaYZ:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "YZ";
+                    break;
+
+                case FunctionKeys.SimplifiedAlphaNum:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
+                    break;
+
+                case FunctionKeys.SimplifiedAlpha123:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "123";
+                    break;
+
+                case FunctionKeys.SimplifiedAlpha456:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "456";
+                    break;
+
+                case FunctionKeys.SimplifiedAlpha789:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "789";
                     break;
 
                 case FunctionKeys.Suggestion1:
                     SwapLastTextChangeForSuggestion(0);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion2:
                     SwapLastTextChangeForSuggestion(1);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion3:
                     SwapLastTextChangeForSuggestion(2);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion4:
                     SwapLastTextChangeForSuggestion(3);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion5:
                     SwapLastTextChangeForSuggestion(4);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion6:
                     SwapLastTextChangeForSuggestion(5);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
+                    break;
+
+                case FunctionKeys.LeftShift:
+                    shiftStateSetAutomatically = false;
+                    GenerateSuggestions(lastProcessedTextWasSuggestion);
                     break;
 
                 default:
                     if (functionKey.ToVirtualKeyCode() != null)
                     {
                         //Key corresponds to physical keyboard key
-                        GenerateAutoCompleteSuggestions();
+                        GenerateSuggestions(false);
 
-                        //If the key cannot be pressed or locked down (these are handled in 
+                        //If the key cannot be pressed or locked down (these are handled in
                         //ReactToPublishableKeyDownStateChanges) then publish it and release unlocked keys
                         var keyValue = new KeyValue(functionKey);
                         if (!KeyValues.KeysWhichCanBePressedOrLockedDown.Contains(keyValue))
@@ -264,10 +362,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                     }
 
-                    if (functionKey == FunctionKeys.LeftShift)
-                    {
-                        shiftStateSetAutomatically = false;
-                    }
+                    lastProcessedTextWasSuggestion = false;
                     break;
             }
         }
@@ -286,8 +381,36 @@ namespace JuliusSweetland.OptiKey.Services
             var capturedTextAfterComposition = CombineStringWithActiveDeadKeys(capturedText);
             ProcessText(capturedTextAfterComposition, true);
             
-            lastTextChangeWasSuggestion = false;
+            lastProcessedTextWasSuggestion = false;
+
+            //Special handling for simplified keyboards
+            if (Settings.Default.UseSimplifiedKeyboardLayout)
+            {
+                char last = capturedText.LastOrDefault();
+                if (last != null)
+                {
+                    if (char.IsLetter(last))
+                    {
+                        Settings.Default.SimplifiedKeyboardCurrentContext = "";
+                    }
+                    else if (char.IsNumber(last))
+                    {
+                        Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
+                    }
+                    else if (char.IsPunctuation(last))
+                    {
+                        Settings.Default.SimplifiedKeyboardCurrentContext = "";
+                    }
+                }
+            }
         }
+
+        public void ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type, int delayMs = 0)
+        {
+            // TODO: This is a stub for future use
+            throw new NotImplementedException();            
+        }
+
 
         private string CombineStringWithActiveDeadKeys(string input)
         {
@@ -320,27 +443,57 @@ namespace JuliusSweetland.OptiKey.Services
 
             ProcessText(captureAndSuggestions.First(), false);
 
-            lastTextChangeWasSuggestion = false;
+            lastProcessedTextWasSuggestion = false;
+            lastProcessedTextWasMultiKey = true;
         }
 
         #endregion
 
         #region Methods - private
 
-        private void ProcessText(string newText, bool generateAutoCompleteSuggestions)
+        private void ProcessText(string newText, bool generateSuggestions)
         {
             Log.DebugFormat("Processing captured text '{0}'", newText.ToPrintableString());
 
             if (string.IsNullOrEmpty(newText)) return;
 
-            //Suppress auto space if... 
-            if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
-                || (lastTextChange.Length == 1 && newText.Length == 1 && !lastTextChangeWasSuggestion) //we are capturing single chars and are on the 2nd or later key (and the last capture wasn't a suggestion, which can be 1 character)
-                || !Settings.Default.KeyboardAndDictionaryLanguage.SupportsAutoSpace() //Language does not support auto space
-                || (newText.Length == 1 && !char.IsLetter(newText.First())) //we have captured a single char which is not a letter
-                || new[] { " ", "\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
+            //Suppress auto space if...
+            if (string.IsNullOrWhiteSpace(lastProcessedText))
             {
-                Log.Debug("Suppressing next auto space.");
+                //We have no text change history, or the last capture was whitespace.
+                Log.Debug("Suppressing auto space before this capture as the last text change was null or white space.");
+                suppressNextAutoSpace = true;
+            }
+			else if(!Settings.Default.KeyboardAndDictionaryLanguage.SupportsAutoSpace()) //Language does not support auto space
+			{
+				Log.DebugFormat("Suppressing auto space before this capture as the KeyboardAndDictionaryLanguage {0} does not support auto space.", Settings.Default.KeyboardAndDictionaryLanguage);
+                suppressNextAutoSpace = true;
+			}
+            else if(lastProcessedText.Length == 1
+                && newText.Length == 1
+                && !lastProcessedTextWasSuggestion
+                && !(keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown() && char.IsLetter(newText.First())))
+            {
+                //We are capturing single chars and are on the 2nd+ character,
+                //the last capture wasn't a suggestion (as these can also be 1 character and we want to inject the space if it is),
+                //and the current capture is not a multi-key selection of a single letter (as we also want to inject the space for this scenario).
+                Log.Debug("Suppressing auto space before this capture as the user appears to be typing one char at a time. Also the last text change was not a suggestion, and the current capture is not a single letter captured with multi-key selection enabled.");
+                suppressNextAutoSpace = true;
+            }
+            else if (newText.Length == 1
+                && !char.IsLetter(newText.First()))
+            {
+                //We have captured a single char which is not a letter
+                Log.Debug("Suppressing auto space before this capture as this capture is a single character which is not a letter.");
+                suppressNextAutoSpace = true;
+            }
+            else if (lastProcessedText.Length == 1
+                && !new[] {'.', '!', '?', ',', ':', ';', ')', ']', '}', '>'}.Contains(lastProcessedText.First())
+                && !char.IsLetter(lastProcessedText.First()))
+            {
+                //The current capture (which we know is a letter or multi-key capture) follows a single character
+                //which is not a letter, or a closing or mid-sentence punctuation; e.g. whitespace or a symbol
+                Log.Debug("Suppressing auto space before this capture as it follows a single character which is not a letter, or a closing or mid-sentence punctuation mark.");
                 suppressNextAutoSpace = true;
             }
 
@@ -442,7 +595,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             //Publish each character (if SimulatingKeyStrokes), releasing 'on' (but not 'locked') modifier keys as appropriate
-            var textToPublish = newTextModified != null ? newTextModified : newText;
+            var textToPublish = newTextModified ?? newText;
             foreach (var c in textToPublish)
             {
                 PublishKeyPress(c);
@@ -455,9 +608,9 @@ namespace JuliusSweetland.OptiKey.Services
                 suppressNextAutoSpace = false;
             }
 
-            if (generateAutoCompleteSuggestions)
+            if (generateSuggestions)
             {
-                GenerateAutoCompleteSuggestions();
+                GenerateSuggestions(false);
             }
         }
 
@@ -553,7 +706,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     if (!shiftStateSetAutomatically)
                     {
-                        GenerateAutoCompleteSuggestions();
+                        GenerateSuggestions(false);
                     }
                 });
         }
@@ -576,8 +729,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var lastState = new KeyboardOutputServiceState(
                     currentStateKey,
                     () => text, s => Text = s, //Set property (not field) to trigger bindings
-                    () => lastTextChange, s => lastTextChange = s,
-                    () => lastTextChangeWasSuggestion, b => lastTextChangeWasSuggestion = b,
+                    () => lastProcessedText, s => lastProcessedText = s,
+                    () => lastProcessedTextWasSuggestion, b => lastProcessedTextWasSuggestion = b,
                     () => suppressNextAutoSpace, b => suppressNextAutoSpace = b,
                     () => shiftStateSetAutomatically, b => shiftStateSetAutomatically = b,
                     () => suggestionService.Suggestions, s => suggestionService.Suggestions = s);
@@ -655,88 +808,112 @@ namespace JuliusSweetland.OptiKey.Services
         private void StoreLastProcessedText(string textChange)
         {
             Log.DebugFormat("Storing last text change '{0}'", textChange);
-            lastTextChange = textChange;
+            lastProcessedText = textChange;
         }
 
-        private void GenerateAutoCompleteSuggestions()
+        private void GenerateSuggestions(bool nextWord)
         {
-            if (lastTextChange == null || lastTextChange.Length == 1) //Don't generate auto complete words if the last input was a multi key capture
+            if (Settings.Default.SuggestWords)
             {
-                if (Settings.Default.AutoCompleteWords)
+                Log.DebugFormat("Generating auto complete suggestions from '{0}'.", Text);
+
+                var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
+                var root = Text;
+
+                if (!Settings.Default.SuggestNextWords)
                 {
-                    var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
+                    nextWord = false;
+                    root = inProgressWord;
+                }
+                else if (lastProcessedTextWasMultiKey)
+                {
+                    lastProcessedTextWasMultiKey = false;
+                    lastProcessedTextWasSuggestion = true;
+                }
 
-                    if (!string.IsNullOrEmpty(inProgressWord)
-                        && char.IsLetter(inProgressWord.First())) //A word must start with a letter
+                var suggestions = dictionaryService.GetSuggestions(root, nextWord)
+                    .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                    .ToList();
+
+                Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
+                    suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
+
+                if (!nextWord & inProgressWord != null)
+                {
+                    // Ensure that the entered word is in the list of suggestions...
+                    if (!suggestions.Contains(inProgressWord, StringComparer.CurrentCultureIgnoreCase))
                     {
-                        Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
-
-                        var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
-                            .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                            .ToList();
-
-                        Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
-                            suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
-
-                        // Ensure that the entered word is in the list of suggestions...
-                        if (!suggestions.Contains(inProgressWord, StringComparer.CurrentCultureIgnoreCase))
+                        suggestions.Insert(0, inProgressWord);
+                        suggestions = suggestions.Take(Settings.Default.MaxDictionaryMatchesOrSuggestions).ToList();
+                    }
+                    else
+                    {
+                        // ...and that it is at the front of the list.
+                        var index =
+                            suggestions.FindIndex(
+                                s => string.Equals(s, inProgressWord, StringComparison.CurrentCultureIgnoreCase));
+                        if (index > 0)
                         {
-                            suggestions.Insert(0, inProgressWord);
-                            suggestions = suggestions.Take(Settings.Default.MaxDictionaryMatchesOrSuggestions).ToList();
+                            suggestions.Swap(0, index);
                         }
-                        else
-                        {
-                            // ...and that it is at the front of the list.
-                            var index =
-                                suggestions.FindIndex(
-                                    s => string.Equals(s, inProgressWord, StringComparison.CurrentCultureIgnoreCase));
-                            if (index > 0)
-                            {
-                                suggestions.Swap(0, index);
-                            }
-                        }
-
-                        //Correctly case auto complete suggestions
-                        var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
-                        var leftShiftIsLockedDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown;
-                        suggestionService.Suggestions = suggestions.Select(suggestion =>
-                        {
-                            var suggestionChars = suggestion.ToCharArray();
-                            for (var index = 0; index < suggestionChars.Length; index++)
-                            {
-                                bool makeUppercase = false;
-                                if (index < inProgressWord.Length
-                                    && char.IsUpper(inProgressWord[index]))
-                                {
-                                    makeUppercase = true; //In progress word is uppercase as this index
-                                }
-                                else if (index == inProgressWord.Length
-                                    && (leftShiftIsDown || leftShiftIsLockedDown))
-                                {
-                                    makeUppercase = true; //Shift is down, so the next character after the end of the in progress word should be uppercase
-                                }
-                                else if (index > inProgressWord.Length
-                                         && leftShiftIsLockedDown)
-                                {
-                                    makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
-                                }
-
-                                if (makeUppercase)
-                                {
-                                    suggestionChars[index] = char.ToUpper(suggestion[index], Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
-                                }
-                            }
-
-                            return new string(suggestionChars);
-                        })
-                        .Distinct() //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
-                        .ToList();
-
-                        return;
                     }
                 }
 
-                ClearSuggestions();
+                //Correctly case suggestions
+                var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
+                var leftShiftIsLockedDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown;
+                suggestionService.Suggestions = suggestions.Select(suggestion =>
+                {
+                    var suggestionChars = suggestion.ToCharArray();
+                    for (var index = 0; index < suggestionChars.Length; index++)
+                    {
+                        bool makeUppercase = false;
+                        if(nextWord || inProgressWord == null)
+                        {
+                            if (index == 0 && (leftShiftIsDown || leftShiftIsLockedDown)) //First character should be uppercase
+                            {
+                                makeUppercase = true;
+                            }
+                            else if (index > 0 && leftShiftIsLockedDown)
+                            {
+                                makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
+                            }
+                            else if (index > 0 && leftShiftIsLockedDown)
+                            {
+                                makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
+                            }
+                        }
+                        else
+                        {
+                            if (index < inProgressWord.Length
+                                && char.IsUpper(inProgressWord[index]))
+                            {
+                                makeUppercase = true; //In progress word is uppercase as this index
+                            }
+                            else if (index == inProgressWord.Length
+                                && (leftShiftIsDown || leftShiftIsLockedDown))
+                            {
+                                makeUppercase = true; //Shift is down, so the next character after the end of the in progress word should be uppercase
+                            }
+                            else if (index > inProgressWord.Length
+                                        && leftShiftIsLockedDown)
+                            {
+                                makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
+                            }
+                        }
+
+                        if (makeUppercase)
+                        {
+                            suggestionChars[index] = char.ToUpper(suggestion[index], Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
+                        }
+                    }
+
+                    return new string(suggestionChars);
+                })
+                .Distinct() //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
+                .ToList();
+
+                return;
             }
         }
 
@@ -907,29 +1084,31 @@ namespace JuliusSweetland.OptiKey.Services
             var suggestionIndex = (suggestionService.SuggestionsPage * suggestionService.SuggestionsPerPage) + index;
             if (suggestionService.Suggestions.Count > suggestionIndex)
             {
-                if (!string.IsNullOrEmpty(lastTextChange)
-                    && lastTextChange.Length > 1)
+                if (!string.IsNullOrEmpty(lastProcessedText)
+                    && lastProcessedText.Length > 1
+                    && lastProcessedTextWasMultiKey)
                 {
-                    //We are swapping out a multi-key capture, or a swapped in suggestion for another suggestion
-                    var replacedText = lastTextChange;
-                    SwapText(lastTextChange, suggestionService.Suggestions[suggestionIndex]);
+                    //We are swapping out a multi-key capture
+                    var replacedText = lastProcessedText;
+                    SwapText(lastProcessedText, suggestionService.Suggestions[suggestionIndex]);
                     var newSuggestions = suggestionService.Suggestions.ToList();
                     newSuggestions[suggestionIndex] = replacedText;
                     StoreSuggestions(newSuggestions);
                 }
                 else
                 {
-                    //We are auto-completing a word with a suggestion
-                    if (!string.IsNullOrEmpty(Text))
+                    var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
+                    if (!Settings.Default.SuggestNextWords || !lastProcessedTextWasSuggestion && !string.IsNullOrEmpty(inProgressWord) && Char.IsLetterOrDigit(inProgressWord.Last()))
                     {
-                        var inProgressWord = Text.InProgressWord(Text.Length);
-                        if (!string.IsNullOrEmpty(inProgressWord))
-                        {
-                            SwapText(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
-                            var newSuggestions = suggestionService.Suggestions.ToList();
-                            newSuggestions.RemoveAt(suggestionIndex);
-                            StoreSuggestions(newSuggestions);
-                        }
+                        //We are auto-completing a word with a suggestion
+                        SwapText(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
+                        GenerateSuggestions(true);
+                    }
+                    else
+                    {
+                        //We are writing the first word or adding a whole word
+                        ProcessText(suggestionService.Suggestions[suggestionIndex], false);
+                        GenerateSuggestions(true);
                     }
                 }
                 suppressNextAutoSpace = false;
@@ -951,7 +1130,7 @@ namespace JuliusSweetland.OptiKey.Services
                 Text = string.Concat(Text.Substring(0, Text.Length - textToSwapOut.Length), textToSwapIn);
 
                 var textHasSameRoot = textToSwapIn.StartsWith(textToSwapOut, StringComparison.Ordinal);
-                if (!textHasSameRoot) //Only backspace the old word if it doesn't share the same root as the new word 
+                if (!textHasSameRoot) //Only backspace the old word if it doesn't share the same root as the new word
                 {
                     for (int i = 0; i < textToSwapOut.Length; i++)
                     {

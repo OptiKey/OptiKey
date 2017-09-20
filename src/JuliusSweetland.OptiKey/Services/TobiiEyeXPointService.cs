@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Fields
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         private GazePointDataStream gazeDataStream;
         private FixationDataStream fixationDataStream;
 
@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public TobiiEyeXPointService()
         {
+            KalmanFilterSupported = true;
             EyeXHost = new EyeXHost();
 
             //Disconnect (deactivate) from the TET server on shutdown - otherwise the process can hang
@@ -36,6 +37,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Log.Info("Disposing of the EyeXHost.");
                     EyeXHost.Dispose();
+                    EyeXHost = null;
                 }
             };
         }
@@ -44,6 +46,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
 
+        public bool KalmanFilterSupported {get; private set; }
         public EyeXHost EyeXHost { get; private set; }
 
         #endregion
@@ -83,7 +86,10 @@ namespace JuliusSweetland.OptiKey.Services
                                 ? GazePointDataMode.Unfiltered //None
                                 : GazePointDataMode.LightlyFiltered); //Low
 
-                        EyeXHost.Start(); // Start the EyeX host
+                        if (!EyeXHost.IsStarted)
+                        {
+                            EyeXHost.Start(); // Start the EyeX host
+                        }
 
                         gazeDataStream.Next += (s, data) =>
                         {
@@ -103,7 +109,10 @@ namespace JuliusSweetland.OptiKey.Services
                                 ? FixationDataMode.Sensitive //Medium
                                 : FixationDataMode.Slow); //Hight
 
-                        EyeXHost.Start(); // Start the EyeX host
+                        if(!EyeXHost.IsStarted)
+                        {
+                            EyeXHost.Start(); // Start the EyeX host
+                        }
 
                         fixationDataStream.Next += (s, data) =>
                         {
@@ -126,8 +135,19 @@ namespace JuliusSweetland.OptiKey.Services
 
                 if (pointEvent == null)
                 {
-                    Log.Info("Last listener of Point event has unsubscribed. Disposing gaze data stream.");
-                    gazeDataStream.Dispose();
+                    Log.Info("Last listener of Point event has unsubscribed. Disposing gaze data & fixation data streams.");
+
+                    if (gazeDataStream != null)
+                    {
+                        gazeDataStream.Dispose();
+                        gazeDataStream = null;
+                    }
+
+                    if (fixationDataStream != null)
+                    {
+                        fixationDataStream.Dispose();
+                        fixationDataStream = null;
+                    }
                 }
             }
         }

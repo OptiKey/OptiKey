@@ -67,7 +67,7 @@ namespace JuliusSweetland.OptiKey.Extensions
             return null;
         }
 
-        public static string ToDictionaryHash(this string entry, bool log = true)
+        public static string Normalise(this string entry, bool log = true)
         {
             if (!string.IsNullOrWhiteSpace(entry))
             {
@@ -236,7 +236,7 @@ namespace JuliusSweetland.OptiKey.Extensions
         {
             var result = new List<Tuple<char, char, int>>();
 
-            var cleansedChars = input.Select(s => s.ToDictionaryHash(log: false).First()).ToList();
+            var cleansedChars = input.Select(s => s.Normalise(log: false).First()).ToList();
             var uncleansedChars = input.Select(s => s.First()).ToList();
             
             for (int index = 0; index < cleansedChars.Count; index++)
@@ -357,5 +357,17 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             return output;
         }
+
+        public static string ToStringWithValidNewlines(this string s)
+        {
+            if (s.Contains("\\r\\n"))
+                s = s.Replace("\\r\\n", Environment.NewLine);
+
+            if (s.Contains("\\n"))
+                s = s.Replace("\\n", Environment.NewLine);
+
+            return s;
+        }
+
     }
 }

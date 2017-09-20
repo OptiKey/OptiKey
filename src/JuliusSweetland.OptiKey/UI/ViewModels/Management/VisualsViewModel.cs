@@ -129,6 +129,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CONVERSATION_NUM_SYM_LAYOUT, Enums.Keyboards.ConversationNumericAndSymbols),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_1, Enums.Keyboards.Currencies1),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_2, Enums.Keyboards.Currencies2),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.CUSTOM_LAYOUT, Enums.Keyboards.CustomKeyboardFile),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_1, Enums.Keyboards.Diacritics1),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_2, Enums.Keyboards.Diacritics2),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_3, Enums.Keyboards.Diacritics3),
@@ -139,7 +140,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Enums.Keyboards>(Resources.NUMBERS_SYMBOLS_LAYOUT_2, Enums.Keyboards.NumericAndSymbols2),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.NUMBERS_SYMBOLS_LAYOUT_3, Enums.Keyboards.NumericAndSymbols3),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.PHYSICAL_KEYS_LAYOUT, Enums.Keyboards.PhysicalKeys),
-                    new KeyValuePair<string, Enums.Keyboards>(Resources.SIZE_POSITION_LAYOUT, Enums.Keyboards.SizeAndPosition)
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.SIZE_POSITION_LAYOUT, Enums.Keyboards.SizeAndPosition),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.WEB_BROWSING_LAYOUT, Enums.Keyboards.WebBrowsing)
                 };
             }
         }
@@ -279,6 +281,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref conversationOnlyMode, value); }
         }
 
+        private bool conversationconfirmEnable;
+        public bool ConversationConfirmEnable
+        {
+            get { return conversationconfirmEnable; }
+            set { SetProperty(ref conversationconfirmEnable, value); }
+        }
+
+        private bool conversationconfirmOnlyMode;
+        public bool ConversationConfirmOnlyMode
+        {
+            get { return conversationconfirmOnlyMode; }
+            set { SetProperty(ref conversationconfirmOnlyMode, value); }
+        }
+
         private Enums.Keyboards startupKeyboard;
         public Enums.Keyboards StartupKeyboard
         {
@@ -316,11 +332,44 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get { return Settings.Default.ConversationOnlyMode != ConversationOnlyMode; }
+            get
+            {
+                return Settings.Default.ConversationOnlyMode != ConversationOnlyMode
+                    || Settings.Default.ConversationConfirmEnable != ConversationConfirmEnable
+                    || Settings.Default.ConversationConfirmOnlyMode != ConversationConfirmOnlyMode;
+            }
         }
-        
+
+        private string simplifiedKeyboardCurrentContext;
+        public string SimplifiedKeyboardCurrentContext
+        {
+            get { return simplifiedKeyboardCurrentContext; }
+            set { SetProperty(ref simplifiedKeyboardCurrentContext, value); }
+        }
+
+        private bool enableQuitKeys;
+        public bool EnableQuitKeys
+        {
+            get { return enableQuitKeys; }
+            set { SetProperty(ref enableQuitKeys, value); }
+        }
+
+        private string dynamicKeyboardsLocation;
+        public string DynamicKeyboardsLocation
+        {
+            get { return dynamicKeyboardsLocation; }
+            set { SetProperty(ref dynamicKeyboardsLocation, value); }
+        }
+
+        private string startupKeyboardFile;
+        public string StartupKeyboardFile
+        {
+            get { return startupKeyboardFile; }
+            set { SetProperty(ref startupKeyboardFile, value); }
+        }
+
         #endregion
-        
+
         #region Methods
 
         private void Load()
@@ -338,12 +387,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
+            ConversationConfirmEnable = Settings.Default.ConversationConfirmEnable;
+            ConversationConfirmOnlyMode = Settings.Default.ConversationConfirmOnlyMode;
             StartupKeyboard = Settings.Default.StartupKeyboard;
             MinimisedPosition = Settings.Default.MainWindowMinimisedPosition;
             KeyCase = Settings.Default.KeyCase;
             MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
+            SimplifiedKeyboardCurrentContext = Settings.Default.SimplifiedKeyboardCurrentContext;
+            EnableQuitKeys = Settings.Default.EnableQuitKeys;
+            DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
+            StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
         }
 
         public void ApplyChanges()
@@ -361,12 +416,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.ConversationOnlyMode = ConversationOnlyMode;
+            Settings.Default.ConversationConfirmEnable = ConversationConfirmEnable;
+            Settings.Default.ConversationConfirmOnlyMode = ConversationConfirmOnlyMode;
             Settings.Default.StartupKeyboard = StartupKeyboard;
             Settings.Default.MainWindowMinimisedPosition = MinimisedPosition;
             Settings.Default.KeyCase = KeyCase;
             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
+            Settings.Default.SimplifiedKeyboardCurrentContext = SimplifiedKeyboardCurrentContext;
+            Settings.Default.EnableQuitKeys = EnableQuitKeys;
+            Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
+            Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
         }
 
         #endregion

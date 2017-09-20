@@ -5,9 +5,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.English
     /// <summary>
     /// Interaction logic for AlphabeticalAlpha1.xaml
     /// </summary>
-    public partial class AlphabeticalAlpha : KeyboardView
+    public partial class AlphabeticalAlpha1 : KeyboardView
     {
-        public AlphabeticalAlpha() : base(shiftAware: true)
+        public AlphabeticalAlpha1() : base(shiftAware: true)
         {
             InitializeComponent();
         }

@@ -14,6 +14,18 @@ namespace JuliusSweetland.OptiKey.Extensions
                 case FunctionKeys.BackOne:
                     return VirtualKeyCode.BACK;
 
+                case FunctionKeys.BrowserBack:
+                    return VirtualKeyCode.BROWSER_BACK;
+
+                case FunctionKeys.BrowserForward:
+                    return VirtualKeyCode.BROWSER_FORWARD;
+
+                case FunctionKeys.BrowserHome:
+                    return VirtualKeyCode.BROWSER_HOME;
+
+                case FunctionKeys.BrowserSearch:
+                    return VirtualKeyCode.BROWSER_SEARCH;
+
                 case FunctionKeys.LeftShift:
                     return VirtualKeyCode.LSHIFT;
 
@@ -62,6 +74,27 @@ namespace JuliusSweetland.OptiKey.Extensions
                 case FunctionKeys.F12:
                     return VirtualKeyCode.F12;
 
+                case FunctionKeys.F13:
+                    return VirtualKeyCode.F13;
+
+                case FunctionKeys.F14:
+                    return VirtualKeyCode.F14;
+
+                case FunctionKeys.F15:
+                    return VirtualKeyCode.F15;
+
+                case FunctionKeys.F16:
+                    return VirtualKeyCode.F16;
+                
+                case FunctionKeys.F17:
+                    return VirtualKeyCode.F17;
+
+                case FunctionKeys.F18:
+                    return VirtualKeyCode.F18;
+
+                case FunctionKeys.F19:
+                    return VirtualKeyCode.F19;
+                    
                 case FunctionKeys.PrintScreen:
                     return VirtualKeyCode.SNAPSHOT; //This is not a typo
 
@@ -94,6 +127,36 @@ namespace JuliusSweetland.OptiKey.Extensions
 
                 case FunctionKeys.Home:
                     return VirtualKeyCode.HOME;
+
+                case FunctionKeys.NumPad0:
+                    return VirtualKeyCode.NUMPAD0;
+
+                case FunctionKeys.NumPad1:
+                    return VirtualKeyCode.NUMPAD1;
+
+                case FunctionKeys.NumPad2:
+                    return VirtualKeyCode.NUMPAD2;
+
+                case FunctionKeys.NumPad3:
+                    return VirtualKeyCode.NUMPAD3;
+
+                case FunctionKeys.NumPad4:
+                    return VirtualKeyCode.NUMPAD4;
+
+                case FunctionKeys.NumPad5:
+                    return VirtualKeyCode.NUMPAD5;
+
+                case FunctionKeys.NumPad6:
+                    return VirtualKeyCode.NUMPAD6;
+
+                case FunctionKeys.NumPad7:
+                    return VirtualKeyCode.NUMPAD7;
+
+                case FunctionKeys.NumPad8:
+                    return VirtualKeyCode.NUMPAD8;
+
+                case FunctionKeys.NumPad9:
+                    return VirtualKeyCode.NUMPAD9;                
 
                 case FunctionKeys.PgUp:
                     return VirtualKeyCode.PRIOR;

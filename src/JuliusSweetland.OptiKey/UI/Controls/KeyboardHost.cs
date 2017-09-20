@@ -17,6 +17,7 @@ using log4net;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using CatalanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Catalan;
 using CroatianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Croatian;
+using CzechViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Czech;
 using DanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Danish;
 using DutchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Dutch;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
@@ -32,6 +33,7 @@ using SlovenianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Slovenian;
 using SpanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Spanish;
 using TurkishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Turkish;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using System.Diagnostics;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -53,7 +55,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.MouseKeyboardDockSize).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationOnlyMode).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.ConversationConfirmEnable).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.ConversationConfirmOnlyMode).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.EnableCommuniKateKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UseCommuniKateKeyboardLayoutByDefault).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UseSimplifiedKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.CommuniKateKeyboardCurrentContext).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.SimplifiedKeyboardCurrentContext).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
 
@@ -62,6 +71,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 contentDp.AddValueChanged(this, ContentChangedHandler);
             }
+
+            this.MouseEnter += this.OnMouseEnter;
         }
 
         #endregion
@@ -157,6 +168,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.CroatianCroatia:
                         newContent = new CroatianViews.Alpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.CzechCzechRepublic:
+                        newContent = new CzechViews.Alpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.DanishDenmark:
                         newContent = new DanishViews.Alpha1 { DataContext = Keyboard };
                         break;
@@ -200,8 +214,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new TurkishViews.Alpha1 { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = Settings.Default.UseAlphabeticalKeyboardLayout 
-                            ? (object)new EnglishViews.AlphabeticalAlpha { DataContext = Keyboard }
+                        newContent = Settings.Default.UsingCommuniKateKeyboardLayout
+                            ? (object)new EnglishViews.CommuniKate { DataContext = Keyboard }
+                            : Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new EnglishViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout 
+                            ? (object)new EnglishViews.AlphabeticalAlpha1 { DataContext = Keyboard }
                             : new EnglishViews.Alpha1 { DataContext = Keyboard };
                         break;
                 }
@@ -224,6 +242,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.CroatianCroatia:
                         newContent = new CroatianViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.CzechCzechRepublic:
+                        newContent = new CzechViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.DanishDenmark:
                         newContent = new DanishViews.ConversationAlpha1 { DataContext = Keyboard };
@@ -268,7 +289,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new TurkishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = Settings.Default.UseAlphabeticalKeyboardLayout
+                        newContent = Settings.Default.UsingCommuniKateKeyboardLayout
+                            ? (object)new EnglishViews.CommuniKate { DataContext = Keyboard }
+                            : Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new EnglishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout
                             ? (object)new EnglishViews.AlphabeticalConversationAlpha1 { DataContext = Keyboard }
                             : new EnglishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
@@ -282,6 +307,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new KoreanViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
                 }
+            }
+            else if (Keyboard is ViewModelKeyboards.ConversationConfirm)
+            {
+                newContent = new CommonViews.ConversationConfirm { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.ConversationNumericAndSymbols)
             {
@@ -343,11 +372,24 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.SizeAndPosition { DataContext = Keyboard };
             }
+            else if (Keyboard is ViewModelKeyboards.WebBrowsing)
+            {
+                newContent = new CommonViews.WebBrowsing { DataContext = Keyboard };
+            }
             else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
             {
                 newContent = new CommonViews.YesNoQuestion { DataContext = Keyboard };
             }
-
+            else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
+            {
+                var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
+                newContent = new CommonViews.DynamicKeyboard(kb.Link, kb.ResizeAction) { DataContext = Keyboard };                
+            }
+            else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)
+            {
+                var kb = Keyboard as ViewModelKeyboards.DynamicKeyboardSelector;
+                newContent = new CommonViews.DynamicKeyboardSelector(kb.PageIndex) { DataContext = Keyboard };
+            }
             Content = newContent;
         }
 
@@ -361,6 +403,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (keyboardHost != null)
             {
                 keyboardHost.BuildPointToKeyMap();
+            }
+        }
+
+        private void OnMouseEnter(object sender, System.EventArgs e)
+        {
+            if (Settings.Default.PointsSource == PointsSources.MousePosition &&
+                Settings.Default.PointsMousePositionHideCursor)
+            {
+                this.Cursor = System.Windows.Input.Cursors.None;
+            }
+            else
+            {
+                this.Cursor = System.Windows.Input.Cursors.Arrow;
             }
         }
         
@@ -409,8 +464,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             foreach (var key in allKeys)
             {
-                if (key.Value.FunctionKey != null
-                    || key.Value.String != null)
+                if (key.IsVisible
+                    && PresentationSource.FromVisual(key) != null
+                    && key.Value != null 
+		    && key.Value.HasContent() )
                 {
                     var rect = new Rect
                     {
@@ -420,7 +477,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     if (rect.Size.Width != 0 && rect.Size.Height != 0)
                     {
-                        pointToKeyValueMap.Add(rect, key.Value);
+                        if (pointToKeyValueMap.ContainsKey(rect))
+                        {
+                            // In Release, just log error
+                            KeyValue existingKeyValue = pointToKeyValueMap[rect];
+                            Log.ErrorFormat("Overlapping keys {0} and {1}, cannot add {1} to map", existingKeyValue, key.Value);
+
+                            Debug.Assert(!pointToKeyValueMap.ContainsKey(rect));
+                        }
+                        else
+                        {
+                            pointToKeyValueMap.Add(rect, key.Value);
+                        }
                     }
 
                     var keyValueChangedSubscription = key.OnPropertyChanges<KeyValue>(Key.ValueProperty).Subscribe(kv =>

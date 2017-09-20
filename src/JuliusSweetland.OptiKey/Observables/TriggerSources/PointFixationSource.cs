@@ -6,6 +6,7 @@ using System.Reactive.Linq;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Observables.PointSources;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
@@ -17,8 +18,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         private readonly TimeSpan timeToCompleteTrigger;
         private readonly double lockOnRadiusSquared;
         private readonly double fixationRadiusSquared;
-        private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
-        
+
+        private IPointSource pointSource;
         private IObservable<TriggerSignal> sequence;
 
         #endregion
@@ -30,13 +31,13 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             TimeSpan timeToCompleteTrigger,
             double lockOnRadius,
             double fixationRadius,
-            IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
+            IPointSource pointSource)
         {
             this.lockOnTime = lockOnTime;
             this.timeToCompleteTrigger = timeToCompleteTrigger;
             this.lockOnRadiusSquared = lockOnRadius * lockOnRadius;
             this.fixationRadiusSquared = fixationRadius * fixationRadius;
-            this.pointAndKeyValueSource = pointAndKeyValueSource;
+            this.pointSource = pointSource;
         }
 
         #endregion
@@ -46,6 +47,16 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         public RunningStates State { get; set; }
 
         public KeyEnabledStates KeyEnabledStates { get; set; } //Irrelevant on point trigger
+
+        /// <summary>
+        /// Change the point and key value source. N.B. After setting this any existing subscription 
+        /// to the sequence must be disposed and the getter called again to recreate the sequence again.
+        /// </summary>
+        public IPointSource PointSource
+        {
+            get { return pointSource; }
+            set { pointSource = value; }
+        }
 
         public IObservable<TriggerSignal> Sequence
         {
@@ -59,15 +70,15 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                         var buffer = new List<Timestamped<PointAndKeyValue>>();
                         DateTimeOffset fixationStart = DateTimeOffset.MinValue;
-                        PointAndKeyValue? fixationCentrePointAndKeyValue = null;
+                        PointAndKeyValue fixationCentrePointAndKeyValue = null;
 
                         Action disposeAllSubscriptions = null;
                         
-                        var pointAndKeyValueSubscription = pointAndKeyValueSource
+                        var pointAndKeyValueSubscription = pointSource.Sequence
                             .Where(_ => disposed == false)
                             .Where(_ => State == RunningStates.Running)
                             .Where(tp => tp.Value != null) //Filter out stale indicators - the fixation progress is not reset by the points sequence being stale
-                            .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
+                            .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value, tp.Timestamp))
                             .Subscribe(point =>
                             {
                                 //Maintain a buffer which contains points which fill the lockOnTime 
@@ -103,8 +114,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                     //We have a current fixation
                                     
                                     //Latest point breaks the current fixation (is outside the acceptable radius of the current fixation)
-                                    if ((Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - point.Value.Point.X), 2)
-                                        + Math.Pow((fixationCentrePointAndKeyValue.Value.Point.Y - point.Value.Point.Y), 2)) 
+                                    if ((Math.Pow((fixationCentrePointAndKeyValue.Point.X - point.Value.Point.X), 2)
+                                        + Math.Pow((fixationCentrePointAndKeyValue.Point.Y - point.Value.Point.Y), 2)) 
                                         > fixationRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
                                     {
                                         //Clear the current fixation and reset progress
@@ -150,6 +161,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                 pointAndKeyValueSubscription.Dispose();
                                 pointAndKeyValueSubscription = null;
                             }
+
+                            sequence = null;
                         };
 
                         return disposeAllSubscriptions;

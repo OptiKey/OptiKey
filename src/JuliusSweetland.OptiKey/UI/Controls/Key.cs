@@ -12,7 +12,6 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 
@@ -23,8 +22,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         #region Private Member Vars
 
         private CompositeDisposable onUnloaded = null;
-        private IKeyStateService keyStateService;
-        private IDisposable keySelectionProgressSubscription;
 
         #endregion
 
@@ -46,18 +43,34 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
             var mainViewModel = keyboardHost.DataContext as MainViewModel;
-            keyStateService = mainViewModel.KeyStateService;
+            var keyStateService = mainViewModel.KeyStateService;
             var capturingStateManager = mainViewModel.CapturingStateManager;
 
             //Calculate KeyDownState
-            var keyStateSubscription = keyStateService.KeyDownStates[Value]
-                .OnPropertyChanges(kds => kds.Value)
-                .Subscribe(value => KeyDownState = value);
-            onUnloaded.Add(keyStateSubscription);
-            KeyDownState = keyStateService.KeyDownStates[Value].Value;
+            if (Value != null)
+            {
+                var keyStateSubscription = keyStateService.KeyDownStates[Value]
+                    .OnPropertyChanges(kds => kds.Value)
+                    .Subscribe(value => KeyDownState = value);
+                onUnloaded.Add(keyStateSubscription);
+            }
+            KeyDownState = (Value == null) ? KeyDownStates.Up : keyStateService.KeyDownStates[Value].Value;
 
             //Calculate SelectionProgress and SelectionInProgress
-            BindToKeySelectionProgress();
+            if (Value != null)
+            {
+                var keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
+                    .OnPropertyChanges(ksp => ksp.Value)
+                    .Subscribe(value =>
+                    {
+                        SelectionProgress = value;
+                        SelectionInProgress = value > 0d;
+                    });
+                onUnloaded.Add(keySelectionProgressSubscription);
+            }
+            var progress = (Value == null) ? 0 : keyStateService.KeySelectionProgress[Value].Value;
+            SelectionProgress = progress;
+            SelectionInProgress = progress > 0d;
 
             //Calculate IsEnabled
             Action calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
@@ -68,7 +81,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             calculateIsEnabled();
             
             //Calculate IsCurrent
-            Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
+            Action<KeyValue> calculateIsCurrent = value => IsCurrent = value != null && Value != null && value.Equals(Value);
             var currentPositionSubscription = mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
                 .Subscribe(calculateIsCurrent);
             onUnloaded.Add(currentPositionSubscription);
@@ -95,7 +108,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 handler => mainViewModel.KeySelection -= handler)
                 .Subscribe(pattern =>
                 {
-                    if (pattern.EventArgs.Equals(Value)
+                    if (Value != null &&
+                        pattern.EventArgs.Equals(Value)
                         && Selection != null)
                     {
                         Selection(this, null);
@@ -103,31 +117,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 });
             onUnloaded.Add(keySelectionSubscription);
         }
-
-        private void BindToKeySelectionProgress()
-        {
-            if (keySelectionProgressSubscription != null)
-            {
-                onUnloaded.Remove(keySelectionProgressSubscription);
-                keySelectionProgressSubscription.Dispose();
-            }
-
-            if (keyStateService == null) return; //Can be called by ValueChanged handler before key is loaded
-
-            keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
-                .OnPropertyChanges(ksp => ksp.Value)
-                .Subscribe(value =>
-                {
-                    SelectionProgress = value;
-                    SelectionInProgress = value > 0d;
-                });
-            onUnloaded.Add(keySelectionProgressSubscription);
-
-            var progress = keyStateService.KeySelectionProgress[Value].Value;
-            SelectionProgress = progress;
-            SelectionInProgress = progress > 0d;
-        }
-
+        
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             if (onUnloaded != null
@@ -213,6 +203,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(HeightSpanProperty, value); }
         }
 
+        public static readonly DependencyProperty SymbolMarginProperty =
+                   DependencyProperty.Register("SymbolMargin", typeof(double), typeof(Key), new PropertyMetadata(2d));
+
+        public double SymbolMargin
+        {
+            get { return (double)GetValue(SymbolMarginProperty); }
+            set { SetValue(SymbolMarginProperty, value); }
+        }
+
         public static readonly DependencyProperty SharedSizeGroupProperty =
             DependencyProperty.Register("SharedSizeGroup", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -251,6 +250,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (key != null)
             {
                 var value = dependencyPropertyChangedEventArgs.NewValue as string;
+                //Depending on parametrized case, change the value
                 if (value != null)
                 {
                     TextInfo textInfo = Settings.Default.UiLanguage.ToCultureInfo().TextInfo;
@@ -321,20 +321,20 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
-        public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
+        public bool HasText { get { return !String.IsNullOrEmpty(ShiftUpText) ||
+                                           !String.IsNullOrEmpty(ShiftDownText); } }
+
+        public static readonly DependencyProperty HasImageProperty =
+            DependencyProperty.Register("HasImage", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool HasImage
+        {
+            get { return (bool)GetValue(HasImageProperty); }
+            set { SetValue(HasImageProperty, value); }
+        }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue), ValueChanged));
-
-        private static void ValueChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as Key;
-
-            if (key != null)
-            {
-                key.BindToKeySelectionProgress();
-            }
-        }
+            DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
         public KeyValue Value
         {

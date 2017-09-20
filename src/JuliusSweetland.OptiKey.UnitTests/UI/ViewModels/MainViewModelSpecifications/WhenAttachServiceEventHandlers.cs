@@ -28,7 +28,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
         protected override void Act()
         {
-            MainViewModel.AttachServiceEventHandlers();
+            MainViewModel.AttachErrorNotifyingServiceHandlers();
+            MainViewModel.AttachInputServiceEventHandlers();
         }
 
         [Test]
@@ -84,7 +85,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var point = new Point(27, 10);
             var keyValue = new KeyValue();
-            InputService.Raise(s => s.CurrentPosition += null, this, new Tuple<Point, KeyValue?>(point, keyValue));
+            InputService.Raise(s => s.CurrentPosition += null, this, new Tuple<Point, KeyValue>(point, keyValue));
 
             Assert.AreEqual(point, MainViewModel.CurrentPositionPoint);
             Assert.AreEqual(keyValue, MainViewModel.CurrentPositionKey);
@@ -110,7 +111,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var point = new Point(27, 10);
             var keyValue = new KeyValue();
-            InputService.Raise(s => s.CurrentPosition += null, this, new Tuple<Point, KeyValue?>(point, keyValue));
+            InputService.Raise(s => s.CurrentPosition += null, this, new Tuple<Point, KeyValue>(point, keyValue));
 
             Assert.AreEqual(point, MainViewModel.CurrentPositionPoint);
             Assert.AreEqual(keyValue, MainViewModel.CurrentPositionKey);
@@ -137,7 +138,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenSelectionProgressShouldBeReset()
         {
-            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue?, double>(null, 0));
+
+            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(null, 0));
 
             Assert.IsNull(MainViewModel.PointSelectionProgress);
 
@@ -169,7 +171,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeySelectionProgressOnKeyStateServiceShouldBeSet()
         {
-            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue?, double>(
+            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(
                 new PointAndKeyValue(new Point(), KeyValueToAssert), 14));
 
             Assert.AreEqual(14, KeySelectionProgress[KeyValueToAssert].Value);
@@ -191,7 +193,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var pointAndKeyValue = new PointAndKeyValue(new Point(), new KeyValue());
 
-            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue?, double>(
+            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(
                 pointAndKeyValue, 83));
 
             Assert.IsNotNull(MainViewModel.PointSelectionProgress);
@@ -258,8 +260,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void GivenSingleKeyIsStringThenSelectionResultEventHandlerShouldBeAttachedToInputService()
         {
             var points = new List<Point>();
-            var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                points, null, "SingleKeyValueIsString", new List<string>());
+            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
+                points, new KeyValue("SingleKeyValueIsString"), new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
@@ -272,8 +274,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void GivenSingleKeyIsFunctionKeySelectionResultEventHandlerShouldBeAttachedToInputService()
         {
             var points = new List<Point>();
-            var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                points, FunctionKeys.Suggestion1, null, new List<string>());
+            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
+                points, new KeyValue(FunctionKeys.Suggestion1), new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
@@ -291,8 +293,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var points = new List<Point>();
             var multiKeySelection = new List<string> { "test-multi" };
-            var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                points, null, null, multiKeySelection);
+            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
+                points, null, multiKeySelection);
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 

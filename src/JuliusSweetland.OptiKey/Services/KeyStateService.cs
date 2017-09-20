@@ -68,30 +68,33 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProgressKeyDownState(KeyValue keyValue)
         {
-            if (KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+            if (null != keyValue)
             {
-                Log.DebugFormat("Changing key down state of '{0}' key from UP to DOWN.", keyValue);
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
-            }
-            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
-                     && !KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
-            {
-                Log.DebugFormat("Changing key down state of '{0}' key from UP to LOCKED DOWN.", keyValue);
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
-            }
-            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
-                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
-            {
-                Log.DebugFormat("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue);
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
-            }
-            else if (KeyDownStates[keyValue].Value != Enums.KeyDownStates.Up)
-            {
-                Log.DebugFormat("Changing key down state of '{0}' key from {1} to UP.", keyValue,
-                    KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down ? "DOWN" : "LOCKED DOWN");
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
+                if (KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                    && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+                {
+                    Log.DebugFormat("Changing key down state of '{0}' key from UP to DOWN.", keyValue);
+                    KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
+                }
+                else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
+                         && !KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                         && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+                {
+                    Log.DebugFormat("Changing key down state of '{0}' key from UP to LOCKED DOWN.", keyValue);
+                    KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+                }
+                else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
+                         && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
+                {
+                    Log.DebugFormat("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue);
+                    KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+                }
+                else if (KeyDownStates[keyValue].Value != Enums.KeyDownStates.Up)
+                {
+                    Log.DebugFormat("Changing key down state of '{0}' key from {1} to UP.", keyValue,
+                        KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down ? "DOWN" : "LOCKED DOWN");
+                    KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
+                }
             }
         }
 

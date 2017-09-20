@@ -4,9 +4,12 @@
     {
         Alpha,
         ConversationAlpha,
+        ConversationConfirm,
         ConversationNumericAndSymbols,
         Currencies1,
         Currencies2,
+        CustomKeyboardFile,
+        DynamicKeyboard,
         Diacritics1,
         Diacritics2,
         Diacritics3,
@@ -17,6 +20,7 @@
         NumericAndSymbols2,
         NumericAndSymbols3,
         PhysicalKeys,
-        SizeAndPosition
+        SizeAndPosition,
+        WebBrowsing
     }
 }
