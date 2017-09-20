@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -1033,6 +1033,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string DICTIONARY_FILE_NOT_FOUND_ERROR {
             get {
                 return ResourceManager.GetString("DICTIONARY_FILE_NOT_FOUND_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All changes made to the settings will be discarded, do you want to continue?.
+        /// </summary>
+        public static string DISCARD_CHANGED_SETTINGS {
+            get {
+                return ResourceManager.GetString("DISCARD_CHANGED_SETTINGS", resourceCulture);
             }
         }
         
@@ -4129,6 +4138,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL {
             get {
                 return ResourceManager.GetString("SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel Settings.
+        /// </summary>
+        public static string SETTINGS_CHANGED {
+            get {
+                return ResourceManager.GetString("SETTINGS_CHANGED", resourceCulture);
             }
         }
         
