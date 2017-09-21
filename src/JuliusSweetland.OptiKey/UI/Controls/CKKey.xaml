@@ -49,7 +49,7 @@
                     <Setter Property="Content">
                         <Setter.Value>
                             <controls:Key SharedSizeGroup="KeyWithText"
-                                          HasImage="True" SymbolGeometry="" 
+                                          SymbolGeometry="" 
                                           ShiftUpText="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
                                           ShiftDownText="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
                                           Value="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/>
@@ -60,7 +60,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SharedSizeGroup="KeyWithText"
-                                                  HasImage="True" SymbolGeometry="" 
+                                                  SymbolGeometry="" 
                                                   Text="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" 
                                                   Value="{Binding Path=CKMenu, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/>
                                 </Setter.Value>
@@ -72,7 +72,7 @@
         </ContentControl>
         <!--controls:Key Grid.RowSpan="2"
                       SharedSizeGroup="KeyWithText"
-                      HasImage="True" SymbolGeometry="" 
+                      SymbolGeometry="" 
                       Text="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" 
                       Value="{Binding Path=CKValue, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/-->
     </Grid>
@@ -91,7 +91,7 @@
                                       Data="M0,0 L0,20 A100,100 0 0 1 -20,0 z" />
         <controls:Key Grid.RowSpan="2" ShiftUpText="hello" ShiftDownText="Hello"
                                               SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry=""
+                                              SymbolGeometry=""
                                               Value="hello"/>
     </-->
 </UserControl>
