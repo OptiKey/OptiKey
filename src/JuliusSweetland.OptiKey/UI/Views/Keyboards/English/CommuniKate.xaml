@@ -74,7 +74,7 @@
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
         <controls:Key Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource SpeakIcon}"
-                      ShowOverScratchpadOveride="True"
+                      OnlyVisibleWhenInUse="True"
                       BackgroundColourOverride="Transparent"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SpeakKey}"/>

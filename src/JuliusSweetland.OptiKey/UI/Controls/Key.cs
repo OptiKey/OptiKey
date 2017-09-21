@@ -324,13 +324,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public bool HasText { get { return !String.IsNullOrEmpty(ShiftUpText) ||
                                            !String.IsNullOrEmpty(ShiftDownText); } }
 
-        public static readonly DependencyProperty ShowOverScratchpadOverideProperty =
-            DependencyProperty.Register("ShowOverScratchpadOveride", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty OnlyVisibleWhenInUseProperty =
+            DependencyProperty.Register("OnlyVisibleWhenInUse", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool ShowOverScratchpadOveride
+        public bool OnlyVisibleWhenInUse
         {
-            get { return (bool)GetValue(ShowOverScratchpadOverideProperty); }
-            set { SetValue(ShowOverScratchpadOverideProperty, value); }
+            get { return (bool)GetValue(OnlyVisibleWhenInUseProperty); }
+            set { SetValue(OnlyVisibleWhenInUseProperty, value); }
         }
 
         public static readonly DependencyProperty BackgroundColourOverrideProperty =
