@@ -1,7 +1,7 @@
-using System.Windows.Controls;
-using System.Windows;
+using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using Microsoft.Win32;
-using JuliusSweetland.OptiKey.Properties;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Management
 {
@@ -22,17 +22,25 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
                 FileName = "marytts-server.bat",
                 Filter = "marytts-server|marytts-server.bat"
             };
+
             if (openFileDialog.ShowDialog() == true)
             {
+                string fileLocation = null;
+
                 if (openFileDialog.FileName.EndsWith(@"\bin\marytts-server.bat"))
                 {
                     txtMaryTtsLocation.Text = openFileDialog.FileName;
-                    Settings.Default.MaryTTSLocation = txtMaryTtsLocation.Text;
+                    fileLocation = txtMaryTtsLocation.Text;
                 }
                 else
                 {
                     txtMaryTtsLocation.Text = Properties.Resources.MARYTTS_LOCATION_ERROR_LABEL;
-                    Settings.Default.MaryTTSLocation = null;
+                }
+
+                SoundsViewModel viewModel = this.DataContext as SoundsViewModel;
+                if (viewModel != null && !string.IsNullOrWhiteSpace(fileLocation))
+                {
+                    viewModel.MaryTTSLocation = fileLocation;
                 }
             }
         }

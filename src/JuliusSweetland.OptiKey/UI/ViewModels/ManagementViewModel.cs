@@ -124,7 +124,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     if (confirmation.Confirmed)
                     {
-                        Settings.Default.Reload();
                         window.Close();
                     }
                 });
