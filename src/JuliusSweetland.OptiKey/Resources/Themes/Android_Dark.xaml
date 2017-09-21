@@ -114,20 +114,6 @@
                         <Setter Property="Foreground" Value="{Binding Path=ForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
                     </DataTrigger>
 
-                    <!--This key has a Selection Foreground Colour Override-->
-                    <!--DataTrigger Binding="{Binding Path=HasSelectionForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
-                        <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
-                            <Setter.Value>
-                                <Storyboard>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" 
-                                                          Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{Binding Path=SelectionForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </Setter.Value>
-                        </Setter>
-                    </!-->
-
                     <!--If there is text, but no symbol then always display the text-->
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
@@ -186,7 +172,7 @@
                     <!--Key is disabled and has a Disabled Foreground Colour Override-->
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=HasDisabledForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
+                            <Condition Binding="{Binding Path=DisabledForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True" />
                             <Condition Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
                         </MultiDataTrigger.Conditions>
                         <MultiDataTrigger.Setters>
@@ -224,20 +210,6 @@
                     <DataTrigger Binding="{Binding Path=ForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
                         <Setter Property="Fill" Value="{Binding Path=ForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
                     </DataTrigger>
-
-                    <!--This key has a Selection Foreground Colour Override-->
-                    <!--DataTrigger Binding="{Binding Path=HasSelectionForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
-                        <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
-                            <Setter.Value>
-                                <Storyboard>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" 
-                                                          Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{Binding Path=SelectionForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </Setter.Value>
-                        </Setter>
-                    </!-->
 
                     <!--Is there a symbol to display-->
                     <DataTrigger Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
@@ -387,7 +359,6 @@
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="BorderBrush" Value="{StaticResource KeyDefaultBorderBrush}" />
                 <Setter Property="Background" Value="{StaticResource KeyDefaultBackgroundBrush}" />
-                <Setter Property="Opacity" Value="1.0" />
                 <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
                     <Setter.Value>
                         <Storyboard>
@@ -406,20 +377,6 @@
                     <!--This key has a Background Colour Override-->
                     <DataTrigger Binding="{Binding Path=BackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
                         <Setter Property="Background" Value="{Binding Path=BackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
-                        <!--Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
-                            <Setter.Value>
-                                <Storyboard>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                          Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBorder}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                                          Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{Binding Path=BackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </Setter.Value>
-                        </Setter!-->
                     </DataTrigger>
 
                     <!--This key is in a key down state of On and is not shown Over the scratchpad-->
@@ -444,6 +401,7 @@
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
                         <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
+                        <Setter Property="Opacity" Value="{Binding Path=DisabledBackgroundOpacity, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
 
                     <!--Key is disabled and has a Disabled Background Colour Override-->
@@ -454,17 +412,6 @@
                         </MultiDataTrigger.Conditions>
                         <MultiDataTrigger.Setters>
                             <Setter Property="Background" Value="{Binding Path=DisabledBackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
-
-                    <!--Key is disabled and has a Disabled Background Opacity Override-->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=DisabledBackgroundOpacityOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="Opacity" Value="{Binding Path=DisabledBackgroundOpacityOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                         </MultiDataTrigger.Setters>
                     </MultiDataTrigger>
                 </Style.Triggers>
