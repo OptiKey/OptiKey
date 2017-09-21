@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
@@ -9,7 +8,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value != null && !value.Equals("") && value.ToString() != "";
+            return value != null && !string.IsNullOrEmpty(value.ToString());
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
