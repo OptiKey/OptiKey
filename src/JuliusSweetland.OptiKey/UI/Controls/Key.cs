@@ -351,6 +351,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(DisabledBackgroundColourOverrideProperty, value); }
         }
 
+        public static readonly DependencyProperty DisabledBackgroundOpacityOverrideProperty =
+            DependencyProperty.Register("DisabledBackgroundOpacityOverride", typeof(double), typeof(Key), new PropertyMetadata(default(double)));
+
+        public double DisabledBackgroundOpacityOverride
+        {
+            get { return (double)GetValue(DisabledBackgroundOpacityOverrideProperty); }
+            set { SetValue(DisabledBackgroundOpacityOverrideProperty, value); }
+        }
+
         public static readonly DependencyProperty ForegroundColourOverrideProperty =
             DependencyProperty.Register("ForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
@@ -396,29 +405,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(SelectionForegroundColourOverrideProperty, value); }
         }
 
-        private static void OnColourOveride(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            var senderAsKey = sender as Key;
-            if (senderAsKey != null && senderAsKey.PropertyChanged != null)
-            {
-                senderAsKey.OnPropertyChanged("HasBackgroundColourOverride");
-                senderAsKey.OnPropertyChanged("HasDisabledBackgroundColourOverride");
-                senderAsKey.OnPropertyChanged("HasForegroundColourOverride");
-                senderAsKey.OnPropertyChanged("HasDisabledForegroundColourOverride");
-                senderAsKey.OnPropertyChanged("HasHoverForegroundColourOverride");
-                senderAsKey.OnPropertyChanged("HasSelectionProgressColourOverride");
-                senderAsKey.OnPropertyChanged("HasSelectionForegroundColourOverride");
-            }
-        }
-
-        public bool HasBackgroundColourOverride { get { return BackgroundColourOverride != null; } }
-        public bool HasDisabledBackgroundColourOverride { get { return DisabledBackgroundColourOverride != null; } }
-        public bool HasForegroundColourOverride { get { return ForegroundColourOverride != null; } }
-        public bool HasDisabledForegroundColourOverride { get { return DisabledForegroundColourOverride != null; } }
-        public bool HasHoverForegroundColourOverride { get { return HoverForegroundColourOverride != null; } }
-        public bool HasSelectionProgressColourOverride { get { return SelectionProgressColourOverride != null; } }
-        public bool HasSelectionForegroundColourOverride { get { return SelectionForegroundColourOverride != null; } }
-        //*/
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 

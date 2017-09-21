@@ -63,7 +63,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -76,7 +76,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                       Value="{Binding Path=CKMenu00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
                                     </Setter.Value>
@@ -85,7 +85,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -146,7 +146,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -159,7 +159,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -168,7 +168,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -229,7 +229,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -242,7 +242,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -251,7 +251,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -312,7 +312,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -325,7 +325,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -334,7 +334,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -395,7 +395,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -408,7 +408,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -417,7 +417,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -479,7 +479,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -492,7 +492,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -501,7 +501,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -562,7 +562,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -575,7 +575,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -584,7 +584,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -645,7 +645,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -658,7 +658,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -667,7 +667,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -728,7 +728,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -741,7 +741,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -750,7 +750,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -811,7 +811,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -824,7 +824,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -833,7 +833,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -895,7 +895,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -908,7 +908,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -917,7 +917,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -978,7 +978,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -991,7 +991,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -1000,7 +1000,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1061,7 +1061,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -1074,7 +1074,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -1083,7 +1083,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1144,7 +1144,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -1157,7 +1157,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -1166,7 +1166,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1227,7 +1227,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -1240,7 +1240,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -1249,7 +1249,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1311,7 +1311,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -1324,7 +1324,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -1333,7 +1333,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1394,7 +1394,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -1407,7 +1407,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -1416,7 +1416,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1477,7 +1477,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -1490,7 +1490,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -1499,7 +1499,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1560,7 +1560,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -1573,7 +1573,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -1582,7 +1582,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1643,7 +1643,7 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                              DisabledBackgroundColourOverride="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              DisabledBackgroundOpacityOverride="0.8"
                                               ShiftUpText="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               ShiftDownText="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
@@ -1656,7 +1656,7 @@
                                         <controls:Key SharedSizeGroup="KeyWithText"
                                                       BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="Transparent" 
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundColourOverride="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                                      DisabledBackgroundOpacityOverride="0.8"
                                                       Text="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
@@ -1665,7 +1665,7 @@
                             <DataTrigger Binding="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <controls:Key DisabledBackgroundColourOverride="Transparent"/>
+                                        <controls:Key DisabledBackgroundOpacityOverride="0.8"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
