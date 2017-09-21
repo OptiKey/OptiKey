@@ -9,8 +9,6 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
     {
         protected Window Window { get; private set; }
         protected bool IsWindowClosed { get; private set; }
-        protected bool IsWarningRaised { get; private set; }
-        protected bool IsCanceled { get; private set; }
         protected bool confirm { get; set; }
 
         protected override void Arrange()
