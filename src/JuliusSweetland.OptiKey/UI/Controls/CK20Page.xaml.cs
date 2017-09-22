@@ -68,39 +68,38 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
                     pagefile = extractPath + manifest.root;
                 }
-                //if (File.Exists(pagefile))
+                
                 {
                     Log.DebugFormat("Page file to read: {0}.", pagefile);
                     string contents = new StreamReader(pagefile, Encoding.UTF8).ReadToEnd();
                     CKOBF CKPageOBF = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
-                    //Log.InfoFormat("raw json file:\n{0}", contents);
                     int ButtonCount = CKPageOBF.buttons.Count();
                     Log.DebugFormat("Page contains {0} buttons.", ButtonCount -2);
-                    int buttonid = 3;
-                    string colour;
-                    string image;
+                    int buttonid = 0;
                     string path;
-                    bool ismenukey;
-                    //KeyValue menukey;
-                    string text;
-                    Load_board board;
-                    string defaultcolour = "#000000";
-                    string defaultimage = ".png";
-                    string defaultpath = null;
-                    bool defaultismenukey = false;
-                    //KeyValue defaultmenukey;
-                    string defaulttext = "";
-                    Load_board defaultboard = null;
+
+                    List<string> Colours = new List<string>();
+                    List<string> Images = new List<string>();
+                    List<string> Paths = new List<string>();
+                    List<bool> Ismenukeys = new List<bool>();
+                    List<string> Texts = new List<string>();
+                    List<Load_board> Boards = new List<Load_board>();
+
+                    string defaultColour = "#000000";
+                    string defaultImage = "";
+                    string defaultPath = null;
+                    bool defaultIsMenuKey = false;
+                    string defaultText = "";
+                    Load_board defaultBoard = null;
 
                     int b = 3;
                     int BlankButtonCount = 23 - CKPageOBF.buttons.Count;
-                    //Log.InfoFormat("There are {0} blank button(s) on this page.", BlankButtonCount);
+                    Log.DebugFormat("There are {0} blank button(s) on this page.", BlankButtonCount);
                     Buttons blankbutton = new Buttons();
-                    blankbutton.background_color = "rgb(0,0,0)";
-                    blankbutton.image_id = "";
-                    blankbutton.label = defaulttext;
-                    //blankbutton.load_board.path = defaultpath;
-                    blankbutton.load_board = defaultboard;
+                    blankbutton.background_color = defaultColour;
+                    blankbutton.image_id = defaultImage;
+                    blankbutton.label = defaultText;
+                    blankbutton.load_board = defaultBoard;
 
                     for (int r = 1; r < 5; ++r)
                         for (int c = 0; c < 5; ++c)
@@ -127,7 +126,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                     CKPageOBF.buttons.Insert(b, blankbutton);
                                     --BlankButtonCount;
                                 }
-                                else if (CKPageOBF.buttons.ElementAt(b).load_board == null && blankbutton.background_color == "rgb(0,0,0)")
+                                else if (CKPageOBF.buttons.ElementAt(b).load_board == null && blankbutton.background_color.Equals(defaultColour))
                                 {
                                     blankbutton.background_color = CKPageOBF.buttons.ElementAt(b).background_color;
                                 }
@@ -156,687 +155,166 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         }
                     ButtonCount = CKPageOBF.buttons.Count();
 
-                    if (buttonid < ButtonCount)
+                    for (int ButtonNo = 3; ButtonNo < ButtonCount; ++ButtonNo)
                     {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
+                        Colours.Add(CKPageOBF.buttons.ElementAt(ButtonNo).background_color);
+                        Images.Add(CKPageOBF.buttons.ElementAt(ButtonNo).image_id);
+                        Boards.Add(CKPageOBF.buttons.ElementAt(ButtonNo).load_board);
+                        Texts.Add(CKPageOBF.buttons.ElementAt(ButtonNo).label);
+                        if (Boards.Last() != null && Boards.Last().path != null)
+                        {
+                            path = Boards.Last().path.Substring(7);
+                            if (path.StartsWith("+"))
+                                Paths.Add(Texts.Last() + path);
+                            else
+                                Paths.Add(path);
+                            Ismenukeys.Add(true);
+                            Log.DebugFormat("Button {0} is a menu key for board {1}.", ButtonNo - 2, path);
+                        }
+                        else
+                        {
+                            Paths.Add(defaultPath);
+                            Ismenukeys.Add(defaultIsMenuKey);
+                        }
                     }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_00 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_00 = text;
-                    key.CKImSo_00 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKKeCo_00 = path;
-                    key.CKMenuKey_00 = ismenukey;
+                    key.CKBaCo_00 = Colours.ElementAt(buttonid);
+                    key.CKText_00 = Texts.ElementAt(buttonid);
+                    key.CKImSo_00 = Images.ElementAt(buttonid);
+                    key.CKKeCo_00 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_00 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_01 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_01 = text;
-                    key.CKImSo_01 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_01 = ismenukey;
-                    key.CKKeCo_01 = path;
+                    key.CKBaCo_01 = Colours.ElementAt(buttonid);
+                    key.CKText_01 = Texts.ElementAt(buttonid);
+                    key.CKImSo_01 = Images.ElementAt(buttonid);
+                    key.CKKeCo_01 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_01 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_02 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_02 = text;
-                    key.CKImSo_02 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_02 = ismenukey;
-                        key.CKKeCo_02 = path;
+                    key.CKBaCo_02 = Colours.ElementAt(buttonid);
+                    key.CKText_02 = Texts.ElementAt(buttonid);
+                    key.CKImSo_02 = Images.ElementAt(buttonid);
+                    key.CKKeCo_02 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_02 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_03 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_03 = text;
-                    key.CKImSo_03 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_03 = ismenukey;
-                    key.CKKeCo_03 = path;
+                    key.CKBaCo_03 = Colours.ElementAt(buttonid);
+                    key.CKText_03 = Texts.ElementAt(buttonid);
+                    key.CKImSo_03 = Images.ElementAt(buttonid);
+                    key.CKKeCo_03 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_03 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_04 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_04 = text;
-                    key.CKImSo_04 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_04 = ismenukey;
-                        key.CKKeCo_04 = path;
-
+                    key.CKBaCo_04 = Colours.ElementAt(buttonid);
+                    key.CKText_04 = Texts.ElementAt(buttonid);
+                    key.CKImSo_04 = Images.ElementAt(buttonid);
+                    key.CKKeCo_04 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_04 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_10 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_10 = text;
-                    key.CKImSo_10 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_10 = ismenukey;
-                        key.CKKeCo_10 = path;
+                    key.CKBaCo_10 = Colours.ElementAt(buttonid);
+                    key.CKText_10 = Texts.ElementAt(buttonid);
+                    key.CKImSo_10 = Images.ElementAt(buttonid);
+                    key.CKKeCo_10 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_10 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_11 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_11 = text;
-                    key.CKImSo_11 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_11 = ismenukey;
-                        key.CKKeCo_11 = path;
+                    key.CKBaCo_11 = Colours.ElementAt(buttonid);
+                    key.CKText_11 = Texts.ElementAt(buttonid);
+                    key.CKImSo_11 = Images.ElementAt(buttonid);
+                    key.CKKeCo_11 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_11 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_12 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_12 = text;
-                    key.CKImSo_12 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_12 = ismenukey;
-                        key.CKKeCo_12 = path;
+                    key.CKBaCo_12 = Colours.ElementAt(buttonid);
+                    key.CKText_12 = Texts.ElementAt(buttonid);
+                    key.CKImSo_12 = Images.ElementAt(buttonid);
+                    key.CKKeCo_12 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_12 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_13 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_13 = text;
-                    key.CKImSo_13 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_13 = ismenukey;
-                        key.CKKeCo_13 = path;
+                    key.CKBaCo_13 = Colours.ElementAt(buttonid);
+                    key.CKText_13 = Texts.ElementAt(buttonid);
+                    key.CKImSo_13 = Images.ElementAt(buttonid);
+                    key.CKKeCo_13 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_13 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_14 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_14 = text;
-                    key.CKImSo_14 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_14 = ismenukey;
-                        key.CKKeCo_14 = path;
-
+                    key.CKBaCo_14 = Colours.ElementAt(buttonid);
+                    key.CKText_14 = Texts.ElementAt(buttonid);
+                    key.CKImSo_14 = Images.ElementAt(buttonid);
+                    key.CKKeCo_14 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_14 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_20 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_20 = text;
-                    key.CKImSo_20 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_20 = ismenukey;
-                        key.CKKeCo_20 = path;
+                    key.CKBaCo_20 = Colours.ElementAt(buttonid);
+                    key.CKText_20 = Texts.ElementAt(buttonid);
+                    key.CKImSo_20 = Images.ElementAt(buttonid);
+                    key.CKKeCo_20 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_20 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_21 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_21 = text;
-                    key.CKImSo_21 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_21 = ismenukey;
-                        key.CKKeCo_21 = path;
+                    key.CKBaCo_21 = Colours.ElementAt(buttonid);
+                    key.CKText_21 = Texts.ElementAt(buttonid);
+                    key.CKImSo_21 = Images.ElementAt(buttonid);
+                    key.CKKeCo_21 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_21 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_22 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_22 = text;
-                    key.CKImSo_22 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_22 = ismenukey;
-                        key.CKKeCo_22 = path;
+                    key.CKBaCo_22 = Colours.ElementAt(buttonid);
+                    key.CKText_22 = Texts.ElementAt(buttonid);
+                    key.CKImSo_22 = Images.ElementAt(buttonid);
+                    key.CKKeCo_22 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_22 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_23 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_23 = text;
-                    key.CKImSo_23 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_23 = ismenukey;
-                        key.CKKeCo_23 = path;
+                    key.CKBaCo_23 = Colours.ElementAt(buttonid);
+                    key.CKText_23 = Texts.ElementAt(buttonid);
+                    key.CKImSo_23 = Images.ElementAt(buttonid);
+                    key.CKKeCo_23 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_23 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_24 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_24 = text;
-                    key.CKImSo_24 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_24 = ismenukey;
-                        key.CKKeCo_24 = path;
-
+                    key.CKBaCo_24 = Colours.ElementAt(buttonid);
+                    key.CKText_24 = Texts.ElementAt(buttonid);
+                    key.CKImSo_24 = Images.ElementAt(buttonid);
+                    key.CKKeCo_24 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_24 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_30 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_30 = text;
-                    key.CKImSo_30 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_30 = ismenukey;
-                        key.CKKeCo_30 = path;
+                    key.CKBaCo_30 = Colours.ElementAt(buttonid);
+                    key.CKText_30 = Texts.ElementAt(buttonid);
+                    key.CKImSo_30 = Images.ElementAt(buttonid);
+                    key.CKKeCo_30 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_30 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_31 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_31 = text;
-                    key.CKImSo_31 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_31 = ismenukey;
-                        key.CKKeCo_31 = path;
+                    key.CKBaCo_31 = Colours.ElementAt(buttonid);
+                    key.CKText_31 = Texts.ElementAt(buttonid);
+                    key.CKImSo_31 = Images.ElementAt(buttonid);
+                    key.CKKeCo_31 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_31 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_32 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_32 = text;
-                    key.CKImSo_32 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_32 = ismenukey;
-                        key.CKKeCo_32 = path;
+                    key.CKBaCo_32 = Colours.ElementAt(buttonid);
+                    key.CKText_32 = Texts.ElementAt(buttonid);
+                    key.CKImSo_32 = Images.ElementAt(buttonid);
+                    key.CKKeCo_32 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_32 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_33 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_33 = text;
-                    key.CKImSo_33 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_33 = ismenukey;
-                        key.CKKeCo_33 = path;
+                    key.CKBaCo_33 = Colours.ElementAt(buttonid);
+                    key.CKText_33 = Texts.ElementAt(buttonid);
+                    key.CKImSo_33 = Images.ElementAt(buttonid);
+                    key.CKKeCo_33 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_33 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
-                    if (buttonid < ButtonCount)
-                    {
-                        colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                        image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                        board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                        text = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    }
-                    else
-                    {
-                        colour = defaultcolour;
-                        image = defaultimage;
-                        board = defaultboard;
-                        text = defaulttext;
-                    }
-                    key.CKBaCo_34 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_34 = text;
-                    key.CKImSo_34 = image;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        if (path.StartsWith("+"))
-                            path = text + path;
-                        ismenukey = true;
-                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                    }
-                    else
-                    {
-                        path = defaultpath;
-                        ismenukey = defaultismenukey;
-                    }
-                    key.CKMenuKey_34 = ismenukey;
-                        key.CKKeCo_34 = path;
+                    key.CKBaCo_34 = Colours.ElementAt(buttonid);
+                    key.CKText_34 = Texts.ElementAt(buttonid);
+                    key.CKImSo_34 = Images.ElementAt(buttonid);
+                    key.CKKeCo_34 = Paths.ElementAt(buttonid);
+                    key.CKMenuKey_34 = Ismenukeys.ElementAt(buttonid);
                 }
             }
         }
@@ -893,11 +371,20 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (dec.StartsWith("#"))
             {
-                return dec;
+                if (dec.Length == 7)
+                    return dec;
+                else
+                    return "#000000";
             }
             else
             {
+                if (dec.StartsWith("rgb("))
+                    dec = dec.Substring(4);
+                if (dec.EndsWith(")"))
+                    dec = dec.Substring(0, dec.Length - 1);
                 List<string> deccolours = dec.Split(',').ToList<string>();
+                if (deccolours.Count != 3)
+                    return "#000000";
                 int intR = (int)Convert.ToSingle(deccolours.ElementAt(0));
                 int intG = (int)Convert.ToSingle(deccolours.ElementAt(1));
                 int intB = (int)Convert.ToSingle(deccolours.ElementAt(2));
