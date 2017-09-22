@@ -623,7 +623,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Location of CommuniKate top page .obf file:.
+        ///   Looks up a localized string similar to Location of CommuniKate top page .obz file:.
         /// </summary>
         public static string COMMUNIKATE_TOPPAGE_LOCATION_LABEL {
             get {
