@@ -1,9 +1,7 @@
-using System.Windows.Controls;
-using System.Windows;
-using Microsoft.Win32;
-using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
+using Microsoft.Win32;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Management
 {

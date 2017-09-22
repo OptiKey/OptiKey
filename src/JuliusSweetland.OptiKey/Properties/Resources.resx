@@ -1903,7 +1903,7 @@ from the Management Console (ALT + M).</value>
     <value>Invalid file</value>
   </data>
   <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
-    <value>Location of CommuniKate top page .obf file:</value>
+    <value>Location of CommuniKate top page .obz file:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
     <value>Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.

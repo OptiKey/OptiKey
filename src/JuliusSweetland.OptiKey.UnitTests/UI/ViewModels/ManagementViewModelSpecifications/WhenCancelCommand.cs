@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using JuliusSweetland.OptiKey.Properties;
+using NUnit.Framework;
 using Prism.Interactivity.InteractionRequest;
 using System.Windows;
 
@@ -11,9 +12,16 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         protected bool IsWindowClosed { get; private set; }
         protected bool confirm { get; set; }
 
+        protected const string defaultCommuniKatePagesetLocation = "./Resources/CommuniKate/pageset.obz";
+        protected const string defaultMaryTTSLocation = "";
+
         protected override void Arrange()
         {
             base.Arrange();
+
+            base.ManagementViewModel.WordsViewModel.CommuniKatePagesetLocation = "new location";
+            base.ManagementViewModel.SoundsViewModel.MaryTTSLocation = "new location";
+
             base.ManagementViewModel.ConfirmationRequest.Raised += (s, e) =>
             {
                 Confirmation context = e.Context as Confirmation;
@@ -42,9 +50,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
 
         [RequiresSTA]
         [Test]
-        public void ThenWindowShouldBeClosed()
+        public void ThenWindowShouldBeClosedWithoutSaving()
         {
             Assert.IsTrue(IsWindowClosed);
+            Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, defaultCommuniKatePagesetLocation);
+            Assert.AreEqual(Settings.Default.MaryTTSLocation, defaultMaryTTSLocation);
         }
     }
 
@@ -59,9 +69,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
 
         [RequiresSTA]
         [Test]
-        public void ThenWindowShouldStay()
+        public void ThenWindowShouldStayWithoutSaving()
         {
             Assert.IsFalse(IsWindowClosed);
+            Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, defaultCommuniKatePagesetLocation);
+            Assert.AreEqual(Settings.Default.MaryTTSLocation, defaultMaryTTSLocation);
         }
     }
 }
