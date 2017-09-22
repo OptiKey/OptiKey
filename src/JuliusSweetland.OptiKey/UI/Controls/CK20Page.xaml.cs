@@ -85,14 +85,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     List<string> Texts = new List<string>();
                     List<Load_board> Boards = new List<Load_board>();
 
-                    string defaultColour = "#000000";
+                    string defaultColour = "rgb(128, 128, 128)";
+                    // some alternative default colours:
+                    // "rgb(68, 68, 68)"; // "rgb(191, 191, 191)"; // "Transparent"; //"#000000"; //
                     string defaultImage = "";
                     string defaultPath = null;
                     bool defaultIsMenuKey = false;
                     string defaultText = "";
                     Load_board defaultBoard = null;
 
-                    int b = 3;
+                    int ButtonNo = 3;
                     int BlankButtonCount = 23 - CKPageOBF.buttons.Count;
                     Log.DebugFormat("There are {0} blank button(s) on this page.", BlankButtonCount);
                     Buttons blankbutton = new Buttons();
@@ -102,11 +104,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     blankbutton.load_board = defaultBoard;
 
                     for (int r = 1; r < 5; ++r)
+                    {
                         for (int c = 0; c < 5; ++c)
                         {
-                            if (b < CKPageOBF.buttons.Count)
+                            if (ButtonNo < CKPageOBF.buttons.Count)
                             {
-                                if (CKPageOBF.buttons.ElementAt(b).id != c.ToString() + r.ToString())
+                                if (CKPageOBF.buttons.ElementAt(ButtonNo).id != c.ToString() + r.ToString())
                                 {
                                     if (BlankButtonCount < 2)
                                     {
@@ -123,12 +126,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                         Log.DebugFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
                                     }
                                     blankbutton.id = c.ToString() + r.ToString();
-                                    CKPageOBF.buttons.Insert(b, blankbutton);
+                                    CKPageOBF.buttons.Insert(ButtonNo, blankbutton);
                                     --BlankButtonCount;
                                 }
-                                else if (CKPageOBF.buttons.ElementAt(b).load_board == null && blankbutton.background_color.Equals(defaultColour))
+                                else
                                 {
-                                    blankbutton.background_color = CKPageOBF.buttons.ElementAt(b).background_color;
+                                    if (CKPageOBF.buttons.ElementAt(ButtonNo).load_board == null && blankbutton.background_color.Equals(defaultColour))
+                                        blankbutton.background_color = CKPageOBF.buttons.ElementAt(ButtonNo).background_color;
                                 }
                             }
                             else
@@ -148,35 +152,32 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                     Log.DebugFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
                                 }
                                 blankbutton.id = c.ToString() + r.ToString();
-                                CKPageOBF.buttons.Insert(b, blankbutton);
+                                CKPageOBF.buttons.Insert(ButtonNo, blankbutton);
                                 --BlankButtonCount;
                             }
-                            ++b;
-                        }
-                    ButtonCount = CKPageOBF.buttons.Count();
-
-                    for (int ButtonNo = 3; ButtonNo < ButtonCount; ++ButtonNo)
-                    {
-                        Colours.Add(dec2hex(CKPageOBF.buttons.ElementAt(ButtonNo).background_color));
-                        Images.Add(CKPageOBF.buttons.ElementAt(ButtonNo).image_id);
-                        Boards.Add(CKPageOBF.buttons.ElementAt(ButtonNo).load_board);
-                        Texts.Add(CKPageOBF.buttons.ElementAt(ButtonNo).label);
-                        if (Boards.Last() != null && Boards.Last().path != null)
-                        {
-                            path = Boards.Last().path.Substring(7);
-                            if (path.StartsWith("+"))
-                                Paths.Add(Texts.Last() + path);
+                            Colours.Add(dec2hex(CKPageOBF.buttons.ElementAt(ButtonNo).background_color));
+                            Images.Add(CKPageOBF.buttons.ElementAt(ButtonNo).image_id);
+                            Boards.Add(CKPageOBF.buttons.ElementAt(ButtonNo).load_board);
+                            Texts.Add(CKPageOBF.buttons.ElementAt(ButtonNo).label);
+                            if (Boards.Last() != null && Boards.Last().path != null)
+                            {
+                                path = Boards.Last().path.Substring(7);
+                                if (path.StartsWith("+"))
+                                    Paths.Add(Texts.Last() + path);
+                                else
+                                    Paths.Add(path);
+                                Ismenukeys.Add(true);
+                                Log.DebugFormat("Button {0} is a menu key for board {1}.", ButtonNo - 2, path);
+                            }
                             else
-                                Paths.Add(path);
-                            Ismenukeys.Add(true);
-                            Log.DebugFormat("Button {0} is a menu key for board {1}.", ButtonNo - 2, path);
-                        }
-                        else
-                        {
-                            Paths.Add(defaultPath);
-                            Ismenukeys.Add(defaultIsMenuKey);
+                            {
+                                Paths.Add(defaultPath);
+                                Ismenukeys.Add(defaultIsMenuKey);
+                            }
+                            ++ButtonNo;
                         }
                     }
+
                     key.CKBaCo_00 = Colours.ElementAt(buttonid);
                     key.CKText_00 = Texts.ElementAt(buttonid);
                     key.CKImSo_00 = Images.ElementAt(buttonid);
@@ -375,6 +376,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     return dec;
                 else
                     return "#000000";
+            }
+            else if (dec.Contains("Transparent"))
+            {
+                return "Transparent";
             }
             else
             {
