@@ -8,13 +8,13 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <CollectionViewSource x:Key="EntriesCollectionViewSource" Source="{Binding Entries}" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
 
     <Grid>
         <Grid IsSharedSizeScope="True"
-              Visibility="{Binding DictionaryControlsAvailable, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
+              Visibility="{Binding DictionaryIsNotPresage, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -110,16 +110,15 @@
             </ItemsControl>
         </Grid>
 
-        <Grid Grid.RowSpan="2" 
-              Visibility="{Binding DictionaryControlsUnavailable, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
+        <Grid Grid.RowSpan="2" >
             <Viewbox Stretch="Uniform">
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" >
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" 
+                           Text="{x:Static resx:Resources.DICTIONARY_IS_PRESAGE}" >
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                            <Setter Property="Text" Value="x:Static resx:Resources.DICTIONARY_CONTROLS_UNAVAILABLE}" />
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding DictionaryIsPresage}" Value="True">
-                                    <Setter Property="Text" Value="x:Static resx:Resources.DICTIONARY_IS_PRESAGE}" />
+                                <DataTrigger Binding="{Binding DictionaryIsNotPresage}" Value="True">
+                                    <Setter Property="Visibility" Value="Hidden" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
