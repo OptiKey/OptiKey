@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
 using Prism.Commands;
@@ -49,6 +50,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             { 
                 SetProperty(ref newEntry, value);
                 AddCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        public bool DictionaryControlsAvailable
+        {
+            get
+            {
+                return Settings.Default.SuggestionMethod == Enums.SuggestionMethods.NGram
+                    || Settings.Default.SuggestionMethod == Enums.SuggestionMethods.Basic;
+            }
+        }
+
+        public bool DictionaryControlsUnavailable
+        {
+            get
+            {
+                return Settings.Default.SuggestionMethod != Enums.SuggestionMethods.NGram
+                    && Settings.Default.SuggestionMethod != Enums.SuggestionMethods.Basic;
+            }
+        }
+
+        public bool DictionaryIsPresage
+        {
+            get
+            {
+                return Settings.Default.SuggestionMethod == Enums.SuggestionMethods.Presage;
             }
         }
 
