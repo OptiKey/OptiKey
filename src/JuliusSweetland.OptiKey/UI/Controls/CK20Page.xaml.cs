@@ -83,7 +83,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     string contents = new StreamReader(pagefile, Encoding.UTF8).ReadToEnd();
                     CKOBF CKPageOBF = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
                     int ButtonCount = CKPageOBF.buttons.Count();
-                    Log.DebugFormat("Page contains {0} buttons.", ButtonCount -2);
+                    Log.DebugFormat("Page contains {0} buttons.", ButtonCount - 3);
                     string image;
                     string path;
 
@@ -102,10 +102,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     bool defaultIsMenuKey = false;
 
                     int BlankButtonCount = 23 - ButtonCount;
-                    Log.DebugFormat("There are {0} blank button(s) on this page.", BlankButtonCount);
+                    Log.DebugFormat("There are {0} empty button(s) on this page.", BlankButtonCount);
                     Buttons blankbutton;
 
-                    // CK 20 pagesets have keys in four rows and six columns 
+                    // CK 20 pagesets have keys in four rows and five columns 
                     // with an extra row at the top for the scratchpad and two other keys
 
                     int ButtonNo = 3;
@@ -114,59 +114,55 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     for (int Row = 1; Row < 5; ++Row)
                     { // start at one to skip the scratchpad row
                         for (int Column = 0; Column < 5; ++Column)
-                        { // all six columns are used
+                        { // all five columns are used
+
+                            // assume the current button is blank
+                            bool CurentButtonIsBlank = true;
+
                             if (ButtonNo < CKPageOBF.buttons.Count)
-                            { // if the stored keys contains more keys than the current button number
-                                if (CKPageOBF.buttons.ElementAt(ButtonNo).id != Column.ToString() + Row.ToString())
-                                { // if the ButtonNo'th key described in the pageset isn't located at this position
-                                  // then a blank key needs to be added to the stored keys here
-                                    if (BlankButtonCount == 1)
-                                    { // if this is the last blank key insert the back button
-                                        blankbutton = new Buttons();
-                                        blankbutton.background_color = "rgb(204,255,204)";
-                                        blankbutton.label = "BACK";
-                                        blankbutton.image_id = "back.png";
-                                        blankbutton.load_board = new Load_board();
-                                        blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPrevious1Context;
-                                        Log.DebugFormat("Back button {3} added at column {0} row {1} with background colour {2}.", Column, Row, blankbutton.background_color, BlankButtonCount);
+                            { // if the stored keys in CKPageOBF total more than the current button number
+                                if (CKPageOBF.buttons.ElementAt(ButtonNo).id == Column.ToString() + Row.ToString())
+                                { // check if the position of the current key matches the current position
+
+                                    // if the positions match then t isn't blank
+                                    CurentButtonIsBlank = false;
+
+                                    if (CKPageOBF.buttons.ElementAt(ButtonNo).load_board == null && pageColour.Equals(defaultColour))
+                                    { // if this non-blank key is the first non-menu key then use its background colour for all the subsequent blank keys
+                                        pageColour = CKPageOBF.buttons.ElementAt(ButtonNo).background_color;
                                     }
-                                    else
-                                    {
-                                        blankbutton = new Buttons();
-                                        blankbutton.background_color = pageColour;
-                                        Log.DebugFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", Column, Row, blankbutton.background_color, BlankButtonCount);
-                                    }
-                                    blankbutton.id = Column.ToString() + Row.ToString();
-                                    CKPageOBF.buttons.Insert(ButtonNo, blankbutton);
-                                    --BlankButtonCount;
-                                }
-                                else if (CKPageOBF.buttons.ElementAt(ButtonNo).load_board == null && pageColour.Equals(defaultColour))
-                                { // if this non-blank key is the first non-menu key then use its background colour for all the subsequent blank keys
-                                    pageColour = CKPageOBF.buttons.ElementAt(ButtonNo).background_color;
                                 }
                             }
-                            else
-                            { // there are no more stored keys so all subsequent keys need to be filled in 
+
+                            if (CurentButtonIsBlank)
+                            { // if the current key is blank insert it
                                 if (BlankButtonCount == 1)
                                 { // if this is the last blank key insert the back button
-                                    blankbutton = new Buttons();
-                                    blankbutton.background_color = "rgb(204,255,204)";
-                                    blankbutton.label = "BACK";
-                                    blankbutton.image_id = "back.png";
-                                    blankbutton.load_board = new Load_board();
-                                    blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPrevious1Context;
-                                    Log.DebugFormat("Back button {3} added at column {0} row {1} with background colour {2}.", Column, Row, blankbutton.background_color, BlankButtonCount);
+                                    blankbutton = new Buttons()
+                                    {
+                                        background_color = "rgb(204,255,204)",
+                                        label = "BACK",
+                                        image_id = "back.png",
+                                        load_board = new Load_board()
+                                        {
+                                            path = "boards/" + Settings.Default.CommuniKateKeyboardPrevious1Context
+                                        }
+                                    };
+                                    Log.DebugFormat("Back button added at column {0} row {1} with background colour {2}.", Column + 1, Row, blankbutton.background_color);
                                 }
                                 else
                                 {
-                                    blankbutton = new Buttons();
-                                    blankbutton.background_color = pageColour;
-                                    Log.DebugFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", Column, Row, blankbutton.background_color, BlankButtonCount);
+                                    blankbutton = new Buttons()
+                                    {
+                                        background_color = pageColour
+                                    };
+                                    Log.DebugFormat("Blank button number {3} added at column {0} row {1} with background colour {2}.", Column + 1, Row, blankbutton.background_color, BlankButtonCount - 1);
                                 }
                                 blankbutton.id = Column.ToString() + Row.ToString();
                                 CKPageOBF.buttons.Insert(ButtonNo, blankbutton);
                                 --BlankButtonCount;
                             }
+
                             // store the individual properties of the current button
                             Colours.Add(dec2hex(CKPageOBF.buttons.ElementAt(ButtonNo).background_color));
                             image = CKPageOBF.buttons.ElementAt(ButtonNo).image_id == "" 
