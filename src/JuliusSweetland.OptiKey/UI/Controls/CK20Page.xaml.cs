@@ -117,7 +117,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         { // all five columns are used
 
                             // assume the current button is blank
-                            bool CurentButtonIsBlank = true;
+                            bool CurrentButtonIsBlank = true;
 
                             if (ButtonNo < CKPageOBF.buttons.Count)
                             { // if the stored keys in CKPageOBF total more than the current button number
@@ -125,7 +125,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 { // check if the position of the current key matches the current position
 
                                     // if the positions match then t isn't blank
-                                    CurentButtonIsBlank = false;
+                                    CurrentButtonIsBlank = false;
 
                                     if (CKPageOBF.buttons.ElementAt(ButtonNo).load_board == null && pageColour.Equals(defaultColour))
                                     { // if this non-blank key is the first non-menu key then use its background colour for all the subsequent blank keys
@@ -134,7 +134,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 }
                             }
 
-                            if (CurentButtonIsBlank)
+                            if (CurrentButtonIsBlank)
                             { // if the current key is blank insert it
                                 if (BlankButtonCount == 1)
                                 { // if this is the last blank key insert the back button
