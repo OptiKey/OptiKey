@@ -56,24 +56,5 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
             Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, defaultCommuniKatePagesetLocation);
             Assert.AreEqual(Settings.Default.MaryTTSLocation, defaultMaryTTSLocation);
         }
-    }
-
-    [TestFixture]
-    public class WhenCancelCommandStay : WhenCancelCommand
-    {
-        protected override void Arrange()
-        {
-            base.confirm = false;
-            base.Arrange();
-        }
-
-        [RequiresSTA]
-        [Test]
-        public void ThenWindowShouldStayWithoutSaving()
-        {
-            Assert.IsFalse(IsWindowClosed);
-            Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, defaultCommuniKatePagesetLocation);
-            Assert.AreEqual(Settings.Default.MaryTTSLocation, defaultMaryTTSLocation);
-        }
-    }
+    }    
 }
