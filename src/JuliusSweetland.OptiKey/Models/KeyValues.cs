@@ -379,7 +379,7 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                return CombiningKeys.Concat(KeysWhichPreventTextCaptureIfDownOrLocked).Distinct().ToList();
+                return CombiningKeys;
             }
         }
 
