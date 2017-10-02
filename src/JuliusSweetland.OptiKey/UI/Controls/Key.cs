@@ -1,19 +1,18 @@
-﻿using System;
-using System.ComponentModel;
-using System.Globalization;
-using System.Reactive.Disposables;
-using System.Reactive.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using JuliusSweetland.OptiKey.Enums;
+﻿using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
+using System;
+using System.ComponentModel;
+using System.Globalization;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -92,13 +91,21 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) => 
                     DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown 
                     || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
+
             var capturingMultiKeySelectionSubscription = capturingStateManager
                 .OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
                 .Subscribe(value => calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
             onUnloaded.Add(capturingMultiKeySelectionSubscription);
+
+            // if multikeys is on, calculate if key should be disabled/enabled
+            var multikeyStateSubscription = capturingStateManager
+                .OnPropertyChanges(state => state.MultiKeyDownOrLocked)
+                .Subscribe(_ => calculateIsEnabled());
+
             var leftShiftKeyStateSubscription = keyStateService.KeyDownStates[KeyValues.LeftShiftKey]
                 .OnPropertyChanges(sds => sds.Value)
                 .Subscribe(value => calculateDisplayShiftDownText(value, capturingStateManager.CapturingMultiKeySelection));
+
             onUnloaded.Add(leftShiftKeyStateSubscription);
             calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, capturingStateManager.CapturingMultiKeySelection);
             

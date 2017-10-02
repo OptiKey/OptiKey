@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Data;
-using JuliusSweetland.OptiKey.Enums;
+﻿using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using Prism.Mvvm;
+using System;
+using System.Linq;
+using System.Windows.Data;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -319,6 +319,13 @@ namespace JuliusSweetland.OptiKey.Models
                     && !KeyValues.MultiKeySelectionKeys.Contains(keyValue))
                 {
                     return false;
+                }
+
+                // Multi-key is down/locked, we shouldn't allow combining keys anymore
+                if (capturingStateManager.MultiKeyDownOrLocked
+                    && KeyValues.KeysDisabledWithMultiKeysSelectionIsOn.Contains(keyValue))
+                {
+                    return false; 
                 }
 
                 //Catalan specific rules

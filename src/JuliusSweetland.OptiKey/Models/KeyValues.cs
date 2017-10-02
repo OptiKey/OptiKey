@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Properties;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -360,6 +360,16 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftWinKey
                 };
+            }
+        }
+
+        public static List<KeyValue> KeysDisabledWithMultiKeysSelectionIsOn
+        {
+            get
+            {
+                List<KeyValue> list = CombiningKeys.Concat(KeysWhichCanBeLockedDown).Distinct().ToList();
+                list.Remove(MultiKeySelectionIsOnKey);
+                return list;
             }
         }
 

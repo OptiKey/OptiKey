@@ -5,5 +5,6 @@ namespace JuliusSweetland.OptiKey.Models
     public interface ICapturingStateManager : INotifyPropertyChanged
     {
         bool CapturingMultiKeySelection { get; set; }
+        bool MultiKeyDownOrLocked { get; set; }
     }
 }

@@ -1,4 +1,9 @@
-﻿using System;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Observables.TriggerSources;
+using JuliusSweetland.OptiKey.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
@@ -6,11 +11,6 @@ using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Observables.TriggerSources;
-using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -355,6 +355,14 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         PublishSelectionResult(result);
+
+                        // if the key is up now, then update the key state
+                        if (keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value == KeyDownStates.Up
+                             && capturingStateManager.MultiKeyDownOrLocked)
+                        {
+                            // this will raise the property changed event and untoggle disabled keys
+                            capturingStateManager.MultiKeyDownOrLocked = false;
+                        }
                     }
                 }
             }
