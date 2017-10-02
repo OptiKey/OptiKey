@@ -263,7 +263,11 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.EnglishCanada, defaultList },
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
-                { Languages.FrenchFrance, defaultList },
+                { Languages.FrenchFrance, "abcdefghijklmnopqrstuvwxyzçé"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
                 { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
@@ -274,8 +278,16 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-                { Languages.ItalianItaly, defaultList },
-                { Languages.PortuguesePortugal, defaultList },
+                { Languages.ItalianItaly, "abcdefghijklmnopqrstuvwxyzî"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
+                { Languages.PortuguesePortugal, "abcdefghijklmnopqrstuvwxyzçà"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
                 { Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
@@ -367,9 +379,7 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                List<KeyValue> list = CombiningKeys.Concat(KeysWhichCanBeLockedDown).Distinct().ToList();
-                list.Remove(MultiKeySelectionIsOnKey);
-                return list;
+                return CombiningKeys.Concat(KeysWhichPreventTextCaptureIfDownOrLocked).Distinct().ToList();
             }
         }
 

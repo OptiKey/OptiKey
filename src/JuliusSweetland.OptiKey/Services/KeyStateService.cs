@@ -130,6 +130,11 @@ namespace JuliusSweetland.OptiKey.Services
                 || (!SimulateKeyStrokes && Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes))
                     ? Enums.KeyDownStates.LockedDown
                     : Enums.KeyDownStates.Up;
+
+            if (KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value != Enums.KeyDownStates.Up)
+            {
+                capturingStateManager.MultiKeyDownOrLocked = true;
+            }
         }
 
         private void AddSettingChangeHandlers()
