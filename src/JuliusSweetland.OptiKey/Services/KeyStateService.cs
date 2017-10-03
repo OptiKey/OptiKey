@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
 using JuliusSweetland.OptiKey.Enums;
@@ -23,7 +23,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly KeyEnabledStates keyEnabledStates;
         private readonly Action<KeyValue> fireKeySelectionEvent;
         private readonly Dictionary<bool, KeyStateServiceState> state = new Dictionary<bool, KeyStateServiceState>();
-        
+
         private bool simulateKeyStrokes;
         private bool turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased;
         
@@ -39,9 +39,9 @@ namespace JuliusSweetland.OptiKey.Services
             Action<KeyValue> fireKeySelectionEvent)
         {
             this.fireKeySelectionEvent = fireKeySelectionEvent;
-            keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
-            keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
-            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
+            this.keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
+            this.keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
+            this.keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
 
             InitialiseKeyDownStates();
             AddSettingChangeHandlers();

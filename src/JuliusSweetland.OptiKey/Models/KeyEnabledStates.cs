@@ -45,8 +45,9 @@ namespace JuliusSweetland.OptiKey.Models
             keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-
+            
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
                 keyStateService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
@@ -319,6 +320,13 @@ namespace JuliusSweetland.OptiKey.Models
                     && !KeyValues.MultiKeySelectionKeys.Contains(keyValue))
                 {
                     return false;
+                }
+
+                // Multi-key is down/locked down - we shouldn't allow combining keys anymore
+                if (KeyValues.KeysDisabledWithMultiKeysSelectionIsOn.Contains(keyValue)
+                    && keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown())
+                {
+                    return false; 
                 }
 
                 //Catalan specific rules
