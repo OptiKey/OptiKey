@@ -136,6 +136,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             
             SubscribeToParentWindowMoves(parentWindow);
+            SubscribeToParentWindowStateChanges(parentWindow);
 
             Loaded -= OnLoaded; //Ensure this logic only runs once
         }
@@ -397,7 +398,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void BuildPointToKeyMap()
         {
-            Log.Debug("Building PointToKeyMap.");
+            Log.Info("Building PointToKeyMap.");
 
             var contentAsFrameworkElement = Content as FrameworkElement;
             if (contentAsFrameworkElement != null)
@@ -431,8 +432,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 if (key.IsVisible
                     && PresentationSource.FromVisual(key) != null
-                    && key.Value != null 
-		    && key.Value.HasContent() )
+                    && key.Value != null
+                    && key.Value.HasContent())
                 {
                     var rect = new Rect
                     {
@@ -458,6 +459,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 }
             }
 
+            Log.InfoFormat("PointToKeyValueMap rebuilt with {0} keys.", pointToKeyValueMap.Keys.Count);
             PointToKeyValueMap = pointToKeyValueMap;
         }
 
@@ -472,10 +474,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 h => SizeChanged -= h)
                 .Throttle(TimeSpan.FromSeconds(0.1))
                 .ObserveOnDispatcher()
-                .Subscribe(_ =>
+                .Subscribe(ep =>
                 {
-                    Log.Debug("SizeChanged event detected.");
-
+                    Log.InfoFormat("SizeChanged event detected from {0} to {1}.", ep.EventArgs.PreviousSize, ep.EventArgs.NewSize);
                     BuildPointToKeyMap();
                 });
         }
@@ -486,7 +487,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void SubscribeToParentWindowMoves(Window parentWindow)
         {
-            //This event will also fire if the window is mimised, restored, or maximised, so no need to monitor StateChanged
             Observable.FromEventPattern<EventHandler, EventArgs>
                 (h => parentWindow.LocationChanged += h,
                 h => parentWindow.LocationChanged -= h)
@@ -494,7 +494,25 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .ObserveOnDispatcher()
                 .Subscribe(_ =>
                 {
-                    Log.Debug("Window's LocationChanged event detected.");
+                    Log.Info("Window's LocationChanged event detected.");
+                    BuildPointToKeyMap();
+                });
+        }
+
+        #endregion
+
+        #region Subscribe To Parent Window State Changes
+
+        private void SubscribeToParentWindowStateChanges(Window parentWindow)
+        {
+            Observable.FromEventPattern<EventHandler, EventArgs>
+                (h => parentWindow.StateChanged += h,
+                h => parentWindow.StateChanged -= h)
+                .Throttle(TimeSpan.FromSeconds(0.1))
+                .ObserveOnDispatcher()
+                .Subscribe(_ =>
+                {
+                    Log.InfoFormat("Window's StateChange event detected. New state: {0}.", parentWindow.WindowState);
                     BuildPointToKeyMap();
                 });
         }
