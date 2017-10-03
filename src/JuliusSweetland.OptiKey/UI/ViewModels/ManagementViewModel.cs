@@ -1,11 +1,11 @@
-using System.Windows;
+using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using log4net;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
-using JuliusSweetland.OptiKey.Properties;
+using System.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {

@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -92,16 +91,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) => 
                     DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown 
                     || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
+
             var capturingMultiKeySelectionSubscription = capturingStateManager
                 .OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
                 .Subscribe(value => calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
             onUnloaded.Add(capturingMultiKeySelectionSubscription);
+
             var leftShiftKeyStateSubscription = keyStateService.KeyDownStates[KeyValues.LeftShiftKey]
                 .OnPropertyChanges(sds => sds.Value)
                 .Subscribe(value => calculateDisplayShiftDownText(value, capturingStateManager.CapturingMultiKeySelection));
+
             onUnloaded.Add(leftShiftKeyStateSubscription);
             calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, capturingStateManager.CapturingMultiKeySelection);
-
+            
             //Publish own version of KeySelection event
             var keySelectionSubscription = Observable.FromEventPattern<KeyValue>(
                 handler => mainViewModel.KeySelection += handler,
@@ -324,13 +326,85 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public bool HasText { get { return !String.IsNullOrEmpty(ShiftUpText) ||
                                            !String.IsNullOrEmpty(ShiftDownText); } }
 
-        public static readonly DependencyProperty HasImageProperty =
-            DependencyProperty.Register("HasImage", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty OnlyVisibleWhenInUseProperty =
+            DependencyProperty.Register("OnlyVisibleWhenInUse", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool HasImage
+        public bool OnlyVisibleWhenInUse
         {
-            get { return (bool)GetValue(HasImageProperty); }
-            set { SetValue(HasImageProperty, value); }
+            get { return (bool)GetValue(OnlyVisibleWhenInUseProperty); }
+            set { SetValue(OnlyVisibleWhenInUseProperty, value); }
+        }
+
+        public static readonly DependencyProperty BackgroundColourOverrideProperty =
+            DependencyProperty.Register("BackgroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush BackgroundColourOverride
+        {
+            get { return (Brush)GetValue(BackgroundColourOverrideProperty); }
+            set { SetValue(BackgroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledBackgroundColourOverrideProperty =
+            DependencyProperty.Register("DisabledBackgroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush DisabledBackgroundColourOverride
+        {
+            get { return (Brush)GetValue(DisabledBackgroundColourOverrideProperty); }
+            set { SetValue(DisabledBackgroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledBackgroundOpacityProperty =
+            DependencyProperty.Register("DisabledBackgroundOpacity", typeof(double), typeof(Key), new PropertyMetadata((1.0)));
+
+        public double DisabledBackgroundOpacity
+        {
+            get { return (double)GetValue(DisabledBackgroundOpacityProperty); }
+            set { SetValue(DisabledBackgroundOpacityProperty, value); }
+        }
+
+        public static readonly DependencyProperty ForegroundColourOverrideProperty =
+            DependencyProperty.Register("ForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush ForegroundColourOverride
+        {
+            get { return (Brush)GetValue(ForegroundColourOverrideProperty); }
+            set { SetValue(ForegroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledForegroundColourOverrideProperty =
+            DependencyProperty.Register("DisabledForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush DisabledForegroundColourOverride
+        {
+            get { return (Brush)GetValue(DisabledForegroundColourOverrideProperty); }
+            set { SetValue(DisabledForegroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverForegroundColourOverrideProperty =
+            DependencyProperty.Register("HoverForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush HoverForegroundColourOverride
+        {
+            get { return (Brush)GetValue(HoverForegroundColourOverrideProperty); }
+            set { SetValue(HoverForegroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectionProgressColourOverrideProperty =
+            DependencyProperty.Register("SelectionProgressColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush SelectionProgressColourOverride
+        {
+            get { return (Brush)GetValue(SelectionProgressColourOverrideProperty); }
+            set { SetValue(SelectionProgressColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectionForegroundColourOverrideProperty =
+            DependencyProperty.Register("SelectionForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush SelectionForegroundColourOverride
+        {
+            get { return (Brush)GetValue(SelectionForegroundColourOverrideProperty); }
+            set { SetValue(SelectionForegroundColourOverrideProperty, value); }
         }
 
         public static readonly DependencyProperty ValueProperty =

@@ -1927,7 +1927,7 @@ from the Management Console (ALT + M).</value>
     <value>Invalid file</value>
   </data>
   <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
-    <value>Location of CommuniKate top page .obf file:</value>
+    <value>Location of CommuniKate top page .obz file:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
     <value>Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
@@ -1949,5 +1949,17 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>CONVERSATION ALPHA 2</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>All changes made to the settings will be discarded, do you want to continue?</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>Cancel Settings</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>The Presage dictionary cannot be edited from here.
+It's default location is "C:\Program Files (x86)\presage\share\presage\database_en.db".
+It can be edited with a program which can read SQLite format 3 files 
+such as "DB Browser for SQLite" (which is a free program).</value>
   </data>
 </root>

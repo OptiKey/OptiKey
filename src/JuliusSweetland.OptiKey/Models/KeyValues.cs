@@ -266,7 +266,11 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.EnglishCanada, defaultList },
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
-                { Languages.FrenchFrance, defaultList },
+                { Languages.FrenchFrance, "abcdefghijklmnopqrstuvwxyzçé"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
                 { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
@@ -277,14 +281,16 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-                { Languages.ItalianItaly, defaultList },
-                //Korean commented out - I don't believe multi-key selection will work at the moment
-                //{ Languages.KoreanKorea, "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㅓㅐㅑㅓㅔㅕㅗㅛㅜㅠㅡㅣ"
-                //                                .ToCharArray()
-                //                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                //                                .ToList()
-                //},
-                { Languages.PortuguesePortugal, defaultList },
+                { Languages.ItalianItaly, "abcdefghijklmnopqrstuvwxyzî"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
+                { Languages.PortuguesePortugal, "abcdefghijklmnopqrstuvwxyzçà"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
                 { Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
@@ -369,6 +375,14 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftWinKey
                 };
+            }
+        }
+
+        public static List<KeyValue> KeysDisabledWithMultiKeysSelectionIsOn
+        {
+            get
+            {
+                return CombiningKeys;
             }
         }
 

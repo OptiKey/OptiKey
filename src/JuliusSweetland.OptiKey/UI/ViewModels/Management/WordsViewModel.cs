@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
 using log4net;
 using Prism.Mvvm;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
@@ -287,7 +287,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;
-            CommuniKateStagedForDeletion = Settings.Default.CommuniKateStagedForDeletion;
+            Settings.Default.CommuniKateStagedForDeletion = CommuniKateStagedForDeletion;
             Settings.Default.UseCommuniKateKeyboardLayoutByDefault = UseCommuniKateKeyboardLayoutByDefault;
             Settings.Default.UsingCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayoutByDefault;
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;

@@ -370,9 +370,6 @@
     <Compile Include="UI\Controls\KeyboardView.cs" />
     <Compile Include="UI\Controls\DynamicKeyboard.cs" />
     <Compile Include="UI\Controls\DynamicKeyboardSelector.cs" />
-    <Compile Include="UI\Controls\CKKey.xaml.cs">
-      <DependentUpon>CKKey.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Controls\ToastNotification.cs" />
     <Compile Include="UI\Controls\Cursor.cs" />
     <Compile Include="UI\Controls\ToastNotificationPopup.cs" />
@@ -388,6 +385,8 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\OverrideHasValue.cs" />
+    <Compile Include="UI\ValueConverters\CloneBrush.cs" />
     <Compile Include="UI\ValueConverters\ObjectIsType.cs" />
     <Compile Include="UI\ValueConverters\ConvertToStarGridLength.cs" />
     <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
@@ -1028,10 +1027,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Controls\CK20Page.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Controls\CKKey.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
