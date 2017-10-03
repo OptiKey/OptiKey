@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public interface IKeyboardOutputService
+    public interface IKeyboardOutputService : INotifyPropertyChanged
     {
         string Text { get; }
 

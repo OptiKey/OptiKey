@@ -139,8 +139,8 @@ DICTIONARY</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Adjust by {0} pixel|Adjust by {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>LETTERS</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>LETTERS 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1478,8 +1478,8 @@ Español
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>ADJUST AMOUNT IN PIXELS</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>CONVERSATION ALPHA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>CONVERSATION ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>CONVERSATION NUMERIC &amp; SYMBOLS</value>
@@ -1736,6 +1736,15 @@ Türkçe
 Italiano
 (Italia)</value>
   </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>Korean (Korea) / 한국어 (한국)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Korean
+(Korea) /
+한국어
+(한국)</value>
+  </data>
   <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
     <value>Slovenian (Slovenia) / Slovensko (Slovenija)</value>
   </data>
@@ -1934,6 +1943,12 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   </data>
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
     <value>Tobii PCEye Plus</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>LETTERS 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>CONVERSATION ALPHA 2</value>
   </data>
   <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
     <value>All changes made to the settings will be discarded, do you want to continue?</value>

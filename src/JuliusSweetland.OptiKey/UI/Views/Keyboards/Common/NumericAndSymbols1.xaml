@@ -148,9 +148,9 @@
                       Value=";"/>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource AlphaIcon}"
-                      Text="{x:Static resx:Resources.ALPHA}"
+                      Text="{x:Static resx:Resources.ALPHA_1}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.AlphaKeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.Alpha1KeyboardKey}"/>
         <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseIcon}"
                       Text="{x:Static resx:Resources.MOUSE}"

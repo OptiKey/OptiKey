@@ -18,6 +18,7 @@ namespace JuliusSweetland.OptiKey.Enums
         GermanGermany,
         GreekGreece,
         ItalianItaly,
+        KoreanKorea,
         PortuguesePortugal,
         RussianRussia,
         SlovenianSlovenia,
@@ -28,9 +29,9 @@ namespace JuliusSweetland.OptiKey.Enums
 
     public static partial class EnumExtensions
     {
-        public static string ToDescription(this Languages languages)
+        public static string ToDescription(this Languages language)
         {
-            switch (languages)
+            switch (language)
             {
                 case Languages.CatalanSpain: return Resources.CATALAN_SPAIN;
                 case Languages.CroatianCroatia: return Resources.CROATIAN_CROATIA;
@@ -45,6 +46,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.GermanGermany: return Resources.GERMAN_GERMANY;
                 case Languages.GreekGreece: return Resources.GREEK_GREECE;
                 case Languages.ItalianItaly: return Resources.ITALIAN_ITALY;
+                case Languages.KoreanKorea: return Resources.KOREAN_KOREA;
                 case Languages.PortuguesePortugal: return Resources.PORTUGUESE_PORTUGAL;
                 case Languages.RussianRussia: return Resources.RUSSIAN_RUSSIA;
                 case Languages.SlovakSlovakia: return Resources.SLOVAK_SLOVAKIA;
@@ -53,12 +55,12 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return Resources.TURKISH_TURKEY;
             }
 
-            return languages.ToString();
+            return language.ToString();
         }
 
-        public static CultureInfo ToCultureInfo(this Languages languages)
+        public static CultureInfo ToCultureInfo(this Languages language)
         {
-            switch (languages)
+            switch (language)
             {
                 case Languages.CatalanSpain: return CultureInfo.GetCultureInfo("ca-ES");
                 case Languages.CroatianCroatia: return CultureInfo.GetCultureInfo("hr-HR");
@@ -73,6 +75,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.GermanGermany: return CultureInfo.GetCultureInfo("de-DE");
                 case Languages.GreekGreece: return CultureInfo.GetCultureInfo("el-GR");
                 case Languages.ItalianItaly: return CultureInfo.GetCultureInfo("it-IT");
+                case Languages.KoreanKorea: return CultureInfo.GetCultureInfo("ko-KR");
                 case Languages.PortuguesePortugal: return CultureInfo.GetCultureInfo("pt-PT");
                 case Languages.RussianRussia: return CultureInfo.GetCultureInfo("ru-RU");
                 case Languages.SlovakSlovakia: return CultureInfo.GetCultureInfo("sk-SK");
@@ -81,6 +84,18 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return CultureInfo.GetCultureInfo("tr-TR");
             }
             return CultureInfo.GetCultureInfo("en-GB");
+        }
+
+        public static bool SupportsAutoSpace(this Languages language)
+        {
+            switch (language)
+            {
+                case Languages.KoreanKorea:
+                    return false;
+
+                default:
+                    return true;
+            }
         }
     }
 }

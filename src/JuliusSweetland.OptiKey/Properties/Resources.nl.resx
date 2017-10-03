@@ -140,8 +140,8 @@ TOEVOEGEN</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Aanpassen {0} pixel|Aanpassen {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>LETTERS</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>LETTERS 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1387,8 +1387,8 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>PAS AANTAL AAN IN PIXELS</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>GESPREK ALPHA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>GESPREK ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>GESPREK NUMMERS &amp; SYMBOLEN</value>
@@ -1575,5 +1575,11 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibratie mislukt!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>LETTERS 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>GESPREK ALPHA 2</value>
   </data>
 </root>

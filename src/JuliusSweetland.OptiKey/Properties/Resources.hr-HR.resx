@@ -140,8 +140,8 @@ RIJEČNIK</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Prilagodi za {0} piksel|Prilagodi za {0} piksela</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>SLOVA</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>SLOVA 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1383,8 +1383,8 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>PODESI IZNOS U PIKSELIMA</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>RAZGOVOR ALFA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>RAZGOVOR ALFA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>RAZGOVOR BROJKE &amp; SIMBOLI</value>
@@ -1571,5 +1571,11 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibracija nije uspjela!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>SLOVA 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>RAZGOVOR ALFA 2</value>
   </data>
 </root>

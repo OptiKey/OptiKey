@@ -152,11 +152,20 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LETTERS.
+        ///   Looks up a localized string similar to LETTERS 1.
         /// </summary>
-        public static string ALPHA {
+        public static string ALPHA_1 {
             get {
-                return ResourceManager.GetString("ALPHA", resourceCulture);
+                return ResourceManager.GetString("ALPHA_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LETTERS 2.
+        /// </summary>
+        public static string ALPHA_2 {
+            get {
+                return ResourceManager.GetString("ALPHA_2", resourceCulture);
             }
         }
         
@@ -650,11 +659,20 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CONVERSATION ALPHA.
+        ///   Looks up a localized string similar to CONVERSATION ALPHA 1.
         /// </summary>
-        public static string CONVERSATION_ALPHA {
+        public static string CONVERSATION_ALPHA_1 {
             get {
-                return ResourceManager.GetString("CONVERSATION_ALPHA", resourceCulture);
+                return ResourceManager.GetString("CONVERSATION_ALPHA_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CONVERSATION ALPHA 2.
+        /// </summary>
+        public static string CONVERSATION_ALPHA_2 {
+            get {
+                return ResourceManager.GetString("CONVERSATION_ALPHA_2", resourceCulture);
             }
         }
         
@@ -2234,6 +2252,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string KEYBOARD_KEY {
             get {
                 return ResourceManager.GetString("KEYBOARD_KEY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korean (Korea) / 한국어 (한국).
+        /// </summary>
+        public static string KOREAN_KOREA {
+            get {
+                return ResourceManager.GetString("KOREAN_KOREA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korean
+        ///(Korea) /
+        ///한국어
+        ///(한국).
+        /// </summary>
+        public static string KOREAN_KOREA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("KOREAN_KOREA_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
