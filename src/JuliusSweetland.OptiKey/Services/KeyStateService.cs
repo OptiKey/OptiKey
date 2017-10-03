@@ -1,14 +1,14 @@
-﻿using JuliusSweetland.OptiKey.Enums;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reactive.Linq;
+using System.Reflection;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reactive.Linq;
-using System.Reflection;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -23,7 +23,6 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly KeyEnabledStates keyEnabledStates;
         private readonly Action<KeyValue> fireKeySelectionEvent;
         private readonly Dictionary<bool, KeyStateServiceState> state = new Dictionary<bool, KeyStateServiceState>();
-        private readonly ICapturingStateManager capturingStateManager;
 
         private bool simulateKeyStrokes;
         private bool turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased;
@@ -40,7 +39,6 @@ namespace JuliusSweetland.OptiKey.Services
             Action<KeyValue> fireKeySelectionEvent)
         {
             this.fireKeySelectionEvent = fireKeySelectionEvent;
-            this.capturingStateManager = capturingStateManager;
             this.keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             this.keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
             this.keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
@@ -97,11 +95,6 @@ namespace JuliusSweetland.OptiKey.Services
                         KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down ? "DOWN" : "LOCKED DOWN");
                     KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
                 }
-
-                if (keyValue == KeyValues.MultiKeySelectionIsOnKey)
-                {
-                    capturingStateManager.MultiKeyDownOrLocked = !(KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up);
-                }
             }
         }
 
@@ -130,11 +123,6 @@ namespace JuliusSweetland.OptiKey.Services
                 || (!SimulateKeyStrokes && Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes))
                     ? Enums.KeyDownStates.LockedDown
                     : Enums.KeyDownStates.Up;
-
-            if (KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value != Enums.KeyDownStates.Up)
-            {
-                capturingStateManager.MultiKeyDownOrLocked = true;
-            }
         }
 
         private void AddSettingChangeHandlers()

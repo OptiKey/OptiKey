@@ -1,11 +1,11 @@
-﻿using JuliusSweetland.OptiKey.Enums;
+﻿using System;
+using System.Linq;
+using System.Windows.Data;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using Prism.Mvvm;
-using System;
-using System.Linq;
-using System.Windows.Data;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -45,8 +45,9 @@ namespace JuliusSweetland.OptiKey.Models
             keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-
+            
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
                 keyStateService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
@@ -321,9 +322,9 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                // Multi-key is down/locked, we shouldn't allow combining keys anymore
-                if (capturingStateManager.MultiKeyDownOrLocked
-                    && KeyValues.KeysDisabledWithMultiKeysSelectionIsOn.Contains(keyValue))
+                // Multi-key is down/locked down - we shouldn't allow combining keys anymore
+                if (KeyValues.KeysDisabledWithMultiKeysSelectionIsOn.Contains(keyValue)
+                    && keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown())
                 {
                     return false; 
                 }

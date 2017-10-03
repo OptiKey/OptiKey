@@ -17,7 +17,6 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         private bool capturingMultiKeySelection;
-        private bool multiKeyDownOrLocked;
 
         public bool CapturingMultiKeySelection
         {
@@ -37,12 +36,6 @@ namespace JuliusSweetland.OptiKey.Models
                             : Settings.Default.MultiKeySelectionCaptureEndSoundVolume);
                 }
             }
-        }
-
-        public bool MultiKeyDownOrLocked
-        {
-             get { return multiKeyDownOrLocked; }
-             set { SetProperty(ref multiKeyDownOrLocked, value); }
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.UI.Utilities;
-using JuliusSweetland.OptiKey.UI.ViewModels;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Reactive.Disposables;
@@ -13,6 +7,12 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.UI.Utilities;
+using JuliusSweetland.OptiKey.UI.ViewModels;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -96,11 +96,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
                 .Subscribe(value => calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
             onUnloaded.Add(capturingMultiKeySelectionSubscription);
-
-            // if multikeys is on, calculate if key should be disabled/enabled
-            var multikeyStateSubscription = capturingStateManager
-                .OnPropertyChanges(state => state.MultiKeyDownOrLocked)
-                .Subscribe(_ => calculateIsEnabled());
 
             var leftShiftKeyStateSubscription = keyStateService.KeyDownStates[KeyValues.LeftShiftKey]
                 .OnPropertyChanges(sds => sds.Value)

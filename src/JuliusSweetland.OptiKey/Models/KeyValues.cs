@@ -1,8 +1,8 @@
-﻿using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Properties;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Models
 {
