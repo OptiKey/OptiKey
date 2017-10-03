@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -127,7 +127,8 @@
     <value>'{0}' 문장을 '{1}' 사전에 추가하시겠습니까?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>사전에 추가</value>
+    <value>사전에 
+추가하기</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>사전에 단어 '{0}'를 추가하시겠습니까?</value>
@@ -136,10 +137,10 @@
     <value>추가된</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
-    <value>Adjust by {0} pixel|Adjust by {0} pixels</value>
+    <value>{0} pixel씩 조정하기</value>
   </data>
-  <data name="ALPHA_1" xml:space="preserve">
-    <value>글자 1</value>
+  <data name="ALPHA" xml:space="preserve">
+    <value>글자</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -151,9 +152,9 @@
     <value>Android Light</value>
   </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
-    <value>Auto capitalise words:</value>
+    <value>첫글자 자동 대문자로 쓰기</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>단어 자동 완성하기</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -162,41 +163,44 @@
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>자동 띄어 쓰기</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>뒤로</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>뒤로</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>뒤로
-한번</value>
+    <value>한글자
+지우기</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>뒤로
-한단어</value>
+    <value>한단어
+지우기</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Bass was unable to create a stream from file '{0}'</value>
+    <value>"Bass"라이브러리가 음원파일 {0}를 로드 및 실행할 수 없습니다.</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
     <value>아래</value>
   </data>
   <data name="BREAK" xml:space="preserve">
-    <value>멈춤</value>
+    <value>BREAK</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>이 메시지와 교정 중단: '{0}'</value>
+    <value>측정이 중단되었습니다. 메시지: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>다시 교정 하시겠습니까?</value>
+    <value>다시 측정 하시겠습니까?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>교정중 오류가 발생하였습니다. 메시지: '{0}'</value>
+    <value>측정중 오류가 발생하였습니다. 메시지: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>이 메시지와 교정 실패: '{0}'</value>
+    <value>측정 실패. 메시지: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
-    <value>Calibration cannot be completed without manual intervention, e.g. having to use a mouse. You may be stuck in the calibration process if you cannot manually interact with your computer.
-Are you sure you would like to re-calibrate?</value>
+    <value>수동 조작 없이는 측정 과정을 마칠 수 없습니다. 즉, 마우스를 사용하여야 합니다. 만약 수동으로 컴퓨터를 조작 할 수 없으면 측정 과정에서 멈춰 있을 수 있습니다.
+그래도 다시 측정 하시겠습니까?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>알 수 없는 이유로 측정이 중단됬습니다. 메시지:'{0}'</value>
@@ -208,17 +212,17 @@ Are you sure you would like to re-calibrate?</value>
     <value>취소</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
-    <value>Capture timeout (ms):</value>
+    <value>단축 키 선택 최대 지속 시간 (ms):</value>
   </data>
   <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
-    <value>Check for updates on startup:</value>
+    <value>프로그램 시작시 업데이트 체크: </value>
   </data>
   <data name="CLEAR" xml:space="preserve">
     <value>지우기</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>클릭
-&amp; 끌기</value>
+    <value>클릭 &amp;
+드래그</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
     <value>클릭 1</value>
@@ -239,11 +243,11 @@ Are you sure you would like to re-calibrate?</value>
     <value>클릭 6</value>
   </data>
   <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>COLLAPSE
-DOCK</value>
+    <value>DOCK
+축소</value>
   </data>
   <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
-    <value>Collapsed dock thickness (as % of full dock thickness):</value>
+    <value>축소된 독(dock)의 두깨 (전체 독 두깨의 %):</value>
   </data>
   <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
     <value>메뉴</value>
@@ -252,30 +256,30 @@ DOCK</value>
     <value>대화</value>
   </data>
   <data name="CONVERSATION_LAYOUT" xml:space="preserve">
-    <value>Conversation Letters</value>
+    <value>대화 키보드 글자</value>
   </data>
   <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
-    <value>Conversation Numeric &amp; Symbols</value>
+    <value>대화 키보드 숫자 &amp; 특수문자</value>
   </data>
   <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
     <value>대화전용 모드:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn't possible.
+    <value>Optikey가 사용자 설정 파일이 망가진 것을 감지하였습니다. 이전 버전의 파일이나 기본 설정파일으로 복구하여야 합니다.
 
-Click Yes to reset your user settings and restart.
+사용자 설정을 리셋하고 다시 시작 하시려면 '예' 버튼을 누르세요.
 
-Click No to close so that you can manually repair or copy your user settings file.</value>
+사용자 설정파일을 수동으로 복구 하시려면 '아니요' 버튼을 누르세요.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
     <value>이런! 사용자 설정 파일이 손상된 듯 합니다.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Bad news - OptiKey has tripped over its feet and has to close down.
+    <value>나쁜 소식 - OptiKey에 문제가 생겨서 종료됩니다.
 
-An email with details of what happened would be very helpful: optikeyfeedback@gmail.com
+이메일에 영어로 어떤 상황에서 종료되었는지 자세히 적어주신다면 문제를 수정하는데 큰 도움이 될거에요: optikeyfeedback@gmail.com
 
-Sorry for the inconvenience.</value>
+불편을 드려서 죄송합니다.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
     <value>이런!</value>
@@ -284,19 +288,22 @@ Sorry for the inconvenience.</value>
     <value>CTRL</value>
   </data>
   <data name="CURRENCIES" xml:space="preserve">
-    <value>화폐</value>
+    <value>화폐 기호</value>
   </data>
   <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
-    <value>화폐 1</value>
+    <value>화폐 기호 1</value>
   </data>
   <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
-    <value>화폐 2</value>
+    <value>화폐 기호 2</value>
   </data>
   <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
-    <value>커서 높이 (픽셀):</value>
+    <value>커서 높이 (pixels):</value>
   </data>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
-    <value>커서 넓이 (픽셀):</value>
+    <value>커서 넓이 (pixels):</value>
+  </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>커스덤 키보드 파일</value>
   </data>
   <data name="DANISH_DENMARK" xml:space="preserve">
     <value>덴마크어 (덴마크) / Dansk (Danmark)</value>
@@ -304,15 +311,14 @@ Sorry for the inconvenience.</value>
   <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>덴마크어
 (덴마크) /
-덴마크어
-(덴마크)</value>
+Dansk
+(Danmark)</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
     <value>디버깅 모드:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DECREASE
-OPACITY</value>
+    <value>투명도 증가</value>
   </data>
   <data name="DEL" xml:space="preserve">
     <value>DEL</value>
@@ -321,50 +327,50 @@ OPACITY</value>
     <value>삭제</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>DIACRITICS</value>
+    <value>발음 구별 부호</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
-    <value>Diacritics 1</value>
+    <value>발음 구별 부호 1</value>
   </data>
   <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
-    <value>Diacritics 2</value>
+    <value>발음 구별 부호 2</value>
   </data>
   <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
-    <value>Diacritics 3</value>
+    <value>발음 구별 부호 3</value>
   </data>
   <data name="DICTIONARY" xml:space="preserve">
     <value>사전</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>사용자 사전이 없고, 다음 경로에서 사전을 찾을 수 없습니다: '{0}'</value>
+    <value>사용자 사전이 존재하지 않고, 다음 경로에서 사전을 찾을 수 없습니다: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
-    <value>Display for X seconds per message character:</value>
+    <value>안내창 글자 당 X 초 동안 표시:</value>
   </data>
   <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
     <value>현재 위치에서 실행...</value>
   </data>
   <data name="DO_AT_POINT" xml:space="preserve">
-    <value>지점에서 실행...</value>
+    <value>지정된 위치 에서 실행...</value>
   </data>
   <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>아래
+    <value>아래쪽
 화살표</value>
   </data>
   <data name="DURATION_FORMAT" xml:space="preserve">
     <value> ({0:#,###}ms)</value>
   </data>
   <data name="END" xml:space="preserve">
-    <value>끝</value>
+    <value>END</value>
   </data>
   <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>영어 (캐나다)</value>
+    <value>영어 (캐나다) / English (Canada)</value>
   </data>
   <data name="ENGLISH_UK" xml:space="preserve">
-    <value>영어 (영국)</value>
+    <value>영어 (영국) / English (UK)</value>
   </data>
   <data name="ENGLISH_US" xml:space="preserve">
-    <value>영어 (미국)</value>
+    <value>영어 (미국) / English (US)</value>
   </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
@@ -382,163 +388,162 @@ OPACITY</value>
     <value>넓히기</value>
   </data>
   <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-DOCK</value>
+    <value>DOCK
+확장</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>확장
-아래 &amp; 왼쪽</value>
+    <value>왼쪽 아래로
+넓히기</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>확장
-아래 &amp; 오른쪽</value>
+    <value>오른쪽 아래로
+넓히기</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>확장
-아래</value>
+    <value>아래쪽으로
+넓히기</value>
   </data>
   <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>확장
-왼쪽</value>
+    <value>왼쪽으로
+넓히기</value>
   </data>
   <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>확장
-오른쪽</value>
+    <value>오른쪽으로
+넓히기</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>확장
-위 &amp; 왼쪽</value>
+    <value>왼쪽 위로
+넓히기</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>확장
-위 &amp; 오른쪽</value>
+    <value>오른쪽 위로
+넓히기</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>확장
-위</value>
+    <value>위쪽으로
+넓히기</value>
   </data>
   <data name="FALLING_SOUND_1" xml:space="preserve">
-    <value>Falling 1</value>
+    <value>누르기 1</value>
   </data>
   <data name="FALLING_SOUND_2" xml:space="preserve">
-    <value>Falling 2</value>
+    <value>누르기 2</value>
   </data>
   <data name="FILL_PIE" xml:space="preserve">
-    <value>Fill Pie</value>
+    <value>원그래프</value>
   </data>
   <data name="FIXATIONS_DWELL" xml:space="preserve">
-    <value>응시 (머무르기)</value>
+    <value>응시하기 (머무르기)</value>
   </data>
   <data name="FONT" xml:space="preserve">
-    <value>글씨</value>
+    <value>글꼴</value>
   </data>
   <data name="FONT_FAMILY_LABEL" xml:space="preserve">
-    <value>Font family:</value>
+    <value>글꼴:</value>
   </data>
   <data name="FONT_STRETCH_LABEL" xml:space="preserve">
-    <value>Font stretch:</value>
+    <value>장평:</value>
   </data>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
-    <value>Font weight:</value>
+    <value>굵기:</value>
   </data>
   <data name="FRENCH_FRANCE" xml:space="preserve">
     <value>프랑스어 (프랑스) / Française (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>Full dock thickness (as % of screen):</value>
+    <value>전체 독(dock)의 두깨 (화면의 %비율):</value>
   </data>
   <data name="GAZE_TRACKER" xml:space="preserve">
     <value>Gaze Tracker</value>
   </data>
   <data name="GROW" xml:space="preserve">
-    <value>Grow</value>
+    <value>증가</value>
   </data>
   <data name="HOME" xml:space="preserve">
     <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Horizontal fill (as % of screen):</value>
+    <value>가로 길이 (화면의 %비율):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Incomplete key fixation time to live (ms):</value>
+    <value>잘못된 키 응시 시간 (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>INCREASE
-OPACITY</value>
+    <value>투명도 감소</value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
-    <value>Info:</value>
+    <value>안내:</value>
   </data>
   <data name="INS" xml:space="preserve">
     <value>INS</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>...but intelligently suppress auto-caps where it is probably unhelpful:</value>
+    <value>....하지만 자동 대소문자 변환이 별로 도움이 되지 않는다면 자동으로 감춥니다:</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
     <value>현재 키보드와 언어는 조합되지 못합니다.</value>
   </data>
   <data name="JUMP" xml:space="preserve">
-    <value>이동</value>
+    <value>붙이기</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>이동
-아래 &amp; 왼쪽</value>
+    <value>위에
+붙이기</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>이동
-아래 &amp; 오른쪽</value>
+    <value>오른쪽 아래에
+붙이기</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>이동
-아래</value>
+    <value>아래에
+붙이기</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>이동
-왼쪽</value>
+    <value>왼쪽에
+붙이기</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>이동
-오른쪽</value>
+    <value>오른쪽에
+붙이기</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>이동
-위 &amp; 왼쪽</value>
+    <value>왼쪽 위에
+붙이기</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>이동
-위 &amp; 오른쪽</value>
+    <value>오른쪽 위에
+붙이기</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>이동
-위</value>
+    <value>위에
+붙이기</value>
   </data>
   <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Key text transformation:</value>
+    <value>키 텍스트 변환</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Key fixation time to complete (ms):</value>
+    <value>확정 키 응시 시간 (ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Key fixation time to lock-on (ms):</value>
+    <value>선택 키 응시 시간 (ms):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Key selection keyboard key:</value>
+    <value>키 선택 키보드 키:</value>
   </data>
   <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Key selection mouse button:</value>
+    <value>키 선택 마우스 버튼:</value>
   </data>
   <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
-    <value>Key Selection:</value>
+    <value>키 선택:</value>
   </data>
   <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Key selection source:</value>
+    <value>키 선택 방법:</value>
   </data>
   <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
-    <value>Key selection: {0}</value>
+    <value>키 선택: {0}</value>
   </data>
   <data name="KEYBOARD_KEY" xml:space="preserve">
-    <value>Keyboard key</value>
+    <value>키보드 키</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
     <value>언어</value>
@@ -549,6 +554,9 @@ OPACITY</value>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>키보드 언어:</value>
   </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>키보드 폴더는 OptiKey 설정창 (화면 탭)에서 설정 할 수 있습니다.</value>
+  </data>
   <data name="LEFT" xml:space="preserve">
     <value>왼쪽</value>
   </data>
@@ -557,12 +565,10 @@ OPACITY</value>
 화살표</value>
   </data>
   <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>왼쪽
-클릭</value>
+    <value>좌클릭</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>왼쪽
-더블 클릭</value>
+    <value>더블 클릭</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>왼쪽
@@ -572,23 +578,23 @@ OPACITY</value>
     <value>잠금</value>
   </data>
   <data name="LOWER_CASE" xml:space="preserve">
-    <value>All in lower case</value>
+    <value>몽땅 소문자로</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MAGNETIC
-CURSOR</value>
+커서</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
     <value>돋보기</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Magnify destination (as % of screen):</value>
+    <value>확대된 영역 (화면의 %비율):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Magnify source (as % of screen):</value>
+    <value>확대할 영역 (화면의 %비율):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
-    <value>Optikey 설정</value>
+    <value>Optikey 설정: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
     <value>Optikey 설정</value>
@@ -603,8 +609,7 @@ CURSOR</value>
     <value>메뉴</value>
   </data>
   <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>휠
-클릭</value>
+    <value>휠클릭</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>휠
@@ -614,16 +619,16 @@ CURSOR</value>
     <value>최소화</value>
   </data>
   <data name="MINIMISED_LAYOUT" xml:space="preserve">
-    <value>Minimised</value>
+    <value>최소화</value>
   </data>
   <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
-    <value>Minimised position:</value>
+    <value>최소화 위치:</value>
   </data>
   <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
-    <value>Minimum dwell time on a key to include in capture (ms):</value>
+    <value>캡처에 포함 할 키의 최소 지속 시간 (ms):</value>
   </data>
   <data name="MISC" xml:space="preserve">
-    <value>Misc</value>
+    <value>기타</value>
   </data>
   <data name="MOUSE" xml:space="preserve">
     <value>마우스</value>
@@ -659,19 +664,19 @@ CURSOR</value>
     <value>마우스 더블 클릭:</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
-    <value>Mouse Down 1</value>
+    <value>마우스 내리기 1</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
-    <value>Mouse Down 2</value>
+    <value>마우스 내리기 2</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
-    <value>Mouse Down 3</value>
+    <value>마우스 내리기 3</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
-    <value>Mouse Down 4</value>
+    <value>마우스 내리기 4</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse down:</value>
+    <value>마우스 내리기:</value>
   </data>
   <data name="MOUSE_LAYOUT" xml:space="preserve">
     <value>마우스</value>
@@ -680,120 +685,123 @@ CURSOR</value>
     <value>마우스 위치</value>
   </data>
   <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
-    <value>Mouse position sample interval (ms):</value>
+    <value>마우스 위치 추출 시간 간격 (ms):</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
-    <value>Mouse Scroll 1</value>
+    <value>마우스 스크롤 1</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
-    <value>Mouse Scroll 2</value>
+    <value>마우스 스크롤 2</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
-    <value>Mouse Scroll 3</value>
+    <value>마우스 스크롤 3</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
-    <value>Mouse Scroll 4</value>
+    <value>마우스 스크롤 4</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
-    <value>Mouse Scroll 5</value>
+    <value>마우스 스크롤 5</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
-    <value>Mouse Scroll 6</value>
+    <value>마우스 스크롤 6</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse scroll:</value>
+    <value>마우스 스크롤:</value>
   </data>
   <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
-    <value>Mouse Up 1</value>
+    <value>마우스 올리기 1</value>
   </data>
   <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
-    <value>Mouse Up 2</value>
+    <value>마우스 올리기 2</value>
   </data>
   <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
-    <value>Mouse Up 3</value>
+    <value>마우스 올리기 3</value>
   </data>
   <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
-    <value>Mouse Up 4</value>
+    <value>마우스 올리기 4</value>
   </data>
   <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse up:</value>
+    <value>마우스 올리기:</value>
   </data>
   <data name="MOVE" xml:space="preserve">
     <value>이동</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>Move by {0} pixel:|Move by {0} pixels:</value>
+    <value>{0}pixel씩 이동</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-DOWN &amp; LEFT</value>
+    <value>왼쪽 아래로
+이동</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-DOWN &amp; RIGHT</value>
+    <value>오른쪽 아래로
+이동</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-DOWN</value>
+    <value>아래로
+이동</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-LEFT</value>
+    <value>왼쪽으로
+이동</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-RIGHT</value>
+    <value>오른쪽으로
+이동</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-TO</value>
+    <value>이곳으로
+이동</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-UP &amp; LEFT</value>
+    <value>왼쪽 위로
+이동</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-UP &amp; RIGHT</value>
+    <value>오른쪽 위로
+이동</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-UP</value>
+    <value>위쪽으로
+이동</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
-    <value>Multi-key captures</value>
+    <value>단축 키 선택</value>
   </data>
   <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
-    <value>Multi-key captures enabled:</value>
+    <value>단축 키 선택 활성화:</value>
   </data>
   <data name="MULTI_KEY_SELECTION" xml:space="preserve">
-    <value>Multi-key Selection</value>
+    <value>단축 키 선택</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Muli-key selection ending:</value>
+    <value>단축 키 선택 끝:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MULTI-KEY
-SELECTION</value>
+    <value>단축 키
+선택</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Muli-key selection starting:</value>
+    <value>단축 키 선택 시작:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
-(The new dictionary entry will contain capital letters)</value>
+(새로운 사전 항목에는 대문자가 포함됩니다)</value>
   </data>
   <data name="NEXT" xml:space="preserve">
     <value>다음</value>
   </data>
   <data name="NO" xml:space="preserve">
-    <value>번</value>
+    <value>아니요</value>
+  </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>키보드를 찾을 수 없습니다!</value>
   </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
-    <value>It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.</value>
+    <value>입력패드에 사전에 없는 단어 나 구가 포함되어 있지 않습니다.</value>
   </data>
   <data name="NO_SOUND" xml:space="preserve">
-    <value>None</value>
+    <value>없음</value>
   </data>
   <data name="NOTHING_NEW" xml:space="preserve">
     <value>흠, 여기에 새로운 것은 없습니다!</value>
@@ -806,33 +814,33 @@ SELECTION</value>
 LK</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NUM
-SYM</value>
+    <value>숫자
+특수문자</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
     <value>숫자
-&amp; 모양</value>
+특수문자</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
-    <value>숫자 &amp; 모양 1</value>
+    <value>숫자 &amp; 특수문자 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
-    <value>숫자 &amp; 모양 2</value>
+    <value>숫자 &amp; 특수문자 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
-    <value>숫자 &amp; 모양 3</value>
+    <value>숫자 &amp; 특수문자 3</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>OK</value>
+    <value>확인</value>
   </data>
   <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
     <value>OptiKey : Type · Click · Speak</value>
   </data>
   <data name="OTHER" xml:space="preserve">
-    <value>Other</value>
+    <value>기타</value>
   </data>
   <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
-    <value>Parent Window could not be identified. Unable to continue</value>
+    <value>상위 창을 확인할 수 없습니다. 계속 진행할 수 없습니다.</value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>PG
@@ -843,47 +851,46 @@ DN</value>
 UP</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
-    <value>Physical Keys</value>
+    <value>기능 키</value>
   </data>
   <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PHYSICAL
-KEYS</value>
+    <value>기능 키</value>
   </data>
   <data name="PLAY_SOUND" xml:space="preserve">
     <value>실행</value>
   </data>
   <data name="POINT_AND_SELECTING" xml:space="preserve">
-    <value>지시 &amp; 선택</value>
+    <value>위치 &amp; 선택</value>
   </data>
   <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
-    <value>Point fixation radius (pixels):</value>
+    <value>마우스 위치 응시 반경 (pixels):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Point fixation time to complete (ms):</value>
+    <value>확정 마우스 위치 응시 시간 (ms):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Point fixation time to lock-on (ms):</value>
+    <value>선택 마우스 위치 응시 시간 (ms):</value>
   </data>
   <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
-    <value>Point lock-on radius (pixels):</value>
+    <value>마우스 위치 시선 고정 반경 (pixels):</value>
   </data>
   <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
-    <value>Point selection: {0}</value>
+    <value>마우스 위치 선택: {0}</value>
   </data>
   <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Point selection keyboard key:</value>
+    <value>마우스 위치 선택 키보드 키:</value>
   </data>
   <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Point selection mouse button:</value>
+    <value>마우스 위치 선택 마우스 버튼:</value>
   </data>
   <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Point selection source:</value>
+    <value>마우스 위치 선택 방법:</value>
   </data>
   <data name="POINTING" xml:space="preserve">
-    <value>Pointing</value>
+    <value>위치</value>
   </data>
   <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
-    <value>Pointing: {0}</value>
+    <value>위치: {0}</value>
   </data>
   <data name="PREV" xml:space="preserve">
     <value>이전</value>
@@ -893,39 +900,38 @@ KEYS</value>
 SCR</value>
   </data>
   <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
-    <value>PROBLEM LOADING KEYBOARD</value>
+    <value>키보드 로딩 문제</value>
   </data>
   <data name="QUIT" xml:space="preserve">
-    <value>나가기</value>
+    <value>종료</value>
   </data>
   <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>정말로 나가시려는게 맞습니까?</value>
+    <value>정말 종료하시겠습니까?</value>
   </data>
   <data name="QUIT_MESSAGE" xml:space="preserve">
-    <value>나가시겠습니까?</value>
+    <value>종료하시겠습니까?</value>
   </data>
   <data name="RATE_LABEL" xml:space="preserve">
-    <value>Rate:</value>
+    <value>비율:</value>
   </data>
   <data name="RE_CALIBRATE" xml:space="preserve">
-    <value>재-측정</value>
+    <value>재측정</value>
   </data>
   <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>REPEAT
-LAST</value>
+    <value>반복하기</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
-    <value>Audio and/or Dictionary service(s) were/was not supplied to the management window action.</value>
+    <value>오디오 및 / 또는 사전이 설정 창에서 설정되지 않았습니다.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey needs to restart to apply your changes.
-Please click OK to continue with the restart, or CANCEL to discard your changes</value>
+    <value>변경사항을 저장하기 위해서 OptiKey가 다시 시작 됩니다.
+계속 하시려면 '확인'을, 변경사항을 취소하시려면 '취소'를 누르세요.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>저장</value>
   </data>
   <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Resuming an incomplete key fixation requires a new lock on:</value>
+    <value>불완전한 키 응시를 다시 시작하려면 새로 시선을 고정해야 합니다:</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
     <value>Right</value>
@@ -935,18 +941,17 @@ Please click OK to continue with the restart, or CANCEL to discard your changes<
 화살표</value>
   </data>
   <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT
-CLICK</value>
+    <value>우클릭</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT
-DOWN/UP</value>
+    <value>오른쪽
+아래/위</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
-    <value>Rising 1</value>
+    <value>때기 1</value>
   </data>
   <data name="RISING_SOUND_2" xml:space="preserve">
-    <value>Rising 2</value>
+    <value>때기 2</value>
   </data>
   <data name="RUSSIAN_RUSSIA" xml:space="preserve">
     <value>러시아어 (러시아) / Русский (Россия)</value>
@@ -955,96 +960,95 @@ DOWN/UP</value>
     <value>스페인어 (스페인) / Español (España)</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
-    <value>Same as dock position</value>
+    <value>독(dock) 위치와 동일하게</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
-    <value>Scratchpad # of lines:</value>
+    <value>입력패드에 보여질 줄의 수:</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SCR
 LK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>Scroll by {0} click:|Scroll by {0} clicks:</value>
+    <value>{0} click 만큼 스크롤</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-DOWN</value>
+    <value>아래로
+스크롤</value>
   </data>
   <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-LEFT</value>
+    <value>왼쪽으로
+스크롤</value>
   </data>
   <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-RIGHT</value>
+    <value>오른쪽으로
+스크롤</value>
   </data>
   <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-UP</value>
+    <value>위쪽으로
+스크롤</value>
   </data>
   <data name="SELECTION" xml:space="preserve">
     <value>선택</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
-    <value>Selection progress indicator behaviour:</value>
+    <value>선택 진행 표시기 동작:</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
-    <value>Selection progress indicator end size (%):</value>
+    <value>선택 진행 표시기가 끝날 때의 크기(%):</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
-    <value>Selection progress indicator start size (%):</value>
+    <value>선택 진행 표시기가 시작 할 때의 크기(%):</value>
   </data>
   <data name="SHIFT" xml:space="preserve">
     <value>SHIFT</value>
   </data>
   <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
-    <value>Show splash screen on startup:</value>
+    <value>시작 시 안내 창 띄우기:</value>
   </data>
   <data name="SHRINK" xml:space="preserve">
-    <value>SHRINK</value>
+    <value>줄이기</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK 
-DOWN &amp; LEFT</value>
+    <value>왼쪽 아래로
+줄이기</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-DOWN &amp; RIGHT</value>
+    <value>오른쪽 아래로
+줄이기</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-DOWN</value>
+    <value>아래로
+줄이기</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
-    <value>Shrink</value>
+    <value>수축</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-LEFT</value>
+    <value>왼쪽으로
+줄이기</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-RIGHT</value>
+    <value>오른쪽으로
+줄이기</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-UP &amp; LEFT</value>
+    <value>왼쪽 위로
+줄이기</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-UP &amp; RIGHT</value>
+    <value>오른쪽 위로
+줄이기</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-UP</value>
+    <value>위로
+줄이기</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
-    <value>(FYI some similar entries are already in the dictionary: {0})</value>
+    <value>(참고로 비슷한 항목이 이미 사전에 포함되어 있습니다 : {0})</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>크기 &amp;
-위치</value>
+    <value>크기 &amp; 위치</value>
   </data>
   <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
     <value>크기 &amp; 위치</value>
@@ -1056,10 +1060,10 @@ UP</value>
     <value>음향 효과</value>
   </data>
   <data name="SOUNDS" xml:space="preserve">
-    <value>음성</value>
+    <value>소리</value>
   </data>
   <data name="SOURCE_LABEL" xml:space="preserve">
-    <value>Source:</value>
+    <value>입력 장치:</value>
   </data>
   <data name="SPACE" xml:space="preserve">
     <value>SPACE</value>
@@ -1068,10 +1072,13 @@ UP</value>
     <value>말하기</value>
   </data>
   <data name="SPEECH" xml:space="preserve">
-    <value>Speech</value>
+    <value>말하기</value>
   </data>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
     <value>시작 키보드:</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>커스덤 키보드 파일:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>멈춤 신호:</value>
@@ -1080,7 +1087,7 @@ UP</value>
     <value>성공</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Suppress modifier keys when in mouse keyboard:</value>
+    <value>마우스 입력모드일 때 특수 키 해제하기 :</value>
   </data>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
@@ -1089,34 +1096,37 @@ UP</value>
     <value>The Eye Tribe</value>
   </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
-    <value>Unable to activate TheEyeTribe GazeManager! Please check that the server is running and the device is connected and try again.</value>
+    <value>TheEyeTribe GazeManager를 실행할 수 없습니다! 서버가 실행 중인지, 디바이스가 연결되었는지 확인하시고 다시 시도해 주세요.</value>
   </data>
   <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
-    <value>TheEyeTribe has not been calibrated. No data will be received until calibration is completed.</value>
+    <value>TheEyeTribe가 측정되지 않았습니다. 측정이 완료될 때 까지 어떤 데이터도 받을 수 없습니다.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Unable to attempt a calibration as no EyeX engine is available.</value>
+    <value>EyeX engine이 실행되고 있지 않기 때문에 측정을 시도할 수 없습니다.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>테마:</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
-    <value>Time until point becomes irrelevent (ms):</value>
+    <value>마우스 위치가 무의미해지는 시간 (ms):</value>
+  </data>
+  <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>커서 감추기</value>
   </data>
   <data name="TITLE_CASE" xml:space="preserve">
-    <value>Words are capitalized</value>
+    <value>단어가 대문자로 표기됩니다.</value>
   </data>
   <data name="TOBII_EYEX" xml:space="preserve">
     <value>Tobii EyeX</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Calibration completed, or possibly cancelled, but everything is working again!</value>
+    <value>측정이 완료되었거나 취소되었을 수도 있지만, 모든 것이 다시 동작합니다!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again.</value>
+    <value>Tobii EyeX Engine을 찾을 수 없습니다. EyeX Engine을 설치하시고 다시 시도해 주세요.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine is not running. Please start the EyeX Engine and try again.</value>
+    <value>Tobii EyeX Engine 이 실행하고 있지 않습니다. EyeX Engine을 실행하시고 다시 시도해 주세요.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1137,39 +1147,39 @@ UP</value>
     <value>음정 4</value>
   </data>
   <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
-    <value>Trigger button/key pressed again</value>
+    <value>trigger 버튼/키가 다시 눌려졌습니다.</value>
   </data>
   <data name="TRIGGER_RELEASED" xml:space="preserve">
-    <value>Trigger button/key released</value>
+    <value>trigger 버튼/키가 떨어졌습니다.</value>
   </data>
   <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
-    <value>I can not detect where you are directing your attention. Is there a problem with the input device? Is it connected, turned on, calibrated, etc?</value>
+    <value>지금 어디를 바라보시는지 감지를 할 수 없습니다. 입력장치에 문제가 있나요? 연결이 잘 되었나요? 장치가 켜져 있나요? 측정이 되었나요?</value>
   </data>
   <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
-    <value>Unable to determine the current elevation.</value>
+    <value>현재 권한을 결정 할 수 없습니다.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>There was a problem setting the voice to '{0}'{1}</value>
+    <value>목소리를 '{0}'에서 {1}로 설정하는데 문제가 있습니다</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
-    <value>Something went wrong, but I don't know what - please check the logs</value>
+    <value>뭔가 잘못되었는데 어디에서 잘못되었는지 모르겠어요 - log를 확인해 주세요.</value>
   </data>
   <data name="UP" xml:space="preserve">
     <value>Top</value>
   </data>
   <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UP
-ARROW</value>
+    <value>위쪽
+화살표</value>
   </data>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
-    <value>UPDATE AVAILABLE!</value>
+    <value>업데이트가 있습니다!</value>
   </data>
   <data name="UPPER_CASE" xml:space="preserve">
-    <value>All in upper case</value>
+    <value>몽땅 대문자로</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
-    <value>Please visit www.optikey.org to download latest version ({0})
-You can turn off update checks from the Management Console (ALT + M).</value>
+    <value>www.optikey.org 에서 최신 버전({0})을 다운 받으세요
+OptiKey 설정 창에서 업데이트 확인 옵션을 끌 수 있습니다 (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
     <value>OptiKey를 재시작해도 되나요?</value>
@@ -1178,13 +1188,13 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>버전: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Vertical fill (as % of screen):</value>
+    <value>세로 길이 (화면의 %비율):</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
-    <value>Visuals</value>
+    <value>화면</value>
   </data>
   <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
-    <value> (from settings)</value>
+    <value>(설정 으로 부터)</value>
   </data>
   <data name="VOICE_LABEL" xml:space="preserve">
     <value>목소리:</value>
@@ -1193,7 +1203,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>음량:</value>
   </data>
   <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
-    <value>Website: www.optikey.org</value>
+    <value>홈페이지: www.optikey.org</value>
   </data>
   <data name="WIN" xml:space="preserve">
     <value>WIN</value>
@@ -1206,6 +1216,9 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="YES" xml:space="preserve">
     <value>예</value>
+  </data>
+  <data name="YESNO" xml:space="preserve">
+    <value>예/아니오</value>
   </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
     <value>글자들</value>
@@ -1220,10 +1233,10 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>중간</value>
   </data>
   <data name="NONE" xml:space="preserve">
-    <value>None</value>
+    <value>없음</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Data stream processing amount:</value>
+    <value>데이터 스트림 처리 수준:</value>
   </data>
   <data name="GERMAN_GERMANY" xml:space="preserve">
     <value>독일어 (독일) / Deutsch (Deutschland)</value>
@@ -1235,7 +1248,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>사용자 인터페이스 언어:</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simulate physical keystrokes when typing characters:</value>
+    <value>글자를 입력 할 때 실제 키 입력 재현하기:</value>
   </data>
   <data name="DUTCH_BELGIUM" xml:space="preserve">
     <value>네덜란드어 (벨기에) / Nederlands (België)</value>
@@ -1256,7 +1269,7 @@ Deutsch
 (Deutschland)</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Suppress mouse magnification for scrolling actions:</value>
+    <value>스크롤이 동작할 때 마우스 확대 억제하기:</value>
   </data>
   <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>러시아어
@@ -1271,13 +1284,13 @@ Español
 (España)</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
+    <value>대화 키보드 경계 두깨 (왼쪽, 위, 오른쪽, 아래 px 단위):</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
-    <value>BACK ONE</value>
+    <value>한글자 지우기</value>
   </data>
   <data name="BACK_WORD" xml:space="preserve">
-    <value>BACK WORD</value>
+    <value>한단어 지우기</value>
   </data>
   <data name="SUGGESTION_1" xml:space="preserve">
     <value>추천 1</value>
@@ -1298,16 +1311,16 @@ Español
     <value>추천 6</value>
   </data>
   <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
-    <value>Suggestion Keys</value>
+    <value>추천 키</value>
   </data>
   <data name="ADD_TO_DICTIONARY" xml:space="preserve">
     <value>사전에 추가</value>
   </data>
   <data name="COLLAPSE_DOCK" xml:space="preserve">
-    <value>COLLAPSE DOCK</value>
+    <value>DOCK 축소</value>
   </data>
   <data name="DOWN_ARROW" xml:space="preserve">
-    <value>DOWN ARROW</value>
+    <value>아래쪽 화살표</value>
   </data>
   <data name="F1" xml:space="preserve">
     <value>F1</value>
@@ -1320,6 +1333,27 @@ Español
   </data>
   <data name="F12" xml:space="preserve">
     <value>F12</value>
+  </data>
+  <data name="F13" xml:space="preserve">
+    <value>F13</value>
+  </data>
+  <data name="F14" xml:space="preserve">
+    <value>F14</value>
+  </data>
+  <data name="F15" xml:space="preserve">
+    <value>F15</value>
+  </data>
+  <data name="F16" xml:space="preserve">
+    <value>F16</value>
+  </data>
+  <data name="F17" xml:space="preserve">
+    <value>F17</value>
+  </data>
+  <data name="F18" xml:space="preserve">
+    <value>F18</value>
+  </data>
+  <data name="F19" xml:space="preserve">
+    <value>F19</value>
   </data>
   <data name="F2" xml:space="preserve">
     <value>F2</value>
@@ -1346,130 +1380,130 @@ Español
     <value>F9</value>
   </data>
   <data name="LEFT_ARROW" xml:space="preserve">
-    <value>LEFT ARROW</value>
+    <value>왼쪽 화살표</value>
   </data>
   <data name="RIGHT_ARROW" xml:space="preserve">
-    <value>RIGHT ARROW</value>
+    <value>오른쪽 화살표</value>
   </data>
   <data name="UP_ARROW" xml:space="preserve">
-    <value>UP ARROW</value>
+    <value>위쪽 화살표</value>
   </data>
   <data name="CLICK_AND_DRAG" xml:space="preserve">
-    <value>CLICK &amp; DRAG</value>
+    <value>클릭 &amp; 드래그</value>
   </data>
   <data name="CURRENCIES_1" xml:space="preserve">
-    <value>CURRENCIES 1</value>
+    <value>화폐 기호 1</value>
   </data>
   <data name="CURRENCIES_2" xml:space="preserve">
-    <value>CURRENCIES 2</value>
+    <value>화폐 기호 2</value>
   </data>
   <data name="DECREASE_OPACITY" xml:space="preserve">
-    <value>DECREASE OPACITY</value>
+    <value>투명도 증가</value>
   </data>
   <data name="DIACRITICS_1" xml:space="preserve">
-    <value>DIACRITICS 1</value>
+    <value>발음 구별 부호 1</value>
   </data>
   <data name="DIACRITICS_2" xml:space="preserve">
-    <value>DIACRITICS 2</value>
+    <value>발음 구별 부호 2</value>
   </data>
   <data name="DIACRITICS_3" xml:space="preserve">
-    <value>DIACRITICS 3</value>
+    <value>발음 구별 부호 3</value>
   </data>
   <data name="EXPAND_DOCK" xml:space="preserve">
-    <value>EXPAND DOCK</value>
+    <value>DOCK 확장</value>
   </data>
   <data name="EXPAND_DOWN" xml:space="preserve">
-    <value>아래로 확장</value>
+    <value>아래로 넓히기</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
-    <value>왼쪽 아래로 확장</value>
+    <value>왼쪽 아래로 넓히기</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>오른쪽 위로 확장</value>
+    <value>오른쪽 위로 넓히기</value>
   </data>
   <data name="EXPAND_LEFT" xml:space="preserve">
-    <value>왼쪽으로 확장</value>
+    <value>왼쪽으로 넓히기</value>
   </data>
   <data name="EXPAND_RIGHT" xml:space="preserve">
-    <value>오른쪽으로 확장</value>
+    <value>오른쪽으로 넓히기</value>
   </data>
   <data name="EXPAND_UP" xml:space="preserve">
-    <value>위로 확장</value>
+    <value>위로 넓히기</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
-    <value>왼쪽 위로 확장</value>
+    <value>왼쪽 위로 넓히기</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
-    <value>오른쪽 위로 확장</value>
+    <value>오른쪽 위로 넓히기</value>
   </data>
   <data name="INCREASE_OPACITY" xml:space="preserve">
-    <value>INCREASE OPACITY</value>
+    <value>투명도 감소</value>
   </data>
   <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
-    <value>숫자 &amp; 상징 1</value>
+    <value>숫자 &amp; 특수문자 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
-    <value>숫자 &amp; 상징 2</value>
+    <value>숫자 &amp; 특수문자 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
-    <value>숫자 &amp; 상징 3</value>
+    <value>숫자 &amp; 특수문자 3</value>
   </data>
   <data name="PHYSICAL_KEYS" xml:space="preserve">
-    <value>물리적 키</value>
+    <value>기능 키</value>
   </data>
   <data name="SIZE_AND_POSITION" xml:space="preserve">
     <value>크기 &amp; 위치</value>
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
-    <value>MAGNETIC CURSOR</value>
+    <value>MAGNETIC 커서</value>
   </data>
   <data name="MIDDLE_CLICK" xml:space="preserve">
-    <value>MIDDLE CLICK</value>
+    <value>휠 클릭</value>
   </data>
   <data name="MIDDLE_DOWN_UP" xml:space="preserve">
-    <value>MIDDLE DOWN/UP</value>
+    <value>휠 아래/위</value>
   </data>
   <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
-    <value>MOVE AMOUNT IN PIXELS</value>
+    <value>한번 움직이는데 드는 pixel 수</value>
   </data>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
-    <value>ADJUST AMOUNT IN PIXELS</value>
+    <value>한번 조정하는데 드는 pixel 수</value>
   </data>
-  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
-    <value>CONVERSATION ALPHA 1</value>
+  <data name="CONVERSATION_ALPHA" xml:space="preserve">
+    <value>대화 키보드 글자</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
-    <value>CONVERSATION NUMERIC &amp; SYMBOLS</value>
+    <value>대화 키보드 숫자 &amp; 특수문자</value>
   </data>
   <data name="JUMP_DOWN" xml:space="preserve">
-    <value>아래로 이동</value>
+    <value>아래에 붙이기</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
-    <value>왼쪽 아래로 이동</value>
+    <value>왼쪽 아래에 붙이기</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>오른쪽 아래로 이동</value>
+    <value>오른쪽 아래에 붙이기</value>
   </data>
   <data name="JUMP_LEFT" xml:space="preserve">
-    <value>왼쪽으로 이동</value>
+    <value>왼쪽에 붙이기</value>
   </data>
   <data name="JUMP_RIGHT" xml:space="preserve">
-    <value>오른쪽으로 이동</value>
+    <value>오른쪽에 붙이기</value>
   </data>
   <data name="JUMP_UP" xml:space="preserve">
-    <value>위로 이동</value>
+    <value>위에 붙이기</value>
   </data>
   <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
-    <value>왼쪽 위로 이동</value>
+    <value>왼쪽 위에 붙이기</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
-    <value>오른쪽 위로 이동</value>
+    <value>오른쪽 위에 붙이기</value>
   </data>
   <data name="LEFT_CLICK" xml:space="preserve">
     <value>좌클릭</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
-    <value>왼쪽 더블 클릭</value>
+    <value>더블 클릭</value>
   </data>
   <data name="LEFT_DOWN_UP" xml:space="preserve">
     <value>왼쪽 아래/위</value>
@@ -1490,7 +1524,7 @@ Español
     <value>오른쪽으로 이동</value>
   </data>
   <data name="MOVE_TO" xml:space="preserve">
-    <value>로 이동</value>
+    <value>이곳으로 이동</value>
   </data>
   <data name="MOVE_UP" xml:space="preserve">
     <value>위로 이동</value>
@@ -1502,22 +1536,22 @@ Español
     <value>오른쪽 위로 이동</value>
   </data>
   <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
-    <value>다중 키 선택</value>
+    <value>단축 키 선택</value>
   </data>
   <data name="NUM_LK" xml:space="preserve">
-    <value>숫자키 잠금</value>
+    <value>NUM LK</value>
   </data>
   <data name="PG_DN" xml:space="preserve">
-    <value>페이지 내리기</value>
+    <value>PG DN</value>
   </data>
   <data name="PG_UP" xml:space="preserve">
-    <value>페이지 올리기</value>
+    <value>PG UP</value>
   </data>
   <data name="PRNT_SCR" xml:space="preserve">
-    <value>프린트스크린</value>
+    <value>PRNT SCR</value>
   </data>
   <data name="REPEAT_LAST" xml:space="preserve">
-    <value>마지막을 반복</value>
+    <value>반복하기</value>
   </data>
   <data name="RIGHT_CLICK" xml:space="preserve">
     <value>우클릭</value>
@@ -1526,31 +1560,31 @@ Español
     <value>오른쪽 아래/위</value>
   </data>
   <data name="SCRN_LK" xml:space="preserve">
-    <value>스크롤 잠금</value>
+    <value>SCR LK</value>
   </data>
   <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
-    <value>SCROLL AMOUNT IN CLICKS</value>
+    <value>한번 스크롤하는데 드는 클릭 수</value>
   </data>
   <data name="SCROLL_DOWN" xml:space="preserve">
-    <value>SCROLL DOWN</value>
+    <value>아래로 스크롤</value>
   </data>
   <data name="SCROLL_LEFT" xml:space="preserve">
-    <value>SCROLL LEFT</value>
+    <value>왼쪽으로 스크롤</value>
   </data>
   <data name="SCROLL_RIGHT" xml:space="preserve">
-    <value>SCROLL RIGHT</value>
+    <value>오른쪽으로 스크롤</value>
   </data>
   <data name="SCROLL_UP" xml:space="preserve">
-    <value>SCROLL UP</value>
+    <value>위쪽으로 스크롤</value>
   </data>
   <data name="SHRINK_DOWN" xml:space="preserve">
     <value>아래로 줄이기</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
-    <value>아래 &amp; 왼쪽으로 줄이기 </value>
+    <value>왼쪽 아래로 줄이기 </value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>아래 &amp; 오른쪽으로 축소하기</value>
+    <value>오른쪽 아래로 줄이기</value>
   </data>
   <data name="SHRINK_LEFT" xml:space="preserve">
     <value>왼쪽으로 줄이기</value>
@@ -1562,19 +1596,19 @@ Español
     <value>위로 줄이기</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
-    <value>위 &amp; 왼쪽으로 줄이기</value>
+    <value>왼쪽 위로 줄이기</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
-    <value>위 &amp; 오른쪽으로 줄이기</value>
+    <value>오른쪽 위로 줄이기</value>
   </data>
   <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
     <value>키보드 변경 키</value>
   </data>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>DOCK ACTION KEYS:</value>
+    <value>독(dock) 액션 키:</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Overrides for individual key fixation times (ms):</value>
+    <value>개별 키 응시 시간 (ms):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
     <value>언어 변경 키</value>
@@ -1586,97 +1620,97 @@ Español
     <value>기타 키</value>
   </data>
   <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>수식어 키</value>
+    <value>특수 키:</value>
   </data>
   <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
     <value>마우스 (현재위치에서 실행) 키:</value>
   </data>
   <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (DO AT POINT) KEYS:</value>
+    <value>마우스 (지정된 위치에서 실행) 키:</value>
   </data>
   <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (MISCELLANEOUS) KEYS:</value>
+    <value>마우스 (기타) 키:</value>
   </data>
   <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
-    <value>MOVE &amp; RESIZE KEYS:</value>
+    <value>이동 &amp; 크기 조정 키:</value>
   </data>
   <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>PHYSICAL KEYS:</value>
+    <value>기능 키:</value>
   </data>
   <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>SUGGESTION KEYS:</value>
+    <value>추천 키:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
-    <value>Specify times to complete on individual keys:</value>
+    <value>개별 키 응시 시간 설정하기:</value>
   </data>
   <data name="GREEK_GREECE" xml:space="preserve">
-    <value>Greek (Greece) / Ελληνικά (Ελλάδα)</value>
+    <value>그리스어 (그리스) / Ελληνικά (Ελλάδα)</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>Management Console</value>
+    <value>Optikey 설정</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
-    <value>나가기</value>
+    <value>종료</value>
   </data>
   <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Greek
-(Greece) /
-Ελληνικά
+    <value>그리스어 
+(그리스) / 
+Ελληνικά 
 (Ελλάδα)</value>
   </data>
   <data name="CROATIAN_CROATIA" xml:space="preserve">
-    <value>Croatian (Croatia) / Hrvatski (Hrvatska)</value>
+    <value>크로아티아어 (크로아티아) / Hrvatski (Hrvatska)</value>
   </data>
   <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Croatian
-(Croatia) /
-Hrvatski
+    <value>크로아티아어 
+(크로아티아) /
+ Hrvatski 
 (Hrvatska)</value>
   </data>
   <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch
-(Belgium) /
-Nederlands
+    <value>네덜란드어 
+(벨기에) / 
+Nederlands 
 (België)</value>
   </data>
   <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch
-(Netherlands) /
-Nederlands
+    <value>네덜란드어 
+(네덜란드) / 
+Nederlands 
 (Nederland)</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
-    <value>Suppress modifier keys for all mouse actions:</value>
+    <value>모든 마우스 동작에 대하여 특수 키 해제하기 :</value>
   </data>
   <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-영어
-(캐나다)
-</value>
+    <value>영어
+(캐나다) / 
+English
+(Canada)</value>
   </data>
   <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-영어
-(영국)
-</value>
+    <value>영어
+(영국) / 
+English
+(UK)</value>
   </data>
   <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-영어
-(미국)
-</value>
+    <value>영어
+(미국) / 
+English
+(US)</value>
   </data>
   <data name="CATALAN_SPAIN" xml:space="preserve">
-    <value>Catalan (Spain) / Català (Espanya)</value>
+    <value>카탈로니아어 (스페인) / Català (Espanya)</value>
   </data>
   <data name="CATALAN_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Catalan
-(Spain) /
-Català
+    <value>카탈로니아어 
+(스페인) / 
+Català 
 (Espanya)</value>
   </data>
   <data name="TURKISH_TURKEY" xml:space="preserve">
-    <value>터키어 (터키) / 터키어 (터키)</value>
+    <value>터키어 (터키) / Türkçe (Türkiye)</value>
   </data>
   <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>터키어
@@ -1706,7 +1740,7 @@ Slovensko
     <value>myGaze와 연결할 수 없습니다! 서버가 실행 중이고, 장치가 연결됬는지 다시 한 번 확인해주시기 바랍니다.</value>
   </data>
   <data name="VI_MYGAZE" xml:space="preserve">
-    <value>시각적 상호작용 myGaze</value>
+    <value>Visual Interaction myGaze</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>측정 실패!</value>
@@ -1715,22 +1749,22 @@ Slovensko
     <value>측정 성공!</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
-    <value>Portuguese (Portugal) / Português (Portugal)</value>
+    <value>포르투갈어 (포르투갈) / Português (Portugal)</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Portuguese
-(Portugal) /
-Português
+    <value>포르투갈어 
+(포르투갈) / 
+Português 
 (Portugal)</value>
   </data>
   <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
-    <value>Slovak (Slovakia) / Slovenčina (Slovensko) </value>
+    <value>슬로바키아어 (슬로바키아) / Slovenčina (Slovensko) </value>
   </data>
   <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Slovak
-(Slovakia) /
-Slovenčina
-(Slovensko)</value>
+    <value>슬로바키아어 
+(슬로바키아) / 
+Slovenčina 
+(Slovensko) </value>
   </data>
   <data name="ALIENWARE_17" xml:space="preserve">
     <value>Alienware 17 (EyeX)</value>
@@ -1751,15 +1785,151 @@ Slovenčina
     <value>Tobii X2-60</value>
   </data>
   <data name="FORCE_CAPS_LOCK" xml:space="preserve">
-    <value>Force caps lock:</value>
+    <value>caps lock 강제하기:</value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use alphabetical keyboard layout:</value>
+    <value>QWERTY 자판 배열을 알파벳 자판 배열로 바꾸기 :</value>
   </data>
-  <data name="ALPHA_2" xml:space="preserve">
-    <value>글자 2</value>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>칼만 필터:</value>
   </data>
-  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
-    <value>CONVERSATION ALPHA 2</value>
+  <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
+    <value>수동 모드 전환</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
+    <value>체코어 (체코) / Čeština (Česko)</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>체코어
+(체코) / 
+Čeština 
+(Česko)</value>
+  </data>
+  <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+    <value>입력 모드가 바뀌었습니다</value>
+  </data>
+  <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+    <value>수동 (마우스)모드가 비활성화되었습니다!</value>
+  </data>
+  <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
+    <value>수동 (마우스)모드가 활성화되었습니다!</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
+    <value>대화 확인 키보드를 활성화 하시겠습니까?</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>대화 확인 키보드 전용 모드:</value>
+  </data>
+  <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
+    <value>종료 키를 활성화 시키겠습니까?</value>
+  </data>
+  <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Alpha keyboard를 단순한 자판 배열로 바꾸기 :</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>브라우저
+뒤로</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>브라우저
+앞으로</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>브라우저
+홈</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>브라우저
+찾기</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>웹 브라우징</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>웹
+브라우징</value>
+  </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>MaryTTS 음성 합성기를 사용 하시겠습니까?</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS 음성:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>MaryTTS 위치 (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>찾기</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>에러: 유효한 'marytts-server.bat' 파일이 선택되지 않았습니다. 다시 시도해주세요.</value>
+  </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>기본</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Presage</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>단어 추천 방법:</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>MaryTTS를 사용할 수 없습니다</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>Presage 단어 예즉 방법을 사용할 수 없습니다</value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>단어 추천 방법이 {0}로 설정되었습니다.
+OptiKey 설정 (ALT + M)에서
+다시 바꿀 수 있습니다.</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>말하기 음성이 시스템 음성에서 {0}으로 설정되었습니다
+OptiKey 설정 (ALT + M)에서
+MaryTTS의 경로와 음성을
+바꿀 수 있습니다.</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>말하기 전 지연시간 (ms):</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Alpha keyboard를 CommuniKate keyboard로 바꾸기 :</value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value> CommuniKate keyboard 배열을 활성화 하기:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>CommuniKate 최상위 페이지 .obf 파일 :</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>유효하지 않은 파일</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>CommuniKate 최상위 페이지 .obf 파일 위치 :</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>64 bit 버전의 Presage가 설치 되어 있거나 (OptiKey는 32 bit  버전만 지원합니다), Presage 파일이 이동되거나, 지워지거나, 손상되었습니다
+Presage를 지우고 32 bit 0.9.2 버전을 설치해 주세요.
+OptiKey는 계속 실행 하려고 하지만 곧 중단 될 수 있습니다.
+다음 실행시 중단되는 것을 막기 위해 예측 방법이 NGram으로 바뀜니다.</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>Presage에서 문제가 발생하였습니다.</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>동적 키보드가 있는 폴더:</value>
+  </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>모든 설정들이 취소됩니다. 계속하시겠습니까?</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>설정 취소</value>
   </data>
 </root>
