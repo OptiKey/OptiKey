@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
             }
             finally
             {
-                MainWindowManipulationService.Restore();
+                MainWindowManipulationService.RestoreSavedState();
             }
             
             args.Callback();
