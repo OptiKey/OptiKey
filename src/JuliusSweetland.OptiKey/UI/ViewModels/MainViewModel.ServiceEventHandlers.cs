@@ -1946,7 +1946,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             nextPointSelectionAction = nextPoint =>
             {
-                if (!suppressMagnification  
+                if (!suppressMagnification 
                     && keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                 {
                     ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
