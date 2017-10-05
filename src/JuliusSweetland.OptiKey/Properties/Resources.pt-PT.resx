@@ -1575,4 +1575,7 @@ Pode desligar as notificações de atualizações a partir do Painel de Controlo
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>CONVERSAÇÃO ALFA 2</value>
   </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>LETRAS</value>
+  </data>
 </root>

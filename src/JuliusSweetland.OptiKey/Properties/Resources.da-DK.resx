@@ -1672,4 +1672,7 @@ Türkçe
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>SAMTALE ALPHA 2</value>
   </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>BOGSTAVER</value>
+  </data>
 </root>

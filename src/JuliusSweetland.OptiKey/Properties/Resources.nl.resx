@@ -1582,4 +1582,7 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>GESPREK ALPHA 2</value>
   </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>LETTERS</value>
+  </data>
 </root>

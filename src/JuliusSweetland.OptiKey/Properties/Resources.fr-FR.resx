@@ -164,9 +164,6 @@ DICTIONNAIRE</value>
     <value>Espacement des mots automatique :</value>
   </data>
   <data name="BACK" xml:space="preserve">
-    <value>Retour</value>
-  </data>
-  <data name="BACK" xml:space="preserve">
     <value>RETOUR</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -1587,5 +1584,8 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>CONVERSATION ALPHA 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>LETTRES</value>
   </data>
 </root>

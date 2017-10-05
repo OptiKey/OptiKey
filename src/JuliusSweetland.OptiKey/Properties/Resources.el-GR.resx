@@ -1616,4 +1616,7 @@ Deutsch (Deutschland)</value>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>ΤΙΜΗ ΑΛΦΑ (ΔΙΑΦΑΝΕΙΑΣ) ΣΥΖΗΤΗΣΗΣ 2</value>
   </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>ΓΡΑΜΜΑΤΑ</value>
+  </data>
 </root>

@@ -168,9 +168,6 @@
   <data name="BACK" xml:space="preserve">
     <value>NAZAJ</value>
   </data>
-  <data name="BACK" xml:space="preserve">
-    <value>NAZAJ</value>
-  </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NAZAJ ENO</value>
   </data>
@@ -1558,5 +1555,8 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>POGOVOR ČRKE 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>ČRKE</value>
   </data>
 </root>

@@ -1962,4 +1962,7 @@ It's default location is "C:\Program Files (x86)\presage\share\presage\database_
 It can be edited with a program which can read SQLite format 3 files 
 such as "DB Browser for SQLite" (which is a free program).</value>
   </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>LETTERS</value>
+  </data>
 </root>

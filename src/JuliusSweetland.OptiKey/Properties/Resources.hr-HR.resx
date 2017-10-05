@@ -165,9 +165,6 @@ RIJEČNIK</value>
     <value>Automatski razmak između riječi:</value>
   </data>
   <data name="BACK" xml:space="preserve">
-    <value>Natrag</value>
-  </data>
-  <data name="BACK" xml:space="preserve">
     <value>NATRAG</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -1577,5 +1574,8 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>RAZGOVOR ALFA 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>SLOVA</value>
   </data>
 </root>

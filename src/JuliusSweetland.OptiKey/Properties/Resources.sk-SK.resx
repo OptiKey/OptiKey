@@ -1564,4 +1564,7 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>KONVERZÁCIA PÍSMENÁ 2</value>
   </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>PÍSMENÁ</value>
+  </data>
 </root>
