@@ -65,6 +65,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         {});
 
                         Log.ErrorFormat("Caught exception: {0}", ex);
+                        
+                        //Reset as much as possible
+                        mainViewModel.SelectionMode = SelectionModes.Key;
+                        mainViewModel.MagnifiedPointSelectionAction = null;
+                        mainViewModel.MagnifyAtPoint = null;
+                        mainViewModel.MagnifiedPointSelectionAction = null;
+                        mainViewModel.ShowCursor = false;
+
+                        //Return so the rest of the workflow is avoided
+                        return;
+
                     }
 
                     EventHandler<Point> pointSelectionHandler = null;

@@ -1946,7 +1946,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             nextPointSelectionAction = nextPoint =>
             {
-                if (!suppressMagnification 
+                if (!suppressMagnification  
                     && keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                 {
                     ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
@@ -1954,7 +1954,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     //2.Last popup open stays on top (I know the VM in MVVM shouldn't care about this, so pretend it's all reason 1).
                     MagnifiedPointSelectionAction = finalClickAction;
                     MagnifyAtPoint = nextPoint;
-                    ShowCursor = true;
+                    if(MagnifyAtPoint != null) //If the magnification fails, MagnifyAtPoint == null, and the pointer has been cleared. 
+                    //We don't want it to re-appear
+                        ShowCursor = true;
                 }
                 else
                 {
