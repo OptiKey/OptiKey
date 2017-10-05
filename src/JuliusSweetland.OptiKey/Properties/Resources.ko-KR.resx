@@ -137,7 +137,7 @@
     <value>추가된</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
-    <value>{0} pixel씩 조정하기</value>
+    <value>{0} pixel씩 조정하기|{0}pixel씩 조정하기</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
     <value>글자</value>
@@ -727,7 +727,7 @@ Dansk
     <value>이동</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>{0}pixel씩 이동</value>
+    <value>{0}pixel씩 이동:|{0}pixel씩 이동</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>왼쪽 아래로
@@ -970,7 +970,7 @@ SCR</value>
 LK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>{0} click 만큼 스크롤</value>
+    <value>{0} click 만큼 스크롤:|{0}click 만큼 스크롤:</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>아래로
@@ -1221,7 +1221,7 @@ OptiKey 설정 창에서 업데이트 확인 옵션을 끌 수 있습니다 (ALT
     <value>예/아니오</value>
   </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
-    <value>글자들</value>
+    <value>글자</value>
   </data>
   <data name="HIGH" xml:space="preserve">
     <value>높게</value>
