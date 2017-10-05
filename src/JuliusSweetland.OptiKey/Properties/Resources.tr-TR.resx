@@ -164,9 +164,6 @@ EKLE</value>
     <value>Kelimeler arasında otomatik boşluk bırak:</value>
   </data>
   <data name="BACK" xml:space="preserve">
-    <value>Geri</value> 
-  </data>
-  <data name="BACK" xml:space="preserve">
     <value>GERİ</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -1572,5 +1569,8 @@ KÜÇÜLT</value>
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>HARFLER 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>HARFLER</value>
   </data>
 </root>

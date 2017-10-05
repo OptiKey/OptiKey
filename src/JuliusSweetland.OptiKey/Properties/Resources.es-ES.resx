@@ -1595,4 +1595,7 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>CONVERSACIÓN ALPHA 2</value>
   </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>LETRAS</value>
+  </data>
 </root>

@@ -152,6 +152,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LETTERS.
+        /// </summary>
+        public static string ALPHA {
+            get {
+                return ResourceManager.GetString("ALPHA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LETTERS 1.
         /// </summary>
         public static string ALPHA_1 {

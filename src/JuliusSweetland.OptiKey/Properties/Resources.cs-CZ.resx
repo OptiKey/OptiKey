@@ -1580,4 +1580,10 @@ Kontrolu aktualizacií můžete vypnout v nastavení (ALT + M).</value>
   <data name="YES" xml:space="preserve">
     <value>ANO</value>
   </data>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>PÍSMENA 1</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>PÍSMENA 2</value>
+  </data>
 </root>

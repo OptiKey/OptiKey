@@ -165,9 +165,6 @@ HINZUFÜGEN</value>
     <value>Automatische Leertaste zwischen Wörtern:</value>
   </data>
   <data name="BACK" xml:space="preserve">
-    <value>Zurück</value>
-  </data>
-  <data name="BACK" xml:space="preserve">
     <value>ZURÜCK</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -1611,5 +1608,8 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>GESPRÄCH ALFA 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>BUCHSTABEN</value>
   </data>
 </root>

@@ -1573,4 +1573,7 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>CONVERSA ALFA 2</value>
   </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>LLETRES</value>
+  </data>
 </root>

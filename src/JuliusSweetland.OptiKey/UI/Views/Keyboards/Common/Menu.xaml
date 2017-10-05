@@ -39,7 +39,7 @@
         </Grid.ColumnDefinitions>
         <controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource AlphaIcon}"
-                      Text="{x:Static resx:Resources.ALPHA_1}"
+                      Text="{x:Static resx:Resources.ALPHA}"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       Value="{x:Static models:KeyValues.Alpha1KeyboardKey}"/>
         <controls:Key Grid.Row="0" Grid.Column="1"
