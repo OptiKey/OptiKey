@@ -139,8 +139,8 @@
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Προσαρμογή κατά {0} εικονοστοιχεία|Προσαρμογή κατά {0} εικονοστοιχεία </value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>ΓΡΑΜΜΑΤΑ </value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>ΓΡΑΜΜΑΤΑ 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1424,8 +1424,8 @@ Deutsch (Deutschland)</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>ΜΕΓΕΘΟΣ ΑΥΞΟΜΕΙΩΣΗΣ ΣΕ PIXEL</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>ΤΙΜΗ ΑΛΦΑ (ΔΙΑΦΑΝΕΙΑΣ) ΣΥΖΗΤΗΣΗΣ</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>ΤΙΜΗ ΑΛΦΑ (ΔΙΑΦΑΝΕΙΑΣ) ΣΥΖΗΤΗΣΗΣ 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>ΑΡΙΘΜΙΤΙΚΑ &amp; ΣΥΜΒΟΛΑ ΣΥΖΗΤΗΣΗΣ</value>
@@ -1609,5 +1609,11 @@ Deutsch (Deutschland)</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Αποτυχία βαθμονόμησης!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>ΓΡΑΜΜΑΤΑ 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>ΤΙΜΗ ΑΛΦΑ (ΔΙΑΦΑΝΕΙΑΣ) ΣΥΖΗΤΗΣΗΣ 2</value>
   </data>
 </root>

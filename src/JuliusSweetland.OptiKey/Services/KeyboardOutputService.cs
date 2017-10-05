@@ -28,9 +28,9 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Dictionary<bool, KeyboardOutputServiceState> state = new Dictionary<bool, KeyboardOutputServiceState>();
 
         private string text;
-        private string lastTextChange;
-        private bool lastTextChangeWasSuggestion;
-        private bool lastTextChangeWasMultiKey;
+        private string lastProcessedText;
+        private bool lastProcessedTextWasSuggestion;
+        private bool lastProcessedTextWasMultiKey;
         private bool suppressNextAutoSpace = true;
         private bool keyboardIsShiftAware;
         private bool shiftStateSetAutomatically;
@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Properties
-
+        
         public string Text
         {
             get { return text; }
@@ -112,7 +112,7 @@ namespace JuliusSweetland.OptiKey.Services
                             AutoPressShiftIfAppropriate();
                         }
 
-                        StoreLastTextChange(null);
+                        StoreLastProcessedText(null);
                         GenerateSuggestions(true);
 
                         Log.Debug("Suppressing next auto space.");
@@ -124,13 +124,13 @@ namespace JuliusSweetland.OptiKey.Services
                         PublishKeyPress(FunctionKeys.BackOne);
                     }
 
-                    lastTextChangeWasSuggestion = false;
+                    lastProcessedTextWasSuggestion = false;
                     break;
 
                 case FunctionKeys.BackOne:
-                    var backOneCount = string.IsNullOrEmpty(lastTextChange)
-                        ? 1 //Default to removing one character if no lastTextChange
-                        : lastTextChange.Length;
+                    var backOneCount = string.IsNullOrEmpty(lastProcessedText)
+                        ? 1 //Default to removing one character if no lastProcessedText
+                        : lastProcessedText.Length;
 
                     var textChangedByBackOne = false;
 
@@ -139,6 +139,38 @@ namespace JuliusSweetland.OptiKey.Services
                         if (Text.Length < backOneCount)
                         {
                             backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
+                        }
+                        
+                        if (backOneCount == 1)
+                        {
+                            var inProgressWord = Text.InProgressWord(Text.Length);
+                            if (inProgressWord != null)
+                            {
+                                //Attempt to break-apart/decompose in-progress word using normalisation
+                                var decomposedInProgressWord = inProgressWord.Decompose();
+                                if (decomposedInProgressWord != inProgressWord)
+                                {
+                                    Log.DebugFormat("In-progress word can be broken apart/decomposed using normalisation. It will be normalised from '{0}' to '{1}'.", inProgressWord, decomposedInProgressWord);
+
+                                    //Remove in-progress word from Text
+                                    Text = Text.Substring(0, Text.Length - inProgressWord.Length);
+
+                                    //Add back the decomposed in-progress word, minus the last character, composed again (to recombine if possible)
+                                    var characterToRemove = decomposedInProgressWord.Last();
+                                    var newInProgressWord = string.Concat(decomposedInProgressWord.Substring(0, decomposedInProgressWord.Length - 1).Compose(), characterToRemove);
+                                    Text = string.Concat(Text, newInProgressWord);
+
+                                    //Remove composed string from external applications by outputting backspaces, then replace with decomposed word
+                                    for (var backCount = 0; backCount < inProgressWord.Length; backCount++)
+                                    {
+                                        PublishKeyPress(FunctionKeys.BackOne);
+                                    }
+                                    foreach (var c in newInProgressWord)
+                                    {
+                                        PublishKeyPress(c);
+                                    }
+                                }
+                            }
                         }
 
                         var textAfterBackOne = Text.Substring(0, Text.Length - backOneCount);
@@ -149,9 +181,9 @@ namespace JuliusSweetland.OptiKey.Services
                             //Removing more than one character - only decrement removed string
                             dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
                         }
-                        else if (!string.IsNullOrEmpty(lastTextChange)
-                            && lastTextChange.Length == 1
-                            && !char.IsWhiteSpace(lastTextChange[0]))
+                        else if (!string.IsNullOrEmpty(lastProcessedText)
+                            && lastProcessedText.Length == 1
+                            && !char.IsWhiteSpace(lastProcessedText[0]))
                         {
                             dictionaryService.DecrementEntryUsageCount(Text.InProgressWord(Text.Length)); //We are removing a non-whitespace character - decrement the in progress word
                             dictionaryService.IncrementEntryUsageCount(textAfterBackOne.InProgressWord(Text.Length)); //And increment the in progress word that is left after the removal
@@ -172,28 +204,28 @@ namespace JuliusSweetland.OptiKey.Services
                         AutoPressShiftIfAppropriate();
                     }
 
-                    StoreLastTextChange(null);
+                    StoreLastProcessedText(null);
                     GenerateSuggestions(false);
 
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
-                    lastTextChangeWasSuggestion = false;
+                    lastProcessedTextWasSuggestion = false;
                     break;
 
                 case FunctionKeys.ClearScratchpad:
                     Text = null;
-                    StoreLastTextChange(null);
+                    StoreLastProcessedText(null);
                     ClearSuggestions();
                     AutoPressShiftIfAppropriate();
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
-                    lastTextChangeWasSuggestion = false;
+                    lastProcessedTextWasSuggestion = false;
                     GenerateSuggestions(false);
                     break;
 
                 case FunctionKeys.ConversationConfirmYes:
                     Text = null;
-                    StoreLastTextChange(null);
+                    StoreLastProcessedText(null);
                     ClearSuggestions();
                     AutoPressShiftIfAppropriate();
                     Log.Debug("Suppressing next auto space.");
@@ -203,7 +235,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.ConversationConfirmNo:
                     Text = null;
-                    StoreLastTextChange(null);
+                    StoreLastProcessedText(null);
                     ClearSuggestions();
                     AutoPressShiftIfAppropriate();
                     Log.Debug("Suppressing next auto space.");
@@ -281,37 +313,37 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.Suggestion1:
                     SwapLastTextChangeForSuggestion(0);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion2:
                     SwapLastTextChangeForSuggestion(1);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion3:
                     SwapLastTextChangeForSuggestion(2);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion4:
                     SwapLastTextChangeForSuggestion(3);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion5:
                     SwapLastTextChangeForSuggestion(4);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion6:
                     SwapLastTextChangeForSuggestion(5);
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.LeftShift:
                     shiftStateSetAutomatically = false;
-                    GenerateSuggestions(lastTextChangeWasSuggestion);
+                    GenerateSuggestions(lastProcessedTextWasSuggestion);
                     break;
 
                 default:
@@ -330,7 +362,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                     }
 
-                    lastTextChangeWasSuggestion = false;
+                    lastProcessedTextWasSuggestion = false;
                     break;
             }
         }
@@ -345,9 +377,11 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ToPrintableString());
-            var capturedTextAfterComposition = ComposeDiacritics(capturedText);
+
+            var capturedTextAfterComposition = CombineStringWithActiveDeadKeys(capturedText);
             ProcessText(capturedTextAfterComposition, true);
-            lastTextChangeWasSuggestion = false;
+            
+            lastProcessedTextWasSuggestion = false;
 
             //Special handling for simplified keyboards
             if (Settings.Default.UseSimplifiedKeyboardLayout)
@@ -378,9 +412,9 @@ namespace JuliusSweetland.OptiKey.Services
         }
 
 
-        private string ComposeDiacritics(string input)
+        private string CombineStringWithActiveDeadKeys(string input)
         {
-            Log.InfoFormat("Composing diacritics on '{0}'", input);
+            Log.InfoFormat("Combing dead keys (diacritics) on '{0}'", input);
             var sb = new StringBuilder(input);
             KeyValues.CombiningKeys.ForEach(combiningKey =>
             {
@@ -391,7 +425,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
             });
 
-            var output = sb.ToString().ComposeDiacritics();
+            var output = sb.ToString().Compose();
             return output;
         }
 
@@ -409,31 +443,36 @@ namespace JuliusSweetland.OptiKey.Services
 
             ProcessText(captureAndSuggestions.First(), false);
 
-            lastTextChangeWasSuggestion = false;
-            lastTextChangeWasMultiKey = true;
+            lastProcessedTextWasSuggestion = false;
+            lastProcessedTextWasMultiKey = true;
         }
 
         #endregion
 
         #region Methods - private
 
-        private void ProcessText(string captureText, bool generateSuggestions)
+        private void ProcessText(string newText, bool generateSuggestions)
         {
-            Log.DebugFormat("Processing captured text '{0}'", captureText.ToPrintableString());
+            Log.DebugFormat("Processing captured text '{0}'", newText.ToPrintableString());
 
-            if (string.IsNullOrEmpty(captureText)) return;
+            if (string.IsNullOrEmpty(newText)) return;
 
             //Suppress auto space if...
-            if (string.IsNullOrWhiteSpace(lastTextChange))
+            if (string.IsNullOrWhiteSpace(lastProcessedText))
             {
                 //We have no text change history, or the last capture was whitespace.
                 Log.Debug("Suppressing auto space before this capture as the last text change was null or white space.");
                 suppressNextAutoSpace = true;
             }
-            else if(lastTextChange.Length == 1
-                && captureText.Length == 1
-                && !lastTextChangeWasSuggestion
-                && !(keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown() && char.IsLetter(captureText.First())))
+			else if(!Settings.Default.KeyboardAndDictionaryLanguage.SupportsAutoSpace()) //Language does not support auto space
+			{
+				Log.DebugFormat("Suppressing auto space before this capture as the KeyboardAndDictionaryLanguage {0} does not support auto space.", Settings.Default.KeyboardAndDictionaryLanguage);
+                suppressNextAutoSpace = true;
+			}
+            else if(lastProcessedText.Length == 1
+                && newText.Length == 1
+                && !lastProcessedTextWasSuggestion
+                && !(keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown() && char.IsLetter(newText.First())))
             {
                 //We are capturing single chars and are on the 2nd+ character,
                 //the last capture wasn't a suggestion (as these can also be 1 character and we want to inject the space if it is),
@@ -441,16 +480,16 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.Debug("Suppressing auto space before this capture as the user appears to be typing one char at a time. Also the last text change was not a suggestion, and the current capture is not a single letter captured with multi-key selection enabled.");
                 suppressNextAutoSpace = true;
             }
-            else if (captureText.Length == 1
-                && !char.IsLetter(captureText.First()))
+            else if (newText.Length == 1
+                && !char.IsLetter(newText.First()))
             {
                 //We have captured a single char which is not a letter
                 Log.Debug("Suppressing auto space before this capture as this capture is a single character which is not a letter.");
                 suppressNextAutoSpace = true;
             }
-            else if (lastTextChange.Length == 1
-                && !new[] {'.', '!', '?', ',', ':', ';', ')', ']', '}', '>'}.Contains(lastTextChange.First())
-                && !char.IsLetter(lastTextChange.First()))
+            else if (lastProcessedText.Length == 1
+                && !new[] {'.', '!', '?', ',', ':', ';', ')', ']', '}', '>'}.Contains(lastProcessedText.First())
+                && !char.IsLetter(lastProcessedText.First()))
             {
                 //The current capture (which we know is a letter or multi-key capture) follows a single character
                 //which is not a letter, or a closing or mid-sentence punctuation; e.g. whitespace or a symbol
@@ -460,9 +499,10 @@ namespace JuliusSweetland.OptiKey.Services
 
             var textBeforeCaptureText = Text;
 
-            //Modify the capture and apply to Text
-            var modifiedCaptureText = ModifyText(captureText);
-            if (!string.IsNullOrEmpty(modifiedCaptureText))
+            //Modify and adjust the capture and apply to Text
+            var newTextModified = ApplyModifierKeys(newText);
+            var lastProcessedTextToStore = newTextModified;
+            if (!string.IsNullOrEmpty(newTextModified))
             {
                 var spaceAdded = AutoAddSpace();
                 if (spaceAdded)
@@ -473,29 +513,73 @@ namespace JuliusSweetland.OptiKey.Services
                     if (shiftPressed)
                     {
                         //LeftShift has been auto-pressed - re-apply modifiers to captured text and suggestions
-                        modifiedCaptureText = ModifyText(captureText);
+                        newTextModified = ApplyModifierKeys(newText);
+                        lastProcessedTextToStore = newTextModified; //Store modified new text as last processed text
                         StoreSuggestions(ModifySuggestions(suggestionService.Suggestions));
 
                         //Ensure suggestions do not contain the modifiedText
-                        if (!string.IsNullOrEmpty(modifiedCaptureText)
+                        if (!string.IsNullOrEmpty(newTextModified)
                             && suggestionService.Suggestions != null
-                            && suggestionService.Suggestions.Contains(modifiedCaptureText))
+                            && suggestionService.Suggestions.Contains(newTextModified))
                         {
-                            suggestionService.Suggestions = suggestionService.Suggestions.Where(s => s != modifiedCaptureText).ToList();
+                            suggestionService.Suggestions = suggestionService.Suggestions.Where(s => s != newTextModified).ToList();
                         }
                     }
                 }
 
-                Text = string.Concat(Text, modifiedCaptureText);
+                var alreadyOutputInProgressWord = Text != null ? Text.InProgressWord(Text.Length) : null;
+                if (newTextModified != null && alreadyOutputInProgressWord != null)
+                {
+                    var inProgressWordWithNewProcessedText = string.Concat(alreadyOutputInProgressWord, newTextModified);
+
+                    //Attempt to adjust and combine (using normalisation) the in-progress word (with new processed text appended)
+                    var adjustedInProgressWordWithNewProcessedText = AdjustInProgressWord(inProgressWordWithNewProcessedText);
+                    var adjustedAndComposedInProgressWordWithNewProcessedText = adjustedInProgressWordWithNewProcessedText.Compose();
+                    if (adjustedAndComposedInProgressWordWithNewProcessedText != inProgressWordWithNewProcessedText)
+                    {
+                        Log.DebugFormat("In-progress word (including new text) can be combined/composed using normalisation. It will be normalised from '{0}' to '{1}'.", inProgressWordWithNewProcessedText, adjustedAndComposedInProgressWordWithNewProcessedText);
+
+                        int commonRootLength = 0;
+                        for (var index = 0; index < adjustedAndComposedInProgressWordWithNewProcessedText.Length; index++)
+                        {
+                            if (adjustedAndComposedInProgressWordWithNewProcessedText[index] != inProgressWordWithNewProcessedText[index])
+                            {
+                                commonRootLength = index;
+                                break;
+                            }
+                        }
+
+                        var countOfCharactersToRemove = alreadyOutputInProgressWord.Length - commonRootLength;
+                        if (countOfCharactersToRemove > Text.Length)
+                        {
+                            countOfCharactersToRemove = Text.Length; //Coerce to length of text as we can't remove more than we've already output
+                        }
+
+                        //Remove (from the end of the string) the part of the in-progress word which will be changed by composition
+                        Text = Text.Substring(0, Text.Length - countOfCharactersToRemove); 
+
+                        //Remove changed in-progress word suffix string from external applications by outputting backspaces - the new suffix will be published seperately
+                        for (var backCount = 0; backCount < countOfCharactersToRemove; backCount++) //Don't include newTextProcessed as it does not exist on Text yet
+                        {
+                            PublishKeyPress(FunctionKeys.BackOne);
+                        }
+
+                        newTextModified = adjustedAndComposedInProgressWordWithNewProcessedText.Substring(commonRootLength, adjustedAndComposedInProgressWordWithNewProcessedText.Length - commonRootLength);
+                    }
+                }
+
+                Text = string.Concat(Text, newTextModified);
             }
 
+            StoreLastProcessedText(lastProcessedTextToStore);
+
             //Increment/decrement usage counts
-            if (captureText.Length > 1)
+            if (newText.Length > 1)
             {
-                dictionaryService.IncrementEntryUsageCount(captureText);
+                dictionaryService.IncrementEntryUsageCount(newText);
             }
-            else if (captureText.Length == 1
-                && !char.IsWhiteSpace(captureText[0]))
+            else if (newText.Length == 1
+                && !char.IsWhiteSpace(newText[0]))
             {
                 if (!string.IsNullOrEmpty(textBeforeCaptureText))
                 {
@@ -511,27 +595,56 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             //Publish each character (if SimulatingKeyStrokes), releasing 'on' (but not 'locked') modifier keys as appropriate
-            for (int index = 0; index < captureText.Length; index++)
+            var textToPublish = newTextModified ?? newText;
+            foreach (var c in textToPublish)
             {
-                PublishKeyPress(modifiedCaptureText != null && modifiedCaptureText.Length == captureText.Length
-                        ? modifiedCaptureText[index]
-                        : captureText[index]);
-
+                PublishKeyPress(c);
                 ReleaseUnlockedKeys();
             }
 
-            if (!string.IsNullOrEmpty(modifiedCaptureText))
+            if (!string.IsNullOrEmpty(newTextModified))
             {
                 AutoPressShiftIfAppropriate();
                 suppressNextAutoSpace = false;
             }
 
-            StoreLastTextChange(modifiedCaptureText);
-
             if (generateSuggestions)
             {
                 GenerateSuggestions(false);
             }
+        }
+
+        private string AdjustInProgressWord(string inProgressWordWithNewProcessedText)
+        {
+            //Korean (Hangul) specific adjustments
+            if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.KoreanKorea)
+            {
+                var decomposedInProgressWord = inProgressWordWithNewProcessedText.Decompose();
+                StringBuilder result = new StringBuilder(decomposedInProgressWord);
+
+                for (int index = 1; index < decomposedInProgressWord.Length; index++)
+                {
+                    //If the character is a consonant it can be an initial or final consonant (which have different unicode values)
+                    //Decide which this is likely to be and convert it before normalisation occurs as initial/final consonants combine
+                    //into syllables differently (or not at all).
+                    if (result[index].CanBeInitialOrFinalHangulConsonant())
+                    {
+                        if (result[index - 1].UnicodeCodePointRange() == UnicodeCodePointRanges.HangulVowel //Previous char is a Hangul vowel
+                            && (result.Length <= index + 1 //There isn't a char after this one
+                            || (result.Length > index + 1 && result[index + 1].UnicodeCodePointRange() != UnicodeCodePointRanges.HangulVowel))) //Or next char exists and it is NOT a Hangul vowel
+                        {
+                            result[index] = result[index].ConvertToFinalHangulConsonant();
+                        }
+                        else
+                        {
+                            result[index] = result[index].ConvertToInitialHangulConsonant();
+                        }
+                    }
+                }
+                return result.ToString();
+            }
+
+            return inProgressWordWithNewProcessedText;
         }
 
         private bool AutoPressShiftIfAppropriate()
@@ -616,8 +729,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var lastState = new KeyboardOutputServiceState(
                     currentStateKey,
                     () => text, s => Text = s, //Set property (not field) to trigger bindings
-                    () => lastTextChange, s => lastTextChange = s,
-                    () => lastTextChangeWasSuggestion, b => lastTextChangeWasSuggestion = b,
+                    () => lastProcessedText, s => lastProcessedText = s,
+                    () => lastProcessedTextWasSuggestion, b => lastProcessedTextWasSuggestion = b,
                     () => suppressNextAutoSpace, b => suppressNextAutoSpace = b,
                     () => shiftStateSetAutomatically, b => shiftStateSetAutomatically = b,
                     () => suggestionService.Suggestions, s => suggestionService.Suggestions = s);
@@ -640,7 +753,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 Log.InfoFormat("No stored KeyboardOutputService state to restore for SimulateKeyStrokes={0} - defaulting state.", newStateKey);
                 Text = null;
-                StoreLastTextChange(null);
+                StoreLastProcessedText(null);
                 ClearSuggestions();
                 ReleaseUnlockedKeys();
                 AutoPressShiftIfAppropriate();
@@ -692,10 +805,10 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void StoreLastTextChange(string textChange)
+        private void StoreLastProcessedText(string textChange)
         {
             Log.DebugFormat("Storing last text change '{0}'", textChange);
-            lastTextChange = textChange;
+            lastProcessedText = textChange;
         }
 
         private void GenerateSuggestions(bool nextWord)
@@ -712,10 +825,10 @@ namespace JuliusSweetland.OptiKey.Services
                     nextWord = false;
                     root = inProgressWord;
                 }
-                else if (lastTextChangeWasMultiKey)
+                else if (lastProcessedTextWasMultiKey)
                 {
-                    lastTextChangeWasMultiKey = false;
-                    lastTextChangeWasSuggestion = true;
+                    lastProcessedTextWasMultiKey = false;
+                    lastProcessedTextWasSuggestion = true;
                 }
 
                 var suggestions = dictionaryService.GetSuggestions(root, nextWord)
@@ -817,7 +930,7 @@ namespace JuliusSweetland.OptiKey.Services
             if (suggestions == null || !suggestions.Any()) return null;
 
             var modifiedSuggestions = suggestions
-                .Select(ModifyText)
+                .Select(ApplyModifierKeys)
                 .Where(s => !string.IsNullOrEmpty(s))
                 .Distinct()
                 .ToList();
@@ -939,7 +1052,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (keyboard:{1})",
+                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (OS keyboard layout:{1})",
                         character.ToPrintableString(), keyboardCulture);
                     publishService.TypeText(character.ToString());
                 }
@@ -971,13 +1084,13 @@ namespace JuliusSweetland.OptiKey.Services
             var suggestionIndex = (suggestionService.SuggestionsPage * suggestionService.SuggestionsPerPage) + index;
             if (suggestionService.Suggestions.Count > suggestionIndex)
             {
-                if (!string.IsNullOrEmpty(lastTextChange)
-                    && lastTextChange.Length > 1
-                    && lastTextChangeWasMultiKey)
+                if (!string.IsNullOrEmpty(lastProcessedText)
+                    && lastProcessedText.Length > 1
+                    && lastProcessedTextWasMultiKey)
                 {
                     //We are swapping out a multi-key capture
-                    var replacedText = lastTextChange;
-                    SwapText(lastTextChange, suggestionService.Suggestions[suggestionIndex]);
+                    var replacedText = lastProcessedText;
+                    SwapText(lastProcessedText, suggestionService.Suggestions[suggestionIndex]);
                     var newSuggestions = suggestionService.Suggestions.ToList();
                     newSuggestions[suggestionIndex] = replacedText;
                     StoreSuggestions(newSuggestions);
@@ -985,7 +1098,7 @@ namespace JuliusSweetland.OptiKey.Services
                 else
                 {
                     var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
-                    if (!Settings.Default.SuggestNextWords || !lastTextChangeWasSuggestion && !string.IsNullOrEmpty(inProgressWord) && Char.IsLetterOrDigit(inProgressWord.Last()))
+                    if (!Settings.Default.SuggestNextWords || !lastProcessedTextWasSuggestion && !string.IsNullOrEmpty(inProgressWord) && Char.IsLetterOrDigit(inProgressWord.Last()))
                     {
                         //We are auto-completing a word with a suggestion
                         SwapText(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
@@ -1031,7 +1144,7 @@ namespace JuliusSweetland.OptiKey.Services
                     PublishKeyPress(c);
                 }
 
-                StoreLastTextChange(textToSwapIn);
+                StoreLastProcessedText(textToSwapIn);
             }
         }
 
@@ -1051,7 +1164,7 @@ namespace JuliusSweetland.OptiKey.Services
             return false;
         }
 
-        private string ModifyText(string textToModify)
+        private string ApplyModifierKeys(string textToModify)
         {
             //TODO Handle LeftAlt modified captures - LeftAlt+Code = unicode characters
 

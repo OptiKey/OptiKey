@@ -140,8 +140,8 @@ HINZUFÜGEN</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Um {0} pixel verstellen|Um {0} pixel verstellen</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>BUCHSTABEN</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>BUCHSTABEN 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1417,8 +1417,8 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>PIXELANZAHL FESTLEGEN</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>GESPRÄCH ALFA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>GESPRÄCH ALFA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>GESPRÄCH NUMMERN &amp; SYMBOLE</value>
@@ -1605,5 +1605,11 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibrierung fehlgeschlagen!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>BUCHSTABEN 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>GESPRÄCH ALFA 2</value>
   </data>
 </root>

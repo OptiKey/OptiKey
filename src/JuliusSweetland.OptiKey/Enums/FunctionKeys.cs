@@ -3,7 +3,8 @@
     public enum FunctionKeys
     {
         AddToDictionary,
-        AlphaKeyboard,
+        Alpha1Keyboard,
+        Alpha2Keyboard,
         Diacritic1Keyboard,
         Diacritic2Keyboard,
         Diacritic3Keyboard,
@@ -25,7 +26,8 @@
         CollapseDock,
         CommuniKate,
         CommuniKateKeyboard,
-        ConversationAlphaKeyboard,
+        ConversationAlpha1Keyboard,
+        ConversationAlpha2Keyboard,
         ConversationConfirmKeyboard,
         ConversationConfirmYes,
         ConversationConfirmNo,
@@ -82,6 +84,7 @@
         IncreaseOpacity,
         Insert,
         ItalianItaly,
+        KoreanKorea,
         LanguageKeyboard,
         LeftAlt,
         LeftCtrl,

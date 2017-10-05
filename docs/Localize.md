@@ -695,10 +695,10 @@ let's do a bit of setup work:
 
  1. Go to `UI\Views\Keyboards`
  2. Create a folder for you language (in our case `Greek`)
- 3. Create a file inside the newly created folder named `Alpha.xaml`
- 4. Create a file inside the same folder you just created named `ConversationAlpha.xaml`
+ 3. Create a file inside the newly created folder named `Alpha1.xaml`
+ 4. Create a file inside the same folder you just created named `ConversationAlpha1.xaml`
 
-When saving the Alpha.xaml and ConversationAlpha.xaml files it is advisable to use the 'File'\'Save As'\'Save with encoding' option and choose the encoding as UTF-8. If not, and your keyboard contains characters outside of the default encoding set (e.g. characters with diacritic/combining marks) then you will encounter build errors.
+When saving the Alpha1.xaml and ConversationAlpha1.xaml files it is advisable to use the 'File'\'Save As'\'Save with encoding' option and choose the encoding as UTF-8. If not, and your keyboard contains characters outside of the default encoding set (e.g. characters with diacritic/combining marks) then you will encounter build errors.
 
 That's it for the setup work, we shall now create each one of these 
 keyboards separately.
@@ -706,8 +706,8 @@ keyboards separately.
 #### Normal keyboard layout
 
 For your convenience you are expected to base this keyboard on the one located in 
-`src\UI\Views\Keyboards\English\Alpha.xaml`; for starters you should first copy
-and paste it's contents to your `Alpha.xaml` file. You will immediately see lot's of
+`src\UI\Views\Keyboards\English\Alpha1.xaml`; for starters you should first copy
+and paste it's contents to your `Alpha1.xaml` file. You will immediately see lot's of
 stuff but the only thing you have to alter is only entries that look like this:
 
 ```xml
@@ -750,7 +750,7 @@ at the top of the `.xaml` file. The result would look like the following:
 
 ```xml
 <controls:KeyboardView 
-    x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek.Alpha"
+    x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek.Alpha1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -764,9 +764,9 @@ at the top of the `.xaml` file. The result would look like the following:
 
 Please note the value of `x:Class` which is 
 `JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek.Alpha`; this will be our namespace
-which will be declared in the respective `Alpha.xaml.cs` file. To do that open a 
-file named `Alpha.xaml.cs` that should have been also created with `Alpha.xaml`
-(you can view it by expanding the arrow on the left of the `Alpha.xaml` file) and change 
+which will be declared in the respective `Alpha1.xaml.cs` file. To do that open a 
+file named `Alpha1.xaml.cs` that should have been also created with `Alpha1.xaml`
+(you can view it by expanding the arrow on the left of the `Alpha1.xaml` file) and change 
 the `namespace` from `JuliusSweetland.OptiKey.UI.Views.Keyboards.English` to 
 `JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek`.
 
@@ -848,8 +848,8 @@ switch (Settings.Default.KeyboardAndDictionaryLanguage)
 #### Simplified "Conversation" keyboard layout
 
 Similarly to the previous keyboard, you should base the this keyboard on the 
-one located in `src\UI\Views\Keyboards\English\ConversationAlpha.xaml`; so copy
-its contents to the `ConversationAlpha.xaml` file you previously created. You will also
+one located in `src\UI\Views\Keyboards\English\ConversationAlpha1.xaml`; so copy
+its contents to the `ConversationAlpha1.xaml` file you previously created. You will also
 have to edit the keyboard keys like you did with the normal keyboard (remember to distinguish
 which entries to change by checking for the `ShiftUpText` and `ShiftDownText` tags).
 
@@ -858,7 +858,7 @@ here as well, so the result for this keyboard would look like this:
 
 ```xml
 <controls:KeyboardView 
-    x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.English.ConversationAlpha"
+    x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.English.ConversationAlpha1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -871,7 +871,7 @@ here as well, so the result for this keyboard would look like this:
     d:DesignHeight="300" d:DesignWidth="300">
 ```
 
-As with the normal keyboard we have to open the `ConversationAlpha.xaml.cs` file 
+As with the normal keyboard we have to open the `ConversationAlpha1.xaml.cs` file 
 of our keyboard and change the `namespace` value to the following:
 
 ```cs

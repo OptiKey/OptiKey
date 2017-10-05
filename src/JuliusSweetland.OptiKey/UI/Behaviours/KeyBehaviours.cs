@@ -7,6 +7,8 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
 {
     public static class KeyBehaviours
     {
+        #region BeginAnimationOnKeySelectionEvent
+
         public static readonly DependencyProperty BeginAnimationOnKeySelectionEventProperty =
             DependencyProperty.RegisterAttached("BeginAnimationOnKeySelectionEvent", typeof (Storyboard), typeof (KeyBehaviours),
             new PropertyMetadata(default(Storyboard), BeginAnimationOnKeySelectionEventChanged));
@@ -43,5 +45,7 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
         {
             return (Storyboard)element.GetValue(BeginAnimationOnKeySelectionEventProperty);
         }
+
+        #endregion
     }
 }

@@ -9,7 +9,8 @@ namespace JuliusSweetland.OptiKey.Models
     public static class KeyValues
     {
         public static readonly KeyValue AddToDictionaryKey = new KeyValue(FunctionKeys.AddToDictionary);
-        public static readonly KeyValue AlphaKeyboardKey = new KeyValue(FunctionKeys.AlphaKeyboard);
+        public static readonly KeyValue Alpha1KeyboardKey = new KeyValue(FunctionKeys.Alpha1Keyboard);
+        public static readonly KeyValue Alpha2KeyboardKey = new KeyValue(FunctionKeys.Alpha2Keyboard);
         public static readonly KeyValue ArrowDownKey = new KeyValue(FunctionKeys.ArrowDown);
         public static readonly KeyValue ArrowLeftKey = new KeyValue(FunctionKeys.ArrowLeft);
         public static readonly KeyValue ArrowRightKey = new KeyValue(FunctionKeys.ArrowRight);
@@ -56,7 +57,8 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CommuniKate = new KeyValue(FunctionKeys.CommuniKate);
         public static readonly KeyValue CommuniKateKeyboardKey = new KeyValue(FunctionKeys.CommuniKateKeyboard);
         public static readonly KeyValue CroatianCroatiaKey = new KeyValue(FunctionKeys.CroatianCroatia);
-        public static readonly KeyValue ConversationAlphaKeyboardKey = new KeyValue(FunctionKeys.ConversationAlphaKeyboard);
+        public static readonly KeyValue ConversationAlpha1KeyboardKey = new KeyValue(FunctionKeys.ConversationAlpha1Keyboard);
+        public static readonly KeyValue ConversationAlpha2KeyboardKey = new KeyValue(FunctionKeys.ConversationAlpha2Keyboard);
         public static readonly KeyValue ConversationConfirmKeyboardKey = new KeyValue(FunctionKeys.ConversationConfirmKeyboard);
         public static readonly KeyValue ConversationConfirmYesKey = new KeyValue(FunctionKeys.ConversationConfirmYes);
         public static readonly KeyValue ConversationConfirmNoKey = new KeyValue(FunctionKeys.ConversationConfirmNo);
@@ -115,6 +117,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue IncreaseOpacityKey = new KeyValue(FunctionKeys.IncreaseOpacity);
         public static readonly KeyValue InsertKey = new KeyValue(FunctionKeys.Insert);
         public static readonly KeyValue ItalianItalyKey = new KeyValue(FunctionKeys.ItalianItaly);
+        public static readonly KeyValue KoreanKoreaKey = new KeyValue(FunctionKeys.KoreanKorea);
         public static readonly KeyValue LanguageKeyboardKey = new KeyValue(FunctionKeys.LanguageKeyboard);
         public static readonly KeyValue LeftAltKey = new KeyValue(FunctionKeys.LeftAlt);
         public static readonly KeyValue LeftCtrlKey = new KeyValue(FunctionKeys.LeftCtrl);
@@ -226,7 +229,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue TurkishTurkeyKey = new KeyValue(FunctionKeys.TurkishTurkey);
         public static readonly KeyValue WebBrowsingKeyboardKey = new KeyValue(FunctionKeys.WebBrowsingKeyboard);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
-        
+
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
 
         static KeyValues()

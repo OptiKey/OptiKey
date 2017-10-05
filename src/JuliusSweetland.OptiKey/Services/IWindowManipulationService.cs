@@ -21,6 +21,7 @@ namespace JuliusSweetland.OptiKey.Services
         void ResizeDockToFull();
         void ResizeDockToSpecificHeight(double heightAsPercentScreen, bool persistNewSize);
         void Restore();
+        void RestoreSavedState();
         void SetOpacity(double opacity);
         void Shrink(ShrinkFromDirections direction, double amountInPx);
     }

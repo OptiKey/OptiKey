@@ -458,9 +458,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 new KeyValueAndTimeSpanGroup(Resources.CHANGE_KEYBOARD_KEY_GROUP, new List<KeyValueAndTimeSpan>
                 {
-                    new KeyValueAndTimeSpan(Resources.ALPHA, KeyValues.AlphaKeyboardKey, dictionary.ContainsKey(KeyValues.AlphaKeyboardKey) ? dictionary[KeyValues.AlphaKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.ALPHA_1, KeyValues.Alpha1KeyboardKey, dictionary.ContainsKey(KeyValues.Alpha1KeyboardKey) ? dictionary[KeyValues.Alpha1KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.ALPHA_2, KeyValues.Alpha2KeyboardKey, dictionary.ContainsKey(KeyValues.Alpha2KeyboardKey) ? dictionary[KeyValues.Alpha2KeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.BACK, KeyValues.BackFromKeyboardKey, dictionary.ContainsKey(KeyValues.BackFromKeyboardKey) ? dictionary[KeyValues.BackFromKeyboardKey] : (TimeSpan?)null),
-                    new KeyValueAndTimeSpan(Resources.CONVERSATION_ALPHA, KeyValues.ConversationAlphaKeyboardKey, dictionary.ContainsKey(KeyValues.ConversationAlphaKeyboardKey) ? dictionary[KeyValues.ConversationAlphaKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CONVERSATION_ALPHA_1, KeyValues.ConversationAlpha1KeyboardKey, dictionary.ContainsKey(KeyValues.ConversationAlpha1KeyboardKey) ? dictionary[KeyValues.ConversationAlpha1KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CONVERSATION_ALPHA_2, KeyValues.ConversationAlpha2KeyboardKey, dictionary.ContainsKey(KeyValues.ConversationAlpha2KeyboardKey) ? dictionary[KeyValues.ConversationAlpha2KeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.CONVERSATION_NUMERIC_AND_SYMBOLS, KeyValues.ConversationNumericAndSymbolsKeyboardKey, dictionary.ContainsKey(KeyValues.ConversationNumericAndSymbolsKeyboardKey) ? dictionary[KeyValues.ConversationNumericAndSymbolsKeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.CURRENCIES_1, KeyValues.Currencies1KeyboardKey, dictionary.ContainsKey(KeyValues.Currencies1KeyboardKey) ? dictionary[KeyValues.Currencies1KeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.CURRENCIES_2, KeyValues.Currencies2KeyboardKey, dictionary.ContainsKey(KeyValues.Currencies2KeyboardKey) ? dictionary[KeyValues.Currencies2KeyboardKey] : (TimeSpan?)null),
@@ -496,6 +498,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.GERMAN_GERMANY, KeyValues.GermanGermanyKey, dictionary.ContainsKey(KeyValues.GermanGermanyKey) ? dictionary[KeyValues.GermanGermanyKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.GREEK_GREECE, KeyValues.GreekGreeceKey, dictionary.ContainsKey(KeyValues.GreekGreeceKey) ? dictionary[KeyValues.GreekGreeceKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.ITALIAN_ITALY, KeyValues.ItalianItalyKey, dictionary.ContainsKey(KeyValues.ItalianItalyKey) ? dictionary[KeyValues.ItalianItalyKey] : (TimeSpan?) null),
+                    new KeyValueAndTimeSpan(Resources.KOREAN_KOREA, KeyValues.KoreanKoreaKey, dictionary.ContainsKey(KeyValues.KoreanKoreaKey) ? dictionary[KeyValues.KoreanKoreaKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.PORTUGUESE_PORTUGAL, KeyValues.PortuguesePortugalKey, dictionary.ContainsKey(KeyValues.PortuguesePortugalKey) ? dictionary[KeyValues.PortuguesePortugalKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.RUSSIAN_RUSSIA, KeyValues.RussianRussiaKey, dictionary.ContainsKey(KeyValues.RussianRussiaKey) ? dictionary[KeyValues.RussianRussiaKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SLOVAK_SLOVAKIA, KeyValues.SlovakSlovakiaKey, dictionary.ContainsKey(KeyValues.SlovakSlovakiaKey) ? dictionary[KeyValues.SlovakSlovakiaKey] : (TimeSpan?)null),

@@ -7,7 +7,6 @@ using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Native;
-using JuliusSweetland.OptiKey.Native.Common;
 using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
 using JuliusSweetland.OptiKey.Static;
@@ -310,21 +309,23 @@ namespace JuliusSweetland.OptiKey.Services
             return window.Opacity;
         }
 
+        /// <summary>
+        /// Hide the window, but don't save window state as this can break calls to the Restore, RestoreSavedState, or ApplySavedSate methods
+        /// </summary>
         public void Hide()
         {
             Log.Info("Hide called");
 
             var windowState = getWindowState();
-            if (windowState != WindowStates.Hidden)
-            {
-                savePreviousWindowState(windowState);
-            }
-            if (getWindowState() == WindowStates.Docked)
+            if (windowState == WindowStates.Hidden) return;
+            
+            if (windowState == WindowStates.Docked)
             {
                 UnRegisterAppBar();
             }
             saveWindowState(WindowStates.Hidden);
             ApplySavedState();
+            saveWindowState(windowState);
         }
 
         public void IncrementOrDecrementOpacity(bool increment)
@@ -454,6 +455,12 @@ namespace JuliusSweetland.OptiKey.Services
             saveWindowState(getPreviousWindowState()); 
             ApplySavedState();
             savePreviousWindowState(windowState);
+        }
+
+        public void RestoreSavedState()
+        {
+            Log.Info("RestoreSavedState called (applying saved state only)");
+            ApplySavedState();
         }
 
         public void SetOpacity(double opacity)

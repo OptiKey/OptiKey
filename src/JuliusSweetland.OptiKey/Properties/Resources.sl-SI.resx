@@ -138,8 +138,8 @@
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Prilagodi z {0} piksli|Prilagodi z {0} piksli</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>ČRKE</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>ČRKE 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1364,8 +1364,8 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>PRILAGODI ZNESEK V PIKSLIH</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>POGOVOR ČRKE</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>POGOVOR ČRKE 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>POGOVOR ŠTEVILKE &amp; SIMBOLI</value>
@@ -1552,5 +1552,11 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibracija ni uspela!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>ČRKE 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>POGOVOR ČRKE 2</value>
   </data>
 </root>
