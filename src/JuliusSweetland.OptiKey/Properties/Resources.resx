@@ -1947,4 +1947,10 @@ It's default location is "C:\Program Files (x86)\presage\share\presage\database_
 It can be edited with a program which can read SQLite format 3 files 
 such as "DB Browser for SQLite" (which is a free program).</value>
   </data>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support.</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>Error:</value>
+  </data>
 </root>

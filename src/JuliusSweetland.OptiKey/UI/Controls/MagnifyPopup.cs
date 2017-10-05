@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.UI.ViewModels;
 using log4net;
 using Image = System.Windows.Controls.Image;
 using Point = System.Windows.Point;
+using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -52,7 +53,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 {
                     SetSizeAndPosition();
 
-                    DisplayScaledScreenshot(sourcePoint.Value);
+                    try
+                    {
+                        DisplayScaledScreenshot(sourcePoint.Value);
+                    }
+                    catch (System.ComponentModel.Win32Exception ex)
+                    {
+                        mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.ERROR_TITLE,
+                        OptiKey.Properties.Resources.ERROR_MAGNIFYING,
+                        NotificationTypes.Error, () =>
+                        {});
+
+                        Log.ErrorFormat("Caught exception: {0}", ex);
+                    }
 
                     EventHandler<Point> pointSelectionHandler = null;
                     pointSelectionHandler = (pointSelectionSender, point) =>
