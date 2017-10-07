@@ -1954,9 +1954,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     //2.Last popup open stays on top (I know the VM in MVVM shouldn't care about this, so pretend it's all reason 1).
                     MagnifiedPointSelectionAction = finalClickAction;
                     MagnifyAtPoint = nextPoint;
-                    if(MagnifyAtPoint != null) //If the magnification fails, MagnifyAtPoint == null, and the pointer has been cleared. 
-                    //We don't want it to re-appear
+                    if (MagnifyAtPoint != null) //If the magnification fails then MagnifyAtPoint will be null
+                    {
                         ShowCursor = true;
+                    }
                 }
                 else
                 {

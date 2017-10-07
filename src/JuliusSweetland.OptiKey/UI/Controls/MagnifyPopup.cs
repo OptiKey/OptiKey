@@ -60,9 +60,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     catch (System.ComponentModel.Win32Exception ex)
                     {
                         mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.ERROR_TITLE,
-                        OptiKey.Properties.Resources.ERROR_MAGNIFYING,
-                        NotificationTypes.Error, () =>
-                        {});
+                            OptiKey.Properties.Resources.ERROR_MAGNIFYING,
+                            NotificationTypes.Error, () => {});
 
                         Log.ErrorFormat("Caught exception: {0}", ex);
                         
@@ -75,7 +74,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                         //Return so the rest of the workflow is avoided
                         return;
-
                     }
 
                     EventHandler<Point> pointSelectionHandler = null;
