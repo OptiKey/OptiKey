@@ -1965,4 +1965,10 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="ALPHA" xml:space="preserve">
     <value>LETTERS</value>
   </data>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support.</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>Error:</value>
+  </data>
 </root>

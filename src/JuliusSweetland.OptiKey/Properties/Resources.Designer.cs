@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -1308,11 +1308,29 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support..
+        /// </summary>
+        public static string ERROR_MAGNIFYING {
+            get {
+                return ResourceManager.GetString("ERROR_MAGNIFYING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error:.
         /// </summary>
         public static string ERROR_SOUND_LABEL {
             get {
                 return ResourceManager.GetString("ERROR_SOUND_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error:.
+        /// </summary>
+        public static string ERROR_TITLE {
+            get {
+                return ResourceManager.GetString("ERROR_TITLE", resourceCulture);
             }
         }
         
