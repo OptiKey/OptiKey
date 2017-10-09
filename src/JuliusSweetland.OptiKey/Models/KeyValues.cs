@@ -15,6 +15,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ArrowLeftKey = new KeyValue(FunctionKeys.ArrowLeft);
         public static readonly KeyValue ArrowRightKey = new KeyValue(FunctionKeys.ArrowRight);
         public static readonly KeyValue ArrowUpKey = new KeyValue(FunctionKeys.ArrowUp);
+        public static readonly KeyValue AttentionKey = new KeyValue(FunctionKeys.AttentionSound);
         public static readonly KeyValue BackFromKeyboardKey = new KeyValue(FunctionKeys.BackFromKeyboard);
         public static readonly KeyValue BackManyKey = new KeyValue(FunctionKeys.BackMany);
         public static readonly KeyValue BackOneKey = new KeyValue(FunctionKeys.BackOne);

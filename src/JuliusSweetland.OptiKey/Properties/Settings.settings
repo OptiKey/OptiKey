@@ -1055,5 +1055,14 @@
     <Setting Name="StartupKeyboardFile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="EnableAttentionKey" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AttentionSoundFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Tone1.wav</Value>
+    </Setting>
+    <Setting Name="AttentionSoundVolume" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -9,6 +9,8 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.Audio;
+using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using log4net;
 using Prism.Mvvm;
 
