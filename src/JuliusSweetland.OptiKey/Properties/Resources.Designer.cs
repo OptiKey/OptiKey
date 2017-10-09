@@ -224,6 +224,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom attention sound (replace &quot;C:\Program Files (x86)\OptiKey\Resources\Sounds\Attention.wav&quot;).
+        /// </summary>
+        public static string ATTENTION_SOUND {
+            get {
+                return ResourceManager.GetString("ATTENTION_SOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attention:.
         /// </summary>
         public static string ATTENTION_SOUND_LABEL {
