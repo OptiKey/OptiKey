@@ -1978,9 +1978,12 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>Attention:</value>
   </data>
   <data name="ATTENTION_SOUND" xml:space="preserve">
-    <value>Custom attention sound (replace "C:\Program Files (x86)\OptiKey\Resources\Sounds\Attention.wav")</value>
+    <value>Custom attention sound</value>
   </data>
   <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
     <value>Enable attention key?</value>
+  </data>
+  <data name="ATTENTION_SOUND_LOCATION_LABEL" xml:space="preserve">
+    <value>Path to attention sound:</value>
   </data>
 </root>

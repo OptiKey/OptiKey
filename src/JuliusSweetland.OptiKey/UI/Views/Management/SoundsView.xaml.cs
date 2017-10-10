@@ -44,5 +44,34 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
                 }
             }
         }
+
+        private void btnFindAttentionSoundFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Audio files (*.aac;*.mp3;*.mp2;*.mp1;*.ogg;*.wav;*.aiff)|*.aac;*.mp3;*.mp2;*.mp1;*.ogg;*.wav;*.aiff|All files (*.*)|*.*"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileLocation = null;
+
+                if (!string.IsNullOrEmpty(openFileDialog.FileName))
+                {
+                    txtAttentionSoundFile.Text = openFileDialog.FileName;
+                    fileLocation = txtAttentionSoundFile.Text;
+                }
+                else
+                {
+                    txtAttentionSoundFile.Text = @"Resources\Sounds\Tone1.wav";
+                }
+
+                SoundsViewModel viewModel = this.DataContext as SoundsViewModel;
+                if (viewModel != null && !string.IsNullOrWhiteSpace(fileLocation))
+                {
+                    viewModel.AttentionSoundFile = fileLocation;
+                }
+            }
+        }
     }
 }

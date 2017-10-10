@@ -83,7 +83,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, string>(Resources.RISING_SOUND_2, @"Resources\Sounds\Rising2.wav"),
                     new KeyValuePair<string, string>(Resources.FALLING_SOUND_1, @"Resources\Sounds\Falling1.wav"),
                     new KeyValuePair<string, string>(Resources.FALLING_SOUND_2, @"Resources\Sounds\Falling2.wav"),
-                    new KeyValuePair<string, string>(Resources.ATTENTION_SOUND, @"Resources\Sounds\attention.wav")
+                    new KeyValuePair<string, string>(Resources.ATTENTION_SOUND, AttentionSoundFile)
                 };
             }
         }

@@ -179,6 +179,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.INFO_SOUND_LABEL}" 
@@ -411,10 +412,29 @@
                                 Command="{Binding MouseScrollSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.ATTENTION_SOUND_LABEL}" 
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.ATTENTION_SOUND_LOCATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" 
                                Visibility="{Binding EnableAttentionKey, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
                     <Grid Grid.Row="10" Grid.Column="1" 
+                          Visibility="{Binding EnableAttentionKey, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Button Click="btnFindAttentionSoundFile_Click" MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
+                                <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
+                            </Button>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Name="txtAttentionSoundFile"
+                               Text="{Binding AttentionSoundFile, Mode=TwoWay}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    </Grid>
+
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.ATTENTION_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" 
+                               Visibility="{Binding EnableAttentionKey, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                    <Grid Grid.Row="11" Grid.Column="1" 
                           Visibility="{Binding EnableAttentionKey, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />

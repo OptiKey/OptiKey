@@ -134,7 +134,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static resx:Settings.Default}, Path=EnableAttentionKey}" Value="True">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AttentionIcon}"
+                                    <controls:Key SymbolGeometry="{StaticResource AlarmIcon}"
                                                   Text="{x:Static resx:Resources.ATTENTION}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   Value="{x:Static models:KeyValues.AttentionKey}"/>
