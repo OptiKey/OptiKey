@@ -122,29 +122,7 @@
                       Text="{x:Static resx:Resources.MENU}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
-        <ContentControl Grid.Row="2" Grid.Column="23">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key />
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static resx:Settings.Default}, Path=EnableAttentionKey}" Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AlarmIcon}"
-                                                  Text="{x:Static resx:Resources.ATTENTION}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  Value="{x:Static models:KeyValues.AttentionKey}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
+        <controls:Key Grid.Row="2" Grid.Column="23"/>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource TabIcon}" 

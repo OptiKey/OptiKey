@@ -2,29 +2,18 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
-    public class ConvertToStarGridLength : IValueConverter
+    public class ConvertBoolToStarGridLength : IValueConverter
     {
         public int DefaultGridLength { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var valueAsDouble = value != null && value != DependencyProperty.UnsetValue
-                ? (int)value
-                : DefaultGridLength;
-
-            if (valueAsDouble <= 0)
-            {
-                valueAsDouble = DefaultGridLength;
-            }
-
-            if (Settings.Default.EnableAttentionKey)
-            {
-                --valueAsDouble;
-            }
+            var valueAsDouble = (bool)value == true
+                ? DefaultGridLength
+                : 0;
 
             return new GridLength((double)valueAsDouble, GridUnitType.Star);
         }
