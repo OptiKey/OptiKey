@@ -509,6 +509,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 new KeyValueAndTimeSpanGroup(Resources.MISC_ACTIONS_KEY_GROUP, new List<KeyValueAndTimeSpan>
                 {
                     new KeyValueAndTimeSpan(Resources.ADD_TO_DICTIONARY, KeyValues.AddToDictionaryKey, dictionary.ContainsKey(KeyValues.AddToDictionaryKey) ? dictionary[KeyValues.AddToDictionaryKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.ATTENTION, KeyValues.AttentionKey, dictionary.ContainsKey(KeyValues.AttentionKey) ? dictionary[KeyValues.AttentionKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.BACK_WORD, KeyValues.BackManyKey, dictionary.ContainsKey(KeyValues.BackManyKey) ? dictionary[KeyValues.BackManyKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.BACK_ONE, KeyValues.BackOneKey, dictionary.ContainsKey(KeyValues.BackOneKey) ? dictionary[KeyValues.BackOneKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.RE_CALIBRATE, KeyValues.CalibrateKey, dictionary.ContainsKey(KeyValues.CalibrateKey) ? dictionary[KeyValues.CalibrateKey] : (TimeSpan?)null),

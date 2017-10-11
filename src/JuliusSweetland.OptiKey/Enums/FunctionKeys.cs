@@ -12,7 +12,7 @@
         ArrowLeft,
         ArrowRight,
         ArrowUp,
-        AttentionSound,
+        Attention,
         BackFromKeyboard,
         BackMany,
         BackOne,

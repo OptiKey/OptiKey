@@ -215,7 +215,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attention.
+        ///   Looks up a localized string similar to ATTENTION.
         /// </summary>
         public static string ATTENTION {
             get {

@@ -393,7 +393,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new Alpha2();
                     break;
 
-                case FunctionKeys.AttentionSound:
+                case FunctionKeys.Attention:
                     audioService.PlaySound(Settings.Default.AttentionSoundFile, 
                         Settings.Default.AttentionSoundVolume);
                     break;
