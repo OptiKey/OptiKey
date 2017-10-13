@@ -1069,7 +1069,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="AttentionSoundFile" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\Tone1.wav</Value>
+      <Value Profile="(Default)">Resources\Sounds\Attention.wav</Value>
     </Setting>
     <Setting Name="AttentionSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>

@@ -16,7 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
-                    <valueConverters:ConvertBoolToStarGridLength DefaultGridLength="1" x:Key="ConvertBoolToStarGridLength" />
+                    <valueConverters:BoolToCustomValues FalseValue="1" x:Key="ConvertBoolToStarGridLength" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

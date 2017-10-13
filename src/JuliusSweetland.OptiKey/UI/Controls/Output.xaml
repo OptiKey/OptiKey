@@ -17,8 +17,8 @@
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:SuggestionsPaged x:Key="SuggestionsPaged" />
-                    <valueConverters:ConvertToStarGridLength DefaultGridLength="8" x:Key="ConvertToStarGridLength" />
-                    <valueConverters:ConvertBoolToStarGridLength DefaultGridLength="1" x:Key="ConvertBoolToStarGridLength" />
+                    <valueConverters:BoolToCustomValues TrueValue="1*" FalseValue="0*" x:Key="BoolToCustomValues" />
+                    <valueConverters:CalculateScratchpadWidth DefaultGridLength="8" x:Key="CalculateScratchpadWidth" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -33,8 +33,15 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableAttentionKey, Converter={StaticResource ConvertBoolToStarGridLength}}" />
-            <ColumnDefinition Width="{Binding ScratchpadWidthInKeys, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource ConvertToStarGridLength}}" />
+            <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableAttentionKey, Converter={StaticResource BoolToCustomValues}}" />
+            <ColumnDefinition>
+                <ColumnDefinition.Width>
+                    <MultiBinding Converter="{StaticResource CalculateScratchpadWidth}" Mode="OneWay">
+                        <Binding Path="ScratchpadWidthInKeys" RelativeSource="{RelativeSource AncestorType=controls:Output}" />
+                        <Binding Path="EnableAttentionKey" Source="{x:Static resx:Settings.Default}" />
+                    </MultiBinding>
+                </ColumnDefinition.Width>
+            </ColumnDefinition>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>

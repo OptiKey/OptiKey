@@ -83,7 +83,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, string>(Resources.RISING_SOUND_2, @"Resources\Sounds\Rising2.wav"),
                     new KeyValuePair<string, string>(Resources.FALLING_SOUND_1, @"Resources\Sounds\Falling1.wav"),
                     new KeyValuePair<string, string>(Resources.FALLING_SOUND_2, @"Resources\Sounds\Falling2.wav"),
-                    new KeyValuePair<string, string>(Resources.ATTENTION_SOUND, AttentionSoundFile)
+                    new KeyValuePair<string, string>(Resources.ATTENTION_SOUND, @"Resources\Sounds\Attention.wav")
                 };
             }
         }
@@ -269,18 +269,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref enableAttentionKey, value); }
         }
 
-        private string attentionSoundFile;
-        public string AttentionSoundFile
-        {
-            get { return attentionSoundFile; }
-            set { SetProperty(ref attentionSoundFile, value); }
-        }
-
         private int attentionSoundVolume;
         public int AttentionSoundVolume
         {
             get { return attentionSoundVolume; }
             set { SetProperty(ref attentionSoundVolume, value); }
+        }
+
+        private string attentionSoundFile;
+        public string AttentionSoundFile
+        {
+            get { return attentionSoundFile; }
+            set { SetProperty(ref attentionSoundFile, value); }
         }
 
         private string multiKeySelectionCaptureStartSoundFile;
@@ -421,7 +421,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionSoundVolume = Settings.Default.KeySelectionSoundVolume;
             ErrorSoundFile = Settings.Default.ErrorSoundFile;
             ErrorSoundVolume = Settings.Default.ErrorSoundVolume;
-            EnableAttentionKey = Settings.Default.EnableAttentionKey;
             AttentionSoundFile = Settings.Default.AttentionSoundFile;
             AttentionSoundVolume = Settings.Default.AttentionSoundVolume;
             MultiKeySelectionCaptureStartSoundFile = Settings.Default.MultiKeySelectionCaptureStartSoundFile;

@@ -224,7 +224,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom attention sound.
+        ///   Looks up a localized string similar to Attention.
         /// </summary>
         public static string ATTENTION_SOUND {
             get {
@@ -238,15 +238,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string ATTENTION_SOUND_LABEL {
             get {
                 return ResourceManager.GetString("ATTENTION_SOUND_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Path to attention sound:.
-        /// </summary>
-        public static string ATTENTION_SOUND_LOCATION_LABEL {
-            get {
-                return ResourceManager.GetString("ATTENTION_SOUND_LOCATION_LABEL", resourceCulture);
             }
         }
         
