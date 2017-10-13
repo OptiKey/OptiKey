@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -211,6 +211,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string ANDROID_LIGHT {
             get {
                 return ResourceManager.GetString("ANDROID_LIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ATTENTION.
+        /// </summary>
+        public static string ATTENTION {
+            get {
+                return ResourceManager.GetString("ATTENTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attention.
+        /// </summary>
+        public static string ATTENTION_SOUND {
+            get {
+                return ResourceManager.GetString("ATTENTION_SOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attention:.
+        /// </summary>
+        public static string ATTENTION_SOUND_LABEL {
+            get {
+                return ResourceManager.GetString("ATTENTION_SOUND_LABEL", resourceCulture);
             }
         }
         
@@ -1196,6 +1223,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string DYNAMIC_KEYBOARDS_LOCATION_LABEL {
             get {
                 return ResourceManager.GetString("DYNAMIC_KEYBOARDS_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable attention key?.
+        /// </summary>
+        public static string ENABLE_ATTENTION_KEY_LABEL {
+            get {
+                return ResourceManager.GetString("ENABLE_ATTENTION_KEY_LABEL", resourceCulture);
             }
         }
         

@@ -42,9 +42,13 @@ Fonts
 
 Icons
   Add To Dictionary icon modified from: Book by Danilo Gusmão Silveira from the Noun Project (thenounproject.com)
+  Alarm icon from: Bell by Adiyogi from the Noun Project (thenounproject.com)
   Back icon: Arrow by Jamison Wieser from the Noun Project (thenounproject.com)
   Backspace (Single) icon: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
   Backspace (Multiple) icon modified from: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
+  Browser Home Icon made by Freepik from www.flaticon.com
+  Browser other icons made by the user who asked for a web browsing keyboard
+  Browser Web Icon made by Freepik from www.flaticon.com
   Calibrate icon: Location by Klara Zalokar from the Noun Project (thenounproject.com)
   Clear icon: Trash by Garrett Knoll from the Noun Project (thenounproject.com)
   Collapse Dock, Dock, Expand Dock, Float, Minimise icons modified from: Rotate by Austin Andrews from the Noun Project (thenounproject.com)

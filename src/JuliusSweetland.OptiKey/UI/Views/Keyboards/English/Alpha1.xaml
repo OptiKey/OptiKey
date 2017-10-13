@@ -122,7 +122,7 @@
                       Text="{x:Static resx:Resources.MENU}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
-        <controls:Key Grid.Row="2" Grid.Column="23" />
+        <controls:Key Grid.Row="2" Grid.Column="23"/>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource TabIcon}" 

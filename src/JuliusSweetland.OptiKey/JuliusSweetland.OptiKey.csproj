@@ -385,10 +385,11 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\BoolToCustomValues.cs" />
     <Compile Include="UI\ValueConverters\OverrideHasValue.cs" />
     <Compile Include="UI\ValueConverters\CloneBrush.cs" />
     <Compile Include="UI\ValueConverters\ObjectIsType.cs" />
-    <Compile Include="UI\ValueConverters\ConvertToStarGridLength.cs" />
+    <Compile Include="UI\ValueConverters\CalculateScratchpadWidth.cs" />
     <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\MinimiseAndDockPositionToSymbolOrientation.cs" />
@@ -840,6 +841,9 @@
     <Resource Include="Resources\Icons\Back.ico" />
     <Resource Include="Resources\Icons\Quit.ico" />
     <Resource Include="Resources\Icons\ManualMode.ico" />
+    <Content Include="Resources\Sounds\Attention.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

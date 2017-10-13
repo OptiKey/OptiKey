@@ -1971,4 +1971,16 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Error:</value>
   </data>
+  <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>Attention:</value>
+  </data>
+  <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>Enable attention key?</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>ATTENTION</value>
+  </data>
+  <data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>Attention</value>
+  </data>
 </root>

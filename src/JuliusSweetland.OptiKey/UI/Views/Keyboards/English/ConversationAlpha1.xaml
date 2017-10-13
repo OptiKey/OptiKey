@@ -150,7 +150,7 @@
                       ShiftUpText="l" ShiftDownText="L"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="l"/>
-        <controls:Key Grid.Row="3" Grid.Column="19" />
+        <controls:Key Grid.Row="3" Grid.Column="19"/>
 
         <ContentControl Grid.Row="4" Grid.Column="0">
             <ContentControl.Style>

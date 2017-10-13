@@ -28,6 +28,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             InfoSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(InfoSoundFile, InfoSoundVolume));
             KeySelectionSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(KeySelectionSoundFile, KeySelectionSoundVolume));
             ErrorSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(ErrorSoundFile, ErrorSoundVolume));
+            AttentionSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(AttentionSoundFile, AttentionSoundVolume));
             MultiKeySelectionCaptureStartSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MultiKeySelectionCaptureStartSoundFile, MultiKeySelectionCaptureStartSoundVolume));
             MultiKeySelectionCaptureEndSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MultiKeySelectionCaptureEndSoundFile, MultiKeySelectionCaptureEndSoundVolume));
             MouseClickSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseClickSoundFile, MouseClickSoundVolume));
@@ -81,7 +82,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, string>(Resources.RISING_SOUND_1, @"Resources\Sounds\Rising1.wav"),
                     new KeyValuePair<string, string>(Resources.RISING_SOUND_2, @"Resources\Sounds\Rising2.wav"),
                     new KeyValuePair<string, string>(Resources.FALLING_SOUND_1, @"Resources\Sounds\Falling1.wav"),
-                    new KeyValuePair<string, string>(Resources.FALLING_SOUND_2, @"Resources\Sounds\Falling2.wav")
+                    new KeyValuePair<string, string>(Resources.FALLING_SOUND_2, @"Resources\Sounds\Falling2.wav"),
+                    new KeyValuePair<string, string>(Resources.ATTENTION_SOUND, @"Resources\Sounds\Attention.wav")
                 };
             }
         }
@@ -260,6 +262,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref errorSoundVolume, value); }
         }
 
+        private bool enableAttentionKey;
+        public bool EnableAttentionKey
+        {
+            get { return enableAttentionKey; }
+            set { SetProperty(ref enableAttentionKey, value); }
+        }
+
+        private int attentionSoundVolume;
+        public int AttentionSoundVolume
+        {
+            get { return attentionSoundVolume; }
+            set { SetProperty(ref attentionSoundVolume, value); }
+        }
+
+        private string attentionSoundFile;
+        public string AttentionSoundFile
+        {
+            get { return attentionSoundFile; }
+            set { SetProperty(ref attentionSoundFile, value); }
+        }
+
         private string multiKeySelectionCaptureStartSoundFile;
         public string MultiKeySelectionCaptureStartSoundFile
         {
@@ -370,6 +393,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public DelegateCommand InfoSoundPlayCommand { get; private set; }
         public DelegateCommand KeySelectionSoundPlayCommand { get; private set; }
         public DelegateCommand ErrorSoundPlayCommand { get; private set; }
+        public DelegateCommand AttentionSoundPlayCommand { get; private set; }
         public DelegateCommand MultiKeySelectionCaptureStartSoundPlayCommand { get; private set; }
         public DelegateCommand MultiKeySelectionCaptureEndSoundPlayCommand { get; private set; }
         public DelegateCommand MouseClickSoundPlayCommand { get; private set; }
@@ -397,6 +421,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionSoundVolume = Settings.Default.KeySelectionSoundVolume;
             ErrorSoundFile = Settings.Default.ErrorSoundFile;
             ErrorSoundVolume = Settings.Default.ErrorSoundVolume;
+            AttentionSoundFile = Settings.Default.AttentionSoundFile;
+            AttentionSoundVolume = Settings.Default.AttentionSoundVolume;
             MultiKeySelectionCaptureStartSoundFile = Settings.Default.MultiKeySelectionCaptureStartSoundFile;
             MultiKeySelectionCaptureStartSoundVolume = Settings.Default.MultiKeySelectionCaptureStartSoundVolume;
             MultiKeySelectionCaptureEndSoundFile = Settings.Default.MultiKeySelectionCaptureEndSoundFile;
@@ -428,6 +454,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeySelectionSoundVolume = KeySelectionSoundVolume;
             Settings.Default.ErrorSoundFile = ErrorSoundFile;
             Settings.Default.ErrorSoundVolume = ErrorSoundVolume;
+            Settings.Default.AttentionSoundFile = AttentionSoundFile;
+            Settings.Default.AttentionSoundVolume = AttentionSoundVolume;
             Settings.Default.MultiKeySelectionCaptureStartSoundFile = MultiKeySelectionCaptureStartSoundFile;
             Settings.Default.MultiKeySelectionCaptureStartSoundVolume = MultiKeySelectionCaptureStartSoundVolume;
             Settings.Default.MultiKeySelectionCaptureEndSoundFile = MultiKeySelectionCaptureEndSoundFile;
