@@ -685,6 +685,7 @@ namespace JuliusSweetland.OptiKey.Services
                     && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
                 {
                     keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
+                    publishService.KeyUp(VirtualKeyCode.LSHIFT); // Do not keep 'real' shift down when app start with a ShiftAware Keyboard #396
                     if (fireKeySelectionEvent != null) fireKeySelectionEvent(KeyValues.LeftShiftKey);
                     return;
                 }
