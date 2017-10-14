@@ -1407,30 +1407,16 @@ namespace JuliusSweetland.OptiKey.Services
             Log.InfoFormat("finalDockLeftInDp:{0}, finalDockTopInDp:{1}, finalDockWidthInDp:{2}, finalDockHeightInDp:{3}", finalDockLeftInDp, finalDockTopInDp, finalDockWidthInDp, finalDockHeightInDp);
             Log.InfoFormat("Screen bounds in dp - Top:{0}, Left:{1}, Width:{2}, Height:{3}", screenBoundsInDp.Top, screenBoundsInDp.Left, screenBoundsInDp.Width, screenBoundsInDp.Height);
 
-            if (finalDockLeftInDp < 0 ||
-                finalDockTopInDp < 0 ||
-                finalDockWidthInDp <= 0 ||
-                finalDockHeightInDp <= 0 ||
-                (finalDockLeftInDp + finalDockWidthInDp) > screenBoundsInDp.Right ||
-                (finalDockTopInDp + finalDockHeightInDp) > screenBoundsInDp.Bottom)
-            {
-                Log.Error("Final dock size and/or position is invalid - reverting to floating size and position");
-                UnRegisterAppBar();
-                saveWindowState(WindowStates.Floating);
-                savePreviousWindowState(WindowStates.Floating);
-                PublishError(this, new ApplicationException("There was a problem positioning OptiKey - reverting to floating position"));
-            }
-            else if (!isInitialising)
-            {
-                //Apply final size and position to the window. This is dispatched with ApplicationIdle priority 
-                //as WPF will send a resize after a new appbar is added. We need to apply the received size & position after this happens.
-                //RECT values are in pixels so I need to scale back to DIPs for WPF.
-                appBarBoundsInPx = new Rect(finalDockLeftInDp, finalDockTopInDp, finalDockWidthInDp, finalDockHeightInDp);
-                if (persist)
-                    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), appBarBoundsInPx);
-                else
-                    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ApplySizeAndPositionDelegate(ApplySizeAndPosition), appBarBoundsInPx);
-            }
+      	    if (isInitialising) return;
+
+      	    //Apply final size and position to the window. This is dispatched with ApplicationIdle priority 
+      	    //as WPF will send a resize after a new appbar is added. We need to apply the received size & position after this happens.
+      	    //RECT values are in pixels so I need to scale back to DIPs for WPF.
+      	    appBarBoundsInPx = new Rect(finalDockLeftInDp, finalDockTopInDp, finalDockWidthInDp, finalDockHeightInDp);
+      	    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
+      	        persist
+      	            ? new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition)
+      	            : new ApplySizeAndPositionDelegate(ApplySizeAndPosition), appBarBoundsInPx);
         }
 
         private void UnRegisterAppBar()
