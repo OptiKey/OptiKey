@@ -85,6 +85,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             });
 
             Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
+
+            Width = 0;
+            Height = 0;
         }
 
         public IWindowManipulationService WindowManipulationService { get; set; }
