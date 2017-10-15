@@ -34,8 +34,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}"
@@ -88,59 +86,52 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.USE_COMMUNIKATE_KEYBOARD_LAYOUT}"
-                               VerticalAlignment="Center" Margin="5" >
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_LAYOUT}"
+                               VerticalAlignment="Center" Margin="5" />
+                    <ComboBox Grid.Row="3" Grid.Column="1"
+                              ItemsSource="{Binding KeyboardLayouts}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding KeyboardLayout, Mode=TwoWay}" >
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseAlphabeticalKeyboardLayout}" Value="True">
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="True">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
+                    <ComboBox Grid.Row="3" Grid.Column="1"
+                              ItemsSource="{Binding KeyboardLayoutsCK}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding KeyboardLayout, Mode=TwoWay}" >
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <CheckBox Grid.Row="3" Grid.Column="1"
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding UseCommuniKateKeyboardLayoutByDefault, Mode=TwoWay}" >
-                        <CheckBox.Style>
-                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseAlphabeticalKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </CheckBox.Style>
-                    </CheckBox>
+                        </ComboBox.Style>
+                    </ComboBox>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding UseAlphabeticalKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -158,12 +149,6 @@
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding UseAlphabeticalKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </StackPanel.Style>
@@ -178,112 +163,14 @@
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding UseAlphabeticalKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.USE_ALPHABETICAL_KEYBOARD_LAYOUT}"
-                               VerticalAlignment="Center" Margin="5" >
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding UseAlphabeticalKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <MultiDataTrigger>
-                                        <MultiDataTrigger.Conditions>
-                                            <Condition Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="True" />
-                                            <Condition Binding="{Binding UseCommuniKateKeyboardLayoutByDefault}" Value="True" />
-                                        </MultiDataTrigger.Conditions>
-                                        <MultiDataTrigger.Setters>
-                                            <Setter Property="Visibility" Value="Collapsed" />
-                                        </MultiDataTrigger.Setters>
-                                    </MultiDataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <CheckBox Grid.Row="5" Grid.Column="1"
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding UseAlphabeticalKeyboardLayout, Mode=TwoWay}" >
-                        <CheckBox.Style>
-                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                                <Setter Property="Visibility" Value="{Binding UseAlphabeticalKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <MultiDataTrigger>
-                                        <MultiDataTrigger.Conditions>
-                                            <Condition Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="True" />
-                                            <Condition Binding="{Binding UseCommuniKateKeyboardLayoutByDefault}" Value="True" />
-                                        </MultiDataTrigger.Conditions>
-                                        <MultiDataTrigger.Setters>
-                                            <Setter Property="Visibility" Value="Collapsed" />
-                                        </MultiDataTrigger.Setters>
-                                    </MultiDataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </CheckBox.Style>
-                    </CheckBox>
-
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.USE_SIMPLIFIED_KEYBOARD_LAYOUT}"
-                               VerticalAlignment="Center" Margin="5" >
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding UseSimplifiedKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseAlphabeticalKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <MultiDataTrigger>
-                                        <MultiDataTrigger.Conditions>
-                                            <Condition Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="True" />
-                                            <Condition Binding="{Binding UseCommuniKateKeyboardLayoutByDefault}" Value="True" />
-                                        </MultiDataTrigger.Conditions>
-                                        <MultiDataTrigger.Setters>
-                                            <Setter Property="Visibility" Value="Collapsed" />
-                                        </MultiDataTrigger.Setters>
-                                    </MultiDataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <CheckBox Grid.Row="6" Grid.Column="1"
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding UseSimplifiedKeyboardLayout, Mode=TwoWay}" >
-                        <CheckBox.Style>
-                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                                <Setter Property="Visibility" Value="{Binding UseSimplifiedKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseAlphabeticalKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <MultiDataTrigger>
-                                        <MultiDataTrigger.Conditions>
-                                            <Condition Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="True" />
-                                            <Condition Binding="{Binding UseCommuniKateKeyboardLayoutByDefault}" Value="True" />
-                                        </MultiDataTrigger.Conditions>
-                                        <MultiDataTrigger.Setters>
-                                            <Setter Property="Visibility" Value="Collapsed" />
-                                        </MultiDataTrigger.Setters>
-                                    </MultiDataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </CheckBox.Style>
-                    </CheckBox>
-
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="7" Grid.Column="1"
+                    <CheckBox Grid.Row="5" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
                 </Grid>

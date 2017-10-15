@@ -1806,7 +1806,7 @@ Slovenčina
     <value>Force caps lock:</value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Replace QWERTY keyboard layout with alphabetical keyboard layout:</value>
+    <value>Use alphabetical keyboard layout</value>
   </data>
   <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
     <value>Kalman Filter:</value>
@@ -1842,7 +1842,7 @@ Slovenčina
     <value>Enable quit keys?</value>
   </data>
   <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Replace Alpha keyboard with simplified keyboard layout:</value>
+    <value>Use simplified keyboard layout</value>
   </data>
   <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Browser
@@ -1915,7 +1915,7 @@ from the Management Console (ALT + M).</value>
     <value>Delay before speech (ms):</value>
   </data>
   <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Replace Alpha keyboard with CommuniKate:</value>
+    <value>Use CommuniKate keyboard layout</value>
   </data>
   <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Enable CommuniKate keyboard layout:</value>
@@ -1982,5 +1982,14 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   </data>
   <data name="ATTENTION_SOUND" xml:space="preserve">
     <value>Attention</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>CommuniKate is currently disabled (use QWERTY)</value>
+  </data>
+  <data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Keyboard style for typing</value>
+  </data>
+  <data name="USE_QWERTY_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Use QWERTY keyboard layout (default)</value>
   </data>
 </root>
