@@ -60,6 +60,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        public List<KeyValuePair<string, KeyboardLayouts>> KeyboardLayouts
+        {
+            get
+            {
+                return new List <KeyValuePair<string, KeyboardLayouts>>
+                {
+                    new KeyValuePair<string, KeyboardLayouts>(Resources.USE_QWERTY_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Qwerty),
+                    new KeyValuePair<string, KeyboardLayouts>(Resources.USE_ALPHABETICAL_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Alphabetic),
+                    new KeyValuePair<string, KeyboardLayouts>(Resources.USE_SIMPLIFIED_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Simplified),
+                    new KeyValuePair<string, KeyboardLayouts>(Resources.COMMUNIKATE_DISABLED, Enums.KeyboardLayouts.Communikate)
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, KeyboardLayouts>> KeyboardLayoutsCK
+        {
+            get
+            {
+                return new List<KeyValuePair<string, KeyboardLayouts>>
+                {
+                    new KeyValuePair<string, KeyboardLayouts>(Resources.USE_QWERTY_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Qwerty),
+                    new KeyValuePair<string, KeyboardLayouts>(Resources.USE_ALPHABETICAL_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Alphabetic),
+                    new KeyValuePair<string, KeyboardLayouts>(Resources.USE_SIMPLIFIED_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Simplified),
+                    new KeyValuePair<string, KeyboardLayouts>(Resources.USE_COMMUNIKATE_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Communikate)
+                };
+            }
+        }
+
         public List<KeyValuePair<string, SuggestionMethods>> SuggestionMethods
         {
             get
@@ -86,6 +114,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        private KeyboardLayouts keyboardLayout;
+        public KeyboardLayouts KeyboardLayout
+        {
+            get { return keyboardLayout; }
+            set { SetProperty(ref keyboardLayout, value); }
+        }
+
         private Languages uiLanguage;
         public Languages UiLanguage
         {
@@ -96,12 +131,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private bool useAlphabeticalKeyboardLayout;
         public bool UseAlphabeticalKeyboardLayout
         {
-            get { return useAlphabeticalKeyboardLayout; }
-            set { SetProperty(ref useAlphabeticalKeyboardLayout, 
-                        value 
-                        && useSimplifiedKeyboardLayout == false
-                        && useCommuniKateKeyboardLayoutByDefault == false
-                        && usingCommuniKateKeyboardLayout == false); }
+            get { return KeyboardLayout == Enums.KeyboardLayouts.Alphabetic; }
+            set { SetProperty(ref useAlphabeticalKeyboardLayout,
+                        KeyboardLayout == Enums.KeyboardLayouts.Alphabetic); }
         }
 
         public bool UseAlphabeticalKeyboardLayoutIsVisible
@@ -117,12 +149,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private bool useSimplifiedKeyboardLayout;
         public bool UseSimplifiedKeyboardLayout
         {
-            get { return useSimplifiedKeyboardLayout; }
+            get { return KeyboardLayout == Enums.KeyboardLayouts.Simplified; }
             set { SetProperty(ref useSimplifiedKeyboardLayout,
-                        value
-                        && useAlphabeticalKeyboardLayout == false
-                        && useCommuniKateKeyboardLayoutByDefault == false
-                        && usingCommuniKateKeyboardLayout == false);
+                        KeyboardLayout == Enums.KeyboardLayouts.Simplified);
             }
         }
 
@@ -176,9 +205,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private bool useCommuniKateKeyboardLayoutByDefault;
         public bool UseCommuniKateKeyboardLayoutByDefault
         {
-            get { return useCommuniKateKeyboardLayoutByDefault; }
-            set { SetProperty(ref useCommuniKateKeyboardLayoutByDefault, value
-                        && enableCommuniKateKeyboardLayout);
+            get { return KeyboardLayout == Enums.KeyboardLayouts.Communikate
+                        && EnableCommuniKateKeyboardLayout; }
+            set { SetProperty(ref useCommuniKateKeyboardLayoutByDefault, 
+                        KeyboardLayout == Enums.KeyboardLayouts.Communikate
+                        && EnableCommuniKateKeyboardLayout);
             }
         }
 
@@ -260,6 +291,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             KeyboardAndDictionaryLanguage = Settings.Default.KeyboardAndDictionaryLanguage;
             UiLanguage = Settings.Default.UiLanguage;
+            KeyboardLayout = Settings.Default.KeyboardLayout;
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
             CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
@@ -284,6 +316,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
             Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
             Settings.Default.UiLanguage = UiLanguage;
+            Settings.Default.KeyboardLayout = KeyboardLayout;
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;

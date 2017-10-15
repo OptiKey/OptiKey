@@ -650,6 +650,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommuniKate is currently disabled (use QWERTY).
+        /// </summary>
+        public static string COMMUNIKATE_DISABLED {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_DISABLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommuniKate top page obf file:.
         /// </summary>
         public static string COMMUNIKATE_TOPPAGE_LABEL {
@@ -2315,6 +2324,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string KEYBOARD_KEY {
             get {
                 return ResourceManager.GetString("KEYBOARD_KEY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard style for typing.
+        /// </summary>
+        public static string KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("KEYBOARD_LAYOUT", resourceCulture);
             }
         }
         
@@ -5152,7 +5170,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replace QWERTY keyboard layout with alphabetical keyboard layout:.
+        ///   Looks up a localized string similar to Use alphabetical keyboard layout.
         /// </summary>
         public static string USE_ALPHABETICAL_KEYBOARD_LAYOUT {
             get {
@@ -5161,7 +5179,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replace Alpha keyboard with CommuniKate:.
+        ///   Looks up a localized string similar to Use CommuniKate keyboard layout.
         /// </summary>
         public static string USE_COMMUNIKATE_KEYBOARD_LAYOUT {
             get {
@@ -5170,7 +5188,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replace Alpha keyboard with simplified keyboard layout:.
+        ///   Looks up a localized string similar to Use QWERTY keyboard layout (default).
+        /// </summary>
+        public static string USE_QWERTY_KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("USE_QWERTY_KEYBOARD_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use simplified keyboard layout.
         /// </summary>
         public static string USE_SIMPLIFIED_KEYBOARD_LAYOUT {
             get {

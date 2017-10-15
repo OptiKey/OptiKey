@@ -196,6 +196,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enums\KeyboardLayouts.cs" />
     <Compile Include="Enums\UnicodeCodePointRanges.cs" />
     <Compile Include="DataFilters\KalmanFilter.cs" />
     <Compile Include="Enums\Case.cs" />
