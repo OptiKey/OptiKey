@@ -74,13 +74,13 @@
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SOURCE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Interval="10"
+                                            Minimum="10" Maximum="100"  Interval="10"
                                             Value="{Binding MagnifySourcePercentageOfScreen, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_DESTINATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Interval="10"
+                                            Minimum="10" Maximum="100" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_QUIT_KEYS_LABEL}" 
@@ -264,7 +264,7 @@
                     <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="15" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Maximum="100" Interval="10"
+                                            Minimum="10" Maximum="90" Interval="10"
                                             Value="{Binding MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL}" 
@@ -345,13 +345,13 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.HORIZONTAL_FILL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="1" Interval="5"
+                                            Minimum="1" Maximum="100" Interval="5"
                                             Value="{Binding ToastNotificationHorizontalFillPercentage, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.VERTICAL_FILL_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="1" Interval="5"
+                                            Minimum="1" Maximum="100" Interval="5"
                                             Value="{Binding ToastNotificationVerticalFillPercentage, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL}" 
