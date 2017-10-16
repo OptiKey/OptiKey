@@ -145,6 +145,7 @@ namespace JuliusSweetland.OptiKey.Services
                             Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
 
                             if (MultiKeySelectionSupported
+                                && keyStateService.KeyEnabledStates[KeyValues.MultiKeySelectionIsOnKey]
                                 && keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown()
                                 && triggerSignal.PointAndKeyValue.KeyValue != null
                                 && KeyValues.MultiKeySelectionKeys.Contains(triggerSignal.PointAndKeyValue.KeyValue)

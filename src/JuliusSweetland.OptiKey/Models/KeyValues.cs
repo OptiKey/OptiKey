@@ -479,7 +479,9 @@ namespace JuliusSweetland.OptiKey.Models
 
         public static List<KeyValue> MultiKeySelectionKeys
         {
-            get { return multiKeySelectionKeys[Settings.Default.KeyboardAndDictionaryLanguage]; }
+            get { return multiKeySelectionKeys.Keys.Contains(Settings.Default.KeyboardAndDictionaryLanguage) 
+                        ? multiKeySelectionKeys[Settings.Default.KeyboardAndDictionaryLanguage]
+                        : new List<KeyValue>(); }
         }
     }
 }
