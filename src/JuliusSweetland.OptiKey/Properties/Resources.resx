@@ -780,14 +780,14 @@ UP</value>
     <value>Multi-key Selection</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Muli-key selection ending:</value>
+    <value>Multi-key selection ending:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MULTI-KEY
 SELECTION</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Muli-key selection starting:</value>
+    <value>Multi-key selection starting:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
@@ -1117,7 +1117,7 @@ POSITION</value>
     <value>Theme:</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
-    <value>Time until point becomes irrelevent (ms):</value>
+    <value>Time until point becomes irrelevant (ms):</value>
   </data>
   <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
     <value>Hide cursor</value>
