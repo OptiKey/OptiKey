@@ -785,6 +785,7 @@ namespace JuliusSweetland.OptiKey
                         keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerMouseDownUpButton));
                         break;
                 }
+
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.KEY_SELECTION_TRIGGER_DESCRIPTION, keySelectionSb));
 
                 var pointSelectionSb = new StringBuilder();
@@ -947,6 +948,7 @@ namespace JuliusSweetland.OptiKey
         }
 
         #endregion
+
         #region Clean Up Extracted CommuniKate Files If Staged For Deletion
 
         private static void CleanupAndPrepareCommuniKateInitialState()
@@ -1077,6 +1079,7 @@ namespace JuliusSweetland.OptiKey
                         "Disabling MaryTTS and using System Voice '{1}' instead.", ExpectedMaryTTSLocationSuffix, Settings.Default.SpeechVoice);
                     Settings.Default.MaryTTSEnabled = false;
 
+                    inputService.RequestSuspend();
                     mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
                         string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
                         NotificationTypes.Error, () =>
