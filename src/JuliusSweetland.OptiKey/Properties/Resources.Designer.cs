@@ -1812,7 +1812,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force caps lock:.
+        ///   Looks up a localized string similar to Force caps lock (shift locked down):.
         /// </summary>
         public static string FORCE_CAPS_LOCK {
             get {

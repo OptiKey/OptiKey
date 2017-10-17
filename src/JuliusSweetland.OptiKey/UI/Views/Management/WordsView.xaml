@@ -125,8 +125,8 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" >
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
+                            VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
@@ -154,8 +154,8 @@
                         </StackPanel.Style>
                     </StackPanel>
                     <TextBlock Grid.Row="4" Grid.Column="2" Name="txtCommuniKateTopPageLocation"
-                               Text="{Binding CommuniKatePagesetLocation, Mode=TwoWay}" 
-                               VerticalAlignment="Center" Margin="5" >
+                                Text="{Binding CommuniKatePagesetLocation, Mode=TwoWay}" 
+                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
@@ -169,10 +169,10 @@
                     </TextBlock>
 
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
-                               VerticalAlignment="Center" Margin="5" />
+                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="5" Grid.Column="1"
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
+                                VerticalAlignment="Center"
+                                IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
 
