@@ -478,14 +478,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void ValidateMaryTTSVoiceSettings()
         {
-            if (MaryTTSEnabled)
+            if (MaryTTSEnabled && 
+                (!File.Exists(MaryTTSLocation) || !MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix)))
             {
-                if (!File.Exists(MaryTTSLocation) || !MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix))
+                // The current MaryTTS setting won't be able to start, try to fix the problem now.
+                if (Settings.Default.MaryTTSEnabled 
+                    && File.Exists(Settings.Default.MaryTTSLocation) 
+                    && Settings.Default.MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix))
                 {
-                    // MaryTTS won't be able to start, revert changes
+                    // if it's previously enabled and the service location is correct, fallback to
+                    // the correct setting.
+                    MaryTTSLocation = Settings.Default.MaryTTSLocation;
+                }
+                else
+                {
+                    // if fallback settings isn't valid either, turn off this setting
                     MaryTTSEnabled = false;
                     MaryTTSLocation = "";
-                    MaryTTSVoice = "";
                 }
             }
         }
