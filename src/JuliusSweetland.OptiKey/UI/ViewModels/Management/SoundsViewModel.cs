@@ -6,6 +6,7 @@ using JuliusSweetland.OptiKey.Services;
 using log4net;
 using Prism.Commands;
 using Prism.Mvvm;
+using System.IO;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
@@ -14,6 +15,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private const string ExpectedMaryTTSLocationSuffix = @"\bin\marytts-server.bat";
 
         private IAudioService audioService;
 
@@ -386,7 +388,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get
             {
                 return Settings.Default.MaryTTSEnabled != MaryTTSEnabled
-                    || Settings.Default.MaryTTSLocation != MaryTTSLocation; ;
+                    || Settings.Default.MaryTTSLocation != MaryTTSLocation;
             }
         }
 
@@ -441,6 +443,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
+            ValidateMaryTTSVoiceSettings();
+
             Settings.Default.SpeechVoice = SpeechVoice;
             Settings.Default.SpeechVolume = SpeechVolume;
             Settings.Default.SpeechRate = SpeechRate;
@@ -470,6 +474,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MouseDoubleClickSoundVolume = MouseDoubleClickSoundVolume;
             Settings.Default.MouseScrollSoundFile = MouseScrollSoundFile;
             Settings.Default.MouseScrollSoundVolume = MouseScrollSoundVolume;
+        }
+
+        private void ValidateMaryTTSVoiceSettings()
+        {
+            if (MaryTTSEnabled && 
+                (!File.Exists(MaryTTSLocation) || !MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix)))
+            {
+                // The current MaryTTS setting won't be able to start, try to fix the problem now.
+                if (Settings.Default.MaryTTSEnabled 
+                    && File.Exists(Settings.Default.MaryTTSLocation) 
+                    && Settings.Default.MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix))
+                {
+                    // if it's previously enabled and the service location is correct, fallback to
+                    // the correct setting.
+                    MaryTTSLocation = Settings.Default.MaryTTSLocation;
+                }
+                else
+                {
+                    // if fallback settings isn't valid either, turn off this setting
+                    MaryTTSEnabled = false;
+                    MaryTTSLocation = "";
+                }
+            }
         }
 
         #endregion
