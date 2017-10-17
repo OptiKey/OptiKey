@@ -803,8 +803,8 @@ namespace JuliusSweetland.OptiKey
                         pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
                         break;
                 }
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.POINT_SELECTION_DESCRIPTION, pointSelectionSb));
 
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.POINT_SELECTION_DESCRIPTION, pointSelectionSb));
                 message.AppendLine(OptiKey.Properties.Resources.MANAGEMENT_CONSOLE_DESCRIPTION);
                 message.AppendLine(OptiKey.Properties.Resources.WEBSITE_DESCRIPTION);
 
@@ -1001,6 +1001,7 @@ namespace JuliusSweetland.OptiKey
                         "Disabling MaryTTS and using System Voice '{0}' instead.", Settings.Default.SpeechVoice);
                     Settings.Default.MaryTTSEnabled = false;
 
+                    inputService.RequestSuspend();
                     mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
                         string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
                         NotificationTypes.Error, () =>
