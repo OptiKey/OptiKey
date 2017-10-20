@@ -418,8 +418,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ResizeDockToSpecificHeight(double heightAsPercentScreen, bool persistNewSize=false)
         {
-            Log.InfoFormat("ResizeDockToSpecificHeight called with height: {0} and persist?: {1}",
-                heightAsPercentScreen, persistNewSize);
+            Log.InfoFormat("ResizeDockToSpecificHeight called with height: {0} and persist?: {1}, current dock size = {2}",
+                heightAsPercentScreen, persistNewSize, getDockSize());
 
             if (getWindowState() != WindowStates.Docked) return;
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize(), heightAsPercentScreen);

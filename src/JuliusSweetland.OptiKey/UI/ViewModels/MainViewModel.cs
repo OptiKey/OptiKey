@@ -369,7 +369,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.CustomKeyboardFile:
-                    Keyboard = new DynamicKeyboard(backAction, (d) => { },
+                    Keyboard = new DynamicKeyboard(backAction, mainWindowManipulationService,
                                    keyStateService, Settings.Default.StartupKeyboardFile);
                     break;
 
