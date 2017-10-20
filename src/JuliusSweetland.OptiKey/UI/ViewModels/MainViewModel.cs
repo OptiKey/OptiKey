@@ -386,7 +386,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.DynamicKeyboard:
-                    Keyboard = new DynamicKeyboardSelector(backAction, 0);
+                    Keyboard = new DynamicKeyboardSelector(() => { }, 0);
                     break;
 
                 case Enums.Keyboards.Menu:
