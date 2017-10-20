@@ -50,12 +50,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 // Setup all the UI components      
                 SetupGrid();
                 SetupKeys();
-
-                // Apply size changes after any optikey general sizing policies.
-                this.SizeChanged += (_, args) =>
-                {
-                    SetupKeyboardLayout(resizeAction);
-                };
+                SetupBorders(); //TODO: Might be better to follow pattern for height overrides?
             }
         }
 
@@ -277,21 +272,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
-        private void SetupKeyboardLayout(Action<double> resizeAction)
+        private void SetupBorders()
         {
-            // Get height, if specified, resize window.
-            if (keyboard.Height.HasValue)
-            {
-                if (keyboard.Height > 100 || keyboard.Height < 1)
-                {
-                    SetupErrorLayout("Incorrect height", "Must be in range [1, 100] (as percent of screen height)");
-                }
-                else
-                {
-                    resizeAction(keyboard.Height.Value);
-                }
-            }
-
             // Get border thickness, if specified, to override
             if (keyboard.BorderThickness.HasValue)
             {

@@ -191,10 +191,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else {
                 // Set up new dynamic keyboard
-                Action<double> resizeAction = h => { mainWindowManipulationService.ResizeDockToSpecificHeight(h, false); };
 
-                // Extract any key states if present
+                // Extract any key states or layout overrides if present
                 var initialKeyStates = new Dictionary<KeyValue, KeyDownStates>();
+                double? overrideHeight = null;
                 try
                 {
                     XmlKeyboard keyboard = XmlKeyboard.ReadFromFile(keyValue.KeyboardFilename);
@@ -213,14 +213,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                         }
                     }
+
+                    overrideHeight = keyboard.Height;
                 }
                 catch (Exception)
                 {
                     // will get caught and handled when DynamicKeyboard is created so we are good to ignore here 
                 }
 
-                DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, resizeAction, keyStateService, keyValue.KeyboardFilename);
+                DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, mainWindowManipulationService, keyStateService, keyValue.KeyboardFilename);
                 newDynKeyboard.SetKeyOverrides(initialKeyStates);
+                newDynKeyboard.OverrideKeyboardLayout(overrideHeight);
                 Keyboard = newDynKeyboard;
 
                 // Clear the scratchpad when launching a dynamic keyboard.
