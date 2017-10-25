@@ -612,6 +612,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 ToastNotification(this, new NotificationEventArgs(title, content, notificationType, callback));
             }
+            else
+            {
+                // Raise errors before the ToastNotification is initialized yet, 
+                // in this case, just raise callback to clean the rest up for now.
+                callback();
+            }
         }
 
         #endregion
