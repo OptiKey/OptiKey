@@ -203,7 +203,7 @@ namespace JuliusSweetland.OptiKey
 
                 //Show the main window
                 mainWindow.Show();
-
+                
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
                 EventHandler sizeAndPositionInitialised = null;
                 sizeAndPositionInitialised = async (_, __) =>
@@ -214,6 +214,9 @@ namespace JuliusSweetland.OptiKey
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService, audioService, mainViewModel);
 
                     inputService.RequestResume(); //Start the input service
+
+                    // Raise any preload errors in the toast notification now.
+                    mainViewModel.RaisePreloadErrorsToastNotification();
 
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };

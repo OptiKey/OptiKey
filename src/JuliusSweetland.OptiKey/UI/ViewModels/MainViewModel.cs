@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -13,6 +14,7 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
+using System.Text;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -264,7 +266,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         }
         
         public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
-        
+
+        private StringBuilder preloadErrors;
+
         #endregion
 
         #region Methods
@@ -576,6 +580,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 InputService.MultiKeySelectionSupported = kb.MultiKeySelectionSupported;
             };
+
             this.OnPropertyChanges(mvm => mvm.Keyboard).Subscribe(setMultiKeySelectionSupported);
             setMultiKeySelectionSupported(Keyboard);
         }
@@ -592,6 +597,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.ResizeDockToFull();
                 }
             };
+
             this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(resizeDockIfCollapsedDockingNotSupported);
             resizeDockIfCollapsedDockingNotSupported(KeyboardSupportsCollapsedDock);
         }
@@ -614,10 +620,40 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
+                if (notificationType == NotificationTypes.Error)
+                {
+                    StorePreloadErrors(content);
+                }
+
                 // Raise errors before the ToastNotification is initialized yet, 
                 // in this case, just raise callback to clean the rest up for now.
                 callback();
             }
+        }
+
+        internal void RaisePreloadErrorsToastNotification()
+        {
+            Log.Error("Roast notification popup has been brought up to display preload errors.");
+
+            if (preloadErrors != null && preloadErrors.Length > 0)
+            {
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                inputService.RequestSuspend();
+                ToastNotification(this, new NotificationEventArgs(Resources.PRELOAD_CRASH_TITLE, 
+                    preloadErrors.ToString(), NotificationTypes.Error, () => inputService.RequestResume()));
+            }
+
+            preloadErrors = null;
+        }
+
+        private void StorePreloadErrors(string content)
+        {
+            if (preloadErrors == null)
+            {
+                preloadErrors = new StringBuilder();
+            }
+
+            preloadErrors.AppendLine(String.Format(" - {0}", content));
         }
 
         #endregion

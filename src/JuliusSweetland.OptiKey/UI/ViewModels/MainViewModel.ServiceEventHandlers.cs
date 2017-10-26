@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
@@ -1986,6 +1984,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ShowCursor = false;
             MagnifyAtPoint = null;
             MagnifiedPointSelectionAction = null;
+
             if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
             {
                 keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
@@ -1993,21 +1992,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         }
 
         private void HandleServiceError(object sender, Exception exception)
-        {                        
-	    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-
+        {
             if (ToastNotification != null)
             {
                 // Only raise toast notifications if it has been initialized
-		Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
-		    
+                Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
+
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                 inputService.RequestSuspend();
                 RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume());
             }
-	    else
-	    {
-		Log.Error("Error event received from service beore main window is initialized and shown, only playing ErrorSoundFile (from settings)", exception);
-	    }
+            else
+            {
+                Log.Error("Error event received from service beore main window is initialized and shown, only playing ErrorSoundFile (from settings)", exception);
+
+                StorePreloadErrors(exception.Message);
+            }
         }
     }
 }
