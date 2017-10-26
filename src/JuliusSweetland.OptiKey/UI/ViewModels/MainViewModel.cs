@@ -631,19 +631,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        internal void RaisePreloadErrorsToastNotification()
+        internal async Task<bool> RaisePreloadErrorsToastNotification()
         {
             Log.Error("Roast notification popup has been brought up to display preload errors.");
+
+            var taskCompletionSource = new TaskCompletionSource<bool>();
 
             if (preloadErrors != null && preloadErrors.Length > 0)
             {
                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                 inputService.RequestSuspend();
-                ToastNotification(this, new NotificationEventArgs(Resources.PRELOAD_CRASH_TITLE, 
-                    preloadErrors.ToString(), NotificationTypes.Error, () => inputService.RequestResume()));
+                ToastNotification(this, new NotificationEventArgs(
+                    Resources.PRELOAD_CRASH_TITLE, 
+                    preloadErrors.ToString(), NotificationTypes.Error, () =>
+                    {
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(true);
+                    }));
+            }
+            else
+            {
+                taskCompletionSource.SetResult(false);
             }
 
             preloadErrors = null;
+
+            return await taskCompletionSource.Task;
         }
 
         private void StorePreloadErrors(string content)
