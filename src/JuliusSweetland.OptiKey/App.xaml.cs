@@ -203,17 +203,20 @@ namespace JuliusSweetland.OptiKey
 
                 //Show the main window
                 mainWindow.Show();
-
+                
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
                 EventHandler sizeAndPositionInitialised = null;
                 sizeAndPositionInitialised = async (_, __) =>
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
                     await ShowSplashScreen(inputService, audioService, mainViewModel);
+                    await mainViewModel.RaisePreloadErrorsToastNotification();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService, audioService, mainViewModel);
 
                     inputService.RequestResume(); //Start the input service
+
+                    // Raise any preload errors in the toast notification now.
 
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
