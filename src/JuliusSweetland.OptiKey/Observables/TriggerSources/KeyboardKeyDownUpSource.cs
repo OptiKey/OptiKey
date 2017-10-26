@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Reactive;
 using System.Reactive.Linq;
-using System.Windows.Forms;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
+using log4net;
 using MouseKeyboardActivityMonitor;
 using MouseKeyboardActivityMonitor.WinApi;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
+using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using Keys = System.Windows.Forms.Keys;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
@@ -14,6 +15,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
     public class KeyboardKeyDownUpSource : ITriggerSource
     {
         #region Fields
+
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly Keys triggerKey;
         private readonly IPointSource pointSource;
@@ -61,15 +64,19 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             handler => new KeyEventHandler(handler),
                             h => keyboardHookListener.KeyDown += h,
                             h => keyboardHookListener.KeyDown -= h)
+                        .Do(ep => Log.DebugFormat("Key down detected with KeyCode:{0} | KeyValue:{1} | KeyData:{2} | Modifiers:{3} | Alt:{4} | Control:{5} | Shift:{6}", ep.EventArgs.KeyCode, ep.EventArgs.KeyValue, ep.EventArgs.KeyData, ep.EventArgs.Modifiers, ep.EventArgs.Alt, ep.EventArgs.Control, ep.EventArgs.Shift))
                         .Where(ep => ep.EventArgs.KeyCode == triggerKey)
-                        .Select(_ => true);
+                        .Select(_ => true)
+                        .Do(_ => Log.DebugFormat("Trigger key down detected ({0})", triggerKey));
 
                     var keyUps = Observable.FromEventPattern<KeyEventHandler, KeyEventArgs>(
                             handler => new KeyEventHandler(handler),
                             h => keyboardHookListener.KeyUp += h,
                             h => keyboardHookListener.KeyUp -= h)
+                        .Do(ep => Log.DebugFormat("Key up detected with KeyCode:{0} | KeyValue:{1} | KeyData:{2} | Modifiers:{3} | Alt:{4} | Control:{5} | Shift:{6}", ep.EventArgs.KeyCode, ep.EventArgs.KeyValue, ep.EventArgs.KeyData, ep.EventArgs.Modifiers, ep.EventArgs.Alt, ep.EventArgs.Control, ep.EventArgs.Shift))
                         .Where(ep => ep.EventArgs.KeyCode == triggerKey)
-                        .Select(_ => false);
+                        .Select(_ => false)
+                        .Do(_ => Log.DebugFormat("Trigger key up detected ({0})", triggerKey));
 
                     sequence = keyDowns.Merge(keyUps)
                         .DistinctUntilChanged()
