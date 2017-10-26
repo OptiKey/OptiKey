@@ -1993,21 +1993,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void HandleServiceError(object sender, Exception exception)
         {
-            if (ToastNotification != null)
-            {
-                // Only raise toast notifications if it has been initialized
-                Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
-
-                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                inputService.RequestSuspend();
-                RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume());
-            }
-            else
-            {
-                Log.Error("Error event received from service beore main window is initialized and shown, only playing ErrorSoundFile (from settings)", exception);
-
-                StorePreloadErrors(exception.Message);
-            }
+            Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
+            inputService.RequestSuspend();
+            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+            RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume());
         }
     }
 }

@@ -36,8 +36,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IMouseOutputService mouseOutputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> errorNotifyingServices; 
-
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
+        private readonly StringBuilder pendingErrorToastNotificationContent = new StringBuilder();
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
         private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
@@ -54,7 +54,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
-
+        
         #endregion
 
         #region Ctor
@@ -266,8 +266,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         }
         
         public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
-
-        private StringBuilder preloadErrors;
 
         #endregion
 
@@ -622,29 +620,28 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 if (notificationType == NotificationTypes.Error)
                 {
-                    StorePreloadErrors(content);
+                    pendingErrorToastNotificationContent.AppendLine(content);
                 }
 
-                // Raise errors before the ToastNotification is initialized yet, 
-                // in this case, just raise callback to clean the rest up for now.
+                //Error raised before the ToastNotification is initialised. Call callback delegate to ensure everything continues.
                 callback();
             }
         }
 
-        internal async Task<bool> RaisePreloadErrorsToastNotification()
+        internal async Task<bool> RaiseAnyPendingErrorToastNotifications()
         {
-            Log.Error("Roast notification popup has been brought up to display preload errors.");
-
             var taskCompletionSource = new TaskCompletionSource<bool>();
 
-            if (preloadErrors != null && preloadErrors.Length > 0)
+            if (ToastNotification != null && pendingErrorToastNotificationContent.Length > 0)
             {
+                Log.ErrorFormat("Toast notification popup will be shown to display startup errors:{0}", pendingErrorToastNotificationContent);
                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                 inputService.RequestSuspend();
                 ToastNotification(this, new NotificationEventArgs(
-                    Resources.PRELOAD_CRASH_TITLE, 
-                    preloadErrors.ToString(), NotificationTypes.Error, () =>
+                    Resources.STARTUP_CRASH_TITLE, 
+                    pendingErrorToastNotificationContent.ToString(), NotificationTypes.Error, () =>
                     {
+                        pendingErrorToastNotificationContent.Clear();
                         inputService.RequestResume();
                         taskCompletionSource.SetResult(true);
                     }));
@@ -654,19 +651,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 taskCompletionSource.SetResult(false);
             }
 
-            preloadErrors = null;
-
             return await taskCompletionSource.Task;
-        }
-
-        private void StorePreloadErrors(string content)
-        {
-            if (preloadErrors == null)
-            {
-                preloadErrors = new StringBuilder();
-            }
-
-            preloadErrors.AppendLine(String.Format(" - {0}", content));
         }
 
         #endregion

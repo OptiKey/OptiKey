@@ -1992,7 +1992,7 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="USE_QWERTY_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Use QWERTY keyboard layout (default)</value>
   </data>
-  <data name="PRELOAD_CRASH_TITLE" xml:space="preserve">
-    <value>Uh-oh! We've encountered the following errors during the launch:</value>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>Uh-oh! We've encountered the following errors during startup:</value>
   </data>
 </root>

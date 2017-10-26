@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -827,7 +827,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CRASH_TITLE", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Croatian (Croatia) / Hrvatski (Hrvatska).
         /// </summary>
@@ -3807,15 +3807,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uh-oh! We&apos;ve encountered the following errors during the launch:.
-        /// </summary>
-        public static string PRELOAD_CRASH_TITLE {
-            get {
-                return ResourceManager.GetString("PRELOAD_CRASH_TITLE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
         ///Please uninstall Presage and install the 32 bit version of 0.9.2.
         ///OptiKey will attempt to continue, but there is a good chance it will crash shortly.
@@ -4648,6 +4639,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SPEECH_DELAY_LABEL {
             get {
                 return ResourceManager.GetString("SPEECH_DELAY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uh-oh! We&apos;ve encountered the following errors during startup:.
+        /// </summary>
+        public static string STARTUP_CRASH_TITLE {
+            get {
+                return ResourceManager.GetString("STARTUP_CRASH_TITLE", resourceCulture);
             }
         }
         

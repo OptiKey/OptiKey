@@ -210,13 +210,11 @@ namespace JuliusSweetland.OptiKey
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
                     await ShowSplashScreen(inputService, audioService, mainViewModel);
-                    await mainViewModel.RaisePreloadErrorsToastNotification();
+                    await mainViewModel.RaiseAnyPendingErrorToastNotifications();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService, audioService, mainViewModel);
 
                     inputService.RequestResume(); //Start the input service
-
-                    // Raise any preload errors in the toast notification now.
 
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
