@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -13,6 +14,7 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
+using System.Text;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -34,8 +36,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IMouseOutputService mouseOutputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> errorNotifyingServices; 
-
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
+        private readonly StringBuilder pendingErrorToastNotificationContent = new StringBuilder();
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
         private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
@@ -52,7 +54,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
-
+        
         #endregion
 
         #region Ctor
@@ -264,7 +266,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         }
         
         public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
-        
+
         #endregion
 
         #region Methods
@@ -576,6 +578,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 InputService.MultiKeySelectionSupported = kb.MultiKeySelectionSupported;
             };
+
             this.OnPropertyChanges(mvm => mvm.Keyboard).Subscribe(setMultiKeySelectionSupported);
             setMultiKeySelectionSupported(Keyboard);
         }
@@ -592,6 +595,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.ResizeDockToFull();
                 }
             };
+
             this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(resizeDockIfCollapsedDockingNotSupported);
             resizeDockIfCollapsedDockingNotSupported(KeyboardSupportsCollapsedDock);
         }
@@ -612,6 +616,42 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 ToastNotification(this, new NotificationEventArgs(title, content, notificationType, callback));
             }
+            else
+            {
+                if (notificationType == NotificationTypes.Error)
+                {
+                    pendingErrorToastNotificationContent.AppendLine(content);
+                }
+
+                //Error raised before the ToastNotification is initialised. Call callback delegate to ensure everything continues.
+                callback();
+            }
+        }
+
+        internal async Task<bool> RaiseAnyPendingErrorToastNotifications()
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+
+            if (ToastNotification != null && pendingErrorToastNotificationContent.Length > 0)
+            {
+                Log.ErrorFormat("Toast notification popup will be shown to display startup errors:{0}", pendingErrorToastNotificationContent);
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                inputService.RequestSuspend();
+                ToastNotification(this, new NotificationEventArgs(
+                    Resources.STARTUP_CRASH_TITLE, 
+                    pendingErrorToastNotificationContent.ToString(), NotificationTypes.Error, () =>
+                    {
+                        pendingErrorToastNotificationContent.Clear();
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(true);
+                    }));
+            }
+            else
+            {
+                taskCompletionSource.SetResult(false);
+            }
+
+            return await taskCompletionSource.Task;
         }
 
         #endregion

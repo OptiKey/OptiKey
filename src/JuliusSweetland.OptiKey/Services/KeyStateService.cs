@@ -221,7 +221,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CalculateMultiKeySelectionSupported()
         {
-            Log.Info("CalculateMultiKeySelectionSupported called.");
+            Log.Debug("CalculateMultiKeySelectionSupported called.");
 
             if (KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown()
                 && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown()))
