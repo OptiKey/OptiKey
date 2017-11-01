@@ -135,8 +135,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Storyboard.SetTargetProperty(introAnimation, new PropertyPath("(UIElement.Opacity)"));
             storyboard.Children.Add(introAnimation);
 
-            var displayTimeInSeconds = Convert.ToInt32(Math.Ceiling((double)(text != null ? text.Length : 0) 
-                * (double)Settings.Default.ToastNotificationSecondsPerCharacter));
+            const double minDisplayTime = 2.0d;
+            var displayTimeInSeconds = Math.Max(minDisplayTime,
+                Convert.ToInt32(Math.Ceiling((double)(text != null ? text.Length : 0) 
+                * (double)Settings.Default.ToastNotificationSecondsPerCharacter)));
 
             var outroAnimation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(0.5)), FillBehavior.Stop)
             {
