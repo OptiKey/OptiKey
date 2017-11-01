@@ -1293,7 +1293,7 @@ Español
 (España)</value>
   </data>
   <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Dynamic keyboard selector</value>
+    <value>Dynamic keyboard menu</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
