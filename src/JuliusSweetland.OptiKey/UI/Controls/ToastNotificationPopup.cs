@@ -21,7 +21,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private Screen screen;
         private ToastNotification toastNotification;
         private Queue<Models.NotificationEventArgs> messageQueue;
-        private int openPopupCounts;
 
         #endregion
 
