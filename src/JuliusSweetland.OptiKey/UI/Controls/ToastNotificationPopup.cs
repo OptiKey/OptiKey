@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -19,12 +20,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private Window window;
         private Screen screen;
         private ToastNotification toastNotification;
+        private Queue<Models.NotificationEventArgs> messageQueue;
+        private int openPopupCounts;
 
         #endregion
 
         public ToastNotificationPopup()
         {
             Loaded += OnLoaded;
+            messageQueue = new Queue<Models.NotificationEventArgs>();
         }
 
         #region On Loaded
@@ -37,30 +41,58 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             toastNotification = VisualAndLogicalTreeHelper.FindLogicalChildren<ToastNotification>(this).First();
             var mainViewModel = DataContext as MainViewModel;
 
-            //Handle ToastNotification event
+            //Handle ToastNotification event: producer will push the message into the queue
             mainViewModel.ToastNotification += (o, args) =>
             {
-                SetSizeAndPosition();
+                messageQueue.Enqueue(args);
 
-                Title = args.Title;
-                Content = args.Content;
-                NotificationType = args.NotificationType;
-
-                Action closePopup = () =>
+                if (messageQueue.Count == 1)
                 {
-                    if (IsOpen)
-                    {
-                        IsOpen = false;
-                        if (args.Callback != null)
-                        {
-                            args.Callback();
-                        }
-                    }
-                };
-
-                AnimateTarget(args.Content, toastNotification, closePopup);
-                IsOpen = true;
+                    // if the first message, start the message chain
+                    RaiseNotificationChain();
+                }
             };
+        }
+
+        // Consumer, pick up a message and display; when done, pick up the next one
+        // and display in the popup
+        private void RaiseNotificationChain()
+        {
+            Models.NotificationEventArgs args = messageQueue.Peek();
+            if (args == null)
+            {
+                this.IsOpen = false;
+                return;
+            }
+
+            SetSizeAndPosition();
+
+            Title = args.Title;
+            Content = args.Content;
+            NotificationType = args.NotificationType;
+
+            Action closePopup = () =>
+            {
+                if (this.IsOpen)
+                {
+                    args.Callback?.Invoke();
+                    messageQueue.Dequeue();    // message is done, remove from the queue
+
+                    if (messageQueue.Count > 0)
+                    {
+                        // raise next message
+                        RaiseNotificationChain();
+                    }
+                    else
+                    {
+                        // all messages are displayed, we're done and lower the popup
+                        this.IsOpen = false;
+                    }
+                }
+            };
+
+            AnimateTarget(args.Content, toastNotification, closePopup);
+            this.IsOpen = true;
         }
 
         #endregion
@@ -129,8 +161,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private static void AnimateTarget(string text, FrameworkElement target, Action onPopupClose)
         {
             var storyboard = new Storyboard();
-
             var introAnimation = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromSeconds(0.5)), FillBehavior.Stop);
+
             Storyboard.SetTarget(introAnimation, target);
             Storyboard.SetTargetProperty(introAnimation, new PropertyPath("(UIElement.Opacity)"));
             storyboard.Children.Add(introAnimation);
@@ -142,7 +174,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 BeginTime = TimeSpan.FromSeconds(displayTimeInSeconds)
             };
+
             outroAnimation.Completed += (_, __) => onPopupClose();
+
             Storyboard.SetTarget(outroAnimation, target);
             Storyboard.SetTargetProperty(outroAnimation, new PropertyPath("(UIElement.Opacity)"));
             storyboard.Children.Add(outroAnimation);

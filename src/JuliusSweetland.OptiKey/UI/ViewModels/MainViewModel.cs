@@ -622,11 +622,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        internal void RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
+        internal bool RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
         {
+            bool notificationRaised = false;
+
             if (ToastNotification != null)
             {
                 ToastNotification(this, new NotificationEventArgs(title, content, notificationType, callback));
+                notificationRaised = true;
             }
             else
             {
@@ -638,6 +641,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 //Error raised before the ToastNotification is initialised. Call callback delegate to ensure everything continues.
                 callback();
             }
+
+            return notificationRaised;
         }
 
         internal async Task<bool> RaiseAnyPendingErrorToastNotifications()
