@@ -1278,10 +1278,7 @@ namespace JuliusSweetland.OptiKey.Services
             if (!SizeAndPositionIsInitialised)
             {
                 SizeAndPositionIsInitialised = true;
-                if (SizeAndPositionInitialised != null)
-                {
-                    SizeAndPositionInitialised(this, new EventArgs());
-                }
+                SizeAndPositionInitialised?.Invoke(this, new EventArgs());
             }
         }
 
@@ -1350,7 +1347,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-      	private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition, bool isInitialising = false, bool persist=true)
+      	private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition, bool isInitialising = false, bool persist = true)
         { 
             Log.InfoFormat("SetAppBarSizeAndPosition called with dockPosition:{0}, sizeAndPosition.Top:{1}, sizeAndPosition.Bottom:{2}, sizeAndPosition.Left:{3}, sizeAndPosition.Right:{4}",
                     dockPosition, sizeAndPosition.Top, sizeAndPosition.Bottom, sizeAndPosition.Left, sizeAndPosition.Right);
@@ -1399,7 +1396,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.InfoFormat("SetPos returned barData.rc.Top:{0}, barData.rc.Bottom:{1}, barData.rc.Left:{2}, barData.rc.Right:{3}",
                     barData.rc.Top, barData.rc.Bottom, barData.rc.Left, barData.rc.Right);
 
-            var finalDockLeftInDp = barData.rc.Left/Graphics.DipScalingFactorX;
+            var finalDockLeftInDp = barData.rc.Left / Graphics.DipScalingFactorX;
             var finalDockTopInDp = barData.rc.Top / Graphics.DipScalingFactorY;
             var finalDockWidthInDp = (barData.rc.Right - barData.rc.Left) / Graphics.DipScalingFactorX;
             var finalDockHeightInDp = (barData.rc.Bottom - barData.rc.Top) / Graphics.DipScalingFactorY;
@@ -1408,6 +1405,12 @@ namespace JuliusSweetland.OptiKey.Services
             Log.InfoFormat("Screen bounds in dp - Top:{0}, Left:{1}, Width:{2}, Height:{3}", screenBoundsInDp.Top, screenBoundsInDp.Left, screenBoundsInDp.Width, screenBoundsInDp.Height);
 
       	    if (isInitialising) return;
+
+            if (finalDockHeightInDp <= 0 || finalDockWidthInDp <= 0)
+            {
+                Log.WarnFormat("Unable to set inappropriate window size - height:{0}, width:{1}; Width and height must all be positive values.", finalDockHeightInDp, finalDockWidthInDp);
+                return;
+            }
 
       	    //Apply final size and position to the window. This is dispatched with ApplicationIdle priority 
       	    //as WPF will send a resize after a new appbar is added. We need to apply the received size & position after this happens.
@@ -1439,10 +1442,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void PublishError(object sender, Exception ex)
         {
             Log.Error("Publishing Error event (if there are any listeners)", ex);
-            if (Error != null)
-            {
-                Error(sender, ex);
-            }
+            Error?.Invoke(sender, ex);
         }
 
         #endregion
