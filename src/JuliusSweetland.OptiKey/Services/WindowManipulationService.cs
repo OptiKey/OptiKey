@@ -1278,7 +1278,10 @@ namespace JuliusSweetland.OptiKey.Services
             if (!SizeAndPositionIsInitialised)
             {
                 SizeAndPositionIsInitialised = true;
-                SizeAndPositionInitialised?.Invoke(this, new EventArgs());
+                if (SizeAndPositionInitialised != null)
+                {
+                    SizeAndPositionInitialised(this, new EventArgs());
+                }
             }
         }
 
@@ -1442,7 +1445,10 @@ namespace JuliusSweetland.OptiKey.Services
         private void PublishError(object sender, Exception ex)
         {
             Log.Error("Publishing Error event (if there are any listeners)", ex);
-            Error?.Invoke(sender, ex);
+            if (Error != null)
+            {
+                Error(sender, ex);
+            }
         }
 
         #endregion
