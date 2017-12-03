@@ -264,13 +264,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref errorSoundVolume, value); }
         }
 
-        private bool enableAttentionKey;
-        public bool EnableAttentionKey
-        {
-            get { return enableAttentionKey; }
-            set { SetProperty(ref enableAttentionKey, value); }
-        }
-
         private int attentionSoundVolume;
         public int AttentionSoundVolume
         {
