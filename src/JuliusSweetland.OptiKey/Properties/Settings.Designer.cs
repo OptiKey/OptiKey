@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -1961,6 +1961,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string StartupKeyboardFile {
             get {
                 return ((string)(this["StartupKeyboardFile"]));
@@ -2019,6 +2020,32 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["ToastNotificationMinimumTimeSeconds"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1000000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan MouseDragDelayAfterLeftMouseButtonDownBeforeMove {
+            get {
+                return ((global::System.TimeSpan)(this["MouseDragDelayAfterLeftMouseButtonDownBeforeMove"]));
+            }
+            set {
+                this["MouseDragDelayAfterLeftMouseButtonDownBeforeMove"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1000000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan MouseDragDelayAfterMoveBeforeLeftMouseButtonUp {
+            get {
+                return ((global::System.TimeSpan)(this["MouseDragDelayAfterMoveBeforeLeftMouseButtonUp"]));
+            }
+            set {
+                this["MouseDragDelayAfterMoveBeforeLeftMouseButtonUp"] = value;
             }
         }
     }

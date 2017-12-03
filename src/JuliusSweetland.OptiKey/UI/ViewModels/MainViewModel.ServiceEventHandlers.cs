@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -956,8 +957,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 }
                                                 mouseOutputService.MoveTo(fp1);
                                                 mouseOutputService.LeftButtonDown();
+                                                Thread.Sleep(Settings.Default.MouseDragDelayAfterLeftMouseButtonDownBeforeMove);
                                                 audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                                                 mouseOutputService.MoveTo(fp2);
+                                                Thread.Sleep(Settings.Default.MouseDragDelayAfterMoveBeforeLeftMouseButtonUp);
                                                 mouseOutputService.LeftButtonUp();
                                                 reinstateModifiers();
                                             };

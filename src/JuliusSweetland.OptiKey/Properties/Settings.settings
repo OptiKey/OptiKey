@@ -1065,7 +1065,7 @@
     <Setting Name="DynamicKeyboardsLocation" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="StartupKeyboardFile" Type="System.String" Scope="User">
+    <Setting Name="StartupKeyboardFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="EnableAttentionKey" Roaming="true" Type="System.Boolean" Scope="User">
@@ -1079,6 +1079,12 @@
     </Setting>
     <Setting Name="ToastNotificationMinimumTimeSeconds" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="MouseDragDelayAfterLeftMouseButtonDownBeforeMove" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.1000000</Value>
+    </Setting>
+    <Setting Name="MouseDragDelayAfterMoveBeforeLeftMouseButtonUp" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
   </Settings>
 </SettingsFile>
