@@ -2025,7 +2025,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1000000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0500000")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan MouseDragDelayAfterLeftMouseButtonDownBeforeMove {
             get {
@@ -2038,7 +2038,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1000000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0500000")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan MouseDragDelayAfterMoveBeforeLeftMouseButtonUp {
             get {
@@ -2046,6 +2046,32 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["MouseDragDelayAfterMoveBeforeLeftMouseButtonUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MouseDragNumberOfSteps {
+            get {
+                return ((int)(this["MouseDragNumberOfSteps"]));
+            }
+            set {
+                this["MouseDragNumberOfSteps"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0050000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan MouseDragDelayBetweenEachStep {
+            get {
+                return ((global::System.TimeSpan)(this["MouseDragDelayBetweenEachStep"]));
+            }
+            set {
+                this["MouseDragDelayBetweenEachStep"] = value;
             }
         }
     }

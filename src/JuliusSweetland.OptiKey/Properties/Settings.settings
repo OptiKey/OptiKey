@@ -1081,10 +1081,16 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="MouseDragDelayAfterLeftMouseButtonDownBeforeMove" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00.1000000</Value>
+      <Value Profile="(Default)">00:00:00.0500000</Value>
     </Setting>
     <Setting Name="MouseDragDelayAfterMoveBeforeLeftMouseButtonUp" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00.1000000</Value>
+      <Value Profile="(Default)">00:00:00.0500000</Value>
+    </Setting>
+    <Setting Name="MouseDragNumberOfSteps" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MouseDragDelayBetweenEachStep" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.0050000</Value>
     </Setting>
   </Settings>
 </SettingsFile>

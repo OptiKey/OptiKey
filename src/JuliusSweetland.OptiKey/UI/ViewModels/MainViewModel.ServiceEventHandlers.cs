@@ -956,11 +956,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                     reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                                                 }
                                                 mouseOutputService.MoveTo(fp1);
+                                                audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                                                 mouseOutputService.LeftButtonDown();
                                                 Thread.Sleep(Settings.Default.MouseDragDelayAfterLeftMouseButtonDownBeforeMove);
-                                                audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
+
+                                                Vector stepVector = fp1 - fp2;
+                                                int steps = Settings.Default.MouseDragNumberOfSteps; 
+                                                stepVector = stepVector / steps;
+
+                                                do
+                                                {
+                                                    fp1.X = fp1.X - stepVector.X;
+                                                    fp1.Y = fp1.Y - stepVector.Y;
+                                                    mouseOutputService.MoveTo(fp1);
+                                                    Thread.Sleep(Settings.Default.MouseDragDelayBetweenEachStep);
+                                                    steps--;
+                                                } while (steps > 0);
+                                                
                                                 mouseOutputService.MoveTo(fp2);
                                                 Thread.Sleep(Settings.Default.MouseDragDelayAfterMoveBeforeLeftMouseButtonUp);
+                                                audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                                                 mouseOutputService.LeftButtonUp();
                                                 reinstateModifiers();
                                             };
