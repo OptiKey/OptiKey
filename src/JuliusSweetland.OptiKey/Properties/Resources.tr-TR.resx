@@ -1573,4 +1573,13 @@ KÜÇÜLT</value>
   <data name="ALPHA" xml:space="preserve">
     <value>HARFLER</value>
   </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>DİL</value>
+  </data>
 </root>

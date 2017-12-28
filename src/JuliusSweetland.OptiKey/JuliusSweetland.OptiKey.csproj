@@ -387,6 +387,7 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\InsertNewlinesBetweenWords.cs" />
     <Compile Include="UI\ValueConverters\BoolToCustomValues.cs" />
     <Compile Include="UI\ValueConverters\OverrideHasValue.cs" />
     <Compile Include="UI\ValueConverters\CloneBrush.cs" />
@@ -400,6 +401,7 @@
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\CommuniKate.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Voice.cs" />
     <Compile Include="UI\ViewModels\Keyboards\WebBrowsing.cs" />
     <Compile Include="UI\ViewModels\Keyboards\SimplifiedConversationAlpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\SimplifiedAlpha.cs" />
@@ -445,6 +447,9 @@
     </Compile>
     <Compile Include="UI\Views\Keyboards\Common\ConversationConfirm.xaml.cs">
       <DependentUpon>ConversationConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\Voice.xaml.cs">
+      <DependentUpon>Voice.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Common\Language.xaml.cs">
       <DependentUpon>Language.xaml</DependentUpon>
@@ -1052,6 +1057,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Common\DynamicKeyboardSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Voice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

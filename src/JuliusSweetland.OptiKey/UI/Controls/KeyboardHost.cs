@@ -341,6 +341,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.Language { DataContext = Keyboard };
             }
+            else if (Keyboard is ViewModelKeyboards.Voice voice)
+            {
+                // Since the Voice keyboard's view-model is in charge of creating the keys instead of the
+                // view, we need to make sure any localized text is up-to-date with the current UI language.
+                voice.LocalizeKeys();
+
+                newContent = new CommonViews.Voice { DataContext = Keyboard };
+            }
             else if (Keyboard is ViewModelKeyboards.Menu)
             {
                 newContent = new CommonViews.Menu { DataContext = Keyboard };

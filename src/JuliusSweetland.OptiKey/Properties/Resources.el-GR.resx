@@ -1619,4 +1619,13 @@ Deutsch (Deutschland)</value>
   <data name="ALPHA" xml:space="preserve">
     <value>ΓΡΑΜΜΑΤΑ</value>
   </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Γλώσσα</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Γλώσσα</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>ΓΛΩΣΣΑ</value>
+  </data>
 </root>

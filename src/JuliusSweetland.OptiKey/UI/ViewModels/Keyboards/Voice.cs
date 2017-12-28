@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
+
+namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
+{
+    public class Voice : BackActionKeyboard
+    {
+        private const int VoiceKeyRows = 4;
+        private const int VoiceKeyColumns = 6;
+        private const int VoiceKeyCount = VoiceKeyRows * VoiceKeyColumns;
+
+        private readonly VoiceKey[] voiceKeys = new VoiceKey[VoiceKeyCount];
+        private readonly List<string> remainingVoices;
+
+        public Voice(Action backAction, List<string> voices) : base(backAction)
+        {
+            int displayedVoiceCount = (voices.Count < VoiceKeyCount)
+                ? voices.Count // We have enough room to display keys for all the voices as well as a key for "Back".
+                : VoiceKeyCount - 2; // Display as much as we can. Reserve a key for "More" in addition to "Back".
+
+            remainingVoices = voices.Skip(displayedVoiceCount).ToList();
+
+            for (int i = 0; i < displayedVoiceCount; i++)
+            {
+                voiceKeys[i] = new VoiceKey
+                {
+                    Text = voices[i],
+                    KeyValue = new KeyValue(FunctionKeys.SelectVoice, voices[i]),
+                };
+            }
+
+            RecreateBackAndMoreKeys();
+        }
+
+        public int RowCount => VoiceKeyRows;
+        public int ColumnCount => VoiceKeyColumns;
+
+        public IEnumerable<VoiceKey> VoiceKeys => voiceKeys;
+
+        public List<string> RemainingVoices => remainingVoices;
+
+        public void LocalizeKeys() => RecreateBackAndMoreKeys();
+
+        private void RecreateBackAndMoreKeys()
+        {
+            voiceKeys[VoiceKeyCount - 1] = new VoiceKey
+            {
+                Text = Resources.BACK,
+                KeyValue = KeyValues.BackFromKeyboardKey,
+            };
+
+            if (remainingVoices.Count > 0)
+            {
+                voiceKeys[VoiceKeyCount - 2] = new VoiceKey
+                {
+                    Text = Resources.MORE,
+                    KeyValue = KeyValues.MoreKey,
+                };
+            }
+        }
+    }
+
+    public struct VoiceKey
+    {
+        public string Text { get; set; }
+        public KeyValue KeyValue { get; set; }
+    }
+}

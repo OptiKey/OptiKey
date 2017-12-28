@@ -1585,4 +1585,13 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="ALPHA" xml:space="preserve">
     <value>LETTERS</value>
   </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>TAAL:</value>
+  </data>
 </root>

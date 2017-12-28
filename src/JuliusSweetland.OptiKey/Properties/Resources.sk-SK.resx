@@ -1567,4 +1567,13 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   <data name="ALPHA" xml:space="preserve">
     <value>PÍSMENÁ</value>
   </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>JAZYK</value>
+  </data>
 </root>

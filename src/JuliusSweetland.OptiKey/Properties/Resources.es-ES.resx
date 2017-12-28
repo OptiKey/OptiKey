@@ -1598,4 +1598,13 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="ALPHA" xml:space="preserve">
     <value>LETRAS</value>
   </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>LENGUAJE</value>
+  </data>
 </root>

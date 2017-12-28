@@ -95,7 +95,7 @@
                       Value="{x:Static models:KeyValues.IncreaseOpacityKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="2"
                       SymbolGeometry="{StaticResource LanguageIcon}"
-                      Text="{x:Static resx:Resources.LANGUAGE}"
+                      Text="{x:Static resx:Resources.LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       Value="{x:Static models:KeyValues.LanguageKeyboardKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="3"

@@ -385,6 +385,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             break;
                     }
                     break;
+
+                case FunctionKeys.SelectVoice:
+                    SelectVoice(singleKeyValue.String);
+                    break;
             }
         }
 
@@ -488,12 +492,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.CatalanSpain:
-                    Log.Info("Changing keyboard language to CatalanSpain.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.CatalanSpain;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.CatalanSpain);
                     break;
 
                 case FunctionKeys.CollapseDock:
@@ -626,12 +625,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.CroatianCroatia:
-                    Log.Info("Changing keyboard language to CroatianCroatia.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.CroatianCroatia;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.CroatianCroatia);
                     break;
 
                 case FunctionKeys.Currencies1Keyboard:
@@ -725,19 +719,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 break;
 
                 case FunctionKeys.CzechCzechRepublic:
-                    Log.Info("Changing keyboard language to CzechCzechRepublic.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.CzechCzechRepublic;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.CzechCzechRepublic);
                     break;
 
                 case FunctionKeys.DanishDenmark:
-                    Log.Info("Changing keyboard language to DanishDenmark.");
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.DanishDenmark;
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.DanishDenmark);
                     break;
 
                 case FunctionKeys.DecreaseOpacity:
@@ -761,48 +747,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.DutchBelgium:
-                    Log.Info("Changing keyboard language to DutchBelgium.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.DutchBelgium;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.DutchBelgium);
                     break;
 
                 case FunctionKeys.DutchNetherlands:
-                    Log.Info("Changing keyboard language to DutchNetherlands.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.DutchNetherlands;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.DutchNetherlands);
                     break;
 
                 case FunctionKeys.EnglishCanada:
-                    Log.Info("Changing keyboard language to EnglishCanada.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.EnglishCanada;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.EnglishCanada);
                     break;
 
                 case FunctionKeys.EnglishUK:
-                    Log.Info("Changing keyboard language to EnglishUK.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.EnglishUK;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.EnglishUK);
                     break;
 
                 case FunctionKeys.EnglishUS:
-                    Log.Info("Changing keyboard language to EnglishUS.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.EnglishUS;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.EnglishUS);
                     break;
 
                 case FunctionKeys.ExpandDock:
@@ -855,28 +816,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.FrenchFrance:
-                    Log.Info("Changing keyboard language to FrenchFrance.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.FrenchFrance;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.FrenchFrance);
                     break;
 
                 case FunctionKeys.GermanGermany:
-                    Log.Info("Changing keyboard language to GermanGermany.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.GermanGermany;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.GermanGermany);
                     break;
 
                 case FunctionKeys.GreekGreece:
-                    Log.Info("Changing keyboard language to GreekGreece.");
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.GreekGreece;
-                    Log.Info("Changing keyboard to Menu");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.GreekGreece);
                     break;
 
                 case FunctionKeys.IncreaseOpacity:
@@ -885,17 +833,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.ItalianItaly:
-                    Log.Info("Changing keyboard language to ItalianItaly.");
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.ItalianItaly;
-                    Log.Info("Changing keyboard to Menu");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.ItalianItaly);
                     break;
 
                 case FunctionKeys.KoreanKorea:
-                    Log.Info("Changing keyboard language to KoreanKorea.");
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.KoreanKorea;
-                    Log.Info("Changing keyboard to Menu");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.KoreanKorea);
                     break;
 
                 case FunctionKeys.LanguageKeyboard:
@@ -922,6 +864,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.Restore();
                         Keyboard = currentKeyboard;
                     });
+                    break;
+
+                case FunctionKeys.More:
+                    ShowMore();
                     break;
 
                 case FunctionKeys.MouseDrag:
@@ -1820,10 +1766,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.PortuguesePortugal:
-                    Log.Info("Changing keyboard language to PortuguesePortugal.");
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.PortuguesePortugal;
-                    Log.Info("Changing keyboard to Menu");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.PortuguesePortugal);
                     break;
 
                 case FunctionKeys.PreviousSuggestions:
@@ -1856,12 +1799,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.RussianRussia:
-                    Log.Info("Changing keyboard language to RussianRussia.");
-                        InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.RussianRussia;
-                        InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.RussianRussia);
                     break;
 
                 case FunctionKeys.ShrinkFromBottom:
@@ -1910,30 +1848,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.SlovakSlovakia:
-                    Log.Info("Changing keyboard language to SlovakSlovakia.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.SlovakSlovakia;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.SlovakSlovakia);
                     break;
 
                 case FunctionKeys.SlovenianSlovenia:
-                    Log.Info("Changing keyboard language to SlovenianSlovenia.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.SlovenianSlovenia;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.SlovenianSlovenia);
                     break;
 
                 case FunctionKeys.SpanishSpain:
-                    Log.Info("Changing keyboard language to SpanishSpain.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.SpanishSpain;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.SpanishSpain);
                     break;
 
                 case FunctionKeys.Speak:
@@ -1967,12 +1890,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.TurkishTurkey:
-                    Log.Info("Changing keyboard language to TurkishTurkey.");
-                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
-                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.TurkishTurkey;
-                    InputService.RequestResume();
-                    Log.Info("Changing keyboard to Menu.");
-                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    SelectLanguage(Languages.TurkishTurkey);
                     break;
 
                 case FunctionKeys.WebBrowsingKeyboard:
@@ -2043,6 +1961,84 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
             {
                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+            }
+        }
+
+        private void NavigateToMenu()
+        {
+            Log.Info("Changing keyboard to Menu.");
+            Keyboard = new Menu(CreateBackAction());
+        }
+
+        private void NavigateToVoiceKeyboard()
+        {
+            List<string> voices = GetAvailableVoices();
+
+            if (voices != null && voices.Count > 0)
+            {
+                Log.Info("Changing keyboard to Voice.");
+                Keyboard = new Voice(CreateBackAction(), voices);
+            }
+            else
+            {
+                Log.Warn("No voices available. Returning to menu.");
+                NavigateToMenu();
+            }
+        }
+
+        private void SelectLanguage(Languages language)
+        {
+            Log.Info("Changing keyboard language to " + language);
+            InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
+            Settings.Default.KeyboardAndDictionaryLanguage = language;
+            InputService.RequestResume();
+
+            NavigateToVoiceKeyboard();
+        }
+        
+        private void SelectVoice(string voice)
+        {
+            if (Settings.Default.MaryTTSEnabled)
+            {
+                Log.Info("Changing Mary TTS voice to " + voice);
+                Settings.Default.MaryTTSVoice = voice;
+            }
+            else
+            {
+                Log.Info("Changing speech voice to " + voice);
+                Settings.Default.SpeechVoice = voice;
+            }
+
+            NavigateToMenu();
+        }
+
+        private void ShowMore()
+        {
+            if (Keyboard is Voice voiceKeyboard)
+            {
+                Log.Info("Moving to next page of voices.");
+                Keyboard = new Voice(CreateBackAction(), voiceKeyboard.RemainingVoices);
+            }
+        }
+        
+        private Action CreateBackAction()
+        {
+            IKeyboard previousKeyboard = Keyboard;
+            return () => Keyboard = previousKeyboard;
+        }
+
+        private List<string> GetAvailableVoices()
+        {
+            try
+            {
+                return Settings.Default.MaryTTSEnabled
+                    ? audioService.GetAvailableMaryTTSVoices()
+                    : audioService.GetAvailableVoices();
+            }
+            catch (Exception e)
+            {
+                Log.Error("Failed to fetch available voices.", e);
+                return null;
             }
         }
     }
