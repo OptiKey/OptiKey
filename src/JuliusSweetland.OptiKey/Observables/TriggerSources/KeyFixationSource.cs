@@ -279,8 +279,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         TimeSpan GetTimeToCompleteTrigger(KeyValue keyValue)
         {
-            if (keyValue.FunctionKey is FunctionKeys functionKey)
+            if (keyValue.FunctionKey.HasValue)
             {
+                FunctionKeys functionKey = keyValue.FunctionKey.Value;
+
                 if (FunctionKeysWithIgnoredStringValue.Contains(functionKey))
                 {
                     keyValue = new KeyValue(functionKey);

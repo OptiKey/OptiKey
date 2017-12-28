@@ -2014,8 +2014,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void ShowMore()
         {
-            if (Keyboard is Voice voiceKeyboard)
+            if (Keyboard is Voice)
             {
+                var voiceKeyboard = Keyboard as Voice;
+
                 Log.Info("Moving to next page of voices.");
                 Keyboard = new Voice(CreateBackAction(), voiceKeyboard.RemainingVoices);
             }

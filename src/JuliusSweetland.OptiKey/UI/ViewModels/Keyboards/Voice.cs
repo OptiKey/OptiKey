@@ -37,14 +37,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             RecreateBackAndMoreKeys();
         }
 
-        public int RowCount => VoiceKeyRows;
-        public int ColumnCount => VoiceKeyColumns;
+        public int RowCount { get { return VoiceKeyRows; } }
+        public int ColumnCount { get { return VoiceKeyColumns; } }
 
-        public IEnumerable<VoiceKey> VoiceKeys => voiceKeys;
+        public IEnumerable<VoiceKey> VoiceKeys { get { return voiceKeys; } }
 
-        public List<string> RemainingVoices => remainingVoices;
+        public List<string> RemainingVoices { get { return remainingVoices; } }
 
-        public void LocalizeKeys() => RecreateBackAndMoreKeys();
+        public void LocalizeKeys()
+        {
+            RecreateBackAndMoreKeys();
+        }
 
         private void RecreateBackAndMoreKeys()
         {
