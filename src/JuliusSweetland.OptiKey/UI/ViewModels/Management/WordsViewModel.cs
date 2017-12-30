@@ -114,6 +114,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        private bool displayVoicesWhenChangingKeyboardLanguage;
+        public bool DisplayVoicesWhenChangingKeyboardLanguage
+        {
+            get { return displayVoicesWhenChangingKeyboardLanguage; }
+            set { SetProperty(ref displayVoicesWhenChangingKeyboardLanguage, value); }
+        }
+
         private KeyboardLayouts keyboardLayout;
         public KeyboardLayouts KeyboardLayout
         {
@@ -290,6 +297,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private void Load()
         {
             KeyboardAndDictionaryLanguage = Settings.Default.KeyboardAndDictionaryLanguage;
+            DisplayVoicesWhenChangingKeyboardLanguage = Settings.Default.DisplayVoicesWhenChangingKeyboardLanguage;
             UiLanguage = Settings.Default.UiLanguage;
             KeyboardLayout = Settings.Default.KeyboardLayout;
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
@@ -315,6 +323,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                                    || (Settings.Default.SuggestionMethod != SuggestionMethod);
 
             Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
+            Settings.Default.DisplayVoicesWhenChangingKeyboardLanguage = DisplayVoicesWhenChangingKeyboardLanguage;
             Settings.Default.UiLanguage = UiLanguage;
             Settings.Default.KeyboardLayout = KeyboardLayout;
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;

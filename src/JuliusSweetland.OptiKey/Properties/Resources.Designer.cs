@@ -1130,6 +1130,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display voices when changing keyboard language.
+        /// </summary>
+        public static string DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE {
+            get {
+                return ResourceManager.GetString("DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do at current location....
         /// </summary>
         public static string DO_AT_CURRENT_LOCATION {

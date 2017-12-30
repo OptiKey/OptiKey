@@ -1993,7 +1993,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Settings.Default.KeyboardAndDictionaryLanguage = language;
             InputService.RequestResume();
 
-            NavigateToVoiceKeyboard();
+            if (Settings.Default.DisplayVoicesWhenChangingKeyboardLanguage)
+            {
+                NavigateToVoiceKeyboard();
+            }
+            else
+            {
+                NavigateToMenu();
+            }
         }
         
         private void SelectVoice(string voice)

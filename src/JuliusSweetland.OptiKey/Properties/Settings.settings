@@ -1112,5 +1112,8 @@
     <Setting Name="MouseDragDelayBetweenEachStep" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.0050000</Value>
     </Setting>
+    <Setting Name="DisplayVoicesWhenChangingKeyboardLanguage" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
