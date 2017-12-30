@@ -57,7 +57,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
                 KeyValue = KeyValues.BackFromKeyboardKey,
             };
 
-            if (remainingVoices.Count > 0)
+            if (remainingVoices.Any())
             {
                 voiceKeys[VoiceKeyCount - 2] = new VoiceKey
                 {

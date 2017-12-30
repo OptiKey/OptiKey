@@ -1974,7 +1974,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             List<string> voices = GetAvailableVoices();
 
-            if (voices != null && voices.Count > 0)
+            if (voices != null && voices.Any())
             {
                 Log.Info("Changing keyboard to Voice.");
                 Keyboard = new Voice(CreateBackAction(), voices);
