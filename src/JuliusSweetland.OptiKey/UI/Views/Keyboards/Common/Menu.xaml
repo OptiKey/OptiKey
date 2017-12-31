@@ -17,6 +17,8 @@
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:MinimiseAndDockPositionToSymbolOrientation x:Key="MinimiseAndDockPositionToSymbolOrientation" />
+                    <valueConverters:BoolToCustomValues x:Key="BooleanToVisibilityConverter" TrueValue="Visible" FalseValue="Collapsed" />
+                    <valueConverters:BoolToCustomValues x:Key="InverseBooleanToVisibilityConverter" TrueValue="Collapsed" FalseValue="Visible" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -95,9 +97,16 @@
                       Value="{x:Static models:KeyValues.IncreaseOpacityKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="2"
                       SymbolGeometry="{StaticResource LanguageIcon}"
+                      Text="{x:Static resx:Resources.LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      Value="{x:Static models:KeyValues.LanguageKeyboardKey}"
+                      Visibility="{Binding DisplayVoicesWhenChangingKeyboardLanguage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <controls:Key Grid.Row="2" Grid.Column="2"
+                      SymbolGeometry="{StaticResource LanguageIcon}"
                       Text="{x:Static resx:Resources.LANGUAGE}"
                       SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.LanguageKeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.LanguageKeyboardKey}"
+                      Visibility="{Binding DisplayVoicesWhenChangingKeyboardLanguage, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
         <controls:Key Grid.Row="2" Grid.Column="3"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
                       Text="{x:Static resx:Resources.RE_CALIBRATE}"

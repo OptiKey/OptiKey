@@ -1634,4 +1634,13 @@ IN SU &amp; DESTRA</value>
   <data name="ALPHA" xml:space="preserve">
     <value>LETTERE</value>
   </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Lingua</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Lingua</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>LINGUA</value>
+  </data>
 </root>

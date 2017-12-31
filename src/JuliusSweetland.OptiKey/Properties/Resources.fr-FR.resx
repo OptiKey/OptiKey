@@ -1588,4 +1588,13 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="ALPHA" xml:space="preserve">
     <value>LETTRES</value>
   </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>LANGUE</value>
+  </data>
 </root>

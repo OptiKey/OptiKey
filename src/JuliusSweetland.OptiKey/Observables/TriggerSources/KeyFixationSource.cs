@@ -19,6 +19,14 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
     {
         #region Fields
 
+        // KeyValues with these FunctionKeys will have their String values ignored when looking them up in
+        // timeToCompleteTriggerByKey. This allows functions like "Select Voice" whose exact keys aren't known
+        // at design-time to share a single time-to-complete setting. 
+        private static readonly ISet<FunctionKeys> FunctionKeysWithIgnoredStringValue = new HashSet<FunctionKeys>
+        {
+            FunctionKeys.SelectVoice
+        };
+
         private readonly TimeSpan lockOnTime;
         private readonly bool resumeRequiresLockOn;
         private readonly TimeSpan defaultTimeToCompleteTrigger;
@@ -207,9 +215,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             }
                                         }
 
-                                        var timeToCompleteTrigger = timeToCompleteTriggerByKey.GetValueOrDefault(
-                                            fixationCentrePointAndKeyValue.KeyValue,
-                                            defaultTimeToCompleteTrigger);
+                                        var timeToCompleteTrigger = GetTimeToCompleteTrigger(fixationCentrePointAndKeyValue.KeyValue);
                                         var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
 
                                         //Publish a high signal if progress is 1 (100%), otherwise just publish progress (filter out 0 as this is a progress reset signal)
@@ -265,6 +271,25 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                 return sequence;
             }
+        }
+
+        #endregion
+        
+        #region Methods
+
+        TimeSpan GetTimeToCompleteTrigger(KeyValue keyValue)
+        {
+            if (keyValue.FunctionKey.HasValue)
+            {
+                FunctionKeys functionKey = keyValue.FunctionKey.Value;
+
+                if (FunctionKeysWithIgnoredStringValue.Contains(functionKey))
+                {
+                    keyValue = new KeyValue(functionKey);
+                }
+            }
+
+            return timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
         }
 
         #endregion

@@ -1998,4 +1998,26 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
     <value>Uh-oh! We've encountered the following errors during startup:</value>
   </data>
+  <data name="SELECT_VOICE" xml:space="preserve">
+    <value>SELECT VOICE</value>
+  </data>
+  <data name="MORE" xml:space="preserve">
+    <value>More…</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Language &amp; Voice</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Language
+&amp; Voice</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>LANGUAGE &amp; VOICE</value>
+  </data>
+  <data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>MORE…</value>
+  </data>
+  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>Display voices when changing keyboard language</value>
+  </data>
 </root>

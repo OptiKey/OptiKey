@@ -1843,7 +1843,12 @@ namespace JuliusSweetland.OptiKey.Properties {
             "\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r" +
             "\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Suggestion6</functi" +
             "onKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>" +
-            "\r\n    </value>\r\n  </item>\r\n</dictionary>")]
+            "\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <funct" +
+            "ionKey>SelectVoice</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n  " +
+            "    <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      " +
+            "<keyValue>\r\n        <functionKey>More</functionKey>\r\n      </keyValue>\r\n    </ke" +
+            "y>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n</dictio" +
+            "nary>")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues KeySelectionTriggerFixationCompleteTimesByKeyValues {
             get {
@@ -2072,6 +2077,19 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["MouseDragDelayBetweenEachStep"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool DisplayVoicesWhenChangingKeyboardLanguage {
+            get {
+                return ((bool)(this["DisplayVoicesWhenChangingKeyboardLanguage"]));
+            }
+            set {
+                this["DisplayVoicesWhenChangingKeyboardLanguage"] = value;
             }
         }
     }

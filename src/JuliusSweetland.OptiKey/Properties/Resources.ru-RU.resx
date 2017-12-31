@@ -1561,4 +1561,13 @@ LK</value>
   <data name="ALPHA" xml:space="preserve">
     <value>БУКВЫ</value>
   </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>ЯЗЫК</value>
+  </data>
 </root>

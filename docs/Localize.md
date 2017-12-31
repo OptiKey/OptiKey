@@ -673,10 +673,7 @@ The `HandleFunctionKeySelectionResult` method needs to know how to handle the se
 
 ```
 	case FunctionKeys.GreekGreece:
-		Log.Info("Changing keyboard language to GreekGreece.");
-		Settings.Default.KeyboardAndDictionaryLanguage = Languages.GreekGreece;
-		Log.Info("Changing keyboard to Menu");
-		Keyboard = new Menu(() => Keyboard = currentKeyboard);
+		SelectLanguage(Languages.GreekGreece);
 		break;
 ```
 

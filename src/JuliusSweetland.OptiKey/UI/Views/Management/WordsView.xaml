@@ -34,6 +34,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}"
@@ -44,15 +45,21 @@
                               SelectedValuePath="Value"
                               SelectedValue="{Binding KeyboardAndDictionaryLanguage, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.UI_LANGUAGE_LABEL}"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE}"
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="1" Grid.Column="1"
+                    <CheckBox Grid.Row="1" Grid.Column="1"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding DisplayVoicesWhenChangingKeyboardLanguage, Mode=TwoWay}"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.UI_LANGUAGE_LABEL}"
+                               VerticalAlignment="Center" Margin="5" />
+                    <ComboBox Grid.Row="2" Grid.Column="1"
                               ItemsSource="{Binding Languages}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding UiLanguage, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -68,7 +75,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="2" Grid.Column="1"
+                    <CheckBox Grid.Row="3" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" >
                         <CheckBox.Style>
@@ -86,9 +93,9 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="3" Grid.Column="1"
+                    <ComboBox Grid.Row="4" Grid.Column="1"
                               ItemsSource="{Binding KeyboardLayouts}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
@@ -106,7 +113,7 @@
                             </Style>
                         </ComboBox.Style>
                     </ComboBox>
-                    <ComboBox Grid.Row="3" Grid.Column="1"
+                    <ComboBox Grid.Row="4" Grid.Column="1"
                               ItemsSource="{Binding KeyboardLayoutsCK}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
@@ -125,7 +132,7 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
                             VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -138,7 +145,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
                         <Button Click="btnFindCommuniKateTopPageLocation_Click" MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
                             <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
                         </Button>
@@ -153,7 +160,7 @@
                             </Style>
                         </StackPanel.Style>
                     </StackPanel>
-                    <TextBlock Grid.Row="4" Grid.Column="2" Name="txtCommuniKateTopPageLocation"
+                    <TextBlock Grid.Row="5" Grid.Column="2" Name="txtCommuniKateTopPageLocation"
                                 Text="{Binding CommuniKatePagesetLocation, Mode=TwoWay}" 
                                 VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
@@ -168,9 +175,9 @@
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
                                 VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="5" Grid.Column="1"
+                    <CheckBox Grid.Row="6" Grid.Column="1"
                                 VerticalAlignment="Center"
                                 IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
                 </Grid>

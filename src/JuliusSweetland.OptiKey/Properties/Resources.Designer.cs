@@ -1130,6 +1130,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display voices when changing keyboard language.
+        /// </summary>
+        public static string DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE {
+            get {
+                return ResourceManager.GetString("DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do at current location....
         /// </summary>
         public static string DO_AT_CURRENT_LOCATION {
@@ -2376,6 +2385,34 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language &amp; Voice.
+        /// </summary>
+        public static string LANGUAGE_AND_VOICE {
+            get {
+                return ResourceManager.GetString("LANGUAGE_AND_VOICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language
+        ///&amp; Voice.
+        /// </summary>
+        public static string LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LANGUAGE &amp; VOICE.
+        /// </summary>
+        public static string LANGUAGE_AND_VOICE_UPPER_CASE {
+            get {
+                return ResourceManager.GetString("LANGUAGE_AND_VOICE_UPPER_CASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LANGUAGE.
         /// </summary>
         public static string LANGUAGE_UPPER_CASE {
@@ -2802,6 +2839,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MODIFIER_KEYS_KEY_GROUP {
             get {
                 return ResourceManager.GetString("MODIFIER_KEYS_KEY_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More….
+        /// </summary>
+        public static string MORE {
+            get {
+                return ResourceManager.GetString("MORE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MORE….
+        /// </summary>
+        public static string MORE_UPPER_CASE {
+            get {
+                return ResourceManager.GetString("MORE_UPPER_CASE", resourceCulture);
             }
         }
         
@@ -4243,6 +4298,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SCROLL_UP_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("SCROLL_UP_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT VOICE.
+        /// </summary>
+        public static string SELECT_VOICE {
+            get {
+                return ResourceManager.GetString("SELECT_VOICE", resourceCulture);
             }
         }
         
