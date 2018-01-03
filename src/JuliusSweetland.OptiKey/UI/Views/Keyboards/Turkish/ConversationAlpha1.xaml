@@ -85,9 +85,9 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="u"/>
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="i" ShiftDownText="I"
+                      ShiftUpText="ı" ShiftDownText="I"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="i"/>
+                      Value="ı"/>
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
                       ShiftUpText="o" ShiftDownText="O"
                       SharedSizeGroup="KeyWithSingleLetter"
