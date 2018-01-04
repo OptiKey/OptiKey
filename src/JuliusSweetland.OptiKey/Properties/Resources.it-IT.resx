@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -121,7 +121,7 @@
     <value>Aggiungi</value>
   </data>
   <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
-    <value>Aggiungi nuovo:</value>
+    <value>Aggiungi una parola:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>Vuoi aggiungere la frase '{0}' al dizionario con lo shortcut '{1}'?</value>
@@ -137,7 +137,7 @@ DIZIONARIO</value>
     <value>Aggiunto</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
-    <value>Sistema con {0} pixel|Sistema con {0} pixel</value>
+    <value>Correggi di {0} pixel|Correggi di {0} pixel</value>
   </data>
   <data name="ALPHA_1" xml:space="preserve">
     <value>LETTERE 1</value>
@@ -187,7 +187,7 @@ PAROLA</value>
     <value>BREAK</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Calibrazione fallita con il messaggio: '{0}'</value>
+    <value>Calibrazione annullata con il messaggio: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>Sei sicuri di voler ri-calibrare?</value>
@@ -203,7 +203,7 @@ PAROLA</value>
 Sei sicuro di voler ri-calibrare?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>La calibrazione è stata bloccata per un motivo sconosciuto. Messaggio: '{0}'</value>
+    <value>La calibrazione è stata fermata per un motivo sconosciuto. Messaggio: '{0}'</value>
   </data>
   <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>Calibrazione avvenuta! Accuratezza (Errore medio = {0})</value>
@@ -221,7 +221,7 @@ Sei sicuro di voler ri-calibrare?</value>
     <value>CANCELLA</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>CLICK
+    <value>CLICCA E
 TRASCINA</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
@@ -293,10 +293,13 @@ Spiacente per il disagio.</value>
     <value>Valuta 2</value>
   </data>
   <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
-    <value>Altezza cursore (px):</value>
+    <value>Altezza cursore (pixel):</value>
   </data>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
     <value>Larghezza cursore (px):</value>
+  </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>File della tastiera personalizzata</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
     <value>Debugging mode:</value>
@@ -327,10 +330,10 @@ OPACITA'</value>
     <value>Dizionario</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>Nessun dizionario esistente e dizionario originale non trovato al percorso: '{0}'</value>
+    <value>Non esiste nessun dizionario utente e il dizionario originale non è stato trovato al percorso: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
-    <value>Mostra per X secondi i caratteri del messaggio:</value>
+    <value>Mostra per X secondi per ogni carattere del messaggio:</value>
   </data>
   <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
     <value>Esegui in questa posizione...</value>
@@ -409,19 +412,19 @@ SU</value>
     <value>Riempimento torta</value>
   </data>
   <data name="FIXATIONS_DWELL" xml:space="preserve">
-    <value>Fissazioni (soffermarsi)</value>
+    <value>Attesa con lo sguardo</value>
   </data>
   <data name="FONT" xml:space="preserve">
-    <value>Font</value>
+    <value>Caratteri</value>
   </data>
   <data name="FONT_FAMILY_LABEL" xml:space="preserve">
     <value>Famiglia caratteri:</value>
   </data>
   <data name="FONT_STRETCH_LABEL" xml:space="preserve">
-    <value>Lunghezza Font:</value>
+    <value>Lunghezza caratteri:</value>
   </data>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
-    <value>Font weight:</value>
+    <value>Spessore caratteri:</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Spessore dock (come % dello schermo):</value>
@@ -436,7 +439,7 @@ SU</value>
     <value>Riempimento orizzontale (in % dello schermo)</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Tempo di permanenza fissazione tasto incompleta (ms):</value>
+    <value>Tempo per cui la selezione incompleta di un tasto resta attiva (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>AUMENTA
@@ -493,25 +496,25 @@ IN SU</value>
     <value>Tasto trasformazione testo:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Tempo per completare la fissazione tasto (ms):</value>
+    <value>Durata dell'attesa con lo sguardo per completare la selezione (ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Tempo fissazione per blocco tasti (ms):</value>
+    <value>Tempo che precede l'inizio della selezione di un tasto (ms):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Tasto selezione tastiera tasto:</value>
+    <value>Tasto della tastiera per la selezione del tasto:</value>
   </data>
   <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Tasto selezione bottone mouse:</value>
+    <value>Pulsante del mouse per la selezione del tasto:</value>
   </data>
   <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
-    <value>Tasto Selezione:</value>
+    <value>Selezione del tasto:</value>
   </data>
   <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Sorgente selezione tasto:</value>
+    <value>Metodo per la selezione del tasto:</value>
   </data>
   <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
-    <value>Selezione tasto: {0}</value>
+    <value>Selezione del tasto: {0}</value>
   </data>
   <data name="KEYBOARD_KEY" xml:space="preserve">
     <value>Tasto tastiera</value>
@@ -524,6 +527,9 @@ IN SU</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>Lingua tastiera:</value>
+  </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>La cartella delle tastiere può essere impostata nelle \n impostazioni (tab Visualizzazione)</value>
   </data>
   <data name="LEFT" xml:space="preserve">
     <value>Sinistra</value>
@@ -558,16 +564,16 @@ MAGNETICO</value>
     <value>ZOOM</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Ingrandire destinazione (in % dello schermo)</value>
+    <value>Visualizzazione dell'ingrandimento (in % dello schermo)</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Ingrandire origine (in % dello schermo)</value>
+    <value>Dimensione dell'ingrandimento (in % dello schermo)</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Impostazioni: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Console Impostazioni</value>
+    <value>Impostazioni OptiKey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Numero massimo di corrispondenze col dizionario:</value>
@@ -605,7 +611,7 @@ GIU'/SU</value>
     <value>MOUSE</value>
   </data>
   <data name="MOUSE_BUTTON" xml:space="preserve">
-    <value>Mouse button</value>
+    <value>Pulsante del mouse</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
     <value>Mouse Click 1</value>
@@ -743,21 +749,21 @@ IN SU</value>
     <value>Cattura multi-tasto abilitata:</value>
   </data>
   <data name="MULTI_KEY_SELECTION" xml:space="preserve">
-    <value>selezione multi-tasto</value>
+    <value>Selezione tasti multipli</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Fine selezione multi-tasto:</value>
+    <value>Fine selezione tast multipli:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SELEZIONE
-MULTI-TASTO</value>
+TASTI MULTIPLI</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Avvio selezione multi-tasto:</value>
+    <value>Avvio selezione taste multipli:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
-(La nuova voce per il dizionario conterrà lettere maiuscole)</value>
+(La nuova voce del dizionario conterrà lettere maiuscole)</value>
   </data>
   <data name="NEXT" xml:space="preserve">
     <value>AVANTI</value>
@@ -765,8 +771,11 @@ MULTI-TASTO</value>
   <data name="NO" xml:space="preserve">
     <value>NO</value>
   </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>Tastiera non trovata</value>
+  </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
-    <value>Sembra che gli appunti non contengano alcuna parola o frase che non sia già stata inserita nel dizionario.</value>
+    <value>Sembra che il campo del testo non contenga alcuna parola o frase che non sia già presente nel dizionario.</value>
   </data>
   <data name="NO_SOUND" xml:space="preserve">
     <value>Nessuno</value>
@@ -786,8 +795,8 @@ LK</value>
 SYM</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>NUMBERi
-&amp; SiMBOLi</value>
+    <value>NUMERI
+&amp; SIMBOLI</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
     <value>Numeri &amp; Simboli 1</value>
@@ -832,16 +841,16 @@ FISICI</value>
     <value>Puntamento &amp; Selezione</value>
   </data>
   <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
-    <value>Raggio punto fissazione (px):</value>
+    <value>Raggio del punto fissato (pixel):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Tempo di fissazione per completare punto (ms):</value>
+    <value>Durata dell'attesa con lo sguardo per selezionare un punto (ms):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Tempo di fissazione per blocco punto (ms):</value>
+    <value>Tempo che precede l'inizio della selezione di un punto (ms):</value>
   </data>
   <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
-    <value>Raggio per blocco su punto (px):</value>
+    <value>Raggio del punto per la preselezione (pixel):</value>
   </data>
   <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
     <value>Selezione punto: {0}</value>
@@ -850,7 +859,7 @@ FISICI</value>
     <value>Tasto di selezione punto:</value>
   </data>
   <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Bottone mouse selezione punto: </value>
+    <value>Pulsante del mouse per la selezione del punto: </value>
   </data>
   <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
     <value>Sorgente selezione punto:</value>
@@ -891,7 +900,7 @@ SCR</value>
 ULTIMO</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
-    <value>Servizio/i Audio e/o Dizionario è/sono non specificati come azione alla finestra di impostazioni. </value>
+    <value>Servizio/i Audio e/o Dizionario non è/sono stati specificati come azione alla finestra di impostazioni. </value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
     <value>OptiKey necessita di essere riavviato per applicare i cambiamenti.
@@ -901,7 +910,7 @@ Si prega di cliccare OK per continuare con il riavvio, ANNULLA per annullare i c
     <value>Ripristina</value>
   </data>
   <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Il recupero di una fissazione tasto incompleta richiede un nuovo blocco su:</value>
+    <value>La ripresa della selezione incompleta di un tasto richiede dinuovo il tempo che precede l'inizio della selezione:</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
     <value>Destra</value>
@@ -928,7 +937,7 @@ GIU'/SU</value>
     <value>Lo stesso della posizione del dock</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
-    <value>Appunta # di linee:</value>
+    <value>Numero di linee del campo di testo:</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SCR
@@ -1010,7 +1019,7 @@ IN SU &amp; DESTRA</value>
 IN SU</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
-    <value>(FYI alcune voci simili sono già state aggiunti al dizionario: {0})</value>
+    <value>(Tieni presente che sono già presenti nel dizionario voci simili: {0})</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>DIMENSIONE
@@ -1043,6 +1052,9 @@ IN SU</value>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
     <value>Tasto di avvio:</value>
   </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>File della tastiera personalizzata:</value>
+  </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>Segnale di stop:</value>
   </data>
@@ -1070,11 +1082,14 @@ IN SU</value>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Tempo fino a che il punto diventa irrilevante (ms):</value>
   </data>
+  <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>Nascondi cursore</value>
+  </data>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Le parole sono in maiuscolo</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Calibrazione completata, o annullata, ma sta andando ancora tutto bene!</value>
+    <value>Calibrazione completata o eventualmente annullata, ma sta andando ancora tutto bene!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
     <value>Tobii EyeX non è stato trovato. Si prega di installare EyeX Engine e riprovare.</value>
@@ -1095,10 +1110,10 @@ IN SU</value>
     <value>Tono 4</value>
   </data>
   <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
-    <value>Bottone/tasto di azione nuovamente premuto</value>
+    <value>Pulsante/tasto di azione premuto dinuovo</value>
   </data>
   <data name="TRIGGER_RELEASED" xml:space="preserve">
-    <value>Bottone/tasto di azione rilasciato</value>
+    <value>Pulsante/tasto di azione rilasciato</value>
   </data>
   <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
     <value>Non posso identificare dove stai dirigendo l'attenzione. C'è forse un problema con il dispositivo di input? E' connesso, acceso, calibrato, etc?</value>
@@ -1127,7 +1142,7 @@ SU</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>Si prega di visitare www.optikey.org per scaricare l'ultima versione ({0})
-Puoi disabilitare il controllo aggiornamenti dalla Console di impostazioni (ALT + M)</value>
+Puoi disabilitare il controllo degli aggiornamenti dalle impostazioni (ALT + M)</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
     <value>Posso riavviare OptiKey?</value>
@@ -1139,7 +1154,7 @@ Puoi disabilitare il controllo aggiornamenti dalla Console di impostazioni (ALT 
     <value>Riempimento verticale (in % dello schermo)</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
-    <value>Visuali</value>
+    <value>Visualizzazione</value>
   </data>
   <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
     <value>(da impostazioni)</value>
@@ -1151,7 +1166,7 @@ Puoi disabilitare il controllo aggiornamenti dalla Console di impostazioni (ALT 
     <value>Volume:</value>
   </data>
   <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
-    <value>Website: www.optikey.org</value>
+    <value>Sito web: www.optikey.org</value>
   </data>
   <data name="WIN" xml:space="preserve">
     <value>WIN</value>
@@ -1164,6 +1179,9 @@ Puoi disabilitare il controllo aggiornamenti dalla Console di impostazioni (ALT 
   </data>
   <data name="YES" xml:space="preserve">
     <value>SI</value>
+  </data>
+  <data name="YESNO" xml:space="preserve">
+    <value>SI/NO</value>
   </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
     <value>Lettere</value>
@@ -1196,7 +1214,7 @@ Puoi disabilitare il controllo aggiornamenti dalla Console di impostazioni (ALT 
     <value>Interrompi l'ingrandimento mouse durante lo scroll </value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Spessore bordo della tastiera di conversazione (sinistra, alto, destra, basso in px):</value>
+    <value>Spessore del bordo della tastiera di conversazione (sinistra, alto, destra, basso in px):</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
     <value>INDIETRO DI UNO</value>
@@ -1483,7 +1501,7 @@ IN SU &amp; DESTRA</value>
   </data>
   <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
     <value>SELEZIONE
-MULTI-TASTO</value>
+TASTI MULTIPLI</value>
   </data>
   <data name="NUM_LK" xml:space="preserve">
     <value>NUM
@@ -1575,7 +1593,7 @@ IN SU &amp; DESTRA</value>
     <value>TASTI D'AZIONE DEL DOCK:</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Esclusioni per il tempo di fissazione di ogni tasto (ms)</value>
+    <value>Preferenze del tempo di attesa con lo sguardo per tasti specifici (ms)</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
     <value>TASTI DI CAMBIO LINGUA:</value>
@@ -1611,7 +1629,7 @@ IN SU &amp; DESTRA</value>
     <value>Specifica il tempo di completamento sui singoli tasti:</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>OptiKey Console Impostazioni</value>
+    <value>Console di gestione (Impostazioni)</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Esci</value>
@@ -1619,11 +1637,135 @@ IN SU &amp; DESTRA</value>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Sopprimi modificatori tasti per tutte le azioni mouse:</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Calibrazione avvenuta!</value>
+  <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>Connessione a myGaze non riuscita! Perfavore controllare che il server stia funzionando e che il dispositivo sia connesso e riprovare.</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Calibrazione fallita!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Calibrazione riuscita!</value>
+  </data>
+  <data name="FORCE_CAPS_LOCK" xml:space="preserve">
+    <value>Blocca maiuscolo:</value>
+  </data>
+  <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Utilizza layout alfabetico della tastiera:</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Filtro Kalman:</value>
+  </data>
+  <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
+    <value>Passa a modalità manuale</value>
+  </data>
+  <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+    <value>Modificato modalità di input</value>
+  </data>
+  <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+    <value>Modalitá manuale (mouse) disabilitata!</value>
+  </data>
+  <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
+    <value>Modalità manuale (mouse) abilitata!</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
+    <value>Abilita tastiera con conferma della conversazione</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Soltanto modalitá con conferma della conversazione:</value>
+  </data>
+  <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
+    <value>Abilita tasti di uscita?</value>
+  </data>
+  <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Utilizza layout semplificato della tastiera</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Indietro</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Avanti</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Home</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Ricerca</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>Navigare in rete</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Navigare
+in rete</value>
+  </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>Utilizza sintetizzatore vocale MaryTTS?</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>Voce di MaryTTS:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>Lingua di MaryTTS (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>ERRORE: non è stato selezionato un file 'marytts-server.bat' valido. Perfavore riprova.</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>Metodo di suggerimento:</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>MaryTTS non è disponibile</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>Predizione delle parole Presage non disponibile </value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>Imposto il metodo di suggerimento a: {0}.
+Puoi tornare indietro
+dalla Console di Gestione (ALT + M).</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>Imposto la voce del sistema alla voce: {0}.
+Puoi controllare il percorso di MaryTTS
+e riimpostare la voce dalla
+Console di Gestione (ALT + M).</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>Ritardo prima della pronuncia (ms)</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Utilizza il layout della tastiera CommuniKate </value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Abilita il layout della tastiera CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>Prima pagina del file obf di CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>File non valido</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>Percorso della prima pagina del file .obx di CommuniKate</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>O è installata una versione a 64 bit di Presage (OptiKey supporta solo la versione a 32 bit), oppure i file di Presage sono stati spostati, cancellati o sono rovinati.
+Perfavore disinstallare Presage e installare la versione a 32 bit 0.9.2.
+OptiKey proverà a continuare l'esecuzione, ma ci sono buone probabilità che si bloccherà presto.
+Il metodo di suggerimento sarà cambiato a NGram per evitare il blocco al prossimo avvio.</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>C'è un problema con Presage</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>Cartella che contiene le tastiere dinamiche:</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>LETTERE 2</value>
@@ -1631,16 +1773,46 @@ IN SU &amp; DESTRA</value>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>CONVERSAZIONE ALPHA 2</value>
   </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>Tutte le modifiche effettuate alle impostazioni verranno annullate, sei sicuro di voler continuare?</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>Annulla impostazioni</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>Il dizionario di Presage non può essere editato da qui.
+Il suo percorso di default é "C:\Program Files (x86)\presage\share\presage\database_en.db".
+Il dizionario può essere modificato con un programma in grado di leggere il formato 3 di file SQLite
+tipo "DB Browser for SQLite" (che è programma free).</value>
+  </data>
   <data name="ALPHA" xml:space="preserve">
     <value>LETTERE</value>
   </data>
-  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
-    <value>Lingua</value>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>Errore durante il processo di ingrandimento. Perfavore disabilitare l'ingrandimento e contattare OptiKey per ulteriore supporto.</value>
   </data>
-  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Lingua</value>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>Errore:</value>
   </data>
-  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
-    <value>LINGUA</value>
+  <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>Attenzione:</value>
+  </data>
+  <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>Abilitare tasto di attenzione?</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>ATTENZIONE</value>
+  </data>
+  <data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>Attenzione</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>CommuniKate é attualmente disabilitato (utilizza QWERTY)</value>
+  </data>
+  <data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Layout della tastiera per la scrittura</value>
+  </data>
+  <data name="USE_QWERTY_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Utilizza layout della tastiera QWERTY (default)</value>
   </data>
 </root>
