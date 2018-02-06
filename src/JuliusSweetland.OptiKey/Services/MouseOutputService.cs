@@ -169,12 +169,17 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("Scrolling wheel by <{0},{1}> in absolute units.", dx, dy);
 
-            if (dx != 0)
+            if (dx != 0 && dy != 0)
+            {
+                publishService.ScrollMouseWheelAbsoluteHorizontal(dx);
+                Thread.Sleep(DEFAULT_SLEEP_MS);
+                publishService.ScrollMouseWheelAbsoluteVertical(dy);
+            }
+            else if (dx != 0)
             {
                 publishService.ScrollMouseWheelAbsoluteHorizontal(dx);
             }
-
-            if (dy != 0)
+            else if (dy != 0)
             {
                 publishService.ScrollMouseWheelAbsoluteVertical(dy);
             }
