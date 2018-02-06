@@ -1,0 +1,62 @@
+﻿<Window x:Class="JuliusSweetland.OptiKey.UI.Windows.LookToScrollOverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
+        xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Focusable="False"
+        IsHitTestVisible="False"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Topmost="True"
+        WindowStyle="None">
+
+    <Window.Resources>
+        <valueConverters:BoolToCustomValues TrueValue="Collapsed" FalseValue="Visible" x:Key="InverseBooleanToVisibility"/>
+        <valueConverters:ColorNameToBrush x:Key="ColorNameToBrush"/>
+        <valueConverters:EnumToVisibilityConverter x:Key="EnumToVisibility"/>
+    </Window.Resources>
+
+    <Window.Visibility>
+        <Binding Path="ActiveLookToScrollBounds.IsEmpty" Converter="{StaticResource InverseBooleanToVisibility}"/>
+    </Window.Visibility>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollVerticalDeadzone}"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollHorizontalDeadzone}"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Bounds -->
+        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" 
+                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayBoundsColor, Converter={StaticResource ColorNameToBrush}}" 
+                BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayBoundsThickness}"/>
+
+        <!-- Deadzone (Free Mode) -->
+        <Border Grid.Row="1" Grid.Column="1" 
+                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColor, Converter={StaticResource ColorNameToBrush}}" 
+                BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
+                Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Free'}"/>
+
+        <!-- Deadzone (Horizontal or Cross Mode) -->
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"
+                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColor, Converter={StaticResource ColorNameToBrush}}" 
+                BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
+                Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Horizontal,Cross'}"/>
+
+        <!-- Deadzone (Vertical or Cross Mode) -->
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColor, Converter={StaticResource ColorNameToBrush}}" 
+                BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
+                Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Vertical,Cross'}"/>
+    </Grid>
+    
+</Window>

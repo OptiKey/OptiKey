@@ -165,6 +165,21 @@ namespace JuliusSweetland.OptiKey.Services
             publishService.RightMouseButtonUp();
         }
 
+        public void ScrollWheelAbsolute(int dx, int dy)
+        {
+            Log.DebugFormat("Scrolling wheel by <{0},{1}> in absolute units.", dx, dy);
+
+            if (dx != 0)
+            {
+                publishService.ScrollMouseWheelAbsoluteHorizontal(dx);
+            }
+
+            if (dy != 0)
+            {
+                publishService.ScrollMouseWheelAbsoluteVertical(dy);
+            }
+        }
+
         #endregion
     }
 }

@@ -143,11 +143,23 @@
             </summary>
             <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.</param>
         </member>
+        <member name="M:WindowsInput.IMouseSimulator.VerticalScrollAbsolute(System.Int32)">
+            <summary>
+            Simulates mouse vertical wheel scroll gesture.
+            </summary>
+            <param name="scrollAmount">The absolute amount to scroll. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.</param>
+        </member>
         <member name="M:WindowsInput.IMouseSimulator.HorizontalScroll(System.Int32)">
             <summary>
             Simulates a mouse horizontal wheel scroll gesture. Supported by Windows Vista and later.
             </summary>
             <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.</param>
+        </member>
+        <member name="M:WindowsInput.IMouseSimulator.HorizontalScrollAbsolute(System.Int32)">
+            <summary>
+            Simulates a mouse horizontal wheel scroll gesture. Supported by Windows Vista and later.
+            </summary>
+            <param name="scrollAmount">The absolute amount to scroll. A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.</param>
         </member>
         <member name="M:WindowsInput.IMouseSimulator.Sleep(System.Int32)">
             <summary>
@@ -379,11 +391,23 @@
             </summary>
             <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.</param>
         </member>
+        <member name="M:WindowsInput.MouseSimulator.VerticalScrollAbsolute(System.Int32)">
+            <summary>
+            Simulates mouse vertical wheel scroll gesture.
+            </summary>
+            <param name="scrollAmount">The absolute amount to scroll. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.</param>
+        </member>
         <member name="M:WindowsInput.MouseSimulator.HorizontalScroll(System.Int32)">
             <summary>
             Simulates a mouse horizontal wheel scroll gesture. Supported by Windows Vista and later.
             </summary>
             <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.</param>
+        </member>
+        <member name="M:WindowsInput.MouseSimulator.HorizontalScrollAbsolute(System.Int32)">
+            <summary>
+            Simulates a mouse horizontal wheel scroll gesture. Supported by Windows Vista and later.
+            </summary>
+            <param name="scrollAmount">The absolute amount to scroll. A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.</param>
         </member>
         <member name="M:WindowsInput.MouseSimulator.Sleep(System.Int32)">
             <summary>

@@ -2092,5 +2092,291 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["DisplayVoicesWhenChangingKeyboardLanguage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollEnabled {
+            get {
+                return ((bool)(this["LookToScrollEnabled"]));
+            }
+            set {
+                this["LookToScrollEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Vertical")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.LookToScrollModes LookToScrollMode {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.LookToScrollModes)(this["LookToScrollMode"]));
+            }
+            set {
+                this["LookToScrollMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Screen")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.LookToScrollBounds LookToScrollBounds {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.LookToScrollBounds)(this["LookToScrollBounds"]));
+            }
+            set {
+                this["LookToScrollBounds"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Medium")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.LookToScrollSpeeds LookToScrollSpeed {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.LookToScrollSpeeds)(this["LookToScrollSpeed"]));
+            }
+            set {
+                this["LookToScrollSpeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollHorizontalDeadzone {
+            get {
+                return ((int)(this["LookToScrollHorizontalDeadzone"]));
+            }
+            set {
+                this["LookToScrollHorizontalDeadzone"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollVerticalDeadzone {
+            get {
+                return ((int)(this["LookToScrollVerticalDeadzone"]));
+            }
+            set {
+                this["LookToScrollVerticalDeadzone"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollBaseSpeedSlow {
+            get {
+                return ((decimal)(this["LookToScrollBaseSpeedSlow"]));
+            }
+            set {
+                this["LookToScrollBaseSpeedSlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollBaseSpeedMedium {
+            get {
+                return ((decimal)(this["LookToScrollBaseSpeedMedium"]));
+            }
+            set {
+                this["LookToScrollBaseSpeedMedium"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollBaseSpeedFast {
+            get {
+                return ((decimal)(this["LookToScrollBaseSpeedFast"]));
+            }
+            set {
+                this["LookToScrollBaseSpeedFast"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.005")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollAccelerationSlow {
+            get {
+                return ((decimal)(this["LookToScrollAccelerationSlow"]));
+            }
+            set {
+                this["LookToScrollAccelerationSlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.010")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollAccelerationMedium {
+            get {
+                return ((decimal)(this["LookToScrollAccelerationMedium"]));
+            }
+            set {
+                this["LookToScrollAccelerationMedium"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.020")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollAccelerationFast {
+            get {
+                return ((decimal)(this["LookToScrollAccelerationFast"]));
+            }
+            set {
+                this["LookToScrollAccelerationFast"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollIncrement {
+            get {
+                return ((int)(this["LookToScrollIncrement"]));
+            }
+            set {
+                this["LookToScrollIncrement"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1, 2, 4, 10, 12, 30, 60, 120")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string LookToScrollIncrementChoices {
+            get {
+                return ((string)(this["LookToScrollIncrementChoices"]));
+            }
+            set {
+                this["LookToScrollIncrementChoices"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollDirectionInverted {
+            get {
+                return ((bool)(this["LookToScrollDirectionInverted"]));
+            }
+            set {
+                this["LookToScrollDirectionInverted"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollCenterMouseWhenActivated {
+            get {
+                return ((bool)(this["LookToScrollCenterMouseWhenActivated"]));
+            }
+            set {
+                this["LookToScrollCenterMouseWhenActivated"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollBringWindowToFrontWhenActivated {
+            get {
+                return ((bool)(this["LookToScrollBringWindowToFrontWhenActivated"]));
+            }
+            set {
+                this["LookToScrollBringWindowToFrontWhenActivated"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollShowOverlayWindow {
+            get {
+                return ((bool)(this["LookToScrollShowOverlayWindow"]));
+            }
+            set {
+                this["LookToScrollShowOverlayWindow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string LookToScrollOverlayBoundsColor {
+            get {
+                return ((string)(this["LookToScrollOverlayBoundsColor"]));
+            }
+            set {
+                this["LookToScrollOverlayBoundsColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Orange")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string LookToScrollOverlayDeadzoneColor {
+            get {
+                return ((string)(this["LookToScrollOverlayDeadzoneColor"]));
+            }
+            set {
+                this["LookToScrollOverlayDeadzoneColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollOverlayBoundsThickness {
+            get {
+                return ((int)(this["LookToScrollOverlayBoundsThickness"]));
+            }
+            set {
+                this["LookToScrollOverlayBoundsThickness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollOverlayDeadzoneThickness {
+            get {
+                return ((int)(this["LookToScrollOverlayDeadzoneThickness"]));
+            }
+            set {
+                this["LookToScrollOverlayDeadzoneThickness"] = value;
+            }
+        }
     }
 }
