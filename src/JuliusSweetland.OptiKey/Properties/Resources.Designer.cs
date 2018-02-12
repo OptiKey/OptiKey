@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -2055,6 +2055,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string ITALIAN_ITALY_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("ITALIAN_ITALY_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Japanese (Japan) / 日本語 (日本).
+        /// </summary>
+        public static string JAPANESE_JAPAN {
+            get {
+                return ResourceManager.GetString("JAPANESE_JAPAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Japanese
+        ///(Japan) /
+        ///日本語
+        ///(日本).
+        /// </summary>
+        public static string JAPANESE_JAPAN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("JAPANESE_JAPAN_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
