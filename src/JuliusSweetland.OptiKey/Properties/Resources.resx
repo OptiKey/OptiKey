@@ -2020,4 +2020,13 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
     <value>Display voices when changing keyboard language</value>
   </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>Japanese (Japan) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Japanese
+(Japan) /
+日本語
+(日本)</value>
+  </data>
 </root>
