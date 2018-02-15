@@ -2525,6 +2525,372 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Look to Scroll.
+        /// </summary>
+        public static string LOOK_TO_SCROLL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;Fast&apos; acceleration (cps per pixel from deadzone):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;Medium&apos; acceleration (cps per pixel from deadzone):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;Slow&apos; acceleration (cps per pixel from deadzone):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOGGLE SCROLLING.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Look to
+        ///Scroll.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_ACTIVE_KEY_TEXT {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_ACTIVE_KEY_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;Fast&apos; base speed (in cps or &quot;clicks&quot; per second):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;Medium&apos; base speed (in cps or &quot;clicks&quot; per second):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;Slow&apos; base speed (in cps or &quot;clicks&quot; per second):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_BOUNDS_CUSTOM {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_CUSTOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}
+        ///Bounds.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_BOUNDS_KEY_FORMAT {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NEXT BOUNDS.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screen.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_BOUNDS_SCREEN {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_SCREEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Window.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_BOUNDS_WINDOW {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_WINDOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Before scrolling, bring chosen window to the front:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Before scrolling, move mouse to center of bounds:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_CENTER_MOUSE_WHEN_ACTIVATED_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_CENTER_MOUSE_WHEN_ACTIVATED_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invert scrolling direction:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use alternative &quot;look to scroll&quot; method for scrolling:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_ENABLED_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_ENABLED_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horizontal deadzone (in pixels):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cycle through these scroll increments:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scroll by {0} wheel unit: 
+        ///(120 wheel units = 1 click)|Scroll by {0} wheel units:
+        ///(120 wheel units = 1 click).
+        /// </summary>
+        public static string LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NEXT INCREMENT.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOOK TO SCROLL KEYS:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_KEY_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cross.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_MODE_CROSS {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_CROSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Free.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_MODE_FREE {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_FREE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horizontal.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_MODE_HORIZONTAL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_HORIZONTAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}
+        ///Mode.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_MODE_KEY_FORMAT {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_KEY_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NEXT MODE.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vertical.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_MODE_VERTICAL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_VERTICAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color of scroll bounds drawn on the overlay:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thickness of scroll bounds drawn on the overlay:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color of deadzone guides drawn on the overlay:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thickness of deadzone guides drawn on the overlay:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show overlay window (requires restart):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fast.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_SPEED_FAST {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_FAST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}
+        ///Speed.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_SPEED_KEY_FORMAT {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_KEY_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NEXT SPEED.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_SPEED_MEDIUM {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_MEDIUM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slow.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_SPEED_SLOW {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_SLOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vertical deadzone (in pixels):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Low.
         /// </summary>
         public static string LOW {

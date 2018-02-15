@@ -197,6 +197,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums\KeyboardLayouts.cs" />
+    <Compile Include="Enums\LookToScrollBounds.cs" />
+    <Compile Include="Enums\LookToScrollModes.cs" />
+    <Compile Include="Enums\LookToScrollSpeeds.cs" />
     <Compile Include="Enums\UnicodeCodePointRanges.cs" />
     <Compile Include="DataFilters\KalmanFilter.cs" />
     <Compile Include="Enums\Case.cs" />
@@ -239,6 +242,7 @@
     <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="Extensions\ProcessExtensions.cs" />
     <Compile Include="Extensions\PropertyExtensions.cs" />
+    <Compile Include="Extensions\RectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
@@ -273,6 +277,9 @@
     <Compile Include="Native\Common\Enums\AppBarMessages.cs" />
     <Compile Include="Native\Common\Enums\AppBarNotify.cs" />
     <Compile Include="Native\Common\Enums\DeviceCaps.cs" />
+    <Compile Include="Native\Common\Enums\DWMWINDOWATTRIBUTE.cs" />
+    <Compile Include="Native\Common\Enums\ExtendedWindowStyles.cs" />
+    <Compile Include="Native\Common\Enums\GetWindowCommand.cs" />
     <Compile Include="Native\Common\Enums\GWL.cs" />
     <Compile Include="Native\Common\Enums\SetWindowPosFlags.cs" />
     <Compile Include="Native\Common\Enums\SpecialWindowHandles.cs" />
@@ -387,6 +394,9 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\ColorNameToBrush.cs" />
+    <Compile Include="UI\ValueConverters\EnumMapper.cs" />
+    <Compile Include="UI\ValueConverters\EnumToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\InsertNewlinesBetweenWords.cs" />
     <Compile Include="UI\ValueConverters\BoolToCustomValues.cs" />
     <Compile Include="UI\ValueConverters\OverrideHasValue.cs" />
@@ -396,9 +406,11 @@
     <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\MinimiseAndDockPositionToSymbolOrientation.cs" />
+    <Compile Include="UI\ValueConverters\ResourceStringLookup.cs" />
     <Compile Include="UI\ValueConverters\WidthGreaterThanHeight.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
+    <Compile Include="UI\ViewModels\ILookToScrollOverlayViewModel.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\CommuniKate.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Voice.cs" />
@@ -430,6 +442,7 @@
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IKeyboard.cs" />
+    <Compile Include="UI\ViewModels\MainViewModel.LookToScroll.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.ServiceEventHandlers.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModel.cs" />
@@ -662,6 +675,9 @@
     <Compile Include="UI\Windows\ConfirmationWindow.xaml.cs">
       <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Windows\LookToScrollOverlayWindow.xaml.cs">
+      <DependentUpon>LookToScrollOverlayWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
       <DependentUpon>ManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -848,6 +864,17 @@
     <Resource Include="Resources\Icons\Back.ico" />
     <Resource Include="Resources\Icons\Quit.ico" />
     <Resource Include="Resources\Icons\ManualMode.ico" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollActive.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreen.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsWindow.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollModeCross.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollModeFree.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollModeHorizontal.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollModeVertical.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollSpeedFast.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollSpeedMedium.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollSpeedSlow.svg" />
     <Content Include="Resources\Sounds\Attention.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1059,6 +1086,10 @@
     <Page Include="UI\Views\Keyboards\Common\DynamicKeyboardSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\LookToScrollResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Common\Voice.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -1337,6 +1368,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Windows\ConfirmationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\LookToScrollOverlayWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
