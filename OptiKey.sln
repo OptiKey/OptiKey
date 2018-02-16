@@ -8,9 +8,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{117E0D45-AA2F-4A2B-AAD5-C3101E1CBCA8}"
 	ProjectSection(SolutionItems) = preProject
 		docs\Certificates and signing notes.txt = docs\Certificates and signing notes.txt
+		docs\Code signing using Signtool or Jarsigner.pdf = docs\Code signing using Signtool or Jarsigner.pdf
 		docs\Deployment.txt = docs\Deployment.txt
 		docs\Design decision notes.txt = docs\Design decision notes.txt
 		docs\Icon design notes.txt = docs\Icon design notes.txt
+		docs\Installing certificate on cryptographic card.pdf = docs\Installing certificate on cryptographic card.pdf
 		docs\Localisation.xls = docs\Localisation.xls
 		docs\Localize.md = docs\Localize.md
 		docs\Physical setup of eye trackers.txt = docs\Physical setup of eye trackers.txt

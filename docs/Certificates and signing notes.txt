@@ -10,6 +10,14 @@ The pfx file can be used with the signtool.exe to sign files. Remember to timest
 
 N.B. With Certum you CANNOT currently renew an open source certificate. Instead you must purchase a new certificate and make sure the details match the previous certificate so that Microsoft Reputation can be built up faster (info from Certum customer services email).
 
+
+FOLLOWING THE CERTUM CHANGE TO USE CRYPTOGRAPHIC SMART CARDS:
+
+The private key (.pfx) can no longer be extracted from the certificate. 
+When you install from the website it now transfers the certificate onto the smart card.
+Read the attached Solution Items (pdf files) regarding installing a certificate and then code signing using it.
+
+
 -----------------------------------------------------------------------------------------------------------------
 
 FILE TYPES:
