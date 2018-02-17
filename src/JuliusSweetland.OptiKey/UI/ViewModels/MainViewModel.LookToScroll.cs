@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -162,9 +161,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     return false;
                 }
 
-                // Exclude invisible or minimized windows.
+                // Exclude windows that aren't visible or that have been minimized.
+                if (!PInvoke.IsWindowVisible(hWnd) || PInvoke.IsIconic(hWnd))
+                {
+                    return false;
+                }
+
+                // Exclude popup windows that have neither a frame like those used for regular windows
+                // nor a frame like those used for dialog windows. This is intended to filter out things
+                // like the lock screen, Start screen, and desktop wallpaper manager without filtering out
+                // legitimate popup windows like "Open" and "Save As" dialogs as well as UWP apps.
                 var style = Static.Windows.GetWindowStyle(hWnd);
-                if ((style & WindowStyles.WS_VISIBLE) == 0 || (style & WindowStyles.WS_MINIMIZE) != 0)
+                if ((style & WindowStyles.WS_POPUP) != 0 && 
+                    (style & WindowStyles.WS_THICKFRAME) == 0 && 
+                    (style & WindowStyles.WS_DLGFRAME) == 0)
                 {
                     return false;
                 }
@@ -176,22 +186,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     return false;
                 }
 
-                // WPF seems to create a second top-level HWND behind the overlay window, and we don't want to be able
-                // to select it. It doesn't have a title I can key off of, and I've found no way to ask WPF for a handle
-                // to it so that I could apply the WS_EX_TRANSPARENT flag to it, so we'll key off its NOACTIVATE style.
-                // Unfortunately, that might prevent some legitimate windows from being selected, but those should be uncommon. 
-                if (Settings.Default.LookToScrollShowOverlayWindow && exStyle.HasFlag(ExtendedWindowStyles.WS_EX_NOACTIVATE))
-                {
-                    return false;
-                }
-
                 // Only include windows that contain the point.
                 Rect? bounds = GetWindowBounds(hWnd);
                 return bounds.HasValue && bounds.Value.Contains(point);
             };
 
-            // Find the front-most top-level window that matches our criteria.
-            IEnumerable<IntPtr> windows = Static.Windows.GetHandlesOfTopLevelWindows().Where(criteria);
+            // Find the front-most top-level window that matches our criteria (expanding UWP apps into their CoreWindows).
+            List<IntPtr> windows = Static.Windows.GetHandlesOfTopLevelWindows();
+            windows = Static.Windows.ReplaceUWPTopLevelWindowsWithCoreWindowChildren(windows);
+            windows = windows.Where(criteria).ToList();
             return Static.Windows.GetFrontmostWindow(windows);
         }
 
