@@ -10,6 +10,12 @@ namespace JuliusSweetland.OptiKey.Static
 {
     public static class Windows
     {
+        // UWP apps have a top-level container window that can be present before the app is actually launched
+        // and can stick around after the app is "closed". This window's CoreWindow children, if any, are what 
+        // one thinks of as the actual top-level windows and only show up when the app is "running".
+        private const string UWPTopLevelWindowClassName = "ApplicationFrameWindow";
+        private const string UWPCoreWindowClassName = "Windows.UI.Core.CoreWindow";
+
         public static long GetWindowStyle(IntPtr hWnd)
         {
             return PInvoke.GetWindowLong(hWnd, (int)GWL.GWL_STYLE);
@@ -42,6 +48,58 @@ namespace JuliusSweetland.OptiKey.Static
             }, 0);
 
             return hWnds;
+        }
+
+        public static List<IntPtr> GetHandlesOfChildWindows(IntPtr hWndParent)
+        {
+            var hWnds = new List<IntPtr>();
+
+            PInvoke.EnumChildWindows(hWndParent, delegate (IntPtr hWnd, int lParam)
+            {
+                hWnds.Add(hWnd);
+                return true; // Keep enumerating.
+            }, 0);
+
+            return hWnds;
+        }
+
+        public static bool IsWindowOfClass(IntPtr hWnd, string className)
+        {
+            var builder = new StringBuilder(className.Length);
+
+            if (PInvoke.GetClassName(hWnd, builder, className.Length + 1) > 0)
+            {
+                return string.Equals(className, builder.ToString());
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool IsUWPTopLevelWindow(IntPtr hWnd)
+        {
+            return IsWindowOfClass(hWnd, UWPTopLevelWindowClassName);
+        }
+
+        public static bool IsUWPCoreWindow(IntPtr hWnd)
+        {
+            return IsWindowOfClass(hWnd, UWPCoreWindowClassName);
+        }
+
+        public static List<IntPtr> ReplaceUWPTopLevelWindowsWithCoreWindowChildren(IEnumerable<IntPtr> hWnds)
+        {
+            return hWnds.SelectMany(hWnd => 
+            {
+                if (IsUWPTopLevelWindow(hWnd))
+                {
+                    return GetHandlesOfChildWindows(hWnd).Where(hWndChild => IsUWPCoreWindow(hWndChild));
+                }
+                else
+                {
+                    return new[] { hWnd };
+                }
+            }).ToList();
         }
 
         public static string GetWindowTitle(IntPtr hWnd)
@@ -83,7 +141,7 @@ namespace JuliusSweetland.OptiKey.Static
                 .ToList();
         }
 
-        public static IntPtr GetFrontmostWindow(IEnumerable<IntPtr> hWnds)
+        public static IntPtr GetFrontmostWindow(List<IntPtr> hWnds)
         {
             var frontmostHWnd = IntPtr.Zero;
 
