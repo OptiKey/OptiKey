@@ -1764,8 +1764,7 @@ namespace JuliusSweetland.OptiKey.Properties {
             "  <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    " +
             "<key>\r\n      <keyValue>\r\n        <functionKey>ItalianItaly</functionKey>\r\n      " +
             "</keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>" +
-            "\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue />\r\n    </key>\r\n    <value>\r\n " +
-            "     <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
+            "\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
             " <keyValue>\r\n        <functionKey>JapaneseJapan</functionKey>\r\n      </keyValue>\r\n" +
             "    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
             " <keyValue>\r\n        <functionKey>KoreanKorea</functionKey>\r\n      </keyValue>\r\n" +
