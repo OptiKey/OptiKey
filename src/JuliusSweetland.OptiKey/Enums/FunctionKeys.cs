@@ -85,6 +85,7 @@
         IncreaseOpacity,
         Insert,
         ItalianItaly,
+        JapaneseJapan,
         KoreanKorea,
         LanguageKeyboard,
         LeftAlt,
