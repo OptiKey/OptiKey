@@ -752,7 +752,6 @@
     <Content Include="Dictionaries\CzechCzechRepublic.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1015,8 +1014,8 @@
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
