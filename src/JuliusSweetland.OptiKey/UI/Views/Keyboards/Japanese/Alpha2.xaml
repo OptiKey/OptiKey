@@ -63,7 +63,7 @@
         
         <!--USEFUL LINKS FOR JAPANESE:-->
         <!--KATAKANA a.k.a. Alpha2 - http://www.asahi-net.or.jp/~ax2s-kmtn/ref/unicode/u30a0.html-->
-        <controls:Key Grid.Row="2" Grid.Column="0"
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource TabIcon}" 
                       Text="{x:Static resx:Resources.TAB}"
                       SharedSizeGroup="KeyWithSymbol"
