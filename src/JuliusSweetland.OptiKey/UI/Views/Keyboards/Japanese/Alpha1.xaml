@@ -63,6 +63,7 @@
 
         <!--USEFUL LINKS FOR JAPANESE:-->
         <!--HIRAGANA a.k.a. Alpha1 - http://www.asahi-net.or.jp/~ax2s-kmtn/ref/unicode/u3040.html-->
+        <!--KATAKANA a.k.a. Alpha2 - http://www.asahi-net.or.jp/~ax2s-kmtn/ref/unicode/u30a0.html-->
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource TabIcon}" 
                       Text="{x:Static resx:Resources.TAB}"
@@ -164,7 +165,7 @@
                       Text="゛"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x3099;" />
-        <!-- This value adds ゛to the previous character. eg. か(ka) to が(ga). -->
+        <!-- This button needs to add the quote-mark-like mark to the previous character. eg. か(ka) to が(ga). -->
         <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
                       Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
@@ -220,7 +221,7 @@
                       Text="゜"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x309A;" />
-        <!-- This value adds ゜to the previous character. eg. は(ha) to ぱ(pa). -->
+        <!-- This button need to add the circle to the previous character. eg. は(ha) to ぱ(pa). -->
         <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2"
                       Text="ー"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -267,13 +268,14 @@
                       Text="れ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x308C;"/>
-        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="わ" ShiftDownText="ゎ"
+        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2" 
+                      Text="わ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x308F;"/>
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="小"
-                      SharedSizeGroup="KeyWithSingleLetter"
+                      SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.LeftShiftKey}"/>
         <!-- This button needs to change the previously entered character into a small version. eg. つ(tsu) to っ -->
         <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
