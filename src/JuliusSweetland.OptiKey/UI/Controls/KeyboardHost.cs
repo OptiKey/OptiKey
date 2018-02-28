@@ -25,6 +25,7 @@ using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
 using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
 using GreekViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek;
 using ItalianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Italian;
+using JapaneseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Japanese;
 using KoreanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Korean;
 using PortugueseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Portuguese;
 using RussianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Russian;
@@ -193,6 +194,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.ItalianItaly:
                         newContent = new ItalianViews.Alpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.JapaneseJapan:
+                        newContent = new JapaneseViews.Alpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.Alpha1 { DataContext = Keyboard };
                         break;
@@ -229,6 +233,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.JapaneseJapan:
+                        newContent = new JapaneseViews.Alpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.Alpha2 { DataContext = Keyboard };
                         break;
@@ -268,6 +275,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.ItalianItaly:
                         newContent = new ItalianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.JapaneseJapan:
+                        newContent = new JapaneseViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
@@ -304,6 +314,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.JapaneseJapan:
+                        newContent = new JapaneseViews.ConversationAlpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;

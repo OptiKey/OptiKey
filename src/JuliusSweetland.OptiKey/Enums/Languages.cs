@@ -93,6 +93,9 @@ namespace JuliusSweetland.OptiKey.Enums
         {
             switch (language)
             {
+                case Languages.JapaneseJapan:
+                    return false;
+
                 case Languages.KoreanKorea:
                     return false;
 

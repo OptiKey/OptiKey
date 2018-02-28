@@ -1,0 +1,304 @@
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Japanese.ConversationAlpha2"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
+                       xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
+                       xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
+                       xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+                       xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
+                       mc:Ignorable="d" 
+                       d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+    </UserControl.Resources>
+    
+    <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
+          Grid.IsSharedSizeScope="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <controls:Output Grid.Row="0" Grid.Column="0"
+                         Grid.RowSpan="2" Grid.ColumnSpan="24" 
+                         ScratchpadWidthInKeys="6"
+                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                      ShiftUpText="ア" ShiftDownText="ァ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30A2;" />
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                      Text="カ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30AB;" />
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
+                      Text="サ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30B5;" />
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
+                      Text="タ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30BF;" />
+        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
+                      Text="ナ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30CA;" />
+        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
+                      Text="ハ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30CF;" />
+        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
+                      Text="マ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30DE;" />
+        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
+                      Text="ラ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30E9;" />
+        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
+                      ShiftUpText="ヤ" ShiftDownText="ャ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30E4;" />
+        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
+                      Text="ン"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30F3;" />
+        <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BackOneIcon}"
+                      Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.BackOneKey}"/>
+        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
+					  SymbolGeometry="{StaticResource MenuIcon}"
+                      Text="{x:Static resx:Resources.MENU}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.MenuKeyboardKey}" />
+
+        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                      ShiftUpText="イ" ShiftDownText="ィ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30A4;" />
+        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+                      Text="キ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30AD;" />
+        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
+                      Text="シ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30B7;" />
+        <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
+                      Text="チ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30C1;" />
+        <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
+                      Text="ニ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30CB;" />
+        <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
+                      Text="ヒ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30D2;" />
+        <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
+                      Text="ミ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30DF;" />
+        <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
+                      Text="リ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30EA;" />
+        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
+                      ShiftUpText="ユ" ShiftDownText="ュ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30E6;" />
+        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
+                      Text="゛"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x3099;" />
+        <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
+                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.ConversationNumericAndSymbolsKeyboardKey}"/>
+        <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource 2of2Icon}"
+                      Text="{x:Static resx:Resources.NEXT}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.ConversationAlpha1KeyboardKey}"/>
+
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                      ShiftUpText="ウ" ShiftDownText="ゥ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30A6;" />
+        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+                      Text="ク"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30AF;" />
+        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
+                      Text="ス"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30B9;" />
+        <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
+                      ShiftUpText="ツ" ShiftDownText="ッ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30C4;" />
+        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
+                      Text="ヌ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30CC;" />
+        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
+                      Text="フ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30D5;" />
+        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
+                      Text="ム"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30E0;" />
+        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
+                      Text="ル"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30EB;" />
+        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
+                      ShiftUpText="ヨ" ShiftDownText="ョ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30E8;" />
+        <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
+                      Text="゜"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x309A;" />
+        <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
+                      Text="ー"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30FC;"/>
+        <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2" />
+
+        <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                      ShiftUpText="エ" ShiftDownText="ェ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30A8;"/>
+        <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
+                      Text="ケ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30B1;"/>
+        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" 
+                      Text="セ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30BB;"/>
+        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" 
+                      Text="テ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30C6;"/>
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2" 
+                      Text="ネ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30CD;"/>
+        <controls:Key Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="2" 
+                      Text="ヘ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30D8;"/>
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" 
+                      Text="メ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30E1;"/>
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" 
+                      Text="レ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30EC;"/>
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
+                      ShiftUpText="ワ" ShiftDownText="ヮ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30EF;"/>
+        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
+                      Text="小"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource SpaceIcon}"
+                      Text="{x:Static resx:Resources.SPACE}"
+                      WidthSpan="2" 
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value=" "/>
+        <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2" />
+
+        <controls:Key Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                      ShiftUpText="オ" ShiftDownText="ォ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30AA;"/>
+        <controls:Key Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" 
+                      Text="コ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30B3;"/>
+        <controls:Key Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" 
+                      Text="ソ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30BD;"/>
+        <controls:Key Grid.Row="6" Grid.Column="6" Grid.ColumnSpan="2" 
+                      Text="ト"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30C8;"/>
+        <controls:Key Grid.Row="6" Grid.Column="8" Grid.ColumnSpan="2" 
+                      Text="ノ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30CE;"/>
+        <controls:Key Grid.Row="6" Grid.Column="10" Grid.ColumnSpan="2" 
+                      Text="ホ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30DB;"/>
+        <controls:Key Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2" 
+                      Text="モ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30E2;"/>
+        <controls:Key Grid.Row="6" Grid.Column="14" Grid.ColumnSpan="2" 
+                      Text="ロ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30ED;"/>
+        <controls:Key Grid.Row="6" Grid.Column="16" Grid.ColumnSpan="2" 
+                      Text="ヲ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x30F2;"/>
+        <controls:Key Grid.Row="6" Grid.Column="18" Grid.ColumnSpan="2"
+                      Text="、"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x3001;"/>
+        <controls:Key Grid.Row="6" Grid.Column="20" Grid.ColumnSpan="2"
+                      Text="。"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x3002;"/>
+        <controls:Key Grid.Row="6" Grid.Column="22" Grid.ColumnSpan="2" />
+        
+    </Grid>
+</controls:KeyboardView>

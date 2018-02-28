@@ -836,6 +836,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     SelectLanguage(Languages.ItalianItaly);
                     break;
 
+                case FunctionKeys.JapaneseJapan:
+                    SelectLanguage(Languages.JapaneseJapan);
+                    break;
+
                 case FunctionKeys.KoreanKorea:
                     SelectLanguage(Languages.KoreanKorea);
                     break;
