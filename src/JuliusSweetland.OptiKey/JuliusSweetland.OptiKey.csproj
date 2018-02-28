@@ -770,7 +770,6 @@
     <Content Include="Dictionaries\JapaneseJapan.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="JapaneseJapan.dic" />
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
