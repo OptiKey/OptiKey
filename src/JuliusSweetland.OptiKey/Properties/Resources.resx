@@ -2146,4 +2146,13 @@ Speed</value>
   <data name="LOOK_TO_SCROLL_SPEED_FAST" xml:space="preserve">
     <value>Fast</value>
   </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>French (Canada) / Française (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>French
+(Canada) /
+Française
+(Canada)</value>
+  </data>
 </root>

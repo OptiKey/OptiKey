@@ -1839,6 +1839,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to French (Canada) / Française (Canada).
+        /// </summary>
+        public static string FRENCH_CANADA {
+            get {
+                return ResourceManager.GetString("FRENCH_CANADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to French
+        ///(Canada) /
+        ///Française
+        ///(Canada).
+        /// </summary>
+        public static string FRENCH_CANADA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("FRENCH_CANADA_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to French (France) / Française (France).
         /// </summary>
         public static string FRENCH_FRANCE {

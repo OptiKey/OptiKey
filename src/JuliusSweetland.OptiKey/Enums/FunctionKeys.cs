@@ -79,6 +79,7 @@
         F18,
         F19,
         FrenchFrance,
+        FrenchCanada,
         GermanGermany,
         GreekGreece,
         Home,
