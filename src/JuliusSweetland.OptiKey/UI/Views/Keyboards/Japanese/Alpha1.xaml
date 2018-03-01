@@ -272,12 +272,12 @@
                       Text="わ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x308F;"/>
-        <!-- This key changes the case of the previously entered character . eg. つ(tsu) to っ -->
+        <!-- This key changes the case of the previously entered character . eg. つ(tsu) to っ or vice versa -->
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="小"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.PreviousJapaneseSymbolToLowerKey}" />
+                      Value="{x:Static models:KeyValues.ToggleCaseOfPreviousCharacterKey}" />
         <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"

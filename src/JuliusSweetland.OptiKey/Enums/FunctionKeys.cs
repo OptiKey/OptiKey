@@ -162,7 +162,6 @@
         PgUp,
         PhysicalKeysKeyboard,
         PortuguesePortugal,
-        PreviousJapaneseSymbolToLower,
         PreviousSuggestions,
         PrintScreen,
         Quit,
@@ -208,6 +207,7 @@
         Suggestion4,
         Suggestion5,
         Suggestion6,
+        ToggleCaseOfPreviousCharacter,
         TurkishTurkey,
         WebBrowsingKeyboard,
         YesQuestionResult
