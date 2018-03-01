@@ -274,9 +274,8 @@
                       Value="&#x308F;"/>
         <!-- This key changes the case of the previously entered character . eg. つ(tsu) to っ -->
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="小"
-                      SharedSizeGroup="KeyWithSymbol"
+                      SharedSizeGroup="KeyWithSingleLetter"
                       Value="{x:Static models:KeyValues.PreviousJapaneseSymbolToLowerKey}" />
         <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SpaceIcon}"

@@ -60,7 +60,7 @@
                          ScratchpadWidthInKeys="8"
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
-        <controls:Key Grid.Row="2" Grid.Column="0"
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource TabIcon}" 
                       Text="{x:Static resx:Resources.TAB}"
                       SharedSizeGroup="KeyWithSymbol"
@@ -270,9 +270,8 @@
                       Value="&#x30EF;"/>
         <!-- This key changes the case of the previously entered character . eg. つ(tsu) to っ -->
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="小"
-                      SharedSizeGroup="KeyWithSymbol"
+                      SharedSizeGroup="KeyWithSingleLetter"
                       Value="{x:Static models:KeyValues.PreviousJapaneseSymbolToLowerKey}" />
         <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SpaceIcon}"
