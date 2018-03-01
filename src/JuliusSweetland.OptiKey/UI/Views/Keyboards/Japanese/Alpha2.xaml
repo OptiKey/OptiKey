@@ -58,18 +58,15 @@
         <controls:Output Grid.Row="0" Grid.Column="0"
                          Grid.RowSpan="2" Grid.ColumnSpan="26" 
                          ScratchpadWidthInKeys="8"
-                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
-        <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
-        
-        <!--USEFUL LINKS FOR JAPANESE:-->
-        <!--KATAKANA a.k.a. Alpha2 - http://www.asahi-net.or.jp/~ax2s-kmtn/ref/unicode/u30a0.html-->
-        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+
+        <controls:Key Grid.Row="2" Grid.Column="0"
                       SymbolGeometry="{StaticResource TabIcon}" 
                       Text="{x:Static resx:Resources.TAB}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="&#x09;" />
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="ア" ShiftDownText="ァ"
+                      Text="ア"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30A2;" />
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
@@ -101,7 +98,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30E9;" />
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ヤ" ShiftDownText="ャ"
+                      Text="ヤ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30E4;" />
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
@@ -125,7 +122,7 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.Alpha1KeyboardKey}"/>
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="イ" ShiftDownText="ィ"
+                      Text="イ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30A4;" />
         <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
@@ -157,14 +154,14 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30EA;" />
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ユ" ShiftDownText="ュ"
+                      Text="ユ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30E6;" />
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                       Text="゛"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x3099;" />
-        <!-- This button adds the quote-mark-like mark to the previous character. eg. か(ka) to が(ga). -->
+        <!-- This key adds the quote-mark-like mark to the previous character. eg. か(ka) to が(ga). -->
         <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
                       Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
@@ -181,7 +178,7 @@
                       SharedSizeGroup="KeyWithDescription"
                       Value="{x:Static models:KeyValues.LeftCtrlKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="ウ" ShiftDownText="ゥ"
+                      Text="ウ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30A6;" />
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
@@ -193,7 +190,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30B9;" />
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="ツ" ShiftDownText="ッ"
+                      Text="ツ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30C4;" />
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
@@ -213,14 +210,14 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30EB;" />
         <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ヨ" ShiftDownText="ョ"
+                      Text="ヨ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30E8;" />
+        <!-- This keys adds the circle to the previous character. eg. は(ha) to ぱ(pa). -->
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
                       Text="゜"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x309A;" />
-        <!-- This button adds the circle to the previous character. eg. は(ha) to ぱ(pa). -->
         <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2"
                       Text="ー"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -235,11 +232,11 @@
                       Text="{x:Static resx:Resources.ALT}"
                       SharedSizeGroup="KeyWithDescription"
                       Value="{x:Static models:KeyValues.LeftAltKey}"/>
-        <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="エ" ShiftDownText="ェ"
+        <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" 
+                      Text="エ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30A8;"/>
-        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" 
                       Text="ケ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30B1;"/>
@@ -267,15 +264,16 @@
                       Text="レ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30EC;"/>
-        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ワ" ShiftDownText="ヮ"
+        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2" 
+                      Text="ワ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30EF;"/>
-        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2" 
+        <!-- This key changes the case of the previously entered character . eg. つ(tsu) to っ -->
+        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="小"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x5C0F;"/>
-        <!-- THIS BUTTON DOES NOT WORK　CORRECTLY YET. It needs to change the previously entered character into a small version. eg. つ(tsu) to っ -->
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.PreviousJapaneseSymbolToLowerKey}" />
         <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
@@ -293,8 +291,8 @@
                       Text="{x:Static resx:Resources.WIN}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.LeftWinKey}"/>
-        <controls:Key Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="オ" ShiftDownText="ォ"
+        <controls:Key Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" 
+                      Text="オ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30AA;"/>
         <controls:Key Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" 
@@ -341,7 +339,6 @@
                       SymbolGeometry="{StaticResource EnterIcon}"
                       Text="{x:Static resx:Resources.ENTER}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="&#x0a;" />
-        <!--Hex for "\n"-->
+                      Value="&#x0a;" /> <!--Hex for "\n"-->
     </Grid>
 </controls:KeyboardView>

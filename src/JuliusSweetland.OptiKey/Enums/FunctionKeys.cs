@@ -162,6 +162,7 @@
         PgUp,
         PhysicalKeysKeyboard,
         PortuguesePortugal,
+        PreviousJapaneseSymbolToLower,
         PreviousSuggestions,
         PrintScreen,
         Quit,

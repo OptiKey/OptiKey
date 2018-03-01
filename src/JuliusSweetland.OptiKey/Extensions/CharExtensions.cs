@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
@@ -8,9 +9,12 @@ namespace JuliusSweetland.OptiKey.Extensions
     public static class CharExtensions
     {
         private static readonly Map<char, char> HangulIntialToFinalConsonents = new Map<char, char>();
-
+        private static readonly Dictionary<char, char> HiraganaUpperToLowerCase = new Dictionary<char, char>();
+        private static readonly Dictionary<char, char> KatakanaUpperToLowerCase = new Dictionary<char, char>();
+        
         static CharExtensions()
         {
+            //Korean mappings
             HangulIntialToFinalConsonents.Add('\u1100', '\u11A8'); //ㄱ
             HangulIntialToFinalConsonents.Add('\u1101', '\u11A9'); //ㄲ
             HangulIntialToFinalConsonents.Add('\u1102', '\u11AB'); //ㄴ
@@ -27,6 +31,49 @@ namespace JuliusSweetland.OptiKey.Extensions
             HangulIntialToFinalConsonents.Add('\u1110', '\u11C0'); //ㅌ
             HangulIntialToFinalConsonents.Add('\u1111', '\u11C1'); //ㅍ
             HangulIntialToFinalConsonents.Add('\u1112', '\u11C2'); //ㅎ
+
+            //Japanese Hiragan mappings
+            HiraganaUpperToLowerCase.Add('あ', 'ぁ'); //あ
+            HiraganaUpperToLowerCase.Add('い', 'ぃ'); //い
+            HiraganaUpperToLowerCase.Add('う', 'ぅ'); //う
+            HiraganaUpperToLowerCase.Add('え', 'ぇ'); //え
+            HiraganaUpperToLowerCase.Add('お', 'ぉ'); //お
+            HiraganaUpperToLowerCase.Add('つ', 'っ'); //つ
+            HiraganaUpperToLowerCase.Add('や', 'ゃ'); //や
+            HiraganaUpperToLowerCase.Add('ゆ', 'ゅ'); //ゆ
+            HiraganaUpperToLowerCase.Add('よ', 'ょ'); //よ
+            HiraganaUpperToLowerCase.Add('わ', 'ゎ'); //わ
+
+            //Japanese Katakana mappings
+            KatakanaUpperToLowerCase.Add('ア', 'ァ'); //ア
+            KatakanaUpperToLowerCase.Add('イ', 'ィ'); //イ
+            KatakanaUpperToLowerCase.Add('ウ', 'ゥ'); //ウ
+            KatakanaUpperToLowerCase.Add('エ', 'ェ'); //エ
+            KatakanaUpperToLowerCase.Add('オ', 'ォ'); //オ
+            KatakanaUpperToLowerCase.Add('カ', 'ヵ'); //カ
+            KatakanaUpperToLowerCase.Add('ク', 'ㇰ'); //ク
+            KatakanaUpperToLowerCase.Add('ケ', 'ヶ'); //ケ
+            KatakanaUpperToLowerCase.Add('シ', 'ㇱ'); //シ
+            KatakanaUpperToLowerCase.Add('ス', 'ㇲ'); //ス
+            KatakanaUpperToLowerCase.Add('ツ', 'ッ'); //ツ
+            KatakanaUpperToLowerCase.Add('ト', 'ㇳ'); //ト
+            KatakanaUpperToLowerCase.Add('ヌ', 'ㇴ'); //ヌ
+            KatakanaUpperToLowerCase.Add('ハ', 'ㇵ'); //ハ
+            KatakanaUpperToLowerCase.Add('ヒ', 'ㇶ'); //ヒ
+            KatakanaUpperToLowerCase.Add('フ', 'ㇷ'); //フ
+            KatakanaUpperToLowerCase.Add('プ', 'ㇷ'); //プ
+            KatakanaUpperToLowerCase.Add('ヘ', 'ㇸ'); //ヘ
+            KatakanaUpperToLowerCase.Add('ホ', 'ㇹ'); //ホ
+            KatakanaUpperToLowerCase.Add('ム', 'ㇺ'); //ム
+            KatakanaUpperToLowerCase.Add('ヤ', 'ャ'); //ヤ
+            KatakanaUpperToLowerCase.Add('ユ', 'ュ'); //ユ
+            KatakanaUpperToLowerCase.Add('ヨ', 'ョ'); //ヨ
+            KatakanaUpperToLowerCase.Add('ラ', 'ㇻ'); //ラ
+            KatakanaUpperToLowerCase.Add('リ', 'ㇼ'); //リ
+            KatakanaUpperToLowerCase.Add('ル', 'ㇽ'); //ル
+            KatakanaUpperToLowerCase.Add('レ', 'ㇾ'); //レ
+            KatakanaUpperToLowerCase.Add('ロ', 'ㇿ'); //ロ
+            KatakanaUpperToLowerCase.Add('ワ', 'ヮ'); //ワ
         }
         
         public static CharCategories ToCharCategory(this char c)
@@ -106,6 +153,25 @@ namespace JuliusSweetland.OptiKey.Extensions
             {
                 return HangulIntialToFinalConsonents.Forward[c];
             }
+            return c;
+        }
+
+        #endregion
+
+        #region Japanese (Hiragana and Katakana) Extension Methods
+
+        public static char ConvertToLowerCaseHiraganaOrKatakana(this char c)
+        {
+            if (HiraganaUpperToLowerCase.ContainsKey(c))
+            {
+                return HiraganaUpperToLowerCase[c];
+            }
+
+            if (KatakanaUpperToLowerCase.ContainsKey(c))
+            {
+                return KatakanaUpperToLowerCase[c];
+            }
+
             return c;
         }
 

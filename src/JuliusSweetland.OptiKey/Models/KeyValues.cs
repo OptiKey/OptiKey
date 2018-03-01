@@ -185,6 +185,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue PgUpKey = new KeyValue(FunctionKeys.PgUp);
         public static readonly KeyValue PhysicalKeysKeyboardKey = new KeyValue(FunctionKeys.PhysicalKeysKeyboard);
         public static readonly KeyValue PortuguesePortugalKey = new KeyValue(FunctionKeys.PortuguesePortugal);
+        public static readonly KeyValue PreviousJapaneseSymbolToLowerKey = new KeyValue(FunctionKeys.PreviousJapaneseSymbolToLower);
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue(FunctionKeys.PreviousSuggestions);
         public static readonly KeyValue PrintScreenKey = new KeyValue(FunctionKeys.PrintScreen);
         public static readonly KeyValue QuitKey = new KeyValue(FunctionKeys.Quit);
