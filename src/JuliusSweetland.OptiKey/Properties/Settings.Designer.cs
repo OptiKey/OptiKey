@@ -1761,7 +1761,7 @@ namespace JuliusSweetland.OptiKey.Properties {
             "ue>\r\n        <functionKey>FrenchFrance</functionKey>\r\n      </keyValue>\r\n    </k" +
             "ey>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item" +
             ">\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>GermanGermany</functionKey>" +
-            "\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    " +
+            "\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n" +
             "\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
             " <keyValue>\r\n        <functionKey>JapaneseJapan</functionKey>\r\n      </keyValue>\r\n" +
             "    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
@@ -1884,7 +1884,7 @@ namespace JuliusSweetland.OptiKey.Properties {
             "onKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>" +
             "\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <funct" +
             "<keyValue>\r\n        <functionKey>More</functionKey>\r\n      </keyValue>\r\n    </ke" +
-            "y>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n</dictio" +
+            "y>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n</dictionary>")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues KeySelectionTriggerFixationCompleteTimesByKeyValues {
             get {
