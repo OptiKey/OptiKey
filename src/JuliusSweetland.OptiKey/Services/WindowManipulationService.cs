@@ -131,6 +131,21 @@ namespace JuliusSweetland.OptiKey.Services
         #region Properties
 
         public bool SizeAndPositionIsInitialised { get; private set; }
+
+        public Rect WindowBounds
+        {
+            get
+            {
+                return new Rect
+                {
+                    X = window.Left,
+                    Y = window.Top,
+                    Width = window.ActualWidth,
+                    Height = window.ActualHeight,
+                };
+            }
+        }
+
         public WindowStates WindowState { get { return getWindowState(); } }
 
         #endregion

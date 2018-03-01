@@ -814,11 +814,11 @@ SYMBOLES</value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>PAGE
-PRÉC.</value>
+SUIV.</value>
   </data>
   <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>PAGE
-SUIV.</value>
+PRÉC.</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
     <value>Touches physiques</value>

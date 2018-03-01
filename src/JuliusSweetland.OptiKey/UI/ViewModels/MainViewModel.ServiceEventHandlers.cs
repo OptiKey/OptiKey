@@ -44,6 +44,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
+            if (Settings.Default.LookToScrollEnabled)
+            {
+                inputServiceLivePositionHandler = (o, position) => UpdateLookToScroll(position);
+            }
+
             inputServiceSelectionProgressHandler = (o, progress) =>
             {
                 if (progress.Item1 == null
@@ -138,6 +143,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputService.PointToKeyValueMap = pointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
 
+            if (Settings.Default.LookToScrollEnabled)
+            {
+                inputService.LivePosition += inputServiceLivePositionHandler;
+            }
+
             Log.Info("AttachInputServiceEventHandlers complete.");
         }
         
@@ -152,8 +162,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputService.Selection -= inputServiceSelectionHandler;
             inputService.SelectionResult -= inputServiceSelectionResultHandler;
 
-            Log.Info("DetachInputServiceEventHandlers complete.");
+            if (Settings.Default.LookToScrollEnabled)
+            {
+                inputService.LivePosition -= inputServiceLivePositionHandler;
+            }
 
+            Log.Info("DetachInputServiceEventHandlers complete.");
         }
 
         private void ProcessChangeKeyboardKeyValue(ChangeKeyboardKeyValue keyValue)
@@ -815,6 +829,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.Expand(ExpandToDirections.TopRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                     break;
 
+                case FunctionKeys.FrenchCanada:
+                    SelectLanguage(Languages.FrenchCanada);
+                    break;
+
                 case FunctionKeys.FrenchFrance:
                     SelectLanguage(Languages.FrenchFrance);
                     break;
@@ -849,6 +867,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.Restore();
                     Log.Info("Changing keyboard to Language.");
                     Keyboard = new Language(() => Keyboard = currentKeyboard);
+                    break;
+
+                case FunctionKeys.LookToScrollActive:
+                    ToggleLookToScroll();
+                    break;
+
+                case FunctionKeys.LookToScrollBounds:
+                    SelectNextLookToScrollBounds();
+                    break;
+
+                case FunctionKeys.LookToScrollIncrement:
+                    SelectNextLookToScrollIncrement();
+                    break;
+
+                case FunctionKeys.LookToScrollMode:
+                    SelectNextLookToScrollMode();
+                    break;
+
+                case FunctionKeys.LookToScrollSpeed:
+                    SelectNextLookToScrollSpeed();
                     break;
 
                 case FunctionKeys.MenuKeyboard:

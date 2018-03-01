@@ -112,6 +112,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue F18Key = new KeyValue(FunctionKeys.F18);
         public static readonly KeyValue F19Key = new KeyValue(FunctionKeys.F19);
         public static readonly KeyValue FrenchFranceKey = new KeyValue(FunctionKeys.FrenchFrance);
+        public static readonly KeyValue FrenchCanadaKey = new KeyValue(FunctionKeys.FrenchCanada);
         public static readonly KeyValue GermanGermanyKey = new KeyValue(FunctionKeys.GermanGermany);
         public static readonly KeyValue GreekGreeceKey = new KeyValue(FunctionKeys.GreekGreece);
         public static readonly KeyValue HomeKey = new KeyValue(FunctionKeys.Home);
@@ -125,6 +126,11 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue LeftCtrlKey = new KeyValue(FunctionKeys.LeftCtrl);
         public static readonly KeyValue LeftShiftKey = new KeyValue(FunctionKeys.LeftShift);
         public static readonly KeyValue LeftWinKey = new KeyValue(FunctionKeys.LeftWin);
+        public static readonly KeyValue LookToScrollActiveKey = new KeyValue(FunctionKeys.LookToScrollActive);
+        public static readonly KeyValue LookToScrollBoundsKey = new KeyValue(FunctionKeys.LookToScrollBounds);
+        public static readonly KeyValue LookToScrollIncrementKey = new KeyValue(FunctionKeys.LookToScrollIncrement);
+        public static readonly KeyValue LookToScrollModeKey = new KeyValue(FunctionKeys.LookToScrollMode);
+        public static readonly KeyValue LookToScrollSpeedKey = new KeyValue(FunctionKeys.LookToScrollSpeed);
         public static readonly KeyValue MenuKey = new KeyValue(FunctionKeys.Menu);
         public static readonly KeyValue MenuKeyboardKey = new KeyValue(FunctionKeys.MenuKeyboard);
         public static readonly KeyValue MinimiseKey = new KeyValue(FunctionKeys.Minimise);
@@ -276,6 +282,11 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
                                                 .ToList()
                 },
+                { Languages.FrenchCanada, "abcdefghijklmnopqrstuvwxyzçé"
+                    .ToCharArray()
+                    .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                    .ToList()
+                },
                 { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
@@ -363,6 +374,8 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftShiftKey,
                     LeftWinKey,
+                    LookToScrollActiveKey,
+                    LookToScrollBoundsKey,
                     MouseLeftDownUpKey,
                     MouseMagneticCursorKey,
                     MouseMagnifierKey,

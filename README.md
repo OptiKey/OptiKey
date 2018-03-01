@@ -1,37 +1,26 @@
 # OptiKey
 
-OptiKey is an assistive on-screen keyboard which runs on Windows. It is designed to be used with an eye-tracking device to assist with keyboard and mouse control for those living with motor and speech limitations, such as Amyotrophic Lateral Sclerosis (ALS) / Motor Neuron Disease (MND).
-
-It works out of the box once you have your eye-tracking device installed and allows selections to be made using dwell selection, buttons, etc. If you do not have an eye tracking device, OptiKey can be used with a mouse.
-
-OptiKey was written as an accessible alternative to the outrageously expensive, unreliable and difficult to use AAC (alternative and augmentative communication) products currently on the market. It is, therefore, fully open-source and free. Forever.
-
+OptiKey is an on-screen keyboard that is designed to help Motor Neuron Disease (MND) patients interact with Windows computers. When used with an eye-tracking device, OptiKey's on-screen keyboard allows MND patients to complete tasks, such as email composition, using only their eyes. OptiKey can also be used with a mouse or webcam. Unlike expensive and unreliable Alternative and Augmentative Communication (AAC) products that are difficult to use, Optikey is free, reliable, and easy to use.
 
 # Getting Started
 
-[**The OptiKey Wiki**](https://github.com/OptiKey/OptiKey/wiki) contains full information on how to get started, system requirements, a user guide, demo videos, a troubleshooting page, and more. Here are some quick links if you're in a hurry:
-
-* If you want to install and use OptiKey on Windows you can download the installer from the [latest release](https://github.com/JuliusSweetland/OptiKey/releases/latest).
-* Watch the [intro video](https://www.youtube.com/watch?v=HLkyORh7vKk).
-* If you wish to get in touch my email is <optikeyfeedback@gmail.com>.
+[**The OptiKey Wiki**](https://github.com/OptiKey/OptiKey/wiki) contains OptiKey's user guides, installation and system requirements, and additional support information. OptiKey's Windows installer can be downloaded from the [latest release](https://github.com/JuliusSweetland/OptiKey/releases/latest). To get an understanding of OptiKey's use, users should watch [Optikey's introduction video](https://www.youtube.com/watch?v=HLkyORh7vKk).
 
 # Supported Platforms
 
-OptiKey targets the .Net 4.6 Framework, which is available for  Windows Vista SP2 onwards. It was designed to run on Windows 8/ 8.1/ 10.
+OptiKey uses the .Net 4.6 Framework and is designed to run on Windows 8 / 8.1 / 10.
 
 # Problems?
 
-If you find a problem such as a crash, an unexpected behaviour, or something similar please visit the [issue tracker](https://github.com/OptiKey/OptiKey/issues) and report the issue.
+If users encounter an issue with OptiKey, such as a software crash or an unexpected behaviour, users should add an issue ticket to [OptiKey's issue tracker](https://github.com/OptiKey/OptiKey/issues). Users are encouraged to check if their issue is already being tracked by OptiKey before creating a new issue ticket.
 
-Please be kind and search to see if the issue is already logged before creating a new one. If you're pressed for time, log it anyway.
+The following information should be specified in an issue ticket:
 
-When creating an issue, please clearly explain:
-
-* What you were trying to do.
-* What you expected to happen.
-* What actually happened.
-* Steps to reproduce the problem.
-* Also include any other information you think is relevant to reproduce the problem (such as screenshots).
+* How OptiKey was being used
+* What the user expected to happen
+* What the user actually experienced
+* Steps to reproduce the issue
+* Any other information that helps to describe and/or reproduce the problem (ex. screenshots)
 
 # License
 
@@ -39,7 +28,4 @@ Licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
 
 # Contact
 
-Want to get in touch, ask a question, or talk to me about anything else which isn't on the [**OptiKey WIKI**](https://github.com/JuliusSweetland/OptiKey/wiki/)? My email address is <optikeyfeedback@gmail.com>.
-
-Thanks for your interest,
-Julius
+To ask a question, or to discuss information that is not on the [**OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/), please use <optikeyfeedback@gmail.com> to contact Julius.

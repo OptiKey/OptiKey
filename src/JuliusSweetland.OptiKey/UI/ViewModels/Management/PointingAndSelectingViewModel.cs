@@ -507,6 +507,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.SPANISH_SPAIN, KeyValues.SpanishSpainKey, dictionary.ContainsKey(KeyValues.SpanishSpainKey) ? dictionary[KeyValues.SpanishSpainKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.TURKISH_TURKEY, KeyValues.TurkishTurkeyKey, dictionary.ContainsKey(KeyValues.TurkishTurkeyKey) ? dictionary[KeyValues.TurkishTurkeyKey] : (TimeSpan?)null),
                 }),
+                new KeyValueAndTimeSpanGroup(Resources.LOOK_TO_SCROLL_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL, KeyValues.LookToScrollActiveKey, dictionary.ContainsKey(KeyValues.LookToScrollActiveKey) ? dictionary[KeyValues.LookToScrollActiveKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL, KeyValues.LookToScrollBoundsKey, dictionary.ContainsKey(KeyValues.LookToScrollBoundsKey) ? dictionary[KeyValues.LookToScrollBoundsKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL, KeyValues.LookToScrollIncrementKey, dictionary.ContainsKey(KeyValues.LookToScrollIncrementKey) ? dictionary[KeyValues.LookToScrollIncrementKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL, KeyValues.LookToScrollModeKey, dictionary.ContainsKey(KeyValues.LookToScrollModeKey) ? dictionary[KeyValues.LookToScrollModeKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL, KeyValues.LookToScrollSpeedKey, dictionary.ContainsKey(KeyValues.LookToScrollSpeedKey) ? dictionary[KeyValues.LookToScrollSpeedKey] : (TimeSpan?)null),
+                }),
                 new KeyValueAndTimeSpanGroup(Resources.MISC_ACTIONS_KEY_GROUP, new List<KeyValueAndTimeSpan>
                 {
                     new KeyValueAndTimeSpan(Resources.ADD_TO_DICTIONARY, KeyValues.AddToDictionaryKey, dictionary.ContainsKey(KeyValues.AddToDictionaryKey) ? dictionary[KeyValues.AddToDictionaryKey] : (TimeSpan?)null),

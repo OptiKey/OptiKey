@@ -199,6 +199,7 @@ public enum Languages
         EnglishCanada,
         EnglishUK,
         EnglishUS,
+		FrenchCanada,
         FrenchFrance,
         GermanGermany,
         RussianRussia
@@ -223,6 +224,7 @@ public enum Languages
         EnglishCanada,
         EnglishUK,
         EnglishUS,
+		FrenchCanada,
         FrenchFrance,
         GermanGermany,
         GreekGreece,
@@ -245,6 +247,7 @@ is the switch statement inside `ToCultureInfo` method:
         case Languages.EnglishUS: return CultureInfo.GetCultureInfo("en-US");
         case Languages.EnglishUK: return CultureInfo.GetCultureInfo("en-GB");
         case Languages.EnglishCanada: return CultureInfo.GetCultureInfo("en-CA");
+		case Languages.FrenchCanada: return CultureInfo.GetCultureInfo("fr-CA");
         case Languages.FrenchFrance: return CultureInfo.GetCultureInfo("fr-FR");
         case Languages.GermanGermany: return CultureInfo.GetCultureInfo("de-DE");
         case Languages.RussianRussia: return CultureInfo.GetCultureInfo("ru-RU");
@@ -268,6 +271,7 @@ for our language would be the following:
         case Languages.EnglishUS: return CultureInfo.GetCultureInfo("en-US");
         case Languages.EnglishUK: return CultureInfo.GetCultureInfo("en-GB");
         case Languages.EnglishCanada: return CultureInfo.GetCultureInfo("en-CA");
+		case Languages.FrenchCanada: return CultureInfo.GetCultureInfo("fr-CA");
         case Languages.FrenchFrance: return CultureInfo.GetCultureInfo("fr-FR");
         case Languages.GermanGermany: return CultureInfo.GetCultureInfo("de-DE");
         case Languages.GreekGreece: return CultureInfo.GetCultureInfo("el-GR");
@@ -288,6 +292,7 @@ switch (languages)
         case Languages.EnglishCanada: return Resources.ENGLISH_CANADA;
         case Languages.EnglishUK: return Resources.ENGLISH_UK;
         case Languages.EnglishUS: return Resources.ENGLISH_US;
+		case Languages.FrenchCanada: return Resources.FRENCH_CANADA;
         case Languages.FrenchFrance: return Resources.FRENCH_FRANCE;
         case Languages.GermanGermany: return Resources.GERMAN_GERMANY;
         case Languages.RussianRussia: return Resources.RUSSIAN_RUSSIA;
@@ -348,6 +353,7 @@ switch (languages)
         case Languages.EnglishCanada: return Resources.ENGLISH_CANADA;
         case Languages.EnglishUK: return Resources.ENGLISH_UK;
         case Languages.EnglishUS: return Resources.ENGLISH_US;
+		case Languages.FrenchCanada: return Resources.FRENCH_CANADA;
         case Languages.FrenchFrance: return Resources.FRENCH_FRANCE;
         case Languages.GermanGermany: return Resources.GERMAN_GERMANY;
         case Languages.GreekGreece: return Resources.GREEK_GREECE;
@@ -384,7 +390,9 @@ public List<KeyValuePair<string, Languages>> Languages
                                         Enums.Languages.EnglishUK),
             new KeyValuePair<string, Languages>(Resources.ENGLISH_US, 
                                         Enums.Languages.EnglishUS),
-            new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, 
+            new KeyValuePair<string, Languages>(Resources.FRENCH_CANADA, 
+                                        Enums.Languages.FrenchCanada),
+			new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, 
                                         Enums.Languages.FrenchFrance),
             new KeyValuePair<string, Languages>(Resources.GERMAN_GERMANY, 
                                         Enums.Languages.GermanGermany),
@@ -418,7 +426,9 @@ public List<KeyValuePair<string, Languages>> Languages
                                         Enums.Languages.EnglishUK),
             new KeyValuePair<string, Languages>(Resources.ENGLISH_US, 
                                         Enums.Languages.EnglishUS),
-            new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, 
+            new KeyValuePair<string, Languages>(Resources.FRENCH_CANADA, 
+                                        Enums.Languages.FrenchCanada),
+			new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, 
                                         Enums.Languages.FrenchFrance),
             new KeyValuePair<string, Languages>(Resources.GERMAN_GERMANY, 
                                         Enums.Languages.GermanGermany),
@@ -443,6 +453,7 @@ so in our case we would name that entry `GreekGreece`; thus before adding the en
 public enum FunctionKeys
 {
     // more entries...
+	FrenchCanada,
     FrenchFrance,
     GermanGermany,
     Home,
@@ -456,6 +467,7 @@ After our addition:
 public enum FunctionKeys
 {
     // more entries...
+	FrenchCanada,
     FrenchFrance,
     GermanGermany,
     GreekGreece,
@@ -482,6 +494,7 @@ the lexicographical order; so our entry would be placed here:
 
 ```cs
 // more entries...
+public static readonly KeyValue FrenchCanadaKey = new KeyValue(FunctionKeys.FrenchCanada);
 public static readonly KeyValue FrenchFranceKey = new KeyValue(FunctionKeys.FrenchFrance);
 public static readonly KeyValue GermanGermanyKey = new KeyValue(FunctionKeys.GermanGermany);
 public static readonly KeyValue GreekGreeceKey = new KeyValue(FunctionKeys.GreekGreece);
