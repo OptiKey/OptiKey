@@ -6,17 +6,17 @@
     <valueConverters:BoolToCustomValues TrueValue="Visible" FalseValue="Collapsed" x:Key="VisibleWhenLookToScroll" />
     <valueConverters:BoolToCustomValues TrueValue="Collapsed" FalseValue="Visible" x:Key="HiddenWhenLookToScroll" />
 
-    <valueConverters:ResourceStringLookup Prefix="LOOK_TO_SCROLL_BOUNDS_" x:Key="LookToScrollBoundsLookup" />
-    <valueConverters:ResourceStringLookup Prefix="LOOK_TO_SCROLL_MODE_" x:Key="LookToScrollModeLookup" />
-    <valueConverters:ResourceStringLookup Prefix="LOOK_TO_SCROLL_SPEED_" x:Key="LookToScrollSpeedLookup" />
+    <valueConverters:ResourceStringLookup Prefix="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_" x:Key="LookToScrollBoundsLookup" />
+    <valueConverters:ResourceStringLookup Prefix="LOOK_TO_SCROLL_MODE_KEY_TEXT_" x:Key="LookToScrollModeLookup" />
+    <valueConverters:ResourceStringLookup Prefix="LOOK_TO_SCROLL_SPEED_KEY_TEXT_" x:Key="LookToScrollSpeedLookup" />
 
     <valueConverters:EnumMapper EnumType="{x:Type enums:LookToScrollModes}" x:Key="LookToScrollModeIcon">
         <valueConverters:EnumMapper.MappedValues>
             <x:Array Type="{x:Type Geometry}">
+                <StaticResource ResourceKey="LookToScrollModeFreeIcon" />
+                <StaticResource ResourceKey="LookToScrollModeCrossIcon" />
                 <StaticResource ResourceKey="LookToScrollModeVerticalIcon" />
                 <StaticResource ResourceKey="LookToScrollModeHorizontalIcon" />
-                <StaticResource ResourceKey="LookToScrollModeCrossIcon" />
-                <StaticResource ResourceKey="LookToScrollModeFreeIcon" />
             </x:Array>
         </valueConverters:EnumMapper.MappedValues>
     </valueConverters:EnumMapper>
@@ -24,8 +24,10 @@
     <valueConverters:EnumMapper EnumType="{x:Type enums:LookToScrollBounds}" x:Key="LookToScrollBoundsIcon">
         <valueConverters:EnumMapper.MappedValues>
             <x:Array Type="{x:Type Geometry}">
+                <StaticResource ResourceKey="LookToScrollBoundsScreenIcon" /> <!-- TODO: #423: new icon for point -->
                 <StaticResource ResourceKey="LookToScrollBoundsScreenIcon" />
                 <StaticResource ResourceKey="LookToScrollBoundsWindowIcon" />
+                <StaticResource ResourceKey="LookToScrollBoundsWindowIcon" /> <!-- TODO: #423: new icon for subwindow -->
                 <StaticResource ResourceKey="LookToScrollBoundsCustomIcon" />
             </x:Array>
         </valueConverters:EnumMapper.MappedValues>

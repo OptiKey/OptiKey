@@ -2,9 +2,9 @@
 {
     public enum LookToScrollModes
     {
+        Free,
+        Cross,
         Vertical,
         Horizontal,
-        Cross,
-        Free,
     }
 }

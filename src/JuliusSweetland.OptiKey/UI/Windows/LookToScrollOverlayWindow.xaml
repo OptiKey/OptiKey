@@ -13,26 +13,26 @@
         WindowStyle="None">
 
     <Window.Resources>
-        <valueConverters:BoolToCustomValues TrueValue="Collapsed" FalseValue="Visible" x:Key="InverseBooleanToVisibility"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
         <valueConverters:ColorNameToBrush x:Key="ColorNameToBrush"/>
         <valueConverters:EnumToVisibilityConverter x:Key="EnumToVisibility"/>
     </Window.Resources>
 
     <Window.Visibility>
-        <Binding Path="ActiveLookToScrollBounds.IsEmpty" Converter="{StaticResource InverseBooleanToVisibility}"/>
+        <Binding Path="IsLookToScrollActive" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollVerticalDeadzone}"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="{Binding Path=ActiveLookToScrollMargins.Top}"/>
+            <RowDefinition Height="{Binding Path=ActiveLookToScrollDeadzone.Height}"/>
+            <RowDefinition Height="{Binding Path=ActiveLookToScrollMargins.Bottom}"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollHorizontalDeadzone}"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="{Binding Path=ActiveLookToScrollMargins.Left}"/>
+            <ColumnDefinition Width="{Binding Path=ActiveLookToScrollDeadzone.Width}"/>
+            <ColumnDefinition Width="{Binding Path=ActiveLookToScrollMargins.Right}"/>
         </Grid.ColumnDefinitions>
         
         <!-- Bounds -->

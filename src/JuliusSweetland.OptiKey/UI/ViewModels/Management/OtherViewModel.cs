@@ -102,6 +102,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref lookToScrollDirectionInverted, value); }
         }
 
+        private bool lookToScrollLockDownBoundsKey;
+        public bool LookToScrollLockDownBoundsKey
+        {
+            get { return lookToScrollLockDownBoundsKey; }
+            set { SetProperty(ref lookToScrollLockDownBoundsKey, value); }
+        }
+
         private bool lookToScrollCenterMouseWhenActivated;
         public bool LookToScrollCenterMouseWhenActivated
         {
@@ -114,6 +121,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return lookToScrollBringWindowToFrontWhenActivated; }
             set { SetProperty(ref lookToScrollBringWindowToFrontWhenActivated, value); }
+        }
+
+        private bool lookToScrollBringWindowToFrontAfterChoosingScreenPoint;
+        public bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint
+        {
+            get { return lookToScrollBringWindowToFrontAfterChoosingScreenPoint; }
+            set { SetProperty(ref lookToScrollBringWindowToFrontAfterChoosingScreenPoint, value); }
         }
 
         private bool lookToScrollShowOverlayWindow;
@@ -241,8 +255,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Debug = Settings.Default.Debug;
             LookToScrollEnabled = Settings.Default.LookToScrollEnabled;
             LookToScrollDirectionInverted = Settings.Default.LookToScrollDirectionInverted;
+            LookToScrollLockDownBoundsKey = Settings.Default.LookToScrollLockDownBoundsKey;
             LookToScrollCenterMouseWhenActivated = Settings.Default.LookToScrollCenterMouseWhenActivated;
             LookToScrollBringWindowToFrontWhenActivated = Settings.Default.LookToScrollBringWindowToFrontWhenActivated;
+            LookToScrollBringWindowToFrontAfterChoosingScreenPoint = Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
             LookToScrollShowOverlayWindow = Settings.Default.LookToScrollShowOverlayWindow;
             LookToScrollOverlayBoundsColor = Settings.Default.LookToScrollOverlayBoundsColor;
             LookToScrollOverlayDeadzoneColor = Settings.Default.LookToScrollOverlayDeadzoneColor;
@@ -270,8 +286,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.Debug = Debug;
             Settings.Default.LookToScrollEnabled = LookToScrollEnabled;
             Settings.Default.LookToScrollDirectionInverted = LookToScrollDirectionInverted;
+            Settings.Default.LookToScrollLockDownBoundsKey = LookToScrollLockDownBoundsKey;
             Settings.Default.LookToScrollCenterMouseWhenActivated = LookToScrollCenterMouseWhenActivated;
             Settings.Default.LookToScrollBringWindowToFrontWhenActivated = LookToScrollBringWindowToFrontWhenActivated;
+            Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint = LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
             Settings.Default.LookToScrollShowOverlayWindow = LookToScrollShowOverlayWindow;
             Settings.Default.LookToScrollOverlayBoundsColor = LookToScrollOverlayBoundsColor;
             Settings.Default.LookToScrollOverlayDeadzoneColor = LookToScrollOverlayDeadzoneColor;

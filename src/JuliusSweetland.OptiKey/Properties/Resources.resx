@@ -2029,11 +2029,17 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
     <value>Invert scrolling direction:</value>
   </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Lock down bounds key to preserve chosen point, window, or region:</value>
+  </data>
   <data name="LOOK_TO_SCROLL_CENTER_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling, move mouse to center of bounds:</value>
+    <value>Before scrolling, move mouse to center of deadzone:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling, bring chosen window to the front:</value>
+    <value>Before scrolling within window, bring it to the front:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>After choosing screen point, bring any window there to the front:</value>
   </data>
   <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
     <value>Show overlay window (requires restart):</value>
@@ -2099,51 +2105,49 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>Look to
 Scroll</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_FORMAT" xml:space="preserve">
-    <value>{0}
-Bounds</value>
-  </data>
   <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
     <value>Scroll by {0} wheel unit: 
 (120 wheel units = 1 click)|Scroll by {0} wheel units:
 (120 wheel units = 1 click)</value>
   </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_FORMAT" xml:space="preserve">
-    <value>{0}
-Mode</value>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Screen at
+Point</value>
   </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_FORMAT" xml:space="preserve">
-    <value>{0}
-Speed</value>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTERED" xml:space="preserve">
+    <value>Screen
+Centered</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_SCREEN" xml:space="preserve">
-    <value>Screen</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_WINDOW" xml:space="preserve">
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
     <value>Window</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_CUSTOM" xml:space="preserve">
-    <value>Custom</value>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Window
+Region</value>
   </data>
-  <data name="LOOK_TO_SCROLL_MODE_VERTICAL" xml:space="preserve">
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Custom
+Region</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
     <value>Vertical</value>
   </data>
-  <data name="LOOK_TO_SCROLL_MODE_HORIZONTAL" xml:space="preserve">
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
     <value>Horizontal</value>
   </data>
-  <data name="LOOK_TO_SCROLL_MODE_CROSS" xml:space="preserve">
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
     <value>Cross</value>
   </data>
-  <data name="LOOK_TO_SCROLL_MODE_FREE" xml:space="preserve">
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
     <value>Free</value>
   </data>
-  <data name="LOOK_TO_SCROLL_SPEED_SLOW" xml:space="preserve">
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
     <value>Slow</value>
   </data>
-  <data name="LOOK_TO_SCROLL_SPEED_MEDIUM" xml:space="preserve">
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
     <value>Medium</value>
   </data>
-  <data name="LOOK_TO_SCROLL_SPEED_FAST" xml:space="preserve">
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
     <value>Fast</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
