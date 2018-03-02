@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -155,7 +155,7 @@ namespace JuliusSweetland.OptiKey.Services
                                     //Remove in-progress word from Text
                                     Text = Text.Substring(0, Text.Length - inProgressWord.Length);
 
-                                    //Add back the decomposed in-progress word, minus the last character, composed again (to recombine if possible)
+                                    //Add back the decomposed in-progress word, minus the last character, composed again (to recombine if possible), plus the last decomposed character (so the last character is decomposed and the prefix of the word is recombined if possible)
                                     var characterToRemove = decomposedInProgressWord.Last();
                                     var newInProgressWord = string.Concat(decomposedInProgressWord.Substring(0, decomposedInProgressWord.Length - 1).Compose(), characterToRemove);
                                     Text = string.Concat(Text, newInProgressWord);
@@ -241,6 +241,11 @@ namespace JuliusSweetland.OptiKey.Services
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
                     Text = Resources.NO;
+                    break;
+
+                case FunctionKeys.LeftShift:
+                    shiftStateSetAutomatically = false;
+                    GenerateSuggestions(lastProcessedTextWasSuggestion);
                     break;
 
                 case FunctionKeys.SimplifiedAlphaClear:
@@ -341,9 +346,49 @@ namespace JuliusSweetland.OptiKey.Services
                     lastProcessedTextWasSuggestion = true;
                     break;
 
-                case FunctionKeys.LeftShift:
-                    shiftStateSetAutomatically = false;
-                    GenerateSuggestions(lastProcessedTextWasSuggestion);
+                case FunctionKeys.ToggleCaseOfPreviousCharacter:
+                    {
+                        var inProgressWord = Text.InProgressWord(Text.Length);
+                        if (inProgressWord != null)
+                        {
+                            //Attempt to break-apart/decompose in-progress word using normalisation
+                            var decomposedInProgressWord = inProgressWord.Decompose();
+                            if (decomposedInProgressWord != inProgressWord)
+                            {
+                                Log.DebugFormat("In-progress word can be broken apart/decomposed using normalisation. It will be normalised from '{0}' to '{1}'.", inProgressWord, decomposedInProgressWord);
+                            }
+
+                            //Remove in-progress word from Text
+                            Text = Text.Substring(0, Text.Length - inProgressWord.Length);
+
+                            //Add back the decomposed in-progress word, with the last character (potentially) cased differently (lower->upper or vice versa), composed again (to recombine if possible)
+                            var finalCharacter = decomposedInProgressWord.Last();
+                            var reCasedFinalCharacter = finalCharacter.ToggleCase();
+                            if (finalCharacter != reCasedFinalCharacter)
+                            {
+                                Log.DebugFormat("Last character of in-progress word has had its case toggled. It will be converted from '{0}' to '{1}'.", finalCharacter, reCasedFinalCharacter);
+                            }
+                            var newInProgressWord = string.Concat(decomposedInProgressWord.Substring(0, decomposedInProgressWord.Length - 1), reCasedFinalCharacter).Compose();
+                            Text = string.Concat(Text, newInProgressWord);
+
+                            //Remove composed string from external applications by outputting backspaces, then replace with decomposed word
+                            for (var backCount = 0; backCount < inProgressWord.Length; backCount++)
+                            {
+                                PublishKeyPress(FunctionKeys.BackOne);
+                            }
+
+                            foreach (var c in newInProgressWord)
+                            {
+                                PublishKeyPress(c);
+                            }
+
+                            dictionaryService.DecrementEntryUsageCount(inProgressWord); //Decrement the original in-progress word
+                            dictionaryService.IncrementEntryUsageCount(newInProgressWord); //And increment the new in-progress word
+
+                            GenerateSuggestions(false);
+                            lastProcessedTextWasSuggestion = false;
+                        }
+                    }
                     break;
 
                 default:

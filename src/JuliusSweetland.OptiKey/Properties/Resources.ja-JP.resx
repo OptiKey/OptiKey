@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,29 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Add</value>
+    <value>追加する</value>
   </data>
   <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
-    <value>Add new entry:</value>
+    <value>新しいエントリーを追加する：</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Would you like to add the phrase '{0}' to the dictionary with shortcut '{1}'?</value>
+    <value>'{0}'を'{1}'というショートカットキーで辞書に立項したいか。</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ADD TO
-DICTIONARY</value>
+    <value>立項する
+辞書に</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Would you like to add the word '{0}' to the dictionary?</value>
+    <value> '{0}'を辞書に立項したいか。</value>
   </data>
   <data name="ADDED" xml:space="preserve">
-    <value>Added</value>
+    <value>立項した</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
-    <value>Adjust by {0} pixel|Adjust by {0} pixels</value>
+    <value>{0} つドットで調節|{0} つドットで調節</value>
   </data>
   <data name="ALPHA_1" xml:space="preserve">
-    <value>LETTERS 1</value>
+    <value>文字1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -152,95 +152,94 @@ DICTIONARY</value>
     <value>Android Light</value>
   </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
-    <value>Auto capitalise words:</value>
+    <value>自動大文字入力:</value>
   </data>
   <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
-    <value>Auto complete words:</value>
+    <value>自動補完入力:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
-    <value>Automatic sentence adjustments</value>
+    <value>自動文章調整</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
-    <value>Auto space between words:</value>
+    <value>スペースの自動補完</value>
   </data>
   <data name="BACK_TITLE_CASE" xml:space="preserve">
-    <value>Back</value>
+    <value>戻る</value>
   </data>
   <data name="BACK" xml:space="preserve">
-    <value>BACK</value>
+    <value>戻る</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>BACK
-ONE</value>
+    <value>１つ
+戻る</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>BACK
-WORD</value>
+    <value>１文字
+戻る</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
     <value>Bass was unable to create a stream from file '{0}'</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
-    <value>Bottom</value>
+    <value>下</value>
   </data>
   <data name="BREAK" xml:space="preserve">
     <value>BREAK</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Calibration aborted with message: '{0}'</value>
+    <value>校正が停止しました: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Are you sure you would like to re-calibrate?</value>
+    <value>もう一度校正しますか？</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>An error occurred during calibration. Message: '{0}'</value>
+    <value>校正中にエラーが発生しました: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Calibration failed with message: '{0}'</value>
+    <value>校正に失敗しました: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
-    <value>Calibration cannot be completed without manual intervention, e.g. having to use a mouse. You may be stuck in the calibration process if you cannot manually interact with your computer.
-Are you sure you would like to re-calibrate?</value>
+    <value>手動操作なしに校正を完了することができません。マウスを使用する必要があります。コンピューターへの手動操作ができない場合、校正途中で止まる可能性があります。再校正してもよろしいですか？</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Calibration stopped for an unknown reason. Message: '{0}'</value>
+    <value>不明な理由により校正が停止しました:{0}</value>
   </data>
   <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
-    <value>Calibration success! Accuracy (Avg Error Degree = {0})</value>
+    <value>校正成功！ 精度（平均エラー度={0}）</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
-    <value>CANCEL</value>
+    <value>キャンセル</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
-    <value>Capture timeout (ms):</value>
+    <value>キャプチャータイムアウト(ミリ秒):</value>
   </data>
   <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
-    <value>Check for updates on startup:</value>
+    <value>起動時に更新を確認する:</value>
   </data>
   <data name="CLEAR" xml:space="preserve">
-    <value>CLEAR</value>
+    <value>CREAR</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>CLICK
-&amp; DRAG</value>
+    <value>クリック
+&amp; ドラッグ</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
-    <value>Click 1</value>
+    <value>クリック 1</value>
   </data>
   <data name="CLICK_SOUND_2" xml:space="preserve">
-    <value>Click 2</value>
+    <value>クリック2</value>
   </data>
   <data name="CLICK_SOUND_3" xml:space="preserve">
-    <value>Click 3</value>
+    <value>クリック3</value>
   </data>
   <data name="CLICK_SOUND_4" xml:space="preserve">
-    <value>Click 4</value>
+    <value>クリック4</value>
   </data>
   <data name="CLICK_SOUND_5" xml:space="preserve">
-    <value>Click 5</value>
+    <value>クリック 5</value>
   </data>
   <data name="CLICK_SOUND_6" xml:space="preserve">
-    <value>Click 6</value>
+    <value>クリック 6</value>
   </data>
   <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>COLLAPSE
@@ -250,76 +249,77 @@ DOCK</value>
     <value>Collapsed dock thickness (as % of full dock thickness):</value>
   </data>
   <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
-    <value>MENU</value>
+    <value>メニュー</value>
   </data>
   <data name="CONVERSATION" xml:space="preserve">
-    <value>CONVERSATION</value>
+    <value>会話</value>
   </data>
   <data name="CONVERSATION_LAYOUT" xml:space="preserve">
-    <value>Conversation Letters</value>
+    <value>会話の字</value>
   </data>
   <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
-    <value>Conversation Numeric &amp; Symbols</value>
+    <value>会話の記号</value>
   </data>
   <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
-    <value>Conversation only mode:</value>
+    <value>会話だけモード</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn't possible.
+    <value>ユーザー設定ファイルの破損が検出されました。古いバージョンかインストール時のバージョンをリストアしてください。
 
-Click Yes to reset your user settings and restart.
+ユーザー設定をリセットし、アプリを再起動する場合は「はい」をクリックしてください。
 
-Click No to close so that you can manually repair or copy your user settings file.</value>
+自分でユーザー設定ファイルを復元する場合は「いいえ」をクリックしてください。</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
-    <value>Uh-oh! The user settings file looks to be corrupt.</value>
+    <value>ユーザー設定ファイルが破損しています。</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Bad news - OptiKey has tripped over its feet and has to close down.
+    <value>残念なお知らせ‐Optikeyは停止しました。
 
-An email with details of what happened would be very helpful: optikeyfeedback@gmail.com
+起こったことの詳細を報告していただけると助かります:
+optikeyfeedback@gmail.com
 
-Sorry for the inconvenience.</value>
+ご不便をおかけして申し訳ありません。</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
-    <value>Uh-oh!</value>
+    <value>エラー</value>
   </data>
   <data name="CTRL" xml:space="preserve">
     <value>CTRL</value>
   </data>
   <data name="CURRENCIES" xml:space="preserve">
-    <value>CURRENCIES</value>
+    <value>通貨記号</value>
   </data>
   <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
-    <value>Currencies 1</value>
+    <value>通貨記号 1</value>
   </data>
   <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
-    <value>Currencies 2</value>
+    <value>通貨記号2</value>
   </data>
   <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
-    <value>Cursor height (pixels):</value>
+    <value>カーソル高さ (pixel):</value>
   </data>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
-    <value>Cursor width (pixels):</value>
+    <value>カーソル幅 (pixel):</value>
   </data>
   <data name="CUSTOM_LAYOUT" xml:space="preserve">
-    <value>Custom keyboard file</value>
+    <value>カスタム キーボードファイル</value>
   </data>
   <data name="DANISH_DENMARK" xml:space="preserve">
-    <value>Danish (Denmark) / Dansk (Danmark)</value>
+    <value>デンマーク語 (デンマーク) / Dansk (Danmark)</value>
   </data>
   <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Danish
-(Denmark) /
+    <value>デンマーク語
+(デンマーク) /
 Dansk
 (Danmark)</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
-    <value>Debugging mode:</value>
+    <value>デバッグモード:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DECREASE
-OPACITY</value>
+    <value>透明度を
+下げる</value>
   </data>
   <data name="DEL" xml:space="preserve">
     <value>DEL</value>
@@ -328,101 +328,101 @@ OPACITY</value>
     <value>Delete</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>DIACRITICS</value>
+    <value>ダイアクリティカルマーク</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
-    <value>Diacritics 1</value>
+    <value>ダイアクリティカルマーク1</value>
   </data>
   <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
-    <value>Diacritics 2</value>
+    <value>ダイアクリティカルマーク2</value>
   </data>
   <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
-    <value>Diacritics 3</value>
+    <value>ダイアクリティカルマーク3</value>
   </data>
   <data name="DICTIONARY" xml:space="preserve">
-    <value>Dictionary</value>
+    <value>辞書</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>No user dictionary exists and original dictionary could not be found at path: '{0}'</value>
+    <value>ユーザー辞書登録がありません。オリジナル辞書ファイルが見つかりません: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
-    <value>Display for X seconds per message character:</value>
+    <value>１文字辺りの表示間隔 - 秒:</value>
   </data>
   <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
-    <value>Do at current location...</value>
+    <value>現在位置で実行</value>
   </data>
   <data name="DO_AT_POINT" xml:space="preserve">
-    <value>Do at point...</value>
+    <value>ポイント指定で実行</value>
   </data>
   <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DOWN
-ARROW</value>
+    <value>下
+矢印</value>
   </data>
   <data name="DURATION_FORMAT" xml:space="preserve">
-    <value> ({0:#,###}ms)</value>
+    <value> ({0:#,###}ミリ秒)</value>
   </data>
   <data name="END" xml:space="preserve">
     <value>END</value>
   </data>
   <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>English (Canada)</value>
+    <value>英語(カナダ)</value>
   </data>
   <data name="ENGLISH_UK" xml:space="preserve">
-    <value>English (UK)</value>
+    <value>英語(イギリス)</value>
   </data>
   <data name="ENGLISH_US" xml:space="preserve">
-    <value>English (US)</value>
+    <value>英語(アメリカ)</value>
   </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Great stuff. '{0}' has been added to the dictionary.</value>
+    <value>'{0}' は辞書に登録されました。</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
-    <value>Error:</value>
+    <value>エラー:</value>
   </data>
   <data name="ESC" xml:space="preserve">
     <value>ESC</value>
   </data>
   <data name="EXPAND" xml:space="preserve">
-    <value>EXPAND</value>
+    <value>拡大</value>
   </data>
   <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-DOCK</value>
+    <value>ドックを
+拡大</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-DOWN &amp; LEFT</value>
+    <value>左下へ
+拡大</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-DOWN &amp; RIGHT</value>
+    <value>右下へ
+拡大</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-DOWN</value>
+    <value>下へ
+拡大</value>
   </data>
   <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-LEFT</value>
+    <value>左へ
+拡大</value>
   </data>
   <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-RIGHT</value>
+    <value>右へ
+拡大</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-UP &amp; LEFT</value>
+    <value>左上へ
+拡大</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-UP &amp; RIGHT</value>
+    <value>右上へ
+拡大</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-UP</value>
+    <value>上へ
+拡大</value>
   </data>
   <data name="FALLING_SOUND_1" xml:space="preserve">
     <value>Falling 1</value>
@@ -431,50 +431,50 @@ UP</value>
     <value>Falling 2</value>
   </data>
   <data name="FILL_PIE" xml:space="preserve">
-    <value>Fill Pie</value>
+    <value>待機マークをフィルする</value>
   </data>
   <data name="FIXATIONS_DWELL" xml:space="preserve">
     <value>Fixations (dwell)</value>
   </data>
   <data name="FONT" xml:space="preserve">
-    <value>Font</value>
+    <value>フォント</value>
   </data>
   <data name="FONT_FAMILY_LABEL" xml:space="preserve">
-    <value>Font family:</value>
+    <value>フォントファミリー:</value>
   </data>
   <data name="FONT_STRETCH_LABEL" xml:space="preserve">
-    <value>Font stretch:</value>
+    <value>フォントストレッチ:</value>
   </data>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
-    <value>Font weight:</value>
+    <value>フォントウェイト:</value>
   </data>
   <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>French (France) / Française (France)</value>
+    <value>フランス語(フランス) / Française (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>Full dock thickness (as % of screen):</value>
+    <value>ドック高さ (%):</value>
   </data>
   <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>Gaze Tracker</value>
+    <value>アイトラッカー</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Grow</value>
   </data>
   <data name="HOME" xml:space="preserve">
-    <value>HOME</value>
+    <value>ホーム</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Horizontal fill (as % of screen):</value>
+    <value>横幅 (%)</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Incomplete key fixation time to live (ms):</value>
+    <value>不完全なキー固定の有効時間(ミリ秒):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>INCREASE
-OPACITY</value>
+    <value>透明度を
+上げる</value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
-    <value>Info:</value>
+    <value>情報：</value>
   </data>
   <data name="INS" xml:space="preserve">
     <value>INS</value>
@@ -483,134 +483,134 @@ OPACITY</value>
     <value>...but intelligently suppress auto-caps where it is probably unhelpful:</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
-    <value>The current keyboard &amp; language combination is not valid</value>
+    <value>現在のキーボードと言語の組み合わせは無効です</value>
   </data>
   <data name="JUMP" xml:space="preserve">
-    <value>JUMP</value>
+    <value>ジャンプ</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-DOWN &amp; LEFT</value>
+    <value>左下へ
+ジャンプ</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-DOWN &amp; RIGHT</value>
+    <value>右下へ
+ジャンプ</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-DOWN</value>
+    <value>下へ
+ジャンプ</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-LEFT</value>
+    <value>左へ
+ジャンプ</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-RIGHT</value>
+    <value>右へ
+ジャンプ</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-UP &amp; LEFT</value>
+    <value>左上へ
+ジャンプ</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-UP &amp; RIGHT</value>
+    <value>右上へ
+ジャンプ</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-UP</value>
+    <value>上へ
+ジャンプ</value>
   </data>
   <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Key text transformation:</value>
+    <value>キーテキスト変換:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Key fixation time to complete (ms):</value>
+    <value>完了までのキー固定時間(ミリ秒):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Key fixation time to lock-on (ms):</value>
+    <value>ロックまでのキー固定時間(ミリ秒):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Key selection keyboard key:</value>
+    <value>キー選択キーボードキー:</value>
   </data>
   <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Key selection mouse button:</value>
+    <value>キー選択マウスボタン:</value>
   </data>
   <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
-    <value>Key Selection:</value>
+    <value>キー選択:</value>
   </data>
   <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Key selection source:</value>
+    <value>キー選択元:</value>
   </data>
   <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
-    <value>Key selection: {0}</value>
+    <value>キー選択: {0}</value>
   </data>
   <data name="KEYBOARD_KEY" xml:space="preserve">
-    <value>Keyboard key</value>
+    <value>キーボードキー</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
-    <value>Language</value>
+    <value>言語</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Keyboard language: {0}</value>
+    <value>キーボード言語: {0}</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Keyboard language:</value>
+    <value>キーボード言語:</value>
   </data>
   <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
-    <value>Keyboards folder can be set in \n Management Console (Visuals tab)</value>
+    <value>キーボードフォルダは\ n管理コンソール(ビジュアルタブ)で設定できます。</value>
   </data>
   <data name="LEFT" xml:space="preserve">
-    <value>Left</value>
+    <value>左</value>
   </data>
   <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT
-ARROW</value>
+    <value>左
+矢印</value>
   </data>
   <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT
-CLICK</value>
+    <value>左
+クリック</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT
-DOUBLE CLICK</value>
+    <value>左
+ダブルクリック</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT
-DOWN/UP</value>
+    <value>左
+下・上</value>
   </data>
   <data name="LOOK" xml:space="preserve">
-    <value>Look</value>
+    <value>見る</value>
   </data>
   <data name="LOWER_CASE" xml:space="preserve">
-    <value>All in lower case</value>
+    <value>すべて小文字</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MAGNETIC
 CURSOR</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
-    <value>MAGNIFIER</value>
+    <value>拡大鏡</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Magnify destination (as % of screen):</value>
+    <value>(スクリーンの％として)先を拡大</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Magnify source (as % of screen):</value>
+    <value>(スクリーンの％として)ソースを拡大。</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
-    <value>Management console: ALT + M</value>
+    <value>管理コンソール: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Management Console</value>
+    <value>OptiKey 管理コンソール</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
-    <value>Maximum number of dictionary matches:</value>
+    <value>辞書検索の最大文字数:</value>
   </data>
   <data name="MENU" xml:space="preserve">
-    <value>MENU</value>
+    <value>メニュー</value>
   </data>
   <data name="MENU_LAYOUT" xml:space="preserve">
-    <value>Menu</value>
+    <value>メニュー</value>
   </data>
   <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MIDDLE
@@ -621,285 +621,285 @@ CLICK</value>
 DOWN/UP</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
-    <value>MINIMISE</value>
+    <value>最小化</value>
   </data>
   <data name="MINIMISED_LAYOUT" xml:space="preserve">
-    <value>Minimised</value>
+    <value>最小化しました。</value>
   </data>
   <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
-    <value>Minimised position:</value>
+    <value>最小化時の位置:</value>
   </data>
   <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
-    <value>Minimum dwell time on a key to include in capture (ms):</value>
+    <value>キャプチャに含めるキーの最小滞留時間(ミリ秒):</value>
   </data>
   <data name="MISC" xml:space="preserve">
-    <value>Misc</value>
+    <value>その他</value>
   </data>
   <data name="MOUSE" xml:space="preserve">
-    <value>MOUSE</value>
+    <value>マウス</value>
   </data>
   <data name="MOUSE_BUTTON" xml:space="preserve">
-    <value>Mouse button</value>
+    <value>マウスボタン</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
-    <value>Mouse Click 1</value>
+    <value>マウスクリック1</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
-    <value>Mouse Click 2</value>
+    <value>マウスクリック2</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
-    <value>Mouse Click 3</value>
+    <value>マウスクリック3</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
-    <value>Mouse Click 4</value>
+    <value>マウスクリック4</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse click:</value>
+    <value>マウスクリック：</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
-    <value>Mouse Double Click 1</value>
+    <value>ダブルクリック1</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
-    <value>Mouse Double Click 2</value>
+    <value>ダブルクリック2</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
-    <value>Mouse Double Click 3</value>
+    <value>ダブルクリック3</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse double click:</value>
+    <value>ダブルクリック:</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
-    <value>Mouse Down 1</value>
+    <value>マウスダウン 1</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
-    <value>Mouse Down 2</value>
+    <value>マウスダウン 2</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
-    <value>Mouse Down 3</value>
+    <value>マウスダウン 3</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
-    <value>Mouse Down 4</value>
+    <value>マウスダウン 4</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse down:</value>
+    <value>マウスダウン</value>
   </data>
   <data name="MOUSE_LAYOUT" xml:space="preserve">
-    <value>Mouse</value>
+    <value>マウス</value>
   </data>
   <data name="MOUSE_POSITION" xml:space="preserve">
-    <value>Mouse position</value>
+    <value>マウス位置</value>
   </data>
   <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
-    <value>Mouse position sample interval (ms):</value>
+    <value>マウス位置更新間隔 (ms):</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
-    <value>Mouse Scroll 1</value>
+    <value>マウススクロール1</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
-    <value>Mouse Scroll 2</value>
+    <value>マウススクロール2</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
-    <value>Mouse Scroll 3</value>
+    <value>マウススクロール3</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
-    <value>Mouse Scroll 4</value>
+    <value>マウススクロール4</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
-    <value>Mouse Scroll 5</value>
+    <value>マウススクロール5</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
-    <value>Mouse Scroll 6</value>
+    <value>マウススクロール6</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse scroll:</value>
+    <value>マウススクロール:</value>
   </data>
   <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
-    <value>Mouse Up 1</value>
+    <value>マウスアップ 1</value>
   </data>
   <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
-    <value>Mouse Up 2</value>
+    <value>マウスアップ 2</value>
   </data>
   <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
-    <value>Mouse Up 3</value>
+    <value>マウスアップ 3</value>
   </data>
   <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
-    <value>Mouse Up 4</value>
+    <value>マウスアップ 4</value>
   </data>
   <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse up:</value>
+    <value>マウスアップ:</value>
   </data>
   <data name="MOVE" xml:space="preserve">
-    <value>MOVE</value>
+    <value>動く</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>Move by {0} pixel:|Move by {0} pixels:</value>
+    <value>{0} つドットで動く:{0} つドットで動く</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-DOWN &amp; LEFT</value>
+    <value>動く
+下と左</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-DOWN &amp; RIGHT</value>
+    <value>動く
+下と右</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-DOWN</value>
+    <value>動く
+下</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-LEFT</value>
+    <value>動く
+左</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-RIGHT</value>
+    <value>動く
+右</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-TO</value>
+    <value>右へ
+移動する</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-UP &amp; LEFT</value>
+    <value>動く
+上と左</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-UP &amp; RIGHT</value>
+    <value>動く
+上と右</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-UP</value>
+    <value>動く
+上</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
-    <value>Multi-key captures</value>
+    <value>複数キー キャプチャー</value>
   </data>
   <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
-    <value>Multi-key captures enabled:</value>
+    <value>複数キー キャプチャー有効化:</value>
   </data>
   <data name="MULTI_KEY_SELECTION" xml:space="preserve">
-    <value>Multi-key Selection</value>
+    <value>複数キー選択</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Multi-key selection ending:</value>
+    <value>複数キー選択終了</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MULTI-KEY
-SELECTION</value>
+    <value>複数キー
+選択</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Multi-key selection starting:</value>
+    <value>複数キー選択開始</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
-(The new dictionary entry will contain capital letters)</value>
+(新しい辞書エントリには大文字が含まれます)</value>
   </data>
   <data name="NEXT" xml:space="preserve">
-    <value>NEXT</value>
+    <value>次</value>
   </data>
   <data name="NO" xml:space="preserve">
-    <value>NO</value>
+    <value>いいえ</value>
   </data>
   <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
-    <value>No keyboards found</value>
+    <value>キーボード接続が見つかりません。</value>
   </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
-    <value>It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.</value>
+    <value>スクラッチパッドには、辞書にまだ存在しない単語やフレーズは含まれていないようです</value>
   </data>
   <data name="NO_SOUND" xml:space="preserve">
-    <value>None</value>
+    <value>なし</value>
   </data>
   <data name="NOTHING_NEW" xml:space="preserve">
-    <value>Hmm, nothing new here!</value>
+    <value>新しいものはありません</value>
   </data>
   <data name="NOTIFICATIONS" xml:space="preserve">
-    <value>Notifications</value>
+    <value>通知</value>
   </data>
   <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NUM
 LK</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NUM
-SYM</value>
+    <value>数字
+記号</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>NUMBERS
-&amp; SYMBOLS</value>
+    <value>数字
+記号</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
-    <value>Numeric &amp; Symbols 1</value>
+    <value>数字記号1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
-    <value>Numeric &amp; Symbols 2</value>
+    <value>数字記号2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
-    <value>Numeric &amp; Symbols 3</value>
+    <value>数字記号3</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>OK</value>
+    <value>オッケー</value>
   </data>
   <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Type · Click · Speak</value>
+    <value>OptiKey : タイプ・クリック・マイク</value>
   </data>
   <data name="OTHER" xml:space="preserve">
-    <value>Other</value>
+    <value>その他</value>
   </data>
   <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
-    <value>Parent Window could not be identified. Unable to continue</value>
+    <value>元のウィンドウを特定できませんでした。 続行できません</value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PG
-DN</value>
+    <value>ページ
+下の</value>
   </data>
   <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PG
-UP</value>
+    <value>ページ
+上の</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
-    <value>Physical Keys</value>
+    <value>物理キー</value>
   </data>
   <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PHYSICAL
-KEYS</value>
+    <value>物理
+キー</value>
   </data>
   <data name="PLAY_SOUND" xml:space="preserve">
-    <value>Play</value>
+    <value>プレー</value>
   </data>
   <data name="POINT_AND_SELECTING" xml:space="preserve">
-    <value>Pointing &amp; Selecting</value>
+    <value>ポインタと選択</value>
   </data>
   <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
-    <value>Point fixation radius (pixels):</value>
+    <value>ポインタ固定半径 (ピクセル):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Point fixation time to complete (ms):</value>
+    <value>ポインタ固定待機時間 (ミリ秒):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Point fixation time to lock-on (ms):</value>
+    <value>ポインタ固定開始時間 (ミリ秒):</value>
   </data>
   <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
-    <value>Point lock-on radius (pixels):</value>
+    <value>ポインタロックオン半径(ピクセル):</value>
   </data>
   <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
-    <value>Point selection: {0}</value>
+    <value>ポインタ選択:{0}</value>
   </data>
   <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Point selection keyboard key:</value>
+    <value>ポインタ選択キーボードキー</value>
   </data>
   <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Point selection mouse button:</value>
+    <value>ポインタ選択マウスボタン:</value>
   </data>
   <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Point selection source:</value>
+    <value>ポインタ選択ソース:</value>
   </data>
   <data name="POINTING" xml:space="preserve">
-    <value>Pointing</value>
+    <value>ポインティング</value>
   </data>
   <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
-    <value>Pointing: {0}</value>
+    <value>ポインティング:{0}</value>
   </data>
   <data name="PREV" xml:space="preserve">
-    <value>PREVIOUS</value>
+    <value>前の</value>
   </data>
   <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>PRNT
@@ -909,51 +909,51 @@ SCR</value>
     <value>PROBLEM LOADING KEYBOARD</value>
   </data>
   <data name="QUIT" xml:space="preserve">
-    <value>QUIT</value>
+    <value>終了</value>
   </data>
   <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Are you absolutely sure that you'd like to quit?</value>
+    <value>本当に終了してよろしいですか？</value>
   </data>
   <data name="QUIT_MESSAGE" xml:space="preserve">
-    <value>Are you sure you would like to quit?</value>
+    <value>終了してよろしいですか？</value>
   </data>
   <data name="RATE_LABEL" xml:space="preserve">
-    <value>Rate:</value>
+    <value>レート:</value>
   </data>
   <data name="RE_CALIBRATE" xml:space="preserve">
-    <value>RE-CALIBRATE</value>
+    <value>再調整</value>
   </data>
   <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>REPEAT
-LAST</value>
+    <value>最後の文字を
+繰り返す</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
-    <value>Audio and/or Dictionary service(s) were/was not supplied to the management window action.</value>
+    <value>オーディオ　および/または　辞書機能()は管理ウィンドウアクションに提供されませんでした。</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey needs to restart to apply your changes.
-Please click OK to continue with the restart, or CANCEL to discard your changes</value>
+    <value>変更を適用するにはOptiKey の再起動が必要です。
+再起動する場合はOKを、変更を破棄する場合はCANCELをクリックしてください。</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Restore</value>
+    <value>復元</value>
   </data>
   <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Resuming an incomplete key fixation requires a new lock on:</value>
+    <value>不完全なキー固定を再開するには、次の新しいロックが必要です。</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
-    <value>Right</value>
+    <value>右</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT
-ARROW</value>
+    <value>右
+矢印</value>
   </data>
   <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT
-CLICK</value>
+    <value>右
+クリック</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT
-DOWN/UP</value>
+    <value>右
+下・上</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
     <value>Rising 1</value>
@@ -962,141 +962,141 @@ DOWN/UP</value>
     <value>Rising 2</value>
   </data>
   <data name="RUSSIAN_RUSSIA" xml:space="preserve">
-    <value>Russian (Russia) / Русский (Россия)</value>
+    <value>ロシア語 (ロシア) / Русский (Россия)</value>
   </data>
   <data name="SPANISH_SPAIN" xml:space="preserve">
-    <value>Spanish (Spain) / Español (España)</value>
+    <value>スペイン語 (スペイン) / Español (España)</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
-    <value>Same as dock position</value>
+    <value>ドックした位置と同じ</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
-    <value>Scratchpad # of lines:</value>
+    <value>スクラッチパッド数：</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCR
-LK</value>
+    <value>画面
+ロック</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>Scroll by {0} click:|Scroll by {0} clicks:</value>
+    <value>{0}クリックでスクロール:{0}クリックでスクロール</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-DOWN</value>
+    <value>下へ
+スクロール</value>
   </data>
   <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-LEFT</value>
+    <value>左へ
+スクロール</value>
   </data>
   <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-RIGHT</value>
+    <value>右へ
+スクロール</value>
   </data>
   <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-UP</value>
+    <value>上へ
+スクロール</value>
   </data>
   <data name="SELECTION" xml:space="preserve">
-    <value>Selection</value>
+    <value>選択</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
-    <value>Selection progress indicator behaviour:</value>
+    <value>選択進捗インジケータの動作:</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
-    <value>Selection progress indicator end size (%):</value>
+    <value>選択進捗インジケータエンドサイズ:</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
-    <value>Selection progress indicator start size (%):</value>
+    <value>選択進捗インジケータスタートサイズ(%):</value>
   </data>
   <data name="SHIFT" xml:space="preserve">
-    <value>SHIFT</value>
+    <value>シフト</value>
   </data>
   <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
-    <value>Show splash screen on startup:</value>
+    <value>起動時にスプラッシュ画面を表示する</value>
   </data>
   <data name="SHRINK" xml:space="preserve">
-    <value>SHRINK</value>
+    <value>縮む</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-DOWN &amp; LEFT</value>
+    <value>左下へ
+縮小</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-DOWN &amp; RIGHT</value>
+    <value>縮む
+下と右</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-DOWN</value>
+    <value>縮む
+下</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
-    <value>Shrink</value>
+    <value>縮む</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-LEFT</value>
+    <value>縮む
+左</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-RIGHT</value>
+    <value>縮む
+右</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-UP &amp; LEFT</value>
+    <value>縮む
+上と左</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-UP &amp; RIGHT</value>
+    <value>縮む
+上と右</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-UP</value>
+    <value>縮む
+上</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
-    <value>(FYI some similar entries are already in the dictionary: {0})</value>
+    <value>(FYI同様の項目が既に辞書に入っています:{0})</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SIZE &amp;
-POSITION</value>
+    <value>サイズと
+位置</value>
   </data>
   <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
-    <value>Size &amp; Position</value>
+    <value>サイズと位置</value>
   </data>
   <data name="SLEEP" xml:space="preserve">
-    <value>SLEEP</value>
+    <value>スリープ</value>
   </data>
   <data name="SOUND_EFFECTS" xml:space="preserve">
-    <value>Sound effects</value>
+    <value>サウンドエフェクト</value>
   </data>
   <data name="SOUNDS" xml:space="preserve">
-    <value>Sounds</value>
+    <value>音</value>
   </data>
   <data name="SOURCE_LABEL" xml:space="preserve">
-    <value>Source:</value>
+    <value>ソース:</value>
   </data>
   <data name="SPACE" xml:space="preserve">
-    <value>SPACE</value>
+    <value>スペース</value>
   </data>
   <data name="SPEAK" xml:space="preserve">
-    <value>SPEAK</value>
+    <value>マイク</value>
   </data>
   <data name="SPEECH" xml:space="preserve">
-    <value>Speech</value>
+    <value>スピーチ</value>
   </data>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Startup keyboard:</value>
+    <value>スタートアップキーボード:</value>
   </data>
   <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
-    <value>Custom keyboard file:</value>
+    <value>カスタムキーボードファイル:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
-    <value>Stop signal:</value>
+    <value>信号停止:</value>
   </data>
   <data name="SUCCESS" xml:space="preserve">
-    <value>Success</value>
+    <value>成功</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Suppress modifier keys when in mouse keyboard:</value>
+    <value>マウスのキーボードで修飾キーを表示しない:</value>
   </data>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
@@ -1105,22 +1105,22 @@ POSITION</value>
     <value>The Eye Tribe</value>
   </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
-    <value>Unable to activate TheEyeTribe GazeManager! Please check that the server is running and the device is connected and try again.</value>
+    <value>TheEyeTribe GazeManagerをアクティブ化できません！ サーバが動作していることとデバイスが接続されていることを確認してから、もう一度試してください。</value>
   </data>
   <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
-    <value>TheEyeTribe has not been calibrated. No data will be received until calibration is completed.</value>
+    <value>TheEyeTribeは校正されていません。 校正が完了するまで、データは受信されません。</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Unable to attempt a calibration as no EyeX engine is available.</value>
+    <value>EyeXエンジンが利用できないため、キャリブレーションを試みることができません。</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
-    <value>Theme:</value>
+    <value>テーマ:</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
-    <value>Time until point becomes irrelevant (ms):</value>
+    <value>Time until point becomes irrelevent (ms):</value>
   </data>
   <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
-    <value>Hide cursor</value>
+    <value>カーソルを隠す</value>
   </data>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Words are capitalized</value>
@@ -1144,16 +1144,16 @@ POSITION</value>
     <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
-    <value>Tone 1</value>
+    <value>音 1</value>
   </data>
   <data name="TONE_SOUND_2" xml:space="preserve">
-    <value>Tone 2</value>
+    <value>音2</value>
   </data>
   <data name="TONE_SOUND_3" xml:space="preserve">
-    <value>Tone 3</value>
+    <value>音3</value>
   </data>
   <data name="TONE_SOUND_4" xml:space="preserve">
-    <value>Tone 4</value>
+    <value>音4</value>
   </data>
   <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
     <value>Trigger button/key pressed again</value>
@@ -1171,14 +1171,14 @@ POSITION</value>
     <value>There was a problem setting the voice to '{0}'{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
-    <value>Something went wrong, but I don't know what - please check the logs</value>
+    <value>問題があったが、分からない。ロッグを見てください。</value>
   </data>
   <data name="UP" xml:space="preserve">
-    <value>Top</value>
+    <value>上</value>
   </data>
   <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UP
-ARROW</value>
+    <value>上
+矢印</value>
   </data>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
     <value>UPDATE AVAILABLE!</value>
@@ -1194,7 +1194,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>May I restart OptiKey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
-    <value>Version: {0}</value>
+    <value>ヴァージョン：{0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
     <value>Vertical fill (as % of screen):</value>
@@ -1206,13 +1206,13 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value> (from settings)</value>
   </data>
   <data name="VOICE_LABEL" xml:space="preserve">
-    <value>Voice:</value>
+    <value>声:</value>
   </data>
   <data name="VOLUME_LABEL" xml:space="preserve">
-    <value>Volume:</value>
+    <value>音量:</value>
   </data>
   <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
-    <value>Website: www.optikey.org</value>
+    <value>サイト：www.optikey.org</value>
   </data>
   <data name="WIN" xml:space="preserve">
     <value>WIN</value>
@@ -1221,28 +1221,28 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>OptiKey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
-    <value>Words</value>
+    <value>言葉</value>
   </data>
   <data name="YES" xml:space="preserve">
-    <value>YES</value>
+    <value>はい</value>
   </data>
   <data name="YESNO" xml:space="preserve">
     <value>YES/NO</value>
   </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
-    <value>Letters</value>
+    <value>字</value>
   </data>
   <data name="HIGH" xml:space="preserve">
-    <value>High</value>
+    <value>高</value>
   </data>
   <data name="LOW" xml:space="preserve">
-    <value>Low</value>
+    <value>低</value>
   </data>
   <data name="MEDIUM" xml:space="preserve">
-    <value>Medium</value>
+    <value>中</value>
   </data>
   <data name="NONE" xml:space="preserve">
-    <value>None</value>
+    <value>なし</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Data stream processing amount:</value>
@@ -1266,14 +1266,14 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>Dutch (Netherlands) / Nederlands (Nederland)</value>
   </data>
   <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>French
-(France) /
+    <value>フランス語
+(フランス) /
 Française
 (France)</value>
   </data>
   <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>German
-(Germany) /
+    <value>ドイツ語
+(ドイツ) /
 Deutsch
 (Deutschland)</value>
   </data>
@@ -1281,58 +1281,55 @@ Deutsch
     <value>Suppress mouse magnification for scrolling actions:</value>
   </data>
   <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Russian
-(Russia) /
+    <value>ロシア語
+(ロシア) /
 Русский
 (Россия)</value>
   </data>
   <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Spanish
-(Spain) /
+    <value>スペイン語
+(スペイン) /
 Español
 (España)</value>
-  </data>
-  <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Dynamic keyboard menu</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
-    <value>BACK ONE</value>
+    <value>１つ戻る</value>
   </data>
   <data name="BACK_WORD" xml:space="preserve">
-    <value>BACK WORD</value>
+    <value>１文字 戻る</value>
   </data>
   <data name="SUGGESTION_1" xml:space="preserve">
-    <value>SUGGESTION 1</value>
+    <value>提案1</value>
   </data>
   <data name="SUGGESTION_2" xml:space="preserve">
-    <value>SUGGESTION 2</value>
+    <value>提案2</value>
   </data>
   <data name="SUGGESTION_3" xml:space="preserve">
-    <value>SUGGESTION 3</value>
+    <value>提案3</value>
   </data>
   <data name="SUGGESTION_4" xml:space="preserve">
-    <value>SUGGESTION 4</value>
+    <value>提案4</value>
   </data>
   <data name="SUGGESTION_5" xml:space="preserve">
-    <value>SUGGESTION 5</value>
+    <value>提案5</value>
   </data>
   <data name="SUGGESTION_6" xml:space="preserve">
-    <value>SUGGESTION 6</value>
+    <value>提案6</value>
   </data>
   <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
     <value>Suggestion Keys</value>
   </data>
   <data name="ADD_TO_DICTIONARY" xml:space="preserve">
-    <value>ADD TO DICTIONARY</value>
+    <value>辞書に追加</value>
   </data>
   <data name="COLLAPSE_DOCK" xml:space="preserve">
     <value>COLLAPSE DOCK</value>
   </data>
   <data name="DOWN_ARROW" xml:space="preserve">
-    <value>DOWN ARROW</value>
+    <value>下矢印</value>
   </data>
   <data name="F1" xml:space="preserve">
     <value>F1</value>
@@ -1392,79 +1389,79 @@ Español
     <value>F9</value>
   </data>
   <data name="LEFT_ARROW" xml:space="preserve">
-    <value>LEFT ARROW</value>
+    <value>左矢印</value>
   </data>
   <data name="RIGHT_ARROW" xml:space="preserve">
-    <value>RIGHT ARROW</value>
+    <value>右矢印</value>
   </data>
   <data name="UP_ARROW" xml:space="preserve">
-    <value>UP ARROW</value>
+    <value>上矢印</value>
   </data>
   <data name="CLICK_AND_DRAG" xml:space="preserve">
-    <value>CLICK &amp; DRAG</value>
+    <value>クリック &amp; ドラッグ</value>
   </data>
   <data name="CURRENCIES_1" xml:space="preserve">
-    <value>CURRENCIES 1</value>
+    <value>通貨 1</value>
   </data>
   <data name="CURRENCIES_2" xml:space="preserve">
-    <value>CURRENCIES 2</value>
+    <value>通貨 2</value>
   </data>
   <data name="DECREASE_OPACITY" xml:space="preserve">
-    <value>DECREASE OPACITY</value>
+    <value>透明度を下げる</value>
   </data>
   <data name="DIACRITICS_1" xml:space="preserve">
-    <value>DIACRITICS 1</value>
+    <value>ダイアクリティカルマーク 1</value>
   </data>
   <data name="DIACRITICS_2" xml:space="preserve">
-    <value>DIACRITICS 2</value>
+    <value>ダイアクリティカルマーク 2</value>
   </data>
   <data name="DIACRITICS_3" xml:space="preserve">
-    <value>DIACRITICS 3</value>
+    <value>ダイアクリティカルマーク 3</value>
   </data>
   <data name="EXPAND_DOCK" xml:space="preserve">
-    <value>EXPAND DOCK</value>
+    <value>ドックを拡大</value>
   </data>
   <data name="EXPAND_DOWN" xml:space="preserve">
-    <value>EXPAND DOWN</value>
+    <value>下へ拡大</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
-    <value>EXPAND DOWN &amp; LEFT</value>
+    <value>左下へ拡大</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>EXPAND DOWN &amp; RIGHT</value>
+    <value>右下へ拡大</value>
   </data>
   <data name="EXPAND_LEFT" xml:space="preserve">
-    <value>EXPAND LEFT</value>
+    <value>左へ拡大</value>
   </data>
   <data name="EXPAND_RIGHT" xml:space="preserve">
-    <value>EXPAND RIGHT</value>
+    <value>右へ拡大</value>
   </data>
   <data name="EXPAND_UP" xml:space="preserve">
-    <value>EXPAND UP</value>
+    <value>上へ拡大</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
-    <value>EXPAND UP &amp; LEFT</value>
+    <value>左上へ拡大</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
-    <value>EXPAND UP &amp; RIGHT</value>
+    <value>右上へ拡大</value>
   </data>
   <data name="INCREASE_OPACITY" xml:space="preserve">
-    <value>INCREASE OPACITY</value>
+    <value>透明度を上げる</value>
   </data>
   <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
-    <value>NUMERIC &amp; SYMBOLS 1</value>
+    <value>数字記号 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
-    <value>NUMERIC &amp; SYMBOLS 2</value>
+    <value>数字記号 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
-    <value>NUMERIC &amp; SYMBOLS 3</value>
+    <value>数字記号 3</value>
   </data>
   <data name="PHYSICAL_KEYS" xml:space="preserve">
-    <value>PHYSICAL KEYS</value>
+    <value>物理キー</value>
   </data>
   <data name="SIZE_AND_POSITION" xml:space="preserve">
-    <value>SIZE &amp; POSITION</value>
+    <value>サイズと位置</value>
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
     <value>MAGNETIC CURSOR</value>
@@ -1485,70 +1482,70 @@ Español
     <value>CONVERSATION ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
-    <value>CONVERSATION NUMERIC &amp; SYMBOLS</value>
+    <value>数字記号の会話入力</value>
   </data>
   <data name="JUMP_DOWN" xml:space="preserve">
-    <value>JUMP DOWN</value>
+    <value>下へジャンプ</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
-    <value>JUMP DOWN &amp; LEFT</value>
+    <value>左下へジャンプ</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>JUMP DOWN &amp; RIGHT</value>
+    <value>右下へジャンプ</value>
   </data>
   <data name="JUMP_LEFT" xml:space="preserve">
-    <value>JUMP LEFT</value>
+    <value>左へジャンプ</value>
   </data>
   <data name="JUMP_RIGHT" xml:space="preserve">
-    <value>JUMP RIGHT</value>
+    <value>右へジャンプ</value>
   </data>
   <data name="JUMP_UP" xml:space="preserve">
-    <value>JUMP UP</value>
+    <value>上へジャンプ</value>
   </data>
   <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
-    <value>JUMP UP &amp; LEFT</value>
+    <value>左上へジャンプ</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
-    <value>JUMP UP &amp; RIGHT</value>
+    <value>右上へジャンプ</value>
   </data>
   <data name="LEFT_CLICK" xml:space="preserve">
-    <value>LEFT CLICK</value>
+    <value>左クリック</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
-    <value>LEFT DOUBLE CLICK</value>
+    <value>ダブルクリック</value>
   </data>
   <data name="LEFT_DOWN_UP" xml:space="preserve">
     <value>LEFT DOWN/UP</value>
   </data>
   <data name="MOVE_DOWN" xml:space="preserve">
-    <value>MOVE DOWN</value>
+    <value>下へ移動</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
-    <value>MOVE DOWN &amp; LEFT</value>
+    <value>左下へ移動</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>MOVE DOWN &amp; RIGHT</value>
+    <value>右下へ移動</value>
   </data>
   <data name="MOVE_LEFT" xml:space="preserve">
-    <value>MOVE LEFT</value>
+    <value>左へ移動</value>
   </data>
   <data name="MOVE_RIGHT" xml:space="preserve">
-    <value>MOVE RIGHT</value>
+    <value>右へ移動</value>
   </data>
   <data name="MOVE_TO" xml:space="preserve">
-    <value>MOVE TO</value>
+    <value>移動先</value>
   </data>
   <data name="MOVE_UP" xml:space="preserve">
-    <value>MOVE UP</value>
+    <value>上へ移動</value>
   </data>
   <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
-    <value>MOVE UP &amp; LEFT</value>
+    <value>左上へ移動</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
-    <value>MOVE UP &amp; RIGHT</value>
+    <value>右上へ移動</value>
   </data>
   <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
-    <value>MULTI-KEY SELECTION</value>
+    <value>複数キー入力</value>
   </data>
   <data name="NUM_LK" xml:space="preserve">
     <value>NUM LK</value>
@@ -1563,55 +1560,55 @@ Español
     <value>PRNT SCR</value>
   </data>
   <data name="REPEAT_LAST" xml:space="preserve">
-    <value>REPEAT LAST</value>
+    <value>最後の文字を繰り返す</value>
   </data>
   <data name="RIGHT_CLICK" xml:space="preserve">
-    <value>RIGHT CLICK</value>
+    <value>右クリック</value>
   </data>
   <data name="RIGHT_DOWN_UP" xml:space="preserve">
     <value>RIGHT DOWN/UP</value>
   </data>
   <data name="SCRN_LK" xml:space="preserve">
-    <value>SCR LK</value>
+    <value>画面ロック</value>
   </data>
   <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
-    <value>SCROLL AMOUNT IN CLICKS</value>
+    <value>１クリックのスクロール量</value>
   </data>
   <data name="SCROLL_DOWN" xml:space="preserve">
-    <value>SCROLL DOWN</value>
+    <value>下へスクロール</value>
   </data>
   <data name="SCROLL_LEFT" xml:space="preserve">
-    <value>SCROLL LEFT</value>
+    <value>左へスクロール</value>
   </data>
   <data name="SCROLL_RIGHT" xml:space="preserve">
-    <value>SCROLL RIGHT</value>
+    <value>右へスクロール</value>
   </data>
   <data name="SCROLL_UP" xml:space="preserve">
-    <value>SCROLL UP</value>
+    <value>上へスクロール</value>
   </data>
   <data name="SHRINK_DOWN" xml:space="preserve">
-    <value>SHRINK DOWN</value>
+    <value>下へスクロール</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
-    <value>SHRINK DOWN &amp; LEFT</value>
+    <value>左下へ縮小</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>SHRINK DOWN &amp; RIGHT</value>
+    <value>右下へ縮小</value>
   </data>
   <data name="SHRINK_LEFT" xml:space="preserve">
-    <value>SHRINK LEFT</value>
+    <value>左へ縮小</value>
   </data>
   <data name="SHRINK_RIGHT" xml:space="preserve">
-    <value>SHRINK RIGHT</value>
+    <value>右へ縮小</value>
   </data>
   <data name="SHRINK_UP" xml:space="preserve">
-    <value>SHRINK UP</value>
+    <value>上へ縮小</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
-    <value>SHRINK UP &amp; LEFT</value>
+    <value>左上へ縮小</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
-    <value>SHRINK UP &amp; RIGHT</value>
+    <value>右上へ縮小</value>
   </data>
   <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
     <value>CHANGE KEYBOARD KEYS:</value>
@@ -1623,16 +1620,16 @@ Español
     <value>Overrides for individual key fixation times (ms):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
-    <value>CHANGE LANGUAGE KEYS:</value>
+    <value>言語キーを変える:</value>
   </data>
   <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
-    <value>LANGUAGE</value>
+    <value>言語</value>
   </data>
   <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>MISCELLANEOUS KEYS:</value>
+    <value>その他キー:</value>
   </data>
   <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>MODIFIER KEYS:</value>
+    <value>修飾キー</value>
   </data>
   <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
     <value>MOUSE (DO AT CURRENT LOCATION) KEYS:</value>
@@ -1647,47 +1644,47 @@ Español
     <value>MOVE &amp; RESIZE KEYS:</value>
   </data>
   <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>PHYSICAL KEYS:</value>
+    <value>物理キー:</value>
   </data>
   <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>SUGGESTION KEYS:</value>
+    <value>サジェスチョンキー:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Specify times to complete on individual keys:</value>
   </data>
   <data name="GREEK_GREECE" xml:space="preserve">
-    <value>Greek (Greece) / Ελληνικά (Ελλάδα)</value>
+    <value>ギリシャ語 (ギリシャ) / Ελληνικά (Ελλάδα)</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>Management Console (Settings)</value>
+    <value>管理コンソール (設定)</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
-    <value>Quit</value>
+    <value>終了</value>
   </data>
   <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Greek
-(Greece) /
+    <value>ギリシャ語
+(ギリシャ) /
 Ελληνικά
 (Ελλάδα)</value>
   </data>
   <data name="CROATIAN_CROATIA" xml:space="preserve">
-    <value>Croatian (Croatia) / Hrvatski (Hrvatska)</value>
+    <value>クロアチア語 (クロアチア) / Hrvatski (Hrvatska)</value>
   </data>
   <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Croatian
-(Croatia) /
+    <value>クロアチア語
+(クロアチア) /
 Hrvatski
 (Hrvatska)</value>
   </data>
   <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch
-(Belgium) /
+    <value>オランダ語
+(ベルギー) /
 Nederlands
 (België)</value>
   </data>
   <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch
-(Netherlands) /
+    <value>オランダ語
+(オランダ) /
 Nederlands
 (Nederland)</value>
   </data>
@@ -1696,64 +1693,64 @@ Nederlands
   </data>
   <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>
-English
-(Canada)
+英語
+(カナダ)
 </value>
   </data>
   <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>
-English
-(UK)
+英語
+(イギリス)
 </value>
   </data>
   <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>
-English
-(US)
+英語
+(アメリカ)
 </value>
   </data>
   <data name="CATALAN_SPAIN" xml:space="preserve">
-    <value>Catalan (Spain) / Català (Espanya)</value>
+    <value>クロアチア語 (スペイン) / Català (Espanya)</value>
   </data>
   <data name="CATALAN_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Catalan
-(Spain) /
+    <value>クロアチア
+(スペイン) /
 Català
 (Espanya)</value>
   </data>
   <data name="TURKISH_TURKEY" xml:space="preserve">
-    <value>Turkish (Turkey) / Türkçe (Türkiye)</value>
+    <value>トルコ語 (トルコ) / Türkçe (Türkiye)</value>
   </data>
   <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Turkish
-(Turkey) /
+    <value>トルコ
+(トルコ語) /
 Türkçe
 (Türkiye)</value>
   </data>
   <data name="ITALIAN_ITALY" xml:space="preserve">
-    <value>Italian (Italy) / Italiano (Italia)</value>
+    <value>イタリア語 (イタリア) / Italiano (Italia)</value>
   </data>
   <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Italian
-(Italy) /
+    <value>イタリア語
+(イタリア) /
 Italiano
 (Italia)</value>
   </data>
   <data name="KOREAN_KOREA" xml:space="preserve">
-    <value>Korean (Korea) / 한국어 (한국)</value>
+    <value>韓国語 (韓国) / 한국어 (한국)</value>
   </data>
   <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Korean
-(Korea) /
+    <value>韓国語
+(韓国) /
 한국어
 (한국)</value>
   </data>
   <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
-    <value>Slovenian (Slovenia) / Slovensko (Slovenija)</value>
+    <value>スロベニア語 (スロベニア) / Slovensko (Slovenija)</value>
   </data>
   <data name="SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Slovenian
-(Slovenia) /
+    <value>スロベニア語
+(スロベニア) /
 Slovensko
 (Slovenija)</value>
   </data>
@@ -1764,26 +1761,26 @@ Slovensko
     <value>Visual Interaction myGaze</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
-    <value>Calibration failed!</value>
+    <value>キャリブレーション失敗!</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Calibration success!</value>
+    <value>キャリブレーション成功!</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
     <value>Portuguese (Portugal) / Português (Portugal)</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Portuguese
-(Portugal) /
+    <value>ポルトガル語
+(ポルトガル) /
 Português
 (Portugal)</value>
   </data>
   <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
-    <value>Slovak (Slovakia) / Slovenčina (Slovensko) </value>
+    <value>スロバキア語 (スロバキア) / Slovenčina (Slovensko) </value>
   </data>
   <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Slovak
-(Slovakia) /
+    <value>スロバキア語
+(スロバキア) /
 Slovenčina
 (Slovensko)</value>
   </data>
@@ -1806,7 +1803,7 @@ Slovenčina
     <value>Tobii X2-60</value>
   </data>
   <data name="FORCE_CAPS_LOCK" xml:space="preserve">
-    <value>Force caps lock (shift locked down):</value>
+    <value>Force caps lock:</value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Use alphabetical keyboard layout</value>
@@ -1818,11 +1815,11 @@ Slovenčina
     <value>Toggle Manual Mode</value>
   </data>
   <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
-    <value>Czech (Czech Rep.) / Čeština (Česko)</value>
+    <value>チェコ語 (チェコ) / Čeština (Česko)</value>
   </data>
   <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Czech
-(Czech Rep.) /
+    <value>チェコ語
+(チェコ) /
 Čeština
 (Česko)</value>
   </data>
@@ -1848,27 +1845,27 @@ Slovenčina
     <value>Use simplified keyboard layout</value>
   </data>
   <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Browser
-Back</value>
+    <value>ブラウザ
+前に戻る</value>
   </data>
   <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Browser
-Forward</value>
+    <value>ブラウザ
+次に進む</value>
   </data>
   <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Browser
-Home</value>
+    <value>ブラウザ
+ホーム</value>
   </data>
   <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Browser
-Search</value>
+    <value>ブラウザ
+検索</value>
   </data>
   <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
-    <value>Web Browsing</value>
+    <value>Webブラウザ</value>
   </data>
   <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Web
-Browsing</value>
+ブラウザ</value>
   </data>
   <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
     <value>Use MaryTTS speech synthesizer?</value>
@@ -1880,7 +1877,7 @@ Browsing</value>
     <value>MaryTTS location (marytts-server.bat):</value>
   </data>
   <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
-    <value>Find</value>
+    <value>検索</value>
   </data>
   <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
     <value>ERROR: a valid 'marytts-server.bat' file was not selected. Please try again.</value>
@@ -1948,7 +1945,7 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
     <value>Tobii PCEye Plus</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
-    <value>LETTERS 2</value>
+    <value>文字 2</value>
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
     <value>CONVERSATION ALPHA 2</value>
@@ -1957,211 +1954,42 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
     <value>All changes made to the settings will be discarded, do you want to continue?</value>
   </data>
   <data name="SETTINGS_CHANGED" xml:space="preserve">
-    <value>Cancel Settings</value>
+    <value>設定を破棄する</value>
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
-    <value>The Presage dictionary cannot be edited from here.
-It's default location is "C:\Program Files (x86)\presage\share\presage\database_en.db".
-It can be edited with a program which can read SQLite format 3 files 
-such as "DB Browser for SQLite" (which is a free program).</value>
+    <value>辞書はここでは編集できません。
+デフォルトパスは "C:\Program Files (x86)\presage\share\presage\database_en.db" です。
+SQLite形式の3ファイルを読み込めるソフトウェアにより編集が可能です。
+(フリーソフトの "DB Browser for SQLite" 等でご利用いただけます。)</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
-    <value>LETTERS</value>
+    <value>文字入力</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support.</value>
+    <value>倍率変更中にエラーが発生しました。倍率変更を中止し、OptiKeyチームへご連絡ください。</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
-    <value>Error:</value>
+    <value>エラー:</value>
   </data>
   <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
-    <value>Attention:</value>
+    <value>注意:</value>
   </data>
   <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
-    <value>Enable attention key?</value>
+    <value>アテンション機能を有効にしますか？</value>
   </data>
   <data name="ATTENTION" xml:space="preserve">
-    <value>ATTENTION</value>
+    <value>アテンション</value>
   </data>
   <data name="ATTENTION_SOUND" xml:space="preserve">
-    <value>Attention</value>
+    <value>注意</value>
   </data>
   <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
-    <value>CommuniKate is currently disabled (use QWERTY)</value>
+    <value>CommuniKate は現在お使いいただけません。(QWERTYをご使用ください。)</value>
   </data>
   <data name="KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Keyboard style for typing</value>
+    <value>入力時のキーボードスタイル</value>
   </data>
   <data name="USE_QWERTY_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use QWERTY keyboard layout (default)</value>
+    <value>QWERTY キーボードレイアウトを使う (デフォルト)</value>
   </data>
-  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
-    <value>Uh-oh! We've encountered the following errors during startup:</value>
-  </data>
-  <data name="SELECT_VOICE" xml:space="preserve">
-    <value>SELECT VOICE</value>
-  </data>
-  <data name="MORE" xml:space="preserve">
-    <value>More…</value>
-  </data>
-  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
-    <value>Language &amp; Voice</value>
-  </data>
-  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Language
-&amp; Voice</value>
-  </data>
-  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
-    <value>LANGUAGE &amp; VOICE</value>
-  </data>
-  <data name="MORE_UPPER_CASE" xml:space="preserve">
-    <value>MORE…</value>
-  </data>
-  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
-    <value>Display voices when changing keyboard language</value>
-  </data>
-  <data name="LOOK_TO_SCROLL" xml:space="preserve">
-    <value>Look to Scroll</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
-    <value>Use alternative "look to scroll" method for scrolling:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>Invert scrolling direction:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_CENTER_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling, move mouse to center of bounds:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling, bring chosen window to the front:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>Show overlay window (requires restart):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL" xml:space="preserve">
-    <value>Color of scroll bounds drawn on the overlay:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL" xml:space="preserve">
-    <value>Color of deadzone guides drawn on the overlay:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
-    <value>Thickness of scroll bounds drawn on the overlay:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
-    <value>Thickness of deadzone guides drawn on the overlay:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
-    <value>Horizontal deadzone (in pixels):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
-    <value>Vertical deadzone (in pixels):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>Cycle through these scroll increments:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>'Slow' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Medium' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>'Fast' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>'Slow' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Medium' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>'Fast' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>LOOK TO SCROLL KEYS:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>TOGGLE SCROLLING</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT BOUNDS</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT INCREMENT</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT MODE</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT SPEED</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
-    <value>Look to
-Scroll</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_FORMAT" xml:space="preserve">
-    <value>{0}
-Bounds</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Scroll by {0} wheel unit: 
-(120 wheel units = 1 click)|Scroll by {0} wheel units:
-(120 wheel units = 1 click)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_FORMAT" xml:space="preserve">
-    <value>{0}
-Mode</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_FORMAT" xml:space="preserve">
-    <value>{0}
-Speed</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_SCREEN" xml:space="preserve">
-    <value>Screen</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_WINDOW" xml:space="preserve">
-    <value>Window</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_CUSTOM" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_VERTICAL" xml:space="preserve">
-    <value>Vertical</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_HORIZONTAL" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_CROSS" xml:space="preserve">
-    <value>Cross</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_FREE" xml:space="preserve">
-    <value>Free</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_SLOW" xml:space="preserve">
-    <value>Slow</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_MEDIUM" xml:space="preserve">
-    <value>Medium</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_FAST" xml:space="preserve">
-    <value>Fast</value>
-  </data>
-  <data name="FRENCH_CANADA" xml:space="preserve">
-    <value>French (Canada) / Française (Canada)</value>
-  </data>
-  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>French
-(Canada) /
-Française
-(Canada)</value>
-  </data>
-  <data name="JAPANESE_JAPAN" xml:space="preserve">
-    <value>Japanese (Japan) / 日本語 (日本)</value>
-  </data>
-  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Japanese
-(Japan) /
-日本語
-(日本)</value>
-  </data>  
 </root>

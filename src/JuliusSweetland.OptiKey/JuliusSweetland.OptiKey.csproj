@@ -530,8 +530,20 @@
     <Compile Include="UI\Views\Keyboards\French\CanadaAlpha1.xaml.cs">
       <DependentUpon>CanadaAlpha1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Japanese\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Japanese\Alpha2.xaml.cs">
+      <DependentUpon>Alpha2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\French\CanadaConversationAlpha1.xaml.cs">
       <DependentUpon>CanadaConversationAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Japanese\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Japanese\ConversationAlpha2.xaml.cs">
+      <DependentUpon>ConversationAlpha2.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Korean\Alpha2.xaml.cs">
       <DependentUpon>Alpha2.xaml</DependentUpon>
@@ -703,6 +715,7 @@
     <EmbeddedResource Include="Properties\Resources.cs-CZ.resx" />
     <EmbeddedResource Include="Properties\Resources.es-ES.resx" />
     <EmbeddedResource Include="Properties\Resources.it-IT.resx" />
+    <EmbeddedResource Include="Properties\Resources.ja-JP.resx" />
     <EmbeddedResource Include="Properties\Resources.ko-KR.resx" />
     <EmbeddedResource Include="Properties\Resources.pt-PT.resx" />
     <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
@@ -714,6 +727,7 @@
     <EmbeddedResource Include="Properties\Resources.tr-TR.resx" />
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
+    <EmbeddedResource Include="Resources.ja-JP.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
     <None Include="..\..\LICENSE.txt">
@@ -776,6 +790,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dictionaries\FrenchCanada.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\JapaneseJapan.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">
@@ -1051,8 +1068,8 @@
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
@@ -1189,7 +1206,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Keyboards\Japanese\Alpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Japanese\Alpha2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\French\CanadaConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Japanese\ConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Japanese\ConversationAlpha2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

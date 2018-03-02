@@ -86,6 +86,7 @@
         IncreaseOpacity,
         Insert,
         ItalianItaly,
+        JapaneseJapan,
         KoreanKorea,
         LanguageKeyboard,
         LeftAlt,
@@ -211,6 +212,7 @@
         Suggestion4,
         Suggestion5,
         Suggestion6,
+        ToggleCaseOfPreviousCharacter,
         TurkishTurkey,
         WebBrowsingKeyboard,
         YesQuestionResult
