@@ -200,6 +200,7 @@
     <Compile Include="Enums\LookToScrollBounds.cs" />
     <Compile Include="Enums\LookToScrollModes.cs" />
     <Compile Include="Enums\LookToScrollSpeeds.cs" />
+    <Compile Include="Enums\SimplifiedKeyboardContexts.cs" />
     <Compile Include="Enums\UnicodeCodePointRanges.cs" />
     <Compile Include="DataFilters\KalmanFilter.cs" />
     <Compile Include="Enums\Case.cs" />

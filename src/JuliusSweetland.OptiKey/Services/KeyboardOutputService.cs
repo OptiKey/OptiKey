@@ -249,71 +249,71 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.SimplifiedAlphaClear:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.Home;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaABCDEFGHI:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "ABCDEFGHI";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup1All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup1All;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaJKLMNOPQR:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "JKLMNOPQR";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup2All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup2All;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaSTUVWXYZ:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "STUVWXYZ";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup3All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaABC:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "ABC";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup1:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup1SubGroup1;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaDEF:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "DEF";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup2:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup1SubGroup2;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaGHI:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "GHI";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup3:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup1SubGroup3;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaJKL:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "JKL";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup1:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup2SubGroup1;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaMNO:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "MNO";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup2:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup2SubGroup2;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaPQR:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "PQR";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup3:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup2SubGroup3;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaSTU:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "STU";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup1:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3SubGroup1;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaVWX:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "VWX";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup2:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3SubGroup2;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaYZ:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "YZ";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup3:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3SubGroup3;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaNum:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
+                case FunctionKeys.SimplifiedKeyboardNumericAll:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.NumericAll;
                     break;
 
-                case FunctionKeys.SimplifiedAlpha123:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "123";
+                case FunctionKeys.SimplifiedKeyboardNumericGroup1:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.NumericGroup1;
                     break;
 
-                case FunctionKeys.SimplifiedAlpha456:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "456";
+                case FunctionKeys.SimplifiedKeyboardNumericGroup2:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.NumericGroup2;
                     break;
 
-                case FunctionKeys.SimplifiedAlpha789:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "789";
+                case FunctionKeys.SimplifiedKeyboardNumericGroup3:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.NumericGroup3;
                     break;
 
                 case FunctionKeys.Suggestion1:
@@ -432,21 +432,9 @@ namespace JuliusSweetland.OptiKey.Services
             if (Settings.Default.UseSimplifiedKeyboardLayout)
             {
                 char last = capturedText.LastOrDefault();
-                if (last != null)
-                {
-                    if (char.IsLetter(last))
-                    {
-                        Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    }
-                    else if (char.IsNumber(last))
-                    {
-                        Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    }
-                    else if (char.IsPunctuation(last))
-                    {
-                        Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    }
-                }
+                Settings.Default.SimplifiedKeyboardContext = last != default(char) && char.IsNumber(last)
+                    ? SimplifiedKeyboardContexts.NumericAll
+                    : SimplifiedKeyboardContexts.Home;
             }
         }
 
