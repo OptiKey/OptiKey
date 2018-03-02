@@ -33,20 +33,20 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <controls:Key Grid.Row="2" Grid.Column="0"
+        <controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource ClearIcon}" 
                       Text="{x:Static resx:Resources.CLEAR}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.ClearScratchpadKey}"/>
-        <controls:Scratchpad Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"
+        <controls:Scratchpad Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4"
                              Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-        <controls:Key Grid.Row="2" Grid.Column="5"
+        <controls:Key Grid.Row="0" Grid.Column="5"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackOneKey}"/>
 
-        <ContentControl Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -206,7 +206,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -366,7 +366,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="0" Grid.Column="4" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="1" Grid.Column="4" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -682,7 +682,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmEnable}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible" />
@@ -709,7 +709,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmEnable}" Value="False" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible" />
@@ -717,7 +717,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="True" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmEnable}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible" />
@@ -743,7 +743,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmEnable}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible" />
@@ -770,14 +770,14 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible" />
                         </MultiDataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="True" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmEnable}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible" />
@@ -811,14 +811,14 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Hidden" />
                         </MultiDataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmEnable}" Value="True" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Hidden" />
                         </MultiDataTrigger>

@@ -225,10 +225,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = Settings.Default.UsingCommuniKateKeyboardLayout
                             ? (object)new EnglishViews.CommuniKate { DataContext = Keyboard }
                             : Settings.Default.UseSimplifiedKeyboardLayout
-                            ? (object)new EnglishViews.SimplifiedAlpha1 { DataContext = Keyboard }
-                            : Settings.Default.UseAlphabeticalKeyboardLayout 
-                            ? (object)new EnglishViews.AlphabeticalAlpha1 { DataContext = Keyboard }
-                            : new EnglishViews.Alpha1 { DataContext = Keyboard };
+                                ? (object)new EnglishViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                                : Settings.Default.UseAlphabeticalKeyboardLayout 
+                                    ? (object)new EnglishViews.AlphabeticalAlpha1 { DataContext = Keyboard }
+                                    : new EnglishViews.Alpha1 { DataContext = Keyboard };
                         break;
                 }
             }
@@ -309,10 +309,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = Settings.Default.UsingCommuniKateKeyboardLayout
                             ? (object)new EnglishViews.CommuniKate { DataContext = Keyboard }
                             : Settings.Default.UseSimplifiedKeyboardLayout
-                            ? (object)new EnglishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
-                            : Settings.Default.UseAlphabeticalKeyboardLayout
-                            ? (object)new EnglishViews.AlphabeticalConversationAlpha1 { DataContext = Keyboard }
-                            : new EnglishViews.ConversationAlpha1 { DataContext = Keyboard };
+                                ? (object)new EnglishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
+                                : Settings.Default.UseAlphabeticalKeyboardLayout
+                                    ? (object)new EnglishViews.AlphabeticalConversationAlpha1 { DataContext = Keyboard }
+                                    : new EnglishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                 }
             }
