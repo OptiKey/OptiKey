@@ -7,7 +7,6 @@
                        xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
-                       xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
 
@@ -105,10 +104,10 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackOneKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
-					  SymbolGeometry="{StaticResource MenuIcon}"
-                      Text="{x:Static resx:Resources.MENU}"
+                      SymbolGeometry="{StaticResource BackManyIcon}"
+                      Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MenuKeyboardKey}" />
+                      Value="{x:Static models:KeyValues.BackManyKey}"/>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="イ"
@@ -243,17 +242,17 @@
                       Text="ワ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30EF;"/>
+        <!-- This key changes the case of the previously entered character . eg. つ(tsu) to っ or vice versa -->
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
                       Text="小"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="{x:Static models:KeyValues.ToggleCaseOfPreviousCharacterKey}" />
-        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
                       WidthSpan="2" 
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
-        <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2" />
 
         <controls:Key Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="オ"
@@ -299,7 +298,31 @@
                       Text="。"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x3002;"/>
-        <controls:Key Grid.Row="6" Grid.Column="22" Grid.ColumnSpan="2" />
-
+        <ContentControl Grid.Row="6" Grid.Column="22" Grid.ColumnSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                          Text="{x:Static resx:Resources.BACK}"
+                                          SharedSizeGroup="KeyWithSymbol"
+                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                  Text="{x:Static resx:Resources.QUIT}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.QuitKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
     </Grid>
 </controls:KeyboardView>
