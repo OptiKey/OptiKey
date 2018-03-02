@@ -341,13 +341,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
-        private string simplifiedKeyboardCurrentContext;
-        public string SimplifiedKeyboardCurrentContext
-        {
-            get { return simplifiedKeyboardCurrentContext; }
-            set { SetProperty(ref simplifiedKeyboardCurrentContext, value); }
-        }
-
         private bool enableQuitKeys;
         public bool EnableQuitKeys
         {
@@ -403,7 +396,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
-            SimplifiedKeyboardCurrentContext = Settings.Default.SimplifiedKeyboardCurrentContext;
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
             EnableAttentionKey = Settings.Default.EnableAttentionKey;
             DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
@@ -433,7 +425,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
-            Settings.Default.SimplifiedKeyboardCurrentContext = SimplifiedKeyboardCurrentContext;
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
             Settings.Default.EnableAttentionKey = EnableAttentionKey;
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;

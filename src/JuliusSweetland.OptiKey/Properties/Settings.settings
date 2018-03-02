@@ -371,9 +371,6 @@
     <Setting Name="ConversationConfirmEnable" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="SimplifiedKeyboardCurrentContext" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="EnableQuitKeys" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -1190,6 +1187,9 @@
     </Setting>
     <Setting Name="LookToScrollOverlayDeadzoneThickness" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="SimplifiedKeyboardContext" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.SimplifiedKeyboardContexts" Scope="User">
+      <Value Profile="(Default)">Home</Value>
     </Setting>
   </Settings>
 </SettingsFile>

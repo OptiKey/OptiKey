@@ -1624,19 +1624,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string SimplifiedKeyboardCurrentContext {
-            get {
-                return ((string)(this["SimplifiedKeyboardCurrentContext"]));
-            }
-            set {
-                this["SimplifiedKeyboardCurrentContext"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool EnableQuitKeys {
@@ -2378,6 +2365,19 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["LookToScrollOverlayDeadzoneThickness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Home")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.SimplifiedKeyboardContexts SimplifiedKeyboardContext {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.SimplifiedKeyboardContexts)(this["SimplifiedKeyboardContext"]));
+            }
+            set {
+                this["SimplifiedKeyboardContext"] = value;
             }
         }
     }
