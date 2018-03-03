@@ -348,7 +348,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.ToggleCaseOfPreviousCharacter:
                     {
-                        var inProgressWord = Text.InProgressWord(Text.Length);
+                        var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
                         if (inProgressWord != null)
                         {
                             //Attempt to break-apart/decompose in-progress word using normalisation
