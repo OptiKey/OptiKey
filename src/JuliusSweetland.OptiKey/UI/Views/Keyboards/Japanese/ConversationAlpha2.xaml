@@ -7,7 +7,6 @@
                        xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
-                       xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
 
@@ -60,7 +59,7 @@
         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="ア" ShiftDownText="ァ"
+                      Text="ア"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30A2;" />
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
@@ -92,7 +91,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30E9;" />
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="ヤ" ShiftDownText="ャ"
+                      Text="ヤ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30E4;" />
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
@@ -105,13 +104,13 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackOneKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
-					  SymbolGeometry="{StaticResource MenuIcon}"
-                      Text="{x:Static resx:Resources.MENU}"
+                      SymbolGeometry="{StaticResource BackManyIcon}"
+                      Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MenuKeyboardKey}" />
+                      Value="{x:Static models:KeyValues.BackManyKey}"/>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="イ" ShiftDownText="ィ"
+                      Text="イ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30A4;" />
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
@@ -143,7 +142,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30EA;" />
         <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="ユ" ShiftDownText="ュ"
+                      Text="ユ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30E6;" />
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
@@ -162,7 +161,7 @@
                       Value="{x:Static models:KeyValues.ConversationAlpha1KeyboardKey}"/>
 
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="ウ" ShiftDownText="ゥ"
+                      Text="ウ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30A6;" />
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
@@ -174,7 +173,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30B9;" />
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="ツ" ShiftDownText="ッ"
+                      Text="ツ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30C4;" />
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
@@ -194,7 +193,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30EB;" />
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="ヨ" ShiftDownText="ョ"
+                      Text="ヨ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30E8;" />
         <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
@@ -208,7 +207,7 @@
         <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2" />
 
         <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="エ" ShiftDownText="ェ"
+                      Text="エ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30A8;"/>
         <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
@@ -240,23 +239,23 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30EC;"/>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="ワ" ShiftDownText="ヮ"
+                      Text="ワ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30EF;"/>
+        <!-- This key changes the case of the previously entered character . eg. つ(tsu) to っ or vice versa -->
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
                       Text="小"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{x:Static models:KeyValues.PreviousJapaneseSymbolToLowerKey}" />
-        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
+                      Value="{x:Static models:KeyValues.ToggleCaseOfPreviousCharacterKey}" />
+        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
                       WidthSpan="2" 
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
-        <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2" />
 
         <controls:Key Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="オ" ShiftDownText="ォ"
+                      Text="オ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x30AA;"/>
         <controls:Key Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" 
@@ -299,7 +298,31 @@
                       Text="。"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x3002;"/>
-        <controls:Key Grid.Row="6" Grid.Column="22" Grid.ColumnSpan="2" />
-
+        <ContentControl Grid.Row="6" Grid.Column="22" Grid.ColumnSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                          Text="{x:Static resx:Resources.BACK}"
+                                          SharedSizeGroup="KeyWithSymbol"
+                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                  Text="{x:Static resx:Resources.QUIT}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.QuitKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
     </Grid>
 </controls:KeyboardView>

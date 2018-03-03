@@ -12,6 +12,7 @@ namespace JuliusSweetland.OptiKey.Services
     {
         event EventHandler<int> PointsPerSecond;
         event EventHandler<Tuple<Point, KeyValue>> CurrentPosition;
+        event EventHandler<Point> LivePosition; // Get up-to-date position, regardless of whether it has changed.
         event EventHandler<Tuple<PointAndKeyValue, double>> SelectionProgress;
         event EventHandler<PointAndKeyValue> Selection;
         event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> SelectionResult;

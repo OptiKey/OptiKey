@@ -3,12 +3,11 @@
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.French
 {
     /// <summary>
-    /// Interaction logic for Alpha1.xaml
+    /// Interaction logic for CanadaConversationAlpha1.xaml
     /// </summary>
-    public partial class Alpha1 : KeyboardView
+    public partial class CanadaConversationAlpha1 : KeyboardView
     {
-        public Alpha1()
-            : base(shiftAware: true)
+        public CanadaConversationAlpha1() : base(shiftAware: true)
         {
             InitializeComponent();
         }

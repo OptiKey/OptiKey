@@ -243,117 +243,77 @@ namespace JuliusSweetland.OptiKey.Services
                     Text = Resources.NO;
                     break;
 
-                case FunctionKeys.PreviousJapaneseSymbolToLower:
-                    {
-                        var inProgressWord = Text.InProgressWord(Text.Length);
-                        if (inProgressWord != null)
-                        {
-                            //Attempt to break-apart/decompose in-progress word using normalisation
-                            var decomposedInProgressWord = inProgressWord.Decompose();
-                            if (decomposedInProgressWord != inProgressWord)
-                            {
-                                Log.DebugFormat("In-progress word can be broken apart/decomposed using normalisation. It will be normalised from '{0}' to '{1}'.", inProgressWord, decomposedInProgressWord);
-                            }
-
-                            //Remove in-progress word from Text
-                            Text = Text.Substring(0, Text.Length - inProgressWord.Length);
-
-                            //Add back the decomposed in-progress word, with the last character (potentially) cased to the lower case symbol, composed again (to recombine if possible)
-                            var finalCharacter = decomposedInProgressWord.Last();
-                            var lowerCaseFinalCharacter = finalCharacter.ConvertToLowerCaseHiraganaOrKatakana();
-                            if (finalCharacter != lowerCaseFinalCharacter)
-                            {
-                                Log.DebugFormat("Last character of in-progress word is a Hiragana or Katakana character that can be converted from upper to lowercase. It will be converted from '{0}' to '{1}'.", finalCharacter, lowerCaseFinalCharacter);
-                            }
-                            var newInProgressWord = string.Concat(decomposedInProgressWord.Substring(0, decomposedInProgressWord.Length - 1), lowerCaseFinalCharacter).Compose();
-                            Text = string.Concat(Text, newInProgressWord);
-
-                            //Remove composed string from external applications by outputting backspaces, then replace with decomposed word
-                            for (var backCount = 0; backCount < inProgressWord.Length; backCount++)
-                            {
-                                PublishKeyPress(FunctionKeys.BackOne);
-                            }
-
-                            foreach (var c in newInProgressWord)
-                            {
-                                PublishKeyPress(c);
-                            }
-
-                            dictionaryService.DecrementEntryUsageCount(inProgressWord); //Decrement the original in-progress word
-                            dictionaryService.IncrementEntryUsageCount(newInProgressWord); //And increment the new in-progress word
-
-                            GenerateSuggestions(false);
-                            lastProcessedTextWasSuggestion = false;
-                        }
-                    }
+                case FunctionKeys.LeftShift:
+                    shiftStateSetAutomatically = false;
+                    GenerateSuggestions(lastProcessedTextWasSuggestion);
                     break;
 
                 case FunctionKeys.SimplifiedAlphaClear:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.Home;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaABCDEFGHI:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "ABCDEFGHI";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup1All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup1All;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaJKLMNOPQR:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "JKLMNOPQR";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup2All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup2All;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaSTUVWXYZ:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "STUVWXYZ";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup3All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaABC:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "ABC";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup1:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup1SubGroup1;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaDEF:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "DEF";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup2:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup1SubGroup2;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaGHI:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "GHI";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup3:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup1SubGroup3;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaJKL:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "JKL";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup1:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup2SubGroup1;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaMNO:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "MNO";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup2:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup2SubGroup2;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaPQR:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "PQR";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup3:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup2SubGroup3;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaSTU:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "STU";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup1:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3SubGroup1;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaVWX:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "VWX";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup2:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3SubGroup2;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaYZ:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "YZ";
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup3:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3SubGroup3;
                     break;
 
-                case FunctionKeys.SimplifiedAlphaNum:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
+                case FunctionKeys.SimplifiedKeyboardNumericAll:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.NumericAll;
                     break;
 
-                case FunctionKeys.SimplifiedAlpha123:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "123";
+                case FunctionKeys.SimplifiedKeyboardNumericGroup1:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.NumericGroup1;
                     break;
 
-                case FunctionKeys.SimplifiedAlpha456:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "456";
+                case FunctionKeys.SimplifiedKeyboardNumericGroup2:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.NumericGroup2;
                     break;
 
-                case FunctionKeys.SimplifiedAlpha789:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "789";
+                case FunctionKeys.SimplifiedKeyboardNumericGroup3:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.NumericGroup3;
                     break;
 
                 case FunctionKeys.Suggestion1:
@@ -386,9 +346,49 @@ namespace JuliusSweetland.OptiKey.Services
                     lastProcessedTextWasSuggestion = true;
                     break;
 
-                case FunctionKeys.LeftShift:
-                    shiftStateSetAutomatically = false;
-                    GenerateSuggestions(lastProcessedTextWasSuggestion);
+                case FunctionKeys.ToggleCaseOfPreviousCharacter:
+                    {
+                        var inProgressWord = Text.InProgressWord(Text.Length);
+                        if (inProgressWord != null)
+                        {
+                            //Attempt to break-apart/decompose in-progress word using normalisation
+                            var decomposedInProgressWord = inProgressWord.Decompose();
+                            if (decomposedInProgressWord != inProgressWord)
+                            {
+                                Log.DebugFormat("In-progress word can be broken apart/decomposed using normalisation. It will be normalised from '{0}' to '{1}'.", inProgressWord, decomposedInProgressWord);
+                            }
+
+                            //Remove in-progress word from Text
+                            Text = Text.Substring(0, Text.Length - inProgressWord.Length);
+
+                            //Add back the decomposed in-progress word, with the last character (potentially) cased differently (lower->upper or vice versa), composed again (to recombine if possible)
+                            var finalCharacter = decomposedInProgressWord.Last();
+                            var reCasedFinalCharacter = finalCharacter.ToggleCase();
+                            if (finalCharacter != reCasedFinalCharacter)
+                            {
+                                Log.DebugFormat("Last character of in-progress word has had its case toggled. It will be converted from '{0}' to '{1}'.", finalCharacter, reCasedFinalCharacter);
+                            }
+                            var newInProgressWord = string.Concat(decomposedInProgressWord.Substring(0, decomposedInProgressWord.Length - 1), reCasedFinalCharacter).Compose();
+                            Text = string.Concat(Text, newInProgressWord);
+
+                            //Remove composed string from external applications by outputting backspaces, then replace with decomposed word
+                            for (var backCount = 0; backCount < inProgressWord.Length; backCount++)
+                            {
+                                PublishKeyPress(FunctionKeys.BackOne);
+                            }
+
+                            foreach (var c in newInProgressWord)
+                            {
+                                PublishKeyPress(c);
+                            }
+
+                            dictionaryService.DecrementEntryUsageCount(inProgressWord); //Decrement the original in-progress word
+                            dictionaryService.IncrementEntryUsageCount(newInProgressWord); //And increment the new in-progress word
+
+                            GenerateSuggestions(false);
+                            lastProcessedTextWasSuggestion = false;
+                        }
+                    }
                     break;
 
                 default:
@@ -432,21 +432,9 @@ namespace JuliusSweetland.OptiKey.Services
             if (Settings.Default.UseSimplifiedKeyboardLayout)
             {
                 char last = capturedText.LastOrDefault();
-                if (last != null)
-                {
-                    if (char.IsLetter(last))
-                    {
-                        Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    }
-                    else if (char.IsNumber(last))
-                    {
-                        Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    }
-                    else if (char.IsPunctuation(last))
-                    {
-                        Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    }
-                }
+                Settings.Default.SimplifiedKeyboardContext = last != default(char) && char.IsNumber(last)
+                    ? SimplifiedKeyboardContexts.NumericAll
+                    : SimplifiedKeyboardContexts.Home;
             }
         }
 

@@ -452,7 +452,8 @@ namespace JuliusSweetland.OptiKey.Models
                 }
 
                 //French specific rules
-                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.FrenchFrance)
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.FrenchFrance
+                    || Settings.Default.KeyboardAndDictionaryLanguage == Languages.FrenchCanada)
                 {
                     //Acute accent: Éé
                     if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())

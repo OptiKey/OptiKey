@@ -15,6 +15,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+                <ResourceDictionary Source="LookToScrollResources.xaml" />
                 <ResourceDictionary>
                     <valueConverters:WidthGreaterThanHeight DefaultValue="True" x:Key="WidthGreaterThanHeight" />
                     <valueConverters:MinimiseAndDockPositionToSymbolOrientation x:Key="MinimiseAndDockPositionToSymbolOrientation" />
@@ -100,7 +101,14 @@
                       SymbolGeometry="{StaticResource MouseScrollToTopIcon}"
                       Text="{x:Static resx:Resources.SCROLL_UP_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MouseMoveAndScrollToTopKey}"/>
+                      Value="{x:Static models:KeyValues.MouseMoveAndScrollToTopKey}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
+        <controls:Key Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource LookToScrollActiveIcon}"
+                      Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ACTIVE_KEY_TEXT}"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      Value="{x:Static models:KeyValues.LookToScrollActiveKey}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
         <controls:Key Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BrowserForwardIcon}"
                       Text="{x:Static resx:Resources.BROWSER_FORWARD_SPLIT_WITH_NEWLINE}"
@@ -126,17 +134,38 @@
                       SymbolGeometry="{StaticResource MouseScrollToLeftIcon}"
                       Text="{x:Static resx:Resources.SCROLL_LEFT_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MouseMoveAndScrollToLeftKey}"/>
+                      Value="{x:Static models:KeyValues.MouseMoveAndScrollToLeftKey}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                      SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource LookToScrollModeIcon}}"
+                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_MODE_KEY_FORMAT}, Converter={StaticResource LookToScrollModeLookup}}"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      Value="{x:Static models:KeyValues.LookToScrollModeKey}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseScrollToBottomIcon}"
                       Text="{x:Static resx:Resources.SCROLL_DOWN_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MouseMoveAndScrollToBottomKey}"/>
+                      Value="{x:Static models:KeyValues.MouseMoveAndScrollToBottomKey}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
+                      SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsIcon}}"
+                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_BOUNDS_KEY_FORMAT}, Converter={StaticResource LookToScrollBoundsLookup}}"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      Value="{x:Static models:KeyValues.LookToScrollBoundsKey}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseScrollToRightIcon}"
                       Text="{x:Static resx:Resources.SCROLL_RIGHT_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MouseMoveAndScrollToRightKey}"/>
+                      Value="{x:Static models:KeyValues.MouseMoveAndScrollToRightKey}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
+                      SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, Converter={StaticResource LookToScrollSpeedIcon}}"
+                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_SPEED_KEY_FORMAT}, Converter={StaticResource LookToScrollSpeedLookup}}"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      Value="{x:Static models:KeyValues.LookToScrollSpeedKey}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
 
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"

@@ -7,6 +7,7 @@
                        xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+                       xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
 
@@ -19,18 +20,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-            <RowDefinition>
-                <RowDefinition.Style>
-                    <Style>
-                        <Setter Property="RowDefinition.Height" Value="*"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="False">
-                                <Setter Property="RowDefinition.Height" Value="2*"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </RowDefinition.Style>
-            </RowDefinition>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -43,107 +34,31 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ContentControl Grid.Row="2" Grid.Column="0">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Visibility" Value="Hidden" />
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource ClearIcon}" 
-                                          Text="{x:Static resx:Resources.CLEAR}"
-                                          SharedSizeGroup="KeyWithSymbol"
-                                          Value="{x:Static models:KeyValues.ClearScratchpadKey}"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
+        <controls:Output Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6"
+                         ScratchpadWidthInKeys="6"
+                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
-        <ContentControl Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Visibility" Value="Hidden" />
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Scratchpad Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
-
-        <ContentControl Grid.Row="2" Grid.Column="5">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Visibility" Value="Hidden" />
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource BackOneIcon}"
-                                          Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
-                                          SharedSizeGroup="KeyWithSymbol"
-                                          Value="{x:Static models:KeyValues.BackOneKey}"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
-
-        <ContentControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Visibility" Value="Hidden" />
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Output ScratchpadWidthInKeys="6"
-                                             NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
-                                                <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="False">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
-
-        <ContentControl Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
                             <controls:Key ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
                                           SharedSizeGroup="KeyWithNineLetters"
-                                          Value="{x:Static models:KeyValues.SimplifiedAlphaABCDEFGHI}"/>
+                                          Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup1AllKey}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="abc" ShiftDownText="ABC"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaABC}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup1SubGroup1Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="a" ShiftDownText="A"
@@ -152,7 +67,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="d" ShiftDownText="D"
@@ -161,7 +76,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="g" ShiftDownText="G"
@@ -170,16 +85,16 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="jkl" ShiftDownText="JKL"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaJKL}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup2SubGroup1Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="j" ShiftDownText="J"
@@ -188,7 +103,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="m" ShiftDownText="M"
@@ -197,7 +112,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="p" ShiftDownText="P"
@@ -206,16 +121,16 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="stu" ShiftDownText="STU"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaSTU}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3SubGroup1Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="s" ShiftDownText="S"
@@ -224,7 +139,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="v" ShiftDownText="V"
@@ -233,7 +148,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="y" ShiftDownText="Y"
@@ -242,16 +157,16 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericAll}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="123&#x0a;0   "
                                                   SharedSizeGroup="KeyWithFourLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlpha123}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardNumericGroup1Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="1"
@@ -260,7 +175,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="4"
@@ -269,7 +184,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="7"
@@ -283,27 +198,27 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
                             <controls:Key ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
                                           SharedSizeGroup="KeyWithNineLetters"
-                                          Value="{x:Static models:KeyValues.SimplifiedAlphaJKLMNOPQR}"/>
+                                          Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup2AllKey}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="def" ShiftDownText="DEF"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaDEF}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup1SubGroup2Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="b" ShiftDownText="B"
@@ -312,7 +227,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="e" ShiftDownText="E"
@@ -321,7 +236,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="h" ShiftDownText="H"
@@ -330,16 +245,16 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="mno" ShiftDownText="MNO"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaMNO}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup2SubGroup2Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="k" ShiftDownText="K"
@@ -348,7 +263,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="n" ShiftDownText="N"
@@ -357,7 +272,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="q" ShiftDownText="Q"
@@ -366,16 +281,16 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="vwx" ShiftDownText="VWX"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaVWX}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3SubGroup2Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="t" ShiftDownText="T"
@@ -384,7 +299,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="w" ShiftDownText="W"
@@ -393,7 +308,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="z" ShiftDownText="Z"
@@ -402,16 +317,16 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericAll}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="456&#x0a;.  "
                                                   SharedSizeGroup="KeyWithFourLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlpha456}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardNumericGroup2Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="2"
@@ -420,7 +335,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="5"
@@ -429,7 +344,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="8"
@@ -443,27 +358,27 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="0" Grid.Column="4" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="2" Grid.RowSpan="2" Grid.Column="4" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
                             <controls:Key ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
                                           SharedSizeGroup="KeyWithNineLetters"
-                                          Value="{x:Static models:KeyValues.SimplifiedAlphaSTUVWXYZ}"/>
+                                          Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="ghi" ShiftDownText="GHI"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaGHI}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup1SubGroup3Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="c" ShiftDownText="C"
@@ -472,7 +387,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="f" ShiftDownText="F"
@@ -481,7 +396,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="i" ShiftDownText="I"
@@ -490,16 +405,16 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="pqr" ShiftDownText="PQR"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaPQR}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup2SubGroup3Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="l" ShiftDownText="L"
@@ -508,7 +423,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="o" ShiftDownText="O"
@@ -517,7 +432,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="r" ShiftDownText="R"
@@ -526,16 +441,16 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="yz?" ShiftDownText="YZ?"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaYZ}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3SubGroup3Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="u" ShiftDownText="U"
@@ -544,7 +459,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key ShiftUpText="x" ShiftDownText="X"
@@ -553,7 +468,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="?"
@@ -562,16 +477,16 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericAll}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="789&#x0a;!   "
                                                   SharedSizeGroup="KeyWithFourLetters"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlpha789}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardNumericGroup3Key}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="3"
@@ -580,7 +495,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="6"
@@ -589,7 +504,7 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="9"
@@ -603,157 +518,14 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
                       WidthSpan="2" 
                       SharedSizeGroup="KeyWithSymbol" 
                       Value=" "/>
-        
-        <ContentControl Grid.Row="4" Grid.Column="4">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Visibility" Value="Visible" />
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource SleepIcon}"
-                                                  Text="{x:Static resx:Resources.SLEEP}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  Value="{x:Static models:KeyValues.SleepKey}"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableQuitKeys}" Value="True">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="False">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource MouseIcon}"
-                                                  Text="{x:Static resx:Resources.MOUSE}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  Value="{x:Static models:KeyValues.MouseKeyboardKey}" />
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
-        <ContentControl Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Visibility" Value="Hidden" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableQuitKeys}" Value="False">
-                            <Setter Property="Visibility" Value="Hidden" />
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource SleepIcon}"
-                                                  Text="{x:Static resx:Resources.SLEEP}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  Value="{x:Static models:KeyValues.SleepKey}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
-        
-        <ContentControl Grid.Row="4" Grid.Column="5">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource MenuIcon}"
-                                          Text="{x:Static resx:Resources.MENU}"
-                                          SharedSizeGroup="KeyWithSymbol"
-                                          Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableQuitKeys}" Value="False">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
-                                                  Text="{x:Static resx:Resources.QUIT}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  Value="{x:Static models:KeyValues.QuitKey}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
 
-        <ContentControl Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
-                                          Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
-                                          WidthSpan="2" 
-                                          SharedSizeGroup="KeyWithSymbol" 
-                                          Value="{x:Static models:KeyValues.SimplifiedAlphaNum}"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.HOME}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.HOME}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.HOME}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.HOME}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
-
-        <ContentControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Visibility" Value="Hidden" />
@@ -770,7 +542,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible" />
                         </MultiDataTrigger>
@@ -778,7 +550,7 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <ContentControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Visibility" Value="Hidden" />
@@ -795,7 +567,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible" />
                         </MultiDataTrigger>
@@ -804,7 +576,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -820,158 +592,155 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ForceCapsLock}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="" />
+                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.Home}" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Hidden" />
                         </MultiDataTrigger>
-                        <!--DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableQuitKeys}" Value="False">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger-->
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3All}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericAll}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="'"
@@ -981,7 +750,7 @@
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup1}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="0"
@@ -991,7 +760,7 @@
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup2}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="."
@@ -1001,7 +770,7 @@
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup3}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="!"
@@ -1016,35 +785,9 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="3" Grid.Column="4">
+        <ContentControl Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Visibility" Value="Hidden" />
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource BackOneIcon}"
-                                          Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
-                                          SharedSizeGroup="KeyWithSymbol"
-                                          Value="{x:Static models:KeyValues.BackOneKey}"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Visibility" Value="Visible" />
-                        </MultiDataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
-
-        <ContentControl Grid.Row="3" Grid.Column="5">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Visibility" Value="Hidden" />
                     <Setter Property="Content">
                         <Setter.Value>
                             <controls:Key SymbolGeometry="{StaticResource EnterIcon}"
@@ -1054,217 +797,259 @@
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Visibility" Value="Visible" />
-                        </MultiDataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1All}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="{x:Static resx:Resources.BACK}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup1}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup1AllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup2}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup1AllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup1SubGroup3}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup1AllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2All}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="{x:Static resx:Resources.BACK}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup1}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup2AllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup2}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup2AllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup2SubGroup3}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup2AllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3All}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="{x:Static resx:Resources.BACK}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup1}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup2}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup3}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericAll}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="{x:Static resx:Resources.BACK}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup1}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
+                                                  WidthSpan="2" 
+                                                  SharedSizeGroup="KeyWithSymbol" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardNumericAllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup2}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
+                                                  WidthSpan="2" 
+                                                  SharedSizeGroup="KeyWithSymbol" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardNumericAllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup3}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
+                                                  WidthSpan="2" 
+                                                  SharedSizeGroup="KeyWithSymbol" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardNumericAllKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+
+        <ContentControl Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
+                                          Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
+                                          WidthSpan="2" 
+                                          SharedSizeGroup="KeyWithSymbol" 
+                                          Value="{x:Static models:KeyValues.SimplifiedKeyboardNumericAllKey}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericAll}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.HOME}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup1}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.HOME}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup2}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.HOME}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.NumericGroup3}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.HOME}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource SpeakIcon}" 
-                                          Text="{x:Static resx:Resources.SPEAK}"
-                                          SharedSizeGroup="KeyWithSymbol"
-                                          WidthSpan="2" 
-                                          Value="{x:Static models:KeyValues.SpeakKey}"/>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="False" />
-                                <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Visibility" Value="Hidden" />
-                        </MultiDataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="{x:Static resx:Resources.BACK}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaABCDEFGHI}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaABCDEFGHI}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaABCDEFGHI}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="{x:Static resx:Resources.BACK}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaJKLMNOPQR}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaJKLMNOPQR}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaJKLMNOPQR}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="{x:Static resx:Resources.BACK}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaSTUVWXYZ}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaSTUVWXYZ}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaSTUVWXYZ}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="{x:Static resx:Resources.BACK}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
-                                                  WidthSpan="2" 
-                                                  SharedSizeGroup="KeyWithSymbol" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaNum}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
-                                                  WidthSpan="2" 
-                                                  SharedSizeGroup="KeyWithSymbol" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaNum}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
-                                                  WidthSpan="2" 
-                                                  SharedSizeGroup="KeyWithSymbol" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaNum}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
+        <controls:Key Grid.Row="5" Grid.Column="4"
+                      SymbolGeometry="{StaticResource MouseIcon}"
+                      Text="{x:Static resx:Resources.MOUSE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.MouseKeyboardKey}" />
+
+        <controls:Key Grid.Row="5" Grid.Column="5"
+                      SymbolGeometry="{StaticResource MenuIcon}"
+                      Text="{x:Static resx:Resources.MENU}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.MenuKeyboardKey}" />
     </Grid>
 </controls:KeyboardView>

@@ -9,8 +9,8 @@ namespace JuliusSweetland.OptiKey.Extensions
     public static class CharExtensions
     {
         private static readonly Map<char, char> HangulIntialToFinalConsonents = new Map<char, char>();
-        private static readonly Dictionary<char, char> HiraganaUpperToLowerCase = new Dictionary<char, char>();
-        private static readonly Dictionary<char, char> KatakanaUpperToLowerCase = new Dictionary<char, char>();
+        private static readonly Map<char, char> HiraganaUpperToLowerCase = new Map<char, char>();
+        private static readonly Map<char, char> KatakanaUpperToLowerCase = new Map<char, char>();
         
         static CharExtensions()
         {
@@ -61,7 +61,6 @@ namespace JuliusSweetland.OptiKey.Extensions
             KatakanaUpperToLowerCase.Add('ハ', 'ㇵ'); //ハ
             KatakanaUpperToLowerCase.Add('ヒ', 'ㇶ'); //ヒ
             KatakanaUpperToLowerCase.Add('フ', 'ㇷ'); //フ
-            KatakanaUpperToLowerCase.Add('プ', 'ㇷ'); //プ
             KatakanaUpperToLowerCase.Add('ヘ', 'ㇸ'); //ヘ
             KatakanaUpperToLowerCase.Add('ホ', 'ㇹ'); //ホ
             KatakanaUpperToLowerCase.Add('ム', 'ㇺ'); //ム
@@ -158,24 +157,45 @@ namespace JuliusSweetland.OptiKey.Extensions
 
         #endregion
 
-        #region Japanese (Hiragana and Katakana) Extension Methods
-
-        public static char ConvertToLowerCaseHiraganaOrKatakana(this char c)
+        public static char ToggleCase(this char c)
         {
-            if (HiraganaUpperToLowerCase.ContainsKey(c))
+            //Upper to lower conversions:
+
+            if (HiraganaUpperToLowerCase.Forward.ContainsKey(c))
             {
-                return HiraganaUpperToLowerCase[c];
+                return HiraganaUpperToLowerCase.Forward[c];
             }
 
-            if (KatakanaUpperToLowerCase.ContainsKey(c))
+            if (KatakanaUpperToLowerCase.Forward.ContainsKey(c))
             {
-                return KatakanaUpperToLowerCase[c];
+                return KatakanaUpperToLowerCase.Forward[c];
             }
 
+            if (char.IsUpper(c))
+            {
+                return char.ToLowerInvariant(c);
+            }
+
+            //Lower to upper conversions
+
+            if (HiraganaUpperToLowerCase.Reverse.ContainsKey(c))
+            {
+                return HiraganaUpperToLowerCase.Reverse[c];
+            }
+
+            if (KatakanaUpperToLowerCase.Reverse.ContainsKey(c))
+            {
+                return KatakanaUpperToLowerCase.Reverse[c];
+            }
+
+            if (char.IsLower(c))
+            {
+                return char.ToUpperInvariant(c);
+            }
+
+            //Neither - just return the char
             return c;
         }
-
-        #endregion
 
         public static string ToPrintableString(this char c)
         {
