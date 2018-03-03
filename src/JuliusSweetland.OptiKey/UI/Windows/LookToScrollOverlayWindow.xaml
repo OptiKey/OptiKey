@@ -14,7 +14,7 @@
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
-        <valueConverters:ColorNameToBrush x:Key="ColorNameToBrush"/>
+        <valueConverters:ColourNameToBrush x:Key="ColourNameToBrush"/>
         <valueConverters:EnumToVisibilityConverter x:Key="EnumToVisibility"/>
     </Window.Resources>
 
@@ -37,24 +37,24 @@
         
         <!-- Bounds -->
         <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" 
-                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayBoundsColor, Converter={StaticResource ColorNameToBrush}}" 
+                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayBoundsColour, Converter={StaticResource ColourNameToBrush}}" 
                 BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayBoundsThickness}"/>
 
         <!-- Deadzone (Free Mode) -->
         <Border Grid.Row="1" Grid.Column="1" 
-                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColor, Converter={StaticResource ColorNameToBrush}}" 
+                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}" 
                 BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
                 Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Free'}"/>
 
         <!-- Deadzone (Horizontal or Cross Mode) -->
         <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"
-                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColor, Converter={StaticResource ColorNameToBrush}}" 
+                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}" 
                 BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
                 Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Horizontal,Cross'}"/>
 
         <!-- Deadzone (Vertical or Cross Mode) -->
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
-                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColor, Converter={StaticResource ColorNameToBrush}}" 
+                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}" 
                 BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
                 Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Vertical,Cross'}"/>
     </Grid>

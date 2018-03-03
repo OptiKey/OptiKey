@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
         #region Properties
 
-        public List<string> ColorNames
+        public List<string> ColourNames
         {
             get
             {
@@ -109,11 +109,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref lookToScrollLockDownBoundsKey, value); }
         }
 
-        private bool lookToScrollCenterMouseWhenActivated;
-        public bool LookToScrollCenterMouseWhenActivated
+        private bool lookToScrollCentreMouseWhenActivated;
+        public bool LookToScrollCentreMouseWhenActivated
         {
-            get { return lookToScrollCenterMouseWhenActivated; }
-            set { SetProperty(ref lookToScrollCenterMouseWhenActivated, value); }
+            get { return lookToScrollCentreMouseWhenActivated; }
+            set { SetProperty(ref lookToScrollCentreMouseWhenActivated, value); }
         }
 
         private bool lookToScrollBringWindowToFrontWhenActivated;
@@ -137,18 +137,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref lookToScrollShowOverlayWindow, value); }
         }
 
-        private string lookToScrollOverlayBoundsColor;
-        public string LookToScrollOverlayBoundsColor
+        private string lookToScrollOverlayBoundsColour;
+        public string LookToScrollOverlayBoundsColour
         {
-            get { return lookToScrollOverlayBoundsColor; }
-            set { SetProperty(ref lookToScrollOverlayBoundsColor, value); }
+            get { return lookToScrollOverlayBoundsColour; }
+            set { SetProperty(ref lookToScrollOverlayBoundsColour, value); }
         }
 
-        private string lookToScrollOverlayDeadzoneColor;
-        public string LookToScrollOverlayDeadzoneColor
+        private string lookToScrollOverlayDeadzoneColour;
+        public string LookToScrollOverlayDeadzoneColour
         {
-            get { return lookToScrollOverlayDeadzoneColor; }
-            set { SetProperty(ref lookToScrollOverlayDeadzoneColor, value); }
+            get { return lookToScrollOverlayDeadzoneColour; }
+            set { SetProperty(ref lookToScrollOverlayDeadzoneColour, value); }
         }
 
         private int lookToScrollOverlayBoundsThickness;
@@ -256,12 +256,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             LookToScrollEnabled = Settings.Default.LookToScrollEnabled;
             LookToScrollDirectionInverted = Settings.Default.LookToScrollDirectionInverted;
             LookToScrollLockDownBoundsKey = Settings.Default.LookToScrollLockDownBoundsKey;
-            LookToScrollCenterMouseWhenActivated = Settings.Default.LookToScrollCenterMouseWhenActivated;
+            LookToScrollCentreMouseWhenActivated = Settings.Default.LookToScrollCentreMouseWhenActivated;
             LookToScrollBringWindowToFrontWhenActivated = Settings.Default.LookToScrollBringWindowToFrontWhenActivated;
             LookToScrollBringWindowToFrontAfterChoosingScreenPoint = Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
             LookToScrollShowOverlayWindow = Settings.Default.LookToScrollShowOverlayWindow;
-            LookToScrollOverlayBoundsColor = Settings.Default.LookToScrollOverlayBoundsColor;
-            LookToScrollOverlayDeadzoneColor = Settings.Default.LookToScrollOverlayDeadzoneColor;
+            LookToScrollOverlayBoundsColour = Settings.Default.LookToScrollOverlayBoundsColour;
+            LookToScrollOverlayDeadzoneColour = Settings.Default.LookToScrollOverlayDeadzoneColour;
             LookToScrollOverlayBoundsThickness = Settings.Default.LookToScrollOverlayBoundsThickness;
             LookToScrollOverlayDeadzoneThickness = Settings.Default.LookToScrollOverlayDeadzoneThickness;
             LookToScrollHorizontalDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
@@ -287,12 +287,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.LookToScrollEnabled = LookToScrollEnabled;
             Settings.Default.LookToScrollDirectionInverted = LookToScrollDirectionInverted;
             Settings.Default.LookToScrollLockDownBoundsKey = LookToScrollLockDownBoundsKey;
-            Settings.Default.LookToScrollCenterMouseWhenActivated = LookToScrollCenterMouseWhenActivated;
+            Settings.Default.LookToScrollCentreMouseWhenActivated = LookToScrollCentreMouseWhenActivated;
             Settings.Default.LookToScrollBringWindowToFrontWhenActivated = LookToScrollBringWindowToFrontWhenActivated;
             Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint = LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
             Settings.Default.LookToScrollShowOverlayWindow = LookToScrollShowOverlayWindow;
-            Settings.Default.LookToScrollOverlayBoundsColor = LookToScrollOverlayBoundsColor;
-            Settings.Default.LookToScrollOverlayDeadzoneColor = LookToScrollOverlayDeadzoneColor;
+            Settings.Default.LookToScrollOverlayBoundsColour = LookToScrollOverlayBoundsColour;
+            Settings.Default.LookToScrollOverlayDeadzoneColour = LookToScrollOverlayDeadzoneColour;
             Settings.Default.LookToScrollOverlayBoundsThickness = LookToScrollOverlayBoundsThickness;
             Settings.Default.LookToScrollOverlayDeadzoneThickness = LookToScrollOverlayDeadzoneThickness;
             Settings.Default.LookToScrollHorizontalDeadzone = LookToScrollHorizontalDeadzone;

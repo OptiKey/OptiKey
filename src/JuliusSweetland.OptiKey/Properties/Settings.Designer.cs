@@ -2296,12 +2296,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool LookToScrollCenterMouseWhenActivated {
+        public bool LookToScrollCentreMouseWhenActivated {
             get {
-                return ((bool)(this["LookToScrollCenterMouseWhenActivated"]));
+                return ((bool)(this["LookToScrollCentreMouseWhenActivated"]));
             }
             set {
-                this["LookToScrollCenterMouseWhenActivated"] = value;
+                this["LookToScrollCentreMouseWhenActivated"] = value;
             }
         }
         
@@ -2348,12 +2348,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string LookToScrollOverlayBoundsColor {
+        public string LookToScrollOverlayBoundsColour {
             get {
-                return ((string)(this["LookToScrollOverlayBoundsColor"]));
+                return ((string)(this["LookToScrollOverlayBoundsColour"]));
             }
             set {
-                this["LookToScrollOverlayBoundsColor"] = value;
+                this["LookToScrollOverlayBoundsColour"] = value;
             }
         }
         
@@ -2361,12 +2361,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Orange")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string LookToScrollOverlayDeadzoneColor {
+        public string LookToScrollOverlayDeadzoneColour {
             get {
-                return ((string)(this["LookToScrollOverlayDeadzoneColor"]));
+                return ((string)(this["LookToScrollOverlayDeadzoneColour"]));
             }
             set {
-                this["LookToScrollOverlayDeadzoneColor"] = value;
+                this["LookToScrollOverlayDeadzoneColour"] = value;
             }
         }
         

@@ -122,7 +122,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     ChoosePointLookToScrollBoundsTarget(callback);
                     break;
 
-                case LookToScrollBounds.ScreenCentered:
+                case LookToScrollBounds.ScreenCentred:
                     ChooseScreenLookToScrollBoundsTarget(callback);        
                     break;
 
@@ -148,7 +148,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void ChoosePointLookToScrollBoundsTarget(Action<bool> callback)
         {
-            Log.Info("Choosing point on screen to use as the center point for scrolling.");
+            Log.Info("Choosing point on screen to use as the centre point for scrolling.");
 
             SetupFinalClickAction(point =>
             {
@@ -422,15 +422,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
             }
 
-            if (Settings.Default.LookToScrollCenterMouseWhenActivated)
+            if (Settings.Default.LookToScrollCentreMouseWhenActivated)
             {
-                CenterMouseInsideLookToScrollDeadzone();
+                CentreMouseInsideLookToScrollDeadzone();
             }
         }
 
-        private void CenterMouseInsideLookToScrollDeadzone()
+        private void CentreMouseInsideLookToScrollDeadzone()
         {
-            Log.Info("Moving mouse to center of look to scroll deadzone.");
+            Log.Info("Moving mouse to centre of look to scroll deadzone.");
 
             Rect? bounds = GetCurrentLookToScrollBoundsRect();
             if (bounds.HasValue)
@@ -442,7 +442,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                 }
 
-                mouseOutputService.MoveTo(GetCurrentLookToScrollCenterPoint(bounds.Value));
+                mouseOutputService.MoveTo(GetCurrentLookToScrollCentrePoint(bounds.Value));
 
                 reinstateModifiers();
             }
@@ -569,16 +569,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             var thisUpdate = DateTime.Now;
 
             Rect bounds;
-            Point center;
-            bool active = ShouldUpdateLookToScroll(position, out bounds, out center);
+            Point centre;
+            bool active = ShouldUpdateLookToScroll(position, out bounds, out centre);
 
             if (active)
             {
                 Log.DebugFormat("Updating look to scroll using position: {0}.", position);
                 Log.DebugFormat("Current look to scroll bounds rect is: {0}.", bounds);
-                Log.DebugFormat("Current look to scroll center point is: {0}.", center);
+                Log.DebugFormat("Current look to scroll centre point is: {0}.", centre);
 
-                Vector velocity = CalculateLookToScrollVelocity(position, center);
+                Vector velocity = CalculateLookToScrollVelocity(position, centre);
 
                 // Convert the velocity from clicks per second to mouse wheel units per second.
                 velocity *= WheelUnitsPerClick;
@@ -592,15 +592,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 PerformLookToScroll(scrollAmount);
             }
 
-            UpdateLookToScrollOverlayProperties(active, bounds, center);
+            UpdateLookToScrollOverlayProperties(active, bounds, centre);
 
             lookToScrollLastUpdate = thisUpdate;
         }
 
-        private bool ShouldUpdateLookToScroll(Point position, out Rect bounds, out Point center)
+        private bool ShouldUpdateLookToScroll(Point position, out Rect bounds, out Point centre)
         {
             bounds = Rect.Empty;
-            center = new Point();
+            centre = new Point();
 
             if (!keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown() ||
                 keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown() ||
@@ -624,7 +624,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             bounds = boundsContainer.Value;
-            center = GetCurrentLookToScrollCenterPoint(bounds);
+            centre = GetCurrentLookToScrollCentrePoint(bounds);
 
             // If using a window or portion of it as the bounds target, only scroll while pointing _at_ that window, 
             // not while pointing at another window on top of it.
@@ -649,7 +649,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             switch (lookToScrollBoundsWhenActivated)
             {
                 case LookToScrollBounds.ScreenPoint:
-                case LookToScrollBounds.ScreenCentered:
+                case LookToScrollBounds.ScreenCentred:
                     bounds = IsMainWindowDocked() 
                         ? FindLargestGapBetweenScreenAndMainWindow() 
                         : GetVirtualScreenBoundsInPixels();
@@ -736,7 +736,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private Point GetCurrentLookToScrollCenterPoint(Rect bounds)
+        private Point GetCurrentLookToScrollCentrePoint(Rect bounds)
         {
             switch (lookToScrollBoundsWhenActivated)
             {
@@ -744,11 +744,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     return pointLookToScrollBoundsTarget;
 
                 default:
-                    return bounds.CalculateCenter();
+                    return bounds.CalculateCentre();
             }
         }
 
-        private Vector CalculateLookToScrollVelocity(Point current, Point center)
+        private Vector CalculateLookToScrollVelocity(Point current, Point centre)
         {
             Tuple<decimal, decimal> baseSpeedAndAcceleration = GetCurrentBaseSpeedAndAcceleration();
 
@@ -765,7 +765,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case LookToScrollModes.Free:
                     velocity.X = CalculateLookToScrollVelocity(
                         current.X, 
-                        center.X,
+                        centre.X,
                         Settings.Default.LookToScrollHorizontalDeadzone, 
                         baseSpeed, 
                         acceleration
@@ -781,7 +781,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case LookToScrollModes.Free:
                     velocity.Y = CalculateLookToScrollVelocity(
                         current.Y,
-                        center.Y,
+                        centre.Y,
                         Settings.Default.LookToScrollVerticalDeadzone,
                         baseSpeed,
                         acceleration
@@ -803,13 +803,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private double CalculateLookToScrollVelocity(
             double current, 
-            double center, 
+            double centre, 
             double deadzone, 
             double baseSpeed, 
             double acceleration)
         {
-            // Calculate the direction and distance from the center to the current value. 
-            double signedDistance = current - center;
+            // Calculate the direction and distance from the centre to the current value. 
+            double signedDistance = current - centre;
             double sign = Math.Sign(signedDistance);
             double distance = Math.Abs(signedDistance);
 
@@ -896,15 +896,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             reinstateModifiers();
         }
 
-        private void UpdateLookToScrollOverlayProperties(bool active, Rect bounds, Point center)
+        private void UpdateLookToScrollOverlayProperties(bool active, Rect bounds, Point centre)
         {
             int hDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
             int vDeadzone = Settings.Default.LookToScrollVerticalDeadzone;
 
             var deadzone = new Rect
             {
-                X = center.X - hDeadzone,
-                Y = center.Y - vDeadzone,
+                X = centre.X - hDeadzone,
+                Y = centre.Y - vDeadzone,
                 Width = hDeadzone * 2,
                 Height = vDeadzone * 2,
             };

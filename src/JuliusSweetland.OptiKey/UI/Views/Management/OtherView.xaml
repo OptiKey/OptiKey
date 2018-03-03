@@ -11,7 +11,7 @@
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
-        <valueConverters:ColorNameToBrush x:Key="ColorNameToBrush" />
+        <valueConverters:ColourNameToBrush x:Key="ColourNameToBrush" />
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
@@ -145,11 +145,11 @@
                               VerticalAlignment="Center"
                               IsChecked="{Binding LookToScrollLockDownBoundsKey, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_CENTER_MOUSE_WHEN_ACTIVATED_LABEL}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                               VerticalAlignment="Center"
-                              IsChecked="{Binding LookToScrollCenterMouseWhenActivated, Mode=TwoWay}" />
+                              IsChecked="{Binding LookToScrollCentreMouseWhenActivated, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
@@ -169,16 +169,16 @@
                               VerticalAlignment="Center"
                               IsChecked="{Binding LookToScrollShowOverlayWindow, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL}" 
                                VerticalAlignment="Center" Margin="5"
                                Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
                     <ComboBox Grid.Row="6" Grid.Column="1"
-                              ItemsSource="{Binding ColorNames}"
-                              SelectedValue="{Binding LookToScrollOverlayBoundsColor, Mode=TwoWay}" 
+                              ItemsSource="{Binding ColourNames}"
+                              SelectedValue="{Binding LookToScrollOverlayBoundsColour, Mode=TwoWay}" 
                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
 
                     <Border Grid.Row="6" Grid.Column="2" Grid.RowSpan="2" Margin="5" Width="50"
-                            BorderBrush="{Binding LookToScrollOverlayBoundsColor, Converter={StaticResource ColorNameToBrush}}"
+                            BorderBrush="{Binding LookToScrollOverlayBoundsColour, Converter={StaticResource ColourNameToBrush}}"
                             BorderThickness="{Binding LookToScrollOverlayBoundsThickness}" 
                             Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
 
@@ -190,16 +190,16 @@
                                             Value="{Binding LookToScrollOverlayBoundsThickness, Mode=TwoWay}"
                                             Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
                     
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL}" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL}" 
                                VerticalAlignment="Center" Margin="5" 
                                Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
                     <ComboBox Grid.Row="8" Grid.Column="1"
-                              ItemsSource="{Binding ColorNames}"
-                              SelectedValue="{Binding LookToScrollOverlayDeadzoneColor, Mode=TwoWay}" 
+                              ItemsSource="{Binding ColourNames}"
+                              SelectedValue="{Binding LookToScrollOverlayDeadzoneColour, Mode=TwoWay}" 
                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
 
                     <Border Grid.Row="8" Grid.Column="2" Grid.RowSpan="2" Margin="5" Width="50"
-                            BorderBrush="{Binding LookToScrollOverlayDeadzoneColor, Converter={StaticResource ColorNameToBrush}}"
+                            BorderBrush="{Binding LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}"
                             BorderThickness="{Binding LookToScrollOverlayDeadzoneThickness}"
                             Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
                     

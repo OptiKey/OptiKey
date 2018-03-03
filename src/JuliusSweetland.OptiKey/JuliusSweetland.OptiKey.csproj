@@ -395,7 +395,7 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
-    <Compile Include="UI\ValueConverters\ColorNameToBrush.cs" />
+    <Compile Include="UI\ValueConverters\ColourNameToBrush.cs" />
     <Compile Include="UI\ValueConverters\EnumMapper.cs" />
     <Compile Include="UI\ValueConverters\EnumToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\InsertNewlinesBetweenWords.cs" />

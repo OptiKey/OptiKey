@@ -2669,11 +2669,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Screen
-        ///Centered.
+        ///Centred.
         /// </summary>
-        public static string LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTERED {
+        public static string LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED {
             get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTERED", resourceCulture);
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED", resourceCulture);
             }
         }
         
@@ -2725,11 +2725,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Before scrolling, move mouse to center of deadzone:.
+        ///   Looks up a localized string similar to Before scrolling, move mouse to centre of deadzone:.
         /// </summary>
-        public static string LOOK_TO_SCROLL_CENTER_MOUSE_WHEN_ACTIVATED_LABEL {
+        public static string LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL {
             get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_CENTER_MOUSE_WHEN_ACTIVATED_LABEL", resourceCulture);
+                return ResourceManager.GetString("LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL", resourceCulture);
             }
         }
         
@@ -2853,11 +2853,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color of scroll bounds drawn on the overlay:.
+        ///   Looks up a localized string similar to Colour of scroll bounds drawn on the overlay:.
         /// </summary>
-        public static string LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL {
+        public static string LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL {
             get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL", resourceCulture);
+                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL", resourceCulture);
             }
         }
         
@@ -2871,11 +2871,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color of deadzone guides drawn on the overlay:.
+        ///   Looks up a localized string similar to Colour of deadzone guides drawn on the overlay:.
         /// </summary>
-        public static string LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL {
+        public static string LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL {
             get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL", resourceCulture);
+                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL", resourceCulture);
             }
         }
         

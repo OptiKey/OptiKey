@@ -2032,8 +2032,8 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
     <value>Lock down bounds key to preserve chosen point, window, or region:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_CENTER_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling, move mouse to center of deadzone:</value>
+  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Before scrolling, move mouse to centre of deadzone:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Before scrolling within window, bring it to the front:</value>
@@ -2044,11 +2044,11 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
     <value>Show overlay window (requires restart):</value>
   </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL" xml:space="preserve">
-    <value>Color of scroll bounds drawn on the overlay:</value>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of scroll bounds drawn on the overlay:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL" xml:space="preserve">
-    <value>Color of deadzone guides drawn on the overlay:</value>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of deadzone guides drawn on the overlay:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>Thickness of scroll bounds drawn on the overlay:</value>
@@ -2114,9 +2114,9 @@ Scroll</value>
     <value>Screen at
 Point</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTERED" xml:space="preserve">
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
     <value>Screen
-Centered</value>
+Centred</value>
   </data>
   <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
     <value>Window</value>

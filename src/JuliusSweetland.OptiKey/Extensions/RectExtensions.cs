@@ -9,7 +9,7 @@ namespace JuliusSweetland.OptiKey.Extensions
             return rect.Width * rect.Height;
         }
 
-        public static Point CalculateCenter(this Rect rect)
+        public static Point CalculateCentre(this Rect rect)
         {
             return new Point
             {
