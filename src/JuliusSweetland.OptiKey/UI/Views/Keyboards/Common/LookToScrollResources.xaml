@@ -24,10 +24,10 @@
     <valueConverters:EnumMapper EnumType="{x:Type enums:LookToScrollBounds}" x:Key="LookToScrollBoundsIcon">
         <valueConverters:EnumMapper.MappedValues>
             <x:Array Type="{x:Type Geometry}">
-                <StaticResource ResourceKey="LookToScrollBoundsScreenIcon" /> <!-- TODO: #423: new icon for point -->
-                <StaticResource ResourceKey="LookToScrollBoundsScreenIcon" />
+                <StaticResource ResourceKey="LookToScrollBoundsScreenPointIcon" />
+                <StaticResource ResourceKey="LookToScrollBoundsScreenCentredIcon" />
                 <StaticResource ResourceKey="LookToScrollBoundsWindowIcon" />
-                <StaticResource ResourceKey="LookToScrollBoundsWindowIcon" /> <!-- TODO: #423: new icon for subwindow -->
+                <StaticResource ResourceKey="LookToScrollBoundsSubwindowIcon" />
                 <StaticResource ResourceKey="LookToScrollBoundsCustomIcon" />
             </x:Array>
         </valueConverters:EnumMapper.MappedValues>

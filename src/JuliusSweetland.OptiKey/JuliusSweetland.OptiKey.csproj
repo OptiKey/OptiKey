@@ -894,7 +894,9 @@
     <Resource Include="Resources\Icons\ManualMode.ico" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollActive.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg" />
-    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreen.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreenCentred.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreenPoint.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsSubwindow.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsWindow.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollModeCross.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollModeFree.svg" />
