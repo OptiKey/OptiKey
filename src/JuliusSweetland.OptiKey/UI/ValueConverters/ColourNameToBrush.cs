@@ -5,7 +5,7 @@ using System.Windows.Media;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
-    public class ColorNameToBrush : IValueConverter
+    public class ColourNameToBrush : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -13,12 +13,12 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
 
             if (value != null)
             {
-                string colorName = value.ToString();
-                object colorObj = ColorConverter.ConvertFromString(colorName);
+                string colourName = value.ToString();
+                object colourObj = ColorConverter.ConvertFromString(colourName);
 
-                if (colorObj != null)
+                if (colourObj != null)
                 {
-                    brush = new SolidColorBrush((Color)colorObj);
+                    brush = new SolidColorBrush((Color)colourObj);
                 }
             }
 
