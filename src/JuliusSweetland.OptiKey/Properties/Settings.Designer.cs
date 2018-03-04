@@ -2099,7 +2099,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Vertical")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Free")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Enums.LookToScrollModes LookToScrollMode {
             get {
@@ -2112,7 +2112,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Screen")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ScreenPoint")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Enums.LookToScrollBounds LookToScrollBounds {
             get {
@@ -2281,14 +2281,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool LookToScrollCenterMouseWhenActivated {
+        public bool LookToScrollLockDownBoundsKey {
             get {
-                return ((bool)(this["LookToScrollCenterMouseWhenActivated"]));
+                return ((bool)(this["LookToScrollLockDownBoundsKey"]));
             }
             set {
-                this["LookToScrollCenterMouseWhenActivated"] = value;
+                this["LookToScrollLockDownBoundsKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollCentreMouseWhenActivated {
+            get {
+                return ((bool)(this["LookToScrollCentreMouseWhenActivated"]));
+            }
+            set {
+                this["LookToScrollCentreMouseWhenActivated"] = value;
             }
         }
         
@@ -2309,6 +2322,19 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint {
+            get {
+                return ((bool)(this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"]));
+            }
+            set {
+                this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool LookToScrollShowOverlayWindow {
             get {
                 return ((bool)(this["LookToScrollShowOverlayWindow"]));
@@ -2322,12 +2348,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string LookToScrollOverlayBoundsColor {
+        public string LookToScrollOverlayBoundsColour {
             get {
-                return ((string)(this["LookToScrollOverlayBoundsColor"]));
+                return ((string)(this["LookToScrollOverlayBoundsColour"]));
             }
             set {
-                this["LookToScrollOverlayBoundsColor"] = value;
+                this["LookToScrollOverlayBoundsColour"] = value;
             }
         }
         
@@ -2335,12 +2361,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Orange")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string LookToScrollOverlayDeadzoneColor {
+        public string LookToScrollOverlayDeadzoneColour {
             get {
-                return ((string)(this["LookToScrollOverlayDeadzoneColor"]));
+                return ((string)(this["LookToScrollOverlayDeadzoneColour"]));
             }
             set {
-                this["LookToScrollOverlayDeadzoneColor"] = value;
+                this["LookToScrollOverlayDeadzoneColour"] = value;
             }
         }
         

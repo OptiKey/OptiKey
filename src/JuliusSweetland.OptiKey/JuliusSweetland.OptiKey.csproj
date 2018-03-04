@@ -395,7 +395,7 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
-    <Compile Include="UI\ValueConverters\ColorNameToBrush.cs" />
+    <Compile Include="UI\ValueConverters\ColourNameToBrush.cs" />
     <Compile Include="UI\ValueConverters\EnumMapper.cs" />
     <Compile Include="UI\ValueConverters\EnumToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\InsertNewlinesBetweenWords.cs" />
@@ -713,6 +713,7 @@
     <Compile Include="Static\DiagnosticInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx" />
     <EmbeddedResource Include="Properties\Resources.cs-CZ.resx" />
+    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
     <EmbeddedResource Include="Properties\Resources.es-ES.resx" />
     <EmbeddedResource Include="Properties\Resources.it-IT.resx" />
     <EmbeddedResource Include="Properties\Resources.ja-JP.resx" />
@@ -893,7 +894,9 @@
     <Resource Include="Resources\Icons\ManualMode.ico" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollActive.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg" />
-    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreen.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreenCentred.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreenPoint.svg" />
+    <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsSubwindow.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsWindow.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollModeCross.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollModeFree.svg" />

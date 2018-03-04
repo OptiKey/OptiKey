@@ -1136,10 +1136,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LookToScrollMode" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.LookToScrollModes" Scope="User">
-      <Value Profile="(Default)">Vertical</Value>
+      <Value Profile="(Default)">Free</Value>
     </Setting>
     <Setting Name="LookToScrollBounds" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.LookToScrollBounds" Scope="User">
-      <Value Profile="(Default)">Screen</Value>
+      <Value Profile="(Default)">ScreenPoint</Value>
     </Setting>
     <Setting Name="LookToScrollSpeed" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.LookToScrollSpeeds" Scope="User">
       <Value Profile="(Default)">Medium</Value>
@@ -1177,19 +1177,25 @@
     <Setting Name="LookToScrollDirectionInverted" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="LookToScrollCenterMouseWhenActivated" Roaming="true" Type="System.Boolean" Scope="User">
+    <Setting Name="LookToScrollLockDownBoundsKey" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LookToScrollCentreMouseWhenActivated" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="LookToScrollBringWindowToFrontWhenActivated" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="LookToScrollBringWindowToFrontAfterChoosingScreenPoint" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
     <Setting Name="LookToScrollShowOverlayWindow" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="LookToScrollOverlayBoundsColor" Roaming="true" Type="System.String" Scope="User">
+    <Setting Name="LookToScrollOverlayBoundsColour" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Yellow</Value>
     </Setting>
-    <Setting Name="LookToScrollOverlayDeadzoneColor" Roaming="true" Type="System.String" Scope="User">
+    <Setting Name="LookToScrollOverlayDeadzoneColour" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Orange</Value>
     </Setting>
     <Setting Name="LookToScrollOverlayBoundsThickness" Roaming="true" Type="System.Int32" Scope="User">

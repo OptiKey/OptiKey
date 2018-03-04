@@ -874,7 +874,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.LookToScrollBounds:
-                    SelectNextLookToScrollBounds();
+                    HandleLookToScrollBoundsKeySelected();
                     break;
 
                 case FunctionKeys.LookToScrollIncrement:

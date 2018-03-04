@@ -21,17 +21,44 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private const int WheelUnitsPerClick = 120;
 
         private bool choosingLookToScrollBoundsTarget = false;
-        private Rect activeLookToScrollBounds = Rect.Empty;
+        private LookToScrollBounds lookToScrollBoundsWhenActivated = LookToScrollBounds.ScreenPoint;
+        private Point pointLookToScrollBoundsTarget = new Point();
         private IntPtr windowLookToScrollBoundsTarget = IntPtr.Zero;
-        private Rect customLookToScrollBoundsTarget = Rect.Empty;
+        private Rect rectLookToScrollBoundsTarget = Rect.Empty;
         private DateTime? lookToScrollLastUpdate = null;
         private Vector lookToScrollLeftoverScrollAmount = new Vector();
 
+        #region ILookToScrollOverlayViewModel Members
+
+        private bool isLookToScrollActive = false;
+        public bool IsLookToScrollActive
+        {
+            get { return isLookToScrollActive; }
+            private set { SetProperty(ref isLookToScrollActive, value); }
+        }
+
+        private Rect activeLookToScrollBounds = Rect.Empty;
         public Rect ActiveLookToScrollBounds
         {
             get { return activeLookToScrollBounds; }
-            set { SetProperty(ref activeLookToScrollBounds, value); }
+            private set { SetProperty(ref activeLookToScrollBounds, value); }
         }
+
+        private Rect activeLookToScrollDeadzone = Rect.Empty;
+        public Rect ActiveLookToScrollDeadzone
+        {
+            get { return activeLookToScrollDeadzone; }
+            private set { SetProperty(ref activeLookToScrollDeadzone, value); }
+        }
+
+        private Thickness activeLookToScrollMargins = new Thickness();
+        public Thickness ActiveLookToScrollMargins
+        {
+            get { return activeLookToScrollMargins; }
+            private set { SetProperty(ref activeLookToScrollMargins, value); }
+        }
+
+        #endregion
 
         private void ToggleLookToScroll()
         {
@@ -41,6 +68,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 Log.Info("Look to scroll is now active.");
 
+                lookToScrollBoundsWhenActivated = Settings.Default.LookToScrollBounds;
                 lookToScrollLeftoverScrollAmount = new Vector();
 
                 if (keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value.IsDownOrLockedDown())
@@ -64,18 +92,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.Info("Choosing look to scroll bounds target.");
 
             choosingLookToScrollBoundsTarget = true;
+            pointLookToScrollBoundsTarget = new Point();
             windowLookToScrollBoundsTarget = IntPtr.Zero;
-            customLookToScrollBoundsTarget = Rect.Empty;
+            rectLookToScrollBoundsTarget = Rect.Empty;
 
             Action<bool> callback = success => 
             {
-                if (success)
+                if (success && Settings.Default.LookToScrollLockDownBoundsKey)
                 {
                     // Lock the bounds key down. This signals that the chosen target should be re-used during
                     // subsequent scrolling sessions.
                     keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.LockedDown;
                 }
-                else
+                else if (!success)
                 {
                     // If a target wasn't successfully chosen, de-activate scrolling and release the bounds key.
                     keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value = KeyDownStates.Up;
@@ -89,12 +118,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             
             switch (Settings.Default.LookToScrollBounds)
             {
-                case LookToScrollBounds.Screen:
+                case LookToScrollBounds.ScreenPoint:
+                    ChoosePointLookToScrollBoundsTarget(callback);
+                    break;
+
+                case LookToScrollBounds.ScreenCentred:
                     ChooseScreenLookToScrollBoundsTarget(callback);        
                     break;
 
                 case LookToScrollBounds.Window:
                     ChooseWindowLookToScrollBoundsTarget(callback);
+                    break;
+
+                case LookToScrollBounds.Subwindow:
+                    ChooseSubwindowLookToScrollBoundsTarget(callback);
                     break;
 
                 case LookToScrollBounds.Custom:
@@ -107,6 +144,41 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.Info("Will use entire usable portion of the screen as the scroll bounds.");
             callback(true); // Always successful.
+        }
+
+        private void ChoosePointLookToScrollBoundsTarget(Action<bool> callback)
+        {
+            Log.Info("Choosing point on screen to use as the centre point for scrolling.");
+
+            SetupFinalClickAction(point =>
+            {
+                if (point.HasValue)
+                {
+                    Log.InfoFormat("User chose point: {0}.", point.Value);
+                    pointLookToScrollBoundsTarget = point.Value;
+
+                    if (Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint)
+                    {
+                        IntPtr hWnd = GetHwndForFrontmostWindowAtPoint(point.Value);
+
+                        if (hWnd == IntPtr.Zero)
+                        {
+                            Log.Info("No valid window at the point to bring to the front.");
+                        }
+                        else if (!PInvoke.SetForegroundWindow(hWnd))
+                        {
+                            Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
+                        }
+                        else
+                        {
+                            Log.InfoFormat("Brought window at the point, {0}, to the front.", hWnd);
+                        }
+                    }
+                }
+
+                ResetAndCleanupAfterMouseAction();
+                callback(point.HasValue);
+            }, suppressMagnification: true);
         }
 
         private void ChooseWindowLookToScrollBoundsTarget(Action<bool> callback)
@@ -144,6 +216,91 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 ResetAndCleanupAfterMouseAction();
                 callback(windowLookToScrollBoundsTarget != IntPtr.Zero);
             }, suppressMagnification: true);
+        }
+
+        private void ChooseSubwindowLookToScrollBoundsTarget(Action<bool> callback)
+        {
+            Log.Info("Choosing a rectangular region of a window to use as the scroll bounds.");
+
+            Action finishUp = () =>
+            {
+                ResetAndCleanupAfterMouseAction();
+                callback(windowLookToScrollBoundsTarget != IntPtr.Zero && !rectLookToScrollBoundsTarget.IsEmpty);
+            };
+
+            SetupFinalClickAction(firstCorner =>
+            {
+                if (firstCorner.HasValue)
+                {
+                    Log.InfoFormat("User chose {0} as the first corner.", firstCorner.Value);
+
+                    IntPtr firstHWnd = GetHwndForFrontmostWindowAtPoint(firstCorner.Value);
+
+                    if (firstHWnd == IntPtr.Zero)
+                    {
+                        Log.Warn("No window was found at the first corner.");
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                        finishUp();
+                    }
+                    else
+                    {
+                        Log.InfoFormat("Window {0} found at the first corner.", firstHWnd);
+
+                        SetupFinalClickAction(secondCorner =>
+                        {
+                            if (secondCorner.HasValue)
+                            {
+                                Log.InfoFormat("User chose {0} as the second corner.", secondCorner.Value);
+
+                                IntPtr secondHWnd = GetHwndForFrontmostWindowAtPoint(secondCorner.Value);
+                                var rect = new Rect(firstCorner.Value, secondCorner.Value);
+
+                                if (secondHWnd == IntPtr.Zero)
+                                {
+                                    Log.Warn("No window was found at the second corner.");
+                                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                                }
+                                else if (secondHWnd != firstHWnd)
+                                {
+                                    Log.WarnFormat("Found a different window at the second corner: {0}.", secondHWnd);
+                                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                                }
+                                else if (!IsRectLargerThanDeadzone(rect))
+                                {
+                                    Log.Warn("The chosen rectangle is not large enough to accomodate the deadzone.");
+                                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                                }
+                                else
+                                {
+                                    Rect? windowBounds = GetWindowBounds(firstHWnd);
+                                    if (windowBounds.HasValue)
+                                    {
+                                        // Express the rect relative to the top-left corner of the window so we can deal with possible
+                                        // movement of the window later.
+                                        rect.Offset(-windowBounds.Value.Left, -windowBounds.Value.Top);
+
+                                        Log.InfoFormat("Selected rect {0} of window {1} as the look to scroll target.", rect, firstHWnd);
+
+                                        windowLookToScrollBoundsTarget = firstHWnd;
+                                        rectLookToScrollBoundsTarget = rect;
+                                    }
+                                    else
+                                    {
+                                        Log.Warn("Could not retrieve the bounds of the chosen window.");
+                                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                                    }
+                                }
+                            }
+
+                            finishUp();
+                        }, suppressMagnification: true);
+                    }
+                }
+                else
+                {
+                    finishUp();
+                }
+            }, finalClickInSeries: false, suppressMagnification: true);
         }
 
         private IntPtr GetHwndForFrontmostWindowAtPoint(Point point)
@@ -205,7 +362,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Action finishUp = () => 
             {
                 ResetAndCleanupAfterMouseAction();
-                callback(!customLookToScrollBoundsTarget.IsEmpty);
+                callback(!rectLookToScrollBoundsTarget.IsEmpty);
             };
 
             SetupFinalClickAction(firstCorner => 
@@ -225,7 +382,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             if (IsRectLargerThanDeadzone(rect))
                             {
                                 Log.InfoFormat("Selected rect {0} as the look to scroll target.", rect);
-                                customLookToScrollBoundsTarget = rect;
+                                rectLookToScrollBoundsTarget = rect;
                             }
                             else
                             {
@@ -254,21 +411,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void TakeActionsUponLookToScrollStarted()
         {
-            if (Settings.Default.LookToScrollBounds == LookToScrollBounds.Window && 
-                Settings.Default.LookToScrollBringWindowToFrontWhenActivated)
+            switch (lookToScrollBoundsWhenActivated)
             {
-                BringLookToScrollWindowBoundsTargetToFront();
+                case LookToScrollBounds.Window:
+                case LookToScrollBounds.Subwindow:
+                    if (Settings.Default.LookToScrollBringWindowToFrontWhenActivated)
+                    {
+                        BringLookToScrollWindowBoundsTargetToFront();
+                    }
+                    break;
             }
 
-            if (Settings.Default.LookToScrollCenterMouseWhenActivated)
+            if (Settings.Default.LookToScrollCentreMouseWhenActivated)
             {
-                CenterMouseInsideLookToScrollBoundsRect();
+                CentreMouseInsideLookToScrollDeadzone();
             }
         }
 
-        private void CenterMouseInsideLookToScrollBoundsRect()
+        private void CentreMouseInsideLookToScrollDeadzone()
         {
-            Log.Info("Moving mouse to center of look to scroll bounds rect.");
+            Log.Info("Moving mouse to centre of look to scroll deadzone.");
 
             Rect? bounds = GetCurrentLookToScrollBoundsRect();
             if (bounds.HasValue)
@@ -280,7 +442,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                 }
 
-                mouseOutputService.MoveTo(bounds.Value.CalculateCenter());
+                mouseOutputService.MoveTo(GetCurrentLookToScrollCentrePoint(bounds.Value));
 
                 reinstateModifiers();
             }
@@ -300,11 +462,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void SelectNextLookToScrollBounds()
+        private void HandleLookToScrollBoundsKeySelected()
         {
             Log.Info("Look to scroll bounds key was selected.");
 
-            if (keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown())
+            if (!Settings.Default.LookToScrollLockDownBoundsKey)
+            {
+                // The key acts as a simple cycle like the mode, speed, and increment keys. Don't let it be locked down.
+                keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
+                SelectNextLookToScrollBounds();
+            }
+            else if (keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown())
             {
                 // If scrolling is active, force the bounds target to be rechosen. This will also cause the
                 // bounds key to become locked down again.
@@ -316,13 +484,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 // release the key and cycle to the next bounds value. It'll eventually get locked down for
                 // real when scrolling is toggled on and the bounds target is chosen.
                 keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
-
-                LookToScrollBounds before = Settings.Default.LookToScrollBounds;
-                LookToScrollBounds after = GetNextEnumValue(before);
-
-                Settings.Default.LookToScrollBounds = after;
-
-                Log.InfoFormat("Changed look to scroll bounds from {0} to {1}.", before, after);
+                SelectNextLookToScrollBounds();
             }
             else
             {
@@ -332,6 +494,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 // alone. The next key press will start cycling.
                 Log.Info("Unlocked look to scroll bounds key. The bounds target will need to be rechosen.");
             }
+        }
+
+        private void SelectNextLookToScrollBounds()
+        {
+            LookToScrollBounds before = Settings.Default.LookToScrollBounds;
+            LookToScrollBounds after = GetNextEnumValue(before);
+
+            Settings.Default.LookToScrollBounds = after;
+
+            Log.InfoFormat("Changed look to scroll bounds from {0} to {1}.", before, after);
         }
 
         private void SelectNextLookToScrollIncrement()
@@ -397,12 +569,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             var thisUpdate = DateTime.Now;
 
             Rect bounds;
-            if (ShouldUpdateLookToScroll(position, out bounds))
+            Point centre;
+            bool active = ShouldUpdateLookToScroll(position, out bounds, out centre);
+
+            if (active)
             {
                 Log.DebugFormat("Updating look to scroll using position: {0}.", position);
                 Log.DebugFormat("Current look to scroll bounds rect is: {0}.", bounds);
+                Log.DebugFormat("Current look to scroll centre point is: {0}.", centre);
 
-                Vector velocity = CalculateLookToScrollVelocity(position, bounds);
+                Vector velocity = CalculateLookToScrollVelocity(position, centre);
 
                 // Convert the velocity from clicks per second to mouse wheel units per second.
                 velocity *= WheelUnitsPerClick;
@@ -414,20 +590,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 scrollAmount += lookToScrollLeftoverScrollAmount;
 
                 PerformLookToScroll(scrollAmount);
+            }
 
-                ActiveLookToScrollBounds = Graphics.PixelsToDips(bounds);
-            }
-            else
-            {
-                ActiveLookToScrollBounds = Rect.Empty;
-            }
+            UpdateLookToScrollOverlayProperties(active, bounds, centre);
 
             lookToScrollLastUpdate = thisUpdate;
         }
 
-        private bool ShouldUpdateLookToScroll(Point position, out Rect bounds)
+        private bool ShouldUpdateLookToScroll(Point position, out Rect bounds, out Point centre)
         {
             bounds = Rect.Empty;
+            centre = new Point();
 
             if (!keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown() ||
                 keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown() ||
@@ -451,13 +624,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             bounds = boundsContainer.Value;
+            centre = GetCurrentLookToScrollCentrePoint(bounds);
 
-            // If using a window as the bounds target, only scroll while pointing _at_ that window, not while
-            // pointing at another window on top of it.
-            if (Settings.Default.LookToScrollBounds == LookToScrollBounds.Window &&
-                GetHwndForFrontmostWindowAtPoint(position) != windowLookToScrollBoundsTarget)
+            // If using a window or portion of it as the bounds target, only scroll while pointing _at_ that window, 
+            // not while pointing at another window on top of it.
+            switch (lookToScrollBoundsWhenActivated)
             {
-                return false;
+                case LookToScrollBounds.Window:
+                case LookToScrollBounds.Subwindow:
+                    if (GetHwndForFrontmostWindowAtPoint(position) != windowLookToScrollBoundsTarget)
+                    {
+                        return false;
+                    }
+                    break;
             }
 
             return bounds.Contains(position);
@@ -467,9 +646,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Rect? bounds = null;
 
-            switch (Settings.Default.LookToScrollBounds)
+            switch (lookToScrollBoundsWhenActivated)
             {
-                case LookToScrollBounds.Screen:
+                case LookToScrollBounds.ScreenPoint:
+                case LookToScrollBounds.ScreenCentred:
                     bounds = IsMainWindowDocked() 
                         ? FindLargestGapBetweenScreenAndMainWindow() 
                         : GetVirtualScreenBoundsInPixels();
@@ -479,8 +659,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     bounds = GetWindowBounds(windowLookToScrollBoundsTarget);  
                     break;
 
+                case LookToScrollBounds.Subwindow:
+                    bounds = GetSubwindowBoundsOnScreen(windowLookToScrollBoundsTarget, rectLookToScrollBoundsTarget);
+                    break;
+
                 case LookToScrollBounds.Custom:
-                    bounds = customLookToScrollBoundsTarget;
+                    bounds = rectLookToScrollBoundsTarget;
                     break;
             }
 
@@ -530,7 +714,41 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             };
         }
 
-        private Vector CalculateLookToScrollVelocity(Point current, Rect bounds)
+        private Rect? GetSubwindowBoundsOnScreen(IntPtr hWnd, Rect relativeBounds)
+        {
+            Rect? windowBounds = GetWindowBounds(hWnd);
+            if (windowBounds.HasValue)
+            {
+                // Express the relative bounds in virtual screen-space again now that we know the location of
+                // the window's top-left corner.
+                Rect subwindowBounds = relativeBounds;
+                subwindowBounds.Offset(windowBounds.Value.Left, windowBounds.Value.Top);
+
+                // Make sure the subwindow bounds are fully contained within the window since the window may have 
+                // shrunk since it was chosen.
+                subwindowBounds.Intersect(windowBounds.Value);
+
+                return subwindowBounds;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private Point GetCurrentLookToScrollCentrePoint(Rect bounds)
+        {
+            switch (lookToScrollBoundsWhenActivated)
+            {
+                case LookToScrollBounds.ScreenPoint:
+                    return pointLookToScrollBoundsTarget;
+
+                default:
+                    return bounds.CalculateCentre();
+            }
+        }
+
+        private Vector CalculateLookToScrollVelocity(Point current, Point centre)
         {
             Tuple<decimal, decimal> baseSpeedAndAcceleration = GetCurrentBaseSpeedAndAcceleration();
 
@@ -547,8 +765,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case LookToScrollModes.Free:
                     velocity.X = CalculateLookToScrollVelocity(
                         current.X, 
-                        bounds.Left, 
-                        bounds.Right, 
+                        centre.X,
                         Settings.Default.LookToScrollHorizontalDeadzone, 
                         baseSpeed, 
                         acceleration
@@ -564,8 +781,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case LookToScrollModes.Free:
                     velocity.Y = CalculateLookToScrollVelocity(
                         current.Y,
-                        bounds.Top,
-                        bounds.Bottom,
+                        centre.Y,
                         Settings.Default.LookToScrollVerticalDeadzone,
                         baseSpeed,
                         acceleration
@@ -587,16 +803,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private double CalculateLookToScrollVelocity(
             double current, 
-            double lowerBound, 
-            double upperBound, 
+            double centre, 
             double deadzone, 
             double baseSpeed, 
             double acceleration)
         {
-            double center = (lowerBound + upperBound) / 2.0;
-
-            // Calculate the direction and distance from the center to the current value. 
-            double signedDistance = current - center;
+            // Calculate the direction and distance from the centre to the current value. 
+            double signedDistance = current - centre;
             double sign = Math.Sign(signedDistance);
             double distance = Math.Abs(signedDistance);
 
@@ -681,6 +894,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             reinstateModifiers();
+        }
+
+        private void UpdateLookToScrollOverlayProperties(bool active, Rect bounds, Point centre)
+        {
+            int hDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
+            int vDeadzone = Settings.Default.LookToScrollVerticalDeadzone;
+
+            var deadzone = new Rect
+            {
+                X = centre.X - hDeadzone,
+                Y = centre.Y - vDeadzone,
+                Width = hDeadzone * 2,
+                Height = vDeadzone * 2,
+            };
+
+            IsLookToScrollActive = active;
+            ActiveLookToScrollBounds = Graphics.PixelsToDips(bounds);
+            ActiveLookToScrollDeadzone = Graphics.PixelsToDips(deadzone);
+            ActiveLookToScrollMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
         }
 
         private Rect GetVirtualScreenBoundsInPixels()

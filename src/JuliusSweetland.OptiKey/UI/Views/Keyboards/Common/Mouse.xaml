@@ -176,7 +176,7 @@
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
                                                 <controls:Key Grid.Row="8" Grid.Column="0" Grid.RowSpan="2"
                                                               SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource LookToScrollModeIcon}}"
-                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_MODE_KEY_FORMAT}, Converter={StaticResource LookToScrollModeLookup}}"
+                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource LookToScrollModeLookup}}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.LookToScrollModeKey}"
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
@@ -188,7 +188,7 @@
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
                                                 <controls:Key Grid.Row="8" Grid.Column="1" Grid.RowSpan="2"
                                                               SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsIcon}}"
-                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_BOUNDS_KEY_FORMAT}, Converter={StaticResource LookToScrollBoundsLookup}}"
+                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsLookup}}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.LookToScrollBoundsKey}"
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
@@ -200,7 +200,7 @@
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
                                                 <controls:Key Grid.Row="8" Grid.Column="2" Grid.RowSpan="2"
                                                               SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, Converter={StaticResource LookToScrollSpeedIcon}}"
-                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_SPEED_KEY_FORMAT}, Converter={StaticResource LookToScrollSpeedLookup}}"
+                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, Converter={StaticResource LookToScrollSpeedLookup}}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.LookToScrollSpeedKey}"
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
@@ -307,7 +307,7 @@
                                                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
                                                         <controls:Key Grid.Row="0" Grid.Column="4"
                                                                       SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsIcon}}"
-                                                                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_BOUNDS_KEY_FORMAT}, Converter={StaticResource LookToScrollBoundsLookup}}"
+                                                                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsLookup}}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
                                                                       Value="{x:Static models:KeyValues.LookToScrollBoundsKey}"
                                                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
@@ -491,7 +491,7 @@
                                                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
                                                         <controls:Key Grid.Row="12" Grid.Column="0" Grid.RowSpan="2"
                                                                       SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource LookToScrollModeIcon}}"
-                                                                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_MODE_KEY_FORMAT}, Converter={StaticResource LookToScrollModeLookup}}"
+                                                                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource LookToScrollModeLookup}}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
                                                                       Value="{x:Static models:KeyValues.LookToScrollModeKey}"
                                                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
@@ -503,7 +503,7 @@
                                                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
                                                         <controls:Key Grid.Row="12" Grid.Column="1" Grid.RowSpan="2"
                                                                       SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsIcon}}"
-                                                                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_BOUNDS_KEY_FORMAT}, Converter={StaticResource LookToScrollBoundsLookup}}"
+                                                                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsLookup}}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
                                                                       Value="{x:Static models:KeyValues.LookToScrollBoundsKey}"
                                                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
@@ -515,7 +515,7 @@
                                                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
                                                         <controls:Key Grid.Row="12" Grid.Column="2" Grid.RowSpan="2"
                                                                       SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, Converter={StaticResource LookToScrollSpeedIcon}}"
-                                                                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_SPEED_KEY_FORMAT}, Converter={StaticResource LookToScrollSpeedLookup}}"
+                                                                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, Converter={StaticResource LookToScrollSpeedLookup}}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
                                                                       Value="{x:Static models:KeyValues.LookToScrollSpeedKey}"
                                                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
@@ -642,7 +642,7 @@
                                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
                                                                 <controls:Key Grid.Row="4" Grid.Column="0"
                                                                               SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsIcon}}"
-                                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, StringFormat={x:Static resx:Resources.LOOK_TO_SCROLL_BOUNDS_KEY_FORMAT}, Converter={StaticResource LookToScrollBoundsLookup}}"
+                                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsLookup}}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                                               Value="{x:Static models:KeyValues.LookToScrollBoundsKey}"
                                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>

@@ -2,8 +2,10 @@
 {
     public enum LookToScrollBounds
     {
-        Screen,
+        ScreenPoint,
+        ScreenCentred,
         Window,
+        Subwindow,
         Custom,
     }
 }
