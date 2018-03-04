@@ -146,10 +146,10 @@
     <value>ALT</value>
   </data>
   <data name="ANDROID_DARK" xml:space="preserve">
-    <value>Android Dark</value>
+    <value>黒背景</value>
   </data>
   <data name="ANDROID_LIGHT" xml:space="preserve">
-    <value>Android Light</value>
+    <value>白背景</value>
   </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>自動大文字入力:</value>
@@ -178,7 +178,7 @@
 戻る</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Bass was unable to create a stream from file '{0}'</value>
+    <value>ベースは{0}ファイルのストリームを作成できませんでした</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
     <value>下</value>
@@ -187,25 +187,25 @@
     <value>BREAK</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>校正が停止しました: '{0}'</value>
+    <value>キャリブレーションが停止しました: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>もう一度校正しますか？</value>
+    <value>もう一度キャリブレーションしますか？</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>校正中にエラーが発生しました: '{0}'</value>
+    <value>キャリブレーション中にエラーが発生しました: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>校正に失敗しました: '{0}'</value>
+    <value>キャリブレーションに失敗しました: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
-    <value>手動操作なしに校正を完了することができません。マウスを使用する必要があります。コンピューターへの手動操作ができない場合、校正途中で止まる可能性があります。再校正してもよろしいですか？</value>
+    <value>手動操作なしにキャリブレーションを完了することができません。マウスを使用する必要があります。コンピューターへの手動操作ができない場合、キャリブレーション途中で止まる可能性があります。再キャリブレーションしてもよろしいですか？</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>不明な理由により校正が停止しました:{0}</value>
+    <value>不明な理由によりキャリブレーションが停止しました:{0}</value>
   </data>
   <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
-    <value>校正成功！ 精度（平均エラー度={0}）</value>
+    <value>キャリブレーション成功！ 精度（平均エラー度={0}）</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
     <value>キャンセル</value>
@@ -242,11 +242,11 @@
     <value>クリック 6</value>
   </data>
   <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>COLLAPSE
-DOCK</value>
+    <value>ドックを
+縮小</value>
   </data>
   <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
-    <value>Collapsed dock thickness (as % of full dock thickness):</value>
+    <value>ドックを縮小（フルドック長の何％に）</value>
   </data>
   <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
     <value>メニュー</value>
@@ -328,16 +328,16 @@ Dansk
     <value>Delete</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>ダイアクリティカルマーク</value>
+    <value>特殊記号</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
-    <value>ダイアクリティカルマーク1</value>
+    <value>特殊記号1</value>
   </data>
   <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
-    <value>ダイアクリティカルマーク2</value>
+    <value>特殊記号2</value>
   </data>
   <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
-    <value>ダイアクリティカルマーク3</value>
+    <value>特殊記号3</value>
   </data>
   <data name="DICTIONARY" xml:space="preserve">
     <value>辞書</value>
@@ -452,7 +452,7 @@ Dansk
     <value>フランス語(フランス) / Française (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>ドック高さ (%):</value>
+    <value>フルドック長 (画面の何%か):</value>
   </data>
   <data name="GAZE_TRACKER" xml:space="preserve">
     <value>アイトラッカー</value>
@@ -480,7 +480,7 @@ Dansk
     <value>INS</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>...but intelligently suppress auto-caps where it is probably unhelpful:</value>
+    <value>ただし、不要な場合は使用しない</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
     <value>現在のキーボードと言語の組み合わせは無効です</value>
@@ -906,7 +906,7 @@ LK</value>
 SCR</value>
   </data>
   <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
-    <value>PROBLEM LOADING KEYBOARD</value>
+    <value>キーボードの読み込みエラー</value>
   </data>
   <data name="QUIT" xml:space="preserve">
     <value>終了</value>
@@ -1105,7 +1105,7 @@ SCR</value>
     <value>The Eye Tribe</value>
   </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
-    <value>TheEyeTribe GazeManagerをアクティブ化できません！ サーバが動作していることとデバイスが接続されていることを確認してから、もう一度試してください。</value>
+    <value>TheEyeTribe GazeManagerをアクティブ化できません！  サーバが実行及びデバイスが接続されていることを確認してから再試行してください。</value>
   </data>
   <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
     <value>TheEyeTribeは校正されていません。 校正が完了するまで、データは受信されません。</value>
@@ -1117,25 +1117,26 @@ SCR</value>
     <value>テーマ:</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
-    <value>Time until point becomes irrelevent (ms):</value>
+    <value>一度選択されたキーの選択固定が無効になるまでの有効時間（ミリ秒）</value>
   </data>
   <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
     <value>カーソルを隠す</value>
   </data>
   <data name="TITLE_CASE" xml:space="preserve">
-    <value>Words are capitalized</value>
+    <value>大文字化されました</value>
   </data>
   <data name="TOBII_EYEX" xml:space="preserve">
     <value>Tobii EyeX</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Calibration completed, or possibly cancelled, but everything is working again!</value>
+    <value>キャリブレーション完了（または失敗）。
+OPtiKey再起動完了</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again.</value>
+    <value>Tobii EyeX Engineが見つかりません。もう一度インストールしなおしてください。</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine is not running. Please start the EyeX Engine and try again.</value>
+    <value>Tobii EyeX Engineは動いていません。もう一度始めてください。</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1156,19 +1157,19 @@ SCR</value>
     <value>音4</value>
   </data>
   <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
-    <value>Trigger button/key pressed again</value>
+    <value>トリガーボタン/キー　が再選択された</value>
   </data>
   <data name="TRIGGER_RELEASED" xml:space="preserve">
-    <value>Trigger button/key released</value>
+    <value>トリガーボタン/キー　が選択解除された</value>
   </data>
   <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
-    <value>I can not detect where you are directing your attention. Is there a problem with the input device? Is it connected, turned on, calibrated, etc?</value>
+    <value>視線を認識できません。入力デバイスに問題がありませんか？接続されていないか、起動していないか、キャリブレーションが完了していません。</value>
   </data>
   <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
-    <value>Unable to determine the current elevation.</value>
+    <value>現在の標高を確定できません。</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>There was a problem setting the voice to '{0}'{1}</value>
+    <value>'{0}'{1}の音声設定に問題があります。</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
     <value>原因不明の問題発生。ログを見てください。</value>
@@ -1184,11 +1185,11 @@ SCR</value>
     <value>アップデート可能</value>
   </data>
   <data name="UPPER_CASE" xml:space="preserve">
-    <value>All in upper case</value>
+    <value>全て大文字</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
-    <value>Please visit www.optikey.org to download latest version ({0})
-You can turn off update checks from the Management Console (ALT + M).</value>
+    <value>www.optikey.orgにアクセスして最新版をダウンロードしてください。 ({0})
+アップデートの確認通知は設定画面からオフにできます。(ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
     <value>OptiKeyを始めますか？</value>
@@ -1197,13 +1198,13 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>バージョン：{0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Vertical fill (as % of screen):</value>
+    <value>縦幅（画面の何％か）</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
-    <value>Visuals</value>
+    <value>ディスプレイ</value>
   </data>
   <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
-    <value> (from settings)</value>
+    <value>（設定から）</value>
   </data>
   <data name="VOICE_LABEL" xml:space="preserve">
     <value>声:</value>
@@ -1245,19 +1246,19 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>なし</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Data stream processing amount:</value>
+    <value>データストリーミングプロセス量</value>
   </data>
   <data name="GERMAN_GERMANY" xml:space="preserve">
     <value>ドイツ語(ドイツ) / Deutsch (Deutschland)</value>
   </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>User interface language: {0}</value>
+    <value>UI言語: {0}</value>
   </data>
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
-    <value>User interface language:</value>
+    <value>UI言語</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simulate physical keystrokes when typing characters:</value>
+    <value>文字を入力するときに物理的なキーストロークをシミュレートする：</value>
   </data>
   <data name="DUTCH_BELGIUM" xml:space="preserve">
     <value>オランダ語（ベルギー） / Nederlands (België)</value>
@@ -1278,7 +1279,7 @@ Deutsch
 (Deutschland)</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Suppress mouse magnification for scrolling actions:</value>
+    <value>画面スクロール時に拡大鏡を停止する:</value>
   </data>
   <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ロシア語
@@ -1293,7 +1294,7 @@ Español
 (España)</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
+    <value>会話キーボードのボーダーの太さ（左、上、右、下：px）：</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
     <value>１つ戻る</value>
@@ -1320,13 +1321,13 @@ Español
     <value>提案6</value>
   </data>
   <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
-    <value>Suggestion Keys</value>
+    <value>予測変換キー</value>
   </data>
   <data name="ADD_TO_DICTIONARY" xml:space="preserve">
     <value>辞書に追加</value>
   </data>
   <data name="COLLAPSE_DOCK" xml:space="preserve">
-    <value>COLLAPSE DOCK</value>
+    <value>ドックを縮小</value>
   </data>
   <data name="DOWN_ARROW" xml:space="preserve">
     <value>下矢印</value>
@@ -1464,7 +1465,7 @@ Español
     <value>サイズと位置</value>
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
-    <value>MAGNETIC CURSOR</value>
+    <value>マグネティックカーソル</value>
   </data>
   <data name="MIDDLE_CLICK" xml:space="preserve">
     <value>中央クリック</value>
@@ -1479,7 +1480,7 @@ Español
     <value>1ピクセルの調整量</value>
   </data>
   <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
-    <value>CONVERSATION ALPHA 1</value>
+    <value>会話キーボード1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>数字記号の会話入力</value>
@@ -1614,10 +1615,10 @@ Español
     <value>キーボードキーを変更</value>
   </data>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>DOCK ACTION KEYS:</value>
+    <value>ドックアクションキー</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Overrides for individual key fixation times (ms):</value>
+    <value>キー固定時間の設定を無視して個々のキーで設定する (ms):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
     <value>言語キーを変える:</value>
@@ -1632,16 +1633,16 @@ Español
     <value>修飾キー</value>
   </data>
   <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (DO AT CURRENT LOCATION) KEYS:</value>
+    <value>マウス(現在位置で実行)キー:</value>
   </data>
   <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (DO AT POINT) KEYS:</value>
+    <value>マウス(ポイント指定で実行)キー:</value>
   </data>
   <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (MISCELLANEOUS) KEYS:</value>
+    <value>マウス(その他)キー:</value>
   </data>
   <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
-    <value>MOVE &amp; RESIZE KEYS:</value>
+    <value>移動&amp;サイズ変更キー:</value>
   </data>
   <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
     <value>物理キー:</value>
@@ -1650,7 +1651,7 @@ Español
     <value>サジェスチョンキー:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
-    <value>Specify times to complete on individual keys:</value>
+    <value>個々のキーで完了する時間を指定する:</value>
   </data>
   <data name="GREEK_GREECE" xml:space="preserve">
     <value>ギリシャ語 (ギリシャ) / Ελληνικά (Ελλάδα)</value>
@@ -1689,7 +1690,7 @@ Nederlands
 (Nederland)</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
-    <value>Suppress modifier keys for all mouse actions:</value>
+    <value>全てのマウスアクションの修飾キーを停止する</value>
   </data>
   <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>
@@ -1755,7 +1756,7 @@ Slovensko
 (Slovenija)</value>
   </data>
   <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
-    <value>Unable to connect to myGaze! Please check that the server is running and the device is connected and try again.</value>
+    <value>myGazeに接続できません。サーバーが実行及びデバイスが接続されていることを確認してから再試行してください。</value>
   </data>
   <data name="VI_MYGAZE" xml:space="preserve">
     <value>Visual Interaction myGaze</value>
@@ -1767,7 +1768,7 @@ Slovensko
     <value>キャリブレーション成功!</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
-    <value>Portuguese (Portugal) / Português (Portugal)</value>
+    <value>ポルトガル語(ポルトガル) / Português (Portugal)</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ポルトガル語
@@ -1803,16 +1804,16 @@ Slovenčina
     <value>Tobii X2-60</value>
   </data>
   <data name="FORCE_CAPS_LOCK" xml:space="preserve">
-    <value>caps lockを強制</value>
+    <value>caps lockを強制:</value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>アルファベットキーボードレイアウトを使う</value>
   </data>
   <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Kalman Filter:</value>
+    <value>Kalmanフィルター:</value>
   </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
-    <value>Toggle Manual Mode</value>
+    <value>マニュアルモードの切り替え</value>
   </data>
   <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
     <value>チェコ語 (チェコ) / Čeština (Česko)</value>
@@ -1824,25 +1825,25 @@ Slovenčina
 (Česko)</value>
   </data>
   <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
-    <value>Input mode changed</value>
+    <value>入力モード変更完了</value>
   </data>
   <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
-    <value>Manual (mouse) mode disabled!</value>
+    <value>マニュアル(マウス)モード無効</value>
   </data>
   <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
-    <value>Manual (mouse) mode enabled!</value>
+    <value>マニュアル(マウス)モード有効</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
-    <value>Enable Conversation Confirm keyboard?</value>
+    <value>はい/いいえモードを有効にする</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
-    <value>Conversation Confirm only mode:</value>
+    <value>はい/いいえモードのみ表示:</value>
   </data>
   <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
-    <value>Enable quit keys?</value>
+    <value>終了キーを有効にするか</value>
   </data>
   <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use simplified keyboard layout</value>
+    <value>シンプル版キーボードを使用する</value>
   </data>
   <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ブラウザ
@@ -1868,19 +1869,19 @@ Slovenčina
 ブラウザ</value>
   </data>
   <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
-    <value>Use MaryTTS speech synthesizer?</value>
+    <value>MaryTTS 音声シンセサイザを使用する</value>
   </data>
   <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
-    <value>MaryTTS voice:</value>
+    <value>MaryTTS 音声:</value>
   </data>
   <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
-    <value>MaryTTS location (marytts-server.bat):</value>
+    <value>MaryTTS ロケーション (marytts-server.bat):</value>
   </data>
   <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
     <value>検索</value>
   </data>
   <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
-    <value>ERROR: a valid 'marytts-server.bat' file was not selected. Please try again.</value>
+    <value>エラー:有効な'marytts-server.bat' ファイルが選択されませんでした。再試行してください。</value>
   </data>
   <data name="BASIC_SUGGESTION" xml:space="preserve">
     <value>Basic</value>
@@ -1892,54 +1893,54 @@ Slovenčina
     <value>Presage</value>
   </data>
   <data name="SUGGESTION_METHOD" xml:space="preserve">
-    <value>Suggestion method:</value>
+    <value>予測変換の種類</value>
   </data>
   <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
-    <value>MaryTTS is not available</value>
+    <value>MaryTTS は利用できません</value>
   </data>
   <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
-    <value>Presage word prediction not available</value>
+    <value>Presage予測変換は利用できません</value>
   </data>
   <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
-    <value>Setting the suggestion method to: {0}.
-You can change this back
-from the Management Console (ALT + M).</value>
+    <value>{0}に設定されています
+管理コンソール(ALT + M)
+から元に戻すことができます</value>
   </data>
   <data name="USING_DEFAULT_VOICE" xml:space="preserve">
-    <value>Setting the speech voice to the system voice: {0}.
-You can check the path for MaryTTS
-and change the voice back to it
-from the Management Console (ALT + M).</value>
+    <value>音声システムが{0}に設定されました
+ MaryTTSのファイルパスと音声は
+管理コンソール (ALT + M)から戻すことができます</value>
   </data>
   <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
-    <value>Delay before speech (ms):</value>
+    <value>読み上げまでの待機時間(ミリ秒):</value>
   </data>
   <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use CommuniKate keyboard layout</value>
+    <value>CommuniKate キーボードを使用する</value>
   </data>
   <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Enable CommuniKate keyboard layout:</value>
+    <value>CommuniKate キーボードを有効にする</value>
   </data>
   <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
     <value>CommuniKate top page obf file:</value>
   </data>
   <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
-    <value>Invalid file</value>
+    <value>無効なファイル</value>
   </data>
   <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
-    <value>Location of CommuniKate top page .obz file:</value>
+    <value>CommuniKate top page .obz fileの場所:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+    <value>日本語版は利用できません
+Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
 Please uninstall Presage and install the 32 bit version of 0.9.2.
 OptiKey will attempt to continue, but there is a good chance it will crash shortly.
 The prediction method will be changed to NGram to prevent a crash on next run.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
-    <value>There is a problem with Presage</value>
+    <value>Presageに問題があります</value>
   </data>
   <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
-    <value>Folder containing dynamic keyboards:</value>
+    <value>ダイナミックキーボードを含むフォルダ:</value>
   </data>
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
     <value>Tobii PCEye Plus</value>
@@ -1948,10 +1949,10 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
     <value>文字 2</value>
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
-    <value>CONVERSATION ALPHA 2</value>
+    <value>会話キーボード2</value>
   </data>
   <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
-    <value>All changes made to the settings will be discarded, do you want to continue?</value>
+    <value>設定に加えられたすべての変更は破棄されます。続行しますか？</value>
   </data>
   <data name="SETTINGS_CHANGED" xml:space="preserve">
     <value>設定を破棄する</value>
