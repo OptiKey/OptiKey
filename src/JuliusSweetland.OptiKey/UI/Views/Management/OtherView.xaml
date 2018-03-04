@@ -11,7 +11,7 @@
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
-        <valueConverters:ColorNameToBrush x:Key="ColorNameToBrush" />
+        <valueConverters:ColourNameToBrush x:Key="ColourNameToBrush" />
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
@@ -129,6 +129,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL}" 
@@ -137,116 +139,128 @@
                               VerticalAlignment="Center"
                               IsChecked="{Binding LookToScrollDirectionInverted, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_CENTER_MOUSE_WHEN_ACTIVATED_LABEL}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                               VerticalAlignment="Center"
-                              IsChecked="{Binding LookToScrollCenterMouseWhenActivated, Mode=TwoWay}" />
+                              IsChecked="{Binding LookToScrollLockDownBoundsKey, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                               VerticalAlignment="Center"
-                              IsChecked="{Binding LookToScrollBringWindowToFrontWhenActivated, Mode=TwoWay}" />
+                              IsChecked="{Binding LookToScrollCentreMouseWhenActivated, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                               VerticalAlignment="Center"
+                              IsChecked="{Binding LookToScrollBringWindowToFrontWhenActivated, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding LookToScrollBringWindowToFrontAfterChoosingScreenPoint, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                              VerticalAlignment="Center"
                               IsChecked="{Binding LookToScrollShowOverlayWindow, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL}" 
                                VerticalAlignment="Center" Margin="5"
                                Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
-                    <ComboBox Grid.Row="4" Grid.Column="1"
-                              ItemsSource="{Binding ColorNames}"
-                              SelectedValue="{Binding LookToScrollOverlayBoundsColor, Mode=TwoWay}" 
-                              Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
-
-                    <Border Grid.Row="4" Grid.Column="2" Grid.RowSpan="2" Margin="5" Width="50"
-                            BorderBrush="{Binding LookToScrollOverlayBoundsColor, Converter={StaticResource ColorNameToBrush}}"
-                            BorderThickness="{Binding LookToScrollOverlayBoundsThickness}" 
-                            Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
-
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" 
-                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
-                    <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="0" Interval="1" StringFormat="###,##0"
-                                            Value="{Binding LookToScrollOverlayBoundsThickness, Mode=TwoWay}"
-                                            Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
-                    
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" 
-                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
                     <ComboBox Grid.Row="6" Grid.Column="1"
-                              ItemsSource="{Binding ColorNames}"
-                              SelectedValue="{Binding LookToScrollOverlayDeadzoneColor, Mode=TwoWay}" 
+                              ItemsSource="{Binding ColourNames}"
+                              SelectedValue="{Binding LookToScrollOverlayBoundsColour, Mode=TwoWay}" 
                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
 
                     <Border Grid.Row="6" Grid.Column="2" Grid.RowSpan="2" Margin="5" Width="50"
-                            BorderBrush="{Binding LookToScrollOverlayDeadzoneColor, Converter={StaticResource ColorNameToBrush}}"
-                            BorderThickness="{Binding LookToScrollOverlayDeadzoneThickness}"
+                            BorderBrush="{Binding LookToScrollOverlayBoundsColour, Converter={StaticResource ColourNameToBrush}}"
+                            BorderThickness="{Binding LookToScrollOverlayBoundsThickness}" 
                             Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
-                    
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL}" 
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" 
                                Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
                     <controls:NumericUpDown Grid.Row="7" Grid.Column="1" TextAlignment="Left"
                                             Minimum="0" Interval="1" StringFormat="###,##0"
+                                            Value="{Binding LookToScrollOverlayBoundsThickness, Mode=TwoWay}"
+                                            Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                    
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" 
+                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                    <ComboBox Grid.Row="8" Grid.Column="1"
+                              ItemsSource="{Binding ColourNames}"
+                              SelectedValue="{Binding LookToScrollOverlayDeadzoneColour, Mode=TwoWay}" 
+                              Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+
+                    <Border Grid.Row="8" Grid.Column="2" Grid.RowSpan="2" Margin="5" Width="50"
+                            BorderBrush="{Binding LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}"
+                            BorderThickness="{Binding LookToScrollOverlayDeadzoneThickness}"
+                            Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                    
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" 
+                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                    <controls:NumericUpDown Grid.Row="9" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="0" Interval="1" StringFormat="###,##0"
                                             Value="{Binding LookToScrollOverlayDeadzoneThickness, Mode=TwoWay}" 
                                             Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL}" 
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="0" Interval="5" StringFormat="###,##0"
                                             Value="{Binding LookToScrollHorizontalDeadzone, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL}" 
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="0" Interval="5" StringFormat="###,##0"
                                             Value="{Binding LookToScrollVerticalDeadzone, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL}" 
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <TextBox Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left" 
+                    <TextBox Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left" 
                              Text="{Binding LookToScrollIncrementChoices, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
-                                            Minimum="0" Interval="0.1" StringFormat="###,##0.0"
-                                            Value="{Binding LookToScrollBaseSpeedSlow, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
-                                            Minimum="0" Interval="0.1" StringFormat="###,##0.0"
-                                            Value="{Binding LookToScrollBaseSpeedMedium, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL}" 
+                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="0" Interval="0.1" StringFormat="###,##0.0"
-                                            Value="{Binding LookToScrollBaseSpeedFast, Mode=TwoWay}" />
+                                            Value="{Binding LookToScrollBaseSpeedSlow, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL}" 
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="0" Interval="0.1" StringFormat="###,##0.0"
+                                            Value="{Binding LookToScrollBaseSpeedMedium, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="0" Interval="0.1" StringFormat="###,##0.0"
+                                            Value="{Binding LookToScrollBaseSpeedFast, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="16" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="0" Interval="0.001" StringFormat="###,##0.000"
                                             Value="{Binding LookToScrollAccelerationSlow, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL}" 
+                    <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="17" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="0" Interval="0.001" StringFormat="###,##0.000"
                                             Value="{Binding LookToScrollAccelerationMedium, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL}" 
+                    <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="16" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="18" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="0" Interval="0.001" StringFormat="###,##0.000"
                                             Value="{Binding LookToScrollAccelerationFast, Mode=TwoWay}" />
                 </Grid>

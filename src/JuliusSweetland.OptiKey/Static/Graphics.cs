@@ -62,5 +62,15 @@ namespace JuliusSweetland.OptiKey.Static
             bounds.Scale(1.0 / DipScalingFactorX, 1.0 / DipScalingFactorY);
             return bounds;
         }
+
+        public static Thickness PixelsToDips(Thickness thickness)
+        {
+            thickness.Left /= DipScalingFactorX;
+            thickness.Right /= DipScalingFactorX;
+            thickness.Top /= DipScalingFactorY;
+            thickness.Bottom /= DipScalingFactorY;
+
+            return thickness;
+        }
     }
 }
