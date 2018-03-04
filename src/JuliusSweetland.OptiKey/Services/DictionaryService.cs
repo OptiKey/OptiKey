@@ -448,7 +448,16 @@ namespace JuliusSweetland.OptiKey.Services
 
         public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
-            return managedSuggestions.GetSuggestions(root, nextWord);
+            try
+            {
+                return managedSuggestions.GetSuggestions(root, nextWord);
+            }
+            catch (Exception e)
+            {
+                PublishError(this, e);
+            }
+
+            return new List<string>();
         }
 
         #endregion
