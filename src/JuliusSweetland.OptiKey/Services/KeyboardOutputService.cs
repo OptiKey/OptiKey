@@ -265,31 +265,31 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.SimplifiedKeyboardAlphaGroup4All:
-                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup4All;
                     break;
 
                 case FunctionKeys.SimplifiedKeyboardAlphaGroup5All:
-                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup5All;
                     break;
 
                 case FunctionKeys.SimplifiedKeyboardAlphaGroup6All:
-                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup6All;
                     break;
 
                 case FunctionKeys.SimplifiedKeyboardAlphaGroup7All:
-                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup7All;
                     break;
 
                 case FunctionKeys.SimplifiedKeyboardAlphaGroup8All:
-                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup8All;
                     break;
 
                 case FunctionKeys.SimplifiedKeyboardAlphaGroup9All:
-                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup9All;
                     break;
 
                 case FunctionKeys.SimplifiedKeyboardAlphaGroup10All:
-                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup10All;
                     break;
 
                 case FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup1:
