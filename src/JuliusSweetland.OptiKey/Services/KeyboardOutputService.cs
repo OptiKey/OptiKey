@@ -264,6 +264,34 @@ namespace JuliusSweetland.OptiKey.Services
                     Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
                     break;
 
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup4All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    break;
+
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup5All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    break;
+
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup6All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    break;
+
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup7All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    break;
+
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup8All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    break;
+
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup9All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    break;
+
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup10All:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3All;
+                    break;
+
                 case FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup1:
                     Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup1SubGroup1;
                     break;
