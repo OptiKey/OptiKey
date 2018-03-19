@@ -2734,6 +2734,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stop scrolling upon switching keyboards:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invert scrolling direction:.
         /// </summary>
         public static string LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL {

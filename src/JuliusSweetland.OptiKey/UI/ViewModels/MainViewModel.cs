@@ -125,6 +125,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             get { return keyboard; }
             set
             {
+                DeactivateLookToScrollUponSwitchingKeyboards();
                 keyboard?.OnExit(); // previous keyboard
                 SetProperty(ref keyboard, value);
                 keyboard?.OnEnter(); // new keyboard
