@@ -2047,6 +2047,9 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>Automatically resume scrolling afterwards:</value>
   </data>
+  <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>Stop scrolling upon switching keyboards:</value>
+  </data>
   <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
     <value>Show overlay window (requires restart):</value>
   </data>

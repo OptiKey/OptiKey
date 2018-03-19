@@ -958,6 +958,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return resumeAction;
         }
 
+        private void DeactivateLookToScrollUponSwitchingKeyboards()
+        {
+            if (Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards)
+            {
+                keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value = KeyDownStates.Up;
+                Log.Info("Look to scroll is no longer active.");
+            }
+        }
+
         private Rect GetVirtualScreenBoundsInPixels()
         {
             return new Rect

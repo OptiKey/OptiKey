@@ -144,6 +144,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref lookToScrollResumeAfterChoosingPointForMouse, value); }
         }
 
+        private bool lookToScrollDeactivateUponSwitchingKeyboards;
+        public bool LookToScrollDeactivateUponSwitchingKeyboards
+        {
+            get { return lookToScrollDeactivateUponSwitchingKeyboards; }
+            set { SetProperty(ref lookToScrollDeactivateUponSwitchingKeyboards, value); }
+        }
+
         private bool lookToScrollShowOverlayWindow;
         public bool LookToScrollShowOverlayWindow
         {
@@ -275,6 +282,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             LookToScrollBringWindowToFrontAfterChoosingScreenPoint = Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
             LookToScrollSuspendBeforeChoosingPointForMouse = Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse;
             LookToScrollResumeAfterChoosingPointForMouse = Settings.Default.LookToScrollResumeAfterChoosingPointForMouse;
+            LookToScrollDeactivateUponSwitchingKeyboards = Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards;
             LookToScrollShowOverlayWindow = Settings.Default.LookToScrollShowOverlayWindow;
             LookToScrollOverlayBoundsColour = Settings.Default.LookToScrollOverlayBoundsColour;
             LookToScrollOverlayDeadzoneColour = Settings.Default.LookToScrollOverlayDeadzoneColour;
@@ -308,6 +316,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint = LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
             Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse = LookToScrollSuspendBeforeChoosingPointForMouse;
             Settings.Default.LookToScrollResumeAfterChoosingPointForMouse = LookToScrollResumeAfterChoosingPointForMouse;
+            Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards = LookToScrollDeactivateUponSwitchingKeyboards;
             Settings.Default.LookToScrollShowOverlayWindow = LookToScrollShowOverlayWindow;
             Settings.Default.LookToScrollOverlayBoundsColour = LookToScrollOverlayBoundsColour;
             Settings.Default.LookToScrollOverlayDeadzoneColour = LookToScrollOverlayDeadzoneColour;
