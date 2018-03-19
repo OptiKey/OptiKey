@@ -409,6 +409,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
         {
             var currentKeyboard = Keyboard;
+            Action resumeLookToScroll;
 
             switch (singleKeyValue.FunctionKey.Value)
             {
@@ -914,6 +915,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseDrag:
                     Log.Info("Mouse drag selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(firstFinalPoint =>
                     {
                         if (firstFinalPoint != null)
@@ -974,6 +976,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         }
 
                                         ResetAndCleanupAfterMouseAction();
+                                        resumeLookToScroll();
                                     };
 
                                     if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
@@ -1011,6 +1014,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
                             }
+                            resumeLookToScroll();
                         }
 
                         //Reset and clean up
@@ -1181,6 +1185,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndLeftClick:
                     Log.Info("Mouse move and left click selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1204,11 +1209,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
+                        resumeLookToScroll();
                     });
                     break;
 
                 case FunctionKeys.MouseMoveAndLeftDoubleClick:
                     Log.Info("Mouse move and left double click selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1232,11 +1239,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                             
                         ResetAndCleanupAfterMouseAction();
+                        resumeLookToScroll();
                     });
                     break;
 
                 case FunctionKeys.MouseMoveAndMiddleClick:
                     Log.Info("Mouse move and middle click selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1260,11 +1269,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
+                        resumeLookToScroll();
                     });
                     break;
                         
                 case FunctionKeys.MouseMoveAndRightClick:
                     Log.Info("Mouse move and right click selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1288,6 +1299,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
+                        resumeLookToScroll();
                     });
                     break;
 
@@ -1323,6 +1335,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndScrollToBottom:
                     Log.Info("Mouse move and scroll to bottom selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1346,11 +1359,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
+                        resumeLookToScroll();
                     }, suppressMagnification:true);
                     break;
 
                 case FunctionKeys.MouseMoveAndScrollToLeft:
                     Log.Info("Mouse move and scroll to left selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1374,11 +1389,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
+                        resumeLookToScroll();
                     }, suppressMagnification: true);
                     break;
 
                 case FunctionKeys.MouseMoveAndScrollToRight:
                     Log.Info("Mouse move and scroll to right selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1402,11 +1419,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
+                        resumeLookToScroll();
                     }, suppressMagnification: true);
                     break;
 
                 case FunctionKeys.MouseMoveAndScrollToTop:
                     Log.Info("Mouse move and scroll to top selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1430,6 +1449,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
+                        resumeLookToScroll();
                     }, suppressMagnification: true);
                     break;
 
@@ -1481,6 +1501,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveTo:
                     Log.Info("Mouse move to selected.");
+                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1501,6 +1522,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             simulateMoveTo(finalPoint.Value);
                         }
                         ResetAndCleanupAfterMouseAction();
+                        resumeLookToScroll();
                     });
                     break;
 

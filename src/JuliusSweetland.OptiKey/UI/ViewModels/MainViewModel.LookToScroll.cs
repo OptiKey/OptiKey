@@ -920,6 +920,44 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ActiveLookToScrollMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
         }
 
+        private Action SuspendLookToScrollWhileChoosingPointForMouse()
+        {
+            Action resumeAction = () => { };
+
+            if (Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse)
+            {
+                NotifyingProxy<KeyDownStates> activeKey = keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey];
+                KeyDownStates originalState = activeKey.Value;
+
+                // Make sure look to scroll is currently active. Otherwise, there's nothing to suspend or resume.
+                if (originalState.IsDownOrLockedDown())
+                {
+                    // Force scrolling to stop by releasing the LookToScrollActiveKey.
+                    activeKey.Value = KeyDownStates.Up;
+
+                    // If configured to resume afterwards, just reapply the original state of the key so the user doesn't have 
+                    // to rechoose the bounds. Otherwise, the user will have to press the key themselves and potentially rechoose 
+                    // the bounds (depending on the state of the bounds key). 
+                    if (Settings.Default.LookToScrollResumeAfterChoosingPointForMouse)
+                    {
+                        Log.Info("Look to scroll has suspended.");
+
+                        resumeAction = () =>
+                        {
+                            activeKey.Value = originalState;
+                            Log.Info("Look to scroll has resumed.");
+                        };
+                    }
+                    else
+                    {
+                        Log.Info("Look to scroll has been suspended and will not automatically resume.");
+                    }
+                }
+            }
+
+            return resumeAction;
+        }
+
         private Rect GetVirtualScreenBoundsInPixels()
         {
             return new Rect
