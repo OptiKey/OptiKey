@@ -130,6 +130,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref lookToScrollBringWindowToFrontAfterChoosingScreenPoint, value); }
         }
 
+        private bool lookToScrollSuspendBeforeChoosingPointForMouse;
+        public bool LookToScrollSuspendBeforeChoosingPointForMouse
+        {
+            get { return lookToScrollSuspendBeforeChoosingPointForMouse; }
+            set { SetProperty(ref lookToScrollSuspendBeforeChoosingPointForMouse, value); }
+        }
+
+        private bool lookToScrollResumeAfterChoosingPointForMouse;
+        public bool LookToScrollResumeAfterChoosingPointForMouse
+        {
+            get { return lookToScrollResumeAfterChoosingPointForMouse; }
+            set { SetProperty(ref lookToScrollResumeAfterChoosingPointForMouse, value); }
+        }
+
         private bool lookToScrollShowOverlayWindow;
         public bool LookToScrollShowOverlayWindow
         {
@@ -259,6 +273,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             LookToScrollCentreMouseWhenActivated = Settings.Default.LookToScrollCentreMouseWhenActivated;
             LookToScrollBringWindowToFrontWhenActivated = Settings.Default.LookToScrollBringWindowToFrontWhenActivated;
             LookToScrollBringWindowToFrontAfterChoosingScreenPoint = Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
+            LookToScrollSuspendBeforeChoosingPointForMouse = Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse;
+            LookToScrollResumeAfterChoosingPointForMouse = Settings.Default.LookToScrollResumeAfterChoosingPointForMouse;
             LookToScrollShowOverlayWindow = Settings.Default.LookToScrollShowOverlayWindow;
             LookToScrollOverlayBoundsColour = Settings.Default.LookToScrollOverlayBoundsColour;
             LookToScrollOverlayDeadzoneColour = Settings.Default.LookToScrollOverlayDeadzoneColour;
@@ -290,6 +306,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.LookToScrollCentreMouseWhenActivated = LookToScrollCentreMouseWhenActivated;
             Settings.Default.LookToScrollBringWindowToFrontWhenActivated = LookToScrollBringWindowToFrontWhenActivated;
             Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint = LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
+            Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse = LookToScrollSuspendBeforeChoosingPointForMouse;
+            Settings.Default.LookToScrollResumeAfterChoosingPointForMouse = LookToScrollResumeAfterChoosingPointForMouse;
             Settings.Default.LookToScrollShowOverlayWindow = LookToScrollShowOverlayWindow;
             Settings.Default.LookToScrollOverlayBoundsColour = LookToScrollOverlayBoundsColour;
             Settings.Default.LookToScrollOverlayDeadzoneColour = LookToScrollOverlayDeadzoneColour;
