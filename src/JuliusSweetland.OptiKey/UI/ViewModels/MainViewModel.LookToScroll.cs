@@ -159,7 +159,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint)
                     {
-                        IntPtr hWnd = GetHwndForFrontmostWindowAtPoint(point.Value);
+                        IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
 
                         if (hWnd == IntPtr.Zero)
                         {
@@ -198,7 +198,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else
                     {
-                        IntPtr hWnd = GetHwndForFrontmostWindowAtPoint(point.Value);
+                        IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
 
                         if (hWnd == IntPtr.Zero)
                         {
@@ -234,7 +234,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     Log.InfoFormat("User chose {0} as the first corner.", firstCorner.Value);
 
-                    IntPtr firstHWnd = GetHwndForFrontmostWindowAtPoint(firstCorner.Value);
+                    IntPtr firstHWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(firstCorner.Value);
 
                     if (firstHWnd == IntPtr.Zero)
                     {
@@ -252,7 +252,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Log.InfoFormat("User chose {0} as the second corner.", secondCorner.Value);
 
-                                IntPtr secondHWnd = GetHwndForFrontmostWindowAtPoint(secondCorner.Value);
+                                IntPtr secondHWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(secondCorner.Value);
                                 var rect = new Rect(firstCorner.Value, secondCorner.Value);
 
                                 if (secondHWnd == IntPtr.Zero)
@@ -305,9 +305,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private IntPtr GetHwndForFrontmostWindowAtPoint(Point point)
         {
-            // Make sure the cursor is hidden or else it may be picked as the front-most "window"!
-            ShowCursor = false;
-
             IntPtr shellWindow = PInvoke.GetShellWindow();
 
             Func<IntPtr, bool> criteria = hWnd => 
@@ -353,6 +350,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             windows = Static.Windows.ReplaceUWPTopLevelWindowsWithCoreWindowChildren(windows);
             windows = windows.Where(criteria).ToList();
             return Static.Windows.GetFrontmostWindow(windows);
+        }
+
+        private IntPtr HideCursorAndGetHwndForFrontmostWindowAtPoint(Point point)
+        {
+            // Make sure the cursor is hidden or else it may be picked as the front-most "window"!
+            ShowCursor = false;
+
+            return GetHwndForFrontmostWindowAtPoint(point);
         }
 
         private void ChooseCustomLookToScrollBoundsTarget(Action<bool> callback)
