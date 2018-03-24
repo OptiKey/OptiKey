@@ -271,6 +271,7 @@
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
                                                         </Grid.ColumnDefinitions>
                                                         <controls:Key Grid.Row="0" Grid.Column="0"
                                                                       SymbolGeometry="{StaticResource MouseLeftClickIcon}"
@@ -312,16 +313,21 @@
                                                                       Value="{x:Static models:KeyValues.LookToScrollBoundsKey}"
                                                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
                                                         <controls:Key Grid.Row="0" Grid.Column="5"
+                                                                      SymbolGeometry="{StaticResource MouseDragIcon}"
+                                                                      Text="{x:Static resx:Resources.CLICK_AND_DRAG_SPLIT_WITH_NEWLINE}"
+                                                                      SharedSizeGroup="KeyWithSymbolAndText"
+                                                                      Value="{x:Static models:KeyValues.MouseDragKey}"/>
+                                                        <controls:Key Grid.Row="0" Grid.Column="6"
                                                                       SymbolGeometry="{StaticResource MouseMagnifierIcon}"
                                                                       Text="{x:Static resx:Resources.MAGNIFIER}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
                                                                       Value="{x:Static models:KeyValues.MouseMagnifierKey}"/>
-                                                        <controls:Key Grid.Row="0" Grid.Column="6"
+                                                        <controls:Key Grid.Row="0" Grid.Column="7"
                                                                       SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
                                                                       Text="{x:Static resx:Resources.REPEAT_LAST_SPLIT_WITH_NEWLINE}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
                                                                       Value="{x:Static models:KeyValues.RepeatLastMouseActionKey}"/>
-                                                        <controls:Key Grid.Row="0" Grid.Column="7"
+                                                        <controls:Key Grid.Row="0" Grid.Column="8"
                                                                       SymbolGeometry="{StaticResource ExpandDockIcon}"
                                                                       Text="{x:Static resx:Resources.EXPAND_DOCK_SPLIT_WITH_NEWLINE}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
@@ -335,7 +341,7 @@
                                                                 </MultiBinding>
                                                             </controls:Key.SymbolOrientation>
                                                         </controls:Key>
-                                                        <controls:Key Grid.Row="0" Grid.Column="8"
+                                                        <controls:Key Grid.Row="0" Grid.Column="9"
                                                                       SymbolGeometry="{StaticResource BackIcon}"
                                                                       Text="{x:Static resx:Resources.BACK}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
@@ -603,6 +609,7 @@
                                                                     <RowDefinition Height="*" />
                                                                     <RowDefinition Height="*" />
                                                                     <RowDefinition Height="*" />
+                                                                    <RowDefinition Height="*" />
                                                                 </Grid.RowDefinitions>
                                                                 <Grid.ColumnDefinitions>
                                                                     <ColumnDefinition Width="*" />
@@ -647,16 +654,21 @@
                                                                               Value="{x:Static models:KeyValues.LookToScrollBoundsKey}"
                                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
                                                                 <controls:Key Grid.Row="5" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource MouseDragIcon}"
+                                                                              Text="{x:Static resx:Resources.CLICK_AND_DRAG_SPLIT_WITH_NEWLINE}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText"
+                                                                              Value="{x:Static models:KeyValues.MouseDragKey}"/>
+                                                                <controls:Key Grid.Row="6" Grid.Column="0"
                                                                               SymbolGeometry="{StaticResource MouseMagnifierIcon}"
                                                                               Text="{x:Static resx:Resources.MAGNIFIER}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                                               Value="{x:Static models:KeyValues.MouseMagnifierKey}"/>
-                                                                <controls:Key Grid.Row="6" Grid.Column="0"
+                                                                <controls:Key Grid.Row="7" Grid.Column="0"
                                                                               SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
                                                                               Text="{x:Static resx:Resources.REPEAT_LAST_SPLIT_WITH_NEWLINE}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                                               Value="{x:Static models:KeyValues.RepeatLastMouseActionKey}"/>
-                                                                <controls:Key Grid.Row="7" Grid.Column="0"
+                                                                <controls:Key Grid.Row="8" Grid.Column="0"
                                                                               SymbolGeometry="{StaticResource ExpandDockIcon}"
                                                                               Text="{x:Static resx:Resources.EXPAND_DOCK_SPLIT_WITH_NEWLINE}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText"
@@ -670,7 +682,7 @@
                                                                         </MultiBinding>
                                                                     </controls:Key.SymbolOrientation>
                                                                 </controls:Key>
-                                                                <controls:Key Grid.Row="8" Grid.Column="0"
+                                                                <controls:Key Grid.Row="9" Grid.Column="0"
                                                                               SymbolGeometry="{StaticResource BackIcon}"
                                                                               Text="{x:Static resx:Resources.BACK}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText"
