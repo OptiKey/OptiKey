@@ -2734,6 +2734,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stop scrolling upon switching keyboards:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invert scrolling direction:.
         /// </summary>
         public static string LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL {
@@ -2889,6 +2898,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatically resume scrolling afterwards:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show overlay window (requires restart):.
         /// </summary>
         public static string LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL {
@@ -2930,6 +2948,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW {
             get {
                 return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop scrolling when choosing where to move, click or drag the mouse:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL", resourceCulture);
             }
         }
         

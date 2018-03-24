@@ -159,7 +159,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint)
                     {
-                        IntPtr hWnd = GetHwndForFrontmostWindowAtPoint(point.Value);
+                        IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
 
                         if (hWnd == IntPtr.Zero)
                         {
@@ -198,7 +198,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else
                     {
-                        IntPtr hWnd = GetHwndForFrontmostWindowAtPoint(point.Value);
+                        IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
 
                         if (hWnd == IntPtr.Zero)
                         {
@@ -234,7 +234,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     Log.InfoFormat("User chose {0} as the first corner.", firstCorner.Value);
 
-                    IntPtr firstHWnd = GetHwndForFrontmostWindowAtPoint(firstCorner.Value);
+                    IntPtr firstHWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(firstCorner.Value);
 
                     if (firstHWnd == IntPtr.Zero)
                     {
@@ -252,7 +252,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Log.InfoFormat("User chose {0} as the second corner.", secondCorner.Value);
 
-                                IntPtr secondHWnd = GetHwndForFrontmostWindowAtPoint(secondCorner.Value);
+                                IntPtr secondHWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(secondCorner.Value);
                                 var rect = new Rect(firstCorner.Value, secondCorner.Value);
 
                                 if (secondHWnd == IntPtr.Zero)
@@ -305,9 +305,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private IntPtr GetHwndForFrontmostWindowAtPoint(Point point)
         {
-            // Make sure the cursor is hidden or else it may be picked as the front-most "window"!
-            ShowCursor = false;
-
             IntPtr shellWindow = PInvoke.GetShellWindow();
 
             Func<IntPtr, bool> criteria = hWnd => 
@@ -353,6 +350,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             windows = Static.Windows.ReplaceUWPTopLevelWindowsWithCoreWindowChildren(windows);
             windows = windows.Where(criteria).ToList();
             return Static.Windows.GetFrontmostWindow(windows);
+        }
+
+        private IntPtr HideCursorAndGetHwndForFrontmostWindowAtPoint(Point point)
+        {
+            // Make sure the cursor is hidden or else it may be picked as the front-most "window"!
+            ShowCursor = false;
+
+            return GetHwndForFrontmostWindowAtPoint(point);
         }
 
         private void ChooseCustomLookToScrollBoundsTarget(Action<bool> callback)
@@ -913,6 +918,53 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ActiveLookToScrollBounds = Graphics.PixelsToDips(bounds);
             ActiveLookToScrollDeadzone = Graphics.PixelsToDips(deadzone);
             ActiveLookToScrollMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
+        }
+
+        private Action SuspendLookToScrollWhileChoosingPointForMouse()
+        {
+            Action resumeAction = () => { };
+
+            if (Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse)
+            {
+                NotifyingProxy<KeyDownStates> activeKey = keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey];
+                KeyDownStates originalState = activeKey.Value;
+
+                // Make sure look to scroll is currently active. Otherwise, there's nothing to suspend or resume.
+                if (originalState.IsDownOrLockedDown())
+                {
+                    // Force scrolling to stop by releasing the LookToScrollActiveKey.
+                    activeKey.Value = KeyDownStates.Up;
+
+                    // If configured to resume afterwards, just reapply the original state of the key so the user doesn't have 
+                    // to rechoose the bounds. Otherwise, the user will have to press the key themselves and potentially rechoose 
+                    // the bounds (depending on the state of the bounds key). 
+                    if (Settings.Default.LookToScrollResumeAfterChoosingPointForMouse)
+                    {
+                        Log.Info("Look to scroll has suspended.");
+
+                        resumeAction = () =>
+                        {
+                            activeKey.Value = originalState;
+                            Log.Info("Look to scroll has resumed.");
+                        };
+                    }
+                    else
+                    {
+                        Log.Info("Look to scroll has been suspended and will not automatically resume.");
+                    }
+                }
+            }
+
+            return resumeAction;
+        }
+
+        private void DeactivateLookToScrollUponSwitchingKeyboards()
+        {
+            if (Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards)
+            {
+                keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value = KeyDownStates.Up;
+                Log.Info("Look to scroll is no longer active.");
+            }
         }
 
         private Rect GetVirtualScreenBoundsInPixels()

@@ -2335,6 +2335,45 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollSuspendBeforeChoosingPointForMouse {
+            get {
+                return ((bool)(this["LookToScrollSuspendBeforeChoosingPointForMouse"]));
+            }
+            set {
+                this["LookToScrollSuspendBeforeChoosingPointForMouse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollResumeAfterChoosingPointForMouse {
+            get {
+                return ((bool)(this["LookToScrollResumeAfterChoosingPointForMouse"]));
+            }
+            set {
+                this["LookToScrollResumeAfterChoosingPointForMouse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollDeactivateUponSwitchingKeyboards {
+            get {
+                return ((bool)(this["LookToScrollDeactivateUponSwitchingKeyboards"]));
+            }
+            set {
+                this["LookToScrollDeactivateUponSwitchingKeyboards"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool LookToScrollShowOverlayWindow {
             get {
                 return ((bool)(this["LookToScrollShowOverlayWindow"]));
