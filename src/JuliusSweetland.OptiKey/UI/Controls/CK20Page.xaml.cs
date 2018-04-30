@@ -23,6 +23,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public class CKOBF
         {
             public List<Buttons> buttons { get; set; }
+            public Grid grid { get; set; }
+            public List<Images> images { get; set; }
         }
 
         public class Buttons
@@ -30,23 +32,50 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             //[JsonProperty("buttons")]
             public Buttons()
             {
-                background_color = "#000000";
+                background_color = "#FFFFFF";
                 border_color = null;
                 image_id = "";
+                sound_id = "";
                 label = "";
+                vocalization = "";
                 load_board = null;
-                id = null;
+                id = "";
+                action = null;
             }
             public string background_color { get; set; }
             public string border_color { get; set; }
             public string id { get; set; }
+            public string action { get; set; }
             public string image_id { get; set; }
+            public string sound_id { get; set; }
             public string label { get; set; }
+            public string vocalization { get; set; }
             public Load_board load_board { get; set; }
         }
 
         public class Load_board
         {
+            public string path { get; set; }
+        }
+
+        public class Grid
+        {
+            //[JsonProperty("grid")]
+            public Grid()
+            {
+                rows = 1;
+                columns = 1;
+                order = null;
+            }
+            public int rows { get; set; }
+            public int columns { get; set; }
+            public List<List<string>> order { get; set; }
+        }
+
+        public class Images
+        {
+            //[JsonProperty("images")]
+            public string id { get; set; }
             public string path { get; set; }
         }
 
@@ -77,20 +106,23 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
                     pagefile = extractPath + manifest.root;
                 }
-                
+
                 {
                     Log.DebugFormat("Page file to read: {0}.", pagefile);
                     string contents = new StreamReader(pagefile, Encoding.UTF8).ReadToEnd();
                     CKOBF CKPageOBF = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
                     int ButtonCount = CKPageOBF.buttons.Count();
-                    Log.DebugFormat("Page contains {0} buttons.", ButtonCount - 3);
+                    int includesTopRow = CKPageOBF.grid.rows >= 5 ? 1 : 0;
+                    Log.DebugFormat("Page contains {0} buttons.", ButtonCount - 3 * includesTopRow);
                     string image;
                     string path;
+                    string text;
 
                     List<string> Colours = new List<string>();
                     List<string> Images = new List<string>();
                     List<string> Paths = new List<string>();
                     List<bool> Ismenukeys = new List<bool>();
+                    List<string> Labels = new List<string>();
                     List<string> Texts = new List<string>();
                     List<Load_board> Boards = new List<Load_board>();
 
@@ -101,17 +133,24 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     string defaultPath = null;
                     bool defaultIsMenuKey = false;
 
-                    int BlankButtonCount = 23 - ButtonCount;
+                    int BlankButtonCount = 0; // CKPageOBF.grid.order.FindAll(x => x.Equals("null")).Count - 2 * includesTopRow; // 20 - ButtonCount + 3 * includesTopRow;
+                    for (int row = includesTopRow; row < CKPageOBF.grid.rows; ++row)
+                    {
+                        var nullEntries = CKPageOBF.grid.order.ElementAt(row).FindAll(x => String.IsNullOrEmpty(x));
+                        if (nullEntries.Count > 0)
+                            BlankButtonCount += nullEntries.Count();
+                    }
                     Log.DebugFormat("There are {0} empty button(s) on this page.", BlankButtonCount);
-                    Buttons blankbutton;
+                    Buttons CurrentButton = new Buttons();
 
                     // CK 20 pagesets have keys in four rows and five columns 
                     // with an extra row at the top for the scratchpad and two other keys
 
-                    int ButtonNo = 3;
+                    int ButtonNo = includesTopRow * 3;
+                    int ButtonIndex;
                     // start at three to skip the scratchpad row keys
 
-                    for (int Row = 1; Row < 5; ++Row)
+                    for (int Row = includesTopRow; Row < 4 + includesTopRow; ++Row)
                     { // start at one to skip the scratchpad row
                         for (int Column = 0; Column < 5; ++Column)
                         { // all five columns are used
@@ -119,17 +158,20 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             // assume the current button is blank
                             bool CurrentButtonIsBlank = true;
 
-                            if (ButtonNo < CKPageOBF.buttons.Count)
+                            if (ButtonNo < CKPageOBF.buttons.Count && Row < CKPageOBF.grid.rows && Column < CKPageOBF.grid.columns)
                             { // if the stored keys in CKPageOBF total more than the current button number
-                                if (CKPageOBF.buttons.ElementAt(ButtonNo).id == Column.ToString() + Row.ToString())
+                                ButtonIndex = CKPageOBF.buttons.FindIndex(x => x.id.Equals(CKPageOBF.grid.order.ElementAt(Row).ElementAt(Column)));
+                                if (ButtonIndex != -1)
                                 { // check if the position of the current key matches the current position
 
-                                    // if the positions match then t isn't blank
+                                    // if the positions match then it isn't blank
                                     CurrentButtonIsBlank = false;
+                                    //CurrentButton = new Buttons();
+                                    CurrentButton = CKPageOBF.buttons.ElementAt(ButtonIndex);
 
-                                    if (CKPageOBF.buttons.ElementAt(ButtonNo).load_board == null && pageColour.Equals(defaultColour))
+                                    if (CurrentButton.load_board == null && pageColour.Equals(defaultColour))
                                     { // if this non-blank key is the first non-menu key then use its background colour for all the subsequent blank keys
-                                        pageColour = CKPageOBF.buttons.ElementAt(ButtonNo).background_color;
+                                        pageColour = CurrentButton.background_color;
                                     }
                                 }
                             }
@@ -138,53 +180,63 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             { // if the current key is blank insert it
                                 if (BlankButtonCount == 1)
                                 { // if this is the last blank key insert the back button
-                                    blankbutton = new Buttons()
+                                    CurrentButton = new Buttons()
                                     {
                                         background_color = "rgb(204,255,204)",
                                         label = "BACK",
-                                        image_id = "back.png",
+                                        image_id = CKpath() + @"images\back.png",
                                         load_board = new Load_board()
                                         {
-                                            path = "boards/" + Settings.Default.CommuniKateKeyboardPrevious1Context
+                                            path = Settings.Default.CommuniKateKeyboardPrevious1Context
                                         }
                                     };
-                                    Log.DebugFormat("Back button added at column {0} row {1} with background colour {2}.", Column + 1, Row, blankbutton.background_color);
+                                    Log.DebugFormat("Back button added at column {0} row {1} with background colour {2}.", Column + 1, Row, CurrentButton.background_color);
                                 }
                                 else
                                 {
-                                    blankbutton = new Buttons()
+                                    CurrentButton = new Buttons()
                                     {
                                         background_color = pageColour
                                     };
-                                    Log.DebugFormat("Blank button number {3} added at column {0} row {1} with background colour {2}.", Column + 1, Row, blankbutton.background_color, BlankButtonCount - 1);
+                                    Log.DebugFormat("Blank button number {3} added at column {0} row {1} with background colour {2}.", Column + 1, Row, CurrentButton.background_color, BlankButtonCount - 1);
                                 }
-                                blankbutton.id = Column.ToString() + Row.ToString();
-                                CKPageOBF.buttons.Insert(ButtonNo, blankbutton);
+                                CurrentButton.id = Column.ToString() + Row.ToString();
+                                CKPageOBF.buttons.Insert(ButtonNo, CurrentButton);
                                 --BlankButtonCount;
                             }
 
                             // store the individual properties of the current button
-                            Colours.Add(dec2hex(CKPageOBF.buttons.ElementAt(ButtonNo).background_color));
-                            image = CKPageOBF.buttons.ElementAt(ButtonNo).image_id == "" 
-                                ? CKPageOBF.buttons.ElementAt(ButtonNo).image_id 
-                                : CKpath() + "images/" + CKPageOBF.buttons.ElementAt(ButtonNo).image_id;
+                            Colours.Add(dec2hex(CurrentButton.background_color));
+                            image = CurrentButton.image_id;
+                            if (image != "" && image != null && !image.EndsWith(@"images\back.png"))
+                            {
+                                if (CKPageOBF.images.FindIndex(x => x.id.Contains(image)) != -1)
+                                    image = CKpath() + CKPageOBF.images.Find(x => x.id.Contains(image)).path;
+                                else
+                                    Log.DebugFormat("Missing image: {0}.", image);
+                            }
+                            // if (!String.IsNullOrEmpty(image))
+                            //     Log.DebugFormat("Button {0} uses image {1}.", ButtonNo + 1 - 3 * includesTopRow, image);
                             Images.Add(image);
-                            Boards.Add(CKPageOBF.buttons.ElementAt(ButtonNo).load_board);
-                            Texts.Add(CKPageOBF.buttons.ElementAt(ButtonNo).label);
+                            Boards.Add(CurrentButton.load_board);
+                            Texts.Add(CurrentButton.label);
+                            text = CurrentButton.vocalization;
                             if (Boards.Last() != null && Boards.Last().path != null)
                             {
-                                path = Boards.Last().path.Substring(7);
-                                if (path.StartsWith("+"))
-                                    Paths.Add(Texts.Last() + path);
+                                path = Boards.Last().path; //.Substring(7);
+                                if (!String.IsNullOrEmpty(text))
+                                    Paths.Add(text + "+" + path);
                                 else
                                     Paths.Add(path);
                                 Ismenukeys.Add(true);
-                                Log.DebugFormat("Button {0} is a menu key for board {1}.", ButtonNo - 2, path);
+                                Log.DebugFormat("Button {0} is a menu key for board {1}.", ButtonNo + 1 - 3 * includesTopRow, path);
+                                Labels.Add(Texts.Last());
                             }
                             else
                             {
                                 Paths.Add(defaultPath);
                                 Ismenukeys.Add(defaultIsMenuKey);
+                                Labels.Add(String.IsNullOrEmpty(text) ? Texts.Last() : text);
                             }
                             ++ButtonNo;
                         }
@@ -192,6 +244,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     int buttonid = 0;
                     key.CKBaCo_00 = Colours.ElementAt(buttonid);
+                    key.CKLabel_00 = Labels.ElementAt(buttonid);
                     key.CKText_00 = Texts.ElementAt(buttonid);
                     key.CKImSo_00 = Images.ElementAt(buttonid);
                     key.CKKeCo_00 = Paths.ElementAt(buttonid);
@@ -199,6 +252,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_01 = Colours.ElementAt(buttonid);
+                    key.CKLabel_01 = Labels.ElementAt(buttonid);
                     key.CKText_01 = Texts.ElementAt(buttonid);
                     key.CKImSo_01 = Images.ElementAt(buttonid);
                     key.CKKeCo_01 = Paths.ElementAt(buttonid);
@@ -206,6 +260,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_02 = Colours.ElementAt(buttonid);
+                    key.CKLabel_02 = Labels.ElementAt(buttonid);
                     key.CKText_02 = Texts.ElementAt(buttonid);
                     key.CKImSo_02 = Images.ElementAt(buttonid);
                     key.CKKeCo_02 = Paths.ElementAt(buttonid);
@@ -213,6 +268,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_03 = Colours.ElementAt(buttonid);
+                    key.CKLabel_03 = Labels.ElementAt(buttonid);
                     key.CKText_03 = Texts.ElementAt(buttonid);
                     key.CKImSo_03 = Images.ElementAt(buttonid);
                     key.CKKeCo_03 = Paths.ElementAt(buttonid);
@@ -220,6 +276,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_04 = Colours.ElementAt(buttonid);
+                    key.CKLabel_04 = Labels.ElementAt(buttonid);
                     key.CKText_04 = Texts.ElementAt(buttonid);
                     key.CKImSo_04 = Images.ElementAt(buttonid);
                     key.CKKeCo_04 = Paths.ElementAt(buttonid);
@@ -227,6 +284,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_10 = Colours.ElementAt(buttonid);
+                    key.CKLabel_10 = Labels.ElementAt(buttonid);
                     key.CKText_10 = Texts.ElementAt(buttonid);
                     key.CKImSo_10 = Images.ElementAt(buttonid);
                     key.CKKeCo_10 = Paths.ElementAt(buttonid);
@@ -234,6 +292,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_11 = Colours.ElementAt(buttonid);
+                    key.CKLabel_11 = Labels.ElementAt(buttonid);
                     key.CKText_11 = Texts.ElementAt(buttonid);
                     key.CKImSo_11 = Images.ElementAt(buttonid);
                     key.CKKeCo_11 = Paths.ElementAt(buttonid);
@@ -241,6 +300,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_12 = Colours.ElementAt(buttonid);
+                    key.CKLabel_12 = Labels.ElementAt(buttonid);
                     key.CKText_12 = Texts.ElementAt(buttonid);
                     key.CKImSo_12 = Images.ElementAt(buttonid);
                     key.CKKeCo_12 = Paths.ElementAt(buttonid);
@@ -248,6 +308,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_13 = Colours.ElementAt(buttonid);
+                    key.CKLabel_13 = Labels.ElementAt(buttonid);
                     key.CKText_13 = Texts.ElementAt(buttonid);
                     key.CKImSo_13 = Images.ElementAt(buttonid);
                     key.CKKeCo_13 = Paths.ElementAt(buttonid);
@@ -255,6 +316,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_14 = Colours.ElementAt(buttonid);
+                    key.CKLabel_14 = Labels.ElementAt(buttonid);
                     key.CKText_14 = Texts.ElementAt(buttonid);
                     key.CKImSo_14 = Images.ElementAt(buttonid);
                     key.CKKeCo_14 = Paths.ElementAt(buttonid);
@@ -262,6 +324,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_20 = Colours.ElementAt(buttonid);
+                    key.CKLabel_20 = Labels.ElementAt(buttonid);
                     key.CKText_20 = Texts.ElementAt(buttonid);
                     key.CKImSo_20 = Images.ElementAt(buttonid);
                     key.CKKeCo_20 = Paths.ElementAt(buttonid);
@@ -269,6 +332,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_21 = Colours.ElementAt(buttonid);
+                    key.CKLabel_21 = Labels.ElementAt(buttonid);
                     key.CKText_21 = Texts.ElementAt(buttonid);
                     key.CKImSo_21 = Images.ElementAt(buttonid);
                     key.CKKeCo_21 = Paths.ElementAt(buttonid);
@@ -276,6 +340,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_22 = Colours.ElementAt(buttonid);
+                    key.CKLabel_22 = Labels.ElementAt(buttonid);
                     key.CKText_22 = Texts.ElementAt(buttonid);
                     key.CKImSo_22 = Images.ElementAt(buttonid);
                     key.CKKeCo_22 = Paths.ElementAt(buttonid);
@@ -283,6 +348,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_23 = Colours.ElementAt(buttonid);
+                    key.CKLabel_23 = Labels.ElementAt(buttonid);
                     key.CKText_23 = Texts.ElementAt(buttonid);
                     key.CKImSo_23 = Images.ElementAt(buttonid);
                     key.CKKeCo_23 = Paths.ElementAt(buttonid);
@@ -290,6 +356,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_24 = Colours.ElementAt(buttonid);
+                    key.CKLabel_24 = Labels.ElementAt(buttonid);
                     key.CKText_24 = Texts.ElementAt(buttonid);
                     key.CKImSo_24 = Images.ElementAt(buttonid);
                     key.CKKeCo_24 = Paths.ElementAt(buttonid);
@@ -297,6 +364,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_30 = Colours.ElementAt(buttonid);
+                    key.CKLabel_30 = Labels.ElementAt(buttonid);
                     key.CKText_30 = Texts.ElementAt(buttonid);
                     key.CKImSo_30 = Images.ElementAt(buttonid);
                     key.CKKeCo_30 = Paths.ElementAt(buttonid);
@@ -304,6 +372,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_31 = Colours.ElementAt(buttonid);
+                    key.CKLabel_31 = Labels.ElementAt(buttonid);
                     key.CKText_31 = Texts.ElementAt(buttonid);
                     key.CKImSo_31 = Images.ElementAt(buttonid);
                     key.CKKeCo_31 = Paths.ElementAt(buttonid);
@@ -311,6 +380,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_32 = Colours.ElementAt(buttonid);
+                    key.CKLabel_32 = Labels.ElementAt(buttonid);
                     key.CKText_32 = Texts.ElementAt(buttonid);
                     key.CKImSo_32 = Images.ElementAt(buttonid);
                     key.CKKeCo_32 = Paths.ElementAt(buttonid);
@@ -318,6 +388,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_33 = Colours.ElementAt(buttonid);
+                    key.CKLabel_33 = Labels.ElementAt(buttonid);
                     key.CKText_33 = Texts.ElementAt(buttonid);
                     key.CKImSo_33 = Images.ElementAt(buttonid);
                     key.CKKeCo_33 = Paths.ElementAt(buttonid);
@@ -325,6 +396,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     ++buttonid;
                     key.CKBaCo_34 = Colours.ElementAt(buttonid);
+                    key.CKLabel_34 = Labels.ElementAt(buttonid);
                     key.CKText_34 = Texts.ElementAt(buttonid);
                     key.CKImSo_34 = Images.ElementAt(buttonid);
                     key.CKKeCo_34 = Paths.ElementAt(buttonid);
@@ -339,27 +411,61 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set
             {
                 string path = CKpath();
-                if (!File.Exists(path + "manifest.json"))
+                string pageset = Settings.Default.CommuniKatePagesetLocation;
+                bool isOBFarchive = true;
+                if (pageset.EndsWith(".obf"))
                 {
-                    string zipPath = Settings.Default.CommuniKatePagesetLocation;
-                    if (!File.Exists(zipPath))
-                        zipPath = @"./Resources/CommuniKate/pageset.obz";
-
-                    using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Read))
+                    string obfFile = path + Path.GetFileName(pageset);
+                    if (File.Exists(obfFile))
                     {
-                        archive.ExtractToDirectory(path);
+                        isOBFarchive = false;
+                        SetValue(CKPageFileProperty, obfFile);
                     }
-                    File.Copy(@"./Resources/CommuniKate/back.png", path + @"images/back.png", true);
+                    else if (File.Exists(pageset))
+                    {
+                        isOBFarchive = false;
+                        if (!Directory.Exists(path))
+                            Directory.CreateDirectory(path);
+                        File.Copy(pageset, obfFile);
+                        string backImage = path + @"images/back.png";
+                        if (!File.Exists(backImage))
+                        {
+                            if (!Directory.Exists(path + "images"))
+                                Directory.CreateDirectory(path + "images");
+                            File.Copy(@"./Resources/CommuniKate/back.png", backImage, true);
+                        }
+                        SetValue(CKPageFileProperty, obfFile);
+                    }
                 }
-                if (value != null)
+                if (isOBFarchive)
                 {
-                    SetValue(CKPageFileProperty, path + "boards/" + value);
-                }
-                else
-                {
-                    string contents = new StreamReader(path + "manifest.json", Encoding.UTF8).ReadToEnd();
-                    Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
-                    SetValue(CKPageFileProperty, path + manifest.root);
+                    if (!File.Exists(path + "manifest.json"))
+                    {
+                        if (!File.Exists(pageset))
+                            pageset = @"./Resources/CommuniKate/pageset.obz";
+
+                        using (ZipArchive archive = ZipFile.Open(pageset, ZipArchiveMode.Read))
+                        {
+                            archive.ExtractToDirectory(path);
+                        }
+                        string backImage = path + @"images/back.png";
+                        if (!File.Exists(backImage))
+                        {
+                            if (!Directory.Exists(path + "images"))
+                                Directory.CreateDirectory(path + "images");
+                            File.Copy(@"./Resources/CommuniKate/back.png", backImage, true);
+                        }
+                    }
+                    if (value != null)
+                    {
+                        SetValue(CKPageFileProperty, path + value);
+                    }
+                    else
+                    {
+                        string contents = new StreamReader(path + "manifest.json", Encoding.UTF8).ReadToEnd();
+                        Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
+                        SetValue(CKPageFileProperty, path + manifest.root);
+                    }
                 }
             }
         }
@@ -398,14 +504,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 if (dec.StartsWith("rgb("))
                     dec = dec.Substring(4);
-                if (dec.EndsWith(")"))
-                    dec = dec.Substring(0, dec.Length - 1);
+                else if (dec.StartsWith("rgba("))
+                    dec = dec.Substring(5);
+                if (dec.Trim().EndsWith(")"))
+                    dec = dec.Trim().Substring(0, dec.Trim().Length - 1);
+                // Log.DebugFormat("Background colour: {0}.", dec);
                 List<string> deccolours = dec.Split(',').ToList<string>();
-                if (deccolours.Count != 3)
+                if (deccolours.Count != 3 && deccolours.Count != 4)
                     return "#000000";
-                int intR = (int)Convert.ToSingle(deccolours.ElementAt(0));
-                int intG = (int)Convert.ToSingle(deccolours.ElementAt(1));
-                int intB = (int)Convert.ToSingle(deccolours.ElementAt(2));
+                int intR = (int)Convert.ToSingle(deccolours.ElementAt(0).Trim());
+                int intG = (int)Convert.ToSingle(deccolours.ElementAt(1).Trim());
+                int intB = (int)Convert.ToSingle(deccolours.ElementAt(2).Trim());
                 byte byteR = Convert.ToByte(intR);
                 byte byteG = Convert.ToByte(intG);
                 byte byteB = Convert.ToByte(intB);
@@ -423,6 +532,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 SetValue(CKMenu00Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_00));
             }
+        }
+
+        public static readonly DependencyProperty CKLabel_00Property =
+            DependencyProperty.Register("CKLabel_00", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_00
+        {
+            get { return (string)GetValue(CKLabel_00Property); }
+            set { SetValue(CKLabel_00Property, value); }
         }
 
         public static readonly DependencyProperty CKText_00Property =
@@ -464,6 +582,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
         }
 
+        public static readonly DependencyProperty CKLabel_01Property =
+            DependencyProperty.Register("CKLabel_01", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_01
+        {
+            get { return (string)GetValue(CKLabel_01Property); }
+            set { SetValue(CKLabel_01Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_01Property =
             DependencyProperty.Register("CKText_01", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -501,6 +628,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 SetValue(CKMenu02Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_02));
             }
+        }
+
+        public static readonly DependencyProperty CKLabel_02Property =
+            DependencyProperty.Register("CKLabel_02", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_02
+        {
+            get { return (string)GetValue(CKLabel_02Property); }
+            set { SetValue(CKLabel_02Property, value); }
         }
 
         public static readonly DependencyProperty CKText_02Property =
@@ -542,6 +678,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
         }
 
+        public static readonly DependencyProperty CKLabel_03Property =
+            DependencyProperty.Register("CKLabel_03", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_03
+        {
+            get { return (string)GetValue(CKLabel_03Property); }
+            set { SetValue(CKLabel_03Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_03Property =
             DependencyProperty.Register("CKText_03", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -579,6 +724,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 SetValue(CKMenu04Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_04));
             }
+        }
+
+        public static readonly DependencyProperty CKLabel_04Property =
+            DependencyProperty.Register("CKLabel_04", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_04
+        {
+            get { return (string)GetValue(CKLabel_04Property); }
+            set { SetValue(CKLabel_04Property, value); }
         }
 
         public static readonly DependencyProperty CKText_04Property =
@@ -620,6 +774,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
         }
 
+        public static readonly DependencyProperty CKLabel_10Property =
+            DependencyProperty.Register("CKLabel_10", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_10
+        {
+            get { return (string)GetValue(CKLabel_10Property); }
+            set { SetValue(CKLabel_10Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_10Property =
             DependencyProperty.Register("CKText_10", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -659,6 +822,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
         }
 
+        public static readonly DependencyProperty CKLabel_11Property =
+            DependencyProperty.Register("CKLabel_11", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_11
+        {
+            get { return (string)GetValue(CKLabel_11Property); }
+            set { SetValue(CKLabel_11Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_11Property =
             DependencyProperty.Register("CKText_11", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -693,6 +865,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (KeyValue)GetValue(CKMenu12Property); }
             set { SetValue(CKMenu12Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_12)); }
+        }
+
+        public static readonly DependencyProperty CKLabel_12Property =
+            DependencyProperty.Register("CKLabel_12", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_12
+        {
+            get { return (string)GetValue(CKLabel_12Property); }
+            set { SetValue(CKLabel_12Property, value); }
         }
 
         public static readonly DependencyProperty CKText_12Property =
@@ -731,6 +912,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKMenu13Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_13)); }
         }
 
+        public static readonly DependencyProperty CKLabel_13Property =
+            DependencyProperty.Register("CKLabel_13", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_13
+        {
+            get { return (string)GetValue(CKLabel_13Property); }
+            set { SetValue(CKLabel_13Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_13Property =
             DependencyProperty.Register("CKText_13", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -765,6 +955,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (KeyValue)GetValue(CKMenu14Property); }
             set { SetValue(CKMenu14Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_14)); }
+        }
+
+        public static readonly DependencyProperty CKLabel_14Property =
+            DependencyProperty.Register("CKLabel_14", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_14
+        {
+            get { return (string)GetValue(CKLabel_14Property); }
+            set { SetValue(CKLabel_14Property, value); }
         }
 
         public static readonly DependencyProperty CKText_14Property =
@@ -803,6 +1002,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKMenu20Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_20)); }
         }
 
+        public static readonly DependencyProperty CKLabel_20Property =
+            DependencyProperty.Register("CKLabel_20", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_20
+        {
+            get { return (string)GetValue(CKLabel_20Property); }
+            set { SetValue(CKLabel_20Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_20Property =
             DependencyProperty.Register("CKText_20", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -837,6 +1045,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (KeyValue)GetValue(CKMenu21Property); }
             set { SetValue(CKMenu21Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_21)); }
+        }
+
+        public static readonly DependencyProperty CKLabel_21Property =
+            DependencyProperty.Register("CKLabel_21", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_21
+        {
+            get { return (string)GetValue(CKLabel_21Property); }
+            set { SetValue(CKLabel_21Property, value); }
         }
 
         public static readonly DependencyProperty CKText_21Property =
@@ -875,6 +1092,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKMenu22Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_22)); }
         }
 
+        public static readonly DependencyProperty CKLabel_22Property =
+            DependencyProperty.Register("CKLabel_22", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_22
+        {
+            get { return (string)GetValue(CKLabel_22Property); }
+            set { SetValue(CKLabel_22Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_22Property =
             DependencyProperty.Register("CKText_22", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -909,6 +1135,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (KeyValue)GetValue(CKMenu23Property); }
             set { SetValue(CKMenu23Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_23)); }
+        }
+
+        public static readonly DependencyProperty CKLabel_23Property =
+            DependencyProperty.Register("CKLabel_23", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_23
+        {
+            get { return (string)GetValue(CKLabel_23Property); }
+            set { SetValue(CKLabel_23Property, value); }
         }
 
         public static readonly DependencyProperty CKText_23Property =
@@ -947,6 +1182,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKMenu24Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_24)); }
         }
 
+        public static readonly DependencyProperty CKLabel_24Property =
+            DependencyProperty.Register("CKLabel_24", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_24
+        {
+            get { return (string)GetValue(CKLabel_24Property); }
+            set { SetValue(CKLabel_24Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_24Property =
             DependencyProperty.Register("CKText_24", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -981,6 +1225,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (KeyValue)GetValue(CKMenu30Property); }
             set { SetValue(CKMenu30Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_30)); }
+        }
+
+        public static readonly DependencyProperty CKLabel_30Property =
+            DependencyProperty.Register("CKLabel_30", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_30
+        {
+            get { return (string)GetValue(CKLabel_30Property); }
+            set { SetValue(CKLabel_30Property, value); }
         }
 
         public static readonly DependencyProperty CKText_30Property =
@@ -1019,6 +1272,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKMenu31Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_31)); }
         }
 
+        public static readonly DependencyProperty CKLabel_31Property =
+            DependencyProperty.Register("CKLabel_31", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_31
+        {
+            get { return (string)GetValue(CKLabel_31Property); }
+            set { SetValue(CKLabel_31Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_31Property =
             DependencyProperty.Register("CKText_31", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1053,6 +1315,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (KeyValue)GetValue(CKMenu32Property); }
             set { SetValue(CKMenu32Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_32)); }
+        }
+
+        public static readonly DependencyProperty CKLabel_32Property =
+            DependencyProperty.Register("CKLabel_32", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_32
+        {
+            get { return (string)GetValue(CKLabel_32Property); }
+            set { SetValue(CKLabel_32Property, value); }
         }
 
         public static readonly DependencyProperty CKText_32Property =
@@ -1091,6 +1362,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKMenu33Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_33)); }
         }
 
+        public static readonly DependencyProperty CKLabel_33Property =
+            DependencyProperty.Register("CKLabel_33", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_33
+        {
+            get { return (string)GetValue(CKLabel_33Property); }
+            set { SetValue(CKLabel_33Property, value); }
+        }
+
         public static readonly DependencyProperty CKText_33Property =
             DependencyProperty.Register("CKText_33", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1125,6 +1405,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (KeyValue)GetValue(CKMenu34Property); }
             set { SetValue(CKMenu34Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_34)); }
+        }
+
+        public static readonly DependencyProperty CKLabel_34Property =
+            DependencyProperty.Register("CKLabel_34", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKLabel_34
+        {
+            get { return (string)GetValue(CKLabel_34Property); }
+            set { SetValue(CKLabel_34Property, value); }
         }
 
         public static readonly DependencyProperty CKText_34Property =
