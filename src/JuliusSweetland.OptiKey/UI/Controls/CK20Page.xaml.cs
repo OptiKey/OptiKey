@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.IO.Compression;
+using System.Drawing;
+using System.Net;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
@@ -77,6 +79,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             //[JsonProperty("images")]
             public string id { get; set; }
             public string path { get; set; }
+            public string url { get; set; }
+            public string data { get; set; }
+            public string content_type { get; set; }
         }
 
         public class Pageset
@@ -210,8 +215,30 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             image = CurrentButton.image_id;
                             if (image != "" && image != null && !image.EndsWith(@"images\back.png"))
                             {
-                                if (CKPageOBF.images.FindIndex(x => x.id.Contains(image)) != -1)
-                                    image = CKpath() + CKPageOBF.images.Find(x => x.id.Contains(image)).path;
+                                int imageIndex = CKPageOBF.images.FindIndex(x => x.id.Contains(image));
+                                if (imageIndex != -1)
+                                {
+                                    var imageData = CKPageOBF.images.ElementAt(imageIndex);
+                                    if (!String.IsNullOrEmpty(imageData.path)) { image = CKpath() + imageData.path; }
+                                    else if (!String.IsNullOrEmpty(imageData.data))
+                                    {
+                                        image += "." + imageData.content_type.Substring(6);
+                                        image = CKpath() + @"images\" + image;
+                                        if (!File.Exists(image))
+                                                File.WriteAllBytes(image, Convert.FromBase64String(imageData.data.Substring(22)));
+                                    }
+                                    else if (!String.IsNullOrEmpty(imageData.url))
+                                    {
+                                        image = CKpath() + @"images\" + Path.GetFileName(imageData.url);
+                                        if (!File.Exists(image))
+                                            using (WebClient client = new WebClient())
+                                            {
+                                                client.DownloadFile(new Uri(imageData.url), image);
+                                            }
+                                    }
+                                    else
+                                        Log.DebugFormat("Insufficient image data for image: {0}.", image);
+                                }
                                 else
                                     Log.DebugFormat("Missing image: {0}.", image);
                             }
