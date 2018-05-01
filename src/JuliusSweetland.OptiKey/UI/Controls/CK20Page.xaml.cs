@@ -208,7 +208,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 }
                                 CurrentButton.id = Column.ToString() + Row.ToString();
                                 CKPageOBF.buttons.Insert(ButtonNo, CurrentButton);
-                                --BlankButtonCount;
+                                if (Row < CKPageOBF.grid.rows && Column < CKPageOBF.grid.columns)
+                                    --BlankButtonCount;
                             }
 
                             // store the individual properties of the current button
