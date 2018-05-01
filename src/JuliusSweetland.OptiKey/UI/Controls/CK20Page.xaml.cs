@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.IO.Compression;
-using System.Drawing;
 using System.Net;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
@@ -116,8 +115,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     Log.DebugFormat("Page file to read: {0}.", pagefile);
                     string contents = new StreamReader(pagefile, Encoding.UTF8).ReadToEnd();
                     CKOBF CKPageOBF = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
-                    int ButtonCount = CKPageOBF.buttons.Count();
                     int includesTopRow = CKPageOBF.grid.rows >= 5 ? 1 : 0;
+                    key.CKGridRows = CKPageOBF.grid.rows - includesTopRow;
+                    key.CKGridColumns = CKPageOBF.grid.columns;
+                    int ButtonCount = CKPageOBF.buttons.Count();
                     Log.DebugFormat("Page contains {0} buttons.", ButtonCount - 3 * includesTopRow);
                     string image;
                     string path;
@@ -237,20 +238,26 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                             }
                                     }
                                     else
+                                    {
                                         Log.DebugFormat("Insufficient image data for image: {0}.", image);
+                                        image = "";
+                                    }
                                 }
                                 else
+                                {
                                     Log.DebugFormat("Missing image: {0}.", image);
+                                    image = "";
+                                }
                             }
-                            // if (!String.IsNullOrEmpty(image))
-                            //     Log.DebugFormat("Button {0} uses image {1}.", ButtonNo + 1 - 3 * includesTopRow, image);
+                            if (!String.IsNullOrEmpty(image))
+                                Log.DebugFormat("Button {0} uses image {1}.", ButtonNo + 1 - 3 * includesTopRow, image);
                             Images.Add(image);
                             Boards.Add(CurrentButton.load_board);
                             Texts.Add(CurrentButton.label);
                             text = CurrentButton.vocalization;
                             if (Boards.Last() != null && Boards.Last().path != null)
                             {
-                                path = Boards.Last().path; //.Substring(7);
+                                path = Boards.Last().path;
                                 if (!String.IsNullOrEmpty(text))
                                     Paths.Add(text + "+" + path);
                                 else
@@ -547,6 +554,24 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 byte byteB = Convert.ToByte(intB);
                 return "#" + byteR.ToString("X2") + byteG.ToString("X2") + byteB.ToString("X2");
             }
+        }
+
+        public static readonly DependencyProperty CKGridRowsProperty =
+            DependencyProperty.Register("CKGridRows", typeof(int), typeof(Key), new PropertyMetadata(default(int)));
+
+        public int CKGridRows
+        {
+            get { return (int)GetValue(CKGridRowsProperty); }
+            set { SetValue(CKGridRowsProperty, value); }
+        }
+
+        public static readonly DependencyProperty CKGridColumnsProperty =
+            DependencyProperty.Register("CKGridColumns", typeof(int), typeof(Key), new PropertyMetadata(default(int)));
+
+        public int CKGridColumns
+        {
+            get { return (int)GetValue(CKGridColumnsProperty); }
+            set { SetValue(CKGridColumnsProperty, value); }
         }
 
         public static readonly DependencyProperty CKMenu00Property =
