@@ -2452,12 +2452,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int CommuniKateSoundVolume {
             get {
                 return ((int)(this["CommuniKateSoundVolume"]));
             }
             set {
                 this["CommuniKateSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CommuniKateDefaultBoard {
+            get {
+                return ((string)(this["CommuniKateDefaultBoard"]));
+            }
+            set {
+                this["CommuniKateDefaultBoard"] = value;
             }
         }
     }

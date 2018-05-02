@@ -121,9 +121,22 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 Log.DebugFormat("Trying to read page file: {0}.", pagefile);
                 if (value == null || !File.Exists(pagefile))
                 {
-                    string contents = new StreamReader(extractPath + "manifest.json", Encoding.UTF8).ReadToEnd();
-                    Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
-                    pagefile = extractPath + manifest.root;
+                    if (!File.Exists(extractPath + Settings.Default.CommuniKateDefaultBoard))
+                    {
+                        string pageset = Settings.Default.CommuniKatePagesetLocation;
+                        if (pageset.EndsWith(".obf"))
+                        {
+                            Settings.Default.CommuniKateDefaultBoard = Path.GetFileName(pageset);
+                        }
+                        else
+                        {
+                            string contents = new StreamReader(extractPath + "manifest.json", Encoding.UTF8).ReadToEnd();
+                            Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
+                            Settings.Default.CommuniKateDefaultBoard = manifest.root;
+                        }
+                    }
+                    pagefile = extractPath + Settings.Default.CommuniKateDefaultBoard;
+                    Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
                 }
 
                 {
@@ -171,6 +184,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     int ButtonNo = includesTopRow * 3;
                     int ButtonIndex;
+                    bool BackButtonAdded = false;
                     // start at three to skip the scratchpad row keys
 
                     for (int Row = includesTopRow; Row < 4 + includesTopRow; ++Row)
@@ -201,8 +215,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                             if (CurrentButtonIsBlank)
                             { // if the current key is blank insert it
-                                if (BlankButtonCount == 1)
+                                if (BlankButtonCount == 1 && !BackButtonAdded && Row < CKPageOBF.grid.rows && Column < CKPageOBF.grid.columns)
                                 { // if this is the last blank key insert the back button
+                                    BackButtonAdded = true;
                                     CurrentButton = new Buttons()
                                     {
                                         background_color = "rgb(204,255,204)",
@@ -380,7 +395,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_00 = Texts.ElementAt(buttonid);
                     key.CKImSo_00 = Images.ElementAt(buttonid);
                     key.CKKeCo_00 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_00 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_00 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_01 = Colours.ElementAt(buttonid);
@@ -388,7 +403,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_01 = Texts.ElementAt(buttonid);
                     key.CKImSo_01 = Images.ElementAt(buttonid);
                     key.CKKeCo_01 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_01 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_01 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_02 = Colours.ElementAt(buttonid);
@@ -396,7 +411,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_02 = Texts.ElementAt(buttonid);
                     key.CKImSo_02 = Images.ElementAt(buttonid);
                     key.CKKeCo_02 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_02 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_02 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_03 = Colours.ElementAt(buttonid);
@@ -404,7 +419,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_03 = Texts.ElementAt(buttonid);
                     key.CKImSo_03 = Images.ElementAt(buttonid);
                     key.CKKeCo_03 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_03 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_03 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_04 = Colours.ElementAt(buttonid);
@@ -412,7 +427,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_04 = Texts.ElementAt(buttonid);
                     key.CKImSo_04 = Images.ElementAt(buttonid);
                     key.CKKeCo_04 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_04 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_04 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_10 = Colours.ElementAt(buttonid);
@@ -420,7 +435,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_10 = Texts.ElementAt(buttonid);
                     key.CKImSo_10 = Images.ElementAt(buttonid);
                     key.CKKeCo_10 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_10 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_10 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_11 = Colours.ElementAt(buttonid);
@@ -428,7 +443,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_11 = Texts.ElementAt(buttonid);
                     key.CKImSo_11 = Images.ElementAt(buttonid);
                     key.CKKeCo_11 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_11 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_11 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_12 = Colours.ElementAt(buttonid);
@@ -436,7 +451,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_12 = Texts.ElementAt(buttonid);
                     key.CKImSo_12 = Images.ElementAt(buttonid);
                     key.CKKeCo_12 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_12 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_12 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_13 = Colours.ElementAt(buttonid);
@@ -444,7 +459,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_13 = Texts.ElementAt(buttonid);
                     key.CKImSo_13 = Images.ElementAt(buttonid);
                     key.CKKeCo_13 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_13 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_13 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_14 = Colours.ElementAt(buttonid);
@@ -452,7 +467,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_14 = Texts.ElementAt(buttonid);
                     key.CKImSo_14 = Images.ElementAt(buttonid);
                     key.CKKeCo_14 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_14 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_14 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_20 = Colours.ElementAt(buttonid);
@@ -460,7 +475,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_20 = Texts.ElementAt(buttonid);
                     key.CKImSo_20 = Images.ElementAt(buttonid);
                     key.CKKeCo_20 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_20 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_20 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_21 = Colours.ElementAt(buttonid);
@@ -468,7 +483,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_21 = Texts.ElementAt(buttonid);
                     key.CKImSo_21 = Images.ElementAt(buttonid);
                     key.CKKeCo_21 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_21 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_21 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_22 = Colours.ElementAt(buttonid);
@@ -476,7 +491,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_22 = Texts.ElementAt(buttonid);
                     key.CKImSo_22 = Images.ElementAt(buttonid);
                     key.CKKeCo_22 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_22 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_22 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_23 = Colours.ElementAt(buttonid);
@@ -484,7 +499,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_23 = Texts.ElementAt(buttonid);
                     key.CKImSo_23 = Images.ElementAt(buttonid);
                     key.CKKeCo_23 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_23 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_23 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_24 = Colours.ElementAt(buttonid);
@@ -492,7 +507,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_24 = Texts.ElementAt(buttonid);
                     key.CKImSo_24 = Images.ElementAt(buttonid);
                     key.CKKeCo_24 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_24 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_24 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_30 = Colours.ElementAt(buttonid);
@@ -500,7 +515,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_30 = Texts.ElementAt(buttonid);
                     key.CKImSo_30 = Images.ElementAt(buttonid);
                     key.CKKeCo_30 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_30 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_30 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_31 = Colours.ElementAt(buttonid);
@@ -508,7 +523,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_31 = Texts.ElementAt(buttonid);
                     key.CKImSo_31 = Images.ElementAt(buttonid);
                     key.CKKeCo_31 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_31 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_31 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_32 = Colours.ElementAt(buttonid);
@@ -516,7 +531,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_32 = Texts.ElementAt(buttonid);
                     key.CKImSo_32 = Images.ElementAt(buttonid);
                     key.CKKeCo_32 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_32 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_32 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_33 = Colours.ElementAt(buttonid);
@@ -524,7 +539,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_33 = Texts.ElementAt(buttonid);
                     key.CKImSo_33 = Images.ElementAt(buttonid);
                     key.CKKeCo_33 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_33 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_33 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_34 = Colours.ElementAt(buttonid);
@@ -532,7 +547,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_34 = Texts.ElementAt(buttonid);
                     key.CKImSo_34 = Images.ElementAt(buttonid);
                     key.CKKeCo_34 = Paths.ElementAt(buttonid);
-                    key.CKMenuKey_34 = Ismenukeys.ElementAt(buttonid);
+                    key.CKMenu_Key_34 = Ismenukeys.ElementAt(buttonid);
                 }
             }
         }
@@ -559,6 +574,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         if (!Directory.Exists(path))
                             Directory.CreateDirectory(path);
                         File.Copy(pageset, obfFile);
+                        Settings.Default.CommuniKateDefaultBoard = obfFile.Substring(path.Length);
                         string backImage = path + @"images/back.png";
                         if (!File.Exists(backImage))
                         {
@@ -579,6 +595,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         using (ZipArchive archive = ZipFile.Open(pageset, ZipArchiveMode.Read))
                         {
                             archive.ExtractToDirectory(path);
+                            string contents = new StreamReader(path + "manifest.json", Encoding.UTF8).ReadToEnd();
+                            Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
+                            Settings.Default.CommuniKateDefaultBoard = manifest.root;
                         }
                         string backImage = path + @"images/back.png";
                         if (!File.Exists(backImage))
@@ -594,9 +613,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     else
                     {
-                        string contents = new StreamReader(path + "manifest.json", Encoding.UTF8).ReadToEnd();
-                        Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
-                        SetValue(CKPageFileProperty, path + manifest.root);
+                        SetValue(CKPageFileProperty, path + Settings.Default.CommuniKateDefaultBoard);
                     }
                 }
             }
@@ -672,15 +689,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKGridColumnsProperty, value); }
         }
 
-        public static readonly DependencyProperty CKMenu00Property =
-            DependencyProperty.Register("CKMenu00", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_00Property =
+            DependencyProperty.Register("CKMenu_00", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu00
+        public KeyValue CKMenu_00
         {
-            get { return (KeyValue)GetValue(CKMenu00Property); }
+            get { return (KeyValue)GetValue(CKMenu_00Property); }
             set
             {
-                SetValue(CKMenu00Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_00));
+                SetValue(CKMenu_00Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_00));
             }
         }
 
@@ -720,15 +737,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_00Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu01Property =
-            DependencyProperty.Register("CKMenu01", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_01Property =
+            DependencyProperty.Register("CKMenu_01", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu01
+        public KeyValue CKMenu_01
         {
-            get { return (KeyValue)GetValue(CKMenu01Property); }
+            get { return (KeyValue)GetValue(CKMenu_01Property); }
             set
             {
-                SetValue(CKMenu01Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_01));
+                SetValue(CKMenu_01Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_01));
             }
         }
 
@@ -768,15 +785,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_01Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu02Property =
-            DependencyProperty.Register("CKMenu02", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_02Property =
+            DependencyProperty.Register("CKMenu_02", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu02
+        public KeyValue CKMenu_02
         {
-            get { return (KeyValue)GetValue(CKMenu02Property); }
+            get { return (KeyValue)GetValue(CKMenu_02Property); }
             set
             {
-                SetValue(CKMenu02Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_02));
+                SetValue(CKMenu_02Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_02));
             }
         }
 
@@ -816,15 +833,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_02Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu03Property =
-            DependencyProperty.Register("CKMenu03", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_03Property =
+            DependencyProperty.Register("CKMenu_03", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu03
+        public KeyValue CKMenu_03
         {
-            get { return (KeyValue)GetValue(CKMenu03Property); }
+            get { return (KeyValue)GetValue(CKMenu_03Property); }
             set
             {
-                SetValue(CKMenu03Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_03));
+                SetValue(CKMenu_03Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_03));
             }
         }
 
@@ -864,15 +881,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_03Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu04Property =
-            DependencyProperty.Register("CKMenu04", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_04Property =
+            DependencyProperty.Register("CKMenu_04", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu04
+        public KeyValue CKMenu_04
         {
-            get { return (KeyValue)GetValue(CKMenu04Property); }
+            get { return (KeyValue)GetValue(CKMenu_04Property); }
             set
             {
-                SetValue(CKMenu04Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_04));
+                SetValue(CKMenu_04Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_04));
             }
         }
 
@@ -912,15 +929,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_04Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu10Property =
-            DependencyProperty.Register("CKMenu10", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_10Property =
+            DependencyProperty.Register("CKMenu_10", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu10
+        public KeyValue CKMenu_10
         {
-            get { return (KeyValue)GetValue(CKMenu10Property); }
+            get { return (KeyValue)GetValue(CKMenu_10Property); }
             set
             {
-                SetValue(CKMenu10Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_10));
+                SetValue(CKMenu_10Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_10));
             }
         }
 
@@ -960,15 +977,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_10Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu11Property =
-            DependencyProperty.Register("CKMenu11", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_11Property =
+            DependencyProperty.Register("CKMenu_11", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu11
+        public KeyValue CKMenu_11
         {
-            get { return (KeyValue)GetValue(CKMenu11Property); }
+            get { return (KeyValue)GetValue(CKMenu_11Property); }
             set
             {
-                SetValue(CKMenu11Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_11));
+                SetValue(CKMenu_11Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_11));
             }
         }
 
@@ -1008,13 +1025,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_11Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu12Property =
-            DependencyProperty.Register("CKMenu12", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_12Property =
+            DependencyProperty.Register("CKMenu_12", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu12
+        public KeyValue CKMenu_12
         {
-            get { return (KeyValue)GetValue(CKMenu12Property); }
-            set { SetValue(CKMenu12Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_12)); }
+            get { return (KeyValue)GetValue(CKMenu_12Property); }
+            set { SetValue(CKMenu_12Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_12)); }
         }
 
         public static readonly DependencyProperty CKLabel_12Property =
@@ -1053,13 +1070,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_12Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu13Property =
-            DependencyProperty.Register("CKMenu13", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_13Property =
+            DependencyProperty.Register("CKMenu_13", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu13
+        public KeyValue CKMenu_13
         {
-            get { return (KeyValue)GetValue(CKMenu13Property); }
-            set { SetValue(CKMenu13Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_13)); }
+            get { return (KeyValue)GetValue(CKMenu_13Property); }
+            set { SetValue(CKMenu_13Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_13)); }
         }
 
         public static readonly DependencyProperty CKLabel_13Property =
@@ -1098,13 +1115,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_13Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu14Property =
-            DependencyProperty.Register("CKMenu14", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_14Property =
+            DependencyProperty.Register("CKMenu_14", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu14
+        public KeyValue CKMenu_14
         {
-            get { return (KeyValue)GetValue(CKMenu14Property); }
-            set { SetValue(CKMenu14Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_14)); }
+            get { return (KeyValue)GetValue(CKMenu_14Property); }
+            set { SetValue(CKMenu_14Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_14)); }
         }
 
         public static readonly DependencyProperty CKLabel_14Property =
@@ -1143,13 +1160,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_14Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu20Property =
-            DependencyProperty.Register("CKMenu20", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_20Property =
+            DependencyProperty.Register("CKMenu_20", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu20
+        public KeyValue CKMenu_20
         {
-            get { return (KeyValue)GetValue(CKMenu20Property); }
-            set { SetValue(CKMenu20Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_20)); }
+            get { return (KeyValue)GetValue(CKMenu_20Property); }
+            set { SetValue(CKMenu_20Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_20)); }
         }
 
         public static readonly DependencyProperty CKLabel_20Property =
@@ -1188,13 +1205,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_20Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu21Property =
-            DependencyProperty.Register("CKMenu21", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_21Property =
+            DependencyProperty.Register("CKMenu_21", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu21
+        public KeyValue CKMenu_21
         {
-            get { return (KeyValue)GetValue(CKMenu21Property); }
-            set { SetValue(CKMenu21Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_21)); }
+            get { return (KeyValue)GetValue(CKMenu_21Property); }
+            set { SetValue(CKMenu_21Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_21)); }
         }
 
         public static readonly DependencyProperty CKLabel_21Property =
@@ -1233,13 +1250,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_21Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu22Property =
-            DependencyProperty.Register("CKMenu22", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_22Property =
+            DependencyProperty.Register("CKMenu_22", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu22
+        public KeyValue CKMenu_22
         {
-            get { return (KeyValue)GetValue(CKMenu22Property); }
-            set { SetValue(CKMenu22Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_22)); }
+            get { return (KeyValue)GetValue(CKMenu_22Property); }
+            set { SetValue(CKMenu_22Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_22)); }
         }
 
         public static readonly DependencyProperty CKLabel_22Property =
@@ -1278,13 +1295,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_22Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu23Property =
-            DependencyProperty.Register("CKMenu23", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_23Property =
+            DependencyProperty.Register("CKMenu_23", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu23
+        public KeyValue CKMenu_23
         {
-            get { return (KeyValue)GetValue(CKMenu23Property); }
-            set { SetValue(CKMenu23Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_23)); }
+            get { return (KeyValue)GetValue(CKMenu_23Property); }
+            set { SetValue(CKMenu_23Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_23)); }
         }
 
         public static readonly DependencyProperty CKLabel_23Property =
@@ -1323,13 +1340,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_23Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu24Property =
-            DependencyProperty.Register("CKMenu24", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_24Property =
+            DependencyProperty.Register("CKMenu_24", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu24
+        public KeyValue CKMenu_24
         {
-            get { return (KeyValue)GetValue(CKMenu24Property); }
-            set { SetValue(CKMenu24Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_24)); }
+            get { return (KeyValue)GetValue(CKMenu_24Property); }
+            set { SetValue(CKMenu_24Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_24)); }
         }
 
         public static readonly DependencyProperty CKLabel_24Property =
@@ -1368,13 +1385,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_24Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu30Property =
-            DependencyProperty.Register("CKMenu30", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_30Property =
+            DependencyProperty.Register("CKMenu_30", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu30
+        public KeyValue CKMenu_30
         {
-            get { return (KeyValue)GetValue(CKMenu30Property); }
-            set { SetValue(CKMenu30Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_30)); }
+            get { return (KeyValue)GetValue(CKMenu_30Property); }
+            set { SetValue(CKMenu_30Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_30)); }
         }
 
         public static readonly DependencyProperty CKLabel_30Property =
@@ -1413,13 +1430,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_30Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu31Property =
-            DependencyProperty.Register("CKMenu31", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_31Property =
+            DependencyProperty.Register("CKMenu_31", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu31
+        public KeyValue CKMenu_31
         {
-            get { return (KeyValue)GetValue(CKMenu31Property); }
-            set { SetValue(CKMenu31Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_31)); }
+            get { return (KeyValue)GetValue(CKMenu_31Property); }
+            set { SetValue(CKMenu_31Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_31)); }
         }
 
         public static readonly DependencyProperty CKLabel_31Property =
@@ -1458,13 +1475,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_31Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu32Property =
-            DependencyProperty.Register("CKMenu32", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_32Property =
+            DependencyProperty.Register("CKMenu_32", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu32
+        public KeyValue CKMenu_32
         {
-            get { return (KeyValue)GetValue(CKMenu32Property); }
-            set { SetValue(CKMenu32Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_32)); }
+            get { return (KeyValue)GetValue(CKMenu_32Property); }
+            set { SetValue(CKMenu_32Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_32)); }
         }
 
         public static readonly DependencyProperty CKLabel_32Property =
@@ -1503,13 +1520,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_32Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu33Property =
-            DependencyProperty.Register("CKMenu33", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_33Property =
+            DependencyProperty.Register("CKMenu_33", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu33
+        public KeyValue CKMenu_33
         {
-            get { return (KeyValue)GetValue(CKMenu33Property); }
-            set { SetValue(CKMenu33Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_33)); }
+            get { return (KeyValue)GetValue(CKMenu_33Property); }
+            set { SetValue(CKMenu_33Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_33)); }
         }
 
         public static readonly DependencyProperty CKLabel_33Property =
@@ -1548,13 +1565,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_33Property, value); }
         }
 
-        public static readonly DependencyProperty CKMenu34Property =
-            DependencyProperty.Register("CKMenu34", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+        public static readonly DependencyProperty CKMenu_34Property =
+            DependencyProperty.Register("CKMenu_34", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public KeyValue CKMenu34
+        public KeyValue CKMenu_34
         {
-            get { return (KeyValue)GetValue(CKMenu34Property); }
-            set { SetValue(CKMenu34Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_34)); }
+            get { return (KeyValue)GetValue(CKMenu_34Property); }
+            set { SetValue(CKMenu_34Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_34)); }
         }
 
         public static readonly DependencyProperty CKLabel_34Property =
@@ -1593,189 +1610,189 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKImSo_34Property, value); }
         }
 
-        public bool CKMenuKey_00
+        public bool CKMenu_Key_00
         {
-            get { return (bool)GetValue(CKMenuKey_00Property); }
-            set { SetValue(CKMenuKey_00Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_00Property); }
+            set { SetValue(CKMenu_Key_00Property, value); }
         }
 
-        public bool CKMenuKey_01
+        public bool CKMenu_Key_01
         {
-            get { return (bool)GetValue(CKMenuKey_01Property); }
-            set { SetValue(CKMenuKey_01Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_01Property); }
+            set { SetValue(CKMenu_Key_01Property, value); }
         }
 
-        public bool CKMenuKey_02
+        public bool CKMenu_Key_02
         {
-            get { return (bool)GetValue(CKMenuKey_02Property); }
-            set { SetValue(CKMenuKey_02Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_02Property); }
+            set { SetValue(CKMenu_Key_02Property, value); }
         }
 
-        public bool CKMenuKey_03
+        public bool CKMenu_Key_03
         {
-            get { return (bool)GetValue(CKMenuKey_03Property); }
-            set { SetValue(CKMenuKey_03Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_03Property); }
+            set { SetValue(CKMenu_Key_03Property, value); }
         }
 
-        public bool CKMenuKey_04
+        public bool CKMenu_Key_04
         {
-            get { return (bool)GetValue(CKMenuKey_04Property); }
-            set { SetValue(CKMenuKey_04Property, value); }
-        }
-
-
-        public bool CKMenuKey_10
-        {
-            get { return (bool)GetValue(CKMenuKey_10Property); }
-            set { SetValue(CKMenuKey_10Property, value); }
-        }
-
-        public bool CKMenuKey_11
-        {
-            get { return (bool)GetValue(CKMenuKey_11Property); }
-            set { SetValue(CKMenuKey_11Property, value); }
-        }
-
-        public bool CKMenuKey_12
-        {
-            get { return (bool)GetValue(CKMenuKey_12Property); }
-            set { SetValue(CKMenuKey_12Property, value); }
-        }
-
-        public bool CKMenuKey_13
-        {
-            get { return (bool)GetValue(CKMenuKey_13Property); }
-            set { SetValue(CKMenuKey_13Property, value); }
-        }
-
-        public bool CKMenuKey_14
-        {
-            get { return (bool)GetValue(CKMenuKey_14Property); }
-            set { SetValue(CKMenuKey_14Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_04Property); }
+            set { SetValue(CKMenu_Key_04Property, value); }
         }
 
 
-        public bool CKMenuKey_20
+        public bool CKMenu_Key_10
         {
-            get { return (bool)GetValue(CKMenuKey_20Property); }
-            set { SetValue(CKMenuKey_20Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_10Property); }
+            set { SetValue(CKMenu_Key_10Property, value); }
         }
 
-        public bool CKMenuKey_21
+        public bool CKMenu_Key_11
         {
-            get { return (bool)GetValue(CKMenuKey_21Property); }
-            set { SetValue(CKMenuKey_21Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_11Property); }
+            set { SetValue(CKMenu_Key_11Property, value); }
         }
 
-        public bool CKMenuKey_22
+        public bool CKMenu_Key_12
         {
-            get { return (bool)GetValue(CKMenuKey_22Property); }
-            set { SetValue(CKMenuKey_22Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_12Property); }
+            set { SetValue(CKMenu_Key_12Property, value); }
         }
 
-        public bool CKMenuKey_23
+        public bool CKMenu_Key_13
         {
-            get { return (bool)GetValue(CKMenuKey_23Property); }
-            set { SetValue(CKMenuKey_23Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_13Property); }
+            set { SetValue(CKMenu_Key_13Property, value); }
         }
 
-        public bool CKMenuKey_24
+        public bool CKMenu_Key_14
         {
-            get { return (bool)GetValue(CKMenuKey_24Property); }
-            set { SetValue(CKMenuKey_24Property, value); }
-        }
-
-
-        public bool CKMenuKey_30
-        {
-            get { return (bool)GetValue(CKMenuKey_30Property); }
-            set { SetValue(CKMenuKey_30Property, value); }
-        }
-
-        public bool CKMenuKey_31
-        {
-            get { return (bool)GetValue(CKMenuKey_31Property); }
-            set { SetValue(CKMenuKey_31Property, value); }
-        }
-
-        public bool CKMenuKey_32
-        {
-            get { return (bool)GetValue(CKMenuKey_32Property); }
-            set { SetValue(CKMenuKey_32Property, value); }
-        }
-
-        public bool CKMenuKey_33
-        {
-            get { return (bool)GetValue(CKMenuKey_33Property); }
-            set { SetValue(CKMenuKey_33Property, value); }
-        }
-
-        public bool CKMenuKey_34
-        {
-            get { return (bool)GetValue(CKMenuKey_34Property); }
-            set { SetValue(CKMenuKey_34Property, value); }
+            get { return (bool)GetValue(CKMenu_Key_14Property); }
+            set { SetValue(CKMenu_Key_14Property, value); }
         }
 
 
-        public static readonly DependencyProperty CKMenuKey_00Property =
-            DependencyProperty.Register("CKMenuKey_00", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public bool CKMenu_Key_20
+        {
+            get { return (bool)GetValue(CKMenu_Key_20Property); }
+            set { SetValue(CKMenu_Key_20Property, value); }
+        }
 
-        public static readonly DependencyProperty CKMenuKey_01Property =
-            DependencyProperty.Register("CKMenuKey_01", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public bool CKMenu_Key_21
+        {
+            get { return (bool)GetValue(CKMenu_Key_21Property); }
+            set { SetValue(CKMenu_Key_21Property, value); }
+        }
 
-        public static readonly DependencyProperty CKMenuKey_02Property =
-            DependencyProperty.Register("CKMenuKey_02", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public bool CKMenu_Key_22
+        {
+            get { return (bool)GetValue(CKMenu_Key_22Property); }
+            set { SetValue(CKMenu_Key_22Property, value); }
+        }
 
-        public static readonly DependencyProperty CKMenuKey_03Property =
-            DependencyProperty.Register("CKMenuKey_03", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public bool CKMenu_Key_23
+        {
+            get { return (bool)GetValue(CKMenu_Key_23Property); }
+            set { SetValue(CKMenu_Key_23Property, value); }
+        }
 
-        public static readonly DependencyProperty CKMenuKey_04Property =
-            DependencyProperty.Register("CKMenuKey_04", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public bool CKMenu_Key_24
+        {
+            get { return (bool)GetValue(CKMenu_Key_24Property); }
+            set { SetValue(CKMenu_Key_24Property, value); }
+        }
+
+
+        public bool CKMenu_Key_30
+        {
+            get { return (bool)GetValue(CKMenu_Key_30Property); }
+            set { SetValue(CKMenu_Key_30Property, value); }
+        }
+
+        public bool CKMenu_Key_31
+        {
+            get { return (bool)GetValue(CKMenu_Key_31Property); }
+            set { SetValue(CKMenu_Key_31Property, value); }
+        }
+
+        public bool CKMenu_Key_32
+        {
+            get { return (bool)GetValue(CKMenu_Key_32Property); }
+            set { SetValue(CKMenu_Key_32Property, value); }
+        }
+
+        public bool CKMenu_Key_33
+        {
+            get { return (bool)GetValue(CKMenu_Key_33Property); }
+            set { SetValue(CKMenu_Key_33Property, value); }
+        }
+
+        public bool CKMenu_Key_34
+        {
+            get { return (bool)GetValue(CKMenu_Key_34Property); }
+            set { SetValue(CKMenu_Key_34Property, value); }
+        }
+
+
+        public static readonly DependencyProperty CKMenu_Key_00Property =
+            DependencyProperty.Register("CKMenu_Key_00", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public static readonly DependencyProperty CKMenu_Key_01Property =
+            DependencyProperty.Register("CKMenu_Key_01", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public static readonly DependencyProperty CKMenu_Key_02Property =
+            DependencyProperty.Register("CKMenu_Key_02", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public static readonly DependencyProperty CKMenu_Key_03Property =
+            DependencyProperty.Register("CKMenu_Key_03", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public static readonly DependencyProperty CKMenu_Key_04Property =
+            DependencyProperty.Register("CKMenu_Key_04", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_10Property =
-            DependencyProperty.Register("CKMenuKey_10", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_10Property =
+            DependencyProperty.Register("CKMenu_Key_10", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_11Property =
-            DependencyProperty.Register("CKMenuKey_11", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_11Property =
+            DependencyProperty.Register("CKMenu_Key_11", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_12Property =
-            DependencyProperty.Register("CKMenuKey_12", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_12Property =
+            DependencyProperty.Register("CKMenu_Key_12", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_13Property =
-            DependencyProperty.Register("CKMenuKey_13", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_13Property =
+            DependencyProperty.Register("CKMenu_Key_13", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_14Property =
-            DependencyProperty.Register("CKMenuKey_14", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_14Property =
+            DependencyProperty.Register("CKMenu_Key_14", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_20Property =
-            DependencyProperty.Register("CKMenuKey_20", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_20Property =
+            DependencyProperty.Register("CKMenu_Key_20", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_21Property =
-            DependencyProperty.Register("CKMenuKey_21", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_21Property =
+            DependencyProperty.Register("CKMenu_Key_21", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_22Property =
-            DependencyProperty.Register("CKMenuKey_22", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_22Property =
+            DependencyProperty.Register("CKMenu_Key_22", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_23Property =
-            DependencyProperty.Register("CKMenuKey_23", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_23Property =
+            DependencyProperty.Register("CKMenu_Key_23", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_24Property =
-            DependencyProperty.Register("CKMenuKey_24", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_24Property =
+            DependencyProperty.Register("CKMenu_Key_24", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_30Property =
-            DependencyProperty.Register("CKMenuKey_30", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_30Property =
+            DependencyProperty.Register("CKMenu_Key_30", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_31Property =
-            DependencyProperty.Register("CKMenuKey_31", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_31Property =
+            DependencyProperty.Register("CKMenu_Key_31", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_32Property =
-            DependencyProperty.Register("CKMenuKey_32", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_32Property =
+            DependencyProperty.Register("CKMenu_Key_32", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_33Property =
-            DependencyProperty.Register("CKMenuKey_33", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_33Property =
+            DependencyProperty.Register("CKMenu_Key_33", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
-        public static readonly DependencyProperty CKMenuKey_34Property =
-            DependencyProperty.Register("CKMenuKey_34", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenu_Key_34Property =
+            DependencyProperty.Register("CKMenu_Key_34", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
         
 
         public static readonly DependencyProperty CKKeCo_00Property =

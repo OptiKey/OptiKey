@@ -402,6 +402,8 @@
     <Compile Include="UI\ValueConverters\BoolToCustomValues.cs" />
     <Compile Include="UI\ValueConverters\ListNotEmpty.cs" />
     <Compile Include="UI\ValueConverters\IsGreaterThan.cs" />
+    <Compile Include="UI\ValueConverters\IsActionKey.cs" />
+    <Compile Include="UI\ValueConverters\IsMenuKey.cs" />
     <Compile Include="UI\ValueConverters\OverrideHasValue.cs" />
     <Compile Include="UI\ValueConverters\CloneBrush.cs" />
     <Compile Include="UI\ValueConverters\ObjectIsType.cs" />
