@@ -26,6 +26,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             public List<Buttons> buttons { get; set; }
             public Grid grid { get; set; }
             public List<Images> images { get; set; }
+            public List<Sounds> sounds { get; set; }
         }
 
         public class Buttons
@@ -39,7 +40,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 sound_id = "";
                 label = "";
                 vocalization = "";
-                load_board = null;
+                load_board = new Load_board();
                 id = "";
                 action = null;
             }
@@ -56,6 +57,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public class Load_board
         {
+            public Load_board()
+            {
+                path = null;
+            }
             public string path { get; set; }
         }
 
@@ -76,6 +81,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public class Images
         {
             //[JsonProperty("images")]
+            public string id { get; set; }
+            public string path { get; set; }
+            public string url { get; set; }
+            public string data { get; set; }
+            public string content_type { get; set; }
+        }
+
+        public class Sounds
+        {
+            //[JsonProperty("sounds")]
             public string id { get; set; }
             public string path { get; set; }
             public string url { get; set; }
@@ -121,6 +136,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     int ButtonCount = CKPageOBF.buttons.Count();
                     Log.DebugFormat("Page contains {0} buttons.", ButtonCount - 3 * includesTopRow);
                     string image;
+                    string sound;
+                    string action;
                     string path;
                     string text;
 
@@ -222,26 +239,37 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 {
                                     var imageData = CKPageOBF.images.ElementAt(imageIndex);
                                     if (!String.IsNullOrEmpty(imageData.path)) { image = CKpath() + imageData.path; }
-                                    else if (!String.IsNullOrEmpty(imageData.data))
-                                    {
-                                        image += "." + imageData.content_type.Substring(6);
-                                        image = CKpath() + @"images\" + image;
-                                        if (!File.Exists(image))
-                                                File.WriteAllBytes(image, Convert.FromBase64String(imageData.data.Substring(22)));
-                                    }
-                                    else if (!String.IsNullOrEmpty(imageData.url))
-                                    {
-                                        image = CKpath() + @"images\" + Path.GetFileName(imageData.url);
-                                        if (!File.Exists(image))
-                                            using (WebClient client = new WebClient())
-                                            {
-                                                client.DownloadFile(new Uri(imageData.url), image);
-                                            }
-                                    }
                                     else
                                     {
-                                        Log.DebugFormat("Insufficient image data for image: {0}.", image);
-                                        image = "";
+                                        if (!Directory.Exists(CKpath() + @"images\")) { Directory.CreateDirectory(CKpath() + @"images\"); }
+                                        if (!String.IsNullOrEmpty(imageData.data))
+                                        {
+                                            image = CKpath() + @"images\" + image + "." + imageData.content_type.Substring(6);
+                                            if (!File.Exists(image))
+                                                File.WriteAllBytes(image, Convert.FromBase64String(imageData.data.Substring(22)));
+                                        }
+                                        else if (!String.IsNullOrEmpty(imageData.url))
+                                        {
+                                            image = CKpath() + @"images\" + image + "." + imageData.content_type.Substring(6);
+                                            if (!File.Exists(image))
+                                                using (WebClient client = new WebClient())
+                                                {
+                                                    try
+                                                    {
+                                                        client.DownloadFile(new Uri(imageData.url), image);
+                                                    }
+                                                    catch (Exception e)
+                                                    {
+                                                        Log.ErrorFormat("Failed to download image {0}.", image);
+                                                        image = null;
+                                                    }
+                                                }
+                                        }
+                                        else
+                                        {
+                                            Log.DebugFormat("Insufficient image data for image: {0}.", image);
+                                            image = "";
+                                        }
                                     }
                                 }
                                 else
@@ -253,18 +281,87 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             if (!String.IsNullOrEmpty(image))
                                 Log.DebugFormat("Button {0} uses image {1}.", ButtonNo + 1 - 3 * includesTopRow, image);
                             Images.Add(image);
+
+                            sound = CurrentButton.sound_id;
+                            if (!String.IsNullOrEmpty(sound))
+                            {
+                                int soundIndex = CKPageOBF.sounds.FindIndex(x => x.id.Contains(sound));
+                                if (soundIndex != -1)
+                                {
+                                    var soundData = CKPageOBF.sounds.ElementAt(soundIndex);
+                                    if (!String.IsNullOrEmpty(soundData.path)) { sound = CKpath() + soundData.path; }
+                                    else
+                                    {
+                                        if (!Directory.Exists(CKpath() + @"sounds\")) { Directory.CreateDirectory(CKpath() + @"sounds\"); }
+                                        if (!String.IsNullOrEmpty(soundData.data))
+                                        {
+                                            sound = CKpath() + @"sounds\" + sound + "." + soundData.content_type.Substring(6);
+                                            if (!File.Exists(sound))
+                                                File.WriteAllBytes(sound, Convert.FromBase64String(soundData.data.Substring(22)));
+                                        }
+                                        else if (!String.IsNullOrEmpty(soundData.url))
+                                        {
+                                            sound = CKpath() + @"sounds\" + sound + "." + soundData.content_type.Substring(6);
+                                            if (!File.Exists(sound))
+                                                using (WebClient client = new WebClient())
+                                                {
+                                                    try
+                                                    {
+                                                        client.DownloadFile(new Uri(soundData.url), sound);
+                                                    }
+                                                    catch (Exception e)
+                                                    {
+                                                        Log.ErrorFormat("Failed to download sound {0}.", sound);
+                                                        sound = null;
+                                                    }
+                                                }
+                                        }
+                                        else
+                                        {
+                                            Log.ErrorFormat("Insufficient sound data for sound: {0}.", sound);
+                                            sound = "";
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Log.ErrorFormat("Missing sound: {0}.", sound);
+                                    sound = "";
+                                }
+                            }
+                            if (!String.IsNullOrEmpty(sound))
+                                Log.DebugFormat("Button {0} uses sound {1}.", ButtonNo + 1 - 3 * includesTopRow, sound);
+
                             Boards.Add(CurrentButton.load_board);
                             Texts.Add(CurrentButton.label);
                             text = CurrentButton.vocalization;
-                            if (Boards.Last() != null && Boards.Last().path != null)
+                            action = CurrentButton.action;
+                            if (!String.IsNullOrEmpty(Boards.Last().path) || !String.IsNullOrEmpty(sound) || !String.IsNullOrEmpty(action))
                             {
-                                path = Boards.Last().path;
+                                path = null;
+                                if (!String.IsNullOrEmpty(Boards.Last().path))
+                                {
+                                    path = ":action:board:" + Boards.Last().path;
+                                    Log.DebugFormat("Button {0} is a menu key for board {1}.", ButtonNo + 1 - 3 * includesTopRow, path);
+                                }
                                 if (!String.IsNullOrEmpty(text))
-                                    Paths.Add(text + "+" + path);
-                                else
-                                    Paths.Add(path);
+                                {
+                                    path += ":action:text:" + text;
+                                    Log.DebugFormat("Button {0} has vocalization {1}.", ButtonNo + 1 - 3 * includesTopRow, text);
+                                }
+                                if (!String.IsNullOrEmpty(sound))
+                                {
+                                    path += ":action:sound:" + sound;
+                                    Log.DebugFormat("Button {0} has sound {1}.", ButtonNo + 1 - 3 * includesTopRow, sound);
+                                }
+                                if (!String.IsNullOrEmpty(action))
+                                {
+                                    path += ":action:action:" + action;
+                                    Log.DebugFormat("Button {0} has action {1}.", ButtonNo + 1 - 3 * includesTopRow, action);
+                                }
+
+                                Paths.Add(path);
                                 Ismenukeys.Add(true);
-                                Log.DebugFormat("Button {0} is a menu key for board {1}.", ButtonNo + 1 - 3 * includesTopRow, path);
                                 Labels.Add(Texts.Last());
                             }
                             else
