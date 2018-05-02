@@ -2176,5 +2176,8 @@ Française
 (Japan) /
 日本語
 (日本)</value>
-  </data>  
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>CommuniKate sound volume:</value>
+  </data>
 </root>

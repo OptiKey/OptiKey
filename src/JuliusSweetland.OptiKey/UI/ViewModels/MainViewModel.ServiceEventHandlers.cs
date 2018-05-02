@@ -402,7 +402,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             else if (action.StartsWith("text:"))
                                 keyboardOutputService.ProcessSingleKeyText(action.Substring(5));
                             else if (action.StartsWith("sound:"))
-                                audioService.PlaySound(action.Substring(6), Settings.Default.AttentionSoundVolume);
+                                audioService.PlaySound(action.Substring(6), Settings.Default.CommuniKateSoundVolume);
                             else if (action.StartsWith("action:"))
                             {
                                 string thisAction = action.Substring(7);

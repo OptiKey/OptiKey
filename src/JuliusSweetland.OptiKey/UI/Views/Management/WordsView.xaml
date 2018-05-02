@@ -37,6 +37,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}"
@@ -168,9 +169,37 @@
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SOUND_VOLUME_LABEL}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="1" Interval="1" Maximum="100"
+                                            Value="{Binding CommuniKateSoundVolume, Mode=TwoWay}" >
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
                                 VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="6" Grid.Column="1"
+                    <CheckBox Grid.Row="7" Grid.Column="1"
                                 VerticalAlignment="Center"
                                 IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
                 </Grid>

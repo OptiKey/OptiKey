@@ -242,6 +242,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref usingCommuniKateKeyboardLayout, useCommuniKateKeyboardLayoutByDefault); }
         }
 
+        private int communiKateSoundVolume;
+        public int CommuniKateSoundVolume
+        {
+            get { return communiKateSoundVolume; }
+            set { SetProperty(ref communiKateSoundVolume, value); }
+        }
+
         private bool forceCapsLock;
         public bool ForceCapsLock
         {
@@ -319,6 +326,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
             CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
             CommuniKateStagedForDeletion = Settings.Default.CommuniKateStagedForDeletion;
+            CommuniKateSoundVolume = Settings.Default.CommuniKateSoundVolume;
             UseCommuniKateKeyboardLayoutByDefault = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
             UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
@@ -345,6 +353,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;
             Settings.Default.CommuniKateStagedForDeletion = CommuniKateStagedForDeletion;
+            Settings.Default.CommuniKateSoundVolume = CommuniKateSoundVolume;
             Settings.Default.UseCommuniKateKeyboardLayoutByDefault = UseCommuniKateKeyboardLayoutByDefault;
             Settings.Default.UsingCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayoutByDefault;
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;
