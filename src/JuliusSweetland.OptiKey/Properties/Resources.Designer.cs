@@ -659,6 +659,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommuniKate sound volume:.
+        /// </summary>
+        public static string COMMUNIKATE_SOUND_VOLUME_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SOUND_VOLUME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommuniKate top page obf file:.
         /// </summary>
         public static string COMMUNIKATE_TOPPAGE_LABEL {

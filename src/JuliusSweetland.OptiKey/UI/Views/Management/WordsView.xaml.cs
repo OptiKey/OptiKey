@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Filter = "Open Board Format|*.obf;*.obz|Open Board Format file (*.OBF)|*.obf|Open Board Format archive (*.OBZ)|*.obz"
+                Filter = "Open Board Format (*.OBF or *.OBZ)|*.obf; *.obz|Open Board Format file (*.OBF)|*.obf|Open Board Format archive (*.OBZ)|*.obz"
             };
 
             if (openFileDialog.ShowDialog() == true)
