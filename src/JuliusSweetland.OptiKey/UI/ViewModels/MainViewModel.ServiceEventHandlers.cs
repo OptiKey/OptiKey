@@ -337,7 +337,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             Log.Info("Changing keyboard to Alpha.");
                                             Keyboard = new Alpha1();
                                         }
-                                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                                        Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
                                         break;
 
                                     case "numbers.obf":
@@ -355,7 +355,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             Log.Info("Changing keyboard to Numeric And Symbols.");
                                             Keyboard = new NumericAndSymbols1();
                                         }
-                                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                                        Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
                                         break;
 
                                     case "computercontrol.obf":
@@ -367,24 +367,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 Keyboard = currentKeyboard;
                                             };
                                             Keyboard = new Mouse(BackAction);
-                                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                                            Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
                                         }
                                         break;
 
                                     default:
                                         if (string.IsNullOrEmpty(Settings.Default.CommuniKateKeyboardCurrentContext))
                                         {
-                                            Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
-                                            Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
-                                            Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
-                                            Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                                            Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateDefaultBoard;
+                                            Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateDefaultBoard;
+                                            Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateDefaultBoard;
+                                            Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateDefaultBoard;
                                         }
                                         else if (Settings.Default.CommuniKateKeyboardPrevious1Context == board)
                                         {
                                             Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateKeyboardPrevious2Context;
                                             Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateKeyboardPrevious3Context;
                                             Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateKeyboardPrevious4Context;
-                                            Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                                            Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateDefaultBoard;
                                         }
                                         else
                                         {
@@ -416,7 +416,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             keyboardOutputService.ProcessSingleKeyText(" ");
                                             break;
                                         case ":home":
-                                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                                            Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
                                             Log.InfoFormat("CommuniKate keyboard page changed to home board.");
                                             break;
                                         case ":speak":
@@ -460,11 +460,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (Settings.Default.EnableCommuniKateKeyboardLayout)
                     {
                         Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
-                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                        Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateDefaultBoard;
                     }
                     Log.Info("Changing keyboard to Alpha1.");
                     Keyboard = new Alpha1();
@@ -494,11 +494,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (Settings.Default.EnableCommuniKateKeyboardLayout)
                         {
                             Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
-                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                            Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
-                            Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
-                            Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
-                            Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                            Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
+                            Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateDefaultBoard;
+                            Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateDefaultBoard;
+                            Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateDefaultBoard;
+                            Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateDefaultBoard;
                         }
                       
                         InitialiseKeyboard(this.mainWindowManipulationService);                     
@@ -559,7 +559,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.CommuniKateKeyboard:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                    Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
                     Settings.Default.UsingCommuniKateKeyboardLayout = true;
                     Log.Info("Changing keyboard to CommuniKate.");
                     Keyboard = new Alpha1();
@@ -569,11 +569,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (Settings.Default.EnableCommuniKateKeyboardLayout)
                     {
                         Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
-                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                        Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateDefaultBoard;
                     }
                     Log.Info("Changing keyboard to ConversationAlpha1.");
                     var opacityBeforeConversationAlpha1 = mainWindowManipulationService.GetOpacity();

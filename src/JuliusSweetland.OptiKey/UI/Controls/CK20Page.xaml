@@ -14,6 +14,8 @@
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:IsGreaterThan x:Key="IsGreaterThan" />
+                    <valueConverters:IsActionKey x:Key="IsActionKey" />
+                    <valueConverters:IsMenuKey x:Key="IsMenuKey" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -126,15 +128,30 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -162,7 +179,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -170,7 +187,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                                      Value="{Binding Path=CKMenu00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
+                                                      Value="{Binding Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -217,7 +234,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -245,7 +262,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -253,11 +270,11 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -300,7 +317,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -328,7 +345,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -336,7 +353,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -383,7 +400,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -411,7 +428,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -419,7 +436,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -466,7 +483,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -494,7 +511,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -502,7 +519,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -550,7 +567,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -578,7 +595,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -586,7 +603,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -633,7 +650,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -661,7 +678,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -669,7 +686,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -716,7 +733,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -744,7 +761,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -752,7 +769,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -799,7 +816,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -827,7 +844,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -835,7 +852,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -882,7 +899,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -910,7 +927,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -918,7 +935,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -966,7 +983,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -994,7 +1011,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1002,7 +1019,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1049,7 +1066,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -1077,7 +1094,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1085,7 +1102,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1132,7 +1149,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -1160,7 +1177,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1168,7 +1185,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1215,7 +1232,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -1243,7 +1260,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1251,7 +1268,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1298,7 +1315,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -1326,7 +1343,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1334,7 +1351,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1382,7 +1399,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -1410,7 +1427,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1418,7 +1435,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1465,7 +1482,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -1493,7 +1510,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1501,7 +1518,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1548,7 +1565,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -1576,7 +1593,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1584,7 +1601,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1631,7 +1648,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -1659,7 +1676,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1667,7 +1684,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1714,7 +1731,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="Black" VerticalAlignment="Top"
@@ -1742,7 +1759,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKMenuKey_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
@@ -1750,7 +1767,7 @@
                                                       SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                                       DisabledBackgroundOpacity="0.8"
                                                       Text="{Binding Path=CKLabel_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                                      Value="{Binding Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
