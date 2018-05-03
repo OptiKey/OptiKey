@@ -16,6 +16,7 @@
                     <valueConverters:IsGreaterThan x:Key="IsGreaterThan" />
                     <valueConverters:IsActionKey x:Key="IsActionKey" />
                     <valueConverters:IsMenuKey x:Key="IsMenuKey" />
+                    <valueConverters:IsValidImage x:Key="IsValidImage" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -126,21 +127,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -173,25 +183,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                                      Value="{Binding Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -209,21 +206,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -256,25 +262,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -292,21 +285,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -339,25 +341,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -375,21 +364,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -422,25 +420,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -458,21 +443,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -505,25 +499,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -542,21 +523,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -589,25 +579,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -625,21 +602,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -672,25 +658,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -708,21 +681,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -755,25 +737,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -791,21 +760,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -838,25 +816,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -874,21 +839,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -921,25 +895,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -958,21 +919,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1005,25 +975,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -1041,21 +998,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1088,25 +1054,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -1124,21 +1077,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1171,25 +1133,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -1207,21 +1156,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1254,25 +1212,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -1290,21 +1235,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1337,25 +1291,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -1374,21 +1315,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1421,25 +1371,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -1457,21 +1394,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1504,25 +1450,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -1540,21 +1473,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1587,25 +1529,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -1623,21 +1552,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1670,25 +1608,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
@@ -1706,21 +1631,30 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                   Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Setter Property="Content">
                             <Setter.Value>
                                 <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                    <TextBlock Text="{Binding Path=CKLabel_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                                FontWeight="Heavy" HorizontalAlignment="Center" />
                                 </Viewbox>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
                                 <Setter Property="Grid.RowSpan" Value="2"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -1753,25 +1687,12 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              ShiftUpText="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              ShiftDownText="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                              Value="{Binding Path=CKLabel_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                              Text="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <controls:Key SharedSizeGroup="KeyWithText"
-                                                      BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
-                                                      SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
-                                                      DisabledBackgroundOpacity="0.8"
-                                                      Text="{Binding Path=CKLabel_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                                      Value="{Binding Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKLabel_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                            <DataTrigger Binding="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key DisabledBackgroundOpacity="0.8"/>
