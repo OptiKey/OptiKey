@@ -157,7 +157,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     List<string> Colours = new List<string>();
                     List<string> Images = new List<string>();
                     List<string> Paths = new List<string>();
-                    List<bool> Ismenukeys = new List<bool>();
+                    //List<bool> Ismenukeys = new List<bool>();
                     List<string> Labels = new List<string>();
                     List<string> Texts = new List<string>();
                     List<Load_board> Boards = new List<Load_board>();
@@ -166,8 +166,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     // some alternative default colours:
                     // "rgb(68, 68, 68)"; // "rgb(191, 191, 191)"; // "Transparent"; //"#000000"; //
                     string pageColour = defaultColour;
-                    string defaultPath = null;
-                    bool defaultIsMenuKey = false;
+                    string defaultPath = null; // ""; //
+                    //bool defaultIsMenuKey = false;
 
                     int BlankButtonCount = 0; // CKPageOBF.grid.order.FindAll(x => x.Equals("null")).Count - 2 * includesTopRow; // 20 - ButtonCount + 3 * includesTopRow;
                     for (int row = includesTopRow; row < CKPageOBF.grid.rows; ++row)
@@ -348,8 +348,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 Log.DebugFormat("Button {0} uses sound {1}.", ButtonNo + 1 - 3 * includesTopRow, sound);
 
                             Boards.Add(CurrentButton.load_board);
-                            Texts.Add(CurrentButton.label);
+                            Labels.Add(CurrentButton.label);
                             text = CurrentButton.vocalization;
+                            Texts.Add(String.IsNullOrEmpty(text) ? Labels.Last() : text);
                             action = CurrentButton.action;
                             if (!String.IsNullOrEmpty(Boards.Last().path) || !String.IsNullOrEmpty(sound) || !String.IsNullOrEmpty(action))
                             {
@@ -376,14 +377,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 }
 
                                 Paths.Add(path);
-                                Ismenukeys.Add(true);
-                                Labels.Add(Texts.Last());
+                                //Ismenukeys.Add(true);
+                                //Texts.Add(Labels.Last());
                             }
                             else
                             {
-                                Paths.Add(defaultPath);
-                                Ismenukeys.Add(defaultIsMenuKey);
-                                Labels.Add(String.IsNullOrEmpty(text) ? Texts.Last() : text);
+                                if (String.IsNullOrEmpty(Texts.Last()))
+                                    Paths.Add(defaultPath);
+                                else
+                                    Paths.Add(":action:text:" + Texts.Last());
+                                //Paths.Add(defaultPath);
+                                //Ismenukeys.Add(defaultIsMenuKey);
+                                //Texts.Add(String.IsNullOrEmpty(text) ? Labels.Last() : text);
                             }
                             ++ButtonNo;
                         }
@@ -395,7 +400,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_00 = Texts.ElementAt(buttonid);
                     key.CKImSo_00 = Images.ElementAt(buttonid);
                     key.CKKeCo_00 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_00 = Ismenukeys.ElementAt(buttonid);
+                    //key.CKMenu_00 = new KeyValue(Enums.FunctionKeys.CommuniKate, Paths.ElementAt(buttonid));
+                    /*
+                    if (String.IsNullOrEmpty(Paths.ElementAt(buttonid)))
+                        key.CKMenu_00 = new KeyValue(Enums.FunctionKeys.CommuniKate, Texts.ElementAt(buttonid));
+                    else
+                        key.CKMenu_00 = new KeyValue(Enums.FunctionKeys.CommuniKate, Paths.ElementAt(buttonid));
+                        */
+                    // key.CKMenu_Key_00 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_01 = Colours.ElementAt(buttonid);
@@ -403,7 +415,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_01 = Texts.ElementAt(buttonid);
                     key.CKImSo_01 = Images.ElementAt(buttonid);
                     key.CKKeCo_01 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_01 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_01 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_02 = Colours.ElementAt(buttonid);
@@ -411,7 +423,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_02 = Texts.ElementAt(buttonid);
                     key.CKImSo_02 = Images.ElementAt(buttonid);
                     key.CKKeCo_02 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_02 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_02 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_03 = Colours.ElementAt(buttonid);
@@ -419,7 +431,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_03 = Texts.ElementAt(buttonid);
                     key.CKImSo_03 = Images.ElementAt(buttonid);
                     key.CKKeCo_03 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_03 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_03 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_04 = Colours.ElementAt(buttonid);
@@ -427,7 +439,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_04 = Texts.ElementAt(buttonid);
                     key.CKImSo_04 = Images.ElementAt(buttonid);
                     key.CKKeCo_04 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_04 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_04 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_10 = Colours.ElementAt(buttonid);
@@ -435,7 +447,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_10 = Texts.ElementAt(buttonid);
                     key.CKImSo_10 = Images.ElementAt(buttonid);
                     key.CKKeCo_10 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_10 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_10 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_11 = Colours.ElementAt(buttonid);
@@ -443,7 +455,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_11 = Texts.ElementAt(buttonid);
                     key.CKImSo_11 = Images.ElementAt(buttonid);
                     key.CKKeCo_11 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_11 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_11 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_12 = Colours.ElementAt(buttonid);
@@ -451,7 +463,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_12 = Texts.ElementAt(buttonid);
                     key.CKImSo_12 = Images.ElementAt(buttonid);
                     key.CKKeCo_12 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_12 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_12 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_13 = Colours.ElementAt(buttonid);
@@ -459,7 +471,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_13 = Texts.ElementAt(buttonid);
                     key.CKImSo_13 = Images.ElementAt(buttonid);
                     key.CKKeCo_13 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_13 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_13 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_14 = Colours.ElementAt(buttonid);
@@ -467,7 +479,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_14 = Texts.ElementAt(buttonid);
                     key.CKImSo_14 = Images.ElementAt(buttonid);
                     key.CKKeCo_14 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_14 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_14 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_20 = Colours.ElementAt(buttonid);
@@ -475,7 +487,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_20 = Texts.ElementAt(buttonid);
                     key.CKImSo_20 = Images.ElementAt(buttonid);
                     key.CKKeCo_20 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_20 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_20 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_21 = Colours.ElementAt(buttonid);
@@ -483,7 +495,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_21 = Texts.ElementAt(buttonid);
                     key.CKImSo_21 = Images.ElementAt(buttonid);
                     key.CKKeCo_21 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_21 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_21 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_22 = Colours.ElementAt(buttonid);
@@ -491,7 +503,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_22 = Texts.ElementAt(buttonid);
                     key.CKImSo_22 = Images.ElementAt(buttonid);
                     key.CKKeCo_22 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_22 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_22 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_23 = Colours.ElementAt(buttonid);
@@ -499,7 +511,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_23 = Texts.ElementAt(buttonid);
                     key.CKImSo_23 = Images.ElementAt(buttonid);
                     key.CKKeCo_23 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_23 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_23 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_24 = Colours.ElementAt(buttonid);
@@ -507,7 +519,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_24 = Texts.ElementAt(buttonid);
                     key.CKImSo_24 = Images.ElementAt(buttonid);
                     key.CKKeCo_24 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_24 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_24 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_30 = Colours.ElementAt(buttonid);
@@ -515,7 +527,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_30 = Texts.ElementAt(buttonid);
                     key.CKImSo_30 = Images.ElementAt(buttonid);
                     key.CKKeCo_30 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_30 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_30 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_31 = Colours.ElementAt(buttonid);
@@ -523,7 +535,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_31 = Texts.ElementAt(buttonid);
                     key.CKImSo_31 = Images.ElementAt(buttonid);
                     key.CKKeCo_31 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_31 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_31 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_32 = Colours.ElementAt(buttonid);
@@ -531,7 +543,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_32 = Texts.ElementAt(buttonid);
                     key.CKImSo_32 = Images.ElementAt(buttonid);
                     key.CKKeCo_32 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_32 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_32 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_33 = Colours.ElementAt(buttonid);
@@ -539,7 +551,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_33 = Texts.ElementAt(buttonid);
                     key.CKImSo_33 = Images.ElementAt(buttonid);
                     key.CKKeCo_33 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_33 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_33 = Ismenukeys.ElementAt(buttonid);
 
                     ++buttonid;
                     key.CKBaCo_34 = Colours.ElementAt(buttonid);
@@ -547,7 +559,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     key.CKText_34 = Texts.ElementAt(buttonid);
                     key.CKImSo_34 = Images.ElementAt(buttonid);
                     key.CKKeCo_34 = Paths.ElementAt(buttonid);
-                    key.CKMenu_Key_34 = Ismenukeys.ElementAt(buttonid);
+                    // key.CKMenu_Key_34 = Ismenukeys.ElementAt(buttonid);
                 }
             }
         }
@@ -1609,7 +1621,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (string)GetValue(CKImSo_34Property); }
             set { SetValue(CKImSo_34Property, value); }
         }
-
+        /*
         public bool CKMenu_Key_00
         {
             get { return (bool)GetValue(CKMenu_Key_00Property); }
@@ -1793,7 +1805,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         
         public static readonly DependencyProperty CKMenu_Key_34Property =
             DependencyProperty.Register("CKMenu_Key_34", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
-        
+        */
 
         public static readonly DependencyProperty CKKeCo_00Property =
             DependencyProperty.Register("CKKeCo_00", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
