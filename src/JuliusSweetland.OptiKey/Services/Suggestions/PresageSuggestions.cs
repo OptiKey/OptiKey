@@ -1,3 +1,4 @@
+using System;
 using JuliusSweetland.OptiKey.Models;
 using log4net;
 using presage;
@@ -24,24 +25,34 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
         {
             Log.DebugFormat("GetSuggestions called with root '{0}'", root);
 
-            if (root == null)
-                this.root = "";
-            else
+            try
             {
-                this.root = root;
-
-                // force presage to suggest the next word by adding a space 
-                if (nextWord && root.Length > 0 && char.IsLetterOrDigit(root.Last()))
+                if (root == null)
                 {
-                    this.root = this.root + " ";
+                    this.root = "";
+                }
+                else
+                {
+                    this.root = root;
+
+                    // force presage to suggest the next word by adding a space 
+                    if (nextWord && root.Length > 0 && char.IsLetterOrDigit(root.Last()))
+                    {
+                        this.root = this.root + " ";
+                    }
+                }
+
+                if (prsg != null)
+                {
+                    return prsg.predict();
                 }
             }
-
-            if (prsg != null)
+            catch (PresageException pe)
             {
-                return prsg.predict();
+                Log.Error("PresageException caught. Rethrowing. This is an attempt to see why the PresageException is not being caught. PresageException:", pe);
+                throw;
             }
-
+            
             return Enumerable.Empty<string>();
         }
 
