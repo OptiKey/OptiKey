@@ -681,11 +681,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Rect screen = GetVirtualScreenBoundsInPixels();
             Rect window = GetMainWindowBoundsInPixels();
 
-            var above = new Rect { X = screen.Left, Y = screen.Top, Width = screen.Width, Height = window.Top - screen.Top };
-            var below = new Rect { X = screen.Left, Y = window.Bottom, Width = screen.Width, Height = screen.Bottom - window.Bottom };
-            var left = new Rect { X = screen.Left, Y = screen.Top, Width = window.Left - screen.Left, Height = screen.Height };
-            var right = new Rect { X = window.Right, Y = screen.Top, Width = screen.Right - window.Right, Height = screen.Height };
-
+            var above = new Rect { X = screen.Left, Y = screen.Top, Width = screen.Width, Height = window.Top >= screen.Top ? window.Top - screen.Top : 0 };
+            var below = new Rect { X = screen.Left, Y = window.Bottom, Width = screen.Width, Height = screen.Bottom >= window.Bottom ? screen.Bottom - window.Bottom : 0 };
+            var left = new Rect { X = screen.Left, Y = screen.Top, Width = window.Left >= screen.Left ? window.Left - screen.Left : 0, Height = screen.Height };
+            var right = new Rect { X = window.Right, Y = screen.Top, Width = screen.Right >= window.Right ? screen.Right - window.Right : 0, Height = screen.Height };
+            
             return new Rect[] { above, below, left, right }.OrderByDescending(rect => rect.CalculateArea()).First();
         }
 
