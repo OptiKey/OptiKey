@@ -2,6 +2,7 @@
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Forms;
+using log4net;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
@@ -14,6 +15,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
     public class MouseButtonDownUpSource : ITriggerSource
     {
         #region Fields
+
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly MouseButtons triggerButton;
         private readonly IPointSource pointSource;
@@ -35,6 +38,12 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             mouseHookListener = new MouseHookListener(new GlobalHooker())
             {
                 Enabled = true
+            };
+
+            System.Windows.Application.Current.Exit += (sender, args) =>
+            {
+                mouseHookListener.Dispose();
+                Log.Debug("Mouse hook listener disposed.");
             };
         }
 

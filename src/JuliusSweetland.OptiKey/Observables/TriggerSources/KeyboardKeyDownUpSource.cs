@@ -40,6 +40,12 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                 Enabled = true
             };
 
+            System.Windows.Application.Current.Exit += (sender, args) =>
+            {
+                keyboardHookListener.Dispose();
+                Log.Debug("Keyboard hook listener disposed.");
+            };
+
             /*
              * Keys: http://msdn.microsoft.com/en-GB/library/system.windows.forms.keys.aspx
              * KeyDown: happens when the person presses a key (when the keyboard first detects a finger on a key, this happens when the key is pressed down).
