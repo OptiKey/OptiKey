@@ -1084,6 +1084,9 @@
     <Setting Name="CommuniKatePagesetLocation" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">./Resources/CommuniKate/pageset.obz</Value>
     </Setting>
+    <Setting Name="CommuniKateDefaultBoard" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
     <Setting Name="UsingCommuniKateKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -1098,6 +1101,18 @@
     </Setting>
     <Setting Name="CommuniKateKeyboardPrevious4Context" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CommuniKateSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="CommuniKateSpeakSelected" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CommuniKateSpeakSelectedVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="CommuniKateSpeakSelectedRate" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="DynamicKeyboardsLocation" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -1215,12 +1230,6 @@
     </Setting>
     <Setting Name="SimplifiedKeyboardContext" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.SimplifiedKeyboardContexts" Scope="User">
       <Value Profile="(Default)">Home</Value>
-    </Setting>
-    <Setting Name="CommuniKateSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">50</Value>
-    </Setting>
-    <Setting Name="CommuniKateDefaultBoard" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

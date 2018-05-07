@@ -668,6 +668,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Speak CommuniKate button text when selected:.
+        /// </summary>
+        public static string COMMUNIKATE_SPEAK_SELECTED_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SPEAK_SELECTED_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate of speech when speaking CommuniKate button text:.
+        /// </summary>
+        public static string COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume of speech when speaking CommuniKate button text:.
+        /// </summary>
+        public static string COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommuniKate top page obf file:.
         /// </summary>
         public static string COMMUNIKATE_TOPPAGE_LABEL {
