@@ -400,16 +400,42 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 }
                             }
                             else if (action.StartsWith("text:"))
+                            {
                                 keyboardOutputService.ProcessSingleKeyText(action.Substring(5));
+                            }
+                            else if (action.StartsWith("speak:"))
+                            {
+                                if (Settings.Default.CommuniKateSpeakSelected)
+                                {
+                                    var speechCommuniKate = audioService.SpeakNewOrInterruptCurrentSpeech(
+                                        action.Substring(6),
+                                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                                        Settings.Default.CommuniKateSpeakSelectedVolume,
+                                        Settings.Default.CommuniKateSpeakSelectedRate,
+                                        Settings.Default.SpeechVoice);
+                                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechCommuniKate ? KeyDownStates.Down : KeyDownStates.Up;
+                                }
+                            }
                             else if (action.StartsWith("sound:"))
                                 audioService.PlaySound(action.Substring(6), Settings.Default.CommuniKateSoundVolume);
                             else if (action.StartsWith("action:"))
                             {
                                 string thisAction = action.Substring(7);
                                 if (thisAction.StartsWith("+"))
+                                {
+                                    bool changedAutoSpace = false;
+                                    if (Settings.Default.AutoAddSpace)
+                                    {
+                                        Settings.Default.AutoAddSpace = false;
+                                        changedAutoSpace = true;
+                                    }
                                     foreach (char letter in thisAction.Substring(1))
                                         keyboardOutputService.ProcessSingleKeyText(letter.ToString());
-                                else
+
+                                    if (changedAutoSpace)
+                                        Settings.Default.AutoAddSpace = true;
+                                }
+                                else if (thisAction.StartsWith(":"))
                                     switch (thisAction)
                                     {
                                         case ":space":
@@ -432,6 +458,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             Log.InfoFormat("Unsupported CommuniKate action: {0}.", thisAction);
                                             break;
                                     }
+                                else
+                                    Log.InfoFormat("Unsupported CommuniKate action: {0}.", thisAction);
                             }
 
                         }
