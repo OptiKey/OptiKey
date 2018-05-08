@@ -330,7 +330,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return ForceCapsLock != Settings.Default.ForceCapsLock
                     || Settings.Default.SuggestionMethod != SuggestionMethod
-                    || Settings.Default.CommuniKateStagedForDeletion == true; }
+                    || Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation; }
         }
 
         #endregion
