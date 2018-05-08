@@ -451,6 +451,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         case ":clear":
                                             keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
                                             break;
+                                        case ":deleteword":
+                                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.BackMany);
+                                            break;
                                         case ":backspace":
                                             keyboardOutputService.ProcessFunctionKey(FunctionKeys.BackOne);
                                             break;

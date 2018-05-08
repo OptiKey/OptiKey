@@ -7,8 +7,11 @@ using System.Text;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Diagnostics;
+using Microsoft.Win32;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -260,7 +263,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 if (imageIndex != -1)
                                 {
                                     var imageData = CKPageOBF.images.ElementAt(imageIndex);
-                                    if (!String.IsNullOrEmpty(imageData.path)) { image = CKpath() + imageData.path; }
+                                    if (!String.IsNullOrEmpty(imageData.path)) { image = CKpath() + imageData.path.Replace("..\\", "").Replace("../", ""); }
                                     else
                                     {
                                         if (!Directory.Exists(CKpath() + @"images\")) { Directory.CreateDirectory(CKpath() + @"images\"); }
@@ -282,7 +285,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                                     }
                                                     catch (Exception e)
                                                     {
-                                                        Log.ErrorFormat("Failed to download image {0}.", image);
+                                                        Log.ErrorFormat("Failed to download image {0} with the following exception: \n{1}", image, e);
                                                         image = null;
                                                     }
                                                 }
@@ -292,6 +295,55 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                             Log.DebugFormat("Insufficient image data for image: {0}.", image);
                                             image = "";
                                         }
+                                    }
+                                    if (image.EndsWith("svg"))
+                                    {
+                                        string pngimage = image.Substring(0, image.Length - 3) + "png";
+                                        if (File.Exists(pngimage))
+                                            image = pngimage;
+                                        else
+                                        {
+                                            Log.DebugFormat("Attempting to convert SVG image {0} to PNG.", image);
+                                            string inkscapePath = null;
+
+                                            try
+                                            {
+                                                inkscapePath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\App Paths\inkscape.exe", "", string.Empty).ToString();
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Log.ErrorFormat("Caught exception: {0}", ex);
+                                            }
+                                            if (String.IsNullOrEmpty(inkscapePath))
+                                                Log.Error("Inkscape not found, please check installation.");
+                                            else
+                                            {
+                                                string inkscapeArgs =
+                                                 "-f " + image + " --export-png \"" +
+                                                 pngimage + "\"";
+
+                                                try
+                                                {
+                                                    Process inkscape = Process.Start(
+                                                      new ProcessStartInfo(
+                                                       inkscapePath,
+                                                       inkscapeArgs));
+                                                    inkscape.WaitForExit(3000);
+                                                    inkscape.CloseOnApplicationExit(Log, "Inkscape " + inkscape.Id);
+                                                    image = pngimage;
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    Log.ErrorFormat("Inkscape path: {0}.", inkscapePath);
+                                                    Log.ErrorFormat("Caught exception: {0}", ex);
+                                                    image = null;
+                                                }
+                                            }
+                                        }
+                                        if (String.IsNullOrEmpty(image))
+                                            Log.Error("Failed at converting SVG image.");
+                                        else
+                                            Log.DebugFormat("Successfully created image {0}.", image);
                                     }
                                 }
                                 else
@@ -311,7 +363,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 if (soundIndex != -1)
                                 {
                                     var soundData = CKPageOBF.sounds.ElementAt(soundIndex);
-                                    if (!String.IsNullOrEmpty(soundData.path)) { sound = CKpath() + soundData.path; }
+                                    if (!String.IsNullOrEmpty(soundData.path)) { sound = CKpath() + soundData.path.Replace("..\\", "").Replace("../", ""); }
                                     else
                                     {
                                         if (!Directory.Exists(CKpath() + @"sounds\")) { Directory.CreateDirectory(CKpath() + @"sounds\"); }
@@ -333,7 +385,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                                     }
                                                     catch (Exception e)
                                                     {
-                                                        Log.ErrorFormat("Failed to download sound {0}.", sound);
+                                                        Log.ErrorFormat("Failed to download sound {0} with the following exception: \n{1}", sound, e);
                                                         sound = null;
                                                     }
                                                 }
@@ -364,7 +416,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             {
                                 if (!String.IsNullOrEmpty(Boards.Last().path))
                                 {
-                                    path = ":action:board:" + Boards.Last().path;
+                                    path = ":action:board:" + Boards.Last().path.Replace("..\\", "").Replace("../", "");
                                     Log.DebugFormat("Button {0} is a menu key for board {1}.", ButtonNo + 1 - 3 * includesTopRow, path);
                                 }
                                 if (!String.IsNullOrEmpty(text))
@@ -586,13 +638,31 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         if (!File.Exists(pageset))
                             pageset = @"./Resources/CommuniKate/pageset.obz";
 
-                        using (ZipArchive archive = ZipFile.Open(pageset, ZipArchiveMode.Read))
+                        try
                         {
-                            archive.ExtractToDirectory(path);
-                            string contents = new StreamReader(path + "manifest.json", Encoding.UTF8).ReadToEnd();
-                            Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
-                            Settings.Default.CommuniKateDefaultBoard = manifest.root;
+                            using (ZipArchive archive = ZipFile.Open(pageset, ZipArchiveMode.Read))
+                            {
+                                // archive.ExtractToDirectory(path);
+                                foreach (var Entry in archive.Entries)
+                                {
+                                    string thisFile = (path + Entry.FullName).Replace("..\\", "").Replace("../", "");
+                                    if (!File.Exists(thisFile))
+                                    {
+                                        string thisDir = Path.GetFullPath(thisFile).Substring(0, Path.GetFullPath(thisFile).Length - Path.GetFileName(thisFile).Length);
+                                        if (!Directory.Exists(thisDir))
+                                            Directory.CreateDirectory(thisDir);
+                                        Entry.ExtractToFile(thisFile);
+                                    }
+                                }
+                            }
                         }
+                        catch (Exception e)
+                        {
+                            Log.ErrorFormat("Unpacking the pageset failed with the following exception: \n{0}", e);
+                        }
+                        string contents = new StreamReader(path + "manifest.json", Encoding.UTF8).ReadToEnd();
+                        Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
+                        Settings.Default.CommuniKateDefaultBoard = manifest.root;
                         string backImage = path + @"images/back.png";
                         if (!File.Exists(backImage))
                         {
@@ -600,6 +670,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 Directory.CreateDirectory(path + "images");
                             File.Copy(@"./Resources/CommuniKate/back.png", backImage, true);
                         }
+
                     }
                     if (value != null)
                     {
