@@ -121,6 +121,10 @@
       <HintPath>..\..\packages\Prism.Wpf.6.3.0\lib\net45\Prism.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SharpVectors.Converters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b532964b8548be77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ext\SharpVectors\SharpVectors.Converters.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -245,6 +249,7 @@
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\RectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\SvgViewboxAttachedProperties.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
@@ -403,6 +408,7 @@
     <Compile Include="UI\ValueConverters\ListNotEmpty.cs" />
     <Compile Include="UI\ValueConverters\IsGreaterThan.cs" />
     <Compile Include="UI\ValueConverters\IsActionKey.cs" />
+    <Compile Include="UI\ValueConverters\IsSvgImage.cs" />
     <Compile Include="UI\ValueConverters\IsValidImage.cs" />
     <Compile Include="UI\ValueConverters\IsMenuKey.cs" />
     <Compile Include="UI\ValueConverters\OverrideHasValue.cs" />
