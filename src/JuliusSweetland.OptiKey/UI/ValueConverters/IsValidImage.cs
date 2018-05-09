@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
             if (!File.Exists(image))
                 return false;
             BitmapImageCheck bic = new BitmapImageCheck();
-            return bic.IsExtensionSupported(Path.GetFileName(image));
+            return bic.IsExtensionSupported(Path.GetFileName(image)) || Path.GetExtension(image).ToLower().EndsWith("svg");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

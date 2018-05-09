@@ -296,55 +296,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                             image = "";
                                         }
                                     }
-                                    if (image.EndsWith("svg"))
-                                    {
-                                        string pngimage = image.Substring(0, image.Length - 3) + "png";
-                                        if (File.Exists(pngimage))
-                                            image = pngimage;
-                                        else
-                                        {
-                                            Log.DebugFormat("Attempting to convert SVG image {0} to PNG.", image);
-                                            string inkscapePath = null;
-
-                                            try
-                                            {
-                                                inkscapePath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\App Paths\inkscape.exe", "", string.Empty).ToString();
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                Log.ErrorFormat("Caught exception: {0}", ex);
-                                            }
-                                            if (String.IsNullOrEmpty(inkscapePath))
-                                                Log.Error("Inkscape not found, please check installation.");
-                                            else
-                                            {
-                                                string inkscapeArgs =
-                                                 "-f " + image + " --export-png \"" +
-                                                 pngimage + "\"";
-
-                                                try
-                                                {
-                                                    Process inkscape = Process.Start(
-                                                      new ProcessStartInfo(
-                                                       inkscapePath,
-                                                       inkscapeArgs));
-                                                    inkscape.WaitForExit(3000);
-                                                    inkscape.CloseOnApplicationExit(Log, "Inkscape " + inkscape.Id);
-                                                    image = pngimage;
-                                                }
-                                                catch (Exception ex)
-                                                {
-                                                    Log.ErrorFormat("Inkscape path: {0}.", inkscapePath);
-                                                    Log.ErrorFormat("Caught exception: {0}", ex);
-                                                    image = null;
-                                                }
-                                            }
-                                        }
-                                        if (String.IsNullOrEmpty(image))
-                                            Log.Error("Failed at converting SVG image.");
-                                        else
-                                            Log.DebugFormat("Successfully created image {0}.", image);
-                                    }
                                 }
                                 else
                                 {
