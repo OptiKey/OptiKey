@@ -396,10 +396,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             if (Settings.Default.CommuniKateSpeakSelected)
                             {
                                 if (String.IsNullOrEmpty(sound))
-                                    if (!String.IsNullOrEmpty(action))
-                                        path += ":action:speak:" + action.Substring(1);
-                                    else
-                                        path += ":action:speak:" + Texts.Last();
+                                    path += ":action:speak:" + Texts.Last();
                             }
                             Paths.Add(path);
                             ++ButtonNo;
@@ -602,7 +599,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                         string thisDir = Path.GetFullPath(thisFile).Substring(0, Path.GetFullPath(thisFile).Length - Path.GetFileName(thisFile).Length);
                                         if (!Directory.Exists(thisDir))
                                             Directory.CreateDirectory(thisDir);
-                                        Entry.ExtractToFile(thisFile);
+                                        if (!thisFile.EndsWith("/"))
+                                            Entry.ExtractToFile(thisFile);
                                     }
                                 }
                             }
