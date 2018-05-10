@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
             KeyValue key = (KeyValue)value;
             if (String.IsNullOrEmpty(key.String))
                 return false;
-            return key.String.Contains(":action:");
+            return key.String.Contains(":action:action:");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

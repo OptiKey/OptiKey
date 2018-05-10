@@ -199,6 +199,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -294,6 +311,23 @@
                                         <Path Fill="Black" VerticalAlignment="Top"
                                               Stretch="Uniform" HorizontalAlignment="Right"
                                               Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -402,6 +436,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -503,6 +554,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -597,6 +665,23 @@
                                         <Path Fill="Black" VerticalAlignment="Top"
                                               Stretch="Uniform" HorizontalAlignment="Right"
                                               Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -706,6 +791,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -800,6 +902,23 @@
                                         <Path Fill="Black" VerticalAlignment="Top"
                                               Stretch="Uniform" HorizontalAlignment="Right"
                                               Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -908,6 +1027,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1009,6 +1145,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1103,6 +1256,23 @@
                                         <Path Fill="Black" VerticalAlignment="Top"
                                               Stretch="Uniform" HorizontalAlignment="Right"
                                               Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1212,6 +1382,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1306,6 +1493,23 @@
                                         <Path Fill="Black" VerticalAlignment="Top"
                                               Stretch="Uniform" HorizontalAlignment="Right"
                                               Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1414,6 +1618,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1515,6 +1736,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1609,6 +1847,23 @@
                                         <Path Fill="Black" VerticalAlignment="Top"
                                               Stretch="Uniform" HorizontalAlignment="Right"
                                               Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1718,6 +1973,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1812,6 +2084,23 @@
                                         <Path Fill="Black" VerticalAlignment="Top"
                                               Stretch="Uniform" HorizontalAlignment="Right"
                                               Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1920,6 +2209,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2021,6 +2327,23 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2115,6 +2438,23 @@
                                         <Path Fill="Black" VerticalAlignment="Top"
                                               Stretch="Uniform" HorizontalAlignment="Right"
                                               Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Path Fill="Black" VerticalAlignment="Top"
+                                              Stretch="Uniform" HorizontalAlignment="Left"
+                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
