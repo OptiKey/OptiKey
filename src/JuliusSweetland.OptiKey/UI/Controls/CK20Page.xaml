@@ -130,39 +130,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -175,9 +164,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -225,7 +218,6 @@
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" HoverForegroundColourOverride="Black" SelectionProgressColourOverride="Black" 
                                               DisabledBackgroundOpacity="0.8"
-                                              SymbolGeometry="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Text="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </Setter.Value>
@@ -249,39 +241,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -294,9 +275,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -367,39 +352,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -412,9 +386,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -485,39 +463,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -530,9 +497,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -603,39 +574,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -648,9 +608,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -722,39 +686,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -767,9 +720,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -840,39 +797,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -885,9 +831,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -958,39 +908,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1003,9 +942,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1076,39 +1019,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1121,9 +1053,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1194,39 +1130,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1239,9 +1164,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1313,39 +1242,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1358,9 +1276,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1431,39 +1353,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1476,9 +1387,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1549,39 +1464,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1594,9 +1498,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1667,39 +1575,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1712,9 +1609,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1785,39 +1686,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1830,9 +1720,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1904,39 +1798,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1949,9 +1832,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -2022,39 +1909,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2067,9 +1943,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -2140,39 +2020,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2185,9 +2054,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -2258,39 +2131,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2303,9 +2165,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -2376,39 +2242,28 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="1" >
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
-                                            <Image.Style>
-                                                <Style TargetType="Image">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
-                                                            <Setter Property="Source" Value="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Image.Style>
-                                        </Image>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" 
-                                                         local:SvgViewboxAttachedProperties.Source="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
-                                    </Setter.Value>
-                                </Setter>
+                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2421,9 +2276,13 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
                                 <Setter Property="Grid.RowSpan" Value="2"/>
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>

@@ -192,7 +192,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return enableCommuniKateKeyboardLayout; }
             set { SetProperty(ref enableCommuniKateKeyboardLayout, value
-                        && useAlphabeticalKeyboardLayout == false
                         && useSimplifiedKeyboardLayout == false
                         && (KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
                             || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK

@@ -937,6 +937,7 @@
     <Resource Include="Resources\Icons\Back.ico" />
     <Resource Include="Resources\Icons\Quit.ico" />
     <Resource Include="Resources\Icons\ManualMode.ico" />
+    <None Include="Resources\Icons\SVG Source Files\CommuniKateToppage.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollActive.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreenCentred.svg" />
