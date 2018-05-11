@@ -105,7 +105,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableCommuniKateKeyboardLayout}" Value="True">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key Text="CK"
+                                    <controls:Key Text="CK" SymbolGeometry="{StaticResource CommuniKateIcon}"
                                                   Value="{x:Static models:KeyValues.CommuniKateKeyboardKey}"/>
                                 </Setter.Value>
                             </Setter>
