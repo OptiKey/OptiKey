@@ -1990,10 +1990,10 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>CommuniKate is currently disabled (use QWERTY)</value>
   </data>
   <data name="KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Keyboard style for typing</value>
+    <value>Keyboard style for typing:</value>
   </data>
-  <data name="USE_QWERTY_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use QWERTY keyboard layout (default)</value>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Use default keyboard layout</value>
   </data>
   <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
     <value>Uh-oh! We've encountered the following errors during startup:</value>
@@ -2018,7 +2018,7 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>MORE…</value>
   </data>
   <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
-    <value>Display voices when changing keyboard language</value>
+    <value>Display voices when changing keyboard language:</value>
   </data>
   <data name="LOOK_TO_SCROLL" xml:space="preserve">
     <value>Look to Scroll</value>

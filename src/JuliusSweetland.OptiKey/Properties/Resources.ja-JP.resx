@@ -1990,7 +1990,7 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
   <data name="KEYBOARD_LAYOUT" xml:space="preserve">
     <value>入力時のキーボードスタイル</value>
   </data>
-  <data name="USE_QWERTY_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>QWERTY キーボードレイアウトを使う (デフォルト)</value>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>デフォルト キーボードレイアウトを使う</value>
   </data>
 </root>

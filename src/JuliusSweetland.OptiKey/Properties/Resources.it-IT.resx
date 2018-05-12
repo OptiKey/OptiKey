@@ -1812,7 +1812,7 @@ tipo "DB Browser for SQLite" (che è programma free).</value>
   <data name="KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Layout della tastiera per la scrittura</value>
   </data>
-  <data name="USE_QWERTY_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Utilizza layout della tastiera QWERTY (default)</value>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Utilizza layout della tastiera default</value>
   </data>
 </root>

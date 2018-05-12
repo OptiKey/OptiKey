@@ -219,7 +219,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new SpanishViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.TurkishTurkey:
-                        newContent = new TurkishViews.Alpha1 { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new TurkishViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : new TurkishViews.Alpha1 { DataContext = Keyboard };
                         break;
                     default:
                         newContent = Settings.Default.UsingCommuniKateKeyboardLayout
@@ -303,7 +305,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new SpanishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.TurkishTurkey:
-                        newContent = new TurkishViews.ConversationAlpha1 { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new TurkishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
+                            : new TurkishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     default:
                         newContent = Settings.Default.UsingCommuniKateKeyboardLayout

@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -1130,7 +1130,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display voices when changing keyboard language.
+        ///   Looks up a localized string similar to Display voices when changing keyboard language:.
         /// </summary>
         public static string DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE {
             get {
@@ -2388,7 +2388,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keyboard style for typing.
+        ///   Looks up a localized string similar to Keyboard style for typing:.
         /// </summary>
         public static string KEYBOARD_LAYOUT {
             get {
@@ -5715,11 +5715,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use QWERTY keyboard layout (default).
+        ///   Looks up a localized string similar to Use default keyboard layout.
         /// </summary>
-        public static string USE_QWERTY_KEYBOARD_LAYOUT {
+        public static string USE_DEFAULT_KEYBOARD_LAYOUT {
             get {
-                return ResourceManager.GetString("USE_QWERTY_KEYBOARD_LAYOUT", resourceCulture);
+                return ResourceManager.GetString("USE_DEFAULT_KEYBOARD_LAYOUT", resourceCulture);
             }
         }
         

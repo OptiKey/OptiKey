@@ -324,7 +324,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="KeyboardLayout" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.KeyboardLayouts" Scope="User">
-      <Value Profile="(Default)">Qwerty</Value>
+      <Value Profile="(Default)">Default</Value>
     </Setting>
     <Setting Name="UseAlphabeticalKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

@@ -5,11 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d"
              d:DesignHeight="385.924" d:DesignWidth="768.753">
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <valueConverters:ListNotEmpty x:Key="ListNotEmpty" />
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
@@ -94,38 +96,29 @@
                     </CheckBox>
 
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_LAYOUT}"
-                               VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="4" Grid.Column="1"
-                              ItemsSource="{Binding KeyboardLayouts}"
-                              DisplayMemberPath="Key"
-                              SelectedValuePath="Value"
-                              SelectedValue="{Binding KeyboardLayout, Mode=TwoWay}" >
-                        <ComboBox.Style>
-                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                    <DataTrigger Binding="{Binding KeyboardLayouts, Converter={StaticResource ListNotEmpty}}" Value="True">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </ComboBox.Style>
-                    </ComboBox>
+                        </TextBlock.Style>
+                    </TextBlock>
                     <ComboBox Grid.Row="4" Grid.Column="1"
-                              ItemsSource="{Binding KeyboardLayoutsCK}"
+                              ItemsSource="{Binding KeyboardLayouts}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding KeyboardLayout, Mode=TwoWay}" >
+                              SelectedValue="{Binding KeyboardLayout, Mode=TwoWay}">
                         <ComboBox.Style>
                             <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="True">
+                                    <DataTrigger Binding="{Binding KeyboardLayouts, Converter={StaticResource ListNotEmpty}}" Value="True">
                                         <Setter Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                                        <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
