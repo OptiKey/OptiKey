@@ -55,11 +55,12 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CombiningRingAboveKey = new KeyValue("\x030A");
         public static readonly KeyValue CombiningRingBelowKey = new KeyValue("\x0325");
         public static readonly KeyValue CombiningTildeKey = new KeyValue("\x0303");
-        public static readonly KeyValue CommuniKate = new KeyValue(FunctionKeys.CommuniKate);
+        public static readonly KeyValue CommuniKateKey = new KeyValue(FunctionKeys.CommuniKate);
         public static readonly KeyValue CommuniKateKeyboardKey = new KeyValue(FunctionKeys.CommuniKateKeyboard);
         public static readonly KeyValue CroatianCroatiaKey = new KeyValue(FunctionKeys.CroatianCroatia);
         public static readonly KeyValue ConversationAlpha1KeyboardKey = new KeyValue(FunctionKeys.ConversationAlpha1Keyboard);
         public static readonly KeyValue ConversationAlpha2KeyboardKey = new KeyValue(FunctionKeys.ConversationAlpha2Keyboard);
+        public static readonly KeyValue ConversationCommuniKateKeyboardKey = new KeyValue(FunctionKeys.ConversationCommuniKateKeyboard);
         public static readonly KeyValue ConversationConfirmKeyboardKey = new KeyValue(FunctionKeys.ConversationConfirmKeyboard);
         public static readonly KeyValue ConversationConfirmYesKey = new KeyValue(FunctionKeys.ConversationConfirmYes);
         public static readonly KeyValue ConversationConfirmNoKey = new KeyValue(FunctionKeys.ConversationConfirmNo);
