@@ -106,7 +106,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="CK" SymbolGeometry="{StaticResource CommuniKateIcon}"
-                                                  Value="{x:Static models:KeyValues.CommuniKateKeyboardKey}"/>
+                                                  Value="{x:Static models:KeyValues.ConversationCommuniKateKeyboardKey}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>

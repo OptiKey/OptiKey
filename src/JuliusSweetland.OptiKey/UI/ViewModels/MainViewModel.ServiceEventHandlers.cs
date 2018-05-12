@@ -786,6 +786,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.SetOpacity(1);
                     break;
 
+                case FunctionKeys.ConversationCommuniKateKeyboard:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
+                    Settings.Default.UsingCommuniKateKeyboardLayout = true;
+                    Settings.Default.CommuniKateKeyboardPrevious1Context = currentKeyboard.ToString();
+                    Log.Info("Changing keyboard to Conversation CommuniKate.");
+                    Action conversationAlphaBackAction = () =>
+                    {
+                        Log.Info("Restoring window size.");
+                        mainWindowManipulationService.Restore();
+                        Keyboard = new Menu(() => Keyboard = new Alpha1());
+                    };
+                    Keyboard = new ConversationAlpha1(conversationAlphaBackAction);
+                    break;
+
                 case FunctionKeys.ConversationConfirmKeyboard:
                     Log.Info("Changing keyboard to ConversationConfirm.");
                     var opacityBeforeConversationConfirm = mainWindowManipulationService.GetOpacity();
