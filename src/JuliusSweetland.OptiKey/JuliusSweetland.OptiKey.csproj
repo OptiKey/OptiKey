@@ -436,6 +436,7 @@
     <Compile Include="UI\ValueConverters\ListNotEmpty.cs" />
     <Compile Include="UI\ValueConverters\IsGreaterThan.cs" />
     <Compile Include="UI\ValueConverters\IsActionKey.cs" />
+    <Compile Include="UI\ValueConverters\BackgroundColourToTextBrush.cs" />
     <Compile Include="UI\ValueConverters\IsSvgImage.cs" />
     <Compile Include="UI\ValueConverters\IsValidImage.cs" />
     <Compile Include="UI\ValueConverters\IsMenuKey.cs" />

@@ -286,13 +286,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                                 {
                                                     try
                                                     {
-                                                        Log.DebugFormat("Trying to download image {0} to {1}", imageData.url, image);
+                                                        Log.InfoFormat("Trying to download image {0} to {1}", imageData.url, image);
                                                         client.DownloadFile(new Uri(imageData.url), image);
                                                     }
                                                     catch (Exception e)
                                                     {
                                                         Log.ErrorFormat("Failed to download image {0} with the following exception: \n{1}", image, e);
-                                                        image = null;
+                                                        image = "";
                                                     }
                                                 }
                                         }
@@ -338,13 +338,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                                 {
                                                     try
                                                     {
-                                                        Log.DebugFormat("Trying to download sound {0} to {1}", soundData.url, sound);
+                                                        Log.InfoFormat("Trying to download sound {0} to {1}", soundData.url, sound);
                                                         client.DownloadFile(new Uri(soundData.url), sound);
                                                     }
                                                     catch (Exception e)
                                                     {
                                                         Log.ErrorFormat("Failed to download sound {0} with the following exception: \n{1}", sound, e);
-                                                        sound = null;
+                                                        sound = "";
                                                     }
                                                 }
                                         }
@@ -655,16 +655,21 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private static Color dec2hex(string dec)
         {
+            Color defaultBackground = new Color();
+            if (Settings.Default.Theme.ToLower().Contains("light"))
+                defaultBackground = Colors.White;
+            else
+                defaultBackground = Colors.Black;
             if (string.IsNullOrEmpty(dec))
             {
-                return Colors.Black;
+                return defaultBackground;
             }
             else if (dec.StartsWith("#"))
             {
                 if (dec.Length == 7)
                     return (Color)ColorConverter.ConvertFromString(dec);
                 else
-                    return Colors.Black;
+                    return defaultBackground;
             }
             else if (dec.Contains("Transparent"))
             {
@@ -683,7 +688,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     Log.DebugFormat("Background colour: {4} {0}, {1}, {2}, {3} ).", deccolours.ElementAt(0), deccolours.ElementAt(1), deccolours.ElementAt(2), deccolours.ElementAt(3), dec.Substring(0, left));
                 */
                 if (deccolours.Count != 3 && deccolours.Count != 4)
-                    return Colors.Black;
+                    return defaultBackground;
                 if (dec.ToLower().Contains("rgba"))
                 {
                     return Color.FromArgb((byte)(Convert.ToSingle(deccolours.ElementAt(3)) * 255)
@@ -704,7 +709,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         , (byte)Convert.ToSingle(deccolours.ElementAt(1))
                         , (byte)Convert.ToSingle(deccolours.ElementAt(2)));
                 }
-                return Colors.Black;
+                return defaultBackground;
             }
         }
 

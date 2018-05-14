@@ -20,6 +20,7 @@
                     <valueConverters:IsMenuKey x:Key="IsMenuKey" />
                     <valueConverters:IsValidImage x:Key="IsValidImage" />
                     <valueConverters:IsSvgImage x:Key="IsSvgImage" />
+                    <valueConverters:BackgroundColourToTextBrush x:Key="BackgroundColourToTextBrush" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -152,17 +153,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -173,8 +169,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -263,17 +259,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -284,8 +275,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -374,17 +365,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -395,8 +381,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -485,17 +471,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -506,8 +487,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -596,17 +577,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -617,8 +593,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -708,17 +684,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -729,8 +700,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -819,17 +790,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -840,8 +806,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -930,17 +896,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -951,8 +912,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1041,17 +1002,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -1062,8 +1018,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1152,17 +1108,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -1173,8 +1124,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1264,17 +1215,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -1285,8 +1231,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1375,17 +1321,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -1396,8 +1337,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1486,17 +1427,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -1507,8 +1443,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1597,17 +1533,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -1618,8 +1549,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1708,17 +1639,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -1729,8 +1655,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1820,17 +1746,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -1841,8 +1762,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1931,17 +1852,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -1952,8 +1868,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2042,17 +1958,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -2063,8 +1974,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2153,17 +2064,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -2174,8 +2080,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2264,17 +2170,12 @@
                     </Style>
                 </svgc:SvgViewbox.Style>
             </svgc:SvgViewbox>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Viewbox Stretch="Uniform">
-                                    <TextBlock Text="{Binding Path=CKLabel_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                                               FontWeight="Heavy" HorizontalAlignment="Center" />
-                                </Viewbox>
-                            </Setter.Value>
-                        </Setter>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="{Binding Path=CKLabel_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToTextBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -2285,8 +2186,8 @@
                             </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Viewbox.Style>
+            </Viewbox>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
