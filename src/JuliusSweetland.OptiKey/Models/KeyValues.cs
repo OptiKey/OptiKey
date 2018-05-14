@@ -210,6 +210,13 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup1AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup1All);
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup2AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup2All);
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup3AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup5AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup5All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup6AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup6All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup7AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup7All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup8AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup8All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup9AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup9All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup10AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup10All);
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup1SubGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup1);
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup1SubGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup2);
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup1SubGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup3);

@@ -12,6 +12,13 @@
         AlphaGroup2SubGroup2,   //MNO
         AlphaGroup2SubGroup3,   //PQR
         AlphaGroup3All,         //STUVWXYZ
+        AlphaGroup4All,
+        AlphaGroup5All,
+        AlphaGroup6All,
+        AlphaGroup7All,
+        AlphaGroup8All,
+        AlphaGroup9All,
+        AlphaGroup10All,
         AlphaGroup3SubGroup1,   //STU
         AlphaGroup3SubGroup2,   //VWX
         AlphaGroup3SubGroup3,   //YZ
