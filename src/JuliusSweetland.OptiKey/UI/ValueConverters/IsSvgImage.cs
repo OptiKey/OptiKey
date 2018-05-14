@@ -10,7 +10,11 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string image = value.ToString();
+            if (String.IsNullOrEmpty(image))
+                return false;
             if (!File.Exists(image))
+                return false;
+            if (new FileInfo(image).Length == 0)
                 return false;
             return Path.GetExtension(image).ToLower().EndsWith("svg");
         }

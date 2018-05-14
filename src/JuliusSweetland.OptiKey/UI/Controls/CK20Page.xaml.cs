@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\CommuniKate\";
+
+        #region OBF Definition
 
         public class CKOBF
         {
@@ -110,7 +113,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             public string format { get; set; }
             public string root { get; set; }
         }
-        
+
+        #endregion
+
         public static DependencyProperty CKPageFileProperty =
         DependencyProperty.Register("CKPageFile", typeof(string), typeof(CK20Page), new PropertyMetadata(default(string), CKPageFileChanged));
 
@@ -166,7 +171,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     string path;
                     string text;
 
-                    List<string> Colours = new List<string>();
+                    List<Brush> Colours = new List<Brush>();
                     List<string> Images = new List<string>();
                     List<string> Paths = new List<string>();
                     List<string> Labels = new List<string>();
@@ -255,7 +260,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             }
 
                             // store the individual properties of the current button
-                            Colours.Add(dec2hex(CurrentButton.background_color));
+                            Colours.Add(new SolidColorBrush(dec2hex(CurrentButton.background_color)));
                             image = CurrentButton.image_id;
                             if (image != "" && image != null && !image.EndsWith(@"images\back.png"))
                             {
@@ -270,17 +275,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                         if (!String.IsNullOrEmpty(imageData.data))
                                         {
                                             image = CKpath() + @"images\" + image + "." + imageData.content_type.Substring(6);
-                                            if (!File.Exists(image))
+                                            if (!File.Exists(image) || new FileInfo(image).Length == 0)
                                                 File.WriteAllBytes(image, Convert.FromBase64String(imageData.data.Substring(22)));
                                         }
                                         else if (!String.IsNullOrEmpty(imageData.url))
                                         {
                                             image = CKpath() + @"images\" + image + "." + imageData.content_type.Substring(6);
-                                            if (!File.Exists(image))
+                                            if (!File.Exists(image) || new FileInfo(image).Length == 0)
                                                 using (WebClient client = new WebClient())
                                                 {
                                                     try
                                                     {
+                                                        Log.DebugFormat("Trying to download image {0} to {1}", imageData.url, image);
                                                         client.DownloadFile(new Uri(imageData.url), image);
                                                     }
                                                     catch (Exception e)
@@ -292,7 +298,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                         }
                                         else
                                         {
-                                            Log.DebugFormat("Insufficient image data for image: {0}.", image);
+                                            Log.ErrorFormat("Insufficient image data for image: {0}.", image);
                                             image = "";
                                         }
                                     }
@@ -321,17 +327,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                         if (!String.IsNullOrEmpty(soundData.data))
                                         {
                                             sound = CKpath() + @"sounds\" + sound + "." + soundData.content_type.Substring(6);
-                                            if (!File.Exists(sound))
+                                            if (!File.Exists(sound) || new FileInfo(sound).Length == 0)
                                                 File.WriteAllBytes(sound, Convert.FromBase64String(soundData.data.Substring(22)));
                                         }
                                         else if (!String.IsNullOrEmpty(soundData.url))
                                         {
                                             sound = CKpath() + @"sounds\" + sound + "." + soundData.content_type.Substring(6);
-                                            if (!File.Exists(sound))
+                                            if (!File.Exists(sound) || new FileInfo(sound).Length == 0)
                                                 using (WebClient client = new WebClient())
                                                 {
                                                     try
                                                     {
+                                                        Log.DebugFormat("Trying to download sound {0} to {1}", soundData.url, sound);
                                                         client.DownloadFile(new Uri(soundData.url), sound);
                                                     }
                                                     catch (Exception e)
@@ -646,44 +653,62 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             return applicationDataPath;
         }
 
-        private static string dec2hex(string dec)
+        private static Color dec2hex(string dec)
         {
             if (string.IsNullOrEmpty(dec))
             {
-                return "#000000";
+                return Colors.Black;
             }
             else if (dec.StartsWith("#"))
             {
                 if (dec.Length == 7)
-                    return dec;
+                    return (Color)ColorConverter.ConvertFromString(dec);
                 else
-                    return "#000000";
+                    return Colors.Black;
             }
             else if (dec.Contains("Transparent"))
             {
-                return "Transparent";
+                return Colors.Transparent;
             }
             else
             {
-                if (dec.StartsWith("rgb("))
-                    dec = dec.Substring(4);
-                else if (dec.StartsWith("rgba("))
-                    dec = dec.Substring(5);
-                if (dec.Trim().EndsWith(")"))
-                    dec = dec.Trim().Substring(0, dec.Trim().Length - 1);
-                // Log.DebugFormat("Background colour: {0}.", dec);
-                List<string> deccolours = dec.Split(',').ToList<string>();
+                int left = dec.IndexOf("(") + 1;
+                int right = dec.IndexOf(")");
+                List<string> deccolours = dec.Substring(left, right - left).Split(',').ToList<string>();
+                /* 
+                Log.DebugFormat("Background colour: {0}.", dec);
+                if (deccolours.Count == 3)
+                    Log.DebugFormat("Background colour: {3} {0}, {1}, {2} ).", deccolours.ElementAt(0), deccolours.ElementAt(1), deccolours.ElementAt(2), dec.Substring(0, left));
+                else if (deccolours.Count == 4)
+                    Log.DebugFormat("Background colour: {4} {0}, {1}, {2}, {3} ).", deccolours.ElementAt(0), deccolours.ElementAt(1), deccolours.ElementAt(2), deccolours.ElementAt(3), dec.Substring(0, left));
+                */
                 if (deccolours.Count != 3 && deccolours.Count != 4)
-                    return "#000000";
-                int intR = (int)Convert.ToSingle(deccolours.ElementAt(0).Trim());
-                int intG = (int)Convert.ToSingle(deccolours.ElementAt(1).Trim());
-                int intB = (int)Convert.ToSingle(deccolours.ElementAt(2).Trim());
-                byte byteR = Convert.ToByte(intR);
-                byte byteG = Convert.ToByte(intG);
-                byte byteB = Convert.ToByte(intB);
-                return "#" + byteR.ToString("X2") + byteG.ToString("X2") + byteB.ToString("X2");
+                    return Colors.Black;
+                if (dec.ToLower().Contains("rgba"))
+                {
+                    return Color.FromArgb((byte)(Convert.ToSingle(deccolours.ElementAt(3)) * 255)
+                        , (byte)Convert.ToSingle(deccolours.ElementAt(0))
+                        , (byte)Convert.ToSingle(deccolours.ElementAt(1))
+                        , (byte)Convert.ToSingle(deccolours.ElementAt(2)));
+                }
+                else if (dec.ToLower().Contains("argb"))
+                {
+                    return Color.FromArgb((byte)(Convert.ToSingle(deccolours.ElementAt(0)) * 255)
+                        , (byte)Convert.ToSingle(deccolours.ElementAt(1))
+                        , (byte)Convert.ToSingle(deccolours.ElementAt(2))
+                        , (byte)Convert.ToSingle(deccolours.ElementAt(3)));
+                }
+                else if (dec.ToLower().Contains("rgb"))
+                {
+                    return Color.FromRgb((byte)Convert.ToSingle(deccolours.ElementAt(0))
+                        , (byte)Convert.ToSingle(deccolours.ElementAt(1))
+                        , (byte)Convert.ToSingle(deccolours.ElementAt(2)));
+                }
+                return Colors.Black;
             }
         }
+
+        #region Dependency Properties
 
         public static readonly DependencyProperty CKGridRowsProperty =
             DependencyProperty.Register("CKGridRows", typeof(int), typeof(Key), new PropertyMetadata(default(int)));
@@ -734,11 +759,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_00Property =
-            DependencyProperty.Register("CKBaCo_00", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_00", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_00
+        public Brush CKBaCo_00
         {
-            get { return (string)GetValue(CKBaCo_00Property); }
+            get { return (Brush)GetValue(CKBaCo_00Property); }
             set { SetValue(CKBaCo_00Property, value); }
         }
 
@@ -782,11 +807,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_01Property =
-            DependencyProperty.Register("CKBaCo_01", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_01", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_01
+        public Brush CKBaCo_01
         {
-            get { return (string)GetValue(CKBaCo_01Property); }
+            get { return (Brush)GetValue(CKBaCo_01Property); }
             set { SetValue(CKBaCo_01Property, value); }
         }
 
@@ -830,11 +855,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_02Property =
-            DependencyProperty.Register("CKBaCo_02", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_02", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_02
+        public Brush CKBaCo_02
         {
-            get { return (string)GetValue(CKBaCo_02Property); }
+            get { return (Brush)GetValue(CKBaCo_02Property); }
             set { SetValue(CKBaCo_02Property, value); }
         }
 
@@ -878,11 +903,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_03Property =
-            DependencyProperty.Register("CKBaCo_03", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_03", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_03
+        public Brush CKBaCo_03
         {
-            get { return (string)GetValue(CKBaCo_03Property); }
+            get { return (Brush)GetValue(CKBaCo_03Property); }
             set { SetValue(CKBaCo_03Property, value); }
         }
 
@@ -926,11 +951,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_04Property =
-            DependencyProperty.Register("CKBaCo_04", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_04", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_04
+        public Brush CKBaCo_04
         {
-            get { return (string)GetValue(CKBaCo_04Property); }
+            get { return (Brush)GetValue(CKBaCo_04Property); }
             set { SetValue(CKBaCo_04Property, value); }
         }
 
@@ -974,11 +999,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_10Property =
-            DependencyProperty.Register("CKBaCo_10", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_10", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_10
+        public Brush CKBaCo_10
         {
-            get { return (string)GetValue(CKBaCo_10Property); }
+            get { return (Brush)GetValue(CKBaCo_10Property); }
             set { SetValue(CKBaCo_10Property, value); }
         }
 
@@ -1022,11 +1047,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_11Property =
-            DependencyProperty.Register("CKBaCo_11", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_11", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_11
+        public Brush CKBaCo_11
         {
-            get { return (string)GetValue(CKBaCo_11Property); }
+            get { return (Brush)GetValue(CKBaCo_11Property); }
             set { SetValue(CKBaCo_11Property, value); }
         }
 
@@ -1067,11 +1092,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_12Property =
-            DependencyProperty.Register("CKBaCo_12", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_12", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_12
+        public Brush CKBaCo_12
         {
-            get { return (string)GetValue(CKBaCo_12Property); }
+            get { return (Brush)GetValue(CKBaCo_12Property); }
             set { SetValue(CKBaCo_12Property, value); }
         }
 
@@ -1112,11 +1137,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_13Property =
-            DependencyProperty.Register("CKBaCo_13", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_13", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_13
+        public Brush CKBaCo_13
         {
-            get { return (string)GetValue(CKBaCo_13Property); }
+            get { return (Brush)GetValue(CKBaCo_13Property); }
             set { SetValue(CKBaCo_13Property, value); }
         }
 
@@ -1157,11 +1182,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_14Property =
-            DependencyProperty.Register("CKBaCo_14", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_14", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_14
+        public Brush CKBaCo_14
         {
-            get { return (string)GetValue(CKBaCo_14Property); }
+            get { return (Brush)GetValue(CKBaCo_14Property); }
             set { SetValue(CKBaCo_14Property, value); }
         }
 
@@ -1202,11 +1227,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_20Property =
-            DependencyProperty.Register("CKBaCo_20", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_20", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_20
+        public Brush CKBaCo_20
         {
-            get { return (string)GetValue(CKBaCo_20Property); }
+            get { return (Brush)GetValue(CKBaCo_20Property); }
             set { SetValue(CKBaCo_20Property, value); }
         }
 
@@ -1247,11 +1272,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_21Property =
-            DependencyProperty.Register("CKBaCo_21", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_21", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_21
+        public Brush CKBaCo_21
         {
-            get { return (string)GetValue(CKBaCo_21Property); }
+            get { return (Brush)GetValue(CKBaCo_21Property); }
             set { SetValue(CKBaCo_21Property, value); }
         }
 
@@ -1292,11 +1317,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_22Property =
-            DependencyProperty.Register("CKBaCo_22", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_22", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_22
+        public Brush CKBaCo_22
         {
-            get { return (string)GetValue(CKBaCo_22Property); }
+            get { return (Brush)GetValue(CKBaCo_22Property); }
             set { SetValue(CKBaCo_22Property, value); }
         }
 
@@ -1337,11 +1362,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_23Property =
-            DependencyProperty.Register("CKBaCo_23", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_23", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_23
+        public Brush CKBaCo_23
         {
-            get { return (string)GetValue(CKBaCo_23Property); }
+            get { return (Brush)GetValue(CKBaCo_23Property); }
             set { SetValue(CKBaCo_23Property, value); }
         }
 
@@ -1382,11 +1407,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_24Property =
-            DependencyProperty.Register("CKBaCo_24", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_24", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_24
+        public Brush CKBaCo_24
         {
-            get { return (string)GetValue(CKBaCo_24Property); }
+            get { return (Brush)GetValue(CKBaCo_24Property); }
             set { SetValue(CKBaCo_24Property, value); }
         }
 
@@ -1427,11 +1452,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_30Property =
-            DependencyProperty.Register("CKBaCo_30", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_30", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_30
+        public Brush CKBaCo_30
         {
-            get { return (string)GetValue(CKBaCo_30Property); }
+            get { return (Brush)GetValue(CKBaCo_30Property); }
             set { SetValue(CKBaCo_30Property, value); }
         }
 
@@ -1472,11 +1497,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_31Property =
-            DependencyProperty.Register("CKBaCo_31", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_31", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_31
+        public Brush CKBaCo_31
         {
-            get { return (string)GetValue(CKBaCo_31Property); }
+            get { return (Brush)GetValue(CKBaCo_31Property); }
             set { SetValue(CKBaCo_31Property, value); }
         }
 
@@ -1517,11 +1542,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_32Property =
-            DependencyProperty.Register("CKBaCo_32", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_32", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_32
+        public Brush CKBaCo_32
         {
-            get { return (string)GetValue(CKBaCo_32Property); }
+            get { return (Brush)GetValue(CKBaCo_32Property); }
             set { SetValue(CKBaCo_32Property, value); }
         }
 
@@ -1562,11 +1587,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_33Property =
-            DependencyProperty.Register("CKBaCo_33", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_33", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_33
+        public Brush CKBaCo_33
         {
-            get { return (string)GetValue(CKBaCo_33Property); }
+            get { return (Brush)GetValue(CKBaCo_33Property); }
             set { SetValue(CKBaCo_33Property, value); }
         }
 
@@ -1607,11 +1632,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKBaCo_34Property =
-            DependencyProperty.Register("CKBaCo_34", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKBaCo_34", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 
-        public string CKBaCo_34
+        public Brush CKBaCo_34
         {
-            get { return (string)GetValue(CKBaCo_34Property); }
+            get { return (Brush)GetValue(CKBaCo_34Property); }
             set { SetValue(CKBaCo_34Property, value); }
         }
 
@@ -1806,5 +1831,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (string)GetValue(CKKeCo_34Property); }
             set { SetValue(CKKeCo_34Property, value); }
         }
+
+        #endregion
     }
 }

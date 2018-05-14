@@ -336,13 +336,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         {
                                             Log.Info("Restoring window size.");
                                             mainWindowManipulationService.Restore();
+                                            Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                             Keyboard = new Menu(() => Keyboard = new Alpha1());
                                         };
                                         Keyboard = new ConversationAlpha1(conversationAlphaBackAction);
                                         break;
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.ConversationConfirm":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Conversation Confirm.");
                                         Action conversationConfirmBackAction = () =>
                                         {
@@ -354,7 +355,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         break;
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.ConversationNumericAndSymbols":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Conversation Numeric And Symbols.");
                                         Action conversationNumericAndSymbolsBackAction = () =>
                                         {
@@ -367,7 +368,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Currencies1":
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Currencies2":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Currencies.");
                                         Keyboard = new Currencies1();
                                         break;
@@ -375,45 +376,55 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Diacritics1":
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Diacritics2":
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Diacritics3":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Diacritics.");
                                         Keyboard = new Diacritics1();
                                         break;
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Menu":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Menu.");
+                                        if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                        }
                                         Keyboard = new Menu(() => Keyboard = new Alpha1());
                                         break;
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Mouse":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Mouse.");
+                                        if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                        }
                                         Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha1()));
                                         break;
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols1":
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols2":
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols3":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Numeric And Symbols.");
                                         Keyboard = new NumericAndSymbols1();
                                         break;
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.PhysicalKeys":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Mouse.");
                                         Keyboard = new PhysicalKeys();
                                         break;
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.SimplifiedAlpha":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Simplified Alpha.");
                                         Keyboard = new SimplifiedAlpha(() => Keyboard = new Menu(() => Keyboard = new Alpha1()));
                                         break;
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.SimplifiedConversationAlpha":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Simplified Conversation Alpha.");
                                         Action simplifiedConversationAlphaBackAction = () =>
                                         {
@@ -425,7 +436,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         break;
 
                                     case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.WebBrowsing":
-                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                                         Log.Info("Changing keyboard back to Web Browsing.");
                                         Keyboard = new WebBrowsing();
                                         break;
