@@ -44,7 +44,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             public Buttons()
             {
                 background_color = "#FFFFFF";
-                border_color = null;
+                border_color = "#000000";
                 image_id = "";
                 sound_id = "";
                 label = "";
@@ -171,7 +171,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     string path;
                     string text;
 
-                    List<Brush> Colours = new List<Brush>();
+                    List<Brush> Backgrounds = new List<Brush>();
+                    List<Brush> Borders = new List<Brush>();
                     List<string> Images = new List<string>();
                     List<string> Paths = new List<string>();
                     List<string> Labels = new List<string>();
@@ -260,7 +261,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             }
 
                             // store the individual properties of the current button
-                            Colours.Add(new SolidColorBrush(dec2hex(CurrentButton.background_color)));
+                            Backgrounds.Add(new SolidColorBrush(dec2hex(CurrentButton.background_color)));
+                            Borders.Add(new SolidColorBrush(dec2hex(CurrentButton.border_color)));
                             image = CurrentButton.image_id;
                             if (image != "" && image != null && !image.EndsWith(@"images\back.png"))
                             {
@@ -411,140 +413,160 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
 
                     int buttonid = 0;
-                    key.CKBaCo_00 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_00 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_00 = Borders.ElementAt(buttonid);
                     key.CKLabel_00 = Labels.ElementAt(buttonid);
                     key.CKText_00 = Texts.ElementAt(buttonid);
                     key.CKImSo_00 = Images.ElementAt(buttonid);
                     key.CKKeCo_00 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_01 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_01 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_01 = Borders.ElementAt(buttonid);
                     key.CKLabel_01 = Labels.ElementAt(buttonid);
                     key.CKText_01 = Texts.ElementAt(buttonid);
                     key.CKImSo_01 = Images.ElementAt(buttonid);
                     key.CKKeCo_01 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_02 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_02 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_02 = Borders.ElementAt(buttonid);
                     key.CKLabel_02 = Labels.ElementAt(buttonid);
                     key.CKText_02 = Texts.ElementAt(buttonid);
                     key.CKImSo_02 = Images.ElementAt(buttonid);
                     key.CKKeCo_02 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_03 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_03 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_03 = Borders.ElementAt(buttonid);
                     key.CKLabel_03 = Labels.ElementAt(buttonid);
                     key.CKText_03 = Texts.ElementAt(buttonid);
                     key.CKImSo_03 = Images.ElementAt(buttonid);
                     key.CKKeCo_03 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_04 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_04 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_04 = Borders.ElementAt(buttonid);
                     key.CKLabel_04 = Labels.ElementAt(buttonid);
                     key.CKText_04 = Texts.ElementAt(buttonid);
                     key.CKImSo_04 = Images.ElementAt(buttonid);
                     key.CKKeCo_04 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_10 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_10 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_10 = Borders.ElementAt(buttonid);
                     key.CKLabel_10 = Labels.ElementAt(buttonid);
                     key.CKText_10 = Texts.ElementAt(buttonid);
                     key.CKImSo_10 = Images.ElementAt(buttonid);
                     key.CKKeCo_10 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_11 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_11 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_11 = Borders.ElementAt(buttonid);
                     key.CKLabel_11 = Labels.ElementAt(buttonid);
                     key.CKText_11 = Texts.ElementAt(buttonid);
                     key.CKImSo_11 = Images.ElementAt(buttonid);
                     key.CKKeCo_11 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_12 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_12 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_12 = Borders.ElementAt(buttonid);
                     key.CKLabel_12 = Labels.ElementAt(buttonid);
                     key.CKText_12 = Texts.ElementAt(buttonid);
                     key.CKImSo_12 = Images.ElementAt(buttonid);
                     key.CKKeCo_12 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_13 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_13 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_13 = Borders.ElementAt(buttonid);
                     key.CKLabel_13 = Labels.ElementAt(buttonid);
                     key.CKText_13 = Texts.ElementAt(buttonid);
                     key.CKImSo_13 = Images.ElementAt(buttonid);
                     key.CKKeCo_13 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_14 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_14 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_14 = Borders.ElementAt(buttonid);
                     key.CKLabel_14 = Labels.ElementAt(buttonid);
                     key.CKText_14 = Texts.ElementAt(buttonid);
                     key.CKImSo_14 = Images.ElementAt(buttonid);
                     key.CKKeCo_14 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_20 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_20 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_20 = Borders.ElementAt(buttonid);
                     key.CKLabel_20 = Labels.ElementAt(buttonid);
                     key.CKText_20 = Texts.ElementAt(buttonid);
                     key.CKImSo_20 = Images.ElementAt(buttonid);
                     key.CKKeCo_20 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_21 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_21 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_21 = Borders.ElementAt(buttonid);
                     key.CKLabel_21 = Labels.ElementAt(buttonid);
                     key.CKText_21 = Texts.ElementAt(buttonid);
                     key.CKImSo_21 = Images.ElementAt(buttonid);
                     key.CKKeCo_21 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_22 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_22 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_22 = Borders.ElementAt(buttonid);
                     key.CKLabel_22 = Labels.ElementAt(buttonid);
                     key.CKText_22 = Texts.ElementAt(buttonid);
                     key.CKImSo_22 = Images.ElementAt(buttonid);
                     key.CKKeCo_22 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_23 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_23 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_23 = Borders.ElementAt(buttonid);
                     key.CKLabel_23 = Labels.ElementAt(buttonid);
                     key.CKText_23 = Texts.ElementAt(buttonid);
                     key.CKImSo_23 = Images.ElementAt(buttonid);
                     key.CKKeCo_23 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_24 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_24 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_24 = Borders.ElementAt(buttonid);
                     key.CKLabel_24 = Labels.ElementAt(buttonid);
                     key.CKText_24 = Texts.ElementAt(buttonid);
                     key.CKImSo_24 = Images.ElementAt(buttonid);
                     key.CKKeCo_24 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_30 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_30 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_30 = Borders.ElementAt(buttonid);
                     key.CKLabel_30 = Labels.ElementAt(buttonid);
                     key.CKText_30 = Texts.ElementAt(buttonid);
                     key.CKImSo_30 = Images.ElementAt(buttonid);
                     key.CKKeCo_30 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_31 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_31 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_31 = Borders.ElementAt(buttonid);
                     key.CKLabel_31 = Labels.ElementAt(buttonid);
                     key.CKText_31 = Texts.ElementAt(buttonid);
                     key.CKImSo_31 = Images.ElementAt(buttonid);
                     key.CKKeCo_31 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_32 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_32 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_32 = Borders.ElementAt(buttonid);
                     key.CKLabel_32 = Labels.ElementAt(buttonid);
                     key.CKText_32 = Texts.ElementAt(buttonid);
                     key.CKImSo_32 = Images.ElementAt(buttonid);
                     key.CKKeCo_32 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_33 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_33 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_33 = Borders.ElementAt(buttonid);
                     key.CKLabel_33 = Labels.ElementAt(buttonid);
                     key.CKText_33 = Texts.ElementAt(buttonid);
                     key.CKImSo_33 = Images.ElementAt(buttonid);
                     key.CKKeCo_33 = Paths.ElementAt(buttonid);
 
                     ++buttonid;
-                    key.CKBaCo_34 = Colours.ElementAt(buttonid);
+                    key.CKBaCo_34 = Backgrounds.ElementAt(buttonid);
+                    key.CKBoCo_34 = Borders.ElementAt(buttonid);
                     key.CKLabel_34 = Labels.ElementAt(buttonid);
                     key.CKText_34 = Texts.ElementAt(buttonid);
                     key.CKImSo_34 = Images.ElementAt(buttonid);
@@ -660,6 +682,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 defaultBackground = Colors.White;
             else
                 defaultBackground = Colors.Black;
+
             if (string.IsNullOrEmpty(dec))
             {
                 return defaultBackground;
@@ -772,6 +795,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_00Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_00Property =
+            DependencyProperty.Register("CKBoCo_00", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_00
+        {
+            get { return (Brush)GetValue(CKBoCo_00Property); }
+            set { SetValue(CKBoCo_00Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_00Property =
             DependencyProperty.Register("CKImSo_00", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -818,6 +850,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_01Property); }
             set { SetValue(CKBaCo_01Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_01Property =
+            DependencyProperty.Register("CKBoCo_01", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_01
+        {
+            get { return (Brush)GetValue(CKBoCo_01Property); }
+            set { SetValue(CKBoCo_01Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_01Property =
@@ -868,6 +909,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_02Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_02Property =
+            DependencyProperty.Register("CKBoCo_02", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_02
+        {
+            get { return (Brush)GetValue(CKBoCo_02Property); }
+            set { SetValue(CKBoCo_02Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_02Property =
             DependencyProperty.Register("CKImSo_02", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -914,6 +964,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_03Property); }
             set { SetValue(CKBaCo_03Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_03Property =
+            DependencyProperty.Register("CKBoCo_03", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_03
+        {
+            get { return (Brush)GetValue(CKBoCo_03Property); }
+            set { SetValue(CKBoCo_03Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_03Property =
@@ -964,6 +1023,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_04Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_04Property =
+            DependencyProperty.Register("CKBoCo_04", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_04
+        {
+            get { return (Brush)GetValue(CKBoCo_04Property); }
+            set { SetValue(CKBoCo_04Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_04Property =
             DependencyProperty.Register("CKImSo_04", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1010,6 +1078,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_10Property); }
             set { SetValue(CKBaCo_10Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_10Property =
+            DependencyProperty.Register("CKBoCo_10", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_10
+        {
+            get { return (Brush)GetValue(CKBoCo_10Property); }
+            set { SetValue(CKBoCo_10Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_10Property =
@@ -1060,6 +1137,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_11Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_11Property =
+            DependencyProperty.Register("CKBoCo_11", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_11
+        {
+            get { return (Brush)GetValue(CKBoCo_11Property); }
+            set { SetValue(CKBoCo_11Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_11Property =
             DependencyProperty.Register("CKImSo_11", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1103,6 +1189,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_12Property); }
             set { SetValue(CKBaCo_12Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_12Property =
+            DependencyProperty.Register("CKBoCo_12", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_12
+        {
+            get { return (Brush)GetValue(CKBoCo_12Property); }
+            set { SetValue(CKBoCo_12Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_12Property =
@@ -1150,6 +1245,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_13Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_13Property =
+            DependencyProperty.Register("CKBoCo_13", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_13
+        {
+            get { return (Brush)GetValue(CKBoCo_13Property); }
+            set { SetValue(CKBoCo_13Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_13Property =
             DependencyProperty.Register("CKImSo_13", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1193,6 +1297,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_14Property); }
             set { SetValue(CKBaCo_14Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_14Property =
+            DependencyProperty.Register("CKBoCo_14", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_14
+        {
+            get { return (Brush)GetValue(CKBoCo_14Property); }
+            set { SetValue(CKBoCo_14Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_14Property =
@@ -1240,6 +1353,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_20Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_20Property =
+            DependencyProperty.Register("CKBoCo_20", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_20
+        {
+            get { return (Brush)GetValue(CKBoCo_20Property); }
+            set { SetValue(CKBoCo_20Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_20Property =
             DependencyProperty.Register("CKImSo_20", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1283,6 +1405,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_21Property); }
             set { SetValue(CKBaCo_21Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_21Property =
+            DependencyProperty.Register("CKBoCo_21", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_21
+        {
+            get { return (Brush)GetValue(CKBoCo_21Property); }
+            set { SetValue(CKBoCo_21Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_21Property =
@@ -1330,6 +1461,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_22Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_22Property =
+            DependencyProperty.Register("CKBoCo_22", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_22
+        {
+            get { return (Brush)GetValue(CKBoCo_22Property); }
+            set { SetValue(CKBoCo_22Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_22Property =
             DependencyProperty.Register("CKImSo_22", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1373,6 +1513,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_23Property); }
             set { SetValue(CKBaCo_23Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_23Property =
+            DependencyProperty.Register("CKBoCo_23", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_23
+        {
+            get { return (Brush)GetValue(CKBoCo_23Property); }
+            set { SetValue(CKBoCo_23Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_23Property =
@@ -1420,6 +1569,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_24Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_24Property =
+            DependencyProperty.Register("CKBoCo_24", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_24
+        {
+            get { return (Brush)GetValue(CKBoCo_24Property); }
+            set { SetValue(CKBoCo_24Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_24Property =
             DependencyProperty.Register("CKImSo_24", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1463,6 +1621,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_30Property); }
             set { SetValue(CKBaCo_30Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_30Property =
+            DependencyProperty.Register("CKBoCo_30", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_30
+        {
+            get { return (Brush)GetValue(CKBoCo_30Property); }
+            set { SetValue(CKBoCo_30Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_30Property =
@@ -1510,6 +1677,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_31Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_31Property =
+            DependencyProperty.Register("CKBoCo_31", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_31
+        {
+            get { return (Brush)GetValue(CKBoCo_31Property); }
+            set { SetValue(CKBoCo_31Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_31Property =
             DependencyProperty.Register("CKImSo_31", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1553,6 +1729,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_32Property); }
             set { SetValue(CKBaCo_32Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_32Property =
+            DependencyProperty.Register("CKBoCo_32", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_32
+        {
+            get { return (Brush)GetValue(CKBoCo_32Property); }
+            set { SetValue(CKBoCo_32Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_32Property =
@@ -1600,6 +1785,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CKBaCo_33Property, value); }
         }
 
+        public static readonly DependencyProperty CKBoCo_33Property =
+            DependencyProperty.Register("CKBoCo_33", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_33
+        {
+            get { return (Brush)GetValue(CKBoCo_33Property); }
+            set { SetValue(CKBoCo_33Property, value); }
+        }
+
         public static readonly DependencyProperty CKImSo_33Property =
             DependencyProperty.Register("CKImSo_33", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
@@ -1643,6 +1837,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(CKBaCo_34Property); }
             set { SetValue(CKBaCo_34Property, value); }
+        }
+
+        public static readonly DependencyProperty CKBoCo_34Property =
+            DependencyProperty.Register("CKBoCo_34", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush CKBoCo_34
+        {
+            get { return (Brush)GetValue(CKBoCo_34Property); }
+            set { SetValue(CKBoCo_34Property, value); }
         }
 
         public static readonly DependencyProperty CKImSo_34Property =

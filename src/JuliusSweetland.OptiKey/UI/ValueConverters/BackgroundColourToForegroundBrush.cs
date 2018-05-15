@@ -7,7 +7,7 @@ using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
-    public class BackgroundColourToTextBrush : IValueConverter
+    public class BackgroundColourToForegroundBrush : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
