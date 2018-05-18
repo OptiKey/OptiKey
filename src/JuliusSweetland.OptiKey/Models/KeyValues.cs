@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Properties;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -92,7 +92,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ExpandToTopAndRightKey = new KeyValue(FunctionKeys.ExpandToTopAndRight);
         public static readonly KeyValue EscapeKey = new KeyValue(FunctionKeys.Escape);
         public static readonly KeyValue ExpandDockKey = new KeyValue(FunctionKeys.ExpandDock);
-        public static readonly KeyValue F1Key = new KeyValue(FunctionKeys.F1);        
+        public static readonly KeyValue F1Key = new KeyValue(FunctionKeys.F1);
         public static readonly KeyValue F2Key = new KeyValue(FunctionKeys.F2);
         public static readonly KeyValue F3Key = new KeyValue(FunctionKeys.F3);
         public static readonly KeyValue F4Key = new KeyValue(FunctionKeys.F4);
@@ -190,6 +190,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue PgDnKey = new KeyValue(FunctionKeys.PgDn);
         public static readonly KeyValue PgUpKey = new KeyValue(FunctionKeys.PgUp);
         public static readonly KeyValue PhysicalKeysKeyboardKey = new KeyValue(FunctionKeys.PhysicalKeysKeyboard);
+        public static readonly KeyValue PolishPolandKey = new KeyValue(FunctionKeys.PolishPoland);
         public static readonly KeyValue PortuguesePortugalKey = new KeyValue(FunctionKeys.PortuguesePortugal);
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue(FunctionKeys.PreviousSuggestions);
         public static readonly KeyValue PrintScreenKey = new KeyValue(FunctionKeys.PrintScreen);
@@ -301,6 +302,11 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
                                                 .ToList()
                 },
+                { Languages.PolishPoland, "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
                 { Languages.PortuguesePortugal, "abcdefghijklmnopqrstuvwxyzçà"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
@@ -320,7 +326,7 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-				{ Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
+                { Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
@@ -338,7 +344,7 @@ namespace JuliusSweetland.OptiKey.Models
             get
             {
                 var keys = CombiningKeys.Concat(
-                    new List <KeyValue>
+                    new List<KeyValue>
                     {
                         LeftAltKey,
                         LeftCtrlKey,

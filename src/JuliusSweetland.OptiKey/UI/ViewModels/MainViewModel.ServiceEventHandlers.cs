@@ -1829,6 +1829,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new PhysicalKeys();
                     break;
 
+                case FunctionKeys.PolishPoland:
+                    SelectLanguage(Languages.PolishPoland);
+                    break;
+
                 case FunctionKeys.PortuguesePortugal:
                     SelectLanguage(Languages.PortuguesePortugal);
                     break;

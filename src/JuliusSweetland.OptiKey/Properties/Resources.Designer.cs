@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -4291,6 +4291,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string POINTING_SOURCE_DESCRIPTION {
             get {
                 return ResourceManager.GetString("POINTING_SOURCE_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polish (Poland) / Polski (Polska).
+        /// </summary>
+        public static string POLISH_POLAND {
+            get {
+                return ResourceManager.GetString("POLISH_POLAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polish
+        ///(Poland) /
+        ///Polski
+        ///(Polska).
+        /// </summary>
+        public static string POLISH_POLAND_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("POLISH_POLAND_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         

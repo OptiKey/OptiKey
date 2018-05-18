@@ -1,5 +1,5 @@
-using System.Globalization;
 using JuliusSweetland.OptiKey.Properties;
+using System.Globalization;
 
 namespace JuliusSweetland.OptiKey.Enums
 {
@@ -21,6 +21,7 @@ namespace JuliusSweetland.OptiKey.Enums
         ItalianItaly,
         JapaneseJapan,
         KoreanKorea,
+        PolishPoland,
         PortuguesePortugal,
         RussianRussia,
         SlovenianSlovenia,
@@ -51,6 +52,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.ItalianItaly: return Resources.ITALIAN_ITALY;
                 case Languages.JapaneseJapan: return Resources.JAPANESE_JAPAN;
                 case Languages.KoreanKorea: return Resources.KOREAN_KOREA;
+                case Languages.PolishPoland: return Resources.POLISH_POLAND;
                 case Languages.PortuguesePortugal: return Resources.PORTUGUESE_PORTUGAL;
                 case Languages.RussianRussia: return Resources.RUSSIAN_RUSSIA;
                 case Languages.SlovakSlovakia: return Resources.SLOVAK_SLOVAKIA;
@@ -71,7 +73,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.CzechCzechRepublic: return CultureInfo.GetCultureInfo("cs-CZ");
                 case Languages.DanishDenmark: return CultureInfo.GetCultureInfo("da-DK");
                 case Languages.DutchBelgium: return CultureInfo.GetCultureInfo("nl-BE");
-                case Languages.DutchNetherlands: return CultureInfo.GetCultureInfo("nl-NL");			
+                case Languages.DutchNetherlands: return CultureInfo.GetCultureInfo("nl-NL");
                 case Languages.EnglishUS: return CultureInfo.GetCultureInfo("en-US");
                 case Languages.EnglishUK: return CultureInfo.GetCultureInfo("en-GB");
                 case Languages.EnglishCanada: return CultureInfo.GetCultureInfo("en-CA");
@@ -82,6 +84,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.ItalianItaly: return CultureInfo.GetCultureInfo("it-IT");
                 case Languages.JapaneseJapan: return CultureInfo.GetCultureInfo("ja-JP");
                 case Languages.KoreanKorea: return CultureInfo.GetCultureInfo("ko-KR");
+                case Languages.PolishPoland: return CultureInfo.GetCultureInfo("pl-PL");
                 case Languages.PortuguesePortugal: return CultureInfo.GetCultureInfo("pt-PT");
                 case Languages.RussianRussia: return CultureInfo.GetCultureInfo("ru-RU");
                 case Languages.SlovakSlovakia: return CultureInfo.GetCultureInfo("sk-SK");
