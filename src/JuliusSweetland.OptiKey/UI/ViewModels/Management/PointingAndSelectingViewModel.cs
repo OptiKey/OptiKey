@@ -1,12 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
@@ -17,26 +17,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
-        
+
         #region Ctor
 
         public PointingAndSelectingViewModel()
         {
             Load();
-            
+
             //Set up property defaulting logic
-            this.OnPropertyChanges(vm => vm.KeySelectionTriggerSource).Subscribe(ts => 
+            this.OnPropertyChanges(vm => vm.KeySelectionTriggerSource).Subscribe(ts =>
             {
-                switch(ts) 
+                switch (ts)
                 {
                     case Enums.TriggerSources.Fixations:
                         MultiKeySelectionTriggerStopSignal = Enums.TriggerStopSignals.NextHigh;
-                    break;
+                        break;
 
                     case Enums.TriggerSources.KeyboardKeyDownsUps:
                     case Enums.TriggerSources.MouseButtonDownUps:
                         MultiKeySelectionTriggerStopSignal = Enums.TriggerStopSignals.NextLow;
-                    break;
+                        break;
                 }
             });
 
@@ -58,9 +58,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 }
             });
         }
-        
+
         #endregion
-        
+
         #region Properties
 
         public List<KeyValuePair<string, PointsSources>> PointsSources
@@ -86,7 +86,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
-        
+
         public List<KeyValuePair<string, TriggerSources>> TriggerSources
         {
             get
@@ -113,17 +113,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
-        
+
         public List<Keys> Keys
         {
             get { return Enum.GetValues(typeof(Enums.Keys)).Cast<Enums.Keys>().OrderBy(k => k.ToString()).ToList(); }
         }
-        
+
         public List<MouseButtons> MouseButtons
         {
             get { return Enum.GetValues(typeof(Enums.MouseButtons)).Cast<Enums.MouseButtons>().OrderBy(mb => mb.ToString()).ToList(); }
         }
-        
+
         public List<KeyValuePair<string, TriggerStopSignals>> TriggerStopSignals
         {
             get
@@ -148,7 +148,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
-        
+
         private PointsSources pointSource;
         public PointsSources PointsSource
         {
@@ -159,7 +159,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private DataStreamProcessingLevels tobiiEyeXProcessingLevel;
         public DataStreamProcessingLevels TobiiEyeXProcessingLevel
         {
-            get {  return tobiiEyeXProcessingLevel; }
+            get { return tobiiEyeXProcessingLevel; }
             set { SetProperty(ref tobiiEyeXProcessingLevel, value); }
         }
 
@@ -183,14 +183,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return pointsMousePositionHideCursor; }
             set { SetProperty(ref pointsMousePositionHideCursor, value); }
         }
-        
+
         private double pointTtlInMs;
         public double PointTtlInMs
         {
             get { return pointTtlInMs; }
             set { SetProperty(ref pointTtlInMs, value); }
         }
-        
+
         private TriggerSources keySelectionTriggerSource;
         public TriggerSources KeySelectionTriggerSource
         {
@@ -211,7 +211,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return keySelectionTriggerMouseDownUpButton; }
             set { SetProperty(ref keySelectionTriggerMouseDownUpButton, value); }
         }
-        
+
         private double keySelectionTriggerFixationLockOnTimeInMs;
         public double KeySelectionTriggerFixationLockOnTimeInMs
         {
@@ -337,7 +337,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return multiKeySelectionFixationMinDwellTimeInMs; }
             set { SetProperty(ref multiKeySelectionFixationMinDwellTimeInMs, value); }
         }
-        
+
         private double multiKeySelectionMaxDurationInMs;
         public double MultiKeySelectionMaxDurationInMs
         {
@@ -382,9 +382,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     || Settings.Default.MultiKeySelectionMaxDuration != TimeSpan.FromMilliseconds(MultiKeySelectionMaxDurationInMs);
             }
         }
-        
+
         #endregion
-        
+
         #region Methods
 
         private void Load()
@@ -501,6 +501,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.ITALIAN_ITALY, KeyValues.ItalianItalyKey, dictionary.ContainsKey(KeyValues.ItalianItalyKey) ? dictionary[KeyValues.ItalianItalyKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.JAPANESE_JAPAN, KeyValues.JapaneseJapanKey, dictionary.ContainsKey(KeyValues.JapaneseJapanKey) ? dictionary[KeyValues.JapaneseJapanKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.KOREAN_KOREA, KeyValues.KoreanKoreaKey, dictionary.ContainsKey(KeyValues.KoreanKoreaKey) ? dictionary[KeyValues.KoreanKoreaKey] : (TimeSpan?) null),
+                    new KeyValueAndTimeSpan(Resources.POLISH_POLAND, KeyValues.PolishPolandKey, dictionary.ContainsKey(KeyValues.PolishPolandKey) ? dictionary[KeyValues.PolishPolandKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.PORTUGUESE_PORTUGAL, KeyValues.PortuguesePortugalKey, dictionary.ContainsKey(KeyValues.PortuguesePortugalKey) ? dictionary[KeyValues.PortuguesePortugalKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.RUSSIAN_RUSSIA, KeyValues.RussianRussiaKey, dictionary.ContainsKey(KeyValues.RussianRussiaKey) ? dictionary[KeyValues.RussianRussiaKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SLOVAK_SLOVAKIA, KeyValues.SlovakSlovakiaKey, dictionary.ContainsKey(KeyValues.SlovakSlovakiaKey) ? dictionary[KeyValues.SlovakSlovakiaKey] : (TimeSpan?)null),
@@ -658,7 +659,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 })
             };
         }
-        
+
         private SerializableDictionaryOfTimeSpanByKeyValues ToSetting(
             IEnumerable<KeyValueAndTimeSpanGroup> groups)
         {
