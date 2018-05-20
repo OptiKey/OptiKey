@@ -5,12 +5,12 @@ using JuliusSweetland.OptiKey.Models;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
-    public class IsMenuKey : IValueConverter
+    public class IsCommuniKateMenuKey : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             KeyValue key = (KeyValue)value;
-            if (String.IsNullOrEmpty(key.String))
+            if (string.IsNullOrEmpty(key.String))
                 return false;
             return key.String.Contains(":action:board:")
                 || key.String.Contains(":ext_letters")

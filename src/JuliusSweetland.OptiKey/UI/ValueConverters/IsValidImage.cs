@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string image = value.ToString();
-            if (String.IsNullOrEmpty(image))
+            if (string.IsNullOrEmpty(image))
                 return false;
             if (!File.Exists(image))
                 return false;
@@ -35,7 +35,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
     /// </summary>
     public class BitmapImageCheck : IDisposable
     {
-        #region class variables
+        #region Class Variables
         string baseKeyPath;
         RegistryKey baseKey;
         private const string WICDecoderCategory = "{7ED96837-96F0-4812-B211-F13C24117ED3}";
@@ -44,7 +44,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         private string[] customExtensions;
         #endregion
 
-        #region constructors
+        #region Constructors
         public BitmapImageCheck()
         {
             if (Environment.Is64BitOperatingSystem && !Environment.Is64BitProcess)
@@ -60,7 +60,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         }
         #endregion
 
-        #region properties
+        #region Properties
         /// <summary>
         /// File extensions that are supported by decoders found elsewhere on the system
         /// </summary>
@@ -95,7 +95,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         }
         #endregion
 
-        #region public methods
+        #region Public Methods
         /// <summary>
         /// Check whether a file is likely to be supported by BitmapImage based upon its extension
         /// </summary>
@@ -116,7 +116,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         }
         #endregion
 
-        #region private methods
+        #region Private Methods
         /// <summary>
         /// Re-calculate which extensions are available on this system. It's unlikely this ever needs to be called outside of the constructor.
         /// </summary>
@@ -217,7 +217,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         #endregion
 
 
-        #region overrides and whatnot
+        #region Overrides and Whatnot
 
         public override string ToString()
         {

@@ -154,11 +154,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     Log.DebugFormat("Page file to read: {0}.", pagefile);
                     string contents = new StreamReader(pagefile, Encoding.UTF8).ReadToEnd();
                     CKOBF CKPageOBF = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
-                    if (!String.IsNullOrEmpty(CKPageOBF.id))
+                    if (!string.IsNullOrEmpty(CKPageOBF.id))
                         Log.DebugFormat("Page file ID: {0}.", CKPageOBF.id);
-                    if (!String.IsNullOrEmpty(CKPageOBF.name))
+                    if (!string.IsNullOrEmpty(CKPageOBF.name))
                         Log.DebugFormat("Page file name: {0}.", CKPageOBF.name);
-                    if (!String.IsNullOrEmpty(CKPageOBF.description_html))
+                    if (!string.IsNullOrEmpty(CKPageOBF.description_html))
                         Log.DebugFormat("Page file description: {0}.", CKPageOBF.description_html);
                     int includesTopRow = CKPageOBF.grid.rows >= 5 ? 1 : 0;
                     key.CKGridRows = CKPageOBF.grid.rows - includesTopRow;
@@ -188,7 +188,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     int BlankButtonCount = 0;
                     for (int row = includesTopRow; row < CKPageOBF.grid.rows; ++row)
                     {
-                        var nullEntries = CKPageOBF.grid.order.ElementAt(row).FindAll(x => String.IsNullOrEmpty(x));
+                        var nullEntries = CKPageOBF.grid.order.ElementAt(row).FindAll(x => string.IsNullOrEmpty(x));
                         if (nullEntries.Count > 0)
                             BlankButtonCount += nullEntries.Count();
                     }
@@ -270,17 +270,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 if (imageIndex != -1)
                                 {
                                     var imageData = CKPageOBF.images.ElementAt(imageIndex);
-                                    if (!String.IsNullOrEmpty(imageData.path)) { image = CKpath() + imageData.path.Replace("..\\", "").Replace("../", ""); }
+                                    if (!string.IsNullOrEmpty(imageData.path)) { image = CKpath() + imageData.path.Replace("..\\", "").Replace("../", ""); }
                                     else
                                     {
                                         if (!Directory.Exists(CKpath() + @"images\")) { Directory.CreateDirectory(CKpath() + @"images\"); }
-                                        if (!String.IsNullOrEmpty(imageData.data))
+                                        if (!string.IsNullOrEmpty(imageData.data))
                                         {
                                             image = CKpath() + @"images\" + image + "." + imageData.content_type.Substring(6);
                                             if (!File.Exists(image) || new FileInfo(image).Length == 0)
                                                 File.WriteAllBytes(image, Convert.FromBase64String(imageData.data.Substring(22)));
                                         }
-                                        else if (!String.IsNullOrEmpty(imageData.url))
+                                        else if (!string.IsNullOrEmpty(imageData.url))
                                         {
                                             image = CKpath() + @"images\" + image + "." + imageData.content_type.Substring(6);
                                             if (!File.Exists(image) || new FileInfo(image).Length == 0)
@@ -311,28 +311,28 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                     image = "";
                                 }
                             }
-                            if (!String.IsNullOrEmpty(image))
+                            if (!string.IsNullOrEmpty(image))
                                 Log.DebugFormat("Button {0} uses image {1}.", ButtonNo + 1 - 3 * includesTopRow, image);
                             Images.Add(image);
 
                             sound = CurrentButton.sound_id;
-                            if (!String.IsNullOrEmpty(sound))
+                            if (!string.IsNullOrEmpty(sound))
                             {
                                 int soundIndex = CKPageOBF.sounds.FindIndex(x => x.id.Contains(sound));
                                 if (soundIndex != -1)
                                 {
                                     var soundData = CKPageOBF.sounds.ElementAt(soundIndex);
-                                    if (!String.IsNullOrEmpty(soundData.path)) { sound = CKpath() + soundData.path.Replace("..\\", "").Replace("../", ""); }
+                                    if (!string.IsNullOrEmpty(soundData.path)) { sound = CKpath() + soundData.path.Replace("..\\", "").Replace("../", ""); }
                                     else
                                     {
                                         if (!Directory.Exists(CKpath() + @"sounds\")) { Directory.CreateDirectory(CKpath() + @"sounds\"); }
-                                        if (!String.IsNullOrEmpty(soundData.data))
+                                        if (!string.IsNullOrEmpty(soundData.data))
                                         {
                                             sound = CKpath() + @"sounds\" + sound + "." + soundData.content_type.Substring(6);
                                             if (!File.Exists(sound) || new FileInfo(sound).Length == 0)
                                                 File.WriteAllBytes(sound, Convert.FromBase64String(soundData.data.Substring(22)));
                                         }
-                                        else if (!String.IsNullOrEmpty(soundData.url))
+                                        else if (!string.IsNullOrEmpty(soundData.url))
                                         {
                                             sound = CKpath() + @"sounds\" + sound + "." + soundData.content_type.Substring(6);
                                             if (!File.Exists(sound) || new FileInfo(sound).Length == 0)
@@ -363,33 +363,33 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                     sound = "";
                                 }
                             }
-                            if (!String.IsNullOrEmpty(sound))
+                            if (!string.IsNullOrEmpty(sound))
                                 Log.DebugFormat("Button {0} uses sound {1}.", ButtonNo + 1 - 3 * includesTopRow, sound);
 
                             Boards.Add(CurrentButton.load_board);
                             Labels.Add(CurrentButton.label);
                             text = CurrentButton.vocalization;
-                            Texts.Add(String.IsNullOrEmpty(text) ? Labels.Last() : text);
+                            Texts.Add(string.IsNullOrEmpty(text) ? Labels.Last() : text);
                             action = CurrentButton.action;
                             path = null;
-                            if (!String.IsNullOrEmpty(Boards.Last().path) || !String.IsNullOrEmpty(sound) || !String.IsNullOrEmpty(action))
+                            if (!string.IsNullOrEmpty(Boards.Last().path) || !string.IsNullOrEmpty(sound) || !string.IsNullOrEmpty(action))
                             {
-                                if (!String.IsNullOrEmpty(Boards.Last().path))
+                                if (!string.IsNullOrEmpty(Boards.Last().path))
                                 {
                                     path = ":action:board:" + Boards.Last().path.Replace("..\\", "").Replace("../", "");
                                     Log.DebugFormat("Button {0} is a menu key for board {1}.", ButtonNo + 1 - 3 * includesTopRow, path);
                                 }
-                                if (!String.IsNullOrEmpty(text))
+                                if (!string.IsNullOrEmpty(text))
                                 {
                                     path += ":action:text:" + text;
                                     Log.DebugFormat("Button {0} has vocalization {1}.", ButtonNo + 1 - 3 * includesTopRow, text);
                                 }
-                                if (!String.IsNullOrEmpty(sound))
+                                if (!string.IsNullOrEmpty(sound))
                                 {
                                     path += ":action:sound:" + sound;
                                     Log.DebugFormat("Button {0} has sound {1}.", ButtonNo + 1 - 3 * includesTopRow, sound);
                                 }
-                                if (!String.IsNullOrEmpty(action))
+                                if (!string.IsNullOrEmpty(action))
                                 {
                                     path += ":action:action:" + action;
                                     Log.DebugFormat("Button {0} has action {1}.", ButtonNo + 1 - 3 * includesTopRow, action);
@@ -397,14 +397,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             }
                             else
                             {
-                                if (String.IsNullOrEmpty(Texts.Last()))
+                                if (string.IsNullOrEmpty(Texts.Last()))
                                     path = defaultPath;
                                 else
                                     path = ":action:text:" + Texts.Last();
                             }
                             if (Settings.Default.CommuniKateSpeakSelected)
                             {
-                                if (String.IsNullOrEmpty(sound))
+                                if (string.IsNullOrEmpty(sound))
                                     path += ":action:speak:" + Texts.Last();
                             }
                             Paths.Add(path);

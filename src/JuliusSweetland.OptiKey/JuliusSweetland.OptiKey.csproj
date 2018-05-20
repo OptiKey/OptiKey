@@ -428,7 +428,7 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
-    <Compile Include="UI\ValueConverters\TwoColoursToForegroundBrush.cs" />
+    <Compile Include="UI\ValueConverters\CommuniKateTwoColoursToForegroundBrush.cs" />
     <Compile Include="UI\ValueConverters\ColourNameToBrush.cs" />
     <Compile Include="UI\ValueConverters\EnumMapper.cs" />
     <Compile Include="UI\ValueConverters\EnumToVisibilityConverter.cs" />
@@ -436,11 +436,11 @@
     <Compile Include="UI\ValueConverters\BoolToCustomValues.cs" />
     <Compile Include="UI\ValueConverters\ListNotEmpty.cs" />
     <Compile Include="UI\ValueConverters\IsGreaterThan.cs" />
-    <Compile Include="UI\ValueConverters\IsActionKey.cs" />
-    <Compile Include="UI\ValueConverters\BackgroundColourToForegroundBrush.cs" />
+    <Compile Include="UI\ValueConverters\IsCommuniKateActionKey.cs" />
+    <Compile Include="UI\ValueConverters\CommuniKateBackgroundColourToForegroundBrush.cs" />
     <Compile Include="UI\ValueConverters\IsSvgImage.cs" />
     <Compile Include="UI\ValueConverters\IsValidImage.cs" />
-    <Compile Include="UI\ValueConverters\IsMenuKey.cs" />
+    <Compile Include="UI\ValueConverters\IsCommuniKateMenuKey.cs" />
     <Compile Include="UI\ValueConverters\OverrideHasValue.cs" />
     <Compile Include="UI\ValueConverters\CloneBrush.cs" />
     <Compile Include="UI\ValueConverters\ObjectIsType.cs" />
@@ -939,7 +939,7 @@
     <Resource Include="Resources\Icons\Back.ico" />
     <Resource Include="Resources\Icons\Quit.ico" />
     <Resource Include="Resources\Icons\ManualMode.ico" />
-    <None Include="Resources\Icons\SVG Source Files\CommuniKateToppage.svg" />
+    <None Include="Resources\Icons\SVG Source Files\CommuniKateTopPage.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollActive.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreenCentred.svg" />
