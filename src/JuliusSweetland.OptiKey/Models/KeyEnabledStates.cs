@@ -587,10 +587,9 @@ namespace JuliusSweetland.OptiKey.Models
                 {
                     if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
                     {
-                        //Acute accent: ćĆ łŁ ńŃ óÓ śŚ źŹ
+                        //Acute accent: ćĆ ńŃ óÓ śŚ źŹ
                         return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
                             || keyValue == new KeyValue("c")
-                            || keyValue == new KeyValue("l")
                             || keyValue == new KeyValue("n")
                             || keyValue == new KeyValue("o")
                             || keyValue == new KeyValue("s")
