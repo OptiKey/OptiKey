@@ -7,7 +7,7 @@ using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
-    public class TwoColoursToForegroundBrush : IMultiValueConverter
+    public class CommuniKateTwoColoursToForegroundBrush : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

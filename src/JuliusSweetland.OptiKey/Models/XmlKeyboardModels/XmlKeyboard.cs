@@ -90,7 +90,7 @@ namespace JuliusSweetland.OptiKey.Models
             string ext = Path.GetExtension(inputFilename);
             bool exists = File.Exists(inputFilename);
             if (!File.Exists(inputFilename) &&
-                String.IsNullOrEmpty(Path.GetExtension(inputFilename)))
+                string.IsNullOrEmpty(Path.GetExtension(inputFilename)))
             {
                 inputFilename += ".xml";
             } 

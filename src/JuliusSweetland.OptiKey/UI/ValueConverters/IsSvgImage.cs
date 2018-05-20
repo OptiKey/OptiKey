@@ -10,7 +10,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string image = value.ToString();
-            if (String.IsNullOrEmpty(image))
+            if (string.IsNullOrEmpty(image))
                 return false;
             if (!File.Exists(image))
                 return false;

@@ -16,12 +16,12 @@
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:IsGreaterThan x:Key="IsGreaterThan" />
-                    <valueConverters:IsActionKey x:Key="IsActionKey" />
-                    <valueConverters:IsMenuKey x:Key="IsMenuKey" />
+                    <valueConverters:IsCommuniKateActionKey x:Key="IsCommuniKateActionKey" />
+                    <valueConverters:IsCommuniKateMenuKey x:Key="IsCommuniKateMenuKey" />
                     <valueConverters:IsValidImage x:Key="IsValidImage" />
                     <valueConverters:IsSvgImage x:Key="IsSvgImage" />
-                    <valueConverters:BackgroundColourToForegroundBrush x:Key="BackgroundColourToForegroundBrush" />
-                    <valueConverters:TwoColoursToForegroundBrush x:Key="TwoColoursToForegroundBrush" />
+                    <valueConverters:CommuniKateBackgroundColourToForegroundBrush x:Key="CommuniKateBackgroundColourToForegroundBrush" />
+                    <valueConverters:CommuniKateTwoColoursToForegroundBrush x:Key="CommuniKateTwoColoursToForegroundBrush" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -156,7 +156,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -177,7 +177,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -194,7 +194,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -215,11 +215,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_00" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_00" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -270,7 +270,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -291,7 +291,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -308,7 +308,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -329,11 +329,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_01" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_01" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -384,7 +384,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -405,7 +405,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -422,7 +422,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -443,11 +443,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_02" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_02" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -498,7 +498,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -519,7 +519,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -536,7 +536,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -557,11 +557,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_03" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_03" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -612,7 +612,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -633,7 +633,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -650,7 +650,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -671,11 +671,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_04" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_04" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -727,7 +727,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -748,7 +748,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -765,7 +765,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -786,11 +786,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_10" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_10" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -841,7 +841,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -862,7 +862,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -879,7 +879,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -900,11 +900,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_11" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_11" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -955,7 +955,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -976,7 +976,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -993,7 +993,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1014,11 +1014,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_12" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_12" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -1069,7 +1069,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -1090,7 +1090,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1107,7 +1107,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1128,11 +1128,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_13" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_13" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -1183,7 +1183,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -1204,7 +1204,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1221,7 +1221,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1242,11 +1242,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_14" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_14" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -1298,7 +1298,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -1319,7 +1319,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1336,7 +1336,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1357,11 +1357,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_20" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_20" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -1412,7 +1412,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -1433,7 +1433,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1450,7 +1450,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1471,11 +1471,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_21" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_21" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -1526,7 +1526,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -1547,7 +1547,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1564,7 +1564,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1585,11 +1585,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_22" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_22" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -1640,7 +1640,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -1661,7 +1661,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1678,7 +1678,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1699,11 +1699,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_23" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_23" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -1754,7 +1754,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -1775,7 +1775,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1792,7 +1792,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1813,11 +1813,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_24" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_24" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -1869,7 +1869,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -1890,7 +1890,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1907,7 +1907,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -1928,11 +1928,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_30" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_30" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -1983,7 +1983,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -2004,7 +2004,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -2021,7 +2021,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -2042,11 +2042,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_31" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_31" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -2097,7 +2097,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -2118,7 +2118,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -2135,7 +2135,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -2156,11 +2156,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_32" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_32" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -2211,7 +2211,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -2232,7 +2232,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -2249,7 +2249,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -2270,11 +2270,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_33" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_33" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
@@ -2325,7 +2325,7 @@
             </svgc:SvgViewbox>
             <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
                 <TextBlock Text="{Binding Path=CKLabel_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           Foreground="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush} }" 
+                           Foreground="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
                            FontWeight="Heavy" HorizontalAlignment="Center" />
                 <Viewbox.Style>
                     <Style TargetType="Viewbox">
@@ -2346,7 +2346,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsMenuKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -2363,7 +2363,7 @@
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Converter={StaticResource IsActionKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Path Fill="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
@@ -2384,11 +2384,11 @@
                                 <controls:Key SharedSizeGroup="KeyWithText"
                                               BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
                                               SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
-                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource BackgroundColourToForegroundBrush}}" 
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
                                               Text="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                                               Value="{Binding Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
                                     <controls:Key.HoverForegroundColourOverride>
-                                        <MultiBinding Converter="{StaticResource TwoColoursToForegroundBrush}">
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
                                             <Binding Path="CKBoCo_34" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                             <Binding Path="CKBaCo_34" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
                                         </MultiBinding>
