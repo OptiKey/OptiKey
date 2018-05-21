@@ -19,14 +19,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Filter = "Open Board Format (*.obz)|*.obz"
+                Filter = "Open Board Format (*.OBF or *.OBZ)|*.obf; *.obz|Open Board Format file (*.OBF)|*.obf|Open Board Format archive (*.OBZ)|*.obz"
             };
 
             if (openFileDialog.ShowDialog() == true)
             {
                 string fileLocation = null;
 
-                if (openFileDialog.FileName.EndsWith(@".obz"))
+                if (openFileDialog.FileName.EndsWith(@".obf") || openFileDialog.FileName.EndsWith(@".obz"))
                 {
                     txtCommuniKateTopPageLocation.Text = openFileDialog.FileName;
                     fileLocation = txtCommuniKateTopPageLocation.Text;

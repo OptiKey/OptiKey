@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -655,6 +655,42 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string COMMUNIKATE_DISABLED {
             get {
                 return ResourceManager.GetString("COMMUNIKATE_DISABLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommuniKate sound volume:.
+        /// </summary>
+        public static string COMMUNIKATE_SOUND_VOLUME_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SOUND_VOLUME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speak CommuniKate button text when selected:.
+        /// </summary>
+        public static string COMMUNIKATE_SPEAK_SELECTED_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SPEAK_SELECTED_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate of speech when speaking CommuniKate button text:.
+        /// </summary>
+        public static string COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume of speech when speaking CommuniKate button text:.
+        /// </summary>
+        public static string COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL", resourceCulture);
             }
         }
         

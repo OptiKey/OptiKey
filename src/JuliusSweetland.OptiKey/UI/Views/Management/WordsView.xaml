@@ -37,6 +37,10 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}"
@@ -67,9 +71,6 @@
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseAlphabeticalKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
                                     <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
@@ -84,9 +85,6 @@
                             <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
                                 <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseAlphabeticalKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
                                     <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
@@ -168,9 +166,133 @@
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SOUND_VOLUME_LABEL}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="1" Interval="1" Maximum="100"
+                                            Value="{Binding CommuniKateSoundVolume, Mode=TwoWay}" >
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_LABEL}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <CheckBox Grid.Row="7" Grid.Column="1"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding CommuniKateSpeakSelected, Mode=TwoWay}" >
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="1" Interval="1" Maximum="100"
+                                            Value="{Binding CommuniKateSpeakSelectedVolume, Mode=TwoWay}" >
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="1" Interval="1" Maximum="100"
+                                            Value="{Binding CommuniKateSpeakSelectedRate, Mode=TwoWay}" >
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
                                 VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="6" Grid.Column="1"
+                    <CheckBox Grid.Row="10" Grid.Column="1"
                                 VerticalAlignment="Center"
                                 IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
                 </Grid>

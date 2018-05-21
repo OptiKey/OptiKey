@@ -29,6 +29,7 @@
         CommuniKateKeyboard,
         ConversationAlpha1Keyboard,
         ConversationAlpha2Keyboard,
+        ConversationCommuniKateKeyboard,
         ConversationConfirmKeyboard,
         ConversationConfirmYes,
         ConversationConfirmNo,

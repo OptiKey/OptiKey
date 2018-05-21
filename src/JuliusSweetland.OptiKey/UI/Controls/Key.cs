@@ -330,8 +330,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
-        public bool HasText { get { return !String.IsNullOrEmpty(ShiftUpText) ||
-                                           !String.IsNullOrEmpty(ShiftDownText); } }
+        public bool HasText { get { return !string.IsNullOrEmpty(ShiftUpText) ||
+                                           !string.IsNullOrEmpty(ShiftDownText); } }
 
         public static readonly DependencyProperty OnlyVisibleWhenInUseProperty =
             DependencyProperty.Register("OnlyVisibleWhenInUse", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
