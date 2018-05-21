@@ -3106,6 +3106,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you would like to switch to manual mode?.
+        /// </summary>
+        public static string MANUAL_MODE_MESSAGE {
+            get {
+                return ResourceManager.GetString("MANUAL_MODE_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use MaryTTS speech synthesizer?.
         /// </summary>
         public static string MARYTTS_ENABLED_LABEL {
@@ -5328,15 +5337,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL {
             get {
                 return ResourceManager.GetString("SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you would like to switch to manual mode?.
-        /// </summary>
-        public static string SWITCH_TO_MANUAL_MODE_MESSAGE {
-            get {
-                return ResourceManager.GetString("SWITCH_TO_MANUAL_MODE_MESSAGE", resourceCulture);
             }
         }
         

@@ -134,7 +134,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             Log.Info("ToggleManualMode called.");
 
-            if (MessageBox.Show(Properties.Resources.SWITCH_TO_MANUAL_MODE_MESSAGE, Properties.Resources.MANUAL_MODE, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show(Properties.Resources.MANUAL_MODE_MESSAGE, Properties.Resources.MANUAL_MODE, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 var mainViewModel = MainView.DataContext as MainViewModel;
                 if (mainViewModel != null)
