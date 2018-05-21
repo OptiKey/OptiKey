@@ -134,18 +134,21 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             Log.Info("ToggleManualMode called.");
 
-            var mainViewModel = MainView.DataContext as MainViewModel;
-            if (mainViewModel != null)
+            if (MessageBox.Show(Properties.Resources.SWITCH_TO_MANUAL_MODE_MESSAGE, Properties.Resources.MANUAL_MODE, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                inputService.RequestSuspend();
-                mainViewModel.DetachInputServiceEventHandlers();
-                var changingToManualMode = inputService.PointSource == defaultPointSource;
-                inputService.PointSource = changingToManualMode ? manualModePointSource : defaultPointSource;
-                mainViewModel.AttachInputServiceEventHandlers();
-                mainViewModel.RaiseToastNotification(Properties.Resources.MANUAL_MODE_CHANGED,
-                    changingToManualMode ? Properties.Resources.MANUAL_MODE_ENABLED : Properties.Resources.MANUAL_MODE_DISABLED, 
-                    NotificationTypes.Normal, () => inputService.RequestResume());
-                mainViewModel.ManualModeEnabled = changingToManualMode;
+                var mainViewModel = MainView.DataContext as MainViewModel;
+                if (mainViewModel != null)
+                {
+                    inputService.RequestSuspend();
+                    mainViewModel.DetachInputServiceEventHandlers();
+                    var changingToManualMode = inputService.PointSource == defaultPointSource;
+                    inputService.PointSource = changingToManualMode ? manualModePointSource : defaultPointSource;
+                    mainViewModel.AttachInputServiceEventHandlers();
+                    mainViewModel.RaiseToastNotification(Properties.Resources.MANUAL_MODE_CHANGED,
+                        changingToManualMode ? Properties.Resources.MANUAL_MODE_ENABLED : Properties.Resources.MANUAL_MODE_DISABLED,
+                        NotificationTypes.Normal, () => inputService.RequestResume());
+                    mainViewModel.ManualModeEnabled = changingToManualMode;
+                }
             }
 
             Log.Info("ToggleManualMode complete.");

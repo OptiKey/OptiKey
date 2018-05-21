@@ -2176,5 +2176,8 @@ Française
 (Japan) /
 日本語
 (日本)</value>
-  </data>  
+  </data>
+  <data name="SWITCH_TO_MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>Are you sure you would like to switch to manual mode?</value>
+  </data>
 </root>
