@@ -6,6 +6,7 @@ using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
@@ -309,95 +310,312 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             switch (singleKeyValue.FunctionKey.Value)
             {
                 case FunctionKeys.CommuniKate:
-                    switch (singleKeyValue.String)
+                    if (singleKeyValue.String.Contains(":action:"))
                     {
-                        case "spelling.obf":
-                            Settings.Default.UsingCommuniKateKeyboardLayout = false;
-                            if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                        string[] stringSeparators = new string[] { ":action:" };
+                        foreach (var action in singleKeyValue.String.Split(stringSeparators, StringSplitOptions.None).ToList())
+                        {
+                            Log.DebugFormat("Performing CommuniKate action: {0}.", action);
+                            if (action.StartsWith("board:"))
                             {
-                                Log.Info("Changing keyboard to ConversationAlpha.");
-                                Action conversationAlphaBackAction = () =>
+                                string board = action.Substring(6);
+                                switch (board)
                                 {
-                                    Settings.Default.UsingCommuniKateKeyboardLayout = true;
-                                    Keyboard = currentKeyboard;
-                                };
-                                Keyboard = new ConversationAlpha1(conversationAlphaBackAction);
-                            }
-                            else
-                            {
-                                Log.Info("Changing keyboard to Alpha.");
-                                Keyboard = new Alpha1();
-                            }
-                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                            break;
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Alpha1":
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Alpha2":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Log.Info("Changing keyboard back to Alpha.");
+                                        Keyboard = new Alpha1();
+                                        break;
 
-                        case "numbers.obf":
-                            if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.ConversationAlpha1":
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.ConversationAlpha2":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                        Log.Info("Changing keyboard back to Conversation Alpha.");
+                                        Action conversationAlphaBackAction = () =>
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                            Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                            Keyboard = new Menu(() => Keyboard = new Alpha1());
+                                        };
+                                        Keyboard = new ConversationAlpha1(conversationAlphaBackAction);
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.ConversationConfirm":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Conversation Confirm.");
+                                        Action conversationConfirmBackAction = () =>
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                            Keyboard = new Menu(() => Keyboard = new Alpha1());
+                                        };
+                                        Keyboard = new ConversationConfirm(conversationConfirmBackAction);
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.ConversationNumericAndSymbols":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Conversation Numeric And Symbols.");
+                                        Action conversationNumericAndSymbolsBackAction = () =>
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                            Keyboard = new Menu(() => Keyboard = new Alpha1());
+                                        };
+                                        Keyboard = new ConversationNumericAndSymbols(conversationNumericAndSymbolsBackAction);
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Currencies1":
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Currencies2":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Currencies.");
+                                        Keyboard = new Currencies1();
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Diacritics1":
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Diacritics2":
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Diacritics3":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Diacritics.");
+                                        Keyboard = new Diacritics1();
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Menu":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Menu.");
+                                        if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                        }
+                                        Keyboard = new Menu(() => Keyboard = new Alpha1());
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Mouse":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Mouse.");
+                                        if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                        }
+                                        Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha1()));
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols1":
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols2":
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols3":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Numeric And Symbols.");
+                                        Keyboard = new NumericAndSymbols1();
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.PhysicalKeys":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Mouse.");
+                                        Keyboard = new PhysicalKeys();
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.SimplifiedAlpha":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Simplified Alpha.");
+                                        Keyboard = new SimplifiedAlpha(() => Keyboard = new Menu(() => Keyboard = new Alpha1()));
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.SimplifiedConversationAlpha":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Simplified Conversation Alpha.");
+                                        Action simplifiedConversationAlphaBackAction = () =>
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                            Keyboard = new Menu(() => Keyboard = new Alpha1());
+                                        };
+                                        Keyboard = new SimplifiedConversationAlpha(simplifiedConversationAlphaBackAction);
+                                        break;
+
+                                    case "JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.WebBrowsing":
+                                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                                        Log.Info("Changing keyboard back to Web Browsing.");
+                                        Keyboard = new WebBrowsing();
+                                        break;
+
+                                    default:
+                                        if (string.IsNullOrEmpty(Settings.Default.CommuniKateKeyboardCurrentContext))
+                                        {
+                                            Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateDefaultBoard;
+                                            Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateDefaultBoard;
+                                            Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateDefaultBoard;
+                                            Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateDefaultBoard;
+                                        }
+                                        else if (Settings.Default.CommuniKateKeyboardPrevious1Context == board)
+                                        {
+                                            Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateKeyboardPrevious2Context;
+                                            Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateKeyboardPrevious3Context;
+                                            Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateKeyboardPrevious4Context;
+                                            Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateDefaultBoard;
+                                        }
+                                        else
+                                        {
+                                            Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateKeyboardPrevious3Context;
+                                            Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateKeyboardPrevious2Context;
+                                            Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateKeyboardPrevious1Context;
+                                            Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateKeyboardCurrentContext;
+                                        }
+
+                                        Settings.Default.CommuniKateKeyboardCurrentContext = board;
+                                        Log.InfoFormat("CommuniKate keyboard page changed to {0}.", board);
+                                        break;
+                                }
+                            }
+                            else if (action.StartsWith("text:"))
                             {
-                                Log.Info("Changing keyboard to ConversationNumericAndSymbols.");
-                                Action BackAction = () =>
+                                keyboardOutputService.ProcessSingleKeyText(action.Substring(5));
+                            }
+                            else if (action.StartsWith("speak:"))
+                            {
+                                if (Settings.Default.CommuniKateSpeakSelected)
                                 {
-                                    Keyboard = currentKeyboard;
-                                };
-                                Keyboard = new ConversationNumericAndSymbols(BackAction);
+                                    var speechCommuniKate = audioService.SpeakNewOrInterruptCurrentSpeech(
+                                        action.Substring(6),
+                                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                                        Settings.Default.CommuniKateSpeakSelectedVolume,
+                                        Settings.Default.CommuniKateSpeakSelectedRate,
+                                        Settings.Default.SpeechVoice);
+                                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechCommuniKate ? KeyDownStates.Down : KeyDownStates.Up;
+                                }
                             }
-                            else
+                            else if (action.StartsWith("sound:"))
+                                audioService.PlaySound(action.Substring(6), Settings.Default.CommuniKateSoundVolume);
+                            else if (action.StartsWith("action:"))
                             {
-                                Log.Info("Changing keyboard to Numeric And Symbols.");
-                                Keyboard = new NumericAndSymbols1();
-                            }
-                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                            break;
-
-                        case "computercontrol.obf":
-                            if (mainWindowManipulationService.WindowState != WindowStates.Maximised)
-                            {
-                                Log.Info("Changing keyboard to Mouse.");
-                                Action BackAction = () =>
+                                string thisAction = action.Substring(7);
+                                if (thisAction.StartsWith("+"))
                                 {
-                                    Keyboard = currentKeyboard;
-                                };
-                                Keyboard = new Mouse(BackAction);
-                                Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                            }
-                            break;
+                                    bool changedAutoSpace = false;
+                                    if (Settings.Default.AutoAddSpace)
+                                    {
+                                        Settings.Default.AutoAddSpace = false;
+                                        changedAutoSpace = true;
+                                    }
+                                    foreach (char letter in thisAction.Substring(1))
+                                        keyboardOutputService.ProcessSingleKeyText(letter.ToString());
 
-                        default:
-                            if (string.IsNullOrEmpty(Settings.Default.CommuniKateKeyboardCurrentContext))
-                            {
-                                Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
-                                Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
-                                Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
-                                Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
-                            }
-                            else if (Settings.Default.CommuniKateKeyboardPrevious1Context == singleKeyValue.String)
-                            {
-                                Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateKeyboardPrevious2Context;
-                                Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateKeyboardPrevious3Context;
-                                Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateKeyboardPrevious4Context;
-                                Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
-                            }
-                            else
-                            {
-                                Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateKeyboardPrevious3Context;
-                                Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateKeyboardPrevious2Context;
-                                Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateKeyboardPrevious1Context;
-                                Settings.Default.CommuniKateKeyboardPrevious1Context = Settings.Default.CommuniKateKeyboardCurrentContext;
+                                    if (changedAutoSpace)
+                                        Settings.Default.AutoAddSpace = true;
+                                }
+                                else if (thisAction.StartsWith(":"))
+                                    switch (thisAction)
+                                    {
+                                        case ":space":
+                                            keyboardOutputService.ProcessSingleKeyText(" ");
+                                            break;
+                                        case ":home":
+                                            Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
+                                            Log.InfoFormat("CommuniKate keyboard page changed to home board.");
+                                            break;
+                                        case ":speak":
+                                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.Speak);
+                                            break;
+                                        case ":clear":
+                                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                                            break;
+                                        case ":deleteword":
+                                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.BackMany);
+                                            break;
+                                        case ":backspace":
+                                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.BackOne);
+                                            break;
+                                        case ":ext_volume_up":
+                                            Native.PInvoke.keybd_event((byte)Keys.VolumeUp, 0, 0, 0);
+                                            break;
+                                        case ":ext_volume_down":
+                                            Native.PInvoke.keybd_event((byte)Keys.VolumeDown, 0, 0, 0);
+                                            break;
+                                        case ":ext_volume_mute":
+                                            Native.PInvoke.keybd_event((byte)Keys.VolumeMute, 0, 0, 0);
+                                            break;
+                                        case ":ext_media_next":
+                                            Native.PInvoke.keybd_event((byte)Keys.MediaNextTrack, 0, 0, 0);
+                                            break;
+                                        case ":ext_media_previous":
+                                            Native.PInvoke.keybd_event((byte)Keys.MediaPreviousTrack, 0, 0, 0);
+                                            break;
+                                        case ":ext_media_pause":
+                                            Native.PInvoke.keybd_event((byte)Keys.MediaPlayPause, 0, 0, 0);
+                                            break;
+                                        case ":ext_letters":
+                                            Settings.Default.UsingCommuniKateKeyboardLayout = false;
+                                            if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                                            {
+                                                Log.Info("Changing keyboard to ConversationAlpha.");
+                                                Action conversationAlphaBackAction = () =>
+                                                {
+                                                    Settings.Default.UsingCommuniKateKeyboardLayout = true;
+                                                    Keyboard = currentKeyboard;
+                                                };
+                                                Keyboard = new ConversationAlpha1(conversationAlphaBackAction);
+                                            }
+                                            else
+                                            {
+                                                Log.Info("Changing keyboard to Alpha.");
+                                                Keyboard = new Alpha1();
+                                            }
+                                            break;
+
+                                        case ":ext_numbers":
+                                            if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                                            {
+                                                Log.Info("Changing keyboard to ConversationNumericAndSymbols.");
+                                                Action BackAction = () =>
+                                                {
+                                                    Keyboard = currentKeyboard;
+                                                };
+                                                Keyboard = new ConversationNumericAndSymbols(BackAction);
+                                            }
+                                            else
+                                            {
+                                                Log.Info("Changing keyboard to Numeric And Symbols.");
+                                                Keyboard = new NumericAndSymbols1();
+                                            }
+                                            break;
+
+                                        case ":ext_mouse":
+                                            if (mainWindowManipulationService.WindowState != WindowStates.Maximised)
+                                            {
+                                                Log.Info("Changing keyboard to Mouse.");
+                                                Action BackAction = () =>
+                                                {
+                                                    Keyboard = currentKeyboard;
+                                                };
+                                                Keyboard = new Mouse(BackAction);
+                                            }
+                                            else
+                                            {
+                                                Log.Info("Changing keyboard to Mouse.");
+                                                Action BackAction = () =>
+                                                {
+                                                    Keyboard = currentKeyboard;
+                                                    Log.Info("Maximising window.");
+                                                    mainWindowManipulationService.Maximise();
+                                                };
+                                                Keyboard = new Mouse(BackAction);
+                                                Log.Info("Restoring window size.");
+                                                mainWindowManipulationService.Restore();
+                                            }
+                                            break;
+                                        default:
+                                            Log.InfoFormat("Unsupported CommuniKate action: {0}.", thisAction);
+                                            break;
+                                    }
+                                else
+                                    Log.InfoFormat("Unsupported CommuniKate action: {0}.", thisAction);
                             }
 
-                            if (singleKeyValue.String.Contains("+"))
-                            {
-                                keyboardOutputService.ProcessSingleKeyText(
-                                    singleKeyValue.String.Split('+').ToList().ElementAt(0));
-                                Settings.Default.CommuniKateKeyboardCurrentContext = 
-                                    singleKeyValue.String.Split('+').ToList().ElementAt(1);
-                            }
-                            else { Settings.Default.CommuniKateKeyboardCurrentContext = singleKeyValue.String; }
-
-                            Log.InfoFormat("CommuniKate keyboard page changed to {0}.",
-                                Settings.Default.CommuniKateKeyboardCurrentContext);
-                            break;
+                        }
                     }
+                    
                     break;
 
                 case FunctionKeys.SelectVoice:
@@ -421,11 +639,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (Settings.Default.EnableCommuniKateKeyboardLayout)
                     {
                         Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
-                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                        Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious1Context = currentKeyboard.ToString();
                     }
                     Log.Info("Changing keyboard to Alpha1.");
                     Keyboard = new Alpha1();
@@ -455,11 +670,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (Settings.Default.EnableCommuniKateKeyboardLayout)
                         {
                             Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
-                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                            Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
-                            Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
-                            Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
-                            Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                            Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
+                            Settings.Default.CommuniKateKeyboardPrevious1Context = currentKeyboard.ToString();
                         }
                       
                         InitialiseKeyboard(this.mainWindowManipulationService);                     
@@ -520,8 +732,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.CommuniKateKeyboard:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                    Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
                     Settings.Default.UsingCommuniKateKeyboardLayout = true;
+                    Settings.Default.CommuniKateKeyboardPrevious1Context = currentKeyboard.ToString();
                     Log.Info("Changing keyboard to CommuniKate.");
                     Keyboard = new Alpha1();
                     break;
@@ -530,11 +743,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (Settings.Default.EnableCommuniKateKeyboardLayout)
                     {
                         Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
-                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                        Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
-                        Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                        Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
+                        Settings.Default.CommuniKateKeyboardPrevious1Context = currentKeyboard.ToString();
                     }
                     Log.Info("Changing keyboard to ConversationAlpha1.");
                     var opacityBeforeConversationAlpha1 = mainWindowManipulationService.GetOpacity();
@@ -585,6 +795,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.Maximise();
                     Log.InfoFormat("Setting opacity to 1 (fully opaque)");
                     mainWindowManipulationService.SetOpacity(1);
+                    break;
+
+                case FunctionKeys.ConversationCommuniKateKeyboard:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
+                    Settings.Default.UsingCommuniKateKeyboardLayout = true;
+                    Settings.Default.CommuniKateKeyboardPrevious1Context = currentKeyboard.ToString();
+                    Log.Info("Changing keyboard to Conversation CommuniKate.");
+                    Action conversationAlphaBackAction = () =>
+                    {
+                        Log.Info("Restoring window size.");
+                        mainWindowManipulationService.Restore();
+                        Keyboard = new Menu(() => Keyboard = new Alpha1());
+                    };
+                    Keyboard = new ConversationAlpha1(conversationAlphaBackAction);
                     break;
 
                 case FunctionKeys.ConversationConfirmKeyboard:

@@ -313,12 +313,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get
-            {
-                return ForceCapsLock != Settings.Default.ForceCapsLock
-                  || Settings.Default.SuggestionMethod != SuggestionMethod
-                  || Settings.Default.CommuniKateStagedForDeletion == true;
-            }
+            get { return ForceCapsLock != Settings.Default.ForceCapsLock
+                    || Settings.Default.SuggestionMethod != SuggestionMethod
+                    || Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation; }
         }
 
         #endregion

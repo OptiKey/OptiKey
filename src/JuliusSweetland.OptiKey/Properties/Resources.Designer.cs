@@ -659,6 +659,42 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommuniKate sound volume:.
+        /// </summary>
+        public static string COMMUNIKATE_SOUND_VOLUME_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SOUND_VOLUME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speak CommuniKate button text when selected:.
+        /// </summary>
+        public static string COMMUNIKATE_SPEAK_SELECTED_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SPEAK_SELECTED_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate of speech when speaking CommuniKate button text:.
+        /// </summary>
+        public static string COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume of speech when speaking CommuniKate button text:.
+        /// </summary>
+        public static string COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommuniKate top page obf file:.
         /// </summary>
         public static string COMMUNIKATE_TOPPAGE_LABEL {
@@ -3070,6 +3106,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MANUAL MODE.
+        /// </summary>
+        public static string MANUAL_MODE {
+            get {
+                return ResourceManager.GetString("MANUAL_MODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Input mode changed.
         /// </summary>
         public static string MANUAL_MODE_CHANGED {
@@ -3093,6 +3138,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MANUAL_MODE_ENABLED {
             get {
                 return ResourceManager.GetString("MANUAL_MODE_ENABLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you would like to switch to manual mode?.
+        /// </summary>
+        public static string MANUAL_MODE_MESSAGE {
+            get {
+                return ResourceManager.GetString("MANUAL_MODE_MESSAGE", resourceCulture);
             }
         }
         
