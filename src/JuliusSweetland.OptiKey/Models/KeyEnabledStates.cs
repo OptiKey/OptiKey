@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Data;
-using JuliusSweetland.OptiKey.Enums;
+﻿using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using Prism.Mvvm;
+using System;
+using System.Linq;
+using System.Windows.Data;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -24,7 +24,7 @@ namespace JuliusSweetland.OptiKey.Models
         #region Ctor
 
         public KeyEnabledStates(
-            IKeyStateService keyStateService, 
+            IKeyStateService keyStateService,
             ISuggestionStateService suggestionService,
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
@@ -47,7 +47,7 @@ namespace JuliusSweetland.OptiKey.Models
             keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-            
+
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
                 keyStateService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
@@ -90,7 +90,7 @@ namespace JuliusSweetland.OptiKey.Models
                 {
                     return false;
                 }
-                
+
                 //Key is MultiKeySelection, but a key which prevents text capture is down or locked down
                 if (keyValue == KeyValues.MultiKeySelectionIsOnKey
                     && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
@@ -188,7 +188,7 @@ namespace JuliusSweetland.OptiKey.Models
                 }
 
                 //Move & Resize keys when docked
-                if(Settings.Default.MainWindowState == WindowStates.Docked
+                if (Settings.Default.MainWindowState == WindowStates.Docked
                     && ((Settings.Default.MainWindowDockPosition == DockEdges.Top &&
                             (keyValue == KeyValues.MoveToTopBoundaryKey
                             || keyValue == KeyValues.MoveToTopKey
@@ -282,10 +282,10 @@ namespace JuliusSweetland.OptiKey.Models
                 }
 
                 //Mouse actions involving left button if it is already down
-                if ((keyValue == KeyValues.MouseDragKey 
-                    || keyValue == KeyValues.MouseLeftClickKey 
+                if ((keyValue == KeyValues.MouseDragKey
+                    || keyValue == KeyValues.MouseLeftClickKey
                     || keyValue == KeyValues.MouseLeftDoubleClickKey
-                    || keyValue == KeyValues.MouseMoveAndLeftClickKey 
+                    || keyValue == KeyValues.MouseMoveAndLeftClickKey
                     || keyValue == KeyValues.MouseMoveAndLeftDoubleClickKey)
                         && keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
                 {
@@ -317,7 +317,7 @@ namespace JuliusSweetland.OptiKey.Models
 
                 //Multi-key capture is disabled because the current language does not support the concept
                 if (keyValue == KeyValues.MultiKeySelectionIsOnKey
-                    && new[]{Languages.KoreanKorea}.Contains(Settings.Default.KeyboardAndDictionaryLanguage))
+                    && new[] { Languages.KoreanKorea }.Contains(Settings.Default.KeyboardAndDictionaryLanguage))
                 {
                     return false;
                 }
@@ -333,7 +333,7 @@ namespace JuliusSweetland.OptiKey.Models
                 if (KeyValues.KeysDisabledWithMultiKeysSelectionIsOn.Contains(keyValue)
                     && keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown())
                 {
-                    return false; 
+                    return false;
                 }
 
                 //Catalan specific rules
@@ -415,7 +415,7 @@ namespace JuliusSweetland.OptiKey.Models
                         && !keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
-                            || (keyValue == KeyValues.CombiningDiaeresisOrUmlautKey 
+                            || (keyValue == KeyValues.CombiningDiaeresisOrUmlautKey
                                 && !keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value.IsDownOrLockedDown()) //The acute accent can be combined with a diaeresis on lower case letters only (shift must be is up)
                             || keyValue == new KeyValue("α")
                             || keyValue == new KeyValue("ε")
@@ -582,6 +582,39 @@ namespace JuliusSweetland.OptiKey.Models
                     }
                 }
 
+                //Polish specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.PolishPoland)
+                {
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        //Acute accent: ćĆ ńŃ óÓ śŚ źŹ
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == new KeyValue("c")
+                            || keyValue == new KeyValue("n")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("s")
+                            || keyValue == new KeyValue("z")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningOgonekOrNosineKey].Value.IsDownOrLockedDown())
+                    {
+                        //Ogonek accent: ąĄ ęĘ
+                        return keyValue == KeyValues.CombiningOgonekOrNosineKey //Allow the ogonek accent to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("e")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningDotAboveKey].Value.IsDownOrLockedDown())
+                    {
+                        //Dot above accent: żŻ
+                        return keyValue == KeyValues.CombiningDotAboveKey //Allow the dot above accent to be manually released
+                            || keyValue == new KeyValue("z")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
                 //Portuguese specific rules
                 if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.PortuguesePortugal)
                 {
@@ -675,12 +708,12 @@ namespace JuliusSweetland.OptiKey.Models
                             || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
                 }
-				
+
                 //Slovak specific rules
-                if(Settings.Default.KeyboardAndDictionaryLanguage == Languages.SlovakSlovakia)
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.SlovakSlovakia)
                 {
                     //Acute accent: Áá éÉ íÍ ĺĹ óÓ ŕŔ úÚ ýÝ
-                    if(keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
                             || keyValue == new KeyValue("a")
@@ -745,7 +778,7 @@ namespace JuliusSweetland.OptiKey.Models
                             || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
                 }
-				
+
                 //Turkish specific rules
                 if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.TurkishTurkey)
                 {

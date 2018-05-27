@@ -29,6 +29,7 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -598,6 +599,12 @@
     <Compile Include="UI\Views\Keyboards\Korean\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Polish\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Polish\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Portuguese\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
@@ -765,6 +772,7 @@
     <EmbeddedResource Include="Properties\Resources.it-IT.resx" />
     <EmbeddedResource Include="Properties\Resources.ja-JP.resx" />
     <EmbeddedResource Include="Properties\Resources.ko-KR.resx" />
+    <EmbeddedResource Include="Properties\Resources.pl-PL.resx" />
     <EmbeddedResource Include="Properties\Resources.pt-PT.resx" />
     <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
     <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
@@ -841,6 +849,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dictionaries\JapaneseJapan.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\PolishPoland.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">
@@ -1292,6 +1303,14 @@
     <Page Include="UI\Views\Keyboards\Korean\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Polish\Alpha1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Polish\ConversationAlpha1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Portuguese\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
