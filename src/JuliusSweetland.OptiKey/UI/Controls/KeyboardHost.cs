@@ -199,7 +199,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new ItalianViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.JapaneseJapan:
-                        newContent = new JapaneseViews.Alpha1 { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new JapaneseViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : new JapaneseViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.Alpha1 { DataContext = Keyboard };
