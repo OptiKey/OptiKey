@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,17 +124,17 @@
     <value>新しいエントリーを追加する：</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>'{0}'を'{1}'というショートカットキーで辞書に追加したいか。</value>
+    <value>'{0}'を'{1}'というショートカットキーで辞書に追加しますか？</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>辞書に
 追加</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value> '{0}'を辞書に追加したいか。</value>
+    <value> '{0}'を辞書に追加しますか？</value>
   </data>
   <data name="ADDED" xml:space="preserve">
-    <value>追加完了</value>
+    <value>追加しました</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>{0} ドット分調節|{0} ドット分調節</value>
@@ -227,13 +227,13 @@
     <value>クリック 1</value>
   </data>
   <data name="CLICK_SOUND_2" xml:space="preserve">
-    <value>クリック2</value>
+    <value>クリック 2</value>
   </data>
   <data name="CLICK_SOUND_3" xml:space="preserve">
-    <value>クリック3</value>
+    <value>クリック 3</value>
   </data>
   <data name="CLICK_SOUND_4" xml:space="preserve">
-    <value>クリック4</value>
+    <value>クリック 4</value>
   </data>
   <data name="CLICK_SOUND_5" xml:space="preserve">
     <value>クリック 5</value>
@@ -318,7 +318,7 @@ Dansk
     <value>デバッグモード:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>透明度を
+    <value>透過率を
 下げる</value>
   </data>
   <data name="DEL" xml:space="preserve">
@@ -362,7 +362,7 @@ Dansk
     <value> ({0:#,###}ミリ秒)</value>
   </data>
   <data name="END" xml:space="preserve">
-    <value>END</value>
+    <value>エンド</value>
   </data>
   <data name="ENGLISH_CANADA" xml:space="preserve">
     <value>英語(カナダ)</value>
@@ -434,7 +434,7 @@ Dansk
     <value>待機マークをフィルする</value>
   </data>
   <data name="FIXATIONS_DWELL" xml:space="preserve">
-    <value>Fixations (dwell)</value>
+    <value>固定（滞留）</value>
   </data>
   <data name="FONT" xml:space="preserve">
     <value>フォント</value>
@@ -455,7 +455,7 @@ Dansk
     <value>フルドック長 (画面の何%か):</value>
   </data>
   <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>アイトラッカー</value>
+    <value>Gaze Tracker</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Grow</value>
@@ -470,7 +470,7 @@ Dansk
     <value>不完全なキー固定の有効時間(ミリ秒):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>透明度を
+    <value>透過率を
 上げる</value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
@@ -576,7 +576,7 @@ Dansk
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>左
-下・上</value>
+上/下</value>
   </data>
   <data name="LOOK" xml:space="preserve">
     <value>見る</value>
@@ -586,16 +586,16 @@ Dansk
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MAGNETIC
-CURSOR</value>
+カーソル</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
     <value>拡大鏡</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>(スクリーンの％として)先を拡大</value>
+    <value>全画面のうち拡大したい画面の大きさ(%)</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>(スクリーンの％として)ソースを拡大。</value>
+    <value>(選択した画面を)何％に拡大するか</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>管理コンソール: ALT + M</value>
@@ -618,7 +618,7 @@ CURSOR</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>中央
-下/上</value>
+上/下</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
     <value>最小化</value>
@@ -732,7 +732,7 @@ CURSOR</value>
     <value>移動</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>{0} ドット分移動:{0} ドット分移動</value>
+    <value>{0} ドット分移動|{0} ドット分移動</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>左下へ
@@ -953,7 +953,7 @@ SCR</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>右
-下・上</value>
+上/下</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
     <value>Rising 1</value>
@@ -978,7 +978,7 @@ SCR</value>
 ロック</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>{0}クリック分スクロール:{0}クリック分スクロール</value>
+    <value>{0}クリック分スクロール|{0}クリック分スクロール</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>下へ
@@ -1185,7 +1185,7 @@ OPtiKey再起動完了</value>
     <value>アップデート可能</value>
   </data>
   <data name="UPPER_CASE" xml:space="preserve">
-    <value>全て大文字</value>
+    <value>すべて大文字</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>www.optikey.orgにアクセスして最新版をダウンロードしてください。 ({0})
@@ -1408,7 +1408,7 @@ Español
     <value>通貨 2</value>
   </data>
   <data name="DECREASE_OPACITY" xml:space="preserve">
-    <value>透明度を下げる</value>
+    <value>透過率を下げる</value>
   </data>
   <data name="DIACRITICS_1" xml:space="preserve">
     <value>ダイアクリティカルマーク 1</value>
@@ -1447,7 +1447,7 @@ Español
     <value>右上へ拡大</value>
   </data>
   <data name="INCREASE_OPACITY" xml:space="preserve">
-    <value>透明度を上げる</value>
+    <value>透過率を上げる</value>
   </data>
   <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
     <value>数字記号 1</value>
@@ -1471,7 +1471,7 @@ Español
     <value>中央クリック</value>
   </data>
   <data name="MIDDLE_DOWN_UP" xml:space="preserve">
-    <value>中央　下・上</value>
+    <value>中央　上/下</value>
   </data>
   <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
     <value>１ピクセルの移動量</value>
@@ -1516,7 +1516,7 @@ Español
     <value>ダブルクリック</value>
   </data>
   <data name="LEFT_DOWN_UP" xml:space="preserve">
-    <value>左　下/上</value>
+    <value>左　上/下</value>
   </data>
   <data name="MOVE_DOWN" xml:space="preserve">
     <value>下へ移動</value>
@@ -1552,10 +1552,11 @@ Español
     <value>NUM LK</value>
   </data>
   <data name="PG_DN" xml:space="preserve">
-    <value>PG DN</value>
+    <value>ページ　下へ</value>
   </data>
   <data name="PG_UP" xml:space="preserve">
-    <value>PG UP</value>
+    <value>ページ
+上へ</value>
   </data>
   <data name="PRNT_SCR" xml:space="preserve">
     <value>PRNT SCR</value>
@@ -1567,7 +1568,7 @@ Español
     <value>右クリック</value>
   </data>
   <data name="RIGHT_DOWN_UP" xml:space="preserve">
-    <value>右　下/上</value>
+    <value>右　上/下</value>
   </data>
   <data name="SCRN_LK" xml:space="preserve">
     <value>SCR LK</value>
