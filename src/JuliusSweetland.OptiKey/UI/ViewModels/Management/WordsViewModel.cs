@@ -69,7 +69,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 var keyboardLayouts = new List<KeyValuePair<string, KeyboardLayouts>>();
 
-                if (UseQwertyKeyboardLayoutIsVisible)
+                if (UseDefaultKeyboardLayoutIsVisible)
                 {
                     keyboardLayouts.Add(new KeyValuePair<string, KeyboardLayouts>(Resources.USE_DEFAULT_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Default));
                 }
@@ -109,7 +109,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set
             {
                 SetProperty(ref this.keyboardAndDictionaryLanguage, value);
-                OnPropertyChanged(() => UseQwertyKeyboardLayoutIsVisible);
+                OnPropertyChanged(() => UseDefaultKeyboardLayoutIsVisible);
                 OnPropertyChanged(() => UseAlphabeticalKeyboardLayoutIsVisible);
                 OnPropertyChanged(() => EnableCommuniKateKeyboardLayoutIsVisible);
                 OnPropertyChanged(() => UseCommuniKateKeyboardLayoutByDefault);
@@ -139,13 +139,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref this.uiLanguage, value); }
         }
 
-        public bool UseQwertyKeyboardLayoutIsVisible
+        public bool UseDefaultKeyboardLayoutIsVisible
         {
             get
             {
                 return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.JapaneseJapan
                        || KeyboardAndDictionaryLanguage == Enums.Languages.TurkishTurkey;
             }
         }
@@ -166,8 +167,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get
             {
                 return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
-                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
-                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS;
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS;
             }
         }
 
@@ -187,9 +188,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get
             {
                 return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
-                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
-                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
-                    || KeyboardAndDictionaryLanguage == Enums.Languages.TurkishTurkey;
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.JapaneseJapan
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.TurkishTurkey;
             }
         }
 
