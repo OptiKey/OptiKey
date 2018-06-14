@@ -1150,7 +1150,7 @@
                       SymbolGeometry="{StaticResource 2of2Icon}"
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value=""/>
+                      Value="{x:Static models:KeyValues.Alpha1KeyboardKey}"/>
 
         <ContentControl Grid.Row="4" Grid.Column="1">
             <ContentControl.Style>
