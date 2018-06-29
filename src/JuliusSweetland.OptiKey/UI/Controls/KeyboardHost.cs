@@ -163,7 +163,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             if (Keyboard is ViewModelKeyboards.Alpha1)
             {
-                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                if (Settings.Default.UsingCommuniKateKeyboardLayout)
+                    newContent = (object)new CommonViews.CommuniKate { DataContext = Keyboard };
+                else switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.CatalanSpain:
                         newContent = new CatalanViews.Alpha1 { DataContext = Keyboard };
@@ -230,13 +232,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             : new TurkishViews.Alpha1 { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = Settings.Default.UsingCommuniKateKeyboardLayout
-                            ? (object)new EnglishViews.CommuniKate { DataContext = Keyboard }
-                            : Settings.Default.UseSimplifiedKeyboardLayout
-                                ? (object)new EnglishViews.SimplifiedAlpha1 { DataContext = Keyboard }
-                                : Settings.Default.UseAlphabeticalKeyboardLayout
-                                    ? (object)new EnglishViews.AlphabeticalAlpha1 { DataContext = Keyboard }
-                                    : new EnglishViews.Alpha1 { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new EnglishViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout
+                                ? (object)new EnglishViews.AlphabeticalAlpha1 { DataContext = Keyboard }
+                                : new EnglishViews.Alpha1 { DataContext = Keyboard };
                         break;
                 }
             }
@@ -256,7 +256,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.ConversationAlpha1)
             {
-                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                if (Settings.Default.UsingCommuniKateKeyboardLayout)
+                    newContent = (object)new CommonViews.CommuniKate { DataContext = Keyboard };
+                else switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.CatalanSpain:
                         newContent = new CatalanViews.ConversationAlpha1 { DataContext = Keyboard };
@@ -321,13 +323,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             : new TurkishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = Settings.Default.UsingCommuniKateKeyboardLayout
-                            ? (object)new EnglishViews.CommuniKate { DataContext = Keyboard }
-                            : Settings.Default.UseSimplifiedKeyboardLayout
-                                ? (object)new EnglishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
-                                : Settings.Default.UseAlphabeticalKeyboardLayout
-                                    ? (object)new EnglishViews.AlphabeticalConversationAlpha1 { DataContext = Keyboard }
-                                    : new EnglishViews.ConversationAlpha1 { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new EnglishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout
+                                ? (object)new EnglishViews.AlphabeticalConversationAlpha1 { DataContext = Keyboard }
+                                : new EnglishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                 }
             }

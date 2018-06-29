@@ -237,7 +237,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                     CurrentButton = new Buttons()
                                     {
                                         background_color = "rgb(204,255,204)",
-                                        label = "BACK",
+                                        label = Properties.Resources.BACK,
                                         image_id = CKpath() + @"images\back.png",
                                         load_board = new Load_board()
                                         {

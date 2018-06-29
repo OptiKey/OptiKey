@@ -429,6 +429,7 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\CommuniKateCalculateBoarderWidth.cs" />
     <Compile Include="UI\ValueConverters\CommuniKateTwoColoursToForegroundBrush.cs" />
     <Compile Include="UI\ValueConverters\ColourNameToBrush.cs" />
     <Compile Include="UI\ValueConverters\EnumMapper.cs" />
@@ -554,7 +555,7 @@
     <Compile Include="UI\Views\Keyboards\Danish\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\CommuniKate.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\CommuniKate.xaml.cs">
       <DependentUpon>CommuniKate.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\AlphabeticalAlpha1.xaml.cs">
@@ -1250,7 +1251,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\CommuniKate.xaml">
+    <Page Include="UI\Views\Keyboards\Common\CommuniKate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

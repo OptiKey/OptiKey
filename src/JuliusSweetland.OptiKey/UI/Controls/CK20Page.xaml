@@ -22,6 +22,7 @@
                     <valueConverters:IsSvgImage x:Key="IsSvgImage" />
                     <valueConverters:CommuniKateBackgroundColourToForegroundBrush x:Key="CommuniKateBackgroundColourToForegroundBrush" />
                     <valueConverters:CommuniKateTwoColoursToForegroundBrush x:Key="CommuniKateTwoColoursToForegroundBrush" />
+                    <valueConverters:CommuniKateCalculateBoarderWidth x:Key="CommuniKateCalculateBoarderWidth" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -172,41 +173,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -286,41 +287,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                    <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -400,41 +401,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -514,41 +515,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -628,41 +629,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -743,41 +744,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -857,41 +858,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -971,41 +972,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1085,41 +1086,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1199,41 +1200,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1314,41 +1315,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1428,41 +1429,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1542,41 +1543,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1656,41 +1657,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1770,41 +1771,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1885,41 +1886,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1999,41 +2000,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2113,41 +2114,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2227,41 +2228,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -2341,41 +2342,41 @@
                     </Style>
                 </Viewbox.Style>
             </Viewbox>
-            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto" StrokeThickness="8" Stroke="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" />
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
-                                              Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
-            <ContentControl>
-                <ContentControl.Style>
-                    <Style TargetType="{x:Type ContentControl}">
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Path Fill="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
-                                              VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
-                                              Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </ContentControl.Style>
-            </ContentControl>
+                </Path.Style>
+            </Path>
             <ContentControl Grid.RowSpan="2">
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">

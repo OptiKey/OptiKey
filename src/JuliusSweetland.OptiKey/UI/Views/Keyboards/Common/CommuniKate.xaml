@@ -1,4 +1,4 @@
-<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.English.CommuniKate"
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Common.CommuniKate"
                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -16,7 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
-                    <valueConverters:BoolToCustomValues FalseValue="1" x:Key="ConvertBoolToStarGridLength" />
+                    <valueConverters:BoolToCustomValues TrueValue="1*" FalseValue="0*" x:Key="ConvertBoolToStarGridLength" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

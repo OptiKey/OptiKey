@@ -2204,4 +2204,7 @@ Française
   <data name="MANUAL_MODE" xml:space="preserve">
     <value>MANUAL MODE</value>
   </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
 </root>

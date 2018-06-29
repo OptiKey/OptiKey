@@ -650,6 +650,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommuniKate.
+        /// </summary>
+        public static string COMMUNIKATE {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommuniKate is currently disabled (use QWERTY).
         /// </summary>
         public static string COMMUNIKATE_DISABLED {
