@@ -66,32 +66,10 @@
                               SelectedValue="{Binding UiLanguage, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
-                               VerticalAlignment="Center" Margin="5" >
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
+                               VerticalAlignment="Center" Margin="5" Visibility="Visible" />
                     <CheckBox Grid.Row="3" Grid.Column="1"
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" >
-                        <CheckBox.Style>
-                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding UseSimplifiedKeyboardLayout}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </CheckBox.Style>
-                    </CheckBox>
+                              VerticalAlignment="Center" Visibility="Visible"
+                              IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5">
@@ -127,7 +105,7 @@
                             VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -142,7 +120,7 @@
                         </Button>
                         <StackPanel.Style>
                             <Style TargetType="{x:Type StackPanel}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -156,7 +134,7 @@
                                 VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -170,7 +148,7 @@
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -184,7 +162,7 @@
                                             Value="{Binding CommuniKateSoundVolume, Mode=TwoWay}" >
                         <controls:NumericUpDown.Style>
                             <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -198,7 +176,7 @@
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -212,7 +190,7 @@
                               IsChecked="{Binding CommuniKateSpeakSelected, Mode=TwoWay}" >
                         <CheckBox.Style>
                             <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -226,7 +204,7 @@
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -243,7 +221,7 @@
                                             Value="{Binding CommuniKateSpeakSelectedVolume, Mode=TwoWay}" >
                         <controls:NumericUpDown.Style>
                             <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -260,7 +238,7 @@
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -277,7 +255,7 @@
                                             Value="{Binding CommuniKateSpeakSelectedRate, Mode=TwoWay}" >
                         <controls:NumericUpDown.Style>
                             <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
-                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
                                         <Setter Property="Visibility" Value="Collapsed" />
