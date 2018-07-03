@@ -2,9 +2,21 @@
 
 OptiKey is an on-screen keyboard that is designed to help Motor Neuron Disease (MND) patients interact with Windows computers. When used with an eye-tracking device, OptiKey's on-screen keyboard allows MND patients to complete tasks, such as email composition, using only their eyes. OptiKey can also be used with a mouse or webcam. Unlike expensive and unreliable Alternative and Augmentative Communication (AAC) products that are difficult to use, Optikey is free, reliable, and easy to use.
 
+The purpose of this fork is to make the keyboard layouts used in the 
+original OptiKey distribution configurable. One application of this 
+configurability is to allow users with motor disabilities more easily 
+write computer programming language source code without the need of 
+repeatedly switching keyboard screens to type non-alphanumeric characters. 
+See the usage below the *Getting Started* section for information on 
+how to configure the customizable keymaps for use with OptiKey. 
+Users with additional special needs related to custom keymaps for use 
+with this application should contact the developer at maxieds@gmail.com. 
+
 # Getting Started
 
 [**The OptiKey Wiki**](https://github.com/OptiKey/OptiKey/wiki) contains OptiKey's user guides, installation and system requirements, and additional support information. OptiKey's Windows installer can be downloaded from the [latest release](https://github.com/JuliusSweetland/OptiKey/releases/latest). To get an understanding of OptiKey's use, users should watch [Optikey's introduction video](https://www.youtube.com/watch?v=HLkyORh7vKk).
+
+# Configuring custom keyboards with OptiKey
 
 # Supported Platforms
 
