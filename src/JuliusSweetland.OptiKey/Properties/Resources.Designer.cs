@@ -4421,6 +4421,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location of Presage database .db file:.
+        /// </summary>
+        public static string PRESAGE_DATABASE_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("PRESAGE_DATABASE_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Presage suggestions to show:.
+        /// </summary>
+        public static string PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL {
+            get {
+                return ResourceManager.GetString("PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Presage.
         /// </summary>
         public static string PRESAGE_SUGGESTION {
@@ -5080,7 +5098,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("SIMILAR_DICTIONARY_ENTRIES_EXIST", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to SIZE &amp; POSITION.
         /// </summary>

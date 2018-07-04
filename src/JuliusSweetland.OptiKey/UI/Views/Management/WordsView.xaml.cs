@@ -44,5 +44,34 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
                 }
             }
         }
+
+        private void btnFindPresageDatabaseLocation_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Presaage Database (*.db)|*.db"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileLocation = null;
+
+                if (openFileDialog.FileName.EndsWith(@".db"))
+                {
+                    txtPresageDatabaseLocation.Text = openFileDialog.FileName;
+                    fileLocation = txtPresageDatabaseLocation.Text;
+                }
+                else
+                {
+                    txtPresageDatabaseLocation.Text = Properties.Resources.COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL;
+                }
+
+                WordsViewModel viewModel = this.DataContext as WordsViewModel;
+                if (viewModel != null && !string.IsNullOrWhiteSpace(fileLocation))
+                {
+                    viewModel.PresageDatabaseLocation = fileLocation;
+                }
+            }
+        }
     }
 }

@@ -2515,5 +2515,31 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["SimplifiedKeyboardContext"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string PresageDatabaseLocation {
+            get {
+                return ((string)(this["PresageDatabaseLocation"]));
+            }
+            set {
+                this["PresageDatabaseLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("11")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int PresageNumberOfSuggestions {
+            get {
+                return ((int)(this["PresageNumberOfSuggestions"]));
+            }
+            set {
+                this["PresageNumberOfSuggestions"] = value;
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -328,6 +329,38 @@ namespace JuliusSweetland.OptiKey
                     }
 
                     return true;
+                }
+                // set the config
+                if (presageTestInstance != null)
+                {
+                    if (File.Exists(Settings.Default.PresageDatabaseLocation))
+                        presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
+                    else 
+                    {
+                        string ApplicationDataSubPath = @"JuliusSweetland\OptiKey";
+                        var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
+                        var database = Path.Combine(path, @"Presage\database.db");
+                        if (!File.Exists(database))
+                        {
+                            try
+                            {
+                                using (ZipArchive archive = ZipFile.Open(@".\Resources\Presage\database.zip", ZipArchiveMode.Read))
+                                {
+                                    archive.ExtractToDirectory(path);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Log.ErrorFormat("Unpacking the Presage database failed with the following exception: \n{0}", e);
+                            }
+                        }
+                        Settings.Default.PresageDatabaseLocation = database;
+                        presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
+                    }
+                    presageTestInstance.set_config("Presage.Selector.REPEAT_SUGGESTIONS", "yes");
+                    presageTestInstance.set_config("Presage.Selector.SUGGESTIONS", Settings.Default.PresageNumberOfSuggestions.ToString());
+                    presageTestInstance.save_config();
+                    Log.Info("Presage settings set successfully.");
                 }
             }
             

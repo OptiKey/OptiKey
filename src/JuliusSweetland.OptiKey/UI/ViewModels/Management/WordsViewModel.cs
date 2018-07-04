@@ -242,6 +242,53 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref usingCommuniKateKeyboardLayout, useCommuniKateKeyboardLayoutByDefault); }
         }
 
+        private int communiKateSoundVolume;
+        public int CommuniKateSoundVolume
+        {
+            get { return communiKateSoundVolume; }
+            set { SetProperty(ref communiKateSoundVolume, value); }
+        }
+
+        private bool communiKateSpeakSelected;
+        public bool CommuniKateSpeakSelected
+        {
+            get { return communiKateSpeakSelected; }
+            set { SetProperty(ref communiKateSpeakSelected, value); }
+        }
+
+        private int communiKateSpeakSelectedVolume;
+        public int CommuniKateSpeakSelectedVolume
+        {
+            get { return communiKateSpeakSelectedVolume; }
+            set { SetProperty(ref communiKateSpeakSelectedVolume, value); }
+        }
+
+        private int communiKateSpeakSelectedRate;
+        public int CommuniKateSpeakSelectedRate
+        {
+            get { return communiKateSpeakSelectedRate; }
+            set { SetProperty(ref communiKateSpeakSelectedRate, value); }
+        }
+
+        public bool PresageSettingsAreVisible
+        {
+            get { return SuggestionMethod == Enums.SuggestionMethods.Presage; }
+        }
+
+        private string presageDatabaseLocation;
+        public string PresageDatabaseLocation
+        {
+            get { return presageDatabaseLocation; }
+            set { SetProperty(ref presageDatabaseLocation, value); }
+        }
+
+        private int presageNumberOfSuggestions;
+        public int PresageNumberOfSuggestions
+        {
+            get { return presageNumberOfSuggestions; }
+            set { SetProperty(ref presageNumberOfSuggestions, value); }
+        }
+
         private bool forceCapsLock;
         public bool ForceCapsLock
         {
@@ -274,7 +321,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public SuggestionMethods SuggestionMethod
         {
             get { return suggestionMethod; }
-            set { SetProperty(ref suggestionMethod, value); }
+            set
+            {
+                SetProperty(ref suggestionMethod, value);
+                OnPropertyChanged(() => PresageSettingsAreVisible);
+            }
         }
 
         private bool suggestWords;
@@ -302,7 +353,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return ForceCapsLock != Settings.Default.ForceCapsLock
                     || Settings.Default.SuggestionMethod != SuggestionMethod
-                    || Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation; }
+                    || Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation
+                    || Settings.Default.PresageDatabaseLocation != PresageDatabaseLocation
+                    || Settings.Default.PresageNumberOfSuggestions != PresageNumberOfSuggestions; }
         }
 
         #endregion
@@ -321,12 +374,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             CommuniKateStagedForDeletion = Settings.Default.CommuniKateStagedForDeletion;
             UseCommuniKateKeyboardLayoutByDefault = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
             UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+            CommuniKateSoundVolume = Settings.Default.CommuniKateSoundVolume;
+            CommuniKateSpeakSelected = Settings.Default.CommuniKateSpeakSelected;
+            CommuniKateSpeakSelectedVolume = Settings.Default.CommuniKateSpeakSelectedVolume;
+            CommuniKateSpeakSelectedRate = Settings.Default.CommuniKateSpeakSelectedRate;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
             ForceCapsLock = Settings.Default.ForceCapsLock;
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
             SuggestionMethod = Settings.Default.SuggestionMethod;
+            PresageDatabaseLocation = Settings.Default.PresageDatabaseLocation;
+            PresageNumberOfSuggestions = Settings.Default.PresageNumberOfSuggestions;
             SuggestWords = Settings.Default.SuggestWords;
             MultiKeySelectionEnabled = Settings.Default.MultiKeySelectionEnabled;
             MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
@@ -347,12 +406,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.CommuniKateStagedForDeletion = CommuniKateStagedForDeletion;
             Settings.Default.UseCommuniKateKeyboardLayoutByDefault = UseCommuniKateKeyboardLayoutByDefault;
             Settings.Default.UsingCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayoutByDefault;
+            Settings.Default.CommuniKateSoundVolume = CommuniKateSoundVolume;
+            Settings.Default.CommuniKateSpeakSelected = CommuniKateSpeakSelected;
+            Settings.Default.CommuniKateSpeakSelectedVolume = CommuniKateSpeakSelectedVolume;
+            Settings.Default.CommuniKateSpeakSelectedRate = CommuniKateSpeakSelectedRate;
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;
             Settings.Default.ForceCapsLock = ForceCapsLock;
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;
             Settings.Default.SuggestionMethod = SuggestionMethod;
+            Settings.Default.PresageDatabaseLocation = PresageDatabaseLocation;
+            Settings.Default.PresageNumberOfSuggestions = PresageNumberOfSuggestions;
             Settings.Default.SuggestWords = SuggestWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;

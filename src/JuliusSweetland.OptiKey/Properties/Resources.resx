@@ -2207,4 +2207,10 @@ Française
   <data name="COMMUNIKATE" xml:space="preserve">
     <value>CommuniKate</value>
   </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>Location of Presage database .db file:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>Number of Presage suggestions to show:</value>
+  </data>
 </root>
