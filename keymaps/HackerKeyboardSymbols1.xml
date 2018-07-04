@@ -16,7 +16,7 @@
                <Height>1</Height>
                <Width>2</Width>
                <Action>AddToDictionary</Action>
-               <Label>ADDTODICT</Label>
+               <Symbol>AddToDictionaryIcon</Symbol>
           </ActionKey>
           <ActionKey> 
                <Row>0</Row>
@@ -48,7 +48,7 @@
                <Height>1</Height>
                <Width>2</Width>
                <Action>ScrollLock</Action>
-               <Label>SCRLOCK</Label>
+               <Symbol>LockBarIcon</Symbol>
           </ActionKey>
           <ActionKey> 
                <Row>0</Row>
@@ -88,14 +88,14 @@
                <Height>1</Height>
                <Width>2</Width>
                <Action>DynamicKeyboardNext</Action>
-               <Label>DYNKBD NEXT</Label>
+               <Symbol>KeyboardIcon</Symbol>
           </ActionKey>
           <ActionKey> 
                <Row>0</Row>
                <Col>20</Col>
                <Height>1</Height>
                <Width>2</Width>
-               <Label>MENU</Label>
+               <Symbol>MenuIcon</Symbol>
                <Action>MenuKeyboard</Action>
           </ActionKey>
           <ActionKey> 
@@ -104,7 +104,7 @@
                <Height>1</Height>
                <Width>2</Width>
                <Action>Alpha1Keyboard</Action>
-               <Label>EXIT TO LETTERS</Label>
+               <Symbol>AlphaIcon</Symbol>
           </ActionKey>
 
           <!-- Second Row Specs -->       
@@ -113,7 +113,7 @@
                <Col>0</Col>
                <Height>1</Height>
                <Width>2</Width>
-               <Label>BACK TO KBD2</Label>
+               <Symbol>2of2Icon</Symbol>
                <ReturnToThisKeyboard>True</ReturnToThisKeyboard>
                <DestinationKeyboard>HackerKeyboard2</DestinationKeyboard>
           </ChangeKeyboardKey>
@@ -202,7 +202,7 @@
                <Col>22</Col>
                <Height>1</Height>
                <Width>2</Width>
-               <Label>BACKONE</Label>
+               <Symbol>BackOneIcon</Symbol>
                <Action>BackOne</Action>
           </ActionKey>
 
@@ -213,7 +213,7 @@
                <Height>1</Height>
                <Width>2</Width>
                <Text>&#9;</Text>
-               <Label>TAB</Label>
+               <Symbol>TabIcon</Symbol>
           </TextKey>
           <TextKey> 
                <Row>2</Row>
@@ -269,7 +269,7 @@
                <Height>1</Height>
                <Width>2</Width>
                <Action>ArrowUp</Action>
-               <Label>UP</Label>
+               <Symbol>UpArrowKeyIcon</Symbol>
           </ActionKey>
           <TextKey> 
                <Row>2</Row>
@@ -310,7 +310,7 @@
                <Col>0</Col>
                <Height>1</Height>
                <Width>2</Width>
-               <Label>BACK TO KBD1</Label>
+               <Symbol>1of2Icon</Symbol>
                <ReturnToThisKeyboard>True</ReturnToThisKeyboard>
                <DestinationKeyboard>HackerKeyboard1</DestinationKeyboard>
           </ChangeKeyboardKey>
@@ -360,7 +360,7 @@
                <Height>1</Height>
                <Width>2</Width>
                <Action>ArrowLeft</Action>
-               <Label>LEFT</Label>
+               <Symbol>LeftArrowKeyIcon</Symbol>
           </ActionKey>
           <ActionKey> 
                <Row>3</Row>
@@ -368,7 +368,7 @@
                <Height>1</Height>
                <Width>2</Width>
                <Action>ArrowDown</Action>
-               <Label>DOWN</Label>
+               <Symbol>DownArrowKeyIcon</Symbol>
           </ActionKey>
           <ActionKey> 
                <Row>3</Row>
@@ -376,7 +376,7 @@
                <Height>1</Height>
                <Width>2</Width>
                <Action>ArrowRight</Action>
-               <Label>RIGHT</Label>
+               <Symbol>RightArrowKeyIcon</Symbol>
           </ActionKey>
           <TextKey> 
                <Row>3</Row>
@@ -442,7 +442,7 @@
                <Height>1</Height>
                <Width>4</Width>
                <Text>&#32;</Text>
-               <Label>SPACE</Label>
+               <Symbol>SpaceIcon</Symbol>
           </TextKey>
           <TextKey> 
                <Row>4</Row>
@@ -466,8 +466,7 @@
                <Height>1</Height>
                <Width>4</Width>
                <Text>&#13;</Text>
-               <Label>ENTER</Label>
-               <Symbol>Enter</Symbol>
+               <Symbol>EnterIcon</Symbol>
           </TextKey>
           <TextKey> 
                <Row>4</Row>

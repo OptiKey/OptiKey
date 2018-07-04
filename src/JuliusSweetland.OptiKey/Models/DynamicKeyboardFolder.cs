@@ -27,57 +27,63 @@ namespace JuliusSweetland.OptiKey.Models
         }
     }
 
-    class DynamicKeyboardFolder
-    {
+	class DynamicKeyboardFolder
+	{
 
-        #region Constants
+		#region Constants
 
-        private const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Keyboards\";
-        private const string OriginalKeyboardsSubPath = @"Keyboards\";
+		private const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Keyboards\";
+		private const string OriginalKeyboardsSubPath = @"Keyboards\";
 
-        #endregion
+		#endregion
 
-        #region Private Members
+		#region Private Members
 
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+		private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+		private int numCustomKeyboards = 0;
 
-        #endregion
+		#endregion
 
-        public List<KeyboardInfo> keyboards;
-        
-        public DynamicKeyboardFolder()
-        {
-            // Find all possible xml files
-            string filePath = Settings.Default.DynamicKeyboardsLocation;
-            keyboards = new List<KeyboardInfo>();
+		public List<KeyboardInfo> keyboards;
 
-            if (Directory.Exists(filePath))
-            {
-                string[] fileArray = Directory.GetFiles(filePath, "*.xml");
+		public DynamicKeyboardFolder()
+		{
+			// Find all possible xml files
+			string filePath = Settings.Default.DynamicKeyboardsLocation;
+			keyboards = new List<KeyboardInfo>();
 
-                Log.InfoFormat("Found {0} keyboard files", fileArray.Length);
+			if (Directory.Exists(filePath))
+			{
+				string[] fileArray = Directory.GetFiles(filePath, "*.xml");
 
-                // Read in keyboard name, symbol, hidden state from each file
-                // Note that ordering is currently undefined
-                foreach (string fileName in fileArray)
-                {
-                    string keyboardPath = Path.Combine(filePath, fileName);
-                    KeyboardInfo info = GetKeyboardInfo(keyboardPath);
-                    if (null != info.fullPath)
-                    {
-                        if (!info.isHidden)
-                        {
-                            keyboards.Add(info);
-                            Log.InfoFormat("Found keyboard file: {0}", info.fullPath);
-                        }
-                        else
-                        {
-                            Log.InfoFormat("Ignoring keyboard file: {0}", info.fullPath);
-                        }
-                    }
-                }
-            }
-        }
+				Log.InfoFormat("Found {0} keyboard files", fileArray.Length);
+
+				// Read in keyboard name, symbol, hidden state from each file
+				// Note that ordering is currently undefined
+				foreach (string fileName in fileArray)
+				{
+					string keyboardPath = Path.Combine(filePath, fileName);
+					KeyboardInfo info = GetKeyboardInfo(keyboardPath);
+					if (null != info.fullPath)
+					{
+						if (!info.isHidden)
+						{
+							keyboards.Add(info);
+							numCustomKeyboards++;
+							Log.InfoFormat("Found keyboard file: {0}", info.fullPath);
+						}
+						else
+						{
+							Log.InfoFormat("Ignoring keyboard file: {0}", info.fullPath);
+						}
+					}
+				}
+			}
+		}
+
+		public int GetNumberOfDynamicKeyboards() {
+			return numCustomKeyboards;
+		}
 
         #region Private Methods
 

@@ -79,6 +79,36 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             return true;
         }
 
+		private string ClassifySharedSizeGroup(Key newKey, string xmlKeyLabel)
+		{
+			bool hasSymbol = null != newKey.SymbolGeometry;
+			bool hasString = xmlKeyLabel.Length > 0;
+			if (hasString && hasSymbol)
+			{
+				return "KeyWithSymbolAndText";
+			}
+			else if (hasString && xmlKeyLabel.Length == 1)
+			{
+				return "KeyWithSingleLetterOrSymbol";
+			}
+			else if (hasString && xmlKeyLabel.Length > 1 && xmlKeyLabel.Length <= 4)
+			{
+				return "KeyWithShortTextLabel";
+			}
+			else if (hasString && xmlKeyLabel.Length > 4)
+			{
+				return "KeyWithLongTextLabel";
+			}
+			else if (hasSymbol)
+			{
+				return "KeyWithSymbol";
+			}
+			else
+			{
+				return "KeyNoTextNoSymbol";
+			}
+		}
+
         private Key CreateKeyWithBasicProps(XmlKey xmlKey)
         {
             // Add the core properties from XML to a new key
@@ -104,22 +134,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.SymbolMargin = keyboard.SymbolMargin.Value;
             }
 
-            // Set shared size group
-            bool hasSymbol = null  != newKey.SymbolGeometry;
-            bool hasString = xmlKey.Label.Length > 0;
-            if (hasSymbol && hasString)
-            {
-                newKey.SharedSizeGroup = "KeyWithSymbolAndText";
-            }
-            else if (hasSymbol)
-            {
-                newKey.SharedSizeGroup = "KeyWithSymbol";            
-            }
-            else if (hasString)
-            {
-                newKey.SharedSizeGroup = "KeyWithText";
-            }
-            // Also group separately by row/col width/height
+			// Set shared size group : The fonts for these groups are sized equally among 
+			// keys with the same SharedSizeGroup property and the same width by height values.
+			// To scale the fonts for better viewability we are breaking the SharedSizeGroup 
+			// labels into classes based on the text label length (if it is non-zero):
+			newKey.SharedSizeGroup = ClassifySharedSizeGroup(newKey, xmlKey.Label);
             newKey.SharedSizeGroup += xmlKey.Width;
             newKey.SharedSizeGroup += xmlKey.Height;
 

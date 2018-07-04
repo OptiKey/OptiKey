@@ -95,7 +95,7 @@
                <Col>20</Col>
                <Height>1</Height>
                <Width>2</Width>
-               <Label>MENU</Label>
+               <Symbol>MenuIcon</Symbol>
                <Action>MenuKeyboard</Action>
           </ActionKey>
           <ChangeKeyboardKey> 
@@ -103,7 +103,7 @@
                <Col>22</Col>
                <Height>1</Height>
                <Width>2</Width>
-               <Label>SYMBOLS</Label>
+               <Symbol>NumericAndSymbolsIcon</Symbol>
                <ReturnToThisKeyboard>True</ReturnToThisKeyboard>
                <DestinationKeyboard>HackerKeyboardSymbols1</DestinationKeyboard>
           </ChangeKeyboardKey>
@@ -202,8 +202,8 @@
                <Col>22</Col>
                <Height>1</Height>
                <Width>2</Width>
-               <Label>BACKONE</Label>
-               <Action>BackOne</Action>
+	       <Action>BackOne</Action>
+	       <Symbol>BackOneIcon</Symbol>
           </ActionKey>
 
           <!-- Third Row Specs -->
@@ -213,7 +213,7 @@
                <Height>1</Height>
                <Width>2</Width>
                <Text>&#9;</Text>
-               <Label>TAB</Label>
+               <Symbol>TabIcon</Symbol>
           </TextKey>
           <TextKey> 
                <Row>2</Row>
@@ -310,7 +310,7 @@
                <Col>0</Col>
                <Height>1</Height>
                <Width>2</Width>
-               <Label>SHIFT</Label>
+               <Symbol>ShiftIcon</Symbol>
                <ReturnToThisKeyboard>True</ReturnToThisKeyboard>
                <DestinationKeyboard>HackerKeyboard2</DestinationKeyboard>
           </ChangeKeyboardKey>
@@ -442,7 +442,7 @@
                <Height>1</Height>
                <Width>4</Width>
                <Text>&#32;</Text>
-               <Label>SPACE</Label>
+               <Symbol>SpaceIcon</Symbol>
           </TextKey>
           <TextKey> 
                <Row>4</Row>
@@ -466,8 +466,7 @@
                <Height>1</Height>
                <Width>4</Width>
                <Text>&#13;</Text>
-               <Label>ENTER</Label>
-               <Symbol>Enter</Symbol>
+               <Symbol>EnterIcon</Symbol>
           </TextKey>
           <TextKey> 
                <Row>4</Row>

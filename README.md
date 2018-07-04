@@ -24,6 +24,8 @@ at the start up of OptiKey by changing the start keyboard to ``CustomKeyboard`` 
 selecting these XML files placed in the Dynamic Keyboards directory listed below this setting in the panel. 
 Note that the HTML entity characters such as ``&#13;`` used in some of the TEXT / LABEL fields just correspond to the 
 numeric ascii value of these characters (see ``man ascii`` for example).
+The icons available for keys with a ``SYMBOL`` entry instead of a text label 
+listing are given in [this file](https://github.com/OptiKey/OptiKey/blob/master/src/JuliusSweetland.OptiKey/Resources/Icons/KeySymbols.xaml). 
 
 ## Anna's Hacker Keyboard (Page 1)
 

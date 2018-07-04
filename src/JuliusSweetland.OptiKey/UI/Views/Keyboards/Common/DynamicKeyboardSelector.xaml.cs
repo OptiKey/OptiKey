@@ -25,7 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private DynamicKeyboardFolder folder;
         private int pageIndex = 0;
 
-        // TODO: Could be user configurable at some point?
+        // Now configurable based on the number of non-hidden custom keyboard profiles in the directory:
         private int mRows = 3;
         private int mCols = 4;
 
@@ -38,6 +38,16 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             // Populate model
             folder = new DynamicKeyboardFolder();
+
+			int numKeyboardFilesLoaded = folder.GetNumberOfDynamicKeyboards();
+			if (numKeyboardFilesLoaded % mCols == 0)
+			{
+				mRows = numKeyboardFilesLoaded / mCols;
+			}
+			else
+			{
+				mRows = numKeyboardFilesLoaded / mCols + 1;
+			}
             
             // Setup grid
             for (int i = 0; i < this.mRows; i++)
