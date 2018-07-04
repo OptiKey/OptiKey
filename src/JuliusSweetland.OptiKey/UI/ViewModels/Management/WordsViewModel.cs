@@ -143,11 +143,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get
             {
-                return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
-                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
-                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
-                       || KeyboardAndDictionaryLanguage == Enums.Languages.JapaneseJapan
-                       || KeyboardAndDictionaryLanguage == Enums.Languages.TurkishTurkey
+                return UseAlphabeticalKeyboardLayoutIsVisible 
+                       || UseSimplifiedKeyboardLayoutIsVisible 
                        || EnableCommuniKateKeyboardLayout;
             }
         }
