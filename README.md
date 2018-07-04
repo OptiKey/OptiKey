@@ -22,6 +22,8 @@ files below and the [FunctionKeys enum](https://github.com/OptiKey/OptiKey/blob/
 to update the ``ACTION`` entries in the ``ActionKey`` entries in the sample file. You can run this keyboard layout configuration 
 at the start up of OptiKey by changing the start keyboard to ``CustomKeyboard`` in the settings window (left click on the keyboard) and 
 selecting these XML files placed in the Dynamic Keyboards directory listed below this setting in the panel. 
+Note that the HTML entity characters such as ``&#13;`` used in some of the TEXT / LABEL fields just correspond to the 
+numeric ascii value of these characters (see ``man ascii`` for example).
 
 ## Anna's Hacker Keyboard (Page 1)
 
