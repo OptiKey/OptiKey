@@ -4,6 +4,8 @@ using log4net;
 using presage;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.IO;
 
 namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
@@ -33,7 +35,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
                 }
                 else
                 {
-                    this.root = root;
+                    this.root = UTF8EncodingToDefault(root);
 
                     // force presage to suggest the next word by adding a space 
                     if (nextWord && root.Length > 0 && char.IsLetterOrDigit(root.Last()))
@@ -44,7 +46,12 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
                 if (prsg != null)
                 {
-                    return prsg.predict();
+                    List<string> suggestions = new List<string>();
+                    foreach (string suggestion in prsg.predict())
+                    {
+                        suggestions.Add(defaultEncodingToUTF8(suggestion));
+                    }
+                    return suggestions;
                 }
             }
             catch (PresageException pe)
@@ -65,6 +72,35 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
         private string callback_get_future_stream()
         {
             return "";
+        }
+
+        /// <summary>
+        /// Buffer to hold byte representation of string for encoding conversion
+        /// </summary>
+        private byte[] _byteBuffer = new byte[10240];
+
+        /// <summary>
+        /// Converts default encoding to UTF8
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        protected string defaultEncodingToUTF8(string input)
+        {
+            int length = Encoding.Default.GetBytes(input, 0, input.Length, _byteBuffer, 0);
+
+            return Encoding.UTF8.GetString(_byteBuffer, 0, length).Replace('’', '\'');
+        }
+
+        /// <summary>
+        /// Converts UTF8 encoded string to the default encoding
+        /// </summary>
+        /// <param name="input">input string</param>
+        /// <returns>converted string</returns>
+        protected string UTF8EncodingToDefault(string input)
+        {
+            int length = Encoding.UTF8.GetBytes(input.Replace('\'', '’'), 0, input.Length, _byteBuffer, 0);
+
+            return Encoding.Default.GetString(_byteBuffer, 0, length).Replace('\'', '`');
         }
     }
 }

@@ -303,7 +303,7 @@ Sorry for the inconvenience.</value>
     <value>Cursor width (pixels):</value>
   </data>
   <data name="CUSTOM_LAYOUT" xml:space="preserve">
-    <value>Custom keyboard file</value>
+    <value>Dynamic keyboard file</value>
   </data>
   <data name="DANISH_DENMARK" xml:space="preserve">
     <value>Danish (Denmark) / Dansk (Danmark)</value>
@@ -1087,7 +1087,7 @@ POSITION</value>
     <value>Startup keyboard:</value>
   </data>
   <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
-    <value>Custom keyboard file:</value>
+    <value>Dynamic keyboard file:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>Stop signal:</value>
@@ -2203,5 +2203,14 @@ Française
   </data>
   <data name="MANUAL_MODE" xml:space="preserve">
     <value>MANUAL MODE</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>Location of Presage database .db file:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>Number of Presage suggestions to show:</value>
   </data>
 </root>

@@ -39,9 +39,11 @@
                     <MultiBinding Converter="{StaticResource CalculateScratchpadWidth}" Mode="OneWay">
                         <Binding Path="ScratchpadWidthInKeys" RelativeSource="{RelativeSource AncestorType=controls:Output}" />
                         <Binding Path="EnableAttentionKey" Source="{x:Static resx:Settings.Default}" />
+                        <Binding Path="EnableCommuniKateKeyboardLayout" Source="{x:Static resx:Settings.Default}" />
                     </MultiBinding>
                 </ColumnDefinition.Width>
             </ColumnDefinition>
+            <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCommuniKateKeyboardLayout, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -52,7 +54,7 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.PreviousSuggestionsKey}">
         </controls:Key>
-        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4">
+        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -120,7 +122,7 @@
                 </controls:Key.Text>
             </controls:Key>
         </Grid>
-        <controls:Key Grid.Row="0" Grid.Column="5"
+        <controls:Key Grid.Row="0" Grid.Column="6"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
@@ -137,7 +139,7 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.ClearScratchpadKey}"/>
         <ContentControl Grid.Row="1" Grid.Column="2"
-                        Visibility="{Binding EnableAttentionKey, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
+                        Visibility="{Binding EnableAttentionKey, Source={x:Static resx:Settings.Default}, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -162,12 +164,36 @@
         </ContentControl>
         <controls:Scratchpad Grid.Row="1" Grid.Column="3"
                              Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-        <controls:Key Grid.Row="1" Grid.Column="4"
+        <ContentControl Grid.Row="1" Grid.Column="4"
+                        Visibility="{Binding EnableCommuniKateKeyboardLayout, Source={x:Static resx:Settings.Default}, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key />
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCommuniKateKeyboardLayout}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource CommuniKateIcon}"
+                                                  Text="{x:Static resx:Resources.COMMUNIKATE}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.CommuniKateKeyboardKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+        <controls:Key Grid.Row="1" Grid.Column="5"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
                       Text="{x:Static resx:Resources.SPEAK}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SpeakKey}"/>
-        <controls:Key Grid.Row="1" Grid.Column="5"
+        <controls:Key Grid.Row="1" Grid.Column="6"
                       SymbolGeometry="{StaticResource SleepIcon}"
                       Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol"

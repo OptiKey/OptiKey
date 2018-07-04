@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -650,6 +650,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommuniKate.
+        /// </summary>
+        public static string COMMUNIKATE {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommuniKate is currently disabled (use QWERTY).
         /// </summary>
         public static string COMMUNIKATE_DISABLED {
@@ -958,7 +967,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom keyboard file.
+        ///   Looks up a localized string similar to Dynamic keyboard file.
         /// </summary>
         public static string CUSTOM_LAYOUT {
             get {
@@ -4412,6 +4421,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location of Presage database .db file:.
+        /// </summary>
+        public static string PRESAGE_DATABASE_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("PRESAGE_DATABASE_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Presage suggestions to show:.
+        /// </summary>
+        public static string PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL {
+            get {
+                return ResourceManager.GetString("PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Presage.
         /// </summary>
         public static string PRESAGE_SUGGESTION {
@@ -5071,7 +5098,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("SIMILAR_DICTIONARY_ENTRIES_EXIST", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to SIZE &amp; POSITION.
         /// </summary>
@@ -5245,7 +5272,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom keyboard file:.
+        ///   Looks up a localized string similar to Dynamic keyboard file:.
         /// </summary>
         public static string STARTUP_KEYBOARD_FILE_LOCATION_LABEL {
             get {
