@@ -83,15 +83,16 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             // Add the core properties from XML to a new key
             Key newKey = new Key();
-            if(null != xmlKey.Label)
-            {
-                newKey.Text = xmlKey.Label.ToStringWithValidNewlines();
-            }
-            else if(null != xmlKey.ShiftDownLabel && null != xmlKey.ShiftUpLabel)
+            if (null != xmlKey.ShiftDownLabel && null != xmlKey.ShiftUpLabel)
             {
                 newKey.ShiftUpText = xmlKey.ShiftUpLabel.ToStringWithValidNewlines();
                 newKey.ShiftDownText = xmlKey.ShiftDownLabel.ToStringWithValidNewlines();
             }
+            else if (null != xmlKey.Label)
+            {
+                newKey.Text = xmlKey.Label.ToStringWithValidNewlines();
+            }
+            
 
             if (null != xmlKey.Symbol)
             {
