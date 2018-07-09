@@ -83,7 +83,15 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             // Add the core properties from XML to a new key
             Key newKey = new Key();
-            newKey.Text = xmlKey.Label.ToStringWithValidNewlines();
+            if(null != xmlKey.Label)
+            {
+                newKey.Text = xmlKey.Label.ToStringWithValidNewlines();
+            }
+            else if(null != xmlKey.ShiftDownLabel && null != xmlKey.ShiftUpLabel)
+            {
+                newKey.ShiftUpText = xmlKey.ShiftUpLabel.ToStringWithValidNewlines();
+                newKey.ShiftDownText = xmlKey.ShiftDownLabel.ToStringWithValidNewlines();
+            }
 
             if (null != xmlKey.Symbol)
             {
@@ -106,7 +114,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             // Set shared size group
             bool hasSymbol = null  != newKey.SymbolGeometry;
-            bool hasString = xmlKey.Label.Length > 0;
+            bool hasString = null != xmlKey.Label || null != xmlKey.ShiftUpLabel || null != xmlKey.ShiftDownLabel;
             if (hasSymbol && hasString)
             {
                 newKey.SharedSizeGroup = "KeyWithSymbolAndText";

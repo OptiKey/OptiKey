@@ -11,7 +11,6 @@ namespace JuliusSweetland.OptiKey.Models
         {
             Width = 1;
             Height = 1;
-            Label = "";
         }
 
         public int Row
@@ -21,6 +20,12 @@ namespace JuliusSweetland.OptiKey.Models
         { get; set; }
 
         public string Label
+        { get; set; }
+
+        public string ShiftUpLabel
+        { get; set; }
+
+        public string ShiftDownLabel
         { get; set; }
 
         public string Symbol
