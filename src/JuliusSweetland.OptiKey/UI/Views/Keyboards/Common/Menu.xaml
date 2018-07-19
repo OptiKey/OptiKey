@@ -80,10 +80,10 @@
                       SharedSizeGroup="KeyWithSymbolAndText"
                       Value="{x:Static models:KeyValues.PhysicalKeysKeyboardKey}"/>
         <controls:Key Grid.Row="1" Grid.Column="3"
-                      SymbolGeometry="{StaticResource SleepIcon}"
-                      Text="{x:Static resx:Resources.SLEEP}"
+                      SymbolGeometry="{StaticResource KeyboardIcon}"
+                      Text="{x:Static resx:Resources.DYNAMIC_KEYBOARD_LAYOUT}"
                       SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.SleepKey}"/>
+                      Value="{x:Static models:KeyValues.DynamicKeyboardMenu}"/>
 
         <controls:Key Grid.Row="2" Grid.Column="0"
                       SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
