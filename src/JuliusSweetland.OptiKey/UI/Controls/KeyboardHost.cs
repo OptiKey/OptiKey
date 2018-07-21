@@ -192,7 +192,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new FrenchViews.FranceAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
-                        newContent = new GermanViews.Alpha1 { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new GermanViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout
+                                ? (object)new GermanViews.AlphabeticalAlpha1 { DataContext = Keyboard }
+                                : new GermanViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GreekGreece:
                         newContent = new GreekViews.Alpha1 { DataContext = Keyboard };
