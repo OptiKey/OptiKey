@@ -166,7 +166,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
-                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS;
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.GermanGermany;
             }
         }
 
