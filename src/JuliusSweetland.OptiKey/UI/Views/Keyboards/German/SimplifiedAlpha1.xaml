@@ -790,10 +790,10 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource EnterIcon}"
-                                          Text="{x:Static resx:Resources.ENTER}"
+                            <controls:Key SymbolGeometry="{StaticResource BackOneIcon}"
+                                          Text="{x:Static resx:Resources.BACK_ONE}"
                                           SharedSizeGroup="KeyWithSymbol"
-                                          Value="&#x0a;"/>
+                                          Value="{x:Static models:KeyValues.BackOneKey}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -1041,10 +1041,10 @@
         </ContentControl>
 
         <controls:Key Grid.Row="5" Grid.Column="4"
-                      SymbolGeometry="{StaticResource MouseIcon}"
-                      Text="{x:Static resx:Resources.MOUSE}"
+                      SymbolGeometry="{StaticResource EnterIcon}"
+                      Text="{x:Static resx:Resources.ENTER}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MouseKeyboardKey}" />
+                      Value="&#x0a;" />
 
         <controls:Key Grid.Row="5" Grid.Column="5"
                       SymbolGeometry="{StaticResource MenuIcon}"
