@@ -531,11 +531,10 @@
                     <Setter Property="Visibility" Value="Hidden" />
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource CalibrateIcon}"
-                                          Text="{x:Static resx:Resources.RE_CALIBRATE}"
-                                          SharedSizeGroup="KeyWithSymbol"
-                                          WidthSpan="2" 
-                                          Value="{x:Static models:KeyValues.CalibrateKey}"/>
+                            <controls:Key SymbolGeometry="{StaticResource BackOneIcon}"
+                                      Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
+                                      SharedSizeGroup="KeyWithSymbol"
+                                      Value="{x:Static models:KeyValues.BackOneKey}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -581,11 +580,10 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource CalibrateIcon}"
-                                          Text="{x:Static resx:Resources.RE_CALIBRATE}"
-                                          SharedSizeGroup="KeyWithSymbol"
-                                          WidthSpan="2" HeightSpan="2"
-                                          Value="{x:Static models:KeyValues.CalibrateKey}"/>
+                            <controls:Key SymbolGeometry="{StaticResource BackOneIcon}"
+                                      Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
+                                      SharedSizeGroup="KeyWithSymbol"
+                                      Value="{x:Static models:KeyValues.BackOneKey}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
