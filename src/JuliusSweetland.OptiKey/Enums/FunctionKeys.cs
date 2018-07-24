@@ -209,6 +209,8 @@
         SimplifiedKeyboardNumericGroup1,
         SimplifiedKeyboardNumericGroup2,
         SimplifiedKeyboardNumericGroup3,
+        SimplifiedKeyboardGermanUmlaut,
+
         SizeAndPositionKeyboard,
         Sleep,
         SlovakSlovakia,
