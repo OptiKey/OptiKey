@@ -611,11 +611,11 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.HOME}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                            <controls:Key Text="&#x25CC;&#x0308;"
+                                          UseUnicodeCompatibilityFont="True"
+                                          SharedSizeGroup="KeyWithSingleLetter"
+                                          WidthSpan="2" HeightSpan="2"
+                                          Value="{x:Static models:KeyValues.SimplifiedKeyboardGermanUmlaut}" />
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -759,6 +759,18 @@
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.AlphaGroup3SubGroup3}">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.HOME}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" HeightSpan="2"
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardContext}" Value="{x:Static enums:SimplifiedKeyboardContexts.GermanUmlaut}">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
