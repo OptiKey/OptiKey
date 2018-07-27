@@ -347,6 +347,10 @@ namespace JuliusSweetland.OptiKey.Services
                     Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.GermanUmlaut;
                     break;
 
+                case FunctionKeys.SimplifiedKeyboardHome:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.Home;
+                    break;
+
                 case FunctionKeys.Suggestion1:
                     SwapLastTextChangeForSuggestion(0);
                     lastProcessedTextWasSuggestion = true;

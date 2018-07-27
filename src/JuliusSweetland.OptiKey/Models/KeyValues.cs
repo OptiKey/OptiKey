@@ -233,6 +233,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue SimplifiedKeyboardNumericGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericGroup2);
         public static readonly KeyValue SimplifiedKeyboardNumericGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericGroup3);
         public static readonly KeyValue SimplifiedKeyboardGermanUmlaut = new KeyValue(FunctionKeys.SimplifiedKeyboardGermanUmlaut);
+        public static readonly KeyValue SimplifiedKeyboardHome = new KeyValue(FunctionKeys.SimplifiedKeyboardHome);
         public static readonly KeyValue SizeAndPositionKeyboardKey = new KeyValue(FunctionKeys.SizeAndPositionKeyboard);
         public static readonly KeyValue SleepKey = new KeyValue(FunctionKeys.Sleep);
         public static readonly KeyValue SlovakSlovakiaKey = new KeyValue(FunctionKeys.SlovakSlovakia);

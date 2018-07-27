@@ -210,6 +210,7 @@
         SimplifiedKeyboardNumericGroup2,
         SimplifiedKeyboardNumericGroup3,
         SimplifiedKeyboardGermanUmlaut,
+        SimplifiedKeyboardHome,  //This is a hack to eliminate highlighting of multiple keys simultaneously on simplified keyboards.  Does the same thing as SimplifiedAlphaClear.
 
         SizeAndPositionKeyboard,
         Sleep,

@@ -654,7 +654,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -665,7 +665,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -676,7 +676,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -687,7 +687,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -860,7 +860,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -872,7 +872,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -884,7 +884,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -896,7 +896,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -908,7 +908,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -920,7 +920,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -932,7 +932,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -944,7 +944,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -956,7 +956,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -968,7 +968,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -980,7 +980,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -992,7 +992,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
@@ -1004,7 +1004,7 @@
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClearKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardHome}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible" />
