@@ -25,6 +25,7 @@
         NumericAll,             //1234567890
         NumericGroup1,          //123
         NumericGroup2,          //456
-        NumericGroup3           //789
+        NumericGroup3,          //789
+        GermanUmlaut            //vowels a, o, u with omlaut (Which letters can have umlauts varies by language, hence this named German)
     }
 }

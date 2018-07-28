@@ -166,7 +166,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
-                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS;
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.GermanGermany;
             }
         }
 
@@ -189,7 +190,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
                        || KeyboardAndDictionaryLanguage == Enums.Languages.JapaneseJapan
-                       || KeyboardAndDictionaryLanguage == Enums.Languages.TurkishTurkey;
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.TurkishTurkey
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.GermanGermany;
             }
         }
 
