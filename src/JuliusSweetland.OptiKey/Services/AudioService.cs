@@ -227,8 +227,12 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     lock (speakCompletedLock)
                     {
-                        speechSynthesiser.SpeakCompleted -= onSpeakCompleted;
-                        onSpeakCompleted = null;
+                        if (onSpeakCompleted != null)
+                        {
+                            speechSynthesiser.SpeakCompleted -= onSpeakCompleted;
+                            onSpeakCompleted = null;
+                        }
+                        
                         if (onComplete != null)
                         {
                             onComplete();
