@@ -277,7 +277,7 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-                { Languages.DanishDenmark, "abcdefghijklmnopqrstuvxyzæøå"
+                { Languages.DanishDenmark, "abcdefghijklmnopqrstuvwxyzæøå"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
