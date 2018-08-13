@@ -20,6 +20,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
+        private readonly NotifyingConcurrentDictionary<KeyValue, bool> keyHighlightStates;
         private readonly KeyEnabledStates keyEnabledStates;
         private readonly Action<KeyValue> fireKeySelectionEvent;
         private readonly Dictionary<bool, KeyStateServiceState> state = new Dictionary<bool, KeyStateServiceState>();
@@ -41,6 +42,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.fireKeySelectionEvent = fireKeySelectionEvent;
             this.keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             this.keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
+            this.keyHighlightStates = new NotifyingConcurrentDictionary<KeyValue, bool>();
             this.keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
 
             InitialiseKeyDownStates();
@@ -60,6 +62,7 @@ namespace JuliusSweetland.OptiKey.Services
         }
         public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get { return keySelectionProgress; } }
         public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get { return keyDownStates; } }
+        public NotifyingConcurrentDictionary<KeyValue, bool> KeyHighlightStates { get { return keyHighlightStates; } }
         public KeyEnabledStates KeyEnabledStates { get { return keyEnabledStates; } }
 
         #endregion
@@ -96,6 +99,11 @@ namespace JuliusSweetland.OptiKey.Services
                     KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
                 }
             }
+        }
+
+        public void SetKeyHighlightState(KeyValue keyValue, bool highlight)
+        {
+            keyHighlightStates[keyValue].Value = highlight;
         }
 
         #endregion

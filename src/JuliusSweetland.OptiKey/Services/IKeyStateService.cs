@@ -10,8 +10,10 @@ namespace JuliusSweetland.OptiKey.Services
         bool SimulateKeyStrokes { get; set; }
         NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get; }
         NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get; }
+        NotifyingConcurrentDictionary<KeyValue, bool> KeyHighlightStates { get; }
         KeyEnabledStates KeyEnabledStates { get; }
 
+        void SetKeyHighlightState(KeyValue keyValue, bool highlight);
         void ProgressKeyDownState(KeyValue keyValue);
     }
 }

@@ -511,10 +511,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private void TraverseAllKeysAndBuildPointToKeyValueMap()
         {
             var allKeys = VisualAndLogicalTreeHelper.FindVisualChildren<Key>(this).ToList();
-            InstanceGetter.Instance.allKeys = allKeys;
-
             var pointToKeyValueMap = new Dictionary<Rect, KeyValue>();
-
             var topLeftPoint = new Point(0, 0);
 
             foreach (var key in allKeys)
