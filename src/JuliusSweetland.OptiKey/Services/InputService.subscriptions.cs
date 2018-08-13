@@ -177,6 +177,9 @@ namespace JuliusSweetland.OptiKey.Services
 
                                 PublishSelection(triggerSignal.PointAndKeyValue);
 
+                                //Set the key's IsHighlighted property in order to show the green border
+                                keyStateService.KeyHighlightStates[triggerSignal.PointAndKeyValue.KeyValue].Value = true;
+                                
                                 multiKeySelectionSubscription =
                                     CreateMultiKeySelectionSubscription()
                                         .ObserveOnDispatcher()
@@ -195,6 +198,9 @@ namespace JuliusSweetland.OptiKey.Services
 
                                                 stopMultiKeySelectionTriggerSignal = null;
                                                 CapturingMultiKeySelection = false;
+
+                                                //Set the key's IsHighlighted to false in order to remove the green border
+                                                keyStateService.KeyHighlightStates[triggerSignal.PointAndKeyValue.KeyValue].Value = false;
                                             });
                             }
                             else

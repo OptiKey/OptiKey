@@ -93,6 +93,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             onUnloaded.Add(currentPositionSubscription);
             calculateIsCurrent(mainViewModel.CurrentPositionKey);
 
+            //Calculate IsHighlighted
+            if (Value != null)
+            {
+                var keyHighlightedSubscription = keyStateService.KeyHighlightStates[Value]
+                    .OnPropertyChanges(ksp => ksp.Value)
+                    .Subscribe(value => IsHighlighted = value);
+                onUnloaded.Add(keyHighlightedSubscription);
+            }
+            IsHighlighted = Value != null && keyStateService.KeyHighlightStates[Value].Value;
+
             //Calculate DisplayShiftDownText
             //Display shift down text (upper case text) if shift is locked down, or down (but NOT when we are capturing a multi key selection)
             Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) => 
@@ -172,6 +182,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (bool) GetValue(IsCurrentProperty); }
             set { SetValue(IsCurrentProperty, value); }
+        }
+
+        //Should be true when key is the first selected key in multiKey sequence, and false otherwise.
+        public static readonly DependencyProperty IsHighlightedProperty =
+            DependencyProperty.Register("IsHighlighted", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool IsHighlighted
+        {
+            get { return (bool)GetValue(IsHighlightedProperty); }
+            set { SetValue(IsHighlightedProperty, value); }
         }
 
         public static readonly DependencyProperty SelectionProgressProperty =
