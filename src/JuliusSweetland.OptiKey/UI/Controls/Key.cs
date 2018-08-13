@@ -174,6 +174,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(IsCurrentProperty, value); }
         }
 
+        //Should be true when key is the first selected key in multiKey sequence, and false otherwise.
+        public static readonly DependencyProperty IsFirstMultiKeyProperty =
+            DependencyProperty.Register("IsFirstMultiKey", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool IsFirstMultiKey
+        {
+            get { return (bool)GetValue(IsFirstMultiKeyProperty); }
+            set { SetValue(IsFirstMultiKeyProperty, value); }
+        }
+
         public static readonly DependencyProperty SelectionProgressProperty =
             DependencyProperty.Register("SelectionProgress", typeof(double), typeof(Key), new PropertyMetadata(default(double)));
 

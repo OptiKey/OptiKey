@@ -22,7 +22,8 @@
             <SolidColorBrush x:Key="KeyHoverForegroundBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="KeySelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="CapturingMultiKeySelectionBrush" Color="{StaticResource Red}" />
-
+            <SolidColorBrush x:Key="FirstMultiKeySelectionBorderBrush" Color="{StaticResource Green}"/>
+            
             <StaticResource x:Key="KeySelectionForeground" ResourceKey="Blue"/>
             <StaticResource x:Key="KeySelectionBorder" ResourceKey="Grey"/>
             <StaticResource x:Key="KeySelectionBackground" ResourceKey="Grey"/>
@@ -444,6 +445,34 @@
                 </Style.Triggers>
             </Style>
 
+            <!--Style triggers for Green border around first typed MultiKey-->
+            <Style x:Key="MultiKeyBorderHighlightStyle" TargetType="{x:Type Border}">
+                <Setter Property="BorderThickness" Value="5" />
+                <Setter Property="BorderBrush" Value="{StaticResource FirstMultiKeySelectionBorderBrush}" />
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <BlurEffect Radius="5.0" KernelType="Gaussian"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                    <!--This key has a Hover Foreground Colour Override-->
+                    <DataTrigger Binding="{Binding Path=HoverForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
+                        <Setter Property="BorderBrush" Value="{Binding Path=HoverForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
+                    </DataTrigger>
+
+                    <!--Is Key Enabled-->
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
+                        <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledForegroundBrush}" />
+                    </DataTrigger>
+
+                    <!--Make visible when this key is current-->
+                    <DataTrigger Binding="{Binding Path=IsFirstMultiKey, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
+                        <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            
             <Style TargetType="{x:Type controls:Key}">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -511,6 +540,8 @@
                                     </Grid>
                                 </Border>
                                 <Border Style="{StaticResource KeyBorderHighlightStyle}" />
+                                <!--Custom border style for multiKey-->
+                                <Border Style="{StaticResource MultiKeyBorderHighlightStyle}" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
