@@ -31,6 +31,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -186,7 +187,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Rx-Xaml.2.2.5\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.Extensions" />
@@ -348,6 +351,7 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\IWebApiService.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
     <Compile Include="Services\Suggestions\ISuggestions.cs" />
@@ -394,6 +398,8 @@
     <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
+    <Compile Include="Services\WebApiService.cs" />
+    <Compile Include="Services\WebApiServiceHost.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
     <Compile Include="Services\KeyboardOutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
@@ -802,7 +808,6 @@
     <EmbeddedResource Include="Properties\Resources.tr-TR.resx" />
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
-    <EmbeddedResource Include="Resources.ja-JP.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
     <None Include="..\..\LICENSE.txt">
@@ -873,6 +878,9 @@
     <Content Include="Dictionaries\PolishPoland.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Diagnostics;
+using System.ServiceModel;
 using Microsoft.Win32;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -50,6 +51,7 @@ namespace JuliusSweetland.OptiKey
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly Action applyTheme;
+        private WebApiServiceHost serviceHost;
 
         #endregion
 
@@ -59,7 +61,7 @@ namespace JuliusSweetland.OptiKey
         {
             //Setup unhandled exception handling and NBug
             AttachUnhandledExceptionHandlers();
-
+            
             //Log startup diagnostic info
             Log.Info("STARTING UP.");
             LogDiagnosticInfo();
@@ -162,6 +164,11 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(inputService);
 
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
+
+                //Set up Wcf Service Host
+                serviceHost = new WebApiServiceHost(suggestionService);
+                serviceHost.Open();
+                CloseServiceHostOnApplicationExit(serviceHost);
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
@@ -961,6 +968,15 @@ namespace JuliusSweetland.OptiKey
                     publishService.ReleaseAllDownKeys();
                 }
             };
+        }
+
+        #endregion
+
+        #region Close ServiceHost On App Exit
+
+        private static void CloseServiceHostOnApplicationExit(ServiceHost serviceHost)
+        {
+            Current.Exit += (o, args) => serviceHost?.Close();
         }
 
         #endregion
