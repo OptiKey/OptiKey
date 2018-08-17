@@ -26,6 +26,7 @@ namespace JuliusSweetland.OptiKey.Services
     public class WcfEndpointServiceInstanceProvider : IInstanceProvider, IContractBehavior
     {
         private readonly ISuggestionStateService suggestionService;
+        private WebApiService webServiceInstance;
 
         public WcfEndpointServiceInstanceProvider(ISuggestionStateService suggestionService)
         {
@@ -46,7 +47,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public object GetInstance(InstanceContext instanceContext)
         {
-            return new WebApiService(this.suggestionService);
+            return webServiceInstance ?? (webServiceInstance = new WebApiService(suggestionService));
         }
 
         public void ReleaseInstance(InstanceContext instanceContext, object instance)
