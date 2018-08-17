@@ -355,6 +355,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref enableAttentionKey, value); }
         }
 
+        private string pluginsLocation;
+        public string PluginsLocation
+        {
+            get { return pluginsLocation; }
+            set { SetProperty(ref pluginsLocation, value); }
+        }
+
         private string dynamicKeyboardsLocation;
         public string DynamicKeyboardsLocation
         {
@@ -398,6 +405,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
             EnableAttentionKey = Settings.Default.EnableAttentionKey;
+            PluginsLocation = Settings.Default.PluginsLocation;
             DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
             StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
         }
@@ -427,6 +435,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
             Settings.Default.EnableAttentionKey = EnableAttentionKey;
+            Settings.Default.PluginsLocation = PluginsLocation;
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
         }

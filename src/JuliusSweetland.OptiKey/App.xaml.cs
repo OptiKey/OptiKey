@@ -139,6 +139,7 @@ namespace JuliusSweetland.OptiKey
                 CleanupAndPrepareCommuniKateInitialState();
 
                 ValidateDynamicKeyboardLocation();
+                ValidatePluginsLocation();
 
                 var presageInstallationProblem = PresageInstallationProblemsDetected();
 
@@ -984,6 +985,30 @@ namespace JuliusSweetland.OptiKey
             {
                 // First time we set to APPDATA location, user may move through settings later
                 Settings.Default.DynamicKeyboardsLocation = GetDefaultUserKeyboardFolder(); ;
+            }
+        }
+
+        #endregion
+
+        #region Validate Plugins Location
+
+        private static string GetDefaultPluginsFolder()
+        {
+            const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Plugins\";
+
+            var applicationDataPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                ApplicationDataSubPath);
+            Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists                        
+            return applicationDataPath;
+        }
+
+        private static void ValidatePluginsLocation()
+        {
+            if (string.IsNullOrEmpty(Settings.Default.PluginsLocation))
+            {
+                // First time we set to APPDATA location, user may move through settings later
+                Settings.Default.PluginsLocation = GetDefaultPluginsFolder(); ;
             }
         }
 

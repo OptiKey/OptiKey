@@ -285,6 +285,7 @@
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyValueConverter.cs" />
+    <Compile Include="Models\Plugin.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlHttpCallKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlExternalProgramKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />
@@ -350,6 +351,8 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\PluginEngine\PluginEngine.cs" />
+    <Compile Include="Services\PluginEngine\IPluginEngine.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
     <Compile Include="Services\Suggestions\ISuggestions.cs" />
