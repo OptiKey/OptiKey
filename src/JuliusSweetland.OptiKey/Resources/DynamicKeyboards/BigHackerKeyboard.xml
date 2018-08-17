@@ -484,13 +484,17 @@
             <Row>6</Row>
             <Col>1</Col>
         </ActionKey>
+        <ExternalProgramKey>
+            <Label>CMD</Label>
+            <Row>6</Row>
+            <Col>2</Col>
+            <CommandLine>cmd.exe</CommandLine>
+        </ExternalProgramKey>
         <ActionKey>
             <Action>LeftShift</Action>
             <Symbol>ShiftIcon</Symbol>
             <Row>6</Row>
-            <Col>2</Col>
-            <Height>1</Height>
-            <Width>2</Width>
+            <Col>3</Col>
         </ActionKey>
         <TextKey>
             <Symbol>TabIcon</Symbol>

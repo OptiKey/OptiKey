@@ -1,6 +1,7 @@
 using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Enums;
 using System.Windows.Controls;
 using System.Xml.Serialization;
 using System.IO;
@@ -222,6 +223,27 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 AddChangeKeyboardKey(key);
             }
+
+            foreach (XmlExternalProgramKey key in keys.ExternalProgramKeys)
+            {
+                AddExternalProgramKey(key);
+            }
+        }
+
+        void AddExternalProgramKey(XmlExternalProgramKey xmlKey)
+        {
+            Key newKey = CreateKeyWithBasicProps(xmlKey);
+
+            if (null != xmlKey.CommandLine)
+            {
+                newKey.Value = new KeyValue(FunctionKeys.ExternalProgram,xmlKey.CommandLine);
+            }
+            else
+            {
+                Log.ErrorFormat("No command line found for key with label {0}", xmlKey.Label);
+            }
+
+            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
         void AddChangeKeyboardKey(XmlChangeKeyboardKey xmlKey)
