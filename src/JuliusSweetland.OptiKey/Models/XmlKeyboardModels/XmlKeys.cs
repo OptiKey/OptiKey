@@ -21,6 +21,10 @@ namespace JuliusSweetland.OptiKey.Models
         public List<XmlExternalProgramKey> ExternalProgramKeys
         { get; set; }
 
+        [XmlElement(ElementName = "HttpCallKey")]
+        public List<XmlHttpCallKey> HttpCallKeys
+        { get; set; }
+
         [XmlIgnore]
         public int Count
         {

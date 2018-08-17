@@ -285,6 +285,7 @@
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyValueConverter.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlHttpCallKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlExternalProgramKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlChangeKeyboardKey.cs" />

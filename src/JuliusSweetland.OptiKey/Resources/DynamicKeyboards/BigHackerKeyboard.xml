@@ -151,12 +151,12 @@
             <Row>1</Row>
             <Col>10</Col>
         </TextKey>
-        <TextKey>
-            <Label>`</Label>
-            <Text>`</Text>
+        <ActionKey>
+            <Action>BackOne</Action>
+            <Symbol>BackOneIcon</Symbol>
             <Row>1</Row>
             <Col>11</Col>
-        </TextKey>
+        </ActionKey>
 
         <TextKey>
             <Label>1</Label>
@@ -488,7 +488,7 @@
             <Label>CMD</Label>
             <Row>6</Row>
             <Col>2</Col>
-            <CommandLine>cmd.exe</CommandLine>
+            <CommandLine>cmds.exesdfsdf</CommandLine>
         </ExternalProgramKey>
         <ActionKey>
             <Action>LeftShift</Action>
@@ -515,12 +515,12 @@
             <Row>6</Row>
             <Col>7</Col>
         </TextKey>
-        <ActionKey>
-            <Action>BackOne</Action>
-            <Symbol>BackOneIcon</Symbol>
+        <HttpCallKey>
+            <Url>http://192.168.1.201/</Url>
+            <Symbol>BrowserIcon</Symbol>
             <Row>6</Row>
             <Col>8</Col>
-        </ActionKey>
+        </HttpCallKey>
         <ActionKey>
             <Action>ArrowLeft</Action>
             <Symbol>LeftArrowKeyIcon</Symbol>

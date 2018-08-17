@@ -85,6 +85,7 @@
         GermanGermany,
         GreekGreece,
         Home,
+        HttpCall,
         IncreaseOpacity,
         Insert,
         ItalianItaly,

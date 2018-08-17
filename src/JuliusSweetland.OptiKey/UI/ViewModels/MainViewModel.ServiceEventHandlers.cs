@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
@@ -633,6 +635,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         Log.Error("Error running external program.", e);
                     }
+                    break;
+
+                case FunctionKeys.HttpCall:
+                    Log.InfoFormat("Calling external Url [{0}]", singleKeyValue.String);
+                    CallHttpResource(singleKeyValue.String);
                     break;
             }
         }
@@ -2322,6 +2329,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             NavigateToMenu();
+        }
+
+        private void CallHttpResource(string url)
+        {
+            // TODO: Check HTTP response code, get response stream, proxy for external calls, configurable timeout.
+            try
+            {
+                WebRequest req = WebRequest.Create(url);
+                req.Timeout = 2000;
+                // Async request as we are not handling the response yet.
+                req.GetResponseAsync();
+            }
+            catch (Exception e)
+            {
+                Log.Error("Failed to call Url.", e);
+            }
         }
 
         private void ShowMore()

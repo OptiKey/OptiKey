@@ -228,6 +228,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 AddExternalProgramKey(key);
             }
+
+            foreach (XmlHttpCallKey key in keys.HttpCallKeys)
+            {
+                AddHttpCallKey(key);
+            }
         }
 
         void AddExternalProgramKey(XmlExternalProgramKey xmlKey)
@@ -241,6 +246,31 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             else
             {
                 Log.ErrorFormat("No command line found for key with label {0}", xmlKey.Label);
+            }
+
+            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
+        }
+
+        void AddHttpCallKey(XmlHttpCallKey xmlKey)
+        {
+            Key newKey = CreateKeyWithBasicProps(xmlKey);
+
+            if (null != xmlKey.Url)
+            {
+                // Check if url is well formed
+                if (Uri.TryCreate(xmlKey.Url, UriKind.Absolute, out Uri uriResult)
+                    && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps))
+                {
+                    newKey.Value = new KeyValue(FunctionKeys.HttpCall, xmlKey.Url);
+                }
+                else
+                {
+                    Log.ErrorFormat("Invalid Url found for key with label {0}. Url is [{1}]", xmlKey.Label, xmlKey.Url);
+                }
+            }
+            else
+            {
+                Log.ErrorFormat("No Url found for key with label {0}", xmlKey.Label);
             }
 
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
