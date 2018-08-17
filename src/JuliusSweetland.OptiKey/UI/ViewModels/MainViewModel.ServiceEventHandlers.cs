@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Threading;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
@@ -2341,17 +2342,45 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void RunExternalProgram(string command)
         {
-            Log.InfoFormat("Running external program [{0}]", command);
-            try
+            if (command.Contains(":") && command.Split(':').Length == 3)
             {
-                Process.Start(command);
-            }
-            catch (Exception exception)
-            {
-                Log.Error("Error running external program.", exception);
-                if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
+                // If external program definition has 2 ":", that means that it is a DLL method call.
+                Log.InfoFormat("Running extension library [{0}]", command);
+                try
                 {
-                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                    string[] args = command.Split(':');
+                    var DLL = Assembly.LoadFile(Directory.GetCurrentDirectory() + @"\" +
+                        (args[0].ToLower().EndsWith(".dll") ? args[0] : (args[0] + ".dll")));
+                    Type type = DLL.GetType(args[1]);
+                    var instance = Activator.CreateInstance(type);
+                    type.InvokeMember(args[2], BindingFlags.InvokeMethod, null, instance, null);
+                }
+                catch (Exception exception)
+                {
+                    Log.Error("Error running extension DLL.", exception);
+                    while (exception.InnerException != null) exception = exception.InnerException;
+                    if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
+                    {
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                    }
+                }
+            }
+            else
+            {
+                // As it doesn't have ":", assume it is a regular application (exe, cmd, etc).
+                Log.InfoFormat("Running external program [{0}]", command);
+                try
+                {
+                    Process.Start(command);
+                }
+                catch (Exception exception)
+                {
+                    Log.Error("Error running external program.", exception);
+                    while (exception.InnerException != null) exception = exception.InnerException;
+                    if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
+                    {
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                    }
                 }
             }
         }
