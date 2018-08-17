@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
@@ -2342,18 +2343,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void RunExternalProgram(string command)
         {
-            if (command.Contains(":") && command.Split(':').Length == 3)
+            if (command.Contains(":") && command.Split(':').Length == 2)
             {
                 // If external program definition has 2 ":", that means that it is a DLL method call.
-                Log.InfoFormat("Running extension library [{0}]", command);
+                Log.InfoFormat("Running plugin [{0}]", command);
                 try
                 {
                     string[] args = command.Split(':');
-                    var DLL = Assembly.LoadFile(Directory.GetCurrentDirectory() + @"\" +
-                        (args[0].ToLower().EndsWith(".dll") ? args[0] : (args[0] + ".dll")));
-                    Type type = DLL.GetType(args[1]);
-                    var instance = Activator.CreateInstance(type);
-                    type.InvokeMember(args[2], BindingFlags.InvokeMethod, null, instance, null);
+                    new PluginEngine().CallPlugin(args[0], args[1]);
                 }
                 catch (Exception exception)
                 {

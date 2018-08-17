@@ -29,6 +29,7 @@ using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it i
 using Octokit;
 using presage;
 using Application = System.Windows.Application;
+using JuliusSweetland.OptiKey.Services.PluginEngine;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -139,7 +140,10 @@ namespace JuliusSweetland.OptiKey
                 CleanupAndPrepareCommuniKateInitialState();
 
                 ValidateDynamicKeyboardLocation();
+
+                // Handle plugins. Validate if directory exists and is accessible and pre-load all plugins, building a in-memory list of available ones.
                 ValidatePluginsLocation();
+                new PluginEngine().LoadAvailablePlugins();
 
                 var presageInstallationProblem = PresageInstallationProblemsDetected();
 

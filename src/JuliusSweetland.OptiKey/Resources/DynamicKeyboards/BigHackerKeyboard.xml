@@ -494,7 +494,7 @@
             <Label>Hello!</Label>
             <Row>6</Row>
             <Col>2</Col>
-            <CommandLine>HelloWorldExtension:HelloWorldExtension.HelloWorld:SayHello</CommandLine>
+            <CommandLine>HelloWorld:SayHello</CommandLine>
         </ExternalProgramKey>
         <ActionKey>
             <Action>LeftShift</Action>
