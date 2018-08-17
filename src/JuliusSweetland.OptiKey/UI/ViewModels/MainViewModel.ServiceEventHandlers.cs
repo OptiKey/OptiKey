@@ -625,7 +625,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.ExternalProgram:
                     Log.InfoFormat("Running external program [{0}]", singleKeyValue.String);
-                    Process.Start(singleKeyValue.String);
+                    try
+                    {
+                        Process.Start(singleKeyValue.String);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error("Error running external program.", e);
+                    }
                     break;
             }
         }
