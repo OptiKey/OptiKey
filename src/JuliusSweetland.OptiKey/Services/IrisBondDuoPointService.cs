@@ -10,7 +10,7 @@ using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class IrisBondPointService : IPointService
+    public class IrisBondDuoPointService : IPointService
     {
         #region Fields
 
@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public IrisBondPointService()
+        public IrisBondDuoPointService()
         {
             KalmanFilterSupported = true;
             //EyeXHost = new EyeXHost();
