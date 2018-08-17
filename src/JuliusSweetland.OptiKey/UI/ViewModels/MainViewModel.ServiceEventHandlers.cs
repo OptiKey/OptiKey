@@ -626,15 +626,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.ExternalProgram:
-                    Log.InfoFormat("Running external program [{0}]", singleKeyValue.String);
-                    try
-                    {
-                        Process.Start(singleKeyValue.String);
-                    }
-                    catch (Exception e)
-                    {
-                        Log.Error("Error running external program.", e);
-                    }
+                    RunExternalProgram(singleKeyValue.String);
                     break;
 
                 case FunctionKeys.HttpCall:
@@ -2344,6 +2336,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             catch (Exception e)
             {
                 Log.Error("Failed to call Url.", e);
+            }
+        }
+
+        private void RunExternalProgram(string command)
+        {
+            Log.InfoFormat("Running external program [{0}]", command);
+            try
+            {
+                Process.Start(command);
+            }
+            catch (Exception exception)
+            {
+                Log.Error("Error running external program.", exception);
+                if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
+                {
+                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                }
             }
         }
 

@@ -488,7 +488,7 @@
             <Label>CMD</Label>
             <Row>6</Row>
             <Col>2</Col>
-            <CommandLine>cmds.exesdfsdf</CommandLine>
+            <CommandLine>cmd.exe</CommandLine>
         </ExternalProgramKey>
         <ActionKey>
             <Action>LeftShift</Action>
