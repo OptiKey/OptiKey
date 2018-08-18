@@ -2341,7 +2341,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.InfoFormat("Running plugin [{0}]", command);
             try
             {
-                string[] args = command.Split(':');
+                string[] args = command.Split('\n');
                 new PluginEngine().RunPlugin(args[0], args[1]);
             }
             catch (Exception exception)

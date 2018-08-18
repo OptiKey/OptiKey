@@ -76,7 +76,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
                 Type[] types = DLL.GetTypes();
                 foreach (Type type in types)
                 {
-                    if (type.Namespace.StartsWith("OptiKey"))
+                    if (type.Namespace.StartsWith("JuliusSweetland.OptiKey."))
                     {
                         // FIXME: Separated methods are not the most efficient way to do it. Probably a single method returning a metadata object is a better approach.
                         var instance = Activator.CreateInstance(type);
@@ -84,7 +84,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
                         string pluginName = (string)type.InvokeMember("GetPluginName", BindingFlags.InvokeMethod, null, instance, null);
                         string pluginDescription = (string)type.InvokeMember("GetPluginDescription", BindingFlags.InvokeMethod, null, instance, null);
 
-                        if (pluginName != null && pluginDescription != null)
+                        if (pluginId != null && pluginName != null && pluginDescription != null)
                         {
                             plugin = new Plugin(pluginId, pluginName, pluginDescription, instance, type);
                         }

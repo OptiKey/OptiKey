@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey", "src\JuliusSweetland.OptiKey\JuliusSweetland.OptiKey.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 EndProject
@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OptiKeyLocaleGuideImages", 
 		docs\OptiKeyLocaleGuideImages\transifex_project_trans_page.JPG = docs\OptiKeyLocaleGuideImages\transifex_project_trans_page.JPG
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.StandardPlugins", "src\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj", "{0C8F0372-2D55-41BC-9730-4ACE3ED67452}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,11 +54,18 @@ Global
 		{5831AF7F-EB4B-42A4-8184-0C8B3A77466B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5831AF7F-EB4B-42A4-8184-0C8B3A77466B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5831AF7F-EB4B-42A4-8184-0C8B3A77466B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C8F0372-2D55-41BC-9730-4ACE3ED67452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8F0372-2D55-41BC-9730-4ACE3ED67452}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8F0372-2D55-41BC-9730-4ACE3ED67452}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8F0372-2D55-41BC-9730-4ACE3ED67452}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7468759C-A5A4-4228-B61C-41DE35482069} = {117E0D45-AA2F-4A2B-AAD5-C3101E1CBCA8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31B17873-AC39-4A8E-90D9-B092A2E107A9}
 	EndGlobalSection
 EndGlobal

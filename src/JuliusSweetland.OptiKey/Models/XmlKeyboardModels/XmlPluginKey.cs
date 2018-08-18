@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.Models
         public string Method
         { get; set; }
 
-        [XmlElement(ElementName = "Arguments")]
+        [XmlElement(ElementName = "Argument")]
         public List<PluginArgument> Arguments
         { get; set; }
     }

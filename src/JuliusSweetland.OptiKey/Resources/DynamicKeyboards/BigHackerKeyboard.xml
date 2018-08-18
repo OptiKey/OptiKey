@@ -151,12 +151,12 @@
             <Row>1</Row>
             <Col>10</Col>
         </TextKey>
-        <ActionKey>
-            <Action>BackOne</Action>
-            <Symbol>BackOneIcon</Symbol>
+        <TextKey>
+            <Label>`</Label>
+            <Text>`</Text>
             <Row>1</Row>
             <Col>11</Col>
-        </ActionKey>
+        </TextKey>
 
         <TextKey>
             <Label>1</Label>
@@ -484,18 +484,17 @@
             <Row>6</Row>
             <Col>1</Col>
         </ActionKey>
-<!--        <ExternalProgramKey>
-            <Label>CMD</Label>
+        <PluginKey>
+            <Label>Hello!</Label> <!-- You can also use a "Symbol" node -->
             <Row>6</Row>
             <Col>2</Col>
-            <CommandLine>cmd.exe</CommandLine>
-        </ExternalProgramKey> -->
-        <ExternalProgramKey>
-            <Label>Hello!</Label>
-            <Row>6</Row>
-            <Col>2</Col>
-            <CommandLine>HelloWorld:SayHello</CommandLine>
-        </ExternalProgramKey>
+            <Plugin>HelloWorld</Plugin>
+            <Method>SayHello</Method>
+            <Argument>
+                <Name>whatToSay</Name>
+                <Value>Hello world!</Value>
+            </Argument>
+        </PluginKey>
         <ActionKey>
             <Action>LeftShift</Action>
             <Symbol>ShiftIcon</Symbol>
@@ -521,12 +520,12 @@
             <Row>6</Row>
             <Col>7</Col>
         </TextKey>
-        <HttpCallKey>
-            <Url>http://192.168.1.201/</Url>
-            <Symbol>BrowserIcon</Symbol>
+        <ActionKey>
+            <Action>BackOne</Action>
+            <Symbol>BackOneIcon</Symbol>
             <Row>6</Row>
             <Col>8</Col>
-        </HttpCallKey>
+        </ActionKey>
         <ActionKey>
             <Action>ArrowLeft</Action>
             <Symbol>LeftArrowKeyIcon</Symbol>
