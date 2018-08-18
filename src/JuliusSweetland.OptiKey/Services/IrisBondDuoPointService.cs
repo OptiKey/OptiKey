@@ -4,8 +4,6 @@ using System.Windows;
 using EyeXFramework;
 using JuliusSweetland.OptiKey.Enums;
 using log4net;
-using Tobii.EyeX.Client;
-using Tobii.EyeX.Framework;
 using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -60,68 +58,45 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Log.Info("Checking the state of the Tobii service...");
 
-                    switch (EyeXHost.EyeXAvailability)
-                    {
-                        case EyeXAvailability.NotAvailable:
-                            PublishError(this, new ApplicationException(Resources.TOBII_EYEX_ENGINE_NOT_FOUND));
-                            return;
+                    //TODO: Check if the camera is available and running
+                    //switch (EyeXHost.EyeXAvailability)
+                    //{
+                    //    case EyeXAvailability.NotAvailable:
+                    //        PublishError(this, new ApplicationException(Resources.TOBII_EYEX_ENGINE_NOT_FOUND));
+                    //        return;
 
-                        case EyeXAvailability.NotRunning:
-                            PublishError(this, new ApplicationException(Resources.TOBII_EYEX_ENGINE_NOT_RUNNING));
-                            return;
-                    }
+                    //    case EyeXAvailability.NotRunning:
+                    //        PublishError(this, new ApplicationException(Resources.TOBII_EYEX_ENGINE_NOT_RUNNING));
+                    //        return;
+                    //}
 
-                    Log.Info("Attaching eye tracking device status changed listener to the Tobii service.");
+                    Log.Info("Attaching eye tracking device status changed listener to the IrisBond service.");
 
-                    EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.InfoFormat("Tobii EyeX tracking device status changed to {0} (IsValid={1})", e, e.IsValid);
+                    //TODO:Hook up to any status change event and log it
+                    //EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.InfoFormat("Tobii EyeX tracking device status changed to {0} (IsValid={1})", e, e.IsValid);
 
-                    if (Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.None ||
-                       Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.Low)
-                    {
-                        gazeDataStream = EyeXHost.CreateGazePointDataStream(
-                            Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.None
-                                ? GazePointDataMode.Unfiltered //None
-                                : GazePointDataMode.LightlyFiltered); //Low
+                    //TODO:Create the data stream, start it
+                    //gazeDataStream = EyeXHost.CreateGazePointDataStream(
+                    //    Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.None
+                    //        ? GazePointDataMode.Unfiltered //None
+                    //        : GazePointDataMode.LightlyFiltered); //Low
 
-                        if (!EyeXHost.IsStarted)
-                        {
-                            EyeXHost.Start(); // Start the EyeX host
-                        }
+                    //if (!EyeXHost.IsStarted)
+                    //{
+                    //    EyeXHost.Start(); // Start the EyeX host
+                    //}
 
-                        gazeDataStream.Next += (s, data) =>
-                        {
-                            if (pointEvent != null
-                                && !double.IsNaN(data.X)
-                                && !double.IsNaN(data.Y))
-                            {
-                                pointEvent(this, new Timestamped<Point>(new Point(data.X, data.Y),
-                                    new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //EyeX does not publish a useable timestamp
-                            }
-                        };
-                    }
-                    else
-                    {
-                        fixationDataStream = EyeXHost.CreateFixationDataStream(
-                            Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.Medium
-                                ? FixationDataMode.Sensitive //Medium
-                                : FixationDataMode.Slow); //Hight
-
-                        if(!EyeXHost.IsStarted)
-                        {
-                            EyeXHost.Start(); // Start the EyeX host
-                        }
-
-                        fixationDataStream.Next += (s, data) =>
-                        {
-                            if (pointEvent != null
-                                && !double.IsNaN(data.X)
-                                && !double.IsNaN(data.Y))
-                            {
-                                pointEvent(this, new Timestamped<Point>(new Point(data.X, data.Y),
-                                    new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //EyeX does not publish a useable timestamp
-                            }
-                        };
-                    }
+                    //TODO:Attach to the data/point event from the eye tracking camera and publish a pointEvent if the coordinates are good
+                    //gazeDataStream.Next += (s, data) =>
+                    //{
+                    //    if (pointEvent != null
+                    //        && !double.IsNaN(data.X)
+                    //        && !double.IsNaN(data.Y))
+                    //    {
+                    //        pointEvent(this, new Timestamped<Point>(new Point(data.X, data.Y),
+                    //            new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //EyeX does not publish a useable timestamp
+                    //    }
+                    //};
                 }
 
                 pointEvent += value;
@@ -134,17 +109,18 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Log.Info("Last listener of Point event has unsubscribed. Disposing gaze data & fixation data streams.");
 
-                    if (gazeDataStream != null)
-                    {
-                        gazeDataStream.Dispose();
-                        gazeDataStream = null;
-                    }
+                    //TODO:Dispose of any streams here
+                    //if (gazeDataStream != null)
+                    //{
+                    //    gazeDataStream.Dispose();
+                    //    gazeDataStream = null;
+                    //}
 
-                    if (fixationDataStream != null)
-                    {
-                        fixationDataStream.Dispose();
-                        fixationDataStream = null;
-                    }
+                    //if (fixationDataStream != null)
+                    //{
+                    //    fixationDataStream.Dispose();
+                    //    fixationDataStream = null;
+                    //}
                 }
             }
         }

@@ -348,6 +348,7 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\IrisBondDuoPointService.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
     <Compile Include="Services\Suggestions\ISuggestions.cs" />
