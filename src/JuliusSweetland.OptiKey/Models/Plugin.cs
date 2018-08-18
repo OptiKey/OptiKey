@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    // TODO: Checar classe SynamicKeyboardFolder nesse mesmo pacote. 
     public class Plugin
     {
         private string id;

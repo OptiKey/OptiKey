@@ -17,12 +17,8 @@ namespace JuliusSweetland.OptiKey.Models
         public List<XmlChangeKeyboardKey> ChangeKeyboardKeys
         { get; set; }
 
-        [XmlElement(ElementName = "ExternalProgramKey")]
-        public List<XmlExternalProgramKey> ExternalProgramKeys
-        { get; set; }
-
-        [XmlElement(ElementName = "HttpCallKey")]
-        public List<XmlHttpCallKey> HttpCallKeys
+        [XmlElement(ElementName = "PluginKey")]
+        public List<XmlPluginKey> PluginKeys
         { get; set; }
 
         [XmlIgnore]

@@ -32,7 +32,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
             foreach (string file in Directory.GetFiles(applicationDataPath, "*.dll"))
             {
-                Plugin plugin = ValidatePlugin(file);
+                Plugin plugin = ValidateAndCreatePlugin(file);
                 if (plugin != null)
                 {
                     AvailablePlugins.Add(plugin.Id, plugin);
@@ -40,32 +40,33 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
             }
         }
 
-        public void CallPlugin(string PluginId, string MethodName)
+        public void RunPlugin(string PluginId, string MethodName)
         {
             Plugin plugin = AvailablePlugins[PluginId];
             plugin.Type.InvokeMember(MethodName, BindingFlags.InvokeMethod, null, plugin.Instance, null);
         }
 
-        public bool PluginExists(string PluginName)
+        public bool PluginExists(string PluginId)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Plugin> GetAllAvailablePlugins()
-        {
-            throw new NotImplementedException();
+            return AvailablePlugins.ContainsKey(PluginId);
         }
 
         public void RefreshAvailablePlugins()
         {
-            throw new NotImplementedException();
+            AvailablePlugins = new Dictionary<string, Plugin>();
+            LoadAvailablePlugins();
+        }
+
+        public List<Plugin> GetAllAvailablePlugins()
+        {
+            return AvailablePlugins.Values.ToList();
         }
 
         #endregion
 
         #region Private methods
 
-        private Plugin ValidatePlugin(string file)
+        private Plugin ValidateAndCreatePlugin(string file)
         {
             Plugin plugin = null;
 

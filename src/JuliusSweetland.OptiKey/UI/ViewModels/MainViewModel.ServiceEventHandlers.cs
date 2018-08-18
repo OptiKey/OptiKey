@@ -627,13 +627,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     SelectVoice(singleKeyValue.String);
                     break;
 
-                case FunctionKeys.ExternalProgram:
-                    RunExternalProgram(singleKeyValue.String);
-                    break;
-
-                case FunctionKeys.HttpCall:
-                    Log.InfoFormat("Calling external Url [{0}]", singleKeyValue.String);
-                    CallHttpResource(singleKeyValue.String);
+                case FunctionKeys.Plugin:
+                    RunPlugin(singleKeyValue.String);
                     break;
             }
         }
@@ -2341,43 +2336,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void RunExternalProgram(string command)
+        private void RunPlugin(string command)
         {
-            if (command.Contains(":") && command.Split(':').Length == 2)
+            Log.InfoFormat("Running plugin [{0}]", command);
+            try
             {
-                // If external program definition has 2 ":", that means that it is a DLL method call.
-                Log.InfoFormat("Running plugin [{0}]", command);
-                try
-                {
-                    string[] args = command.Split(':');
-                    new PluginEngine().CallPlugin(args[0], args[1]);
-                }
-                catch (Exception exception)
-                {
-                    Log.Error("Error running extension DLL.", exception);
-                    while (exception.InnerException != null) exception = exception.InnerException;
-                    if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
-                    {
-                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                    }
-                }
+                string[] args = command.Split(':');
+                new PluginEngine().RunPlugin(args[0], args[1]);
             }
-            else
+            catch (Exception exception)
             {
-                // As it doesn't have ":", assume it is a regular application (exe, cmd, etc).
-                Log.InfoFormat("Running external program [{0}]", command);
-                try
+                Log.Error("Error running plugin.", exception);
+                while (exception.InnerException != null) exception = exception.InnerException;
+                if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
                 {
-                    Process.Start(command);
-                }
-                catch (Exception exception)
-                {
-                    Log.Error("Error running external program.", exception);
-                    while (exception.InnerException != null) exception = exception.InnerException;
-                    if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
-                    {
-                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                    }
+                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                 }
             }
         }
