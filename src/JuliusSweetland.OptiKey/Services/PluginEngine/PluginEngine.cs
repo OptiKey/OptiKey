@@ -78,6 +78,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
                 {
                     if (type.Namespace.StartsWith("OptiKey"))
                     {
+                        // FIXME: Separated methods are not the most efficient way to do it. Probably a single method returning a metadata object is a better approach.
                         var instance = Activator.CreateInstance(type);
                         string pluginId = (string)type.InvokeMember("GetPluginId", BindingFlags.InvokeMethod, null, instance, null);
                         string pluginName = (string)type.InvokeMember("GetPluginName", BindingFlags.InvokeMethod, null, instance, null);
