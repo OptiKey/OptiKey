@@ -40,10 +40,19 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
             }
         }
 
-        public void RunPlugin(string PluginId, string MethodName)
+        public void RunPlugin(XmlPluginKey key)
         {
-            Plugin plugin = AvailablePlugins[PluginId];
-            plugin.Type.InvokeMember(MethodName, BindingFlags.InvokeMethod, null, plugin.Instance, null);
+            Plugin plugin = AvailablePlugins[key.Plugin];
+            List<string> methodArgs = null;
+            if (key.Arguments?.Count > 0)
+            {
+                methodArgs = new List<String>();
+                foreach (PluginArgument arg in key.Arguments)
+                {
+                    methodArgs.Add(arg.Arg);
+                }
+            }
+            plugin.Type.InvokeMember(key.Method, BindingFlags.InvokeMethod, null, plugin.Instance, methodArgs?.ToArray());
         }
 
         public bool PluginExists(string PluginId)
@@ -65,7 +74,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
         #endregion
 
         #region Private methods
-
+        // FIXME: deveria voltar uma lista de plugins, e nao somente 1 plugin. Cada DLL pode ter vários, esse método só está retornando o último.
         private Plugin ValidateAndCreatePlugin(string file)
         {
             Plugin plugin = null;

@@ -10,7 +10,9 @@ using System.Linq;
 using System.Windows.Media;
 using System.Reflection;
 using log4net;
+using System.Xml;
 using System.Windows;
+using System.Text;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -236,17 +238,19 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             if (null != xmlKey.Plugin && null != xmlKey.Method)
             {
-                // FIXME: Concatenating all data in a single string and then parsing it again is probably not be the best solution.
-                string methodArg = xmlKey.Plugin + "\n" + xmlKey.Method;
-                foreach (PluginArgument arg in xmlKey.Arguments)
+                // FIXME: Saving the XML of the xmlKey itself probably is not be the best option. It is done this way to avoid messing with
+                // other pieces of code deep within OptiKey.
+                XmlSerializer xmlSer = new XmlSerializer(typeof(XmlPluginKey));
+                using (var sww = new StringWriter())
                 {
-                    methodArg += "\n" + arg.Name + ":" + arg.Value;
+                    XmlTextWriter writer = new XmlTextWriter(sww) { Formatting = Formatting.Indented };
+                    xmlSer.Serialize(writer, xmlKey);
+                    newKey.Value = new KeyValue(FunctionKeys.Plugin, sww.ToString());
                 }
-                newKey.Value = new KeyValue(FunctionKeys.Plugin, methodArg);
             }
             else
             {
-                Log.ErrorFormat("Incomplete plugin key configuration in key {0}", xmlKey.Label != null ? xmlKey.Label : xmlKey.Symbol);
+                Log.ErrorFormat("Incomplete plugin key configuration in key {0}", xmlKey.Label ?? xmlKey.Symbol);
             }
 
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);

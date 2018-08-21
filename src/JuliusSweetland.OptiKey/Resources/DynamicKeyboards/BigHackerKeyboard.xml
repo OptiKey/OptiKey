@@ -485,15 +485,16 @@
             <Col>1</Col>
         </ActionKey>
         <PluginKey>
-            <Label>Hello!</Label> <!-- You can also use a "Symbol" node -->
+            <Label>Hello!</Label>
             <Row>6</Row>
             <Col>2</Col>
-            <Plugin>HelloWorld</Plugin>
-            <Method>SayHello</Method>
-            <Argument>
-                <Name>whatToSay</Name>
-                <Value>Hello world!</Value>
-            </Argument>
+            <Plugin>HttpCall</Plugin>
+            <Method>GET</Method>
+            <Arguments>
+              <Arg>https://www.uol.com.br</Arg>
+              <Arg> </Arg>
+              <Arg> </Arg>
+            </Arguments>
         </PluginKey>
         <ActionKey>
             <Action>LeftShift</Action>

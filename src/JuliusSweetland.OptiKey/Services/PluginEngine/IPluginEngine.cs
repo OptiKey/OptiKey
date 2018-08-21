@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
         void LoadAvailablePlugins();
         void RefreshAvailablePlugins();
         bool PluginExists(string PluginId);
-        void RunPlugin(string PluginId, string MethodName);
+        void RunPlugin(XmlPluginKey key);
         List<Plugin> GetAllAvailablePlugins();
     }
 }

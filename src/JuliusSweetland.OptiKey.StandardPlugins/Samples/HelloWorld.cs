@@ -14,16 +14,16 @@
             <Col>2</Col>
             <Plugin>HelloWorld</Plugin>
             <Method>SayHello</Method>
-            <Argument>
-                <Name>whatToSay</Name>
-                <Value>Hello world!</Value>
-            </Argument>
+            <Arguments>
+                <Arg>Hello World!</Arg>
+            </Arguments>
         </PluginKey>
  *
- * CommandLine is composed of three parts, separated by a ':' character:
- * 1) DLL file name, with or without extension, case insensitive. In the example above, "HelloWorldExtension"
- * 2) Class name, with namespace, case sensitive. In the example above, "OptiKeyExtensions.HelloWorld"
- * 3) Method name, case sensitive. It takes no arguments and has no return type (void). In the example above "SayHello"
+ * Standard dynamic key elements like "Label" and "Symbol" works the same way as standard action keys. There are three new nodes:
+ * 
+ * 1) Plugin: This is the plugin name. It is the same value that must be returned in "GetPluginId" method and must be unique within an OptiKey installation.
+ * 2) Method: The name of the method that will be called when the key is pressed.
+ * 3) Arguments: Array of "Arg" elements that will be passed as arguments to the method. The order of the arguments must be the same as the method gets them. For now, only string arguments are supported.
  *
  * Please refer to OptiKey wiki for more information on registering and developing extensions.
  */
@@ -37,10 +37,10 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
         // Initialize a new instance of the SpeechSynthesizer.
         private static SpeechSynthesizer synth = new SpeechSynthesizer();
 
-        // Those are two required methods. Getters for internal OptiKey ID, name and description
+        // Those are three required methods. Getters for internal OptiKey ID, name and description
         public string GetPluginId() => "HelloWorld";
         public string GetPluginName() => "Hello World Plugin";
-        public string GetPluginDescription() => "This is a sample plugin that just says \"Hello World\" through windows TTS.";
+        public string GetPluginDescription() => "This is a sample plugin that just says what you want through windows TTS.";
 
         // Name your method anything you want. You can have as many methods as you want in a single class. You will also use the method name in Dynamic Keyboard key definition.
         public void SayHello(string whatToSay) => synth.SpeakAsync(textToSpeak: whatToSay);

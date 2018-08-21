@@ -5,8 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Windows;
+using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -2320,29 +2322,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             NavigateToMenu();
         }
 
-        private void CallHttpResource(string url)
-        {
-            // TODO: Check HTTP response code, get response stream, proxy for external calls, configurable timeout.
-            try
-            {
-                WebRequest req = WebRequest.Create(url);
-                req.Timeout = 2000;
-                // Async request as we are not handling the response yet.
-                req.GetResponseAsync();
-            }
-            catch (Exception e)
-            {
-                Log.Error("Failed to call Url.", e);
-            }
-        }
-
         private void RunPlugin(string command)
         {
+            //FIXME: Log Message is logging entire XML
             Log.InfoFormat("Running plugin [{0}]", command);
             try
             {
-                string[] args = command.Split('\n');
-                new PluginEngine().RunPlugin(args[0], args[1]);
+                XmlSerializer serializer = new XmlSerializer(typeof(XmlPluginKey));
+                StringReader rdr = new StringReader(command);
+                new PluginEngine().RunPlugin((XmlPluginKey)serializer.Deserialize(rdr));
             }
             catch (Exception exception)
             {
