@@ -5,12 +5,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Models;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services.PluginEngine
 {
-    public class PluginEngine : IPluginEngine
+    public class PluginEngine
     {
 
         #region Private Member Vars
@@ -22,7 +23,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
         #region Public methods
 
-        public void LoadAvailablePlugins()
+        public static void LoadAvailablePlugins()
         {
             const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Plugins\";
 
@@ -32,41 +33,41 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
             foreach (string file in Directory.GetFiles(applicationDataPath, "*.dll"))
             {
-                Plugin plugin = ValidateAndCreatePlugin(file);
-                if (plugin != null)
+                List<Plugin> plugins = ValidateAndCreatePlugins(file);
+                foreach (Plugin plugin in plugins)
                 {
                     AvailablePlugins.Add(plugin.Id, plugin);
                 }
             }
         }
 
-        public void RunPlugin(XmlPluginKey key)
+        public static void RunPlugin(XmlPluginKey key)
         {
             Plugin plugin = AvailablePlugins[key.Plugin];
             List<string> methodArgs = null;
-            if (key.Arguments?.Count > 0)
+            if (key.Arguments?.Arg?.Count > 0)
             {
                 methodArgs = new List<String>();
-                foreach (PluginArgument arg in key.Arguments)
+                foreach (string arg in key.Arguments.Arg)
                 {
-                    methodArgs.Add(arg.Arg);
+                    methodArgs.Add(arg);
                 }
             }
             plugin.Type.InvokeMember(key.Method, BindingFlags.InvokeMethod, null, plugin.Instance, methodArgs?.ToArray());
         }
 
-        public bool PluginExists(string PluginId)
+        public static bool PluginExists(string PluginId)
         {
             return AvailablePlugins.ContainsKey(PluginId);
         }
 
-        public void RefreshAvailablePlugins()
+        public static void RefreshAvailablePlugins()
         {
             AvailablePlugins = new Dictionary<string, Plugin>();
             LoadAvailablePlugins();
         }
 
-        public List<Plugin> GetAllAvailablePlugins()
+        public static List<Plugin> GetAllAvailablePlugins()
         {
             return AvailablePlugins.Values.ToList();
         }
@@ -74,39 +75,44 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
         #endregion
 
         #region Private methods
-        // FIXME: deveria voltar uma lista de plugins, e nao somente 1 plugin. Cada DLL pode ter vários, esse método só está retornando o último.
-        private Plugin ValidateAndCreatePlugin(string file)
+
+        private static List<Plugin> ValidateAndCreatePlugins(string file)
         {
-            Plugin plugin = null;
+            List<Plugin> plugins = new List<Plugin>();
 
             try
             {
-                var DLL = Assembly.LoadFile(file);
-                Type[] types = DLL.GetTypes();
-                foreach (Type type in types)
+                Assembly DLL = Assembly.LoadFile(file);
+                string metadataResName = Array.Find(DLL.GetManifestResourceNames(), new Predicate<String>(FindMetadataResource));
+                if (null != metadataResName)
                 {
-                    if (type.Namespace.StartsWith("JuliusSweetland.OptiKey."))
+                    XmlSerializer serializer = new XmlSerializer(typeof(Plugins));
+                    Plugins pluginMetadata = (Plugins)serializer.Deserialize(new StringReader(new StreamReader(DLL.GetManifestResourceStream(metadataResName)).ReadToEnd()));
+                    foreach (Plugin plugin in pluginMetadata.Plugin)
                     {
-                        // FIXME: Separated methods are not the most efficient way to do it. Probably a single method returning a metadata object is a better approach.
-                        var instance = Activator.CreateInstance(type);
-                        string pluginId = (string)type.InvokeMember("GetPluginId", BindingFlags.InvokeMethod, null, instance, null);
-                        string pluginName = (string)type.InvokeMember("GetPluginName", BindingFlags.InvokeMethod, null, instance, null);
-                        string pluginDescription = (string)type.InvokeMember("GetPluginDescription", BindingFlags.InvokeMethod, null, instance, null);
-
-                        if (pluginId != null && pluginName != null && pluginDescription != null)
+                        Type pluginType = DLL.GetType(plugin.Impl);
+                        if (null != pluginType)
                         {
-                            plugin = new Plugin(pluginId, pluginName, pluginDescription, instance, type);
+                            plugin.Instance = Activator.CreateInstance(pluginType);
+                            plugin.Type = pluginType;
+                            plugins.Add(plugin);
                         }
                     }
                 }
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Error creating plugin instance: [{0}].", file, e);
+                Log.ErrorFormat("Error handling library: [{0}].", file, e);
+                // Ensure that all plugins from this DLL are discarded.
+                plugins = new List<Plugin>();
             }
-            return plugin;
+            return plugins;
         }
 
+        private static bool FindMetadataResource(string resource)
+        {
+            return resource.StartsWith("JuliusSweetland.OptiKey.") && resource.EndsWith("metadata.xml");
+        }
         #endregion
 
     }

@@ -485,15 +485,16 @@
             <Col>1</Col>
         </ActionKey>
         <PluginKey>
-            <Label>Hello!</Label>
+            <Label>Google</Label>
             <Row>6</Row>
             <Col>2</Col>
             <Plugin>HttpCall</Plugin>
             <Method>GET</Method>
             <Arguments>
-              <Arg>https://www.uol.com.br</Arg>
+              <Arg>https://www.google.com</Arg>
               <Arg> </Arg>
               <Arg> </Arg>
+              <Arg>10000</Arg>
             </Arguments>
         </PluginKey>
         <ActionKey>

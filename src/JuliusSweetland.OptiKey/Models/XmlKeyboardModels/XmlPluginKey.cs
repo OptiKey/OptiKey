@@ -12,14 +12,14 @@ namespace JuliusSweetland.OptiKey.Models
         public string Method
         { get; set; }
 
-        [XmlElement(ElementName = "Arguments")]
-        public List<PluginArgument> Arguments
+        public PluginArguments Arguments
         { get; set; }
     }
 
-    public class PluginArgument
+    public class PluginArguments
     {
-        public string Arg
+        [XmlElement(ElementName = "Arg")]
+        public List<string> Arg
         { get; set; }
     }
 }

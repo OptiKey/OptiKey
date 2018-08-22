@@ -2330,7 +2330,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(XmlPluginKey));
                 StringReader rdr = new StringReader(command);
-                new PluginEngine().RunPlugin((XmlPluginKey)serializer.Deserialize(rdr));
+                PluginEngine.RunPlugin((XmlPluginKey)serializer.Deserialize(rdr));
             }
             catch (Exception exception)
             {

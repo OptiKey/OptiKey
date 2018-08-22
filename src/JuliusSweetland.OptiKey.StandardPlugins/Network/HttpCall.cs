@@ -1,21 +1,24 @@
-﻿using System.Net;
-using System.Speech.Synthesis;
+﻿using System;
+using System.Net.Http;
+using System.Text;
 
 /**
  * This is a plugin that calls a HTTP request upon key selection.
  * 
  * It has the following methods:
  * 
- * 1) GET: This method calls a HTTP/HTTPS url using GET HTTP method. Arguments are:
- *    . URL: the url that will be called
- *    . Accepts: The value for 'Accept' HTTP header
- *    . Authorization: The value for 'Authorization' HTTP header
- * 2) POST: This method calls a HTTP/HTTPS url ugin POST HTTP method. Arguments are:
- *    . URL: the url that will be called
- *    . Accepts: The value for 'Accept' HTTP header
- *    . Authorization: The value for 'Authorization' HTTP header
- *    . ContentType: The value for 'ContentType' HTTP header
- *    . Payload: The Payload that will be posted
+ * 1) GET: This method calls a HTTP/HTTPS uri using GET HTTP method. Arguments are:
+ *    . uri: the uri that will be called
+ *    . accept: The value for 'Accept' HTTP header
+ *    . authorization: The value for 'Authorization' HTTP header
+ *    . timeout: How many miliseconds the plugin will wait for answer when calling the provided uri. Default value is 3s
+ * 2) POST: This method calls a HTTP/HTTPS uri ugin POST HTTP method. Arguments are:
+ *    . uri: the uri that will be called
+ *    . accepts: The value for 'Accept' HTTP header
+ *    . authorization: The value for 'Authorization' HTTP header
+ *    . timeout: How many miliseconds the plugin will wait for answer when calling the provided uri. Default value is 3s
+ *    . contentType: The value for 'ContentType' HTTP header
+ *    . payload: The Payload that will be posted
  * 
  * Please refer to OptiKey wiki for more information on registering and developing extensions.
  */
@@ -25,41 +28,43 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
 {
     public class HttpCall
     {
-        // Getters for internal OptiKey ID, name and description
-        public string GetPluginId() => "HttpCall";
-        public string GetPluginName() => "HTTP/HTTPS Call Plugin";
-        public string GetPluginDescription() => "This plugins enables OptiKey to call a external URL every time a plugin key is pressed";
-
         // GET HTTP method request
-        public void GET(string url, string accepts, string authorization)
+        public void GET(string uri, string accept, string authorization, string timeout)
         {
-            WebRequest webRequest = HandleHeaders(WebRequest.Create(url), accepts, authorization, null);
-            HttpWebResponse webResp = (HttpWebResponse)webRequest.GetResponse();
-            //TODO CHeck HTTP response code
-            //if (webResp.StatusCode.)
+            HttpClient client = new HttpClient();
+            client = Configure(client, accept, authorization, timeout);
+            HttpResponseMessage response = client.GetAsync(uri).Result;
+            response.EnsureSuccessStatusCode();
         }
 
         // POST HTTP method request
-        public void POST(string url, string accepts, string authorization, string contentType, string payload)
+        public void POST(string uri, string accept, string authorization, string timeout, string contentType, string payload)
         {
-            //TODO
+            HttpClient client = new HttpClient();
+            client = Configure(client, accept, authorization, timeout);
+            HttpResponseMessage response = client.PostAsync(uri, new StringContent(payload, Encoding.UTF8, contentType)).Result;
+            response.EnsureSuccessStatusCode();
         }
 
-        private WebRequest HandleHeaders(WebRequest webRequest, string accepts, string authorization, string contentType)
+        private HttpClient Configure(HttpClient client, string accept, string authorization, string timeout)
         {
-            if (!string.IsNullOrWhiteSpace(accepts))
+            if (!string.IsNullOrWhiteSpace(accept))
             {
-                webRequest.Headers.Add("Accepts", accepts);
+                client.DefaultRequestHeaders.Add("Accept", accept);
             }
             if (!string.IsNullOrWhiteSpace(authorization))
             {
-                webRequest.Headers.Add("Authorization", authorization);
+                client.DefaultRequestHeaders.Add("Authorization", authorization);
             }
-            if (!string.IsNullOrWhiteSpace(contentType))
+
+            // Default timeout is 3s
+            if (!Int32.TryParse(timeout, out int iTimeout))
             {
-                webRequest.ContentType = contentType;
+                iTimeout = 3000;
             }
-            return webRequest;
+            client.Timeout = TimeSpan.FromMilliseconds(iTimeout);
+
+            return client;
         }
     }
 }
