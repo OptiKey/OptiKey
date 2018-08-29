@@ -151,12 +151,12 @@
             <Row>1</Row>
             <Col>10</Col>
         </TextKey>
-        <TextKey>
-            <Label>`</Label>
-            <Text>`</Text>
+        <ActionKey>
+            <Action>BackOne</Action>
+            <Symbol>BackOneIcon</Symbol>
             <Row>1</Row>
             <Col>11</Col>
-        </TextKey>
+        </ActionKey>
 
         <TextKey>
             <Label>1</Label>
@@ -485,17 +485,14 @@
             <Col>1</Col>
         </ActionKey>
         <PluginKey>
-            <Label>Google</Label>
-            <Row>6</Row>
-            <Col>2</Col>
-            <Plugin>HttpCall</Plugin>
-            <Method>GET</Method>
-            <Arguments>
-              <Arg>https://www.google.com</Arg>
-              <Arg> </Arg>
-              <Arg> </Arg>
-              <Arg>10000</Arg>
-            </Arguments>
+	        <Label>Notepad</Label>
+	        <Row>6</Row>
+	        <Col>2</Col>
+	        <Plugin>ExternalProgram</Plugin>
+	        <Method>RUN</Method>
+	        <Arguments>
+		        <Arg>notepad.exe</Arg>
+	        </Arguments>
         </PluginKey>
         <ActionKey>
             <Action>LeftShift</Action>
@@ -522,12 +519,19 @@
             <Row>6</Row>
             <Col>7</Col>
         </TextKey>
-        <ActionKey>
-            <Action>BackOne</Action>
-            <Symbol>BackOneIcon</Symbol>
-            <Row>6</Row>
-            <Col>8</Col>
-        </ActionKey>
+        <PluginKey>
+	          <Label>APICall</Label>
+	          <Row>6</Row>
+	          <Col>8</Col>
+	          <Plugin>HttpCall</Plugin>
+	          <Method>GET</Method>
+	          <Arguments>
+		            <Arg>http://www.google.com</Arg>
+		            <Arg></Arg>
+		            <Arg></Arg>
+		            <Arg>10000</Arg>
+	          </Arguments>
+        </PluginKey>
         <ActionKey>
             <Action>ArrowLeft</Action>
             <Symbol>LeftArrowKeyIcon</Symbol>

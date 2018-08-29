@@ -100,7 +100,7 @@
 	<Row>6</Row>
 	<Col>2</Col>
 	<Plugin>HttpCall</Plugin>
-	<Method>GET</Method>
+	<Method>POST</Method>
 	<Arguments>
 		<Arg>http://www.google.com</Arg>
 		<Arg></Arg>
@@ -109,6 +109,38 @@
 		<Arg>application/json; charset=utf-8</Arg>
 		<Arg>{}</Arg>
 	  </Arguments>
+</PluginKey>]]>
+        </SampleConfig>
+      </Method>
+    </Methods>
+  </Plugin>
+  <Plugin>
+    <Id>ExternalProgram</Id>
+    <Impl>JuliusSweetland.OptiKey.StandardPlugins.ExternalProgram</Impl>
+    <Name>Runs a command in windows</Name>
+    <Description>This is a plugin that runs a command in windows. It can be anything that you would run using command line prompt.</Description>
+    <Methods>
+      <Method>
+        <Name>RUN</Name>
+        <Description>Runs a command in windows. It can be anything that you would run using command line prompt.</Description>
+        <Arguments>
+          <Argument>
+            <Name>command</Name>
+            <Description>command line that will be executed</Description>
+            <Sample>notepad.exe</Sample>
+            <Required>true</Required>
+          </Argument>
+        </Arguments>
+        <SampleConfig>
+          <![CDATA[<PluginKey>
+	<Label>Notepad</Label>
+	<Row>6</Row>
+	<Col>2</Col>
+	<Plugin>ExternalProgram</Plugin>
+	<Method>RUN</Method>
+	<Arguments>
+		<Arg>notepad.exe</Arg>
+	</Arguments>
 </PluginKey>]]>
         </SampleConfig>
       </Method>
