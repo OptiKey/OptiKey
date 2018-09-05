@@ -44,10 +44,14 @@
 	<Plugin>HttpCall</Plugin>
 	<Method>GET</Method>
 	<Arguments>
-		<Arg>http://www.google.com</Arg>
-		<Arg></Arg>
-		<Arg></Arg>
-		<Arg>10000</Arg>
+	  <Argument>
+		<Name>uri</Name>
+		<Value>http://www.google.com</Value>
+	  </Argument>
+	  <Argument>
+		<Name>timeout</Name>
+		<Value>10000</Value>
+	  </Argument>
 	</Arguments>
 </PluginKey>]]>
         </SampleConfig>
@@ -102,13 +106,27 @@
 	<Plugin>HttpCall</Plugin>
 	<Method>POST</Method>
 	<Arguments>
-		<Arg>http://www.google.com</Arg>
-		<Arg></Arg>
-		<Arg></Arg>
-		<Arg>10000</Arg>
-		<Arg>application/json; charset=utf-8</Arg>
-		<Arg>{}</Arg>
-	  </Arguments>
+	  <Argument>
+		<Name>uri</Name>
+		<Value>http://www.google.com</Value>
+	  </Argument>
+	  <Argument>
+		<Name>timeout</Name>
+		<Value>10000</Value>
+	  </Argument>
+	  <Argument>
+		<Name>accept</Name>
+		<Value>application/json</Value>
+	  </Argument>
+	  <Argument>
+		<Name>contentType</Name>
+		<Value>application/json; charset=utf-8</Value>
+	  </Argument>
+	  <Argument>
+		<Name>payload</Name>
+		<Value>{}</Value>
+	  </Argument>
+    </Arguments>
 </PluginKey>]]>
         </SampleConfig>
       </Method>
@@ -139,7 +157,10 @@
 	<Plugin>ExternalProgram</Plugin>
 	<Method>RUN</Method>
 	<Arguments>
-		<Arg>notepad.exe</Arg>
+	  <Argument>
+		<Name>command</Name>
+		<Value>notepad.exe</Value>
+	  </Argument>
 	</Arguments>
 </PluginKey>]]>
         </SampleConfig>
