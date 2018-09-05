@@ -32,19 +32,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
             }
         }
 
-        private void FindPluginsFolder(object sender, System.Windows.RoutedEventArgs e)
-        {
-            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            folderBrowser.Description = "Select folder containing plugins";
-            folderBrowser.SelectedPath = txtPluginsLocation.Text;
-
-            if (folderBrowser.ShowDialog() == DialogResult.OK)
-            {
-                // This is hooked up to the PluginsLocation property
-                txtPluginsLocation.Text = folderBrowser.SelectedPath;
-            }
-        }
-
         private void FindStartupKeyboardFile(object sender, System.Windows.RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog

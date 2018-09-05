@@ -284,25 +284,6 @@
                                 <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
                             </Button>
                      </StackPanel>
-
-                    <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.PLUGINS_LOCATION_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" >
-                    </TextBlock>
-
-                    <StackPanel Grid.Row="17" Grid.Column="1" Orientation="Horizontal">
-                        <TextBlock Name="txtPluginsLocation"
-                                   Text="{Binding PluginsLocation, Mode=TwoWay}" 
-                                   HorizontalAlignment="Left" 
-                                   VerticalAlignment="Center"
-                                   Margin="5" >
-                        </TextBlock>
-                        <Button Click="FindPluginsFolder" MinWidth="100" Margin="5,5,5,5" 
-                                VerticalAlignment="Center"  
-                                HorizontalAlignment="Right">
-                            <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
-                        </Button>
-                    </StackPanel>
-
                 </Grid>
             </GroupBox>
 

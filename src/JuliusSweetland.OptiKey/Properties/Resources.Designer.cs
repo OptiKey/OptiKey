@@ -269,6 +269,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available plugins.
+        /// </summary>
+        public static string AVAILABLE_PLUGINS_LABEL {
+            get {
+                return ResourceManager.GetString("AVAILABLE_PLUGINS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BACK.
         /// </summary>
         public static string BACK {
@@ -4259,6 +4268,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plugins.
+        /// </summary>
+        public static string PLUGINS_LABEL {
+            get {
+                return ResourceManager.GetString("PLUGINS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Folder containing plugins:.
         /// </summary>
         public static string PLUGINS_LOCATION_LABEL {
@@ -4562,6 +4580,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string RE_CALIBRATE {
             get {
                 return ResourceManager.GetString("RE_CALIBRATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh plugins.
+        /// </summary>
+        public static string REFRESH_PLUGINS_BUTTON {
+            get {
+                return ResourceManager.GetString("REFRESH_PLUGINS_BUTTON", resourceCulture);
             }
         }
         
