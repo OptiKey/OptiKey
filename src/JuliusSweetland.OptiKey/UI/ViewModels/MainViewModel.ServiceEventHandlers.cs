@@ -2326,11 +2326,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             //FIXME: Log Message is logging entire XML
             Log.InfoFormat("Running plugin [{0}]", command);
+
+            // Build plugin context
+            Dictionary<string, string> context = BuildPluginContext();
+
             try
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(XmlPluginKey));
                 StringReader rdr = new StringReader(command);
-                PluginEngine.RunPlugin((XmlPluginKey)serializer.Deserialize(rdr));
+                PluginEngine.RunPlugin(context, (XmlPluginKey)serializer.Deserialize(rdr));
             }
             catch (Exception exception)
             {
@@ -2341,6 +2345,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                 }
             }
+        }
+
+        private Dictionary<string, string> BuildPluginContext()
+        {
+            Dictionary<string, string> context = new Dictionary<string, string>
+            {
+                { "scratchpadText", keyboardOutputService.Text }
+            };
+            return context;
         }
 
         private void ShowMore()

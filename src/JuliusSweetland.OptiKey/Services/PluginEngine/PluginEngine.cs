@@ -41,7 +41,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
             }
         }
 
-        public static void RunPlugin(XmlPluginKey key)
+        public static void RunPlugin(Dictionary<String, String> context, XmlPluginKey key)
         {
             Plugin plugin = AvailablePlugins[key.Plugin];
             List<string> methodArgs = null;
@@ -60,7 +60,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
                             {
                                 if (arg.Name.Equals(pluginMethodParam.Name))
                                 {
-                                    argValue = GetArgumentValue(arg.Value);
+                                    argValue = GetArgumentValue(context, arg.Value);
                                     break;
                                 }
                             }
@@ -131,10 +131,18 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
             return resource.StartsWith("JuliusSweetland.OptiKey.") && resource.EndsWith("metadata.xml");
         }
 
-        //TODO: Handle macros
-        private static string GetArgumentValue(string value)
+        private static string GetArgumentValue(Dictionary<String, String> context, string value)
         {
-            return value;
+            string result = value;
+            if (value.StartsWith("$"))
+            {
+                string contextValue = context[value.Substring(1)];
+                if (contextValue != null)
+                {
+                    result = contextValue;
+                }
+            }
+            return result;
         }
 
         #endregion
