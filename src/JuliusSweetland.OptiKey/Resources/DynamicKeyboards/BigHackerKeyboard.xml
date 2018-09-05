@@ -491,7 +491,10 @@
 	        <Plugin>ExternalProgram</Plugin>
 	        <Method>RUN</Method>
 	        <Arguments>
-		        <Arg>notepad.exe</Arg>
+            <Argument>
+              <Name>command</Name>
+              <Value>notepad.exe</Value>
+            </Argument>
 	        </Arguments>
         </PluginKey>
         <ActionKey>
@@ -526,10 +529,14 @@
 	          <Plugin>HttpCall</Plugin>
 	          <Method>GET</Method>
 	          <Arguments>
-		            <Arg>http://www.google.com</Arg>
-		            <Arg></Arg>
-		            <Arg></Arg>
-		            <Arg>10000</Arg>
+              <Argument>
+                <Name>uri</Name>
+                <Value>http://www.google.com</Value>
+              </Argument>
+              <Argument>
+                <Name>timeout</Name>
+                <Value>10000</Value>
+              </Argument>
 	          </Arguments>
         </PluginKey>
         <ActionKey>

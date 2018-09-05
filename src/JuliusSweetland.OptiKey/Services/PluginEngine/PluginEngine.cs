@@ -45,12 +45,29 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
         {
             Plugin plugin = AvailablePlugins[key.Plugin];
             List<string> methodArgs = null;
-            if (key.Arguments?.Arg?.Count > 0)
+            if (key.Arguments?.Argument?.Count > 0)
             {
+                // FIXME: This logic does not support two methods with the same name and different arguments
                 methodArgs = new List<String>();
-                foreach (string arg in key.Arguments.Arg)
+                foreach (MethodInfo pluginMethod in plugin.Type.GetMethods())
                 {
-                    methodArgs.Add(arg);
+                    if (pluginMethod.Name.Equals(key.Method))
+                    {
+                        foreach (ParameterInfo pluginMethodParam in pluginMethod.GetParameters())
+                        {
+                            string argValue = null;
+                            foreach (PluginArgument arg in key.Arguments.Argument)
+                            {
+                                if (arg.Name.Equals(pluginMethodParam.Name))
+                                {
+                                    argValue = GetArgumentValue(arg.Value);
+                                    break;
+                                }
+                            }
+                            methodArgs.Add(argValue);
+                        }
+                        break;
+                    }
                 }
             }
             plugin.Type.InvokeMember(key.Method, BindingFlags.InvokeMethod, null, plugin.Instance, methodArgs?.ToArray());
@@ -113,6 +130,13 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
         {
             return resource.StartsWith("JuliusSweetland.OptiKey.") && resource.EndsWith("metadata.xml");
         }
+
+        //TODO: Handle macros
+        private static string GetArgumentValue(string value)
+        {
+            return value;
+        }
+
         #endregion
 
     }
