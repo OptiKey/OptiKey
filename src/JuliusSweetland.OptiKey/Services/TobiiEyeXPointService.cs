@@ -46,7 +46,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
 
-        public bool KalmanFilterSupported {get; private set; }
+        public bool KalmanFilterSupported { get; private set; }
         public EyeXHost EyeXHost { get; private set; }
 
         #endregion
