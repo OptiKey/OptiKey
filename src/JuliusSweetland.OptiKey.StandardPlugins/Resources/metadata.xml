@@ -135,7 +135,7 @@
   <Plugin>
     <Id>ExternalProgram</Id>
     <Impl>JuliusSweetland.OptiKey.StandardPlugins.ExternalProgram</Impl>
-    <Name>Runs a command in windows</Name>
+    <Name>External program plugin</Name>
     <Description>This is a plugin that runs a command in windows. It can be anything that you would run using command line prompt.</Description>
     <Methods>
       <Method>

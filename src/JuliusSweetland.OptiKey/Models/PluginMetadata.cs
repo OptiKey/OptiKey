@@ -17,6 +17,27 @@ namespace JuliusSweetland.OptiKey.Models
         public string Required { get; set; }
         [XmlElement(ElementName = "DefaultValue")]
         public string DefaultValue { get; set; }
+
+        public string ArgumentDescriptionSuffix
+        {
+            get
+            {
+                string description = (Description != null && Description.EndsWith(".")) ? " " : ". ";
+                if (Required != null)
+                {
+                    description += "Required: " + Required + ". ";
+                }
+                if (DefaultValue != null)
+                {
+                    description += "Default value: " + DefaultValue + ". ";
+                }
+                if (Sample != null)
+                {
+                    description += "Sample: " + Sample + ". ";
+                }
+                return description;
+            }
+        }
     }
 
     [XmlRoot(ElementName = "Arguments")]
