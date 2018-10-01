@@ -276,7 +276,15 @@
                       Text=","
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value=","/>
-        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="8"
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
+                      Text="!"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="!"/>
+        <controls:Key Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
+                      Text="?"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="?"/>
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
                       WidthSpan="4" 
