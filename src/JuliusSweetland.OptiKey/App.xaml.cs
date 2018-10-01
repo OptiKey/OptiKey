@@ -1003,7 +1003,17 @@ namespace JuliusSweetland.OptiKey
             var applicationDataPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 ApplicationDataSubPath);
-            Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists                        
+
+            // If directory doesn't exist, assume that this is the first run. So, move plugins from installation package to target path
+            if (!Directory.Exists(applicationDataPath))
+            {
+                Directory.CreateDirectory(applicationDataPath);
+                foreach (string pluginFile in System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\Plugins"))
+                {
+                    File.Copy(pluginFile, Path.Combine(applicationDataPath, Path.GetFileName(pluginFile)), true);
+                }
+            }
+
             return applicationDataPath;
         }
 
