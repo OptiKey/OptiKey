@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services.PluginEngine
@@ -25,11 +26,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
         public static void LoadAvailablePlugins()
         {
-            const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Plugins\";
-
-            var applicationDataPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                ApplicationDataSubPath);
+            var applicationDataPath = Settings.Default.PluginsLocation;
 
             foreach (string file in Directory.GetFiles(applicationDataPath, "*.dll"))
             {
