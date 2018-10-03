@@ -58,10 +58,12 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
             }
 
             // Default timeout is 3s
-            if (!Int32.TryParse(timeout, out int iTimeout))
+            int iTimeout = 3000;
+            if (!string.IsNullOrWhiteSpace(timeout))
             {
-                iTimeout = 3000;
+                iTimeout = Int32.Parse(timeout);
             }
+
             client.Timeout = TimeSpan.FromMilliseconds(iTimeout);
 
             return client;
