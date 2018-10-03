@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,4 +63,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>md "$(SolutionDir)src\JuliusSweetland.OptiKey\bin\$(ConfigurationName)\Resources\Plugins"
+xcopy "$(ProjectDir)bin\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKey\bin\$(ConfigurationName)\Resources\Plugins"
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
