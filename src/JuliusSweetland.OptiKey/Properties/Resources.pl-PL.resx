@@ -1928,6 +1928,9 @@ Przy kolejnym starcie aplikacji metoda predykcji zostanie zmieniona na NGram.</v
   <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
     <value>Folder zawierający pliki dynamicznych klawiatur: </value>
   </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>Folder zawierający pliki wtyczki: </value>
+  </data>
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
     <value>Tobii PCEye Plus</value>
   </data>

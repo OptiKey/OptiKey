@@ -29,6 +29,7 @@ using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it i
 using Octokit;
 using presage;
 using Application = System.Windows.Application;
+using JuliusSweetland.OptiKey.Services.PluginEngine;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -139,6 +140,10 @@ namespace JuliusSweetland.OptiKey
                 CleanupAndPrepareCommuniKateInitialState();
 
                 ValidateDynamicKeyboardLocation();
+
+                // Handle plugins. Validate if directory exists and is accessible and pre-load all plugins, building a in-memory list of available ones.
+                ValidatePluginsLocation();
+                PluginEngine.LoadAvailablePlugins();
 
                 var presageInstallationProblem = PresageInstallationProblemsDetected();
 
@@ -984,6 +989,40 @@ namespace JuliusSweetland.OptiKey
             {
                 // First time we set to APPDATA location, user may move through settings later
                 Settings.Default.DynamicKeyboardsLocation = GetDefaultUserKeyboardFolder(); ;
+            }
+        }
+
+        #endregion
+
+        #region Validate Plugins Location
+
+        private static string GetDefaultPluginsFolder()
+        {
+            const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Plugins\";
+
+            var applicationDataPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                ApplicationDataSubPath);
+
+            // If directory doesn't exist, assume that this is the first run. So, move plugins from installation package to target path
+            if (!Directory.Exists(applicationDataPath))
+            {
+                Directory.CreateDirectory(applicationDataPath);
+                foreach (string pluginFile in System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\Plugins"))
+                {
+                    File.Copy(pluginFile, Path.Combine(applicationDataPath, Path.GetFileName(pluginFile)), true);
+                }
+            }
+
+            return applicationDataPath;
+        }
+
+        private static void ValidatePluginsLocation()
+        {
+            if (string.IsNullOrEmpty(Settings.Default.PluginsLocation))
+            {
+                // First time we set to APPDATA location, user may move through settings later
+                Settings.Default.PluginsLocation = GetDefaultPluginsFolder(); ;
             }
         }
 
