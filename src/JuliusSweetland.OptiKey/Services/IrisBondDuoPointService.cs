@@ -2,9 +2,9 @@
 using System.Reactive;
 using System.Windows;
 using EyeXFramework;
-using JuliusSweetland.OptiKey.Enums;
 using log4net;
-using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Native.IrisBond;
+using JuliusSweetland.OptiKey.Native.IrisBond.Enums;
 
 namespace JuliusSweetland.OptiKey.Services
 {
