@@ -1943,6 +1943,9 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
     <value>ダイナミックキーボードを含むフォルダ:</value>
   </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>プラグインを含むフォルダ:</value>
+  </data>
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
     <value>Tobii PCEye Plus</value>
   </data>

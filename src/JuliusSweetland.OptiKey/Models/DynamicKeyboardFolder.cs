@@ -29,14 +29,6 @@ namespace JuliusSweetland.OptiKey.Models
 
     class DynamicKeyboardFolder
     {
-
-        #region Constants
-
-        private const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Keyboards\";
-        private const string OriginalKeyboardsSubPath = @"Keyboards\";
-
-        #endregion
-
         #region Private Members
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);

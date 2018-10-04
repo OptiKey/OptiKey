@@ -1953,6 +1953,9 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
     <value>Folder containing dynamic keyboards:</value>
   </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>Folder containing plugins:</value>
+  </data>
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
     <value>Tobii PCEye Plus</value>
   </data>
@@ -2212,5 +2215,14 @@ Française
   </data>
   <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
     <value>Number of Presage suggestions to show:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>Available plugins</value>
+  </data>
+  <data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
+  <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>Refresh plugins</value>
   </data>
 </root>

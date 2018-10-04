@@ -1,6 +1,6 @@
 <Keyboard>
     <Name>Big Hacker Keyboard</Name>
-    <Height>32</Height>
+    <Height>50</Height>
     <SymbolMargin>10</SymbolMargin>
     <BorderThickness>1,1,1,1</BorderThickness>
     <Grid>
@@ -151,12 +151,12 @@
             <Row>1</Row>
             <Col>10</Col>
         </TextKey>
-        <TextKey>
-            <Label>`</Label>
-            <Text>`</Text>
+        <ActionKey>
+            <Action>BackOne</Action>
+            <Symbol>BackOneIcon</Symbol>
             <Row>1</Row>
             <Col>11</Col>
-        </TextKey>
+        </ActionKey>
 
         <TextKey>
             <Label>1</Label>
@@ -484,13 +484,24 @@
             <Row>6</Row>
             <Col>1</Col>
         </ActionKey>
+        <PluginKey>
+	        <Label>Notepad</Label>
+	        <Row>6</Row>
+	        <Col>2</Col>
+	        <Plugin>ExternalProgram</Plugin>
+	        <Method>RUN</Method>
+	        <Arguments>
+            <Argument>
+              <Name>command</Name>
+              <Value>notepad.exe</Value>
+            </Argument>
+	        </Arguments>
+        </PluginKey>
         <ActionKey>
             <Action>LeftShift</Action>
             <Symbol>ShiftIcon</Symbol>
             <Row>6</Row>
-            <Col>2</Col>
-            <Height>1</Height>
-            <Width>2</Width>
+            <Col>3</Col>
         </ActionKey>
         <TextKey>
             <Symbol>TabIcon</Symbol>
@@ -511,12 +522,23 @@
             <Row>6</Row>
             <Col>7</Col>
         </TextKey>
-        <ActionKey>
-            <Action>BackOne</Action>
-            <Symbol>BackOneIcon</Symbol>
-            <Row>6</Row>
-            <Col>8</Col>
-        </ActionKey>
+        <PluginKey>
+	          <Label>APICall</Label>
+	          <Row>6</Row>
+	          <Col>8</Col>
+	          <Plugin>HttpCall</Plugin>
+	          <Method>GET</Method>
+	          <Arguments>
+              <Argument>
+                <Name>uri</Name>
+                <Value>http://www.google.com</Value>
+              </Argument>
+              <Argument>
+                <Name>timeout</Name>
+                <Value>10000</Value>
+              </Argument>
+	          </Arguments>
+        </PluginKey>
         <ActionKey>
             <Action>ArrowLeft</Action>
             <Symbol>LeftArrowKeyIcon</Symbol>
@@ -535,6 +557,5 @@
             <Row>6</Row>
             <Col>11</Col>
         </ActionKey>
-
     </Keys>
 </Keyboard>
