@@ -2,7 +2,7 @@
 
 OptiKey is an on-screen keyboard that is designed to help Motor Neuron Disease (MND) patients interact with Windows computers. When used with an eye-tracking device, OptiKey's on-screen keyboard allows MND patients to complete tasks, such as email composition, using only their eyes. OptiKey can also be used with a mouse or webcam. Unlike expensive and unreliable Alternative and Augmentative Communication (AAC) products that are difficult to use, Optikey is free, reliable, and easy to use.
 
-[![Build Status](https://chief7.visualstudio.com/OptiKey/_apis/build/status/rschiefer.OptiKey)](https://chief7.visualstudio.com/OptiKey/_build/latest?definitionId=8)
+[![Build Status](https://dev.azure.com/optikey/optikey/_apis/build/status/rschiefer.OptiKey)](https://dev.azure.com/optikey/optikey/_build/latest?definitionId=1)
 
 # Getting Started
 
