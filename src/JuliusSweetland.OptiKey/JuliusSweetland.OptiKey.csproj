@@ -981,9 +981,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\screenshots\BigHackerKeyboard.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollActive.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreenCentred.svg" />

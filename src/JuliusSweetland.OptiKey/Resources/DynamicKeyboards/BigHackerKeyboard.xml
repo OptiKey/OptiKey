@@ -1,6 +1,6 @@
 <Keyboard>
     <Name>Big Hacker Keyboard</Name>
-    <Height>32</Height>
+    <Height>50</Height>
     <SymbolMargin>10</SymbolMargin>
     <BorderThickness>1,1,1,1</BorderThickness>
     <Grid>
@@ -557,6 +557,5 @@
             <Row>6</Row>
             <Col>11</Col>
         </ActionKey>
-
     </Keys>
 </Keyboard>

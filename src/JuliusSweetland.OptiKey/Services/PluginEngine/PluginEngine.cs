@@ -17,7 +17,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
         #region Private Member Vars
 
-        private static Dictionary<string, Plugin> AvailablePlugins = new Dictionary<string, Plugin>();
+        private static Dictionary<string, Plugin> availablePlugins = new Dictionary<string, Plugin>();
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
@@ -33,14 +33,14 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
                 List<Plugin> plugins = ValidateAndCreatePlugins(file);
                 foreach (Plugin plugin in plugins)
                 {
-                    AvailablePlugins.Add(plugin.Id, plugin);
+                    availablePlugins.Add(plugin.Id, plugin);
                 }
             }
         }
 
-        public static void RunPlugin(Dictionary<String, String> context, XmlPluginKey key)
+        public static void RunPlugin(Dictionary<string, string> context, XmlPluginKey key)
         {
-            Plugin plugin = AvailablePlugins[key.Plugin];
+            Plugin plugin = availablePlugins[key.Plugin];
             List<string> methodArgs = null;
             if (key.Arguments?.Argument?.Count > 0)
             {
@@ -70,20 +70,20 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
             plugin.Type.InvokeMember(key.Method, BindingFlags.InvokeMethod, null, plugin.Instance, methodArgs?.ToArray());
         }
 
-        public static bool PluginExists(string PluginId)
+        public static bool PluginExists(string pluginId)
         {
-            return AvailablePlugins.ContainsKey(PluginId);
+            return availablePlugins.ContainsKey(pluginId);
         }
 
         public static void RefreshAvailablePlugins()
         {
-            AvailablePlugins = new Dictionary<string, Plugin>();
+            availablePlugins = new Dictionary<string, Plugin>();
             LoadAvailablePlugins();
         }
 
         public static List<Plugin> GetAllAvailablePlugins()
         {
-            return AvailablePlugins.Values.ToList();
+            return availablePlugins.Values.ToList();
         }
 
         #endregion
@@ -96,15 +96,15 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
             try
             {
-                Assembly DLL = Assembly.LoadFile(file);
-                string metadataResName = Array.Find(DLL.GetManifestResourceNames(), new Predicate<String>(FindMetadataResource));
+                Assembly dll = Assembly.LoadFile(file);
+                string metadataResName = Array.Find(dll.GetManifestResourceNames(), new Predicate<String>(FindMetadataResource));
                 if (null != metadataResName)
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Plugins));
-                    Plugins pluginMetadata = (Plugins)serializer.Deserialize(new StringReader(new StreamReader(DLL.GetManifestResourceStream(metadataResName)).ReadToEnd()));
+                    Plugins pluginMetadata = (Plugins)serializer.Deserialize(new StringReader(new StreamReader(dll.GetManifestResourceStream(metadataResName)).ReadToEnd()));
                     foreach (Plugin plugin in pluginMetadata.Plugin)
                     {
-                        Type pluginType = DLL.GetType(plugin.Impl);
+                        Type pluginType = dll.GetType(plugin.Impl);
                         if (null != pluginType)
                         {
                             plugin.Instance = Activator.CreateInstance(pluginType);
@@ -143,6 +143,5 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
         }
 
         #endregion
-
     }
 }

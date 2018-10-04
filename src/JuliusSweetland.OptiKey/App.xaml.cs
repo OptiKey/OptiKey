@@ -974,12 +974,20 @@ namespace JuliusSweetland.OptiKey
 
         private static string GetDefaultUserKeyboardFolder()
         {
-            const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Keyboards\";
+            const string applicationDataSubPath = @"JuliusSweetland\OptiKey\Keyboards\";
 
-            var applicationDataPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                ApplicationDataSubPath);
-            Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists                        
+            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationDataSubPath);
+
+            // If directory doesn't exist, assume that this is the first run. So, move dynamic keyboards from installation package to target path
+            if (!Directory.Exists(applicationDataPath))
+            {
+                Directory.CreateDirectory(applicationDataPath);
+                foreach (string dynamicKeyboard in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\DynamicKeyboards"))
+                {
+                    File.Copy(dynamicKeyboard, Path.Combine(applicationDataPath, Path.GetFileName(dynamicKeyboard)), true);
+                }
+            }
+
             return applicationDataPath;
         }
 
@@ -998,17 +1006,15 @@ namespace JuliusSweetland.OptiKey
 
         private static string GetDefaultPluginsFolder()
         {
-            const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Plugins\";
+            const string applicationDataSubPath = @"JuliusSweetland\OptiKey\Plugins\";
 
-            var applicationDataPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                ApplicationDataSubPath);
+            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationDataSubPath);
 
             // If directory doesn't exist, assume that this is the first run. So, move plugins from installation package to target path
             if (!Directory.Exists(applicationDataPath))
             {
                 Directory.CreateDirectory(applicationDataPath);
-                foreach (string pluginFile in System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\Plugins"))
+                foreach (string pluginFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\Plugins"))
                 {
                     File.Copy(pluginFile, Path.Combine(applicationDataPath, Path.GetFileName(pluginFile)), true);
                 }
