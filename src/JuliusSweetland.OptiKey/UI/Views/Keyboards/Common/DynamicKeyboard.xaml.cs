@@ -1,6 +1,7 @@
 using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Enums;
 using System.Windows.Controls;
 using System.Xml.Serialization;
 using System.IO;
@@ -9,7 +10,9 @@ using System.Linq;
 using System.Windows.Media;
 using System.Reflection;
 using log4net;
+using System.Xml;
 using System.Windows;
+using System.Text;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -222,6 +225,35 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 AddChangeKeyboardKey(key);
             }
+
+            foreach (XmlPluginKey key in keys.PluginKeys)
+            {
+                AddPluginKey(key);
+            }
+        }
+
+        void AddPluginKey(XmlPluginKey xmlKey)
+        {
+            Key newKey = CreateKeyWithBasicProps(xmlKey);
+
+            if (null != xmlKey.Plugin && null != xmlKey.Method)
+            {
+                // FIXME: Saving the XML of the xmlKey itself probably is not be the best option. It is done this way to avoid messing with
+                // other pieces of code deep within OptiKey.
+                XmlSerializer xmlSer = new XmlSerializer(typeof(XmlPluginKey));
+                using (var sww = new StringWriter())
+                {
+                    XmlTextWriter writer = new XmlTextWriter(sww) { Formatting = Formatting.Indented };
+                    xmlSer.Serialize(writer, xmlKey);
+                    newKey.Value = new KeyValue(FunctionKeys.Plugin, sww.ToString());
+                }
+            }
+            else
+            {
+                Log.ErrorFormat("Incomplete plugin key configuration in key {0}", xmlKey.Label ?? xmlKey.Symbol);
+            }
+
+            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
         void AddChangeKeyboardKey(XmlChangeKeyboardKey xmlKey)

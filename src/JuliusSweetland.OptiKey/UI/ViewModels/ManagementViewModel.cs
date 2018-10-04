@@ -29,6 +29,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
             SoundsViewModel = new SoundsViewModel(audioService);
             VisualsViewModel = new VisualsViewModel();
+            PluginsViewModel = new PluginsViewModel();
             WordsViewModel = new WordsViewModel(dictionaryService);
             
             //Instantiate interaction requests and commands
@@ -50,6 +51,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     || PointingAndSelectingViewModel.ChangesRequireRestart
                     || SoundsViewModel.ChangesRequireRestart
                     || VisualsViewModel.ChangesRequireRestart
+                    || PluginsViewModel.ChangesRequireRestart
                     || WordsViewModel.ChangesRequireRestart;
             }
         }
@@ -59,6 +61,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
         public SoundsViewModel SoundsViewModel { get; private set; }
         public VisualsViewModel VisualsViewModel { get; private set; }
+        public PluginsViewModel PluginsViewModel { get; private set; }
         public WordsViewModel WordsViewModel { get; private set; }
         
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
@@ -76,6 +79,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             PointingAndSelectingViewModel.ApplyChanges();
             SoundsViewModel.ApplyChanges();
             VisualsViewModel.ApplyChanges();
+            PluginsViewModel.ApplyChanges();
             WordsViewModel.ApplyChanges();
         }
 

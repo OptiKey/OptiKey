@@ -285,6 +285,8 @@
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyValueConverter.cs" />
+    <Compile Include="Models\PluginMetadata.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlPluginKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlChangeKeyboardKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlGrid.cs" />
@@ -348,6 +350,7 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\PluginEngine\PluginEngine.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
     <Compile Include="Services\Suggestions\ISuggestions.cs" />
@@ -493,6 +496,7 @@
     <Compile Include="UI\ViewModels\Management\DictionaryViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\PointingAndSelectingViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\SoundsViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\PluginsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
@@ -749,6 +753,9 @@
     <Compile Include="UI\Views\Management\DictionaryView.xaml.cs">
       <DependentUpon>DictionaryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Management\PluginsView.xaml.cs">
+      <DependentUpon>PluginsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Management\PointingAndSelectingView.xaml.cs">
       <DependentUpon>PointingAndSelectingView.xaml</DependentUpon>
     </Compile>
@@ -972,9 +979,7 @@
     <None Include="Resources\Icons\SVG Source Files\CommuniKateTopPage.svg" />
     <Content Include="Resources\DynamicKeyboards\BigHackerKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\screenshots\BigHackerKeyboard.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollActive.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg" />
@@ -1522,6 +1527,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Management\DictionaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\PluginsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

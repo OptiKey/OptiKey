@@ -1923,6 +1923,9 @@ OptiKey는 계속 실행 하려고 하지만 곧 중단 될 수 있습니다.
   <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
     <value>동적 키보드가 있는 폴더:</value>
   </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>플러그인이있는 폴더:</value>
+  </data>
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
     <value>Tobii PCEye Plus</value>
   </data>

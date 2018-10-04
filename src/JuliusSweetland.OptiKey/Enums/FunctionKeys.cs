@@ -168,6 +168,7 @@
         PgDn,
         PgUp,
         PhysicalKeysKeyboard,
+        Plugin,
         PolishPoland,
         PortuguesePortugal,
         PreviousSuggestions,

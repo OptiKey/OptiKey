@@ -1767,6 +1767,9 @@ Il metodo di suggerimento sarà cambiato a NGram per evitare il blocco al prossi
   <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
     <value>Cartella che contiene le tastiere dinamiche:</value>
   </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>Cartella che contiene le plugin:</value>
+  </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>LETTERE 2</value>
   </data>
