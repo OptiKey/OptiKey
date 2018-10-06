@@ -6,8 +6,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public abstract class KeyboardView : UserControl
     {
+		private readonly bool supportsCollapsedDock;
+		private readonly bool shiftAware;
+
         protected KeyboardView(bool supportsCollapsedDock = false, bool shiftAware = false)
         {
+			this.supportsCollapsedDock = supportsCollapsedDock;
+			this.shiftAware = shiftAware;
+
             //Setup binding for SupportsCollapsedDock property
             SetBinding(SupportsCollapsedDockProperty, new Binding
             {
@@ -24,12 +30,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 Mode = BindingMode.TwoWay //This MUST be TwoWay to detect changes to the DataContext used in the binding path
             });
 
-            //Push DP bound values to targets on each load (when the keyboard has potentially changed)
-            Loaded += (sender, args) =>
-            {
-                SupportsCollapsedDock = supportsCollapsedDock;
-                ShiftAware = shiftAware;
-            };
+			//Push DP bound values to targets on each load (when the keyboard has potentially changed)
+			Loaded += OnLoaded;
 
             SetResourceReference(StyleProperty, "KeyboardViewStyle");
         }
@@ -51,5 +53,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (bool) GetValue(ShiftAwareProperty); }
             set { SetValue(ShiftAwareProperty, value); }
         }
-    }
+
+		protected virtual void OnLoaded(object sender, RoutedEventArgs e)
+		{
+			SupportsCollapsedDock = supportsCollapsedDock;
+			ShiftAware = shiftAware;
+		}
+	}
 }
