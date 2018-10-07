@@ -1,14 +1,14 @@
 ﻿using System;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.UI.Models
 {
-    [TestClass]
+    [TestFixture]
     public class KeyValueTest
     {
-        [TestMethod]
+        [Test]
         public void TestEqualityWithFunctionKeys()
         {
             KeyValue valBreak1 = new KeyValue(FunctionKeys.Break);
@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.Models
             Assert.AreNotEqual(valBreak1, valDelete);
         }
 
-        [TestMethod]
+        [Test]
         public void TestEqualityWithStrings()
         {
             KeyValue valHello1 = new KeyValue("Hello");
@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.Models
             Assert.AreNotEqual(valHello1, valGoodbye);
         }
 
-        [TestMethod]
+        [Test]
         public void TestEqualityWithStringsAndFunctionKeys()
         {
             KeyValue valBreakHello1 = new KeyValue(FunctionKeys.Break, "Hello");
