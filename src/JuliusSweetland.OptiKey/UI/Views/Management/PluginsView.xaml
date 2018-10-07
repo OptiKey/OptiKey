@@ -1,0 +1,143 @@
+<UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.Management.PluginsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="AvailablePluginsCollectionViewSource" Source="{Binding AvailablePlugins}" />
+    </UserControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.PLUGINS_LABEL}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.PLUGINS_LOCATION_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" >
+                    </TextBlock>
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                        <TextBlock Name="txtPluginsLocation"
+                                   Text="{Binding PluginsLocation, Mode=TwoWay}" 
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center"
+                                   Margin="5" >
+                        </TextBlock>
+                        <Button Click="FindPluginsFolder" MinWidth="100" Margin="5,5,5,5" 
+                                VerticalAlignment="Center"  
+                                HorizontalAlignment="Right">
+                            <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
+                        </Button>
+                        <!-- Not fully working yet
+                        <Button Click="RefreshAvailablePlugins" MinWidth="100" Margin="5,5,5,5" 
+                                VerticalAlignment="Center"  
+                                HorizontalAlignment="Right">
+                            <x:Static Member="resx:Resources.REFRESH_PLUGINS_BUTTON"/>
+                        </Button>-->
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.AVAILABLE_PLUGINS_LABEL}">
+                <Grid>
+                    <ItemsControl 
+                          VirtualizingStackPanel.IsVirtualizing="True"
+                          ScrollViewer.CanContentScroll="True"
+                          ItemsSource="{Binding Source={StaticResource AvailablePluginsCollectionViewSource}, Mode=OneWay}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <GroupBox Header="{Binding Name}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <StackPanel Grid.Column="0" Grid.Row="0">
+                                                <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Description}"/>
+                                            </StackPanel>
+                                            <Grid Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <StackPanel Grid.Column="0" Grid.Row="1">
+                                                    <TextBlock Text="Methods:" />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" Grid.Row="1">
+                                                    <ItemsControl ItemsSource="{Binding Methods.Method}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <GroupBox Header="{Binding Name}">
+                                                                    <Grid>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="250"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="Auto" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <StackPanel Grid.Column="0">
+                                                                            <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Description}" />
+                                                                        </StackPanel>
+                                                                        <StackPanel Grid.Column="1" Margin="30,0,0,0">
+                                                                            <TextBlock Text="Arguments:" />
+                                                                            <ItemsControl ItemsSource="{Binding Arguments.Argument}">
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <StackPanel VerticalAlignment="Bottom">
+                                                                                            <StackPanel Orientation="Horizontal">
+                                                                                                <TextBlock Text=". " HorizontalAlignment="Left"/>
+                                                                                                <TextBlock FontWeight="Bold" Text="{Binding Name}"/>
+                                                                                                <TextBlock Text=": "/>
+                                                                                                <TextBlock Text="{Binding Description}"/>
+                                                                                                <TextBlock FontWeight="Light" FontStyle="Italic" Text="{Binding ArgumentDescriptionSuffix}"/>
+                                                                                            </StackPanel>
+                                                                                        </StackPanel>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                            <TextBlock Text="Sample dynamic keyboard config:" Margin="0,15,0,0"/>
+                                                                            <TextBox IsReadOnly="True" TextWrapping="Wrap" Background="LightGray" FontFamily="Courier New" Text="{Binding SampleConfig}" Margin="0,10,0,0" />
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </GroupBox>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </GroupBox>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

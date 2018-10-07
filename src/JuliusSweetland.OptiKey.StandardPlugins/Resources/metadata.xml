@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Plugins>
+  <Plugin>
+    <Id>HttpCall</Id>
+    <Impl>JuliusSweetland.OptiKey.StandardPlugins.HttpCall</Impl>
+    <Name>HTTP/HTTPS Call Plugin</Name>
+    <Description>This plugins enables OptiKey to call a external HTTP/HTTPS uri every time a plugin key is pressed</Description>
+    <Methods>
+      <Method>
+        <Name>GET</Name>
+        <Description>Calls an HTTP/HTTPS uri using "GET" HTTP method.</Description>
+        <Arguments>
+          <Argument>
+            <Name>uri</Name>
+            <Description>URI that will be called.</Description>
+            <Sample>https://www.google.com</Sample>
+            <Required>true</Required>
+          </Argument>
+          <Argument>
+            <Name>accept</Name>
+            <Description>"Accept" HTTP header value</Description>
+            <Sample>application/json</Sample>
+            <Required>false</Required>
+          </Argument>
+          <Argument>
+            <Name>authorization</Name>
+            <Description>"Authorization" HTTP header value</Description>
+            <Sample>Bearer aa375135-a465-4437-a0e9-62775c7e708a</Sample>
+            <Required>false</Required>
+          </Argument>
+          <Argument>
+            <Name>timeout</Name>
+            <Description>Request timeout in miliseconds</Description>
+            <Sample>10000</Sample>
+            <Required>false</Required>
+            <DefaultValue>3000</DefaultValue>
+          </Argument>
+        </Arguments>
+        <SampleConfig>
+          <![CDATA[<PluginKey>
+	<Label>APICall</Label>
+	<Row>6</Row>
+	<Col>2</Col>
+	<Plugin>HttpCall</Plugin>
+	<Method>GET</Method>
+	<Arguments>
+	  <Argument>
+		<Name>uri</Name>
+		<Value>http://www.google.com</Value>
+	  </Argument>
+	  <Argument>
+		<Name>timeout</Name>
+		<Value>10000</Value>
+	  </Argument>
+	</Arguments>
+</PluginKey>]]>
+        </SampleConfig>
+      </Method>
+      <Method>
+        <Name>POST</Name>
+        <Description>Calls an HTTP/HTTPS uri using "POST" HTTP method.</Description>
+        <Arguments>
+          <Argument>
+            <Name>uri</Name>
+            <Description>URI that will be called.</Description>
+            <Sample>https://www.google.com</Sample>
+            <Required>true</Required>
+          </Argument>
+          <Argument>
+            <Name>accept</Name>
+            <Description>"Accept" HTTP header value</Description>
+            <Sample>application/json</Sample>
+            <Required>false</Required>
+          </Argument>
+          <Argument>
+            <Name>authorization</Name>
+            <Description>"Authorization" HTTP header value</Description>
+            <Sample>Bearer aa375135-a465-4437-a0e9-62775c7e708a</Sample>
+            <Required>false</Required>
+          </Argument>
+          <Argument>
+            <Name>timeout</Name>
+            <Description>Request timeout in miliseconds</Description>
+            <Sample>10000</Sample>
+            <Required>false</Required>
+            <DefaultValue>3000</DefaultValue>
+          </Argument>
+          <Argument>
+            <Name>contentType</Name>
+            <Description>"Content-Type" HTTP header value</Description>
+            <Sample>application/json; charset=utf-8</Sample>
+            <Required>false</Required>
+          </Argument>
+          <Argument>
+            <Name>payload</Name>
+            <Description>Data that will be posted</Description>
+            <Sample>{"hello": "world!"}</Sample>
+            <Required>false</Required>
+          </Argument>
+        </Arguments>
+        <SampleConfig>
+          <![CDATA[<PluginKey>
+	<Label>APICall</Label>
+	<Row>6</Row>
+	<Col>2</Col>
+	<Plugin>HttpCall</Plugin>
+	<Method>POST</Method>
+	<Arguments>
+	  <Argument>
+		<Name>uri</Name>
+		<Value>http://www.google.com</Value>
+	  </Argument>
+	  <Argument>
+		<Name>timeout</Name>
+		<Value>10000</Value>
+	  </Argument>
+	  <Argument>
+		<Name>accept</Name>
+		<Value>application/json</Value>
+	  </Argument>
+	  <Argument>
+		<Name>contentType</Name>
+		<Value>application/json; charset=utf-8</Value>
+	  </Argument>
+	  <Argument>
+		<Name>payload</Name>
+		<Value>{}</Value>
+	  </Argument>
+    </Arguments>
+</PluginKey>]]>
+        </SampleConfig>
+      </Method>
+    </Methods>
+  </Plugin>
+  <Plugin>
+    <Id>ExternalProgram</Id>
+    <Impl>JuliusSweetland.OptiKey.StandardPlugins.ExternalProgram</Impl>
+    <Name>External program plugin</Name>
+    <Description>This is a plugin that runs a command in windows. It can be anything that you would run using command line prompt.</Description>
+    <Methods>
+      <Method>
+        <Name>RUN</Name>
+        <Description>Runs a command in windows. It can be anything that you would run using command line prompt.</Description>
+        <Arguments>
+          <Argument>
+            <Name>command</Name>
+            <Description>command line that will be executed</Description>
+            <Sample>notepad.exe</Sample>
+            <Required>true</Required>
+          </Argument>
+        </Arguments>
+        <SampleConfig>
+          <![CDATA[<PluginKey>
+	<Label>Notepad</Label>
+	<Row>6</Row>
+	<Col>2</Col>
+	<Plugin>ExternalProgram</Plugin>
+	<Method>RUN</Method>
+	<Arguments>
+	  <Argument>
+		<Name>command</Name>
+		<Value>notepad.exe</Value>
+	  </Argument>
+	</Arguments>
+</PluginKey>]]>
+        </SampleConfig>
+      </Method>
+    </Methods>
+  </Plugin>
+</Plugins>

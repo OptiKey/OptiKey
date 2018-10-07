@@ -31,3 +31,5 @@ Licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
 # Contact
 
 To ask a question, or to discuss information that is not on the [**OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/), please use <optikeyfeedback@gmail.com> to contact Julius.
+
+[![Build status](https://dev.azure.com/optikey/optikey/_apis/build/status/optikey-CI)](https://dev.azure.com/optikey/optikey/_build/latest?definitionId=-1)

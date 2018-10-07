@@ -17,6 +17,10 @@ namespace JuliusSweetland.OptiKey.Models
         public List<XmlChangeKeyboardKey> ChangeKeyboardKeys
         { get; set; }
 
+        [XmlElement(ElementName = "PluginKey")]
+        public List<XmlPluginKey> PluginKeys
+        { get; set; }
+
         [XmlIgnore]
         public int Count
         {

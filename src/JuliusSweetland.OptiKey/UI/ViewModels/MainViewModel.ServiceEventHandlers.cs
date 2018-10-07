@@ -1,13 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Windows;
+using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
@@ -620,6 +627,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.SelectVoice:
                     SelectVoice(singleKeyValue.String);
+                    break;
+
+                case FunctionKeys.Plugin:
+                    RunPlugin(singleKeyValue.String);
                     break;
             }
         }
@@ -2309,6 +2320,40 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             NavigateToMenu();
+        }
+
+        private void RunPlugin(string command)
+        {
+            //FIXME: Log Message is logging entire XML
+            Log.InfoFormat("Running plugin [{0}]", command);
+
+            // Build plugin context
+            Dictionary<string, string> context = BuildPluginContext();
+
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(XmlPluginKey));
+                StringReader rdr = new StringReader(command);
+                PluginEngine.RunPlugin(context, (XmlPluginKey)serializer.Deserialize(rdr));
+            }
+            catch (Exception exception)
+            {
+                Log.Error("Error running plugin.", exception);
+                while (exception.InnerException != null) exception = exception.InnerException;
+                if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
+                {
+                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                }
+            }
+        }
+
+        private Dictionary<string, string> BuildPluginContext()
+        {
+            Dictionary<string, string> context = new Dictionary<string, string>
+            {
+                { "scratchpadText", keyboardOutputService.Text }
+            };
+            return context;
         }
 
         private void ShowMore()

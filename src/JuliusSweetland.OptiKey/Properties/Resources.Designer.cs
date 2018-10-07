@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -265,6 +265,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string AUTO_SPACE_BETWEEN_WORDS_LABEL {
             get {
                 return ResourceManager.GetString("AUTO_SPACE_BETWEEN_WORDS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available plugins.
+        /// </summary>
+        public static string AVAILABLE_PLUGINS_LABEL {
+            get {
+                return ResourceManager.GetString("AVAILABLE_PLUGINS_LABEL", resourceCulture);
             }
         }
         
@@ -4259,6 +4268,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plugins.
+        /// </summary>
+        public static string PLUGINS_LABEL {
+            get {
+                return ResourceManager.GetString("PLUGINS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder containing plugins:.
+        /// </summary>
+        public static string PLUGINS_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("PLUGINS_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pointing &amp; Selecting.
         /// </summary>
         public static string POINT_AND_SELECTING {
@@ -4553,6 +4580,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string RE_CALIBRATE {
             get {
                 return ResourceManager.GetString("RE_CALIBRATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh plugins.
+        /// </summary>
+        public static string REFRESH_PLUGINS_BUTTON {
+            get {
+                return ResourceManager.GetString("REFRESH_PLUGINS_BUTTON", resourceCulture);
             }
         }
         
