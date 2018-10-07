@@ -80,9 +80,20 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get { return this.Hidden ? "True" : "False"; }
             set { this.Hidden = XmlUtils.ConvertToBoolean(value); }
-        }        
-        
-        public static XmlKeyboard ReadFromFile(string inputFilename)
+        }
+
+		[XmlIgnore]
+		public bool IsShiftAware
+		{ get; set; }
+
+		[XmlElement("IsShiftAware")]
+		public string IsShiftAwareAsString
+		{
+			get { return this.IsShiftAware ? "True" : "False"; }
+			set { this.IsShiftAware = XmlUtils.ConvertToBoolean(value); }
+		}
+
+		public static XmlKeyboard ReadFromFile(string inputFilename)
         {
             XmlKeyboard keyboard;
 

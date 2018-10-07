@@ -380,5 +380,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             return s;
         }
 
-    }
+		protected override void OnLoaded(object sender, RoutedEventArgs e)
+		{
+			base.OnLoaded(sender, e);
+			ShiftAware = keyboard.IsShiftAware;
+		}
+	}
 }
