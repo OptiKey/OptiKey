@@ -1,8 +1,8 @@
 ﻿# OptiKey Localization guide
 
 This document will outline the steps one needs to take to successfully localize OptiKey in 
-a Latin-based language. Unfortunately support for languages having a complex alphabet, 
-such as Japanese, Chinese etc. is not ready yet for prime-time use.
+a Latin-based language. Unfortunately, support for languages having a complex alphabet
+such as Japanese, Chinese etc. is not yet ready for prime-time use.
 
 ## Introduction: Adding a new Locale
 
@@ -22,7 +22,7 @@ into two major parts:
 
 ## UI Translation
 
-Before touching any of the code in the project the first thing that should be completed is
+Before touching any of the code in the project, the first thing that should be completed is
 the UI resource string translations, which can be easily done through [Transifex][3]. This
 process depending on how much time you have available to allocate might take a while, so it's
 better to do that first. This task has also the benefit that it requires no knowledge of 
@@ -54,7 +54,7 @@ see your projects, including OptiKey as it is shown in the figure below.
 
 ![OptiKey Dashboard](https://raw.githubusercontent.com/OptiKey/OptiKey/master/docs/OptiKeyLocaleGuideImages/transifex_dashboard.JPG)
 
-There you can find the languages that their translation process has started, 
+There you can find the languages whose translation process has started, 
 as well as the percentage of translated strings that each one has so far.
 
 
@@ -84,14 +84,14 @@ lead you to the following
 ![OptiKey Project Selection](https://raw.githubusercontent.com/OptiKey/OptiKey/master/docs/OptiKeyLocaleGuideImages/transifex_project_trans_page.JPG)
 
 Which is the actual translation interface. You can easily start translating by first
-clicking at the desired string to be translated and typing the representative 
+clicking on the desired string to be translated and typing the representative 
 translation to your language in the bottom right box clicking **Save** to store the
 translation. Play around with the [Transifex][3] interface a bit, it's relatively 
-easy to use so you shouldn't have any problems -- but should you do, let us know so 
+easy to use so you shouldn't have any problems -- but should you do let us know so 
 we can help you!
 
 After completing the translation in [Transifex][3], you should notify us as soon as possible
-so the translation you made can be checked and have it's `.resx` file generated as
+so the translation you made can be checked and have its `.resx` file generated as
 you will need this in order to implement the new locale inside OptiKey. Having acquired
 your language `.resx` file it's time to start adding the new **Locale** inside OptiKey.
 
