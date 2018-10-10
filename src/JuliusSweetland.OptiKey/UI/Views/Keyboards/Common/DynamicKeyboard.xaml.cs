@@ -13,6 +13,7 @@ using log4net;
 using System.Xml;
 using System.Windows;
 using System.Text;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -79,8 +80,44 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 return false;
             }
 
-            return true;
+			return ValidateRowsAndColumns();
         }
+
+		private bool ValidateRowsAndColumns()
+		{
+			var allKeys = keyboard.Keys.ActionKeys.Cast<XmlKey>()
+				.Concat(keyboard.Keys.ChangeKeyboardKeys)
+				.Concat(keyboard.Keys.PluginKeys)
+				.Concat(keyboard.Keys.TextKeys)
+				.ToList();
+
+			var duplicates = allKeys
+				.GroupBy(key => new Tuple<int, int>(key.Row, key.Col))
+				.Where(group => group.Count() > 1)
+				.Select(group => group.ToList())
+				.ToList();
+
+			if (duplicates.Count == 0)
+				return true;
+
+			var errorMsg = duplicates.Select(keys =>
+				{
+					var keyStrings = keys.Select(key => GetKeyString(key)).Aggregate((seq, next) => $"{seq}, {next}");
+					return $"{keyStrings} ({keys.First().Row}, {keys.First().Col})";
+				})
+				.Aggregate((msg, key) => $"{msg}, {key}");
+
+			SetupErrorLayout("Duplicate row/column values for keys", errorMsg);
+			return false;
+		}
+
+		private string GetKeyString(XmlKey xmlKey)
+		{
+			if (xmlKey is XmlTextKey textKey)
+				return textKey.Text;
+			else
+				return xmlKey.Label ?? xmlKey.Symbol;
+		}
 
         private Key CreateKeyWithBasicProps(XmlKey xmlKey)
         {
