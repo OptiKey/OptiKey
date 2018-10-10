@@ -17,7 +17,7 @@ If users encounter an issue with OptiKey, such as a software crash or an unexpec
 The following information should be specified in an issue ticket:
 
 * How OptiKey was being used
-* What the user expected to happen
+* What the user expected to happen//commend added
 * What the user actually experienced
 * Steps to reproduce the issue
 * Any other information that helps to describe and/or reproduce the problem (ex. screenshots)
