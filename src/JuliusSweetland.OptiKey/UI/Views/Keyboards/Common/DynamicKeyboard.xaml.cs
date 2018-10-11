@@ -113,7 +113,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
 		private string GetKeyString(XmlKey xmlKey)
 		{
-			if (xmlKey is XmlTextKey textKey)
+			var textKey = xmlKey as XmlTextKey;
+			if (textKey != null)
 				return textKey.Text;
 			else
 				return xmlKey.Label ?? xmlKey.Symbol;
