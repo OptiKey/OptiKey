@@ -2225,4 +2225,13 @@ Française
   <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
     <value>Refresh plugins</value>
   </data>
+  <data name="REFRESH" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Are you absolutely sure that you'd like to refresh OptiKey?</value>
+  </data>
+  <data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>Are you sure you'd like to refresh OptiKey?</value>
+  </data>
 </root>

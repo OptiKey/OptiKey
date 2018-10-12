@@ -228,6 +228,7 @@
         ToggleCaseOfPreviousCharacter,
         TurkishTurkey,
         WebBrowsingKeyboard,
-        YesQuestionResult
+        YesQuestionResult,
+        Refresh
     }
 }

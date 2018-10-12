@@ -2204,6 +2204,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.YesQuestionResult:
                     HandleYesNoQuestionResult(true);
                     break;
+                case FunctionKeys.Refresh:
+                    keyboardBeforeQuit = Keyboard;
+                    Keyboard = new YesNoQuestion(Resources.REFRESH_MESSAGE,
+                        () =>
+                        {
+                            System.Windows.Forms.Application.Restart();
+                            Application.Current.Shutdown();
+                        },
+                        () => { Keyboard = keyboardBeforeQuit; });
+                    break;
             }
 
             keyboardOutputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);

@@ -91,6 +91,7 @@ Icons
   Tab icon modified from: Transfer by Stefan Parnarov from the Noun Project (thenounproject.com)
   Windows icon: appbar.os.windows.8 from Modern UI Icons - modernuiicons.com
   Yes icon from: Right by Raúl Santos from the Noun Project (thenounproject.com)
+  Refresh Icon: Icon made from [Icon Fonts](http://www.onlinewebfonts.com/icon) is licensed by CC BY 3.0  
 
 Sound effects - royalty free from soundbible.com, salamisound.com and soundjig.com
 
