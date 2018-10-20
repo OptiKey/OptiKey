@@ -1,68 +1,79 @@
-Low cost certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
-		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
+# Certificates and Signing Notes
 
-Once purchased and activated etc on the website download the .cer file then install it into the local computer's (or current user's) certificate store.
-Also use the Certum 'Install Online' option on the certificate (this installs the private key which isn't there if you just install the .cer file manually).
-Open mmc.exe and add the Certificate (Local Computer or Current User) add-in and find the certificate (it should be in Personal Certificates).
-Right click on the certificate and select 'Export...'.
-Check to export the private key - complete the process (including extended properties I think). Requires password and produces a .pfx file.
-The pfx file can be used with the signtool.exe to sign files. Remember to timestamp while signing so the signed file is valid even after the expiry of the certificate.
+## Obtaining a Certificate
 
-N.B. With Certum you CANNOT currently renew an open source certificate. Instead you must purchase a new certificate and make sure the details match the previous certificate so that Microsoft Reputation can be built up faster (info from Certum customer services email).
+Low cost certificate for Open Source projects; [Certum by Asseco][Certum] (from the [StackOverflow][]  question ["Code signing certificate for open-source projects?"](http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects "StackOverflow: Code signing certificate for open-source projects?"))
 
+Once purchased and activated etc on the website download the `.cer` file then install it into the local computer's (or current user's) certificate store.
+Also use the Certum "Install Online" option on the certificate (this installs the private key which isn't there if you just install the `.cer` file manually).
+Open `mmc.exe` and add the Certificate (Local Computer or Current User) add-in and find the certificate (it should be in Personal Certificates).
+Right click on the certificate and select `'Export...'`.
+Check to export the private key - complete the process (including extended properties I think). Requires password and produces a `.pfx` file.
+The `.pfx` file can be used with the `signtool.exe` to sign files. Remember to timestamp while signing so the signed file is valid even after the expiry of the certificate.
 
-FOLLOWING THE CERTUM CHANGE TO USE CRYPTOGRAPHIC SMART CARDS:
+*N.B.* With [Certum][] you **CANNOT** currently renew an open source certificate. Instead you must purchase a new certificate and make sure the details match the previous certificate so that Microsoft Reputation can be built up faster (info from Certum customer services email).
 
-The private key (.pfx) can no longer be extracted from the certificate. 
+### FOLLOWING THE CERTUM CHANGE TO USE CRYPTOGRAPHIC SMART CARDS
+
+The private key (`.pfx`) can no longer be extracted from the certificate.
 When you install from the website it now transfers the certificate onto the smart card.
-Read the attached Solution Items (pdf files) regarding installing a certificate and then code signing using it.
+Read the attached Solution Items (`.pdf` files) regarding installing a certificate and then code signing using it.
 
+-----
 
------------------------------------------------------------------------------------------------------------------
+## FILE TYPES
 
-FILE TYPES:
-(Taken from http://stackoverflow.com/questions/2292495/what-is-the-difference-between-a-cer-pvk-and-pfx-file)
-Windows uses .cer extension for an X.509 certificate. These can be in "binary" (ASN.1 DER), or it can be encoded with Base-64 and have a header and footer applied (PEM); Windows will recognize either. To verify the integrity of a certificate, you have to check its signature using the issuer's public key... which is, in turn, another certificate.
-Windows uses .pfx for a PKCS #12 file. This file can contain a variety of cryptographic information, including certificates, certificate chains, root authority certificates, and private keys. Its contents can be cryptographically protected (with passwords) to keep private keys private and preserve the integrity of the root certificates.
-Windows uses .pvk for a private key file. These are in a proprietary format. Some documentation is available.
-You should never disclose your private key. These keys are contained in .pfx and .pvk files.
+The following items were taken from the [StackOverflow][] question ["What is the difference between a .cer, .pvk and .pfx file?"](http://stackoverflow.com/questions/2292495/what-is-the-difference-between-a-cer-pvk-and-pfx-file "StackOverflow: What is the difference between a .cer, .pvk and .pfx file?")  
 
-Generally, you only exchange your certificate (.cer) and the certificates of any intermediate issuers (i.e., the certificates of all of your CAs, except the root CA) with other parties.
+Windows uses `.cer` extension for an X.509 certificate. These can be in "binary" (ASN.1 DER), or it can be encoded with Base-64 and have a header and footer applied (PEM); Windows will recognize either. To verify the integrity of a certificate, you have to check its signature using the issuer's public key... which is, in turn, another certificate.  
 
------------------------------------------------------------------------------------------------------------------
+Windows uses `.pfx` for a PKCS #12 file. This file can contain a variety of cryptographic information, including certificates, certificate chains, root authority certificates, and private keys. Its contents can be cryptographically protected (with passwords) to keep private keys private and preserve the integrity of the root certificates.  
+
+Windows uses `.pvk` for a private key file. These are in a proprietary format. Some documentation is available.  
+
+You should **never** disclose your private key. These keys are contained in `.pfx` and `.pvk` files.  
+
+Generally, you only exchange your certificate (`.cer`) and the certificates of any intermediate issuers (i.e., the certificates of all of your CAs, except the root CA) with other parties.
+
+-----
+
+## Signing Information (Howto and Resources)
 
 Signing ClickOnce applications and manifests:
-http://blogs.msdn.com/b/vsto/archive/2009/04/29/signing-and-re-signing-manifests-in-clickonce.aspx
+[http://blogs.msdn.com/b/vsto/archive/2009/04/29/signing-and-re-signing-manifests-in-clickonce.aspx]()
 
 ClickOnce Manifest Signing and Strong-Name Assembly Signing Using Visual Studio Project Designer's Signing Page:
-http://msdn.microsoft.com/en-us/library/aa730868(v=vs.80).aspx
+[http://msdn.microsoft.com/en-us/library/aa730868(v=vs.80).aspx]()
 
 How to: Sign Application and Deployment Manifests:
-http://msdn.microsoft.com/en-us/library/che5h906.aspx
+[http://msdn.microsoft.com/en-us/library/che5h906.aspx]()
 
 What's the Difference - certificate signing vs strong naming:
-http://blogs.msdn.com/b/ericlippert/archive/2009/09/03/what-s-the-difference-part-five-certificate-signing-vs-strong-naming.aspx
+[http://blogs.msdn.com/b/ericlippert/archive/2009/09/03/what-s-the-difference-part-five-certificate-signing-vs-strong-naming.aspx]()
 
 What happens when a code signing certificate expires?
-http://stackoverflow.com/questions/329396/what-happens-when-a-code-signing-certificate-expires
+[http://stackoverflow.com/questions/329396/what-happens-when-a-code-signing-certificate-expires]()
+
+-----
+
+## Creating a Self-Signed Certificate and Signing Optikey
+
+(THIS IS **NOT** HOW TO USE A CERTIFICATE AUTHORITY CERTIFICATE)
+
+Taken from the [StackOverflow][] question ["How do I create a self-signed certificate for code signing on Windows?"](http://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows)
+
+1. CREATE A SELF-SIGNED CERTIFICATE AUTHORITY (CA)  
+`makecert -r -pe -n "CN=Julius Test CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv JuliusTestCA.pvk JuliusTestCA.cer`
+2. IMPORT THE CA  
+`certutil -user -addstore Root JuliusTestCA.cer`
+3. MAKE A CODE-SIGNING CERTIFICATE  
+`makecert -pe -n "CN=Julius Test SPC" -a sha256 -cy end -sky signature -ic JuliusTestCA.cer -iv JuliusTestCA.pvk -sv JuliusTestSPC.pvk JuliusTestSPC.cer`
+4. CONVERT THE CERTIFICATE AND KEY INTO PFX FILE  
+`pvk2pfx -pvk JuliusTestSPC.pvk -spc JuliusTestSPC.cer -pfx JuliusTestSPC.pfx`
+5. SIGN THE EXE FILE WITH NEW PFX FILE (Run from exe location)  
+`"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool" sign /v /f "C:\OptiKey Release Staging\Certificates\JuliusTestSPC.pfx" /p %passwd% /t http://timestamp.verisign.com/scripts/timstamp.dll "C:\OptiKey Release Staging\Binaries\OptiKey.exe"`
 
 
------------------------------------------------------------------------------------------------------------------
 
-CREATING A SELF SIGNED CERTIFICATE AND SIGNING OPTIKEY (THIS IS **NOT** HOW TO USE A CERTIFICATE AUTHORITY CERTIFICATE):
-(Taken from http://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows)
-
-1.CREATE A SELF-SIGNED CERTIFICATE AUTHORITY (CA):
-makecert -r -pe -n "CN=Julius Test CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv JuliusTestCA.pvk JuliusTestCA.cer
-
-2.IMPORT THE CA:
-certutil -user -addstore Root JuliusTestCA.cer
-
-3.MAKE A CODE-SIGNING CERTIFICATE:
-makecert -pe -n "CN=Julius Test SPC" -a sha256 -cy end -sky signature -ic JuliusTestCA.cer -iv JuliusTestCA.pvk -sv JuliusTestSPC.pvk JuliusTestSPC.cer
-
-4.CONVERT THE CERTIFICATE AND KEY INTO PFX FILE:
-pvk2pfx -pvk JuliusTestSPC.pvk -spc JuliusTestSPC.cer -pfx JuliusTestSPC.pfx
-
-5.SIGN THE EXE FILE WITH NEW PFX FILE: (Run from exe location)
-"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool" sign /v /f "C:\OptiKey Release Staging\Certificates\JuliusTestSPC.pfx" /p %passwd% /t http://timestamp.verisign.com/scripts/timstamp.dll "C:\OptiKey Release Staging\Binaries\OptiKey.exe"
+[StackOverflow]: https://stackoverflow.com "Stack Overflow Questions and Answer site"
+[Certum]: https://www.certum.eu/en/cert_offer_en_open_source_cs/ "Certum's Open Source Code Signing Certificate Program"
