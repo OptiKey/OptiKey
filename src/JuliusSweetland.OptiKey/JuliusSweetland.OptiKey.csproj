@@ -927,8 +927,8 @@
     <None Include="Resources\Icons\SVG Source Files\Menu.svg" />
     <None Include="Resources\Icons\SVG Source Files\DecreaseOpacity.svg" />
     <None Include="Resources\Icons\SVG Source Files\IncreaseOpacity.svg" />
-    <None Include="..\..\docs\CREDITS.txt">
-      <Link>CREDITS.txt</Link>
+    <None Include="..\..\docs\CREDITS.md">
+      <Link>CREDITS.md</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Icons\SVG Source Files\MouseLeftDoubleClick.svg" />
