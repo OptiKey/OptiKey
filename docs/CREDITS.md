@@ -1,6 +1,10 @@
+# Thanks, Credits, and Recognition
+
 I would like to extend my thanks/credit to the following people, websites & organisations...
 
-[Patrons](https://www.patreon.com/OptiKey) (thank you very much for sponsoring this project)
+## People and Organizations
+
+* [Patrons](https://www.patreon.com/OptiKey) (thank you very much for sponsoring this project)
 * Gerald Walden (for his patronage, as well as very kindly donating an OpenBCI Ultracortex kit)
 * Udo Heintz
 * Sean McLane
@@ -36,11 +40,15 @@ I would like to extend my thanks/credit to the following people, websites & orga
 * Peter Evans
 * SuJin Lee
   
-Fonts
+## Resources
+
+### Fonts
+
 * Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
 * Charis SIL - Under the SIL Open Font License (OFL)
 
-Icons
+### Icons
+
 * Add To Dictionary icon modified from: Book by Danilo Gusmão Silveira from [The Noun Project][]
 * Alarm icon from: Bell by Adiyogi from [The Noun Project][]
 * Back icon: Arrow by Jamison Wieser from [The Noun Project][]
@@ -92,18 +100,23 @@ Icons
 * Windows icon: appbar.os.windows.8 from [Modern UI Icons][]
 * Yes icon from: Right by Raúl Santos from [The Noun Project][]
 
-Sound effects - royalty free from [soundbible.com](), [salamisound.com]() and [soundjig.com]()
+### Royalty Free Sound Effects
+
+* [soundbible.com]()
+* [salamisound.com]()
+* [soundjig.com]()
+
+### Setup package tools
+
+* Inno Setup Compiler - [http://www.jrsoftware.org/]()
+* Inno Script Studio - [https://www.kymoto.org/products/inno-script-studio]()
+* ISTool - [http://sourceforge.net/projects/istool/]()
 
 Vector graphic manipulation/editing achieved with the excellent, free, and open source [Inkscape](https://inkscape.org/)
 
 Some image editing done using the free online editor [LunaPic](http://www165.lunapic.com/editor/)
 
 Icon files (.ico) created with [IcoFX](http://icofx.ro/)
-
-Setup package tools: 
-* Inno Setup Compiler - [http://www.jrsoftware.org/]()
-* Inno Script Studio - [https://www.kymoto.org/products/inno-script-studio]()
-* ISTool - [http://sourceforge.net/projects/istool/]()
 
 The [StackOverflow](https://stackoverflow.com) community for providing the answer more times than I can count.
 
@@ -118,8 +131,6 @@ Korean dictionary "Frequency of modern Korean usage" in 2005, by "National Insti
 My wife Kate for keeping a convincing "tell me more" face on every time I talk about this too much.
 
 Thank you.
-
-
 
 [The Noun Project]:  https://thenounproject.com/ "The Noun Project - Icons for Everything"
 [Modern UI Icons]: http://modernuiicons.com "Modern UI Icons - Handcrafted pixel perfect icons for the modern UI style"
