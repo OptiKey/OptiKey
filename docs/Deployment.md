@@ -34,9 +34,9 @@ The following steps are to be followed when deploying a new version
 
 ## .Net Framework Version Notes
 
-The application targets .Net 4.5 and so requires that the .Net Framework v4.5 (or later) is installed.
+The application targets .Net 4.6 and so requires that the .Net Framework v4.6 (or later) is installed.
 
-The .Net Framework v4.5 is supported on the following Windows versions (from [https://docs.microsoft.com/en-us/dotnet/framework/get-started/system-requirements](https://docs.microsoft.com/en-us/dotnet/framework/get-started/system-requirements ".Net Framework system requirements") )  
+The .Net Framework v4.6 is supported on the following Windows versions (from [https://docs.microsoft.com/en-us/dotnet/framework/get-started/system-requirements](https://docs.microsoft.com/en-us/dotnet/framework/get-started/system-requirements ".Net Framework system requirements") )  
 
 * Client operating systems from Windows Vista SP2 onwards
 * Server operating systems from Windows Server 2008 SP2/Windows Server 2008 R2 SP1 onwards
