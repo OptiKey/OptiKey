@@ -127,6 +127,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value =
                 Settings.Default.MultiKeySelectionEnabled &&
+                Settings.Default.KeyboardLayout != KeyboardLayouts.Simplified &&
                 ((SimulateKeyStrokes && Settings.Default.MultiKeySelectionLockedDownWhenSimulatingKeyStrokes)
                 || (!SimulateKeyStrokes && Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes))
                     ? Enums.KeyDownStates.LockedDown
@@ -137,11 +138,13 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Info("Adding setting change handlers.");
             
-            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled).Where(mkse => !mkse).Subscribe(_ =>
-            {
-                //Release multi-key selection key if multi-key selection is disabled from the settings
-                KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value = Enums.KeyDownStates.Up;
-            });
+            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled && s.KeyboardLayout != KeyboardLayouts.Simplified)
+                .Where(mkse => !mkse)
+                .Subscribe(_ =>
+                {
+                    //Release multi-key selection key if multi-key selection is disabled from the settings
+                    KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value = Enums.KeyDownStates.Up;
+                });
         }
 
         private void AddSimulateKeyStrokesChangeHandler()
