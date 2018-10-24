@@ -137,12 +137,22 @@ namespace JuliusSweetland.OptiKey.Services
         private void AddSettingChangeHandlers()
         {
             Log.Info("Adding setting change handlers.");
-            
-            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled && s.KeyboardLayout != KeyboardLayouts.Simplified)
+
+            Settings.Default
+                .OnPropertyChanges(s => s.MultiKeySelectionEnabled)
                 .Where(mkse => !mkse)
                 .Subscribe(_ =>
                 {
                     //Release multi-key selection key if multi-key selection is disabled from the settings
+                    KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value = Enums.KeyDownStates.Up;
+                });
+
+            Settings.Default
+                .OnPropertyChanges(s => s.KeyboardLayout)
+                .Where(layout => layout == KeyboardLayouts.Simplified)
+                .Subscribe(_ =>
+                {
+                    //Release multi-key selection key if using simplified keyboard
                     KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value = Enums.KeyDownStates.Up;
                 });
         }
