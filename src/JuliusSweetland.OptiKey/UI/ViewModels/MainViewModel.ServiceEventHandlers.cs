@@ -283,7 +283,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
       
-	    private void KeySelectionResult(KeyValue singleKeyValue, List<string> multiKeySelection)
+        private void KeySelectionResult(KeyValue singleKeyValue, List<string> multiKeySelection)
         {
             // Pass single key to appropriate processing function
             if (singleKeyValue != null)
