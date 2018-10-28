@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using JuliusSweetland.OptiKey.Enums;
@@ -33,6 +34,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly ICommand toggleManualModeCommand;
         private readonly ICommand backCommand;
         private readonly ICommand quitCommand;
+        private readonly ICommand restartCommand;
 
         public MainWindow(
             IAudioService audioService,
@@ -55,6 +57,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             toggleManualModeCommand = new DelegateCommand(ToggleManualMode, () => !(defaultPointSource is MousePositionSource));
             quitCommand = new DelegateCommand(Quit);
             backCommand = new DelegateCommand(Back);
+            restartCommand = new DelegateCommand(Restart);
 
             //Setup key binding (Alt+M and Shift+Alt+M) to open settings
             InputBindings.Add(new KeyBinding
@@ -91,6 +94,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             Height = 0;
         }
 
+       
+
         public IWindowManipulationService WindowManipulationService { get; set; }
 
         public InteractionRequest<NotificationWithServicesAndState> ManagementWindowRequest { get { return managementWindowRequest; } }
@@ -98,6 +103,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         public ICommand ToggleManualModeCommand { get { return toggleManualModeCommand; } }
         public ICommand QuitCommand { get { return quitCommand; } }
         public ICommand BackCommand { get { return backCommand; } }
+        public ICommand RestartCommand { get { return restartCommand; } }
 
         private void RequestManagementWindow()
         {
@@ -169,6 +175,15 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             {
                 mainViewModel.BackFromKeyboard();   
             }            
+        }
+
+        private void Restart()
+        {
+            if (MessageBox.Show(Properties.Resources.REFRESH_MESSAGE, Properties.Resources.RESTART, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                System.Windows.Forms.Application.Restart();
+                Application.Current.Shutdown();
+            }
         }
     }
 }

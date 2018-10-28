@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -4584,6 +4584,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you absolutely sure that you&apos;d like to restart OptiKey?.
+        /// </summary>
+        public static string REFRESH_CONFIRMATION_MESSAGE {
+            get {
+                return ResourceManager.GetString("REFRESH_CONFIRMATION_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you&apos;d like to restart OptiKey?.
+        /// </summary>
+        public static string REFRESH_MESSAGE {
+            get {
+                return ResourceManager.GetString("REFRESH_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refresh plugins.
         /// </summary>
         public static string REFRESH_PLUGINS_BUTTON {
@@ -4617,6 +4635,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW {
             get {
                 return ResourceManager.GetString("REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart.
+        /// </summary>
+        public static string RESTART {
+            get {
+                return ResourceManager.GetString("RESTART", resourceCulture);
             }
         }
         
