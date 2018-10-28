@@ -981,6 +981,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="Resources\Icons\RestartIcon.ico" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollActive.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsScreenCentred.svg" />

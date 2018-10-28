@@ -197,6 +197,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue PrintScreenKey = new KeyValue(FunctionKeys.PrintScreen);
         public static readonly KeyValue QuitKey = new KeyValue(FunctionKeys.Quit);
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue(FunctionKeys.RepeatLastMouseAction);
+        public static readonly KeyValue RestartKey = new KeyValue(FunctionKeys.Restart);
         public static readonly KeyValue RussianRussiaKey = new KeyValue(FunctionKeys.RussianRussia);
         public static readonly KeyValue ScrollLockKey = new KeyValue(FunctionKeys.ScrollLock);
         public static readonly KeyValue SelectVoiceKey = new KeyValue(FunctionKeys.SelectVoice);
@@ -250,9 +251,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue TurkishTurkeyKey = new KeyValue(FunctionKeys.TurkishTurkey);
         public static readonly KeyValue WebBrowsingKeyboardKey = new KeyValue(FunctionKeys.WebBrowsingKeyboard);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
-        public static readonly KeyValue RefreshKey = new KeyValue(FunctionKeys.Refresh);
-
-
+        
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
 
         static KeyValues()

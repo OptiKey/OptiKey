@@ -34,7 +34,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly ICommand toggleManualModeCommand;
         private readonly ICommand backCommand;
         private readonly ICommand quitCommand;
-        private readonly ICommand resetCommand;
+        private readonly ICommand restartCommand;
 
         public MainWindow(
             IAudioService audioService,
@@ -57,7 +57,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             toggleManualModeCommand = new DelegateCommand(ToggleManualMode, () => !(defaultPointSource is MousePositionSource));
             quitCommand = new DelegateCommand(Quit);
             backCommand = new DelegateCommand(Back);
-            resetCommand = new DelegateCommand(Reset);
+            restartCommand = new DelegateCommand(Restart);
 
             //Setup key binding (Alt+M and Shift+Alt+M) to open settings
             InputBindings.Add(new KeyBinding
@@ -103,7 +103,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         public ICommand ToggleManualModeCommand { get { return toggleManualModeCommand; } }
         public ICommand QuitCommand { get { return quitCommand; } }
         public ICommand BackCommand { get { return backCommand; } }
-        public ICommand ResetCommand { get { return resetCommand; } }
+        public ICommand RestartCommand { get { return restartCommand; } }
 
         private void RequestManagementWindow()
         {
@@ -177,9 +177,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             }            
         }
 
-        private void Reset()
+        private void Restart()
         {
-            if (MessageBox.Show(Properties.Resources.REFRESH_MESSAGE, Properties.Resources.REFRESH, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show(Properties.Resources.REFRESH_MESSAGE, Properties.Resources.RESTART, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 System.Windows.Forms.Application.Restart();
                 Application.Current.Shutdown();

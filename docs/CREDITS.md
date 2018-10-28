@@ -39,7 +39,12 @@ I would like to extend my thanks/credit to the following people, websites & orga
 * Sam Meier
 * Peter Evans
 * SuJin Lee
-  
+* Jonathan Kim
+* Adam Brunnmeier
+* Nicholas Farley
+* Judica
+* Max Zschoch
+
 ## Resources
 
 ### Fonts
@@ -92,6 +97,7 @@ I would like to extend my thanks/credit to the following people, websites & orga
 * Position and Opacity icon modified from Move by TukTuk Design and Transparency by Eva Verbeek from the Noun Project from [The Noun Project][] 
 * Quit icon: Power by Creative Stall from [The Noun Project][]
 * Repeat Last Mouse Action icon: Replay by Arthur Shlain from [The Noun Project][]
+* Restart Icon: Icon made from [Icon Fonts](http://www.onlinewebfonts.com/icon) is licensed by CC BY 3.0  
 * Shift icon: Arrow by Mateo Zlatar from [The Noun Project][]
 * Size and Opacity icon modified from Move by TukTuk Design and Transparency by Eva Verbeek from [The Noun Project][]
 * Sleep icon: Sleep by Rémy Médard from [The Noun Project][]

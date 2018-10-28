@@ -848,6 +848,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.SetOpacity(1);
                     break;
 
+                case FunctionKeys.ConversationConfirmNo:
+                    var speechStartedNo = audioService.SpeakNewOrInterruptCurrentSpeech(
+                        Resources.NO,
+                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                        Settings.Default.SpeechVolume,
+                        Settings.Default.SpeechRate,
+                        Settings.Default.SpeechVoice);
+                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedNo ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
+                case FunctionKeys.ConversationConfirmYes:
+                    var speechStartedYes = audioService.SpeakNewOrInterruptCurrentSpeech(
+                        Resources.YES,
+                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                        Settings.Default.SpeechVolume,
+                        Settings.Default.SpeechRate,
+                        Settings.Default.SpeechVoice);
+                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedYes ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
                 case FunctionKeys.ConversationNumericAndSymbolsKeyboard:
                     Log.Info("Changing keyboard to ConversationNumericAndSymbols.");
                     var opacityBeforeConversationNumericAndSymbols = mainWindowManipulationService.GetOpacity();
@@ -2101,6 +2121,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     break;
 
+                case FunctionKeys.Restart:
+                    keyboardBeforeQuit = Keyboard;
+                    Keyboard = new YesNoQuestion(Resources.REFRESH_MESSAGE,
+                        () =>
+                        {
+                            System.Windows.Forms.Application.Restart();
+                            Application.Current.Shutdown();
+                        },
+                        () => { Keyboard = keyboardBeforeQuit; });
+                    break;
+
                 case FunctionKeys.RussianRussia:
                     SelectLanguage(Languages.RussianRussia);
                     break;
@@ -2172,26 +2203,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
                     break;
 
-                case FunctionKeys.ConversationConfirmYes:
-                    var speechStartedYes = audioService.SpeakNewOrInterruptCurrentSpeech(
-                        Resources.YES,
-                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
-                        Settings.Default.SpeechVolume,
-                        Settings.Default.SpeechRate,
-                        Settings.Default.SpeechVoice);
-                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedYes ? KeyDownStates.Down : KeyDownStates.Up;
-                    break;
-
-                case FunctionKeys.ConversationConfirmNo:
-                    var speechStartedNo = audioService.SpeakNewOrInterruptCurrentSpeech(
-                        Resources.NO,
-                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
-                        Settings.Default.SpeechVolume,
-                        Settings.Default.SpeechRate,
-                        Settings.Default.SpeechVoice);
-                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedNo ? KeyDownStates.Down : KeyDownStates.Up;
-                    break;
-
                 case FunctionKeys.TurkishTurkey:
                     SelectLanguage(Languages.TurkishTurkey);
                     break;
@@ -2203,16 +2214,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.YesQuestionResult:
                     HandleYesNoQuestionResult(true);
-                    break;
-                case FunctionKeys.Refresh:
-                    keyboardBeforeQuit = Keyboard;
-                    Keyboard = new YesNoQuestion(Resources.REFRESH_MESSAGE,
-                        () =>
-                        {
-                            System.Windows.Forms.Application.Restart();
-                            Application.Current.Shutdown();
-                        },
-                        () => { Keyboard = keyboardBeforeQuit; });
                     break;
             }
 

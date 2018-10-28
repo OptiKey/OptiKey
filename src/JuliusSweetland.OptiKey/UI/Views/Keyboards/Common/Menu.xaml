@@ -31,7 +31,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -115,22 +114,16 @@
                       Value="{x:Static models:KeyValues.CalibrateKey}"/>
 
         <controls:Key Grid.Row="3" Grid.Column="0"
-                      SymbolGeometry="{StaticResource RefreshIcon}"
-                      Text="{x:Static resx:Resources.REFRESH}"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.RefreshKey}"/>
-
-        <controls:Key Grid.Row="3" Grid.Column="1"
                       SymbolGeometry="{StaticResource QuitIcon}"
                       Text="{x:Static resx:Resources.QUIT}"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       Value="{x:Static models:KeyValues.QuitKey}"/>
-        <controls:Key Grid.Row="3" Grid.Column="2"
+        <controls:Key Grid.Row="3" Grid.Column="1"
                       SymbolGeometry="{StaticResource SizeAndPositionIcon}"
                       Text="{x:Static resx:Resources.SIZE_AND_POSITION_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       Value="{x:Static models:KeyValues.SizeAndPositionKeyboardKey}"/>
-        <controls:Key Grid.Row="3" Grid.Column="3"
+        <controls:Key Grid.Row="3" Grid.Column="2"
                       SymbolGeometry="{StaticResource MinimiseIcon}"
                       Text="{x:Static resx:Resources.MINIMISE}"
                       SharedSizeGroup="KeyWithSymbolAndText"
@@ -144,8 +137,7 @@
                 </MultiBinding>
             </controls:Key.SymbolOrientation>
         </controls:Key>
-
-        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
+        <controls:Key Grid.Row="3" Grid.Column="3"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="{x:Static resx:Resources.BACK}"
                       SharedSizeGroup="KeyWithSymbolAndText"
