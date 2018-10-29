@@ -19,10 +19,12 @@ namespace JuliusSweetland.OptiKey.Extensions
             {
                 //Trim white space
                 string hash = entry.Trim();
+                bool suppressRepeatedCharacters = true;
 
                 //Phrase/Sentence - extract first letter of each word, from which we will build the hash
                 if (hash.Contains(" "))
                 {
+                    suppressRepeatedCharacters = false;
                     hash = new string(hash
                         .Split(' ')
                         .Where(s => !string.IsNullOrEmpty(s))
@@ -43,7 +45,7 @@ namespace JuliusSweetland.OptiKey.Extensions
                 var hashStringBuilder = new StringBuilder();
                 foreach (var c in hash.ToCharArray())
                 {
-                    if (hashStringBuilder.Length == 0 || hashStringBuilder[hashStringBuilder.Length - 1] != c)
+                    if (!suppressRepeatedCharacters || hashStringBuilder.Length == 0 || hashStringBuilder[hashStringBuilder.Length - 1] != c)
                     {
                         hashStringBuilder.Append(c);
                     }
