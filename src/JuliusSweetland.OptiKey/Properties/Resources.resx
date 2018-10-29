@@ -2234,4 +2234,10 @@ Française
   <data name="REFRESH_MESSAGE" xml:space="preserve">
     <value>Are you sure you'd like to restart OptiKey?</value>
   </data>
+  <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>DYNAMIC KEYBOARD</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>WEB BROWSING</value>
+  </data>
 </root>

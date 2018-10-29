@@ -1290,6 +1290,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DYNAMIC KEYBOARD.
+        /// </summary>
+        public static string DYNAMIC_KEYBOARD {
+            get {
+                return ResourceManager.GetString("DYNAMIC_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dynamic keyboard menu.
         /// </summary>
         public static string DYNAMIC_KEYBOARD_LAYOUT {
@@ -5989,6 +5998,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string VOLUME_LABEL {
             get {
                 return ResourceManager.GetString("VOLUME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WEB BROWSING.
+        /// </summary>
+        public static string WEB_BROWSING {
+            get {
+                return ResourceManager.GetString("WEB_BROWSING", resourceCulture);
             }
         }
         

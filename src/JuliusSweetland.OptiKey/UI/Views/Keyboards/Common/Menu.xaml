@@ -83,7 +83,7 @@
                       SymbolGeometry="{StaticResource KeyboardIcon}"
                       Text="{x:Static resx:Resources.DYNAMIC_KEYBOARD_LAYOUT}"
                       SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.DynamicKeyboardMenu}"/>
+                      Value="{x:Static models:KeyValues.DynamicKeyboardKey}"/>
 
         <controls:Key Grid.Row="2" Grid.Column="0"
                       SymbolGeometry="{StaticResource DecreaseOpacityIcon}"

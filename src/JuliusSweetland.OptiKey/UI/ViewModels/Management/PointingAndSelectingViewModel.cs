@@ -469,6 +469,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.DIACRITICS_1, KeyValues.Diacritic1KeyboardKey, dictionary.ContainsKey(KeyValues.Diacritic1KeyboardKey) ? dictionary[KeyValues.Diacritic1KeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.DIACRITICS_2, KeyValues.Diacritic2KeyboardKey, dictionary.ContainsKey(KeyValues.Diacritic2KeyboardKey) ? dictionary[KeyValues.Diacritic2KeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.DIACRITICS_3, KeyValues.Diacritic3KeyboardKey, dictionary.ContainsKey(KeyValues.Diacritic3KeyboardKey) ? dictionary[KeyValues.Diacritic3KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.DYNAMIC_KEYBOARD, KeyValues.DynamicKeyboardKey, dictionary.ContainsKey(KeyValues.DynamicKeyboardKey) ? dictionary[KeyValues.DynamicKeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.LANGUAGE_AND_VOICE_UPPER_CASE, KeyValues.LanguageKeyboardKey, dictionary.ContainsKey(KeyValues.LanguageKeyboardKey) ? dictionary[KeyValues.LanguageKeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.MENU, KeyValues.MenuKeyboardKey, dictionary.ContainsKey(KeyValues.MenuKeyboardKey) ? dictionary[KeyValues.MenuKeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.MOUSE, KeyValues.MouseKeyboardKey, dictionary.ContainsKey(KeyValues.MouseKeyboardKey) ? dictionary[KeyValues.MouseKeyboardKey] : (TimeSpan?)null),
@@ -477,6 +478,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.NUMBERS_SYMBOLS_3, KeyValues.NumericAndSymbols3KeyboardKey, dictionary.ContainsKey(KeyValues.NumericAndSymbols3KeyboardKey) ? dictionary[KeyValues.NumericAndSymbols3KeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.PHYSICAL_KEYS, KeyValues.PhysicalKeysKeyboardKey, dictionary.ContainsKey(KeyValues.PhysicalKeysKeyboardKey) ? dictionary[KeyValues.PhysicalKeysKeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SIZE_AND_POSITION, KeyValues.SizeAndPositionKeyboardKey, dictionary.ContainsKey(KeyValues.SizeAndPositionKeyboardKey) ? dictionary[KeyValues.SizeAndPositionKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.WEB_BROWSING, KeyValues.WebBrowsingKeyboardKey, dictionary.ContainsKey(KeyValues.WebBrowsingKeyboardKey) ? dictionary[KeyValues.WebBrowsingKeyboardKey] : (TimeSpan?)null),
                 }),
                 new KeyValueAndTimeSpanGroup(Resources.DOCK_ACTIONS_KEY_GROUP, new List<KeyValueAndTimeSpan>
                 {
@@ -532,6 +534,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.MULTI_KEY_SELECTION_UPPER_CASE, KeyValues.MultiKeySelectionIsOnKey, dictionary.ContainsKey(KeyValues.MultiKeySelectionIsOnKey) ? dictionary[KeyValues.MultiKeySelectionIsOnKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.NO, KeyValues.NoQuestionResultKey, dictionary.ContainsKey(KeyValues.NoQuestionResultKey) ? dictionary[KeyValues.NoQuestionResultKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.QUIT, KeyValues.QuitKey, dictionary.ContainsKey(KeyValues.QuitKey) ? dictionary[KeyValues.QuitKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.RESTART, KeyValues.RestartKey, dictionary.ContainsKey(KeyValues.RestartKey) ? dictionary[KeyValues.RestartKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SELECT_VOICE, KeyValues.SelectVoiceKey, dictionary.ContainsKey(KeyValues.SelectVoiceKey) ? dictionary[KeyValues.SelectVoiceKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SLEEP, KeyValues.SleepKey, dictionary.ContainsKey(KeyValues.SleepKey) ? dictionary[KeyValues.SleepKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SPEAK, KeyValues.SpeakKey, dictionary.ContainsKey(KeyValues.SpeakKey) ? dictionary[KeyValues.SpeakKey] : (TimeSpan?)null),
