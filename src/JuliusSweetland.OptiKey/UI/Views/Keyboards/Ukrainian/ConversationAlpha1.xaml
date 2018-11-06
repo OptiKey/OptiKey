@@ -182,7 +182,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ь"/>
         <controls:Key Grid.Row="4" Grid.Column="15" Grid.ColumnSpan="2"
-                       ShiftUpText="б" ShiftDownText="Б"
+                       ShiftUpText="б" ShiftDownText="Ь"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="б"/>
         <controls:Key Grid.Row="4" Grid.Column="17" Grid.ColumnSpan="2"
