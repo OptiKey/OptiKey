@@ -172,6 +172,7 @@
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -278,6 +279,10 @@
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.TurkishTurkeyKey}"/>
                                     <controls:Key Grid.Row="5" Grid.Column="3"
+                                                  Text="{x:Static resx:Resources.UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static models:KeyValues.UkrainianUkraineKey}"/>
+                                    <controls:Key Grid.Row="6" Grid.ColumnSpan="4"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
