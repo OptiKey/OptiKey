@@ -227,6 +227,7 @@
         Suggestion6,
         ToggleCaseOfPreviousCharacter,
         TurkishTurkey,
+        UkrainianUkraine,
         WebBrowsingKeyboard,
         YesQuestionResult
     }
