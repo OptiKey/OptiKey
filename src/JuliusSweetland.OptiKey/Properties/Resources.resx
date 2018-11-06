@@ -2240,4 +2240,13 @@ Française
   <data name="WEB_BROWSING" xml:space="preserve">
     <value>WEB BROWSING</value>
   </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>Ukrainian (Ukraine) / Українська (Україна)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ukrainian
+(Ukraine) /
+Українська
+(Україна)</value>
+  </data>
 </root>
