@@ -793,6 +793,27 @@ namespace JuliusSweetland.OptiKey.Models
                     }
                 }
 
+                //Ukrainian specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.UkrainianUkraine)
+                {
+                    //Acute accent: Аа Ее Єє Ии Іі Її Оо Уу Юю Яя
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                               || keyValue == new KeyValue("а")
+                               || keyValue == new KeyValue("е")
+                               || keyValue == new KeyValue("є")
+                               || keyValue == new KeyValue("и")
+                               || keyValue == new KeyValue("і")
+                               || keyValue == new KeyValue("ї")
+                               || keyValue == new KeyValue("о")
+                               || keyValue == new KeyValue("у")
+                               || keyValue == new KeyValue("ю")
+                               || keyValue == new KeyValue("я")
+                               || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
                 return true;
             }
         }
