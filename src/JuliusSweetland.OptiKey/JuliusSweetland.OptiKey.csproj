@@ -741,6 +741,12 @@
     <Compile Include="UI\Views\Keyboards\Turkish\SimplifiedConversationAlpha1.xaml.cs">
       <DependentUpon>SimplifiedConversationAlpha1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Ukrainian\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Ukrainian\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -809,6 +815,7 @@
     <EmbeddedResource Include="Properties\Resources.tr-TR.resx" />
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
+    <EmbeddedResource Include="Properties\Resources.uk-UA.resx" />
     <EmbeddedResource Include="Resources.ja-JP.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
@@ -880,6 +887,10 @@
     <Content Include="Dictionaries\PolishPoland.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Dictionaries\UkrainianUkraine.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="app.config" />
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1512,6 +1523,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Turkish\SimplifiedConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Ukrainian\Alpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Ukrainian\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

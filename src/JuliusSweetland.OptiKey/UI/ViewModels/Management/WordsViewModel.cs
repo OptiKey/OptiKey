@@ -58,7 +58,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Languages>(Resources.SLOVAK_SLOVAKIA, Enums.Languages.SlovakSlovakia),
                     new KeyValuePair<string, Languages>(Resources.SLOVENIAN_SLOVENIA, Enums.Languages.SlovenianSlovenia),
                     new KeyValuePair<string, Languages>(Resources.SPANISH_SPAIN, Enums.Languages.SpanishSpain),
-                    new KeyValuePair<string, Languages>(Resources.TURKISH_TURKEY, Enums.Languages.TurkishTurkey)
+                    new KeyValuePair<string, Languages>(Resources.TURKISH_TURKEY, Enums.Languages.TurkishTurkey),
+                    new KeyValuePair<string, Languages>(Resources.UKRAINIAN_UKRAINE, Enums.Languages.UkrainianUkraine),
                 };
             }
         }

@@ -249,6 +249,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Suggestion6Key = new KeyValue(FunctionKeys.Suggestion6);
         public static readonly KeyValue ToggleCaseOfPreviousCharacterKey = new KeyValue(FunctionKeys.ToggleCaseOfPreviousCharacter);
         public static readonly KeyValue TurkishTurkeyKey = new KeyValue(FunctionKeys.TurkishTurkey);
+        public static readonly KeyValue UkrainianUkraineKey = new KeyValue(FunctionKeys.UkrainianUkraine);
         public static readonly KeyValue WebBrowsingKeyboardKey = new KeyValue(FunctionKeys.WebBrowsingKeyboard);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
         
@@ -343,6 +344,11 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToList()
                 },
                 { Languages.TurkishTurkey, "abcçdefgğhiıjklmnoöprsştuüvyz"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.UkrainianUkraine, "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()

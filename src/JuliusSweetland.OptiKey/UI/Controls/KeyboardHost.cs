@@ -36,6 +36,7 @@ using SlovakViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Slovak;
 using SlovenianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Slovenian;
 using SpanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Spanish;
 using TurkishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Turkish;
+using UkrainianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Ukrainian;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -236,6 +237,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             ? (object)new TurkishViews.SimplifiedAlpha1 { DataContext = Keyboard }
                             : new TurkishViews.Alpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.UkrainianUkraine:
+                        newContent = new UkrainianViews.Alpha1 { DataContext = Keyboard };
+                        break;
                     default:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new EnglishViews.SimplifiedAlpha1 { DataContext = Keyboard }
@@ -330,6 +334,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new TurkishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
                             : new TurkishViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.UkrainianUkraine:
+                        newContent = new UkrainianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     default:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout

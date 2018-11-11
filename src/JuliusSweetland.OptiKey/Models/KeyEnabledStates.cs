@@ -741,21 +741,7 @@ namespace JuliusSweetland.OptiKey.Models
                         || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
                 }
-
-                //Turkish specific rules
-                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.TurkishTurkey)
-                {
-                    //Circumflex: Ââ Îî Ûû
-                    if (keyStateService.KeyDownStates[KeyValues.CombiningCircumflexKey].Value.IsDownOrLockedDown())
-                    {
-                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
-                            || keyValue == new KeyValue("a")
-                            || keyValue == new KeyValue("i")
-                            || keyValue == new KeyValue("u")
-                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
-                    }
-                }
-
+                
                 //Spanish specific rules
                 if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.SpanishSpain)
                 {
@@ -790,6 +776,27 @@ namespace JuliusSweetland.OptiKey.Models
                             || keyValue == new KeyValue("i")
                             || keyValue == new KeyValue("u")
                             || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
+                //Ukrainian specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.UkrainianUkraine)
+                {
+                    //Acute accent: Аа Ее Єє Ии Іі Її Оо Уу Юю Яя
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                               || keyValue == new KeyValue("а")
+                               || keyValue == new KeyValue("е")
+                               || keyValue == new KeyValue("є")
+                               || keyValue == new KeyValue("и")
+                               || keyValue == new KeyValue("і")
+                               || keyValue == new KeyValue("ї")
+                               || keyValue == new KeyValue("о")
+                               || keyValue == new KeyValue("у")
+                               || keyValue == new KeyValue("ю")
+                               || keyValue == new KeyValue("я")
+                               || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
                 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -537,10 +538,10 @@ namespace JuliusSweetland.OptiKey.Services
 				Log.DebugFormat("Suppressing auto space before this capture as the KeyboardAndDictionaryLanguage {0} does not support auto space.", Settings.Default.KeyboardAndDictionaryLanguage);
                 suppressNextAutoSpace = true;
 			}
-            else if(lastProcessedText.Length == 1
-                && newText.Length == 1
-                && !lastProcessedTextWasSuggestion
-                && !(keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown() && char.IsLetter(newText.First())))
+            else if (new StringInfo(lastProcessedText).LengthInTextElements == 1
+                     && new StringInfo(newText).LengthInTextElements == 1
+                     && !lastProcessedTextWasSuggestion
+                     && !(keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown() && char.IsLetter(newText.First())))
             {
                 //We are capturing single chars and are on the 2nd+ character,
                 //the last capture wasn't a suggestion (as these can also be 1 character and we want to inject the space if it is),
