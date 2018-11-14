@@ -654,6 +654,14 @@ namespace JuliusSweetland.OptiKey
                         new Regex(GazeTrackerUdpRegex));
                     break;
 
+                case PointsSources.IrisBondDuo:
+                    var irisBondPointService = new IrisBondDuoPointService();
+                    errorNotifyingServices.Add(irisBondPointService);
+                    pointSource = new PointServiceSource(
+                        Settings.Default.PointTtl,
+                        irisBondPointService);
+                    break;
+
                 case PointsSources.MousePosition:
                     pointSource = new MousePositionSource(
                         Settings.Default.PointTtl);

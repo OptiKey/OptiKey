@@ -36,6 +36,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SOURCE_LABEL}" 
@@ -130,7 +131,37 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.KALMAN_FILTER_ENABLED}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.IRISBOND_DATA_STREAM_PROCESSING_LEVEL}" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisBondDuo}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <ComboBox Grid.Row="2" Grid.Column="1" 
+                              ItemsSource="{Binding IrisBondDataStreamProcessingLevels}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding IrisBondProcessingLevel, Mode=TwoWay}">
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisBondDuo}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KALMAN_FILTER_ENABLED}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -143,7 +174,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="2" Grid.Column="1" 
+                    <CheckBox Grid.Row="3" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding KalmanFilterEnabled, Mode=TwoWay}">
                         <CheckBox.Style>
@@ -158,7 +189,7 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_POSITION_SAMPLE_INTERVAL_LABEL}" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_POSITION_SAMPLE_INTERVAL_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -171,7 +202,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding PointsMousePositionSampleIntervalInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
@@ -186,13 +217,13 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL}" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL}" 
                                 VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding PointTtlInMs, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.HIDE_CURSOR_LABEL}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.HIDE_CURSOR_LABEL}" 
                                 VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -206,7 +237,7 @@
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <CheckBox Grid.Row="5" Grid.Column="1" 
+                    <CheckBox Grid.Row="6" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding PointsMousePositionHideCursor, Mode=TwoWay}">
                         <CheckBox.Style>

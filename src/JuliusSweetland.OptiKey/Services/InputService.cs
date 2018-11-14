@@ -76,18 +76,9 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 pointSource = value;
 
-                //Replace point source on trigger source if it is a FixationTriggerSource (which rely on a point source)
-                var keyFixationTriggerSource = keySelectionTriggerSource as IFixationTriggerSource;
-                if (keyFixationTriggerSource != null)
-                {
-                    keyFixationTriggerSource.PointSource = pointSource;
-                }
-
-                var pointFixationTriggerSource = pointSelectionTriggerSource as IFixationTriggerSource;
-                if (pointFixationTriggerSource != null)
-                {
-                    pointFixationTriggerSource.PointSource = pointSource;
-                }
+                //Replace point source on key and point trigger sources as they publish the selection location from the point source
+                keySelectionTriggerSource.PointSource = pointSource;
+                pointSelectionTriggerSource.PointSource = pointSource;
             }
         }
 

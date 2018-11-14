@@ -5,6 +5,7 @@ namespace JuliusSweetland.OptiKey.Enums
     {
         Alienware17,
         GazeTracker,
+        IrisBondDuo,
         MousePosition,
         SteelseriesSentry,
         TheEyeTribe,
@@ -27,6 +28,7 @@ namespace JuliusSweetland.OptiKey.Enums
             {
                 case PointsSources.Alienware17: return Resources.ALIENWARE_17;
                 case PointsSources.GazeTracker: return Resources.GAZE_TRACKER;
+                case PointsSources.IrisBondDuo: return Resources.IRISBOND_DUO;
                 case PointsSources.MousePosition: return Resources.MOUSE_POSITION;
                 case PointsSources.SteelseriesSentry: return Resources.STEELSERIES_SENTRY;
                 case PointsSources.TheEyeTribe: return Resources.THE_EYE_TRIBE;

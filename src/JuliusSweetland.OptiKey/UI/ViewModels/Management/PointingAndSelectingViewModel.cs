@@ -71,6 +71,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.Alienware17.ToDescription(), Enums.PointsSources.Alienware17),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.GazeTracker.ToDescription(), Enums.PointsSources.GazeTracker),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisBondDuo.ToDescription(), Enums.PointsSources.IrisBondDuo),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.MousePosition.ToDescription(), Enums.PointsSources.MousePosition),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.SteelseriesSentry.ToDescription(), Enums.PointsSources.SteelseriesSentry),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe),
@@ -110,6 +111,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.Low.ToDescription(), Enums.DataStreamProcessingLevels.Low),
                     new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.Medium.ToDescription(), Enums.DataStreamProcessingLevels.Medium),
                     new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.High.ToDescription(), Enums.DataStreamProcessingLevels.High)
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, DataStreamProcessingLevels>> IrisBondDataStreamProcessingLevels
+        {
+            get
+            {
+                return new List<KeyValuePair<string, DataStreamProcessingLevels>>
+                {
+                    new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.None.ToDescription(), Enums.DataStreamProcessingLevels.None),
+                    new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.Medium.ToDescription(), Enums.DataStreamProcessingLevels.Medium)
                 };
             }
         }
@@ -161,6 +174,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return tobiiEyeXProcessingLevel; }
             set { SetProperty(ref tobiiEyeXProcessingLevel, value); }
+        }
+
+        private DataStreamProcessingLevels irisBondProcessingLevel;
+        public DataStreamProcessingLevels IrisBondProcessingLevel
+        {
+            get { return irisBondProcessingLevel; }
+            set { SetProperty(ref irisBondProcessingLevel, value); }
         }
 
         private bool kalmanFilterEnabled;
@@ -359,6 +379,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
                 return Settings.Default.PointsSource != PointsSource
                     || (Settings.Default.TobiiEyeXProcessingLevel != TobiiEyeXProcessingLevel && PointsSource == Enums.PointsSources.TobiiEyeX)
+                    || (Settings.Default.IrisBondProcessingLevel != IrisBondProcessingLevel && PointsSource == Enums.PointsSources.IrisBondDuo)
                     || (Settings.Default.PointsMousePositionSampleInterval != TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs) && PointsSource == Enums.PointsSources.MousePosition)
                     || Settings.Default.PointTtl != TimeSpan.FromMilliseconds(PointTtlInMs)
                     || Settings.Default.KeySelectionTriggerSource != KeySelectionTriggerSource
@@ -391,6 +412,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             PointsSource = Settings.Default.PointsSource;
             TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
+            IrisBondProcessingLevel = Settings.Default.IrisBondProcessingLevel;
             KalmanFilterEnabled = Settings.Default.KalmanFilterEnabled;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
             PointsMousePositionHideCursor = Settings.Default.PointsMousePositionHideCursor;
@@ -423,6 +445,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             Settings.Default.PointsSource = PointsSource;
             Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
+            Settings.Default.IrisBondProcessingLevel = IrisBondProcessingLevel;
             Settings.Default.KalmanFilterEnabled = KalmanFilterEnabled;
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointsMousePositionHideCursor = PointsMousePositionHideCursor;

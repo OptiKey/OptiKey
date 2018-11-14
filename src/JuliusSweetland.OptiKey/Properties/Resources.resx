@@ -2202,7 +2202,7 @@ Française
     <value>Volume of speech when speaking CommuniKate button text:</value>
   </data>
   <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
-    <value>Are you sure you would like to switch to manual mode?</value>
+    <value>Are you sure you would like to switch to/from manual mode?</value>
   </data>
   <data name="MANUAL_MODE" xml:space="preserve">
     <value>MANUAL MODE</value>
@@ -2248,5 +2248,17 @@ Française
 (Ukraine) /
 Українська
 (Україна)</value>
+  </data>
+  <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Data stream processing amount:</value>
+  </data>
+  <data name="IRISBOND_DUO" xml:space="preserve">
+    <value>IrisBond Duo</value>
+  </data>
+  <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>IrisBond tracker could not be started.</value>
+  </data>
+  <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>IrisBond tracker cannot found. Please check the tracker's connection and try again.</value>
   </data>
 </root>

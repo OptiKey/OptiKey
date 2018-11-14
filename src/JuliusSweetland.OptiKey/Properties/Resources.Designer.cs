@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -2122,6 +2122,42 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data stream processing amount:.
+        /// </summary>
+        public static string IRISBOND_DATA_STREAM_PROCESSING_LEVEL {
+            get {
+                return ResourceManager.GetString("IRISBOND_DATA_STREAM_PROCESSING_LEVEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IrisBond Duo.
+        /// </summary>
+        public static string IRISBOND_DUO {
+            get {
+                return ResourceManager.GetString("IRISBOND_DUO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IrisBond tracker could not be started..
+        /// </summary>
+        public static string IRISBOND_TRACKER_COULD_NOT_BE_STARTED {
+            get {
+                return ResourceManager.GetString("IRISBOND_TRACKER_COULD_NOT_BE_STARTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IrisBond tracker cannot found. Please check the tracker&apos;s connection and try again..
+        /// </summary>
+        public static string IRISBOND_TRACKER_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("IRISBOND_TRACKER_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Italian (Italy) / Italiano (Italia).
         /// </summary>
         public static string ITALIAN_ITALY {
@@ -3169,7 +3205,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you would like to switch to manual mode?.
+        ///   Looks up a localized string similar to Are you sure you would like to switch to/from manual mode?.
         /// </summary>
         public static string MANUAL_MODE_MESSAGE {
             get {
