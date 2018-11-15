@@ -399,6 +399,7 @@
     <Compile Include="Services\MyGazePointService.cs" />
     <Compile Include="Services\MyGazeCalibrationService.cs" />
     <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
+    <Compile Include="Services\IrisBondDuoCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\IrisBondDuoPointService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
@@ -899,7 +900,6 @@
     <Content Include="Dictionaries\UkrainianUkraine.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

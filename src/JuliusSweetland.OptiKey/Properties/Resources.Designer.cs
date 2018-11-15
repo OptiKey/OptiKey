@@ -2122,6 +2122,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calibration completed (success or failure), but everything is working again!.
+        /// </summary>
+        public static string IRISBOND_CALIBRATION_COMPLETE {
+            get {
+                return ResourceManager.GetString("IRISBOND_CALIBRATION_COMPLETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data stream processing amount:.
         /// </summary>
         public static string IRISBOND_DATA_STREAM_PROCESSING_LEVEL {

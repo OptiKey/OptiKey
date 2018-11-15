@@ -614,6 +614,9 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TheEyeTribe:
                     return new TheEyeTribeCalibrationService();
 
+                case PointsSources.IrisBondDuo:
+                    return new IrisBondDuoCalibrationService();
+
                 case PointsSources.Alienware17:
                 case PointsSources.SteelseriesSentry:
                 case PointsSources.TobiiEyeX:

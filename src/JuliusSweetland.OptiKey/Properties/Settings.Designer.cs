@@ -2578,5 +2578,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["IrisBondProcessingLevel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int IrisBondCalibrationTargetCount {
+            get {
+                return ((int)(this["IrisBondCalibrationTargetCount"]));
+            }
+            set {
+                this["IrisBondCalibrationTargetCount"] = value;
+            }
+        }
     }
 }
