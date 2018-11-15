@@ -138,7 +138,7 @@
                         </MultiDataTrigger.Setters>
                     </MultiDataTrigger>
 
-                    <!-- Also display the text is the key is progressing -->
+                    <!-- Also display the text if the key is progressing -->
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
                             <Condition Binding="{Binding Path=HasText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
@@ -165,7 +165,7 @@
                         <Setter Property="Text" Value="{Binding Path=ShiftDownText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Key is disabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
@@ -262,7 +262,7 @@
                         <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockedDownForegroundBrush}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Key is disabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
@@ -326,7 +326,7 @@
                         <Setter Property="Visibility" Value="Visible" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Key is disabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
@@ -348,7 +348,7 @@
                         <Setter Property="Visibility" Value="Hidden" />
                     </Trigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Key is disabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="Visibility" Value="Hidden" />
                     </DataTrigger>
@@ -398,7 +398,7 @@
                         <Setter Property="Background" Value="{StaticResource KeyDownStateIsLockedDownBackgroundBrush}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Key is disabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
                         <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
@@ -433,7 +433,7 @@
                         <Setter Property="BorderBrush" Value="{Binding Path=HoverForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Key is disabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
@@ -460,7 +460,7 @@
                         <Setter Property="BorderBrush" Value="{Binding Path=HoverForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Key is disabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
