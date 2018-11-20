@@ -12,8 +12,6 @@ using System.Reflection;
 using log4net;
 using System.Xml;
 using System.Windows;
-using System.Text;
-using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -28,7 +26,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         public DynamicKeyboard(string inputFile, Action<double> resizeAction)
         {
-
             InitializeComponent();
             inputFilename = inputFile;
             
@@ -421,7 +418,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 		protected override void OnLoaded(object sender, RoutedEventArgs e)
 		{
 			base.OnLoaded(sender, e);
-			ShiftAware = keyboard.IsShiftAware;
+			ShiftAware = keyboard != null && keyboard.IsShiftAware;
 		}
 	}
 }
