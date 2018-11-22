@@ -4481,10 +4481,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+        ///   Looks up a localized string similar to OptiKey was unable to handshake with Presage. There are a few possible causes:
+        ///    1.The DBFILENAME location specified in the presage.xml file (located in C:\Users\USER_NAME\.presage) does not exist - please check and correct this (or uninstall/reinstall Presage).
+        ///    2.Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+        ///
         ///Please uninstall Presage and install the 32 bit version of 0.9.2.
-        ///OptiKey will attempt to continue, but there is a good chance it will crash shortly.
-        ///The prediction method will be changed to NGram to prevent a crash on next run..
+        ///OptiKey will att [rest of string was truncated]&quot;;.
         /// </summary>
         public static string PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE {
             get {
