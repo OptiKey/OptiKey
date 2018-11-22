@@ -336,11 +336,13 @@ namespace JuliusSweetland.OptiKey
                     return true;
                 }
                 // set the config
-                if (presageTestInstance != null)
+                if (File.Exists(Settings.Default.PresageDatabaseLocation))
                 {
-                    if (File.Exists(Settings.Default.PresageDatabaseLocation))
-                        presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
-                    else 
+                    presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
+                }
+                else
+                {
+                    try
                     {
                         string ApplicationDataSubPath = @"JuliusSweetland\OptiKey";
                         var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
@@ -359,14 +361,21 @@ namespace JuliusSweetland.OptiKey
                                 Log.ErrorFormat("Unpacking the Presage database failed with the following exception: \n{0}", e);
                             }
                         }
+
                         Settings.Default.PresageDatabaseLocation = database;
                         presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
                     }
-                    presageTestInstance.set_config("Presage.Selector.REPEAT_SUGGESTIONS", "yes");
-                    presageTestInstance.set_config("Presage.Selector.SUGGESTIONS", Settings.Default.PresageNumberOfSuggestions.ToString());
-                    presageTestInstance.save_config();
-                    Log.Info("Presage settings set successfully.");
+                    catch (Exception ex)
+                    {
+                        Log.Error("Presage failed to bootstrap. The database (database.db file) was not found, and the database.zip file could not be extracted!", ex);
+                        return true;
+                    }
                 }
+
+                presageTestInstance.set_config("Presage.Selector.REPEAT_SUGGESTIONS", "yes");
+                presageTestInstance.set_config("Presage.Selector.SUGGESTIONS", Settings.Default.PresageNumberOfSuggestions.ToString());
+                presageTestInstance.save_config();
+                Log.Info("Presage settings set successfully.");
             }
             
             return false;
