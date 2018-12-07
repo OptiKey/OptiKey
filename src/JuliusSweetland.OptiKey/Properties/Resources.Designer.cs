@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -5009,6 +5009,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL {
             get {
                 return ResourceManager.GetString("SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serbian (Serbia) / Српски (Србија).
+        /// </summary>
+        public static string SERBIAN_SERBIA {
+            get {
+                return ResourceManager.GetString("SERBIAN_SERBIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serbian
+        ///(Serbia) /
+        ///Српски
+        ///(Србија).
+        /// </summary>
+        public static string SERBIAN_SERBIA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("SERBIAN_SERBIA_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         

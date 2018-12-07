@@ -1748,6 +1748,15 @@ Italiano
 한국어
 (한국)</value>
   </data>
+  <data name="SERBIAN_SERBIA" xml:space="preserve">
+    <value>Serbian (Serbia) / Српски (Србија)</value>
+  </data>
+  <data name="SERBIAN_SERBIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Serbian
+(Serbia) /
+Српски
+(Србија)</value>
+  </data>
   <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
     <value>Slovenian (Slovenia) / Slovensko (Slovenija)</value>
   </data>

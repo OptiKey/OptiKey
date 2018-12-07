@@ -199,6 +199,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue(FunctionKeys.RepeatLastMouseAction);
         public static readonly KeyValue RestartKey = new KeyValue(FunctionKeys.Restart);
         public static readonly KeyValue RussianRussiaKey = new KeyValue(FunctionKeys.RussianRussia);
+        public static readonly KeyValue SerbianSerbiaKey = new KeyValue(FunctionKeys.SerbianSerbia);
         public static readonly KeyValue ScrollLockKey = new KeyValue(FunctionKeys.ScrollLock);
         public static readonly KeyValue SelectVoiceKey = new KeyValue(FunctionKeys.SelectVoice);
         public static readonly KeyValue ShrinkFromBottomKey = new KeyValue(FunctionKeys.ShrinkFromBottom);
@@ -328,6 +329,11 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList() },
+                { Languages.SerbianSerbia, "абвгдђежзијклљмнњопрстћуфхцчџш"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
                 { Languages.SlovakSlovakia, "aáäbcčdďeéfghchiíjklĺľmnoóôpqrŕsštťuúvwxyýzž"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
