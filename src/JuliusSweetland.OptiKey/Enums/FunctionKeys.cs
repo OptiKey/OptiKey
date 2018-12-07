@@ -179,6 +179,7 @@
         RussianRussia,
         ScrollLock,
         SelectVoice,
+        SerbianSerbia,
         ShrinkFromBottom,
         ShrinkFromBottomAndLeft,
         ShrinkFromBottomAndRight,
