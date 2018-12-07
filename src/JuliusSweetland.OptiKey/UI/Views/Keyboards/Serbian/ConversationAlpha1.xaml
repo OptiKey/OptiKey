@@ -45,10 +45,14 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Output Grid.Row="0" Grid.Column="0"
-                         Grid.RowSpan="2" Grid.ColumnSpan="20" 
+                         Grid.RowSpan="2" Grid.ColumnSpan="24" 
                          ScratchpadWidthInKeys="6"
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
@@ -70,9 +74,9 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="р"/>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="t" ShiftDownText="T"
+                      ShiftUpText="т" ShiftDownText="Т"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="t"/>
+                      Value="т"/>
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
                       ShiftUpText="з" ShiftDownText="З"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -148,13 +152,13 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="х"/>
         <controls:Key Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2"
-                      ShiftUpText="j" ShiftDownText="J"
+                      ShiftUpText="ј" ShiftDownText="J"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="j"/>
+                      Value="ј"/>
         <controls:Key Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2"
-                      ShiftUpText="k" ShiftDownText="K"
+                      ShiftUpText="к" ShiftDownText="K"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="k"/>
+                      Value="к"/>
         <controls:Key Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2"
                       ShiftUpText="л" ShiftDownText="Л"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -167,11 +171,7 @@
                       ShiftUpText="ћ" ShiftDownText="Ћ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ћ"/>
-        <controls:Key Grid.Row="3" Grid.Column="23" Grid.ColumnSpan="2"
-                      ShiftUpText="ж" ShiftDownText="Ж"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ж"/>
-        <controls:Key Grid.Row="3" Grid.Column="25"/>
+        <controls:Key Grid.Row="3" Grid.Column="23"/>
 
         <ContentControl Grid.Row="4" Grid.Column="0">
             <ContentControl.Style>
@@ -196,9 +196,9 @@
             </ContentControl.Style>
         </ContentControl>
         <controls:Key Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
-                      ShiftUpText="ѕ" ShiftDownText="Ѕ"
+                      ShiftUpText="ж" ShiftDownText="Ж"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ѕ"/>
+                      Value="ж"/>
         <controls:Key Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
                       ShiftUpText="џ" ShiftDownText="Џ"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -220,20 +220,20 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="н"/>
         <controls:Key Grid.Row="4" Grid.Column="13" Grid.ColumnSpan="2"
-                      ShiftUpText="m" ShiftDownText="M"
+                      ShiftUpText="м" ShiftDownText="M"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="m"/>
-        <controls:Key Grid.Row="4" Grid.Column="15" Grid.ColumnSpan="2"
+                      Value="м"/>
+        <controls:Key Grid.Row="4" Grid.Column="15" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackOneKey}"/>
-        <controls:Key Grid.Row="4" Grid.Column="17" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="19" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource BackManyIcon}"
                       Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
-        <controls:Key Grid.Row="4" Grid.Column="19" />
+        <controls:Key Grid.Row="4" Grid.Column="23" />
 
         <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
@@ -254,26 +254,26 @@
                       Text=","
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value=","/>
-        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="8"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
                       WidthSpan="2" 
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
-        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
                       Text="."
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="."/>
-        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
+        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
                       Text="'"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="'"/>
-        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>
-        <ContentControl Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
