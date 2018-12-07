@@ -170,11 +170,11 @@
     <value>НАЗАД</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>НАЗАД
-ЗА ЈЕДНУ</value>
+    <value>ОБРИШИ
+СЛОВО</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>НАЗАД
+    <value>ОБРИШИ
 РЕЧ</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
@@ -212,7 +212,7 @@
     <value>ОТКАЖИ</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
-    <value>Временско ограничење захвата (мс):</value>
+    <value>Временско ограничење захвата (ms):</value>
   </data>
   <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
     <value>Провери ажурирања при подизању:</value>
@@ -274,7 +274,7 @@
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Лоша вест - Optikey се срушио.
-Били бисмо захвални на слању обавештења са детаљима како је до тога дошло на адресу Optikeyфеедбацк@гмаил.цом
+Били бисмо захвални на слању обавештења са детаљима како је до тога дошло на адресу Optikeyfeedback@gmail.com
 Извињавамо се због непријатности.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
@@ -302,13 +302,13 @@
     <value>Прилагођена датотека тастатуре</value>
   </data>
   <data name="DANISH_DENMARK" xml:space="preserve">
-    <value>Danish (Denmark) / Dansk (Danmark)</value>
+    <value>Danish (Denmark) / Дански (Данска)</value>
   </data>
   <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Danish
 (Denmark) /
-Dansk
-(Danmark)</value>
+Дански
+(Данска)</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
     <value>Начин откривања грешака:</value>
@@ -355,13 +355,13 @@ Dansk
 ДОЛЕ</value>
   </data>
   <data name="DURATION_FORMAT" xml:space="preserve">
-    <value> ({0:#,###}мс)</value>
+    <value> ({0:#,###}ms)</value>
   </data>
   <data name="END" xml:space="preserve">
     <value>END</value>
   </data>
   <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>English (Canada)</value>
+    <value>English (Canada) / Енглески (Канада)</value>
   </data>
   <data name="ENGLISH_UK" xml:space="preserve">
     <value>English (UK)</value>
@@ -445,7 +445,7 @@ Dansk
     <value>Дебљина фонта:</value>
   </data>
   <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>French (France) / FranÃ§aise (France)</value>
+    <value>French (France) / Француски (Француска)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Пуна ширина траке (као % екрана):</value>
@@ -463,7 +463,7 @@ Dansk
     <value>Хоризонтално пуњење (као % екрана):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Време живота непотпуне фиксације (мс):</value>
+    <value>Време живота непотпуне фиксације (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>СМАЊИ
@@ -520,10 +520,10 @@ Dansk
     <value>Трансформација текста на тастеру:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Време фиксације тастера за завршавање (мс):</value>
+    <value>Време фиксације тастера за завршавање (ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Време фиксације за маркирање (мс):</value>
+    <value>Време фиксације за маркирање (ms):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
     <value>Тастер тастатуре за избор тастера:</value>
@@ -626,7 +626,7 @@ Dansk
     <value>Смањени положај:</value>
   </data>
   <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
-    <value>Минимално вријеме задржавања на тастера за укључивање у захват (мс):</value>
+    <value>Минимално вријеме задржавања на тастера за укључивање у захват (ms):</value>
   </data>
   <data name="MISC" xml:space="preserve">
     <value>Разно</value>
@@ -686,7 +686,7 @@ Dansk
     <value>Положај миша</value>
   </data>
   <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
-    <value>Интервал узорковања положаја миша (мс):</value>
+    <value>Интервал узорковања положаја миша (ms):</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
     <value>Клизање мишем 1</value>
@@ -814,21 +814,21 @@ Dansk
 LK</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NUM
-SYM</value>
+    <value>НУМЕРИЧКА 
+ТАСТАТУРА</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
     <value>БРОЈКЕ
 И СИМБОЛИ</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
-    <value>Бројке и симболи 1</value>
+    <value>Бројеви и симболи 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
-    <value>Бројке и симболи 2</value>
+    <value>Бројеви и симболи 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
-    <value>Бројке и симболи 3</value>
+    <value>Бројеви и симболи 3</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>ОК</value>
@@ -867,10 +867,10 @@ UP</value>
     <value>Радијус тачке фиксирања (пиксела):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Време фиксације тачке за довршетак (мс):</value>
+    <value>Време фиксације тачке за довршетак (ms):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Време фиксације за маркирање (мс):</value>
+    <value>Време фиксације за маркирање (ms):</value>
   </data>
   <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
     <value>Радијус тачке маркирања (пиксела):</value>
@@ -957,10 +957,10 @@ SCR</value>
     <value>Растући 2</value>
   </data>
   <data name="RUSSIAN_RUSSIA" xml:space="preserve">
-    <value>Russian (Russia)</value>
+    <value>Russian (Russia) / Руски (Русија)</value>
   </data>
   <data name="SPANISH_SPAIN" xml:space="preserve">
-    <value>Spanish (Spain)</value>
+    <value>Spanish (Spain) / Шпански (Шпанија)</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Исто као положај траке</value>
@@ -1112,7 +1112,7 @@ LK</value>
     <value>Тема:</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
-    <value>Време након којег тачка постане безначајна (мс):</value>
+    <value>Време након којег тачка постане безначајна (ms):</value>
   </data>
   <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
     <value>Сакриј курсор</value>
@@ -1243,7 +1243,7 @@ LK</value>
     <value>Количина обраде тока података:</value>
   </data>
   <data name="GERMAN_GERMANY" xml:space="preserve">
-    <value>German (Germany) / Deutsch (Deutschland)</value>
+    <value>German (Germany) / Немачки (Немачка)</value>
   </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Језик корисничког интерфејса: {0}</value>
@@ -1255,33 +1255,37 @@ LK</value>
     <value>Симулирај стварне ударце тастера током притискања знакова:</value>
   </data>
   <data name="DUTCH_BELGIUM" xml:space="preserve">
-    <value>Dutch (Belgium) / Nederlands (BelgiÃ«)</value>
+    <value>Dutch (Belgium) / Холандски (Белгија)</value>
   </data>
   <data name="DUTCH_NETHERLANDS" xml:space="preserve">
-    <value>Dutch (Netherlands) / Nederlands (Nederland)</value>
+    <value>Dutch (Netherlands) / Холандски (Холандија)</value>
   </data>
   <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>French
 (France) /
-FranÃ§aise
-(France)</value>
+Француски
+(Француска)</value>
   </data>
   <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>German
 (Germany) /
-Deutsch
-(Deutschland)</value>
+Немачки
+(Немачка)</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Искључи повећање миша за поступке клизања:</value>
   </data>
   <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Russian
-(Russia)</value>
+(Russia) /
+Руски
+(Русија)</value>
   </data>
   <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Spanish
-(Spain)</value>
+(Spain) /
+Шпански
+(Шпанија)</value>
   </data>
   <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Динамички мени тастатуре</value>
@@ -1611,7 +1615,7 @@ Deutsch
     <value>АКЦИЈСКИ ТАСТЕРИ ТРАКЕ:</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Посебна подешавања времена фиксације за поједине тастере (мс):</value>
+    <value>Посебна подешавања времена фиксације за поједине тастере (ms):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
     <value>ПРОМЕНИ ТАСТЕРЕ ЈЕЗИКА:</value>
@@ -1647,7 +1651,7 @@ Deutsch
     <value>Одреди времена завршетка појединих тастера:</value>
   </data>
   <data name="GREEK_GREECE" xml:space="preserve">
-    <value>Greek (Greece)</value>
+    <value>Greek (Greece) / Грчки (Грчка)</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
     <value>Управљачка конзола</value>
@@ -1657,7 +1661,9 @@ Deutsch
   </data>
   <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Greek
-(Greece)</value>
+(Greece) /
+Грчки
+(Грчка)</value>
   </data>
   <data name="CROATIAN_CROATIA" xml:space="preserve">
     <value>Croatian (Croatia) / Hrvatski (Hrvatska)</value>
@@ -1671,14 +1677,14 @@ Hrvatski
   <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Dutch
 (Belgium) /
-Nederlands
-(BelgiÃ«)</value>
+Холандски
+(Белгија)</value>
   </data>
   <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Dutch
 (Netherlands) /
-Nederlands
-(Nederland)</value>
+Холандски
+(Холандија)</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Искључите тастере прилагодбе (Alt, Shift, Ctrl, Win) за све акције мишем:</value>
@@ -1686,63 +1692,80 @@ Nederlands
   <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>
 English
-(Canada)
+(Canada) /
+Енглески
+(Канада)
 </value>
   </data>
   <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>
 English
-(UK)
+(UK) /
+Енглески
+(Уједињено краљевство)
 </value>
   </data>
   <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>
 English
-(US)
+(US) /
+Енглески
+(САД)
 </value>
   </data>
   <data name="CATALAN_SPAIN" xml:space="preserve">
-    <value>Catalan (Spain) / CatalÃ  (Espanya)</value>
+    <value>Catalan (Spain) / Каталонски (Шпанија)</value>
   </data>
   <data name="CATALAN_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Catalan
 (Spain) /
-CatalÃ 
-(Espanya)</value>
+Каталонски 
+(Шпанија)</value>
   </data>
   <data name="TURKISH_TURKEY" xml:space="preserve">
-    <value>Turkish (Turkey) / TÃ¼rkÃ§e (TÃ¼rkiye)</value>
+    <value>Turkish (Turkey) / Турски (Турска)</value>
   </data>
   <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Turkish
 (Turkey) /
-TÃ¼rkÃ§e
-(TÃ¼rkiye)</value>
+Турски
+(Турска)</value>
   </data>
   <data name="ITALIAN_ITALY" xml:space="preserve">
-    <value>Italian (Italy) / Italiano (Italia)</value>
+    <value>Italian (Italy) / Италијански (Италија)</value>
   </data>
   <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Italian
 (Italy) /
-Italiano
-(Italia)</value>
+Италијански
+(Италија)</value>
   </data>
   <data name="KOREAN_KOREA" xml:space="preserve">
-    <value>Korean (Korea) / í•œêµ­ì–´ (í•œêµ­)</value>
+    <value>Korean (Korea) / Корејски (Кореја­)</value>
   </data>
   <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Korean
-(Korea)</value>
+(Korea) /
+Корејски
+(Кореја)</value>
+  </data>
+  <data name="SERBIAN_SERBIA" xml:space="preserve">
+    <value>Serbian (Serbia) / Српски (Србија)</value>
+  </data>
+  <data name="SERBIAN_SERBIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Serbian
+(Serbia) /
+Српски
+(Србија)</value>
   </data>
   <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
-    <value>Slovenian (Slovenia) / Slovensko (Slovenija)</value>
+    <value>Slovenian (Slovenia) / Словеначки (Словенија)</value>
   </data>
   <data name="SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Slovenian
 (Slovenia) /
-Slovensko
-(Slovenija)</value>
+Словеначки
+(Словенија)</value>
   </data>
   <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
     <value>Unable to connect to myGaze! Please check that the server is running and the device is connected and try again.</value>
@@ -1751,37 +1774,37 @@ Slovensko
     <value>Visual Interaction myGaze</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
-    <value>Калибрација није успјела!</value>
+    <value>Калибрација није успела!</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Калибрација је успешно завршена!</value>
   </data>
   <data name="POLISH_POLAND" xml:space="preserve">
-    <value>Polish (Poland) / Polski (Polska)</value>
+    <value>Polish (Poland) / Пољски (Пољска)</value>
   </data>
   <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Polish
 (Poland) /
-Polski
-(Polska)</value>
+Пољски
+(Пољска)</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
-    <value>Portuguese (Portugal) / PortuguÃªs (Portugal)</value>
+    <value>Portuguese (Portugal) / Португалски (Португалија)</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Portuguese
 (Portugal) /
-PortuguÃªs
-(Portugal)</value>
+Португалски
+(Португалија)</value>
   </data>
   <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
-    <value>Slovak (Slovakia) / SlovenÄina (Slovensko) </value>
+    <value>Slovak (Slovakia) / Словачки (Словачка) </value>
   </data>
   <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Slovak
 (Slovakia) /
-SlovenÄina
-(Slovensko)</value>
+Словачки
+(Словачка)</value>
   </data>
   <data name="ALIENWARE_17" xml:space="preserve">
     <value>Alienware 17 (EyeX)</value>
@@ -1805,7 +1828,7 @@ SlovenÄina
     <value>Force caps lock (shift locked down):</value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use alphabetical keyboard layout</value>
+    <value>Користи алфабет изглед тастатуре</value>
   </data>
   <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
     <value>Kalman Filter:</value>
@@ -1814,11 +1837,13 @@ SlovenÄina
     <value>Toggle Manual Mode</value>
   </data>
   <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
-    <value>Czech (Czech Rep.) / ÄŒeÅ¡tina (ÄŒesko)</value>
+    <value>Czech (Czech Rep.) / Чешки (Чешка)</value>
   </data>
   <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Czech
-(Czech Rep.)</value>
+(Czech Rep.) / 
+Чешки 
+(Чешка)</value>
   </data>
   <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
     <value>Input mode changed</value>
@@ -1839,7 +1864,7 @@ SlovenÄina
     <value>Enable quit keys?</value>
   </data>
   <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use simplified keyboard layout</value>
+    <value>Користи поједностављен изглед тастатуре</value>
   </data>
   <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Browser
@@ -1850,19 +1875,19 @@ Back</value>
 Forward</value>
   </data>
   <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Browser
-Home</value>
+    <value>Почетна страница
+Претраживача</value>
   </data>
   <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Browser
-Search</value>
+    <value>Претрага
+у Претраживачу</value>
   </data>
   <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
-    <value>Web Browsing</value>
+    <value>Претраживање Интернета</value>
   </data>
   <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Web
-Browsing</value>
+    <value>Претраживање
+Интернета</value>
   </data>
   <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
     <value>Use MaryTTS speech synthesizer?</value>
@@ -1938,6 +1963,9 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
     <value>Folder containing dynamic keyboards:</value>
   </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>Folder containing plugins:</value>
+  </data>
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
     <value>Tobii PCEye Plus</value>
   </data>
@@ -1975,10 +2003,10 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>Enable attention key?</value>
   </data>
   <data name="ATTENTION" xml:space="preserve">
-    <value>ATTENTION</value>
+    <value>ПАЖЊА</value>
   </data>
   <data name="ATTENTION_SOUND" xml:space="preserve">
-    <value>Attention</value>
+    <value>Пажња</value>
   </data>
   <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
     <value>CommuniKate is currently disabled (use QWERTY)</value>
@@ -1987,13 +2015,13 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>Keyboard style for typing:</value>
   </data>
   <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use default keyboard layout</value>
+    <value>Користи уобичајени изглед тастатуре</value>
   </data>
   <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
-    <value>Uh-oh! We've encountered the following errors during startup:</value>
+    <value>Бедак, брате! Десиле су се следеће грешке у току покретанја апликације:</value>
   </data>
   <data name="SELECT_VOICE" xml:space="preserve">
-    <value>SELECT VOICE</value>
+    <value>ИЗАБЕРИ ГЛАС</value>
   </data>
   <data name="MORE" xml:space="preserve">
     <value>Више</value>
@@ -2145,29 +2173,31 @@ Region</value>
     <value>Free</value>
   </data>
   <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>Slow</value>
+    <value>Споро</value>
   </data>
   <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>Medium</value>
+    <value>Срдње</value>
   </data>
   <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>Fast</value>
+    <value>Брзо</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
-    <value>French (Canada) / FranÃ§aise (Canada)</value>
+    <value>French (Canada) / Француски (Француска)</value>
   </data>
   <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>French
 (Canada) /
-FranÃ§aise
-(Canada)</value>
+Француски
+(Канада)</value>
   </data>
   <data name="JAPANESE_JAPAN" xml:space="preserve">
-    <value>Japanese (Japan) / æ—¥æœ¬èªž (æ—¥æœ¬)</value>
+    <value>Japanese (Japan) / Јапански (Јапан)</value>
   </data>
   <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Japanese
-(Japan)</value>
+(Japan) / 
+Јапански 
+(Јапан)</value>
   </data>
   <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
     <value>CommuniKate sound volume:</value>
@@ -2182,9 +2212,66 @@ FranÃ§aise
     <value>Volume of speech when speaking CommuniKate button text:</value>
   </data>
   <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
-    <value>Are you sure you would like to switch to manual mode?</value>
+    <value>Да ли сте сигурни да желите да пређете на ручни начин рада?</value>
   </data>
   <data name="MANUAL_MODE" xml:space="preserve">
-    <value>MANUAL MODE</value>
+    <value>РУЧНИ НАЧИН РАДА</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>Location of Presage database .db file:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>Number of Presage suggestions to show:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>Available plugins</value>
+  </data>
+  <data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
+  <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>Refresh plugins</value>
+  </data>
+  <data name="RESTART" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Are you absolutely sure that you'd like to restart OptiKey?</value>
+  </data>
+  <data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>Are you sure you'd like to restart OptiKey?</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>DYNAMIC KEYBOARD</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>ПРЕТРАЖИВАЊЕ ИНТЕРНЕТА</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>Ukrainian (Ukraine) / Украјински (Украјина)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ukrainian
+(Ukraine) /
+Украјински
+(Украјина)</value>
+  </data>
+  <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Data stream processing amount:</value>
+  </data>
+  <data name="IRISBOND_DUO" xml:space="preserve">
+    <value>IrisBond Duo</value>
+  </data>
+  <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>IrisBond tracker could not be started.</value>
+  </data>
+  <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>IrisBond tracker cannot found. Please check the tracker's connection and try again.</value>
+  </data>
+  <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
+    <value>Calibration completed (success or failure), but everything is working again!</value>
   </data>
 </root>
