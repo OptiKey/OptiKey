@@ -91,7 +91,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.PolishPoland: return CultureInfo.GetCultureInfo("pl-PL");
                 case Languages.PortuguesePortugal: return CultureInfo.GetCultureInfo("pt-PT");
                 case Languages.RussianRussia: return CultureInfo.GetCultureInfo("ru-RU");
-                case Languages.SerbianSerbia: return CultureInfo.GetCultureInfo("sr-RS");
+                case Languages.SerbianSerbia: return CultureInfo.GetCultureInfo("sr-Cyrl-RS");
                 case Languages.SlovakSlovakia: return CultureInfo.GetCultureInfo("sk-SK");
                 case Languages.SlovenianSlovenia: return CultureInfo.GetCultureInfo("sl-SI");
                 case Languages.SpanishSpain: return CultureInfo.GetCultureInfo("es-ES");
