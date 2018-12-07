@@ -1197,28 +1197,28 @@ LK</value>
 (лево, горе, десно, доле у пикселима):</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
-    <value>НАЗАД ЗА ЈЕДНУ</value>
+    <value>ОБРИШИ СЛОВО</value>
   </data>
   <data name="BACK_WORD" xml:space="preserve">
-    <value>НАЗАД РЕЧ</value>
+    <value>ОБРИШИ РЕЧ</value>
   </data>
   <data name="SUGGESTION_1" xml:space="preserve">
-    <value>ПРИЈЕДЛОГ 1</value>
+    <value>ПРЕДЛОГ 1</value>
   </data>
   <data name="SUGGESTION_2" xml:space="preserve">
-    <value>ПРИЈЕДЛОГ 2</value>
+    <value>ПРЕДЛОГ 2</value>
   </data>
   <data name="SUGGESTION_3" xml:space="preserve">
-    <value>ПРИЈЕДЛОГ 3</value>
+    <value>ПРЕДЛОГ 3</value>
   </data>
   <data name="SUGGESTION_4" xml:space="preserve">
-    <value>ПРИЈЕДЛОГ 4</value>
+    <value>ПРЕДЛОГ 4</value>
   </data>
   <data name="SUGGESTION_5" xml:space="preserve">
-    <value>ПРИЈЕДЛОГ 5</value>
+    <value>ПРЕДЛОГ 5</value>
   </data>
   <data name="SUGGESTION_6" xml:space="preserve">
-    <value>ПРИЈЕДЛОГ 6</value>
+    <value>ПРЕДЛОГ 6</value>
   </data>
   <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
     <value>Тастери предлога</value>
@@ -1350,13 +1350,13 @@ LK</value>
     <value>СМАЊИ ПРОВИДНОСТ</value>
   </data>
   <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
-    <value>БРОЈКЕ И СИМБОЛИ 1</value>
+    <value>БРОЈЕВИ И СИМБОЛИ 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
-    <value>БРОЈКЕ И СИМБОЛИ 2</value>
+    <value>БРОЈЕВИ И СИМБОЛИ 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
-    <value>БРОЈКЕ И СИМБОЛИ 3</value>
+    <value>БРОЈЕВИ И СИМБОЛИ 3</value>
   </data>
   <data name="PHYSICAL_KEYS" xml:space="preserve">
     <value>ФИЗИЧКИ ТАСТЕРИ</value>
@@ -1365,7 +1365,7 @@ LK</value>
     <value>ВЕЛИЧИНА И ПОЛОЖАЈ</value>
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
-    <value>МАГНЕТСКИ КУРСОР</value>
+    <value>МАГНЕТНИ КУРСОР</value>
   </data>
   <data name="MIDDLE_CLICK" xml:space="preserve">
     <value>СРЕДЊИ КЛИК</value>
