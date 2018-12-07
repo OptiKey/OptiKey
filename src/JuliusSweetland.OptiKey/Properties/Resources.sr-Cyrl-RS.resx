@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
+﻿<root>
   <!-- 
     Microsoft ResX Schema 
     
@@ -118,230 +117,230 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Dodaj</value>
+    <value>Додај</value>
   </data>
   <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
-    <value>Dodaj novi unos:</value>
+    <value>Додај нови унос:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>
-Da li želite u rečnik dodati izraz '{0}' sa kraticom '{1}'?</value>
+Да ли желите у речник додати израз '{0}' са кратицом '{1}'?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DODAJ U
-REČNIK</value>
+    <value>ДОДАЈ У
+РЕЧНИК</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Da li želite dodati reč '{0}' u rečnik?</value>
+    <value>Да ли желите додати реч '{0}' у речник?</value>
   </data>
   <data name="ADDED" xml:space="preserve">
-    <value>Dodano</value>
+    <value>Додано</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
-    <value>Podesi za {0} piksel|Podesi za {0} piksela</value>
+    <value>Подеси за {0} пиксел|Подеси за {0} пиксела</value>
   </data>
   <data name="ALPHA_1" xml:space="preserve">
-    <value>SLOVA 1</value>
+    <value>СЛОВА 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
   </data>
   <data name="ANDROID_DARK" xml:space="preserve">
-    <value>Android tamna</value>
+    <value>Андроид тамна</value>
   </data>
   <data name="ANDROID_LIGHT" xml:space="preserve">
-    <value>Android svetla</value>
+    <value>Андроид светла</value>
   </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
-    <value>Automatska velika slova:</value>
+    <value>Аутоматска велика слова:</value>
   </data>
   <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
-    <value>Dovrši reči automatski:</value>
+    <value>Доврши речи аутоматски:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
-    <value>Automatska popravka rečenice</value>
+    <value>Аутоматска поправка реченице</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
-    <value>Automatski razmak između reči:</value>
+    <value>Аутоматски размак између речи:</value>
   </data>
   <data name="BACK" xml:space="preserve">
-    <value>NAZAD</value>
+    <value>НАЗАД</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NAZAD
-ZA JEDNU</value>
+    <value>НАЗАД
+ЗА ЈЕДНУ</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NAZAD
-REČ</value>
+    <value>НАЗАД
+РЕЧ</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Bass nije uspeo pustiti zvuk iz datoteke '{0}' </value>
+    <value>Басс није успео пустити звук из датотеке '{0}' </value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
-    <value>Dno</value>
+    <value>Дно</value>
   </data>
   <data name="BREAK" xml:space="preserve">
-    <value>PREKID</value>
+    <value>ПРЕКИД</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Kalibracija otkazana uz poruku: '{0}'</value>
+    <value>Калибрација отказана уз поруку: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Da li želite ponovno da kalibrišete?</value>
+    <value>Да ли желите поновно да калибришете?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>Dogodila se greška tokom kalibracije. Poruka: '{0}'</value>
+    <value>Догодила се грешка током калибрације. Порука: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Kalibracija nije uspela uz poruku: '{0}'</value>
+    <value>Калибрација није успела уз поруку: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
-    <value>Kalibracija ne može biti završena bez ručne intervencije, tj. korišćenja miša. Mogli biste ostati zaglavljeni u kalibracionom procesu ako ne možete ručno upravljati računarom.
-Da li ste sigurni da želite ponovno kalibrisati?</value>
+    <value>Калибрација не може бити завршена без ручне интервенције, тј. коришћења миша. Могли бисте остати заглављени у калибрационом процесу ако не можете ручно управљати рачунаром.
+Да ли сте сигурни да желите поновно калибрисати?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Kalibracija je zaustavljena iz nepoznatog razloga. Poruka: '{0}'</value>
+    <value>Калибрација је заустављена из непознатог разлога. Порука: '{0}'</value>
   </data>
   <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
-    <value>Kalibracija je uspešno završena! Preciznost (prosečna greška u stepeni = {0})</value>
+    <value>Калибрација је успешно завршена! Прецизност (просечна грешка у степени = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
-    <value>OTKAŽI</value>
+    <value>ОТКАЖИ</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
-    <value>Vremensko ograničenje zahvata (ms):</value>
+    <value>Временско ограничење захвата (мс):</value>
   </data>
   <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
-    <value>Proveri ažuriranja pri podizanju:</value>
+    <value>Провери ажурирања при подизању:</value>
   </data>
   <data name="CLEAR" xml:space="preserve">
-    <value>OČISTI</value>
+    <value>ОЧИСТИ</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>KLIKNI
-I POVUCI</value>
+    <value>КЛИКНИ
+И ПОВУЦИ</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
-    <value>Klik 1</value>
+    <value>Клик 1</value>
   </data>
   <data name="CLICK_SOUND_2" xml:space="preserve">
-    <value>Klik 2</value>
+    <value>Клик 2</value>
   </data>
   <data name="CLICK_SOUND_3" xml:space="preserve">
-    <value>Klik 3</value>
+    <value>Клик 3</value>
   </data>
   <data name="CLICK_SOUND_4" xml:space="preserve">
-    <value>Klik 4</value>
+    <value>Клик 4</value>
   </data>
   <data name="CLICK_SOUND_5" xml:space="preserve">
-    <value>Klik 5</value>
+    <value>Клик 5</value>
   </data>
   <data name="CLICK_SOUND_6" xml:space="preserve">
-    <value>Klik 6</value>
+    <value>Клик 6</value>
   </data>
   <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-TRAKU</value>
+    <value>СМАЊИ
+ТРАКУ</value>
   </data>
   <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
-    <value>Debljina smanjene trake (kao % pune debljine trake):</value>
+    <value>Дебљина смањене траке (као % пуне дебљине траке):</value>
   </data>
   <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
-    <value>MENI</value>
+    <value>МЕНИ</value>
   </data>
   <data name="CONVERSATION" xml:space="preserve">
-    <value>RAZGOVOR</value>
+    <value>РАЗГОВОР</value>
   </data>
   <data name="CONVERSATION_LAYOUT" xml:space="preserve">
-    <value>Razgovor Slova</value>
+    <value>Разговор Слова</value>
   </data>
   <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
-    <value>Razgovor Brojevi i Simboli</value>
+    <value>Разговор Бројеви и Симболи</value>
   </data>
   <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
-    <value>Samo način razgovora:</value>
+    <value>Само начин разговора:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey je primetio da je Vaša datoteka sa korisničkim podešavanjima pokvarena i mora biti popravljena vraćanjem stare ili originalne verzije.
-Kliknite Da za resetovanje Vaših podešavanja i restartovanje.
-Kliknite Ne za zatvaranje kako biste mogli ručno popraviti ili kopirati Vašu datoteku korisničkih podešavanja.</value>
+    <value>Optikey је приметио да је Ваша датотека са корисничким подешавањима покварена и мора бити поправљена враћањем старе или оригиналне верзије.
+Кликните Да за ресетовање Ваших подешавања и рестартовање.
+Кликните Не за затварање како бисте могли ручно поправити или копирати Вашу датотеку корисничких подешавања.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
-    <value>Greška! Vaša datoteka korisničkih podešavanja je pokvarena.</value>
+    <value>Грешка! Ваша датотека корисничких подешавања је покварена.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Loša vest - OptiKey se srušio.
-Bili bismo zahvalni na slanju obaveštenja sa detaljima kako je do toga došlo na adresu optikeyfeedback@gmail.com
-Izvinjavamo se zbog neprijatnosti.</value>
+    <value>Лоша вест - Optikey се срушио.
+Били бисмо захвални на слању обавештења са детаљима како је до тога дошло на адресу Optikeyфеедбацк@гмаил.цом
+Извињавамо се због непријатности.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
-    <value>Greška!</value>
+    <value>Грешка!</value>
   </data>
   <data name="CTRL" xml:space="preserve">
     <value>CTRL</value>
   </data>
   <data name="CURRENCIES" xml:space="preserve">
-    <value>VALUTE</value>
+    <value>ВАЛУТЕ</value>
   </data>
   <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
-    <value>Valute 1</value>
+    <value>Валуте 1</value>
   </data>
   <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
-    <value>Valute 2</value>
+    <value>Валуте 2</value>
   </data>
   <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
-    <value>Visina kursora (piksela):</value>
+    <value>Висина курсора (пиксела):</value>
   </data>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
-    <value>Širina kursora (piksela):</value>
+    <value>Ширина курсора (пиксела):</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
-    <value>Način otkrivanja grešaka:</value>
+    <value>Начин откривања грешака:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POVEĆAJ
-PROVIDNOST</value>
+    <value>ПОВЕЋАЈ
+ПРОВИДНОСТ</value>
   </data>
   <data name="DEL" xml:space="preserve">
     <value>DEL</value>
   </data>
   <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Obriši</value>
+    <value>Обриши</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>DIJAKRITIČKI ZNAKOVI</value>
+    <value>ДИЈАКРИТИЧКИ ЗНАКОВИ</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
-    <value>Dijakritički znakovi 1</value>
+    <value>Дијакритички знакови 1</value>
   </data>
   <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
-    <value>Dijakritički znakovi 2</value>
+    <value>Дијакритички знакови 2</value>
   </data>
   <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
-    <value>Dijakritički znakovi 3</value>
+    <value>Дијакритички знакови 3</value>
   </data>
   <data name="DICTIONARY" xml:space="preserve">
-    <value>Rečnik</value>
+    <value>Речник</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>Ne postoji korisnički rečnik, a izvorni rečnik nije pronađen na stazi: '{0}'</value>
+    <value>Не постоји кориснички речник, а изворни речник није пронађен на стази: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
-    <value>Trajanje prikaza X sekundi po znaku poruke:</value>
+    <value>Трајање приказа X секунди по знаку поруке:</value>
   </data>
   <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
-    <value>Uradi na trenutnoj lokaciji...</value>
+    <value>Уради на тренутној локацији...</value>
   </data>
   <data name="DO_AT_POINT" xml:space="preserve">
-    <value>Uradi na položaju...</value>
+    <value>Уради на положају...</value>
   </data>
   <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>STRELICA
-DOLE</value>
+    <value>СТРЕЛИЦА
+ДОЛЕ</value>
   </data>
   <data name="DURATION_FORMAT" xml:space="preserve">
-    <value> ({0:#,###}ms)</value>
+    <value> ({0:#,###}мс)</value>
   </data>
   <data name="END" xml:space="preserve">
     <value>END</value>
@@ -350,430 +349,430 @@ DOLE</value>
     <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Odlično. '{0}' je dodano u rečnik.</value>
+    <value>Одлично. '{0}' је додано у речник.</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
-    <value>Greška:</value>
+    <value>Грешка:</value>
   </data>
   <data name="ESC" xml:space="preserve">
     <value>ESC</value>
   </data>
   <data name="EXPAND" xml:space="preserve">
-    <value>PROŠIRI</value>
+    <value>ПРОШИРИ</value>
   </data>
   <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PROŠIRI
-TRAKU</value>
+    <value>ПРОШИРИ
+ТРАКУ</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PROŠIRI
-DOLE I LEVO</value>
+    <value>ПРОШИРИ
+ДОЛЕ И ЛЕВО</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PROŠIRI
-DOLE I DESNO</value>
+    <value>ПРОШИРИ
+ДОЛЕ И ДЕСНО</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PROŠIRI
-DOLE</value>
+    <value>ПРОШИРИ
+ДОЛЕ</value>
   </data>
   <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PROŠIRI
-LEVO</value>
+    <value>ПРОШИРИ
+ЛЕВО</value>
   </data>
   <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PROŠIRI
-DESNO</value>
+    <value>ПРОШИРИ
+ДЕСНО</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PROŠIRI
-GORE I LEVO</value>
+    <value>ПРОШИРИ
+ГОРЕ И ЛЕВО</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PROŠIRI
-GORE I DESNO</value>
+    <value>ПРОШИРИ
+ГОРЕ И ДЕСНО</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PROŠIRI
-GORE</value>
+    <value>ПРОШИРИ
+ГОРЕ</value>
   </data>
   <data name="FALLING_SOUND_1" xml:space="preserve">
-    <value>Padajući 1</value>
+    <value>Падајући 1</value>
   </data>
   <data name="FALLING_SOUND_2" xml:space="preserve">
-    <value>Padajući 2</value>
+    <value>Падајући 2</value>
   </data>
   <data name="FILL_PIE" xml:space="preserve">
-    <value>Animacija sata</value>
+    <value>Анимација сата</value>
   </data>
   <data name="FIXATIONS_DWELL" xml:space="preserve">
-    <value>Fiksacije (zadržavanje)</value>
+    <value>Фиксације (задржавање)</value>
   </data>
   <data name="FONT" xml:space="preserve">
-    <value>Font</value>
+    <value>Фонт</value>
   </data>
   <data name="FONT_FAMILY_LABEL" xml:space="preserve">
-    <value>Familija fontova:</value>
+    <value>Фамилија фонтова:</value>
   </data>
   <data name="FONT_STRETCH_LABEL" xml:space="preserve">
-    <value>Raširi font:</value>
+    <value>Рашири фонт:</value>
   </data>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
-    <value>Debljina fonta:</value>
+    <value>Дебљина фонта:</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>Puna širina trake (kao % ekrana):</value>
+    <value>Пуна ширина траке (као % екрана):</value>
   </data>
   <data name="GROW" xml:space="preserve">
-    <value>Povećaj</value>
+    <value>Повећај</value>
   </data>
   <data name="HOME" xml:space="preserve">
     <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Horizontalno punjenje (kao % ekrana):</value>
+    <value>Хоризонтално пуњење (као % екрана):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Vreme života nepotpune fiksacije (ms):</value>
+    <value>Време живота непотпуне фиксације (мс):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-PROVIDNOST
+    <value>СМАЊИ
+ПРОВИДНОСТ
 </value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
-    <value>Obavesti:</value>
+    <value>Обавести:</value>
   </data>
   <data name="INS" xml:space="preserve">
     <value>INS</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>...ali inteligentno izbegni automatska velika slova gde to verovatno nije potrebno:</value>
+    <value>...али интелигентно избегни аутоматска велика слова где то вероватно није потребно:</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
-    <value>Trenutna kombinacija tastarue i jezika nije moguća</value>
+    <value>Тренутна комбинација тастаруе и језика није могућа</value>
   </data>
   <data name="JUMP" xml:space="preserve">
-    <value>SKOČI</value>
+    <value>СКОЧИ</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SKOČI
-DOLE I LEVO</value>
+    <value>СКОЧИ
+ДОЛЕ И ЛЕВО</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SKOČI
-DOLE I DESNO</value>
+    <value>СКОЧИ
+ДОЛЕ И ДЕСНО</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SKOČI
-DOLE</value>
+    <value>СКОЧИ
+ДОЛЕ</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SKOČI
-LEVO</value>
+    <value>СКОЧИ
+ЛЕВО</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SKOČI
-DESNO</value>
+    <value>СКОЧИ
+ДЕСНО</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SKOČI
-GORE I LEVO</value>
+    <value>СКОЧИ
+ГОРЕ И ЛЕВО</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SKOČI
-GORE I DESNO</value>
+    <value>СКОЧИ
+ГОРЕ И ДЕСНО</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SKOČI
-GORE</value>
+    <value>СКОЧИ
+ГОРЕ</value>
   </data>
   <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Transformacija teksta na tasteru:</value>
+    <value>Трансформација текста на тастеру:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Vreme fiksacije tastera za završavanje (ms):</value>
+    <value>Време фиксације тастера за завршавање (мс):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Vreme fiksacije za markiranje (ms):</value>
+    <value>Време фиксације за маркирање (мс):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Taster tastature za izbor tastera:</value>
+    <value>Тастер тастатуре за избор тастера:</value>
   </data>
   <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Taster miša za izbor tastera:</value>
+    <value>Тастер миша за избор тастера:</value>
   </data>
   <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
-    <value>Izbor tastera:</value>
+    <value>Избор тастера:</value>
   </data>
   <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Izvor izbora tastera:</value>
+    <value>Извор избора тастера:</value>
   </data>
   <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
-    <value>Izbor tastera: {0}</value>
+    <value>Избор тастера: {0}</value>
   </data>
   <data name="KEYBOARD_KEY" xml:space="preserve">
-    <value>Taster tastature</value>
+    <value>Тастер тастатуре</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
-    <value>Jezik</value>
+    <value>Језик</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Jezik tastature: {0}</value>
+    <value>Језик тастатуре: {0}</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Jezik tastature:</value>
+    <value>Језик тастатуре:</value>
   </data>
   <data name="LEFT" xml:space="preserve">
-    <value>Levo</value>
+    <value>Лево</value>
   </data>
   <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>STRELICA
-LEVO</value>
+    <value>СТРЕЛИЦА
+ЛЕВО</value>
   </data>
   <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEVI
-KLIK</value>
+    <value>ЛЕВИ
+КЛИК</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEVI
-DUPLI KLIK</value>
+    <value>ЛЕВИ
+ДУПЛИ КЛИК</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEVO
-DOLE/GORE</value>
+    <value>ЛЕВО
+ДОЛЕ/ГОРЕ</value>
   </data>
   <data name="LOOK" xml:space="preserve">
-    <value>Izgled</value>
+    <value>Изглед</value>
   </data>
   <data name="LOWER_CASE" xml:space="preserve">
-    <value>Sve malim slovima</value>
+    <value>Све малим словима</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MAGNETNI
-KURSOR</value>
+    <value>МАГНЕТНИ
+КУРСОР</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
-    <value>LUPA</value>
+    <value>ЛУПА</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Povećaj destinaciju (kao % ekrana):</value>
+    <value>Повећај дестинацију (као % екрана):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Povećaj izvor (kao % ekrana):</value>
+    <value>Повећај извор (као % екрана):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
-    <value>Upravljačka konzola: ALT + M</value>
+    <value>Управљачка конзола: ALT + М</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Upravljačka konzola OptiKey-a</value>
+    <value>Управљачка конзола Optikey-а</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
-    <value>Maksimalan broj podudaranja sa rečnikom:</value>
+    <value>Максималан број подударања са речником:</value>
   </data>
   <data name="MENU" xml:space="preserve">
-    <value>MENU</value>
+    <value>МЕНИ</value>
   </data>
   <data name="MENU_LAYOUT" xml:space="preserve">
-    <value>Menu</value>
+    <value>МЕНИ</value>
   </data>
   <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SREDNJI
-KLIK</value>
+    <value>СРЕДЊИ
+КЛИК</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SREDNJA
-DOLE/GORE</value>
+    <value>СРЕДЊА
+ДОЛЕ/ГОРЕ</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
-    <value>SMANJI</value>
+    <value>СМАЊИ</value>
   </data>
   <data name="MINIMISED_LAYOUT" xml:space="preserve">
-    <value>Smanjeno</value>
+    <value>Смањено</value>
   </data>
   <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
-    <value>Smanjeni položaj:</value>
+    <value>Смањени положај:</value>
   </data>
   <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
-    <value>Minimalno vrijeme zadržavanja na tastera za uključivanje u zahvat (ms):</value>
+    <value>Минимално вријеме задржавања на тастера за укључивање у захват (мс):</value>
   </data>
   <data name="MISC" xml:space="preserve">
-    <value>Razno</value>
+    <value>Разно</value>
   </data>
   <data name="MOUSE" xml:space="preserve">
-    <value>MIŠ</value>
+    <value>МИШ</value>
   </data>
   <data name="MOUSE_BUTTON" xml:space="preserve">
-    <value>Taster miša</value>
+    <value>Тастер миша</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
-    <value>Klik miša 1</value>
+    <value>Клик миша 1</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
-    <value>Klik miša 2</value>
+    <value>Клик миша 2</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
-    <value>Klik miša 3</value>
+    <value>Клик миша 3</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
-    <value>Klik miša 4</value>
+    <value>Клик миша 4</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
-    <value>Klik miša:</value>
+    <value>Клик миша:</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
-    <value>Dupli klik miša 1</value>
+    <value>Дупли клик миша 1</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
-    <value>Dupli klik miša 2</value>
+    <value>Дупли клик миша 2</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
-    <value>Dupli klik miša 3</value>
+    <value>Дупли клик миша 3</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
-    <value>Dupli klik miša:</value>
+    <value>Дупли клик миша:</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
-    <value>Taster miša pritisnut 1</value>
+    <value>Тастер миша притиснут 1</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
-    <value>Taster miša pritisnut 2</value>
+    <value>Тастер миша притиснут 2</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
-    <value>Taster miša pritisnut 3</value>
+    <value>Тастер миша притиснут 3</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
-    <value>Taster miša pritisnut 4</value>
+    <value>Тастер миша притиснут 4</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
-    <value>Taster miša pritisnut:</value>
+    <value>Тастер миша притиснут:</value>
   </data>
   <data name="MOUSE_LAYOUT" xml:space="preserve">
-    <value>Miš</value>
+    <value>Миш</value>
   </data>
   <data name="MOUSE_POSITION" xml:space="preserve">
-    <value>Položaj miša</value>
+    <value>Положај миша</value>
   </data>
   <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
-    <value>Interval uzorkovanja položaja miša (ms):</value>
+    <value>Интервал узорковања положаја миша (мс):</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
-    <value>Klizanje mišem 1</value>
+    <value>Клизање мишем 1</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
-    <value>Klizanje mišem 2</value>
+    <value>Клизање мишем 2</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
-    <value>Klizanje mišem 3</value>
+    <value>Клизање мишем 3</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
-    <value>Klizanje mišem 4</value>
+    <value>Клизање мишем 4</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
-    <value>Klizanje mišem 5</value>
+    <value>Клизање мишем 5</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
-    <value>Klizanje mišem 6</value>
+    <value>Клизање мишем 6</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
-    <value>Klizanje mišem:</value>
+    <value>Клизање мишем:</value>
   </data>
   <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
-    <value>Taster miša pušten 1</value>
+    <value>Тастер миша пуштен 1</value>
   </data>
   <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
-    <value>Taster miša pušten 2</value>
+    <value>Тастер миша пуштен 2</value>
   </data>
   <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
-    <value>Taster miša pušten 3</value>
+    <value>Тастер миша пуштен 3</value>
   </data>
   <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
-    <value>Taster miša pušten 4</value>
+    <value>Тастер миша пуштен 4</value>
   </data>
   <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
-    <value>Taster miša pušten:</value>
+    <value>Тастер миша пуштен:</value>
   </data>
   <data name="MOVE" xml:space="preserve">
-    <value>POMERI</value>
+    <value>ПОМЕРИ</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>Pomeri za {0} piksel|Pomeri za {0} piksela</value>
+    <value>Помери за {0} пиксел|Помери за {0} пиксела</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POMERI
-DOLE I LEVO</value>
+    <value>ПОМЕРИ
+ДОЛЕ И ЛЕВО</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POMERI
-DOLE I LEVO</value>
+    <value>ПОМЕРИ
+ДОЛЕ И ЛЕВО</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POMERI
-DOLE</value>
+    <value>ПОМЕРИ
+ДОЛЕ</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POMERI
-LEVO</value>
+    <value>ПОМЕРИ
+ЛЕВО</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POMERI
-DESNO</value>
+    <value>ПОМЕРИ
+ДЕСНО</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POMERI
-NA</value>
+    <value>ПОМЕРИ
+НА</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POMERI
-GORE I LEVO</value>
+    <value>ПОМЕРИ
+ГОРЕ И ЛЕВО</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POMERI GORE I DESNO</value>
+    <value>ПОМЕРИ ГОРЕ И ДЕСНО</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>POMERI
-GORE</value>
+    <value>ПОМЕРИ
+ГОРЕ</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
-    <value>Zahvat više tastera</value>
+    <value>Захват више тастера</value>
   </data>
   <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
-    <value>Zahvat više tastera omogućen:</value>
+    <value>Захват више тастера омогућен:</value>
   </data>
   <data name="MULTI_KEY_SELECTION" xml:space="preserve">
-    <value>Izbor više tastera</value>
+    <value>Избор више тастера</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Kraj izbora više tastera:</value>
+    <value>Крај избора више тастера:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>IZBOR
-VIŠE TASTERA</value>
+    <value>ИЗБОР
+ВИШЕ ТАСТЕРА</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Početak izbora više tastera:</value>
+    <value>Почетак избора више тастера:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
-(Novi unos u rečnik će sadržati velika slova)</value>
+(Нови унос у речник ће садржати велика слова)</value>
   </data>
   <data name="NEXT" xml:space="preserve">
-    <value>DALJE</value>
+    <value>ДАЉЕ</value>
   </data>
   <data name="NO" xml:space="preserve">
-    <value>NE</value>
+    <value>НЕ</value>
   </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
-    <value>Izgleda da skica ne sadrži reči ili izraze koji već postoje u rečnik.</value>
+    <value>Изгледа да скица не садржи речи или изразе који већ постоје у речник.</value>
   </data>
   <data name="NO_SOUND" xml:space="preserve">
-    <value>Bez</value>
+    <value>Без</value>
   </data>
   <data name="NOTHING_NEW" xml:space="preserve">
-    <value>Hmm, ništa novog ovde!</value>
+    <value>Хмм, ништа новог овде!</value>
   </data>
   <data name="NOTIFICATIONS" xml:space="preserve">
-    <value>Obaveštenja</value>
+    <value>Обавештења</value>
   </data>
   <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NUM
@@ -784,29 +783,29 @@ LK</value>
 SYM</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>BROJKE
-I SIMBOLI</value>
+    <value>БРОЈКЕ
+И СИМБОЛИ</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
-    <value>Brojke i simboli 1</value>
+    <value>Бројке и симболи 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
-    <value>Brojke i simboli 2</value>
+    <value>Бројке и симболи 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
-    <value>Brojke i simboli 3</value>
+    <value>Бројке и симболи 3</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>OK</value>
+    <value>ОК</value>
   </data>
   <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Kucaj · Klikni · Govori</value>
+    <value>Optikey : Куцај · Кликни · Говори</value>
   </data>
   <data name="OTHER" xml:space="preserve">
-    <value>Ostalo</value>
+    <value>Остало</value>
   </data>
   <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
-    <value>Glavni prozor ne može biti pronađen. Nije moguće nastaviti </value>
+    <value>Главни прозор не може бити пронађен. Није могуће наставити </value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>PG
@@ -817,421 +816,421 @@ DN</value>
 UP</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
-    <value>Fizički tasteri</value>
+    <value>Физички тастери</value>
   </data>
   <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>FIZIČKI
-TASTERI</value>
+    <value>ФИЗИЧКИ
+ТАСТЕРИ</value>
   </data>
   <data name="PLAY_SOUND" xml:space="preserve">
-    <value>Play</value>
+    <value>Пусти</value>
   </data>
   <data name="POINT_AND_SELECTING" xml:space="preserve">
-    <value>Označavanje i izbor</value>
+    <value>Означавање и избор</value>
   </data>
   <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
-    <value>Radijus tačke fiksiranja (piksela):</value>
+    <value>Радијус тачке фиксирања (пиксела):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Vreme fiksacije tačke za dovršetak (ms):</value>
+    <value>Време фиксације тачке за довршетак (мс):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Vreme fiksacije za markiranje (ms):</value>
+    <value>Време фиксације за маркирање (мс):</value>
   </data>
   <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
-    <value>Radijus tačke markiranja (piksela):</value>
+    <value>Радијус тачке маркирања (пиксела):</value>
   </data>
   <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
-    <value>Izbor tačke: {0}</value>
+    <value>Избор тачке: {0}</value>
   </data>
   <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Taster tastature za izbor tačke:</value>
+    <value>Тастер тастатуре за избор тачке:</value>
   </data>
   <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Taster miša za izbor tačke:</value>
+    <value>Тастер миша за избор тачке:</value>
   </data>
   <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Izvor izbora tačke:</value>
+    <value>Извор избора тачке:</value>
   </data>
   <data name="POINTING" xml:space="preserve">
-    <value>Usmeravanje</value>
+    <value>Усмеравање</value>
   </data>
   <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
-    <value>Usmeravanje: {0}</value>
+    <value>Усмеравање: {0}</value>
   </data>
   <data name="PREV" xml:space="preserve">
-    <value>PRETHODNO</value>
+    <value>ПРЕТХОДНО</value>
   </data>
   <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PRNT
+    <value>Prnt
 SCR</value>
   </data>
   <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
-    <value>PROBLEM SA UČITAVANJEM TASTATURE</value>
+    <value>ПРОБЛЕМ СА УЧИТАВАЊЕМ ТАСТАТУРЕ</value>
   </data>
   <data name="QUIT" xml:space="preserve">
-    <value>KRAJ</value>
+    <value>КРАЈ</value>
   </data>
   <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Da li ste potpuno sigurni da želite završiti?</value>
+    <value>Да ли сте потпуно сигурни да желите завршити?</value>
   </data>
   <data name="QUIT_MESSAGE" xml:space="preserve">
-    <value>Da li ste sigurni da želite završiti?</value>
+    <value>Да ли сте сигурни да желите завршити?</value>
   </data>
   <data name="RATE_LABEL" xml:space="preserve">
-    <value>Brzina:</value>
+    <value>Брзина:</value>
   </data>
   <data name="RE_CALIBRATE" xml:space="preserve">
-    <value>PONOVNO KALIBRIRANJE</value>
+    <value>ПОНОВНО КАЛИБРИРАЊЕ</value>
   </data>
   <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PONOVI
-ZADNJE</value>
+    <value>ПОНОВИ
+ЗАДЊЕ</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
-    <value>Zvučne i/ili rečničke usluge nisu dostavljene akciji upravljanja prozorom. </value>
+    <value>Звучне и/или речничке услуге нису достављене акцији управљања прозором. </value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Optikey se treba ponovno pokrenuti da bi se primenile vaše promene.
-Molimo pritisnite OK za nastavak ponovnog pokretanja, ili ODUSTANI da biste odustali od promena</value>
+    <value>Optikey се треба поновно покренути да би се примениле ваше промене.
+Молимо притисните ОК за наставак поновног покретања, или ОДУСТАНИ да бисте одустали од промена</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Vrati</value>
+    <value>Врати</value>
   </data>
   <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Nastavak nepotpune fiksacije tastera zahteva novo markiranje:</value>
+    <value>Наставак непотпуне фиксације тастера захтева ново маркирање:</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
-    <value>Desno</value>
+    <value>Десно</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DESNO
-STRELICA</value>
+    <value>ДЕСНО
+СТРЕЛИЦА</value>
   </data>
   <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DESNO
-KLIK</value>
+    <value>ДЕСНО
+КЛИК</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DESNO
-DOLE/GORE</value>
+    <value>ДЕСНО
+ДОЛЕ/ГОРЕ</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
-    <value>Rastući 1</value>
+    <value>Растући 1</value>
   </data>
   <data name="RISING_SOUND_2" xml:space="preserve">
-    <value>Rastući 2</value>
+    <value>Растући 2</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
-    <value>Isto kao položaj trake</value>
+    <value>Исто као положај траке</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
-    <value>Skica # linija:</value>
+    <value>Скица # линија:</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SCR
 LK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>Klizi s {0} klikom:|Klizi sa {0} klikova:</value>
+    <value>Клизи с {0} кликом:|Клизи са {0} кликова:</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>KLIZI
-DOLE</value>
+    <value>КЛИЗИ
+ДОЛЕ</value>
   </data>
   <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>KLIZI
-LEVO</value>
+    <value>КЛИЗИ
+ЛЕВО</value>
   </data>
   <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>KLIZI
-DESNO</value>
+    <value>КЛИЗИ
+ДЕСНО</value>
   </data>
   <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>KLIZI
-GORE</value>
+    <value>КЛИЗИ
+ГОРЕ</value>
   </data>
   <data name="SELECTION" xml:space="preserve">
-    <value>Izbor</value>
+    <value>Избор</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
-    <value>Ponašanje indikatora napretka izbora:</value>
+    <value>Понашање индикатора напретка избора:</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
-    <value>Krajnja veličina indikatora napretka izbora (%):</value>
+    <value>Крајња величина индикатора напретка избора (%):</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
-    <value>Početna veličina indikatora napretka izbora (%):</value>
+    <value>Почетна величина индикатора напретка избора (%):</value>
   </data>
   <data name="SHIFT" xml:space="preserve">
     <value>SHIFT</value>
   </data>
   <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
-    <value>Pokaži pozdravni ekran pri pokretanju:</value>
+    <value>Покажи поздравни екран при покретању:</value>
   </data>
   <data name="SHRINK" xml:space="preserve">
-    <value>SMANJI</value>
+    <value>СМАЊИ</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-DOLE I LEVO</value>
+    <value>СМАЊИ
+ДОЛЕ И ЛЕВО</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-DOLE I DESNO</value>
+    <value>СМАЊИ
+ДОЛЕ И ДЕСНО</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-DOLE</value>
+    <value>СМАЊИ
+ДОЛЕ</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
-    <value>Smanji</value>
+    <value>Смањи</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-LEVO</value>
+    <value>СМАЊИ
+ЛЕВО</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-DESNO</value>
+    <value>СМАЊИ
+ДЕСНО</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-GORE I LEVO</value>
+    <value>СМАЊИ
+ГОРЕ И ЛЕВО</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-GORE I DESNO</value>
+    <value>СМАЊИ
+ГОРЕ И ДЕСНО</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SMANJI
-GORE</value>
+    <value>СМАЊИ
+ГОРЕ</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
-    <value>(Obaveštenje: slični unosi već postoje u rečniku: {0})</value>
+    <value>(Обавештење: слични уноси већ постоје у речнику: {0})</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>VELIČINA I
-POLOŽAJ</value>
+    <value>ВЕЛИЧИНА И
+ПОЛОЖАЈ</value>
   </data>
   <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
-    <value>Veličina i položaj</value>
+    <value>Величина и положај</value>
   </data>
   <data name="SLEEP" xml:space="preserve">
-    <value>SPAVAJ</value>
+    <value>СПАВАЈ</value>
   </data>
   <data name="SOUND_EFFECTS" xml:space="preserve">
-    <value>Zvučni efekti</value>
+    <value>Звучни ефекти</value>
   </data>
   <data name="SOUNDS" xml:space="preserve">
-    <value>Zvukovi</value>
+    <value>Звукови</value>
   </data>
   <data name="SOURCE_LABEL" xml:space="preserve">
-    <value>Izvor:</value>
+    <value>Извор:</value>
   </data>
   <data name="SPACE" xml:space="preserve">
-    <value>RAZMAK</value>
+    <value>РАЗМАК</value>
   </data>
   <data name="SPEAK" xml:space="preserve">
-    <value>GOVORI</value>
+    <value>ГОВОРИ</value>
   </data>
   <data name="SPEECH" xml:space="preserve">
-    <value>Govor</value>
+    <value>Говор</value>
   </data>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Početna tastatura:</value>
+    <value>Почетна тастатура:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
-    <value>Stop znak:</value>
+    <value>Стоп знак:</value>
   </data>
   <data name="SUCCESS" xml:space="preserve">
-    <value>Uspešno</value>
+    <value>Успешно</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Isključi CRTL,SHIFT,ALT,WIN tasteri tokom korišćenja tastature miša:</value>
+    <value>Искључи CTRL,SHIFT,ALT,WIN тастери током коришћења тастатуре миша:</value>
   </data>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
-    <value>Nije moguće aktivirati TheEyeTribe GazeManager! Molimo proverite je li server aktivan i je li uređaj spojen, pa pokušajte ponovno.</value>
+    <value>Није могуће активирати TheEyeTribe GazeManager! Молимо проверите је ли сервер активан и је ли уређај спојен, па покушајте поновно.</value>
   </data>
   <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
-    <value>TheEyeTribe nije kalibrisan. Podaci neće biti obrađivani dok se kalibracija ne dovrši.</value>
+    <value>TheEyeTribe није калибрисан. Подаци неће бити обрађивани док се калибрација не доврши.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Nije moguće početi kalibraciju jer EyeX engine nije dostupan.</value>
+    <value>Није могуће почети калибрацију јер EyeX енгине није доступан.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
-    <value>Tema:</value>
+    <value>Тема:</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
-    <value>Vreme nakon kojeg tačka postane beznačajna (ms):</value>
+    <value>Време након којег тачка постане безначајна (мс):</value>
   </data>
   <data name="TITLE_CASE" xml:space="preserve">
-    <value>Reči počinju velikim slovom</value>
+    <value>Речи почињу великим словом</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Kalibracija završena, ili moguće otkazana, ali sve ipak opet radi!</value>
+    <value>Калибрација завршена, или могуће отказана, али све ипак опет ради!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine nije pronađen. Molimo instalirajte EyeX Engine i pokušajte ponovno.</value>
+    <value>Tobii ЕyеX Engine није пронађен. Молимо инсталирајте ЕyеX Engine и покушајте поновно.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine nije pokrenut. Molimo pokrenite EyeX Engine i pokušajte ponovno.</value>
+    <value>Tobii ЕyеX Engine није покренут. Молимо покрените ЕyеX Engine и покушајте поновно.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
-    <value>Ton 1</value>
+    <value>Тон 1</value>
   </data>
   <data name="TONE_SOUND_2" xml:space="preserve">
-    <value>Ton 2</value>
+    <value>Тон 2</value>
   </data>
   <data name="TONE_SOUND_3" xml:space="preserve">
-    <value>Ton 3</value>
+    <value>Тон 3</value>
   </data>
   <data name="TONE_SOUND_4" xml:space="preserve">
-    <value>Ton 4</value>
+    <value>Тон 4</value>
   </data>
   <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
-    <value>Taster okidač pritisnut ponovno</value>
+    <value>Тастер окидач притиснут поновно</value>
   </data>
   <data name="TRIGGER_RELEASED" xml:space="preserve">
-    <value>Taster okidač pušten</value>
+    <value>Тастер окидач пуштен</value>
   </data>
   <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
-    <value>Ne mogu otkriti na šta usmeravate Vašu pažnju. Postoji li problem sa ulaznim uređajem? Je li spojen, upaljen, kalibrisan, itd.?</value>
+    <value>Не могу открити на шта усмеравате Вашу пажњу. Постоји ли проблем са улазним уређајем? Је ли спојен, упаљен, калибрисан, итд.?</value>
   </data>
   <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
-    <value>Ne mogu odrediti trenutna korisnička prava.</value>
+    <value>Не могу одредити тренутна корисничка права.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>Došlo je do problema sa podešavanjem glasa na '{0}'{1}</value>
+    <value>Дошло је до проблема са подешавањем гласа на '{0}'{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
-    <value>Nešto je pošlo po zlu, ali ne znam šta - molim proverite logove</value>
+    <value>Нешто је пошло по злу, али не знам шта - молим проверите логове</value>
   </data>
   <data name="UP" xml:space="preserve">
-    <value>Gore</value>
+    <value>Горе</value>
   </data>
   <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>STRELICA
-GORE</value>
+    <value>СТРЕЛИЦА
+ГОРЕ</value>
   </data>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
-    <value>AŽURIRANJE DOSTUPNO!</value>
+    <value>АЖУРИРАЊЕ ДОСТУПНО!</value>
   </data>
   <data name="UPPER_CASE" xml:space="preserve">
-    <value>Sve velikim slovom</value>
+    <value>Све великим словом</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
-    <value>Molimo posetite www.optikey.org za preuzimanje najnovije verzije ({0})
-Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
+    <value>Молимо посетите www.optikey.org за преузимање најновије верзије ({0})
+Можете искључити ажурирања из управљачке конзоле (Alt + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Mogu li ponovno pokrenuti OptiKey?</value>
+    <value>Могу ли поновно покренути Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
-    <value>Verzija: {0}</value>
+    <value>Верзија: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Vertikalna popunjenost (kao % zaslona):</value>
+    <value>Вертикална попуњеност (као % заслона):</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
-    <value>Vizuelni signali</value>
+    <value>Визуелни сигнали</value>
   </data>
   <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
-    <value>(iz postavki)</value>
+    <value>(из поставки)</value>
   </data>
   <data name="VOICE_LABEL" xml:space="preserve">
-    <value>Glas:</value>
+    <value>Глас:</value>
   </data>
   <data name="VOLUME_LABEL" xml:space="preserve">
-    <value>Glasnoća:</value>
+    <value>Гласноћа:</value>
   </data>
   <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
     <value>Website: www.optikey.org</value>
   </data>
   <data name="WIN" xml:space="preserve">
-    <value>WIN</value>
+    <value>Win</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
-    <value>Reči</value>
+    <value>Речи</value>
   </data>
   <data name="YES" xml:space="preserve">
-    <value>DA</value>
+    <value>ДА</value>
   </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
-    <value>Slova</value>
+    <value>Слова</value>
   </data>
   <data name="HIGH" xml:space="preserve">
-    <value>Visoko</value>
+    <value>Високо</value>
   </data>
   <data name="LOW" xml:space="preserve">
-    <value>Nisko</value>
+    <value>Ниско</value>
   </data>
   <data name="MEDIUM" xml:space="preserve">
-    <value>Srednje</value>
+    <value>Средње</value>
   </data>
   <data name="NONE" xml:space="preserve">
-    <value>Bez</value>
+    <value>Без</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Količina obrade toka podataka:</value>
+    <value>Количина обраде тока података:</value>
   </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Jezik korisničkog sučelja: {0}</value>
+    <value>Језик корисничког сучеља: {0}</value>
   </data>
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Jezik korisničkog sučelja:</value>
+    <value>Језик корисничког сучеља:</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simuliraj stvarne udarce tastera tokom pritiskanja znakova:</value>
+    <value>Симулирај стварне ударце тастера током притискања знакова:</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Isključi povećanje miša za postupke klizanja:</value>
+    <value>Искључи повећање миша за поступке клизања:</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Debljina ivice govorne tastature
-(levo, gore, desno, dole u pikselima):</value>
+    <value>Дебљина ивице говорне тастатуре
+(лево, горе, десно, доле у пикселима):</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
-    <value>NAZAD ZA JEDNU</value>
+    <value>НАЗАД ЗА ЈЕДНУ</value>
   </data>
   <data name="BACK_WORD" xml:space="preserve">
-    <value>NAZAD REČ</value>
+    <value>НАЗАД РЕЧ</value>
   </data>
   <data name="SUGGESTION_1" xml:space="preserve">
-    <value>PRIJEDLOG 1</value>
+    <value>ПРИЈЕДЛОГ 1</value>
   </data>
   <data name="SUGGESTION_2" xml:space="preserve">
-    <value>PRIJEDLOG 2</value>
+    <value>ПРИЈЕДЛОГ 2</value>
   </data>
   <data name="SUGGESTION_3" xml:space="preserve">
-    <value>PRIJEDLOG 3</value>
+    <value>ПРИЈЕДЛОГ 3</value>
   </data>
   <data name="SUGGESTION_4" xml:space="preserve">
-    <value>PRIJEDLOG 4</value>
+    <value>ПРИЈЕДЛОГ 4</value>
   </data>
   <data name="SUGGESTION_5" xml:space="preserve">
-    <value>PRIJEDLOG 5</value>
+    <value>ПРИЈЕДЛОГ 5</value>
   </data>
   <data name="SUGGESTION_6" xml:space="preserve">
-    <value>PRIJEDLOG 6</value>
+    <value>ПРИЈЕДЛОГ 6</value>
   </data>
   <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
-    <value>Tasteri predloga</value>
+    <value>Тастери предлога</value>
   </data>
   <data name="ADD_TO_DICTIONARY" xml:space="preserve">
-    <value>DODAJ U REČNIK</value>
+    <value>ДОДАЈ У РЕЧНИК</value>
   </data>
   <data name="COLLAPSE_DOCK" xml:space="preserve">
-    <value>SMANJI TRAKU</value>
+    <value>СМАЊИ ТРАКУ</value>
   </data>
   <data name="DOWN_ARROW" xml:space="preserve">
-    <value>STRELICA DOLE</value>
+    <value>СТРЕЛИЦА ДОЛЕ</value>
   </data>
   <data name="F1" xml:space="preserve">
     <value>F1</value>
@@ -1291,163 +1290,163 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
     <value>F9</value>
   </data>
   <data name="LEFT_ARROW" xml:space="preserve">
-    <value>STRELICA LEVO</value>
+    <value>СТРЕЛИЦА ЛЕВО</value>
   </data>
   <data name="RIGHT_ARROW" xml:space="preserve">
-    <value>STRELICA DESNO</value>
+    <value>СТРЕЛИЦА ДЕСНО</value>
   </data>
   <data name="UP_ARROW" xml:space="preserve">
-    <value>STRELICA GORE</value>
+    <value>СТРЕЛИЦА ГОРЕ</value>
   </data>
   <data name="CLICK_AND_DRAG" xml:space="preserve">
-    <value>KLIKNI I POVUCI</value>
+    <value>КЛИКНИ И ПОВУЦИ</value>
   </data>
   <data name="CURRENCIES_1" xml:space="preserve">
-    <value>VALUTE 1</value>
+    <value>ВАЛУТЕ 1</value>
   </data>
   <data name="CURRENCIES_2" xml:space="preserve">
-    <value>VALUTE 2</value>
+    <value>ВАЛУТЕ 2</value>
   </data>
   <data name="DECREASE_OPACITY" xml:space="preserve">
-    <value>POVEĆAJ PROVIDNOST</value>
+    <value>ПОВЕЋАЈ ПРОВИДНОСТ</value>
   </data>
   <data name="DIACRITICS_1" xml:space="preserve">
-    <value>DIJAKRITIČKI ZNAKOVI 1</value>
+    <value>ДИЈАКРИТИЧКИ ЗНАКОВИ 1</value>
   </data>
   <data name="DIACRITICS_2" xml:space="preserve">
-    <value>DIJAKRITIČKI ZNAKOVI 2</value>
+    <value>ДИЈАКРИТИЧКИ ЗНАКОВИ 2</value>
   </data>
   <data name="DIACRITICS_3" xml:space="preserve">
-    <value>DIJAKRITIČKI ZNAKOVI 3</value>
+    <value>ДИЈАКРИТИЧКИ ЗНАКОВИ 3</value>
   </data>
   <data name="EXPAND_DOCK" xml:space="preserve">
-    <value>RAŠIRI TRAKU</value>
+    <value>РАШИРИ ТРАКУ</value>
   </data>
   <data name="EXPAND_DOWN" xml:space="preserve">
-    <value>RAŠIRI DOLE</value>
+    <value>РАШИРИ ДОЛЕ</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
-    <value>RAŠIRI DOLE I LEVO</value>
+    <value>РАШИРИ ДОЛЕ И ЛЕВО</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>RAŠIRI DOLE I DESNO</value>
+    <value>РАШИРИ ДОЛЕ И ДЕСНО</value>
   </data>
   <data name="EXPAND_LEFT" xml:space="preserve">
-    <value>RAŠIRI LEVO</value>
+    <value>РАШИРИ ЛЕВО</value>
   </data>
   <data name="EXPAND_RIGHT" xml:space="preserve">
-    <value>RAŠIRI DESNO</value>
+    <value>РАШИРИ ДЕСНО</value>
   </data>
   <data name="EXPAND_UP" xml:space="preserve">
-    <value>RAŠIRI GORE</value>
+    <value>РАШИРИ ГОРЕ</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
-    <value>RAŠIRI GORE I LEVO</value>
+    <value>РАШИРИ ГОРЕ И ЛЕВО</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
-    <value>RAŠIRI GORE I DESNO</value>
+    <value>РАШИРИ ГОРЕ И ДЕСНО</value>
   </data>
   <data name="INCREASE_OPACITY" xml:space="preserve">
-    <value>SMANJI PROVIDNOST</value>
+    <value>СМАЊИ ПРОВИДНОСТ</value>
   </data>
   <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
-    <value>BROJKE I SIMBOLI 1</value>
+    <value>БРОЈКЕ И СИМБОЛИ 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
-    <value>BROJKE I SIMBOLI 2</value>
+    <value>БРОЈКЕ И СИМБОЛИ 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
-    <value>BROJKE I SIMBOLI 3</value>
+    <value>БРОЈКЕ И СИМБОЛИ 3</value>
   </data>
   <data name="PHYSICAL_KEYS" xml:space="preserve">
-    <value>FIZIČKI TASTERI</value>
+    <value>ФИЗИЧКИ ТАСТЕРИ</value>
   </data>
   <data name="SIZE_AND_POSITION" xml:space="preserve">
-    <value>VELIČINA I POLOŽAJ</value>
+    <value>ВЕЛИЧИНА И ПОЛОЖАЈ</value>
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
-    <value>MAGNETSKI KURSOR</value>
+    <value>МАГНЕТСКИ КУРСОР</value>
   </data>
   <data name="MIDDLE_CLICK" xml:space="preserve">
-    <value>SREDNJI KLIK</value>
+    <value>СРЕДЊИ КЛИК</value>
   </data>
   <data name="MIDDLE_DOWN_UP" xml:space="preserve">
-    <value>SREDINA DOLE/GORE</value>
+    <value>СРЕДИНА ДОЛЕ/ГОРЕ</value>
   </data>
   <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
-    <value>POMAK U PIKSELIMA</value>
+    <value>ПОМАК У ПИКСЕЛИМА</value>
   </data>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
-    <value>PODESI IZNOS U PIKSELIMA</value>
+    <value>ПОДЕСИ ИЗНОС У ПИКСЕЛИМА</value>
   </data>
   <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
-    <value>RAZGOVOR ALFA 1</value>
+    <value>РАЗГОВОР АЛФА 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
-    <value>RAZGOVOR BROJKE I SIMBOLI</value>
+    <value>РАЗГОВОР БРОЈКЕ И СИМБОЛИ</value>
   </data>
   <data name="JUMP_DOWN" xml:space="preserve">
-    <value>SKOČI DOLE</value>
+    <value>СКОЧИ ДОЛЕ</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
-    <value>SKOČI DOLE I LEVO</value>
+    <value>СКОЧИ ДОЛЕ И ЛЕВО</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>SKOČI DOLE I DESNO</value>
+    <value>СКОЧИ ДОЛЕ И ДЕСНО</value>
   </data>
   <data name="JUMP_LEFT" xml:space="preserve">
-    <value>SKOČI LEVO</value>
+    <value>СКОЧИ ЛЕВО</value>
   </data>
   <data name="JUMP_RIGHT" xml:space="preserve">
-    <value>SKOČI DESNO</value>
+    <value>СКОЧИ ДЕСНО</value>
   </data>
   <data name="JUMP_UP" xml:space="preserve">
-    <value>SKOČI GORE</value>
+    <value>СКОЧИ ГОРЕ</value>
   </data>
   <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
-    <value>SKOČI GORE I LEVO</value>
+    <value>СКОЧИ ГОРЕ И ЛЕВО</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
-    <value>SKOČI GORE I DESNO</value>
+    <value>СКОЧИ ГОРЕ И ДЕСНО</value>
   </data>
   <data name="LEFT_CLICK" xml:space="preserve">
-    <value>LEVI KLIK</value>
+    <value>ЛЕВИ КЛИК</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
-    <value>LEVI DUPLI KLIK</value>
+    <value>ЛЕВИ ДУПЛИ КЛИК</value>
   </data>
   <data name="LEFT_DOWN_UP" xml:space="preserve">
-    <value>LEVO DOLE/GORE</value>
+    <value>ЛЕВО ДОЛЕ/ГОРЕ</value>
   </data>
   <data name="MOVE_DOWN" xml:space="preserve">
-    <value>POMERI DOLE</value>
+    <value>ПОМЕРИ ДОЛЕ</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
-    <value>POMERI DOLE I LEVO</value>
+    <value>ПОМЕРИ ДОЛЕ И ЛЕВО</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>POMERI DOLE I DESNO</value>
+    <value>ПОМЕРИ ДОЛЕ И ДЕСНО</value>
   </data>
   <data name="MOVE_LEFT" xml:space="preserve">
-    <value>POMERI LEVO</value>
+    <value>ПОМЕРИ ЛЕВО</value>
   </data>
   <data name="MOVE_RIGHT" xml:space="preserve">
-    <value>POMERI DESNO</value>
+    <value>ПОМЕРИ ДЕСНО</value>
   </data>
   <data name="MOVE_TO" xml:space="preserve">
-    <value>POMERI NA</value>
+    <value>ПОМЕРИ НА</value>
   </data>
   <data name="MOVE_UP" xml:space="preserve">
-    <value>POMERI GORE</value>
+    <value>ПОМЕРИ ГОРЕ</value>
   </data>
   <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
-    <value>POMERI GORE I LEVO</value>
+    <value>ПОМЕРИ ГОРЕ И ЛЕВО</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
-    <value>POMERI GORE I DESNO</value>
+    <value>ПОМЕРИ ГОРЕ И ДЕСНО</value>
   </data>
   <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
-    <value>IZBOR VIŠE TASTERA</value>
+    <value>ИЗБОР ВИШЕ ТАСТЕРА</value>
   </data>
   <data name="NUM_LK" xml:space="preserve">
     <value>NUM LK</value>
@@ -1459,132 +1458,132 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
     <value>PG UP</value>
   </data>
   <data name="PRNT_SCR" xml:space="preserve">
-    <value>PRNT SCR</value>
+    <value>PRT SCR</value>
   </data>
   <data name="REPEAT_LAST" xml:space="preserve">
-    <value>PONOVI ZADNJE</value>
+    <value>ПОНОВИ ЗАДЊЕ</value>
   </data>
   <data name="RIGHT_CLICK" xml:space="preserve">
-    <value>DESNI KLIK</value>
+    <value>ДЕСНИ КЛИК</value>
   </data>
   <data name="RIGHT_DOWN_UP" xml:space="preserve">
-    <value>DESNO/GORE</value>
+    <value>ДЕСНО/ГОРЕ</value>
   </data>
   <data name="SCRN_LK" xml:space="preserve">
     <value>SCR LK</value>
   </data>
   <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
-    <value>KOLIČINA KLIZANJA U KLIKOVIMA</value>
+    <value>КОЛИЧИНА КЛИЗАЊА У КЛИКОВИМА</value>
   </data>
   <data name="SCROLL_DOWN" xml:space="preserve">
-    <value>KLIZI DOLE</value>
+    <value>КЛИЗИ ДОЛЕ</value>
   </data>
   <data name="SCROLL_LEFT" xml:space="preserve">
-    <value>KLIZI LEVO</value>
+    <value>КЛИЗИ ЛЕВО</value>
   </data>
   <data name="SCROLL_RIGHT" xml:space="preserve">
-    <value>KLIZI DESNO</value>
+    <value>КЛИЗИ ДЕСНО</value>
   </data>
   <data name="SCROLL_UP" xml:space="preserve">
-    <value>KLIZI GORE</value>
+    <value>КЛИЗИ ГОРЕ</value>
   </data>
   <data name="SHRINK_DOWN" xml:space="preserve">
-    <value>SMANJI DOLE</value>
+    <value>СМАЊИ ДОЛЕ</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
-    <value>SMANJI DOLE I LEVO</value>
+    <value>СМАЊИ ДОЛЕ И ЛЕВО</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>SMANJI DOLE I DESNO</value>
+    <value>СМАЊИ ДОЛЕ И ДЕСНО</value>
   </data>
   <data name="SHRINK_LEFT" xml:space="preserve">
-    <value>SMANJI LEVO</value>
+    <value>СМАЊИ ЛЕВО</value>
   </data>
   <data name="SHRINK_RIGHT" xml:space="preserve">
-    <value>SMANJI DESNO</value>
+    <value>СМАЊИ ДЕСНО</value>
   </data>
   <data name="SHRINK_UP" xml:space="preserve">
-    <value>SMANJI GORE </value>
+    <value>СМАЊИ ГОРЕ </value>
   </data>
   <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
-    <value>SMANJI GORE I LEVO</value>
+    <value>СМАЊИ ГОРЕ И ЛЕВО</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
-    <value>SMANJI GORE I DESNO</value>
+    <value>СМАЊИ ГОРЕ И ДЕСНО</value>
   </data>
   <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
-    <value>PROMENI TASTERE TASTATURE:</value>
+    <value>ПРОМЕНИ ТАСТЕРЕ ТАСТАТУРЕ:</value>
   </data>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>AKCIJSKI TASTERI TRAKE:</value>
+    <value>АКЦИЈСКИ ТАСТЕРИ ТРАКЕ:</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Posebna podešavanja vremena fiksacije za pojedine tastere (ms):</value>
+    <value>Посебна подешавања времена фиксације за поједине тастере (мс):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
-    <value>PROMENI TASTERE JEZIKA:</value>
+    <value>ПРОМЕНИ ТАСТЕРЕ ЈЕЗИКА:</value>
   </data>
   <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
-    <value>JEZIK</value>
+    <value>ЈЕЗИК</value>
   </data>
   <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>RAZNI TASTERI:</value>
+    <value>РАЗНИ ТАСТЕРИ:</value>
   </data>
   <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>TASTERI PODEŠAVANJA:</value>
+    <value>ТАСТЕРИ ПОДЕШАВАЊА:</value>
   </data>
   <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
-    <value>TASTERI MIŠA (TRENUTNE LOKACIJE):</value>
+    <value>ТАСТЕРИ МИША (ТРЕНУТНЕ ЛОКАЦИЈЕ):</value>
   </data>
   <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
-    <value>TASTERI MIŠA (URADI NA TRENUTNOJ LOKACIJI):</value>
+    <value>ТАСТЕРИ МИША (УРАДИ НА ТРЕНУТНОЈ ЛОКАЦИЈИ):</value>
   </data>
   <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
-    <value>TASTERI (RAZNI) MIŠA:</value>
+    <value>ТАСТЕРИ (РАЗНИ) МИША:</value>
   </data>
   <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
-    <value>POMERI I PROMENI VELIČINU TASTERA:</value>
+    <value>ПОМЕРИ И ПРОМЕНИ ВЕЛИЧИНУ ТАСТЕРА:</value>
   </data>
   <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>FIZIČKI TASTERI:</value>
+    <value>ФИЗИЧКИ ТАСТЕРИ:</value>
   </data>
   <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>TASTERI PREDLOGA: </value>
+    <value>ТАСТЕРИ ПРЕДЛОГА: </value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
-    <value>Odredi vremena završetka pojedinih tastera:</value>
+    <value>Одреди времена завршетка појединих тастера:</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>Upravljačka konzola</value>
+    <value>Управљачка конзола</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
-    <value>Završi</value>
+    <value>Заврши</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
-    <value>Isključite tastere prilagodbe (ALT, SHIFT, CTRL, WIN) za sve akcije mišem:</value>
+    <value>Искључите тастере прилагодбе (Alt, Shift, Ctrl, Win) за све акције мишем:</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Kalibracija je uspešno završena!</value>
+    <value>Калибрација је успешно завршена!</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
-    <value>Kalibracija nije uspela!</value>
+    <value>Калибрација није успела!</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
-    <value>SLOVA 2</value>
+    <value>СЛОВА 2</value>
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
-    <value>RAZGOVOR ALFA 2</value>
+    <value>РАЗГОВОР АЛФА 2</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
-    <value>SLOVA</value>
+    <value>СЛОВА</value>
   </data>
   <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
-    <value>Jezik</value>
+    <value>Језик</value>
   </data>
   <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Jezik</value>
+    <value>Језик</value>
   </data>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
-    <value>JEZIK</value>
+    <value>ЈЕЗИК</value>
   </data>
 </root>
