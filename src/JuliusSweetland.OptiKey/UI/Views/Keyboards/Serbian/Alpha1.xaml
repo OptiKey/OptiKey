@@ -48,6 +48,8 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Output Grid.Row="0" Grid.Column="0"
@@ -105,12 +107,7 @@
                       ShiftUpText="ђ" ShiftDownText="Ђ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ђ"/>
-        <controls:Key Grid.Row="2" Grid.Column="25" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MenuIcon}"
-                      Text="{x:Static resx:Resources.MENU}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
-        <controls:Key Grid.Row="2" Grid.Column="27"/>
+        <controls:Key Grid.Row="2" Grid.Column="25"/>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource TabIcon}" 
@@ -162,19 +159,10 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ћ"/>
         <controls:Key Grid.Row="3" Grid.Column="24" Grid.ColumnSpan="2"
-                      ShiftUpText="ж" ShiftDownText="Ж"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ж"/>
-        <controls:Key Grid.Row="3" Grid.Column="26" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource BrowserIcon}"
-                      Text="{x:Static resx:Resources.WEB_BROWSING_SPLIT_WITH_NEWLINE}"
+                      SymbolGeometry="{StaticResource MenuIcon}"
+                      Text="{x:Static resx:Resources.MENU}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.WebBrowsingKeyboardKey}"/>
-        <controls:Key Grid.Row="3" Grid.Column="28" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseIcon}"
-                      Text="{x:Static resx:Resources.MOUSE}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MouseKeyboardKey}" />
+                      Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
 
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
@@ -182,9 +170,9 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.LeftShiftKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="ѕ" ShiftDownText="Ѕ"
+                      ShiftUpText="ж" ShiftDownText="Ж"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ѕ"/>
+                      Value="ж"/>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
                       ShiftUpText="џ" ShiftDownText="Џ"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -229,6 +217,11 @@
                       Text="{x:Static resx:Resources.MAGNIFIER}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MouseMagnifierKey}"/>
+        <controls:Key Grid.Row="4" Grid.Column="24" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BrowserIcon}"
+                      Text="{x:Static resx:Resources.WEB_BROWSING_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.WebBrowsingKeyboardKey}"/>
 
         <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="{x:Static resx:Resources.CTRL}"
@@ -282,5 +275,10 @@
                       Text="{x:Static resx:Resources.LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MouseMoveAndLeftDoubleClickKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="24" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource MouseIcon}"
+                      Text="{x:Static resx:Resources.MOUSE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.MouseKeyboardKey}" />
     </Grid>
 </controls:KeyboardView>
