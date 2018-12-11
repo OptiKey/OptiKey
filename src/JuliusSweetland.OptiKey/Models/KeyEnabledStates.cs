@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Key is Calibrate, but not calibrate service available
+                //Key is Calibrate, but calibrate service is not available
                 if (keyValue == KeyValues.CalibrateKey
                     && calibrationService == null)
                 {

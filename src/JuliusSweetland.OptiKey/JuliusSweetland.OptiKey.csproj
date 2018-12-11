@@ -823,6 +823,10 @@
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
     <EmbeddedResource Include="Properties\Resources.uk-UA.resx" />
     <EmbeddedResource Include="Resources.ja-JP.resx" />
+    <Content Include="..\..\ext\IrisBond\PGRFlyCapture.dll">
+      <Link>PGRFlyCapture.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Presage\database.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
