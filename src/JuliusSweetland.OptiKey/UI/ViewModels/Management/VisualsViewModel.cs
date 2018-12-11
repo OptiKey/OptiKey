@@ -39,7 +39,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>(Resources.ANDROID_DARK, "/Resources/Themes/Android_Dark.xaml"),
-                    new KeyValuePair<string, string>(Resources.ANDROID_LIGHT, "/Resources/Themes/Android_Light.xaml")
+                    new KeyValuePair<string, string>(Resources.ANDROID_LIGHT, "/Resources/Themes/Android_Light.xaml"),
+                    new KeyValuePair<string, string>(Resources.ANDROID_TWO_TONE, "/Resources/Themes/Android_Two_Tone.xaml")
                 };
             }
         }

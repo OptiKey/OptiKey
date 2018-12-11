@@ -1206,6 +1206,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\Themes\Android_Two_Tone.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Themes\Colours\Android.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

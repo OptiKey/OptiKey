@@ -151,6 +151,9 @@ DICTIONARY</value>
   <data name="ANDROID_LIGHT" xml:space="preserve">
     <value>Android Light</value>
   </data>
+  <data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>Android Two Tone</value>
+  </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Auto capitalise words:</value>
   </data>
