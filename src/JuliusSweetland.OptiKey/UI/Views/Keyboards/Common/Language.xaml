@@ -212,16 +212,16 @@
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.DutchNetherlandsKey}"/>
                                     <controls:Key Grid.Row="1" Grid.Column="2"
-                                                  Text="{x:Static resx:Resources.ENGLISH_CANADA}"
+                                                  Text="{x:Static resx:Resources.ENGLISH_CANADA_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.EnglishCanadaKey}"/>
                                     <controls:Key Grid.Row="1" Grid.Column="3"
-                                                  Text="{x:Static resx:Resources.ENGLISH_UK}"
+                                                  Text="{x:Static resx:Resources.ENGLISH_UK_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.EnglishUKKey}"/>
                                     
                                     <controls:Key Grid.Row="2" Grid.Column="0"
-                                                  Text="{x:Static resx:Resources.ENGLISH_US}"
+                                                  Text="{x:Static resx:Resources.ENGLISH_US_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.EnglishUSKey}"/>
                                     <controls:Key Grid.Row="2" Grid.Column="1"
@@ -267,9 +267,9 @@
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
                                     <controls:Key Grid.Row="4" Grid.Column="3"
-                                                  Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
+                                                  Text="{x:Static resx:Resources.SERBIAN_SERBIA_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
-                                                  Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
+                                                  Value="{x:Static models:KeyValues.SerbianSerbiaKey}"/>
                                     
                                     <controls:Key Grid.Row="5" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE}"
