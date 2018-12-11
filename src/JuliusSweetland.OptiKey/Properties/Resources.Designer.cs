@@ -5022,6 +5022,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Serbian (Serbia) / Српски (Србија).
+        /// </summary>
+        public static string SERBIAN_SERBIA {
+            get {
+                return ResourceManager.GetString("SERBIAN_SERBIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serbian
+        ///(Serbia) /
+        ///Српски
+        ///(Србија).
+        /// </summary>
+        public static string SERBIAN_SERBIA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("SERBIAN_SERBIA_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel Settings.
         /// </summary>
         public static string SETTINGS_CHANGED {
