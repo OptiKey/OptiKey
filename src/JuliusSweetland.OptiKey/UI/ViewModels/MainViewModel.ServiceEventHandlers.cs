@@ -897,6 +897,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.CroatianCroatia:
                     SelectLanguage(Languages.CroatianCroatia);
                     break;
+                case FunctionKeys.SerbianSerbia:
+                    SelectLanguage(Languages.SerbianSerbia);
+                    break;
 
                 case FunctionKeys.Currencies1Keyboard:
                     Log.Info("Changing keyboard to Currencies1.");

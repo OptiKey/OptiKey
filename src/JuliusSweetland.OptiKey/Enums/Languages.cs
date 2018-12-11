@@ -24,6 +24,7 @@ namespace JuliusSweetland.OptiKey.Enums
         PolishPoland,
         PortuguesePortugal,
         RussianRussia,
+        SerbianSerbia,
         SlovenianSlovenia,
         SlovakSlovakia,
         SpanishSpain,
@@ -56,6 +57,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.PolishPoland: return Resources.POLISH_POLAND;
                 case Languages.PortuguesePortugal: return Resources.PORTUGUESE_PORTUGAL;
                 case Languages.RussianRussia: return Resources.RUSSIAN_RUSSIA;
+                case Languages.SerbianSerbia: return Resources.SERBIAN_SERBIA;
                 case Languages.SlovakSlovakia: return Resources.SLOVAK_SLOVAKIA;
                 case Languages.SlovenianSlovenia: return Resources.SLOVENIAN_SLOVENIA;
                 case Languages.SpanishSpain: return Resources.SPANISH_SPAIN;
@@ -89,6 +91,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.PolishPoland: return CultureInfo.GetCultureInfo("pl-PL");
                 case Languages.PortuguesePortugal: return CultureInfo.GetCultureInfo("pt-PT");
                 case Languages.RussianRussia: return CultureInfo.GetCultureInfo("ru-RU");
+                case Languages.SerbianSerbia: return CultureInfo.GetCultureInfo("sr-Cyrl-RS");
                 case Languages.SlovakSlovakia: return CultureInfo.GetCultureInfo("sk-SK");
                 case Languages.SlovenianSlovenia: return CultureInfo.GetCultureInfo("sl-SI");
                 case Languages.SpanishSpain: return CultureInfo.GetCultureInfo("es-ES");
