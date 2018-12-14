@@ -1,4 +1,4 @@
-﻿namespace JuliusSweetland.OptiKey.Native.IrisBond.Enums
+﻿namespace JuliusSweetland.OptiKey.Native.Irisbond.Enums
 {
     // Structure used to select the controlling eye
     public enum CONTROLLING_EYE

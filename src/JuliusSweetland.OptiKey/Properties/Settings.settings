@@ -1310,10 +1310,10 @@
   &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
     </Setting>
-    <Setting Name="IrisBondProcessingLevel" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels" Scope="User">
+    <Setting Name="IrisbondProcessingLevel" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels" Scope="User">
       <Value Profile="(Default)">None</Value>
     </Setting>
-    <Setting Name="IrisBondCalibrationTargetCount" Roaming="true" Type="System.Int32" Scope="User">
+    <Setting Name="IrisbondCalibrationTargetCount" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">9</Value>
     </Setting>
   </Settings>

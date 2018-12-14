@@ -323,10 +323,10 @@
     <Compile Include="Native\Common\Enums\TOKEN_ELEVATION_TYPE.cs" />
     <Compile Include="Native\Common\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Common\Enums\WindowShowStyle.cs" />
-    <Compile Include="Native\IrisBond\Enums\CALIBRATION_STATUS.cs" />
-    <Compile Include="Native\IrisBond\Enums\CONTROLLING_EYE.cs" />
-    <Compile Include="Native\IrisBond\Enums\START_STATUS.cs" />
-    <Compile Include="Native\IrisBond\PInvoke.cs" />
+    <Compile Include="Native\Irisbond\Enums\CALIBRATION_STATUS.cs" />
+    <Compile Include="Native\Irisbond\Enums\CONTROLLING_EYE.cs" />
+    <Compile Include="Native\Irisbond\Enums\START_STATUS.cs" />
+    <Compile Include="Native\Irisbond\PInvoke.cs" />
     <Compile Include="Native\PInvoke.cs" />
     <Compile Include="Native\Common\Static\WindowStyles.cs" />
     <Compile Include="Native\Common\Structs\APPBARDATA.cs" />
@@ -399,9 +399,9 @@
     <Compile Include="Services\MyGazePointService.cs" />
     <Compile Include="Services\MyGazeCalibrationService.cs" />
     <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
-    <Compile Include="Services\IrisBondDuoCalibrationService.cs" />
+    <Compile Include="Services\IrisbondDuoCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
-    <Compile Include="Services\IrisBondDuoPointService.cs" />
+    <Compile Include="Services\IrisbondDuoPointService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
     <Compile Include="Services\KeyboardOutputService.cs" />
@@ -830,7 +830,9 @@
     <EmbeddedResource Include="Properties\Resources.el-GR.resx" />
     <EmbeddedResource Include="Properties\Resources.sk-SK.resx" />
     <EmbeddedResource Include="Properties\Resources.sl-SI.resx" />
-    <EmbeddedResource Include="Properties\Resources.sr-Cyrl-RS.resx" />
+    <EmbeddedResource Include="Properties\Resources.sr-Cyrl-RS.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.tr-TR.resx" />
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
@@ -1655,12 +1657,12 @@
   <ItemGroup>
     <PublishFile Include="External Libraries\Newtonsoft.Json.xml">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>

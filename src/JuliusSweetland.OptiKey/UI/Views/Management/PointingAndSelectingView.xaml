@@ -137,7 +137,7 @@
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisBondDuo}">
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisbondDuo}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -145,15 +145,15 @@
                         </TextBlock.Style>
                     </TextBlock>
                     <ComboBox Grid.Row="2" Grid.Column="1" 
-                              ItemsSource="{Binding IrisBondDataStreamProcessingLevels}"
+                              ItemsSource="{Binding IrisbondDataStreamProcessingLevels}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding IrisBondProcessingLevel, Mode=TwoWay}">
+                              SelectedValue="{Binding IrisbondProcessingLevel, Mode=TwoWay}">
                         <ComboBox.Style>
                             <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisBondDuo}">
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisbondDuo}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
                                 </Style.Triggers>

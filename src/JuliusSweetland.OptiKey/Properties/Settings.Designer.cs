@@ -2573,12 +2573,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("None")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels IrisBondProcessingLevel {
+        public global::JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels IrisbondProcessingLevel {
             get {
-                return ((global::JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels)(this["IrisBondProcessingLevel"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels)(this["IrisbondProcessingLevel"]));
             }
             set {
-                this["IrisBondProcessingLevel"] = value;
+                this["IrisbondProcessingLevel"] = value;
             }
         }
         
@@ -2586,12 +2586,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int IrisBondCalibrationTargetCount {
+        public int IrisbondCalibrationTargetCount {
             get {
-                return ((int)(this["IrisBondCalibrationTargetCount"]));
+                return ((int)(this["IrisbondCalibrationTargetCount"]));
             }
             set {
-                this["IrisBondCalibrationTargetCount"] = value;
+                this["IrisbondCalibrationTargetCount"] = value;
             }
         }
     }

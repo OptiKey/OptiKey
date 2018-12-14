@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using JuliusSweetland.OptiKey.Native.IrisBond.Enums;
+using JuliusSweetland.OptiKey.Native.Irisbond.Enums;
 
-namespace JuliusSweetland.OptiKey.Native.IrisBond
+namespace JuliusSweetland.OptiKey.Native.Irisbond
 {
     public static class PInvoke
     {

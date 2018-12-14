@@ -3,13 +3,13 @@ using System.Reactive;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using log4net;
-using JuliusSweetland.OptiKey.Native.IrisBond;
-using JuliusSweetland.OptiKey.Native.IrisBond.Enums;
+using JuliusSweetland.OptiKey.Native.Irisbond;
+using JuliusSweetland.OptiKey.Native.Irisbond.Enums;
 using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class IrisBondDuoPointService : IPointService
+    public class IrisbondDuoPointService : IPointService
     {
         #region Fields
 
@@ -23,7 +23,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public IrisBondDuoPointService()
+        public IrisbondDuoPointService()
         {
             KalmanFilterSupported = true;
         }
@@ -46,7 +46,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (pointEvent == null)
                 {
-                    Log.Info("Checking the IrisBond tracker is connected...");
+                    Log.Info("Checking the Irisbond Duo tracker is connected...");
 
                     bool trackerConnected = PInvoke.trackerIsPresent();
                     if (!trackerConnected)
@@ -107,14 +107,14 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (pointEvent != null)
             {
-                float x = Settings.Default.IrisBondProcessingLevel > DataStreamProcessingLevels.None ? pogX : pogRawX;
-                float y = Settings.Default.IrisBondProcessingLevel > DataStreamProcessingLevels.None ? pogY : pogRawY;
+                float x = Settings.Default.IrisbondProcessingLevel > DataStreamProcessingLevels.None ? pogX : pogRawX;
+                float y = Settings.Default.IrisbondProcessingLevel > DataStreamProcessingLevels.None ? pogY : pogRawY;
 
                 if(!double.IsNaN(x)
                    && !double.IsNaN(y))
                 {
                     pointEvent(this, new Timestamped<Point>(new Point(pogX, pogY),
-                        new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //IrisBondDuo does not publish a useable timestamp
+                        new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //IrisbondDuo does not publish a useable timestamp
                 }
             }
         }

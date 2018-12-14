@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
-using JuliusSweetland.OptiKey.Native.IrisBond;
+using JuliusSweetland.OptiKey.Native.Irisbond;
 using log4net;
 using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class IrisBondDuoCalibrationService : ICalibrationService
+    public class IrisbondDuoCalibrationService : ICalibrationService
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public async Task<string> Calibrate(Window parentWindow)
         {
-            Log.Info("Attempting to calibrate using the IrisBond engine.");
+            Log.Info("Attempting to calibrate using the Irisbond engine.");
 
             taskCompletionSource = new TaskCompletionSource<string>(); //Used to make this method awaitable on the InteractionRequest callback
 

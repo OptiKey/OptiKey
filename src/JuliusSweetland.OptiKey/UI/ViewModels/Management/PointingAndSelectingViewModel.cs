@@ -71,7 +71,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.Alienware17.ToDescription(), Enums.PointsSources.Alienware17),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.GazeTracker.ToDescription(), Enums.PointsSources.GazeTracker),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisBondDuo.ToDescription(), Enums.PointsSources.IrisBondDuo),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisbondDuo.ToDescription(), Enums.PointsSources.IrisbondDuo),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.MousePosition.ToDescription(), Enums.PointsSources.MousePosition),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.SteelseriesSentry.ToDescription(), Enums.PointsSources.SteelseriesSentry),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe),
@@ -115,7 +115,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
-        public List<KeyValuePair<string, DataStreamProcessingLevels>> IrisBondDataStreamProcessingLevels
+        public List<KeyValuePair<string, DataStreamProcessingLevels>> IrisbondDataStreamProcessingLevels
         {
             get
             {
@@ -177,7 +177,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         private DataStreamProcessingLevels irisBondProcessingLevel;
-        public DataStreamProcessingLevels IrisBondProcessingLevel
+        public DataStreamProcessingLevels IrisbondProcessingLevel
         {
             get { return irisBondProcessingLevel; }
             set { SetProperty(ref irisBondProcessingLevel, value); }
@@ -379,7 +379,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
                 return Settings.Default.PointsSource != PointsSource
                     || (Settings.Default.TobiiEyeXProcessingLevel != TobiiEyeXProcessingLevel && PointsSource == Enums.PointsSources.TobiiEyeX)
-                    || (Settings.Default.IrisBondProcessingLevel != IrisBondProcessingLevel && PointsSource == Enums.PointsSources.IrisBondDuo)
+                    || (Settings.Default.IrisbondProcessingLevel != IrisbondProcessingLevel && PointsSource == Enums.PointsSources.IrisbondDuo)
                     || (Settings.Default.PointsMousePositionSampleInterval != TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs) && PointsSource == Enums.PointsSources.MousePosition)
                     || Settings.Default.PointTtl != TimeSpan.FromMilliseconds(PointTtlInMs)
                     || Settings.Default.KeySelectionTriggerSource != KeySelectionTriggerSource
@@ -412,7 +412,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             PointsSource = Settings.Default.PointsSource;
             TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
-            IrisBondProcessingLevel = Settings.Default.IrisBondProcessingLevel;
+            IrisbondProcessingLevel = Settings.Default.IrisbondProcessingLevel;
             KalmanFilterEnabled = Settings.Default.KalmanFilterEnabled;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
             PointsMousePositionHideCursor = Settings.Default.PointsMousePositionHideCursor;
@@ -445,7 +445,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             Settings.Default.PointsSource = PointsSource;
             Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
-            Settings.Default.IrisBondProcessingLevel = IrisBondProcessingLevel;
+            Settings.Default.IrisbondProcessingLevel = IrisbondProcessingLevel;
             Settings.Default.KalmanFilterEnabled = KalmanFilterEnabled;
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointsMousePositionHideCursor = PointsMousePositionHideCursor;

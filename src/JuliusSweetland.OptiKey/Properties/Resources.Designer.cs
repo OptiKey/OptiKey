@@ -2149,7 +2149,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IrisBond Duo.
+        ///   Looks up a localized string similar to Irisbond Duo.
         /// </summary>
         public static string IRISBOND_DUO {
             get {
@@ -2158,7 +2158,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IrisBond tracker could not be started..
+        ///   Looks up a localized string similar to Irisbond Duo tracker could not be started..
         /// </summary>
         public static string IRISBOND_TRACKER_COULD_NOT_BE_STARTED {
             get {
@@ -2167,7 +2167,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IrisBond tracker cannot found. Please check the tracker&apos;s connection and try again..
+        ///   Looks up a localized string similar to Irisbond Duo tracker cannot found. Please check the tracker&apos;s connection and try again..
         /// </summary>
         public static string IRISBOND_TRACKER_NOT_FOUND {
             get {

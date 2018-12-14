@@ -1,4 +1,4 @@
-﻿namespace JuliusSweetland.OptiKey.Native.IrisBond.Enums
+﻿namespace JuliusSweetland.OptiKey.Native.Irisbond.Enums
 {
     // Result of the library initialization returned by Start
     public enum CALIBRATION_STATUS

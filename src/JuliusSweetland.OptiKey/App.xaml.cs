@@ -623,8 +623,8 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TheEyeTribe:
                     return new TheEyeTribeCalibrationService();
 
-                case PointsSources.IrisBondDuo:
-                    return new IrisBondDuoCalibrationService();
+                case PointsSources.IrisbondDuo:
+                    return new IrisbondDuoCalibrationService();
 
                 case PointsSources.Alienware17:
                 case PointsSources.SteelseriesSentry:
@@ -666,8 +666,8 @@ namespace JuliusSweetland.OptiKey
                         new Regex(GazeTrackerUdpRegex));
                     break;
 
-                case PointsSources.IrisBondDuo:
-                    var irisBondPointService = new IrisBondDuoPointService();
+                case PointsSources.IrisbondDuo:
+                    var irisBondPointService = new IrisbondDuoPointService();
                     errorNotifyingServices.Add(irisBondPointService);
                     pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
