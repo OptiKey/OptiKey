@@ -848,6 +848,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy All.
+        /// </summary>
+        public static string COPY_ALL_FROM_SCRATCHPAD {
+            get {
+                return ResourceManager.GetString("COPY_ALL_FROM_SCRATCHPAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OptiKey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn&apos;t possible.
         ///
         ///Click Yes to reset your user settings and restart.
