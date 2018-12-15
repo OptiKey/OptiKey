@@ -188,15 +188,32 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <controls:Key Grid.Row="1" Grid.Column="5"
-                      SymbolGeometry="{StaticResource SpeakIcon}" 
-                      Text="{x:Static resx:Resources.SPEAK}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.SpeakKey}"/>
-        <controls:Key Grid.Row="1" Grid.Column="6"
-                      SymbolGeometry="{StaticResource SleepIcon}"
-                      Text="{x:Static resx:Resources.SLEEP}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.SleepKey}"/>
+
+        <Grid Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <controls:Key Grid.Row="0"
+                          SymbolGeometry="{StaticResource SpeakIcon}" 
+                          Text="{x:Static resx:Resources.SPEAK}"
+                          SharedSizeGroup="KeyWithSymbol"
+                          Value="{x:Static models:KeyValues.SpeakKey}"/>
+
+            <controls:Key Grid.Column="1"
+                          SymbolGeometry="{StaticResource SleepIcon}"
+                          Text="{x:Static resx:Resources.SLEEP}"
+                          SharedSizeGroup="KeyWithSymbol"
+                          Value="{x:Static models:KeyValues.SleepKey}"/>
+
+            <controls:Key Grid.Column="2"
+                          SymbolGeometry="{StaticResource CopyAllIcon}"
+                          Text="{x:Static resx:Resources.COPY_ALL_FROM_SCRATCHPAD}"
+                          SharedSizeGroup="KeyWithSymbol"
+                          Value="{x:Static models:KeyValues.CopyAllFromScratchpad}"/>
+
+        </Grid>
     </Grid>
 </UserControl>
