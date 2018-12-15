@@ -31,6 +31,7 @@
         ConversationConfirmYes,
         ConversationConfirmNo,
         ConversationNumericAndSymbolsKeyboard,
+        CopyAllFromScratchpad,
         CroatianCroatia,
         Currencies1Keyboard,
         Currencies2Keyboard,
