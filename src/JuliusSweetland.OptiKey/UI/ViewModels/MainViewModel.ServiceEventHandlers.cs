@@ -896,6 +896,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.CopyAllFromScratchpad:
                     {
+                        Log.Info("Copying text from scratchpad to clipboard.");
                         string textFromScratchpad = KeyboardOutputService.Text;
 
                         if (!string.IsNullOrEmpty(textFromScratchpad))
