@@ -894,6 +894,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.SetOpacity(1);
                     break;
 
+                case FunctionKeys.CopyAllFromScratchpad:
+                    {
+                        string textFromScratchpad = KeyboardOutputService.Text;
+
+                        if (!string.IsNullOrEmpty(textFromScratchpad))
+                        {
+                            Clipboard.SetText(textFromScratchpad);
+                        }
+                    }
+                    break;
+
                 case FunctionKeys.CroatianCroatia:
                     SelectLanguage(Languages.CroatianCroatia);
                     break;
