@@ -356,6 +356,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref enableAttentionKey, value); }
         }
 
+        private bool enableCopyAllScratchpadKey;
+        public bool EnableCopyAllScratchpadKey
+        {
+            get { return enableCopyAllScratchpadKey; }
+            set { SetProperty(ref enableCopyAllScratchpadKey, value); }
+        }
+
         private string dynamicKeyboardsLocation;
         public string DynamicKeyboardsLocation
         {
@@ -399,6 +406,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
             EnableAttentionKey = Settings.Default.EnableAttentionKey;
+            EnableCopyAllScratchpadKey = Settings.Default.EnableCopyAllScratchpadKey;
             DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
             StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
         }
@@ -428,6 +436,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
             Settings.Default.EnableAttentionKey = EnableAttentionKey;
+            Settings.Default.EnableCopyAllScratchpadKey = EnableCopyAllScratchpadKey;
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
         }

@@ -1353,6 +1353,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable copy scratchpad key?.
+        /// </summary>
+        public static string ENABLE_COPY_SCRATCHPAD_KEY_LABEL {
+            get {
+                return ResourceManager.GetString("ENABLE_COPY_SCRATCHPAD_KEY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable quit keys?.
         /// </summary>
         public static string ENABLE_QUIT_KEYS_LABEL {

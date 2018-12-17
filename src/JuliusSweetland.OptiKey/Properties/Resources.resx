@@ -2007,6 +2007,9 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
     <value>Enable attention key?</value>
   </data>
+  <data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
+    <value>Enable copy scratchpad key?</value>
+  </data>
   <data name="ATTENTION" xml:space="preserve">
     <value>ATTENTION</value>
   </data>

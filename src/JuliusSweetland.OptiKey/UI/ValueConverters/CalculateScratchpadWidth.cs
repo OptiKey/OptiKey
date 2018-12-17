@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
@@ -12,7 +11,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values == null || values.Length != 3)
+            if (values == null || values.Length != 4)
             {
                 return new GridLength(DefaultGridLength, GridUnitType.Star);
             }
@@ -20,6 +19,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
             int scratchpadWidthInKeys = (int) values[0];
             bool attentionKeyEnabled = (bool)values[1];
             bool ckKeyEnabled = (bool)values[2];
+            bool copyAllScratchpadEnabled = (bool)values[3];
 
             if (scratchpadWidthInKeys <= 0)
             {
@@ -32,6 +32,11 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
             }
 
             if (ckKeyEnabled)
+            {
+                --scratchpadWidthInKeys;
+            }
+
+            if (copyAllScratchpadEnabled)
             {
                 --scratchpadWidthInKeys;
             }
