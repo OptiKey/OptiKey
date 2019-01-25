@@ -45,9 +45,9 @@
                 </ColumnDefinition.Width>
             </ColumnDefinition>
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCommuniKateKeyboardLayout, Converter={StaticResource BoolToCustomValues}}" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCopyAllScratchpadKey, Converter={StaticResource BoolToCustomValues}}" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0"
@@ -190,17 +190,7 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <controls:Key Grid.Row="1" Grid.Column="5"
-                      SymbolGeometry="{StaticResource SpeakIcon}" 
-                      Text="{x:Static resx:Resources.SPEAK}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.SpeakKey}"/>
-        <controls:Key Grid.Row="1" Grid.Column="6"
-                      SymbolGeometry="{StaticResource SleepIcon}"
-                      Text="{x:Static resx:Resources.SLEEP}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.SleepKey}"/>
-        <ContentControl Grid.Row="1" Grid.Column="7"
+        <ContentControl Grid.Row="1" Grid.Column="5"
                         Visibility="{Binding EnableCopyAllScratchpadKey, Source={x:Static resx:Settings.Default}, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
@@ -224,5 +214,15 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
+        <controls:Key Grid.Row="1" Grid.Column="6"
+                      SymbolGeometry="{StaticResource SpeakIcon}" 
+                      Text="{x:Static resx:Resources.SPEAK}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.SpeakKey}"/>
+        <controls:Key Grid.Row="1" Grid.Column="7"
+                      SymbolGeometry="{StaticResource SleepIcon}"
+                      Text="{x:Static resx:Resources.SLEEP}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.SleepKey}"/>
     </Grid>
 </UserControl>
