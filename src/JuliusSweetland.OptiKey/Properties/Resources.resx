@@ -2285,4 +2285,10 @@ Française
   <data name="COPY_ALL_FROM_SCRATCHPAD" xml:space="preserve">
     <value>Copy All</value>
   </data>
+  <data name="DYNAMIC_KEYBOARD_DEFINITION_INVALID" xml:space="preserve">
+    <value>Dynamic keyboard definition invalid</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
+    <value>The defined height of this dynamic keyboard is too large (&gt; 95% of screen)</value>
+  </data>
 </root>

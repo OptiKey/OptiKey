@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -1313,6 +1313,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string DYNAMIC_KEYBOARD {
             get {
                 return ResourceManager.GetString("DYNAMIC_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dynamic keyboard definition invalid.
+        /// </summary>
+        public static string DYNAMIC_KEYBOARD_DEFINITION_INVALID {
+            get {
+                return ResourceManager.GetString("DYNAMIC_KEYBOARD_DEFINITION_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The defined height of this dynamic keyboard is too large (&gt; 95% of screen).
+        /// </summary>
+        public static string DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD {
+            get {
+                return ResourceManager.GetString("DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD", resourceCulture);
             }
         }
         

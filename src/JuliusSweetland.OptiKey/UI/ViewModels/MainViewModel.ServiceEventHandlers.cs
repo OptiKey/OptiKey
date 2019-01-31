@@ -244,7 +244,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     // will get caught and handled when DynamicKeyboard is created so we are good to ignore here 
                 }
 
-                DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, mainWindowManipulationService, keyStateService, keyValue.KeyboardFilename);
+                DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, mainWindowManipulationService, keyStateService,
+                    inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename);
                 newDynKeyboard.SetKeyOverrides(initialKeyStates);
                 newDynKeyboard.OverrideKeyboardLayout(overrideHeight);
                 Keyboard = newDynKeyboard;
