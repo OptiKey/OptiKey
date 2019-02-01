@@ -842,6 +842,7 @@
       <Link>PGRFlyCapture.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Fonts\B612-licence-epl-v10.html" />
     <Content Include="Resources\Presage\database.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -939,6 +940,15 @@
     <Content Include="Resources\CommuniKate\pageset.obz">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Fonts\Mandatory.ttf" />
+    <Resource Include="Resources\Fonts\B612 Mono-Bold.ttf" />
+    <Resource Include="Resources\Fonts\B612 Mono-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\B612 Mono-Italic.ttf" />
+    <Resource Include="Resources\Fonts\B612 Mono-Regular.ttf" />
+    <Resource Include="Resources\Fonts\B612-Bold.ttf" />
+    <Resource Include="Resources\Fonts\B612-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\B612-Italic.ttf" />
+    <Resource Include="Resources\Fonts\B612-Regular.ttf" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />
@@ -1657,12 +1667,12 @@
   <ItemGroup>
     <PublishFile Include="External Libraries\Newtonsoft.Json.xml">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
