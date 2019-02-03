@@ -521,6 +521,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.ENGLISH_US, KeyValues.EnglishUSKey, dictionary.ContainsKey(KeyValues.EnglishUSKey) ? dictionary[KeyValues.EnglishUSKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.FRENCH_CANADA, KeyValues.FrenchCanadaKey, dictionary.ContainsKey(KeyValues.FrenchCanadaKey) ? dictionary[KeyValues.FrenchCanadaKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.FRENCH_FRANCE, KeyValues.FrenchFranceKey, dictionary.ContainsKey(KeyValues.FrenchFranceKey) ? dictionary[KeyValues.FrenchFranceKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.GEORGIAN_GEORGIA, KeyValues.GeorgianGeorgiaKey, dictionary.ContainsKey(KeyValues.GeorgianGeorgiaKey) ? dictionary[KeyValues.GeorgianGeorgiaKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.GERMAN_GERMANY, KeyValues.GermanGermanyKey, dictionary.ContainsKey(KeyValues.GermanGermanyKey) ? dictionary[KeyValues.GermanGermanyKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.GREEK_GREECE, KeyValues.GreekGreeceKey, dictionary.ContainsKey(KeyValues.GreekGreeceKey) ? dictionary[KeyValues.GreekGreeceKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.ITALIAN_ITALY, KeyValues.ItalianItalyKey, dictionary.ContainsKey(KeyValues.ItalianItalyKey) ? dictionary[KeyValues.ItalianItalyKey] : (TimeSpan?) null),

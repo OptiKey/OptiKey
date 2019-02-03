@@ -1096,6 +1096,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     SelectLanguage(Languages.FrenchFrance);
                     break;
 
+                case FunctionKeys.GeorgianGeorgia:
+                    SelectLanguage(Languages.GeorgianGeorgia);
+                    break;
+
                 case FunctionKeys.GermanGermany:
                     SelectLanguage(Languages.GermanGermany);
                     break;
