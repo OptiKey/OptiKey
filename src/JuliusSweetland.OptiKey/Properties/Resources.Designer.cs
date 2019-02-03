@@ -1971,6 +1971,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Georgian (Georgia) / ქართული (საქართველო).
+        /// </summary>
+        public static string GEORGIAN_GEORGIA {
+            get {
+                return ResourceManager.GetString("GEORGIAN_GEORGIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Georgian
+        ///(Georgia) /
+        ///ქართული
+        ///(საქართველო).
+        /// </summary>
+        public static string GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to German (Germany) / Deutsch (Deutschland).
         /// </summary>
         public static string GERMAN_GERMANY {

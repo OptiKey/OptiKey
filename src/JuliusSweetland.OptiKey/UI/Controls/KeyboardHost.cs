@@ -24,6 +24,7 @@ using DanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Danish;
 using DutchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Dutch;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
 using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
+using GeorgianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Georgian;
 using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
 using GreekViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek;
 using ItalianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Italian;
@@ -194,6 +195,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.FranceAlpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.GeorgianGeorgia:
+                        newContent = new GeorgianViews.Alpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.GermanGermany:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new GermanViews.SimplifiedAlpha1 { DataContext = Keyboard }
@@ -296,6 +300,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.FranceConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.GeorgianGeorgia:
+                        newContent = new GeorgianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
