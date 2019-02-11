@@ -589,6 +589,12 @@
     <Compile Include="UI\Views\Keyboards\Georgian\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Georgian\SimplifiedAlpha1.xaml.cs">
+      <DependentUpon>SimplifiedAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Georgian\SimplifiedConversationAlpha1.xaml.cs">
+      <DependentUpon>SimplifiedConversationAlpha1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\German\AlphabeticalConversationAlpha1.xaml.cs">
       <DependentUpon>AlphabeticalConversationAlpha1.xaml</DependentUpon>
     </Compile>
@@ -1366,6 +1372,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Keyboards\Georgian\SimplifiedAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Georgian\SimplifiedConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\German\AlphabeticalConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1675,12 +1689,12 @@
   <ItemGroup>
     <PublishFile Include="External Libraries\Newtonsoft.Json.xml">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>

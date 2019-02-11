@@ -196,7 +196,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new FrenchViews.FranceAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GeorgianGeorgia:
-                        newContent = new GeorgianViews.Alpha1 { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new GeorgianViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : new GeorgianViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
@@ -302,7 +304,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new FrenchViews.FranceConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GeorgianGeorgia:
-                        newContent = new GeorgianViews.ConversationAlpha1 { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new GeorgianViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
+                            : new GeorgianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout

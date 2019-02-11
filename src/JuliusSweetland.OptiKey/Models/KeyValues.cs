@@ -231,6 +231,9 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup3SubGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup1);
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup3SubGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup2);
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup3SubGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup3);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4SubGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup1);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4SubGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup2);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4SubGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup3);
         public static readonly KeyValue SimplifiedKeyboardNumericAllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericAll);
         public static readonly KeyValue SimplifiedKeyboardNumericGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericGroup1);
         public static readonly KeyValue SimplifiedKeyboardNumericGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericGroup2);
