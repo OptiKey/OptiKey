@@ -1347,7 +1347,7 @@
                                                   Text="ძწჭ&#x0a;ხჯჰ&#x0a;?!."
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup4AllKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible"></Setter>
@@ -1359,7 +1359,7 @@
                                                   Text="ძწჭ&#x0a;ხჯჰ&#x0a;?!."
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup4AllKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible"></Setter>
@@ -1371,7 +1371,7 @@
                                                   Text="ძწჭ&#x0a;ხჯჰ&#x0a;?!."
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup4AllKey}"/>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Visibility" Value="Visible"></Setter>
