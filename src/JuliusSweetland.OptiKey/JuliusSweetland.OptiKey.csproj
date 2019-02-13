@@ -849,7 +849,6 @@
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
     <EmbeddedResource Include="Properties\Resources.uk-UA.resx" />
-    <EmbeddedResource Include="Resources.ja-JP.resx" />
     <Content Include="..\..\ext\Irisbond\PGRFlyCapture.dll">
       <Link>PGRFlyCapture.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1699,12 +1698,12 @@
   <ItemGroup>
     <PublishFile Include="External Libraries\Newtonsoft.Json.xml">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
