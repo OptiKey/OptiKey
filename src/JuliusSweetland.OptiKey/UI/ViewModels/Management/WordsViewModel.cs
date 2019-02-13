@@ -194,6 +194,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
                        || KeyboardAndDictionaryLanguage == Enums.Languages.JapaneseJapan
                        || KeyboardAndDictionaryLanguage == Enums.Languages.TurkishTurkey
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.GeorgianGeorgia
                        || KeyboardAndDictionaryLanguage == Enums.Languages.GermanGermany;
             }
         }

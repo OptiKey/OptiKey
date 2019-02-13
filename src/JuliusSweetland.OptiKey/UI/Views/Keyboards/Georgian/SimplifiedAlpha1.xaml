@@ -1014,7 +1014,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="ტუფ&#x0a;ქღყ&#x0a;შჩც@"
+                                                  Text="ტუფ&#x0a;ქღყ&#x0a;შჩც"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="1" 
                                                   Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>
@@ -1025,7 +1025,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="ტუფ&#x0a;ქღყ&#x0a;შჩც@"
+                                                  Text="ტუფ&#x0a;ქღყ&#x0a;შჩც"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="1" 
                                                   Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>
@@ -1036,7 +1036,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="ტუფ&#x0a;ქღყ&#x0a;შჩც@"
+                                                  Text="ტუფ&#x0a;ქღყ&#x0a;შჩც"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="1" 
                                                   Value="{x:Static models:KeyValues.SimplifiedKeyboardAlphaGroup3AllKey}"/>

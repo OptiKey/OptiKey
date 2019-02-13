@@ -328,6 +328,18 @@ namespace JuliusSweetland.OptiKey.Services
                     Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup3SubGroup3;
                     break;
 
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup1:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup4SubGroup1;
+                    break;
+
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup2:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup4SubGroup2;
+                    break;
+
+                case FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup3:
+                    Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.AlphaGroup4SubGroup3;
+                    break;
+
                 case FunctionKeys.SimplifiedKeyboardNumericAll:
                     Settings.Default.SimplifiedKeyboardContext = SimplifiedKeyboardContexts.NumericAll;
                     break;

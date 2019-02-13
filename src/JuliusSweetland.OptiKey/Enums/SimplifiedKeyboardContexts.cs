@@ -15,7 +15,7 @@
         AlphaGroup3SubGroup1,   //STU
         AlphaGroup3SubGroup2,   //VWX
         AlphaGroup3SubGroup3,   //YZ
-        AlphaGroup4All,         // Japanese
+        AlphaGroup4All,         // Georgian & Japanese
         AlphaGroup4SubGroup1,   //Georgian 
         AlphaGroup4SubGroup2,   //Georgian
         AlphaGroup4SubGroup3,   //Georgian
