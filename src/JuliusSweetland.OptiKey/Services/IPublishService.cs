@@ -24,6 +24,8 @@ namespace JuliusSweetland.OptiKey.Services
         void ScrollMouseWheelDown(int clicks);
         void ScrollMouseWheelLeft(int clicks);
         void ScrollMouseWheelRight(int clicks);
+        void ScrollMouseWheelAbsoluteHorizontal(int amount);
+        void ScrollMouseWheelAbsoluteVertical(int amount);
         void TypeText(string text);
     }
 }

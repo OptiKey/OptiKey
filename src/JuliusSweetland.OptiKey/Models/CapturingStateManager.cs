@@ -17,6 +17,7 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         private bool capturingMultiKeySelection;
+
         public bool CapturingMultiKeySelection
         {
             get { return capturingMultiKeySelection; }

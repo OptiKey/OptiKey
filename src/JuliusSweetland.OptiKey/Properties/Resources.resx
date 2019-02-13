@@ -139,8 +139,8 @@ DICTIONARY</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Adjust by {0} pixel|Adjust by {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>LETTERS</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>LETTERS 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -151,10 +151,13 @@ DICTIONARY</value>
   <data name="ANDROID_LIGHT" xml:space="preserve">
     <value>Android Light</value>
   </data>
+  <data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>Android Two Tone</value>
+  </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Auto capitalise words:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Auto complete words:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -162,6 +165,9 @@ DICTIONARY</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Auto space between words:</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Back</value>
   </data>
   <data name="BACK" xml:space="preserve">
     <value>BACK</value>
@@ -218,7 +224,7 @@ Are you sure you would like to re-calibrate?</value>
     <value>CLEAR</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>CLICK 
+    <value>CLICK
 &amp; DRAG</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
@@ -298,6 +304,9 @@ Sorry for the inconvenience.</value>
   </data>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
     <value>Cursor width (pixels):</value>
+  </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>Dynamic keyboard file</value>
   </data>
   <data name="DANISH_DENMARK" xml:space="preserve">
     <value>Danish (Denmark) / Dansk (Danmark)</value>
@@ -407,11 +416,11 @@ LEFT</value>
 RIGHT</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND 
+    <value>EXPAND
 UP &amp; LEFT</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND 
+    <value>EXPAND
 UP &amp; RIGHT</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -549,6 +558,9 @@ UP</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>Keyboard language:</value>
+  </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>Keyboards folder can be set in \n Management Console (Visuals tab)</value>
   </data>
   <data name="LEFT" xml:space="preserve">
     <value>Left</value>
@@ -771,14 +783,14 @@ UP</value>
     <value>Multi-key Selection</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Muli-key selection ending:</value>
+    <value>Multi-key selection ending:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MULTI-KEY
 SELECTION</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Muli-key selection starting:</value>
+    <value>Multi-key selection starting:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
@@ -789,6 +801,9 @@ SELECTION</value>
   </data>
   <data name="NO" xml:space="preserve">
     <value>NO</value>
+  </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>No keyboards found</value>
   </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
     <value>It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.</value>
@@ -811,7 +826,7 @@ LK</value>
 SYM</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>NUMBERS 
+    <value>NUMBERS
 &amp; SYMBOLS</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
@@ -1006,7 +1021,7 @@ UP</value>
     <value>SHRINK</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK 
+    <value>SHRINK
 DOWN &amp; LEFT</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -1074,6 +1089,9 @@ POSITION</value>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
     <value>Startup keyboard:</value>
   </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>Dynamic keyboard file:</value>
+  </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>Stop signal:</value>
   </data>
@@ -1102,7 +1120,7 @@ POSITION</value>
     <value>Theme:</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
-    <value>Time until point becomes irrelevent (ms):</value>
+    <value>Time until point becomes irrelevant (ms):</value>
   </data>
   <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
     <value>Hide cursor</value>
@@ -1276,6 +1294,9 @@ Deutsch
 (Spain) /
 Español
 (España)</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Dynamic keyboard menu</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
@@ -1463,8 +1484,8 @@ Español
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>ADJUST AMOUNT IN PIXELS</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>CONVERSATION ALPHA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>CONVERSATION ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>CONVERSATION NUMERIC &amp; SYMBOLS</value>
@@ -1646,6 +1667,15 @@ Español
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Quit</value>
   </data>
+  <data name="GEORGIAN_GEORGIA" xml:space="preserve">
+    <value>Georgian (Georgia) / ქართული (საქართველო)</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Georgian
+(Georgia) /
+ქართული
+(საქართველო)</value>
+  </data>
   <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Greek
 (Greece) /
@@ -1721,6 +1751,24 @@ Türkçe
 Italiano
 (Italia)</value>
   </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>Korean (Korea) / 한국어 (한국)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Korean
+(Korea) /
+한국어
+(한국)</value>
+  </data>
+  <data name="SERBIAN_SERBIA" xml:space="preserve">
+    <value>Serbian (Serbia) / Српски (Србија)</value>
+  </data>
+  <data name="SERBIAN_SERBIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Serbian
+(Serbia) /
+Српски
+(Србија)</value>
+  </data>
   <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
     <value>Slovenian (Slovenia) / Slovensko (Slovenija)</value>
   </data>
@@ -1741,6 +1789,15 @@ Slovensko
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibration success!</value>
+  </data>
+  <data name="POLISH_POLAND" xml:space="preserve">
+    <value>Polish (Poland) / Polski (Polska)</value>
+  </data>
+  <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Polish
+(Poland) /
+Polski
+(Polska)</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
     <value>Portuguese (Portugal) / Português (Portugal)</value>
@@ -1779,10 +1836,10 @@ Slovenčina
     <value>Tobii X2-60</value>
   </data>
   <data name="FORCE_CAPS_LOCK" xml:space="preserve">
-    <value>Force caps lock:</value>
+    <value>Force caps lock (shift locked down):</value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use alphabetical keyboard layout:</value>
+    <value>Use alphabetical keyboard layout</value>
   </data>
   <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
     <value>Kalman Filter:</value>
@@ -1818,6 +1875,417 @@ Slovenčina
     <value>Enable quit keys?</value>
   </data>
   <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use simplify keyboard layout:</value>
+    <value>Use simplified keyboard layout</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Back</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Forward</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Home</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Search</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>Web Browsing</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Web
+Browsing</value>
+  </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>Use MaryTTS speech synthesizer?</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS voice:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>MaryTTS location (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>ERROR: a valid 'marytts-server.bat' file was not selected. Please try again.</value>
+  </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Presage</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>Suggestion method:</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>MaryTTS is not available</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>Presage word prediction not available</value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>Setting the suggestion method to: {0}.
+You can change this back
+from the Management Console (ALT + M).</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>Setting the speech voice to the system voice: {0}.
+You can check the path for MaryTTS
+and change the voice back to it
+from the Management Console (ALT + M).</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>Delay before speech (ms):</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Use CommuniKate keyboard layout</value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Enable CommuniKate keyboard layout:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>CommuniKate top page obf file:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>Invalid file</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>Location of CommuniKate top page .obz file:</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>OptiKey was unable to handshake with Presage. There are a few possible causes:
+    1.The DBFILENAME location specified in the presage.xml file (located in C:\Users\USER_NAME\.presage) does not exist - please check and correct this (or uninstall/reinstall Presage).
+    2.Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+
+Please uninstall Presage and install the 32 bit version of 0.9.2.
+OptiKey will attempt to continue, but there is a good chance it will crash shortly.
+The prediction method will be changed to NGram to prevent a crash on next run.</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>There is a problem with Presage</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>Folder containing dynamic keyboards:</value>
+  </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>Folder containing plugins:</value>
+  </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>LETTERS 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>CONVERSATION ALPHA 2</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>All changes made to the settings will be discarded, do you want to continue?</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>Cancel Settings</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>The Presage dictionary cannot be edited from here.
+It's default location is "C:\Program Files (x86)\presage\share\presage\database_en.db".
+It can be edited with a program which can read SQLite format 3 files 
+such as "DB Browser for SQLite" (which is a free program).</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>LETTERS</value>
+  </data>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support.</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>Error:</value>
+  </data>
+  <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>Attention:</value>
+  </data>
+  <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>Enable attention key?</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>ATTENTION</value>
+  </data>
+  <data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>CommuniKate is currently disabled (use QWERTY)</value>
+  </data>
+  <data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Keyboard style for typing:</value>
+  </data>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Use default keyboard layout</value>
+  </data>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>Uh-oh! We've encountered the following errors during startup:</value>
+  </data>
+  <data name="SELECT_VOICE" xml:space="preserve">
+    <value>SELECT VOICE</value>
+  </data>
+  <data name="MORE" xml:space="preserve">
+    <value>More…</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Language &amp; Voice</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Language
+&amp; Voice</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>LANGUAGE &amp; VOICE</value>
+  </data>
+  <data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>MORE…</value>
+  </data>
+  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>Display voices when changing keyboard language:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL" xml:space="preserve">
+    <value>Look to Scroll</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>Use alternative "look to scroll" method for scrolling:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Invert scrolling direction:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Lock down bounds key to preserve chosen point, window, or region:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Before scrolling, move mouse to centre of deadzone:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Before scrolling within window, bring it to the front:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>After choosing screen point, bring any window there to the front:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Stop scrolling when choosing where to move, click or drag the mouse:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Automatically resume scrolling afterwards:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>Stop scrolling upon switching keyboards:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Show overlay window (requires restart):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of scroll bounds drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of deadzone guides drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
+    <value>Thickness of scroll bounds drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
+    <value>Thickness of deadzone guides drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Horizontal deadzone (in pixels):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Vertical deadzone (in pixels):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Cycle through these scroll increments:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>'Slow' base speed (in cps or "clicks" per second):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Medium' base speed (in cps or "clicks" per second):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>'Fast' base speed (in cps or "clicks" per second):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>'Slow' acceleration (cps per pixel from deadzone):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Medium' acceleration (cps per pixel from deadzone):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>'Fast' acceleration (cps per pixel from deadzone):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>LOOK TO SCROLL KEYS:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>TOGGLE SCROLLING</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT BOUNDS</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT INCREMENT</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT MODE</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT SPEED</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>Look to
+Scroll</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Scroll by {0} wheel unit: 
+(120 wheel units = 1 click)|Scroll by {0} wheel units:
+(120 wheel units = 1 click)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Screen at
+Point</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Screen
+Centred</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Window</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Window
+Region</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Custom
+Region</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>Cross</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Slow</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Fast</value>
+  </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>French (Canada) / Française (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>French
+(Canada) /
+Française
+(Canada)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>Japanese (Japan) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Japanese
+(Japan) /
+日本語
+(日本)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>CommuniKate sound volume:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>Speak CommuniKate button text when selected:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>Rate of speech when speaking CommuniKate button text:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>Volume of speech when speaking CommuniKate button text:</value>
+  </data>
+  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>Are you sure you would like to switch to/from manual mode?</value>
+  </data>
+  <data name="MANUAL_MODE" xml:space="preserve">
+    <value>MANUAL MODE</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>Location of Presage database .db file:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>Number of Presage suggestions to show:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>Available plugins</value>
+  </data>
+  <data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
+  <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>Refresh plugins</value>
+  </data>
+  <data name="RESTART" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Are you absolutely sure that you'd like to restart OptiKey?</value>
+  </data>
+  <data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>Are you sure you'd like to restart OptiKey?</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>DYNAMIC KEYBOARD</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>WEB BROWSING</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>Ukrainian (Ukraine) / Українська (Україна)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ukrainian
+(Ukraine) /
+Українська
+(Україна)</value>
+  </data>
+  <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Data stream processing amount:</value>
+  </data>
+  <data name="IRISBOND_DUO" xml:space="preserve">
+    <value>Irisbond Duo</value>
+  </data>
+  <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>Irisbond Duo tracker could not be started.</value>
+  </data>
+  <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>Irisbond Duo tracker cannot found. Please check the tracker's connection and try again.</value>
+  </data>
+  <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
+    <value>Calibration completed (success or failure), but everything is working again!</value>
   </data>
 </root>

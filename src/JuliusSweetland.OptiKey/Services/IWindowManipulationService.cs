@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -8,6 +9,7 @@ namespace JuliusSweetland.OptiKey.Services
         event EventHandler SizeAndPositionInitialised;
 
         bool SizeAndPositionIsInitialised { get; }
+        Rect WindowBounds { get; }
         WindowStates WindowState { get; }
 
         void Expand(ExpandToDirections direction, double amountInPx);
@@ -19,7 +21,9 @@ namespace JuliusSweetland.OptiKey.Services
         void Move(MoveToDirections direction, double? amountInPx);
         void ResizeDockToCollapsed();
         void ResizeDockToFull();
+        void ResizeDockToSpecificHeight(double heightAsPercentScreen, bool persistNewSize);
         void Restore();
+        void RestoreSavedState();
         void SetOpacity(double opacity);
         void Shrink(ShrinkFromDirections direction, double amountInPx);
     }

@@ -19,10 +19,12 @@ namespace JuliusSweetland.OptiKey.Extensions
             {
                 //Trim white space
                 string hash = entry.Trim();
+                bool suppressRepeatedCharacters = true;
 
                 //Phrase/Sentence - extract first letter of each word, from which we will build the hash
                 if (hash.Contains(" "))
                 {
+                    suppressRepeatedCharacters = false;
                     hash = new string(hash
                         .Split(' ')
                         .Where(s => !string.IsNullOrEmpty(s))
@@ -43,7 +45,7 @@ namespace JuliusSweetland.OptiKey.Extensions
                 var hashStringBuilder = new StringBuilder();
                 foreach (var c in hash.ToCharArray())
                 {
-                    if (hashStringBuilder.Length == 0 || hashStringBuilder[hashStringBuilder.Length - 1] != c)
+                    if (!suppressRepeatedCharacters || hashStringBuilder.Length == 0 || hashStringBuilder[hashStringBuilder.Length - 1] != c)
                     {
                         hashStringBuilder.Append(c);
                     }
@@ -181,6 +183,17 @@ namespace JuliusSweetland.OptiKey.Extensions
         }
 
         /// <summary>
+        /// Normalises string using decomposition and then attempts to compose sequences into their primary composites.
+        /// In other words the string is decomposed and then recomposed. During composition any "combining" Unicode 
+        /// characters/marks are squashed into primary composites, e.g. an "e" followed by a "Combining Grave Accent" becomes "è".
+        /// This will only work if the diacritics are "combining" characters, NOT "modifier" characters or standard characters.
+        /// </summary>
+        public static string Compose(this string src, bool compatibilityDecomposition = true)
+        {
+            return src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKC : NormalizationForm.FormC);
+        }
+
+        /// <summary>
         /// Remove diacritics (accents etc) from source string and returns the base string
         /// Info on unicode representation of diacritics: http://www.unicode.org/reports/tr15/
         /// � symbols in your dictionary file? Resave it in UTF-8 encoding (I use Notepad)
@@ -189,7 +202,7 @@ namespace JuliusSweetland.OptiKey.Extensions
         {
             var sb = new StringBuilder();
 
-            var decomposed = src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKD : NormalizationForm.FormD);
+            var decomposed = src.Decompose(compatibilityDecomposition);
 
             foreach (char c in decomposed)
             {
@@ -210,15 +223,9 @@ namespace JuliusSweetland.OptiKey.Extensions
             return sb.ToString();
         }
 
-        /// <summary>
-        /// Normalises string using decomposition and then attempts to compose sequences into their primary composites.
-        /// In other words the string is decomposed and then recomposed. During composition any "combining" Unicode 
-        /// characters/marks are squashed into primary composites, e.g. an "e" followed by a "Combining Grave Accent" becomes "è".
-        /// This will only work if the diacritics are "combining" characters, NOT "modifier" characters or standard characters.
-        /// </summary>
-        public static string ComposeDiacritics(this string src, bool compatibilityDecomposition = true)
+        public static string Decompose(this string src, bool compatibilityDecomposition = true)
         {
-            return src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKC : NormalizationForm.FormC);
+            return src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKD : NormalizationForm.FormD);
         }
 
         /// <summary>
@@ -352,5 +359,17 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             return output;
         }
+
+        public static string ToStringWithValidNewlines(this string s)
+        {
+            if (s.Contains("\\r\\n"))
+                s = s.Replace("\\r\\n", Environment.NewLine);
+
+            if (s.Contains("\\n"))
+                s = s.Replace("\\n", Environment.NewLine);
+
+            return s;
+        }
+
     }
 }

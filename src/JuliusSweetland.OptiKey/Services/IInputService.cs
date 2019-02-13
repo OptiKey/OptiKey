@@ -11,10 +11,11 @@ namespace JuliusSweetland.OptiKey.Services
     public interface IInputService : INotifyPropertyChanged, INotifyErrors
     {
         event EventHandler<int> PointsPerSecond;
-        event EventHandler<Tuple<Point, KeyValue?>> CurrentPosition;
-        event EventHandler<Tuple<PointAndKeyValue?, double>> SelectionProgress;
+        event EventHandler<Tuple<Point, KeyValue>> CurrentPosition;
+        event EventHandler<Point> LivePosition; // Get up-to-date position, regardless of whether it has changed.
+        event EventHandler<Tuple<PointAndKeyValue, double>> SelectionProgress;
         event EventHandler<PointAndKeyValue> Selection;
-        event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> SelectionResult;
+        event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> SelectionResult;
 
         IPointSource PointSource { get; set; }
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }

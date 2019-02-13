@@ -1,37 +1,45 @@
-﻿using System;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.UI.Utilities;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.UI.Utilities;
-using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
-using log4net;
-using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using CatalanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Catalan;
+using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using CroatianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Croatian;
 using CzechViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Czech;
 using DanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Danish;
 using DutchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Dutch;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
 using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
+using GeorgianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Georgian;
 using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
 using GreekViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek;
 using ItalianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Italian;
+using JapaneseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Japanese;
+using KoreanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Korean;
+using PolishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Polish;
 using PortugueseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Portuguese;
 using RussianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Russian;
 using SlovakViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Slovak;
 using SlovenianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Slovenian;
 using SpanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Spanish;
 using TurkishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Turkish;
+using UkrainianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Ukrainian;
+using SerbianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Serbian;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
-using System.Diagnostics;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -40,6 +48,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         #region Private member vars
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        private CompositeDisposable currentKeyboardKeyValueSubscriptions = new CompositeDisposable();
 
         #endregion
 
@@ -54,8 +64,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.ConversationConfirmEnable).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationConfirmOnlyMode).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.EnableCommuniKateKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UseCommuniKateKeyboardLayoutByDefault).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseSimplifiedKeyboardLayout).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.SimplifiedKeyboardCurrentContext).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.CommuniKateKeyboardCurrentContext).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.SimplifiedKeyboardContext).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
 
@@ -71,9 +84,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         #endregion
 
         #region Properties
-        
+
         public static readonly DependencyProperty KeyboardProperty =
-            DependencyProperty.Register("Keyboard", typeof (IKeyboard), typeof (KeyboardHost),
+            DependencyProperty.Register("Keyboard", typeof(IKeyboard), typeof(KeyboardHost),
                 new PropertyMetadata(default(IKeyboard),
                     (o, args) =>
                     {
@@ -86,7 +99,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public IKeyboard Keyboard
         {
-            get { return (IKeyboard) GetValue(KeyboardProperty); }
+            get { return (IKeyboard)GetValue(KeyboardProperty); }
             set { SetValue(KeyboardProperty, value); }
         }
 
@@ -101,7 +114,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty ErrorContentProperty =
-            DependencyProperty.Register("ErrorContent", typeof (object), typeof (KeyboardHost), new PropertyMetadata(default(object)));
+            DependencyProperty.Register("ErrorContent", typeof(object), typeof(KeyboardHost), new PropertyMetadata(default(object)));
 
         public object ErrorContent
         {
@@ -131,8 +144,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                 throw windowException;
             }
-            
+
             SubscribeToParentWindowMoves(parentWindow);
+            SubscribeToParentWindowStateChanges(parentWindow);
 
             Loaded -= OnLoaded; //Ensure this logic only runs once
         }
@@ -143,29 +157,31 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void GenerateContent()
         {
-            Log.DebugFormat("GenerateContent called. Keyboard language is '{0}' and Keyboard type is '{1}'", 
+            Log.DebugFormat("GenerateContent called. Keyboard language is '{0}' and Keyboard type is '{1}'",
                 Settings.Default.KeyboardAndDictionaryLanguage, Keyboard != null ? Keyboard.GetType() : null);
 
             //Clear out point to key map
             PointToKeyValueMap = null;
-          
+
             object newContent = ErrorContent;
 
-            if (Keyboard is ViewModelKeyboards.Alpha)
+            if (Keyboard is ViewModelKeyboards.Alpha1)
             {
-                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                if (Settings.Default.UsingCommuniKateKeyboardLayout)
+                    newContent = (object)new CommonViews.CommuniKate { DataContext = Keyboard };
+                else switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.CatalanSpain:
-                        newContent = new CatalanViews.Alpha { DataContext = Keyboard };
+                        newContent = new CatalanViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:
-                        newContent = new CroatianViews.Alpha { DataContext = Keyboard };
+                        newContent = new CroatianViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CzechCzechRepublic:
-                        newContent = new CzechViews.Alpha { DataContext = Keyboard };
+                        newContent = new CzechViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.DanishDenmark:
-                        newContent = new DanishViews.Alpha { DataContext = Keyboard };
+                        newContent = new DanishViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.DutchBelgium:
                         newContent = new DutchViews.BelgiumAlpha { DataContext = Keyboard };
@@ -173,103 +189,191 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.DutchNetherlands:
                         newContent = new DutchViews.NetherlandsAlpha { DataContext = Keyboard };
                         break;
+                    case Languages.FrenchCanada:
+                        newContent = new FrenchViews.CanadaAlpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.FrenchFrance:
-                        newContent = new FrenchViews.Alpha { DataContext = Keyboard };
+                        newContent = new FrenchViews.FranceAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.GeorgianGeorgia:
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new GeorgianViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : new GeorgianViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
-                        newContent = new GermanViews.Alpha { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new GermanViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout
+                                ? (object)new GermanViews.AlphabeticalAlpha1 { DataContext = Keyboard }
+                                : new GermanViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GreekGreece:
-                        newContent = new GreekViews.Alpha { DataContext = Keyboard };
+                        newContent = new GreekViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.ItalianItaly:
-                        newContent = new ItalianViews.Alpha { DataContext = Keyboard };
+                        newContent = new ItalianViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.JapaneseJapan:
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new JapaneseViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : new JapaneseViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.KoreanKorea:
+                        newContent = new KoreanViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.PolishPoland:
+                        newContent = new PolishViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.PortuguesePortugal:
-                        newContent = new PortugueseViews.Alpha { DataContext = Keyboard };
+                        newContent = new PortugueseViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.RussianRussia:
-                        newContent = new RussianViews.Alpha { DataContext = Keyboard };
+                        newContent = new RussianViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.SerbianSerbia:
+                        newContent = new SerbianViews.Alpha1 { DataContext = Keyboard }; 
                         break;
                     case Languages.SlovakSlovakia:
-                        newContent = new SlovakViews.Alpha { DataContext = Keyboard };
+                        newContent = new SlovakViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.SlovenianSlovenia:
-                        newContent = new SlovenianViews.Alpha { DataContext = Keyboard };
+                        newContent = new SlovenianViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.SpanishSpain:
-                        newContent = new SpanishViews.Alpha { DataContext = Keyboard };
+                        newContent = new SpanishViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.TurkishTurkey:
-                        newContent = new TurkishViews.Alpha { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new TurkishViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : new TurkishViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.UkrainianUkraine:
+                        newContent = new UkrainianViews.Alpha1 { DataContext = Keyboard };
                         break;
                     default:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
-                            ? (object)new EnglishViews.SimplifiedAlpha { DataContext = Keyboard }
-                            : Settings.Default.UseAlphabeticalKeyboardLayout 
-                            ? (object)new EnglishViews.AlphabeticalAlpha { DataContext = Keyboard }
-                            : new EnglishViews.Alpha { DataContext = Keyboard };
+                            ? (object)new EnglishViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout
+                                ? (object)new EnglishViews.AlphabeticalAlpha1 { DataContext = Keyboard }
+                                : new EnglishViews.Alpha1 { DataContext = Keyboard };
                         break;
                 }
             }
-            else if (Keyboard is ViewModelKeyboards.ConversationAlpha)
+            else if (Keyboard is ViewModelKeyboards.Alpha2)
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.JapaneseJapan:
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new JapaneseViews.SimplifiedAlpha2 { DataContext = Keyboard }
+                            : new JapaneseViews.Alpha2 { DataContext = Keyboard };
+                        break;
+                    case Languages.KoreanKorea:
+                        newContent = new KoreanViews.Alpha2 { DataContext = Keyboard };
+                        break;
+                }
+            }
+            else if (Keyboard is ViewModelKeyboards.ConversationAlpha1)
+            {
+                if (Settings.Default.UsingCommuniKateKeyboardLayout)
+                    newContent = (object)new CommonViews.CommuniKate { DataContext = Keyboard };
+                else switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                {
                     case Languages.CatalanSpain:
-                        newContent = new CatalanViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new CatalanViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:
-                        newContent = new CroatianViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new CroatianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CzechCzechRepublic:
-                        newContent = new CzechViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new CzechViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.DanishDenmark:
-                        newContent = new DanishViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new DanishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.DutchBelgium:
-                        newContent = new DutchViews.BelgiumConversationAlpha { DataContext = Keyboard };
+                        newContent = new DutchViews.BelgiumConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.DutchNetherlands:
-                        newContent = new DutchViews.NetherlandsConversationAlpha { DataContext = Keyboard };
+                        newContent = new DutchViews.NetherlandsConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.FrenchCanada:
+                        newContent = new FrenchViews.CanadaConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.FrenchFrance:
-                        newContent = new FrenchViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new FrenchViews.FranceConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.GeorgianGeorgia:
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new GeorgianViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
+                            : new GeorgianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
-                        newContent = new GermanViews.ConversationAlpha { DataContext = Keyboard };
-                        break;
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new GermanViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout
+                                ? (object)new GermanViews.AlphabeticalConversationAlpha1 { DataContext = Keyboard }
+                                : new EnglishViews.ConversationAlpha1 { DataContext = Keyboard };
+                            break;
                     case Languages.GreekGreece:
-                        newContent = new GreekViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new GreekViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.ItalianItaly:
-                        newContent = new ItalianViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new ItalianViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.JapaneseJapan:
+                        newContent = new JapaneseViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.KoreanKorea:
+                        newContent = new KoreanViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.PolishPoland:
+                        newContent = new PolishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.PortuguesePortugal:
-                        newContent = new PortugueseViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new PortugueseViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.RussianRussia:
-                        newContent = new RussianViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new RussianViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.SerbianSerbia:
+                        newContent = new SerbianViews.ConversationAlpha1 { DataContext = Keyboard }; 
                         break;
                     case Languages.SlovakSlovakia:
-                        newContent = new SlovakViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new SlovakViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.SlovenianSlovenia:
-                        newContent = new SlovenianViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new SlovenianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.SpanishSpain:
-                        newContent = new SpanishViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = new SpanishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.TurkishTurkey:
-                        newContent = new TurkishViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new TurkishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
+                            : new TurkishViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.UkrainianUkraine:
+                        newContent = new UkrainianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     default:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
-                            ? (object)new EnglishViews.SimplifiedConversationAlpha { DataContext = Keyboard }
+                            ? (object)new EnglishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
                             : Settings.Default.UseAlphabeticalKeyboardLayout
-                            ? (object)new EnglishViews.AlphabeticalConversationAlpha { DataContext = Keyboard }
-                            : new EnglishViews.ConversationAlpha { DataContext = Keyboard };
+                                ? (object)new EnglishViews.AlphabeticalConversationAlpha1 { DataContext = Keyboard }
+                                : new EnglishViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                }
+            }
+            else if (Keyboard is ViewModelKeyboards.ConversationAlpha2)
+            {
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                {
+                    case Languages.JapaneseJapan:
+                        newContent = new JapaneseViews.ConversationAlpha2 { DataContext = Keyboard };
+                        break;
+                    case Languages.KoreanKorea:
+                        newContent = new KoreanViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
                 }
             }
@@ -305,6 +409,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.Language { DataContext = Keyboard };
             }
+            else if (Keyboard is ViewModelKeyboards.Voice)
+            {
+                var voice = Keyboard as ViewModelKeyboards.Voice;
+
+                // Since the Voice keyboard's view-model is in charge of creating the keys instead of the
+                // view, we need to make sure any localized text is up-to-date with the current UI language.
+                voice.LocalizeKeys();
+
+                newContent = new CommonViews.Voice { DataContext = Keyboard };
+            }
             else if (Keyboard is ViewModelKeyboards.Menu)
             {
                 newContent = new CommonViews.Menu { DataContext = Keyboard };
@@ -337,16 +451,29 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.SizeAndPosition { DataContext = Keyboard };
             }
+            else if (Keyboard is ViewModelKeyboards.WebBrowsing)
+            {
+                newContent = new CommonViews.WebBrowsing { DataContext = Keyboard };
+            }
             else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
             {
                 newContent = new CommonViews.YesNoQuestion { DataContext = Keyboard };
             }
-
+            else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
+            {
+                var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
+                newContent = new CommonViews.DynamicKeyboard(kb.Link, kb.ResizeAction) { DataContext = Keyboard };
+            }
+            else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)
+            {
+                var kb = Keyboard as ViewModelKeyboards.DynamicKeyboardSelector;
+                newContent = new CommonViews.DynamicKeyboardSelector(kb.PageIndex) { DataContext = Keyboard };
+            }
             Content = newContent;
         }
 
         #endregion
-        
+
         #region Content Change Handler
 
         private static void ContentChangedHandler(object sender, EventArgs e)
@@ -370,14 +497,21 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 this.Cursor = System.Windows.Input.Cursors.Arrow;
             }
         }
-        
+
         #endregion
 
         #region Build Point To Key Map
 
         private void BuildPointToKeyMap()
         {
-            Log.Debug("Building PointToKeyMap.");
+            Log.Info("Building PointToKeyMap.");
+
+            if (currentKeyboardKeyValueSubscriptions != null)
+            {
+                Log.Debug("Disposing of currentKeyboardKeyValueSubscriptions.");
+                currentKeyboardKeyValueSubscriptions.Dispose();
+            }
+            currentKeyboardKeyValueSubscriptions = new CompositeDisposable();
 
             var contentAsFrameworkElement = Content as FrameworkElement;
             if (contentAsFrameworkElement != null)
@@ -402,21 +536,20 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private void TraverseAllKeysAndBuildPointToKeyValueMap()
         {
             var allKeys = VisualAndLogicalTreeHelper.FindVisualChildren<Key>(this).ToList();
-
             var pointToKeyValueMap = new Dictionary<Rect, KeyValue>();
-
             var topLeftPoint = new Point(0, 0);
 
             foreach (var key in allKeys)
             {
                 if (key.IsVisible
                     && PresentationSource.FromVisual(key) != null
-                    && (key.Value.FunctionKey != null || key.Value.String != null))
+                    && key.Value != null
+                    && key.Value.HasContent())
                 {
                     var rect = new Rect
                     {
                         Location = key.PointToScreen(topLeftPoint),
-                        Size = (Size) key.GetTransformToDevice().Transform((Vector) key.RenderSize)
+                        Size = (Size)key.GetTransformToDevice().Transform((Vector)key.RenderSize)
                     };
 
                     if (rect.Size.Width != 0 && rect.Size.Height != 0)
@@ -434,9 +567,20 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             pointToKeyValueMap.Add(rect, key.Value);
                         }
                     }
+
+                    var keyValueChangedSubscription = key.OnPropertyChanges<KeyValue>(Key.ValueProperty).Subscribe(kv =>
+                    {
+                        KeyValue mapValue;
+                        if (pointToKeyValueMap.TryGetValue(rect, out mapValue))
+                        {
+                            pointToKeyValueMap[rect] = kv;
+                        }
+                    });
+                    currentKeyboardKeyValueSubscriptions.Add(keyValueChangedSubscription);
                 }
             }
 
+            Log.InfoFormat("PointToKeyValueMap rebuilt with {0} keys.", pointToKeyValueMap.Keys.Count);
             PointToKeyValueMap = pointToKeyValueMap;
         }
 
@@ -451,10 +595,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 h => SizeChanged -= h)
                 .Throttle(TimeSpan.FromSeconds(0.1))
                 .ObserveOnDispatcher()
-                .Subscribe(_ =>
+                .Subscribe(ep =>
                 {
-                    Log.Debug("SizeChanged event detected.");
-
+                    Log.InfoFormat("SizeChanged event detected from {0} to {1}.", ep.EventArgs.PreviousSize, ep.EventArgs.NewSize);
                     BuildPointToKeyMap();
                 });
         }
@@ -465,7 +608,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void SubscribeToParentWindowMoves(Window parentWindow)
         {
-            //This event will also fire if the window is mimised, restored, or maximised, so no need to monitor StateChanged
             Observable.FromEventPattern<EventHandler, EventArgs>
                 (h => parentWindow.LocationChanged += h,
                 h => parentWindow.LocationChanged -= h)
@@ -473,7 +615,25 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .ObserveOnDispatcher()
                 .Subscribe(_ =>
                 {
-                    Log.Debug("Window's LocationChanged event detected.");
+                    Log.Info("Window's LocationChanged event detected.");
+                    BuildPointToKeyMap();
+                });
+        }
+
+        #endregion
+
+        #region Subscribe To Parent Window State Changes
+
+        private void SubscribeToParentWindowStateChanges(Window parentWindow)
+        {
+            Observable.FromEventPattern<EventHandler, EventArgs>
+                (h => parentWindow.StateChanged += h,
+                h => parentWindow.StateChanged -= h)
+                .Throttle(TimeSpan.FromSeconds(0.1))
+                .ObserveOnDispatcher()
+                .Subscribe(_ =>
+                {
+                    Log.InfoFormat("Window's StateChange event detected. New state: {0}.", parentWindow.WindowState);
                     BuildPointToKeyMap();
                 });
         }

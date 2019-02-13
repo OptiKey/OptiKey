@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -140,8 +140,8 @@ TOEVOEGEN</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Aanpassen {0} pixel|Aanpassen {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>LETTERS</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>LETTERS 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -155,7 +155,7 @@ TOEVOEGEN</value>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Automatische hoofdletters:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Automatisch woorden invullen:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -163,6 +163,9 @@ TOEVOEGEN</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Automatische spaties tussen woorden:</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Terug</value>
   </data>
   <data name="BACK" xml:space="preserve">
     <value>TERUG</value>
@@ -1384,8 +1387,8 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>PAS AANTAL AAN IN PIXELS</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>GESPREK ALPHA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>GESPREK ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>GESPREK NUMMERS &amp; SYMBOLEN</value>
@@ -1572,5 +1575,23 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibratie mislukt!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>LETTERS 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>GESPREK ALPHA 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>LETTERS</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>TAAL:</value>
   </data>
 </root>

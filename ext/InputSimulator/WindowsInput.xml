@@ -32,6 +32,12 @@
             The service contract for a mouse simulator for the Windows platform.
             </summary>
         </member>
+        <member name="P:WindowsInput.IMouseSimulator.Keyboard">
+            <summary>
+            Gets the <see cref="T:WindowsInput.IKeyboardSimulator"/> instance for simulating Keyboard input.
+            </summary>
+            <value>The <see cref="T:WindowsInput.IKeyboardSimulator"/> instance.</value>
+        </member>
         <member name="M:WindowsInput.IMouseSimulator.MoveMouseBy(System.Int32,System.Int32)">
             <summary>
             Simulates mouse movement by the specified distance measured as a delta from the current mouse location in pixels.
@@ -75,22 +81,22 @@
         </member>
         <member name="M:WindowsInput.IMouseSimulator.MiddleButtonDown">
             <summary>
-            Simulates a mouse Middle button down gesture.
+            Simulates a mouse middle button down gesture.
             </summary>
         </member>
         <member name="M:WindowsInput.IMouseSimulator.MiddleButtonUp">
             <summary>
-            Simulates a mouse Middle button up gesture.
+            Simulates a mouse middle button up gesture.
             </summary>
         </member>
         <member name="M:WindowsInput.IMouseSimulator.MiddleButtonClick">
             <summary>
-            Simulates a mouse Middle button click gesture.
+            Simulates a mouse middle button click gesture.
             </summary>
         </member>
         <member name="M:WindowsInput.IMouseSimulator.MiddleButtonDoubleClick">
             <summary>
-            Simulates a mouse Middle button double-click gesture.
+            Simulates a mouse middle button double-click gesture.
             </summary>
         </member>
         <member name="M:WindowsInput.IMouseSimulator.RightButtonDown">
@@ -143,11 +149,23 @@
             </summary>
             <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.</param>
         </member>
+        <member name="M:WindowsInput.IMouseSimulator.VerticalScrollAbsolute(System.Int32)">
+            <summary>
+            Simulates mouse vertical wheel scroll gesture.
+            </summary>
+            <param name="scrollAmount">The absolute amount to scroll. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.</param>
+        </member>
         <member name="M:WindowsInput.IMouseSimulator.HorizontalScroll(System.Int32)">
             <summary>
             Simulates a mouse horizontal wheel scroll gesture. Supported by Windows Vista and later.
             </summary>
             <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.</param>
+        </member>
+        <member name="M:WindowsInput.IMouseSimulator.HorizontalScrollAbsolute(System.Int32)">
+            <summary>
+            Simulates a mouse horizontal wheel scroll gesture. Supported by Windows Vista and later.
+            </summary>
+            <param name="scrollAmount">The absolute amount to scroll. A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.</param>
         </member>
         <member name="M:WindowsInput.IMouseSimulator.Sleep(System.Int32)">
             <summary>
@@ -160,12 +178,6 @@
             Sleeps the executing thread to create a pause between simulated inputs.
             </summary>
             <param name="timeout">The time to wait.</param>
-        </member>
-        <member name="P:WindowsInput.IMouseSimulator.Keyboard">
-            <summary>
-            Gets the <see cref="T:WindowsInput.IKeyboardSimulator"/> instance for simulating Keyboard input.
-            </summary>
-            <value>The <see cref="T:WindowsInput.IKeyboardSimulator"/> instance.</value>
         </member>
         <member name="T:WindowsInput.InputSimulator">
             <summary>
@@ -262,6 +274,12 @@
             <param name="messageDispatcher">The <see cref="T:WindowsInput.IInputMessageDispatcher"/> to use for dispatching <see cref="T:WindowsInput.Native.INPUT"/> messages.</param>
             <exception cref="T:System.InvalidOperationException">If null is passed as the <paramref name="messageDispatcher"/>.</exception>
         </member>
+        <member name="P:WindowsInput.MouseSimulator.Keyboard">
+            <summary>
+            Gets the <see cref="T:WindowsInput.IKeyboardSimulator"/> instance for simulating Keyboard input.
+            </summary>
+            <value>The <see cref="T:WindowsInput.IKeyboardSimulator"/> instance.</value>
+        </member>
         <member name="M:WindowsInput.MouseSimulator.SendSimulatedInput(WindowsInput.Native.INPUT[])">
             <summary>
             Sends the list of <see cref="T:WindowsInput.Native.INPUT"/> messages using the <see cref="T:WindowsInput.IInputMessageDispatcher"/> instance.
@@ -311,22 +329,22 @@
         </member>
         <member name="M:WindowsInput.MouseSimulator.MiddleButtonDown">
             <summary>
-            Simulates a mouse Middle button down gesture.
+            Simulates a mouse middle button down gesture.
             </summary>
         </member>
         <member name="M:WindowsInput.MouseSimulator.MiddleButtonUp">
             <summary>
-            Simulates a mouse Middle button up gesture.
+            Simulates a mouse middle button up gesture.
             </summary>
         </member>
         <member name="M:WindowsInput.MouseSimulator.MiddleButtonClick">
             <summary>
-            Simulates a mouse Middle-click gesture.
+            Simulates a mouse middle-click gesture.
             </summary>
         </member>
         <member name="M:WindowsInput.MouseSimulator.MiddleButtonDoubleClick">
             <summary>
-            Simulates a mouse Middle button double-click gesture.
+            Simulates a mouse middle button double-click gesture.
             </summary>
         </member>
         <member name="M:WindowsInput.MouseSimulator.RightButtonDown">
@@ -379,11 +397,23 @@
             </summary>
             <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.</param>
         </member>
+        <member name="M:WindowsInput.MouseSimulator.VerticalScrollAbsolute(System.Int32)">
+            <summary>
+            Simulates mouse vertical wheel scroll gesture.
+            </summary>
+            <param name="scrollAmount">The absolute amount to scroll. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.</param>
+        </member>
         <member name="M:WindowsInput.MouseSimulator.HorizontalScroll(System.Int32)">
             <summary>
             Simulates a mouse horizontal wheel scroll gesture. Supported by Windows Vista and later.
             </summary>
             <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.</param>
+        </member>
+        <member name="M:WindowsInput.MouseSimulator.HorizontalScrollAbsolute(System.Int32)">
+            <summary>
+            Simulates a mouse horizontal wheel scroll gesture. Supported by Windows Vista and later.
+            </summary>
+            <param name="scrollAmount">The absolute amount to scroll. A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.</param>
         </member>
         <member name="M:WindowsInput.MouseSimulator.Sleep(System.Int32)">
             <summary>
@@ -396,12 +426,6 @@
             Sleeps the executing thread to create a pause between simulated inputs.
             </summary>
             <param name="timeout">The time to wait.</param>
-        </member>
-        <member name="P:WindowsInput.MouseSimulator.Keyboard">
-            <summary>
-            Gets the <see cref="T:WindowsInput.IKeyboardSimulator"/> instance for simulating Keyboard input.
-            </summary>
-            <value>The <see cref="T:WindowsInput.IKeyboardSimulator"/> instance.</value>
         </member>
         <member name="T:WindowsInput.Native.NativeMethods">
             <summary>
@@ -515,161 +539,6 @@
             Specifies the high-order word of the lParam parameter for uMsg. 
             </summary>
         </member>
-        <member name="T:WindowsInput.IInputDeviceStateAdaptor">
-            <summary>
-            The contract for a service that interprets the state of input devices.
-            </summary>
-        </member>
-        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsKeyDown(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the specified key is up or down.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the key is down; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsKeyUp(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the specified key is up or down.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the key is up; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsHardwareKeyDown(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the physical key is up or down at the time the function is called regardless of whether the application thread has read the keyboard event from the message pump.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the key is down; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsHardwareKeyUp(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the physical key is up or down at the time the function is called regardless of whether the application thread has read the keyboard event from the message pump.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the key is up; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsTogglingKeyInEffect(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the toggling key is toggled on (in-effect) or not.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the toggling key is toggled on (in-effect); otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="T:WindowsInput.IInputMessageDispatcher">
-            <summary>
-            The contract for a service that dispatches <see cref="T:WindowsInput.Native.INPUT"/> messages to the appropriate destination.
-            </summary>
-        </member>
-        <member name="M:WindowsInput.IInputMessageDispatcher.DispatchInput(WindowsInput.Native.INPUT[])">
-            <summary>
-            Dispatches the specified list of <see cref="T:WindowsInput.Native.INPUT"/> messages in their specified order.
-            </summary>
-            <param name="inputs">The list of <see cref="T:WindowsInput.Native.INPUT"/> messages to be dispatched.</param>
-            <exception cref="T:System.ArgumentException">If the <paramref name="inputs"/> array is empty.</exception>
-            <exception cref="T:System.ArgumentNullException">If the <paramref name="inputs"/> array is null.</exception>
-            <exception cref="T:System.Exception">If the any of the commands in the <paramref name="inputs"/> array could not be sent successfully.</exception>
-        </member>
-        <member name="T:WindowsInput.IKeyboardSimulator">
-            <summary>
-            The service contract for a keyboard simulator for the Windows platform.
-            </summary>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.KeyDown(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Simulates the key down gesture for the specified key.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.KeyPress(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Simulates the key press gesture for the specified key.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.KeyPress(WindowsInput.Native.VirtualKeyCode[])">
-            <summary>
-            Simulates a key press for each of the specified key codes in the order they are specified.
-            </summary>
-            <param name="keyCodes"></param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.KeyUp(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Simulates the key up gesture for the specified key.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.ModifiedKeyStroke(System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode},System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode})">
-            <summary>
-            Simulates a modified keystroke where there are multiple modifiers and multiple keys like CTRL-ALT-K-C where CTRL and ALT are the modifierKeys and K and C are the keys.
-            The flow is Modifiers KeyDown in order, Keys Press in order, Modifiers KeyUp in reverse order.
-            </summary>
-            <param name="modifierKeyCodes">The list of <see cref="T:WindowsInput.Native.VirtualKeyCode"/>s for the modifier keys.</param>
-            <param name="keyCodes">The list of <see cref="T:WindowsInput.Native.VirtualKeyCode"/>s for the keys to simulate.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.ModifiedKeyStroke(System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode},WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Simulates a modified keystroke where there are multiple modifiers and one key like CTRL-ALT-C where CTRL and ALT are the modifierKeys and C is the key.
-            The flow is Modifiers KeyDown in order, Key Press, Modifiers KeyUp in reverse order.
-            </summary>
-            <param name="modifierKeyCodes">The list of <see cref="T:WindowsInput.Native.VirtualKeyCode"/>s for the modifier keys.</param>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode,System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode})">
-            <summary>
-            Simulates a modified keystroke where there is one modifier and multiple keys like CTRL-K-C where CTRL is the modifierKey and K and C are the keys.
-            The flow is Modifier KeyDown, Keys Press in order, Modifier KeyUp.
-            </summary>
-            <param name="modifierKey">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the modifier key.</param>
-            <param name="keyCodes">The list of <see cref="T:WindowsInput.Native.VirtualKeyCode"/>s for the keys to simulate.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode,WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Simulates a simple modified keystroke like CTRL-C where CTRL is the modifierKey and C is the key.
-            The flow is Modifier KeyDown, Key Press, Modifier KeyUp.
-            </summary>
-            <param name="modifierKeyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the  modifier key.</param>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.TextEntry(System.String)">
-            <summary>
-            Simulates uninterrupted text entry via the keyboard.
-            </summary>
-            <param name="text">The text to be simulated.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.TextEntry(System.Char)">
-            <summary>
-            Simulates a single character text entry via the keyboard.
-            </summary>
-            <param name="character">The unicode character to be simulated.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.Sleep(System.Int32)">
-            <summary>
-            Sleeps the executing thread to create a pause between simulated inputs.
-            </summary>
-            <param name="millsecondsTimeout">The number of milliseconds to wait.</param>
-        </member>
-        <member name="M:WindowsInput.IKeyboardSimulator.Sleep(System.TimeSpan)">
-            <summary>
-            Sleeps the executing thread to create a pause between simulated inputs.
-            </summary>
-            <param name="timeout">The time to wait.</param>
-        </member>
-        <member name="P:WindowsInput.IKeyboardSimulator.Mouse">
-            <summary>
-            Gets the <see cref="T:WindowsInput.IMouseSimulator"/> instance for simulating Mouse input.
-            </summary>
-            <value>The <see cref="T:WindowsInput.IMouseSimulator"/> instance.</value>
-        </member>
         <member name="T:WindowsInput.Native.INPUT">
             <summary>
             The INPUT structure is used by SendInput to store information for synthesizing input events such as keystrokes, mouse movement, and mouse clicks. (see: http://msdn.microsoft.com/en-us/library/ms646270(VS.85).aspx)
@@ -692,315 +561,6 @@
             <summary>
             The data structure that contains information about the simulated Mouse, Keyboard or Hardware event.
             </summary>
-        </member>
-        <member name="T:WindowsInput.InputBuilder">
-            <summary>
-            A helper class for building a list of <see cref="T:WindowsInput.Native.INPUT"/> messages ready to be sent to the native Windows API.
-            </summary>
-        </member>
-        <member name="F:WindowsInput.InputBuilder._inputList">
-            <summary>
-            The public list of <see cref="T:WindowsInput.Native.INPUT"/> messages being built by this instance.
-            </summary>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:WindowsInput.InputBuilder"/> class.
-            </summary>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.ToArray">
-            <summary>
-            Returns the list of <see cref="T:WindowsInput.Native.INPUT"/> messages as a <see cref="T:System.Array"/> of <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </summary>
-            <returns>The <see cref="T:System.Array"/> of <see cref="T:WindowsInput.Native.INPUT"/> messages.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.GetEnumerator">
-            <summary>
-            Returns an enumerator that iterates through the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </summary>
-            <returns>
-            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </returns>
-            <filterpriority>1</filterpriority>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Returns an enumerator that iterates through the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </summary>
-            <returns>
-            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </returns>
-            <filterpriority>2</filterpriority>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.IsExtendedKey(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines if the <see cref="T:WindowsInput.Native.VirtualKeyCode"/> is an ExtendedKey
-            </summary>
-            <param name="keyCode">The key code.</param>
-            <returns>true if the key code is an extended key; otherwise, false.</returns>
-            <remarks>
-            The extended keys consist of the ALT and CTRL keys on the right-hand side of the keyboard; the INS, DEL, HOME, END, PAGE UP, PAGE DOWN, and arrow keys in the clusters to the left of the numeric keypad; the NUM LOCK key; the BREAK (CTRL+PAUSE) key; the PRINT SCRN key; and the divide (/) and ENTER keys in the numeric keypad.
-            
-            See http://msdn.microsoft.com/en-us/library/ms646267(v=vs.85).aspx Section "Extended-Key Flag"
-            </remarks>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddKeyDown(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Adds a key down to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/>.</param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddKeyUp(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Adds a key up to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/>.</param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddKeyPress(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Adds a key press to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages which is equivalent to a key down followed by a key up.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/>.</param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddCharacter(System.Char)">
-            <summary>
-            Adds the character to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </summary>
-            <param name="character">The <see cref="T:System.Char"/> to be added to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.</param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddCharacters(System.Collections.Generic.IEnumerable{System.Char})">
-            <summary>
-            Adds all of the characters in the specified <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Char"/>.
-            </summary>
-            <param name="characters">The characters to add.</param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddCharacters(System.String)">
-            <summary>
-            Adds the characters in the specified <see cref="T:System.String"/>.
-            </summary>
-            <param name="characters">The string of <see cref="T:System.Char"/> to add.</param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddRelativeMouseMovement(System.Int32,System.Int32)">
-            <summary>
-            Moves the mouse relative to its current position.
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddAbsoluteMouseMovement(System.Int32,System.Int32)">
-            <summary>
-            Move the mouse to an absolute position.
-            </summary>
-            <param name="absoluteX"></param>
-            <param name="absoluteY"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddAbsoluteMouseMovementOnVirtualDesktop(System.Int32,System.Int32)">
-            <summary>
-            Move the mouse to the absolute position on the virtual desktop.
-            </summary>
-            <param name="absoluteX"></param>
-            <param name="absoluteY"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseButtonDown(WindowsInput.MouseButton)">
-            <summary>
-            Adds a mouse button down for the specified button.
-            </summary>
-            <param name="button"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseXButtonDown(System.Int32)">
-            <summary>
-            Adds a mouse button down for the specified button.
-            </summary>
-            <param name="xButtonId"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseButtonUp(WindowsInput.MouseButton)">
-            <summary>
-            Adds a mouse button up for the specified button.
-            </summary>
-            <param name="button"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseXButtonUp(System.Int32)">
-            <summary>
-            Adds a mouse button up for the specified button.
-            </summary>
-            <param name="xButtonId"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseButtonClick(WindowsInput.MouseButton)">
-            <summary>
-            Adds a single click of the specified button.
-            </summary>
-            <param name="button"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseXButtonClick(System.Int32)">
-            <summary>
-            Adds a single click of the specified button.
-            </summary>
-            <param name="xButtonId"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseButtonDoubleClick(WindowsInput.MouseButton)">
-            <summary>
-            Adds a double click of the specified button.
-            </summary>
-            <param name="button"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseXButtonDoubleClick(System.Int32)">
-            <summary>
-            Adds a double click of the specified button.
-            </summary>
-            <param name="xButtonId"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseVerticalWheelScroll(System.Int32)">
-            <summary>
-            Scroll the vertical mouse wheel by the specified amount.
-            </summary>
-            <param name="scrollAmount"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="M:WindowsInput.InputBuilder.AddMouseHorizontalWheelScroll(System.Int32)">
-            <summary>
-            Scroll the horizontal mouse wheel by the specified amount.
-            </summary>
-            <param name="scrollAmount"></param>
-            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
-        </member>
-        <member name="P:WindowsInput.InputBuilder.Item(System.Int32)">
-            <summary>
-            Gets the <see cref="T:WindowsInput.Native.INPUT"/> at the specified position.
-            </summary>
-            <value>The <see cref="T:WindowsInput.Native.INPUT"/> message at the specified position.</value>
-        </member>
-        <member name="T:WindowsInput.KeyboardSimulator">
-            <summary>
-            Implements the <see cref="T:WindowsInput.IKeyboardSimulator"/> interface by calling the an <see cref="T:WindowsInput.IInputMessageDispatcher"/> to simulate Keyboard gestures.
-            </summary>
-        </member>
-        <member name="F:WindowsInput.KeyboardSimulator._messageDispatcher">
-            <summary>
-            The instance of the <see cref="T:WindowsInput.IInputMessageDispatcher"/> to use for dispatching <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </summary>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.#ctor(WindowsInput.IInputSimulator)">
-            <summary>
-            Initializes a new instance of the <see cref="T:WindowsInput.KeyboardSimulator"/> class using an instance of a <see cref="T:WindowsInput.WindowsInputMessageDispatcher"/> for dispatching <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </summary>
-            <param name="inputSimulator">The <see cref="T:WindowsInput.IInputSimulator"/> that owns this instance.</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.#ctor(WindowsInput.IInputSimulator,WindowsInput.IInputMessageDispatcher)">
-            <summary>
-            Initializes a new instance of the <see cref="T:WindowsInput.KeyboardSimulator"/> class using the specified <see cref="T:WindowsInput.IInputMessageDispatcher"/> for dispatching <see cref="T:WindowsInput.Native.INPUT"/> messages.
-            </summary>
-            <param name="inputSimulator">The <see cref="T:WindowsInput.IInputSimulator"/> that owns this instance.</param>
-            <param name="messageDispatcher">The <see cref="T:WindowsInput.IInputMessageDispatcher"/> to use for dispatching <see cref="T:WindowsInput.Native.INPUT"/> messages.</param>
-            <exception cref="T:System.InvalidOperationException">If null is passed as the <paramref name="messageDispatcher"/>.</exception>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.SendSimulatedInput(WindowsInput.Native.INPUT[])">
-            <summary>
-            Sends the list of <see cref="T:WindowsInput.Native.INPUT"/> messages using the <see cref="T:WindowsInput.IInputMessageDispatcher"/> instance.
-            </summary>
-            <param name="inputList">The <see cref="T:System.Array"/> of <see cref="T:WindowsInput.Native.INPUT"/> messages to send.</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.KeyDown(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Calls the Win32 SendInput method to simulate a KeyDown.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> to press</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.KeyUp(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Calls the Win32 SendInput method to simulate a KeyUp.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> to lift up</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.KeyPress(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Calls the Win32 SendInput method with a KeyDown and KeyUp message in the same input sequence in order to simulate a Key PRESS.
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> to press</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.KeyPress(WindowsInput.Native.VirtualKeyCode[])">
-            <summary>
-            Simulates a key press for each of the specified key codes in the order they are specified.
-            </summary>
-            <param name="keyCodes"></param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode,WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Simulates a simple modified keystroke like CTRL-C where CTRL is the modifierKey and C is the key.
-            The flow is Modifier KeyDown, Key Press, Modifier KeyUp.
-            </summary>
-            <param name="modifierKeyCode">The modifier key</param>
-            <param name="keyCode">The key to simulate</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.ModifiedKeyStroke(System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode},WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Simulates a modified keystroke where there are multiple modifiers and one key like CTRL-ALT-C where CTRL and ALT are the modifierKeys and C is the key.
-            The flow is Modifiers KeyDown in order, Key Press, Modifiers KeyUp in reverse order.
-            </summary>
-            <param name="modifierKeyCodes">The list of modifier keys</param>
-            <param name="keyCode">The key to simulate</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode,System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode})">
-            <summary>
-            Simulates a modified keystroke where there is one modifier and multiple keys like CTRL-K-C where CTRL is the modifierKey and K and C are the keys.
-            The flow is Modifier KeyDown, Keys Press in order, Modifier KeyUp.
-            </summary>
-            <param name="modifierKey">The modifier key</param>
-            <param name="keyCodes">The list of keys to simulate</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.ModifiedKeyStroke(System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode},System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode})">
-            <summary>
-            Simulates a modified keystroke where there are multiple modifiers and multiple keys like CTRL-ALT-K-C where CTRL and ALT are the modifierKeys and K and C are the keys.
-            The flow is Modifiers KeyDown in order, Keys Press in order, Modifiers KeyUp in reverse order.
-            </summary>
-            <param name="modifierKeyCodes">The list of modifier keys</param>
-            <param name="keyCodes">The list of keys to simulate</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.TextEntry(System.String)">
-            <summary>
-            Calls the Win32 SendInput method with a stream of KeyDown and KeyUp messages in order to simulate uninterrupted text entry via the keyboard.
-            </summary>
-            <param name="text">The text to be simulated.</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.TextEntry(System.Char)">
-            <summary>
-            Simulates a single character text entry via the keyboard.
-            </summary>
-            <param name="character">The unicode character to be simulated.</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.Sleep(System.Int32)">
-            <summary>
-            Sleeps the executing thread to create a pause between simulated inputs.
-            </summary>
-            <param name="millsecondsTimeout">The number of milliseconds to wait.</param>
-        </member>
-        <member name="M:WindowsInput.KeyboardSimulator.Sleep(System.TimeSpan)">
-            <summary>
-            Sleeps the executing thread to create a pause between simulated inputs.
-            </summary>
-            <param name="timeout">The time to wait.</param>
-        </member>
-        <member name="P:WindowsInput.KeyboardSimulator.Mouse">
-            <summary>
-            Gets the <see cref="T:WindowsInput.IMouseSimulator"/> instance for simulating Mouse input.
-            </summary>
-            <value>The <see cref="T:WindowsInput.IMouseSimulator"/> instance.</value>
         </member>
         <member name="T:WindowsInput.Native.InputType">
             <summary>
@@ -1224,152 +784,6 @@
             <summary>
             The <see cref="T:WindowsInput.Native.HARDWAREINPUT"/> definition.
             </summary>
-        </member>
-        <member name="T:WindowsInput.WindowsInputDeviceStateAdaptor">
-            <summary>
-            An implementation of <see cref="T:WindowsInput.IInputDeviceStateAdaptor"/> for Windows by calling the native <see cref="M:WindowsInput.Native.NativeMethods.GetKeyState(System.UInt16)"/> and <see cref="M:WindowsInput.Native.NativeMethods.GetAsyncKeyState(System.UInt16)"/> methods.
-            </summary>
-        </member>
-        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsKeyDown(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the specified key is up or down by calling the GetKeyState function. (See: http://msdn.microsoft.com/en-us/library/ms646301(VS.85).aspx)
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the key is down; otherwise, <c>false</c>.
-            </returns>
-            <remarks>
-            The key status returned from this function changes as a thread reads key messages from its message queue. The status does not reflect the interrupt-level state associated with the hardware. Use the GetAsyncKeyState function to retrieve that information. 
-            An application calls GetKeyState in response to a keyboard-input message. This function retrieves the state of the key when the input message was generated. 
-            To retrieve state information for all the virtual keys, use the GetKeyboardState function. 
-            An application can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for Bthe nVirtKey parameter. This gives the status of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. An application can also use the following virtual-key code constants as values for nVirtKey to distinguish between the left and right instances of those keys. 
-            VK_LSHIFT
-            VK_RSHIFT
-            VK_LCONTROL
-            VK_RCONTROL
-            VK_LMENU
-            VK_RMENU
-            
-            These left- and right-distinguishing constants are available to an application only through the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
-            </remarks>
-        </member>
-        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsKeyUp(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the specified key is up or downby calling the <see cref="M:WindowsInput.Native.NativeMethods.GetKeyState(System.UInt16)"/> function. (See: http://msdn.microsoft.com/en-us/library/ms646301(VS.85).aspx)
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the key is up; otherwise, <c>false</c>.
-            </returns>
-            <remarks>
-            The key status returned from this function changes as a thread reads key messages from its message queue. The status does not reflect the interrupt-level state associated with the hardware. Use the GetAsyncKeyState function to retrieve that information. 
-            An application calls GetKeyState in response to a keyboard-input message. This function retrieves the state of the key when the input message was generated. 
-            To retrieve state information for all the virtual keys, use the GetKeyboardState function. 
-            An application can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for Bthe nVirtKey parameter. This gives the status of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. An application can also use the following virtual-key code constants as values for nVirtKey to distinguish between the left and right instances of those keys. 
-            VK_LSHIFT
-            VK_RSHIFT
-            VK_LCONTROL
-            VK_RCONTROL
-            VK_LMENU
-            VK_RMENU
-            
-            These left- and right-distinguishing constants are available to an application only through the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
-            </remarks>
-        </member>
-        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsHardwareKeyDown(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the physical key is up or down at the time the function is called regardless of whether the application thread has read the keyboard event from the message pump by calling the <see cref="M:WindowsInput.Native.NativeMethods.GetAsyncKeyState(System.UInt16)"/> function. (See: http://msdn.microsoft.com/en-us/library/ms646293(VS.85).aspx)
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the key is down; otherwise, <c>false</c>.
-            </returns>
-            <remarks>
-            The GetAsyncKeyState function works with mouse buttons. However, it checks on the state of the physical mouse buttons, not on the logical mouse buttons that the physical buttons are mapped to. For example, the call GetAsyncKeyState(VK_LBUTTON) always returns the state of the left physical mouse button, regardless of whether it is mapped to the left or right logical mouse button. You can determine the system's current mapping of physical mouse buttons to logical mouse buttons by calling 
-            Copy CodeGetSystemMetrics(SM_SWAPBUTTON) which returns TRUE if the mouse buttons have been swapped.
-            
-            Although the least significant bit of the return value indicates whether the key has been pressed since the last query, due to the pre-emptive multitasking nature of Windows, another application can call GetAsyncKeyState and receive the "recently pressed" bit instead of your application. The behavior of the least significant bit of the return value is retained strictly for compatibility with 16-bit Windows applications (which are non-preemptive) and should not be relied upon.
-            
-            You can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for the vKey parameter. This gives the state of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. 
-            
-            Windows NT/2000/XP: You can use the following virtual-key code constants as values for vKey to distinguish between the left and right instances of those keys. 
-            
-            Code Meaning 
-            VK_LSHIFT Left-shift key. 
-            VK_RSHIFT Right-shift key. 
-            VK_LCONTROL Left-control key. 
-            VK_RCONTROL Right-control key. 
-            VK_LMENU Left-menu key. 
-            VK_RMENU Right-menu key. 
-            
-            These left- and right-distinguishing constants are only available when you call the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
-            </remarks>
-        </member>
-        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsHardwareKeyUp(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the physical key is up or down at the time the function is called regardless of whether the application thread has read the keyboard event from the message pump by calling the <see cref="M:WindowsInput.Native.NativeMethods.GetAsyncKeyState(System.UInt16)"/> function. (See: http://msdn.microsoft.com/en-us/library/ms646293(VS.85).aspx)
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the key is up; otherwise, <c>false</c>.
-            </returns>
-            <remarks>
-            The GetAsyncKeyState function works with mouse buttons. However, it checks on the state of the physical mouse buttons, not on the logical mouse buttons that the physical buttons are mapped to. For example, the call GetAsyncKeyState(VK_LBUTTON) always returns the state of the left physical mouse button, regardless of whether it is mapped to the left or right logical mouse button. You can determine the system's current mapping of physical mouse buttons to logical mouse buttons by calling 
-            Copy CodeGetSystemMetrics(SM_SWAPBUTTON) which returns TRUE if the mouse buttons have been swapped.
-            
-            Although the least significant bit of the return value indicates whether the key has been pressed since the last query, due to the pre-emptive multitasking nature of Windows, another application can call GetAsyncKeyState and receive the "recently pressed" bit instead of your application. The behavior of the least significant bit of the return value is retained strictly for compatibility with 16-bit Windows applications (which are non-preemptive) and should not be relied upon.
-            
-            You can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for the vKey parameter. This gives the state of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. 
-            
-            Windows NT/2000/XP: You can use the following virtual-key code constants as values for vKey to distinguish between the left and right instances of those keys. 
-            
-            Code Meaning 
-            VK_LSHIFT Left-shift key. 
-            VK_RSHIFT Right-shift key. 
-            VK_LCONTROL Left-control key. 
-            VK_RCONTROL Right-control key. 
-            VK_LMENU Left-menu key. 
-            VK_RMENU Right-menu key. 
-            
-            These left- and right-distinguishing constants are only available when you call the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
-            </remarks>
-        </member>
-        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsTogglingKeyInEffect(WindowsInput.Native.VirtualKeyCode)">
-            <summary>
-            Determines whether the toggling key is toggled on (in-effect) or not by calling the <see cref="M:WindowsInput.Native.NativeMethods.GetKeyState(System.UInt16)"/> function.  (See: http://msdn.microsoft.com/en-us/library/ms646301(VS.85).aspx)
-            </summary>
-            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
-            <returns>
-            	<c>true</c> if the toggling key is toggled on (in-effect); otherwise, <c>false</c>.
-            </returns>
-            <remarks>
-            The key status returned from this function changes as a thread reads key messages from its message queue. The status does not reflect the interrupt-level state associated with the hardware. Use the GetAsyncKeyState function to retrieve that information. 
-            An application calls GetKeyState in response to a keyboard-input message. This function retrieves the state of the key when the input message was generated. 
-            To retrieve state information for all the virtual keys, use the GetKeyboardState function. 
-            An application can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for the nVirtKey parameter. This gives the status of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. An application can also use the following virtual-key code constants as values for nVirtKey to distinguish between the left and right instances of those keys. 
-            VK_LSHIFT
-            VK_RSHIFT
-            VK_LCONTROL
-            VK_RCONTROL
-            VK_LMENU
-            VK_RMENU
-            
-            These left- and right-distinguishing constants are available to an application only through the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
-            </remarks>
-        </member>
-        <member name="T:WindowsInput.WindowsInputMessageDispatcher">
-            <summary>
-            Implements the <see cref="T:WindowsInput.IInputMessageDispatcher"/> by calling <see cref="M:WindowsInput.Native.NativeMethods.SendInput(System.UInt32,WindowsInput.Native.INPUT[],System.Int32)"/>.
-            </summary>
-        </member>
-        <member name="M:WindowsInput.WindowsInputMessageDispatcher.DispatchInput(WindowsInput.Native.INPUT[])">
-            <summary>
-            Dispatches the specified list of <see cref="T:WindowsInput.Native.INPUT"/> messages in their specified order by issuing a single called to <see cref="M:WindowsInput.Native.NativeMethods.SendInput(System.UInt32,WindowsInput.Native.INPUT[],System.Int32)"/>.
-            </summary>
-            <param name="inputs">The list of <see cref="T:WindowsInput.Native.INPUT"/> messages to be dispatched.</param>
-            <exception cref="T:System.ArgumentException">If the <paramref name="inputs"/> array is empty.</exception>
-            <exception cref="T:System.ArgumentNullException">If the <paramref name="inputs"/> array is null.</exception>
-            <exception cref="T:System.Exception">If the any of the commands in the <paramref name="inputs"/> array could not be sent successfully.</exception>
         </member>
         <member name="T:WindowsInput.Native.VirtualKeyCode">
             <summary>
@@ -2255,6 +1669,616 @@
             <summary>
             Set if the second X button is pressed or released.
             </summary>
+        </member>
+        <member name="T:WindowsInput.IInputDeviceStateAdaptor">
+            <summary>
+            The contract for a service that interprets the state of input devices.
+            </summary>
+        </member>
+        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsKeyDown(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the specified key is up or down.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the key is down; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsKeyUp(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the specified key is up or down.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the key is up; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsHardwareKeyDown(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the physical key is up or down at the time the function is called regardless of whether the application thread has read the keyboard event from the message pump.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the key is down; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsHardwareKeyUp(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the physical key is up or down at the time the function is called regardless of whether the application thread has read the keyboard event from the message pump.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the key is up; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:WindowsInput.IInputDeviceStateAdaptor.IsTogglingKeyInEffect(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the toggling key is toggled on (in-effect) or not.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the toggling key is toggled on (in-effect); otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:WindowsInput.IInputMessageDispatcher">
+            <summary>
+            The contract for a service that dispatches <see cref="T:WindowsInput.Native.INPUT"/> messages to the appropriate destination.
+            </summary>
+        </member>
+        <member name="M:WindowsInput.IInputMessageDispatcher.DispatchInput(WindowsInput.Native.INPUT[])">
+            <summary>
+            Dispatches the specified list of <see cref="T:WindowsInput.Native.INPUT"/> messages in their specified order.
+            </summary>
+            <param name="inputs">The list of <see cref="T:WindowsInput.Native.INPUT"/> messages to be dispatched.</param>
+            <exception cref="T:System.ArgumentException">If the <paramref name="inputs"/> array is empty.</exception>
+            <exception cref="T:System.ArgumentNullException">If the <paramref name="inputs"/> array is null.</exception>
+            <exception cref="T:System.Exception">If the any of the commands in the <paramref name="inputs"/> array could not be sent successfully.</exception>
+        </member>
+        <member name="T:WindowsInput.IKeyboardSimulator">
+            <summary>
+            The service contract for a keyboard simulator for the Windows platform.
+            </summary>
+        </member>
+        <member name="P:WindowsInput.IKeyboardSimulator.Mouse">
+            <summary>
+            Gets the <see cref="T:WindowsInput.IMouseSimulator"/> instance for simulating Mouse input.
+            </summary>
+            <value>The <see cref="T:WindowsInput.IMouseSimulator"/> instance.</value>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.KeyDown(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Simulates the key down gesture for the specified key.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.KeyPress(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Simulates the key press gesture for the specified key.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.KeyPress(WindowsInput.Native.VirtualKeyCode[])">
+            <summary>
+            Simulates a key press for each of the specified key codes in the order they are specified.
+            </summary>
+            <param name="keyCodes"></param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.KeyUp(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Simulates the key up gesture for the specified key.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.ModifiedKeyStroke(System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode},System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode})">
+            <summary>
+            Simulates a modified keystroke where there are multiple modifiers and multiple keys like CTRL-ALT-K-C where CTRL and ALT are the modifierKeys and K and C are the keys.
+            The flow is Modifiers KeyDown in order, Keys Press in order, Modifiers KeyUp in reverse order.
+            </summary>
+            <param name="modifierKeyCodes">The list of <see cref="T:WindowsInput.Native.VirtualKeyCode"/>s for the modifier keys.</param>
+            <param name="keyCodes">The list of <see cref="T:WindowsInput.Native.VirtualKeyCode"/>s for the keys to simulate.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.ModifiedKeyStroke(System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode},WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Simulates a modified keystroke where there are multiple modifiers and one key like CTRL-ALT-C where CTRL and ALT are the modifierKeys and C is the key.
+            The flow is Modifiers KeyDown in order, Key Press, Modifiers KeyUp in reverse order.
+            </summary>
+            <param name="modifierKeyCodes">The list of <see cref="T:WindowsInput.Native.VirtualKeyCode"/>s for the modifier keys.</param>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode,System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode})">
+            <summary>
+            Simulates a modified keystroke where there is one modifier and multiple keys like CTRL-K-C where CTRL is the modifierKey and K and C are the keys.
+            The flow is Modifier KeyDown, Keys Press in order, Modifier KeyUp.
+            </summary>
+            <param name="modifierKey">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the modifier key.</param>
+            <param name="keyCodes">The list of <see cref="T:WindowsInput.Native.VirtualKeyCode"/>s for the keys to simulate.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode,WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Simulates a simple modified keystroke like CTRL-C where CTRL is the modifierKey and C is the key.
+            The flow is Modifier KeyDown, Key Press, Modifier KeyUp.
+            </summary>
+            <param name="modifierKeyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the  modifier key.</param>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.TextEntry(System.String)">
+            <summary>
+            Simulates uninterrupted text entry via the keyboard.
+            </summary>
+            <param name="text">The text to be simulated.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.TextEntry(System.Char)">
+            <summary>
+            Simulates a single character text entry via the keyboard.
+            </summary>
+            <param name="character">The unicode character to be simulated.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.Sleep(System.Int32)">
+            <summary>
+            Sleeps the executing thread to create a pause between simulated inputs.
+            </summary>
+            <param name="millsecondsTimeout">The number of milliseconds to wait.</param>
+        </member>
+        <member name="M:WindowsInput.IKeyboardSimulator.Sleep(System.TimeSpan)">
+            <summary>
+            Sleeps the executing thread to create a pause between simulated inputs.
+            </summary>
+            <param name="timeout">The time to wait.</param>
+        </member>
+        <member name="T:WindowsInput.InputBuilder">
+            <summary>
+            A helper class for building a list of <see cref="T:WindowsInput.Native.INPUT"/> messages ready to be sent to the native Windows API.
+            </summary>
+        </member>
+        <member name="F:WindowsInput.InputBuilder._inputList">
+            <summary>
+            The public list of <see cref="T:WindowsInput.Native.INPUT"/> messages being built by this instance.
+            </summary>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WindowsInput.InputBuilder"/> class.
+            </summary>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.ToArray">
+            <summary>
+            Returns the list of <see cref="T:WindowsInput.Native.INPUT"/> messages as a <see cref="T:System.Array"/> of <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </summary>
+            <returns>The <see cref="T:System.Array"/> of <see cref="T:WindowsInput.Native.INPUT"/> messages.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:WindowsInput.InputBuilder.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:WindowsInput.Native.INPUT"/> at the specified position.
+            </summary>
+            <value>The <see cref="T:WindowsInput.Native.INPUT"/> message at the specified position.</value>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.IsExtendedKey(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines if the <see cref="T:WindowsInput.Native.VirtualKeyCode"/> is an ExtendedKey
+            </summary>
+            <param name="keyCode">The key code.</param>
+            <returns>true if the key code is an extended key; otherwise, false.</returns>
+            <remarks>
+            The extended keys consist of the ALT and CTRL keys on the right-hand side of the keyboard; the INS, DEL, HOME, END, PAGE UP, PAGE DOWN, and arrow keys in the clusters to the left of the numeric keypad; the NUM LOCK key; the BREAK (CTRL+PAUSE) key; the PRINT SCRN key; and the divide (/) and ENTER keys in the numeric keypad.
+            
+            See http://msdn.microsoft.com/en-us/library/ms646267(v=vs.85).aspx Section "Extended-Key Flag"
+            </remarks>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddKeyDown(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Adds a key down to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/>.</param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddKeyUp(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Adds a key up to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/>.</param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddKeyPress(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Adds a key press to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages which is equivalent to a key down followed by a key up.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/>.</param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddCharacter(System.Char)">
+            <summary>
+            Adds the character to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </summary>
+            <param name="character">The <see cref="T:System.Char"/> to be added to the list of <see cref="T:WindowsInput.Native.INPUT"/> messages.</param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddCharacters(System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            Adds all of the characters in the specified <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Char"/>.
+            </summary>
+            <param name="characters">The characters to add.</param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddCharacters(System.String)">
+            <summary>
+            Adds the characters in the specified <see cref="T:System.String"/>.
+            </summary>
+            <param name="characters">The string of <see cref="T:System.Char"/> to add.</param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddRelativeMouseMovement(System.Int32,System.Int32)">
+            <summary>
+            Moves the mouse relative to its current position.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddAbsoluteMouseMovement(System.Int32,System.Int32)">
+            <summary>
+            Move the mouse to an absolute position.
+            </summary>
+            <param name="absoluteX"></param>
+            <param name="absoluteY"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddAbsoluteMouseMovementOnVirtualDesktop(System.Int32,System.Int32)">
+            <summary>
+            Move the mouse to the absolute position on the virtual desktop.
+            </summary>
+            <param name="absoluteX"></param>
+            <param name="absoluteY"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseButtonDown(WindowsInput.MouseButton)">
+            <summary>
+            Adds a mouse button down for the specified button.
+            </summary>
+            <param name="button"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseXButtonDown(System.Int32)">
+            <summary>
+            Adds a mouse button down for the specified button.
+            </summary>
+            <param name="xButtonId"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseButtonUp(WindowsInput.MouseButton)">
+            <summary>
+            Adds a mouse button up for the specified button.
+            </summary>
+            <param name="button"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseXButtonUp(System.Int32)">
+            <summary>
+            Adds a mouse button up for the specified button.
+            </summary>
+            <param name="xButtonId"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseButtonClick(WindowsInput.MouseButton)">
+            <summary>
+            Adds a single click of the specified button.
+            </summary>
+            <param name="button"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseXButtonClick(System.Int32)">
+            <summary>
+            Adds a single click of the specified button.
+            </summary>
+            <param name="xButtonId"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseButtonDoubleClick(WindowsInput.MouseButton)">
+            <summary>
+            Adds a double click of the specified button.
+            </summary>
+            <param name="button"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseXButtonDoubleClick(System.Int32)">
+            <summary>
+            Adds a double click of the specified button.
+            </summary>
+            <param name="xButtonId"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseVerticalWheelScroll(System.Int32)">
+            <summary>
+            Scroll the vertical mouse wheel by the specified amount.
+            </summary>
+            <param name="scrollAmount"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="M:WindowsInput.InputBuilder.AddMouseHorizontalWheelScroll(System.Int32)">
+            <summary>
+            Scroll the horizontal mouse wheel by the specified amount.
+            </summary>
+            <param name="scrollAmount"></param>
+            <returns>This <see cref="T:WindowsInput.InputBuilder"/> instance.</returns>
+        </member>
+        <member name="T:WindowsInput.KeyboardSimulator">
+            <summary>
+            Implements the <see cref="T:WindowsInput.IKeyboardSimulator"/> interface by calling the an <see cref="T:WindowsInput.IInputMessageDispatcher"/> to simulate Keyboard gestures.
+            </summary>
+        </member>
+        <member name="F:WindowsInput.KeyboardSimulator._messageDispatcher">
+            <summary>
+            The instance of the <see cref="T:WindowsInput.IInputMessageDispatcher"/> to use for dispatching <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </summary>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.#ctor(WindowsInput.IInputSimulator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WindowsInput.KeyboardSimulator"/> class using an instance of a <see cref="T:WindowsInput.WindowsInputMessageDispatcher"/> for dispatching <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </summary>
+            <param name="inputSimulator">The <see cref="T:WindowsInput.IInputSimulator"/> that owns this instance.</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.#ctor(WindowsInput.IInputSimulator,WindowsInput.IInputMessageDispatcher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WindowsInput.KeyboardSimulator"/> class using the specified <see cref="T:WindowsInput.IInputMessageDispatcher"/> for dispatching <see cref="T:WindowsInput.Native.INPUT"/> messages.
+            </summary>
+            <param name="inputSimulator">The <see cref="T:WindowsInput.IInputSimulator"/> that owns this instance.</param>
+            <param name="messageDispatcher">The <see cref="T:WindowsInput.IInputMessageDispatcher"/> to use for dispatching <see cref="T:WindowsInput.Native.INPUT"/> messages.</param>
+            <exception cref="T:System.InvalidOperationException">If null is passed as the <paramref name="messageDispatcher"/>.</exception>
+        </member>
+        <member name="P:WindowsInput.KeyboardSimulator.Mouse">
+            <summary>
+            Gets the <see cref="T:WindowsInput.IMouseSimulator"/> instance for simulating Mouse input.
+            </summary>
+            <value>The <see cref="T:WindowsInput.IMouseSimulator"/> instance.</value>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.SendSimulatedInput(WindowsInput.Native.INPUT[])">
+            <summary>
+            Sends the list of <see cref="T:WindowsInput.Native.INPUT"/> messages using the <see cref="T:WindowsInput.IInputMessageDispatcher"/> instance.
+            </summary>
+            <param name="inputList">The <see cref="T:System.Array"/> of <see cref="T:WindowsInput.Native.INPUT"/> messages to send.</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.KeyDown(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Calls the Win32 SendInput method to simulate a KeyDown.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> to press</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.KeyUp(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Calls the Win32 SendInput method to simulate a KeyUp.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> to lift up</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.KeyPress(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Calls the Win32 SendInput method with a KeyDown and KeyUp message in the same input sequence in order to simulate a Key PRESS.
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> to press</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.KeyPress(WindowsInput.Native.VirtualKeyCode[])">
+            <summary>
+            Simulates a key press for each of the specified key codes in the order they are specified.
+            </summary>
+            <param name="keyCodes"></param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode,WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Simulates a simple modified keystroke like CTRL-C where CTRL is the modifierKey and C is the key.
+            The flow is Modifier KeyDown, Key Press, Modifier KeyUp.
+            </summary>
+            <param name="modifierKeyCode">The modifier key</param>
+            <param name="keyCode">The key to simulate</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.ModifiedKeyStroke(System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode},WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Simulates a modified keystroke where there are multiple modifiers and one key like CTRL-ALT-C where CTRL and ALT are the modifierKeys and C is the key.
+            The flow is Modifiers KeyDown in order, Key Press, Modifiers KeyUp in reverse order.
+            </summary>
+            <param name="modifierKeyCodes">The list of modifier keys</param>
+            <param name="keyCode">The key to simulate</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode,System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode})">
+            <summary>
+            Simulates a modified keystroke where there is one modifier and multiple keys like CTRL-K-C where CTRL is the modifierKey and K and C are the keys.
+            The flow is Modifier KeyDown, Keys Press in order, Modifier KeyUp.
+            </summary>
+            <param name="modifierKey">The modifier key</param>
+            <param name="keyCodes">The list of keys to simulate</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.ModifiedKeyStroke(System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode},System.Collections.Generic.IEnumerable{WindowsInput.Native.VirtualKeyCode})">
+            <summary>
+            Simulates a modified keystroke where there are multiple modifiers and multiple keys like CTRL-ALT-K-C where CTRL and ALT are the modifierKeys and K and C are the keys.
+            The flow is Modifiers KeyDown in order, Keys Press in order, Modifiers KeyUp in reverse order.
+            </summary>
+            <param name="modifierKeyCodes">The list of modifier keys</param>
+            <param name="keyCodes">The list of keys to simulate</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.TextEntry(System.String)">
+            <summary>
+            Calls the Win32 SendInput method with a stream of KeyDown and KeyUp messages in order to simulate uninterrupted text entry via the keyboard.
+            </summary>
+            <param name="text">The text to be simulated.</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.TextEntry(System.Char)">
+            <summary>
+            Simulates a single character text entry via the keyboard.
+            </summary>
+            <param name="character">The unicode character to be simulated.</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.Sleep(System.Int32)">
+            <summary>
+            Sleeps the executing thread to create a pause between simulated inputs.
+            </summary>
+            <param name="millsecondsTimeout">The number of milliseconds to wait.</param>
+        </member>
+        <member name="M:WindowsInput.KeyboardSimulator.Sleep(System.TimeSpan)">
+            <summary>
+            Sleeps the executing thread to create a pause between simulated inputs.
+            </summary>
+            <param name="timeout">The time to wait.</param>
+        </member>
+        <member name="T:WindowsInput.WindowsInputDeviceStateAdaptor">
+            <summary>
+            An implementation of <see cref="T:WindowsInput.IInputDeviceStateAdaptor"/> for Windows by calling the native <see cref="M:WindowsInput.Native.NativeMethods.GetKeyState(System.UInt16)"/> and <see cref="M:WindowsInput.Native.NativeMethods.GetAsyncKeyState(System.UInt16)"/> methods.
+            </summary>
+        </member>
+        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsKeyDown(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the specified key is up or down by calling the GetKeyState function. (See: http://msdn.microsoft.com/en-us/library/ms646301(VS.85).aspx)
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the key is down; otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            The key status returned from this function changes as a thread reads key messages from its message queue. The status does not reflect the interrupt-level state associated with the hardware. Use the GetAsyncKeyState function to retrieve that information. 
+            An application calls GetKeyState in response to a keyboard-input message. This function retrieves the state of the key when the input message was generated. 
+            To retrieve state information for all the virtual keys, use the GetKeyboardState function. 
+            An application can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for Bthe nVirtKey parameter. This gives the status of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. An application can also use the following virtual-key code constants as values for nVirtKey to distinguish between the left and right instances of those keys. 
+            VK_LSHIFT
+            VK_RSHIFT
+            VK_LCONTROL
+            VK_RCONTROL
+            VK_LMENU
+            VK_RMENU
+            
+            These left- and right-distinguishing constants are available to an application only through the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
+            </remarks>
+        </member>
+        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsKeyUp(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the specified key is up or downby calling the <see cref="M:WindowsInput.Native.NativeMethods.GetKeyState(System.UInt16)"/> function. (See: http://msdn.microsoft.com/en-us/library/ms646301(VS.85).aspx)
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the key is up; otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            The key status returned from this function changes as a thread reads key messages from its message queue. The status does not reflect the interrupt-level state associated with the hardware. Use the GetAsyncKeyState function to retrieve that information. 
+            An application calls GetKeyState in response to a keyboard-input message. This function retrieves the state of the key when the input message was generated. 
+            To retrieve state information for all the virtual keys, use the GetKeyboardState function. 
+            An application can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for Bthe nVirtKey parameter. This gives the status of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. An application can also use the following virtual-key code constants as values for nVirtKey to distinguish between the left and right instances of those keys. 
+            VK_LSHIFT
+            VK_RSHIFT
+            VK_LCONTROL
+            VK_RCONTROL
+            VK_LMENU
+            VK_RMENU
+            
+            These left- and right-distinguishing constants are available to an application only through the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
+            </remarks>
+        </member>
+        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsHardwareKeyDown(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the physical key is up or down at the time the function is called regardless of whether the application thread has read the keyboard event from the message pump by calling the <see cref="M:WindowsInput.Native.NativeMethods.GetAsyncKeyState(System.UInt16)"/> function. (See: http://msdn.microsoft.com/en-us/library/ms646293(VS.85).aspx)
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the key is down; otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            The GetAsyncKeyState function works with mouse buttons. However, it checks on the state of the physical mouse buttons, not on the logical mouse buttons that the physical buttons are mapped to. For example, the call GetAsyncKeyState(VK_LBUTTON) always returns the state of the left physical mouse button, regardless of whether it is mapped to the left or right logical mouse button. You can determine the system's current mapping of physical mouse buttons to logical mouse buttons by calling 
+            Copy CodeGetSystemMetrics(SM_SWAPBUTTON) which returns TRUE if the mouse buttons have been swapped.
+            
+            Although the least significant bit of the return value indicates whether the key has been pressed since the last query, due to the pre-emptive multitasking nature of Windows, another application can call GetAsyncKeyState and receive the "recently pressed" bit instead of your application. The behavior of the least significant bit of the return value is retained strictly for compatibility with 16-bit Windows applications (which are non-preemptive) and should not be relied upon.
+            
+            You can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for the vKey parameter. This gives the state of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. 
+            
+            Windows NT/2000/XP: You can use the following virtual-key code constants as values for vKey to distinguish between the left and right instances of those keys. 
+            
+            Code Meaning 
+            VK_LSHIFT Left-shift key. 
+            VK_RSHIFT Right-shift key. 
+            VK_LCONTROL Left-control key. 
+            VK_RCONTROL Right-control key. 
+            VK_LMENU Left-menu key. 
+            VK_RMENU Right-menu key. 
+            
+            These left- and right-distinguishing constants are only available when you call the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
+            </remarks>
+        </member>
+        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsHardwareKeyUp(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the physical key is up or down at the time the function is called regardless of whether the application thread has read the keyboard event from the message pump by calling the <see cref="M:WindowsInput.Native.NativeMethods.GetAsyncKeyState(System.UInt16)"/> function. (See: http://msdn.microsoft.com/en-us/library/ms646293(VS.85).aspx)
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the key is up; otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            The GetAsyncKeyState function works with mouse buttons. However, it checks on the state of the physical mouse buttons, not on the logical mouse buttons that the physical buttons are mapped to. For example, the call GetAsyncKeyState(VK_LBUTTON) always returns the state of the left physical mouse button, regardless of whether it is mapped to the left or right logical mouse button. You can determine the system's current mapping of physical mouse buttons to logical mouse buttons by calling 
+            Copy CodeGetSystemMetrics(SM_SWAPBUTTON) which returns TRUE if the mouse buttons have been swapped.
+            
+            Although the least significant bit of the return value indicates whether the key has been pressed since the last query, due to the pre-emptive multitasking nature of Windows, another application can call GetAsyncKeyState and receive the "recently pressed" bit instead of your application. The behavior of the least significant bit of the return value is retained strictly for compatibility with 16-bit Windows applications (which are non-preemptive) and should not be relied upon.
+            
+            You can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for the vKey parameter. This gives the state of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. 
+            
+            Windows NT/2000/XP: You can use the following virtual-key code constants as values for vKey to distinguish between the left and right instances of those keys. 
+            
+            Code Meaning 
+            VK_LSHIFT Left-shift key. 
+            VK_RSHIFT Right-shift key. 
+            VK_LCONTROL Left-control key. 
+            VK_RCONTROL Right-control key. 
+            VK_LMENU Left-menu key. 
+            VK_RMENU Right-menu key. 
+            
+            These left- and right-distinguishing constants are only available when you call the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
+            </remarks>
+        </member>
+        <member name="M:WindowsInput.WindowsInputDeviceStateAdaptor.IsTogglingKeyInEffect(WindowsInput.Native.VirtualKeyCode)">
+            <summary>
+            Determines whether the toggling key is toggled on (in-effect) or not by calling the <see cref="M:WindowsInput.Native.NativeMethods.GetKeyState(System.UInt16)"/> function.  (See: http://msdn.microsoft.com/en-us/library/ms646301(VS.85).aspx)
+            </summary>
+            <param name="keyCode">The <see cref="T:WindowsInput.Native.VirtualKeyCode"/> for the key.</param>
+            <returns>
+            	<c>true</c> if the toggling key is toggled on (in-effect); otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            The key status returned from this function changes as a thread reads key messages from its message queue. The status does not reflect the interrupt-level state associated with the hardware. Use the GetAsyncKeyState function to retrieve that information. 
+            An application calls GetKeyState in response to a keyboard-input message. This function retrieves the state of the key when the input message was generated. 
+            To retrieve state information for all the virtual keys, use the GetKeyboardState function. 
+            An application can use the virtual-key code constants VK_SHIFT, VK_CONTROL, and VK_MENU as values for the nVirtKey parameter. This gives the status of the SHIFT, CTRL, or ALT keys without distinguishing between left and right. An application can also use the following virtual-key code constants as values for nVirtKey to distinguish between the left and right instances of those keys. 
+            VK_LSHIFT
+            VK_RSHIFT
+            VK_LCONTROL
+            VK_RCONTROL
+            VK_LMENU
+            VK_RMENU
+            
+            These left- and right-distinguishing constants are available to an application only through the GetKeyboardState, SetKeyboardState, GetAsyncKeyState, GetKeyState, and MapVirtualKey functions. 
+            </remarks>
+        </member>
+        <member name="T:WindowsInput.WindowsInputMessageDispatcher">
+            <summary>
+            Implements the <see cref="T:WindowsInput.IInputMessageDispatcher"/> by calling <see cref="M:WindowsInput.Native.NativeMethods.SendInput(System.UInt32,WindowsInput.Native.INPUT[],System.Int32)"/>.
+            </summary>
+        </member>
+        <member name="M:WindowsInput.WindowsInputMessageDispatcher.DispatchInput(WindowsInput.Native.INPUT[])">
+            <summary>
+            Dispatches the specified list of <see cref="T:WindowsInput.Native.INPUT"/> messages in their specified order by issuing a single called to <see cref="M:WindowsInput.Native.NativeMethods.SendInput(System.UInt32,WindowsInput.Native.INPUT[],System.Int32)"/>.
+            </summary>
+            <param name="inputs">The list of <see cref="T:WindowsInput.Native.INPUT"/> messages to be dispatched.</param>
+            <exception cref="T:System.ArgumentException">If the <paramref name="inputs"/> array is empty.</exception>
+            <exception cref="T:System.ArgumentNullException">If the <paramref name="inputs"/> array is null.</exception>
+            <exception cref="T:System.Exception">If the any of the commands in the <paramref name="inputs"/> array could not be sent successfully.</exception>
         </member>
     </members>
 </doc>

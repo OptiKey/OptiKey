@@ -44,6 +44,6 @@ namespace JuliusSweetland.OptiKey.Services
             return await taskCompletionSource.Task;
         }
 
-        public bool CanBeCompletedWithoutManualIntervention { get { return false; } }
+        public bool CanBeCompletedWithoutManualIntervention { get { return true; } }
     }
 }

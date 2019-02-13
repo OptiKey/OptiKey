@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -139,8 +139,8 @@ SLOVNÍKA</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Upraviť {0} pixel|Upraviť o {0} pixelov</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>PÍSMENÁ</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>PÍSMENÁ 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -154,7 +154,7 @@ SLOVNÍKA</value>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Automaticky kapitalizovať slová:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Automaticky dopĺňať slová:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -162,6 +162,9 @@ SLOVNÍKA</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Automatické medzery medzi slovami:</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Späť</value>
   </data>
   <data name="BACK" xml:space="preserve">
     <value>SPÄŤ</value>
@@ -1360,8 +1363,8 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>UPRAVIŤ O POČET PIXELOV</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>KONVERZÁCIA PÍSMENÁ</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>KONVERZÁCIA PÍSMENÁ 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>KONVERZÁCIA ČÍSLA A SYMBOLY</value>
@@ -1554,5 +1557,23 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibrácia úspešná!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>PÍSMENÁ 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>KONVERZÁCIA PÍSMENÁ 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>PÍSMENÁ</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>JAZYK</value>
   </data>
 </root>

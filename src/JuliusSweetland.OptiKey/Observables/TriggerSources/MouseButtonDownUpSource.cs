@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Forms;
+using log4net;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
@@ -15,10 +15,12 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
     {
         #region Fields
 
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly MouseButtons triggerButton;
-        private readonly IPointSource pointSource;
         private readonly MouseHookListener mouseHookListener;
 
+        private IPointSource pointSource;
         private IObservable<TriggerSignal> sequence;
 
         #endregion
@@ -36,6 +38,12 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             {
                 Enabled = true
             };
+
+            System.Windows.Application.Current.Exit += (sender, args) =>
+            {
+                mouseHookListener.Dispose();
+                Log.Debug("Mouse hook listener disposed.");
+            };
         }
 
         #endregion
@@ -43,6 +51,16 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         #region Properties
 
         public RunningStates State { get; set; }
+
+        /// <summary>
+        /// Change the point and key value source. N.B. After setting this any existing subscription 
+        /// to the sequence must be disposed and the getter called again to recreate the sequence again.
+        /// </summary>
+        public IPointSource PointSource
+        {
+            get { return pointSource; }
+            set { pointSource = value; }
+        }
 
         public IObservable<TriggerSignal> Sequence
         {

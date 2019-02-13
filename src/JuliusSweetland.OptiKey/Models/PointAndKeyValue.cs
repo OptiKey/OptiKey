@@ -2,26 +2,25 @@
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public struct PointAndKeyValue
+    public class PointAndKeyValue
     {
-        public PointAndKeyValue(Point point, KeyValue? keyValue)
-            : this()
+        public PointAndKeyValue(Point point, KeyValue keyValue)
         {
             Point = point;
             KeyValue = keyValue;
         }
 
         public Point Point { get; private set; }
-        public KeyValue? KeyValue { get; private set; }
+        public KeyValue KeyValue { get; private set; }
 
         public bool StringIsLetter
         {
-            get { return KeyValue != null && KeyValue.Value.StringIsLetter; }
+            get { return KeyValue != null && KeyValue.StringIsLetter; }
         }
 
         public string String
         {
-            get { return KeyValue != null ? KeyValue.Value.String : null; }
+            get { return KeyValue != null ? KeyValue.String : null; }
         }
 
         public override string ToString()

@@ -4,5 +4,7 @@
     {
         bool SimulateKeyStrokes { get; }
         bool MultiKeySelectionSupported { get; }
+        void OnEnter();
+        void OnExit();
     }
 }

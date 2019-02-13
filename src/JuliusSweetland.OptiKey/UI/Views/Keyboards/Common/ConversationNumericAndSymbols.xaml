@@ -93,7 +93,28 @@
                     Text="0"
                     SharedSizeGroup="KeyWithSingleLetter"
                     Value="0"/>
-    <controls:Key Grid.Row="3" Grid.Column="0" />
+      
+    <ContentControl Grid.Row="3" Grid.Column="0">
+        <ContentControl.Style>
+            <Style TargetType="{x:Type ContentControl}">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <controls:Key />
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableCommuniKateKeyboardLayout}" Value="True">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key Text="CK" SymbolGeometry="{StaticResource CommuniKateIcon}"
+                                                Value="{x:Static models:KeyValues.ConversationCommuniKateKeyboardKey}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ContentControl.Style>
+    </ContentControl>
     <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Case="None"
                   Text="-"
                   SharedSizeGroup="KeyWithSingleLetter"
@@ -198,9 +219,9 @@
                   Value="{x:Static models:KeyValues.LeftShiftKey}" />
     <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
                   SymbolGeometry="{StaticResource AlphaIcon}"
-                  Text="{x:Static resx:Resources.ALPHA}"
+                  Text="{x:Static resx:Resources.ALPHA_1}"
                   SharedSizeGroup="KeyWithSymbol"
-                  Value="{x:Static models:KeyValues.ConversationAlphaKeyboardKey}" />
+                  Value="{x:Static models:KeyValues.ConversationAlpha1KeyboardKey}" />
     <controls:Key Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Case="None"
                   Text=","
                   SharedSizeGroup="KeyWithSingleLetter"

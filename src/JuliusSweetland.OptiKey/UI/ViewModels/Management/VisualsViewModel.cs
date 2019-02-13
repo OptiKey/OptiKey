@@ -39,7 +39,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>(Resources.ANDROID_DARK, "/Resources/Themes/Android_Dark.xaml"),
-                    new KeyValuePair<string, string>(Resources.ANDROID_LIGHT, "/Resources/Themes/Android_Light.xaml")
+                    new KeyValuePair<string, string>(Resources.ANDROID_LIGHT, "/Resources/Themes/Android_Light.xaml"),
+                    new KeyValuePair<string, string>(Resources.ANDROID_TWO_TONE, "/Resources/Themes/Android_Two_Tone.xaml")
                 };
             }
         }
@@ -129,6 +130,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CONVERSATION_NUM_SYM_LAYOUT, Enums.Keyboards.ConversationNumericAndSymbols),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_1, Enums.Keyboards.Currencies1),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_2, Enums.Keyboards.Currencies2),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.CUSTOM_LAYOUT, Enums.Keyboards.CustomKeyboardFile),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.DYNAMIC_KEYBOARD_LAYOUT, Enums.Keyboards.DynamicKeyboard),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_1, Enums.Keyboards.Diacritics1),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_2, Enums.Keyboards.Diacritics2),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_3, Enums.Keyboards.Diacritics3),
@@ -139,7 +142,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Enums.Keyboards>(Resources.NUMBERS_SYMBOLS_LAYOUT_2, Enums.Keyboards.NumericAndSymbols2),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.NUMBERS_SYMBOLS_LAYOUT_3, Enums.Keyboards.NumericAndSymbols3),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.PHYSICAL_KEYS_LAYOUT, Enums.Keyboards.PhysicalKeys),
-                    new KeyValuePair<string, Enums.Keyboards>(Resources.SIZE_POSITION_LAYOUT, Enums.Keyboards.SizeAndPosition)
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.SIZE_POSITION_LAYOUT, Enums.Keyboards.SizeAndPosition),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.WEB_BROWSING_LAYOUT, Enums.Keyboards.WebBrowsing)
                 };
             }
         }
@@ -338,18 +342,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
-        private string simplifiedKeyboardCurrentContext;
-        public string SimplifiedKeyboardCurrentContext
-        {
-            get { return simplifiedKeyboardCurrentContext; }
-            set { SetProperty(ref simplifiedKeyboardCurrentContext, value); }
-        }
-
         private bool enableQuitKeys;
         public bool EnableQuitKeys
         {
             get { return enableQuitKeys; }
             set { SetProperty(ref enableQuitKeys, value); }
+        }
+
+        private bool enableAttentionKey;
+        public bool EnableAttentionKey
+        {
+            get { return enableAttentionKey; }
+            set { SetProperty(ref enableAttentionKey, value); }
+        }
+
+        private string dynamicKeyboardsLocation;
+        public string DynamicKeyboardsLocation
+        {
+            get { return dynamicKeyboardsLocation; }
+            set { SetProperty(ref dynamicKeyboardsLocation, value); }
+        }
+
+        private string startupKeyboardFile;
+        public string StartupKeyboardFile
+        {
+            get { return startupKeyboardFile; }
+            set { SetProperty(ref startupKeyboardFile, value); }
         }
 
         #endregion
@@ -379,8 +397,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
-            SimplifiedKeyboardCurrentContext = Settings.Default.SimplifiedKeyboardCurrentContext;
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
+            EnableAttentionKey = Settings.Default.EnableAttentionKey;
+            DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
+            StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
         }
 
         public void ApplyChanges()
@@ -406,8 +426,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
-            Settings.Default.SimplifiedKeyboardCurrentContext = SimplifiedKeyboardCurrentContext;
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
+            Settings.Default.EnableAttentionKey = EnableAttentionKey;
+            Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
+            Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
         }
 
         #endregion

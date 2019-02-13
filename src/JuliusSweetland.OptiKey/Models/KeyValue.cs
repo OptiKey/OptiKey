@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Configuration;
-using System.Globalization;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.Text;
@@ -13,10 +12,17 @@ using JuliusSweetland.OptiKey.Extensions;
 namespace JuliusSweetland.OptiKey.Models
 {
     [TypeConverter(typeof(KeyValueConverter))]
-    public struct KeyValue : IEquatable<KeyValue>
+    public class KeyValue : IEquatable<KeyValue>
     {
+
         private readonly FunctionKeys? functionKey;
         private readonly string str;
+
+        public KeyValue()
+        {
+            this.functionKey = null;
+            this.str = null;
+        }
 
         public KeyValue(FunctionKeys functionKey)
         {
@@ -36,6 +42,12 @@ namespace JuliusSweetland.OptiKey.Models
             this.str = str;
         }
 
+        public KeyValue(FunctionKeys functionKey, string str)
+        {
+            this.functionKey = functionKey;
+            this.str = str;
+        }
+
         public FunctionKeys? FunctionKey { get { return functionKey; } }
         public string String { get { return str; } }
 
@@ -46,27 +58,55 @@ namespace JuliusSweetland.OptiKey.Models
         
         #region IEquatable
 
-        public bool Equals(KeyValue kv)
+        public static bool Equals(KeyValue x, KeyValue y)
         {
-            // Return true if the fields match:
-            return (FunctionKey == kv.FunctionKey)
-                && (String == kv.String);
+            return x == y;
         }
 
-        public static bool operator ==(KeyValue kv1, KeyValue kv2)
+        public override bool Equals(System.Object obj)
         {
-            return kv1.Equals(kv2);
+            // If parameter cannot be cast to KeyValue return false:
+            KeyValue p = obj as KeyValue;
+            if ((object)p == null)
+            {
+                return false;
+            }
+
+            // Return true if objects match
+            return (p == this);
+        }
+
+        public bool Equals(KeyValue kv)
+        {
+            if (ReferenceEquals(null, kv)) return false;
+            else return (this == kv);   
+        }
+
+        public static bool operator ==(KeyValue x, KeyValue y)
+        {
+            // If both are null, or both are same instance, return true.
+            if (System.Object.ReferenceEquals(x, y))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)x == null) || ((object)y == null))
+            {
+                return false;
+            }
+
+            // Return true if the fields and hash codes match
+            // Hash code check allows us to account for differences in 
+            // subclasses, even if the (KeyValue) parts are equal.
+            return (x.FunctionKey == y.FunctionKey)
+                && (x.String == y.String)
+                && x.GetHashCode() == y.GetHashCode();
         }
 
         public static bool operator !=(KeyValue x, KeyValue y)
         {
             return !(x == y);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            return obj is KeyValue && Equals((KeyValue) obj);
         }
 
         public override int GetHashCode()
@@ -105,42 +145,10 @@ namespace JuliusSweetland.OptiKey.Models
             
             return stringBuilder.ToString();
         }
-    }
 
-    public sealed class KeyValueConverter : TypeConverter
-    {
-        // The ITypeDescriptorContext interface provides the context for the
-        // conversion. Typically, this interface is used at design time to 
-        // provide information about the design-time container.
-        public override bool CanConvertFrom(ITypeDescriptorContext context,
-           Type sourceType)
-        {
-            if (sourceType == typeof(string))
-            {
-                return true;
-            }
-            return base.CanConvertFrom(context, sourceType);
-        }
-
-        public override object ConvertFrom(ITypeDescriptorContext context,
-           CultureInfo culture, object value)
-        {
-            var text = value as string;
-            if (text!=null)
-            {
-                return new KeyValue(text);
-            }
-            return base.ConvertFrom(context, culture, value);
-        }
-
-        public override object ConvertTo(ITypeDescriptorContext context,
-           CultureInfo culture, object value, Type destinationType)
-        {
-            if (destinationType == typeof(string))
-            {
-                return ((KeyValue)value).String;
-            }
-            return base.ConvertTo(context, culture, value, destinationType);
+        public virtual bool HasContent() {            
+            return (FunctionKey != null) ||
+                   (!string.IsNullOrEmpty(String)); 
         }
     }
 }

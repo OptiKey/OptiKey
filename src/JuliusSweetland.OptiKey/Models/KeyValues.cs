@@ -1,23 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Properties;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Models
 {
     public static class KeyValues
     {
         public static readonly KeyValue AddToDictionaryKey = new KeyValue(FunctionKeys.AddToDictionary);
-        public static readonly KeyValue AlphaKeyboardKey = new KeyValue(FunctionKeys.AlphaKeyboard);
+        public static readonly KeyValue Alpha1KeyboardKey = new KeyValue(FunctionKeys.Alpha1Keyboard);
+        public static readonly KeyValue Alpha2KeyboardKey = new KeyValue(FunctionKeys.Alpha2Keyboard);
         public static readonly KeyValue ArrowDownKey = new KeyValue(FunctionKeys.ArrowDown);
         public static readonly KeyValue ArrowLeftKey = new KeyValue(FunctionKeys.ArrowLeft);
         public static readonly KeyValue ArrowRightKey = new KeyValue(FunctionKeys.ArrowRight);
         public static readonly KeyValue ArrowUpKey = new KeyValue(FunctionKeys.ArrowUp);
+        public static readonly KeyValue AttentionKey = new KeyValue(FunctionKeys.Attention);
         public static readonly KeyValue BackFromKeyboardKey = new KeyValue(FunctionKeys.BackFromKeyboard);
         public static readonly KeyValue BackManyKey = new KeyValue(FunctionKeys.BackMany);
         public static readonly KeyValue BackOneKey = new KeyValue(FunctionKeys.BackOne);
         public static readonly KeyValue BreakKey = new KeyValue(FunctionKeys.Break);
+        public static readonly KeyValue BrowserBackKey = new KeyValue(FunctionKeys.BrowserBack);
+        public static readonly KeyValue BrowserForwardKey = new KeyValue(FunctionKeys.BrowserForward);
+        public static readonly KeyValue BrowserHomeKey = new KeyValue(FunctionKeys.BrowserHome);
+        public static readonly KeyValue BrowserSearchKey = new KeyValue(FunctionKeys.BrowserSearch);
         public static readonly KeyValue CalibrateKey = new KeyValue(FunctionKeys.Calibrate);
         public static readonly KeyValue CatalanSpainKey = new KeyValue(FunctionKeys.CatalanSpain);
         public static readonly KeyValue ClearScratchpadKey = new KeyValue(FunctionKeys.ClearScratchpad);
@@ -49,8 +55,12 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CombiningRingAboveKey = new KeyValue("\x030A");
         public static readonly KeyValue CombiningRingBelowKey = new KeyValue("\x0325");
         public static readonly KeyValue CombiningTildeKey = new KeyValue("\x0303");
+        public static readonly KeyValue CommuniKateKey = new KeyValue(FunctionKeys.CommuniKate);
+        public static readonly KeyValue CommuniKateKeyboardKey = new KeyValue(FunctionKeys.CommuniKateKeyboard);
         public static readonly KeyValue CroatianCroatiaKey = new KeyValue(FunctionKeys.CroatianCroatia);
-        public static readonly KeyValue ConversationAlphaKeyboardKey = new KeyValue(FunctionKeys.ConversationAlphaKeyboard);
+        public static readonly KeyValue ConversationAlpha1KeyboardKey = new KeyValue(FunctionKeys.ConversationAlpha1Keyboard);
+        public static readonly KeyValue ConversationAlpha2KeyboardKey = new KeyValue(FunctionKeys.ConversationAlpha2Keyboard);
+        public static readonly KeyValue ConversationCommuniKateKeyboardKey = new KeyValue(FunctionKeys.ConversationCommuniKateKeyboard);
         public static readonly KeyValue ConversationConfirmKeyboardKey = new KeyValue(FunctionKeys.ConversationConfirmKeyboard);
         public static readonly KeyValue ConversationConfirmYesKey = new KeyValue(FunctionKeys.ConversationConfirmYes);
         public static readonly KeyValue ConversationConfirmNoKey = new KeyValue(FunctionKeys.ConversationConfirmNo);
@@ -66,6 +76,9 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Diacritic3KeyboardKey = new KeyValue(FunctionKeys.Diacritic3Keyboard);
         public static readonly KeyValue DutchBelgiumKey = new KeyValue(FunctionKeys.DutchBelgium);
         public static readonly KeyValue DutchNetherlandsKey = new KeyValue(FunctionKeys.DutchNetherlands);
+        public static readonly KeyValue DynamicKeyboardKey = new KeyValue(FunctionKeys.DynamicKeyboard);
+        public static readonly KeyValue DynamicKeyboardNext = new KeyValue(FunctionKeys.DynamicKeyboardNext);
+        public static readonly KeyValue DynamicKeyboardPrev = new KeyValue(FunctionKeys.DynamicKeyboardPrev);
         public static readonly KeyValue EndKey = new KeyValue(FunctionKeys.End);
         public static readonly KeyValue EnglishCanadaKey = new KeyValue(FunctionKeys.EnglishCanada);
         public static readonly KeyValue EnglishUKKey = new KeyValue(FunctionKeys.EnglishUK);
@@ -80,7 +93,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ExpandToTopAndRightKey = new KeyValue(FunctionKeys.ExpandToTopAndRight);
         public static readonly KeyValue EscapeKey = new KeyValue(FunctionKeys.Escape);
         public static readonly KeyValue ExpandDockKey = new KeyValue(FunctionKeys.ExpandDock);
-        public static readonly KeyValue F1Key = new KeyValue(FunctionKeys.F1);        
+        public static readonly KeyValue F1Key = new KeyValue(FunctionKeys.F1);
         public static readonly KeyValue F2Key = new KeyValue(FunctionKeys.F2);
         public static readonly KeyValue F3Key = new KeyValue(FunctionKeys.F3);
         public static readonly KeyValue F4Key = new KeyValue(FunctionKeys.F4);
@@ -100,20 +113,30 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue F18Key = new KeyValue(FunctionKeys.F18);
         public static readonly KeyValue F19Key = new KeyValue(FunctionKeys.F19);
         public static readonly KeyValue FrenchFranceKey = new KeyValue(FunctionKeys.FrenchFrance);
+        public static readonly KeyValue FrenchCanadaKey = new KeyValue(FunctionKeys.FrenchCanada);
+        public static readonly KeyValue GeorgianGeorgiaKey = new KeyValue(FunctionKeys.GeorgianGeorgia);
         public static readonly KeyValue GermanGermanyKey = new KeyValue(FunctionKeys.GermanGermany);
         public static readonly KeyValue GreekGreeceKey = new KeyValue(FunctionKeys.GreekGreece);
         public static readonly KeyValue HomeKey = new KeyValue(FunctionKeys.Home);
         public static readonly KeyValue IncreaseOpacityKey = new KeyValue(FunctionKeys.IncreaseOpacity);
         public static readonly KeyValue InsertKey = new KeyValue(FunctionKeys.Insert);
         public static readonly KeyValue ItalianItalyKey = new KeyValue(FunctionKeys.ItalianItaly);
+        public static readonly KeyValue JapaneseJapanKey = new KeyValue(FunctionKeys.JapaneseJapan);
+        public static readonly KeyValue KoreanKoreaKey = new KeyValue(FunctionKeys.KoreanKorea);
         public static readonly KeyValue LanguageKeyboardKey = new KeyValue(FunctionKeys.LanguageKeyboard);
         public static readonly KeyValue LeftAltKey = new KeyValue(FunctionKeys.LeftAlt);
         public static readonly KeyValue LeftCtrlKey = new KeyValue(FunctionKeys.LeftCtrl);
         public static readonly KeyValue LeftShiftKey = new KeyValue(FunctionKeys.LeftShift);
         public static readonly KeyValue LeftWinKey = new KeyValue(FunctionKeys.LeftWin);
+        public static readonly KeyValue LookToScrollActiveKey = new KeyValue(FunctionKeys.LookToScrollActive);
+        public static readonly KeyValue LookToScrollBoundsKey = new KeyValue(FunctionKeys.LookToScrollBounds);
+        public static readonly KeyValue LookToScrollIncrementKey = new KeyValue(FunctionKeys.LookToScrollIncrement);
+        public static readonly KeyValue LookToScrollModeKey = new KeyValue(FunctionKeys.LookToScrollMode);
+        public static readonly KeyValue LookToScrollSpeedKey = new KeyValue(FunctionKeys.LookToScrollSpeed);
         public static readonly KeyValue MenuKey = new KeyValue(FunctionKeys.Menu);
         public static readonly KeyValue MenuKeyboardKey = new KeyValue(FunctionKeys.MenuKeyboard);
         public static readonly KeyValue MinimiseKey = new KeyValue(FunctionKeys.Minimise);
+        public static readonly KeyValue MoreKey = new KeyValue(FunctionKeys.More);
         public static readonly KeyValue MouseDragKey = new KeyValue(FunctionKeys.MouseDrag);
         public static readonly KeyValue MouseKeyboardKey = new KeyValue(FunctionKeys.MouseKeyboard);
         public static readonly KeyValue MouseLeftClickKey = new KeyValue(FunctionKeys.MouseLeftClick);
@@ -169,13 +192,17 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue PgDnKey = new KeyValue(FunctionKeys.PgDn);
         public static readonly KeyValue PgUpKey = new KeyValue(FunctionKeys.PgUp);
         public static readonly KeyValue PhysicalKeysKeyboardKey = new KeyValue(FunctionKeys.PhysicalKeysKeyboard);
+        public static readonly KeyValue PolishPolandKey = new KeyValue(FunctionKeys.PolishPoland);
         public static readonly KeyValue PortuguesePortugalKey = new KeyValue(FunctionKeys.PortuguesePortugal);
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue(FunctionKeys.PreviousSuggestions);
         public static readonly KeyValue PrintScreenKey = new KeyValue(FunctionKeys.PrintScreen);
         public static readonly KeyValue QuitKey = new KeyValue(FunctionKeys.Quit);
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue(FunctionKeys.RepeatLastMouseAction);
+        public static readonly KeyValue RestartKey = new KeyValue(FunctionKeys.Restart);
         public static readonly KeyValue RussianRussiaKey = new KeyValue(FunctionKeys.RussianRussia);
+        public static readonly KeyValue SerbianSerbiaKey = new KeyValue(FunctionKeys.SerbianSerbia);
         public static readonly KeyValue ScrollLockKey = new KeyValue(FunctionKeys.ScrollLock);
+        public static readonly KeyValue SelectVoiceKey = new KeyValue(FunctionKeys.SelectVoice);
         public static readonly KeyValue ShrinkFromBottomKey = new KeyValue(FunctionKeys.ShrinkFromBottom);
         public static readonly KeyValue ShrinkFromBottomAndLeftKey = new KeyValue(FunctionKeys.ShrinkFromBottomAndLeft);
         public static readonly KeyValue ShrinkFromBottomAndRightKey = new KeyValue(FunctionKeys.ShrinkFromBottomAndRight);
@@ -184,24 +211,35 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ShrinkFromTopKey = new KeyValue(FunctionKeys.ShrinkFromTop);
         public static readonly KeyValue ShrinkFromTopAndLeftKey = new KeyValue(FunctionKeys.ShrinkFromTopAndLeft);
         public static readonly KeyValue ShrinkFromTopAndRightKey = new KeyValue(FunctionKeys.ShrinkFromTopAndRight);
-        public static readonly KeyValue SimplifiedAlphaClear = new KeyValue(FunctionKeys.SimplifiedAlphaClear);
-        public static readonly KeyValue SimplifiedAlphaABCDEFGHI = new KeyValue(FunctionKeys.SimplifiedAlphaABCDEFGHI);
-        public static readonly KeyValue SimplifiedAlphaJKLMNOPQR = new KeyValue(FunctionKeys.SimplifiedAlphaJKLMNOPQR);
-        public static readonly KeyValue SimplifiedAlphaSTUVWXYZ = new KeyValue(FunctionKeys.SimplifiedAlphaSTUVWXYZ);
-        public static readonly KeyValue SimplifiedAlphaABC = new KeyValue(FunctionKeys.SimplifiedAlphaABC);
-        public static readonly KeyValue SimplifiedAlphaDEF = new KeyValue(FunctionKeys.SimplifiedAlphaDEF);
-        public static readonly KeyValue SimplifiedAlphaGHI = new KeyValue(FunctionKeys.SimplifiedAlphaGHI);
-        public static readonly KeyValue SimplifiedAlphaJKL = new KeyValue(FunctionKeys.SimplifiedAlphaJKL);
-        public static readonly KeyValue SimplifiedAlphaMNO = new KeyValue(FunctionKeys.SimplifiedAlphaMNO);
-        public static readonly KeyValue SimplifiedAlphaPQR = new KeyValue(FunctionKeys.SimplifiedAlphaPQR);
-        public static readonly KeyValue SimplifiedAlphaSTU = new KeyValue(FunctionKeys.SimplifiedAlphaSTU);
-        public static readonly KeyValue SimplifiedAlphaVWX = new KeyValue(FunctionKeys.SimplifiedAlphaVWX);
-        public static readonly KeyValue SimplifiedAlphaYZ = new KeyValue(FunctionKeys.SimplifiedAlphaYZ);
-        public static readonly KeyValue SimplifiedAlphaQE = new KeyValue(FunctionKeys.SimplifiedAlphaQE);
-        public static readonly KeyValue SimplifiedAlphaNum = new KeyValue(FunctionKeys.SimplifiedAlphaNum);
-        public static readonly KeyValue SimplifiedAlpha123 = new KeyValue(FunctionKeys.SimplifiedAlpha123);
-        public static readonly KeyValue SimplifiedAlpha456 = new KeyValue(FunctionKeys.SimplifiedAlpha456);
-        public static readonly KeyValue SimplifiedAlpha789 = new KeyValue(FunctionKeys.SimplifiedAlpha789);
+        public static readonly KeyValue SimplifiedAlphaClearKey = new KeyValue(FunctionKeys.SimplifiedAlphaClear);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup1AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup1All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup2AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup2All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup3AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup5AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup5All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup6AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup6All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup7AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup7All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup8AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup8All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup9AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup9All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup10AllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup10All);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup1SubGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup1);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup1SubGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup2);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup1SubGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup3);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup2SubGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup1);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup2SubGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup2);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup2SubGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup3);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup3SubGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup1);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup3SubGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup2);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup3SubGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup3);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4SubGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup1);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4SubGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup2);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4SubGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup3);
+        public static readonly KeyValue SimplifiedKeyboardNumericAllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericAll);
+        public static readonly KeyValue SimplifiedKeyboardNumericGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericGroup1);
+        public static readonly KeyValue SimplifiedKeyboardNumericGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericGroup2);
+        public static readonly KeyValue SimplifiedKeyboardNumericGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericGroup3);
+        public static readonly KeyValue SimplifiedKeyboardGermanUmlaut = new KeyValue(FunctionKeys.SimplifiedKeyboardGermanUmlaut);
+        public static readonly KeyValue SimplifiedKeyboardHome = new KeyValue(FunctionKeys.SimplifiedKeyboardHome);
         public static readonly KeyValue SizeAndPositionKeyboardKey = new KeyValue(FunctionKeys.SizeAndPositionKeyboard);
         public static readonly KeyValue SleepKey = new KeyValue(FunctionKeys.Sleep);
         public static readonly KeyValue SlovakSlovakiaKey = new KeyValue(FunctionKeys.SlovakSlovakia);
@@ -214,7 +252,10 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Suggestion4Key = new KeyValue(FunctionKeys.Suggestion4);
         public static readonly KeyValue Suggestion5Key = new KeyValue(FunctionKeys.Suggestion5);
         public static readonly KeyValue Suggestion6Key = new KeyValue(FunctionKeys.Suggestion6);
+        public static readonly KeyValue ToggleCaseOfPreviousCharacterKey = new KeyValue(FunctionKeys.ToggleCaseOfPreviousCharacter);
         public static readonly KeyValue TurkishTurkeyKey = new KeyValue(FunctionKeys.TurkishTurkey);
+        public static readonly KeyValue UkrainianUkraineKey = new KeyValue(FunctionKeys.UkrainianUkraine);
+        public static readonly KeyValue WebBrowsingKeyboardKey = new KeyValue(FunctionKeys.WebBrowsingKeyboard);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
         
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
@@ -243,7 +284,7 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-                { Languages.DanishDenmark, "abcdefghijklmnopqrstuvxyzæøå"
+                { Languages.DanishDenmark, "abcdefghijklmnopqrstuvwxyzæøå"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
@@ -253,8 +294,22 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.EnglishCanada, defaultList },
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
-                { Languages.FrenchFrance, defaultList },
+                { Languages.FrenchFrance, "abcdefghijklmnopqrstuvwxyzçé"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
+                { Languages.FrenchCanada, "abcdefghijklmnopqrstuvwxyzçé"
+                    .ToCharArray()
+                    .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                    .ToList()
+                },
                 { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.GeorgianGeorgia, "აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
@@ -264,12 +319,30 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-                { Languages.ItalianItaly, defaultList },
-                { Languages.PortuguesePortugal, defaultList },
+                { Languages.ItalianItaly, "abcdefghijklmnopqrstuvwxyzî"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
+                { Languages.PolishPoland, "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
+                { Languages.PortuguesePortugal, "abcdefghijklmnopqrstuvwxyzçà"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
                 { Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList() },
+                { Languages.SerbianSerbia, "абвгдђежзијклљмнњопрстћуфхцчџш"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
                 { Languages.SlovakSlovakia, "aáäbcčdďeéfghchiíjklĺľmnoóôpqrŕsštťuúvwxyýzž"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
@@ -280,12 +353,17 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-				{ Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
+                { Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
                 { Languages.TurkishTurkey, "abcçdefgğhiıjklmnoöprsştuüvyz"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.UkrainianUkraine, "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
@@ -297,8 +375,8 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                return CombiningKeys.Concat(
-                    new List <KeyValue>
+                var keys = CombiningKeys.Concat(
+                    new List<KeyValue>
                     {
                         LeftAltKey,
                         LeftCtrlKey,
@@ -308,6 +386,18 @@ namespace JuliusSweetland.OptiKey.Models
                         MultiKeySelectionIsOnKey
                     })
                     .ToList();
+
+                if (Settings.Default.KeySelectionTriggerSource == TriggerSources.KeyboardKeyDownsUps)
+                {
+                    //LWIN cannot be pressed or locked down when using a KeyboardKeyDownUpSource as the trigger - the windows key
+                    //does not combine as a modifier with other keys, which means we cannot detect any future trigger key presses
+                    //once the LWIN key is down. The only work around is to prevent the key from being pressed down and used as a modifier.
+                    //Issue for this bug https://globalmousekeyhook.codeplex.com/workitem/1188
+                    //Source for this bug https://globalmousekeyhook.codeplex.com/SourceControl/latest#Main/MouseKeyboardActivityMonitor/KeyEventArgsExt.cs
+                    keys.Remove(LeftWinKey);
+                }
+
+                return keys;
             }
         }
 
@@ -315,12 +405,14 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                return new List<KeyValue>
+                var keys = new List<KeyValue>
                 {
                     LeftAltKey,
                     LeftCtrlKey,
                     LeftShiftKey,
                     LeftWinKey,
+                    LookToScrollActiveKey,
+                    LookToScrollBoundsKey,
                     MouseLeftDownUpKey,
                     MouseMagneticCursorKey,
                     MouseMagnifierKey,
@@ -329,6 +421,18 @@ namespace JuliusSweetland.OptiKey.Models
                     MultiKeySelectionIsOnKey,
                     SleepKey
                 };
+
+                if (Settings.Default.KeySelectionTriggerSource == TriggerSources.KeyboardKeyDownsUps)
+                {
+                    //LWIN cannot be pressed or locked down when using a KeyboardKeyDownUpSource as the trigger - the windows key
+                    //does not combine as a modifier with other keys, which means we cannot detect any future trigger key presses
+                    //once the LWIN key is down. The only work around is to prevent the key from being pressed down and used as a modifier.
+                    //Issue for this bug https://globalmousekeyhook.codeplex.com/workitem/1188
+                    //Source for this bug https://globalmousekeyhook.codeplex.com/SourceControl/latest#Main/MouseKeyboardActivityMonitor/KeyEventArgsExt.cs
+                    keys.Remove(LeftWinKey);
+                }
+
+                return keys;
             }
         }
 
@@ -350,6 +454,14 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftWinKey
                 };
+            }
+        }
+
+        public static List<KeyValue> KeysDisabledWithMultiKeysSelectionIsOn
+        {
+            get
+            {
+                return CombiningKeys;
             }
         }
 
@@ -445,7 +557,12 @@ namespace JuliusSweetland.OptiKey.Models
 
         public static List<KeyValue> MultiKeySelectionKeys
         {
-            get { return multiKeySelectionKeys[Settings.Default.KeyboardAndDictionaryLanguage]; }
+            get
+            {
+                return multiKeySelectionKeys.ContainsKey(Settings.Default.KeyboardAndDictionaryLanguage)
+                    ? multiKeySelectionKeys[Settings.Default.KeyboardAndDictionaryLanguage]
+                    : new List<KeyValue>();
+            }
         }
     }
 }

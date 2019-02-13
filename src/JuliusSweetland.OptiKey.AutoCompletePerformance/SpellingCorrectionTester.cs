@@ -6,7 +6,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
+using JuliusSweetland.OptiKey.Services.Suggestions;
 
 namespace JuliusSweetland.OptiKey.AutoCompletePerformance
 {
@@ -22,20 +22,23 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
         private const string DictionaryFileType = "dic";
         private const int NumberOfSuggestionsToCheck = 4;
         private const string OriginalDictionariesSubPath = @"Dictionaries";
-        private readonly IManageAutoComplete autoComplete;
+        private readonly IManagedSuggestions managedSuggestion;
 
-        public SpellingCorrectionTester(AutoCompleteMethods autoCompleteMethod, Languages language)
+        public SpellingCorrectionTester(SuggestionMethods SuggestionMethod, Languages language)
         {
-            switch (autoCompleteMethod)
+            switch (SuggestionMethod)
             {
-                case AutoCompleteMethods.NGram:
-                    autoComplete = new NGramAutoComplete();
+                case SuggestionMethods.NGram:
+                    managedSuggestion = new NGramAutoComplete();
                     break;
-                case AutoCompleteMethods.Basic:
-                    autoComplete = new BasicAutoComplete();
+                case SuggestionMethods.Basic:
+                    managedSuggestion = new BasicAutoComplete();
+                    break;
+                case SuggestionMethods.Presage:
+                    managedSuggestion = new PresageSuggestions();
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException("autoCompleteMethod", autoCompleteMethod, null);
+                    throw new ArgumentOutOfRangeException("SuggestionMethod", SuggestionMethod, null);
             }
 
             Configure(language);
@@ -50,7 +53,7 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
             for (var n = 1; n <= misspellingTest.Misspelling.Length; ++n)
             {
                 var typedSoFar = misspellingTest.Misspelling.Substring(0, n);
-                var suggestions = autoComplete.GetSuggestions(typedSoFar).Take(NumberOfSuggestionsToCheck);
+                var suggestions = managedSuggestion.GetSuggestions(typedSoFar).Take(NumberOfSuggestionsToCheck);
 
                 if (!suggestions.Any(
                         suggestion =>
@@ -83,7 +86,7 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
 
             var newEntryWithUsageCount = new DictionaryEntry(entry);
 
-            autoComplete.AddEntry(entry, newEntryWithUsageCount);
+            managedSuggestion.AddEntry(entry, newEntryWithUsageCount);
         }
 
         private void Configure(Languages keyboardAndDictionaryLanguage)

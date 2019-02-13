@@ -1,0 +1,2414 @@
+﻿<UserControl x:Class="JuliusSweetland.OptiKey.UI.Controls.CK20Page"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
+             xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
+             xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+             xmlns:local="clr-namespace:JuliusSweetland.OptiKey.Extensions"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+                <ResourceDictionary>
+                    <valueConverters:IsGreaterThan x:Key="IsGreaterThan" />
+                    <valueConverters:IsCommuniKateActionKey x:Key="IsCommuniKateActionKey" />
+                    <valueConverters:IsCommuniKateMenuKey x:Key="IsCommuniKateMenuKey" />
+                    <valueConverters:IsValidImage x:Key="IsValidImage" />
+                    <valueConverters:IsSvgImage x:Key="IsSvgImage" />
+                    <valueConverters:CommuniKateBackgroundColourToForegroundBrush x:Key="CommuniKateBackgroundColourToForegroundBrush" />
+                    <valueConverters:CommuniKateTwoColoursToForegroundBrush x:Key="CommuniKateTwoColoursToForegroundBrush" />
+                    <valueConverters:CommuniKateCalculateBoarderWidth x:Key="CommuniKateCalculateBoarderWidth" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition>
+                <RowDefinition.Style>
+                    <Style TargetType="{x:Type RowDefinition}">
+                        <Setter Property="Height" Value="0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKGridRows, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, 
+                                Converter={StaticResource IsGreaterThan}, ConverterParameter=1}" Value="True">
+                                <Setter Property="Height" Value="*" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RowDefinition.Style>
+            </RowDefinition>
+            <RowDefinition>
+                <RowDefinition.Style>
+                    <Style TargetType="{x:Type RowDefinition}">
+                        <Setter Property="Height" Value="0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKGridRows, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, 
+                                Converter={StaticResource IsGreaterThan}, ConverterParameter=2}" Value="True">
+                                <Setter Property="Height" Value="*" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RowDefinition.Style>
+            </RowDefinition>
+            <RowDefinition>
+                <RowDefinition.Style>
+                    <Style TargetType="{x:Type RowDefinition}">
+                        <Setter Property="Height" Value="0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKGridRows, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, 
+                                Converter={StaticResource IsGreaterThan}, ConverterParameter=3}" Value="True">
+                                <Setter Property="Height" Value="*" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RowDefinition.Style>
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition>
+                <ColumnDefinition.Style>
+                    <Style TargetType="{x:Type ColumnDefinition}">
+                        <Setter Property="Width" Value="0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKGridColumns, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, 
+                                Converter={StaticResource IsGreaterThan}, ConverterParameter=1}" Value="True">
+                                <Setter Property="Width" Value="*" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ColumnDefinition.Style>
+            </ColumnDefinition>
+            <ColumnDefinition>
+                <ColumnDefinition.Style>
+                    <Style TargetType="{x:Type ColumnDefinition}">
+                        <Setter Property="Width" Value="0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKGridColumns, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, 
+                                Converter={StaticResource IsGreaterThan}, ConverterParameter=2}" Value="True">
+                                <Setter Property="Width" Value="*" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ColumnDefinition.Style>
+            </ColumnDefinition>
+            <ColumnDefinition>
+                <ColumnDefinition.Style>
+                    <Style TargetType="{x:Type ColumnDefinition}">
+                        <Setter Property="Width" Value="0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKGridColumns, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, 
+                                Converter={StaticResource IsGreaterThan}, ConverterParameter=3}" Value="True">
+                                <Setter Property="Width" Value="*" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ColumnDefinition.Style>
+            </ColumnDefinition>
+            <ColumnDefinition>
+                <ColumnDefinition.Style>
+                    <Style TargetType="{x:Type ColumnDefinition}">
+                        <Setter Property="Width" Value="0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKGridColumns, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, 
+                                Converter={StaticResource IsGreaterThan}, ConverterParameter=4}" Value="True">
+                                <Setter Property="Width" Value="*" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ColumnDefinition.Style>
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Row="0" Grid.Column="0" 
+              Background="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_00" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_00" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" 
+              Background="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                    <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_01" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_01" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2" 
+              Background="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_02" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_02" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="3" 
+              Background="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_03" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_03" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="4" 
+              Background="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_04" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_04" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" 
+              Background="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_10" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_10" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" 
+              Background="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_11" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_11" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2" 
+              Background="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_12" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_12" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3" 
+              Background="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_13" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_13" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="4" 
+              Background="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_14" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_14" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="0" 
+              Background="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_20" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_20" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1" 
+              Background="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_21" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_21" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2" 
+              Background="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_22" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_22" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="3" 
+              Background="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_23" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_23" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="4" 
+              Background="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_24" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_24" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="0" 
+              Background="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_30" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_30" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="1" 
+              Background="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_31" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_31" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="2" 
+              Background="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_32" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_32" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="3" 
+              Background="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_33" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_33" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="4" 
+              Background="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="True">
+                                <Setter Property="Source" Value="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <svgc:SvgViewbox Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" >
+                <svgc:SvgViewbox.Style>
+                    <Style TargetType="svgc:SvgViewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="True">
+                                <Setter Property="local:SvgViewboxAttachedProperties.Source" Value="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </svgc:SvgViewbox.Style>
+            </svgc:SvgViewbox>
+            <Viewbox Stretch="Uniform" Margin="10, 0, 10, 0">
+                <TextBlock Text="{Binding Path=CKLabel_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                           Foreground="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush} }" 
+                           FontWeight="Heavy" HorizontalAlignment="Center" />
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsValidImage}}" Value="False"/>
+                                    <Condition Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource IsSvgImage}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+            </Viewbox>
+            <Rectangle Grid.RowSpan="2" Height="auto" Width="auto"
+                       Stroke="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" >
+                <Rectangle.StrokeThickness>
+                    <MultiBinding Converter="{StaticResource CommuniKateCalculateBoarderWidth}">
+                        <Binding Path="CKGridRows" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                        <Binding Path="CKGridColumns" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                    </MultiBinding>
+                </Rectangle.StrokeThickness>
+            </Rectangle>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Right"
+                  Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateMenuKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <Path VerticalAlignment="Top" Stretch="Uniform" HorizontalAlignment="Left"
+                  Data="M0,0 L0,20 A40,40 0 0 0 20,0 z" >
+                <Path.Style>
+                    <Style TargetType="Path">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Converter={StaticResource IsCommuniKateActionKey}, Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="True">
+                                <Setter Property="Fill" Value="{Binding Path=CKBoCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+            <ContentControl Grid.RowSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <controls:Key SharedSizeGroup="KeyWithText"
+                                              BackgroundColourOverride="Transparent" ForegroundColourOverride="Transparent" DisabledForegroundColourOverride="{DynamicResource KeyDefaultBackgroundBrush}" 
+                                              SelectionForegroundColourOverride="Black" DisabledBackgroundOpacity="0.8"
+                                              SelectionProgressColourOverride="{Binding Path=CKBaCo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}, Converter={StaticResource CommuniKateBackgroundColourToForegroundBrush}}" 
+                                              Text="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                              Value="{Binding Path=CKMenu_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}">
+                                    <controls:Key.HoverForegroundColourOverride>
+                                        <MultiBinding Converter="{StaticResource CommuniKateTwoColoursToForegroundBrush}">
+                                            <Binding Path="CKBoCo_34" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                            <Binding Path="CKBaCo_34" RelativeSource="{RelativeSource AncestorType={x:Type controls:CK20Page}}" />
+                                        </MultiBinding>
+                                    </controls:Key.HoverForegroundColourOverride>
+                                </controls:Key>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key DisabledBackgroundOpacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -11,6 +11,6 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
     {
         RunningStates State { get; set; }
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
-        IObservable<Timestamped<PointAndKeyValue?>> Sequence { get; }
+        IObservable<Timestamped<PointAndKeyValue>> Sequence { get; }
     }
 }

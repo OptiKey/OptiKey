@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -139,8 +139,8 @@ ORDBOG</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Juster {0} pixel|Juster {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>BOGSTAVER</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>BOGSTAVER 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -154,7 +154,7 @@ ORDBOG</value>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Start automatisk ord med stort:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Automatisk færdiggørelse af ord:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -162,6 +162,9 @@ ORDBOG</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Automatisk mellemrum mellem ord</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Tilbage</value>
   </data>
   <data name="BACK" xml:space="preserve">
     <value>TILBAGE</value>
@@ -1073,9 +1076,6 @@ POSITION</value>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
-  <data name="THE_EYE_TRIBE" xml:space="preserve">
-    <value>The Eye Tribe</value>
-  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>Ude af stand til at aktivere TheEyeTriber GazeManager! Tjek venligst at serveren kører og at enheden er forbundet og forsøg igen.</value>
   </data>
@@ -1094,9 +1094,6 @@ POSITION</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Ord skrives med stort</value>
   </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
-  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibrering færdig, eller muligvis afbrudt, men alt virker igen!</value>
   </data>
@@ -1105,12 +1102,6 @@ POSITION</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Tobii EyeX Engine kører ikke. Start venligst EyeX Enginen og forsøg igen.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tone 1</value>
@@ -1438,8 +1429,8 @@ Deutsch
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>JUSTÉR MÆNGDEN I PIXELS</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>SAMTALE ALPHA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>SAMTALE ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>SAMTALE NUMERISK OG SYMBOLER</value>
@@ -1674,5 +1665,23 @@ Türkçe
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibrering mislykkedes!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>BOGSTAVER 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>SAMTALE ALPHA 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>BOGSTAVER</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Sprog</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Sprog</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>SPROG</value>
   </data>
 </root>
