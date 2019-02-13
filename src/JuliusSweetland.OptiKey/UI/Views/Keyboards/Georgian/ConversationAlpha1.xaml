@@ -57,51 +57,51 @@
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="ღ" ShiftDownText="ღ"
+                      Text="ღ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ღ"/>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="ჯ" ShiftDownText="ჯ"
+                      Text="ჯ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ჯ"/>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                      ShiftUpText="უ" ShiftDownText="უ" 
+                      Text="უ" 
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="უ"/>
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="კ" ShiftDownText="კ"
+                      Text="კ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="კ"/>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="ე" ShiftDownText="ე"
+                      Text="ე"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ე"/>
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                      ShiftUpText="ნ" ShiftDownText="ნ"
+                      Text="ნ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ნ"/>
         <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
-                      ShiftUpText="გ" ShiftDownText="გ"
+                      Text="გ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="გ"/>
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="შ" ShiftDownText="შ"
+                      Text="შ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="შ"/>
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="წ" ShiftDownText="წ"
+                      Text="წ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="წ"/>
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ზ" ShiftDownText="ზ"
+                      Text="ზ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ზ"/>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      ShiftUpText="ხ" ShiftDownText="ხ"
+                      Text="ხ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ხ"/>
         <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
-                      ShiftUpText="ც" ShiftDownText="ც"
+                      Text="ც"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ც"/>
 
@@ -127,87 +127,87 @@
             </ContentControl.Style>
         </ContentControl>
         <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
-                      ShiftUpText="ფ" ShiftDownText="ფ"
+                      Text="ფ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ფ"/>
         <controls:Key Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"
-                      ShiftUpText="ძ" ShiftDownText="ძ"
+                      Text="ძ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ძ"/>
         <controls:Key Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2"
-                      ShiftUpText="ვ" ShiftDownText="ვ"
+                      Text="ვ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ვ"/>
         <controls:Key Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2"
-                      ShiftUpText="თ" ShiftDownText="თ"
+                      Text="თ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="თ"/>
         <controls:Key Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2"
-                      ShiftUpText="ა" ShiftDownText="ა"
+                      Text="ა"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ა"/>
         <controls:Key Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2"
-                      ShiftUpText="პ" ShiftDownText="პ"
+                      Text="პ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="პ"/>
         <controls:Key Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2"
-                      ShiftUpText="რ" ShiftDownText="რ"
+                      Text="რ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="რ"/>
         <controls:Key Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2"
-                      ShiftUpText="ო" ShiftDownText="ო"
+                      Text="ო"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ო"/>
         <controls:Key Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2"
-                      ShiftUpText="ლ" ShiftDownText="ლ"
+                      Text="ლ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ლ"/>
         <controls:Key Grid.Row="3" Grid.Column="19" Grid.ColumnSpan="2"
-                      ShiftUpText="დ" ShiftDownText="დ"
+                      Text="დ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="დ"/>
         <controls:Key Grid.Row="3" Grid.Column="21" Grid.ColumnSpan="2"
-                      ShiftUpText="ჟ" ShiftDownText="ჟ"
+                      Text="ჟ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ჟ"/>
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="ჭ" ShiftDownText="ჭ"
+                      Text="ჭ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ჭ"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="ჩ" ShiftDownText="ჩ"
+                      Text="ჩ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ჩ"/>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
-                      ShiftUpText="ყ" ShiftDownText="ყ"
+                      Text="ყ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ყ"/>
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="ს" ShiftDownText="ს"
+                      Text="ს"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ს"/>
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="მ" ShiftDownText="მ"
+                      Text="მ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="მ"/>
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
-                      ShiftUpText="ი" ShiftDownText="ი"
+                      Text="ი"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ი"/>
         <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
-                      ShiftUpText="ტ" ShiftDownText="ტ"
+                      Text="ტ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ტ"/>
         <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="ქ" ShiftDownText="ქ"
+                      Text="ქ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ქ"/>
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="ბ" ShiftDownText="ბ"
+                      Text="ბ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ბ"/>
         <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ჰ" ShiftDownText="ჰ"
+                      Text="ჰ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ჰ"/>
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
