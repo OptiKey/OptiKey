@@ -48,6 +48,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Languages>(Resources.ENGLISH_US, Enums.Languages.EnglishUS),
                     new KeyValuePair<string, Languages>(Resources.FRENCH_CANADA, Enums.Languages.FrenchCanada),
                     new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, Enums.Languages.FrenchFrance),
+                    new KeyValuePair<string, Languages>(Resources.GEORGIAN_GEORGIA, Enums.Languages.GeorgianGeorgia),
                     new KeyValuePair<string, Languages>(Resources.GERMAN_GERMANY, Enums.Languages.GermanGermany),
                     new KeyValuePair<string, Languages>(Resources.GREEK_GREECE, Enums.Languages.GreekGreece),
                     new KeyValuePair<string, Languages>(Resources.ITALIAN_ITALY, Enums.Languages.ItalianItaly),
@@ -187,6 +188,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
                        || KeyboardAndDictionaryLanguage == Enums.Languages.JapaneseJapan
                        || KeyboardAndDictionaryLanguage == Enums.Languages.TurkishTurkey
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.GeorgianGeorgia
                        || KeyboardAndDictionaryLanguage == Enums.Languages.GermanGermany;
             }
         }

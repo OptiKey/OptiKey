@@ -115,6 +115,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue F19Key = new KeyValue(FunctionKeys.F19);
         public static readonly KeyValue FrenchFranceKey = new KeyValue(FunctionKeys.FrenchFrance);
         public static readonly KeyValue FrenchCanadaKey = new KeyValue(FunctionKeys.FrenchCanada);
+        public static readonly KeyValue GeorgianGeorgiaKey = new KeyValue(FunctionKeys.GeorgianGeorgia);
         public static readonly KeyValue GermanGermanyKey = new KeyValue(FunctionKeys.GermanGermany);
         public static readonly KeyValue GreekGreeceKey = new KeyValue(FunctionKeys.GreekGreece);
         public static readonly KeyValue HomeKey = new KeyValue(FunctionKeys.Home);
@@ -231,6 +232,9 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup3SubGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup1);
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup3SubGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup2);
         public static readonly KeyValue SimplifiedKeyboardAlphaGroup3SubGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup3);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4SubGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup1);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4SubGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup2);
+        public static readonly KeyValue SimplifiedKeyboardAlphaGroup4SubGroup3Key = new KeyValue(FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup3);
         public static readonly KeyValue SimplifiedKeyboardNumericAllKey = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericAll);
         public static readonly KeyValue SimplifiedKeyboardNumericGroup1Key = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericGroup1);
         public static readonly KeyValue SimplifiedKeyboardNumericGroup2Key = new KeyValue(FunctionKeys.SimplifiedKeyboardNumericGroup2);
@@ -302,6 +306,11 @@ namespace JuliusSweetland.OptiKey.Models
                     .ToList()
                 },
                 { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.GeorgianGeorgia, "აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()

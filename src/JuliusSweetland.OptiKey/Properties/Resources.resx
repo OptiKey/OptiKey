@@ -1667,6 +1667,15 @@ Español
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Quit</value>
   </data>
+  <data name="GEORGIAN_GEORGIA" xml:space="preserve">
+    <value>Georgian (Georgia) / ქართული (საქართველო)</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Georgian
+(Georgia) /
+ქართული
+(საქართველო)</value>
+  </data>
   <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Greek
 (Greece) /
