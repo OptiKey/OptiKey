@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
+                    xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters">
+
+    <valueConverters:BoolToCustomValues TrueValue="Visible" FalseValue="Collapsed" x:Key="VisibleWhenLookToScroll" />
+    <valueConverters:BoolToCustomValues TrueValue="Collapsed" FalseValue="Visible" x:Key="HiddenWhenLookToScroll" />
+
+    <valueConverters:ResourceStringLookup Prefix="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_" x:Key="LookToScrollBoundsLookup" />
+    <valueConverters:ResourceStringLookup Prefix="LOOK_TO_SCROLL_MODE_KEY_TEXT_" x:Key="LookToScrollModeLookup" />
+    <valueConverters:ResourceStringLookup Prefix="LOOK_TO_SCROLL_SPEED_KEY_TEXT_" x:Key="LookToScrollSpeedLookup" />
+
+    <valueConverters:EnumMapper EnumType="{x:Type enums:LookToScrollModes}" x:Key="LookToScrollModeIcon">
+        <valueConverters:EnumMapper.MappedValues>
+            <x:Array Type="{x:Type Geometry}">
+                <StaticResource ResourceKey="LookToScrollModeFreeIcon" />
+                <StaticResource ResourceKey="LookToScrollModeCrossIcon" />
+                <StaticResource ResourceKey="LookToScrollModeVerticalIcon" />
+                <StaticResource ResourceKey="LookToScrollModeHorizontalIcon" />
+            </x:Array>
+        </valueConverters:EnumMapper.MappedValues>
+    </valueConverters:EnumMapper>
+
+    <valueConverters:EnumMapper EnumType="{x:Type enums:LookToScrollBounds}" x:Key="LookToScrollBoundsIcon">
+        <valueConverters:EnumMapper.MappedValues>
+            <x:Array Type="{x:Type Geometry}">
+                <StaticResource ResourceKey="LookToScrollBoundsScreenPointIcon" />
+                <StaticResource ResourceKey="LookToScrollBoundsScreenCentredIcon" />
+                <StaticResource ResourceKey="LookToScrollBoundsWindowIcon" />
+                <StaticResource ResourceKey="LookToScrollBoundsSubwindowIcon" />
+                <StaticResource ResourceKey="LookToScrollBoundsCustomIcon" />
+            </x:Array>
+        </valueConverters:EnumMapper.MappedValues>
+    </valueConverters:EnumMapper>
+
+    <valueConverters:EnumMapper EnumType="{x:Type enums:LookToScrollSpeeds}" x:Key="LookToScrollSpeedIcon">
+        <valueConverters:EnumMapper.MappedValues>
+            <x:Array Type="{x:Type Geometry}">
+                <StaticResource ResourceKey="LookToScrollSpeedSlowIcon" />
+                <StaticResource ResourceKey="LookToScrollSpeedMediumIcon" />
+                <StaticResource ResourceKey="LookToScrollSpeedFastIcon" />
+            </x:Array>
+        </valueConverters:EnumMapper.MappedValues>
+    </valueConverters:EnumMapper>
+
+</ResourceDictionary>

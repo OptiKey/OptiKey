@@ -39,6 +39,15 @@ namespace JuliusSweetland.OptiKey.Models
                     reader.ReadStartElement("functionKey");
                     var functionKeyAsString = reader.ReadString();
                     FunctionKeys localFk;
+                    //Remap function keys which have changed names over time
+                    if (functionKeyAsString == "AlphaKeyboard")
+                    {
+                        functionKeyAsString = "Alpha1Keyboard";
+                    }
+                    else if (functionKeyAsString == "ConversationAlphaKeyboard")
+                    {
+                        functionKeyAsString = "ConversationAlpha1Keyboard";
+                    }
                     if (Enum.TryParse(functionKeyAsString, out localFk))
                     {
                         fk = localFk;

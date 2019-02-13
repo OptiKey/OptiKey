@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -139,8 +139,8 @@ EKLE</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>{0} piksel olarak ayarla | {0} piksel olarak ayarla</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>HARFLER</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>HARFLER 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -154,7 +154,7 @@ EKLE</value>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Kelimelerin ilk harflerini otomatik olarak büyüt:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Kelimeleri otomatik olarak tamamla:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -1373,8 +1373,8 @@ OK</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>PİKSEL BAZINDA DÜZELTME MİKTARI</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>HARFLER</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>HARFLER 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>RAKAMLAR VE SEMBOLLER</value>
@@ -1563,5 +1563,23 @@ KÜÇÜLT</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibrasyon başarısız!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>HARFLER 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>HARFLER 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>HARFLER</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>DİL</value>
   </data>
 </root>

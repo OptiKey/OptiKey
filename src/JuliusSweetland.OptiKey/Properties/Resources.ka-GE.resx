@@ -124,14 +124,14 @@
     <value>ახალი სიტყვის დამატება:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>გსურთ ფრაზის &apos;{0}&apos; დამატება ლექსიკონში კომბინაციის &apos;{1}&apos; გამოყენებით?</value>
+    <value>გსურთ ფრაზის '{0}' დამატება ლექსიკონში კომბინაციის '{1}' გამოყენებით?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ლექსიკონში
 დამატება</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>გსურთ &apos;{0}&apos;ს დამატება ლექსიკონში?</value>
+    <value>გსურთ '{0}'ს დამატება ლექსიკონში?</value>
   </data>
   <data name="ADDED" xml:space="preserve">
     <value>დამატებულია</value>
@@ -139,8 +139,8 @@
   <data name="ADJUST_BY" xml:space="preserve">
     <value>{0} პიქსელით კორექტირება|{0}  პიქსელით კორექტირება</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>ასოები</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>ასოები 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -154,7 +154,7 @@
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>სიტყვების პირველი ასოს ავტომატურად ზედა რეგისტრში გადაყვანა - სხვა ენებისთვის:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>ავტომატურად დასრულდეს სიტყვები</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -162,6 +162,9 @@
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>სიტყვებს შორის ავტომატური გამოტოვება</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>უქან</value>
   </data>
   <data name="BACK" xml:space="preserve">
     <value>უკან</value>
@@ -175,7 +178,7 @@
 უკან</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>&apos;Bass&apos;ის მოდული ვერ ახერხებს {0} ფაილის გახმოვანებას</value>
+    <value>'Bass'ის მოდული ვერ ახერხებს {0} ფაილის გახმოვანებას</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
     <value>ქვემოთ</value>
@@ -184,23 +187,23 @@
     <value>BREAK</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>კალიბრაცია შეჩერდა ამ შეტყობინებით: &apos;{0}&apos;</value>
+    <value>კალიბრაცია შეჩერდა ამ შეტყობინებით: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>ნამდვილად გსურთ რე-კალიბრაცია?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>შეცდომა დაფიქსირდა კალიბრაციი დროს. შეტყობინება: &apos;{0}&apos;</value>
+    <value>შეცდომა დაფიქსირდა კალიბრაციი დროს. შეტყობინება: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>კალიბრაცია ვერ მოხერხდა. შეტყობინება: &apos;{0}&apos;</value>
+    <value>კალიბრაცია ვერ მოხერხდა. შეტყობინება: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
     <value>კალიბრაცია ვერ დასრულდება პირადი ჩარევის გარეშე, მაგ: მაუსის გამოყენების საჭიროება. შესაძლოა შეჩერდეთ კალიბრაციის პროცესში თუ პირადი ჩარევის შესაძლებლობა არ გაქვთ თქვენი კომპიუტერით.
 დარწმუნებული ხართ რომ გსურთ რე-კალიბრაცია?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>კალიბრაცია შეწყდა გურკვეველი მიზეზით. შეტყობინება: &apos;{0}&apos;</value>
+    <value>კალიბრაცია შეწყდა გურკვეველი მიზეზით. შეტყობინება: '{0}'</value>
   </data>
   <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>კალიბრაცია შესრულდა! სიზუსტე (საშუალო შეცდომის დონე = {0})</value>
@@ -218,7 +221,8 @@
     <value>წაშლა</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>წკაპი და გადაადგილება</value>
+    <value>წკაპი
+და გადაადგილება</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
     <value>წკაპ 1</value>
@@ -298,6 +302,9 @@
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
     <value>კურსორის სიგანე (პიქსელი):</value>
   </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>"პირადად მორგებული" კლავიატურის ფაილი</value>
+  </data>
   <data name="DANISH_DENMARK" xml:space="preserve">
     <value>დანიური (დანია)  / Dansk (Danmark)</value>
   </data>
@@ -336,7 +343,7 @@ Dansk
     <value>ლექსიკონი</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>მომხმარებლის ლექსიკონი არ არსებობს. თავდაპირველი ლექსიკონი ვერ დაფიქსირდა &apos;{0}&apos; ლოკაციასთან</value>
+    <value>მომხმარებლის ლექსიკონი არ არსებობს. თავდაპირველი ლექსიკონი ვერ დაფიქსირდა '{0}' ლოკაციასთან</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
     <value>თითო შეტყობინების სიმბოლოს ჩვენება X წამით:</value>
@@ -370,7 +377,7 @@ Dansk
     <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>კარგია! &apos;{0}&apos; დამატებულია ლექსიკონში</value>
+    <value>კარგია! '{0}' დამატებულია ლექსიკონში</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
     <value>ხარვეზი:</value>
@@ -548,6 +555,9 @@ Dansk
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>კლავიატურის ენა:</value>
+  </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>კლავიატურის საქაღალდის მითითება შესაძლებელია მართვის კონსოლში (ვიზუალურ განყოფილებაში)</value>
   </data>
   <data name="LEFT" xml:space="preserve">
     <value>მარცხნივ</value>
@@ -773,7 +783,7 @@ Dansk
     <value>ღილაკების გადაბმულად არჩევის დასასრული:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ღილაკების გადაბმულად
+    <value>გადაბმულად
 არჩევა</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
@@ -788,6 +798,9 @@ Dansk
   </data>
   <data name="NO" xml:space="preserve">
     <value>არა</value>
+  </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>კლავიატურა ვერ მოიძებნა</value>
   </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
     <value>ეს სიტყვა/ფრაზა უკვე არსებობს ლექსიკონში.</value>
@@ -1073,6 +1086,9 @@ LK</value>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
     <value>საწყისი კლავიატურა:</value>
   </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>"პირადად მორგებული" კლავიატურის ფაილი:</value>
+  </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>შეწყვეტის სიგნალი:</value>
   </data>
@@ -1152,7 +1168,7 @@ LK</value>
     <value>მომხმარებლის სტატუსი ვერ დადასტურდა.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>პრობლემა შეიქმნა ხმის დაყენებისას &apos;{0}&apos;{1}-ზე</value>
+    <value>პრობლემა შეიქმნა ხმის დაყენებისას '{0}'{1}-ზე</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
     <value>გაურკვეველი შეცდომა მოხდა - გთხოვთ შეამოწმოთ აღრიცხვის ჟურნალები</value>
@@ -1275,6 +1291,9 @@ Deutsch
 (ესპანეთი)/
 Español
 (España)</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>დინამიური კლავიატურის მენიუ</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>საუბრის რეჟიმის კლავიატურის ჩარჩოს სისქე (მარცხნივ, ზევით, მარჯნივ, ქვევით პიქსელებში):</value>
@@ -1462,8 +1481,8 @@ Español
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>პიქსელების რაოდენობის კორექტირება</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>ალფაბეტის ღილაკი</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>ალფაბეტის ღილაკი 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>საუბარი რიცხვები &amp; სიმბოლოები</value>
@@ -1720,6 +1739,15 @@ Türkçe
 Italiano
 (Italia)</value>
   </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>კორეული (კორეა) / 한국어 (한국)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>კორეული
+(კორეა) /
+한국어
+(한국)</value>
+  </data>
   <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
     <value>სლოვენური (სლოვანია) / Slovensko (Slovenija)</value>
   </data>
@@ -1740,6 +1768,15 @@ Slovensko
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>კალიბრაცია წარმატებულია!</value>
+  </data>
+  <data name="POLISH_POLAND" xml:space="preserve">
+    <value>პოლონური (პოლონეთი) / Polski (Polska)</value>
+  </data>
+  <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>პოლონური
+(პოლონეთი) /
+Polski
+(Polska)</value>
   </data>
   <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
     <value>პორტუგალიური (პორტუგალია) / Português (Portugal)</value>
@@ -1778,10 +1815,10 @@ Slovenčina
     <value>Tobii X2-60</value>
   </data>
   <data name="FORCE_CAPS_LOCK" xml:space="preserve">
-    <value>დააძალე ზედა რეგისტრის ასოების გამოყენება - სხვა ენებისთვის:</value>
+    <value>იძულებითი CAPS LOCK (SHIFT-ის დაბლოკვა): </value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>ალფაბეტის კლავიატურის დანიშვნა:</value>
+    <value>ალფაბეტის კლავიატურის  სქემის გამოყენება</value>
   </data>
   <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
     <value>კალმან ფილტრი:</value>
@@ -1817,6 +1854,352 @@ Slovenčina
     <value>გსურთ გასვლის ღილაკის გააქტიურება?</value>
   </data>
   <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>გამოიყენე მარტივი კლავიატურის სქემა:</value>
+    <value>გამოიყენე მარტივი კლავიატურის სქემა</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ბრაუზერი
+უკან</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ბრაუზერი
+წინ</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ბრაუზერი
+მთავარი გვერდი</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ბრაუზერი
+ძიება</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>ვებ ძიება</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ვებ
+ძიება</value>
+  </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>გამოვიყენო MaryTTS საუბრის სინთეზატორი?</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS ხმა:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>MaryTTS-ის ადგილმდებარეობა (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>ძიება</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>შეცდომა დაფიქსირდა: ვალიდური 'marytts-server.bat' ფაილი არ იქნა არჩეული. გთხოვთ სცადეთ თავიდან.</value>
+  </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>ძირითადი</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Presage</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>შეთავაზების მეთოდი</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>MaryTTS-ი ხელმისაწვდომი არ არის</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>Presage-ის სიტყვათა პროგნოზირება ხელმისაწვდომი არ არის</value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>{0}-ის შეთავაზების მეთოდად არჩევა. აღნიშნული ცვლილების გაუქმება შესაძლებელია მართვის კონცოლიდან (ALT+M)</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>სიტყვის წამოთქმისას ხმის სისტემურ ხმაზე დაყენება: {0}
+შეგიძლიათ შეამოწმოთ  MaryTTS მდებარეობა
+და ისევ შეცვალოთ ხმა MaryTTS-ზე
+მართვის კონსოლიდან (ALT + M). </value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>დაყოვნება საუბრის დაწყებამდე</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>გამოიყენე CommuniKate კლავიატურის სქემა</value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>გააქტიურე CommuniKate კლავიატურის სქემა:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>CommuniKate ზედა გვერდის obf ფაილი:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>არავალიდური ფაილი.</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>CommuniKate ადგილმდებარეობის ზედა გვერდის .obz ფაილი:</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>ან Presage-ის 64 bit ვერსია არის დაინსტალირებული (OptiKey მხოლოდ მუშაობს 32 bit ვერსიაზე), ან Presage ფაილები გადაადგილდა, წაიშალა ან კორუმპირებულია.
+გთხოვთ გადააყენეთ Presage და დააყენეთ 32 bit ვერსია - 0.9.2.
+OptiKey შეეცდება გააგრძელოს მუშაობა, თუმცა მალევე გაითიშება.
+ეს სიტყვის პროგნოზირების მეთოდი შემდეგ ჩართვაზე შეიცვლება NGram-ით, რომ თავიდან იქნას აცილებული გათიშვა.</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>Presage-ს პრობლემა აქვს</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>საქაღალდე შეიცავს შემდეგი სახის დინამიურ კლავიატურეს:</value>
+  </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>ასოები 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>ალფაბეტის ღილაკი 2</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>გსურთ ყველა აღნიშნული ცვლილების გაუქმება?</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>პარამეტრების გაუქმება</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>აქედან Presage-ის ლექსიკონის შეცვლა არ არის შესაძლებელი.
+მისი ძირითადი მდებარეობა არის "C:\Program Files (x86)\presage\share\presage\database_en.db".
+მისი შეცვლა შესაძლებელია პროგრამით, რომელსაც შეუძლია წაიკითხოს SQLite3-ის ფორმატის ფაილები
+როგორიცაა "DB Browser for SQLite" (რომელიც არის უფასო აპლიკაცია).</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>ასოები</value>
+  </data>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>შეცდომა დაფიქსირდა გადიდებისას. გთხოვთ გამორთეთ გადიდება და დაეკონტაქტეთ OptiKey-ის  დახმარებისთვის.</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>ხარვეზი:</value>
+  </data>
+  <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>ყურადღება:</value>
+  </data>
+  <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>გსურთ "ყურადღების" ღილაკის გააქტიურება?</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>ყურადღება!</value>
+  </data>
+  <data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>ყურადღება</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>CommuniKate ამ დროისთვის არ არის გააქტიურებული ( გამოიყენე QWERTY)</value>
+  </data>
+  <data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>ბეჭდვისთვის კლავიატურის სტილი: </value>
+  </data>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>ძირითადი კლავიატურის სქემის გამოყენება</value>
+  </data>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>ყურადღება! ჩართვისას დაფიქსირდა შემდეგი სახის ხარვეზები:</value>
+  </data>
+  <data name="SELECT_VOICE" xml:space="preserve">
+    <value>ხმის არჩევა</value>
+  </data>
+  <data name="MORE" xml:space="preserve">
+    <value>დამატებითი ინფორმაცია...</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>ენა და ხმა</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ენა
+და ხმა</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>ენა და ხმა</value>
+  </data>
+  <data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>სხვა...</value>
+  </data>
+  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>კლავიატურის ენის შეცვლისას გამოყენებადი ხმების გამოჩენა:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL" xml:space="preserve">
+    <value>გახედვა დასქროლვისთვის</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>ალტერნატიული "გახედვა დასქროლვისთვის" სქროლინგის მეთოდის გამოყენება:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>ინვერტული სქროლვის მიმართულება:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>დაბლოკვა აიძულებს კნოპკას, რომ შეინარჩუნოს არჩეული წერტილი, ფანჯარა ან რეგიონი:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>დასქროლვამდე, გადაადგილდეს მაუსი "მკვდარი ზონის" ცენტრში:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>ფანჯარაში დასქროლვამდე, ფანჯრის წინ წამოწევა:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>ფანჯრის წინ წამოწევა, ეკრანზე  წერილის არჩევით:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>სქროლვის შეწყვეტა, როცა ირჩევთ სად გადაადგილდეთ ან დააწკაპოთ მაუსით:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>სქროლვის ავტომატური გაგრძელება წერტილის არჩევის შემდეგ:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>სქროლვის შეწყვეტა კლავიატურის შეცვლის დროს:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>გამოაჩინე "გადამფარველი" ფანჯარა (საჭიროებს გადატვირთვას):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>"სქროლის" დადგენილი საზღვრების ფერი:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>"მკვდარი ზონის" გიდების ხაზების ფერი:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
+    <value>"სქროლის" დადგენილი საზღვრების სისქე:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
+    <value>"მკვდარი ზონის" გიდების ხაზების სისქე:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>ჰორიზონტალური "მკვდარი ზონა" (პიქსელებში):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>ვერტიკალური "მკვდარი ზონა" (პიქსელებში):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>ციკლის შესრულება სქროლინგის ნამატების მეშვეობით</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>"ნელი" საბაზისო სიჩქარე (გადაწკაპვა/წამში)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>"საშუალო" საბაზისო სიჩქარე (გადაწკაპვა/წამში)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>"სწრაფი" საბაზისო სიჩქარე (გადაწკაპვა/წამში)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>"ნელი" აჩქარება (გადაწკაპვა/წამში ყოველ პიქსელზე მკვდარი ზონიდან):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>"საშუალო" აჩქარება (გადაწკაპვა/წამში ყოველ პიქსელზე მკვდარი ზონიდან):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>"სწრაფი" აჩქარება (გადაწკაპვა/წამში ყოველ პიქსელზე მკვდარი ზონიდან):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>"გახედვა დასქროლვისთვის" ღილაკები: </value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>სქროლინგის გადართვა</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>შემდეგი საზღვრები</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>შემდეგი ნამატი</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>შემდეგი რეჟიმი</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>შემდეგი სიჩქარე</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>გახედვა
+სქროლვისთვის </value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>დასქროლვა{0}-ით მაუსის ბორბლის ერთეულით
+(120 მაუსის ბორბლის ერთეული = 1 გადაწკაპვა)დასქროლვა{0}მაუსის ბორბლის ერთეულებით:
+(120 მაუსის ბორბლის ერთეული = 1 გადაწკაპვა)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>ეკრანი ამ
+წერტილთან</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>ეკრანი
+ცენტრში</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>ფანჯარა</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>ფანჯარა
+რეგიონი</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>"პირადად მორგებული"
+რეგიონი</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>ვერტიკალური</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>ჰორიზონტალური</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>გადაკვეთა</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>თავისუფალი</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>ნელი</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>საშუალო</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>სწრაფი</value>
+  </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>ფრანგული (კანადა) / Française (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ფრანგული
+ (კანადა) /
+ Française 
+(Canada)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>იაპონური (იაპონია) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>იაპონური
+(იაპონია) /
+日本語
+(日本)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>CommuniKate-ის ხმის ჟღერადობა:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>გამოთქვი CommuniKate-ის კნოპკის ტექსტი არჩევისას:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>საუბრის სიჩქარე CommuniKate-ის კნოპკის ტექსტის გამოთქმისას:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>საუბრის ჟღერადობა CommuniKate-ის კნოპკის ტექსტის გამოთქმისას:</value>
+  </data>
+  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>დარწმუნებული ხართ რომ გსურთ მანუალურ რეჟიმზე გადართვა?</value>
+  </data>
+  <data name="MANUAL_MODE" xml:space="preserve">
+    <value>მანუალური რეჟიმი</value>
   </data>
 </root>

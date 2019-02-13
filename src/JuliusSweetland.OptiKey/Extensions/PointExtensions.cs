@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Extensions
         /// Convert a point to a PointAndKeyValue (if one can be mapped from the supplied pointToKeyValueMap).
         /// N.B. Null will be returned if the point supplied is null.
         /// </summary>
-        public static PointAndKeyValue? ToPointAndKeyValue(this Point? point, Dictionary<Rect, KeyValue> pointToKeyValueMap)
+        public static PointAndKeyValue ToPointAndKeyValue(this Point? point, Dictionary<Rect, KeyValue> pointToKeyValueMap)
         {
             if (point == null)
             {
@@ -29,7 +29,7 @@ namespace JuliusSweetland.OptiKey.Extensions
             return new PointAndKeyValue(point.Value, point.Value.ToKeyValue(pointToKeyValueMap));
         }
 
-        public static KeyValue? ToKeyValue(this Point point, Dictionary<Rect, KeyValue> pointToKeyValueMap)
+        public static KeyValue ToKeyValue(this Point point, Dictionary<Rect, KeyValue> pointToKeyValueMap)
         {
             Rect? keyRect = pointToKeyValueMap != null
                 ? pointToKeyValueMap.Keys.FirstOrDefault(r => r.Contains(point))
@@ -37,7 +37,7 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             return keyRect != null && pointToKeyValueMap.ContainsKey(keyRect.Value)
                 ? pointToKeyValueMap[keyRect.Value]
-                : (KeyValue?)null;
+                : (KeyValue)null;
         }
     }
 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -140,8 +140,8 @@ RIJEČNIK</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Prilagodi za {0} piksel|Prilagodi za {0} piksela</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>SLOVA</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>SLOVA 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -155,7 +155,7 @@ RIJEČNIK</value>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Automatska velika slova:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Dovrši riječi automatski:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -1380,8 +1380,8 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>PODESI IZNOS U PIKSELIMA</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>RAZGOVOR ALFA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>RAZGOVOR ALFA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>RAZGOVOR BROJKE &amp; SIMBOLI</value>
@@ -1568,5 +1568,23 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibracija nije uspjela!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>SLOVA 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>RAZGOVOR ALFA 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>SLOVA</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Jezik</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Jezik</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>JEZIK</value>
   </data>
 </root>

@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -794,12 +794,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool AutoCompleteWords {
+        public bool SuggestWords {
             get {
-                return ((bool)(this["AutoCompleteWords"]));
+                return ((bool)(this["SuggestWords"]));
             }
             set {
-                this["AutoCompleteWords"] = value;
+                this["SuggestWords"] = value;
             }
         }
         
@@ -1392,12 +1392,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NGram")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.AutoCompleteMethods AutoCompleteMethod {
+        public global::JuliusSweetland.OptiKey.Enums.SuggestionMethods SuggestionMethod {
             get {
-                return ((global::JuliusSweetland.OptiKey.Enums.AutoCompleteMethods)(this["AutoCompleteMethod"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.SuggestionMethods)(this["SuggestionMethod"]));
             }
             set {
-                this["AutoCompleteMethod"] = value;
+                this["SuggestionMethod"] = value;
             }
         }
         
@@ -1416,6 +1416,19 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.KeyboardLayouts KeyboardLayout {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.KeyboardLayouts)(this["KeyboardLayout"]));
+            }
+            set {
+                this["KeyboardLayout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool UseAlphabeticalKeyboardLayout {
@@ -1424,6 +1437,84 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["UseAlphabeticalKeyboardLayout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool UseSimplifiedKeyboardLayout {
+            get {
+                return ((bool)(this["UseSimplifiedKeyboardLayout"]));
+            }
+            set {
+                this["UseSimplifiedKeyboardLayout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool EnableCommuniKateKeyboardLayout {
+            get {
+                return ((bool)(this["EnableCommuniKateKeyboardLayout"]));
+            }
+            set {
+                this["EnableCommuniKateKeyboardLayout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool UseCommuniKateKeyboardLayoutByDefault {
+            get {
+                return ((bool)(this["UseCommuniKateKeyboardLayoutByDefault"]));
+            }
+            set {
+                this["UseCommuniKateKeyboardLayoutByDefault"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardCurrentContext {
+            get {
+                return ((string)(this["CommuniKateKeyboardCurrentContext"]));
+            }
+            set {
+                this["CommuniKateKeyboardCurrentContext"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool CommuniKateStagedForDeletion {
+            get {
+                return ((bool)(this["CommuniKateStagedForDeletion"]));
+            }
+            set {
+                this["CommuniKateStagedForDeletion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool SuggestNextWords {
+            get {
+                return ((bool)(this["SuggestNextWords"]));
+            }
+            set {
+                this["SuggestNextWords"] = value;
             }
         }
         
@@ -1508,6 +1599,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool ConversationConfirmOnlyMode {
             get {
                 return ((bool)(this["ConversationConfirmOnlyMode"]));
@@ -1520,6 +1612,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool ConversationConfirmEnable {
             get {
                 return ((bool)(this["ConversationConfirmEnable"]));
@@ -1531,19 +1624,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string SimplifiedKeyboardCurrentContext {
-            get {
-                return ((string)(this["SimplifiedKeyboardCurrentContext"]));
-            }
-            set {
-                this["SimplifiedKeyboardCurrentContext"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool EnableQuitKeys {
             get {
                 return ((bool)(this["EnableQuitKeys"]));
@@ -1555,151 +1637,930 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool MaryTTSEnabled {
+            get {
+                return ((bool)(this["MaryTTSEnabled"]));
+            }
+            set {
+                this["MaryTTSEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cmu-slt-hsmm en_US female hmm")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MaryTTSVoice {
+            get {
+                return ((string)(this["MaryTTSVoice"]));
+            }
+            set {
+                this["MaryTTSVoice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MaryTTSLocation {
+            get {
+                return ((string)(this["MaryTTSLocation"]));
+            }
+            set {
+                this["MaryTTSLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int SpeechDelay {
+            get {
+                return ((int)(this["SpeechDelay"]));
+            }
+            set {
+                this["SpeechDelay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Resources/CommuniKate/pageset.obz")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKatePagesetLocation {
+            get {
+                return ((string)(this["CommuniKatePagesetLocation"]));
+            }
+            set {
+                this["CommuniKatePagesetLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateDefaultBoard {
+            get {
+                return ((string)(this["CommuniKateDefaultBoard"]));
+            }
+            set {
+                this["CommuniKateDefaultBoard"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool UsingCommuniKateKeyboardLayout {
+            get {
+                return ((bool)(this["UsingCommuniKateKeyboardLayout"]));
+            }
+            set {
+                this["UsingCommuniKateKeyboardLayout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardPrevious1Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious1Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious1Context"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardPrevious2Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious2Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious2Context"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardPrevious3Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious3Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious3Context"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardPrevious4Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious4Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious4Context"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int CommuniKateSoundVolume {
+            get {
+                return ((int)(this["CommuniKateSoundVolume"]));
+            }
+            set {
+                this["CommuniKateSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool CommuniKateSpeakSelected {
+            get {
+                return ((bool)(this["CommuniKateSpeakSelected"]));
+            }
+            set {
+                this["CommuniKateSpeakSelected"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int CommuniKateSpeakSelectedVolume {
+            get {
+                return ((int)(this["CommuniKateSpeakSelectedVolume"]));
+            }
+            set {
+                this["CommuniKateSpeakSelectedVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int CommuniKateSpeakSelectedRate {
+            get {
+                return ((int)(this["CommuniKateSpeakSelectedRate"]));
+            }
+            set {
+                this["CommuniKateSpeakSelectedRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string DynamicKeyboardsLocation {
+            get {
+                return ((string)(this["DynamicKeyboardsLocation"]));
+            }
+            set {
+                this["DynamicKeyboardsLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string StartupKeyboardFile {
+            get {
+                return ((string)(this["StartupKeyboardFile"]));
+            }
+            set {
+                this["StartupKeyboardFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string PluginsLocation {
+            get {
+                return ((string)(this["PluginsLocation"]));
+            }
+            set {
+                this["PluginsLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool EnableAttentionKey {
+            get {
+                return ((bool)(this["EnableAttentionKey"]));
+            }
+            set {
+                this["EnableAttentionKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Attention.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string AttentionSoundFile {
+            get {
+                return ((string)(this["AttentionSoundFile"]));
+            }
+            set {
+                this["AttentionSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int AttentionSoundVolume {
+            get {
+                return ((int)(this["AttentionSoundVolume"]));
+            }
+            set {
+                this["AttentionSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double ToastNotificationMinimumTimeSeconds {
+            get {
+                return ((double)(this["ToastNotificationMinimumTimeSeconds"]));
+            }
+            set {
+                this["ToastNotificationMinimumTimeSeconds"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0500000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan MouseDragDelayAfterLeftMouseButtonDownBeforeMove {
+            get {
+                return ((global::System.TimeSpan)(this["MouseDragDelayAfterLeftMouseButtonDownBeforeMove"]));
+            }
+            set {
+                this["MouseDragDelayAfterLeftMouseButtonDownBeforeMove"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0500000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan MouseDragDelayAfterMoveBeforeLeftMouseButtonUp {
+            get {
+                return ((global::System.TimeSpan)(this["MouseDragDelayAfterMoveBeforeLeftMouseButtonUp"]));
+            }
+            set {
+                this["MouseDragDelayAfterMoveBeforeLeftMouseButtonUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MouseDragNumberOfSteps {
+            get {
+                return ((int)(this["MouseDragNumberOfSteps"]));
+            }
+            set {
+                this["MouseDragNumberOfSteps"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0050000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan MouseDragDelayBetweenEachStep {
+            get {
+                return ((global::System.TimeSpan)(this["MouseDragDelayBetweenEachStep"]));
+            }
+            set {
+                this["MouseDragDelayBetweenEachStep"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool DisplayVoicesWhenChangingKeyboardLanguage {
+            get {
+                return ((bool)(this["DisplayVoicesWhenChangingKeyboardLanguage"]));
+            }
+            set {
+                this["DisplayVoicesWhenChangingKeyboardLanguage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollEnabled {
+            get {
+                return ((bool)(this["LookToScrollEnabled"]));
+            }
+            set {
+                this["LookToScrollEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Free")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.LookToScrollModes LookToScrollMode {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.LookToScrollModes)(this["LookToScrollMode"]));
+            }
+            set {
+                this["LookToScrollMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ScreenPoint")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.LookToScrollBounds LookToScrollBounds {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.LookToScrollBounds)(this["LookToScrollBounds"]));
+            }
+            set {
+                this["LookToScrollBounds"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Medium")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.LookToScrollSpeeds LookToScrollSpeed {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.LookToScrollSpeeds)(this["LookToScrollSpeed"]));
+            }
+            set {
+                this["LookToScrollSpeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollHorizontalDeadzone {
+            get {
+                return ((int)(this["LookToScrollHorizontalDeadzone"]));
+            }
+            set {
+                this["LookToScrollHorizontalDeadzone"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollVerticalDeadzone {
+            get {
+                return ((int)(this["LookToScrollVerticalDeadzone"]));
+            }
+            set {
+                this["LookToScrollVerticalDeadzone"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollBaseSpeedSlow {
+            get {
+                return ((decimal)(this["LookToScrollBaseSpeedSlow"]));
+            }
+            set {
+                this["LookToScrollBaseSpeedSlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollBaseSpeedMedium {
+            get {
+                return ((decimal)(this["LookToScrollBaseSpeedMedium"]));
+            }
+            set {
+                this["LookToScrollBaseSpeedMedium"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollBaseSpeedFast {
+            get {
+                return ((decimal)(this["LookToScrollBaseSpeedFast"]));
+            }
+            set {
+                this["LookToScrollBaseSpeedFast"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.005")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollAccelerationSlow {
+            get {
+                return ((decimal)(this["LookToScrollAccelerationSlow"]));
+            }
+            set {
+                this["LookToScrollAccelerationSlow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.010")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollAccelerationMedium {
+            get {
+                return ((decimal)(this["LookToScrollAccelerationMedium"]));
+            }
+            set {
+                this["LookToScrollAccelerationMedium"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.020")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public decimal LookToScrollAccelerationFast {
+            get {
+                return ((decimal)(this["LookToScrollAccelerationFast"]));
+            }
+            set {
+                this["LookToScrollAccelerationFast"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollIncrement {
+            get {
+                return ((int)(this["LookToScrollIncrement"]));
+            }
+            set {
+                this["LookToScrollIncrement"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1, 2, 4, 10, 12, 30, 60, 120")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string LookToScrollIncrementChoices {
+            get {
+                return ((string)(this["LookToScrollIncrementChoices"]));
+            }
+            set {
+                this["LookToScrollIncrementChoices"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollDirectionInverted {
+            get {
+                return ((bool)(this["LookToScrollDirectionInverted"]));
+            }
+            set {
+                this["LookToScrollDirectionInverted"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollLockDownBoundsKey {
+            get {
+                return ((bool)(this["LookToScrollLockDownBoundsKey"]));
+            }
+            set {
+                this["LookToScrollLockDownBoundsKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollCentreMouseWhenActivated {
+            get {
+                return ((bool)(this["LookToScrollCentreMouseWhenActivated"]));
+            }
+            set {
+                this["LookToScrollCentreMouseWhenActivated"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollBringWindowToFrontWhenActivated {
+            get {
+                return ((bool)(this["LookToScrollBringWindowToFrontWhenActivated"]));
+            }
+            set {
+                this["LookToScrollBringWindowToFrontWhenActivated"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint {
+            get {
+                return ((bool)(this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"]));
+            }
+            set {
+                this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollSuspendBeforeChoosingPointForMouse {
+            get {
+                return ((bool)(this["LookToScrollSuspendBeforeChoosingPointForMouse"]));
+            }
+            set {
+                this["LookToScrollSuspendBeforeChoosingPointForMouse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollResumeAfterChoosingPointForMouse {
+            get {
+                return ((bool)(this["LookToScrollResumeAfterChoosingPointForMouse"]));
+            }
+            set {
+                this["LookToScrollResumeAfterChoosingPointForMouse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollDeactivateUponSwitchingKeyboards {
+            get {
+                return ((bool)(this["LookToScrollDeactivateUponSwitchingKeyboards"]));
+            }
+            set {
+                this["LookToScrollDeactivateUponSwitchingKeyboards"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollShowOverlayWindow {
+            get {
+                return ((bool)(this["LookToScrollShowOverlayWindow"]));
+            }
+            set {
+                this["LookToScrollShowOverlayWindow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string LookToScrollOverlayBoundsColour {
+            get {
+                return ((string)(this["LookToScrollOverlayBoundsColour"]));
+            }
+            set {
+                this["LookToScrollOverlayBoundsColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Orange")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string LookToScrollOverlayDeadzoneColour {
+            get {
+                return ((string)(this["LookToScrollOverlayDeadzoneColour"]));
+            }
+            set {
+                this["LookToScrollOverlayDeadzoneColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollOverlayBoundsThickness {
+            get {
+                return ((int)(this["LookToScrollOverlayBoundsThickness"]));
+            }
+            set {
+                this["LookToScrollOverlayBoundsThickness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int LookToScrollOverlayDeadzoneThickness {
+            get {
+                return ((int)(this["LookToScrollOverlayDeadzoneThickness"]));
+            }
+            set {
+                this["LookToScrollOverlayDeadzoneThickness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Home")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.SimplifiedKeyboardContexts SimplifiedKeyboardContext {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.SimplifiedKeyboardContexts)(this["SimplifiedKeyboardContext"]));
+            }
+            set {
+                this["SimplifiedKeyboardContext"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string PresageDatabaseLocation {
+            get {
+                return ((string)(this["PresageDatabaseLocation"]));
+            }
+            set {
+                this["PresageDatabaseLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("11")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int PresageNumberOfSuggestions {
+            get {
+                return ((int)(this["PresageNumberOfSuggestions"]));
+            }
+            set {
+                this["PresageNumberOfSuggestions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<dictionary>\r\n  <item>\r\n    <key>\r\n     " +
-            " <keyValue>\r\n        <functionKey>AlphaKeyboard</functionKey>\r\n      </keyValue>" +
-            "\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>" +
-            "\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>BackFromKeyboard</" +
-            "functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</" +
-            "ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        " +
-            "<functionKey>ConversationAlphaKeyboard</functionKey>\r\n      </keyValue>\r\n    </k" +
-            "ey>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item" +
-            ">\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>ConversationNumericAndSymbo" +
-            "lsKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <tic" +
-            "ks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValu" +
-            "e>\r\n        <functionKey>Currencies1Keyboard</functionKey>\r\n      </keyValue>\r\n " +
-            "   </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n " +
-            " <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Currencies2Keyboard</" +
-            "functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</" +
-            "ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        " +
-            "<functionKey>Diacritic1Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n  " +
-            "  <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    " +
-            "<key>\r\n      <keyValue>\r\n        <functionKey>Diacritic2Keyboard</functionKey>\r\n" +
-            "      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </" +
-            "value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>D" +
-            "iacritic3Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n   " +
-            "   <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <" +
-            "keyValue>\r\n        <functionKey>LanguageKeyboard</functionKey>\r\n      </keyValue" +
+            " <keyValue>\r\n        <functionKey>Alpha1Keyboard</functionKey>\r\n      </keyValue" +
             ">\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item" +
-            ">\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>MenuKeyboard</fun" +
-            "ctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</tic" +
-            "ks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <fu" +
-            "nctionKey>MouseKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value" +
-            ">\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n " +
-            "     <keyValue>\r\n        <functionKey>NumericAndSymbols1Keyboard</functionKey>\r\n" +
-            "      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </" +
-            "value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>N" +
-            "umericAndSymbols2Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <val" +
-            "ue>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r" +
-            "\n      <keyValue>\r\n        <functionKey>NumericAndSymbols3Keyboard</functionKey>" +
-            "\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    " +
-            "</value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey" +
-            ">PhysicalKeysKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r" +
-            "\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n   " +
-            "   <keyValue>\r\n        <functionKey>SizeAndPositionKeyboard</functionKey>\r\n     " +
-            " </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value" +
-            ">\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Catala" +
-            "nSpain</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>P" +
-            "T1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n" +
-            "        <functionKey>CroatianCroatia</functionKey>\r\n      </keyValue>\r\n    </key" +
+            ">\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Alpha2Keyboard</f" +
+            "unctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</t" +
+            "icks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <" +
+            "functionKey>BackFromKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <" +
+            "value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <ke" +
+            "y>\r\n      <keyValue>\r\n        <functionKey>ConversationAlpha1Keyboard</functionK" +
+            "ey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n " +
+            "   </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <function" +
+            "Key>ConversationAlpha2Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n   " +
+            " <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <" +
+            "key>\r\n      <keyValue>\r\n        <functionKey>ConversationNumericAndSymbolsKeyboa" +
+            "rd</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.7" +
+            "5S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n    " +
+            "    <functionKey>Currencies1Keyboard</functionKey>\r\n      </keyValue>\r\n    </key" +
             ">\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r" +
-            "\n    <key>\r\n      <keyValue>\r\n        <functionKey>DanishDenmark</functionKey>\r\n" +
-            "      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </" +
-            "value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>D" +
-            "utchBelgium</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ti" +
-            "cks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyVal" +
-            "ue>\r\n        <functionKey>DutchNetherlands</functionKey>\r\n      </keyValue>\r\n   " +
-            " </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <" +
-            "item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>EnglishCanada</function" +
+            "\n    <key>\r\n      <keyValue>\r\n        <functionKey>Currencies2Keyboard</function" +
             "Key>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n" +
             "    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functio" +
-            "nKey>EnglishUK</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      " +
+            "nKey>Diacritic1Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value" +
+            ">\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n " +
+            "     <keyValue>\r\n        <functionKey>Diacritic2Keyboard</functionKey>\r\n      </" +
+            "keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n" +
+            "  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Diacritic" +
+            "3Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <tick" +
+            "s>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue" +
+            ">\r\n        <functionKey>LanguageKeyboard</functionKey>\r\n      </keyValue>\r\n    <" +
+            "/key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <it" +
+            "em>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>MenuKeyboard</functionKey" +
+            ">\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n   " +
+            " </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKe" +
+            "y>MouseKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n     " +
+            " <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <ke" +
+            "yValue>\r\n        <functionKey>NumericAndSymbols1Keyboard</functionKey>\r\n      </" +
+            "keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n" +
+            "  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>NumericAn" +
+            "dSymbols2Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n   " +
+            "   <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <" +
+            "keyValue>\r\n        <functionKey>NumericAndSymbols3Keyboard</functionKey>\r\n      " +
+            "</keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>" +
+            "\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Dynamic" +
+            "Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks" +
+            ">PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>" +
+            "\r\n        <functionKey>WebBrowsingKeyboard</functionKey>\r\n      </keyValue>\r\n   " +
+            " </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <" +
+            "item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>PhysicalKeysKeyboard</f" +
+            "unctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</t" +
+            "icks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <" +
+            "functionKey>SizeAndPositionKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>" +
+            "\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n" +
+            "    <key>\r\n      <keyValue>\r\n        <functionKey>CatalanSpain</functionKey>\r\n  " +
+            "    </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </va" +
+            "lue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Cro" +
+            "atianCroatia</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <t" +
+            "icks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyVa" +
+            "lue>\r\n        <functionKey>DanishDenmark</functionKey>\r\n      </keyValue>\r\n    <" +
+            "/key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <it" +
+            "em>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>DutchBelgium</functionKey" +
+            ">\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n   " +
+            " </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKe" +
+            "y>DutchNetherlands</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n  " +
+            "    <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      " +
+            "<keyValue>\r\n        <functionKey>EnglishCanada</functionKey>\r\n      </keyValue>\r" +
+            "\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r" +
+            "\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>EnglishUK</function" +
+            "Key>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n" +
+            "    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functio" +
+            "nKey>EnglishUS</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      " +
             "<ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <key" +
-            "Value>\r\n        <functionKey>EnglishUS</functionKey>\r\n      </keyValue>\r\n    </k" +
-            "ey>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item" +
-            ">\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>FrenchFrance</functionKey>\r" +
-            "\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    <" +
-            "/value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>" +
-            "GermanGermany</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <" +
-            "ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyV" +
-            "alue>\r\n        <functionKey>GreekGreece</functionKey>\r\n      </keyValue>\r\n    </" +
-            "key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <ite" +
-            "m>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>ItalianItaly</functionKey>" +
-            "\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    " +
-            "</value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey" +
-            ">PortuguesePortugal</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n " +
-            "     <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
-            " <keyValue>\r\n        <functionKey>RussianRussia</functionKey>\r\n      </keyValue>" +
-            "\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>" +
-            "\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>SlovakSlovakia</fu" +
-            "nctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ti" +
-            "cks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <f" +
-            "unctionKey>SlovenianSlovenia</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <" +
-            "value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <ke" +
-            "y>\r\n      <keyValue>\r\n        <functionKey>SpanishSpain</functionKey>\r\n      </k" +
-            "eyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n " +
-            " </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>TurkishTur" +
-            "key</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1." +
-            "75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n   " +
-            "     <functionKey>AddToDictionary</functionKey>\r\n      </keyValue>\r\n    </key>\r\n" +
-            "    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <" +
-            "key>\r\n      <keyValue>\r\n        <functionKey>BackMany</functionKey>\r\n      </key" +
-            "Value>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  <" +
-            "/item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>BackOne</fun" +
-            "ctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</tic" +
-            "ks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <fu" +
-            "nctionKey>Calibrate</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n " +
-            "     <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
-            " <keyValue>\r\n        <functionKey>ClearScratchpad</functionKey>\r\n      </keyValu" +
-            "e>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r" +
-            "\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>DecreaseOpacity</fu" +
-            "nctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ti" +
-            "cks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <f" +
-            "unctionKey>IncreaseOpacity</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <va" +
-            "lue>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>" +
-            "\r\n      <keyValue>\r\n        <functionKey>Minimise</functionKey>\r\n      </keyValu" +
-            "e>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </ite" +
-            "m>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>MultiKeySelectio" +
-            "nIsOn</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT" +
-            "1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n " +
-            "       <functionKey>NoQuestionResult</functionKey>\r\n      </keyValue>\r\n    </key" +
-            ">\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r" +
-            "\n    <key>\r\n      <keyValue>\r\n        <functionKey>Quit</functionKey>\r\n      </k" +
-            "eyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </" +
-            "item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Sleep</functi" +
+            "Value>\r\n        <functionKey>FrenchCanada</functionKey>\r\n      </keyValue>\r\n    " +
+            "</key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <i" +
+            "tem>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>FrenchFrance</functionKe" +
+            "y>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n  " +
+            "  </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionK" +
+            "ey>GeorgianGeorgia</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n  " +
+            "    <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      " +
+            "<keyValue>\r\n        <functionKey>GermanGermany</functionKey>\r\n      </keyValue>\r" +
+            "\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r" +
+            "\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>GreekGreece</functi" +
             "onKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>" +
             "\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <funct" +
-            "ionKey>Speak</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <t" +
-            "icks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyVa" +
-            "lue>\r\n        <functionKey>YesQuestionResult</functionKey>\r\n      </keyValue>\r\n " +
-            "   </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n " +
-            " <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>LeftAlt</functionKey>" +
-            "\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.5S</ticks>\r\n    <" +
-            "/value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>" +
-            "LeftCtrl</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks" +
-            ">PT1.5S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r" +
-            "\n        <functionKey>LeftShift</functionKey>\r\n      </keyValue>\r\n    </key>\r\n  " +
-            "  <value>\r\n      <ticks>PT1.5S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <" +
-            "key>\r\n      <keyValue>\r\n        <functionKey>LeftWin</functionKey>\r\n      </keyV" +
-            "alue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.5S</ticks>\r\n    </value>\r\n  </i" +
-            "tem>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>NextSuggestion" +
-            "s</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75" +
-            "S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n     " +
-            "   <functionKey>PreviousSuggestions</functionKey>\r\n      </keyValue>\r\n    </key>" +
-            "\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n" +
-            "    <key>\r\n      <keyValue>\r\n        <functionKey>Suggestion1</functionKey>\r\n   " +
-            "   </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </val" +
-            "ue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Sugg" +
-            "estion2</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>" +
-            "PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r" +
-            "\n        <functionKey>Suggestion3</functionKey>\r\n      </keyValue>\r\n    </key>\r\n" +
-            "    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n  " +
-            "  <key>\r\n      <keyValue>\r\n        <functionKey>Suggestion4</functionKey>\r\n     " +
+            "ionKey>ItalianItaly</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n " +
+            "     <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
+            " <keyValue>\r\n        <functionKey>JapaneseJapan</functionKey>\r\n      </keyValue>" +
+            "\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>" +
+            "\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>KoreanKorea</funct" +
+            "ionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks" +
+            ">\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <func" +
+            "tionKey>PolishPoland</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n" +
+            "      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n    " +
+            "  <keyValue>\r\n        <functionKey>PortuguesePortugal</functionKey>\r\n      </key" +
+            "Value>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  <" +
+            "/item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>RussianRussi" +
+            "a</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75" +
+            "S</ticks>\r\n    </value>\r\n  </item>\r\n   <item>\r\n    <key>\r\n      <keyValue>\r\n    " +
+            "    <functionKey>SerbianSerbia</functionKey>\r\n      </keyValue>\r\n    </key>\r\n   " +
+            " <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <" +
+            "key>\r\n      <keyValue>\r\n        <functionKey>SlovakSlovakia</functionKey>\r\n     " +
             " </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value" +
-            ">\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Sugges" +
-            "tion5</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT" +
-            "1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n " +
-            "       <functionKey>Suggestion6</functionKey>\r\n      </keyValue>\r\n    </key>\r\n  " +
-            "  <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n</dictionary>")]
+            ">\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Sloven" +
+            "ianSlovenia</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ti" +
+            "cks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyVal" +
+            "ue>\r\n        <functionKey>SpanishSpain</functionKey>\r\n      </keyValue>\r\n    </k" +
+            "ey>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item" +
+            ">\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>TurkishTurkey</functionKey>" +
+            "\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    " +
+            "</value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey" +
+            ">UkrainianUkraine</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n   " +
+            "    <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      " +
+            "<keyValue>\r\n        <functionKey>AddToDictionary</functionKey>\r\n      </keyValue" +
+            ">\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n" +
+            "  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Attention</functionK" +
+            "ey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    " +
+            "</value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey" +
+            ">CommuniKateKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n" +
+            "      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <" +
+            "keyValue>\r\n        <functionKey>BackMany</functionKey>\r\n      </keyValue>\r\n    <" +
+            "/key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <it" +
+            "em>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>BackOne</functionKey>\r\n  " +
+            "    </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </va" +
+            "lue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Cal" +
+            "ibrate</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>P" +
+            "T1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n" +
+            "        <functionKey>ClearScratchpad</functionKey>\r\n      </keyValue>\r\n    </key" +
+            ">\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n  " +
+            "  <key>\r\n      <keyValue>\r\n        <functionKey>DecreaseOpacity</functionKey>\r\n " +
+            "     </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </v" +
+            "alue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>In" +
+            "creaseOpacity</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <" +
+            "ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyV" +
+            "alue>\r\n        <functionKey>Minimise</functionKey>\r\n      </keyValue>\r\n    </key" +
+            ">\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r" +
+            "\n    <key>\r\n      <keyValue>\r\n        <functionKey>MultiKeySelectionIsOn</functi" +
+            "onKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>" +
+            "\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <funct" +
+            "ionKey>NoQuestionResult</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value" +
+            ">\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n " +
+            "     <keyValue>\r\n        <functionKey>Quit</functionKey>\r\n      </keyValue>\r\n   " +
+            " </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <ite" +
+            "m>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Restart</functionKey>\r\n   " +
+            "   </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>" +
+            "\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Sleep</" +
+            "functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</" +
+            "ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        " +
+            "<functionKey>Speak</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n  " +
+            "    <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      " +
+            "<keyValue>\r\n        <functionKey>YesQuestionResult</functionKey>\r\n      </keyVal" +
+            "ue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </it" +
+            "em>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>LeftAlt</functi" +
+            "onKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.5S</ticks>\r" +
+            "\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functi" +
+            "onKey>LeftCtrl</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      " +
+            "<ticks>PT1.5S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyV" +
+            "alue>\r\n        <functionKey>LeftShift</functionKey>\r\n      </keyValue>\r\n    </ke" +
+            "y>\r\n    <value>\r\n      <ticks>PT1.5S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r" +
+            "\n    <key>\r\n      <keyValue>\r\n        <functionKey>LeftWin</functionKey>\r\n      " +
+            "</keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.5S</ticks>\r\n    </value>\r" +
+            "\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>NextSugg" +
+            "estions</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>" +
+            "PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r" +
+            "\n        <functionKey>PreviousSuggestions</functionKey>\r\n      </keyValue>\r\n    " +
+            "</key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <i" +
+            "tem>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Suggestion1</functionKey" +
+            ">\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n   " +
+            " </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKe" +
+            "y>Suggestion2</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <" +
+            "ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyV" +
+            "alue>\r\n        <functionKey>Suggestion3</functionKey>\r\n      </keyValue>\r\n    </" +
+            "key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <ite" +
+            "m>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Suggestion4</functionKey>\r" +
+            "\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    <" +
+            "/value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>" +
+            "Suggestion5</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ti" +
+            "cks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyVal" +
+            "ue>\r\n        <functionKey>Suggestion6</functionKey>\r\n      </keyValue>\r\n    </ke" +
+            "y>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>" +
+            "\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>SelectVoice</functionKey>\r\n " +
+            "     </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </v" +
+            "alue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Mo" +
+            "re</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.7" +
+            "5S</ticks>\r\n    </value>\r\n  </item>\r\n</dictionary>")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues KeySelectionTriggerFixationCompleteTimesByKeyValues {
             get {
@@ -1712,13 +2573,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UseSimplifiedKeyboardLayout {
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels IrisbondProcessingLevel {
             get {
-                return ((bool)(this["UseSimplifiedKeyboardLayout"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels)(this["IrisbondProcessingLevel"]));
             }
             set {
-                this["UseSimplifiedKeyboardLayout"] = value;
+                this["IrisbondProcessingLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int IrisbondCalibrationTargetCount {
+            get {
+                return ((int)(this["IrisbondCalibrationTargetCount"]));
+            }
+            set {
+                this["IrisbondCalibrationTargetCount"] = value;
             }
         }
     }

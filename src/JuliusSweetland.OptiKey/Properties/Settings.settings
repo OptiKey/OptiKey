@@ -179,7 +179,7 @@
     <Setting Name="CrashMessageFontSize" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
-    <Setting Name="AutoCompleteWords" Roaming="true" Type="System.Boolean" Scope="User">
+    <Setting Name="SuggestWords" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="CalibrationMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
@@ -317,13 +317,34 @@
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByIndividualKey" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="AutoCompleteMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
+    <Setting Name="SuggestionMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.SuggestionMethods" Scope="User">
       <Value Profile="(Default)">NGram</Value>
     </Setting>
     <Setting Name="SuppressModifierKeysForAllMouseActions" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="KeyboardLayout" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.KeyboardLayouts" Scope="User">
+      <Value Profile="(Default)">Default</Value>
+    </Setting>
     <Setting Name="UseAlphabeticalKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UseSimplifiedKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="EnableCommuniKateKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UseCommuniKateKeyboardLayoutByDefault" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CommuniKateKeyboardCurrentContext" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">toppage</Value>
+    </Setting>
+    <Setting Name="CommuniKateStagedForDeletion" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SuggestNextWords" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ForceCapsLock" Roaming="true" Type="System.Boolean" Scope="User">
@@ -344,17 +365,185 @@
     <Setting Name="KalmanFilterMeasurementNoise" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1000</Value>
     </Setting>
-    <Setting Name="ConversationConfirmOnlyMode" Type="System.Boolean" Scope="User">
+    <Setting Name="ConversationConfirmOnlyMode" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ConversationConfirmEnable" Type="System.Boolean" Scope="User">
+    <Setting Name="ConversationConfirmEnable" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="SimplifiedKeyboardCurrentContext" Type="System.String" Scope="User">
+    <Setting Name="EnableQuitKeys" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MaryTTSEnabled" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MaryTTSVoice" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">cmu-slt-hsmm en_US female hmm</Value>
+    </Setting>
+    <Setting Name="MaryTTSLocation" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="EnableQuitKeys" Type="System.Boolean" Scope="User">
+    <Setting Name="SpeechDelay" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="CommuniKatePagesetLocation" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">./Resources/CommuniKate/pageset.obz</Value>
+    </Setting>
+    <Setting Name="CommuniKateDefaultBoard" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UsingCommuniKateKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CommuniKateKeyboardPrevious1Context" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CommuniKateKeyboardPrevious2Context" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CommuniKateKeyboardPrevious3Context" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CommuniKateKeyboardPrevious4Context" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CommuniKateSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="CommuniKateSpeakSelected" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CommuniKateSpeakSelectedVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="CommuniKateSpeakSelectedRate" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DynamicKeyboardsLocation" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="StartupKeyboardFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PluginsLocation" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="EnableAttentionKey" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AttentionSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Attention.wav</Value>
+    </Setting>
+    <Setting Name="AttentionSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="ToastNotificationMinimumTimeSeconds" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="MouseDragDelayAfterLeftMouseButtonDownBeforeMove" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.0500000</Value>
+    </Setting>
+    <Setting Name="MouseDragDelayAfterMoveBeforeLeftMouseButtonUp" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.0500000</Value>
+    </Setting>
+    <Setting Name="MouseDragNumberOfSteps" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MouseDragDelayBetweenEachStep" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.0050000</Value>
+    </Setting>
+    <Setting Name="DisplayVoicesWhenChangingKeyboardLanguage" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LookToScrollEnabled" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LookToScrollMode" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.LookToScrollModes" Scope="User">
+      <Value Profile="(Default)">Free</Value>
+    </Setting>
+    <Setting Name="LookToScrollBounds" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.LookToScrollBounds" Scope="User">
+      <Value Profile="(Default)">ScreenPoint</Value>
+    </Setting>
+    <Setting Name="LookToScrollSpeed" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.LookToScrollSpeeds" Scope="User">
+      <Value Profile="(Default)">Medium</Value>
+    </Setting>
+    <Setting Name="LookToScrollHorizontalDeadzone" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="LookToScrollVerticalDeadzone" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="LookToScrollBaseSpeedSlow" Roaming="true" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LookToScrollBaseSpeedMedium" Roaming="true" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LookToScrollBaseSpeedFast" Roaming="true" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LookToScrollAccelerationSlow" Roaming="true" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.005</Value>
+    </Setting>
+    <Setting Name="LookToScrollAccelerationMedium" Roaming="true" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.010</Value>
+    </Setting>
+    <Setting Name="LookToScrollAccelerationFast" Roaming="true" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.020</Value>
+    </Setting>
+    <Setting Name="LookToScrollIncrement" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="LookToScrollIncrementChoices" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1, 2, 4, 10, 12, 30, 60, 120</Value>
+    </Setting>
+    <Setting Name="LookToScrollDirectionInverted" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LookToScrollLockDownBoundsKey" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LookToScrollCentreMouseWhenActivated" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LookToScrollBringWindowToFrontWhenActivated" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LookToScrollBringWindowToFrontAfterChoosingScreenPoint" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LookToScrollSuspendBeforeChoosingPointForMouse" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LookToScrollResumeAfterChoosingPointForMouse" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LookToScrollDeactivateUponSwitchingKeyboards" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LookToScrollShowOverlayWindow" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LookToScrollOverlayBoundsColour" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yellow</Value>
+    </Setting>
+    <Setting Name="LookToScrollOverlayDeadzoneColour" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Orange</Value>
+    </Setting>
+    <Setting Name="LookToScrollOverlayBoundsThickness" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="LookToScrollOverlayDeadzoneThickness" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="SimplifiedKeyboardContext" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.SimplifiedKeyboardContexts" Scope="User">
+      <Value Profile="(Default)">Home</Value>
+    </Setting>
+    <Setting Name="PresageDatabaseLocation" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PresageNumberOfSuggestions" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">11</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByKeyValues" Roaming="true" Type="JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -362,7 +551,17 @@
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
-        &lt;functionKey&gt;AlphaKeyboard&lt;/functionKey&gt;
+        &lt;functionKey&gt;Alpha1Keyboard&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;Alpha2Keyboard&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
     &lt;value&gt;
@@ -382,7 +581,17 @@
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
-        &lt;functionKey&gt;ConversationAlphaKeyboard&lt;/functionKey&gt;
+        &lt;functionKey&gt;ConversationAlpha1Keyboard&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;ConversationAlpha2Keyboard&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
     &lt;value&gt;
@@ -512,6 +721,26 @@
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
+        &lt;functionKey&gt;DynamicKeyboard&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;WebBrowsingKeyboard&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
         &lt;functionKey&gt;PhysicalKeysKeyboard&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
@@ -612,7 +841,27 @@
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
+        &lt;functionKey&gt;FrenchCanada&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
         &lt;functionKey&gt;FrenchFrance&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;GeorgianGeorgia&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
     &lt;value&gt;
@@ -652,6 +901,36 @@
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
+        &lt;functionKey&gt;JapaneseJapan&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;KoreanKorea&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;PolishPoland&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
         &lt;functionKey&gt;PortuguesePortugal&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
@@ -663,6 +942,16 @@
     &lt;key&gt;
       &lt;keyValue&gt;
         &lt;functionKey&gt;RussianRussia&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+   &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;SerbianSerbia&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
     &lt;value&gt;
@@ -712,7 +1001,37 @@
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
+        &lt;functionKey&gt;UkrainianUkraine&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+       &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
         &lt;functionKey&gt;AddToDictionary&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT2S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;Attention&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT2S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;CommuniKateKeyboard&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
     &lt;value&gt;
@@ -813,6 +1132,16 @@
     &lt;key&gt;
       &lt;keyValue&gt;
         &lt;functionKey&gt;Quit&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT2S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;Restart&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
     &lt;value&gt;
@@ -969,10 +1298,33 @@
       &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
     &lt;/value&gt;
   &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;SelectVoice&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
+        &lt;functionKey&gt;More&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
     </Setting>
-    <Setting Name="UseSimplifiedKeyboardLayout" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="IrisbondProcessingLevel" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="IrisbondCalibrationTargetCount" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">9</Value>
     </Setting>
   </Settings>
 </SettingsFile>

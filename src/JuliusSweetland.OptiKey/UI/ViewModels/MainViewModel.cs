@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -13,6 +14,7 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
+using System.Text;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -34,17 +36,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IMouseOutputService mouseOutputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> errorNotifyingServices; 
-
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
+        private readonly StringBuilder pendingErrorToastNotificationContent = new StringBuilder();
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
-        private EventHandler<Tuple<Point, KeyValue?>> inputServiceCurrentPositionHandler;
-        private EventHandler<Tuple<PointAndKeyValue?, double>> inputServiceSelectionProgressHandler;
+        private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
+        private EventHandler<Point> inputServiceLivePositionHandler;
+        private EventHandler<Tuple<PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
         private EventHandler<PointAndKeyValue> inputServiceSelectionHandler;
-        private EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> inputServiceSelectionResultHandler;
+        private EventHandler<Tuple<List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
         private SelectionModes selectionMode;
         private Point currentPositionPoint;
-        private KeyValue? currentPositionKey;
+        private KeyValue currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
         private bool showCursor;
@@ -52,7 +55,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
-
+        
         #endregion
 
         #region Ctor
@@ -122,8 +125,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             get { return keyboard; }
             set
             {
-                Log.InfoFormat("Keyboard changed to {0}", value);
+                DeactivateLookToScrollUponSwitchingKeyboards();
+                keyboard?.OnExit(); // previous keyboard
                 SetProperty(ref keyboard, value);
+                keyboard?.OnEnter(); // new keyboard
+                Log.InfoFormat("Keyboard changed to {0}", value);                
+            }
+        }
+
+        public void BackFromKeyboard()
+        {
+            Log.Info("Navigating back from keyboard via contextmenu.");
+            var navigableKeyboard = Keyboard as IBackAction;
+            if (navigableKeyboard != null && navigableKeyboard.BackAction != null)
+            {
+                navigableKeyboard.BackAction();
+            }
+            else
+            {
+                Log.Error("Keyboard doesn't have backaction, going back to initial keyboard instead");
+                InitialiseKeyboard(this.mainWindowManipulationService);
             }
         }
 
@@ -201,7 +222,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             set { SetProperty(ref currentPositionPoint, value); }
         }
 
-        public KeyValue? CurrentPositionKey
+        public KeyValue CurrentPositionKey
         {
             get { return currentPositionKey; }
             set { SetProperty(ref currentPositionKey, value); }
@@ -247,9 +268,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             get { return scratchpadIsDisabled; }
             set { SetProperty(ref scratchpadIsDisabled, value); }
         }
-
-        public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
         
+        public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
+
         #endregion
 
         #region Methods
@@ -266,7 +287,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             if (Settings.Default.ConversationOnlyMode)
             {
-                Keyboard = new ConversationAlpha(null);
+                Keyboard = new ConversationAlpha1(null);
                 windowManipulationService.Maximise();
             }
             else if (Settings.Default.ConversationConfirmOnlyMode)
@@ -278,131 +299,169 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 switch (Settings.Default.StartupKeyboard)
                 {
-                    case Enums.Keyboards.Alpha:
-                        Keyboard = new Alpha();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
                     case Enums.Keyboards.ConversationAlpha:
-                        Keyboard = new ConversationAlpha(() =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
-                        });
-                        windowManipulationService.Maximise();
-                        break;
-
-                    case Enums.Keyboards.ConversationNumericAndSymbols:
-                        Keyboard = new ConversationNumericAndSymbols(() =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
-                        });
-                        windowManipulationService.Maximise();
-                        break;
-
                     case Enums.Keyboards.ConversationConfirm:
-                        Keyboard = new ConversationConfirm(() =>
+                    case Enums.Keyboards.ConversationNumericAndSymbols:
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard, 
+                            windowManipulationService, () =>
                         {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
+                            Keyboard = new Menu(() => Keyboard = new Alpha1());
+                            windowManipulationService.Restore();
+                            windowManipulationService.ResizeDockToFull();
                         });
-                        windowManipulationService.Maximise();
-                        break;
-
-                    case Enums.Keyboards.Currencies1:
-                        Keyboard = new Currencies1();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Currencies2:
-                        Keyboard = new Currencies2();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Diacritics1:
-                        Keyboard = new Diacritics1();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Diacritics2:
-                        Keyboard = new Diacritics2();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Diacritics3:
-                        Keyboard = new Diacritics3();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Menu:
-                        Keyboard = new Menu(() => Keyboard = new Alpha());
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.Minimised:
-                        Keyboard = new Minimised(() =>
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
+                            windowManipulationService, () =>
                         {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            Keyboard = new Menu(() => Keyboard = new Alpha1());
                             windowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
+                            windowManipulationService.ResizeDockToFull();
                         });
-                        windowManipulationService.Minimise();
                         break;
 
-                    case Enums.Keyboards.Mouse:
-                        Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
-                        windowManipulationService.Restore();
-                        if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
+                    case Enums.Keyboards.CustomKeyboardFile:
+                        // No BackAction if we're starting from a custom keyboard, since it should be 
+                        // the root menu.
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
+                            windowManipulationService, () => { });
+                        break;
+
+                    default:
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
+                            windowManipulationService, () =>
                         {
-                            mainWindowManipulationService.ResizeDockToFull();
-                        }
-                        else
-                        {
-                            mainWindowManipulationService.ResizeDockToCollapsed();
-                        }
-                        break;
-
-                    case Enums.Keyboards.NumericAndSymbols1:
-                        Keyboard = new NumericAndSymbols1();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.NumericAndSymbols2:
-                        Keyboard = new NumericAndSymbols2();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.NumericAndSymbols3:
-                        Keyboard = new NumericAndSymbols3();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.PhysicalKeys:
-                        Keyboard = new PhysicalKeys();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.SizeAndPosition:
-                        Keyboard = new SizeAndPosition(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
+                            Keyboard = new Alpha1(); 
+                        });
                         break;
                 }
+            }
+        }
+
+        private void SetKeyboardFromEnum(Enums.Keyboards keyboardEnum,
+                                         IWindowManipulationService windowManipulationService,
+                                         Action backAction)
+        {
+            // Set up the keyboard
+            switch (keyboardEnum)
+            {
+                case Enums.Keyboards.Alpha:
+                    Keyboard = new Alpha1();
+                    break;
+
+                case Enums.Keyboards.ConversationAlpha:
+                    Keyboard = new ConversationAlpha1(backAction);
+                    break;
+
+                case Enums.Keyboards.ConversationNumericAndSymbols:
+                    Keyboard = new ConversationNumericAndSymbols(backAction);
+                    break;
+
+                case Enums.Keyboards.ConversationConfirm:
+                    Keyboard = new ConversationConfirm(backAction);
+                    break;
+
+                case Enums.Keyboards.Currencies1:
+                    Keyboard = new Currencies1();
+                    break;
+
+                case Enums.Keyboards.Currencies2:
+                    Keyboard = new Currencies2();
+                    break;
+
+                case Enums.Keyboards.CustomKeyboardFile:
+                    Keyboard = new DynamicKeyboard(backAction, mainWindowManipulationService,
+                                   keyStateService, Settings.Default.StartupKeyboardFile);
+                    break;
+
+                case Enums.Keyboards.Diacritics1:
+                    Keyboard = new Diacritics1();
+                    break;
+
+                case Enums.Keyboards.Diacritics2:
+                    Keyboard = new Diacritics2();
+                    break;
+
+                case Enums.Keyboards.Diacritics3:
+                    Keyboard = new Diacritics3();
+                    break;
+
+                case Enums.Keyboards.DynamicKeyboard:
+                    Keyboard = new DynamicKeyboardSelector(() => { }, 0);
+                    break;
+
+                case Enums.Keyboards.Menu:
+                    Keyboard = new Menu(backAction);
+                    break;
+
+                case Enums.Keyboards.Minimised:
+                    Keyboard = new Minimised(backAction);
+                    break;
+
+                case Enums.Keyboards.Mouse:
+                    Keyboard = new Mouse(backAction);
+                    break;
+
+                case Enums.Keyboards.NumericAndSymbols1:
+                    Keyboard = new NumericAndSymbols1();
+                    break;
+
+                case Enums.Keyboards.NumericAndSymbols2:
+                    Keyboard = new NumericAndSymbols2();
+                    break;
+
+                case Enums.Keyboards.NumericAndSymbols3:
+                    Keyboard = new NumericAndSymbols3();
+                    break;
+
+                case Enums.Keyboards.PhysicalKeys:
+                    Keyboard = new PhysicalKeys();
+                    break;
+
+                case Enums.Keyboards.SizeAndPosition:
+                    Keyboard = new SizeAndPosition(backAction);
+                    break;
+
+                case Enums.Keyboards.WebBrowsing:
+                    Keyboard = new WebBrowsing();
+                    break;
+
+                default:
+                    Log.ErrorFormat("Cannot load keyboard: {0}, this is not a valid StartupKeyboard", 
+                        Settings.Default.StartupKeyboard);
+                    break;
+            }
+
+            // Set the window appropriately according to keyboard
+            switch (Settings.Default.StartupKeyboard)
+            {
+                case Enums.Keyboards.ConversationAlpha:
+                case Enums.Keyboards.ConversationConfirm:
+                case Enums.Keyboards.ConversationNumericAndSymbols:
+                    windowManipulationService.Maximise();
+                    break;
+
+                case Enums.Keyboards.Minimised:
+                    windowManipulationService.Minimise();
+                    break;
+
+                case Enums.Keyboards.Mouse:
+                    windowManipulationService.Restore();
+                    if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
+                    {
+                        windowManipulationService.ResizeDockToFull();
+                    }
+                    else
+                    {
+                        windowManipulationService.ResizeDockToCollapsed();
+                    }
+                    break;
+
+                default:
+                    windowManipulationService.Restore();
+                    windowManipulationService.ResizeDockToFull();
+                    break;
             }
         }
 
@@ -533,6 +592,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 InputService.MultiKeySelectionSupported = kb.MultiKeySelectionSupported;
             };
+
             this.OnPropertyChanges(mvm => mvm.Keyboard).Subscribe(setMultiKeySelectionSupported);
             setMultiKeySelectionSupported(Keyboard);
         }
@@ -549,10 +609,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.ResizeDockToFull();
                 }
             };
+
             this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(resizeDockIfCollapsedDockingNotSupported);
             resizeDockIfCollapsedDockingNotSupported(KeyboardSupportsCollapsedDock);
         }
-
+        
         private void ResetSelectionProgress()
         {
             PointSelectionProgress = null;
@@ -563,12 +624,53 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        internal void RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
+        internal bool RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
         {
+            bool notificationRaised = false;
+
             if (ToastNotification != null)
             {
                 ToastNotification(this, new NotificationEventArgs(title, content, notificationType, callback));
+                notificationRaised = true;
             }
+            else
+            {
+                if (notificationType == NotificationTypes.Error)
+                {
+                    pendingErrorToastNotificationContent.AppendLine(content);
+                }
+
+                //Error raised before the ToastNotification is initialised. Call callback delegate to ensure everything continues.
+                callback();
+            }
+
+            return notificationRaised;
+        }
+
+        internal async Task<bool> RaiseAnyPendingErrorToastNotifications()
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+
+            if (ToastNotification != null && pendingErrorToastNotificationContent.Length > 0)
+            {
+                Log.ErrorFormat("Toast notification popup will be shown to display startup errors:{0}", pendingErrorToastNotificationContent);
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                inputService.RequestSuspend();
+                ToastNotification(this, new NotificationEventArgs(
+                    Resources.STARTUP_CRASH_TITLE, 
+                    pendingErrorToastNotificationContent.ToString(), NotificationTypes.Error, () =>
+                    {
+                        pendingErrorToastNotificationContent.Clear();
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(true);
+                    }));
+            }
+            else
+            {
+                taskCompletionSource.SetResult(false);
+            }
+
+            return await taskCompletionSource.Task;
         }
 
         #endregion

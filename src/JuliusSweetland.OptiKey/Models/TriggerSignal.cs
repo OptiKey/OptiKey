@@ -2,7 +2,7 @@
 {
     public struct TriggerSignal
     {
-        public TriggerSignal(double? signal, double? progress, PointAndKeyValue? pointAndKeyValue)
+        public TriggerSignal(double? signal, double? progress, PointAndKeyValue pointAndKeyValue)
             : this()
         {
             Signal = signal;
@@ -16,7 +16,7 @@
         //Progress ranges from 0 to 1 in 1/100th of a percent
         public double? Progress { get; private set; }
 
-        public PointAndKeyValue? PointAndKeyValue { get; private set; }
+        public PointAndKeyValue PointAndKeyValue { get; private set; }
 
         public override string ToString()
         {

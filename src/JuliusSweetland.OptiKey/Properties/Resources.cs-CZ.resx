@@ -163,7 +163,7 @@ SLOVNÍKU</value>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Automaticky kapitalizovat slova:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Automaticky doplňovat slova :</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -171,6 +171,9 @@ SLOVNÍKU</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Automatické mezery mezi slovama:</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Zpět</value>
   </data>
   <data name="BACK" xml:space="preserve">
     <value>ZPĚT</value>
@@ -1576,5 +1579,20 @@ Kontrolu aktualizacií můžete vypnout v nastavení (ALT + M).</value>
   </data>
   <data name="YES" xml:space="preserve">
     <value>ANO</value>
+  </data>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>PÍSMENA 1</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>PÍSMENA 2</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>JAZYK</value>
   </data>
 </root>

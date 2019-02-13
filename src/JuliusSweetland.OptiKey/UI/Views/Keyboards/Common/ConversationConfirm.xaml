@@ -77,9 +77,9 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.ALPHA}"
+                                                  Text="{x:Static resx:Resources.ALPHA_1}"
                                                   SharedSizeGroup="KeyWithSymbol"
-                                                  Value="{x:Static models:KeyValues.ConversationAlphaKeyboardKey}"/>
+                                                  Value="{x:Static models:KeyValues.ConversationAlpha1KeyboardKey}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>

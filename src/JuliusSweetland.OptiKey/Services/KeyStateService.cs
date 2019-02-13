@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
 using JuliusSweetland.OptiKey.Enums;
@@ -20,10 +20,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
+        private readonly NotifyingConcurrentDictionary<KeyValue, bool> keyHighlightStates;
         private readonly KeyEnabledStates keyEnabledStates;
         private readonly Action<KeyValue> fireKeySelectionEvent;
         private readonly Dictionary<bool, KeyStateServiceState> state = new Dictionary<bool, KeyStateServiceState>();
-        
+
         private bool simulateKeyStrokes;
         private bool turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased;
         
@@ -39,9 +40,10 @@ namespace JuliusSweetland.OptiKey.Services
             Action<KeyValue> fireKeySelectionEvent)
         {
             this.fireKeySelectionEvent = fireKeySelectionEvent;
-            keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
-            keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
-            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
+            this.keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
+            this.keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
+            this.keyHighlightStates = new NotifyingConcurrentDictionary<KeyValue, bool>();
+            this.keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
 
             InitialiseKeyDownStates();
             AddSettingChangeHandlers();
@@ -60,6 +62,7 @@ namespace JuliusSweetland.OptiKey.Services
         }
         public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get { return keySelectionProgress; } }
         public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get { return keyDownStates; } }
+        public NotifyingConcurrentDictionary<KeyValue, bool> KeyHighlightStates { get { return keyHighlightStates; } }
         public KeyEnabledStates KeyEnabledStates { get { return keyEnabledStates; } }
 
         #endregion
@@ -68,31 +71,39 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProgressKeyDownState(KeyValue keyValue)
         {
-            if (KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+            if (null != keyValue)
             {
-                Log.DebugFormat("Changing key down state of '{0}' key from UP to DOWN.", keyValue);
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
+                if (KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                    && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+                {
+                    Log.DebugFormat("Changing key down state of '{0}' key from UP to DOWN.", keyValue);
+                    KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
+                }
+                else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
+                         && !KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                         && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+                {
+                    Log.DebugFormat("Changing key down state of '{0}' key from UP to LOCKED DOWN.", keyValue);
+                    KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+                }
+                else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
+                         && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
+                {
+                    Log.DebugFormat("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue);
+                    KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+                }
+                else if (KeyDownStates[keyValue].Value != Enums.KeyDownStates.Up)
+                {
+                    Log.DebugFormat("Changing key down state of '{0}' key from {1} to UP.", keyValue,
+                        KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down ? "DOWN" : "LOCKED DOWN");
+                    KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
+                }
             }
-            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
-                     && !KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
-            {
-                Log.DebugFormat("Changing key down state of '{0}' key from UP to LOCKED DOWN.", keyValue);
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
-            }
-            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
-                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
-            {
-                Log.DebugFormat("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue);
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
-            }
-            else if (KeyDownStates[keyValue].Value != Enums.KeyDownStates.Up)
-            {
-                Log.DebugFormat("Changing key down state of '{0}' key from {1} to UP.", keyValue,
-                    KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down ? "DOWN" : "LOCKED DOWN");
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
-            }
+        }
+
+        public void SetKeyHighlightState(KeyValue keyValue, bool highlight)
+        {
+            keyHighlightStates[keyValue].Value = highlight;
         }
 
         #endregion
@@ -116,6 +127,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value =
                 Settings.Default.MultiKeySelectionEnabled &&
+                Settings.Default.KeyboardLayout != KeyboardLayouts.Simplified &&
                 ((SimulateKeyStrokes && Settings.Default.MultiKeySelectionLockedDownWhenSimulatingKeyStrokes)
                 || (!SimulateKeyStrokes && Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes))
                     ? Enums.KeyDownStates.LockedDown
@@ -125,12 +137,24 @@ namespace JuliusSweetland.OptiKey.Services
         private void AddSettingChangeHandlers()
         {
             Log.Info("Adding setting change handlers.");
-            
-            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled).Where(mkse => !mkse).Subscribe(_ =>
-            {
-                //Release multi-key selection key if multi-key selection is disabled from the settings
-                KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value = Enums.KeyDownStates.Up;
-            });
+
+            Settings.Default
+                .OnPropertyChanges(s => s.MultiKeySelectionEnabled)
+                .Where(mkse => !mkse)
+                .Subscribe(_ =>
+                {
+                    //Release multi-key selection key if multi-key selection is disabled from the settings
+                    KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value = Enums.KeyDownStates.Up;
+                });
+
+            Settings.Default
+                .OnPropertyChanges(s => s.KeyboardLayout)
+                .Where(layout => layout == KeyboardLayouts.Simplified)
+                .Subscribe(_ =>
+                {
+                    //Release multi-key selection key if using simplified keyboard
+                    KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value = Enums.KeyDownStates.Up;
+                });
         }
 
         private void AddSimulateKeyStrokesChangeHandler()
@@ -218,7 +242,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CalculateMultiKeySelectionSupported()
         {
-            Log.Info("CalculateMultiKeySelectionSupported called.");
+            Log.Debug("CalculateMultiKeySelectionSupported called.");
 
             if (KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown()
                 && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown()))

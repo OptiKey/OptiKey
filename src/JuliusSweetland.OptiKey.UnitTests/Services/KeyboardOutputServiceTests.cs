@@ -14,7 +14,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         private static readonly string dzMultiCodePoint = "\u0064\u007A";
 
         private static readonly string singleCodePointString = "12" + dzSingleCodePoint + "34";
-        private static readonly string multiCodePointString = "12" + dzMultiCodePoint +"34";
+        private static readonly string multiCodePointString = "12" + dzMultiCodePoint + "34";
 
         [Test]
         public void SuggestionSingleCodePointToMultiCodePoint()

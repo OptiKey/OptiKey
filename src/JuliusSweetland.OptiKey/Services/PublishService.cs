@@ -100,15 +100,12 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 Log.DebugFormat("Simulating moving mouse to point '{0}'", point);
-
-                var virtualScreenWidthInPixels = SystemParameters.VirtualScreenWidth * Graphics.DipScalingFactorX;
-                var virtualScreenHeightInPixels = SystemParameters.VirtualScreenHeight * Graphics.DipScalingFactorY;
-
+                
                 //N.B. InputSimulator does not deal in pixels. The position should be a scaled point between 0 and 65535. 
                 //https://inputsimulator.codeplex.com/discussions/86530
                 inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(
-                    Math.Ceiling(65535 * (point.X / virtualScreenWidthInPixels)),
-                    Math.Ceiling(65535 * (point.Y / virtualScreenHeightInPixels)));
+                    Math.Ceiling(65535 * (point.X / Graphics.VirtualScreenWidthInPixels)),
+                    Math.Ceiling(65535 * (point.Y / Graphics.VirtualScreenHeightInPixels)));
             }
             catch (Exception exception)
             {
@@ -291,6 +288,32 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 Log.DebugFormat("Simulating scrolling the horizontal mouse wheel right by {0} clicks", clicks);
                 inputSimulator.Mouse.HorizontalScroll(clicks);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelAbsoluteHorizontal(int amount)
+        {
+            try
+            {
+                Log.DebugFormat("Simulating scrolling the horizontal mouse wheel by {0} units", amount);
+                inputSimulator.Mouse.HorizontalScrollAbsolute(amount);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelAbsoluteVertical(int amount)
+        {
+            try
+            {
+                Log.DebugFormat("Simulating scrolling the vertical mouse wheel by {0} units", amount);
+                inputSimulator.Mouse.VerticalScrollAbsolute(amount);
             }
             catch (Exception exception)
             {

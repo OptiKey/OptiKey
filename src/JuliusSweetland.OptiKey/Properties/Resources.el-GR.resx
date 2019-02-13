@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -139,8 +139,8 @@
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Προσαρμογή κατά {0} εικονοστοιχεία|Προσαρμογή κατά {0} εικονοστοιχεία </value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>ΓΡΑΜΜΑΤΑ </value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>ΓΡΑΜΜΑΤΑ 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -154,7 +154,7 @@
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Αυτόματη προσαρμογή μικρών/κεφαλαίων στις λέξεις </value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Αυτόματη συμπλήρωση λέξεων </value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -162,6 +162,9 @@
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Αυτόματη εισαγωγή κενών μεταξύ των λέξεων </value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Πισω </value>
   </data>
   <data name="BACK" xml:space="preserve">
     <value>ΠΙΣΩ </value>
@@ -1098,9 +1101,6 @@ LK</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Τα γράμματα των λέξεων γίνονται κεφαλαία</value>
   </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
-  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Η βαθμονόμηση ολοκληρώθηκε, ή πιθανώς ακυρώθηκε, αλλά όλα δουλεύουν πάλι!</value>
   </data>
@@ -1109,12 +1109,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Η Μηχανή Tobii EyeX δεν εκτελείται. Παρακαλώ εκκινήστε την Μηχανή Tobii EyeX και ξαναπροσπαθήστε.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Τόνος 1</value>
@@ -1430,8 +1424,8 @@ Deutsch (Deutschland)</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>ΜΕΓΕΘΟΣ ΑΥΞΟΜΕΙΩΣΗΣ ΣΕ PIXEL</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>ΤΙΜΗ ΑΛΦΑ (ΔΙΑΦΑΝΕΙΑΣ) ΣΥΖΗΤΗΣΗΣ</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>ΤΙΜΗ ΑΛΦΑ (ΔΙΑΦΑΝΕΙΑΣ) ΣΥΖΗΤΗΣΗΣ 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>ΑΡΙΘΜΙΤΙΚΑ &amp; ΣΥΜΒΟΛΑ ΣΥΖΗΤΗΣΗΣ</value>
@@ -1615,5 +1609,23 @@ Deutsch (Deutschland)</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Αποτυχία βαθμονόμησης!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>ΓΡΑΜΜΑΤΑ 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>ΤΙΜΗ ΑΛΦΑ (ΔΙΑΦΑΝΕΙΑΣ) ΣΥΖΗΤΗΣΗΣ 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>ΓΡΑΜΜΑΤΑ</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Γλώσσα</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Γλώσσα</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>ΓΛΩΣΣΑ</value>
   </data>
 </root>

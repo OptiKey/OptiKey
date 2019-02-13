@@ -29,7 +29,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         private readonly KalmanFilter kalmanFilterX;
         private readonly KalmanFilter kalmanFilterY;
 
-        private IObservable<Timestamped<PointAndKeyValue?>> sequence;
+        private IObservable<Timestamped<PointAndKeyValue>> sequence;
 
         #endregion
 
@@ -65,7 +65,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         /// 
         /// REPEAT: Keep re-subscribing to the observable indefinitely (http://theburningmonk.com/2010/03/rx-framework-iobservable-repeat/)
         /// </summary>
-        public IObservable<Timestamped<PointAndKeyValue?>> Sequence
+        public IObservable<Timestamped<PointAndKeyValue>> Sequence
         {
             get
             {
@@ -108,7 +108,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                         )
                             .DistinctUntilChanged(tp => tp.Value) //When GT loses the user's eyes it repeats the last value - suppress
                             .PublishLivePointsOnly(pointTtl)
-                            .Select(tp => new Timestamped<PointAndKeyValue?>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp)))
+                            .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp)))
                         .Replay(1) //Buffer one value for every subscriber so there is always a 'most recent' point available
                         .RefCount();
                 }

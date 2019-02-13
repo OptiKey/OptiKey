@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -140,8 +140,8 @@ HINZUFÜGEN</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Um {0} pixel verstellen|Um {0} pixel verstellen</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>BUCHSTABEN</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>BUCHSTABEN 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -155,7 +155,7 @@ HINZUFÜGEN</value>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Automatische Grossschreibung:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Automatische Worterkennung:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
@@ -1414,8 +1414,8 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>PIXELANZAHL FESTLEGEN</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>GESPRÄCH ALFA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>GESPRÄCH ALFA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>GESPRÄCH NUMMERN &amp; SYMBOLE</value>
@@ -1602,5 +1602,23 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibrierung fehlgeschlagen!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>BUCHSTABEN 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>GESPRÄCH ALFA 2</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>BUCHSTABEN</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>SPRACHE</value>
   </data>
 </root>

@@ -30,10 +30,11 @@ namespace JuliusSweetland.OptiKey.Services
         private int suspendRequestCount;
         
         private event EventHandler<int> pointsPerSecondEvent;
-        private event EventHandler<Tuple<Point, KeyValue?>> currentPositionEvent;
-        private event EventHandler<Tuple<PointAndKeyValue?, double>> selectionProgressEvent;
+        private event EventHandler<Tuple<Point, KeyValue>> currentPositionEvent;
+        private event EventHandler<Point> livePositionEvent;
+        private event EventHandler<Tuple<PointAndKeyValue, double>> selectionProgressEvent;
         private event EventHandler<PointAndKeyValue> selectionEvent;
-        private event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> selectionResultEvent;
+        private event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> selectionResultEvent;
 
         #endregion
 
@@ -75,18 +76,9 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 pointSource = value;
 
-                //Replace point source on trigger source if it is a FixationTriggerSource (which rely on a point source)
-                var keyFixationTriggerSource = keySelectionTriggerSource as IFixationTriggerSource;
-                if (keyFixationTriggerSource != null)
-                {
-                    keyFixationTriggerSource.PointSource = pointSource;
-                }
-
-                var pointFixationTriggerSource = pointSelectionTriggerSource as IFixationTriggerSource;
-                if (pointFixationTriggerSource != null)
-                {
-                    pointFixationTriggerSource.PointSource = pointSource;
-                }
+                //Replace point source on key and point trigger sources as they publish the selection location from the point source
+                keySelectionTriggerSource.PointSource = pointSource;
+                pointSelectionTriggerSource.PointSource = pointSource;
             }
         }
 
@@ -208,7 +200,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Current Position
 
-        public event EventHandler<Tuple<Point, KeyValue?>> CurrentPosition
+        public event EventHandler<Tuple<Point, KeyValue>> CurrentPosition
         {
             add
             {
@@ -243,9 +235,46 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
+        #region Live Position
+
+        public event EventHandler<Point> LivePosition
+        {
+            add
+            {
+                if (livePositionEvent == null)
+                {
+                    Log.Info("LivePosition event has first subscriber.");
+                }
+
+                livePositionEvent += value;
+
+                if (livePositionSubscription == null)
+                {
+                    CreateLivePositionSubscription();
+                }
+            }
+            remove
+            {
+                livePositionEvent -= value;
+
+                if (livePositionEvent == null)
+                {
+                    Log.Info("Last listener of LivePosition event has unsubscribed. Disposing of livePositionSubscription.");
+
+                    if (livePositionSubscription != null)
+                    {
+                        livePositionSubscription.Dispose();
+                        livePositionSubscription = null;
+                    }
+                }
+            }
+        }
+
+        #endregion
+
         #region Selection Progress
 
-        public event EventHandler<Tuple<PointAndKeyValue?, double>> SelectionProgress
+        public event EventHandler<Tuple<PointAndKeyValue, double>> SelectionProgress
         {
             add
             {
@@ -318,7 +347,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Selection Result
 
-        public event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> SelectionResult
+        public event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> SelectionResult
         {
             add
             {
@@ -374,7 +403,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Current Position
 
-        private void PublishCurrentPosition(Tuple<Point, KeyValue?> currentPosition)
+        private void PublishCurrentPosition(Tuple<Point, KeyValue> currentPosition)
         {
             if (currentPositionEvent != null)
             {
@@ -386,9 +415,23 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
+        #region Publish Live Position
+
+        private void PublishLivePosition(Point livePosition)
+        {
+            if (livePositionEvent != null)
+            {
+                Log.DebugFormat("Publishing LivePosition event with Point:{0}", livePosition);
+
+                livePositionEvent(this, livePosition);
+            }
+        }
+
+        #endregion
+
         #region Publish Selection Progress
 
-        private void PublishSelectionProgress(Tuple<PointAndKeyValue?, double> selectionProgress)
+        private void PublishSelectionProgress(Tuple<PointAndKeyValue, double> selectionProgress)
         {
             if (selectionProgressEvent != null)
             {
@@ -419,16 +462,16 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Selection Result
 
-        private void PublishSelectionResult(Tuple<List<Point>, FunctionKeys?, string, List<string>> selectionResult)
+        private void PublishSelectionResult(Tuple<List<Point>, KeyValue, List<string>> selectionResult)
         {
             if (selectionResultEvent != null)
             {
                 Log.DebugFormat("Publishing Selection Result event with {0} point(s), FunctionKey:'{1}', String:'{2}', Best match '{3}', Suggestion count:{4}",
                         selectionResult.Item1 != null ? selectionResult.Item1.Count : (int?)null,
-                        selectionResult.Item2, 
-                        selectionResult.Item3.ToPrintableString(),
-                        selectionResult.Item4 != null && selectionResult.Item4.Any() ? selectionResult.Item4.First() : null,
-                        selectionResult.Item4 != null ? selectionResult.Item4.Count : (int?)null);
+                        selectionResult.Item2 != null ? selectionResult.Item2.FunctionKey : null,  
+                        selectionResult.Item2 != null ? selectionResult.Item2.String.ToPrintableString() : "",
+                        selectionResult.Item3 != null && selectionResult.Item3.Any() ? selectionResult.Item3.First() : null,
+                        selectionResult.Item3 != null ? selectionResult.Item3.Count : (int?)null);
 
                 selectionResultEvent(this, selectionResult);
             }

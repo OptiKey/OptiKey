@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -42,27 +41,40 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             onUnloaded = new CompositeDisposable();
 
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
+
+            // If key isn't visible, it won't have a visual parent and this is okay.
+            if (keyboardHost == null && !this.IsVisible)
+            {
+                return;
+            }
+
             var mainViewModel = keyboardHost.DataContext as MainViewModel;
             var keyStateService = mainViewModel.KeyStateService;
             var capturingStateManager = mainViewModel.CapturingStateManager;
 
             //Calculate KeyDownState
-            var keyStateSubscription = keyStateService.KeyDownStates[Value]
-                .OnPropertyChanges(kds => kds.Value)
-                .Subscribe(value => KeyDownState = value);
-            onUnloaded.Add(keyStateSubscription);
-            KeyDownState = keyStateService.KeyDownStates[Value].Value;
+            if (Value != null)
+            {
+                var keyStateSubscription = keyStateService.KeyDownStates[Value]
+                    .OnPropertyChanges(kds => kds.Value)
+                    .Subscribe(value => KeyDownState = value);
+                onUnloaded.Add(keyStateSubscription);
+            }
+            KeyDownState = (Value == null) ? KeyDownStates.Up : keyStateService.KeyDownStates[Value].Value;
 
             //Calculate SelectionProgress and SelectionInProgress
-            var keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
-                .OnPropertyChanges(ksp => ksp.Value)
-                .Subscribe(value =>
-                {
-                    SelectionProgress = value;
-                    SelectionInProgress = value > 0d;
-                });
-            onUnloaded.Add(keySelectionProgressSubscription);
-            var progress = keyStateService.KeySelectionProgress[Value].Value;
+            if (Value != null)
+            {
+                var keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
+                    .OnPropertyChanges(ksp => ksp.Value)
+                    .Subscribe(value =>
+                    {
+                        SelectionProgress = value;
+                        SelectionInProgress = value > 0d;
+                    });
+                onUnloaded.Add(keySelectionProgressSubscription);
+            }
+            var progress = (Value == null) ? 0 : keyStateService.KeySelectionProgress[Value].Value;
             SelectionProgress = progress;
             SelectionInProgress = progress > 0d;
 
@@ -75,34 +87,48 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             calculateIsEnabled();
             
             //Calculate IsCurrent
-            Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
+            Action<KeyValue> calculateIsCurrent = value => IsCurrent = value != null && Value != null && value.Equals(Value);
             var currentPositionSubscription = mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
                 .Subscribe(calculateIsCurrent);
             onUnloaded.Add(currentPositionSubscription);
             calculateIsCurrent(mainViewModel.CurrentPositionKey);
+
+            //Calculate IsHighlighted
+            if (Value != null)
+            {
+                var keyHighlightedSubscription = keyStateService.KeyHighlightStates[Value]
+                    .OnPropertyChanges(ksp => ksp.Value)
+                    .Subscribe(value => IsHighlighted = value);
+                onUnloaded.Add(keyHighlightedSubscription);
+            }
+            IsHighlighted = Value != null && keyStateService.KeyHighlightStates[Value].Value;
 
             //Calculate DisplayShiftDownText
             //Display shift down text (upper case text) if shift is locked down, or down (but NOT when we are capturing a multi key selection)
             Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) => 
                     DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown 
                     || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
+
             var capturingMultiKeySelectionSubscription = capturingStateManager
                 .OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
                 .Subscribe(value => calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
             onUnloaded.Add(capturingMultiKeySelectionSubscription);
+
             var leftShiftKeyStateSubscription = keyStateService.KeyDownStates[KeyValues.LeftShiftKey]
                 .OnPropertyChanges(sds => sds.Value)
                 .Subscribe(value => calculateDisplayShiftDownText(value, capturingStateManager.CapturingMultiKeySelection));
+
             onUnloaded.Add(leftShiftKeyStateSubscription);
             calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, capturingStateManager.CapturingMultiKeySelection);
-
+            
             //Publish own version of KeySelection event
             var keySelectionSubscription = Observable.FromEventPattern<KeyValue>(
                 handler => mainViewModel.KeySelection += handler,
                 handler => mainViewModel.KeySelection -= handler)
                 .Subscribe(pattern =>
                 {
-                    if (pattern.EventArgs.Equals(Value)
+                    if (Value != null &&
+                        pattern.EventArgs.Equals(Value)
                         && Selection != null)
                     {
                         Selection(this, null);
@@ -158,6 +184,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(IsCurrentProperty, value); }
         }
 
+        //Should be true when key is the first selected key in multiKey sequence, and false otherwise.
+        public static readonly DependencyProperty IsHighlightedProperty =
+            DependencyProperty.Register("IsHighlighted", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool IsHighlighted
+        {
+            get { return (bool)GetValue(IsHighlightedProperty); }
+            set { SetValue(IsHighlightedProperty, value); }
+        }
+
         public static readonly DependencyProperty SelectionProgressProperty =
             DependencyProperty.Register("SelectionProgress", typeof(double), typeof(Key), new PropertyMetadata(default(double)));
 
@@ -194,6 +230,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (double) GetValue(HeightSpanProperty); }
             set { SetValue(HeightSpanProperty, value); }
+        }
+
+        public static readonly DependencyProperty SymbolMarginProperty =
+                   DependencyProperty.Register("SymbolMargin", typeof(double), typeof(Key), new PropertyMetadata(2d));
+
+        public double SymbolMargin
+        {
+            get { return (double)GetValue(SymbolMarginProperty); }
+            set { SetValue(SymbolMarginProperty, value); }
         }
 
         public static readonly DependencyProperty SharedSizeGroupProperty =
@@ -305,7 +350,89 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
-        public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
+        public bool HasText { get { return !string.IsNullOrEmpty(ShiftUpText) ||
+                                           !string.IsNullOrEmpty(ShiftDownText); } }
+
+        public static readonly DependencyProperty OnlyVisibleWhenInUseProperty =
+            DependencyProperty.Register("OnlyVisibleWhenInUse", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool OnlyVisibleWhenInUse
+        {
+            get { return (bool)GetValue(OnlyVisibleWhenInUseProperty); }
+            set { SetValue(OnlyVisibleWhenInUseProperty, value); }
+        }
+
+        public static readonly DependencyProperty BackgroundColourOverrideProperty =
+            DependencyProperty.Register("BackgroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush BackgroundColourOverride
+        {
+            get { return (Brush)GetValue(BackgroundColourOverrideProperty); }
+            set { SetValue(BackgroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledBackgroundColourOverrideProperty =
+            DependencyProperty.Register("DisabledBackgroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush DisabledBackgroundColourOverride
+        {
+            get { return (Brush)GetValue(DisabledBackgroundColourOverrideProperty); }
+            set { SetValue(DisabledBackgroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledBackgroundOpacityProperty =
+            DependencyProperty.Register("DisabledBackgroundOpacity", typeof(double), typeof(Key), new PropertyMetadata((1.0)));
+
+        public double DisabledBackgroundOpacity
+        {
+            get { return (double)GetValue(DisabledBackgroundOpacityProperty); }
+            set { SetValue(DisabledBackgroundOpacityProperty, value); }
+        }
+
+        public static readonly DependencyProperty ForegroundColourOverrideProperty =
+            DependencyProperty.Register("ForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush ForegroundColourOverride
+        {
+            get { return (Brush)GetValue(ForegroundColourOverrideProperty); }
+            set { SetValue(ForegroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledForegroundColourOverrideProperty =
+            DependencyProperty.Register("DisabledForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush DisabledForegroundColourOverride
+        {
+            get { return (Brush)GetValue(DisabledForegroundColourOverrideProperty); }
+            set { SetValue(DisabledForegroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverForegroundColourOverrideProperty =
+            DependencyProperty.Register("HoverForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush HoverForegroundColourOverride
+        {
+            get { return (Brush)GetValue(HoverForegroundColourOverrideProperty); }
+            set { SetValue(HoverForegroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectionProgressColourOverrideProperty =
+            DependencyProperty.Register("SelectionProgressColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush SelectionProgressColourOverride
+        {
+            get { return (Brush)GetValue(SelectionProgressColourOverrideProperty); }
+            set { SetValue(SelectionProgressColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectionForegroundColourOverrideProperty =
+            DependencyProperty.Register("SelectionForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush SelectionForegroundColourOverride
+        {
+            get { return (Brush)GetValue(SelectionForegroundColourOverrideProperty); }
+            set { SetValue(SelectionForegroundColourOverrideProperty, value); }
+        }
 
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));

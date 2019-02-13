@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Services
             KalmanFilterSupported = true;
             EyeXHost = new EyeXHost();
 
-            //Disconnect (deactivate) from the TET server on shutdown - otherwise the process can hang
+            //Disconnect (deactivate) from the EyeXHost on shutdown - otherwise the process can hang
             Application.Current.Exit += (sender, args) =>
             {
                 if (EyeXHost != null)

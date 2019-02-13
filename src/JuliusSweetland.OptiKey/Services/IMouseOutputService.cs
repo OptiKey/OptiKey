@@ -24,5 +24,6 @@ namespace JuliusSweetland.OptiKey.Services
         void RightButtonClick();
         void RightButtonDown();
         void RightButtonUp();
+        void ScrollWheelAbsolute(int dx, int dy);
     }
 }

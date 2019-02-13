@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reactive.Disposables;
 using System.Windows;
 using System.Windows.Controls;
 using JuliusSweetland.OptiKey.Extensions;
@@ -21,10 +22,20 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
             {
                 PositionCaret(textBox, caretElement);
 
-                textBox.OnPropertyChanges<string>(TextBox.TextProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
-                textBox.OnPropertyChanges<double>(Control.FontSizeProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
-                textBox.OnPropertyChanges<double>(FrameworkElement.ActualWidthProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
-                textBox.OnPropertyChanges<double>(FrameworkElement.ActualHeightProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
+                var compositeDisposable = new CompositeDisposable
+                {
+                    textBox.OnPropertyChanges<string>(TextBox.TextProperty).Subscribe(_ => PositionCaret(textBox, caretElement)),
+                    textBox.OnPropertyChanges<double>(Control.FontSizeProperty).Subscribe(_ => PositionCaret(textBox, caretElement)),
+                    textBox.OnPropertyChanges<double>(FrameworkElement.ActualWidthProperty).Subscribe(_ => PositionCaret(textBox, caretElement)),
+                    textBox.OnPropertyChanges<double>(FrameworkElement.ActualHeightProperty).Subscribe(_ => PositionCaret(textBox, caretElement))
+                };
+
+                textBox.Unloaded += (_, __) =>
+                {
+                    compositeDisposable.Dispose();
+                    textBox = null;
+                    caretElement = null;
+                };
             }
         }
 
