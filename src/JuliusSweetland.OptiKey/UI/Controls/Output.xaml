@@ -40,10 +40,12 @@
                         <Binding Path="ScratchpadWidthInKeys" RelativeSource="{RelativeSource AncestorType=controls:Output}" />
                         <Binding Path="EnableAttentionKey" Source="{x:Static resx:Settings.Default}" />
                         <Binding Path="EnableCommuniKateKeyboardLayout" Source="{x:Static resx:Settings.Default}" />
+                        <Binding Path="EnableCopyAllScratchpadKey" Source="{x:Static resx:Settings.Default}" />
                     </MultiBinding>
                 </ColumnDefinition.Width>
             </ColumnDefinition>
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCommuniKateKeyboardLayout, Converter={StaticResource BoolToCustomValues}}" />
+            <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCopyAllScratchpadKey, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -54,7 +56,7 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.PreviousSuggestionsKey}">
         </controls:Key>
-        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5">
+        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -122,7 +124,7 @@
                 </controls:Key.Text>
             </controls:Key>
         </Grid>
-        <controls:Key Grid.Row="0" Grid.Column="6"
+        <controls:Key Grid.Row="0" Grid.Column="7"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
@@ -188,12 +190,36 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <controls:Key Grid.Row="1" Grid.Column="5"
+        <ContentControl Grid.Row="1" Grid.Column="5"
+                        Visibility="{Binding EnableCopyAllScratchpadKey, Source={x:Static resx:Settings.Default}, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key />
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCopyAllScratchpadKey}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource CopyAllIcon}"
+                                                  Text="{x:Static resx:Resources.COPY_ALL_FROM_SCRATCHPAD}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.CopyAllFromScratchpad}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+        <controls:Key Grid.Row="1" Grid.Column="6"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
                       Text="{x:Static resx:Resources.SPEAK}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SpeakKey}"/>
-        <controls:Key Grid.Row="1" Grid.Column="6"
+        <controls:Key Grid.Row="1" Grid.Column="7"
                       SymbolGeometry="{StaticResource SleepIcon}"
                       Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol"

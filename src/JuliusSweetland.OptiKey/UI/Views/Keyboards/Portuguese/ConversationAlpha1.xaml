@@ -155,7 +155,10 @@
                       Value="ç"/>
         <controls:Key Grid.Row="3" Grid.Column="23" />
 
-        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Case="None"
+                      Text="!"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="!"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                       ShiftUpText="à" ShiftDownText="À"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -198,7 +201,10 @@
                       Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
-        <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2" Case="None"
+                      Text="?"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="?"/>
         
         <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
@@ -219,15 +225,7 @@
                       Text=","
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value=","/>
-        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
-                      Text="!"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="!"/>
-        <controls:Key Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
-                      Text="?"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="?"/>
-        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="4"
+       <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="8"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
                       WidthSpan="4" 

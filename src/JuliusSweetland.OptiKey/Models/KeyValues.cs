@@ -65,6 +65,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ConversationConfirmYesKey = new KeyValue(FunctionKeys.ConversationConfirmYes);
         public static readonly KeyValue ConversationConfirmNoKey = new KeyValue(FunctionKeys.ConversationConfirmNo);
         public static readonly KeyValue ConversationNumericAndSymbolsKeyboardKey = new KeyValue(FunctionKeys.ConversationNumericAndSymbolsKeyboard);
+        public static readonly KeyValue CopyAllFromScratchpad = new KeyValue(FunctionKeys.CopyAllFromScratchpad);
         public static readonly KeyValue Currencies1KeyboardKey = new KeyValue(FunctionKeys.Currencies1Keyboard);
         public static readonly KeyValue Currencies2KeyboardKey = new KeyValue(FunctionKeys.Currencies2Keyboard);
         public static readonly KeyValue CzechCzechRepublicKey = new KeyValue(FunctionKeys.CzechCzechRepublic);
@@ -257,7 +258,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue UkrainianUkraineKey = new KeyValue(FunctionKeys.UkrainianUkraine);
         public static readonly KeyValue WebBrowsingKeyboardKey = new KeyValue(FunctionKeys.WebBrowsingKeyboard);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
-        
+
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
 
         static KeyValues()

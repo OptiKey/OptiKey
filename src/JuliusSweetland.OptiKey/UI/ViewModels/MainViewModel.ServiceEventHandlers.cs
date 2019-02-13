@@ -244,7 +244,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     // will get caught and handled when DynamicKeyboard is created so we are good to ignore here 
                 }
 
-                DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, mainWindowManipulationService, keyStateService, keyValue.KeyboardFilename);
+                DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, mainWindowManipulationService, keyStateService,
+                    inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename);
                 newDynKeyboard.SetKeyOverrides(initialKeyStates);
                 newDynKeyboard.OverrideKeyboardLayout(overrideHeight);
                 Keyboard = newDynKeyboard;
@@ -892,6 +893,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.Maximise();
                     Log.InfoFormat("Setting opacity to 1 (fully opaque)");
                     mainWindowManipulationService.SetOpacity(1);
+                    break;
+
+                case FunctionKeys.CopyAllFromScratchpad:
+                    {
+                        Log.Info("Copying text from scratchpad to clipboard.");
+                        string textFromScratchpad = KeyboardOutputService.Text;
+
+                        if (!string.IsNullOrEmpty(textFromScratchpad))
+                        {
+                            Clipboard.SetText(textFromScratchpad);
+                        }
+                    }
                     break;
 
                 case FunctionKeys.CroatianCroatia:

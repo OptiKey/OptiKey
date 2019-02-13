@@ -2016,6 +2016,9 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
     <value>Enable attention key?</value>
   </data>
+  <data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
+    <value>Enable copy scratchpad key?</value>
+  </data>
   <data name="ATTENTION" xml:space="preserve">
     <value>ATTENTION</value>
   </data>
@@ -2287,5 +2290,14 @@ Française
   </data>
   <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
     <value>Calibration completed (success or failure), but everything is working again!</value>
+  </data>
+  <data name="COPY_ALL_FROM_SCRATCHPAD" xml:space="preserve">
+    <value>Copy All</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_DEFINITION_INVALID" xml:space="preserve">
+    <value>Dynamic keyboard definition invalid</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
+    <value>The defined height of this dynamic keyboard is too large (&gt; 95% of screen)</value>
   </data>
 </root>

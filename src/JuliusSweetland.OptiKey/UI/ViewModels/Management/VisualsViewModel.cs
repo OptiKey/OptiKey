@@ -14,9 +14,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
     {
         #region Private Member Vars
 
-        private const string RobotoUrl = "/Resources/Fonts/#Roboto";
+        private const string B612Url = "/Resources/Fonts/#B612";
+        private const string B612MonoUrl = "/Resources/Fonts/#B612 Mono";
         private const string CharisSILUrl = "/Resources/Fonts/#CharisSIL";
-
+        private const string MandatoryUrl = "/Resources/Fonts/#Mandatory";
+        private const string RobotoUrl = "/Resources/Fonts/#Roboto";
+        
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
@@ -51,8 +54,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Roboto", RobotoUrl),
-                    new KeyValuePair<string, string>("Charis SIL", CharisSILUrl)
+                    new KeyValuePair<string, string>("B612", B612Url),
+                    new KeyValuePair<string, string>("B612 Mono", B612MonoUrl),
+                    new KeyValuePair<string, string>("Charis SIL", CharisSILUrl),
+                    new KeyValuePair<string, string>("Mandatory", MandatoryUrl),
+                    new KeyValuePair<string, string>("Roboto", RobotoUrl)
                 };
             }
         }
@@ -63,17 +69,35 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 switch (FontFamily)
                 {
-                    case RobotoUrl:
+                    case B612Url:
                         return new List<FontStretches>
                         {
-                            Enums.FontStretches.Normal, 
-                            Enums.FontStretches.Condensed
+                            Enums.FontStretches.Normal
+                        };
+
+                    case B612MonoUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
                         };
 
                     case CharisSILUrl:
                         return new List<FontStretches>
                         {
                             Enums.FontStretches.Normal
+                        };
+
+                    case MandatoryUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
+                        };
+
+                    case RobotoUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal, 
+                            Enums.FontStretches.Condensed
                         };
                 }
 
@@ -87,6 +111,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 switch (FontFamily)
                 {
+                    case B612Url:
+                        return new List<FontWeights> { Enums.FontWeights.Regular };
+
+                    case B612MonoUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular };
+
+                    case CharisSILUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular };
+
+                    case MandatoryUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular };
+
                     case RobotoUrl:
                         switch (FontStretch)
                         {
@@ -110,9 +146,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                                             };
                         }
                         break;
-
-                    case CharisSILUrl:
-                        return new List<FontWeights> {Enums.FontWeights.Regular};
                 }
 
                 return null;
@@ -356,6 +389,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref enableAttentionKey, value); }
         }
 
+        private bool enableCopyAllScratchpadKey;
+        public bool EnableCopyAllScratchpadKey
+        {
+            get { return enableCopyAllScratchpadKey; }
+            set { SetProperty(ref enableCopyAllScratchpadKey, value); }
+        }
+
         private string dynamicKeyboardsLocation;
         public string DynamicKeyboardsLocation
         {
@@ -399,6 +439,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
             EnableAttentionKey = Settings.Default.EnableAttentionKey;
+            EnableCopyAllScratchpadKey = Settings.Default.EnableCopyAllScratchpadKey;
             DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
             StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
         }
@@ -428,6 +469,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
             Settings.Default.EnableAttentionKey = EnableAttentionKey;
+            Settings.Default.EnableCopyAllScratchpadKey = EnableCopyAllScratchpadKey;
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
         }

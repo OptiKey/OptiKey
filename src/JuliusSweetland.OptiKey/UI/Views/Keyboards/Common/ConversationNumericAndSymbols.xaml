@@ -93,28 +93,8 @@
                     Text="0"
                     SharedSizeGroup="KeyWithSingleLetter"
                     Value="0"/>
-      
-    <ContentControl Grid.Row="3" Grid.Column="0">
-        <ContentControl.Style>
-            <Style TargetType="{x:Type ContentControl}">
-                <Setter Property="Content">
-                    <Setter.Value>
-                        <controls:Key />
-                    </Setter.Value>
-                </Setter>
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableCommuniKateKeyboardLayout}" Value="True">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <controls:Key Text="CK" SymbolGeometry="{StaticResource CommuniKateIcon}"
-                                                Value="{x:Static models:KeyValues.ConversationCommuniKateKeyboardKey}"/>
-                            </Setter.Value>
-                        </Setter>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </ContentControl.Style>
-    </ContentControl>
+
+    <controls:Key Grid.Row="3" Grid.Column="0" />
     <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Case="None"
                   Text="-"
                   SharedSizeGroup="KeyWithSingleLetter"
