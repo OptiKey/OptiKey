@@ -597,7 +597,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .ObserveOnDispatcher()
                 .Subscribe(ep =>
                 {
-                    Log.InfoFormat("SizeChanged event detected from {0} to {1}.", ep.EventArgs.PreviousSize, ep.EventArgs.NewSize);
+                    Log.Info($"KeyboardHost SizeChanged event detected from {ep.EventArgs.PreviousSize} to {ep.EventArgs.NewSize}.");
                     BuildPointToKeyMap();
                 });
         }
@@ -613,9 +613,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 h => parentWindow.LocationChanged -= h)
                 .Throttle(TimeSpan.FromSeconds(0.1))
                 .ObserveOnDispatcher()
-                .Subscribe(_ =>
+                .Subscribe(ep =>
                 {
-                    Log.Info("Window's LocationChanged event detected.");
+                    var window = ep.Sender as Window;
+                    Log.Info($"Window's LocationChanged event detected. New window left:{window?.Left}, right:{(window?.Left ?? 0) + (window?.Width ?? 0)}, top:{window?.Top}, bottom:{(window?.Top ?? 0) + (window?.Height ?? 0)}.");
                     BuildPointToKeyMap();
                 });
         }
@@ -633,7 +634,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .ObserveOnDispatcher()
                 .Subscribe(_ =>
                 {
-                    Log.InfoFormat("Window's StateChange event detected. New state: {0}.", parentWindow.WindowState);
+                    Log.Info($"Window's StateChange event detected. New state: {parentWindow.WindowState}.");
                     BuildPointToKeyMap();
                 });
         }

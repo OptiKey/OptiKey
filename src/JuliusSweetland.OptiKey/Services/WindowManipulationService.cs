@@ -116,6 +116,8 @@ namespace JuliusSweetland.OptiKey.Services
             CoerceSavedStateAndApply();
             PreventWindowActivation();
 
+            window.SizeChanged += (sender, args) => Log.Info($"Window SizeChange event detected from {args.PreviousSize} to {args.NewSize}. (Window state is {window.WindowState}, location is left:{window.Left}, right:{window.Left + window.Width}, top:{window.Top}, bottom:{window.Top + window.Height}).");
+
             window.Closed += (_, __) => UnRegisterAppBar();
         }
 
