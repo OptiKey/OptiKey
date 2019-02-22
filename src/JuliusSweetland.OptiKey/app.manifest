@@ -10,7 +10,7 @@
 
             <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
             <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
-            <requestedExecutionLevel  level="highestAvailable" uiAccess="true" />
+            <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
             Specifying requestedExecutionLevel node will disable file and registry virtualization.
             If you want to utilize File and Registry Virtualization for backward 
