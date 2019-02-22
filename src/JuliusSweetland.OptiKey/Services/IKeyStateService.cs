@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.Services
         NotifyingConcurrentDictionary<KeyValue, bool> KeyHighlightStates { get; }
         KeyEnabledStates KeyEnabledStates { get; }
 
-        void SetKeyHighlightState(KeyValue keyValue, bool highlight);
+        void ClearKeyHighlightStates();
         void ProgressKeyDownState(KeyValue keyValue);
     }
 }

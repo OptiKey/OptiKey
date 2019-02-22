@@ -263,8 +263,13 @@ namespace JuliusSweetland.OptiKey.Services
 
                 var intervalSubscription =
                     Observable.Interval(Settings.Default.MultiKeySelectionMaxDuration)
+                        .ObserveOnDispatcher()
                         .Where(_ => disposed == false)
-                        .Subscribe(i => observer.OnError(new TimeoutException("Multi-key capture has exceeded the maximum duration")));
+                        .Subscribe(i =>
+                        {
+                            keyStateService.ClearKeyHighlightStates();
+                            observer.OnError(new TimeoutException("Multi-key capture has exceeded the maximum duration"));
+                        });
 
                 var pointAndKeyValueSubscription = pointSource.Sequence
                     .Where(tp => tp.Value != null) //Filter out stale indicators

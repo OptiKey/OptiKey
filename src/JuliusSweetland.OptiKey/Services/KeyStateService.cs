@@ -101,9 +101,12 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void SetKeyHighlightState(KeyValue keyValue, bool highlight)
+        public void ClearKeyHighlightStates()
         {
-            keyHighlightStates[keyValue].Value = highlight;
+            foreach (var keyValue in keyHighlightStates.Keys)
+            {
+                keyHighlightStates[keyValue].Value = false;
+            }
         }
 
         #endregion

@@ -154,6 +154,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                         changingToManualMode ? Properties.Resources.MANUAL_MODE_ENABLED : Properties.Resources.MANUAL_MODE_DISABLED,
                         NotificationTypes.Normal, () => inputService.RequestResume());
                     mainViewModel.ManualModeEnabled = changingToManualMode;
+                    keyStateService.ClearKeyHighlightStates(); //Clear any in-progress multi-key selection highlighting
                 }
             }
 
