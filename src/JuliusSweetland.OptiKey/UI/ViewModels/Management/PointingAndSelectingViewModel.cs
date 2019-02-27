@@ -560,7 +560,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.MULTI_KEY_SELECTION_UPPER_CASE, KeyValues.MultiKeySelectionIsOnKey, dictionary.ContainsKey(KeyValues.MultiKeySelectionIsOnKey) ? dictionary[KeyValues.MultiKeySelectionIsOnKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.NO, KeyValues.NoQuestionResultKey, dictionary.ContainsKey(KeyValues.NoQuestionResultKey) ? dictionary[KeyValues.NoQuestionResultKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.QUIT, KeyValues.QuitKey, dictionary.ContainsKey(KeyValues.QuitKey) ? dictionary[KeyValues.QuitKey] : (TimeSpan?)null),
-                    new KeyValueAndTimeSpan(Resources.RESTART, KeyValues.RestartKey, dictionary.ContainsKey(KeyValues.RestartKey) ? dictionary[KeyValues.RestartKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.RESTART_UPPERCASE, KeyValues.RestartKey, dictionary.ContainsKey(KeyValues.RestartKey) ? dictionary[KeyValues.RestartKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SELECT_VOICE, KeyValues.SelectVoiceKey, dictionary.ContainsKey(KeyValues.SelectVoiceKey) ? dictionary[KeyValues.SelectVoiceKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SLEEP, KeyValues.SleepKey, dictionary.ContainsKey(KeyValues.SleepKey) ? dictionary[KeyValues.SleepKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SPEAK, KeyValues.SpeakKey, dictionary.ContainsKey(KeyValues.SpeakKey) ? dictionary[KeyValues.SpeakKey] : (TimeSpan?)null),
@@ -674,6 +674,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.PG_UP, KeyValues.PgUpKey, dictionary.ContainsKey(KeyValues.PgUpKey) ? dictionary[KeyValues.PgUpKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.PRNT_SCR, KeyValues.PrintScreenKey, dictionary.ContainsKey(KeyValues.PrintScreenKey) ? dictionary[KeyValues.PrintScreenKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.SCRN_LK, KeyValues.ScrollLockKey, dictionary.ContainsKey(KeyValues.ScrollLockKey) ? dictionary[KeyValues.ScrollLockKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.TAB, KeyValues.TabKey, dictionary.ContainsKey(KeyValues.TabKey) ? dictionary[KeyValues.TabKey] : (TimeSpan?)null),
                 }),
                 new KeyValueAndTimeSpanGroup(Resources.SUGGESTION_KEYS_KEY_GROUP, new List<KeyValueAndTimeSpan>
                 {

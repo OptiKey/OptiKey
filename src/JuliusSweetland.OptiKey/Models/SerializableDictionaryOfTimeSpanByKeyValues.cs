@@ -99,7 +99,7 @@ namespace JuliusSweetland.OptiKey.Models
                 if (key.String != null)
                 {
                     writer.WriteStartElement("str");
-                    writer.WriteString(key.String);
+                    writer.WriteCData(key.String);
                     writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
