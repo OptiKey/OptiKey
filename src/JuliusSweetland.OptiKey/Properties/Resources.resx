@@ -2300,4 +2300,7 @@ Française
   <data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
     <value>The defined height of this dynamic keyboard is too large (&gt; 95% of screen)</value>
   </data>
+  <data name="RESTART_UPPERCASE" xml:space="preserve">
+    <value>Restart</value>
+  </data>
 </root>
