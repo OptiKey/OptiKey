@@ -853,6 +853,9 @@
       <Link>PGRFlyCapture.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="NOTES AND DISCLAIMER.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\Fonts\B612-licence-epl-v10.html" />
     <Content Include="Resources\Presage\database.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

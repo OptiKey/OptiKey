@@ -533,10 +533,6 @@ namespace JuliusSweetland.OptiKey
 
         private static void AttachUnhandledExceptionHandlers()
         {
-            Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
-            AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
-            TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
-
 #if !DEBUG
             Application.Current.DispatcherUnhandledException += NBug.Handler.DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += NBug.Handler.UnhandledException;
@@ -577,6 +573,10 @@ namespace JuliusSweetland.OptiKey
 
             NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
 #endif
+
+            Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
+            TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
         }
 
         #endregion
