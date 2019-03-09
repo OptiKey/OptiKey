@@ -1,4 +1,5 @@
-﻿namespace JuliusSweetland.OptiKey.Enums
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+namespace JuliusSweetland.OptiKey.Enums
 {
     // Case transformation applied to strings before displaying them on keys.
     public enum Case

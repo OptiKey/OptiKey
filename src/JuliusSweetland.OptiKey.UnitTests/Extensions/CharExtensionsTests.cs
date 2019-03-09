@@ -1,4 +1,5 @@
-﻿using WindowsInput.Native;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using NUnit.Framework;

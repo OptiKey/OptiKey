@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using System.Collections.Generic;
 using System.Windows;
 using JuliusSweetland.OptiKey.Extensions;
 using NUnit.Framework;

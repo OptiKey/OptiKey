@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using System.Diagnostics;
 
 /**
  * This is a plugin that runs a command in windows. It can be anything that you would run using command line prompt.

@@ -1,4 +1,5 @@
-﻿namespace JuliusSweetland.OptiKey.Native.Irisbond.Enums
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+namespace JuliusSweetland.OptiKey.Native.Irisbond.Enums
 {
     // Structure used to select the controlling eye
     public enum CONTROLLING_EYE

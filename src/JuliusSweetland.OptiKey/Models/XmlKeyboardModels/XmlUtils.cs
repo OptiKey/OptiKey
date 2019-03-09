@@ -1,3 +1,4 @@
+// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System.Reflection;
 using System.Xml;
 using log4net;

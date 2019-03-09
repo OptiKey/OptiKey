@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using System.IO;
 using System.Text;
 using CsvHelper;
 using JuliusSweetland.OptiKey.Enums;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Prism.Mvvm;
 

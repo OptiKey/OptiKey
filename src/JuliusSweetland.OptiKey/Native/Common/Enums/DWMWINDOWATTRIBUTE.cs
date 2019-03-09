@@ -1,4 +1,5 @@
-﻿namespace JuliusSweetland.OptiKey.Native.Common.Enums
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+namespace JuliusSweetland.OptiKey.Native.Common.Enums
 {
     // From: http://pinvoke.net/default.aspx/Enums/DWMWINDOWATTRIBUTE.html
     public enum DWMWINDOWATTRIBUTE : uint

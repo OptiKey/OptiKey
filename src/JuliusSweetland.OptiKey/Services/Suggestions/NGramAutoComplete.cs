@@ -1,4 +1,5 @@
-﻿using JuliusSweetland.OptiKey.Extensions;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using log4net;
 using System;

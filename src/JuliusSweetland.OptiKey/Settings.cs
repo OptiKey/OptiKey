@@ -1,4 +1,5 @@
-﻿namespace JuliusSweetland.OptiKey.Properties {
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+namespace JuliusSweetland.OptiKey.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

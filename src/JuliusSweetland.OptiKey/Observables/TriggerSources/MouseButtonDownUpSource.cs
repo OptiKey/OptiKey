@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using System;
 using System.Reactive.Linq;
 using System.Windows.Forms;
 using log4net;

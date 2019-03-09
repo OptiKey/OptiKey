@@ -1,4 +1,5 @@
-﻿namespace JuliusSweetland.OptiKey.Native.Irisbond.Enums
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+namespace JuliusSweetland.OptiKey.Native.Irisbond.Enums
 {
     // Result of the library initialization returned by Start
     public enum CALIBRATION_STATUS

@@ -1,4 +1,5 @@
-﻿using JuliusSweetland.OptiKey.Services.Suggestions;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using JuliusSweetland.OptiKey.Services.Suggestions;
 using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete

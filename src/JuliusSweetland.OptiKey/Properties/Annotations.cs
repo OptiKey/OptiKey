@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using System;
 
 #pragma warning disable 1591
 // ReSharper disable UnusedMember.Global

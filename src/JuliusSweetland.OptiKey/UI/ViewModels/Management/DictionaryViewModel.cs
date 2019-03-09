@@ -1,3 +1,4 @@
+// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System.Collections.ObjectModel;
 using System.Linq;
 using JuliusSweetland.OptiKey.Models;

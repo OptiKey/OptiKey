@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Models
 {
