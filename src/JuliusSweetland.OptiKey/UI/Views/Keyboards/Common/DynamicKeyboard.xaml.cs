@@ -25,7 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private string inputFilename;
         private XmlKeyboard keyboard;
 
-        public DynamicKeyboard(string inputFile, Action<double> resizeAction)
+        public DynamicKeyboard(string inputFile)
         {
             InitializeComponent();
             inputFilename = inputFile;
