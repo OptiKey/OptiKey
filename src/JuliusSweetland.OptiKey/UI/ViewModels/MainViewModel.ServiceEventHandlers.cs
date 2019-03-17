@@ -2232,6 +2232,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     SelectLanguage(Languages.UkrainianUkraine);
                     break;
 
+                case FunctionKeys.UrduPakistan:
+                    SelectLanguage(Languages.UrduPakistan);
+                    break;
+
                 case FunctionKeys.WebBrowsingKeyboard:
                     Log.Info("Changing keyboard to WebBrowsing.");
                     Keyboard = new WebBrowsing();

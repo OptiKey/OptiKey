@@ -34,12 +34,13 @@ using KoreanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Korean;
 using PolishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Polish;
 using PortugueseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Portuguese;
 using RussianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Russian;
+using SerbianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Serbian;
 using SlovakViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Slovak;
 using SlovenianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Slovenian;
 using SpanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Spanish;
 using TurkishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Turkish;
 using UkrainianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Ukrainian;
-using SerbianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Serbian;
+using UrduViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Urdu;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -251,6 +252,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.UkrainianUkraine:
                         newContent = new UkrainianViews.Alpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.UrduPakistan:
+                        newContent = new UrduViews.Alpha1 { DataContext = Keyboard };
+                        break;
                     default:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new EnglishViews.SimplifiedAlpha1 { DataContext = Keyboard }
@@ -271,6 +275,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.Alpha2 { DataContext = Keyboard };
+                        break;
+                    case Languages.UrduPakistan:
+                        newContent = new UrduViews.Alpha2 { DataContext = Keyboard };
                         break;
                 }
             }
@@ -357,7 +364,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.UkrainianUkraine:
                         newContent = new UkrainianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
-                    default:
+                    case Languages.UrduPakistan:
+                        newContent = new UrduViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                        default:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new EnglishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
                             : Settings.Default.UseAlphabeticalKeyboardLayout
@@ -375,6 +385,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.ConversationAlpha2 { DataContext = Keyboard };
+                        break;
+                    case Languages.UrduPakistan:
+                        newContent = new UrduViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
                 }
             }

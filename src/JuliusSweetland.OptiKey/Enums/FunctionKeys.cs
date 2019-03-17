@@ -235,6 +235,7 @@ namespace JuliusSweetland.OptiKey.Enums
         ToggleCaseOfPreviousCharacter,
         TurkishTurkey,
         UkrainianUkraine,
+        UrduPakistan,
         WebBrowsingKeyboard,
         YesQuestionResult
     }

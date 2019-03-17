@@ -537,6 +537,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.SPANISH_SPAIN, KeyValues.SpanishSpainKey, dictionary.ContainsKey(KeyValues.SpanishSpainKey) ? dictionary[KeyValues.SpanishSpainKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.TURKISH_TURKEY, KeyValues.TurkishTurkeyKey, dictionary.ContainsKey(KeyValues.TurkishTurkeyKey) ? dictionary[KeyValues.TurkishTurkeyKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.UKRAINIAN_UKRAINE, KeyValues.UkrainianUkraineKey, dictionary.ContainsKey(KeyValues.UkrainianUkraineKey) ? dictionary[KeyValues.UkrainianUkraineKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.URDU_PAKISTAN, KeyValues.UrduPakistanKey, dictionary.ContainsKey(KeyValues.UrduPakistanKey) ? dictionary[KeyValues.UrduPakistanKey] : (TimeSpan?)null),
                 }),
                 new KeyValueAndTimeSpanGroup(Resources.LOOK_TO_SCROLL_KEY_GROUP, new List<KeyValueAndTimeSpan>
                 {

@@ -1,6 +1,12 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+
+using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -12,7 +18,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public Output()
         {
             InitializeComponent();
-            Loaded += (sender, args) => NumberOfSuggestionsDisplayed = 4;
+            Loaded += (sender, args) =>
+            {
+                NumberOfSuggestionsDisplayed = 4;
+
+                Action<Languages> applyResourceLanguage = language =>
+                {
+                    Scratchpad.FlowDirection = language.ToCultureInfo().TextInfo.IsRightToLeft
+                        ? FlowDirection.RightToLeft
+                        : FlowDirection.LeftToRight;
+                };
+                Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(applyResourceLanguage);
+                applyResourceLanguage(Settings.Default.UiLanguage);
+            };
         }
 
         public static readonly DependencyProperty NumberOfSuggestionsDisplayedProperty =

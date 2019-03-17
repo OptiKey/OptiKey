@@ -568,6 +568,18 @@
     <Compile Include="UI\Views\Keyboards\Common\CommuniKate.xaml.cs">
       <DependentUpon>CommuniKate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Urdu\Alpha2.xaml.cs">
+      <DependentUpon>Alpha2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Urdu\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Urdu\ConversationAlpha2.xaml.cs">
+      <DependentUpon>ConversationAlpha2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Urdu\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\English\AlphabeticalAlpha1.xaml.cs">
       <DependentUpon>AlphabeticalAlpha1.xaml</DependentUpon>
     </Compile>
@@ -851,6 +863,10 @@
     <EmbeddedResource Include="Properties\Resources.uk-UA.resx" />
     <Content Include="..\..\ext\Irisbond\PGRFlyCapture.dll">
       <Link>PGRFlyCapture.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Properties\Resources.ur-PK.resx" />
+    <Content Include="Dictionaries\UrduPakistan.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="NOTES AND DISCLAIMER.txt">
@@ -1353,6 +1369,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Common\CommuniKate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Urdu\Alpha2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Urdu\Alpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Urdu\ConversationAlpha2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Urdu\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

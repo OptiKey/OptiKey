@@ -6025,6 +6025,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Urdu (Pakistan) / اردو (پاکستان).
+        /// </summary>
+        public static string URDU_PAKISTAN {
+            get {
+                return ResourceManager.GetString("URDU_PAKISTAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urdu
+        ///(Pakistan) /
+        ///اردو 
+        ///(پاکستان).
+        /// </summary>
+        public static string URDU_PAKISTAN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("URDU_PAKISTAN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please visit www.optikey.org to download latest version ({0})
         ///You can turn off update checks from the Management Console (ALT + M)..
         /// </summary>
