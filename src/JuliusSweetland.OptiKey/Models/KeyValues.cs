@@ -30,6 +30,16 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ClearScratchpadKey = new KeyValue(FunctionKeys.ClearScratchpad);
         public static readonly KeyValue CollapseDockKey = new KeyValue(FunctionKeys.CollapseDock);
         public static readonly KeyValue CombiningAcuteAccentKey = new KeyValue("\x0301");
+        public static readonly KeyValue CombiningArabicKasraKey = new KeyValue("\x0650");
+        public static readonly KeyValue CombiningArabicFathatanKey = new KeyValue("\x064B");
+        public static readonly KeyValue CombiningArabicDammaKey = new KeyValue("\x064F");
+        public static readonly KeyValue CombiningArabicLetterSuperscriptAlefKey = new KeyValue("\x0670");
+        public static readonly KeyValue CombiningArabicFathaKey = new KeyValue("\064E");
+        public static readonly KeyValue CombiningArabicHamzaAboveKey = new KeyValue("\x0654");
+        public static readonly KeyValue CombiningArabicShaddaKey = new KeyValue("\x0651");
+        public static readonly KeyValue CombiningArabicMaddahAboveKey = new KeyValue("\x0653");
+        public static readonly KeyValue CombiningArabicSmallHighLigatureSadWithLamWithAlefMaksuraKey = new KeyValue("\x06d6");
+        public static readonly KeyValue CombiningArabicSmallHighLigatureQafWithLamWithAlefMaksuraKey = new KeyValue("\x06d7");
         public static readonly KeyValue CombiningBreveKey = new KeyValue("\x0306");
         public static readonly KeyValue CombiningCaronOrHacekKey = new KeyValue("\x030C");
         public static readonly KeyValue CombiningCedillaKey = new KeyValue("\x0327");
@@ -507,7 +517,17 @@ namespace JuliusSweetland.OptiKey.Models
                     CombiningReversedCommaAboveOrRoughBreathingKey,
                     CombiningRingAboveKey,
                     CombiningRingBelowKey,
-                    CombiningTildeKey
+                    CombiningTildeKey,
+                    CombiningArabicKasraKey,
+                    CombiningArabicFathatanKey,
+                    CombiningArabicDammaKey,
+                    CombiningArabicLetterSuperscriptAlefKey,
+                    CombiningArabicFathaKey,
+                    CombiningArabicHamzaAboveKey,
+                    CombiningArabicShaddaKey,
+                    CombiningArabicMaddahAboveKey,
+                    CombiningArabicSmallHighLigatureSadWithLamWithAlefMaksuraKey,
+                    CombiningArabicSmallHighLigatureQafWithLamWithAlefMaksuraKey
                 };
             }
         }
