@@ -521,8 +521,12 @@
     <Compile Include="UI\Views\Keyboards\Common\Language.xaml.cs">
       <DependentUpon>Language.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Common\DynamicKeyboard.xaml.cs" />
-    <Compile Include="UI\Views\Keyboards\Common\DynamicKeyboardSelector.xaml.cs" />
+    <Compile Include="UI\Views\Keyboards\Common\DynamicKeyboard.xaml.cs">
+      <DependentUpon>DynamicKeyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\DynamicKeyboardSelector.xaml.cs">
+      <DependentUpon>DynamicKeyboardSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Common\Minimised.xaml.cs">
       <DependentUpon>Minimised.xaml</DependentUpon>
     </Compile>
@@ -782,6 +786,15 @@
     </Compile>
     <Compile Include="UI\Views\Keyboards\Ukrainian\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Urdu\NumericAndSymbols1.xaml.cs">
+      <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Urdu\NumericAndSymbols2.xaml.cs">
+      <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Urdu\NumericAndSymbols3.xaml.cs">
+      <DependentUpon>NumericAndSymbols3.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -1653,6 +1666,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Ukrainian\ConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Urdu\NumericAndSymbols1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Urdu\NumericAndSymbols2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Urdu\NumericAndSymbols3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

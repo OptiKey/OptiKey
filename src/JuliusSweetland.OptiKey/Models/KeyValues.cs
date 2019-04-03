@@ -382,7 +382,7 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-                { Languages.UrduPakistan, "ۓؤئژزڑںۂءآگيظضذڈثچخقفےسشغعمورنلہاکیطصھدٹپتبجح"
+                { Languages.UrduPakistan, "طصھدٹپتبجحمورنلہاکیقفےسشغعظضذڈثۃھچخژزڑںءآگاً"
                     .ToCharArray()
                     .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                     .ToList()

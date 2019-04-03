@@ -270,7 +270,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="8"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
-                      WidthSpan="2" 
+                      WidthSpan="4" 
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Case="None"

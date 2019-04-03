@@ -1,14 +1,14 @@
 <!--
 Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
-<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Common.NumericAndSymbols3"
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Urdu.NumericAndSymbols1"
                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                        xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
-                       xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+                       xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
 
@@ -59,50 +59,50 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Case="None"
-                      Text="†"
+                      Text="۱"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="†"/>
+                      Value="۱"/>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
-                      Text="‡"
+                      Text="۲"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="‡"/>
+                      Value="۲"/>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
-                      Text="№"
+                      Text="۳"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="№"/>
+                      Value="۳"/>
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
-                      Text="÷"
+                      Text="۴"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="÷"/>
+                      Value="۴"/>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
-                      Text="‰"
+                      Text="۵"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="‰"/>
+                      Value="۵"/>
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
-                      Text="‱"
+                      Text="۶"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="‱"/>
+                      Value="۶"/>
         <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
-                      Text="¶"
+                      Text="۷"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="¶"/>
+                      Value="۷"/>
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
-                      Text="§"
+                      Text="۸"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="§"/>
+                      Value="۸"/>
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
-                      Text="⇒"
+                      Text="۹"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⇒"/>
+                      Value="۹"/>
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
-                      Text="→"
+                      Text="۰"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="→"/>
+                      Value="۰"/>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource 3of3Icon}"
+                      SymbolGeometry="{StaticResource 1of3Icon}"
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.NumericAndSymbols2KeyboardKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MenuIcon}"
                       Text="{x:Static resx:Resources.MENU}"
@@ -110,45 +110,45 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Case="None"
-                      Text="⊃"
+                      Text="1"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⊃"/>
+                      Value="1"/>
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
-                      Text="⇔"
+                      Text="2"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⇔"/>
+                      Value="2"/>
         <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
-                      Text="↔"
+                      Text="3"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="↔"/>
+                      Value="3"/>
         <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
-                      Text="¬"
+                      Text="4"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="¬"/>
+                      Value="4"/>
         <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
-                      Text="∧"
+                      Text="5"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="∧"/>
+                      Value="5"/>
         <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
-                      Text="∨"
+                      Text="6"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="∨"/>
+                      Value="6"/>
         <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
-                      Text="⊕"
+                      Text="7"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⊕"/>
+                      Value="7"/>
         <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
-                      Text="⊻"
+                      Text="8"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⊻"/>
+                      Value="8"/>
         <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
-                      Text="⊤"
+                      Text="9"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⊤"/>
+                      Value="9"/>
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
-                      Text="⊥"
+                      Text="0"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⊥"/>
+                      Value="0"/>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource AlphaIcon}"
                       Text="{x:Static resx:Resources.ALPHA_1}"
@@ -166,33 +166,33 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.LeftShiftKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
-                      Text="∑"
+                      Text="+"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="∑"/>
+                      Value="+"/>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
-                      Text="∀"
+                      Text="-"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="∀"/>
+                      Value="-"/>
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
-                      Text="∃"
+                      Text="*"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="∃"/>
+                      Value="*"/>
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
-                      Text="∄"
+                      Text="/"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="∄"/>
+                      Value="/"/>
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
-                      Text="≡"
+                      Text="_"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="≡"/>
+                      Value="_"/>
         <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
-                      Text="⊢"
+                      Text="%"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⊢"/>
+                      Value="%"/>
         <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
-                      Text="⊨"
+                      Text="("
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⊨"/>
+                      Value="("/>
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
@@ -228,9 +228,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithDescription"
                       Value="{x:Static models:KeyValues.LeftAltKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
-                      Text="⋆"
+                      Text=")"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⋆"/>
+                      Value=")"/>
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
@@ -238,13 +238,13 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
         <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
-                      Text="⊬"
+                      Text=":"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⊬"/>
+                      Value=":"/>
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
-                      Text="⊭"
+                      Text=";"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="⊭"/>
+                      Value=";"/>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource EnterIcon}"
                       Text="{x:Static resx:Resources.ENTER}"

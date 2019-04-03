@@ -367,7 +367,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.UrduPakistan:
                         newContent = new UrduViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
-                        default:
+                    default:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new EnglishViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
                             : Settings.Default.UseAlphabeticalKeyboardLayout
@@ -445,17 +445,41 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.Mouse { DataContext = Keyboard };
             }
+            else if (Keyboard is ViewModelKeyboards.NumericAndSymbols1)
+            {
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                {
+                    case Languages.UrduPakistan:
+                        newContent = new UrduViews.NumericAndSymbols1 { DataContext = Keyboard };
+                        break;
+                    default:
+                        newContent = new CommonViews.NumericAndSymbols1 { DataContext = Keyboard };
+                        break;
+                }
+            }
             else if (Keyboard is ViewModelKeyboards.NumericAndSymbols2)
             {
-                newContent = new CommonViews.NumericAndSymbols2 { DataContext = Keyboard };
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                {
+                    case Languages.UrduPakistan:
+                        newContent = new UrduViews.NumericAndSymbols2 { DataContext = Keyboard };
+                        break;
+                    default:
+                        newContent = new CommonViews.NumericAndSymbols2 { DataContext = Keyboard };
+                        break;
+                }
             }
             else if (Keyboard is ViewModelKeyboards.NumericAndSymbols3)
             {
-                newContent = new CommonViews.NumericAndSymbols3 { DataContext = Keyboard };
-            }
-            else if (Keyboard is ViewModelKeyboards.NumericAndSymbols1)
-            {
-                newContent = new CommonViews.NumericAndSymbols1 { DataContext = Keyboard };
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                {
+                    case Languages.UrduPakistan:
+                        newContent = new UrduViews.NumericAndSymbols3 { DataContext = Keyboard };
+                        break;
+                    default:
+                        newContent = new CommonViews.NumericAndSymbols3 { DataContext = Keyboard };
+                        break;
+                }
             }
             else if (Keyboard is ViewModelKeyboards.PhysicalKeys)
             {

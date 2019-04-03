@@ -48,95 +48,16 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Output Grid.Row="0" Grid.Column="0"
-                         Grid.RowSpan="2" Grid.ColumnSpan="20" 
-                         ScratchpadWidthInKeys="6"
+                         Grid.RowSpan="2" Grid.ColumnSpan="22" 
+                         ScratchpadWidthInKeys="7"
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
-        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="ظ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0638;"/>
-        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="ض"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0636;"/>
-        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="ذ" 
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0630;"/>
-        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="ڈ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0688;"/>
-        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="ث"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x062b;"/>
-        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                      Text="&#x25CC;&#x0651;"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0651;"/>
-        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
-                      Text="ۃ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x06c3;"/>
-        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="ـ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0640;"/>
-        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
-                      Text="چ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0686;"/>
-        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                      Text="خ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x062e;"/>
-
-        <controls:Key Grid.Row="3" Grid.Column="0" />
-        <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
-                      Text="ژ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0698;"/>
-        <controls:Key Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"
-                      Text="ز"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0632;"/>
-        <controls:Key Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2"
-                      Text="ڑ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0691;"/>
-        <controls:Key Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2"
-                      Text="ں"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x06ba;"/>
-        <controls:Key Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2"
-                      Text="ۂ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x06c2;"/>
-        <controls:Key Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2"
-                      Text="ء"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0621;"/>
-        <controls:Key Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2"
-                      Text="آ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0622;"/>
-        <controls:Key Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2"
-                      Text="گ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x06af;"/>
-        <controls:Key Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2"
-                      Text="ي"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x064a;"/>
-        <controls:Key Grid.Row="3" Grid.Column="19"/>
-
-        <ContentControl Grid.Row="4" Grid.Column="0">
+        <ContentControl Grid.Row="2" Grid.Column="0">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -158,46 +79,146 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <controls:Key Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                      Text="&#x25CC;&#x0651;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.CombiningArabicShaddaKey}"/>
+        <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
+                      Text="ظ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0638;"/>
+        <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
+                      Text="ض"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0636;"/>
+        <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
+                      Text="ذ" 
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0630;"/>
+        <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"
+                      Text="ڈ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0688;"/>
+        <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2"
+                      Text="ث"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x062b;"/>
+        <controls:Key Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="2"
+                      Text="ۃ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x06c3;"/>
+        <controls:Key Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="2"
+                      Text="ھ" 
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x06be;"/>
+        <controls:Key Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="2"
+                      Text="چ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0686;"/>
+        <controls:Key Grid.Row="2" Grid.Column="19" Grid.ColumnSpan="2"
+                      Text="خ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x062e;"/>
+        <controls:Key Grid.Row="2" Grid.Column="21" />
+
+        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                      Text="&#x25CC;&#x0650;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.CombiningArabicKasraKey}"/>
+        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+                      Text="&#x25CC;&#x064F;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.CombiningArabicDammaKey}"/>
+        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
+                      Text="ژ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0698;"/>
+        <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
+                      Text="ز"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0632;"/>
+        <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
+                      Text="ڑ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0691;"/>
+        <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
+                      Text="ں"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x06ba;"/>
+        <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
+                      Text="ء"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0621;"/>
+        <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
+                      Text="آ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0622;"/>
+        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
+                      Text="گ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x06af;"/>
+        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
+                      Text="ـ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0640;"/>
+        <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                       Text="&#x25CC;&#x06d6;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x06d6;"/>
-        <controls:Key Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
+                      Value="{x:Static models:KeyValues.CombiningArabicSmallHighLigatureSadWithLamWithAlefMaksuraKey}"/>
+
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                      Text="&#x25CC;&#x064B;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.CombiningArabicFathatanKey}"/>
+        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+                      Text="&#x25CC;&#x064E;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.CombiningArabicFathaKey}"/>
+        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
+                      Text="،"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x060c;"/>
+        <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
+                      Text="&quot;"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0022;"/>
+        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="٭"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x066d;"/>
-        <controls:Key Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2"
-                      Text="ۓ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x06d3;"/>
-        <controls:Key Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="2"
-                      Text="ؤ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0624;"/>
-        <controls:Key Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="2"
-                      Text="ئ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0626;"/>
-        <controls:Key Grid.Row="4" Grid.Column="11" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
                       Text="؛"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x061b;"/>
-        <controls:Key Grid.Row="4" Grid.Column="13" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
                       Text="؟"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x061f;"/>
-        <controls:Key Grid.Row="4" Grid.Column="15" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
+                      Text="اً"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0627;&#x064b;"/>
+        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackOneKey}"/>
-        <controls:Key Grid.Row="4" Grid.Column="17" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackManyIcon}"
                       Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
-        <controls:Key Grid.Row="4" Grid.Column="19" />
+        <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
+                      Text="&#x25CC;&#x06d7;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.CombiningArabicSmallHighLigatureQafWithLamWithAlefMaksuraKey}"/>
         
         <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
@@ -218,26 +239,26 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Text=","
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value=","/>
-        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
-                      WidthSpan="2" 
+                      WidthSpan="3" 
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
-        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
                       Text="."
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="."/>
-        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
                       Text="'"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="'"/>
-        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>
-        <ContentControl Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
