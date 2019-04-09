@@ -452,6 +452,7 @@
     <Compile Include="UI\ValueConverters\IsSvgImage.cs" />
     <Compile Include="UI\ValueConverters\IsValidImage.cs" />
     <Compile Include="UI\ValueConverters\IsCommuniKateMenuKey.cs" />
+    <Compile Include="UI\ValueConverters\FontFamilyNotIn.cs" />
     <Compile Include="UI\ValueConverters\OverrideHasValue.cs" />
     <Compile Include="UI\ValueConverters\CloneBrush.cs" />
     <Compile Include="UI\ValueConverters\ObjectIsType.cs" />
@@ -996,6 +997,10 @@
     <Resource Include="Resources\Fonts\B612-BoldItalic.ttf" />
     <Resource Include="Resources\Fonts\B612-Italic.ttf" />
     <Resource Include="Resources\Fonts\B612-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Jameel Noori Nastaleeq Kasheeda.ttf" />
+    <Resource Include="Resources\Fonts\Jameel Noori Nastaleeq.ttf" />
+    <Resource Include="Resources\Fonts\Pak Nastaleeq %28Beta Release%29.ttf" />
+    <Resource Include="Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />

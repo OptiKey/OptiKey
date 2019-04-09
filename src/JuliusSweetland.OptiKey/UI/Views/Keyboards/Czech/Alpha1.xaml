@@ -152,10 +152,10 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="l"/>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
-                      Text="&#x25CC;&#x030C;"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{x:Static models:KeyValues.CombiningCaronOrHacekKey}"/>
+                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
+                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}"/>
         <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseIcon}"
                       Text="{x:Static resx:Resources.MOUSE}"
@@ -206,10 +206,10 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
-                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
+                      SymbolGeometry="{StaticResource BrowserIcon}"
+                      Text="{x:Static resx:Resources.WEB_BROWSING_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.WebBrowsingKeyboardKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseMagnifierIcon}"
                       Text="{x:Static resx:Resources.MAGNIFIER}"
@@ -230,13 +230,17 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithDescription"
                       Value="{x:Static models:KeyValues.LeftAltKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
+                      ShiftUpText="ů" ShiftDownText="Ů"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ů" />
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
                       Text=","
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value=","/>
-        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
+        <controls:Key Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
-                      WidthSpan="2" 
+                      WidthSpan="1" 
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
         <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
@@ -249,15 +253,15 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}" />
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="ů" ShiftDownText="Ů"
+                      Text="&#x25CC;&#x030C;"
+                      UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ů" />
+                      Value="{x:Static models:KeyValues.CombiningCaronOrHacekKey}" />
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource EnterIcon}"
                       Text="{x:Static resx:Resources.ENTER}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="&#x0a;" />
-        <!--Hex for "\n"-->
+                      Value="&#x0a;" /><!--Hex for "\n"-->
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseLeftClickIcon}"
                       Text="{x:Static resx:Resources.LEFT_CLICK_SPLIT_WITH_NEWLINE}"

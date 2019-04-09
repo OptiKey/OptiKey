@@ -166,10 +166,10 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="m"/>
         <controls:Key Grid.Row="3" Grid.Column="24" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource AlphaIcon}"
-                      Text="{x:Static resx:Resources.ALPHA_1}"
+                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
+                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.Alpha1KeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}"/>
         <controls:Key Grid.Row="3" Grid.Column="26" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseIcon}"
                       Text="{x:Static resx:Resources.MOUSE}"
@@ -229,10 +229,10 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="24" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
-                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
+                      SymbolGeometry="{StaticResource BrowserIcon}"
+                      Text="{x:Static resx:Resources.WEB_BROWSING_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.WebBrowsingKeyboardKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="26" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseMagnifierIcon}"
                       Text="{x:Static resx:Resources.MAGNIFIER}"

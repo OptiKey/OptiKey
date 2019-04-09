@@ -453,6 +453,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(UseUnicodeCompatibilityFontProperty, value); }
         }
 
+        public static readonly DependencyProperty UseUrduCompatibilityFontProperty =
+            DependencyProperty.Register("UseUrduCompatibilityFont", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool UseUrduCompatibilityFont
+        {
+            get { return (bool)GetValue(UseUrduCompatibilityFontProperty); }
+            set { SetValue(UseUrduCompatibilityFontProperty, value); }
+        }
+
         #endregion
 
         #region OnPropertyChanged

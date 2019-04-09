@@ -9,7 +9,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
                     xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
                     xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
-                    xmlns:keyboardBase="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base">
+                    xmlns:keyboardBase="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/OptiKey;component/Resources/Themes/Colours/Android.xaml" />
@@ -76,6 +77,13 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <valueConverters:ObjectIsType x:Key="ObjectIsType" />
             <valueConverters:CloneBrush x:Key="CloneBrush" />
             <valueConverters:OverrideHasValue x:Key="OverrideHasValue" />
+            <valueConverters:FontFamilyNotIn x:Key="NotInListOfUrduFonts">
+                <valueConverters:FontFamilyNotIn.Fonts>
+                    <system:String>/Resources/Fonts/#Fajer Noori Nastalique</system:String>
+                    <system:String>/Resources/Fonts/#Jameel Noori Nastaleeq</system:String>
+                    <system:String>/Resources/Fonts/#Pak Nastaleeq</system:String>
+                </valueConverters:FontFamilyNotIn.Fonts>
+            </valueConverters:FontFamilyNotIn>
 
             <Style x:Key="MainWindowStyle" TargetType="{x:Type windows:MainWindow}" BasedOn="{StaticResource {x:Type Window}}">
                 <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
@@ -190,6 +198,22 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <Setter Property="FontWeight" Value="Regular" />
                         <Setter Property="FontStretch" Value="Normal" />
                     </DataTrigger>
+
+                    <!--Use Urdu compatibility font (for rendering characters that may be unsupported in the user specified font)-->
+                    <!--Specifically this is used to render numbers on the Urdu numeric keyboard correctly as they share unicode
+                    points with other Arabic and Persian numbers, but are only displayed correctly if an Urdu specific font is used.
+                    See https://r12a.github.io/scripts/arabic/urdu#numbers for more.-->
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding Path=UseUrduCompatibilityFont, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
+                            <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily, Converter={StaticResource NotInListOfUrduFonts}, Mode=OneWay}" Value="True" />
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter Property="FontFamily" Value="/Resources/Fonts/#Jameel Noori Nastaleeq" />
+                            <Setter Property="FontWeight" Value="Regular" />
+                            <Setter Property="FontStretch" Value="Normal" />
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
                 </Style.Triggers>
             </Style>
 

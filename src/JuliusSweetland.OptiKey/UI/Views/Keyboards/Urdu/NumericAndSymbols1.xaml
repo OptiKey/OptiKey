@@ -59,42 +59,52 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۱"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۱"/>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۲"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۲"/>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۳"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۳"/>
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۴"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۴"/>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۵"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۵"/>
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۶"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۶"/>
         <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۷"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۷"/>
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۸"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۸"/>
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۹"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۹"/>
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="۰"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="۰"/>
@@ -166,14 +176,17 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.LeftShiftKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="٬"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="٬"/>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="٫"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="٫"/>
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
+                      UseUrduCompatibilityFont="True"
                       Text="٪"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="٪"/>

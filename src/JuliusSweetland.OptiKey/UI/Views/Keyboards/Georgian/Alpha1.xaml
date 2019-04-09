@@ -206,6 +206,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Text="{x:Static resx:Resources.MENU}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
+
         <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="{x:Static resx:Resources.CTRL}"
                       SharedSizeGroup="KeyWithDescription"
