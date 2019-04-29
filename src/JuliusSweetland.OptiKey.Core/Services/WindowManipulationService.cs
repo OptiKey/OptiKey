@@ -723,6 +723,10 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("CalculateDockSizeAndPositionInPx called with position:{0}, size:{1}", position, size);
 
+            // Check if screen bounds have changed (e.g. change in resolution)
+            screen = window.GetScreen();
+            screenBoundsInPx = new Rect(screen.Bounds.Left, screen.Bounds.Top, screen.Bounds.Width, screen.Bounds.Height);
+
             double x, y, width, height;
             double thicknessAsPercentage;
             if (overrideThicknessAsPercentage.HasValue)
