@@ -22,12 +22,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 NumberOfSuggestionsDisplayed = 4;
 
-                Action<Languages> applyResourceLanguage = language =>
-                {
-                    Scratchpad.FlowDirection = language.ToCultureInfo().TextInfo.IsRightToLeft
+                Action<Languages> applyResourceLanguage = language => Scratchpad.FlowDirection = language.ToCultureInfo().TextInfo.IsRightToLeft
                         ? FlowDirection.RightToLeft
                         : FlowDirection.LeftToRight;
-                };
                 Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(applyResourceLanguage);
                 applyResourceLanguage(Settings.Default.UiLanguage);
             };

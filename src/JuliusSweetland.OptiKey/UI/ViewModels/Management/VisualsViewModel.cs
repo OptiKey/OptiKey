@@ -18,10 +18,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private const string B612Url = "/Resources/Fonts/#B612";
         private const string B612MonoUrl = "/Resources/Fonts/#B612 Mono";
         private const string CharisSILUrl = "/Resources/Fonts/#CharisSIL";
-        private const string FajerNooriNastaliqueUrl = "/Resources/Fonts/#Fajer Noori Nastalique"; //Urdu (Pakistan) font
-        private const string JameelNooriNastaleeqUrl = "/Resources/Fonts/#Jameel Noori Nastaleeq"; //Urdu (Pakistan) font
+        public const string FajerNooriNastaliqueUrl = "/Resources/Fonts/#Fajer Noori Nastalique"; //Urdu (Pakistan) font
+        public const string JameelNooriNastaleeqUrl = "/Resources/Fonts/#Jameel Noori Nastaleeq"; //Urdu (Pakistan) font
         private const string MandatoryUrl = "/Resources/Fonts/#Mandatory";
-        private const string PakNastaleeqUrl = "/Resources/Fonts/#Pak Nastaleeq"; //Urdu (Pakistan) font
+        public const string PakNastaleeqUrl = "/Resources/Fonts/#Pak Nastaleeq"; //Urdu (Pakistan) font
         private const string RobotoUrl = "/Resources/Fonts/#Roboto";
         
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

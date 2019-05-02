@@ -603,10 +603,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                              IsReadOnly="True"
                                              CaretBrush="Transparent" 
                                              Padding="0" Margin="0" BorderThickness="0"
-                                             MaxWidth="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
-                                             FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}"
-                                             FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}"
-                                             FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}">
+                                             MaxWidth="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}">
                                             <TextBox.FontSize>
                                                 <MultiBinding Converter="{StaticResource FontSizeToFitLines}">
                                                     <MultiBinding.Bindings>
@@ -620,6 +617,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                 <Style TargetType="{x:Type TextBox}">
                                                     <Setter Property="Foreground" Value="{StaticResource ScratchpadForegroundBrush}" />
                                                     <Setter Property="Background" Value="{StaticResource ScratchpadBackgroundBrush}" />
+                                                    <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}" />
+                                                    <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}" />
+                                                    <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}" />
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding DataContext.ScratchpadIsDisabled, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="True">
                                                             <Setter Property="Foreground" Value="{StaticResource ScratchpadDisabledForegroundBrush}" />
@@ -772,11 +772,14 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                         </Style>
                                     </Border.Style>
                                     <StackPanel Margin="20">
-                                        <TextBlock TextWrapping="Wrap" FontWeight="Bold" Margin="5" HorizontalAlignment="Center" TextAlignment="Center" FontSize="25"
+                                        <TextBlock TextWrapping="Wrap" Margin="5" HorizontalAlignment="Center" TextAlignment="Center" FontSize="25"
                                                    Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}">
                                             <TextBlock.Style>
                                                 <Style TargetType="TextBlock">
                                                     <Setter Property="Foreground" Value="{StaticResource ToastNotificationForegroundBrush}" />
+                                                    <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}" />
+                                                    <Setter Property="FontWeight" Value="Bold" />
+                                                    <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}" />
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Path=NotificationType, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}" Value="{x:Static enums:NotificationTypes.Error}">
                                                             <Setter Property="Foreground" Value="{StaticResource ToastErrorNotificationForegroundBrush}" />
@@ -790,6 +793,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                             <TextBlock.Style>
                                                 <Style TargetType="TextBlock">
                                                     <Setter Property="Foreground" Value="{StaticResource ToastNotificationForegroundBrush}" />
+                                                    <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}" />
+                                                    <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}" />
+                                                    <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}" />
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Path=NotificationType, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}" Value="{x:Static enums:NotificationTypes.Error}">
                                                             <Setter Property="Foreground" Value="{StaticResource ToastErrorNotificationForegroundBrush}" />

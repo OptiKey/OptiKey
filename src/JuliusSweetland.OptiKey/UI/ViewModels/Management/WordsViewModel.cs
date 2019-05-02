@@ -352,7 +352,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get { return ForceCapsLock != Settings.Default.ForceCapsLock
+            get { return Settings.Default.UiLanguage != UiLanguage
+                    || ForceCapsLock != Settings.Default.ForceCapsLock
                     || Settings.Default.SuggestionMethod != SuggestionMethod
                     || Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation
                     || Settings.Default.PresageDatabaseLocation != PresageDatabaseLocation

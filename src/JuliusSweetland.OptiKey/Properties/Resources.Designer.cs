@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -1073,6 +1073,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We recommend changing the UiLanguage to Urdu to ensure typed Urdu text flows from right to left in the scratchpad.
+        ///Would you like OptiKey to automatically set the UiLanguage to Urdu?.
+        /// </summary>
+        public static string DEFAULT_UILANGUAGE_TO_URDU {
+            get {
+                return ResourceManager.GetString("DEFAULT_UILANGUAGE_TO_URDU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DEL.
         /// </summary>
         public static string DEL {
@@ -1938,6 +1948,17 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We recommend changing the font used in OptiKey to one which is fully compatible with Urdu.
+        ///If a font is used which is not Urdu specific then text, and especially numbers, may display incorrectly.
+        ///Would you like OptiKey to automatically set the font to Jameel Noori Nastaleeq?.
+        /// </summary>
+        public static string FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE {
+            get {
+                return ResourceManager.GetString("FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Force caps lock (shift locked down):.
         /// </summary>
         public static string FORCE_CAPS_LOCK {
@@ -2625,6 +2646,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string LANGUAGE_AND_VOICE_UPPER_CASE {
             get {
                 return ResourceManager.GetString("LANGUAGE_AND_VOICE_UPPER_CASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A language specific font is recommended.
+        /// </summary>
+        public static string LANGUAGE_SPECIFIC_FONT_RECOMMENDED {
+            get {
+                return ResourceManager.GetString("LANGUAGE_SPECIFIC_FONT_RECOMMENDED", resourceCulture);
             }
         }
         
@@ -5927,6 +5957,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string UI_LANGUAGE_LABEL {
             get {
                 return ResourceManager.GetString("UI_LANGUAGE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UI and Keyboard/Dictionary languages are different.
+        /// </summary>
+        public static string UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE {
+            get {
+                return ResourceManager.GetString("UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE", resourceCulture);
             }
         }
         

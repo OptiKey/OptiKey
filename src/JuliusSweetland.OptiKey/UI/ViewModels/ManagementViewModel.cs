@@ -1,4 +1,6 @@
 // Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+
+using System.Linq;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
@@ -7,6 +9,7 @@ using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
 using System.Windows;
+using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -73,6 +76,48 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         
         #region Methods
 
+        private void CoerceValues()
+        {
+            if (WordsViewModel.KeyboardAndDictionaryLanguage == Languages.UrduPakistan 
+                && WordsViewModel.UiLanguage != Languages.UrduPakistan)
+            {
+                ConfirmationRequest.Raise(
+                    new Confirmation
+                    {
+                        Title = Resources.UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE,
+                        Content = Resources.DEFAULT_UILANGUAGE_TO_URDU
+                    }, confirmation =>
+                    {
+                        if (confirmation.Confirmed)
+                        {
+                            Log.Info("Prompting user to change the UiLanguage to Urdu as the KeyboardAndDictionaryLanguage is Urdu. The UiLanguage controls whether the scratchpad has text flow RightToLeft, which Urdu requires.");
+                            WordsViewModel.UiLanguage = Languages.UrduPakistan;
+                        }
+                    });
+            }
+
+            if ((WordsViewModel.KeyboardAndDictionaryLanguage == Languages.UrduPakistan
+                || WordsViewModel.UiLanguage == Languages.UrduPakistan)
+                && !new[] { VisualsViewModel.FajerNooriNastaliqueUrl, VisualsViewModel.JameelNooriNastaleeqUrl, VisualsViewModel.PakNastaleeqUrl}.Contains(VisualsViewModel.FontFamily))
+            {
+                ConfirmationRequest.Raise(
+                    new Confirmation
+                    {
+                        Title = Resources.LANGUAGE_SPECIFIC_FONT_RECOMMENDED,
+                        Content = Resources.FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE
+                    }, confirmation =>
+                    {
+                        if (confirmation.Confirmed)
+                        {
+                            Log.Info("Prompting user to change the font to an Urdu compatible font. If another font is used then text (especially numbers which are only displayed correctly in Urdu if an Urdu font is used) may be displayed incorrectly.");
+                            VisualsViewModel.FontFamily = VisualsViewModel.JameelNooriNastaleeqUrl;
+                            VisualsViewModel.FontStretch = Enums.FontStretches.Normal;
+                            VisualsViewModel.FontWeight = Enums.FontWeights.Regular;
+                        }
+                    });
+            }
+        }
+
         private void ApplyChanges()
         {
             DictionaryViewModel.ApplyChanges();
@@ -86,6 +131,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void Ok(Window window)
         {
+            CoerceValues();
+
             if (ChangesRequireRestart)
             {
                 //Warn if restart required and prompt for Confirmation before restarting

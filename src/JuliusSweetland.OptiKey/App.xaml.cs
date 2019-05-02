@@ -89,7 +89,7 @@ namespace JuliusSweetland.OptiKey
             ((Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
 
             //Apply resource language (and listen for changes)
-            Action<Languages> applyResourceLanguage = language => OptiKey.Properties.Resources.Culture = language.ToCultureInfo();
+            Action<Languages> applyResourceLanguage = language => OptiKey.Properties.Resources.Culture = language.ToCultureInfo(); //Reloads resource file by culture code
             Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(applyResourceLanguage);
             applyResourceLanguage(Settings.Default.UiLanguage);
 
@@ -175,8 +175,15 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(mainWindowManipulationService);
                 mainWindow.WindowManipulationService = mainWindowManipulationService;
 
-				//Subscribing to the on closing events.
-				mainWindow.Closing += dictionaryService.OnAppClosing;
+                //Apply main window flow direction from UiLanguage
+                Action<Languages> applyResourceLanguage = language => mainWindow.ContextMenu.FlowDirection = language.ToCultureInfo().TextInfo.IsRightToLeft 
+                    ? FlowDirection.RightToLeft 
+                    : FlowDirection.LeftToRight;
+                Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(applyResourceLanguage);
+                applyResourceLanguage(Settings.Default.UiLanguage);
+
+                //Subscribing to the on closing events.
+                mainWindow.Closing += dictionaryService.OnAppClosing;
 
 				mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
