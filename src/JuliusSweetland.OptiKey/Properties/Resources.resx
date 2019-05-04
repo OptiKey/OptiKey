@@ -2327,4 +2327,7 @@ Would you like OptiKey to automatically set the font to Jameel Noori Nastaleeq?<
   <data name="UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE" xml:space="preserve">
     <value>UI and Keyboard/Dictionary languages are different</value>
   </data>
+  <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
+    <value>Type diacritic marks (accents etc) after letters:</value>
+  </data>
 </root>

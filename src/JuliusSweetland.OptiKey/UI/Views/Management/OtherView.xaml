@@ -93,16 +93,16 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <CheckBox Grid.Row="5" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding MagnifySuppressedForScrollingActions, Mode=TwoWay}" />
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ENABLED_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="6" Grid.Column="1" 
                               VerticalAlignment="Center"
-                              IsChecked="{Binding Debug, Mode=TwoWay}" />
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ENABLED_LABEL}" 
+                              IsChecked="{Binding LookToScrollEnabled, Mode=TwoWay}" />
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="7" Grid.Column="1" 
                               VerticalAlignment="Center"
-                              IsChecked="{Binding LookToScrollEnabled, Mode=TwoWay}" />
+                              IsChecked="{Binding Debug, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
 

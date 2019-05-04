@@ -5943,6 +5943,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type diacritic marks (accents etc) after letters:.
+        /// </summary>
+        public static string TYPE_DIACRITICS_AFTER_LETTERS {
+            get {
+                return ResourceManager.GetString("TYPE_DIACRITICS_AFTER_LETTERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User interface language: {0}.
         /// </summary>
         public static string UI_LANGUAGE_DESCRIPTION {

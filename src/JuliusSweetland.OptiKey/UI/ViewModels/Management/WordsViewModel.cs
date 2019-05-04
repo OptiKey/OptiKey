@@ -296,6 +296,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return forceCapsLock; }
             set { SetProperty(ref forceCapsLock, value); }
         }
+        
+        private bool typeDiacriticsAfterLetters;
+        public bool TypeDiacriticsAfterLetters
+        {
+            get { return typeDiacriticsAfterLetters; }
+            set { SetProperty(ref typeDiacriticsAfterLetters, value); }
+        }
 
         private bool autoAddSpace;
         public bool AutoAddSpace
@@ -382,6 +389,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             CommuniKateSpeakSelectedRate = Settings.Default.CommuniKateSpeakSelectedRate;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
             ForceCapsLock = Settings.Default.ForceCapsLock;
+            TypeDiacriticsAfterLetters = Settings.Default.TypeDiacriticsAfterLetters;
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
@@ -414,6 +422,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.CommuniKateSpeakSelectedRate = CommuniKateSpeakSelectedRate;
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;
             Settings.Default.ForceCapsLock = ForceCapsLock;
+            Settings.Default.TypeDiacriticsAfterLetters = TypeDiacriticsAfterLetters;
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;

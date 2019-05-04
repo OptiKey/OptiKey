@@ -394,17 +394,23 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                var keys = CombiningKeys.Concat(
-                    new List<KeyValue>
-                    {
-                        LeftAltKey,
-                        LeftCtrlKey,
-                        LeftShiftKey,
-                        LeftWinKey,
-                        MouseMagnifierKey,
-                        MultiKeySelectionIsOnKey
-                    })
-                    .ToList();
+                var keys = new List<KeyValue>
+                {
+                    LeftAltKey,
+                    LeftCtrlKey,
+                    LeftShiftKey,
+                    LeftWinKey,
+                    MouseMagnifierKey,
+                    MultiKeySelectionIsOnKey
+                };
+
+                if(!Settings.Default.TypeDiacriticsAfterLetters)
+                {
+                    //By default TypeDiacriticsAfterLetters is false and the default behaviour
+                    //is for the user to press down the diacritic key and then the letter.
+                    //Diacritics, therefore, have to be in the set which can be pressed down.
+                    keys = keys.Concat(CombiningKeys).ToList();
+                }
 
                 if (Settings.Default.KeySelectionTriggerSource == TriggerSources.KeyboardKeyDownsUps)
                 {

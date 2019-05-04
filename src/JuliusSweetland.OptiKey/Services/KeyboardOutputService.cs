@@ -463,7 +463,10 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProcessSingleKeyText(string capturedText)
         {
-            if (KeyValues.CombiningKeys.Any(k => k.String == capturedText))
+            //If the setting to type diacritics after letters is set to true then we want to apply the diacritic as soon as it is typed.
+            //Otherwise suppress it for now (it will be pressed down) and apply it when the next non-combining key is pressed.
+            if (!Settings.Default.TypeDiacriticsAfterLetters
+                && KeyValues.CombiningKeys.Any(k => k.String == capturedText))
             {
                 //These are dead keys - do nothing until we have a letter to combine the pressed dead keys with
                 Log.InfoFormat("Suppressing processing on {0} as it is a dead key", capturedText.ToPrintableString());
@@ -492,8 +495,7 @@ namespace JuliusSweetland.OptiKey.Services
             // TODO: This is a stub for future use
             throw new NotImplementedException();            
         }
-
-
+        
         private string CombineStringWithActiveDeadKeys(string input)
         {
             Log.InfoFormat("Combing dead keys (diacritics) on '{0}'", input);

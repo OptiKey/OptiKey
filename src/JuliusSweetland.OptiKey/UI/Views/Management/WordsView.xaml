@@ -44,6 +44,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}"
@@ -276,6 +277,12 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <CheckBox Grid.Row="10" Grid.Column="1"
                                 VerticalAlignment="Center"
                                 IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.TYPE_DIACRITICS_AFTER_LETTERS}"
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="11" Grid.Column="1"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding TypeDiacriticsAfterLetters, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
 
