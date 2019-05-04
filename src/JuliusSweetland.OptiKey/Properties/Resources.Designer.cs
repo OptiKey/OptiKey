@@ -5814,7 +5814,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tobii PCEyeMini.
+        ///   Looks up a localized string similar to Tobii PCEye Mini.
         /// </summary>
         public static string TOBII_PCEYE_MINI {
             get {
