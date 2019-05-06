@@ -36,8 +36,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OptiKeyLocaleGuideImages", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.StandardPlugins", "src\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj", "{0C8F0372-2D55-41BC-9730-4ACE3ED67452}"
 EndProject
-Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "JuliusSweetland.OptiKey.Setup", "setup\JuliusSweetland.OptiKey.Setup.aiproj", "{7CFA84D1-2AC8-4D37-B03A-5D64FB06C00C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
