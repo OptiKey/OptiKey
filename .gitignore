@@ -9,6 +9,7 @@
 
 # Release deployment, including certificates, etc
 deployment/
+JuliusSweetland.OptiKey.Setup-SetupFiles/
 
 # Jekyll site
 _site/
