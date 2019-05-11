@@ -215,10 +215,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
-                      Text="&#x25CC;&#x06d7;"
-                      UseUnicodeCompatibilityFont="True"
+                      Text="ئ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{x:Static models:KeyValues.CombiningArabicSmallHighLigatureQafWithLamWithAlefMaksuraKey}"/>
+                      Value="ئ"/>
         
         <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource CalibrateIcon}"

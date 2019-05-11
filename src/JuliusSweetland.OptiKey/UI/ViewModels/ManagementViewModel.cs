@@ -116,7 +116,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (confirmation.Confirmed)
                         {
                             Log.Info("Prompting user to change the font to an Urdu compatible font. If another font is used then text (especially numbers which are only displayed correctly in Urdu if an Urdu font is used) may be displayed incorrectly.");
-                            VisualsViewModel.FontFamily = VisualsViewModel.JameelNooriNastaleeqUrl;
+                            VisualsViewModel.FontFamily = VisualsViewModel.NafeesWebNaskhUrl;
                             VisualsViewModel.FontStretch = Enums.FontStretches.Normal;
                             VisualsViewModel.FontWeight = Enums.FontWeights.Regular;
                         }

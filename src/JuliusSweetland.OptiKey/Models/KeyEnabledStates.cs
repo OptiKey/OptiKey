@@ -1142,57 +1142,6 @@ namespace JuliusSweetland.OptiKey.Models
                                || keyValue == new KeyValue("گ")
                                || keyValue == new KeyValue("اً");
                     }
-
-                    //Small High Ligature Sad With Qaf With Alef Maksura
-                    if (keyStateService.KeyDownStates[KeyValues.CombiningArabicSmallHighLigatureQafWithLamWithAlefMaksuraKey].Value.IsDownOrLockedDown())
-                    {
-                        return keyValue == KeyValues.CombiningArabicSmallHighLigatureQafWithLamWithAlefMaksuraKey //Allow the Small High Ligature Qaf With Lam With Alef Maksura to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == new KeyValue("ط")
-                               || keyValue == new KeyValue("ص")
-                               || keyValue == new KeyValue("ھ")
-                               || keyValue == new KeyValue("د")
-                               || keyValue == new KeyValue("ٹ")
-                               || keyValue == new KeyValue("پ")
-                               || keyValue == new KeyValue("ت")
-                               || keyValue == new KeyValue("ب")
-                               || keyValue == new KeyValue("ج")
-                               || keyValue == new KeyValue("ح")
-                               || keyValue == new KeyValue("م")
-                               || keyValue == new KeyValue("و")
-                               || keyValue == new KeyValue("ر")
-                               || keyValue == new KeyValue("ن")
-                               || keyValue == new KeyValue("ل")
-                               || keyValue == new KeyValue("ہ")
-                               || keyValue == new KeyValue("ا")
-                               || keyValue == new KeyValue("ک")
-                               || keyValue == new KeyValue("ی")
-                               || keyValue == new KeyValue("ق")
-                               || keyValue == new KeyValue("ف")
-                               || keyValue == new KeyValue("ے")
-                               || keyValue == new KeyValue("س")
-                               || keyValue == new KeyValue("ش")
-                               || keyValue == new KeyValue("غ")
-                               || keyValue == new KeyValue("ع")
-                               || keyValue == new KeyValue("ظ")
-                               || keyValue == new KeyValue("ض")
-                               || keyValue == new KeyValue("ذ")
-                               || keyValue == new KeyValue("ڈ")
-                               || keyValue == new KeyValue("ث")
-                               || keyValue == new KeyValue("ۃ")
-                               || keyValue == new KeyValue("ھ")
-                               || keyValue == new KeyValue("چ")
-                               || keyValue == new KeyValue("خ")
-                               || keyValue == new KeyValue("ژ")
-                               || keyValue == new KeyValue("ز")
-                               || keyValue == new KeyValue("ڑ")
-                               || keyValue == new KeyValue("ں")
-                               || keyValue == new KeyValue("ء")
-                               || keyValue == new KeyValue("آ")
-                               || keyValue == new KeyValue("گ")
-                               || keyValue == new KeyValue("اً");
-                    }
                 }
 
                 return true;

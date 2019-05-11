@@ -1950,7 +1950,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to We recommend changing the font used in OptiKey to one which is fully compatible with Urdu.
         ///If a font is used which is not Urdu specific then text, and especially numbers, may display incorrectly.
-        ///Would you like OptiKey to automatically set the font to Jameel Noori Nastaleeq?.
+        ///Would you like OptiKey to automatically set the font to Nafees Web Naskh?.
         /// </summary>
         public static string FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE {
             get {
