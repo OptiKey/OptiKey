@@ -98,7 +98,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             if ((WordsViewModel.KeyboardAndDictionaryLanguage == Languages.UrduPakistan
                 || WordsViewModel.UiLanguage == Languages.UrduPakistan)
-                && !new[] { VisualsViewModel.FajerNooriNastaliqueUrl, VisualsViewModel.JameelNooriNastaleeqUrl, VisualsViewModel.PakNastaleeqUrl}.Contains(VisualsViewModel.FontFamily))
+                && !new[]
+                {
+                    VisualsViewModel.FajerNooriNastaliqueUrl,
+                    VisualsViewModel.JameelNooriNastaleeqUrl,
+                    VisualsViewModel.NafeesNastaleeqUrl,
+                    VisualsViewModel.NafeesPakistaniNaskhUrl,
+                    VisualsViewModel.NafeesRiqaUrl,
+                    VisualsViewModel.NafeesWebNaskhUrl,
+                    VisualsViewModel.PakNastaleeqUrl
+                }.Contains(VisualsViewModel.FontFamily))
             {
                 ConfirmationRequest.Raise(
                     new Confirmation

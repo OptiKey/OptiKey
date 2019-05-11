@@ -888,6 +888,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Resources\Fonts\B612-licence-epl-v10.html" />
+    <Content Include="Resources\Fonts\Nafees Web Naskh License Agreement.txt" />
+    <Content Include="Resources\Fonts\Nafees Nastaleeq License Agreement .txt" />
+    <Content Include="Resources\Fonts\Nafees Riqa License Agreement.txt" />
+    <Content Include="Resources\Fonts\Nafees Pakistani Naskh License Agreement.txt" />
     <Content Include="Resources\Presage\database.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1002,6 +1006,10 @@
     <Resource Include="Resources\Fonts\Jameel Noori Nastaleeq.ttf" />
     <Resource Include="Resources\Fonts\Pak Nastaleeq %28Beta Release%29.ttf" />
     <Resource Include="Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf" />
+    <Resource Include="Resources\Fonts\Nafees Nastaleeq v1.02.ttf" />
+    <Resource Include="Resources\Fonts\Nafees Riqa v1.0.ttf" />
+    <Resource Include="Resources\Fonts\Nafees Web Naskh.ttf" />
+    <Resource Include="Resources\Fonts\Nafees Pakistani Naskh v2.01.ttf" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />
@@ -1764,12 +1772,12 @@
   <ItemGroup>
     <PublishFile Include="External Libraries\Newtonsoft.Json.xml">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
