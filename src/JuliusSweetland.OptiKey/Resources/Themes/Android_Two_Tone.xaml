@@ -82,9 +82,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <valueConverters:FontFamilyNotIn.Fonts>
                     <system:String>/Resources/Fonts/#Fajer Noori Nastalique</system:String>
                     <system:String>/Resources/Fonts/#Jameel Noori Nastaleeq</system:String>
-                    <system:String>/Resources/Fonts/#Nafees Nastaleeq</system:String>
-                    <system:String>/Resources/Fonts/#Nafees Pakistani Naskh 2.01</system:String>
-                    <system:String>/Resources/Fonts/#Nafees Riqa v1.0</system:String>
                     <system:String>/Resources/Fonts/#Nafees Web Naskh</system:String>
                     <system:String>/Resources/Fonts/#Pak Nastaleeq</system:String>
                 </valueConverters:FontFamilyNotIn.Fonts>

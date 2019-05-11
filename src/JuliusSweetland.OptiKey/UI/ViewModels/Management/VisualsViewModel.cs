@@ -21,9 +21,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public const string FajerNooriNastaliqueUrl = "/Resources/Fonts/#Fajer Noori Nastalique"; //Urdu (Pakistan) font
         public const string JameelNooriNastaleeqUrl = "/Resources/Fonts/#Jameel Noori Nastaleeq"; //Urdu (Pakistan) font
         private const string MandatoryUrl = "/Resources/Fonts/#Mandatory";
-        public const string NafeesNastaleeqUrl = "/Resources/Fonts/#Nafees Nastaleeq"; //Urdu (Pakistan) font
-        public const string NafeesPakistaniNaskhUrl = "/Resources/Fonts/#Nafees Pakistani Naskh 2.01"; //Urdu (Pakistan) font
-        public const string NafeesRiqaUrl = "/Resources/Fonts/#Nafees Riqa v1.0"; //Urdu (Pakistan) font
         public const string NafeesWebNaskhUrl = "/Resources/Fonts/#Nafees Web Naskh"; //Urdu (Pakistan) font
         public const string PakNastaleeqUrl = "/Resources/Fonts/#Pak Nastaleeq"; //Urdu (Pakistan) font
         private const string RobotoUrl = "/Resources/Fonts/#Roboto";
@@ -68,9 +65,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, string>("Fajer Noori Nastalique (for Urdu)", FajerNooriNastaliqueUrl),
                     new KeyValuePair<string, string>("Jameel Noori Nastaleeq (for Urdu)", JameelNooriNastaleeqUrl),
                     new KeyValuePair<string, string>("Mandatory", MandatoryUrl),
-                    new KeyValuePair<string, string>("Nafees Nastaleeq (for Urdu)", NafeesNastaleeqUrl),
-                    new KeyValuePair<string, string>("Nafees Pakistani Naskh (for Urdu)", NafeesPakistaniNaskhUrl),
-                    new KeyValuePair<string, string>("Nafees Riqa (for Urdu)", NafeesRiqaUrl),
                     new KeyValuePair<string, string>("Nafees Web Naskh (for Urdu)", NafeesWebNaskhUrl),
                     new KeyValuePair<string, string>("Pak Nastaleeq (for Urdu)", PakNastaleeqUrl),
                     new KeyValuePair<string, string>("Roboto", RobotoUrl)
@@ -115,24 +109,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                         };
 
                     case MandatoryUrl:
-                        return new List<FontStretches>
-                        {
-                            Enums.FontStretches.Normal
-                        };
-
-                    case NafeesNastaleeqUrl:
-                        return new List<FontStretches>
-                        {
-                            Enums.FontStretches.Normal
-                        };
-
-                    case NafeesPakistaniNaskhUrl:
-                        return new List<FontStretches>
-                        {
-                            Enums.FontStretches.Normal
-                        };
-
-                    case NafeesRiqaUrl:
                         return new List<FontStretches>
                         {
                             Enums.FontStretches.Normal
@@ -184,15 +160,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                         return new List<FontWeights> { Enums.FontWeights.Regular };
 
                     case MandatoryUrl:
-                        return new List<FontWeights> { Enums.FontWeights.Regular };
-
-                    case NafeesNastaleeqUrl:
-                        return new List<FontWeights> { Enums.FontWeights.Regular };
-
-                    case NafeesPakistaniNaskhUrl:
-                        return new List<FontWeights> { Enums.FontWeights.Regular };
-
-                    case NafeesRiqaUrl:
                         return new List<FontWeights> { Enums.FontWeights.Regular };
 
                     case NafeesWebNaskhUrl:
