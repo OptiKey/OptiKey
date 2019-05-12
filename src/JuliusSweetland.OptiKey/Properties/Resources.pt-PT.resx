@@ -1825,7 +1825,7 @@ Slovenčina
     <value>Tobii Eye Tracker 4C</value>
   </data>
   <data name="TOBII_PCEYE_MINI" xml:space="preserve">
-    <value>Tobii PCEyeMini</value>
+    <value>Tobii PCEye Mini</value>
   </data>
   <data name="TOBII_X2_30" xml:space="preserve">
     <value>Tobii X2-30</value>
@@ -2315,14 +2315,17 @@ Française
 Gostaria que o OptiKey alterasse automaticamente o idioma para urdu?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
-    <value>Recomendamos alterar o tipo de letra usada pelo OptiKey para um que seja totalmente compatível com o urdu.
+    <value>Recomendamos alterar o tipo de letra usada pelo OptiKey para uma que seja totalmente compatível com o urdu.
 Se for usada um tipo de letra que não é específica do urdu, o texto e especialmente os números, podem ser mostrados incorretamente.
-Gostaria que o OptiKey alterasse automaticamente para o tipo de letra Jameel Noori Nastaleeq?</value>
+Gostaria que o OptiKey alterasse automaticamente para o tipo de letra Nafees Web Naskh?</value>
   </data>
   <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
     <value>É recomendável um tipo de letra específico</value>
   </data>
   <data name="UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE" xml:space="preserve">
     <value>O idioma da interface e o usado no teclado e no dicionário são diferentes</value>
+  </data>
+  <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
+    <value>Escrever diacríticos (acentos, cedilhas, etc.) após as letras:</value>
   </data>
 </root>
