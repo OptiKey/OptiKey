@@ -128,6 +128,9 @@ namespace JuliusSweetland.OptiKey
         {
             try
             {
+                // Output the user settings for debugging
+                logUserSettings();
+
                 Log.Info("Boot strapping the services and UI.");
 
                 //Apply theme
@@ -251,6 +254,31 @@ namespace JuliusSweetland.OptiKey
             {
                 Log.Error("Error starting up application", ex);
                 throw;
+            }
+        }
+
+        private void logUserSettings()
+        {
+
+            // If debug switched on, dump entire XML into log so we can replicate issues.
+            if (Settings.Default.Debug)
+            {
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
+                Log.Debug(config.FilePath);
+
+                // We read into a single string so we can print without log4net preamble on each line.
+                string configText = File.ReadAllText(config.FilePath);
+                Log.DebugFormat("\r\n{0}", configText);
+            }
+            // Otherwise just key: value pairs into log
+            else
+            {
+                Log.Info("Current user settings:");
+
+                foreach (SettingsProperty property in Settings.Default.Properties)
+                {
+                    Log.InfoFormat("  {0}: {1}", property.Name, Settings.Default[property.Name].ToString());
+                }
             }
         }
 
