@@ -18,139 +18,156 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     </UserControl.Resources>
 
     <Grid>
-        <Grid IsSharedSizeScope="True"
-              Visibility="{Binding DictionaryIsNotPresage, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" 
-                    Content="Load dictionary for review"   
-                    HorizontalAlignment="Left"
-                    Command="{Binding LoadCommand}" 
-                    Visibility="{Binding IsLoaded, Converter={StaticResource BooleanToVisibilityConverterInverse}}"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.DICTIONARY}" >
+
+            <Grid>
+                <Grid IsSharedSizeScope="True"
+                    Visibility="{Binding DictionaryIsNotPresage, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                                Text="{x:Static resx:Resources.LOAD_DICTIONARY_DESCRIPTION}" 
+                                Visibility="{Binding IsLoaded, Converter={StaticResource BooleanToVisibilityConverterInverse}}"
+                                Margin="5" />
+
+                    <Button Grid.Row="1" 
+                        Content="{x:Static resx:Resources.LOAD_DICTIONARY}"                            
+                        HorizontalAlignment="Left"
+                        Command="{Binding LoadCommand}" 
+                        Visibility="{Binding IsLoaded, Converter={StaticResource BooleanToVisibilityConverterInverse}}"
                     />
-            
-            <StackPanel Grid.Row="1"
+
+                    <StackPanel Grid.Row="2"
                         Orientation="Horizontal" 
                         HorizontalAlignment="Center"
                         Visibility="{Binding IsLoaded, Converter={StaticResource BooleanToVisibilityConverter}}"
                         >
-                <Label Content="{x:Static resx:Resources.ADD_NEW_ENTRY_TO_DICTIONARY}" 
-                       FontWeight="Bold"
-                       Margin="2" 
-                       VerticalAlignment="Center" />
-                <TextBox MinWidth="150" 
-                         Text="{Binding NewEntry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                         Margin="2" 
-                         VerticalAlignment="Center" />
-                <Button Content="{x:Static resx:Resources.ADD_DICTIONARY_ENTRY}" 
-                        Command="{Binding AddCommand}" 
-                        Margin="2" 
-                        VerticalAlignment="Center" />
-            </StackPanel>
-        
-            <ItemsControl Grid.Row="2"
-                          Width="Auto"
-                          HorizontalAlignment="Center"
-                          VirtualizingStackPanel.IsVirtualizing="True"
-                          ScrollViewer.CanContentScroll="True"
-                          AlternationCount="2"
-                          ItemsSource="{Binding Source={StaticResource EntriesCollectionViewSource}, Mode=OneWay}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid x:Name="ItemsGrid">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" MinWidth = "200" SharedSizeGroup="WordColumn" />
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="ToggleDeleteButtonColumn" />
-                            </Grid.ColumnDefinitions>
+                        <Label Content="{x:Static resx:Resources.ADD_NEW_ENTRY_TO_DICTIONARY}" 
+                            FontWeight="Bold"
+                            Margin="2" 
+                            VerticalAlignment="Center" />
+                        <TextBox MinWidth="150" 
+                            Text="{Binding NewEntry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            Margin="2" 
+                            VerticalAlignment="Center" />
+                        <Button Content="{x:Static resx:Resources.ADD_DICTIONARY_ENTRY}" 
+                            Command="{Binding AddCommand}" 
+                            Margin="2" 
+                            VerticalAlignment="Center" />
+                    </StackPanel>
 
-                            <TextBlock Grid.Column="0" 
-                                       Text="{Binding Entry}"
-                                       HorizontalAlignment="Left" 
-                                       VerticalAlignment="Center" 
-                                       Margin="50,2,50,2">
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Deleted}" Value="True">
-                                                <Setter Property="Foreground" Value="Red" />
-                                                <Setter Property="TextDecorations" Value="Strikethrough" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Added}" Value="True">
-                                                <Setter Property="Foreground" Value="Green" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>        
-                           </TextBlock>
+                    <ItemsControl Grid.Row="3"
+                        Width="Auto"
+                        HorizontalAlignment="Center"
+                        VirtualizingStackPanel.IsVirtualizing="True"
+                        ScrollViewer.CanContentScroll="True"
+                        AlternationCount="2"
+                        ItemsSource="{Binding Source={StaticResource EntriesCollectionViewSource}, Mode=OneWay}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="ItemsGrid">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" MinWidth = "300" SharedSizeGroup="WordColumn" />
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="ToggleDeleteButtonColumn" />
+                                    </Grid.ColumnDefinitions>
 
-                            <Button Grid.Column="1" 
+                                    <TextBlock Grid.Column="0" 
+                                    Text="{Binding Entry}"
+                                    HorizontalAlignment="Left" 
                                     VerticalAlignment="Center" 
-                                    MinWidth="100" 
-                                    Margin="50,2,50,2"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.ToggleDeleteCommand}" 
-                                    CommandParameter="{Binding Entry}">
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                                        <Setter Property="Content" Value="{x:Static resx:Resources.DELETE_DICTIONARY_ENTRY}" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Deleted}" Value="True">
-                                                <Setter Property="Content" Value="{x:Static resx:Resources.RESTORE_DICTIONARY_ENTRY}" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>        
-                            </Button>
-                        </Grid>
-                        <DataTemplate.Triggers>
-                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                                <Setter Property="Background" Value="White" TargetName="ItemsGrid"/>
-                            </Trigger>
-                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                                <Setter Property="Background" Value="Azure" TargetName="ItemsGrid"/>
-                            </Trigger>
-                        </DataTemplate.Triggers>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.Template>
-                    <ControlTemplate>
-                        <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
-                                Padding="{TemplateBinding Control.Padding}"
-                                BorderBrush="{TemplateBinding Border.BorderBrush}"
-                                Background="{TemplateBinding Panel.Background}"
-                                SnapsToDevicePixels="True">
-                            <ScrollViewer Padding="{TemplateBinding Control.Padding}" Focusable="False">
-                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
-                            </ScrollViewer>
-                        </Border>
-                    </ControlTemplate>
-                </ItemsControl.Template>
-            </ItemsControl>
-        </Grid>
+                                    Margin="50,2,50,2">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Deleted}" Value="True">
+                                                        <Setter Property="Foreground" Value="Red" />
+                                                        <Setter Property="TextDecorations" Value="Strikethrough" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Added}" Value="True">
+                                                        <Setter Property="Foreground" Value="Green" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
 
-        <Grid Grid.RowSpan="2" >
-            <Viewbox Stretch="Uniform">
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" 
-                           Text="{x:Static resx:Resources.DICTIONARY_IS_PRESAGE}" >
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding DictionaryIsNotPresage}" Value="True">
-                                    <Setter Property="Visibility" Value="Hidden" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Viewbox>
-        </Grid>
+                                    <Button Grid.Column="1" 
+                                VerticalAlignment="Center" 
+                                MinWidth="100" 
+                                Margin="50,2,50,2"
+                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.ToggleDeleteCommand}" 
+                                CommandParameter="{Binding Entry}">
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                                                <Setter Property="Content" Value="{x:Static resx:Resources.DELETE_DICTIONARY_ENTRY}" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Deleted}" Value="True">
+                                                        <Setter Property="Content" Value="{x:Static resx:Resources.RESTORE_DICTIONARY_ENTRY}" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                        <Setter Property="Background" Value="White" TargetName="ItemsGrid"/>
+                                    </Trigger>
+                                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                        <Setter Property="Background" Value="Azure" TargetName="ItemsGrid"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.Template>
+                            <ControlTemplate>
+                                <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                            Padding="{TemplateBinding Control.Padding}"
+                            BorderBrush="{TemplateBinding Border.BorderBrush}"
+                            Background="{TemplateBinding Panel.Background}"
+                            SnapsToDevicePixels="True">
+                                    <ScrollViewer Padding="{TemplateBinding Control.Padding}" Focusable="False">
+                                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                    </ScrollViewer>
+                                </Border>
+                            </ControlTemplate>
+                        </ItemsControl.Template>
+                    </ItemsControl>
+                </Grid>
+
+                <Grid Grid.RowSpan="2" >
+                    <Viewbox Stretch="Uniform">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" 
+                        Text="{x:Static resx:Resources.DICTIONARY_IS_PRESAGE}" >
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DictionaryIsNotPresage}" Value="True">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Viewbox>
+                </Grid>
+            </Grid>
+        </GroupBox>
     </Grid>
+
 </UserControl>

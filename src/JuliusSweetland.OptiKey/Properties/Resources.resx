@@ -2330,4 +2330,10 @@ Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value
   <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
     <value>Type diacritic marks (accents etc) after letters:</value>
   </data>
+  <data name="LOAD_DICTIONARY" xml:space="preserve">
+    <value>Load dictionary</value>
+  </data>
+  <data name="LOAD_DICTIONARY_DESCRIPTION" xml:space="preserve">
+    <value>Load the dictionary to review, add or delete words.</value>
+  </data>
 </root>

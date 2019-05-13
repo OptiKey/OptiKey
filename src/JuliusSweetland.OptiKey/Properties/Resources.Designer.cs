@@ -2762,6 +2762,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Load dictionary.
+        /// </summary>
+        public static string LOAD_DICTIONARY {
+            get {
+                return ResourceManager.GetString("LOAD_DICTIONARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load the dictionary to review, add or delete words..
+        /// </summary>
+        public static string LOAD_DICTIONARY_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("LOAD_DICTIONARY_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Look.
         /// </summary>
         public static string LOOK {
