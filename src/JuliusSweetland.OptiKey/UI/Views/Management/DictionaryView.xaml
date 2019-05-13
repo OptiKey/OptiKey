@@ -7,12 +7,14 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="EntriesCollectionViewSource" Source="{Binding Entries}" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <valueConverters:BoolToCustomValues TrueValue="Collapsed" FalseValue="Visible" x:Key="BooleanToVisibilityConverterInverse" />
     </UserControl.Resources>
 
     <Grid>
@@ -20,12 +22,22 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
               Visibility="{Binding DictionaryIsNotPresage, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-        
-            <StackPanel Grid.Row="0" 
+
+            <Button Grid.Row="0" Grid.Column="0" 
+                    Content="Load dictionary for review"   
+                    HorizontalAlignment="Left"
+                    Command="{Binding LoadCommand}" 
+                    Visibility="{Binding IsLoaded, Converter={StaticResource BooleanToVisibilityConverterInverse}}"
+                    />
+            
+            <StackPanel Grid.Row="1"
                         Orientation="Horizontal" 
-                        HorizontalAlignment="Center">
+                        HorizontalAlignment="Center"
+                        Visibility="{Binding IsLoaded, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        >
                 <Label Content="{x:Static resx:Resources.ADD_NEW_ENTRY_TO_DICTIONARY}" 
                        FontWeight="Bold"
                        Margin="2" 
@@ -40,7 +52,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         VerticalAlignment="Center" />
             </StackPanel>
         
-            <ItemsControl Grid.Row="1"
+            <ItemsControl Grid.Row="2"
                           VirtualizingStackPanel.IsVirtualizing="True"
                           ScrollViewer.CanContentScroll="True"
                           AlternationCount="2"

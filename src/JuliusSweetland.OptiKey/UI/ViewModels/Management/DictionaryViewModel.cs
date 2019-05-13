@@ -28,8 +28,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
             AddCommand = new DelegateCommand(Add, () => !string.IsNullOrEmpty(NewEntry));
             ToggleDeleteCommand = new DelegateCommand<string>(ToggleDelete, e => !string.IsNullOrEmpty(e));
-        
-            Load();
+            LoadCommand = new DelegateCommand(Load);
         }
         
         #endregion
@@ -66,10 +65,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return false; }
         }
-        
+
+        private bool isLoaded = false;
+        public bool IsLoaded
+        {
+            set { SetProperty(ref isLoaded, value); }
+            get { return isLoaded; }
+        }
+
         public DelegateCommand AddCommand { get; private set; }
-        public DelegateCommand<string> ToggleDeleteCommand { get; private set; }        
-        
+        public DelegateCommand<string> ToggleDeleteCommand { get; private set; }
+        public DelegateCommand LoadCommand { get; private set; }
+
         #endregion
         
         #region Methods
@@ -84,6 +91,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                         .OrderBy(e => e.Entry)
                         .ToList())
                 : null;
+
+            IsLoaded = true;
+
         }
         
         private void Add()
