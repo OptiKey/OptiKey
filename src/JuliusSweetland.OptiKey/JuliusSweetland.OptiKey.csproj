@@ -999,8 +999,6 @@
     <Resource Include="Resources\Fonts\B612-BoldItalic.ttf" />
     <Resource Include="Resources\Fonts\B612-Italic.ttf" />
     <Resource Include="Resources\Fonts\B612-Regular.ttf" />
-    <Resource Include="Resources\Fonts\Jameel Noori Nastaleeq Kasheeda.ttf" />
-    <Resource Include="Resources\Fonts\Jameel Noori Nastaleeq.ttf" />
     <Resource Include="Resources\Fonts\Pak Nastaleeq %28Beta Release%29.ttf" />
     <Resource Include="Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf" />
     <Resource Include="Resources\Fonts\Nafees Web Naskh.ttf" />
