@@ -101,7 +101,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 && !new[]
                 {
                     VisualsViewModel.FajerNooriNastaliqueUrl,
-                    VisualsViewModel.JameelNooriNastaleeqUrl,
                     VisualsViewModel.NafeesWebNaskhUrl,
                     VisualsViewModel.PakNastaleeqUrl
                 }.Contains(VisualsViewModel.FontFamily))

@@ -80,7 +80,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <valueConverters:FontFamilyNotIn x:Key="NotInListOfUrduFonts">
                 <valueConverters:FontFamilyNotIn.Fonts>
                     <system:String>/Resources/Fonts/#Fajer Noori Nastalique</system:String>
-                    <system:String>/Resources/Fonts/#Jameel Noori Nastaleeq</system:String>
                     <system:String>/Resources/Fonts/#Nafees Web Naskh</system:String>
                     <system:String>/Resources/Fonts/#Pak Nastaleeq</system:String>
                 </valueConverters:FontFamilyNotIn.Fonts>
@@ -210,7 +209,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily, Converter={StaticResource NotInListOfUrduFonts}, Mode=OneWay}" Value="True" />
                         </MultiDataTrigger.Conditions>
                         <MultiDataTrigger.Setters>
-                            <Setter Property="FontFamily" Value="/Resources/Fonts/#Jameel Noori Nastaleeq" />
+                            <Setter Property="FontFamily" Value="/Resources/Fonts/#Nafees Web Naskh" />
                             <Setter Property="FontWeight" Value="Regular" />
                             <Setter Property="FontStretch" Value="Normal" />
                         </MultiDataTrigger.Setters>

@@ -19,7 +19,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private const string B612MonoUrl = "/Resources/Fonts/#B612 Mono";
         private const string CharisSILUrl = "/Resources/Fonts/#CharisSIL";
         public const string FajerNooriNastaliqueUrl = "/Resources/Fonts/#Fajer Noori Nastalique"; //Urdu (Pakistan) font
-        public const string JameelNooriNastaleeqUrl = "/Resources/Fonts/#Jameel Noori Nastaleeq"; //Urdu (Pakistan) font
         private const string MandatoryUrl = "/Resources/Fonts/#Mandatory";
         public const string NafeesWebNaskhUrl = "/Resources/Fonts/#Nafees Web Naskh"; //Urdu (Pakistan) font
         public const string PakNastaleeqUrl = "/Resources/Fonts/#Pak Nastaleeq"; //Urdu (Pakistan) font
@@ -63,7 +62,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, string>("B612 Mono", B612MonoUrl),
                     new KeyValuePair<string, string>("Charis SIL", CharisSILUrl),
                     new KeyValuePair<string, string>("Fajer Noori Nastalique (for Urdu)", FajerNooriNastaliqueUrl),
-                    new KeyValuePair<string, string>("Jameel Noori Nastaleeq (for Urdu)", JameelNooriNastaleeqUrl),
                     new KeyValuePair<string, string>("Mandatory", MandatoryUrl),
                     new KeyValuePair<string, string>("Nafees Web Naskh (for Urdu)", NafeesWebNaskhUrl),
                     new KeyValuePair<string, string>("Pak Nastaleeq (for Urdu)", PakNastaleeqUrl),
@@ -97,12 +95,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                         };
 
                     case FajerNooriNastaliqueUrl:
-                        return new List<FontStretches>
-                        {
-                            Enums.FontStretches.Normal
-                        };
-
-                    case JameelNooriNastaleeqUrl:
                         return new List<FontStretches>
                         {
                             Enums.FontStretches.Normal
@@ -155,10 +147,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
                     case FajerNooriNastaliqueUrl:
                         return new List<FontWeights> { Enums.FontWeights.Regular };
-
-                    case JameelNooriNastaleeqUrl:
-                        return new List<FontWeights> { Enums.FontWeights.Regular };
-
+                        
                     case MandatoryUrl:
                         return new List<FontWeights> { Enums.FontWeights.Regular };
 

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Speech.Synthesis;
 using System.Windows;
@@ -193,8 +194,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         private async void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
         {
-            Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, 
-                !Settings.Default.MaryTTSEnabled ? voice : Settings.Default.MaryTTSVoice);
+            Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}' and delay {4}ms", textToSpeak, volume, rate, 
+                !Settings.Default.MaryTTSEnabled ? voice : Settings.Default.MaryTTSVoice, Settings.Default.SpeechDelay);
 
             if (string.IsNullOrEmpty(textToSpeak)) return;
 
