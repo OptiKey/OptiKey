@@ -107,6 +107,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="Text" Value="{Binding Path=ShiftUpText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                <Setter Property="FlowDirection" Value="{Binding Source={x:Static properties:Settings.Default}, Path=UiLanguageFlowDirection}" />
                 <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}" />
                 <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}" />
                 <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}" />
@@ -676,6 +677,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <TextBlock Text="{TemplateBinding Text}"
                                            TextWrapping="Wrap"
                                            TextAlignment="Center"
+                                           FlowDirection="{Binding Source={x:Static properties:Settings.Default}, Path=UiLanguageFlowDirection}"
                                            FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}"
                                            FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}"
                                            FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}"
@@ -773,7 +775,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     </Border.Style>
                                     <StackPanel Margin="20">
                                         <TextBlock TextWrapping="Wrap" Margin="5" HorizontalAlignment="Center" TextAlignment="Center" FontSize="25"
-                                                   Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}">
+                                                   Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}"
+                                                   FlowDirection="{Binding Source={x:Static properties:Settings.Default}, Path=UiLanguageFlowDirection}">
                                             <TextBlock.Style>
                                                 <Style TargetType="TextBlock">
                                                     <Setter Property="Foreground" Value="{StaticResource ToastNotificationForegroundBrush}" />
@@ -789,7 +792,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                             </TextBlock.Style>
                                         </TextBlock>
                                         <TextBlock TextWrapping="Wrap" Margin="5" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16"
-                                                   Text="{Binding Path=Content, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}">
+                                                   Text="{Binding Path=Content, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}"
+                                                   FlowDirection="{Binding Source={x:Static properties:Settings.Default}, Path=UiLanguageFlowDirection}">
                                             <TextBlock.Style>
                                                 <Style TargetType="TextBlock">
                                                     <Setter Property="Foreground" Value="{StaticResource ToastNotificationForegroundBrush}" />

@@ -18,16 +18,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public Output()
         {
             InitializeComponent();
-            Loaded += (sender, args) =>
-            {
-                NumberOfSuggestionsDisplayed = 4;
-
-                Action<Languages> applyResourceLanguage = language => Scratchpad.FlowDirection = language.ToCultureInfo().TextInfo.IsRightToLeft
-                        ? FlowDirection.RightToLeft
-                        : FlowDirection.LeftToRight;
-                Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(applyResourceLanguage);
-                applyResourceLanguage(Settings.Default.UiLanguage);
-            };
+            Loaded += (sender, args) => NumberOfSuggestionsDisplayed = 4;
         }
 
         public static readonly DependencyProperty NumberOfSuggestionsDisplayedProperty =

@@ -168,7 +168,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             </ContentControl.Style>
         </ContentControl>
         <controls:Scratchpad Grid.Row="1" Grid.Column="3" x:Name="Scratchpad"
-                             Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
+                             Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}"
+                             FlowDirection="{Binding Source={x:Static resx:Settings.Default}, Path=UiLanguageFlowDirection}" />
         <ContentControl Grid.Row="1" Grid.Column="4"
                         Visibility="{Binding EnableCommuniKateKeyboardLayout, Source={x:Static resx:Settings.Default}, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
             <ContentControl.Style>

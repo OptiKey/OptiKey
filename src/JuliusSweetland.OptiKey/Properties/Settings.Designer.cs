@@ -2627,5 +2627,17 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["TypeDiacriticsAfterLetters"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LeftToRight")]
+        public global::System.Windows.FlowDirection UiLanguageFlowDirection {
+            get {
+                return ((global::System.Windows.FlowDirection)(this["UiLanguageFlowDirection"]));
+            }
+            set {
+                this["UiLanguageFlowDirection"] = value;
+            }
+        }
     }
 }
