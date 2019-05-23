@@ -1,18 +1,22 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Speech.Synthesis;
 using System.Windows;
 using System.Net;
 using System.Text;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services.Audio;
 using log4net;
+using Microsoft.Win32.SafeHandles;
 using Un4seen.Bass;
+using SpeechLib;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -30,11 +34,16 @@ namespace JuliusSweetland.OptiKey.Services
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private readonly SpeechSynthesizer speechSynthesiser;
+        private SpVoice legacySpeechSynthesiser;
         private readonly SoundPlayerEx maryTtsPlayer;
 
         private readonly object speakCompletedLock = new object();
         private EventHandler<SpeakCompletedEventArgs> onSpeakCompleted;
+        private WaitOrTimerCallback legacySpeakCompleted;
         private EventHandler onMaryTtsSpeakCompleted;
+
+        private bool legacySpeechMode;
+        private readonly Dictionary<string, int> legacyVoiceToTokenIndexLookup = new Dictionary<string, int>();
 
         #endregion
 
@@ -73,7 +82,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 lock (speakCompletedLock)
                 {
-                    if (onSpeakCompleted == null && onMaryTtsSpeakCompleted == null)
+                    if (onSpeakCompleted == null && legacySpeakCompleted == null && onMaryTtsSpeakCompleted == null)
                     {
                         Speak(textToSpeak, onComplete, volume, rate, voice);
                         return true;
@@ -175,6 +184,12 @@ namespace JuliusSweetland.OptiKey.Services
         private void CancelSpeech()
         {
             Log.Info("Cancelling all speech");
+            if (legacySpeechMode)
+            {
+                Log.Warn("Cancel speech attempted, but using legacy speech synthesiser which does not support this.");
+                return;
+            }
+
             lock (speakCompletedLock)
             {
                 if (onSpeakCompleted != null)
@@ -204,18 +219,74 @@ namespace JuliusSweetland.OptiKey.Services
                 await Task.Delay(Settings.Default.SpeechDelay);
             }
 
-            if (!Settings.Default.MaryTTSEnabled)
+            if (Settings.Default.MaryTTSEnabled)
             {
-                //Default TTS
-                speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
-                speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
+                SpeakWithMaryTTS(textToSpeak, onComplete, volume, rate);
+            }
+            else
+            {
+                SpeakWithMicrosoftSpeechLibrary(textToSpeak, onComplete, volume, rate, voice);
+            }
+        }
 
-                var voiceToUse = voice ?? Settings.Default.SpeechVoice;
-                if (!string.IsNullOrWhiteSpace(voiceToUse))
+        private void SpeakWithMicrosoftSpeechLibrary(string textToSpeak, Action onComplete, int? volume, int? rate, string voice)
+        {
+            var voiceToUse = voice ?? Settings.Default.SpeechVoice;
+            if (!string.IsNullOrWhiteSpace(voiceToUse))
+            {
+                if (!legacySpeechMode)
                 {
                     try
                     {
                         speechSynthesiser.SelectVoice(voiceToUse);
+                        speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
+                        speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
+                    }
+                    catch (Exception exception)
+                    {
+                        var customException = new ApplicationException(string.Format(Resources.UNABLE_TO_SET_VOICE_WARNING,
+                            voiceToUse, voice == null ? Resources.VOICE_COMES_FROM_SETTINGS : null), exception);
+                        PublishError(this, customException);
+
+                        Log.Info("Switching to legacy speech mode and trying again...");
+                        legacySpeechMode = true;
+                    }
+                }
+
+                if (legacySpeechMode)
+                {
+                    Log.Info("Attempting speech using legacy mode.");
+                    try
+                    {
+                        if (legacySpeechSynthesiser == null)
+                        {
+                            //Lazy instantiate legacy speech synthesiser
+                            legacySpeechSynthesiser = new SpVoice();
+                        }
+
+                        var availableVoices = legacySpeechSynthesiser.GetVoices(string.Empty, string.Empty);
+                        if (legacyVoiceToTokenIndexLookup.ContainsKey(voiceToUse))
+                        {
+                            int voiceIndex = legacyVoiceToTokenIndexLookup[voiceToUse];
+                            Log.InfoFormat($"{voiceToUse} voice token exists at index {voiceIndex}. Setting voice on legacy speech synthesiser.");
+                            legacySpeechSynthesiser.Voice = availableVoices.Item(voiceIndex);
+                            Log.Info("Voice token set.");
+                        }
+                        else
+                        {
+                            for (int voiceIndex = 0; voiceIndex < availableVoices.Count; voiceIndex++)
+                            {
+                                var voiceToken = availableVoices.Item(voiceIndex);
+                                if (voiceToken.GetDescription() == voiceToUse)
+                                {
+                                    Log.InfoFormat($"{voiceToUse} voice token found at index {voiceIndex}. Setting voice on legacy speech synthesiser.");
+                                    legacyVoiceToTokenIndexLookup.Add(voiceToUse, voiceIndex);
+                                    legacySpeechSynthesiser.Voice = voiceToken;
+                                    Log.Info("Voice token set.");
+                                    break;
+                                }
+                            }
+                        }
                     }
                     catch (Exception exception)
                     {
@@ -224,7 +295,11 @@ namespace JuliusSweetland.OptiKey.Services
                         PublishError(this, customException);
                     }
                 }
+            }
 
+            //Speak
+            if (!legacySpeechMode)
+            {
                 onSpeakCompleted = (sender, args) =>
                 {
                     lock (speakCompletedLock)
@@ -234,7 +309,7 @@ namespace JuliusSweetland.OptiKey.Services
                             speechSynthesiser.SpeakCompleted -= onSpeakCompleted;
                             onSpeakCompleted = null;
                         }
-                        
+
                         if (onComplete != null)
                         {
                             onComplete();
@@ -246,49 +321,77 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else
             {
-                //MaryTTS
-                float maryTTSRate = rate ?? Settings.Default.SpeechRate;
-                float maryTTSVolume = volume ?? Settings.Default.SpeechVolume;
-
-                maryTTSRate = (maryTTSRate + 10.0f) / 20.0f * 3.0f;
-                maryTTSRate = maryTTSRate < 0.1f ? 0.1f
-                    : maryTTSRate > 3.0f ? 3.0f : maryTTSRate;
-
-                maryTTSVolume = maryTTSVolume / 100.0f * 1.0f;
-                maryTTSVolume = maryTTSVolume < 0.0f ? 0.0f 
-                    : maryTTSVolume > 1.0f ? 1.0f : maryTTSVolume;
-
-                List<string> voiceParameters = Settings.Default.MaryTTSVoice.Split(' ').ToList();
-
-                maryTtsPlayer.SoundLocation = "http://localhost:59125/process?"
-                                              + "INPUT_TYPE=TEXT&AUDIO=WAVE_FILE&"
-                                              + "LOCALE=" + voiceParameters.ElementAt(1) + "&"
-                                              + "VOICE=" + voiceParameters.ElementAt(0) + "&"
-                                              + "INPUT_TEXT=" + textToSpeak + "&"
-                                              + "OUTPUT_TYPE=AUDIO&"
-                                              + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
-                                              + string.Format("{0:N1}", maryTTSRate) + ";&"
-                                              + "effect_Volume_selected=on&effect_Volume_parameters=amount:"
-                                              + string.Format("{0:N1}", maryTTSVolume) + ";";
-
-                onMaryTtsSpeakCompleted = (sender, args) =>
+                //Legacy speech mode
+                if (legacySpeechSynthesiser != null)
                 {
-                    lock (speakCompletedLock)
+                    legacySpeechSynthesiser.Speak(textToSpeak, SpeechVoiceSpeakFlags.SVSFIsNotXML | SpeechVoiceSpeakFlags.SVSFlagsAsync);
+                    var speechHandle = legacySpeechSynthesiser.SpeakCompleteEvent();
+                    var speechHandlePtr = new IntPtr(speechHandle);
+                    if (speechHandlePtr != IntPtr.Zero)
                     {
-                        maryTtsPlayer.SoundFinished -= onMaryTtsSpeakCompleted;
-                        onMaryTtsSpeakCompleted = null;
-                        if (onComplete != null)
+                        var autoResetEvent = new AutoResetEvent(false)
                         {
-                            onComplete();
-                        }
+                            SafeWaitHandle = new SafeWaitHandle(speechHandlePtr, false)
+                        };
+                        var uiThreadDispatcher = Dispatcher.CurrentDispatcher;
+                        legacySpeakCompleted = (state, timedOut) =>
+                        {
+                            if (onComplete != null)
+                            {
+                                uiThreadDispatcher.Invoke(onComplete);
+                            }
+                            autoResetEvent.Dispose();
+                            legacySpeakCompleted = null;
+                        };
+                        ThreadPool.RegisterWaitForSingleObject(autoResetEvent, legacySpeakCompleted, null, 30000, true);
                     }
-                };
-
-                maryTtsPlayer.SoundFinished += onMaryTtsSpeakCompleted;
-#pragma warning disable 4014
-                maryTtsPlayer.PlayAsync(ex => PublishError(this, ex)); //Awaitable, but we don't want to await it
-#pragma warning restore 4014
+                }
             }
+        }
+
+        private void SpeakWithMaryTTS(string textToSpeak, Action onComplete, int? volume, int? rate)
+        {
+            float maryTTSRate = rate ?? Settings.Default.SpeechRate;
+            float maryTTSVolume = volume ?? Settings.Default.SpeechVolume;
+
+            maryTTSRate = (maryTTSRate + 10.0f) / 20.0f * 3.0f;
+            maryTTSRate = maryTTSRate < 0.1f ? 0.1f
+                : maryTTSRate > 3.0f ? 3.0f : maryTTSRate;
+
+            maryTTSVolume = maryTTSVolume / 100.0f * 1.0f;
+            maryTTSVolume = maryTTSVolume < 0.0f ? 0.0f
+                : maryTTSVolume > 1.0f ? 1.0f : maryTTSVolume;
+
+            List<string> voiceParameters = Settings.Default.MaryTTSVoice.Split(' ').ToList();
+
+            maryTtsPlayer.SoundLocation = "http://localhost:59125/process?"
+                                          + "INPUT_TYPE=TEXT&AUDIO=WAVE_FILE&"
+                                          + "LOCALE=" + voiceParameters.ElementAt(1) + "&"
+                                          + "VOICE=" + voiceParameters.ElementAt(0) + "&"
+                                          + "INPUT_TEXT=" + textToSpeak + "&"
+                                          + "OUTPUT_TYPE=AUDIO&"
+                                          + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
+                                          + string.Format("{0:N1}", maryTTSRate) + ";&"
+                                          + "effect_Volume_selected=on&effect_Volume_parameters=amount:"
+                                          + string.Format("{0:N1}", maryTTSVolume) + ";";
+
+            onMaryTtsSpeakCompleted = (sender, args) =>
+            {
+                lock (speakCompletedLock)
+                {
+                    maryTtsPlayer.SoundFinished -= onMaryTtsSpeakCompleted;
+                    onMaryTtsSpeakCompleted = null;
+                    if (onComplete != null)
+                    {
+                        onComplete();
+                    }
+                }
+            };
+
+            maryTtsPlayer.SoundFinished += onMaryTtsSpeakCompleted;
+#pragma warning disable 4014
+            maryTtsPlayer.PlayAsync(ex => PublishError(this, ex)); //Awaitable, but we don't want to await it
+#pragma warning restore 4014
         }
 
         #endregion
