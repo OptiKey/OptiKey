@@ -1355,5 +1355,8 @@
     <Setting Name="UiLanguageFlowDirection" Type="System.Windows.FlowDirection" Scope="User">
       <Value Profile="(Default)">LeftToRight</Value>
     </Setting>
+    <Setting Name="EnablePlugins" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
