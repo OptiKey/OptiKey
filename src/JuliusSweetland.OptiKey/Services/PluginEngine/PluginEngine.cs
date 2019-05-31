@@ -25,11 +25,14 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
         #region Public methods
 
-        public static void LoadAvailablePlugins()
+        public static void LoadAvailablePlugins(string pathName = "")
         {
-            var applicationDataPath = Settings.Default.PluginsLocation;
+            if (String.IsNullOrEmpty(pathName))
+            {
+                pathName = Settings.Default.PluginsLocation;
+            }
 
-            foreach (string file in Directory.GetFiles(applicationDataPath, "*.dll"))
+            foreach (string file in Directory.GetFiles(pathName, "*.dll"))
             {
                 List<Plugin> plugins = ValidateAndCreatePlugins(file);
                 foreach (Plugin plugin in plugins)
@@ -76,10 +79,10 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
             return availablePlugins.ContainsKey(pluginId);
         }
 
-        public static void RefreshAvailablePlugins()
+        public static void RefreshAvailablePlugins(string pathName)
         {
             availablePlugins = new Dictionary<string, Plugin>();
-            LoadAvailablePlugins();
+            LoadAvailablePlugins(pathName);
         }
 
         public static List<Plugin> GetAllAvailablePlugins()
