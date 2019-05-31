@@ -20,7 +20,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Filter = "Presaage Database (*.db)|*.db"
+                Filter = "Presage Database (*.db)|*.db"
             };
 
             if (openFileDialog.ShowDialog() == true)
