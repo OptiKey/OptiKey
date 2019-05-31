@@ -32,6 +32,28 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
         #region Properties
 
+
+        private bool enableQuitKeys;
+        public bool EnableQuitKeys
+        {
+            get { return enableQuitKeys; }
+            set { SetProperty(ref enableQuitKeys, value); }
+        }
+
+        private bool enableAttentionKey;
+        public bool EnableAttentionKey
+        {
+            get { return enableAttentionKey; }
+            set { SetProperty(ref enableAttentionKey, value); }
+        }
+
+        private bool enableCopyAllScratchpadKey;
+        public bool EnableCopyAllScratchpadKey
+        {
+            get { return enableCopyAllScratchpadKey; }
+            set { SetProperty(ref enableCopyAllScratchpadKey, value); }
+        }
+
         private string pluginsLocation;
         public string PluginsLocation
         {
@@ -69,12 +91,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
+            EnableQuitKeys = Settings.Default.EnableQuitKeys;
+            EnableAttentionKey = Settings.Default.EnableAttentionKey;
+            EnableCopyAllScratchpadKey = Settings.Default.EnableCopyAllScratchpadKey;
+
             PluginsLocation = Settings.Default.PluginsLocation;
             EnablePlugins = Settings.Default.EnablePlugins;
         }
 
         public void ApplyChanges()
         {
+            Settings.Default.EnableQuitKeys = EnableQuitKeys;
+            Settings.Default.EnableAttentionKey = EnableAttentionKey;
+            Settings.Default.EnableCopyAllScratchpadKey = EnableCopyAllScratchpadKey;
+
             Settings.Default.PluginsLocation = PluginsLocation;
             Settings.Default.EnablePlugins = EnablePlugins;
         }

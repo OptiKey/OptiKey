@@ -84,24 +84,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                             Minimum="10" Maximum="100" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_QUIT_KEYS_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="6" Grid.Column="1" 
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding EnableQuitKeys, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_ATTENTION_KEY_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="7" Grid.Column="1" 
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding EnableAttentionKey, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COPY_SCRATCHPAD_KEY_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="8" Grid.Column="1" 
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding EnableCopyAllScratchpadKey, Mode=TwoWay}" />
-
                     <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
