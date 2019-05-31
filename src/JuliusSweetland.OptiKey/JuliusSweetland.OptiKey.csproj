@@ -504,7 +504,7 @@
     <Compile Include="UI\ViewModels\Management\DictionaryViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\PointingAndSelectingViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\SoundsViewModel.cs" />
-    <Compile Include="UI\ViewModels\Management\PluginsViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\FeaturesViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
@@ -810,8 +810,8 @@
     <Compile Include="UI\Views\Management\DictionaryView.xaml.cs">
       <DependentUpon>DictionaryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Management\PluginsView.xaml.cs">
-      <DependentUpon>PluginsView.xaml</DependentUpon>
+    <Compile Include="UI\Views\Management\FeaturesView.xaml.cs">
+      <DependentUpon>FeaturesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Management\PointingAndSelectingView.xaml.cs">
       <DependentUpon>PointingAndSelectingView.xaml</DependentUpon>
@@ -1703,7 +1703,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Management\PluginsView.xaml">
+    <Page Include="UI\Views\Management\FeaturesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

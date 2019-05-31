@@ -59,7 +59,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
                 }
 
                 // TODO: do this with binding only
-                PluginsViewModel viewModel = this.DataContext as PluginsViewModel;
+                FeaturesViewModel viewModel = this.DataContext as FeaturesViewModel;
                 if (viewModel != null && !string.IsNullOrWhiteSpace(fileLocation))
                 {
                     viewModel.CommuniKatePagesetLocation = fileLocation;

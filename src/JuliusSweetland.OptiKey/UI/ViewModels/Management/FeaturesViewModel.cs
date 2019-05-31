@@ -13,7 +13,7 @@ using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
-    public class PluginsViewModel : BindableBase
+    public class FeaturesViewModel : BindableBase
     {
         #region Private Member Vars
 
@@ -23,7 +23,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
         #region Ctor
 
-        public PluginsViewModel()
+        public FeaturesViewModel()
         {
             Load();
         }
