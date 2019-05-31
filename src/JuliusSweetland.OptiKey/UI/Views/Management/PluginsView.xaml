@@ -47,12 +47,12 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 HorizontalAlignment="Right">
                             <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
                         </Button>
-                        <!-- Not fully working yet
+                        
                         <Button Click="RefreshAvailablePlugins" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
                             <x:Static Member="resx:Resources.REFRESH_PLUGINS_BUTTON"/>
-                        </Button>-->
+                        </Button>
                     </StackPanel>
                 </Grid>
             </GroupBox>
