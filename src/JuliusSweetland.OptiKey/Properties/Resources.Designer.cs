@@ -848,6 +848,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Conversation options.
+        /// </summary>
+        public static string CONVERSATION_OPTIONS {
+            get {
+                return ResourceManager.GetString("CONVERSATION_OPTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy All.
         /// </summary>
         public static string COPY_ALL_FROM_SCRATCHPAD {
@@ -1710,6 +1719,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string EXPAND_UP_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("EXPAND_UP_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra features.
+        /// </summary>
+        public static string EXTRA_FEATURES {
+            get {
+                return ResourceManager.GetString("EXTRA_FEATURES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra keys.
+        /// </summary>
+        public static string EXTRA_KEYS {
+            get {
+                return ResourceManager.GetString("EXTRA_KEYS", resourceCulture);
             }
         }
         
@@ -5975,6 +6002,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TYPE_DIACRITICS_AFTER_LETTERS {
             get {
                 return ResourceManager.GetString("TYPE_DIACRITICS_AFTER_LETTERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typing options.
+        /// </summary>
+        public static string TYPING_OPTIONS {
+            get {
+                return ResourceManager.GetString("TYPING_OPTIONS", resourceCulture);
             }
         }
         

@@ -20,9 +20,56 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.PLUGINS_LABEL}">
+            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.EXTRA_KEYS}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.CONVERSATION_OPTIONS}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    
+                    
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.TYPING_OPTIONS}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </GroupBox>
+            
+            <GroupBox Grid.Row="3" Header="{x:Static resx:Resources.PLUGINS_LABEL}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -67,7 +114,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 </Grid>
             </GroupBox>
 
-            <GroupBox Grid.Row="1" 
+            <GroupBox Grid.Row="4" 
                       Header="{x:Static resx:Resources.AVAILABLE_PLUGINS_LABEL}"
                       Visibility="{Binding EnablePlugins, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
                 <Grid>
