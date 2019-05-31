@@ -2336,4 +2336,7 @@ Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value
   <data name="LOAD_DICTIONARY_DESCRIPTION" xml:space="preserve">
     <value>Load the dictionary to review, add or delete words.</value>
   </data>
+  <data name="ENABLE_PLUGINS" xml:space="preserve">
+    <value>Enable plugins</value>
+  </data>
 </root>
