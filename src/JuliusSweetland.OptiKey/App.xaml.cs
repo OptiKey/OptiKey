@@ -278,7 +278,7 @@ namespace JuliusSweetland.OptiKey
 
                 foreach (SettingsProperty property in Settings.Default.Properties)
                 {
-                    Log.InfoFormat("  {0}: {1}", property.Name, Settings.Default[property.Name].ToString());
+                    Log.InfoFormat("  {0}: {1}", property.Name, Settings.Default[property.Name]);
                 }
             }
         }
