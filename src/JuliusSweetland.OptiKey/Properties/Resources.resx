@@ -1951,7 +1951,7 @@ from the Management Console (ALT + M).</value>
     <value>Use CommuniKate keyboard layout</value>
   </data>
   <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Enable CommuniKate keyboard layout:</value>
+    <value>Enable CommuniKate key?</value>
   </data>
   <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
     <value>CommuniKate top page obf file:</value>

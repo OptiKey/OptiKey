@@ -7,6 +7,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
 
@@ -23,6 +24,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.EXTRA_KEYS}">
@@ -32,6 +34,11 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -54,6 +61,12 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <CheckBox Grid.Row="2" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding EnableCopyAllScratchpadKey, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
+                               VerticalAlignment="Center" Margin="5" Visibility="Visible" />
+                    <CheckBox Grid.Row="3" Grid.Column="1"
+                              VerticalAlignment="Center" Visibility="Visible"
+                              IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" />
 
                 </Grid>
             </GroupBox>
@@ -86,8 +99,205 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </Grid.RowDefinitions>
                 </Grid>
             </GroupBox>
+
+            <GroupBox Grid.Row="3" Header="{x:Static resx:Resources.COMMUNIKATE}"
+                                           Visibility="{Binding EnableCommuniKateKeyboardLayout, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
+                            VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    
+                    <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Click="btnFindCommuniKateTopPageLocation_Click" MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
+                            <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
+                        </Button>
+                        <TextBlock Name="txtCommuniKateTopPageLocation"
+                                Text="{Binding CommuniKatePagesetLocation, Mode=TwoWay}" 
+                                VerticalAlignment="Center" Margin="5" >
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                    </StackPanel>
+                    
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SOUND_VOLUME_LABEL}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="1" Interval="1" Maximum="100"
+                                            Value="{Binding CommuniKateSoundVolume, Mode=TwoWay}" >
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_LABEL}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <CheckBox Grid.Row="7" Grid.Column="1"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding CommuniKateSpeakSelected, Mode=TwoWay}" >
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="1" Interval="1" Maximum="100"
+                                            Value="{Binding CommuniKateSpeakSelectedVolume, Mode=TwoWay}" >
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="1" Interval="1" Maximum="100"
+                                            Value="{Binding CommuniKateSpeakSelectedRate, Mode=TwoWay}" >
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+                    
+                </Grid>
+            </GroupBox>
             
-            <GroupBox Grid.Row="3" Header="{x:Static resx:Resources.PLUGINS_LABEL}">
+            <GroupBox Grid.Row="4" Header="{x:Static resx:Resources.PLUGINS_LABEL}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -132,7 +342,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 </Grid>
             </GroupBox>
 
-            <GroupBox Grid.Row="4" 
+            <GroupBox Grid.Row="5" 
                       Header="{x:Static resx:Resources.AVAILABLE_PLUGINS_LABEL}"
                       Visibility="{Binding EnablePlugins, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
                 <Grid>

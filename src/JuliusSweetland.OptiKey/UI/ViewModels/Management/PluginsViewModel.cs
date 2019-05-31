@@ -54,6 +54,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref enableCopyAllScratchpadKey, value); }
         }
 
+        private bool enableCommuniKateKeyboardLayout;
+        public bool EnableCommuniKateKeyboardLayout
+        {
+            get { return enableCommuniKateKeyboardLayout; }
+            set
+            {
+                SetProperty(ref enableCommuniKateKeyboardLayout, value);
+            }
+        }
+
         private string pluginsLocation;
         public string PluginsLocation
         {
@@ -71,10 +81,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get
-            {
-                // TODO
-                return false;
+            get {
+                return  Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation;
             }
         }
 
@@ -87,6 +95,51 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #endregion
 
+        #region Communikate properties
+        private string communiKatePagesetLocation;
+        public string CommuniKatePagesetLocation
+        {
+            get { return communiKatePagesetLocation; }
+            set { SetProperty(ref communiKatePagesetLocation, value); }
+        }
+
+        private bool communiKateStagedForDeletion;
+        public bool CommuniKateStagedForDeletion
+        {
+            get { return communiKateStagedForDeletion; }
+            set { SetProperty(ref communiKateStagedForDeletion, value); }
+        }
+
+        private int communiKateSoundVolume;
+        public int CommuniKateSoundVolume
+        {
+            get { return communiKateSoundVolume; }
+            set { SetProperty(ref communiKateSoundVolume, value); }
+        }
+
+        private bool communiKateSpeakSelected;
+        public bool CommuniKateSpeakSelected
+        {
+            get { return communiKateSpeakSelected; }
+            set { SetProperty(ref communiKateSpeakSelected, value); }
+        }
+
+        private int communiKateSpeakSelectedVolume;
+        public int CommuniKateSpeakSelectedVolume
+        {
+            get { return communiKateSpeakSelectedVolume; }
+            set { SetProperty(ref communiKateSpeakSelectedVolume, value); }
+        }
+
+        private int communiKateSpeakSelectedRate;
+        public int CommuniKateSpeakSelectedRate
+        {
+            get { return communiKateSpeakSelectedRate; }
+            set { SetProperty(ref communiKateSpeakSelectedRate, value); }
+        }
+
+        #endregion
+
         #region Methods
 
         private void Load()
@@ -94,6 +147,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
             EnableAttentionKey = Settings.Default.EnableAttentionKey;
             EnableCopyAllScratchpadKey = Settings.Default.EnableCopyAllScratchpadKey;
+
+            EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
+            CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
+            CommuniKateStagedForDeletion = Settings.Default.CommuniKateStagedForDeletion;
+            CommuniKateSoundVolume = Settings.Default.CommuniKateSoundVolume;
+            CommuniKateSpeakSelected = Settings.Default.CommuniKateSpeakSelected;
+            CommuniKateSpeakSelectedVolume = Settings.Default.CommuniKateSpeakSelectedVolume;
+            CommuniKateSpeakSelectedRate = Settings.Default.CommuniKateSpeakSelectedRate;
 
             PluginsLocation = Settings.Default.PluginsLocation;
             EnablePlugins = Settings.Default.EnablePlugins;
@@ -104,6 +165,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
             Settings.Default.EnableAttentionKey = EnableAttentionKey;
             Settings.Default.EnableCopyAllScratchpadKey = EnableCopyAllScratchpadKey;
+
+            Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
+            Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;
+            Settings.Default.CommuniKateStagedForDeletion = CommuniKateStagedForDeletion;
+            Settings.Default.CommuniKateSoundVolume = CommuniKateSoundVolume;
+            Settings.Default.CommuniKateSpeakSelected = CommuniKateSpeakSelected;
+            Settings.Default.CommuniKateSpeakSelectedVolume = CommuniKateSpeakSelectedVolume;
+            Settings.Default.CommuniKateSpeakSelectedRate = CommuniKateSpeakSelectedRate;
 
             Settings.Default.PluginsLocation = PluginsLocation;
             Settings.Default.EnablePlugins = EnablePlugins;

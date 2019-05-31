@@ -1381,7 +1381,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable CommuniKate keyboard layout:.
+        ///   Looks up a localized string similar to Enable CommuniKate key?.
         /// </summary>
         public static string ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT {
             get {
