@@ -1723,15 +1723,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Extra features.
-        /// </summary>
-        public static string EXTRA_FEATURES {
-            get {
-                return ResourceManager.GetString("EXTRA_FEATURES", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Extra keys.
         /// </summary>
         public static string EXTRA_KEYS {
@@ -1926,6 +1917,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string FALLING_SOUND_2 {
             get {
                 return ResourceManager.GetString("FALLING_SOUND_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra features.
+        /// </summary>
+        public static string FEATURES {
+            get {
+                return ResourceManager.GetString("FEATURES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra features.
+        /// </summary>
+        public static string FEATURES_LABEL {
+            get {
+                return ResourceManager.GetString("FEATURES_LABEL", resourceCulture);
             }
         }
         

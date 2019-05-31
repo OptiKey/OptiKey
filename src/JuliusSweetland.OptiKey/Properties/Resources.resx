@@ -2339,7 +2339,7 @@ Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value
   <data name="ENABLE_PLUGINS" xml:space="preserve">
     <value>Enable plugins</value>
   </data>
-  <data name="EXTRA_FEATURES" xml:space="preserve">
+  <data name="FEATURES_LABEL" xml:space="preserve">
     <value>Extra features</value>
   </data>
   <data name="CONVERSATION_OPTIONS" xml:space="preserve">
@@ -2350,5 +2350,8 @@ Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value
   </data>
   <data name="TYPING_OPTIONS" xml:space="preserve">
     <value>Typing options</value>
+  </data>
+  <data name="FEATURES" xml:space="preserve">
+    <value>Extra features</value>
   </data>
 </root>
