@@ -12,6 +12,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="AvailablePluginsCollectionViewSource" Source="{Binding AvailablePlugins}" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
@@ -29,13 +30,22 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.PLUGINS_LOCATION_LABEL}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_PLUGINS}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="0" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding EnablePlugins, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.PLUGINS_LOCATION_LABEL}" 
+                               Visibility="{Binding EnablePlugins, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                                VerticalAlignment="Center" Margin="5" >
                     </TextBlock>
-
-                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                    
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
+                                Visibility="{Binding EnablePlugins, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
                         <TextBlock Name="txtPluginsLocation"
                                    Text="{Binding PluginsLocation, Mode=TwoWay}" 
                                    HorizontalAlignment="Left" 
@@ -57,7 +67,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 </Grid>
             </GroupBox>
 
-            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.AVAILABLE_PLUGINS_LABEL}">
+            <GroupBox Grid.Row="1" 
+                      Header="{x:Static resx:Resources.AVAILABLE_PLUGINS_LABEL}"
+                      Visibility="{Binding EnablePlugins, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
                 <Grid>
                     <ItemsControl 
                           VirtualizingStackPanel.IsVirtualizing="True"

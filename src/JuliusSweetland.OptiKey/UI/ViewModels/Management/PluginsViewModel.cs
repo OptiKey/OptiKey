@@ -56,6 +56,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        private bool enablePlugins;
+        public bool EnablePlugins
+        {
+            get { return enablePlugins; }
+            set { SetProperty(ref enablePlugins, value); }
+        }
+
         #endregion
 
         #region Methods
@@ -63,11 +70,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private void Load()
         {
             PluginsLocation = Settings.Default.PluginsLocation;
+            EnablePlugins = Settings.Default.EnablePlugins;
         }
 
         public void ApplyChanges()
         {
             Settings.Default.PluginsLocation = PluginsLocation;
+            Settings.Default.EnablePlugins = EnablePlugins;
         }
 
         #endregion
