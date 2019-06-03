@@ -14,6 +14,7 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly List<KeyValueAndTimeSpan> keyValueAndTimeSpans;
         private TimeSpan? commonTimeSpan;
         private bool monitorHierarchy = true;
+        private bool containsVarious = false;
 
         public KeyValueAndTimeSpanGroup(string name, List<KeyValueAndTimeSpan> keyValueAndTimeSpans)
         {
@@ -29,6 +30,11 @@ namespace JuliusSweetland.OptiKey.Models
                                                   .Count() == 1
                     ? keyValueAndTimeSpans.First().TimeSpanTotalMilliseconds
                     : null;
+                bool atLeastOneValue = keyValueAndTimeSpans.Any()
+                                  && keyValueAndTimeSpans.Select(kvats => kvats.TimeSpanTotalMilliseconds)
+                                  .Where(ms => ms != null)
+                                  .Any();
+                ContainsVarious = atLeastOneValue && (CommonTimeSpanTotalMilliseconds == null);
                 monitorHierarchy = true;
             };
 
@@ -45,6 +51,11 @@ namespace JuliusSweetland.OptiKey.Models
                 {
                     monitorHierarchy = false;
                     keyValueAndTimeSpans.ForEach(kvats => kvats.TimeSpanTotalMilliseconds = commonTimeSpan);
+                    bool atLeastOneValue = keyValueAndTimeSpans.Any()
+                                  && keyValueAndTimeSpans.Select(kvats => kvats.TimeSpanTotalMilliseconds)
+                                  .Where(ms => ms != null)
+                                  .Any();
+                    ContainsVarious = atLeastOneValue && (CommonTimeSpanTotalMilliseconds == null);
                     monitorHierarchy = true;
                 });
 
@@ -53,6 +64,10 @@ namespace JuliusSweetland.OptiKey.Models
 
         public string Name { get { return name; } }
         public List<KeyValueAndTimeSpan> KeyValueAndTimeSpans { get { return keyValueAndTimeSpans; } }
+        public bool ContainsVarious {
+            get { return containsVarious;  }        
+            set { SetProperty(ref containsVarious, value); }
+        }
         public double? CommonTimeSpanTotalMilliseconds
         {
             get { return commonTimeSpan != null ? commonTimeSpan.Value.TotalMilliseconds : (double?)null; }

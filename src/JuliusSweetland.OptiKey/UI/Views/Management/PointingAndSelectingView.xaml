@@ -10,12 +10,14 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:mahAppsShared="http://metro.mahapps.com/winfx/xaml/shared"
              xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroupsCollectionViewSource" 
                               Source="{Binding KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups}" />
+        <valueConverters:BoolToCustomValues TrueValue="Visible" FalseValue="Hidden" x:Key="BooleanToVisible" />
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
@@ -495,7 +497,19 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                         </MultiBinding>
                                                     </TextBlock.Foreground>    
                                                 </TextBlock>
+
+                                                <!-- unused control to set backdrop -->
+                                                <controls:NumericUpDown Grid.Column="1" TextAlignment="Left"/>
+
+                                                <!-- text visible in front, but doesn't take click focus -->
+                                                <TextBlock Grid.Column="1" Text="{x:Static resx:Resources.VARIOUS}" Foreground="Gray" VerticalAlignment="Center" Margin="5"
+                                                           Visibility="{Binding ContainsVarious, Converter={StaticResource BooleanToVisible}}"
+                                                           Focusable="False" FontStyle="Italic">
+                                                </TextBlock>
+                                                
+                                                <!-- real control, is see-through -->
                                                 <controls:NumericUpDown Grid.Column="1" TextAlignment="Left"
+                                                                        Background="Transparent"
                                                                         Minimum="1" Interval="10" StringFormat="###,##0"
                                                                         Value="{Binding CommonTimeSpanTotalMilliseconds, Mode=TwoWay}" />
                                             </Grid>

@@ -6235,6 +6235,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Various.
+        /// </summary>
+        public static string VARIOUS {
+            get {
+                return ResourceManager.GetString("VARIOUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to May I restart OptiKey?.
         /// </summary>
         public static string VERIFY_RESTART {

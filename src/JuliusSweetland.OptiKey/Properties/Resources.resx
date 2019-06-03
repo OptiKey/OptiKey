@@ -2354,4 +2354,7 @@ Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value
   <data name="FEATURES" xml:space="preserve">
     <value>Extra features</value>
   </data>
+  <data name="VARIOUS" xml:space="preserve">
+    <value>Various</value>
+  </data>
 </root>
