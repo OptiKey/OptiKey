@@ -474,9 +474,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </ItemsControl.Style>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <GroupBox Header="{Binding}"
+                                <Expander Header="{Binding}"
                                           VerticalAlignment="Center" Margin="0,5,0,5">
-                                    <GroupBox.HeaderTemplate>
+                                    <Expander.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -488,7 +488,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                         <MultiBinding Converter="{x:Static mahAppsShared:BackgroundToForegroundConverter.Instance}">
                                                             <Binding Mode="OneWay"
                                                                      Path="Background"
-                                                                     RelativeSource="{RelativeSource AncestorType={x:Type GroupBox}}" />
+                                                                     RelativeSource="{RelativeSource AncestorType={x:Type Expander}}" />
                                                             <Binding Mode="OneWay"
                                                                      Path="(controls:GroupBoxHelper.HeaderForeground)"
                                                                      RelativeSource="{RelativeSource TemplatedParent}" />
@@ -500,7 +500,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                         Value="{Binding CommonTimeSpanTotalMilliseconds, Mode=TwoWay}" />
                                             </Grid>
                                         </DataTemplate>
-                                    </GroupBox.HeaderTemplate>
+                                    </Expander.HeaderTemplate>
                                     <ItemsControl VirtualizingStackPanel.IsVirtualizing="True"
                                                   ItemsSource="{Binding KeyValueAndTimeSpans, Mode=OneWay}">
                                         <ItemsControl.ItemTemplate>
@@ -524,7 +524,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
                                     </ItemsControl>
-                                </GroupBox>
+                                </Expander>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemsPanel>
