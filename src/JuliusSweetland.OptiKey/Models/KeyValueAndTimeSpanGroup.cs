@@ -38,7 +38,7 @@ namespace JuliusSweetland.OptiKey.Models
                     .Where(tstm => monitorHierarchy)
                     .Subscribe(timeSpan => calculateCommonTimeSpan()));
             
-            //Propogate common time span changes to children
+            //Propagate common time span changes to children
             this.OnPropertyChanges(kwatsg => kwatsg.CommonTimeSpanTotalMilliseconds)
                 .Where(tstm => monitorHierarchy)
                 .Subscribe(commonTimeSpan =>
