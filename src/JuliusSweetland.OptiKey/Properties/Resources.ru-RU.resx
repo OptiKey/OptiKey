@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -151,6 +151,9 @@
   <data name="ANDROID_LIGHT" xml:space="preserve">
     <value>Светлый Android</value>
   </data>
+  <data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>Android Two Tone</value>
+  </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Автокапитализация слов:</value>
   </data>
@@ -162,6 +165,9 @@
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Автопробел между слов:</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Назад</value>
   </data>
   <data name="BACK" xml:space="preserve">
     <value>НАЗАД</value>
@@ -218,8 +224,8 @@
     <value>ОЧИСТИТЬ</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ВЗЯТЬ И
-ПЕРЕНЕСТИ</value>
+    <value>КЛИК
+И ПЕРЕНОС</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
     <value>Клик 1</value>
@@ -299,6 +305,18 @@
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
     <value>Ширина курсора (пиксели):</value>
   </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>Пользовательский файл клавиатуры</value>
+  </data>
+  <data name="DANISH_DENMARK" xml:space="preserve">
+    <value>Датский (Дания) / Dansk (Danmark)</value>
+  </data>
+  <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Датский
+(Дания) /
+Dansk
+(Danmark)</value>
+  </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
     <value>Режим "Debugging":</value>
   </data>
@@ -349,6 +367,15 @@
   </data>
   <data name="END" xml:space="preserve">
     <value>END</value>
+  </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>Английский (Канада)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>Английский (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>Английский (США)</value>
   </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
@@ -425,8 +452,14 @@
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Толщина шрифта:</value>
   </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>Французский (Франция) / Française (France)</value>
+  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Полная величина дока (% от окна):</value>
+  </data>
+  <data name="GAZE_TRACKER" xml:space="preserve">
+    <value>Gaze Tracker</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Увеличивающийся</value>
@@ -526,6 +559,10 @@
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>Язык клавиатуры:</value>
+  </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>Папка клавиатуры может быть установлена в
+Консоли Управления (вкладка Visuals)</value>
   </data>
   <data name="LEFT" xml:space="preserve">
     <value>Слева</value>
@@ -767,6 +804,9 @@
   <data name="NO" xml:space="preserve">
     <value>НЕТ</value>
   </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>Клавиатура не найдена</value>
+  </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
     <value>Похоже что слово или словосочетание уже есть в словаре.</value>
   </data>
@@ -788,8 +828,8 @@ LK</value>
 СИМВОЛЫ</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>ЦИФРЫ И
-СИМВОЛЫ</value>
+    <value>Цифры
+и Символы</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
     <value>Цифры и Символы 1</value>
@@ -927,6 +967,12 @@ SCR</value>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Повышающийся 2</value>
   </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>Русский (Россия) / Русский (Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN" xml:space="preserve">
+    <value>Испанский (Испания) / Español (España)</value>
+  </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Такая же, как и позиция дока.</value>
   </data>
@@ -979,7 +1025,7 @@ LK</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>УМЕНЬШИТЬ
-ВНИЗУ И ВЛЕВО</value>
+ВНИЗ И ВЛЕВО</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>УМЕНЬШИТЬ
@@ -1046,6 +1092,9 @@ LK</value>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
     <value>Клавиатура при запуске:</value>
   </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>Пользовательский файл клавиатуры:</value>
+  </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>Сигнал Стоп:</value>
   </data>
@@ -1057,6 +1106,9 @@ LK</value>
   </data>
   <data name="TAB" xml:space="preserve">
     <value>ТАБ</value>
+  </data>
+  <data name="THE_EYE_TRIBE" xml:space="preserve">
+    <value>The Eye Tribe</value>
   </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>Невозможно активировать TheEyeTribe GazeManager! Пожалуйсто проверьте, что сервер включен и устройство подключено к компьютеру, и попробуйте снова.</value>
@@ -1073,8 +1125,14 @@ LK</value>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Время пока точка станет неуместной(ms):</value>
   </data>
+  <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>Скрыть курсор</value>
+  </data>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Слова начинаются с заглавных букв</value>
+  </data>
+  <data name="TOBII_EYEX" xml:space="preserve">
+    <value>Tobii EyeX</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Калибровка завершена или возможно была прервана, но теперь все работает! </value>
@@ -1084,6 +1142,12 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>'Tobii EyeX Engine' не работает. Пожалуйста запустите 'EyeX Engine' и попробуйте снова.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go</value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Тон 1</value>
@@ -1168,6 +1232,9 @@ LK</value>
   <data name="YES" xml:space="preserve">
     <value>ДА</value>
   </data>
+  <data name="YESNO" xml:space="preserve">
+    <value>ДА/НЕТ</value>
+  </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
     <value>Буквы</value>
   </data>
@@ -1186,6 +1253,9 @@ LK</value>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Объем потока обработки данных:</value>
   </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>Немецкий (Германия) / Deutsch (Deutschland)</value>
+  </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Язык интерфейса: {0}</value>
   </data>
@@ -1195,8 +1265,41 @@ LK</value>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Имитировать физическую клавиатуру (для письма): </value>
   </data>
+  <data name="DUTCH_BELGIUM" xml:space="preserve">
+    <value>Голландский (Бельгия) / Nederlands (België) </value>
+  </data>
+  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
+    <value>Голландский (Нидерланды) / Nederlands (Nederland)</value>
+  </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Французский
+(Франция) /
+Française
+(France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Немецкий
+(Германия) /
+Deutsch
+(Deutschland)</value>
+  </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Выключить увеличение во время прокручивания мыши:</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Русский
+(Россия) /
+Русский
+(Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Испанский
+(Испания) /
+Español
+(España)</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Динамическое меню клавиатуры</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Толщина края разговорной клавиатуры (слева, сверху, справа, снизу в пикселях):</value>
@@ -1248,6 +1351,27 @@ LK</value>
   </data>
   <data name="F12" xml:space="preserve">
     <value>F12</value>
+  </data>
+  <data name="F13" xml:space="preserve">
+    <value>F13</value>
+  </data>
+  <data name="F14" xml:space="preserve">
+    <value>F14</value>
+  </data>
+  <data name="F15" xml:space="preserve">
+    <value>F15</value>
+  </data>
+  <data name="F16" xml:space="preserve">
+    <value>F16</value>
+  </data>
+  <data name="F17" xml:space="preserve">
+    <value>F17</value>
+  </data>
+  <data name="F18" xml:space="preserve">
+    <value>F18</value>
+  </data>
+  <data name="F19" xml:space="preserve">
+    <value>F19</value>
   </data>
   <data name="F2" xml:space="preserve">
     <value>F2</value>
@@ -1364,7 +1488,7 @@ LK</value>
     <value>ПОДВИНУТЬ В ПИКСЕЛЯХ(МЕНЮ МЫШИ)</value>
   </data>
   <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
-    <value>РЕЧЬ(БУКВЫ) 1</value>
+    <value>РЕЧЬ БУКВЫ 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>РЕЧЬ(ЦИФРЫ И СИМВОЛЫ)</value>
@@ -1537,29 +1661,388 @@ LK</value>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Настройка время захвата отдельной клавиши:</value>
   </data>
+  <data name="GREEK_GREECE" xml:space="preserve">
+    <value>Греческий (Греция) / Ελληνικά (Ελλάδα)</value>
+  </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Консоль Управления (Настройки)</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Выход</value>
   </data>
+  <data name="GEORGIAN_GEORGIA" xml:space="preserve">
+    <value>Грузинский (Грузия) / ქართული (საქართველო)</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Грузинский
+(Грузия) /
+ქართული
+(საქართველო)</value>
+  </data>
+  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Греческий
+(Греция) /
+Ελληνικά
+(Ελλάδα)</value>
+  </data>
+  <data name="CROATIAN_CROATIA" xml:space="preserve">
+    <value>Хорватский (Хорватия) / Hrvatski (Hrvatska)</value>
+  </data>
+  <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Хорватский
+(Хорватия) /
+Hrvatski
+(Hrvatska)</value>
+  </data>
+  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Голландский
+(Бельгия) /
+Nederlands
+(België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Голландский
+(Нидерланды) /
+Nederlands
+(Nederland)</value>
+  </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Скрыть модификаторы клавиш для всех действий мыши:</value>
+  </data>
+  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Английский
+(Канада)
+</value>
+  </data>
+  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Английский
+(UK)
+</value>
+  </data>
+  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Английский
+(США)</value>
+  </data>
+  <data name="CATALAN_SPAIN" xml:space="preserve">
+    <value>Каталанский (Испания) / Català (Espanya)</value>
+  </data>
+  <data name="CATALAN_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Каталанский
+(Испания) /
+Català
+(Espanya)</value>
+  </data>
+  <data name="TURKISH_TURKEY" xml:space="preserve">
+    <value>Турецкий (Турция) / Türkçe (Türkiye)</value>
+  </data>
+  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Турецкий
+(Турция) /
+Türkçe
+(Türkiye)</value>
+  </data>
+  <data name="ITALIAN_ITALY" xml:space="preserve">
+    <value>Итальянский (Италия) / Italiano (Italia)</value>
+  </data>
+  <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Итальянский
+(Италия) /
+Italiano
+(Italia)</value>
+  </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>Корейский (Корея) / 한국어 (한국)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Корейский
+(Корея) /
+한국어
+(한국)</value>
+  </data>
+  <data name="SERBIAN_SERBIA" xml:space="preserve">
+    <value>Сербский (Сербия) / Српски (Србија)</value>
+  </data>
+  <data name="SERBIAN_SERBIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Сербский
+(Сербия) /
+Српски
+(Србија)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
+    <value>Словенский (Словения) / Slovensko (Slovenija)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Словенский
+(Словения) /
+Slovensko
+(Slovenija)</value>
+  </data>
+  <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>Невозможно подключиться к myGaze! Пожалуйста, проверьте, что сервер запущен и устройство подключено, а затем попробуйте снова.</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>Визуальное Взаимодействие myGaze</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Калибровка не удалась!</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Калибровка завершена успешно!</value>
   </data>
-  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
-    <value>Калибровка не удалась!</value>
+  <data name="POLISH_POLAND" xml:space="preserve">
+    <value>Польский (Польша) / Polski (Polska)</value>
+  </data>
+  <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Польский
+(Польша) /
+Polski
+(Polska)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
+    <value>Португальский (Португалия) / Português (Portugal)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Португальский
+(Португалия) /
+Português
+(Portugal)</value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
+    <value>Словацкий (Словакия) / Slovenčina (Slovensko) </value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Словацкий
+(Словакия) /
+Slovenčina
+(Slovensko)</value>
+  </data>
+  <data name="ALIENWARE_17" xml:space="preserve">
+    <value>Alienware 17 (EyeX)</value>
+  </data>
+  <data name="STEELSERIES_SENTRY" xml:space="preserve">
+    <value>Steelseries Sentry (EyeX)</value>
+  </data>
+  <data name="TOBII_EYE_TRACKER_4C" xml:space="preserve">
+    <value>Tobii Eye Tracker 4C</value>
+  </data>
+  <data name="TOBII_PCEYE_MINI" xml:space="preserve">
+    <value>Tobii PCEye Mini</value>
+  </data>
+  <data name="TOBII_X2_30" xml:space="preserve">
+    <value>Tobii X2-30</value>
+  </data>
+  <data name="TOBII_X2_60" xml:space="preserve">
+    <value>Tobii X2-60</value>
+  </data>
+  <data name="FORCE_CAPS_LOCK" xml:space="preserve">
+    <value>Принудительная caps lock (shift заблокирован)</value>
+  </data>
+  <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Использовать алфавитную раскладку клавиатуры</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Фильтр Калмана</value>
+  </data>
+  <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
+    <value>Переключить Ручной Режим</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
+    <value>Чешский (Чехия) / Čeština (Česko)</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Чешский
+(Чехия) /
+Čeština
+(Česko)</value>
+  </data>
+  <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+    <value>Режим ввода изменен</value>
+  </data>
+  <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+    <value>Ручной режим (мыши) выключен!</value>
+  </data>
+  <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
+    <value>Ручной режим (мыши) включен!</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
+    <value>Включить клавиатуру подтверждения речи?</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Только режим подтверждения речи:</value>
+  </data>
+  <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
+    <value>Включить клавиши выхода?</value>
+  </data>
+  <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Использовать упрощенную раскладку клавиатуры</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Браузер
+Назад</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Браузер
+Вперед</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Браузер
+Домашняя</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Браузер
+Поиск</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>Веб Браузинг</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Веб
+Браузинг</value>
+  </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>Использовать синтезатор голоса MaryTTS?</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS голос:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>MaryTTS местоположение (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>ОШИБКА: корректный 'marytts-server.bat' не выбран. Попробуйте еще раз.</value>
+  </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>Базовый</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Presage</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>Метод предложения:</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>MaryTTS недоступен</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>Предложение слов Presage недоступно</value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>Настройка метода предложеник: {0}.
+Вы можете вернуть значения обратно
+из Управляющей Консоли (ALT + M).</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>Настройка голоса к системному голосу: {0}.
+Вы можете проверить путь к MaryTTS
+и изменить голос обратно
+из Управляющей Консоли (ALT + M).</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>Задержка перед озвучиванием (ms):</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Использовать раскладку клавиатуры CommuniKate</value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Включить раскладку клавиатуры CommuniKate</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>CommuniKate верхняя страница obf файла:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>Недопустимый файл</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>Расположение верхней страницы CommuniKate .obz файла:</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>OptiKey не смог с Presage. Несколько возможных причин:
+   1.DBFILENAME, путь к которому указан в presage.xml файлу (расположен в C:\Users\USER_NAME\.presage), не существует пожалуйста, проверьте и исправьте это (или удалите/переустановите Presage).
+   2.Установлена 64-битная версия Presage (OptiKey поддерживает только 32-битную версию), или файлы Presage был перемещены, удалены или повреждены.
+
+Пожалуйста, удалите Presage и установите 32-битную версию 0.9.2.
+OptiKey продолжит работу, но есть большая вероятность, что приложение будет закрыто с ошибкой.
+Метод предложение будет заменен на NGram для избежания ошибок при следующем запуске.</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>Проблемы с Presage</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>Папка содержащая динамические клавиатуры</value>
+  </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>Папка содержащая плагины:</value>
+  </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>БУКВЫ 2</value>
   </data>
   <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
-    <value>РЕЧЬ(БУКВЫ) 2</value>
+    <value>РЕЧЬ БУКВЫ 2</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>Все изменения, внесенные в настройки, будут отменены. Вы хотите продолжить?</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>Отменить Настройки</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>Presage словарь не может быть изменен здесь.
+По умолчанию он расположен в is "C:\Program Files (x86)\presage\share\presage\database_en.db".
+Он может быть изменен программами, способными работать с SQLite format 3. Например, "DB Browser for SQLite" (распространяется бесплатно).</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
     <value>БУКВЫ</value>
+  </data>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>Во время работы увеличения возникла ошибка. Пожалуйста, выключите увеличение и свяжитесь с OptiKey для получение технической поддержки.</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>Ошибка:</value>
+  </data>
+  <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>Внимание:</value>
+  </data>
+  <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>Включить клавишу внимания?</value>
+  </data>
+  <data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
+    <value>Включить клавиши копирования блокнота?</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>ВНИМАНИЕ</value>
+  </data>
+  <data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>Внимание</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>CommuniKate в настоящий момент выключен (используйте QWERTY)</value>
+  </data>
+  <data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Стиль клавиатуры для печати:</value>
+  </data>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Использовать раскладку клавиатуры по умолчанию</value>
+  </data>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>Ох-хо! Мы столкнулись со следующими ошибками при запуске:</value>
+  </data>
+  <data name="SELECT_VOICE" xml:space="preserve">
+    <value>ВЫБОР ГОЛОСА</value>
+  </data>
+  <data name="MORE" xml:space="preserve">
+    <value>Больше...</value>
   </data>
   <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
     <value>Язык</value>
@@ -1569,5 +2052,282 @@ LK</value>
   </data>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>ЯЗЫК</value>
+  </data>
+  <data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>БОЛЬШЕ...</value>
+  </data>
+  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>Отображение голосов при смене языка клавиатуры:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL" xml:space="preserve">
+    <value>Посмотреть для Прокрутки</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>Использовать альтернативный "посмотреть для прокрутки" метод прокрутки:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Инверсия направления прокручивания:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Заблокировать клавишу границ, чтобы сохранить выбранную точку, окно или область:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Перед прокручиванием перемести мышь в центр мертвой зоны:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Перед прокручиванием в окне, перенести его на передний план:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>После выбора точки на экране, перенести туда любое окно на передний план:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Останавливать прокручивание при выборе направления движения, нажатия или перемещения мыши</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Автоматически возобновлять прокручивание:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>Прекратить прокрутку при переключении клавиатуры:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Показать окно оверлея (требуется перезагрузка):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Цвет границ прокрутки, нарисованных на оверлее:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Цвет направляющих мертвой зоны, нанесенных на оверлей:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
+    <value>Толщина границ прокрутки, нарисованных на оверлее:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
+    <value>Толщина направляющих мертвой зоны, нанесенных на оверлей:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Горизонтальная мертвая зона (в пикселях):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Вертикальная мертвая зона (в пикселях):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Циклически измения этиж значений прокрутки:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>'Медленная' базовая скорость (в cps или "кликах" в секунду)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Средняя' базовая скорость (в cps или "кликах" в секунду)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>'Быстрая' базовая скорость (в cps или "кликах" в секунду)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>«Медленное» ускорение (cps на пиксель из мертвой зоны):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>«Среднее» ускорение (cps на пиксель из мертвой зоны):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>«Быстрое» ускорение (cps на пиксель из мертвой зоны):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>LOOK TO SCROLL KЛАВИШИ:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>ВКЛЮЧИТЬ ПРОКРУТКУ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>СЛЕДУЮЩИЙ ПРЕДЕЛ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>СЛЕДУЮЩЕЕ ВОЗРАСТАНИЕ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>СЛЕДУЮЩИЙ РЕЖИМ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>СЛЕДУЮЩАЯ СКОРОСТЬ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>Look to
+Scroll</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Прокрутить на {0}шаг:
+(120 шагов = 1 клик)|Прокрутить на {0} шагов:
+(120 шагов = 1 клик)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Экран на
+Курсор</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Центрировать
+Экран</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Окно</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Окно
+Регион</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Пользовательский
+Регион</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Вертикальный</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Горизонтальный</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>Cross</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Свободно</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Медленно</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Средний</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Быстро</value>
+  </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>Французский (Канада) / Française (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Французский
+(Канада) /
+Française
+(Canada)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>Японский (Япония) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Японский
+(Япония) /
+日本語
+(日本)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>CommuniKate громкость звука:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>Произнести текст  при выборе  CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>Скорость речи при произнесении текста при использовании CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>Громкость речи при произнесении текста при использовании  CommuniKate:</value>
+  </data>
+  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>Вы уверены, что хотите переключиться в/из ручного режима?</value>
+  </data>
+  <data name="MANUAL_MODE" xml:space="preserve">
+    <value>РУЧНОЙ РЕЖИМ</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>Расположение файла базы данных Presage .db:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>Количество отображаемых Presage предположений:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>Доступные плагины</value>
+  </data>
+  <data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>Плагины</value>
+  </data>
+  <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>Обновить плагины</value>
+  </data>
+  <data name="RESTART" xml:space="preserve">
+    <value>Перезапуск</value>
+  </data>
+  <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Вы абсолютно уверены, что хотите перезапустить OptiKey?</value>
+  </data>
+  <data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>Вы уверены, что хотите перезапустить OptiKey?</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>ДИНАМИЧЕСКАЯ КЛАВИАТУРА</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>ВЕБ БРАУЗИНГ</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>Украинский (Украина) / Українська (Україна)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Украинский
+(Украина) /
+Українська
+(Україна)</value>
+  </data>
+  <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Объем потока обработки данных:</value>
+  </data>
+  <data name="IRISBOND_DUO" xml:space="preserve">
+    <value>Irisbond Duo</value>
+  </data>
+  <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>Irisbond Duo не может быть запущен.</value>
+  </data>
+  <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>Irisbond Duo не найден. Пожалуйста, проверьте соединение и попробуйте еще раз.</value>
+  </data>
+  <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
+    <value>Калибровка завершена (успешно или неудачно), но теперь все работает!</value>
+  </data>
+  <data name="COPY_ALL_FROM_SCRATCHPAD" xml:space="preserve">
+    <value>Копировать все</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_DEFINITION_INVALID" xml:space="preserve">
+    <value>Неверное определение динамической клавиатуры</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
+    <value>Заданная высота данной динамической клавиатуры слишком велика (&gt; 95% экрана)</value>
+  </data>
+  <data name="RESTART_UPPERCASE" xml:space="preserve">
+    <value>Перезапуск</value>
+  </data>
+  <data name="URDU_PAKISTAN" xml:space="preserve">
+    <value>Урду (Пакистан) / اردو (پاکستان)</value>
+  </data>
+  <data name="URDU_PAKISTAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Урду 
+(Пакистан) / 
+اردو
+ (پاکستان)</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
+    <value>Мы рекомендуем изменить UiLanguage на Urdu, чтобы печатать набранный текст на урду справа налево в блокноте.
+Хотите, чтобы OptiKey автоматически установил UiLanguage на урду?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
+    <value>Мы рекомендуем изменить шрифт, используемый в OptiKey, на тот, который полностью совместим с урду.
+Если используется шрифт, не относящийся к урду, то текст, особенно цифры, могут отображаться неправильно.
+Вы хотите, чтобы OptiKey автоматически установил шрифт Nafees Web Naskh?</value>
+  </data>
+  <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
+    <value>Рекомендуется использовать шрифт для конкретного языка</value>
+  </data>
+  <data name="UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE" xml:space="preserve">
+    <value>Языки интерфейса и клавиатуры / словаря разные</value>
+  </data>
+  <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
+    <value>Введите диакритические знаки (ударения и т. д.) после букв:</value>
   </data>
 </root>
