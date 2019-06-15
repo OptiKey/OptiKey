@@ -78,7 +78,64 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void CoerceValues()
         {
-            if (WordsViewModel.KeyboardAndDictionaryLanguage == Languages.UrduPakistan 
+            CoercePersianSettings();
+            CoerceUrduSettings();
+        }
+
+        private void CoercePersianSettings()
+        {
+            if (WordsViewModel.KeyboardAndDictionaryLanguage == Languages.PersianIran
+                && WordsViewModel.UiLanguage != Languages.PersianIran)
+            {
+                ConfirmationRequest.Raise(
+                    new Confirmation
+                    {
+                        Title = Resources.UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE,
+                        Content = Resources.DEFAULT_UILANGUAGE_TO_PERSIAN
+                    }, confirmation =>
+                    {
+                        if (confirmation.Confirmed)
+                        {
+                            Log.Info("Prompting user to change the UiLanguage to Persian as the KeyboardAndDictionaryLanguage is Persian. The UiLanguage controls whether the scratchpad has text flow RightToLeft, which Persian requires.");
+                            WordsViewModel.UiLanguage = Languages.PersianIran;
+                        }
+                    });
+            }
+
+            if ((WordsViewModel.KeyboardAndDictionaryLanguage == Languages.PersianIran
+                 || WordsViewModel.UiLanguage == Languages.PersianIran)
+                && !new[]
+                {
+                    VisualsViewModel.ElhamUrl,
+                    VisualsViewModel.HomaUrl,
+                    VisualsViewModel.KoodakUrl,
+                    VisualsViewModel.NazliUrl,
+                    VisualsViewModel.RoyaUrl,
+                    VisualsViewModel.TerafikUrl,
+                    VisualsViewModel.TitrUrl
+                }.Contains(VisualsViewModel.FontFamily))
+            {
+                ConfirmationRequest.Raise(
+                    new Confirmation
+                    {
+                        Title = Resources.LANGUAGE_SPECIFIC_FONT_RECOMMENDED,
+                        Content = Resources.FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE
+                    }, confirmation =>
+                    {
+                        if (confirmation.Confirmed)
+                        {
+                            Log.Info("Prompting user to change the font to an Persian compatible font. If another font is used then text may be displayed incorrectly.");
+                            VisualsViewModel.FontFamily = VisualsViewModel.TerafikUrl;
+                            VisualsViewModel.FontStretch = Enums.FontStretches.Normal;
+                            VisualsViewModel.FontWeight = Enums.FontWeights.Regular;
+                        }
+                    });
+            }
+        }
+
+        private void CoerceUrduSettings()
+        {
+            if (WordsViewModel.KeyboardAndDictionaryLanguage == Languages.UrduPakistan
                 && WordsViewModel.UiLanguage != Languages.UrduPakistan)
             {
                 ConfirmationRequest.Raise(
@@ -97,7 +154,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             if ((WordsViewModel.KeyboardAndDictionaryLanguage == Languages.UrduPakistan
-                || WordsViewModel.UiLanguage == Languages.UrduPakistan)
+                 || WordsViewModel.UiLanguage == Languages.UrduPakistan)
                 && !new[]
                 {
                     VisualsViewModel.FajerNooriNastaliqueUrl,

@@ -49,8 +49,7 @@ I would like to extend my thanks/credit to the following people, websites & orga
 
 ### Fonts
 
-* Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
-* Charis SIL - Under the SIL Open Font License (OFL)
+* All relevant licenses are included in the Resources\Fonts directory and bundled with the installed files
 
 ### Icons
 

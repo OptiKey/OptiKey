@@ -200,6 +200,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue NumericAndSymbols1KeyboardKey = new KeyValue(FunctionKeys.NumericAndSymbols1Keyboard);
         public static readonly KeyValue NumericAndSymbols2KeyboardKey = new KeyValue(FunctionKeys.NumericAndSymbols2Keyboard);
         public static readonly KeyValue NumericAndSymbols3KeyboardKey = new KeyValue(FunctionKeys.NumericAndSymbols3Keyboard);
+        public static readonly KeyValue PersianIranKey = new KeyValue(FunctionKeys.PersianIran);
         public static readonly KeyValue PgDnKey = new KeyValue(FunctionKeys.PgDn);
         public static readonly KeyValue PgUpKey = new KeyValue(FunctionKeys.PgUp);
         public static readonly KeyValue PhysicalKeysKeyboardKey = new KeyValue(FunctionKeys.PhysicalKeysKeyboard);
@@ -336,6 +337,11 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
                                                 .ToList()
+                },
+                { Languages.PersianIran, "ضصثقفغعهخحجچشسیبلاتنمکگظطژزرذدوپآ"
+                    .ToCharArray()
+                    .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                    .ToList()
                 },
                 { Languages.PolishPoland, "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż"
                                                 .ToCharArray()

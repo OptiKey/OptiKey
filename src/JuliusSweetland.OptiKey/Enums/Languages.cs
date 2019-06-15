@@ -23,6 +23,7 @@ namespace JuliusSweetland.OptiKey.Enums
         ItalianItaly,
         JapaneseJapan,
         KoreanKorea,
+        PersianIran,
         PolishPoland,
         PortuguesePortugal,
         RussianRussia,
@@ -58,6 +59,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.ItalianItaly: return Resources.ITALIAN_ITALY;
                 case Languages.JapaneseJapan: return Resources.JAPANESE_JAPAN;
                 case Languages.KoreanKorea: return Resources.KOREAN_KOREA;
+                case Languages.PersianIran: return Resources.PERSIAN_IRAN;
                 case Languages.PolishPoland: return Resources.POLISH_POLAND;
                 case Languages.PortuguesePortugal: return Resources.PORTUGUESE_PORTUGAL;
                 case Languages.RussianRussia: return Resources.RUSSIAN_RUSSIA;
@@ -94,6 +96,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.ItalianItaly: return CultureInfo.GetCultureInfo("it-IT");
                 case Languages.JapaneseJapan: return CultureInfo.GetCultureInfo("ja-JP");
                 case Languages.KoreanKorea: return CultureInfo.GetCultureInfo("ko-KR");
+                case Languages.PersianIran: return CultureInfo.GetCultureInfo("fa-IR");
                 case Languages.PolishPoland: return CultureInfo.GetCultureInfo("pl-PL");
                 case Languages.PortuguesePortugal: return CultureInfo.GetCultureInfo("pt-PT");
                 case Languages.RussianRussia: return CultureInfo.GetCultureInfo("ru-RU");
