@@ -172,6 +172,7 @@ namespace JuliusSweetland.OptiKey.Enums
         PgUp,
         PhysicalKeysKeyboard,
         Plugin,
+        PersianIran,
         PolishPoland,
         PortuguesePortugal,
         PreviousSuggestions,
