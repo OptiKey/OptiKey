@@ -32,6 +32,8 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CombiningAcuteAccentKey = new KeyValue("\x0301");
         public static readonly KeyValue CombiningArabicKasraKey = new KeyValue("\x0650");
         public static readonly KeyValue CombiningArabicFathatanKey = new KeyValue("\x064B");
+        public static readonly KeyValue CombiningArabicDammatanKey = new KeyValue("\x064C");
+        public static readonly KeyValue CombiningArabicKasratanKey = new KeyValue("\x064D");
         public static readonly KeyValue CombiningArabicDammaKey = new KeyValue("\x064F");
         public static readonly KeyValue CombiningArabicLetterSuperscriptAlefKey = new KeyValue("\x0670");
         public static readonly KeyValue CombiningArabicFathaKey = new KeyValue("\x064E");
@@ -532,6 +534,8 @@ namespace JuliusSweetland.OptiKey.Models
                     CombiningArabicKasraKey,
                     CombiningArabicFathatanKey,
                     CombiningArabicDammaKey,
+                    CombiningArabicDammatanKey,
+                    CombiningArabicKasratanKey,
                     CombiningArabicLetterSuperscriptAlefKey,
                     CombiningArabicFathaKey,
                     CombiningArabicHamzaAboveKey,
