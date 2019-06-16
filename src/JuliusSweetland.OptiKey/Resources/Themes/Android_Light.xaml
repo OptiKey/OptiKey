@@ -219,7 +219,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily, Converter={StaticResource NotInListOfPersianFonts}, Mode=OneWay}" Value="True" />
                         </MultiDataTrigger.Conditions>
                         <MultiDataTrigger.Setters>
-                            <Setter Property="FontFamily" Value="/Resources/Fonts/#Terafik" />
+                            <Setter Property="FontFamily" Value="/Resources/Fonts/#Nazli" />
                             <Setter Property="FontWeight" Value="Regular" />
                             <Setter Property="FontStretch" Value="Normal" />
                         </MultiDataTrigger.Setters>

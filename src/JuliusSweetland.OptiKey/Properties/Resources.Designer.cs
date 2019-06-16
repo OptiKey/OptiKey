@@ -1960,7 +1960,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to We recommend changing the font used in OptiKey to one which is fully compatible with Persian.
         ///If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
-        ///Would you like OptiKey to automatically set the font to Terafik?.
+        ///Would you like OptiKey to automatically set the font to Nazli?.
         /// </summary>
         public static string FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE {
             get {

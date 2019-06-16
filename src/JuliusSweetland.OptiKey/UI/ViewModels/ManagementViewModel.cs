@@ -125,7 +125,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (confirmation.Confirmed)
                         {
                             Log.Info("Prompting user to change the font to an Persian compatible font. If another font is used then text may be displayed incorrectly.");
-                            VisualsViewModel.FontFamily = VisualsViewModel.TerafikUrl;
+                            VisualsViewModel.FontFamily = VisualsViewModel.NazliUrl;
                             VisualsViewModel.FontStretch = Enums.FontStretches.Normal;
                             VisualsViewModel.FontWeight = Enums.FontWeights.Regular;
                         }
