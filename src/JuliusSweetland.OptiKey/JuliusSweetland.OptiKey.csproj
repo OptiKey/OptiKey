@@ -810,6 +810,9 @@
     <Compile Include="UI\Views\Keyboards\Ukrainian\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Urdu\ConversationNumericAndSymbols.xaml.cs">
+      <DependentUpon>ConversationNumericAndSymbols.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Urdu\NumericAndSymbols1.xaml.cs">
       <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
     </Compile>
@@ -1742,6 +1745,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Ukrainian\ConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Urdu\ConversationNumericAndSymbols.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

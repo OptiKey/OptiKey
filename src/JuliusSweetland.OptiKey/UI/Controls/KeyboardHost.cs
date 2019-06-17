@@ -171,7 +171,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (Keyboard is ViewModelKeyboards.Alpha1)
             {
                 if (Settings.Default.UsingCommuniKateKeyboardLayout)
-                    newContent = (object)new CommonViews.CommuniKate { DataContext = Keyboard };
+                {
+                    newContent = (object) new CommonViews.CommuniKate {DataContext = Keyboard};
+                }
                 else switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.CatalanSpain:
@@ -291,7 +293,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.ConversationAlpha1)
             {
                 if (Settings.Default.UsingCommuniKateKeyboardLayout)
+                {
                     newContent = (object)new CommonViews.CommuniKate { DataContext = Keyboard };
+                }
                 else switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.CatalanSpain:
@@ -410,7 +414,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.ConversationNumericAndSymbols)
             {
-                newContent = new CommonViews.ConversationNumericAndSymbols { DataContext = Keyboard };
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                {
+                    case Languages.UrduPakistan:
+                        newContent = new UrduViews.ConversationNumericAndSymbols {DataContext = Keyboard};
+                        break;
+                    default:
+                        newContent = new CommonViews.ConversationNumericAndSymbols {DataContext = Keyboard};
+                        break;
+                }
             }
             else if (Keyboard is ViewModelKeyboards.Currencies1)
             {
