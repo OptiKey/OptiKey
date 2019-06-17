@@ -1362,7 +1362,7 @@
     <Setting Name="TypeDiacriticsAfterLetters" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="UiLanguageFlowDirection" Type="System.Windows.FlowDirection" Scope="User">
+    <Setting Name="UiLanguageFlowDirection" Roaming="true" Type="System.Windows.FlowDirection" Scope="User">
       <Value Profile="(Default)">LeftToRight</Value>
     </Setting>
   </Settings>
