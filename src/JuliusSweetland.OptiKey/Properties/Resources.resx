@@ -2332,7 +2332,7 @@ Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
     <value>We recommend changing the UiLanguage to Persian to ensure typed Persian text flows from right to left in the scratchpad.
-Would you like OptiKey to automatically set the UiLanguage to Urdu?</value>
+Would you like OptiKey to automatically set the UiLanguage to Persian?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
     <value>We recommend changing the font used in OptiKey to one which is fully compatible with Persian.

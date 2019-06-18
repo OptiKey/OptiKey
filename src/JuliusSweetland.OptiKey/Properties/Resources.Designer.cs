@@ -1074,7 +1074,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to We recommend changing the UiLanguage to Persian to ensure typed Persian text flows from right to left in the scratchpad.
-        ///Would you like OptiKey to automatically set the UiLanguage to Urdu?.
+        ///Would you like OptiKey to automatically set the UiLanguage to Persian?.
         /// </summary>
         public static string DEFAULT_UILANGUAGE_TO_PERSIAN {
             get {

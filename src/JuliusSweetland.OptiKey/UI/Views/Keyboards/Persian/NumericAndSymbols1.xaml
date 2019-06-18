@@ -59,52 +59,52 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۱"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F1;"/>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۲"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F2;"/>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۳"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F3;"/>
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۴"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F4;"/>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۵"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F5;"/>
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۶"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F6;"/>
         <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۷"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F7;"/>
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۸"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F8;"/>
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۹"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F9;"/>
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
-                      UseUrduCompatibilityFont="True"
+                      UsePersianCompatibilityFont="True"
                       Text="۰"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x06F0;"/>
