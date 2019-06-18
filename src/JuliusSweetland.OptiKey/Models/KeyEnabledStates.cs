@@ -583,6 +583,215 @@ namespace JuliusSweetland.OptiKey.Models
                     }
                 }
 
+                //Persian specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.PersianIran)
+                {
+                    //Fathatan
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningArabicFathatanKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningArabicFathatanKey //Allow the Fathatan to be manually released
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == new KeyValue("ا");
+                    }
+
+                    //Dammatan
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningArabicDammatanKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningArabicDammatanKey //Allow the Dammatan to be manually released
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == new KeyValue("ا");
+                    }
+
+                    //Kasratan
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningArabicKasratanKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningArabicKasratanKey //Allow the Kasratan to be manually released
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == new KeyValue("ا");
+                    }
+                    
+                    //Fatha
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningArabicFathaKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningArabicFathaKey //Allow the Fatha to be manually released
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == new KeyValue("آ")
+                               || keyValue == new KeyValue("ض")
+                               || keyValue == new KeyValue("ص")
+                               || keyValue == new KeyValue("ث")
+                               || keyValue == new KeyValue("ق")
+                               || keyValue == new KeyValue("ف")
+                               || keyValue == new KeyValue("غ")
+                               || keyValue == new KeyValue("ع")
+                               || keyValue == new KeyValue("ه")
+                               || keyValue == new KeyValue("خ")
+                               || keyValue == new KeyValue("ح")
+                               || keyValue == new KeyValue("ج")
+                               || keyValue == new KeyValue("چ")
+                               || keyValue == new KeyValue("ش")
+                               || keyValue == new KeyValue("س")
+                               || keyValue == new KeyValue("ی")
+                               || keyValue == new KeyValue("ب")
+                               || keyValue == new KeyValue("ل")
+                               || keyValue == new KeyValue("ا")
+                               || keyValue == new KeyValue("ت")
+                               || keyValue == new KeyValue("ن")
+                               || keyValue == new KeyValue("م")
+                               || keyValue == new KeyValue("ک")
+                               || keyValue == new KeyValue("گ")
+                               || keyValue == new KeyValue("ظ")
+                               || keyValue == new KeyValue("ط")
+                               || keyValue == new KeyValue("ژ")
+                               || keyValue == new KeyValue("ز")
+                               || keyValue == new KeyValue("ر")
+                               || keyValue == new KeyValue("ذ")
+                               || keyValue == new KeyValue("د")
+                               || keyValue == new KeyValue("و")
+                               || keyValue == new KeyValue("پ");
+                    }
+
+                    //Damma
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningArabicDammaKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningArabicDammaKey //Allow the Damma to be manually released
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == new KeyValue("آ")
+                               || keyValue == new KeyValue("ض")
+                               || keyValue == new KeyValue("ص")
+                               || keyValue == new KeyValue("ث")
+                               || keyValue == new KeyValue("ق")
+                               || keyValue == new KeyValue("ف")
+                               || keyValue == new KeyValue("غ")
+                               || keyValue == new KeyValue("ع")
+                               || keyValue == new KeyValue("ه")
+                               || keyValue == new KeyValue("خ")
+                               || keyValue == new KeyValue("ح")
+                               || keyValue == new KeyValue("ج")
+                               || keyValue == new KeyValue("چ")
+                               || keyValue == new KeyValue("ش")
+                               || keyValue == new KeyValue("س")
+                               || keyValue == new KeyValue("ی")
+                               || keyValue == new KeyValue("ب")
+                               || keyValue == new KeyValue("ل")
+                               || keyValue == new KeyValue("ا")
+                               || keyValue == new KeyValue("ت")
+                               || keyValue == new KeyValue("ن")
+                               || keyValue == new KeyValue("م")
+                               || keyValue == new KeyValue("ک")
+                               || keyValue == new KeyValue("گ")
+                               || keyValue == new KeyValue("ظ")
+                               || keyValue == new KeyValue("ط")
+                               || keyValue == new KeyValue("ژ")
+                               || keyValue == new KeyValue("ز")
+                               || keyValue == new KeyValue("ر")
+                               || keyValue == new KeyValue("ذ")
+                               || keyValue == new KeyValue("د")
+                               || keyValue == new KeyValue("و")
+                               || keyValue == new KeyValue("پ");
+                    }
+
+                    //Kasra
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningArabicKasraKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningArabicKasraKey //Allow the Kasra to be manually released
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == new KeyValue("آ")
+                               || keyValue == new KeyValue("ض")
+                               || keyValue == new KeyValue("ص")
+                               || keyValue == new KeyValue("ث")
+                               || keyValue == new KeyValue("ق")
+                               || keyValue == new KeyValue("ف")
+                               || keyValue == new KeyValue("غ")
+                               || keyValue == new KeyValue("ع")
+                               || keyValue == new KeyValue("ه")
+                               || keyValue == new KeyValue("خ")
+                               || keyValue == new KeyValue("ح")
+                               || keyValue == new KeyValue("ج")
+                               || keyValue == new KeyValue("چ")
+                               || keyValue == new KeyValue("ش")
+                               || keyValue == new KeyValue("س")
+                               || keyValue == new KeyValue("ی")
+                               || keyValue == new KeyValue("ب")
+                               || keyValue == new KeyValue("ل")
+                               || keyValue == new KeyValue("ا")
+                               || keyValue == new KeyValue("ت")
+                               || keyValue == new KeyValue("ن")
+                               || keyValue == new KeyValue("م")
+                               || keyValue == new KeyValue("ک")
+                               || keyValue == new KeyValue("گ")
+                               || keyValue == new KeyValue("ظ")
+                               || keyValue == new KeyValue("ط")
+                               || keyValue == new KeyValue("ژ")
+                               || keyValue == new KeyValue("ز")
+                               || keyValue == new KeyValue("ر")
+                               || keyValue == new KeyValue("ذ")
+                               || keyValue == new KeyValue("د")
+                               || keyValue == new KeyValue("و")
+                               || keyValue == new KeyValue("پ");
+                    }
+
+                    //Shadda
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningArabicShaddaKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningArabicShaddaKey //Allow the Shadda to be manually released
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == new KeyValue("آ")
+                               || keyValue == new KeyValue("ض")
+                               || keyValue == new KeyValue("ص")
+                               || keyValue == new KeyValue("ث")
+                               || keyValue == new KeyValue("ق")
+                               || keyValue == new KeyValue("ف")
+                               || keyValue == new KeyValue("غ")
+                               || keyValue == new KeyValue("ع")
+                               || keyValue == new KeyValue("ه")
+                               || keyValue == new KeyValue("خ")
+                               || keyValue == new KeyValue("ح")
+                               || keyValue == new KeyValue("ج")
+                               || keyValue == new KeyValue("چ")
+                               || keyValue == new KeyValue("ش")
+                               || keyValue == new KeyValue("س")
+                               || keyValue == new KeyValue("ی")
+                               || keyValue == new KeyValue("ب")
+                               || keyValue == new KeyValue("ل")
+                               || keyValue == new KeyValue("ا")
+                               || keyValue == new KeyValue("ت")
+                               || keyValue == new KeyValue("ن")
+                               || keyValue == new KeyValue("م")
+                               || keyValue == new KeyValue("ک")
+                               || keyValue == new KeyValue("گ")
+                               || keyValue == new KeyValue("ظ")
+                               || keyValue == new KeyValue("ط")
+                               || keyValue == new KeyValue("ژ")
+                               || keyValue == new KeyValue("ز")
+                               || keyValue == new KeyValue("ر")
+                               || keyValue == new KeyValue("ذ")
+                               || keyValue == new KeyValue("د")
+                               || keyValue == new KeyValue("و")
+                               || keyValue == new KeyValue("پ");
+                    }
+                }
+
                 //Polish specific rules
                 if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.PolishPoland)
                 {
@@ -808,8 +1017,10 @@ namespace JuliusSweetland.OptiKey.Models
                     if (keyStateService.KeyDownStates[KeyValues.CombiningArabicMaddahAboveKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningArabicMaddahAboveKey //Allow the Madd to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == new KeyValue("ا"); //Alef
                     }
 
@@ -817,8 +1028,10 @@ namespace JuliusSweetland.OptiKey.Models
                     if (keyStateService.KeyDownStates[KeyValues.CombiningArabicLetterSuperscriptAlefKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningArabicLetterSuperscriptAlefKey //Allow the Superscript Alef to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.CombiningArabicShaddaKey
                                || keyValue == new KeyValue("ل")
                                || keyValue == new KeyValue("ے")
@@ -829,8 +1042,10 @@ namespace JuliusSweetland.OptiKey.Models
                     if (keyStateService.KeyDownStates[KeyValues.CombiningArabicHamzaAboveKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningArabicHamzaAboveKey //Allow the Hamza Above to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == new KeyValue("ہ")
                                || keyValue == new KeyValue("ے")
                                || keyValue == new KeyValue("ی")
@@ -841,8 +1056,10 @@ namespace JuliusSweetland.OptiKey.Models
                     if (keyStateService.KeyDownStates[KeyValues.CombiningArabicShaddaKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningArabicShaddaKey //Allow the Shadd to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.CombiningArabicLetterSuperscriptAlefKey
                                || keyValue == new KeyValue("ط")
                                || keyValue == new KeyValue("ص")
@@ -893,8 +1110,10 @@ namespace JuliusSweetland.OptiKey.Models
                     if (keyStateService.KeyDownStates[KeyValues.CombiningArabicFathatanKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningArabicFathatanKey //Allow the Fathatan to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == new KeyValue("ط")
                                || keyValue == new KeyValue("ص")
                                || keyValue == new KeyValue("ھ")
@@ -943,8 +1162,10 @@ namespace JuliusSweetland.OptiKey.Models
                     if (keyStateService.KeyDownStates[KeyValues.CombiningArabicKasraKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningArabicKasraKey //Allow the Kasra to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == new KeyValue("ط")
                                || keyValue == new KeyValue("ص")
                                || keyValue == new KeyValue("ھ")
@@ -994,8 +1215,10 @@ namespace JuliusSweetland.OptiKey.Models
                     if (keyStateService.KeyDownStates[KeyValues.CombiningArabicDammaKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningArabicDammaKey //Allow the Damma to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == new KeyValue("ط")
                                || keyValue == new KeyValue("ص")
                                || keyValue == new KeyValue("ھ")
@@ -1045,8 +1268,10 @@ namespace JuliusSweetland.OptiKey.Models
                     if (keyStateService.KeyDownStates[KeyValues.CombiningArabicFathaKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningArabicFathaKey //Allow the Fatha to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == new KeyValue("ط")
                                || keyValue == new KeyValue("ص")
                                || keyValue == new KeyValue("ھ")
@@ -1096,8 +1321,10 @@ namespace JuliusSweetland.OptiKey.Models
                     if (keyStateService.KeyDownStates[KeyValues.CombiningArabicSmallHighLigatureSadWithLamWithAlefMaksuraKey].Value.IsDownOrLockedDown())
                     {
                         return keyValue == KeyValues.CombiningArabicSmallHighLigatureSadWithLamWithAlefMaksuraKey //Allow the Small High Ligature Sad With Lam With Alef Maksura to be manually released
-                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the 2 keyboards
-                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the 2 keyboards
+                               || keyValue == KeyValues.Alpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
+                               || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == new KeyValue("ط")
                                || keyValue == new KeyValue("ص")
                                || keyValue == new KeyValue("ھ")
