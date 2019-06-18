@@ -586,6 +586,9 @@
     <Compile Include="UI\Views\Keyboards\Persian\ConversationAlpha2.xaml.cs">
       <DependentUpon>ConversationAlpha2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Persian\ConversationNumericAndSymbols.xaml.cs">
+      <DependentUpon>ConversationNumericAndSymbols.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Persian\NumericAndSymbols1.xaml.cs">
       <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
     </Compile>
@@ -1449,6 +1452,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Persian\ConversationAlpha2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Persian\ConversationNumericAndSymbols.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

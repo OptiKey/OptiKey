@@ -416,6 +416,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.PersianIran:
+                        newContent = new PersianViews.ConversationNumericAndSymbols { DataContext = Keyboard };
+                        break;
                     case Languages.UrduPakistan:
                         newContent = new UrduViews.ConversationNumericAndSymbols {DataContext = Keyboard};
                         break;

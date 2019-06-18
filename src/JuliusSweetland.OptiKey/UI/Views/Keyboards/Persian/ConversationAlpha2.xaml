@@ -211,10 +211,10 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
 
         <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource 1of2Icon}"
+                      SymbolGeometry="{StaticResource 2of2Icon}"
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.ConversationAlpha2KeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.ConversationAlpha1KeyboardKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
                       Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
