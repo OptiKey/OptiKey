@@ -227,5 +227,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey\JuliusSweetland.OptiKey.csproj">
+      <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
+      <Name>JuliusSweetland.OptiKey</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
