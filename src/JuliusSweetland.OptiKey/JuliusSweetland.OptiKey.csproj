@@ -1048,6 +1048,8 @@
     <Resource Include="Resources\Fonts\FarsiWeb Font - terafik.ttf" />
     <Resource Include="Resources\Fonts\FarsiWeb Font - terafikb.ttf" />
     <Resource Include="Resources\Fonts\FarsiWeb Font - titr.ttf" />
+    <Resource Include="Resources\Fonts\FarsiWeb Font - nazli.ttf" />
+    <Resource Include="Resources\Fonts\FarsiWeb Font - nazlib.ttf" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />

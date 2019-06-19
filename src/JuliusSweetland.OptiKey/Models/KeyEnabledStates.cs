@@ -627,7 +627,6 @@ namespace JuliusSweetland.OptiKey.Models
                                || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
-                               || keyValue == new KeyValue("آ")
                                || keyValue == new KeyValue("ض")
                                || keyValue == new KeyValue("ص")
                                || keyValue == new KeyValue("ث")
@@ -670,7 +669,6 @@ namespace JuliusSweetland.OptiKey.Models
                                || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
-                               || keyValue == new KeyValue("آ")
                                || keyValue == new KeyValue("ض")
                                || keyValue == new KeyValue("ص")
                                || keyValue == new KeyValue("ث")
@@ -713,7 +711,6 @@ namespace JuliusSweetland.OptiKey.Models
                                || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
-                               || keyValue == new KeyValue("آ")
                                || keyValue == new KeyValue("ض")
                                || keyValue == new KeyValue("ص")
                                || keyValue == new KeyValue("ث")
@@ -756,7 +753,6 @@ namespace JuliusSweetland.OptiKey.Models
                                || keyValue == KeyValues.Alpha2KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.ConversationAlpha1KeyboardKey //Allow movement between the keyboards
                                || keyValue == KeyValues.ConversationAlpha2KeyboardKey //Allow movement between the keyboards
-                               || keyValue == new KeyValue("آ")
                                || keyValue == new KeyValue("ض")
                                || keyValue == new KeyValue("ص")
                                || keyValue == new KeyValue("ث")
