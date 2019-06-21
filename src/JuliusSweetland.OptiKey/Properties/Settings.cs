@@ -2,14 +2,20 @@
 
 namespace JuliusSweetland.OptiKey.Properties {
         
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        
+    public abstract class Settings : global::System.Configuration.ApplicationSettingsBase {
+
+        private static Settings defaultInstance;
+
         public static Settings Default {
             get {
                 return defaultInstance;
             }
+        }
+
+        // Allow derived classes to set the static instance
+        public static void SetDefault(Settings defaultInst)
+        {
+            defaultInstance = defaultInst;
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
