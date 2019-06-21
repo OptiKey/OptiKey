@@ -5,19 +5,23 @@ namespace JuliusSweetland.OptiKey.Properties {
     public abstract class Settings : global::System.Configuration.ApplicationSettingsBase {
 
         private static Settings defaultInstance;
-
+        
+        // Settings singleton used by core library is configured by each executable with their own derived settings.       
         public static Settings Default {
             get {
+                if (null == defaultInstance)
+                {
+                    throw new System.ArgumentNullException("Base settings class is null - Settings need initialising from a derived class");
+                }
                 return defaultInstance;
             }
         }
 
-        // Allow derived classes to set the static instance
-        public static void SetDefault(Settings defaultInst)
+        public static void InitialiseWithDerivedSettings(Settings instance)
         {
-            defaultInstance = defaultInst;
+            defaultInstance = instance;
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Insert")]

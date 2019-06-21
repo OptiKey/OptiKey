@@ -4,16 +4,11 @@ namespace JuliusSweetland.OptiKeyYesNo.Properties {
 
     class Settings : JuliusSweetland.OptiKey.Properties.Settings
     {
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public new static Settings Default
+        
+        public static void Initialise()
         {
-            get
-            {
-                // Make sure dll is using our derived settings
-                SetDefault(defaultInstance);
-                return defaultInstance;
-            }
+            Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+            InitialiseWithDerivedSettings(defaultInstance);            
         }
 
         // Example of an overridden default

@@ -59,6 +59,9 @@ namespace JuliusSweetland.OptiKeyYesNo
 
         public App()
         {
+            // Setup derived settings class
+            Settings.Initialise();
+
             //Setup unhandled exception handling and NBug
             AttachUnhandledExceptionHandlers();
 
