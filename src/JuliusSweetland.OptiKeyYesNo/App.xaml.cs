@@ -104,8 +104,8 @@ namespace JuliusSweetland.OptiKeyYesNo
             applyTheme = () =>
             {
                 var themeDictionary = new ThemeResourceDictionary
-                {
-                    Source = new Uri(Settings.Default.Theme, UriKind.Relative)
+                {                    
+                    Source = new Uri("pack://application:,,,/OptiKey;component" + Settings.Default.Theme)
                 };
 
                 var previousThemes = Resources.MergedDictionaries
