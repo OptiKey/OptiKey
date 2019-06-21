@@ -55,7 +55,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             { 
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "SingleKey";
-                newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["MenuIcon"];
+                newKey.SymbolGeometry = (Geometry)this.Resources["MenuIcon"];
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.MENU;
                 newKey.Value = KeyValues.MenuKeyboardKey;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             // Sleep key for bottom left
             {
                 Key newKey = new Key();
-                newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["SleepIcon"];
+                newKey.SymbolGeometry = (Geometry)this.Resources["SleepIcon"];                
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.SLEEP;
                 newKey.Value = KeyValues.SleepKey;
                 this.AddKey(newKey, this.mRows - 1, 0);
@@ -125,8 +125,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             // Add prev/next keys (may be disabled)
             {
                 Key newKey = new Key();
-                newKey.SharedSizeGroup = "SingleKey";        
-                newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["ArrowPointingToLeftIcon"];
+                newKey.SharedSizeGroup = "SingleKey";
+                newKey.SymbolGeometry = (Geometry)this.Resources["ArrowPointingToLeftIcon"];
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.PREV;
                 if (this.pageIndex > 0)
                 {
@@ -137,7 +137,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "SingleKey";
-                newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["ArrowPointingToRightIcon"];
+                newKey.SymbolGeometry = (Geometry)this.Resources["ArrowPointingToRightIcon"];
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.NEXT;
                 if (nKBs < remainingKeyboards)
                 {
