@@ -202,11 +202,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <Resource Include="..\JuliusSweetland.OptiKey\Resources\DynamicKeyboards\BigHackerKeyboard.xml">
       <Link>Resources\DynamicKeyboards\BigHackerKeyboard.xml</Link>
       <SubType>Designer</SubType>
@@ -890,10 +885,6 @@
       <Link>Resources\Presage\database.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JuliusSweetland.OptiKey\JuliusSweetland.OptiKey.csproj">
