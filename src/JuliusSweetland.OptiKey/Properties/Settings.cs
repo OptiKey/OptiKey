@@ -2626,6 +2626,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("LeftToRight")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.Windows.FlowDirection UiLanguageFlowDirection {
             get {
                 return ((global::System.Windows.FlowDirection)(this["UiLanguageFlowDirection"]));
@@ -2638,6 +2639,7 @@ namespace JuliusSweetland.OptiKey.Properties {
 	[global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool EnablePlugins {
             get {
                 return ((bool)(this["EnablePlugins"]));
