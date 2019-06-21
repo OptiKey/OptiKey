@@ -137,6 +137,29 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             Log.Info("RequestManagementWindow complete.");
         }
 
+        public void SetMainViewModel(MainViewModel mainViewModel)
+        {
+            MainView.DataContext = mainViewModel;
+        }
+
+        public void AddOnMainViewLoadedAction(Action postMainViewLoaded)
+        {
+            if (MainView.IsLoaded)
+            {
+                postMainViewLoaded();
+            }
+            else
+            {
+                RoutedEventHandler loadedHandler = null;
+                loadedHandler = (s, a) =>
+                {
+                    postMainViewLoaded();
+                    MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
+                };
+                MainView.Loaded += loadedHandler;
+            }
+        }
+
         private void ToggleManualMode()
         {
             Log.Info("ToggleManualMode called.");

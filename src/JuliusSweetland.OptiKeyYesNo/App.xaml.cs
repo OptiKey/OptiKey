@@ -193,7 +193,7 @@ namespace JuliusSweetland.OptiKeyYesNo
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
 
-                mainWindow.MainView.DataContext = mainViewModel;
+                mainWindow.SetMainViewModel(mainViewModel);
 
                 //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
                 Action postMainViewLoaded = () =>
@@ -202,21 +202,7 @@ namespace JuliusSweetland.OptiKeyYesNo
                     mainViewModel.AttachInputServiceEventHandlers();
                 };
 
-                if (mainWindow.MainView.IsLoaded)
-                {
-                    postMainViewLoaded();
-                }
-                else
-                {
-                    RoutedEventHandler loadedHandler = null;
-                    loadedHandler = (s, a) =>
-                    {
-                        postMainViewLoaded();
-                        mainWindow.MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
-                    };
-
-                    mainWindow.MainView.Loaded += loadedHandler;
-                }
+                mainWindow.AddOnMainViewLoadedAction(postMainViewLoaded);
 
                 //Show the main window
                 mainWindow.Show();

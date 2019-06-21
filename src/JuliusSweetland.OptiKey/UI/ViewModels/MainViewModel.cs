@@ -625,7 +625,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        internal bool RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
+        public bool RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
         {
             bool notificationRaised = false;
 
@@ -648,7 +648,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return notificationRaised;
         }
 
-        internal async Task<bool> RaiseAnyPendingErrorToastNotifications()
+        public async Task<bool> RaiseAnyPendingErrorToastNotifications()
         {
             var taskCompletionSource = new TaskCompletionSource<bool>();
 
