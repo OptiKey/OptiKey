@@ -2266,7 +2266,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Irisbond Duo tracker cannot found. Please check the tracker&apos;s connection and try again..
+        ///   Looks up a localized string similar to Irisbond Duo tracker cannot be found. Please check the tracker&apos;s connection and try again..
         /// </summary>
         public static string IRISBOND_TRACKER_NOT_FOUND {
             get {

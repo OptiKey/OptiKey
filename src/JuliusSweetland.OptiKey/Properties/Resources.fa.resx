@@ -137,7 +137,7 @@
     <value>اضافه شد</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
-    <value>تنظیم توسط {0} تنظیم پیکسل توسط {0} پیکسل ها</value>
+    <value>تنظیم توسط {0} پیکسل|تنظیم توسط {0} پیکسل</value>
   </data>
   <data name="ALPHA_1" xml:space="preserve">
     <value>حروف 1</value>
@@ -2283,7 +2283,7 @@ Française
     <value>ردیاب Irisbond Duo نمی تواند شروع شود.</value>
   </data>
   <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
-    <value>ردیاب Irisbond Duo یافت نشد. لطفا اتصال ردیاب را بررسی کنید و دوباره امتحان کنید.</value>
+    <value>ردیاب Irisbond Duo یافت نشد. لطفاً اتصال ردیاب را بررسی کنید و دوباره امتحان کنید.</value>
   </data>
   <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
     <value>کالیبراسیون کامل شده است (موفق یا ناموفق)، اما همه چیز دوباره کار می کند!</value>
@@ -2326,5 +2326,23 @@ Française
   </data>
   <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
     <value>علامت های تفکیک کننده (لهجه ها و غیره) را بعد از حروف تایپ کنید:</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
+    <value>ما تغییر زبان رابط کاربری به فارسی را برای اطمینان از اینکه متن فارسی تایپ شده در چرک نویس از راست به چپ جریان دارد توصیه میکنیم.
+آیا مایل هستید OptiKey به صورت خودکار رابط کاربری را به فارسی تنظیم کند؟</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
+    <value>ما تغییر فونت مورد استفاده در OptiKey را به فونتی که کاملاً با فارسی سازگار است توصیه می کنیم.
+اگر فونتی که استفاده می شود فارسی نباشد در نتیجه امکان دارد متون و مخصوصاً اعداد به طور غلط نمایش داده شود.
+آیا مایل هستید OptiKey به صورت خودکار فونت را به Nazli تنظیم کند؟</value>
+  </data>
+  <data name="PERSIAN_IRAN" xml:space="preserve">
+    <value>Persian (Iran) / فارسی (ایرانی)</value>
+  </data>
+  <data name="PERSIAN_IRAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Persian
+(Iran) /
+فارسی
+(ایرانی)</value>
   </data>
 </root>
