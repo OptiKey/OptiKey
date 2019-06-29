@@ -915,6 +915,7 @@
     <Content Include="Dictionaries\PersianIran.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
