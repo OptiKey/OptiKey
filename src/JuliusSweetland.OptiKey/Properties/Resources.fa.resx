@@ -152,7 +152,7 @@
     <value>اندروید روشن</value>
   </data>
   <data name="ANDROID_TWO_TONE" xml:space="preserve">
-    <value>اندروید دو آهنگ</value>
+    <value>اندروید دو رنگ</value>
   </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>کلمات بزرگ اتومات:</value>
@@ -187,7 +187,7 @@
     <value>پایین</value>
   </data>
   <data name="BREAK" xml:space="preserve">
-    <value>شکستن</value>
+    <value>BREAK</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
     <value>کالیبراسیون با پیام '{0}' قطع شد:</value>
@@ -246,10 +246,11 @@
     <value>کلیک 6</value>
   </data>
   <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>کلاپس داک</value>
+    <value>کوچک کردن
+پنجره</value>
   </data>
   <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
-    <value>ضخامت کلاپس داک (به عنوان٪ از ضخامت کامل داک):</value>
+    <value>ضخامت پنجره کوچک شده (به عنوان٪ از ضخامت کامل پنجره):</value>
   </data>
   <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
     <value>منو</value>
@@ -329,16 +330,16 @@ Dansk
     <value>حذف</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>تفکیک کننده</value>
+    <value>علائم تفکیک کننده</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
-    <value>تفکیک کننده 1</value>
+    <value>علائم تفکیک کننده 1</value>
   </data>
   <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
-    <value>تفکیک کننده 2</value>
+    <value>علائم تفکیک کننده 2</value>
   </data>
   <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
-    <value>تفکیک کننده 3</value>
+    <value>علائم تفکیک کننده 3</value>
   </data>
   <data name="DICTIONARY" xml:space="preserve">
     <value>لغتنامه</value>
@@ -347,7 +348,7 @@ Dansk
     <value>هیچ لغتنامه ی از کاربر وجود ندارد و فرهنگ لغت اصلی در این مسیر پیدا نشد: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
-    <value>نمایش برای X ثانیه به ازای هر کاراکتر:</value>
+    <value>نمایش برای X ثانیه به ازای هر پیام کاراکتر:</value>
   </data>
   <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
     <value>انجام در محل فعلی ...</value>
@@ -363,7 +364,7 @@ Dansk
     <value> ({0:#,###}ms)</value>
   </data>
   <data name="END" xml:space="preserve">
-    <value>پایان</value>
+    <value>END</value>
   </data>
   <data name="ENGLISH_CANADA" xml:space="preserve">
     <value>انگلیسی (کانادا)</value>
@@ -391,7 +392,7 @@ Dansk
   </data>
   <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>پهن کردن
-داک</value>
+پنجره</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>پهن کردن
@@ -453,7 +454,7 @@ Dansk
     <value>فرانسوی (فرانسه) / Française (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>ضخامت داک کامل (به عنوان٪ از صفحه نمایش):</value>
+    <value>ضخامت پنجره کامل (به عنوان٪ از صفحه نمایش):</value>
   </data>
   <data name="GAZE_TRACKER" xml:space="preserve">
     <value>ردیاب Gaze</value>
@@ -462,13 +463,13 @@ Dansk
     <value>رشد</value>
   </data>
   <data name="HOME" xml:space="preserve">
-    <value>خانه</value>
+    <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
     <value>پر کردن افقی (به عنوان٪ از صفحه نمایش):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>زمان ناقص کلید ثابت برای زنده بودن (ms):</value>
+    <value>زمان تثبیت کلید ناقص برای برقرار بودن (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>افزایش
@@ -481,7 +482,7 @@ Dansk
     <value>INS</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>... اما هوشمندانه حروف بزرگ خودکار را جایی که احتمالا بی مورد است منع می کند:</value>
+    <value>... اما هوشمندانه حروف بزرگ خودکار را جایی که احتمالا بی مورد است منع کن:</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
     <value>ترکیب فعلی صفحه کلید و زبان معتبر نیست</value>
@@ -820,8 +821,8 @@ Dansk
 LK</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NUM
-SYM</value>
+    <value>اعداد
+نمادها</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
     <value>اعداد
@@ -938,7 +939,7 @@ SCR</value>
     <value>بازگرداندن</value>
   </data>
   <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
-    <value>ادامه یک کلید ثابت ناقص به قفل جدید نیاز دارد:</value>
+    <value>ادامه یک کلید ثابت ناقص به قفل جدید نیاز داشته باشد:</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
     <value>راست</value>
@@ -968,10 +969,10 @@ SCR</value>
     <value>اسپانیایی (اسپانیا) / Español (España)</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
-    <value>همانند موقعیت داک</value>
+    <value>همانند موقعیت پنجره</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
-    <value>چرک نویس # خطوط</value>
+    <value>تعداد خطوط چرک نویس:</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SCR
@@ -1096,7 +1097,7 @@ LK</value>
     <value>موفقیت</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
-    <value>در هنگام استفاده از کیبورد ماوس کلید های اصلاح کننده را قطع کن:</value>
+    <value>کلید های اصلاح کننده را در هنگام استفاده از کیبورد ماوس متوقف کن:</value>
   </data>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
@@ -1278,7 +1279,7 @@ Deutsch
 (Deutschland)</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>بزرگنمایی ماوس را برای اقدامات پیمایش ممنوع کنید:</value>
+    <value>بزرگنمایی ماوس را برای کارهای اسکرول متوقف کن:</value>
   </data>
   <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>روسی
@@ -1329,7 +1330,7 @@ Español
     <value>اضافه کردن به لغتنامه</value>
   </data>
   <data name="COLLAPSE_DOCK" xml:space="preserve">
-    <value>سقوط داک</value>
+    <value>کوچک کردن پنجره</value>
   </data>
   <data name="DOWN_ARROW" xml:space="preserve">
     <value>نشان پایین</value>
@@ -1413,28 +1414,28 @@ Español
     <value>کاهش شفافیت</value>
   </data>
   <data name="DIACRITICS_1" xml:space="preserve">
-    <value>تفکیک کننده 1</value>
+    <value>علائم تفکیک کننده 1</value>
   </data>
   <data name="DIACRITICS_2" xml:space="preserve">
-    <value>تفکیک کننده 2</value>
+    <value>علائم تفکیک کننده 2</value>
   </data>
   <data name="DIACRITICS_3" xml:space="preserve">
-    <value>تفکیک کننده 3</value>
+    <value>علائم تفکیک کننده 3</value>
   </data>
   <data name="EXPAND_DOCK" xml:space="preserve">
-    <value>پهن کردن داک</value>
+    <value>پهن کردن پنجره</value>
   </data>
   <data name="EXPAND_DOWN" xml:space="preserve">
     <value>پهن کردن پایین</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
-    <value>پهن مردن پایین و چپ</value>
+    <value>پهن کردن پایین و چپ</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>پهن مردن پایین و راست</value>
+    <value>پهن کردن پایین و راست</value>
   </data>
   <data name="EXPAND_LEFT" xml:space="preserve">
-    <value>پهن مردن چپ</value>
+    <value>پهن کردن چپ</value>
   </data>
   <data name="EXPAND_RIGHT" xml:space="preserve">
     <value>پهن کردن راست</value>
@@ -1443,10 +1444,10 @@ Español
     <value>پهن کردن بالا</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
-    <value>پهن مردن بالا و چپ</value>
+    <value>پهن کردن بالا و چپ</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
-    <value>پهن مردن بالا و راست</value>
+    <value>پهن کردن بالا و راست</value>
   </data>
   <data name="INCREASE_OPACITY" xml:space="preserve">
     <value>افزایش شفافیت</value>
@@ -1476,10 +1477,10 @@ Español
     <value>وسط پایین/بالا</value>
   </data>
   <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
-    <value>میزان حرکت در پیکسل</value>
+    <value>میزان حرکت به پیکسل</value>
   </data>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
-    <value>تنظیم میزان در پیکسل</value>
+    <value>تنظیم میزان به پیکسل</value>
   </data>
   <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
     <value>گفتگوی آلفا 1</value>
@@ -1575,7 +1576,7 @@ Español
     <value>SCR LK</value>
   </data>
   <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
-    <value>میزان اسکرول در کلیک ها</value>
+    <value>میزان اسکرول به کلیک</value>
   </data>
   <data name="SCROLL_DOWN" xml:space="preserve">
     <value>اسکرول پایین</value>
@@ -1617,10 +1618,10 @@ Español
     <value>تغییر کلید های کیبورد</value>
   </data>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>کلید های عمل داک</value>
+    <value>کلید های عمل پنجره</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>لغو برای زمان های ثابت کلید های فردی (ms):</value>
+    <value>زمان تثبیت لغو برای کلید های منحصر به فرد (ms):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
     <value>تغییر زبان کلید ها</value>
@@ -1653,7 +1654,7 @@ Español
     <value>کلید های پیشنهادی:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
-    <value>تعیین زمان برای تکمیل بر روی کلید های فردی:</value>
+    <value>تعیین زمان برای تکمیل بر روی کلید های منحصر به فرد:</value>
   </data>
   <data name="GREEK_GREECE" xml:space="preserve">
     <value>یونانی (یونان) / Ελληνικά (Ελλάδα)</value>
@@ -1701,7 +1702,7 @@ Nederlands
 (Nederland)</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
-    <value>کلید های اصلاح کننده را برای تمام فعالیت های ماوس متوقف کنید:</value>
+    <value>کلید های اصلاح کننده را برای تمام فعالیت های ماوس متوقف کن:</value>
   </data>
   <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>
@@ -2054,7 +2055,7 @@ OptiKey سعی خواهد کرد تا ادامه یابد، اما احتمال 
     <value>بیشتر...</value>
   </data>
   <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
-    <value>هنگام تغییر زبان کیبورد صداها را نمایش دهید:</value>
+    <value>هنگام تغییر زبان کیبورد صداها را نمایش بده:</value>
   </data>
   <data name="LOOK_TO_SCROLL" xml:space="preserve">
     <value>نگاه به اسکرول</value>
@@ -2325,7 +2326,7 @@ Française
     <value>رابط کاربری و کیبورد/زبان لغتنامه متفاوت هستند</value>
   </data>
   <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
-    <value>علامت های تفکیک کننده (لهجه ها و غیره) را بعد از حروف تایپ کنید:</value>
+    <value>علامت های تفکیک کننده (لهجه ها و غیره) را بعد از حروف تایپ کن:</value>
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
     <value>ما تغییر زبان رابط کاربری به فارسی را برای اطمینان از اینکه متن فارسی تایپ شده در چرک نویس از راست به چپ جریان دارد توصیه میکنیم.
