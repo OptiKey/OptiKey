@@ -1,8 +1,9 @@
-﻿<Application x:Class="JuliusSweetland.OptiKey.Pro.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<z:OptiKeyApp xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"             
+             xmlns:z="clr-namespace:JuliusSweetland.OptiKey;assembly=OptiKey"
+             x:Class="JuliusSweetland.OptiKey.Pro.App"
              Startup="App_OnStartup">
-    <Application.Resources>
+    <z:OptiKeyApp.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
@@ -13,5 +14,5 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Application.Resources>
-</Application>
+    </z:OptiKeyApp.Resources>
+</z:OptiKeyApp>

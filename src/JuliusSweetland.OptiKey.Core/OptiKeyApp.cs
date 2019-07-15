@@ -35,29 +35,35 @@ using JuliusSweetland.OptiKey.Services.PluginEngine;
 namespace JuliusSweetland.OptiKey
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Interaction logic for OptiKeyApp.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class OptiKeyApp : Application
     {
         #region Constants
 
-        private const string GazeTrackerUdpRegex = @"^STREAM_DATA\s(?<instanceTime>\d+)\s(?<x>-?\d+(\.[0-9]+)?)\s(?<y>-?\d+(\.[0-9]+)?)";
-        private const string GitHubRepoName = "optikey";
-        private const string GitHubRepoOwner = "optikey";
-        private const string ExpectedMaryTTSLocationSuffix = @"\bin\marytts-server.bat";
+        protected const string GazeTrackerUdpRegex = @"^STREAM_DATA\s(?<instanceTime>\d+)\s(?<x>-?\d+(\.[0-9]+)?)\s(?<y>-?\d+(\.[0-9]+)?)";
+        protected const string GitHubRepoName = "optikey";
+        protected const string GitHubRepoOwner = "optikey";
+        protected const string ExpectedMaryTTSLocationSuffix = @"\bin\marytts-server.bat";
 
         #endregion
 
-        #region Private Member Vars
+        #region protected Member Vars
 
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly Action applyTheme;
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        protected Action applyTheme;
 
         #endregion
 
         #region Ctor
 
-        public App()
+        public OptiKeyApp()
+        {
+            
+        }
+
+        // Previously in core OptiKey ctr, now called by derived classes after setting up Settings class
+        protected void Initialise()
         {
             //Setup unhandled exception handling and NBug
             AttachUnhandledExceptionHandlers();
@@ -104,7 +110,8 @@ namespace JuliusSweetland.OptiKey
             {
                 var themeDictionary = new ThemeResourceDictionary
                 {
-                    Source = new Uri(Settings.Default.Theme, UriKind.Relative)
+                    // TODO: this is a bit weird, makes assumptions about architecture of calling code...
+                    Source = new Uri("pack://application:,,,/OptiKey;component" + Settings.Default.Theme)
                 };
 
                 var previousThemes = Resources.MergedDictionaries
@@ -122,142 +129,7 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
-        #region On Startup
-
-        private void App_OnStartup(object sender, StartupEventArgs e)
-        {
-            try
-            {
-                Log.Info("Boot strapping the services and UI.");
-
-                //Apply theme
-                applyTheme();
-
-                //Define MainViewModel before services so I can setup a delegate to call into the MainViewModel
-                //This is to work around the fact that the MainViewModel is created after the services.
-                MainViewModel mainViewModel = null;
-                Action<KeyValue> fireKeySelectionEvent = kv =>
-                {
-                    if (mainViewModel != null) //Access to modified closure is a good thing here, for once!
-                    {
-                        mainViewModel.FireKeySelectionEvent(kv);
-                    }
-                };
-
-                CleanupAndPrepareCommuniKateInitialState();
-
-                ValidateDynamicKeyboardLocation();
-
-                // Handle plugins. Validate if directory exists and is accessible and pre-load all plugins, building a in-memory list of available ones.
-                ValidatePluginsLocation();
-                if (Settings.Default.EnablePlugins)
-                {
-                    PluginEngine.LoadAvailablePlugins();
-                }
-
-                var presageInstallationProblem = PresageInstallationProblemsDetected();
-
-                //Create services
-                var errorNotifyingServices = new List<INotifyErrors>();
-                IAudioService audioService = new AudioService();
-                
-                IDictionaryService dictionaryService = new DictionaryService(Settings.Default.SuggestionMethod);
-                IPublishService publishService = new PublishService();
-                ISuggestionStateService suggestionService = new SuggestionStateService();
-                ICalibrationService calibrationService = CreateCalibrationService();
-                ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
-                ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
-                IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
-                IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
-                IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
-                IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
-                errorNotifyingServices.Add(audioService);
-                errorNotifyingServices.Add(dictionaryService);
-                errorNotifyingServices.Add(publishService);
-                errorNotifyingServices.Add(inputService);
-
-                ReleaseKeysOnApplicationExit(keyStateService, publishService);
-
-                //Compose UI
-                var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
-                IWindowManipulationService mainWindowManipulationService = CreateMainWindowManipulationService(mainWindow);
-                errorNotifyingServices.Add(mainWindowManipulationService);
-                mainWindow.WindowManipulationService = mainWindowManipulationService;
-
-                //Subscribing to the on closing events.
-                mainWindow.Closing += dictionaryService.OnAppClosing;
-
-				mainViewModel = new MainViewModel(
-                    audioService, calibrationService, dictionaryService, keyStateService,
-                    suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
-
-                mainWindow.MainView.DataContext = mainViewModel;
-
-                //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
-                Action postMainViewLoaded = () =>
-                {
-                    mainViewModel.AttachErrorNotifyingServiceHandlers();
-                    mainViewModel.AttachInputServiceEventHandlers();
-                };
-
-                if(mainWindow.MainView.IsLoaded)
-                {
-                    postMainViewLoaded();
-                }
-                else
-                {
-                    RoutedEventHandler loadedHandler = null;
-                    loadedHandler = (s, a) =>
-                    {
-                        postMainViewLoaded();
-                        mainWindow.MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
-                    };
-					
-                    mainWindow.MainView.Loaded += loadedHandler;
-                }
-
-                //Show the main window
-                mainWindow.Show();
-
-                if (Settings.Default.LookToScrollEnabled && Settings.Default.LookToScrollShowOverlayWindow)
-                {
-                    // Create the overlay window, but don't show it yet. It'll make itself visible when the conditions are right.
-                    new LookToScrollOverlayWindow(mainViewModel);
-                }
-                
-                //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
-                EventHandler sizeAndPositionInitialised = null;
-                sizeAndPositionInitialised = async (_, __) =>
-                {
-                    mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
-                    await ShowSplashScreen(inputService, audioService, mainViewModel);
-                    await mainViewModel.RaiseAnyPendingErrorToastNotifications();
-                    await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
-                    await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService, audioService, mainViewModel);
-
-                    inputService.RequestResume(); //Start the input service
-
-                    await CheckForUpdates(inputService, audioService, mainViewModel);
-                };
-
-                if (mainWindowManipulationService.SizeAndPositionIsInitialised)
-                {
-                    sizeAndPositionInitialised(null, null);
-                }
-                else
-                {
-                    mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Error starting up application", ex);
-                throw;
-            }
-        }
-
-        private static bool PresageInstallationProblemsDetected()
+        protected static bool PresageInstallationProblemsDetected()
         {
             if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
             {
@@ -391,11 +263,9 @@ namespace JuliusSweetland.OptiKey
             return false;
         }
 
-        #endregion
-
 		#region Create Main Window Manipulation Service
 
-		    private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
+		    protected WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
         {
             return new WindowManipulationService(
                 mainWindow,
@@ -541,7 +411,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Attach Unhandled Exception Handlers
 
-        private static void AttachUnhandledExceptionHandlers()
+        protected static void AttachUnhandledExceptionHandlers()
         {
 #if !DEBUG
             Application.Current.DispatcherUnhandledException += NBug.Handler.DispatcherUnhandledException;
@@ -593,7 +463,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Handle Corrupt Settings
 
-        private static void HandleCorruptSettings()
+        protected static void HandleCorruptSettings()
         {
             try
             {
@@ -626,7 +496,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Create Service Methods
 
-        private static ICalibrationService CreateCalibrationService()
+        protected static ICalibrationService CreateCalibrationService()
         {
             switch (Settings.Default.PointsSource)
             {
@@ -655,7 +525,7 @@ namespace JuliusSweetland.OptiKey
             return null;
         }
 
-        private static IInputService CreateInputService(
+        protected static IInputService CreateInputService(
             IKeyStateService keyStateService,
             IDictionaryService dictionaryService,
             IAudioService audioService,
@@ -805,7 +675,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Log Diagnostic Info
 
-        private static void LogDiagnosticInfo()
+        protected static void LogDiagnosticInfo()
         {
             Log.InfoFormat("Assembly version: {0}", DiagnosticInfo.AssemblyVersion);
             var assemblyFileVersion = DiagnosticInfo.AssemblyFileVersion;
@@ -829,7 +699,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Show Splash Screen
 
-        private static async Task<bool> ShowSplashScreen(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        protected static async Task<bool> ShowSplashScreen(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
@@ -909,7 +779,7 @@ namespace JuliusSweetland.OptiKey
 
         #region  Check For Updates
 
-        private static async Task<bool> CheckForUpdates(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        protected static async Task<bool> CheckForUpdates(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
@@ -988,7 +858,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Release Keys On App Exit
 
-        private static void ReleaseKeysOnApplicationExit(IKeyStateService keyStateService, IPublishService publishService)
+        protected static void ReleaseKeysOnApplicationExit(IKeyStateService keyStateService, IPublishService publishService)
         {
             Current.Exit += (o, args) =>
             {
@@ -1003,7 +873,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Validate Dynamic Keyboard Location
 
-        private static string GetDefaultUserKeyboardFolder()
+        protected static string GetDefaultUserKeyboardFolder()
         {
             const string applicationDataSubPath = @"JuliusSweetland\OptiKey\Keyboards\";
 
@@ -1022,7 +892,7 @@ namespace JuliusSweetland.OptiKey
             return applicationDataPath;
         }
 
-        private static void ValidateDynamicKeyboardLocation()
+        protected static void ValidateDynamicKeyboardLocation()
         {
             if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation))
             {
@@ -1035,7 +905,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Validate Plugins Location
 
-        private static string GetDefaultPluginsFolder()
+        protected static string GetDefaultPluginsFolder()
         {
             const string applicationDataSubPath = @"JuliusSweetland\OptiKey\Plugins\";
 
@@ -1054,7 +924,7 @@ namespace JuliusSweetland.OptiKey
             return applicationDataPath;
         }
 
-        private static void ValidatePluginsLocation()
+        protected static void ValidatePluginsLocation()
         {
             if (string.IsNullOrEmpty(Settings.Default.PluginsLocation))
             {
@@ -1067,7 +937,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Clean Up Extracted CommuniKate Files If Staged For Deletion
 
-        private static void CleanupAndPrepareCommuniKateInitialState()
+        protected static void CleanupAndPrepareCommuniKateInitialState()
         {
             if (Settings.Default.EnableCommuniKateKeyboardLayout)
             {
@@ -1097,7 +967,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Attempt To Start/Stop Mary TTS Service Automatically
 
-        private static async Task<bool> AttemptToStartMaryTTSService(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        protected static async Task<bool> AttemptToStartMaryTTSService(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
@@ -1217,7 +1087,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Alert If Presage Bitness Or Bootstrap Or Version Failure
 
-        private static async Task<bool> AlertIfPresageBitnessOrBootstrapOrVersionFailure(
+        protected static async Task<bool> AlertIfPresageBitnessOrBootstrapOrVersionFailure(
             bool presageInstallationProblem, IInputService inputService, IAudioService audioService,  MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
