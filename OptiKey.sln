@@ -37,6 +37,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.StandardPlugins", "src\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj", "{0C8F0372-2D55-41BC-9730-4ACE3ED67452}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Pro", "src\JuliusSweetland.OptiKey.Pro\JuliusSweetland.OptiKey.Pro.csproj", "{A42B7E64-5E13-4B8A-AF6C-31E07FA00CC4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0C8F0372-2D55-41BC-9730-4ACE3ED67452} = {0C8F0372-2D55-41BC-9730-4ACE3ED67452}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Symbol", "src\JuliusSweetland.OptiKey.Symbol\JuliusSweetland.OptiKey.Symbol.csproj", "{2947DE4A-159C-46D2-AF3E-5768FFB3A61F}"
 EndProject
