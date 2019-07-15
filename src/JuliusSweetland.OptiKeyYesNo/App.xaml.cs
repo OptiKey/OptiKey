@@ -1,7 +1,9 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -10,27 +12,28 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Diagnostics;
-using Microsoft.Win32;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using JuliusSweetland.OptiKey.YesNo.Properties;
 using log4net;
+using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
-using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
-using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
+using Microsoft.Win32;
+using NBug.Core.UI;
 using Octokit;
 using presage;
+using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
+using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Application = System.Windows.Application;
-using JuliusSweetland.OptiKey.Services.PluginEngine;
 
 namespace JuliusSweetland.OptiKey.YesNo
 {
