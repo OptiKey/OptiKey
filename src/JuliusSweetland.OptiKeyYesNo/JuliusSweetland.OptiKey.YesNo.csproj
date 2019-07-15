@@ -891,13 +891,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JuliusSweetland.OptiKey\JuliusSweetland.OptiKey.csproj">
-      <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
-      <Name>JuliusSweetland.OptiKey</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
     <Resource Include="..\JuliusSweetland.OptiKey\Resources\CommuniKate\back.png">
       <Link>Resources\CommuniKate\back.png</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -909,6 +902,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey\JuliusSweetland.OptiKey.Core.csproj">
+      <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
+      <Name>JuliusSweetland.OptiKey.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
