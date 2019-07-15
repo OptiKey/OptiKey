@@ -69,6 +69,9 @@ xcopy "$(ProjectDir)bin\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSwe
 
 if not exist "$(SolutionDir)src\JuliusSweetland.OptiKeyYesNo\bin\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKeyYesNo\bin\$(ConfigurationName)\Resources\Plugins"
 xcopy "$(ProjectDir)bin\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKeyYesNo\bin\$(ConfigurationName)\Resources\Plugins" /y
+
+if not exist "$(SolutionDir)src\JuliusSweetland.OptiKey.Symbol\bin\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKeyYesNo\bin\$(ConfigurationName)\Resources\Plugins"
+xcopy "$(ProjectDir)bin\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKeyYesNo\bin\$(ConfigurationName)\Resources\Plugins" /y
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
