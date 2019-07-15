@@ -91,15 +91,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JuliusSweetland.OptiKey\JuliusSweetland.OptiKey.Core.csproj">
-      <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
-      <Name>JuliusSweetland.OptiKey.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="..\..\LICENSE.txt">
       <Link>LICENSE.txt</Link>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj">
+      <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
+      <Name>JuliusSweetland.OptiKey.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
