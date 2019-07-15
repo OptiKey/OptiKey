@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A42B7E64-5E13-4B8A-AF6C-31E07FA00CC4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>JuliusSweetland.OptiKeyYesNo</RootNamespace>
+    <RootNamespace>JuliusSweetland.OptiKey.YesNo</RootNamespace>
     <AssemblyName>OptiKeyYesNo</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>JuliusSweetland.OptiKeyYesNo.App</StartupObject>
+    <StartupObject>JuliusSweetland.OptiKey.YesNo.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">

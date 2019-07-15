@@ -21,6 +21,7 @@ using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
+using JuliusSweetland.OptiKey.YesNo.Properties;
 using log4net;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
@@ -30,9 +31,8 @@ using Octokit;
 using presage;
 using Application = System.Windows.Application;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
-using JuliusSweetland.OptiKeyYesNo.Properties;
 
-namespace JuliusSweetland.OptiKeyYesNo
+namespace JuliusSweetland.OptiKey.YesNo
 {
     /// <summary>
     /// Interaction logic for App.xaml
