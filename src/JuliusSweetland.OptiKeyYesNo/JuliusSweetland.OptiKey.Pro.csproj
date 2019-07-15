@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A42B7E64-5E13-4B8A-AF6C-31E07FA00CC4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>JuliusSweetland.OptiKey.YesNo</RootNamespace>
-    <AssemblyName>OptiKeyYesNo</AssemblyName>
+    <RootNamespace>JuliusSweetland.OptiKey.Pro</RootNamespace>
+    <AssemblyName>OptiKey.Pro</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>JuliusSweetland.OptiKey.YesNo.App</StartupObject>
+    <StartupObject>JuliusSweetland.OptiKey.Pro.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">

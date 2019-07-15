@@ -36,7 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OptiKeyLocaleGuideImages", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.StandardPlugins", "src\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj", "{0C8F0372-2D55-41BC-9730-4ACE3ED67452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.YesNo", "src\JuliusSweetland.OptiKeyYesNo\JuliusSweetland.OptiKey.YesNo.csproj", "{A42B7E64-5E13-4B8A-AF6C-31E07FA00CC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Pro", "src\JuliusSweetland.OptiKeyYesNo\JuliusSweetland.OptiKey.Pro.csproj", "{A42B7E64-5E13-4B8A-AF6C-31E07FA00CC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

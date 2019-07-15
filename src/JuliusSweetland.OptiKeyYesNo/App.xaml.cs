@@ -17,12 +17,12 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
+using JuliusSweetland.OptiKey.Pro.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
-using JuliusSweetland.OptiKey.YesNo.Properties;
 using log4net;
 using log4net.Appender;
 using log4net.Core;
@@ -35,7 +35,7 @@ using log4net.Appender; //Do not remove even if marked as unused by Resharper - 
 using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Application = System.Windows.Application;
 
-namespace JuliusSweetland.OptiKey.YesNo
+namespace JuliusSweetland.OptiKey.Pro
 {
     /// <summary>
     /// Interaction logic for App.xaml
