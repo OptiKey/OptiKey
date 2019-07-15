@@ -7,7 +7,7 @@
     <ProjectGuid>{A42B7E64-5E13-4B8A-AF6C-31E07FA00CC4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>JuliusSweetland.OptiKeyYesNo</RootNamespace>
-    <AssemblyName>JuliusSweetland.OptiKeyYesNo</AssemblyName>
+    <AssemblyName>OptiKeyYesNo</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -33,6 +33,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>JuliusSweetland.OptiKeyYesNo.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
