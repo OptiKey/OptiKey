@@ -206,6 +206,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="log4net.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\BigHackerKeyboard.xml">
       <Link>Resources\DynamicKeyboards\BigHackerKeyboard.xml</Link>
       <SubType>Designer</SubType>

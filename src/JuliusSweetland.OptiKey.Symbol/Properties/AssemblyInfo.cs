@@ -40,6 +40,8 @@ using System.Windows;
                                               // app, or any theme specific resource dictionaries)
 )]
 
+//Configure log4net - the alternative is to call "log4net.Config.XmlConfigurator.Configure();" as early as possible
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 
 // Version information for an assembly consists of the following four values:
 //
