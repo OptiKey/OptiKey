@@ -699,7 +699,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Show Splash Screen
 
-        protected static async Task<bool> ShowSplashScreen(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        protected static async Task<bool> ShowSplashScreen(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel, string splashTitle)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
@@ -758,7 +758,7 @@ namespace JuliusSweetland.OptiKey
                 inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 mainViewModel.RaiseToastNotification(
-                    OptiKey.Properties.Resources.OPTIKEY_DESCRIPTION,
+                    splashTitle,
                     message.ToString(),
                     NotificationTypes.Normal,
                     () =>
