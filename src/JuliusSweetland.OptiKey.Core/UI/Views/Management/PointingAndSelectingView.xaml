@@ -222,12 +222,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL}" 
-                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="1" Interval="10" StringFormat="###,##0"
-                                            Value="{Binding PointTtlInMs, Mode=TwoWay}" />
-
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.HIDE_CURSOR_LABEL}" 
                                 VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
