@@ -842,7 +842,7 @@ SYM</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Type · Click · Speak</value>
+    <value>Optikey Pro : Computer Control &amp; Communication</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Other</value>
@@ -2358,12 +2358,12 @@ Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value
     <value>Various</value>
   </data>
   <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Conversation</value>
+    <value>Optikey Chat : Easy Communication</value>
   </data>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Mouse Control</value>
+    <value>Optikey Mouse : Full Cursor Control</value>
   </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey Symbol : Open Symbol Communication </value>
+    <value>Optikey Symbol : Open Symbol Communication</value>
   </data>
 </root>

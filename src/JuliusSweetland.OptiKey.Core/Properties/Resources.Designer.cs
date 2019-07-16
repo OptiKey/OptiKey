@@ -4370,7 +4370,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey : Conversation.
+        ///   Looks up a localized string similar to Optikey Chat : Easy Communication.
         /// </summary>
         public static string OPTIKEY_CHAT_DESCRIPTION {
             get {
@@ -4379,7 +4379,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey : Mouse Control.
+        ///   Looks up a localized string similar to Optikey Mouse : Full Cursor Control.
         /// </summary>
         public static string OPTIKEY_MOUSE_DESCRIPTION {
             get {
@@ -4388,7 +4388,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey : Type · Click · Speak.
+        ///   Looks up a localized string similar to Optikey Pro : Computer Control &amp; Communication.
         /// </summary>
         public static string OPTIKEY_PRO_DESCRIPTION {
             get {
@@ -4397,7 +4397,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey Symbol : Open Symbol Communication .
+        ///   Looks up a localized string similar to Optikey Symbol : Open Symbol Communication.
         /// </summary>
         public static string OPTIKEY_SYMBOL_DESCRIPTION {
             get {
