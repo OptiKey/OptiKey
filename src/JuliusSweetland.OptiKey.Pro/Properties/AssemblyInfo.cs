@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("OptiKey Pro")]
 [assembly: AssemblyDescription("Free, Open Source, Assistive On-Screen Keyboard")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("OptiKey Ltd")]
+[assembly: AssemblyCompany("JuliusSweetland")]
 [assembly: AssemblyProduct("OptiKey Pro")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
