@@ -243,11 +243,34 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                         </MultiBinding>
                                                     </controls:Key.SymbolOrientation>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="8" Grid.Column="7" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource BackIcon}"
-                                                              Text="{x:Static resx:Resources.BACK}"
-                                                              SharedSizeGroup="KeyWithSymbolAndText"
-                                                              Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+
+
+                                                <ContentControl Grid.Row="8" Grid.Column="7" Grid.RowSpan="2">
+                                                    <ContentControl.Style>
+                                                        <Style TargetType="{x:Type ContentControl}">
+                                                            <Setter Property="Content">
+                                                                <Setter.Value>
+                                                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                                      Text="{x:Static resx:Resources.BACK}"
+                                                                      SharedSizeGroup="KeyWithSymbol"
+                                                                      Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=MouseOnlyMode}" Value="True">
+                                                                    <Setter Property="Content">
+                                                                        <Setter.Value>
+                                                                            <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                                              Text="{x:Static resx:Resources.QUIT}"
+                                                                              SharedSizeGroup="KeyWithSymbol"
+                                                                              Value="{x:Static models:KeyValues.QuitKey}"/>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </ContentControl.Style>
+                                                </ContentControl>
                                             </Grid>
                                         </Setter.Value>
                                     </Setter>
@@ -344,11 +367,33 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                 </MultiBinding>
                                                             </controls:Key.SymbolOrientation>
                                                         </controls:Key>
-                                                        <controls:Key Grid.Row="0" Grid.Column="9"
-                                                                      SymbolGeometry="{StaticResource BackIcon}"
+                                                        
+                                                        <ContentControl Grid.Row="0" Grid.Column="9">
+                                                            <ContentControl.Style>
+                                                                <Style TargetType="{x:Type ContentControl}">
+                                                                    <Setter Property="Content">
+                                                                        <Setter.Value>
+                                                                            <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                                                       Text="{x:Static resx:Resources.BACK}"
-                                                                      SharedSizeGroup="KeyWithSymbolAndText"
+                                                                      SharedSizeGroup="KeyWithSymbol"
                                                                       Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=MouseOnlyMode}" Value="True">
+                                                                            <Setter Property="Content">
+                                                                                <Setter.Value>
+                                                                                    <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                                              Text="{x:Static resx:Resources.QUIT}"
+                                                                              SharedSizeGroup="KeyWithSymbol"
+                                                                              Value="{x:Static models:KeyValues.QuitKey}"/>
+                                                                                </Setter.Value>
+                                                                            </Setter>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </ContentControl.Style>
+                                                        </ContentControl>
                                                     </Grid>
                                                 </Setter.Value>
                                             </Setter>
@@ -584,11 +629,33 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                 </MultiBinding>
                                                             </controls:Key.SymbolOrientation>
                                                         </controls:Key>
-                                                        <controls:Key Grid.Row="16" Grid.Column="3" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource BackIcon}"
+                                                        
+                                                        <ContentControl Grid.Row="16" Grid.Column="3" Grid.RowSpan="2">
+                                                            <ContentControl.Style>
+                                                                <Style TargetType="{x:Type ContentControl}">
+                                                                    <Setter Property="Content">
+                                                                        <Setter.Value>
+                                                                            <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                                                       Text="{x:Static resx:Resources.BACK}"
-                                                                      SharedSizeGroup="KeyWithSymbolAndText"
+                                                                      SharedSizeGroup="KeyWithSymbol"
                                                                       Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=MouseOnlyMode}" Value="True">
+                                                                            <Setter Property="Content">
+                                                                                <Setter.Value>
+                                                                                    <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                                              Text="{x:Static resx:Resources.QUIT}"
+                                                                              SharedSizeGroup="KeyWithSymbol"
+                                                                              Value="{x:Static models:KeyValues.QuitKey}"/>
+                                                                                </Setter.Value>
+                                                                            </Setter>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </ContentControl.Style>
+                                                        </ContentControl>
                                                     </Grid>
                                                 </Setter.Value>
                                             </Setter>
@@ -685,11 +752,32 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                         </MultiBinding>
                                                                     </controls:Key.SymbolOrientation>
                                                                 </controls:Key>
-                                                                <controls:Key Grid.Row="9" Grid.Column="0"
-                                                                              SymbolGeometry="{StaticResource BackIcon}"
-                                                                              Text="{x:Static resx:Resources.BACK}"
-                                                                              SharedSizeGroup="KeyWithSymbolAndText"
-                                                                              Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                                                <ContentControl Grid.Row="9" Grid.Column="0">
+                                                                    <ContentControl.Style>
+                                                                        <Style TargetType="{x:Type ContentControl}">
+                                                                            <Setter Property="Content">
+                                                                                <Setter.Value>
+                                                                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                                      Text="{x:Static resx:Resources.BACK}"
+                                                                      SharedSizeGroup="KeyWithSymbol"
+                                                                      Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                                                                </Setter.Value>
+                                                                            </Setter>
+                                                                            <Style.Triggers>
+                                                                                <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=MouseOnlyMode}" Value="True">
+                                                                                    <Setter Property="Content">
+                                                                                        <Setter.Value>
+                                                                                            <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                                              Text="{x:Static resx:Resources.QUIT}"
+                                                                              SharedSizeGroup="KeyWithSymbol"
+                                                                              Value="{x:Static models:KeyValues.QuitKey}"/>
+                                                                                        </Setter.Value>
+                                                                                    </Setter>
+                                                                                </DataTrigger>
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </ContentControl.Style>
+                                                                </ContentControl>
                                                             </Grid>
                                                         </Setter.Value>
                                                     </Setter>
