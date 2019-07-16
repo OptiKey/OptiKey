@@ -78,6 +78,17 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <valueConverters:ObjectIsType x:Key="ObjectIsType" />
             <valueConverters:CloneBrush x:Key="CloneBrush" />
             <valueConverters:OverrideHasValue x:Key="OverrideHasValue" />
+            <valueConverters:FontFamilyNotIn x:Key="NotInListOfPersianFonts">
+                <valueConverters:FontFamilyNotIn.Fonts>
+                    <system:String>/Resources/Fonts/#Elham</system:String>
+                    <system:String>/Resources/Fonts/#Homa</system:String>
+                    <system:String>/Resources/Fonts/#Koodak</system:String>
+                    <system:String>/Resources/Fonts/#Nazli</system:String>
+                    <system:String>/Resources/Fonts/#Roya</system:String>
+                    <system:String>/Resources/Fonts/#Terafik</system:String>
+                    <system:String>/Resources/Fonts/#Titr</system:String>
+                </valueConverters:FontFamilyNotIn.Fonts>
+            </valueConverters:FontFamilyNotIn>
             <valueConverters:FontFamilyNotIn x:Key="NotInListOfUrduFonts">
                 <valueConverters:FontFamilyNotIn.Fonts>
                     <system:String>/Resources/Fonts/#Fajer Noori Nastalique</system:String>
@@ -200,6 +211,20 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <Setter Property="FontWeight" Value="Regular" />
                         <Setter Property="FontStretch" Value="Normal" />
                     </DataTrigger>
+
+                    <!--Use Persian compatibility font (for rendering characters that may be unsupported in the user specified font)-->
+                    <!--See the notes on Urdu characters below. This is not strictly necessary, but ensures Persian numbers are displayed correctly.-->
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding Path=UsePersianCompatibilityFont, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
+                            <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily, Converter={StaticResource NotInListOfPersianFonts}, Mode=OneWay}" Value="True" />
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter Property="FontFamily" Value="/Resources/Fonts/#Nazli" />
+                            <Setter Property="FontWeight" Value="Regular" />
+                            <Setter Property="FontStretch" Value="Normal" />
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
 
                     <!--Use Urdu compatibility font (for rendering characters that may be unsupported in the user specified font)-->
                     <!--Specifically this is used to render numbers on the Urdu numeric keyboard correctly as they share unicode

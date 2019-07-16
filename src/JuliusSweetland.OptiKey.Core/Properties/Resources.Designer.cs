@@ -1082,6 +1082,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We recommend changing the UiLanguage to Persian to ensure typed Persian text flows from right to left in the scratchpad.
+        ///Would you like OptiKey to automatically set the UiLanguage to Persian?.
+        /// </summary>
+        public static string DEFAULT_UILANGUAGE_TO_PERSIAN {
+            get {
+                return ResourceManager.GetString("DEFAULT_UILANGUAGE_TO_PERSIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We recommend changing the UiLanguage to Urdu to ensure typed Urdu text flows from right to left in the scratchpad.
         ///Would you like optikey to automatically set the UiLanguage to Urdu?.
         /// </summary>
@@ -1993,6 +2003,17 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We recommend changing the font used in optikey to one which is fully compatible with Persian.
+        ///If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
+        ///Would you like optikey to automatically set the font to Nazli?.
+        /// </summary>
+        public static string FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE {
+            get {
+                return ResourceManager.GetString("FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We recommend changing the font used in optikey to one which is fully compatible with Urdu.
         ///If a font is used which is not Urdu specific then text, and especially numbers, may display incorrectly.
         ///Would you like optikey to automatically set the font to Nafees Web Naskh?.
@@ -2290,7 +2311,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Irisbond Duo tracker cannot found. Please check the tracker&apos;s connection and try again..
+        ///   Looks up a localized string similar to Irisbond Duo tracker cannot be found. Please check the tracker&apos;s connection and try again..
         /// </summary>
         public static string IRISBOND_TRACKER_NOT_FOUND {
             get {
@@ -4420,6 +4441,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string PARENT_WINDOW_COULD_NOT_BE_FOUND {
             get {
                 return ResourceManager.GetString("PARENT_WINDOW_COULD_NOT_BE_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Persian (Iran) / فارسی (ایرانی).
+        /// </summary>
+        public static string PERSIAN_IRAN {
+            get {
+                return ResourceManager.GetString("PERSIAN_IRAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Persian
+        ///(Iran) /
+        ///فارسی
+        ///(ایرانی).
+        /// </summary>
+        public static string PERSIAN_IRAN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("PERSIAN_IRAN_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         

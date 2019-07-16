@@ -2328,4 +2328,13 @@ Gostaria que o optikey alterasse automaticamente para o tipo de letra Nafees Web
   <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
     <value>Escrever diacríticos (acentos, cedilhas, etc.) após as letras:</value>
   </data>
+  <data name="PERSIAN_IRAN" xml:space="preserve">
+    <value>Persa (Irão) / فارسی (ایرانی)</value>
+  </data>
+  <data name="PERSIAN_IRAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Persa
+(Irão) /
+فارسی
+(ایرانی)</value>
+  </data>
 </root>

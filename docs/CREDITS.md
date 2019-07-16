@@ -44,13 +44,15 @@ I would like to extend my thanks/credit to the following people, websites & orga
 * Nicholas Farley
 * Judica
 * Max Zschoch
+* K.lbl
+* Samual Haddad
+* Amy Vining
 
 ## Resources
 
 ### Fonts
 
-* Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
-* Charis SIL - Under the SIL Open Font License (OFL)
+* All relevant licenses are included in the Resources\Fonts directory and bundled with the installed files
 
 ### Icons
 

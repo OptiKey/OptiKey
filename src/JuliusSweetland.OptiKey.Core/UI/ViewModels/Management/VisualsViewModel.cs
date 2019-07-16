@@ -18,12 +18,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private const string B612Url = "/Resources/Fonts/#B612";
         private const string B612MonoUrl = "/Resources/Fonts/#B612 Mono";
         private const string CharisSILUrl = "/Resources/Fonts/#CharisSIL";
+        public const string ElhamUrl = "/Resources/Fonts/#Elham"; //Persian (Iran) font
         public const string FajerNooriNastaliqueUrl = "/Resources/Fonts/#Fajer Noori Nastalique"; //Urdu (Pakistan) font
+        public const string HomaUrl = "/Resources/Fonts/#Homa"; //Persian (Iran) font
+        public const string KoodakUrl = "/Resources/Fonts/#Koodak"; //Persian (Iran) font
         private const string MandatoryUrl = "/Resources/Fonts/#Mandatory";
         public const string NafeesWebNaskhUrl = "/Resources/Fonts/#Nafees Web Naskh"; //Urdu (Pakistan) font
+        public const string NazliUrl = "/Resources/Fonts/#Nazli"; //Persian (Iran) font
         public const string PakNastaleeqUrl = "/Resources/Fonts/#Pak Nastaleeq"; //Urdu (Pakistan) font
         private const string RobotoUrl = "/Resources/Fonts/#Roboto";
-        
+        public const string RoyaUrl = "/Resources/Fonts/#Roya"; //Persian (Iran) font
+        public const string TerafikUrl = "/Resources/Fonts/#Terafik"; //Persian (Iran) font
+        public const string TitrUrl = "/Resources/Fonts/#Titr"; //Persian (Iran) font
+
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
@@ -61,11 +68,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, string>("B612", B612Url),
                     new KeyValuePair<string, string>("B612 Mono", B612MonoUrl),
                     new KeyValuePair<string, string>("Charis SIL", CharisSILUrl),
+                    new KeyValuePair<string, string>("Elham (for Persian)", ElhamUrl),
                     new KeyValuePair<string, string>("Fajer Noori Nastalique (for Urdu)", FajerNooriNastaliqueUrl),
+                    new KeyValuePair<string, string>("Homa (for Persian)", HomaUrl),
+                    new KeyValuePair<string, string>("Koodak (for Persian)", KoodakUrl),
                     new KeyValuePair<string, string>("Mandatory", MandatoryUrl),
                     new KeyValuePair<string, string>("Nafees Web Naskh (for Urdu)", NafeesWebNaskhUrl),
+                    new KeyValuePair<string, string>("Nazli (for Persian)", NazliUrl),
                     new KeyValuePair<string, string>("Pak Nastaleeq (for Urdu)", PakNastaleeqUrl),
-                    new KeyValuePair<string, string>("Roboto", RobotoUrl)
+                    new KeyValuePair<string, string>("Roboto", RobotoUrl),
+                    new KeyValuePair<string, string>("Roya (for Persian)", RoyaUrl),
+                    new KeyValuePair<string, string>("Terafik (for Persian)", TerafikUrl),
+                    new KeyValuePair<string, string>("Titr (for Persian)", TitrUrl)
                 };
             }
         }
@@ -94,7 +108,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                             Enums.FontStretches.Normal
                         };
 
+                    case ElhamUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
+                        };
+
                     case FajerNooriNastaliqueUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
+                        };
+
+                    case HomaUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
+                        };
+
+                    case KoodakUrl:
                         return new List<FontStretches>
                         {
                             Enums.FontStretches.Normal
@@ -112,6 +144,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                             Enums.FontStretches.Normal
                         };
 
+                    case NazliUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
+                        };
+
                     case PakNastaleeqUrl:
                         return new List<FontStretches>
                         {
@@ -123,6 +161,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                         {
                             Enums.FontStretches.Normal, 
                             Enums.FontStretches.Condensed
+                        };
+
+                    case RoyaUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
+                        };
+
+                    case TerafikUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
+                        };
+
+                    case TitrUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
                         };
                 }
 
@@ -145,14 +201,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     case CharisSILUrl:
                         return new List<FontWeights> { Enums.FontWeights.Regular };
 
+                    case ElhamUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular };
+
+                    case HomaUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular };
+
                     case FajerNooriNastaliqueUrl:
                         return new List<FontWeights> { Enums.FontWeights.Regular };
-                        
+
+                    case KoodakUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular };
+
                     case MandatoryUrl:
                         return new List<FontWeights> { Enums.FontWeights.Regular };
 
                     case NafeesWebNaskhUrl:
                         return new List<FontWeights> { Enums.FontWeights.Regular };
+
+                    case NazliUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular, Enums.FontWeights.Bold };
 
                     case PakNastaleeqUrl:
                         return new List<FontWeights> { Enums.FontWeights.Regular };
@@ -180,6 +248,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                                             };
                         }
                         break;
+
+                    case RoyaUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular, Enums.FontWeights.Bold };
+
+                    case TerafikUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular, Enums.FontWeights.Bold };
+
+                    case TitrUrl:
+                        return new List<FontWeights> { Enums.FontWeights.Regular };
                 }
 
                 return null;

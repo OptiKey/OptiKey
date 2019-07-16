@@ -62,52 +62,52 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       UseUrduCompatibilityFont="True"
                       Text="۱"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۱"/>
+                      Value="&#x06F1;"/>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="۲"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۲"/>
+                      Value="&#x06F2;"/>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="۳"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۳"/>
+                      Value="&#x06F3;"/>
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="۴"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۴"/>
+                      Value="&#x06F4;"/>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="۵"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۵"/>
+                      Value="&#x06F5;"/>
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="۶"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۶"/>
+                      Value="&#x06F6;"/>
         <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="۷"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۷"/>
+                      Value="&#x06F7;"/>
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="۸"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۸"/>
+                      Value="&#x06F8;"/>
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="۹"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۹"/>
+                      Value="&#x06F9;"/>
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="۰"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="۰"/>
+                      Value="&#x06F0;"/>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource 1of3Icon}"
                       Text="{x:Static resx:Resources.NEXT}"

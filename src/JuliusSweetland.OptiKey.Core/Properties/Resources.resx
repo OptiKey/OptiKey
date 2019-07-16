@@ -2286,7 +2286,7 @@ Française
     <value>Irisbond Duo tracker could not be started.</value>
   </data>
   <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
-    <value>Irisbond Duo tracker cannot found. Please check the tracker's connection and try again.</value>
+    <value>Irisbond Duo tracker cannot be found. Please check the tracker's connection and try again.</value>
   </data>
   <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
     <value>Calibration completed (success or failure), but everything is working again!</value>
@@ -2329,6 +2329,24 @@ Would you like optikey to automatically set the font to Nafees Web Naskh?</value
   </data>
   <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
     <value>Type diacritic marks (accents etc) after letters:</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
+    <value>We recommend changing the UiLanguage to Persian to ensure typed Persian text flows from right to left in the scratchpad.
+Would you like OptiKey to automatically set the UiLanguage to Persian?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
+    <value>We recommend changing the font used in optiKey to one which is fully compatible with Persian.
+If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
+Would you like OptiKey to automatically set the font to Nazli?</value>
+  </data>
+  <data name="PERSIAN_IRAN" xml:space="preserve">
+    <value>Persian (Iran) / فارسی (ایرانی)</value>
+  </data>
+  <data name="PERSIAN_IRAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Persian
+(Iran) /
+فارسی
+(ایرانی)</value>
   </data>
   <data name="LOAD_DICTIONARY" xml:space="preserve">
     <value>Load dictionary</value>

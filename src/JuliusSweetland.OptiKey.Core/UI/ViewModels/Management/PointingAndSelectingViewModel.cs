@@ -528,6 +528,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.ITALIAN_ITALY, KeyValues.ItalianItalyKey, dictionary.ContainsKey(KeyValues.ItalianItalyKey) ? dictionary[KeyValues.ItalianItalyKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.JAPANESE_JAPAN, KeyValues.JapaneseJapanKey, dictionary.ContainsKey(KeyValues.JapaneseJapanKey) ? dictionary[KeyValues.JapaneseJapanKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.KOREAN_KOREA, KeyValues.KoreanKoreaKey, dictionary.ContainsKey(KeyValues.KoreanKoreaKey) ? dictionary[KeyValues.KoreanKoreaKey] : (TimeSpan?) null),
+                    new KeyValueAndTimeSpan(Resources.PERSIAN_IRAN, KeyValues.PersianIranKey, dictionary.ContainsKey(KeyValues.PersianIranKey) ? dictionary[KeyValues.PersianIranKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.POLISH_POLAND, KeyValues.PolishPolandKey, dictionary.ContainsKey(KeyValues.PolishPolandKey) ? dictionary[KeyValues.PolishPolandKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.PORTUGUESE_PORTUGAL, KeyValues.PortuguesePortugalKey, dictionary.ContainsKey(KeyValues.PortuguesePortugalKey) ? dictionary[KeyValues.PortuguesePortugalKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.RUSSIAN_RUSSIA, KeyValues.RussianRussiaKey, dictionary.ContainsKey(KeyValues.RussianRussiaKey) ? dictionary[KeyValues.RussianRussiaKey] : (TimeSpan?)null),

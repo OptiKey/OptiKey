@@ -2100,6 +2100,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new NumericAndSymbols3();
                     break;
 
+                case FunctionKeys.PersianIran:
+                    SelectLanguage(Languages.PersianIran);
+                    break;
+
                 case FunctionKeys.PhysicalKeysKeyboard:
                     Log.Info("Changing keyboard to PhysicalKeys.");
                     Keyboard = new PhysicalKeys();

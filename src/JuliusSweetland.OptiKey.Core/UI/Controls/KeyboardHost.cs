@@ -31,6 +31,7 @@ using GreekViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek;
 using ItalianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Italian;
 using JapaneseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Japanese;
 using KoreanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Korean;
+using PersianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Persian;
 using PolishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Polish;
 using PortugueseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Portuguese;
 using RussianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Russian;
@@ -170,7 +171,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (Keyboard is ViewModelKeyboards.Alpha1)
             {
                 if (Settings.Default.UsingCommuniKateKeyboardLayout)
-                    newContent = (object)new CommonViews.CommuniKate { DataContext = Keyboard };
+                {
+                    newContent = (object) new CommonViews.CommuniKate {DataContext = Keyboard};
+                }
                 else switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.CatalanSpain:
@@ -223,7 +226,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.Alpha1 { DataContext = Keyboard };
                         break;
-                    case Languages.PolishPoland:
+                    case Languages.PersianIran:
+                        newContent = new PersianViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                        case Languages.PolishPoland:
                         newContent = new PolishViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.PortuguesePortugal:
@@ -276,6 +282,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.Alpha2 { DataContext = Keyboard };
                         break;
+                    case Languages.PersianIran:
+                        newContent = new PersianViews.Alpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.UrduPakistan:
                         newContent = new UrduViews.Alpha2 { DataContext = Keyboard };
                         break;
@@ -284,7 +293,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.ConversationAlpha1)
             {
                 if (Settings.Default.UsingCommuniKateKeyboardLayout)
+                {
                     newContent = (object)new CommonViews.CommuniKate { DataContext = Keyboard };
+                }
                 else switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.CatalanSpain:
@@ -335,7 +346,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
-                    case Languages.PolishPoland:
+                    case Languages.PersianIran:
+                        newContent = new PersianViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                        case Languages.PolishPoland:
                         newContent = new PolishViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.PortuguesePortugal:
@@ -386,6 +400,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.KoreanKorea:
                         newContent = new KoreanViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
+                    case Languages.PersianIran:
+                        newContent = new PersianViews.ConversationAlpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.UrduPakistan:
                         newContent = new UrduViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
@@ -397,7 +414,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.ConversationNumericAndSymbols)
             {
-                newContent = new CommonViews.ConversationNumericAndSymbols { DataContext = Keyboard };
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                {
+                    case Languages.PersianIran:
+                        newContent = new PersianViews.ConversationNumericAndSymbols { DataContext = Keyboard };
+                        break;
+                    case Languages.UrduPakistan:
+                        newContent = new UrduViews.ConversationNumericAndSymbols {DataContext = Keyboard};
+                        break;
+                    default:
+                        newContent = new CommonViews.ConversationNumericAndSymbols {DataContext = Keyboard};
+                        break;
+                }
             }
             else if (Keyboard is ViewModelKeyboards.Currencies1)
             {
@@ -449,6 +477,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.PersianIran:
+                        newContent = new PersianViews.NumericAndSymbols1 { DataContext = Keyboard };
+                        break;
                     case Languages.UrduPakistan:
                         newContent = new UrduViews.NumericAndSymbols1 { DataContext = Keyboard };
                         break;
@@ -461,6 +492,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.PersianIran:
+                        newContent = new PersianViews.NumericAndSymbols2 { DataContext = Keyboard };
+                        break;
                     case Languages.UrduPakistan:
                         newContent = new UrduViews.NumericAndSymbols2 { DataContext = Keyboard };
                         break;
@@ -473,6 +507,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.PersianIran:
+                        newContent = new PersianViews.NumericAndSymbols3 { DataContext = Keyboard };
+                        break;
                     case Languages.UrduPakistan:
                         newContent = new UrduViews.NumericAndSymbols3 { DataContext = Keyboard };
                         break;
