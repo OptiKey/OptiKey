@@ -17,7 +17,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
-using JuliusSweetland.OptiKey.Symbol.Properties;
+using JuliusSweetland.OptiKey.Chat.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Static;
@@ -35,7 +35,7 @@ using log4net.Appender; //Do not remove even if marked as unused by Resharper - 
 using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Application = System.Windows.Application;
 
-namespace JuliusSweetland.OptiKey.Symbol
+namespace JuliusSweetland.OptiKey.Chat
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -158,7 +158,7 @@ namespace JuliusSweetland.OptiKey.Symbol
                 sizeAndPositionInitialised = async (_, __) =>
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
-                    await ShowSplashScreen(inputService, audioService, mainViewModel, OptiKey.Properties.Resources.OPTIKEY_SYMBOL_DESCRIPTION);
+                    await ShowSplashScreen(inputService, audioService, mainViewModel, OptiKey.Properties.Resources.OPTIKEY_CHAT_DESCRIPTION);
                     await mainViewModel.RaiseAnyPendingErrorToastNotifications();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService, audioService, mainViewModel);

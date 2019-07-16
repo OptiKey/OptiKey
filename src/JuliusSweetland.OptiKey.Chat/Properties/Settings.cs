@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
-namespace JuliusSweetland.OptiKey.Symbol.Properties
+namespace JuliusSweetland.OptiKey.Chat.Properties
 {
 
     class Settings : JuliusSweetland.OptiKey.Properties.Settings

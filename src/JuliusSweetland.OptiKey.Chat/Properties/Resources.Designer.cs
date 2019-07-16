@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JuliusSweetland.OptiKey.Symbol.Properties
+namespace JuliusSweetland.OptiKey.Chat.Properties
 {
     using System;
 
@@ -45,7 +45,7 @@ namespace JuliusSweetland.OptiKey.Symbol.Properties
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JuliusSweetland.OptiKey.Symbol.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JuliusSweetland.OptiKey.Chat.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
