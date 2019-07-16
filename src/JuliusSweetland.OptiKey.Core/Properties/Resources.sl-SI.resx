@@ -272,7 +272,7 @@ Klikni "Ne" za zaprtje, tako da voste lahko ročno popravili ali skopirali vašo
     <value>O, ne! Izgleda, da je datoteka z uporabniškimi nastavitvami poškodovana.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Slaba novica - Optikey se je sesula in se mora ponovno zagnati.
+    <value>Slaba novica - optikey se je sesula in se mora ponovno zagnati.
 
 Priporočamo se za e-pošto s podrbonostmi, kaj se je zgodilo na:
 optikeyfeedback@gmail.com
@@ -568,7 +568,7 @@ KAZALEC</value>
     <value>Upravljalno okno: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Upravljalno okno Optikey</value>
+    <value>Upravljalno okno optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Največje število zadetkov slovarja:</value>
@@ -895,7 +895,7 @@ ZADNJO</value>
     <value>Zvok in/ali Slovar niso omogočeni v upravljalnem oknu.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Za upoštevanje sprememb se mora Optikey ponovno zagnati.
+    <value>Za upoštevanje sprememb se mora optikey ponovno zagnati.
 Prosimo, pritisnite OK za nadaljevanje ponovnega zagona ali PREKLIČI za zavrnitev sprememb.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1131,7 +1131,7 @@ PUŠČICA</value>
 Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Lahko ponovno zaženem Optikey?</value>
+    <value>Lahko ponovno zaženem optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Različica: {0}</value>

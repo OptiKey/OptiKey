@@ -275,7 +275,7 @@ Klik Nej for at lukke, så du manuelt kan reparere eller kopiere dine brugerinds
     <value>Åh-åh! Filen med brugerindstillinger ser ud til at være ødelagt.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Dårlige nyheder - Optikey ser ud til at have problemer og er nødt til at lukke.
+    <value>Dårlige nyheder - optikey ser ud til at have problemer og er nødt til at lukke.
 
 En email med detaljer om hændelsen ville være meget behjælpelig: optikeyfeedback@gmail.com
 
@@ -1151,7 +1151,7 @@ PIL</value>
 Du kan slå tjek for opdateringer fra i Administrationskonsollen (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Må jeg genstarte Optikey?</value>
+    <value>Må jeg genstarte optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version: {0}</value>

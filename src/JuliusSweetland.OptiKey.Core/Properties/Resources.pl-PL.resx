@@ -275,7 +275,7 @@ Wybierz Nie aby zamknąć i naprawić lub skopiować plik ustawień użytkownika
     <value>O o! Plik ustawień użytkownika wygląda na zniszczony. </value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Zła wiadomośc- Optikey musi zostać zamknięty. 
+    <value>Zła wiadomośc- optikey musi zostać zamknięty. 
 
 E-mail zawierający informacje na temat tego co się stało byłby bardzo pomocny:optikeyfeedback@gmail.com
 
@@ -603,7 +603,7 @@ KURSOR</value>
     <value>Konsola zarządzania: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Konsola Zarządzania Optikey</value>
+    <value>Konsola Zarządzania optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maksymalna liczba dopasowań słownika:</value>
@@ -1190,7 +1190,7 @@ STRZAŁKA</value>
 Możesz wyłączyć sprawdzanie dostępnych aktualizacji z konsoli (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Czy mogę zrestartować Optikey?</value>
+    <value>Czy mogę zrestartować optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Wersja: {0}</value>
@@ -1917,7 +1917,7 @@ w Ustawieniach (ALT + M)</value>
     <value>Ścieżka do pliku .obz zawierającego pierwszą stronę CommuniKate</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>Zainstalowano 64-bitową wersję Presage (Optikey wspiera jedynie wersję 32-bitową), Presage został przeniesiony, usunięty lub jest uszkodzony.
+    <value>Zainstalowano 64-bitową wersję Presage (optikey wspiera jedynie wersję 32-bitową), Presage został przeniesiony, usunięty lub jest uszkodzony.
 Odinstaluj Presage i zainstaluj  edycję 32-bitową w wersji 0.9.2
 Optikey podejmie próbę dalszego działania, ale nie będzie ono stabilne 
 Przy kolejnym starcie aplikacji metoda predykcji zostanie zmieniona na NGram.</value>
@@ -1955,7 +1955,7 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
     <value>LITERY</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>Wystąpił błąd podczas powiększania. Wyłącz opcję powiększenia i skontaktuj się z działem wsparcia Optikey w celu uzyskania dalszej pomocy.</value>
+    <value>Wystąpił błąd podczas powiększania. Wyłącz opcję powiększenia i skontaktuj się z działem wsparcia optikey w celu uzyskania dalszej pomocy.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Błąd:</value>

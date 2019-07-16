@@ -273,7 +273,7 @@ Klicken Sie Nein wenn sie selbst die Datei reparieren oder kopieren wollen.</val
     <value>Oh ha! Die Benutzereinstellungsdatei sieht beschädigt aus.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Schlechte Nachrichten - Optikey ist gestürzt und muss geschlossen werden.
+    <value>Schlechte Nachrichten - optikey ist gestürzt und muss geschlossen werden.
 
 Eine email mit Angaben was passiert ist wäre sehr hilfreich: optikeyfeedback@gmail.com
 
@@ -1163,7 +1163,7 @@ HOCH</value>
 Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT + M) abschalten.</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Darf Ich Optikey neustarten?</value>
+    <value>Darf Ich optikey neustarten?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version: {0}</value>

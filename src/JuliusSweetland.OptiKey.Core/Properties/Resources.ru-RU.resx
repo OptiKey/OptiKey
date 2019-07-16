@@ -272,7 +272,7 @@
     <value>Ого! Пользовательские настройки повреждены.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Плохие новости - Optikey поломался и должен выключиться.
+    <value>Плохие новости - optikey поломался и должен выключиться.
 
 Пожалуйсто, вышлите описание того, что именно случилось на этот майл: optikeyfeedback@gmail.com
 
@@ -897,7 +897,7 @@ SCR</value>
     <value>Сервис(-ы) Аудио и/или Словаря не был/были предоставлены .</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Перезагрузите Optikey  что бы применить ваши иземенения.
+    <value>Перезагрузите optikey  что бы применить ваши иземенения.
 Пожалуйста нажмите "ОК" что бы перезагрузить или "ОТМЕНА" что бы отменить изменения</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1133,7 +1133,7 @@ LK</value>
 Вы можете отключить проверку обновелний в настройках (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Могу ли я перезагрузить Optikey?</value>
+    <value>Могу ли я перезагрузить optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Версия: {0}</value>

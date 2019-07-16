@@ -264,15 +264,15 @@ CONTEXT.</value>
     <value>Mode conversation seulement :</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>Optikey a détécté que votre fichier de paramètre est corrompu et doit être réparé. La réparation consiste à réinstaller la version précédente ou remettre les valeurs par défaut. 
+    <value>optikey a détécté que votre fichier de paramètre est corrompu et doit être réparé. La réparation consiste à réinstaller la version précédente ou remettre les valeurs par défaut. 
 
-Clickez sur OUI pourremettre les valeurs par défaut ou sur NON pour fermer Optikey et réinstaller vous même la version précédente.</value>
+Clickez sur OUI pourremettre les valeurs par défaut ou sur NON pour fermer optikey et réinstaller vous même la version précédente.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
     <value>Oh-oh! Le fichier de paramètre semble corrompu</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Mauvaise nouvelle - Optikey s'est crashé.
+    <value>Mauvaise nouvelle - optikey s'est crashé.
 
 Un email avec les circonstances de l'accident sera très utile : optikeyfeedback@gmail.com
 

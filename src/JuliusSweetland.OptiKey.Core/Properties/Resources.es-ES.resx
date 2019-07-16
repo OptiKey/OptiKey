@@ -275,7 +275,7 @@ Hagal clic en No para reparar manualmente o hacer una copia de su archivo de con
     <value>¡Ups! Al parecer el archivo de configuración de usuario está corrupto.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Malas noticias - Optikey ha tenido un traspié y deberá cerrarse.
+    <value>Malas noticias - optikey ha tenido un traspié y deberá cerrarse.
 
 Nos sería muy útil tener detalles de lo que ha ocurrido: optikeyfeedback@gmail.com
 
@@ -580,7 +580,7 @@ MAGNÉTICO</value>
     <value>Consola de administración: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Consola de administración de Optikey</value>
+    <value>Consola de administración de optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Número máximo de coincidencias en diccionario:</value>
@@ -1149,7 +1149,7 @@ ARRIBA</value>
 Para dejar de revisar si existen nuevas versiones del software, diríjase a la Consola de Administración (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>¿Me permite reiniciar Optikey?</value>
+    <value>¿Me permite reiniciar optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versión: {0}</value>

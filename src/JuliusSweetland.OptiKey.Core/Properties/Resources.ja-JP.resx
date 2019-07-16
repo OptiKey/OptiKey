@@ -274,7 +274,7 @@
     <value>ユーザー設定ファイルが破損しています。</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>残念なお知らせ‐Optikeyは停止しました。
+    <value>残念なお知らせ‐optikeyは停止しました。
 
 起こったことの詳細を報告していただけると助かります:
 optikeyfeedback@gmail.com
@@ -931,7 +931,7 @@ SCR</value>
     <value>オーディオ　および/または　辞書機能()は管理ウィンドウアクションに提供されませんでした。</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>変更を適用するにはOptikey の再起動が必要です。
+    <value>変更を適用するにはoptikey の再起動が必要です。
 再起動する場合はOKを、変更を破棄する場合はCANCELをクリックしてください。</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1932,7 +1932,7 @@ Slovenčina
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
     <value>日本語版は利用できません
-Either a 64 bit version of Presage is installed (Optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+Either a 64 bit version of Presage is installed (optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
 Please uninstall Presage and install the 32 bit version of 0.9.2.
 Optikey will attempt to continue, but there is a good chance it will crash shortly.
 The prediction method will be changed to NGram to prevent a crash on next run.</value>
@@ -1971,7 +1971,7 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
     <value>文字入力</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>倍率変更中にエラーが発生しました。倍率変更を中止し、Optikeyチームへご連絡ください。</value>
+    <value>倍率変更中にエラーが発生しました。倍率変更を中止し、optikeyチームへご連絡ください。</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>エラー:</value>

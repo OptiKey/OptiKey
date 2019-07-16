@@ -314,7 +314,7 @@ Zvolte Ne, jestli chcete ukončit aplikaci a manuálně opravit nebo zkopírovat
     <value>Uh-oh! Zdá se že soubor s uživatelským nastavení je poškozený. </value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Špatné zprávy - Optikey přestal reagovat a musí být ukončen.
+    <value>Špatné zprávy - optikey přestal reagovat a musí být ukončen.
 Ocenili bysme mail s popisem problému:
 optikeyfeedback@gmail.com
 za vzniklou situaci se omlouváme.</value>
@@ -784,7 +784,7 @@ KURZOR</value>
     <value>Nastavení: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Nastavení Optikey</value>
+    <value>Nastavení optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maximální počet nálezů ze slovníku:</value>
@@ -1209,7 +1209,7 @@ POSLEDNÍ</value>
     <value>Servis(y) pro Audio a/nebo Slovník nejsou dostupné oknu s nastavením.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Pro aplikaci vašich změn je potřebné restartovat Optikey. Stiskněte OK jestli chcete restartovat nebo ZRUŠIT jestli chcete zrušit změny.</value>
+    <value>Pro aplikaci vašich změn je potřebné restartovat optikey. Stiskněte OK jestli chcete restartovat nebo ZRUŠIT jestli chcete zrušit změny.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>Obnovit</value>
@@ -1542,7 +1542,7 @@ NAHORU</value>
 Kontrolu aktualizacií můžete vypnout v nastavení (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Můžu restartovat Optikey?</value>
+    <value>Můžu restartovat optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Verze:  {0}</value>

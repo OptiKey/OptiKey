@@ -273,7 +273,7 @@ Zvoľte Nie ak chcete ukončiť aplikáciu a manuálne opraviť alebo skopírova
     <value>Uh-oh! Zdá sa že súbor s používateľskými nastaveniami je poškodený.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Zlé správy - Optikey sa potkol sám o seba a musí byť ukončený. 
+    <value>Zlé správy - optikey sa potkol sám o seba a musí byť ukončený. 
 Ocenili by sme email s popisom incidentu: optikeyfeedback@gmail.com
 Za vzniknutú situáciu sa ospravedlňujeme.</value>
   </data>
@@ -568,7 +568,7 @@ KURZOR</value>
     <value>Nastavania: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Nastavenia Optikey</value>
+    <value>Nastavenia optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maximálny počet nálezov zo slovníka:</value>
@@ -895,7 +895,7 @@ POSLEDNÉ</value>
     <value>Servis(y) pre Audio a/alebo Slovník nie sú dostupné oknu s nastaveniami.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Pre aplikovanie vašich zmien je potrebné reštartovať Optikey. Stlačte OK ak chcete reštartovať, alebo ZRUŠIŤ ak chcete zrušiť zmeny.</value>
+    <value>Pre aplikovanie vašich zmien je potrebné reštartovať optikey. Stlačte OK ak chcete reštartovať, alebo ZRUŠIŤ ak chcete zrušiť zmeny.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>Obnoviť</value>
@@ -1132,7 +1132,7 @@ HORE</value>
 Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Môžem reštartovať Optikey?</value>
+    <value>Môžem reštartovať optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Verzia: {0}</value>

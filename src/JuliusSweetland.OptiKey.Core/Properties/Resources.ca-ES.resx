@@ -275,7 +275,7 @@ Clica No per tancar de manera que es pugui reparar  de forma manual o copiar el 
     <value>Oh-Oh! El fitxer de configuració d'usuari sembla que està malmès.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Les males notícies - Optikey ha ensopegat amb els seus peus i ha de tancar.
+    <value>Les males notícies - optikey ha ensopegat amb els seus peus i ha de tancar.
 
 Seria molt útil rebre un correu electrònic amb els detalls del que ha passat: optikeyfeedback@gmail.com
 
@@ -571,7 +571,7 @@ MAGNÈTIC</value>
     <value>Consola d'administració: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Consola d'administració d'Optikey</value>
+    <value>Consola d'administració d'optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Nombre màxim de coincidències al diccionari:</value>
@@ -1133,7 +1133,7 @@ AMUNT</value>
 Pots desactivar la comprovació d'actualitzacions des de la Consola d'administració (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Puc reiniciar Optikey?</value>
+    <value>Puc reiniciar optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versió: {0}</value>
