@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Sym
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Chat", "src\JuliusSweetland.OptiKey.Chat\JuliusSweetland.OptiKey.Chat.csproj", "{C0148D83-B0B5-4C8F-B56C-7B5CDC387F92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Mouse", "src\JuliusSweetland.OptiKey.Mouse\JuliusSweetland.OptiKey.Mouse.csproj", "{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -109,6 +111,14 @@ Global
 		{C0148D83-B0B5-4C8F-B56C-7B5CDC387F92}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
 		{C0148D83-B0B5-4C8F-B56C-7B5CDC387F92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0148D83-B0B5-4C8F-B56C-7B5CDC387F92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}.All|Any CPU.Build.0 = Release|Any CPU
+		{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
+		{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

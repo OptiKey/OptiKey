@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0148D83-B0B5-4C8F-B56C-7B5CDC387F92}</ProjectGuid>
+    <ProjectGuid>{2885FEE0-3BD2-43C7-8D14-4D5795EA0BE9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>JuliusSweetland.OptiKey.Mouse</RootNamespace>
     <AssemblyName>OptiKey.Mouse</AssemblyName>
