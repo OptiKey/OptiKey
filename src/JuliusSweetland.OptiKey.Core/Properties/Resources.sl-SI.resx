@@ -262,7 +262,7 @@ NAČIN</value>
     <value>Način pogovora:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey je ugotovil, da je datoteka z nastavitvami uporabnika pokvarjena in jo je treba popraviti. To bo naredil tako, da bo obnovil starejšo različico ali trenutno različico, če to ni možno.
+    <value>Optikey je ugotovil, da je datoteka z nastavitvami uporabnika pokvarjena in jo je treba popraviti. To bo naredil tako, da bo obnovil starejšo različico ali trenutno različico, če to ni možno.
 
 Klikni "Da" za ponovni zagon uporabniških nastavitev in ponovni zagon.
 
@@ -272,7 +272,7 @@ Klikni "Ne" za zaprtje, tako da voste lahko ročno popravili ali skopirali vašo
     <value>O, ne! Izgleda, da je datoteka z uporabniškimi nastavitvami poškodovana.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Slaba novica - OptiKey se je sesula in se mora ponovno zagnati.
+    <value>Slaba novica - Optikey se je sesula in se mora ponovno zagnati.
 
 Priporočamo se za e-pošto s podrbonostmi, kaj se je zgodilo na:
 optikeyfeedback@gmail.com
@@ -568,7 +568,7 @@ KAZALEC</value>
     <value>Upravljalno okno: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Upravljalno okno OptiKey</value>
+    <value>Upravljalno okno Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Največje število zadetkov slovarja:</value>
@@ -803,7 +803,7 @@ SIMB</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Tipkaj · Klikaj · Govori </value>
+    <value>Optikey : Tipkaj · Klikaj · Govori </value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Drugo</value>
@@ -895,7 +895,7 @@ ZADNJO</value>
     <value>Zvok in/ali Slovar niso omogočeni v upravljalnem oknu.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Za upoštevanje sprememb se mora OptiKey ponovno zagnati.
+    <value>Za upoštevanje sprememb se mora Optikey ponovno zagnati.
 Prosimo, pritisnite OK za nadaljevanje ponovnega zagona ali PREKLIČI za zavrnitev sprememb.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1131,7 +1131,7 @@ PUŠČICA</value>
 Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Lahko ponovno zaženem OptiKey?</value>
+    <value>Lahko ponovno zaženem Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Različica: {0}</value>
@@ -1158,7 +1158,7 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Besede</value>

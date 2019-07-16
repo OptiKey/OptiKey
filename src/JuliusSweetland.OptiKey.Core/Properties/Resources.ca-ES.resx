@@ -265,7 +265,7 @@ TECLAT</value>
     <value>Només mode conversa:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey ha detectat que el seu arxiu de configuració d'usuari està malmès i s'ha de reparar. Això es farà mitjançant la restauració d'una versió antiga, o d'una versió per defecte si això no és possible.
+    <value>Optikey ha detectat que el seu arxiu de configuració d'usuari està malmès i s'ha de reparar. Això es farà mitjançant la restauració d'una versió antiga, o d'una versió per defecte si això no és possible.
 
 Clica Sí per restablir la configuració d'usuari i reiniciar.
 
@@ -275,7 +275,7 @@ Clica No per tancar de manera que es pugui reparar  de forma manual o copiar el 
     <value>Oh-Oh! El fitxer de configuració d'usuari sembla que està malmès.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Les males notícies - OptiKey ha ensopegat amb els seus peus i ha de tancar.
+    <value>Les males notícies - Optikey ha ensopegat amb els seus peus i ha de tancar.
 
 Seria molt útil rebre un correu electrònic amb els detalls del que ha passat: optikeyfeedback@gmail.com
 
@@ -571,7 +571,7 @@ MAGNÈTIC</value>
     <value>Consola d'administració: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Consola d'administració d'OptiKey</value>
+    <value>Consola d'administració d'Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Nombre màxim de coincidències al diccionari:</value>
@@ -805,7 +805,7 @@ I SÍMBOLS</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Escriu · Fes clic · Parla</value>
+    <value>Optikey : Escriu · Fes clic · Parla</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Altres</value>
@@ -897,7 +897,7 @@ PANT</value>
     <value>No s'ha subministrat servei d'àudio i/o de diccionari a l'acció de la finestra de gestió.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey necessita reiniciar per aplicar els teus canvis.
+    <value>Optikey necessita reiniciar per aplicar els teus canvis.
 Sisplau, fes clic a OK per continuar o a CANCEL·LAR per descartar els canvis</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1133,7 +1133,7 @@ AMUNT</value>
 Pots desactivar la comprovació d'actualitzacions des de la Consola d'administració (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Puc reiniciar OptiKey?</value>
+    <value>Puc reiniciar Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versió: {0}</value>
@@ -1160,7 +1160,7 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Paraules</value>

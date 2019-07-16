@@ -840,7 +840,7 @@ E SÍMBOLOS</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Escrever · Clicar · Falar</value>
+    <value>Optikey : Escrever · Clicar · Falar</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Outro</value>
@@ -1192,7 +1192,7 @@ CIMA</value>
 Pode desligar as notificações de atualizações a partir da Consola de gestão (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Posso reiniciar o OptiKey?</value>
+    <value>Posso reiniciar o Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versão: {0}</value>
@@ -1219,7 +1219,7 @@ Pode desligar as notificações de atualizações a partir da Consola de gestão
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Palavras</value>
@@ -1961,12 +1961,12 @@ na Consola de gestão (ALT + M).</value>
     <value>Localização do ficheiro .obz da página de topo CommuniKate:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>O OptiKey não conseguiu fazer a comunicação (handshake) com o Presage. Pode ser devido a:
+    <value>O Optikey não conseguiu fazer a comunicação (handshake) com o Presage. Pode ser devido a:
     1.A localização de DBFILENAME especificada no ficheiro presage.xml (localizada em C:\Utilizadores\NOME_DO_UTILIZADOR\.presage ou C:\Users\USER_NAME\.presage) não existe - por favor verifique e corrija isto (ou desinstale/reinstale o Presage).
-    2.Ou está instalada uma versão 64 bits do Presage (o OptiKey apenas suporta a versão 32 bits) ou os ficheiros do Presage foram movidos para outro local, eliminados ou estão corrompidos.
+    2.Ou está instalada uma versão 64 bits do Presage (o Optikey apenas suporta a versão 32 bits) ou os ficheiros do Presage foram movidos para outro local, eliminados ou estão corrompidos.
 
 Por favor desinstale o Presage e instale a versão 32 bits do 0.9.2.
-O OptiKey irá tentar continuar, mas há grande probabilidade de bloquear.
+O Optikey irá tentar continuar, mas há grande probabilidade de bloquear.
 O método de previsão será alterado para o NGram para que o programa não bloqueie da próxima vez.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
@@ -2003,7 +2003,7 @@ como o "DB Browser for SQLite" (que é um programa livre).</value>
     <value>LETRAS</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>Surgiu um erro durante o processo de magnificação. Por favor desative a magnificação e contacte a comunidade do OptiKey para apoio adicional.</value>
+    <value>Surgiu um erro durante o processo de magnificação. Por favor desative a magnificação e contacte a comunidade do Optikey para apoio adicional.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Erro:</value>
@@ -2254,10 +2254,10 @@ Française
     <value>Reiniciar</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Tem a certeza absoluta que quer reiniciar o OptiKey?</value>
+    <value>Tem a certeza absoluta que quer reiniciar o Optikey?</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>Tem a certeza que quer reiniciar o OptiKey?</value>
+    <value>Tem a certeza que quer reiniciar o Optikey?</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>TECLADO DINÂMICO</value>
@@ -2312,12 +2312,12 @@ Française
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
     <value>Recomendamos alterar o idioma da interface para urdu para se certificar que o texto digitado flui da direita para a esquerda no rascunho.
-Gostaria que o OptiKey alterasse automaticamente o idioma para urdu?</value>
+Gostaria que o Optikey alterasse automaticamente o idioma para urdu?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
-    <value>Recomendamos alterar o tipo de letra usada pelo OptiKey para uma que seja totalmente compatível com o urdu.
+    <value>Recomendamos alterar o tipo de letra usada pelo Optikey para uma que seja totalmente compatível com o urdu.
 Se for usada um tipo de letra que não é específica do urdu, o texto e especialmente os números, podem ser mostrados incorretamente.
-Gostaria que o OptiKey alterasse automaticamente para o tipo de letra Nafees Web Naskh?</value>
+Gostaria que o Optikey alterasse automaticamente para o tipo de letra Nafees Web Naskh?</value>
   </data>
   <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
     <value>É recomendável um tipo de letra específico</value>

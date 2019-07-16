@@ -264,15 +264,15 @@ CONTEXT.</value>
     <value>Mode conversation seulement :</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey a détécté que votre fichier de paramètre est corrompu et doit être réparé. La réparation consiste à réinstaller la version précédente ou remettre les valeurs par défaut. 
+    <value>Optikey a détécté que votre fichier de paramètre est corrompu et doit être réparé. La réparation consiste à réinstaller la version précédente ou remettre les valeurs par défaut. 
 
-Clickez sur OUI pourremettre les valeurs par défaut ou sur NON pour fermer OptiKey et réinstaller vous même la version précédente.</value>
+Clickez sur OUI pourremettre les valeurs par défaut ou sur NON pour fermer Optikey et réinstaller vous même la version précédente.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
     <value>Oh-oh! Le fichier de paramètre semble corrompu</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Mauvaise nouvelle - OptiKey s'est crashé.
+    <value>Mauvaise nouvelle - Optikey s'est crashé.
 
 Un email avec les circonstances de l'accident sera très utile : optikeyfeedback@gmail.com
 
@@ -570,7 +570,7 @@ MAGNÉTIQUE</value>
     <value>Fenêtre de paramètres : ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey - Fenêtre de paramètres</value>
+    <value>Optikey - Fenêtre de paramètres</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Nombre maximal de suggestion du dictionnaire :</value>
@@ -804,7 +804,7 @@ SYMBOLES</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Tappez · Clickez · Parlez</value>
+    <value>Optikey : Tappez · Clickez · Parlez</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Autre</value>
@@ -896,7 +896,7 @@ L'ACTION</value>
     <value>Le(s) service(s) audio et/ou de dictionnaire n'a/n'ont pas été fournis à la fenêtre mère</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey doit redémarrer pour appliquer vos changement. 
+    <value>Optikey doit redémarrer pour appliquer vos changement. 
 
 Merci de cliquer sur Ok pour redémarrer ou Annuler pour revenir en arrière sans appliquer les modifications.</value>
   </data>
@@ -1139,7 +1139,7 @@ HAUT</value>
 Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de paramètres (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>OptiKey doit il redémarrer ?</value>
+    <value>Optikey doit il redémarrer ?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version : {0}</value>
@@ -1166,7 +1166,7 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
     <value>WINDOWS</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Langue</value>

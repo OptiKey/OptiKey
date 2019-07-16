@@ -265,7 +265,7 @@ PANEL</value>
     <value>Modo de solo conversación:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey ha detectado que su archivo de configuración está corrupto y debe ser reparado. Para esto se usará una versión más antigua, y si esto no es posible una versión por defecto.
+    <value>Optikey ha detectado que su archivo de configuración está corrupto y debe ser reparado. Para esto se usará una versión más antigua, y si esto no es posible una versión por defecto.
 
 Haga clic en Sí para restaurar su configuración y reiniciar.
 
@@ -275,7 +275,7 @@ Hagal clic en No para reparar manualmente o hacer una copia de su archivo de con
     <value>¡Ups! Al parecer el archivo de configuración de usuario está corrupto.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Malas noticias - OptiKey ha tenido un traspié y deberá cerrarse.
+    <value>Malas noticias - Optikey ha tenido un traspié y deberá cerrarse.
 
 Nos sería muy útil tener detalles de lo que ha ocurrido: optikeyfeedback@gmail.com
 
@@ -580,7 +580,7 @@ MAGNÉTICO</value>
     <value>Consola de administración: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Consola de administración de OptiKey</value>
+    <value>Consola de administración de Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Número máximo de coincidencias en diccionario:</value>
@@ -818,7 +818,7 @@ Y SÍMBOLOS</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey: Escribir · Cliquear · Hablar</value>
+    <value>Optikey: Escribir · Cliquear · Hablar</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Otros</value>
@@ -910,7 +910,7 @@ PANT</value>
     <value>No se entregaron servicio(s) de Audio y/o de Diccionario a la acción de ventana de administración.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey necesita reiniciarse para aplicar los cambios
+    <value>Optikey necesita reiniciarse para aplicar los cambios
 Por favor toque OK para continuar con el reinicio, o CANCELAR para descartar los cambios</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1149,7 +1149,7 @@ ARRIBA</value>
 Para dejar de revisar si existen nuevas versiones del software, diríjase a la Consola de Administración (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>¿Me permite reiniciar OptiKey?</value>
+    <value>¿Me permite reiniciar Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versión: {0}</value>
@@ -1176,7 +1176,7 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Palabras</value>

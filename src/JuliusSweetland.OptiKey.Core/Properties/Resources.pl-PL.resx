@@ -265,7 +265,7 @@ PANEL</value>
     <value>Tryb konwersacji:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey wykrył że Twoje ustawienia użytkownika zostały zniszczone i muszą zostać naprawione. Zostanie to wykonane po przez przywrócenie starszej lub domyślnej wersji programu.
+    <value>Optikey wykrył że Twoje ustawienia użytkownika zostały zniszczone i muszą zostać naprawione. Zostanie to wykonane po przez przywrócenie starszej lub domyślnej wersji programu.
  
 Wybierz Tak aby zresetować Twoje ustawienia użytkownika i zrestartować. 
 
@@ -275,7 +275,7 @@ Wybierz Nie aby zamknąć i naprawić lub skopiować plik ustawień użytkownika
     <value>O o! Plik ustawień użytkownika wygląda na zniszczony. </value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Zła wiadomośc- OptiKey musi zostać zamknięty. 
+    <value>Zła wiadomośc- Optikey musi zostać zamknięty. 
 
 E-mail zawierający informacje na temat tego co się stało byłby bardzo pomocny:optikeyfeedback@gmail.com
 
@@ -603,7 +603,7 @@ KURSOR</value>
     <value>Konsola zarządzania: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Konsola Zarządzania OptiKey</value>
+    <value>Konsola Zarządzania Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maksymalna liczba dopasowań słownika:</value>
@@ -839,7 +839,7 @@ SYM</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Pisz· Klikaj · Mów</value>
+    <value>Optikey : Pisz· Klikaj · Mów</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Inne</value>
@@ -931,7 +931,7 @@ OSTATNI</value>
     <value>Głos i/lub Słownik nie został(y) dostarczone do okna zarządzania akcjami. </value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey wymaga ponownego uruchomienia programu, aby zatwierdzić zmiany.
+    <value>Optikey wymaga ponownego uruchomienia programu, aby zatwierdzić zmiany.
 Proszę naciśnij OK, aby kontynuować lub ANULUJ, aby porzucić zmiany.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1190,7 +1190,7 @@ STRZAŁKA</value>
 Możesz wyłączyć sprawdzanie dostępnych aktualizacji z konsoli (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Czy mogę zrestartować OptiKey?</value>
+    <value>Czy mogę zrestartować Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Wersja: {0}</value>
@@ -1217,7 +1217,7 @@ Możesz wyłączyć sprawdzanie dostępnych aktualizacji z konsoli (ALT + M).</v
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Słowa</value>
@@ -1917,9 +1917,9 @@ w Ustawieniach (ALT + M)</value>
     <value>Ścieżka do pliku .obz zawierającego pierwszą stronę CommuniKate</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>Zainstalowano 64-bitową wersję Presage (OptiKey wspiera jedynie wersję 32-bitową), Presage został przeniesiony, usunięty lub jest uszkodzony.
+    <value>Zainstalowano 64-bitową wersję Presage (Optikey wspiera jedynie wersję 32-bitową), Presage został przeniesiony, usunięty lub jest uszkodzony.
 Odinstaluj Presage i zainstaluj  edycję 32-bitową w wersji 0.9.2
-OptiKey podejmie próbę dalszego działania, ale nie będzie ono stabilne 
+Optikey podejmie próbę dalszego działania, ale nie będzie ono stabilne 
 Przy kolejnym starcie aplikacji metoda predykcji zostanie zmieniona na NGram.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
@@ -1955,7 +1955,7 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
     <value>LITERY</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>Wystąpił błąd podczas powiększania. Wyłącz opcję powiększenia i skontaktuj się z działem wsparcia OptiKey w celu uzyskania dalszej pomocy.</value>
+    <value>Wystąpił błąd podczas powiększania. Wyłącz opcję powiększenia i skontaktuj się z działem wsparcia Optikey w celu uzyskania dalszej pomocy.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Błąd:</value>

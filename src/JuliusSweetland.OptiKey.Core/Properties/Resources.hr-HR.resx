@@ -263,7 +263,7 @@ TRAKU</value>
     <value>Samo način razgovora:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey je uočio da je Vaša datoteka sa korisničkim postavkama pokvarena i mora biti popravljena vraćanjem stare ili originalne verzije.
+    <value>Optikey je uočio da je Vaša datoteka sa korisničkim postavkama pokvarena i mora biti popravljena vraćanjem stare ili originalne verzije.
 Kliknite Da za resetiranje Vaših postavki i ponovno pokretanje.
 Kliknite Ne za zatvaranje kako biste mogli ručno popraviti ili kopirati Vašu datoteku korisničkih postavki.</value>
   </data>
@@ -271,7 +271,7 @@ Kliknite Ne za zatvaranje kako biste mogli ručno popraviti ili kopirati Vašu d
     <value>Greška! Vaša datoteka korisničkih postavki je pokvarena.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Loša vijest - OptiKey se srušio.
+    <value>Loša vijest - Optikey se srušio.
 Bili bismo zahvalni na slanju obavijesti sa detaljima kako je do toga došlo na adresu optikeyfeedback@gmail.com
 Ispričavamo se na neugodnosti.</value>
   </data>
@@ -566,7 +566,7 @@ KURSOR</value>
     <value>Upravljačka konzola: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Upravljačka konzola OptiKey-a</value>
+    <value>Upravljačka konzola Optikey-a</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maksimalan broj podudaranja sa rječnikom:</value>
@@ -1128,7 +1128,7 @@ GORE</value>
 Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Mogu li ponovno pokrenuti OptiKey?</value>
+    <value>Mogu li ponovno pokrenuti Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Verzija: {0}</value>
@@ -1155,7 +1155,7 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Riječi</value>

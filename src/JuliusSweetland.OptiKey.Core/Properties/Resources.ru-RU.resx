@@ -262,7 +262,7 @@
     <value>Режим речи:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey обнаружил что пользовательские настройки повреждены и должны быть востановлены. Это можно сделать восстановив предидущую версию или вернув настройки по умолчанию.
+    <value>Optikey обнаружил что пользовательские настройки повреждены и должны быть востановлены. Это можно сделать восстановив предидущую версию или вернув настройки по умолчанию.
 
 Нажмите "Да" чтобы сбросить пользовательские настройки и перезагрузить.
 
@@ -272,7 +272,7 @@
     <value>Ого! Пользовательские настройки повреждены.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Плохие новости - OptiKey поломался и должен выключиться.
+    <value>Плохие новости - Optikey поломался и должен выключиться.
 
 Пожалуйсто, вышлите описание того, что именно случилось на этот майл: optikeyfeedback@gmail.com
 
@@ -569,7 +569,7 @@
     <value>Настройки: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Настройки</value>
+    <value>Optikey Настройки</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Максимальное число совпадений в словаре:</value>
@@ -804,7 +804,7 @@ LK</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Type · Click · Speak</value>
+    <value>Optikey : Type · Click · Speak</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Другое</value>
@@ -897,7 +897,7 @@ SCR</value>
     <value>Сервис(-ы) Аудио и/или Словаря не был/были предоставлены .</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Перезагрузите OptiKey  что бы применить ваши иземенения.
+    <value>Перезагрузите Optikey  что бы применить ваши иземенения.
 Пожалуйста нажмите "ОК" что бы перезагрузить или "ОТМЕНА" что бы отменить изменения</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1133,7 +1133,7 @@ LK</value>
 Вы можете отключить проверку обновелний в настройках (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Могу ли я перезагрузить OptiKey?</value>
+    <value>Могу ли я перезагрузить Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Версия: {0}</value>
@@ -1160,7 +1160,7 @@ LK</value>
     <value>ВИН</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Слова</value>

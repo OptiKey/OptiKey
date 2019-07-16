@@ -265,7 +265,7 @@ DOK</value>
     <value>Iba konverzácia:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey zistil e váš súbor s používateľskými nastaveniami bol poškodený a musí byť opravený. Oprava bude realizovaný obnovením staršej verzie, alebo pôvodenj verzie ak to nie je možné. 
+    <value>Optikey zistil e váš súbor s používateľskými nastaveniami bol poškodený a musí byť opravený. Oprava bude realizovaný obnovením staršej verzie, alebo pôvodenj verzie ak to nie je možné. 
 Zvoľte Áno ak chcete resetovať používateľské nastavenia a reštartovať aplikáciu.
 Zvoľte Nie ak chcete ukončiť aplikáciu a manuálne opraviť alebo skopírovať súbor s používateľskými nastaveniami.</value>
   </data>
@@ -273,7 +273,7 @@ Zvoľte Nie ak chcete ukončiť aplikáciu a manuálne opraviť alebo skopírova
     <value>Uh-oh! Zdá sa že súbor s používateľskými nastaveniami je poškodený.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Zlé správy - OptiKey sa potkol sám o seba a musí byť ukončený. 
+    <value>Zlé správy - Optikey sa potkol sám o seba a musí byť ukončený. 
 Ocenili by sme email s popisom incidentu: optikeyfeedback@gmail.com
 Za vzniknutú situáciu sa ospravedlňujeme.</value>
   </data>
@@ -568,7 +568,7 @@ KURZOR</value>
     <value>Nastavania: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Nastavenia OptiKey</value>
+    <value>Nastavenia Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maximálny počet nálezov zo slovníka:</value>
@@ -803,7 +803,7 @@ A SYMBOLY</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Píš · Klikaj · Hovor</value>
+    <value>Optikey : Píš · Klikaj · Hovor</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Ostatné</value>
@@ -895,7 +895,7 @@ POSLEDNÉ</value>
     <value>Servis(y) pre Audio a/alebo Slovník nie sú dostupné oknu s nastaveniami.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Pre aplikovanie vašich zmien je potrebné reštartovať OptiKey. Stlačte OK ak chcete reštartovať, alebo ZRUŠIŤ ak chcete zrušiť zmeny.</value>
+    <value>Pre aplikovanie vašich zmien je potrebné reštartovať Optikey. Stlačte OK ak chcete reštartovať, alebo ZRUŠIŤ ak chcete zrušiť zmeny.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>Obnoviť</value>
@@ -1132,7 +1132,7 @@ HORE</value>
 Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Môžem reštartovať OptiKey?</value>
+    <value>Môžem reštartovať Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Verzia: {0}</value>
@@ -1159,7 +1159,7 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Slová</value>

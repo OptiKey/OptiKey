@@ -273,7 +273,7 @@ Klicken Sie Nein wenn sie selbst die Datei reparieren oder kopieren wollen.</val
     <value>Oh ha! Die Benutzereinstellungsdatei sieht beschädigt aus.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Schlechte Nachrichten - OptiKey ist gestürzt und muss geschlossen werden.
+    <value>Schlechte Nachrichten - Optikey ist gestürzt und muss geschlossen werden.
 
 Eine email mit Angaben was passiert ist wäre sehr hilfreich: optikeyfeedback@gmail.com
 
@@ -585,7 +585,7 @@ CURSOR</value>
     <value>Verwaltungskonsole: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Verwaltungskonsole</value>
+    <value>Optikey Verwaltungskonsole</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maximale Nummer der Wörterbuchübereinstimmungen:</value>
@@ -828,7 +828,7 @@ SYMBOLE</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Tippen· Klicken· Sprechen</value>
+    <value>Optikey : Tippen· Klicken· Sprechen</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Andere</value>
@@ -920,7 +920,7 @@ WIEDERHOLEN</value>
     <value>Audio und/oder Wörterbuch wurde nicht der Verwaltungsfensteraktion zur Verfügung gestellt.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey muss neu gestartet werden um die Änderungen zu übernehmen.
+    <value>Optikey muss neu gestartet werden um die Änderungen zu übernehmen.
 Bitte OK klicken um neuzustarten oder ABBRECHEN um die Änderungen zu verwerfen.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1163,7 +1163,7 @@ HOCH</value>
 Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT + M) abschalten.</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Darf Ich OptiKey neustarten?</value>
+    <value>Darf Ich Optikey neustarten?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version: {0}</value>
@@ -1190,7 +1190,7 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
     <value>WINDOWS</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Wörter</value>

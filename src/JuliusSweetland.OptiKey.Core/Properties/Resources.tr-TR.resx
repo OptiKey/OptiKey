@@ -262,7 +262,7 @@ KAPAT</value>
     <value>Sadece iletişim modu:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey kullanıcı ayarlarınızın bozulduğunu ve tamir edilmesi gerektiğini algıladı. Eski bir versiyona geri yükleyerek bu sorunu çözebilirsiniz. Eğer mümkün değilse mevcut versiyonu deneyin.
+    <value>Optikey kullanıcı ayarlarınızın bozulduğunu ve tamir edilmesi gerektiğini algıladı. Eski bir versiyona geri yükleyerek bu sorunu çözebilirsiniz. Eğer mümkün değilse mevcut versiyonu deneyin.
 
 Kullanıcı ayarlarınızı sıfırlamak ve yeniden başlatmak için Evet'e tıklayın
 
@@ -272,7 +272,7 @@ Dosyaları manuel olarak ya da yedeklemek için Hayır'ı tıklayın</value>
     <value>Olamaz! Kullanıcı ayarları dosyası bozulmuş gibi görünüyor.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Kötü haber - OptiKey'in ayağı kaydı ve kapanması gerekiyor.
+    <value>Kötü haber - Optikey'in ayağı kaydı ve kapanması gerekiyor.
 
 Neler olduğuna dair bir e-posta yollayarak yardımcı olursan seviniriz: optikeyfeedback@gmail.com
 
@@ -570,7 +570,7 @@ TIKLA</value>
     <value>Yönetici Konsolu: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Yönetim Konsolu</value>
+    <value>Optikey Yönetim Konsolu</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Sözlükte bulunanların maksimum sayısı:</value>
@@ -813,7 +813,7 @@ SEMBOLLER</value>
     <value>TAMAM</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Yaz · Tıkla · Konuş</value>
+    <value>Optikey : Yaz · Tıkla · Konuş</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Diğer</value>
@@ -1143,7 +1143,7 @@ OK</value>
     <value>En son versiyonu ({0}) indirmek için, lütfen www.optikey.org  adresini ziyaret ediniz. Otomatik güncellemeleri kapatmak için Yönetim panelini kullanınız (ALT +M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>OptiKey'i yeniden başlatabilir miyim ?</value>
+    <value>Optikey'i yeniden başlatabilir miyim ?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versiyon: {0}</value>
@@ -1170,7 +1170,7 @@ OK</value>
     <value>Windows Tuşu</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Kelimeler</value>

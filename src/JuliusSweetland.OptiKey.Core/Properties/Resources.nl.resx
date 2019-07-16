@@ -266,7 +266,7 @@ DOCK</value>
     <value>Alleen gespreksmodus:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey heeft gedetecteerd dat uw gebruikersinstellingenbestand corrupt is en moet worden herstelt. Dit wordt gedaan door een oude versie van dit bestand in te stellen of door de standaardinstellingen in te stellen wanneer optie 1 niet lukt.
+    <value>Optikey heeft gedetecteerd dat uw gebruikersinstellingenbestand corrupt is en moet worden herstelt. Dit wordt gedaan door een oude versie van dit bestand in te stellen of door de standaardinstellingen in te stellen wanneer optie 1 niet lukt.
 
 Klik JA om de instellingen te herstellen.
 
@@ -276,7 +276,7 @@ Klik NEE om handmatig de gebruikersinstellingenbestand te repareren/kopiëren.</
     <value>Oeps! Het gebruikersinstellingenbestand lijkt corrupt te zijn.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Slecht nieuws - OptiKey is door technische problemen afgesloten.
+    <value>Slecht nieuws - Optikey is door technische problemen afgesloten.
 
 U kunt ons helpen door ons een e-mail te sturen met details naar optikeyfeedback@gmail.com. Dit waarderen we heel erg.
 
@@ -573,7 +573,7 @@ CURSOR</value>
     <value>Management console: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Management Console</value>
+    <value>Optikey Management Console</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maximale aantal woordenboek overeenkomsten:</value>
@@ -808,7 +808,7 @@ SYM</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Typ · Klik · Spreek</value>
+    <value>Optikey : Typ · Klik · Spreek</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Overige</value>
@@ -900,7 +900,7 @@ LAATSTE</value>
     <value>Audio en/of woordenboekdienst(en) werd(en) niet aan het management window action geleverd.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey moet herstarten om de wijzigingen door te voeren.
+    <value>Optikey moet herstarten om de wijzigingen door te voeren.
 Klik OK om te herstarten, of klik ANNULEREN om wijzigingen ongedaan te maken.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1136,7 +1136,7 @@ OMHOOG</value>
 U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Mag ik OptiKey herstarten?</value>
+    <value>Mag ik Optikey herstarten?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versie: {0}</value>
@@ -1163,7 +1163,7 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Woorden</value>

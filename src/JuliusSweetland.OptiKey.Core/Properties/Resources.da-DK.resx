@@ -265,7 +265,7 @@ DOCK</value>
     <value>Samtale tilstand:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey kan ikke læse brugerindstillingerne, da filen er ødelagt og må repareres. Dette gøres ved at genindlæse en tidligere udgave, eller standardindstillingerne hvis det ikke er muligt.
+    <value>Optikey kan ikke læse brugerindstillingerne, da filen er ødelagt og må repareres. Dette gøres ved at genindlæse en tidligere udgave, eller standardindstillingerne hvis det ikke er muligt.
 
 Klik Ja for at nulstille brugerindstillinger og genstarte.
 
@@ -275,7 +275,7 @@ Klik Nej for at lukke, så du manuelt kan reparere eller kopiere dine brugerinds
     <value>Åh-åh! Filen med brugerindstillinger ser ud til at være ødelagt.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Dårlige nyheder - OptiKey ser ud til at have problemer og er nødt til at lukke.
+    <value>Dårlige nyheder - Optikey ser ud til at have problemer og er nødt til at lukke.
 
 En email med detaljer om hændelsen ville være meget behjælpelig: optikeyfeedback@gmail.com
 
@@ -586,7 +586,7 @@ MARKØR</value>
     <value>Administrationskonsol: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Administrationskonsol</value>
+    <value>Optikey Administrationskonsol</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maksimalt antal ordbogs forekomster:</value>
@@ -820,7 +820,7 @@ SYM</value>
     <value>OK</value>
   </data>
   <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Skriv · Klik · Tal</value>
+    <value>Optikey : Skriv · Klik · Tal</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Andet</value>
@@ -912,7 +912,7 @@ SIDSTE</value>
     <value>Lyd og/eller Orbogs service(er) blev ikke leveret til administration vindue handlingen.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey er nødt til at genstarte for at udføre ændringerne.
+    <value>Optikey er nødt til at genstarte for at udføre ændringerne.
 Klik på OK for at genstarte, eller ANNULLER for at annullere ændringerne.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1151,7 +1151,7 @@ PIL</value>
 Du kan slå tjek for opdateringer fra i Administrationskonsollen (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Må jeg genstarte OptiKey?</value>
+    <value>Må jeg genstarte Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version: {0}</value>
@@ -1178,7 +1178,7 @@ Du kan slå tjek for opdateringer fra i Administrationskonsollen (ALT + M).</val
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Ord</value>
