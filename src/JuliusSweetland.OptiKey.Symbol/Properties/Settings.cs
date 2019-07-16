@@ -12,37 +12,74 @@ namespace JuliusSweetland.OptiKey.Symbol.Properties
             InitialiseWithDerivedSettings(defaultInstance);
         }
 
-        // Example of an overridden default
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Bold")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public new string FontWeight
-        {
-            get
-            {
-                return ((string)(this["FontWeight"]));
-            }
-            set
-            {
-                this["FontWeight"] = value;
-            }
-        }
+        /*
+         * Override all the settings relating to Communikate keyboard setup, to lock user into
+         * Communikate conversation mode only.
+         */
 
-        // Example of an extra config for exe
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool ExtraThing
+        public override bool EnableCommuniKateKeyboardLayout
         {
             get
             {
-                return ((bool)(this["ExtraThing"]));
+                return true;
             }
             set
             {
-                this["ExtraThing"] = value;
+                // no-op
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool UseCommuniKateKeyboardLayoutByDefault
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+                // no-op
+            }
+        }
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool UsingCommuniKateKeyboardLayout
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+                // no-op
+            }
+        }
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool ConversationOnlyMode
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+                // no-op
             }
         }
 

@@ -572,7 +572,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool ConversationOnlyMode {
+        public virtual bool ConversationOnlyMode {
             get {
                 return ((bool)(this["ConversationOnlyMode"]));
             }
@@ -1456,7 +1456,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool EnableCommuniKateKeyboardLayout {
+        public virtual bool EnableCommuniKateKeyboardLayout {
             get {
                 return ((bool)(this["EnableCommuniKateKeyboardLayout"]));
             }
@@ -1469,7 +1469,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool UseCommuniKateKeyboardLayoutByDefault {
+        public virtual bool UseCommuniKateKeyboardLayoutByDefault {
             get {
                 return ((bool)(this["UseCommuniKateKeyboardLayoutByDefault"]));
             }
@@ -1716,7 +1716,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool UsingCommuniKateKeyboardLayout {
+        public virtual bool UsingCommuniKateKeyboardLayout {
             get {
                 return ((bool)(this["UsingCommuniKateKeyboardLayout"]));
             }
