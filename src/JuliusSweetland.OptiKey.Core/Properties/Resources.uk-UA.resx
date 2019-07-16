@@ -837,7 +837,7 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>ОК</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
     <value>OptiKey :  Набір · Клік · Вимова</value>
   </data>
   <data name="OTHER" xml:space="preserve">

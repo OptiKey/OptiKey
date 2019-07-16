@@ -4379,20 +4379,20 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey : Type · Click · Speak.
-        /// </summary>
-        public static string OPTIKEY_DESCRIPTION {
-            get {
-                return ResourceManager.GetString("OPTIKEY_DESCRIPTION", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to OptiKey : Mouse Control.
         /// </summary>
         public static string OPTIKEY_MOUSE_DESCRIPTION {
             get {
                 return ResourceManager.GetString("OPTIKEY_MOUSE_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OptiKey : Type · Click · Speak.
+        /// </summary>
+        public static string OPTIKEY_PRO_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("OPTIKEY_PRO_DESCRIPTION", resourceCulture);
             }
         }
         

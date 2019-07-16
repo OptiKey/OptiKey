@@ -163,7 +163,7 @@ namespace JuliusSweetland.OptiKey.Pro
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -=
                         sizeAndPositionInitialised; //Ensure this handler only triggers once
-                    await ShowSplashScreen(inputService, audioService, mainViewModel, OptiKey.Properties.Resources.OPTIKEY_DESCRIPTION);
+                    await ShowSplashScreen(inputService, audioService, mainViewModel, OptiKey.Properties.Resources.OPTIKEY_PRO_DESCRIPTION);
                     await mainViewModel.RaiseAnyPendingErrorToastNotifications();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService,

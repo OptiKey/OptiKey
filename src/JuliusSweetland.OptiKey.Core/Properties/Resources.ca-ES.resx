@@ -804,7 +804,7 @@ I SÍMBOLS</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
     <value>OptiKey : Escriu · Fes clic · Parla</value>
   </data>
   <data name="OTHER" xml:space="preserve">
