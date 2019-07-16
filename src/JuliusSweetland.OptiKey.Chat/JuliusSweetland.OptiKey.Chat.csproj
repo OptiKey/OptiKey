@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2947DE4A-159C-46D2-AF3E-5768FFB3A61F}</ProjectGuid>
+    <ProjectGuid>{C0148D83-B0B5-4C8F-B56C-7B5CDC387F92}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>JuliusSweetland.OptiKey.Chat</RootNamespace>
     <AssemblyName>OptiKey.Chat</AssemblyName>
