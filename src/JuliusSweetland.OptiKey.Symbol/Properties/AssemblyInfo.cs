@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyDescription("Free, Open Source, Assistive Communication")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JuliusSweetland")]
-[assembly: AssemblyProduct("OptiKey Symbol")]
+[assembly: AssemblyProduct("Open Symbol Communication")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

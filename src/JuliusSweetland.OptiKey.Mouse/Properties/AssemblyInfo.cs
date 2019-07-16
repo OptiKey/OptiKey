@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("OptiKey Mouse")]
-[assembly: AssemblyDescription("Free, Open Source, Assistive Communication")]
+[assembly: AssemblyDescription("Full Cursor Control")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JuliusSweetland")]
 [assembly: AssemblyProduct("OptiKey Mouse")]

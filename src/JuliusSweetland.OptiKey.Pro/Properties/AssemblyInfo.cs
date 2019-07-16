@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("OptiKey Pro")]
-[assembly: AssemblyDescription("Free, Open Source, Assistive On-Screen Keyboard")]
+[assembly: AssemblyDescription("Computer Control & Communication")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JuliusSweetland")]
 [assembly: AssemblyProduct("OptiKey Pro")]

@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("OptiKey Chat")]
-[assembly: AssemblyDescription("Free, Open Source, Assistive Communication")]
+[assembly: AssemblyDescription("Easy Communication")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JuliusSweetland")]
 [assembly: AssemblyProduct("OptiKey Chat")]
