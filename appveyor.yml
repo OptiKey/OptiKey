@@ -15,7 +15,7 @@ before_build:
   - nuget restore
   
 after_build:
-  - 7z a OptiKey.zip %APPVEYOR_BUILD_FOLDER%\src\JuliusSweetland.OptiKey\bin\%configuration%\*
+  - 7z a OptiKey.zip %APPVEYOR_BUILD_FOLDER%\src\JuliusSweetland.OptiKey.Core\bin\%configuration%\*
   
 artifacts:
   - path: OptiKey.zip
