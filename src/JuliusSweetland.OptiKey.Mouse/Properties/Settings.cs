@@ -13,15 +13,15 @@ namespace JuliusSweetland.OptiKey.Mouse.Properties
         }
 
         /*
-         * Override the settings relating to conversation mode, to lock user into
-         * conversation mode only.
+         * Override the settings relating to mouse mode, to lock user into
+         * mouse mode only.
          */
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public override bool ConversationOnlyMode
+        public override bool MouseOnlyMode
         {
             get
             {
@@ -33,5 +33,20 @@ namespace JuliusSweetland.OptiKey.Mouse.Properties
             }
         }
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Mouse")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual global::JuliusSweetland.OptiKey.Enums.Keyboards StartupKeyboard
+        {
+            get
+            {
+                return Enums.Keyboards.Mouse;
+            }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
     }
 }

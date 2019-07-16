@@ -1225,7 +1225,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Alpha")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.Keyboards StartupKeyboard {
+        public virtual global::JuliusSweetland.OptiKey.Enums.Keyboards StartupKeyboard {
             get {
                 return ((global::JuliusSweetland.OptiKey.Enums.Keyboards)(this["StartupKeyboard"]));
             }
