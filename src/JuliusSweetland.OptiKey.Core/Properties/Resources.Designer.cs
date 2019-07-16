@@ -866,7 +866,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn&apos;t possible.
+        ///   Looks up a localized string similar to Optikey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn&apos;t possible.
         ///
         ///Click Yes to reset your user settings and restart.
         ///
@@ -888,7 +888,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bad news - OptiKey has tripped over its feet and has to close down.
+        ///   Looks up a localized string similar to Bad news - Optikey has tripped over its feet and has to close down.
         ///
         ///An email with details of what happened would be very helpful: optikeyfeedback@gmail.com
         ///
@@ -1083,7 +1083,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to We recommend changing the UiLanguage to Urdu to ensure typed Urdu text flows from right to left in the scratchpad.
-        ///Would you like OptiKey to automatically set the UiLanguage to Urdu?.
+        ///Would you like Optikey to automatically set the UiLanguage to Urdu?.
         /// </summary>
         public static string DEFAULT_UILANGUAGE_TO_URDU {
             get {
@@ -1507,7 +1507,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support..
+        ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact Optikey for further support..
         /// </summary>
         public static string ERROR_MAGNIFYING {
             get {
@@ -1993,9 +1993,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We recommend changing the font used in OptiKey to one which is fully compatible with Urdu.
+        ///   Looks up a localized string similar to We recommend changing the font used in Optikey to one which is fully compatible with Urdu.
         ///If a font is used which is not Urdu specific then text, and especially numbers, may display incorrectly.
-        ///Would you like OptiKey to automatically set the font to Nafees Web Naskh?.
+        ///Would you like Optikey to automatically set the font to Nafees Web Naskh?.
         /// </summary>
         public static string FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE {
             get {
@@ -3328,7 +3328,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey Management Console.
+        ///   Looks up a localized string similar to Optikey Management Console.
         /// </summary>
         public static string MANAGEMENT_CONSOLE_TITLE {
             get {
@@ -4667,12 +4667,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey was unable to handshake with Presage. There are a few possible causes:
+        ///   Looks up a localized string similar to Optikey was unable to handshake with Presage. There are a few possible causes:
         ///    1.The DBFILENAME location specified in the presage.xml file (located in C:\Users\USER_NAME\.presage) does not exist - please check and correct this (or uninstall/reinstall Presage).
-        ///    2.Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+        ///    2.Either a 64 bit version of Presage is installed (Optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
         ///
         ///Please uninstall Presage and install the 32 bit version of 0.9.2.
-        ///OptiKey will att [rest of string was truncated]&quot;;.
+        ///Optikey will att [rest of string was truncated]&quot;;.
         /// </summary>
         public static string PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE {
             get {
@@ -4826,7 +4826,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you absolutely sure that you&apos;d like to restart OptiKey?.
+        ///   Looks up a localized string similar to Are you absolutely sure that you&apos;d like to restart Optikey?.
         /// </summary>
         public static string REFRESH_CONFIRMATION_MESSAGE {
             get {
@@ -4835,7 +4835,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you&apos;d like to restart OptiKey?.
+        ///   Looks up a localized string similar to Are you sure you&apos;d like to restart Optikey?.
         /// </summary>
         public static string REFRESH_MESSAGE {
             get {
@@ -4890,7 +4890,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey needs to restart to apply your changes.
+        ///   Looks up a localized string similar to Optikey needs to restart to apply your changes.
         ///Please click OK to continue with the restart, or CANCEL to discard your changes.
         /// </summary>
         public static string RESTART_MESSAGE {
@@ -6271,7 +6271,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to May I restart OptiKey?.
+        ///   Looks up a localized string similar to May I restart Optikey?.
         /// </summary>
         public static string VERIFY_RESTART {
             get {
@@ -6389,7 +6389,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OptiKey v{0}.
+        ///   Looks up a localized string similar to Optikey v{0}.
         /// </summary>
         public static string WINDOW_TITLE {
             get {

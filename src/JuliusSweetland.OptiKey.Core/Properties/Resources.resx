@@ -268,7 +268,7 @@ DOCK</value>
     <value>Conversation only mode:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn't possible.
+    <value>Optikey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn't possible.
 
 Click Yes to reset your user settings and restart.
 
@@ -278,7 +278,7 @@ Click No to close so that you can manually repair or copy your user settings fil
     <value>Uh-oh! The user settings file looks to be corrupt.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Bad news - OptiKey has tripped over its feet and has to close down.
+    <value>Bad news - Optikey has tripped over its feet and has to close down.
 
 An email with details of what happened would be very helpful: optikeyfeedback@gmail.com
 
@@ -604,7 +604,7 @@ CURSOR</value>
     <value>Management console: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Management Console</value>
+    <value>Optikey Management Console</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maximum number of dictionary matches:</value>
@@ -934,7 +934,7 @@ LAST</value>
     <value>Audio and/or Dictionary service(s) were/was not supplied to the management window action.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey needs to restart to apply your changes.
+    <value>Optikey needs to restart to apply your changes.
 Please click OK to continue with the restart, or CANCEL to discard your changes</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1194,7 +1194,7 @@ ARROW</value>
 You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>May I restart OptiKey?</value>
+    <value>May I restart Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version: {0}</value>
@@ -1221,7 +1221,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Words</value>
@@ -1963,12 +1963,12 @@ from the Management Console (ALT + M).</value>
     <value>Location of CommuniKate top page .obz file:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>OptiKey was unable to handshake with Presage. There are a few possible causes:
+    <value>Optikey was unable to handshake with Presage. There are a few possible causes:
     1.The DBFILENAME location specified in the presage.xml file (located in C:\Users\USER_NAME\.presage) does not exist - please check and correct this (or uninstall/reinstall Presage).
-    2.Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+    2.Either a 64 bit version of Presage is installed (Optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
 
 Please uninstall Presage and install the 32 bit version of 0.9.2.
-OptiKey will attempt to continue, but there is a good chance it will crash shortly.
+Optikey will attempt to continue, but there is a good chance it will crash shortly.
 The prediction method will be changed to NGram to prevent a crash on next run.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
@@ -2005,7 +2005,7 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>LETTERS</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support.</value>
+    <value>An error has occurred during the magnification process. Please disable magnification and contact Optikey for further support.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Error:</value>
@@ -2256,10 +2256,10 @@ Française
     <value>Restart</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Are you absolutely sure that you'd like to restart OptiKey?</value>
+    <value>Are you absolutely sure that you'd like to restart Optikey?</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>Are you sure you'd like to restart OptiKey?</value>
+    <value>Are you sure you'd like to restart Optikey?</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>DYNAMIC KEYBOARD</value>
@@ -2314,12 +2314,12 @@ Française
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
     <value>We recommend changing the UiLanguage to Urdu to ensure typed Urdu text flows from right to left in the scratchpad.
-Would you like OptiKey to automatically set the UiLanguage to Urdu?</value>
+Would you like Optikey to automatically set the UiLanguage to Urdu?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
-    <value>We recommend changing the font used in OptiKey to one which is fully compatible with Urdu.
+    <value>We recommend changing the font used in Optikey to one which is fully compatible with Urdu.
 If a font is used which is not Urdu specific then text, and especially numbers, may display incorrectly.
-Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value>
+Would you like Optikey to automatically set the font to Nafees Web Naskh?</value>
   </data>
   <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
     <value>A language specific font is recommended</value>
