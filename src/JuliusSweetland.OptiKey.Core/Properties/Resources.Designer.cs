@@ -4370,11 +4370,38 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OptiKey : Conversation.
+        /// </summary>
+        public static string OPTIKEY_CHAT_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("OPTIKEY_CHAT_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OptiKey : Type · Click · Speak.
         /// </summary>
         public static string OPTIKEY_DESCRIPTION {
             get {
                 return ResourceManager.GetString("OPTIKEY_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OptiKey : Mouse Control.
+        /// </summary>
+        public static string OPTIKEY_MOUSE_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("OPTIKEY_MOUSE_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OptiKey Symbol : Open Symbol Communication .
+        /// </summary>
+        public static string OPTIKEY_SYMBOL_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("OPTIKEY_SYMBOL_DESCRIPTION", resourceCulture);
             }
         }
         

@@ -2357,4 +2357,13 @@ Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value
   <data name="VARIOUS" xml:space="preserve">
     <value>Various</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>OptiKey : Conversation</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>OptiKey : Mouse Control</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>OptiKey Symbol : Open Symbol Communication </value>
+  </data>
 </root>
