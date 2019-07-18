@@ -568,11 +568,17 @@
     <Compile Include="UI\Views\Keyboards\Danish\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\CommuniKate.xaml.cs">
+      <DependentUpon>CommuniKate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Danish\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Common\CommuniKate.xaml.cs">
-      <DependentUpon>CommuniKate.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Finnish\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Finnish\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Persian\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
@@ -875,11 +881,20 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
+    <Page Include="UI\Views\Keyboards\Danish\ConversationAlpha1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Finnish\Alpha1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx" />
     <EmbeddedResource Include="Properties\Resources.cs-CZ.resx" />
     <EmbeddedResource Include="Properties\Resources.en-US.resx" />
     <EmbeddedResource Include="Properties\Resources.es-ES.resx" />
     <EmbeddedResource Include="Properties\Resources.fa.resx" />
+    <EmbeddedResource Include="Properties\Resources.fi-FI.resx" />
     <EmbeddedResource Include="Properties\Resources.it-IT.resx" />
     <EmbeddedResource Include="Properties\Resources.ja-JP.resx">
       <SubType>Designer</SubType>
@@ -915,7 +930,9 @@
     <Content Include="Dictionaries\PersianIran.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
+    <Content Include="Dictionaries\FinnishFinland.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -1434,13 +1451,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Danish\ConversationAlpha1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\Views\Keyboards\Common\CommuniKate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Finnish\ConversationAlpha1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Persian\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -1871,6 +1888,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

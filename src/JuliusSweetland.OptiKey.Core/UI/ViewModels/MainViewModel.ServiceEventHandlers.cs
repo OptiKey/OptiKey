@@ -1102,6 +1102,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.Expand(ExpandToDirections.TopRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                     break;
 
+                case FunctionKeys.FinnishFinland:
+                    SelectLanguage(Languages.FinnishFinland);
+                    break;
+
                 case FunctionKeys.FrenchCanada:
                     SelectLanguage(Languages.FrenchCanada);
                     break;

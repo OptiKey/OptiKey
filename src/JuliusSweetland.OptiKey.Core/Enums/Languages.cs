@@ -15,6 +15,7 @@ namespace JuliusSweetland.OptiKey.Enums
         EnglishCanada,
         EnglishUK,
         EnglishUS,
+        FinnishFinland,
         FrenchCanada,
         FrenchFrance,
         GeorgianGeorgia,
@@ -51,6 +52,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.EnglishCanada: return Resources.ENGLISH_CANADA;
                 case Languages.EnglishUK: return Resources.ENGLISH_UK;
                 case Languages.EnglishUS: return Resources.ENGLISH_US;
+                case Languages.FinnishFinland: return Resources.FINNISH_FINLAND;
                 case Languages.FrenchCanada: return Resources.FRENCH_CANADA;
                 case Languages.FrenchFrance: return Resources.FRENCH_FRANCE;
                 case Languages.GeorgianGeorgia: return Resources.GEORGIAN_GEORGIA;
@@ -88,6 +90,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.EnglishUS: return CultureInfo.GetCultureInfo("en-US");
                 case Languages.EnglishUK: return CultureInfo.GetCultureInfo("en-GB");
                 case Languages.EnglishCanada: return CultureInfo.GetCultureInfo("en-CA");
+                case Languages.FinnishFinland: return CultureInfo.GetCultureInfo("fi-FI");
                 case Languages.FrenchCanada: return CultureInfo.GetCultureInfo("fr-CA");
                 case Languages.FrenchFrance: return CultureInfo.GetCultureInfo("fr-FR");
                 case Languages.GeorgianGeorgia: return CultureInfo.GetCultureInfo("ka-GE");
