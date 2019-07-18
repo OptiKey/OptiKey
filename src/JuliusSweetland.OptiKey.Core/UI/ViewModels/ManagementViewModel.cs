@@ -209,6 +209,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             Log.Info("Applying management changes and attempting to restart OptiKey");
                             ApplyChanges();
+                            Settings.Default.Save();
                             try
                             {
                                 System.Windows.Forms.Application.Restart();
