@@ -77,14 +77,14 @@ Before starting anything else it would be a good idea to copy and place correctl
 
 ### Add the `.resx` file
 
-The UI strings resource file is not difficult to generate, as that's done automatically by[Transifex][3] itself; thus grab that file from [Transifex][3] and **before** putting it inside the correct folder rename it using the scheme `Resources.[CultureInfoCode].resx` where `[CultureInfoCode]` is the value for our language from the row using the same name located [here][11]. Thus for `Greek` the name of the `.resx` file would be `Resources.el-GR.resx`. Now that we have named our resources file correctly we have to place it in the following directory `src\JuliusSweetland.OptiKey\Properties`.
+The UI strings resource file is not difficult to generate, as that's done automatically by[Transifex][3] itself; thus grab that file from [Transifex][3] and **before** putting it inside the correct folder rename it using the scheme `Resources.[CultureInfoCode].resx` where `[CultureInfoCode]` is the value for our language from the row using the same name located [here][11]. Thus for `Greek` the name of the `.resx` file would be `Resources.el-GR.resx`. Now that we have named our resources file correctly we have to place it in the following directory `src\JuliusSweetland.OptiKey.Core\Properties`.
 
 After placing the file in the correct folder go back in Visual Studio in OptiKey solution and do the following:
 
  1. Right-click `JuliusSweetland.OptiKey` project
  2. Select `Add`
  3. Select `Existing Item`
- 4. Go to `src\JuliusSweetland.OptiKey\Properties` and select the `Resources.el-GR.resx` file you just placed
+ 4. Go to `src\JuliusSweetland.OptiKey.Core\Properties` and select the `Resources.el-GR.resx` file you just placed
  5. Click `OK` to add the resource file
  6. The final step is to place the `Resources.el-GR.resx` file inside the `Properties` folder in the project (which has a wrench icon), do that by dragging and dropping the file inside the solution to the correct place.
 
@@ -92,12 +92,12 @@ Please ensure that the property of the file named `Build Action` is set to `Embe
 
 ### Add the `.dic` file
 
-This process is extremely similar to the above, but the naming scheme is a bit different; here the naming scheme follows the `LanguageRegion.dic` rule, where the `Language` term is our language and `Region` our region value; so in our case we would name the dictionary as `GreekGreece.dic`. After naming the file correctly you should place it inside `src\JuliusSweetland.OptiKey\Dictionaries`. Now go back into Visual Studio with an open OptiKey solution and perform the following steps:
+This process is extremely similar to the above, but the naming scheme is a bit different; here the naming scheme follows the `LanguageRegion.dic` rule, where the `Language` term is our language and `Region` our region value; so in our case we would name the dictionary as `GreekGreece.dic`. After naming the file correctly you should place it inside `src\JuliusSweetland.OptiKey.Core\Dictionaries`. Now go back into Visual Studio with an open OptiKey solution and perform the following steps:
 
  1. Right-click `JuliusSweetland.OptiKey` project
  2. Select `Add`
  3. Select `Existing Item`
- 4. Go to `src\JuliusSweetland.OptiKey\Dictionaries` and select the `GreekGreece.dic` file you just placed
+ 4. Go to `src\JuliusSweetland.OptiKey.Core\Dictionaries` and select the `GreekGreece.dic` file you just placed
  5. Click `OK` to add the dictionary file
  6. Place the `GreekGreece.dic` file inside the `Dictionaries` folder in the project, do that by dragging and dropping the file inside the solution to the correct place.
  7. The final step is to select the `GreekGreece.dic` file, right-click it and select `Properties`
@@ -111,7 +111,7 @@ Now we are ready to start implementing the logic required to add the new languag
 
 ## Adding a new Language
 
-The first thing we need to do is to go inside `JuliusSweetland.OptiKey` project and open `Enums\Languages.cs` (full path `src\JuliusSweetland.OptiKey\Enums\Languages.cs`) in order to perform the following additions:
+The first thing we need to do is to go inside `JuliusSweetland.OptiKey` project and open `Enums\Languages.cs` (full path `src\JuliusSweetland.OptiKey.Core\Enums\Languages.cs`) in order to perform the following additions:
 
 * Add a new entry into the `Language` enumeration.
 * Add a human-friendly name for this entry in the `ToDescription()` method's `switch` statement
@@ -333,7 +333,7 @@ public List<KeyValuePair<string, Languages>> Languages
 
 ### Add Language button in `FunctionKeys` enumeration
 
-Now we have to open `FunctionKeys.cs` file which is located in `Enums\FunctionsKeys.cs`  (full path: `src\JuliusSweetland.OptiKey\Enums\FunctionKeys.cs`). This file contains the enumeration that is responsible for containing all of OptiKey's distinct buttons. Now the naming convention followed here is `LanguageRegion` so in our case we would name that entry `GreekGreece`; thus before adding the entry:
+Now we have to open `FunctionKeys.cs` file which is located in `Enums\FunctionsKeys.cs`  (full path: `src\JuliusSweetland.OptiKey.Core\Enums\FunctionKeys.cs`). This file contains the enumeration that is responsible for containing all of OptiKey's distinct buttons. Now the naming convention followed here is `LanguageRegion` so in our case we would name that entry `GreekGreece`; thus before adding the entry:
 
 ```cs
 public enum FunctionKeys
@@ -366,7 +366,7 @@ public enum FunctionKeys
 
 ### Add Language `Key` in OptiKey `KeyValues`
 
-Let's now open `KeyValues.cs` file which is located in `Models\KeyValues.cs` (full path `src\JuliusSweetland.OptiKey\Models\KeyValues.cs`). This file contains all the KeyValue pairs and has one entry for each one of the `FunctionKeys` enumeration entry. Thus our entry would be something like this:
+Let's now open `KeyValues.cs` file which is located in `Models\KeyValues.cs` (full path `src\JuliusSweetland.OptiKey.Core\Models\KeyValues.cs`). This file contains all the KeyValue pairs and has one entry for each one of the `FunctionKeys` enumeration entry. Thus our entry would be something like this:
 
 ```cs
 public static readonly KeyValue GreekGreeceKey = new KeyValue(FunctionKeys.GreekGreece);

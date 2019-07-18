@@ -520,6 +520,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.ENGLISH_CANADA, KeyValues.EnglishCanadaKey, dictionary.ContainsKey(KeyValues.EnglishCanadaKey) ? dictionary[KeyValues.EnglishCanadaKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.ENGLISH_UK, KeyValues.EnglishUKKey, dictionary.ContainsKey(KeyValues.EnglishUKKey) ? dictionary[KeyValues.EnglishUKKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.ENGLISH_US, KeyValues.EnglishUSKey, dictionary.ContainsKey(KeyValues.EnglishUSKey) ? dictionary[KeyValues.EnglishUSKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.FINNISH_FINLAND, KeyValues.FinnishFinlandKey, dictionary.ContainsKey(KeyValues.FinnishFinlandKey) ? dictionary[KeyValues.FinnishFinlandKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.FRENCH_CANADA, KeyValues.FrenchCanadaKey, dictionary.ContainsKey(KeyValues.FrenchCanadaKey) ? dictionary[KeyValues.FrenchCanadaKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.FRENCH_FRANCE, KeyValues.FrenchFranceKey, dictionary.ContainsKey(KeyValues.FrenchFranceKey) ? dictionary[KeyValues.FrenchFranceKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.GEORGIAN_GEORGIA, KeyValues.GeorgianGeorgiaKey, dictionary.ContainsKey(KeyValues.GeorgianGeorgiaKey) ? dictionary[KeyValues.GeorgianGeorgiaKey] : (TimeSpan?)null),

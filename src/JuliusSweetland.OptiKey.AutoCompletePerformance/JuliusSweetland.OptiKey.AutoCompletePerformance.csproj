@@ -61,25 +61,25 @@
     <Compile Include="SpellingCorrectionTestResult.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\JuliusSweetland.OptiKey\Dictionaries\DanishDenmark.dic">
+    <None Include="..\JuliusSweetland.OptiKey.Core\Dictionaries\DanishDenmark.dic">
       <Link>Dictionaries\DanishDenmark.dic</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey\Dictionaries\EnglishCanada.dic">
+    <None Include="..\JuliusSweetland.OptiKey.Core\Dictionaries\EnglishCanada.dic">
       <Link>Dictionaries\EnglishCanada.dic</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey\Dictionaries\EnglishUK.dic">
+    <None Include="..\JuliusSweetland.OptiKey.Core\Dictionaries\EnglishUK.dic">
       <Link>Dictionaries\EnglishUK.dic</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey\Dictionaries\EnglishUS.dic">
+    <None Include="..\JuliusSweetland.OptiKey.Core\Dictionaries\EnglishUS.dic">
       <Link>Dictionaries\EnglishUS.dic</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey\Dictionaries\FrenchFrance.dic">
+    <None Include="..\JuliusSweetland.OptiKey.Core\Dictionaries\FrenchFrance.dic">
       <Link>Dictionaries\FrenchFrance.dic</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey\Dictionaries\GermanGermany.dic">
+    <None Include="..\JuliusSweetland.OptiKey.Core\Dictionaries\GermanGermany.dic">
       <Link>Dictionaries\GermanGermany.dic</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey\Dictionaries\RussianRussia.dic">
+    <None Include="..\JuliusSweetland.OptiKey.Core\Dictionaries\RussianRussia.dic">
       <Link>Dictionaries\RussianRussia.dic</Link>
     </None>
     <None Include="MisspellingsEnglishUK.csv">
@@ -91,7 +91,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JuliusSweetland.OptiKey\JuliusSweetland.OptiKey.csproj">
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.csproj">
       <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
       <Name>JuliusSweetland.OptiKey</Name>
     </ProjectReference>
