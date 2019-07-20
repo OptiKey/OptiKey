@@ -1,7 +1,7 @@
 ﻿<!--
 Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
-<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Finnish.ConversationAlpha1"
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Danish.ConversationAlpha1"
                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -99,9 +99,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="p"/>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      ShiftUpText="Ä" ShiftDownText="Ä"
+                      ShiftUpText="å" ShiftDownText="Å"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ä"/>
+                      Value="å"/>
 
         <!--<controls:Key Grid.Row="3" Grid.Column="0" />-->
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
@@ -142,9 +142,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Value="l"/>
         <!--<controls:Key Grid.Row="3" Grid.Column="19" />-->
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ö" ShiftDownText="Ö"
+                      ShiftUpText="æ" ShiftDownText="Æ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ö"/>
+                      Value="æ"/>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                       ShiftUpText="ø" ShiftDownText="Ø"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -213,7 +213,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
-                      WidthSpan="2" 
+                      WidthSpan="3" 
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
