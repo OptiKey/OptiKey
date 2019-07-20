@@ -99,9 +99,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="p"/>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      ShiftUpText="Ä" ShiftDownText="Ä"
+                      ShiftUpText="å" ShiftDownText="Å"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ä"/>
+                      Value="å"/>
 
         <!--<controls:Key Grid.Row="3" Grid.Column="0" />-->
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
@@ -146,11 +146,14 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ö"/>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
-                      ShiftUpText="ø" ShiftDownText="Ø"
+                      ShiftUpText="ä" ShiftDownText="Ä"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ø"/>
+                      Value="ä"/>
 
-        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Case="None"
+                      Text="?"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="?"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                       ShiftUpText="z" ShiftDownText="Z"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -179,17 +182,20 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       ShiftUpText="m" ShiftDownText="M"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="m"/>
-        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
+                      Text="-"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="-"/>
+        <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackOneKey}"/>
-        <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackManyIcon}"
                       Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
-        <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"/>
 
         <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
@@ -221,9 +227,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="."/>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
-                      Text="'"
+                      Text=":"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="'"/>
+                      Value=":"/>
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
