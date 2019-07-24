@@ -86,6 +86,7 @@ namespace JuliusSweetland.OptiKey.Enums
         GeorgianGeorgia,
         GermanGermany,
         GreekGreece,
+        HebrewIsrael,
         Home,
         IncreaseOpacity,
         Insert,

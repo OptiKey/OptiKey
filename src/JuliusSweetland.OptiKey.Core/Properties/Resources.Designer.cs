@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -1194,7 +1194,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Presage dictionary cannot be edited from here.
         ///It&apos;s default location is &quot;C:\Program Files (x86)\presage\share\presage\database_en.db&quot;.
-        ///It can be edited with a program which can read SQLite format 3 files 
+        ///It can be edited with a program which can read SQLite format 3 files
         ///such as &quot;DB Browser for SQLite&quot; (which is a free program)..
         /// </summary>
         public static string DICTIONARY_IS_PRESAGE {
@@ -2121,6 +2121,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hebrew (Israel) / עברית (ישראל).
+        /// </summary>
+        public static string HEBREW_ISRAEL {
+            get {
+                return ResourceManager.GetString("HEBREW_ISRAEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hebrew
+        ///(Israel) /
+        ///עברית
+        ///(ישראל).
+        /// </summary>
+        public static string HEBREW_ISRAEL_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("HEBREW_ISRAEL_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hide cursor.
         /// </summary>
         public static string HIDE_CURSOR_LABEL {
@@ -3004,7 +3025,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scroll by {0} wheel unit: 
+        ///   Looks up a localized string similar to Scroll by {0} wheel unit:
         ///(120 wheel units = 1 click)|Scroll by {0} wheel units:
         ///(120 wheel units = 1 click).
         /// </summary>
@@ -4624,7 +4645,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         ///    2.Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
         ///
         ///Please uninstall Presage and install the 32 bit version of 0.9.2.
-        ///OptiKey will att [rest of string was truncated]&quot;;.
+        ///OptiKey will attempt  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE {
             get {
@@ -6126,7 +6147,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Urdu
         ///(Pakistan) /
-        ///اردو 
+        ///اردو
         ///(پاکستان).
         /// </summary>
         public static string URDU_PAKISTAN_SPLIT_WITH_NEWLINE {

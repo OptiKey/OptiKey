@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -2378,196 +2378,188 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<dictionary>\r\n  <item>\r\n    <key>\r\n     " +
-            " <keyValue>\r\n        <functionKey>Alpha1Keyboard</functionKey>\r\n      </keyValue" +
-            ">\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item" +
-            ">\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Alpha2Keyboard</f" +
-            "unctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</t" +
-            "icks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <" +
-            "functionKey>BackFromKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <" +
-            "value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <ke" +
-            "y>\r\n      <keyValue>\r\n        <functionKey>ConversationAlpha1Keyboard</functionK" +
-            "ey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n " +
-            "   </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <function" +
-            "Key>ConversationAlpha2Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n   " +
-            " <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <" +
-            "key>\r\n      <keyValue>\r\n        <functionKey>ConversationNumericAndSymbolsKeyboa" +
-            "rd</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.7" +
-            "5S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n    " +
-            "    <functionKey>Currencies1Keyboard</functionKey>\r\n      </keyValue>\r\n    </key" +
-            ">\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r" +
-            "\n    <key>\r\n      <keyValue>\r\n        <functionKey>Currencies2Keyboard</function" +
-            "Key>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n" +
-            "    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functio" +
-            "nKey>Diacritic1Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value" +
-            ">\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n " +
-            "     <keyValue>\r\n        <functionKey>Diacritic2Keyboard</functionKey>\r\n      </" +
-            "keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n" +
-            "  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Diacritic" +
-            "3Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <tick" +
-            "s>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue" +
-            ">\r\n        <functionKey>LanguageKeyboard</functionKey>\r\n      </keyValue>\r\n    <" +
-            "/key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <it" +
-            "em>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>MenuKeyboard</functionKey" +
-            ">\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n   " +
-            " </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKe" +
-            "y>MouseKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n     " +
-            " <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <ke" +
-            "yValue>\r\n        <functionKey>NumericAndSymbols1Keyboard</functionKey>\r\n      </" +
-            "keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n" +
-            "  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>NumericAn" +
-            "dSymbols2Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n   " +
-            "   <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <" +
-            "keyValue>\r\n        <functionKey>NumericAndSymbols3Keyboard</functionKey>\r\n      " +
-            "</keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>" +
-            "\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Dynamic" +
-            "Keyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks" +
-            ">PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>" +
-            "\r\n        <functionKey>WebBrowsingKeyboard</functionKey>\r\n      </keyValue>\r\n   " +
-            " </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <" +
-            "item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>PhysicalKeysKeyboard</f" +
-            "unctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</t" +
-            "icks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <" +
-            "functionKey>SizeAndPositionKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>" +
-            "\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n" +
-            "    <key>\r\n      <keyValue>\r\n        <functionKey>CatalanSpain</functionKey>\r\n  " +
-            "    </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </va" +
-            "lue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Cro" +
-            "atianCroatia</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <t" +
-            "icks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyVa" +
-            "lue>\r\n        <functionKey>CzechCzechRepublic</functionKey>\r\n      </keyValue>\r\n" +
-            "    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n" +
-            "  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>DanishDenmark</funct" +
-            "ionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks" +
-            ">\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <func" +
-            "tionKey>DutchBelgium</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n" +
-            "      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n    " +
-            "  <keyValue>\r\n        <functionKey>DutchNetherlands</functionKey>\r\n      </keyVa" +
-            "lue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </i" +
-            "tem>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>EnglishCanada<" +
-            "/functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S<" +
-            "/ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n       " +
-            " <functionKey>EnglishUK</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value" +
-            ">\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n " +
-            "     <keyValue>\r\n        <functionKey>EnglishUS</functionKey>\r\n      </keyValue>" +
-            "\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>" +
-            "\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>FrenchCanada</func" +
-            "tionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</tick" +
-            "s>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <fun" +
-            "ctionKey>FrenchFrance</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r" +
-            "\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n   " +
-            "   <keyValue>\r\n        <functionKey>GeorgianGeorgia</functionKey>\r\n      </keyVa" +
-            "lue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </i" +
-            "tem>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>GermanGermany<" +
-            "/functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S<" +
-            "/ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n       " +
-            " <functionKey>GreekGreece</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <val" +
-            "ue>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r" +
-            "\n      <keyValue>\r\n        <functionKey>ItalianItaly</functionKey>\r\n      </keyV" +
-            "alue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </" +
-            "item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>JapaneseJapan" +
-            "</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S" +
-            "</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n      " +
-            "  <functionKey>KoreanKorea</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <va" +
-            "lue>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>" +
-            "\r\n      <keyValue>\r\n        <functionKey>PersianIran</functionKey>\r\n      </keyV" +
-            "alue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </" +
-            "item>  \r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>PolishPolan" +
-            "d</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75" +
-            "S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n     " +
-            "   <functionKey>PortuguesePortugal</functionKey>\r\n      </keyValue>\r\n    </key>\r" +
-            "\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n " +
-            "   <key>\r\n      <keyValue>\r\n        <functionKey>RussianRussia</functionKey>\r\n  " +
-            "    </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </va" +
-            "lue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Ser" +
-            "bianSerbia</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <tic" +
-            "ks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValu" +
-            "e>\r\n        <functionKey>SlovakSlovakia</functionKey>\r\n      </keyValue>\r\n    </" +
-            "key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <ite" +
-            "m>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>SlovenianSlovenia</functio" +
-            "nKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r" +
-            "\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functi" +
-            "onKey>SpanishSpain</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n  " +
-            "    <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      " +
-            "<keyValue>\r\n        <functionKey>TurkishTurkey</functionKey>\r\n      </keyValue>\r" +
-            "\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r" +
-            "\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>UkrainianUkraine</f" +
-            "unctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</t" +
-            "icks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <" +
-            "functionKey>UrduPakistan</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <valu" +
-            "e>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n" +
-            "      <keyValue>\r\n        <functionKey>AddToDictionary</functionKey>\r\n      </ke" +
-            "yValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </i" +
-            "tem>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Attention</fun" +
-            "ctionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>" +
-            "\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <funct" +
-            "ionKey>CommuniKateKeyboard</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <va" +
-            "lue>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n " +
-            "     <keyValue>\r\n        <functionKey>BackMany</functionKey>\r\n      </keyValue>\r" +
-            "\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r" +
-            "\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>BackOne</functionKe" +
-            "y>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n  " +
-            "  </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionK" +
-            "ey>Calibrate</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <t" +
-            "icks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyVa" +
-            "lue>\r\n        <functionKey>ClearScratchpad</functionKey>\r\n      </keyValue>\r\n   " +
-            " </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <ite" +
-            "m>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>DecreaseOpacity</functionK" +
-            "ey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n " +
-            "   </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <function" +
-            "Key>IncreaseOpacity</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n " +
-            "     <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
-            " <keyValue>\r\n        <functionKey>Minimise</functionKey>\r\n      </keyValue>\r\n   " +
-            " </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <" +
-            "item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>MultiKeySelectionIsOn</" +
-            "functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</" +
-            "ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        " +
-            "<functionKey>NoQuestionResult</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    " +
-            "<value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <k" +
-            "ey>\r\n      <keyValue>\r\n        <functionKey>Quit</functionKey>\r\n      </keyValue" +
-            ">\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n" +
-            "  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Restart</functionKey" +
-            ">\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </" +
-            "value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>S" +
-            "leep</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1" +
-            ".75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n  " +
-            "      <functionKey>Speak</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <valu" +
-            "e>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n" +
-            "      <keyValue>\r\n        <functionKey>YesQuestionResult</functionKey>\r\n      </" +
-            "keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n" +
-            "  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>LeftAlt</" +
-            "functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.5S</t" +
-            "icks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <" +
-            "functionKey>LeftCtrl</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n" +
-            "      <ticks>PT1.5S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
-            " <keyValue>\r\n        <functionKey>LeftShift</functionKey>\r\n      </keyValue>\r\n  " +
-            "  </key>\r\n    <value>\r\n      <ticks>PT1.5S</ticks>\r\n    </value>\r\n  </item>\r\n  <" +
-            "item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>LeftWin</functionKey>\r\n" +
-            "      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.5S</ticks>\r\n    </v" +
-            "alue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Ne" +
-            "xtSuggestions</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <" +
-            "ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyV" +
-            "alue>\r\n        <functionKey>PreviousSuggestions</functionKey>\r\n      </keyValue>" +
-            "\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>" +
-            "\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Suggestion1</funct" +
-            "ionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks" +
-            ">\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <func" +
-            "tionKey>Suggestion2</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n " +
-            "     <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n     " +
-            " <keyValue>\r\n        <functionKey>Suggestion3</functionKey>\r\n      </keyValue>\r\n" +
-            "    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n" +
-            "  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Suggestion4</functio" +
-            "nKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r" +
-            "\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functi" +
-            "onKey>Suggestion5</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n   " +
-            "   <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <" +
-            "keyValue>\r\n        <functionKey>Suggestion6</functionKey>\r\n      </keyValue>\r\n  " +
-            "  </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  " +
-            "<item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>SelectVoice</functionK" +
-            "ey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n " +
-            "   </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <function" +
-            "Key>More</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks" +
-            ">PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n</dictionary>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\n<dictionary>\n  <item>\n    <key>\n      <ke" +
+            "yValue>\n        <functionKey>Alpha1Keyboard</functionKey>\n      </keyValue>\n    " +
+            "</key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n" +
+            "    <key>\n      <keyValue>\n        <functionKey>Alpha2Keyboard</functionKey>\n   " +
+            "   </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n" +
+            "  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>BackFromKeybo" +
+            "ard</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S<" +
+            "/ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <func" +
+            "tionKey>ConversationAlpha1Keyboard</functionKey>\n      </keyValue>\n    </key>\n  " +
+            "  <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>" +
+            "\n      <keyValue>\n        <functionKey>ConversationAlpha2Keyboard</functionKey>\n" +
+            "      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </valu" +
+            "e>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>Conversati" +
+            "onNumericAndSymbolsKeyboard</functionKey>\n      </keyValue>\n    </key>\n    <valu" +
+            "e>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      " +
+            "<keyValue>\n        <functionKey>Currencies1Keyboard</functionKey>\n      </keyVal" +
+            "ue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n " +
+            " <item>\n    <key>\n      <keyValue>\n        <functionKey>Currencies2Keyboard</fun" +
+            "ctionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n" +
+            "    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>" +
+            "Diacritic1Keyboard</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      " +
+            "<ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue" +
+            ">\n        <functionKey>Diacritic2Keyboard</functionKey>\n      </keyValue>\n    </" +
+            "key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n  " +
+            "  <key>\n      <keyValue>\n        <functionKey>Diacritic3Keyboard</functionKey>\n " +
+            "     </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value" +
+            ">\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>LanguageKey" +
+            "board</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75" +
+            "S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <fu" +
+            "nctionKey>MenuKeyboard</functionKey>\n      </keyValue>\n    </key>\n    <value>\n  " +
+            "    <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyV" +
+            "alue>\n        <functionKey>MouseKeyboard</functionKey>\n      </keyValue>\n    </k" +
+            "ey>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n   " +
+            " <key>\n      <keyValue>\n        <functionKey>NumericAndSymbols1Keyboard</functio" +
+            "nKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    " +
+            "</value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>Nume" +
+            "ricAndSymbols2Keyboard</functionKey>\n      </keyValue>\n    </key>\n    <value>\n  " +
+            "    <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyV" +
+            "alue>\n        <functionKey>NumericAndSymbols3Keyboard</functionKey>\n      </keyV" +
+            "alue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>" +
+            "\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>DynamicKeyboard</funct" +
+            "ionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n  " +
+            "  </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>We" +
+            "bBrowsingKeyboard</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <" +
+            "ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>" +
+            "\n        <functionKey>PhysicalKeysKeyboard</functionKey>\n      </keyValue>\n    <" +
+            "/key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n " +
+            "   <key>\n      <keyValue>\n        <functionKey>SizeAndPositionKeyboard</function" +
+            "Key>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    <" +
+            "/value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>Catal" +
+            "anSpain</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1." +
+            "75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <" +
+            "functionKey>CroatianCroatia</functionKey>\n      </keyValue>\n    </key>\n    <valu" +
+            "e>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      " +
+            "<keyValue>\n        <functionKey>CzechCzechRepublic</functionKey>\n      </keyValu" +
+            "e>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  " +
+            "<item>\n    <key>\n      <keyValue>\n        <functionKey>DanishDenmark</functionKe" +
+            "y>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </v" +
+            "alue>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>DutchBe" +
+            "lgium</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75" +
+            "S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <fu" +
+            "nctionKey>DutchNetherlands</functionKey>\n      </keyValue>\n    </key>\n    <value" +
+            ">\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <" +
+            "keyValue>\n        <functionKey>EnglishCanada</functionKey>\n      </keyValue>\n   " +
+            " </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>" +
+            "\n    <key>\n      <keyValue>\n        <functionKey>EnglishUK</functionKey>\n      <" +
+            "/keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </" +
+            "item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>EnglishUS</functi" +
+            "onKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n   " +
+            " </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>Fre" +
+            "nchCanada</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT" +
+            "1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n       " +
+            " <functionKey>FrenchFrance</functionKey>\n      </keyValue>\n    </key>\n    <value" +
+            ">\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <" +
+            "keyValue>\n        <functionKey>GeorgianGeorgia</functionKey>\n      </keyValue>\n " +
+            "   </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <ite" +
+            "m>\n    <key>\n      <keyValue>\n        <functionKey>GermanGermany</functionKey>\n " +
+            "     </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value" +
+            ">\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>GreekGreece" +
+            "</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ti" +
+            "cks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functio" +
+            "nKey>HebrewIsrael</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <" +
+            "ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>" +
+            "\n        <functionKey>ItalianItaly</functionKey>\n      </keyValue>\n    </key>\n  " +
+            "  <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>" +
+            "\n      <keyValue>\n        <functionKey>JapaneseJapan</functionKey>\n      </keyVa" +
+            "lue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n" +
+            "  <item>\n    <key>\n      <keyValue>\n        <functionKey>KoreanKorea</functionKe" +
+            "y>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </v" +
+            "alue>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>Persian" +
+            "Iran</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S" +
+            "</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <fun" +
+            "ctionKey>PolishPoland</functionKey>\n      </keyValue>\n    </key>\n    <value>\n   " +
+            "   <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyVa" +
+            "lue>\n        <functionKey>PortuguesePortugal</functionKey>\n      </keyValue>\n   " +
+            " </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>" +
+            "\n    <key>\n      <keyValue>\n        <functionKey>RussianRussia</functionKey>\n   " +
+            "   </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n" +
+            "  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>SerbianSerbia" +
+            "</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ti" +
+            "cks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functio" +
+            "nKey>SlovakSlovakia</functionKey>\n      </keyValue>\n    </key>\n    <value>\n     " +
+            " <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValu" +
+            "e>\n        <functionKey>SlovenianSlovenia</functionKey>\n      </keyValue>\n    </" +
+            "key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n  " +
+            "  <key>\n      <keyValue>\n        <functionKey>SpanishSpain</functionKey>\n      <" +
+            "/keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </" +
+            "item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>TurkishTurkey</fu" +
+            "nctionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>" +
+            "\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey" +
+            ">UkrainianUkraine</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <" +
+            "ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>" +
+            "\n        <functionKey>UrduPakistan</functionKey>\n      </keyValue>\n    </key>\n  " +
+            "  <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>" +
+            "\n      <keyValue>\n        <functionKey>AddToDictionary</functionKey>\n      </key" +
+            "Value>\n    </key>\n    <value>\n      <ticks>PT2S</ticks>\n    </value>\n  </item>\n " +
+            " <item>\n    <key>\n      <keyValue>\n        <functionKey>Attention</functionKey>\n" +
+            "      </keyValue>\n    </key>\n    <value>\n      <ticks>PT2S</ticks>\n    </value>\n" +
+            "  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>CommuniKateKe" +
+            "yboard</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT2S<" +
+            "/ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <func" +
+            "tionKey>BackMany</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <t" +
+            "icks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n" +
+            "        <functionKey>BackOne</functionKey>\n      </keyValue>\n    </key>\n    <val" +
+            "ue>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n     " +
+            " <keyValue>\n        <functionKey>Calibrate</functionKey>\n      </keyValue>\n    <" +
+            "/key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n " +
+            "   <key>\n      <keyValue>\n        <functionKey>ClearScratchpad</functionKey>\n   " +
+            "   </keyValue>\n    </key>\n    <value>\n      <ticks>PT2S</ticks>\n    </value>\n  <" +
+            "/item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>DecreaseOpacity<" +
+            "/functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</tic" +
+            "ks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <function" +
+            "Key>IncreaseOpacity</functionKey>\n      </keyValue>\n    </key>\n    <value>\n     " +
+            " <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValu" +
+            "e>\n        <functionKey>Minimise</functionKey>\n      </keyValue>\n    </key>\n    " +
+            "<value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n " +
+            "     <keyValue>\n        <functionKey>MultiKeySelectionIsOn</functionKey>\n      <" +
+            "/keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </" +
+            "item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>NoQuestionResult<" +
+            "/functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</tic" +
+            "ks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <function" +
+            "Key>Quit</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT2" +
+            "S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <fu" +
+            "nctionKey>Restart</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <" +
+            "ticks>PT2S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n  " +
+            "      <functionKey>Sleep</functionKey>\n      </keyValue>\n    </key>\n    <value>\n" +
+            "      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <ke" +
+            "yValue>\n        <functionKey>Speak</functionKey>\n      </keyValue>\n    </key>\n  " +
+            "  <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>" +
+            "\n      <keyValue>\n        <functionKey>YesQuestionResult</functionKey>\n      </k" +
+            "eyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </it" +
+            "em>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>LeftAlt</functionKe" +
+            "y>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.5S</ticks>\n    </va" +
+            "lue>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>LeftCtrl" +
+            "</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.5S</tic" +
+            "ks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <function" +
+            "Key>LeftShift</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <tick" +
+            "s>PT1.5S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n    " +
+            "    <functionKey>LeftWin</functionKey>\n      </keyValue>\n    </key>\n    <value>\n" +
+            "      <ticks>PT1.5S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <key" +
+            "Value>\n        <functionKey>NextSuggestions</functionKey>\n      </keyValue>\n    " +
+            "</key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n" +
+            "    <key>\n      <keyValue>\n        <functionKey>PreviousSuggestions</functionKey" +
+            ">\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </va" +
+            "lue>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>Suggesti" +
+            "on1</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S<" +
+            "/ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <func" +
+            "tionKey>Suggestion2</functionKey>\n      </keyValue>\n    </key>\n    <value>\n     " +
+            " <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValu" +
+            "e>\n        <functionKey>Suggestion3</functionKey>\n      </keyValue>\n    </key>\n " +
+            "   <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key" +
+            ">\n      <keyValue>\n        <functionKey>Suggestion4</functionKey>\n      </keyVal" +
+            "ue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n " +
+            " <item>\n    <key>\n      <keyValue>\n        <functionKey>Suggestion5</functionKey" +
+            ">\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S</ticks>\n    </va" +
+            "lue>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <functionKey>Suggesti" +
+            "on6</functionKey>\n      </keyValue>\n    </key>\n    <value>\n      <ticks>PT1.75S<" +
+            "/ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValue>\n        <func" +
+            "tionKey>SelectVoice</functionKey>\n      </keyValue>\n    </key>\n    <value>\n     " +
+            " <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n  <item>\n    <key>\n      <keyValu" +
+            "e>\n        <functionKey>More</functionKey>\n      </keyValue>\n    </key>\n    <val" +
+            "ue>\n      <ticks>PT1.75S</ticks>\n    </value>\n  </item>\n</dictionary>")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues KeySelectionTriggerFixationCompleteTimesByKeyValues {
             get {

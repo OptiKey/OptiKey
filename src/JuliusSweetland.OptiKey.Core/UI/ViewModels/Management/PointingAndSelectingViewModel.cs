@@ -525,6 +525,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.GEORGIAN_GEORGIA, KeyValues.GeorgianGeorgiaKey, dictionary.ContainsKey(KeyValues.GeorgianGeorgiaKey) ? dictionary[KeyValues.GeorgianGeorgiaKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.GERMAN_GERMANY, KeyValues.GermanGermanyKey, dictionary.ContainsKey(KeyValues.GermanGermanyKey) ? dictionary[KeyValues.GermanGermanyKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.GREEK_GREECE, KeyValues.GreekGreeceKey, dictionary.ContainsKey(KeyValues.GreekGreeceKey) ? dictionary[KeyValues.GreekGreeceKey] : (TimeSpan?) null),
+                    new KeyValueAndTimeSpan(Resources.HEBREW_ISRAEL, KeyValues.HebrewIsraelKey, dictionary.ContainsKey(KeyValues.HebrewIsraelKey) ? dictionary[KeyValues.HebrewIsraelKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.ITALIAN_ITALY, KeyValues.ItalianItalyKey, dictionary.ContainsKey(KeyValues.ItalianItalyKey) ? dictionary[KeyValues.ItalianItalyKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.JAPANESE_JAPAN, KeyValues.JapaneseJapanKey, dictionary.ContainsKey(KeyValues.JapaneseJapanKey) ? dictionary[KeyValues.JapaneseJapanKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.KOREAN_KOREA, KeyValues.KoreanKoreaKey, dictionary.ContainsKey(KeyValues.KoreanKoreaKey) ? dictionary[KeyValues.KoreanKoreaKey] : (TimeSpan?) null),

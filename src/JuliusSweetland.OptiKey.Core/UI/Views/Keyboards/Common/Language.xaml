@@ -164,7 +164,11 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                           Text="{x:Static resx:Resources.URDU_PAKISTAN_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.UrduPakistanKey}"/>
-                            <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
+                            <controls:Key Grid.Row="4" Grid.Column="4"
+                                          Text="{x:Static resx:Resources.HEBREW_ISRAEL_SPLIT_WITH_NEWLINE}"
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static models:KeyValues.HebrewIsraelKey}"/>
+                            <controls:Key Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2"
                                           Text="{x:Static resx:Resources.BACK}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
@@ -319,7 +323,11 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                   Text="{x:Static resx:Resources.URDU_PAKISTAN_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.UrduPakistanKey}"/>
-                                    <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
+                                    <controls:Key Grid.Row="5" Grid.Column="3"
+                                                  Text="{x:Static resx:Resources.HEBREW_ISRAEL_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static models:KeyValues.HebrewIsraelKey}"/>
+                                    <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
