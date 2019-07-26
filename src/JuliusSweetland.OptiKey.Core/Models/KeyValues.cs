@@ -125,6 +125,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue F17Key = new KeyValue(FunctionKeys.F17);
         public static readonly KeyValue F18Key = new KeyValue(FunctionKeys.F18);
         public static readonly KeyValue F19Key = new KeyValue(FunctionKeys.F19);
+        public static readonly KeyValue FinnishFinlandKey = new KeyValue(FunctionKeys.FinnishFinland);
         public static readonly KeyValue FrenchFranceKey = new KeyValue(FunctionKeys.FrenchFrance);
         public static readonly KeyValue FrenchCanadaKey = new KeyValue(FunctionKeys.FrenchCanada);
         public static readonly KeyValue GeorgianGeorgiaKey = new KeyValue(FunctionKeys.GeorgianGeorgia);
@@ -311,6 +312,11 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.EnglishCanada, defaultList },
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
+                { Languages.FinnishFinland, "abcdefghijklmnopqrstuvwxyzåäö"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
                 { Languages.FrenchFrance, "abcdefghijklmnopqrstuvwxyzçé"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))

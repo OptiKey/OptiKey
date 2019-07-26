@@ -1913,6 +1913,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Finnish (Finland) / suomi (Suomi).
+        /// </summary>
+        public static string FINNISH_FINLAND {
+            get {
+                return ResourceManager.GetString("FINNISH_FINLAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finnish
+        /// (Finland) /
+        /// suomi
+        /// (Suomi).
+        /// </summary>
+        public static string FINNISH_FINLAND_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("FINNISH_FINLAND_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fixations (dwell).
         /// </summary>
         public static string FIXATIONS_DWELL {

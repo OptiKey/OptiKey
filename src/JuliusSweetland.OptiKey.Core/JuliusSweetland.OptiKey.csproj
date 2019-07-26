@@ -565,14 +565,17 @@
     <Compile Include="UI\Views\Keyboards\Czech\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Danish\Alpha1.xaml.cs">
-      <DependentUpon>Alpha1.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Common\CommuniKate.xaml.cs">
+      <DependentUpon>CommuniKate.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Danish\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Common\CommuniKate.xaml.cs">
-      <DependentUpon>CommuniKate.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Finnish\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Finnish\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Hebrew\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
@@ -892,6 +895,7 @@
     <EmbeddedResource Include="Properties\Resources.en-US.resx" />
     <EmbeddedResource Include="Properties\Resources.es-ES.resx" />
     <EmbeddedResource Include="Properties\Resources.fa.resx" />
+    <EmbeddedResource Include="Properties\Resources.fi-FI.resx" />
     <EmbeddedResource Include="Properties\Resources.it-IT.resx" />
     <EmbeddedResource Include="Properties\Resources.ja-JP.resx">
       <SubType>Designer</SubType>
@@ -927,11 +931,14 @@
     <Content Include="Dictionaries\PersianIran.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Dictionaries\FinnishFinland.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.he-IL.resx" />
-    <None Include="app.config" />
     <Content Include="Dictionaries\HebrewIsrael.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -1374,6 +1381,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Keyboards\Common\CommuniKate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>    
     <Page Include="UI\Views\Keyboards\Common\ConversationConfirm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1454,9 +1465,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Common\CommuniKate.xaml">
-      <Generator>MSBuild:Compile</Generator>
+        <Page Include="UI\Views\Keyboards\Finnish\Alpha1.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Finnish\ConversationAlpha1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Hebrew\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>

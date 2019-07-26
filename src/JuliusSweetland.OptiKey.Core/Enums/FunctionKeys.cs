@@ -81,6 +81,7 @@ namespace JuliusSweetland.OptiKey.Enums
         F17,
         F18,
         F19,
+        FinnishFinland,
         FrenchFrance,
         FrenchCanada,
         GeorgianGeorgia,
