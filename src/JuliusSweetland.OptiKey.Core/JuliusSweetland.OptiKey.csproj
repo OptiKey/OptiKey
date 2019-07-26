@@ -565,9 +565,6 @@
     <Compile Include="UI\Views\Keyboards\Czech\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Danish\Alpha1.xaml.cs">
-      <DependentUpon>Alpha1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Views\Keyboards\Common\CommuniKate.xaml.cs">
       <DependentUpon>CommuniKate.xaml</DependentUpon>
     </Compile>
@@ -579,6 +576,18 @@
     </Compile>
     <Compile Include="UI\Views\Keyboards\Finnish\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hebrew\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hebrew\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hebrew\SimplifiedAlpha1.xaml.cs">
+      <DependentUpon>SimplifiedAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hebrew\SimplifiedConversationAlpha1.xaml.cs">
+      <DependentUpon>SimplifiedConversationAlpha1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Persian\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
@@ -881,14 +890,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
-    <Page Include="UI\Views\Keyboards\Danish\ConversationAlpha1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Finnish\Alpha1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx" />
     <EmbeddedResource Include="Properties\Resources.cs-CZ.resx" />
     <EmbeddedResource Include="Properties\Resources.en-US.resx" />
@@ -931,6 +932,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dictionaries\FinnishFinland.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Properties\Resources.he-IL.resx" />
+    <Content Include="Dictionaries\HebrewIsrael.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
@@ -1376,6 +1381,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Keyboards\Common\CommuniKate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>    
     <Page Include="UI\Views\Keyboards\Common\ConversationConfirm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1452,13 +1461,33 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Common\CommuniKate.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="UI\Views\Keyboards\Danish\ConversationAlpha1.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+        <Page Include="UI\Views\Keyboards\Finnish\Alpha1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Finnish\ConversationAlpha1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hebrew\Alpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hebrew\ConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hebrew\SimplifiedAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hebrew\SimplifiedConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Persian\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
