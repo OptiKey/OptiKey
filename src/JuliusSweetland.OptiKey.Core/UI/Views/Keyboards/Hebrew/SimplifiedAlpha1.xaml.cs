@@ -8,7 +8,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Hebrew
     /// </summary>
     public partial class SimplifiedAlpha1 : KeyboardView
     {
-        public SimplifiedAlpha1() : base(shiftAware: true)
+        public SimplifiedAlpha1() : base(shiftAware: false)
         {
             InitializeComponent();
         }
