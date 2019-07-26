@@ -901,6 +901,16 @@
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
+        &lt;functionKey&gt;HebrewIsrael&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
         &lt;functionKey&gt;ItalianItaly&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
@@ -937,7 +947,7 @@
     &lt;value&gt;
       &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
     &lt;/value&gt;
-  &lt;/item&gt;  
+  &lt;/item&gt;
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;

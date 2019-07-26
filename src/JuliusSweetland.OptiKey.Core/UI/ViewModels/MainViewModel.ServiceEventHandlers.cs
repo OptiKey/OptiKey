@@ -1122,6 +1122,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     SelectLanguage(Languages.GreekGreece);
                     break;
 
+                case FunctionKeys.HebrewIsrael:
+                    SelectLanguage(Languages.HebrewIsrael);
+                    break;
+
                 case FunctionKeys.IncreaseOpacity:
                     Log.Info("Increasing opacity.");
                     mainWindowManipulationService.IncrementOrDecrementOpacity(true);

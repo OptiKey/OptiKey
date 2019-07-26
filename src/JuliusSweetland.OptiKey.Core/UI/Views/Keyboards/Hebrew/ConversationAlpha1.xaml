@@ -1,0 +1,266 @@
+﻿<!--
+Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Hebrew.ConversationAlpha1"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
+                       xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
+                       xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
+                       xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+                       mc:Ignorable="d"
+                       d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+    </UserControl.Resources>
+
+    <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
+          Grid.IsSharedSizeScope="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <controls:Output Grid.Row="0" Grid.Column="0"
+                         Grid.RowSpan="2" Grid.ColumnSpan="20"
+                         ScratchpadWidthInKeys="6"
+                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                      ShiftUpText="ק" ShiftDownText="ק"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ק"/>
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                      ShiftUpText="ר" ShiftDownText="ר"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ר"/>
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
+                      ShiftUpText="א" ShiftDownText="א"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="א"/>
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
+                      ShiftUpText="ט" ShiftDownText="ט"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ט"/>
+        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
+                      ShiftUpText="ו" ShiftDownText="ו"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ו"/>
+        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
+                      ShiftUpText="ן" ShiftDownText="ן"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ן"/>
+        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
+                      ShiftUpText="ם" ShiftDownText="ם"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ם"/>
+        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
+                      ShiftUpText="פ" ShiftDownText="פ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="פ"/>
+        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BackOneIcon}"
+                      Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.BackOneKey}"/>
+        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BackManyIcon}"
+                      Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.BackManyKey}"/>
+
+        <controls:Key Grid.Row="3" Grid.Column="0" />
+        <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                      ShiftUpText="ש" ShiftDownText="ש"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ש"/>
+        <controls:Key Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"
+                      ShiftUpText="ד" ShiftDownText="ד"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ד"/>
+        <controls:Key Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2"
+                      ShiftUpText="ג" ShiftDownText="ג"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ג"/>
+        <controls:Key Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2"
+                      ShiftUpText="כ" ShiftDownText="כ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="כ"/>
+        <controls:Key Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2"
+                      ShiftUpText="ע" ShiftDownText="ע"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ע"/>
+        <controls:Key Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2"
+                      ShiftUpText="י" ShiftDownText="י"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="י"/>
+        <controls:Key Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2"
+                      ShiftUpText="ח" ShiftDownText="ח"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ח"/>
+        <controls:Key Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2"
+                      ShiftUpText="ל" ShiftDownText="ל"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ל"/>
+        <controls:Key Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2"
+                      ShiftUpText="ך" ShiftDownText="ך"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ך"/>
+        <controls:Key Grid.Row="3" Grid.Column="19"/>
+
+        <ContentControl Grid.Row="4" Grid.Column="0">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key />
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmEnable}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource YesNoIcon}"
+                                                  Text="{x:Static resx:Resources.YESNO}"
+                                                  Value="{x:Static models:KeyValues.ConversationConfirmKeyboardKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+        <controls:Key Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                      ShiftUpText="ז" ShiftDownText="ז"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ז"/>
+        <controls:Key Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
+                      ShiftUpText="ס" ShiftDownText="ס"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ס"/>
+        <controls:Key Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2"
+                      ShiftUpText="ב" ShiftDownText="ב"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ב"/>
+        <controls:Key Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="2"
+                      ShiftUpText="ה" ShiftDownText="ה"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ה"/>
+        <controls:Key Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="2"
+                      ShiftUpText="נ" ShiftDownText="נ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="נ"/>
+        <controls:Key Grid.Row="4" Grid.Column="11" Grid.ColumnSpan="2"
+                      ShiftUpText="מ" ShiftDownText="מ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="מ"/>
+        <controls:Key Grid.Row="4" Grid.Column="13" Grid.ColumnSpan="2"
+                      ShiftUpText="צ" ShiftDownText="צ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="צ"/>
+        <controls:Key Grid.Row="4" Grid.Column="15" Grid.ColumnSpan="2"
+                      ShiftUpText="ת" ShiftDownText="ת"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ת"/>
+        <controls:Key Grid.Row="4" Grid.Column="17" Grid.ColumnSpan="2"
+                      ShiftUpText="ץ" ShiftDownText="ץ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ץ"/>
+
+        <controls:Key Grid.Row="4" Grid.Column="19" />
+
+        <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource CalibrateIcon}"
+                      Text="{x:Static resx:Resources.RE_CALIBRATE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.CalibrateKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource ShiftIcon}"
+                      Text="{x:Static resx:Resources.SHIFT}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
+                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.ConversationNumericAndSymbolsKeyboardKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
+                      Text=","
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value=","/>
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
+                      SymbolGeometry="{StaticResource SpaceIcon}"
+                      Text="{x:Static resx:Resources.SPACE}"
+                      WidthSpan="2"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value=" "/>
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
+                      Text="."
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="."/>
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
+                      Text="'"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="'"/>
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
+                      Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>
+        <ContentControl Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                          Text="{x:Static resx:Resources.BACK}"
+                                          SharedSizeGroup="KeyWithSymbol"
+                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                  Text="{x:Static resx:Resources.QUIT}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.QuitKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
+</controls:KeyboardView>

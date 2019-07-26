@@ -1998,7 +1998,7 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>The Presage dictionary cannot be edited from here.
 It's default location is "C:\Program Files (x86)\presage\share\presage\database_en.db".
-It can be edited with a program which can read SQLite format 3 files 
+It can be edited with a program which can read SQLite format 3 files
 such as "DB Browser for SQLite" (which is a free program).</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
@@ -2154,7 +2154,7 @@ such as "DB Browser for SQLite" (which is a free program).</value>
 Scroll</value>
   </data>
   <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Scroll by {0} wheel unit: 
+    <value>Scroll by {0} wheel unit:
 (120 wheel units = 1 click)|Scroll by {0} wheel units:
 (120 wheel units = 1 click)</value>
   </data>
@@ -2309,7 +2309,7 @@ Française
   <data name="URDU_PAKISTAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Urdu
 (Pakistan) /
-اردو 
+اردو
 (پاکستان)</value>
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
@@ -2347,5 +2347,14 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
 (Iran) /
 فارسی
 (ایرانی)</value>
+  </data>
+  <data name="HEBREW_ISRAEL" xml:space="preserve">
+    <value>Hebrew (Israel) / עברית (ישראל)</value>
+  </data>
+  <data name="HEBREW_ISRAEL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Hebrew
+(Israel) /
+עברית
+(ישראל)</value>
   </data>
 </root>
