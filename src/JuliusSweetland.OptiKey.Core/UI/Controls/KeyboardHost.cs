@@ -284,6 +284,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.HebrewIsrael:
+                        newContent = new HebrewViews.Alpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.JapaneseJapan:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new JapaneseViews.SimplifiedAlpha2 { DataContext = Keyboard }

@@ -580,6 +580,9 @@
     <Compile Include="UI\Views\Keyboards\Hebrew\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Hebrew\Alpha2.xaml.cs">
+      <DependentUpon>Alpha2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Hebrew\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
@@ -1384,7 +1387,7 @@
     <Page Include="UI\Views\Keyboards\Common\CommuniKate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>    
+    </Page>
     <Page Include="UI\Views\Keyboards\Common\ConversationConfirm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1465,7 +1468,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-        <Page Include="UI\Views\Keyboards\Finnish\Alpha1.xaml">
+    <Page Include="UI\Views\Keyboards\Finnish\Alpha1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1474,6 +1477,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Hebrew\Alpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hebrew\Alpha2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
