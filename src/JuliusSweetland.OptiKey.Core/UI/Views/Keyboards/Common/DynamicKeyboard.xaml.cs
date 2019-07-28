@@ -300,7 +300,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 var rootDir = Path.GetDirectoryName(inputFilename);
                 bool replaceCurrKeyboard = !xmlKey.ReturnToThisKeyboard;
-                newKey.Value = System.Enum.TryParse(xmlKey.DestinationKeyboard, out Enums.Keyboards keyboardEnum) 
+                Enums.Keyboards keyboardEnum;
+                newKey.Value = System.Enum.TryParse(xmlKey.DestinationKeyboard, out keyboardEnum) 
                     ? new ChangeKeyboardKeyValue(keyboardEnum, replaceCurrKeyboard) 
                     : new ChangeKeyboardKeyValue(Path.Combine(rootDir, xmlKey.DestinationKeyboard), replaceCurrKeyboard);
             }
