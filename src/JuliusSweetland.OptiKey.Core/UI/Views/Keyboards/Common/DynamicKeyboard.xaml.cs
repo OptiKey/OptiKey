@@ -114,29 +114,28 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 			var textKey = xmlKey as XmlTextKey;
 			if (textKey != null)
 				return textKey.Text;
-			else
-				return xmlKey.Label ?? xmlKey.Symbol;
+
+            return xmlKey.Label ?? xmlKey.Symbol;
 		}
 
         private Key CreateKeyWithBasicProps(XmlKey xmlKey)
         {
             // Add the core properties from XML to a new key
             Key newKey = new Key();
-            if (null != xmlKey.ShiftDownLabel && null != xmlKey.ShiftUpLabel)
+            if (xmlKey.ShiftDownLabel != null && xmlKey.ShiftUpLabel != null)
             {
                 newKey.ShiftUpText = xmlKey.ShiftUpLabel.ToStringWithValidNewlines();
                 newKey.ShiftDownText = xmlKey.ShiftDownLabel.ToStringWithValidNewlines();
             }
-            else if (null != xmlKey.Label)
+            else if (xmlKey.Label != null)
             {
                 newKey.Text = xmlKey.Label.ToStringWithValidNewlines();
             }
             
-
-            if (null != xmlKey.Symbol)
+            if (xmlKey.Symbol != null)
             {
                 Geometry geom = (Geometry)this.Resources[xmlKey.Symbol];
-                if (null != geom)
+                if (geom != null)
                 {
                     newKey.SymbolGeometry = geom;
                 }
@@ -153,8 +152,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
 
             // Set shared size group
-            bool hasSymbol = null  != newKey.SymbolGeometry;
-            bool hasString = null != xmlKey.Label || null != xmlKey.ShiftUpLabel || null != xmlKey.ShiftDownLabel;
+            bool hasSymbol = newKey.SymbolGeometry != null;
+            bool hasString = xmlKey.Label != null || xmlKey.ShiftUpLabel != null || xmlKey.ShiftDownLabel != null;
             if (hasSymbol && hasString)
             {
                 newKey.SharedSizeGroup = "KeyWithSymbolAndText";
@@ -165,11 +164,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
             else if (hasString)
             {
-                newKey.SharedSizeGroup = "KeyWithText";
+                newKey.SharedSizeGroup = !(newKey.Text != null && newKey.Text.Length > 1) 
+                                         && !(newKey.ShiftDownText != null && newKey.ShiftDownText.Length > 1) 
+                                         && !(newKey.ShiftUpText != null && newKey.ShiftUpText.Length > 1) ? "KeyWithSingleLetter" : "KeyWithText";
             }
-            // Also group separately by row/col width/height
-            newKey.SharedSizeGroup += xmlKey.Width;
-            newKey.SharedSizeGroup += xmlKey.Height;
+
+            //Set width span and height span
+            newKey.WidthSpan = xmlKey.Width;
+            newKey.HeightSpan = xmlKey.Height;
 
             return newKey;
         }
@@ -195,7 +197,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         private void SetupErrorLayout(string heading, string content)
         {
-
             AddRowsToGrid(4);
             AddColsToGrid(4);
 
@@ -241,7 +242,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
         }
         
-
         private void SetupKeys()
         {
             XmlKeys keys = keyboard.Keys;
@@ -272,9 +272,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             Key newKey = CreateKeyWithBasicProps(xmlKey);
 
-            if (null != xmlKey.Plugin && null != xmlKey.Method)
+            if (xmlKey.Plugin != null && xmlKey.Method != null)
             {
-                // FIXME: Saving the XML of the xmlKey itself probably is not be the best option. It is done this way to avoid messing with
+                // FIXME: Saving the XML of the xmlKey itself probably is not the best option. It is done this way to avoid messing with
                 // other pieces of code deep within OptiKey.
                 XmlSerializer xmlSer = new XmlSerializer(typeof(XmlPluginKey));
                 using (var sww = new StringWriter())
@@ -296,19 +296,13 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             Key newKey = CreateKeyWithBasicProps(xmlKey);
 
-            if (null != xmlKey.DestinationKeyboard)
+            if (xmlKey.DestinationKeyboard != null)
             {
                 var rootDir = Path.GetDirectoryName(inputFilename);
                 bool replaceCurrKeyboard = !xmlKey.ReturnToThisKeyboard;
-                Enums.Keyboards keyboardEnum;
-                if (System.Enum.TryParse(xmlKey.DestinationKeyboard, out keyboardEnum))
-                {
-                    newKey.Value = new ChangeKeyboardKeyValue(keyboardEnum, replaceCurrKeyboard);
-                }
-                else
-                {
-                    newKey.Value = new ChangeKeyboardKeyValue(Path.Combine(rootDir, xmlKey.DestinationKeyboard), replaceCurrKeyboard);
-                }
+                newKey.Value = System.Enum.TryParse(xmlKey.DestinationKeyboard, out Enums.Keyboards keyboardEnum) 
+                    ? new ChangeKeyboardKeyValue(keyboardEnum, replaceCurrKeyboard) 
+                    : new ChangeKeyboardKeyValue(Path.Combine(rootDir, xmlKey.DestinationKeyboard), replaceCurrKeyboard);
             }
             else
             {
@@ -322,7 +316,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             Key newKey = CreateKeyWithBasicProps(xmlKey);
 
-            if (null != xmlKey.Text)
+            if (xmlKey.Text != null)
             {
                 newKey.Value = new KeyValue(xmlKey.Text);
             }
@@ -342,7 +336,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 newKey.Value = new KeyValue(xmlKey.Action.Value);
             }
-            else { 
+            else
+            { 
                 Log.ErrorFormat("No FunctionKey found for key with label {0}", xmlKey.Label);
             }
 
@@ -354,8 +349,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             // Get border thickness, if specified, to override
             if (keyboard.BorderThickness.HasValue)
             {
-                Log.InfoFormat("Setting border thickness for custom keyboard: {0}",
-                               keyboard.BorderThickness.Value);
+                Log.InfoFormat("Setting border thickness for custom keyboard: {0}", keyboard.BorderThickness.Value);
                 this.BorderThickness = keyboard.BorderThickness.Value;
             }
         }
@@ -404,7 +398,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             Grid.SetRowSpan(key, rowspan);
         }
 
-        //TODO: move to an extension method?
         public static string StringWithValidNewlines(string s)
         {
             if (s.Contains("\\r\\n"))
