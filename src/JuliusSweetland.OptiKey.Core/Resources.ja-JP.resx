@@ -1812,7 +1812,7 @@ Slovenčina
     <value>Kalman Filter:</value>
   </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
-    <value>Toggle Manual Mode</value>
+    <value>Toggle Mouse Control Mode</value>
   </data>
   <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
     <value>チェコ語 (チェコ) / Čeština (Česko)</value>
@@ -1827,10 +1827,10 @@ Slovenčina
     <value>Input mode changed</value>
   </data>
   <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
-    <value>Manual (mouse) mode disabled!</value>
+    <value>Mouse Control mode disabled!</value>
   </data>
   <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
-    <value>Manual (mouse) mode enabled!</value>
+    <value>Mouse Control mode enabled!</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
     <value>Enable Conversation Confirm keyboard?</value>
