@@ -1844,8 +1844,8 @@ Slovenčina
   <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
     <value>Kalman Filter:</value>
   </data>
-  <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
-    <value>Toggle Manual Mode</value>
+  <data name="TOGGLE_MOUSE_CONTROL_MODE" xml:space="preserve">
+    <value>Toggle Mouse Control Mode</value>
   </data>
   <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
     <value>Czech (Czech Rep.) / Čeština (Česko)</value>
@@ -1856,10 +1856,10 @@ Slovenčina
 Čeština
 (Česko)</value>
   </data>
-  <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+  <data name="MOUSE_CONTROL_MODE_CHANGED" xml:space="preserve">
     <value>Input mode changed</value>
   </data>
-  <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+  <data name="MOUSE_CONTROL_MODE_DISABLED" xml:space="preserve">
     <value>Manual (mouse) mode disabled!</value>
   </data>
   <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
@@ -2228,10 +2228,10 @@ Française
   <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
     <value>Volume of speech when speaking CommuniKate button text:</value>
   </data>
-  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+  <data name="MOUSE_CONTROL_MODE_MESSAGE" xml:space="preserve">
     <value>Are you sure you would like to switch to/from manual mode?</value>
   </data>
-  <data name="MANUAL_MODE" xml:space="preserve">
+  <data name="MOUSE_CONTROL_MODE" xml:space="preserve">
     <value>MANUAL MODE</value>
   </data>
   <data name="COMMUNIKATE" xml:space="preserve">
