@@ -1860,10 +1860,10 @@ Slovenčina
     <value>Input mode changed</value>
   </data>
   <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
-    <value>Manual (mouse) mode disabled!</value>
+    <value>Mouse (manual) mode disabled!</value>
   </data>
   <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
-    <value>Manual (mouse) mode enabled!</value>
+    <value>Mouse (manual) mode enabled!</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
     <value>Enable Conversation Confirm keyboard?</value>
