@@ -1845,7 +1845,7 @@ Slovenčina
     <value>Kalman Filter:</value>
   </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
-    <value>Toggle Manual Mode</value>
+    <value>Toggle Mouse Control Mode</value>
   </data>
   <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
     <value>Czech (Czech Rep.) / Čeština (Česko)</value>
@@ -2232,7 +2232,7 @@ Française
     <value>Are you sure you would like to switch to/from manual mode?</value>
   </data>
   <data name="MANUAL_MODE" xml:space="preserve">
-    <value>MANUAL MODE</value>
+    <value>MOUSE CONTROL MODE</value>
   </data>
   <data name="COMMUNIKATE" xml:space="preserve">
     <value>CommuniKate</value>
