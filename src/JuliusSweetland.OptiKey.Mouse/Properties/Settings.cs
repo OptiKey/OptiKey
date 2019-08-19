@@ -12,6 +12,8 @@ namespace JuliusSweetland.OptiKey.Mouse.Properties
             InitialiseWithDerivedSettings(defaultInstance);
         }
 
+        #region App-specific settings
+        
         /*
          * Override the settings relating to mouse mode, to lock user into
          * mouse mode only.
@@ -48,5 +50,108 @@ namespace JuliusSweetland.OptiKey.Mouse.Properties
                 // no-op, can't be changed in this app
             }
         }
+
+        #endregion
+
+
+        #region Unsupported features
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool EnableCommuniKateKeyboardLayout
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                // no-op
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool ConversationOnlyMode
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool EnableAttentionKey
+        {
+            get { return false; }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool ConversationConfirmEnable
+        {
+            get { return false; }
+            set { /* no-op */ }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool EnableQuitKeys
+        {
+            get { return false; }
+            set { /* no-op */ }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool EnableCopyAllScratchpadKey
+        {
+            get { return false; }
+            set { /* no-op */ }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool MultiKeySelectionEnabled
+        {
+            get { return false; }
+            set { /* no-op */ }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool MagnifySuppressedForScrollingActions
+        {
+            get { return false; }
+            set { /* no-op */ }
+        }
+
+        #endregion
+
     }
 }

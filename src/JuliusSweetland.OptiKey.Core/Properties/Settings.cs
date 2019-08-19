@@ -1151,7 +1151,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool MultiKeySelectionEnabled {
+        public virtual bool MultiKeySelectionEnabled {
             get {
                 return ((bool)(this["MultiKeySelectionEnabled"]));
             }
@@ -1333,7 +1333,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool MagnifySuppressedForScrollingActions {
+        public virtual bool MagnifySuppressedForScrollingActions {
             get {
                 return ((bool)(this["MagnifySuppressedForScrollingActions"]));
             }
@@ -1632,7 +1632,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool ConversationConfirmEnable {
+        public virtual bool ConversationConfirmEnable {
             get {
                 return ((bool)(this["ConversationConfirmEnable"]));
             }
@@ -1645,7 +1645,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool EnableQuitKeys {
+        public virtual bool EnableQuitKeys {
             get {
                 return ((bool)(this["EnableQuitKeys"]));
             }
@@ -1892,7 +1892,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool EnableAttentionKey {
+        public virtual bool EnableAttentionKey {
             get {
                 return ((bool)(this["EnableAttentionKey"]));
             }
@@ -2009,7 +2009,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool LookToScrollEnabled {
+        public virtual bool LookToScrollEnabled {
             get {
                 return ((bool)(this["LookToScrollEnabled"]));
             }
@@ -2625,7 +2625,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool EnableCopyAllScratchpadKey {
+        public virtual bool EnableCopyAllScratchpadKey {
             get {
                 return ((bool)(this["EnableCopyAllScratchpadKey"]));
             }
