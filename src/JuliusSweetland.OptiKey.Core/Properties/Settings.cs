@@ -1,8 +1,12 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
+using log4net;
+
 namespace JuliusSweetland.OptiKey.Properties {
         
     public abstract class Settings : global::System.Configuration.ApplicationSettingsBase {
+
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static Settings defaultInstance;
         
@@ -2666,6 +2670,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["EnablePlugins"] = value;
+            }
+        }
+
+        public bool IsOverridden(string propName)
+        {
+            var propActual = this.GetType().GetProperty(propName);
+            var propBase = typeof(Settings).GetProperty(propName);
+
+            if (propActual != null && propBase != null)
+            {
+                return !(propActual.DeclaringType == propBase.DeclaringType);
+            }
+            else
+            {
+                Log.ErrorFormat("No property named {0}", propName);
+                return false;
             }
         }
     }
