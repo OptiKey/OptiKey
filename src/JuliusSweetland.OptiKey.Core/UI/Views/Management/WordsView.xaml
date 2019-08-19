@@ -15,6 +15,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <valueConverters:ListNotEmpty x:Key="ListNotEmpty" />
+        <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
@@ -274,7 +275,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="0" Grid.Column="1"
                               VerticalAlignment="Center"
-                              IsChecked="{Binding MultiKeySelectionEnabled, Mode=TwoWay}" />
+                              IsChecked="{Binding MultiKeySelectionEnabled, Mode=TwoWay}" 
+                              IsEnabled="{Binding Source='MultiKeySelectionEnabled', Converter={StaticResource EnabledIfNotOverridden}}"
+                              />
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.MAX_DICTIONARY_MATCHES_LABEL}"
                                VerticalAlignment="Center" Margin="5" />

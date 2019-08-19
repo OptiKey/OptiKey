@@ -8,12 +8,14 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="AvailablePluginsCollectionViewSource" Source="{Binding AvailablePlugins}" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
@@ -48,25 +50,29 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="0" Grid.Column="1" 
                               VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='EnableQuitKeys', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding EnableQuitKeys, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_ATTENTION_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="1" Grid.Column="1" 
                               VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='EnableAttentionKey', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding EnableAttentionKey, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COPY_SCRATCHPAD_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="2" Grid.Column="1" 
                               VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='EnableCopyAllScratchpadKey', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding EnableCopyAllScratchpadKey, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5" Visibility="Visible" />
                     <CheckBox Grid.Row="3" Grid.Column="1"
                               VerticalAlignment="Center" Visibility="Visible"
-                              IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" />
+                              IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" 
+                              IsEnabled="{Binding Source='EnableCommuniKateKeyboardLayout', Converter={StaticResource EnabledIfNotOverridden}}"/>
 
                 </Grid>
             </GroupBox>

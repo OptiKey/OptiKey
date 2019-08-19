@@ -15,6 +15,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
         <valueConverters:ColourNameToBrush x:Key="ColourNameToBrush" />
+        <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
@@ -92,11 +93,13 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="5" Grid.Column="1" 
                               VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='MagnifySuppressedForScrollingActions', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding MagnifySuppressedForScrollingActions, Mode=TwoWay}" />
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ENABLED_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="6" Grid.Column="1" 
                               VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='LookToScrollEnabled', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding LookToScrollEnabled, Mode=TwoWay}" />
                     <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />

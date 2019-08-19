@@ -8,8 +8,21 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+                <ResourceDictionary>
+                    <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
@@ -99,7 +112,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </TextBlock>
                     <CheckBox Grid.Row="9" Grid.Column="1" 
                               VerticalAlignment="Center"
-                              IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}">
+                              IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}"
+                              IsEnabled="{Binding Source='ConversationOnlyMode', Converter={StaticResource EnabledIfNotOverridden}}">
                         <CheckBox.Style>
                             <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
                                 <Setter Property="Visibility" Value="Visible" />
@@ -116,6 +130,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="10" Grid.Column="1" 
                               VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='ConversationConfirmEnable', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding ConversationConfirmEnable, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ONLY_MODE_LABEL}" 
@@ -172,7 +187,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               ItemsSource="{Binding StartupKeyboards}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding StartupKeyboard, Mode=TwoWay}">
+                              SelectedValue="{Binding StartupKeyboard, Mode=TwoWay}"
+                              IsEnabled="{Binding Source='StartupKeyboard', Converter={StaticResource EnabledIfNotOverridden}}">
                         <ComboBox.Style>
                             <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
                                 <Setter Property="Visibility" Value="Visible" />
