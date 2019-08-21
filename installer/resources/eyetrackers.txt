@@ -1,0 +1,5 @@
+# first line ignored; subsequent lines: description for dropdown | optikey enum | extra info
+Alienware 17 (EyeX)|Alienware17|This works with Alienware laptops using the Tobii Eye Tracking Engine.
+Gaze tracker |GazeTracker|This is the GazeTracker and it does stuff
+Irisbond Duo|IrisbondDuo|This is the IrisbondDuo
+MousePosition| Mouse position | Use mouse position as input instead of eye tracker.\nYou might use this for testing without an eye tracker, or if you have a head mouse or something else controlling the mouse.\n\nOkay! 
