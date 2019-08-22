@@ -143,6 +143,9 @@ Function EyeTrackerNext
 
   Session.Property("EYETRACKER_TEXT") = tracker_extra_info
 
+  ' Store the eyetracker enum as a property: we'll need to use this for writing to XML
+  Session.Property("EYETRACKER_SELECTED") = tracker_enum
+
 End Function
 
 
