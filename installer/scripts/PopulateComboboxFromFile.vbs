@@ -128,13 +128,20 @@ Function EyeTrackerNext
   Const SEP_2 = "|"
   Dim strValue, order, orderDelta, AIListBoxData
   
+  ' Get attached info from property
   selectedTracker = Session.Property(comboProp)
   trackerInfo = Session.Property("EYETRACKER_" + selectedTracker)
 
-  Session.Property("EYETRACKER_TEXT") = trackerInfo
+  Dim parts
+  parts = Split(trackerInfo, "|")
+  tracker_label = parts(0)
+  tracker_enum = parts(1)      
+  tracker_extra_info = parts(2)
+  
+  ' insert line feeds if present
+  tracker_extra_info = Replace(tracker_extra_info,"\n",vbLf) 
 
-  ' Set tracker = eyetrackerDict(selectedTracker)  
-  ' Session.Property("EYETRACKER_TEXT") = Session.Property("EYETRACKER_DICT")
+  Session.Property("EYETRACKER_TEXT") = tracker_extra_info
 
 End Function
 
