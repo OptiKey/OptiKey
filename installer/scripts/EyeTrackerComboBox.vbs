@@ -124,13 +124,7 @@ Function EyeTrackerSelected
   tracker_enum = parts(1)      
   tracker_extra_info = parts(2)
   
-  ' insert line feeds if present
-  tracker_extra_info = Replace(tracker_extra_info,"\n",vbLf) 
-
-  Session.Property("EYETRACKER_TEXT") = tracker_extra_info
-
-  ' Store the eyetracker enum as a property: we'll need to use this for writing to XML
-  Session.Property("EYETRACKER_SELECTED") = tracker_enum
+  UpdateEyeTracker(tracker_enum), tracker_extra_info
 
 End Function
 
