@@ -13,7 +13,7 @@
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="OptiKey"/>
     <ROW Property="ProductCode" Value="1033:{0175AF6D-5986-45A9-8BBB-7A7FC9165D84} 2057:{EBF8A1A5-B5FD-47D0-9806-B3ED0B46B349} " Type="16"/>
-    <ROW Property="ProductLanguage" Value="2057"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="OptiKey"/>
     <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
@@ -69,7 +69,7 @@
     <ROW Directory="urPK_Dir" Directory_Parent="Release_Dir" DefaultDir="ur-PK"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_ExePath" ComponentId="{F5FDEEBF-C211-4456-83CC-CEF1417E5B4B}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
+    <ROW Component="AI_ExePath" ComponentId="{9FFD6344-1AA8-4534-9441-004C35197522}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
     <ROW Component="APPDIR" ComponentId="{BCE9D9C0-E20E-46AB-A912-C0E4A61BE0EC}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="Attention.wav" ComponentId="{8879CD7F-FCEA-4305-8BCB-7CA5F455E9B1}" Directory_="Sounds_Dir" Attributes="0" KeyPath="Attention.wav" Type="0"/>
     <ROW Component="B612licenceeplv10.html" ComponentId="{3BDAA78F-016A-4B8E-8231-4E3B0E40A1F8}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
@@ -382,9 +382,9 @@
     <ROW Dialog_="EyeTracker" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
     <ROW Dialog_="EyeTracker" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
     <ROW Dialog_="EyeTracker" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
-    <ROW Dialog_="EyeTracker" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="New Dialog Description..." Order="700"/>
+    <ROW Dialog_="EyeTracker" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Please select the eye tracker you will be using with Optikey" Order="700"/>
     <ROW Dialog_="EyeTracker" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
-    <ROW Dialog_="EyeTracker" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="New Dialog" TextStyle="[DlgTitleFont]" Order="900"/>
+    <ROW Dialog_="EyeTracker" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Eye tracker" TextStyle="[DlgTitleFont]" Order="900"/>
     <ROW Dialog_="EyeTracker" Control="MyComboBox" Type="ComboBox" X="25" Y="61" Width="279" Height="16" Attributes="3" Property="MY_COMBO" Text="{1024}" Order="1000"/>
     <ROW Dialog_="EyeTracker" Control="Text_1" Type="Text" X="25" Y="99" Width="279" Height="91" Attributes="65539" Property="EYETRACKER_TEXT" Text="[EYETRACKER_TEXT]" Order="1100"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
