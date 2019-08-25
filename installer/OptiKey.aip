@@ -366,7 +366,7 @@
     <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_CU" Builds="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
-    <ROW Name="PopulateComboboxFromFile.vbs" SourcePath="scripts\PopulateComboboxFromFile.vbs"/>
+    <ROW Name="EyeTrackerComboBox.vbs" SourcePath="scripts\EyeTrackerComboBox.vbs"/>
     <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
     <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
@@ -504,13 +504,13 @@
     <ROW Action="AI_XmlRemove" Type="11265" Source="xmlCfg.dll" Target="OnXmlRemove" WithoutSeq="true"/>
     <ROW Action="AI_XmlRollback" Type="11521" Source="xmlCfg.dll" Target="OnXmlRollback" WithoutSeq="true"/>
     <ROW Action="AI_XmlUninstall" Type="1" Source="xmlCfg.dll" Target="OnXmlUninstall" AdditionalSeq="AI_DATA_SETTER_2"/>
-    <ROW Action="EyeTrackerComboSelected" Type="6" Source="PopulateComboboxFromFile.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
+    <ROW Action="EyeTrackerComboSelected" Type="6" Source="EyeTrackerComboBox.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
     <ROW Action="PopulateComboBox" Type="1" Source="aicustact.dll" Target="PopulateComboBox" WithoutSeq="true" Options="1"/>
-    <ROW Action="PopulateComboboxFromFile.vbs" Type="6" Source="PopulateComboboxFromFile.vbs" Target="PopulateEyeTrackerCombo" WithoutSeq="true"/>
+    <ROW Action="PopulateComboboxFromFile.vbs" Type="6" Source="EyeTrackerComboBox.vbs" Target="PopulateEyeTrackerCombo" WithoutSeq="true"/>
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
-    <ROW Action="SetProperty" Type="51" Source="EYETRACKER_SELECTED" Target="Unspecified" WithoutSeq="true"/>
+    <ROW Action="SetProperty" Type="51" Source="EYETRACKER_SELECTED" Target="MousePosition" WithoutSeq="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="EyeTracker" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
