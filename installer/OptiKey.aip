@@ -13,7 +13,7 @@
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="OptiKey"/>
     <ROW Property="ProductCode" Value="1033:{0175AF6D-5986-45A9-8BBB-7A7FC9165D84} 2057:{EBF8A1A5-B5FD-47D0-9806-B3ED0B46B349} " Type="16"/>
-    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductLanguage" Value="2057"/>
     <ROW Property="ProductName" Value="OptiKey"/>
     <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
@@ -457,9 +457,12 @@
     <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_RemoveTempFiles" Condition="1" Ordering="102"/>
     <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_RemoveTempFiles" Condition="1" Ordering="101"/>
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="2"/>
-    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="DoAction" Argument="EyeTrackerNextButton" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="DoAction" Argument="EyeTrackerComboSelected" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="[EYETRACKER_DICT]" Argument="&quot;&quot;" Condition="AI_INSTALL" Ordering="3"/>
     <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="DoAction" Argument="SetProperty" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="Languages" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
+    <ROW Dialog_="Languages" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="Languages" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -501,9 +504,9 @@
     <ROW Action="AI_XmlRemove" Type="11265" Source="xmlCfg.dll" Target="OnXmlRemove" WithoutSeq="true"/>
     <ROW Action="AI_XmlRollback" Type="11521" Source="xmlCfg.dll" Target="OnXmlRollback" WithoutSeq="true"/>
     <ROW Action="AI_XmlUninstall" Type="1" Source="xmlCfg.dll" Target="OnXmlUninstall" AdditionalSeq="AI_DATA_SETTER_2"/>
-    <ROW Action="EyeTrackerNextButton" Type="6" Source="PopulateComboboxFromFile.vbs" Target="EyeTrackerNext" WithoutSeq="true"/>
+    <ROW Action="EyeTrackerComboSelected" Type="6" Source="PopulateComboboxFromFile.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
     <ROW Action="PopulateComboBox" Type="1" Source="aicustact.dll" Target="PopulateComboBox" WithoutSeq="true" Options="1"/>
-    <ROW Action="PopulateComboboxFromFile.vbs" Type="6" Source="PopulateComboboxFromFile.vbs" Target="PopulateComboWithEnvVars" WithoutSeq="true"/>
+    <ROW Action="PopulateComboboxFromFile.vbs" Type="6" Source="PopulateComboboxFromFile.vbs" Target="PopulateEyeTrackerCombo" WithoutSeq="true"/>
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
