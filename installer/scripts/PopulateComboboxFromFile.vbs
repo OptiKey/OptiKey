@@ -36,7 +36,7 @@ End Class
 '       actual insertion.
 ' -----------------------------------------------------------------------------
 Function PopulateComboFromFile(filespec, comboProp, orderStart, orderDelta)
-  Dim fso, strLine, pos, strEnvVarName, idx
+  Dim fso, strLine, idx
   Const ForReading = 1
   Const SEP_1 = "#"
   Const SEP_2 = "|"
@@ -60,9 +60,6 @@ Function PopulateComboFromFile(filespec, comboProp, orderStart, orderDelta)
   ' used as index; first env. var. will be selected in combo
   idx = -1
   
-  Dim eyetrackerDict
-  Set eyetrackerDict = CreateObject("Scripting.Dictionary")
-
   ' Read the source file, line by line
   strLine = srcFile.ReadLine ' skip first line
   Do While srcFile.AtEndOfStream <> True
@@ -74,19 +71,12 @@ Function PopulateComboFromFile(filespec, comboProp, orderStart, orderDelta)
     parts = Split(strLine, "|")
     ub = UBound(parts) ' largest idx, i.e. (size-1)
 
-    ' TODO: store info, enums etc in lists, and recover using the index of the combobox. 
-    ' though I suspect we need to figure out the index ourselves by searching for current value
-    ' in list of values
-    '
-    ' OR: for every eyetracker create an installer property with the other info in it.
-    ' this is perhaps more tractable despite being somewhat ugly
-
     if ub >= 0 Then '(not empty)
       tracker_label = parts(0)
       tracker_enum = parts(1)      
       tracker_extra_info = parts(2)
 
-      ' the whole line will be inserted as value and the env. var. name as text
+      ' add this as entry to the combobox
       AIComboData = AIComboData & SEP_2 & tracker_label & SEP_1 & tracker_label
       
       If idx = 0 Then
@@ -107,9 +97,6 @@ Function PopulateComboFromFile(filespec, comboProp, orderStart, orderDelta)
   ' Set the Property that will be used as input by the AI PopulateComboBox
   ' Custom Action
   Session.Property("AI_COMBOBOX_DATA") = AIComboData
-  
-  ' Store tracker data dict as property
-  ' Session.Property("EYETRACKER_DICT") = CStr(eyetrackerDict)
   
   ' Invoke the Custom Action -> this could also have been done from a 
   ' DoAction Control Event
