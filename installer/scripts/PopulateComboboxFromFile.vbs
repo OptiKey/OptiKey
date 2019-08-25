@@ -4,7 +4,7 @@
 '       output of the "set" command
 ' -----------------------------------------------------------------------------
 Function PopulateComboWithEnvVars()
-  Const comboProp = "MY_COMBO"
+  Const comboProp = "COMBO_EYE_TRACKER"
   Const orderStart = 10
   Const orderDelta = 5
 
@@ -109,8 +109,7 @@ End  Function
 '       ListBoxDemoDlgB is clicked.     
 ' -----------------------------------------------------------------------------
 Function EyeTrackerNext
-  Const comboProp = "MY_COMBO"
-  Const listBoxProp = "MY_LISTBOX"
+  Const comboProp = "COMBO_EYE_TRACKER"
   Const SEP_1 = "#"
   Const SEP_2 = "|"
   Dim strValue, order, orderDelta, AIListBoxData

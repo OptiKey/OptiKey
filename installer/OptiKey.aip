@@ -384,7 +384,7 @@
     <ROW Dialog_="EyeTracker" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Please select the eye tracker you will be using with Optikey" Order="700"/>
     <ROW Dialog_="EyeTracker" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="EyeTracker" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Eye tracker" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="EyeTracker" Control="MyComboBox" Type="ComboBox" X="25" Y="61" Width="279" Height="16" Attributes="3" Property="MY_COMBO" Text="{1024}" Order="1000"/>
+    <ROW Dialog_="EyeTracker" Control="MyComboBox" Type="ComboBox" X="25" Y="61" Width="279" Height="16" Attributes="3" Property="COMBO_EYE_TRACKER" Text="{1024}" Order="1000"/>
     <ROW Dialog_="EyeTracker" Control="Text_1" Type="Text" X="25" Y="99" Width="279" Height="91" Attributes="65539" Property="EYETRACKER_TEXT" Text="[EYETRACKER_TEXT]" Order="1100"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
     <ROW Dialog_="NewDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
