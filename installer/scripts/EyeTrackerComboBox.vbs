@@ -65,8 +65,8 @@ Function PopulateEyeTrackerComboFromFile(filespec, comboProp, orderStart, orderD
       
       If idx = 0 Then
         ' select the first item (index 0) in the ComboBox
-        Session.Property(comboProp) = tracker_label
-        Session.Property("EYETRACKER_TEXT") = tracker_extra_info
+        Session.Property(comboProp) = tracker_label        
+        UpdateEyeTracker(tracker_enum), tracker_extra_info
       End If    
 
       ' store attached data in an installer property
@@ -87,6 +87,22 @@ Function PopulateEyeTrackerComboFromFile(filespec, comboProp, orderStart, orderD
   Session.DoAction("PopulateComboBox")  
 End  Function
 
+
+' -----------------------------------------------------------------------------
+' @info Update UI and properties for new eye tracker
+' -----------------------------------------------------------------------------
+Function UpdateEyeTracker(tracker_enum, tracker_extra_info)
+  
+  ' insert line feeds if present
+  tracker_extra_info = Replace(tracker_extra_info,"\n",vbLf) 
+  
+  ' Update the text label displaying extra info
+  Session.Property("EYETRACKER_TEXT") = tracker_extra_info
+
+  ' Store the eyetracker enum as a property: we'll need to use this for writing to XML
+  Session.Property("EYETRACKER_SELECTED") = tracker_enum
+
+End Function
 
 ' -----------------------------------------------------------------------------
 ' @info This function is executed when a new selection has been made in the 
