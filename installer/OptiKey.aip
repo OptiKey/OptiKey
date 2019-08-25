@@ -14,7 +14,7 @@
     <ROW Property="MY_COMBO" Value=" " Type="4"/>
     <ROW Property="Manufacturer" Value="OptiKey"/>
     <ROW Property="ProductCode" Value="1033:{0175AF6D-5986-45A9-8BBB-7A7FC9165D84} 2057:{EBF8A1A5-B5FD-47D0-9806-B3ED0B46B349} " Type="16"/>
-    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductLanguage" Value="2057"/>
     <ROW Property="ProductName" Value="OptiKey"/>
     <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
@@ -70,7 +70,7 @@
     <ROW Directory="urPK_Dir" Directory_Parent="Release_Dir" DefaultDir="ur-PK"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_ExePath" ComponentId="{B674A3A2-B66F-414C-A3BE-9348FF43C47F}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
+    <ROW Component="AI_ExePath" ComponentId="{F5FDEEBF-C211-4456-83CC-CEF1417E5B4B}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
     <ROW Component="APPDIR" ComponentId="{BCE9D9C0-E20E-46AB-A912-C0E4A61BE0EC}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="Attention.wav" ComponentId="{8879CD7F-FCEA-4305-8BCB-7CA5F455E9B1}" Directory_="Sounds_Dir" Attributes="0" KeyPath="Attention.wav" Type="0"/>
     <ROW Component="B612licenceeplv10.html" ComponentId="{3BDAA78F-016A-4B8E-8231-4E3B0E40A1F8}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
@@ -447,12 +447,13 @@
     <ROW Dialog_="EyeTracker" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="PrepareDlg" Control_="Next" Event="DoAction" Argument="PopulateComboBox" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="NewDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="DoAction" Argument="PopulateComboboxFromFile.vbs" Condition="1 AND ( AI_COMBOBOX_DATA &lt;&gt; &quot;SUCCESS&quot; )" Ordering="0"/>
+    <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="DoAction" Argument="PopulateComboboxFromFile.vbs" Condition="1 AND ( AI_COMBOBOX_DATA &lt;&gt; &quot;SUCCESS&quot; )" Ordering="2"/>
     <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_RemoveTempFiles" Condition="1" Ordering="102"/>
     <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_RemoveTempFiles" Condition="1" Ordering="101"/>
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="2"/>
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="DoAction" Argument="EyeTrackerNextButton" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="[EYETRACKER_DICT]" Argument="&quot;&quot;" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="[EYETRACKER_DICT]" Argument="&quot;&quot;" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="DoAction" Argument="SetProperty" Condition="AI_INSTALL" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -500,6 +501,7 @@
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+    <ROW Action="SetProperty" Type="51" Source="EYETRACKER_SELECTED" Target="Unspecified" WithoutSeq="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="EyeTracker" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
@@ -600,6 +602,10 @@
     <ROW Action="AI_DATA_SETTER_1" Condition="(REMOVE &lt;&gt; &quot;ALL&quot;)" Sequence="5101"/>
     <ROW Action="AI_XmlUninstall" Condition="(REMOVE)" Sequence="3102"/>
     <ROW Action="AI_DATA_SETTER_2" Condition="(REMOVE)" Sequence="3101"/>
+    <ROW Action="AI_ExtractTempFiles" Sequence="1001"/>
+    <ROW Action="AI_RemoveTempFiles" Sequence="6601"/>
+    <ROW Action="AI_RemoveAllTempFiles" Sequence="1502"/>
+    <ROW Action="AI_DATA_SETTER_3" Sequence="1501"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99" Builds="DefaultBuild"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101" Builds="DefaultBuild"/>
     <ROW Action="AI_DeleteCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="199" Builds="DefaultBuild"/>
@@ -612,10 +618,6 @@
     <ROW Action="AI_ExtractFiles" Sequence="3998" Builds="DefaultBuild"/>
     <ROW Action="AI_DATA_SETTER" Sequence="3997"/>
     <ROW Action="AI_EstimateExtractFiles" Sequence="3999" Builds="DefaultBuild"/>
-    <ROW Action="AI_ExtractTempFiles" Sequence="1001"/>
-    <ROW Action="AI_RemoveTempFiles" Sequence="6601"/>
-    <ROW Action="AI_RemoveAllTempFiles" Sequence="1502"/>
-    <ROW Action="AI_DATA_SETTER_3" Sequence="1501"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
@@ -671,9 +673,9 @@
     <ROW XmlAttribute="allowExeDefinition" XmlElement="section" Name="allowExeDefinition" Flags="14" Order="2" Value="MachineToLocalUser"/>
     <ROW XmlAttribute="name" XmlElement="sectionGroup" Name="name" Flags="15" Order="0" Value="userSettings"/>
     <ROW XmlAttribute="name_1" XmlElement="section" Name="name" Flags="15" Order="0" Value="JuliusSweetland.OptiKey.Pro.Properties.Settings"/>
-    <ROW XmlAttribute="name_2" XmlElement="setting" Name="name" Flags="15" Order="0" Value="Theme"/>
+    <ROW XmlAttribute="name_3" XmlElement="setting_1" Name="name" Flags="15" Order="0" Value="PointsSource"/>
     <ROW XmlAttribute="requirePermission" XmlElement="section" Name="requirePermission" Flags="14" Order="3" Value="false"/>
-    <ROW XmlAttribute="serializeAs" XmlElement="setting" Name="serializeAs" Flags="14" Order="1" Value="String"/>
+    <ROW XmlAttribute="serializeAs_1" XmlElement="setting_1" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="type" XmlElement="sectionGroup" Name="type" Flags="14" Order="1" Value="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     <ROW XmlAttribute="type_1" XmlElement="section" Name="type" Flags="14" Order="1" Value="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
   </COMPONENT>
@@ -683,9 +685,9 @@
     <ROW XmlElement="configuration" Name="configuration" Condition="1" Order="0" Flags="30"/>
     <ROW XmlElement="section" ParentElement="sectionGroup" Name="section" Condition="1" Order="0" Flags="14"/>
     <ROW XmlElement="sectionGroup" ParentElement="configSections" Name="sectionGroup" Condition="1" Order="0" Flags="14"/>
-    <ROW XmlElement="setting" ParentElement="JuliusSweetland.OptiKey.Pro.Propert" Name="setting" Condition="1" Order="0" Flags="14"/>
+    <ROW XmlElement="setting_1" ParentElement="JuliusSweetland.OptiKey.Pro.Propert" Name="setting_1" Condition="1" Order="0" Flags="14"/>
     <ROW XmlElement="userSettings" ParentElement="configuration" Name="userSettings" Condition="1" Order="1" Flags="14"/>
-    <ROW XmlElement="value" ParentElement="setting" Name="value" Condition="1" Order="0" Flags="14" Text="/Resources/Themes/Android_Light.xaml"/>
+    <ROW XmlElement="value_1" ParentElement="setting_1" Name="value" Condition="1" Order="0" Flags="14" Text="[EYETRACKER_SELECTED]"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlFileComponent">
     <ROW XmlFile="OptikeyPro.exe.config" FileName="OPTIKE~1.CON|OptikeyPro.exe.config" DirProperty="Release_Dir" Component="APPDIR" RootElement="configuration" Flags="89" Version="1.0" Encoding="UTF-8" IndentUnits="2"/>
