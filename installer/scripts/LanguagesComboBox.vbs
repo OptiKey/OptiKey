@@ -1,23 +1,9 @@
 ' -----------------------------------------------------------------------------
 ' @info Attached to UI action, fills combo box
 ' -----------------------------------------------------------------------------
-Function PopulateUiLanguagesCombo()
-  Const comboProp = "COMBO_UI_LANGUAGE"
-  Const selectedProp = "UI_LANGUAGE_SELECTED"
-  Const orderStart = 10
-  Const orderDelta = 5
-
-  ' This file contains the list of languages + enums 
-  strFile = Session.Property("TempFolder") & "languages.txt"
-  PopulateLanguageComboFromFile(strFile), comboProp, orderStart, orderDelta, selectedProp
-End  Function
-
-' -----------------------------------------------------------------------------
-' @info Attached to UI action, fills combo box
-' -----------------------------------------------------------------------------
-Function PopulateTypingLanguagesCombo()
-  Const comboProp = "COMBO_TYPING_LANGUAGE"
-  Const selectedProp = "TYPING_LANGUAGE_SELECTED"
+Function PopulateLanguagesCombo()
+  Const comboProp = "COMBO_LANGUAGE"
+  Const selectedProp = "LANGUAGE_SELECTED"
   Const orderStart = 10
   Const orderDelta = 5
 
@@ -87,7 +73,7 @@ Function PopulateLanguageComboFromFile(filespec, comboProp, orderStart, orderDel
       if InStr(lang_label, "English") > 0 and InStr(lang_label, "UK") > 0 Then       
         ' select the first item in the ComboBox
         Session.Property(comboProp) = lang_label             
-        Session.Property(selectedProp) = lang_enum
+        LanguageSelected()
       End If
 
       ' store attached data in an installer property
@@ -127,37 +113,32 @@ End  Function
 ' @info This function is executed when a new selection has been made in the 
 '       UI language combo box   
 ' -----------------------------------------------------------------------------
-Function UiLanguageSelected
-  Const comboProp = "COMBO_UI_LANGUAGE"
-  Const SEP_1 = "#"
-  Const SEP_2 = "|"
-  Dim strValue, order, orderDelta, AIListBoxData
+Function LanguageSelected
+  Const comboProp = "COMBO_LANGUAGE"  
+  Const defaultFontFamily = "/Resources/Fonts/#Roboto"
+  Const defaultFontStretch = "Condensed"
+  Const defaultFontWeight = "Light"
   
   ' Get attached info from property
   selectedLanguage = Session.Property(comboProp)
   lang_enum = Session.Property("LANGUAGE_" + SanitisePropName(selectedLanguage))
 
   ' Store the  enum as a property: we'll need to use this for writing to XML
-  Session.Property("UI_LANGUAGE_SELECTED") = lang_enum
+  Session.Property("LANGUAGE_SELECTED") = lang_enum
 
-End Function
+  ' Set accompanying settings
+  If StrComp(lang_enum, "PersianIran") = 0 Then
+    Session.Property("SELECTED_FONTFAMILY") = "/Resources/Fonts/#Nafees Web Naskh"
+    Session.Property("SELECTED_FONTSTRETCH") = "Normal"
+    Session.Property("SELECTED_FONTWEIGHT") = "Regular"
+  ElseIf StrComp(lang_enum, "UrduPakistan") = 0 Then 
+    Session.Property("SELECTED_FONTFAMILY") = "/Resources/Fonts/#Nazli"
+    Session.Property("SELECTED_FONTSTRETCH") = "Normal"
+    Session.Property("SELECTED_FONTWEIGHT") = "Regular"
+  Else
+    Session.Property("SELECTED_FONTFAMILY") = defaultFontFamily
+    Session.Property("SELECTED_FONTSTRETCH") = defaultFontStretch
+    Session.Property("SELECTED_FONTWEIGHT") = defaultFontWeight
+  End If    
 
-' -----------------------------------------------------------------------------
-' @info This function is executed when a new selection has been made in the 
-'       typing language combo box   
-' -----------------------------------------------------------------------------
-Function TypingLanguageSelected
-  Const comboProp = "COMBO_TYPING_LANGUAGE"
-  Const SEP_1 = "#"
-  Const SEP_2 = "|"
-  Dim strValue, order, orderDelta, AIListBoxData
-  
-  ' Get attached info from property
-  selectedLanguage = Session.Property(comboProp)
-  lang_enum = Session.Property("LANGUAGE_" + SanitisePropName(selectedLanguage))
-
-  ' Store the enum as a property: we'll need to use this for writing to XML
-  Session.Property("TYPING_LANGUAGE_SELECTED") = lang_enum
-
-End Function
-
+End  Function

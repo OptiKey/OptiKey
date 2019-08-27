@@ -397,10 +397,7 @@
     <ROW Dialog_="Languages" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Please select your preferred languages" Order="700"/>
     <ROW Dialog_="Languages" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="Languages" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Languages" TextStyle="[DlgTitleFont]" Order="900"/>
-    <ROW Dialog_="Languages" Control="Text_1" Type="Text" X="22" Y="68" Width="184" Height="21" Attributes="65539" Property="TEXT_1_PROP" Text="Language for user interface:" Order="1000"/>
-    <ROW Dialog_="Languages" Control="Text_2" Type="Text" X="22" Y="129" Width="184" Height="21" Attributes="65539" Property="TEXT_1_PROP_1" Text="Language for typing keyboard:" Order="1100"/>
-    <ROW Dialog_="Languages" Control="ComboBox_UILanguage" Type="ComboBox" X="25" Y="92" Width="159" Height="12" Attributes="3" Property="COMBO_UI_LANGUAGE" Text="{260}" Order="1200"/>
-    <ROW Dialog_="Languages" Control="ComboBox_TypingLanguage" Type="ComboBox" X="25" Y="150" Width="159" Height="12" Attributes="3" Property="COMBO_TYPING_LANGUAGE" Text="{260}" Order="1300"/>
+    <ROW Dialog_="Languages" Control="ComboBox_Language" Type="ComboBox" X="21" Y="65" Width="159" Height="16" Attributes="3" Property="COMBO_LANGUAGE" Text="{260}" Order="1000"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
     <ROW Dialog_="NewDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="NewDialog" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
@@ -464,12 +461,9 @@
     <ROW Dialog_="Languages" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="Languages" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="Languages" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="PopulateTypingLanguagesCombo" Condition="AI_INSTALL" Ordering="4"/>
-    <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="PopulateUiLanguagesCombo" Condition="AI_INSTALL" Ordering="3"/>
-    <ROW Dialog_="Languages" Control_="ComboBox_UILanguage" Event="DoAction" Argument="UiLanguageSelected" Condition="AI_INSTALL" Ordering="0"/>
-    <ROW Dialog_="Languages" Control_="ComboBox_UILanguage" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="Languages" Control_="ComboBox_TypingLanguage" Event="DoAction" Argument="TypingLanguageSelected" Condition="AI_INSTALL" Ordering="0"/>
-    <ROW Dialog_="Languages" Control_="ComboBox_TypingLanguage" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="PopulateLanguagesCombo" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="DoAction" Argument="LanguageSelected" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -512,18 +506,18 @@
     <ROW Action="AI_XmlRollback" Type="11521" Source="xmlCfg.dll" Target="OnXmlRollback" WithoutSeq="true"/>
     <ROW Action="AI_XmlUninstall" Type="1" Source="xmlCfg.dll" Target="OnXmlUninstall" AdditionalSeq="AI_DATA_SETTER_2"/>
     <ROW Action="EyeTrackerComboSelected" Type="6" Source="EyeTrackerComboBox.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
+    <ROW Action="LanguageSelected" Type="6" Source="LanguagesComboBox.vbs" Target="LanguageSelected" WithoutSeq="true"/>
     <ROW Action="PopulateComboBox" Type="1" Source="aicustact.dll" Target="PopulateComboBox" WithoutSeq="true" Options="1"/>
     <ROW Action="PopulateEyeTrackerCombo.vbs" Type="6" Source="EyeTrackerComboBox.vbs" Target="PopulateEyeTrackerCombo" WithoutSeq="true"/>
-    <ROW Action="PopulateTypingLanguagesCombo" Type="6" Source="LanguagesComboBox.vbs" Target="PopulateTypingLanguagesCombo" WithoutSeq="true"/>
-    <ROW Action="PopulateUiLanguagesCombo" Type="6" Source="LanguagesComboBox.vbs" Target="PopulateUiLanguagesCombo" WithoutSeq="true"/>
+    <ROW Action="PopulateLanguagesCombo" Type="6" Source="LanguagesComboBox.vbs" Target="PopulateLanguagesCombo" WithoutSeq="true"/>
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
     <ROW Action="SetPropertyEyeTrackerSelected" Type="51" Source="EYETRACKER_SELECTED" Target="MousePosition"/>
-    <ROW Action="SetPropertyTypingLanguageSelected" Type="51" Source="TYPING_LANGUAGE_SELECTED" Target="EnglishUK"/>
-    <ROW Action="SetPropertyUiLanguageSelected" Type="51" Source="UI_LANGUAGE_SELECTED" Target="EnglishUK"/>
-    <ROW Action="TypingLanguageSelected" Type="6" Source="LanguagesComboBox.vbs" Target="TypingLanguageSelected" WithoutSeq="true"/>
-    <ROW Action="UiLanguageSelected" Type="6" Source="LanguagesComboBox.vbs" Target="UiLanguageSelected" WithoutSeq="true"/>
+    <ROW Action="SetPropertyFontFamily" Type="51" Source="SELECTED_FONTFAMILY" Target="&quot;/Resources/Fonts/#Roboto&quot;"/>
+    <ROW Action="SetPropertyFontStretch" Type="51" Source="SELECTED_FONTSTRETCH" Target="&quot;Condensed&quot;"/>
+    <ROW Action="SetPropertyFontWeight" Type="51" Source="SELECTED_FONTWEIGHT" Target="Light"/>
+    <ROW Action="SetPropertyLanguageSelected" Type="51" Source="LANGUAGE_SELECTED" Target="EnglishUK"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="EyeTracker" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
@@ -644,16 +638,18 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="54"/>
-    <ROW Action="AI_DpiContentScale" Sequence="53"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="52"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="57"/>
+    <ROW Action="AI_DpiContentScale" Sequence="56"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="55"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="AI_ExtractTempFiles" Sequence="1001"/>
-    <ROW Action="SetPropertyUiLanguageSelected" Sequence="201"/>
-    <ROW Action="SetPropertyTypingLanguageSelected" Sequence="76"/>
-    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="51"/>
+    <ROW Action="SetPropertyLanguageSelected" Sequence="201"/>
+    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="54"/>
+    <ROW Action="SetPropertyFontFamily" Sequence="51"/>
+    <ROW Action="SetPropertyFontWeight" Sequence="52"/>
+    <ROW Action="SetPropertyFontStretch" Sequence="53"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
@@ -703,10 +699,16 @@
     <ROW XmlAttribute="name_2" XmlElement="UiLanguage" Name="name" Flags="15" Order="0" Value="UiLanguage"/>
     <ROW XmlAttribute="name_3" XmlElement="setting_1" Name="name" Flags="15" Order="0" Value="PointsSource"/>
     <ROW XmlAttribute="name_4" XmlElement="TypingLanguage" Name="name" Flags="15" Order="0" Value="KeyboardAndDictionaryLanguage"/>
+    <ROW XmlAttribute="name_5" XmlElement="setting" Name="name" Flags="15" Order="0" Value="FontWeight"/>
+    <ROW XmlAttribute="name_6" XmlElement="setting_2" Name="name" Flags="15" Order="0" Value="FontFamily"/>
+    <ROW XmlAttribute="name_7" XmlElement="setting_3" Name="name" Flags="15" Order="0" Value="FontStretch"/>
     <ROW XmlAttribute="requirePermission" XmlElement="section" Name="requirePermission" Flags="14" Order="3" Value="false"/>
     <ROW XmlAttribute="serializeAs" XmlElement="UiLanguage" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="serializeAs_1" XmlElement="setting_1" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="serializeAs_2" XmlElement="TypingLanguage" Name="serializeAs" Flags="14" Order="1" Value="String"/>
+    <ROW XmlAttribute="serializeAs_3" XmlElement="setting" Name="serializeAs" Flags="14" Order="1" Value="String"/>
+    <ROW XmlAttribute="serializeAs_4" XmlElement="setting_2" Name="serializeAs" Flags="14" Order="1" Value="String"/>
+    <ROW XmlAttribute="serializeAs_5" XmlElement="setting_3" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="type" XmlElement="sectionGroup" Name="type" Flags="14" Order="1" Value="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     <ROW XmlAttribute="type_1" XmlElement="section" Name="type" Flags="14" Order="1" Value="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
   </COMPONENT>
@@ -718,11 +720,17 @@
     <ROW XmlElement="configuration" Name="configuration" Condition="1" Order="0" Flags="30"/>
     <ROW XmlElement="section" ParentElement="sectionGroup" Name="section" Condition="1" Order="0" Flags="14"/>
     <ROW XmlElement="sectionGroup" ParentElement="configSections" Name="sectionGroup" Condition="1" Order="0" Flags="14"/>
+    <ROW XmlElement="setting" ParentElement="JuliusSweetland.OptiKey.Pro.Propert" Name="setting" Condition="1" Order="3" Flags="14"/>
     <ROW XmlElement="setting_1" ParentElement="JuliusSweetland.OptiKey.Pro.Propert" Name="setting" Condition="1" Order="0" Flags="14"/>
+    <ROW XmlElement="setting_2" ParentElement="JuliusSweetland.OptiKey.Pro.Propert" Name="setting" Condition="1" Order="4" Flags="14"/>
+    <ROW XmlElement="setting_3" ParentElement="JuliusSweetland.OptiKey.Pro.Propert" Name="setting" Condition="1" Order="5" Flags="14"/>
     <ROW XmlElement="userSettings" ParentElement="configuration" Name="userSettings" Condition="1" Order="1" Flags="14"/>
-    <ROW XmlElement="value" ParentElement="UiLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[UI_LANGUAGE_SELECTED]"/>
+    <ROW XmlElement="value" ParentElement="UiLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[LANGUAGE_SELECTED]"/>
     <ROW XmlElement="value_1" ParentElement="setting_1" Name="value" Condition="1" Order="0" Flags="14" Text="[EYETRACKER_SELECTED]"/>
-    <ROW XmlElement="value_2" ParentElement="TypingLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[TYPING_LANGUAGE_SELECTED]"/>
+    <ROW XmlElement="value_2" ParentElement="TypingLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[LANGUAGE_SELECTED]"/>
+    <ROW XmlElement="value_3" ParentElement="setting" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTWEIGHT]"/>
+    <ROW XmlElement="value_4" ParentElement="setting_2" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTFAMILY]"/>
+    <ROW XmlElement="value_5" ParentElement="setting_3" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTSTRETCH]"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlFileComponent">
     <ROW XmlFile="OptikeyPro.exe.config" FileName="OPTIKE~1.CON|OptikeyPro.exe.config" DirProperty="Release_Dir" Component="APPDIR" RootElement="configuration" Flags="89" Version="1.0" Encoding="UTF-8" IndentUnits="2"/>
