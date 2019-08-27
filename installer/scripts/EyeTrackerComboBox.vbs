@@ -20,6 +20,12 @@ End  Function
 '       actual insertion.
 ' -----------------------------------------------------------------------------
 Function PopulateEyeTrackerComboFromFile(filespec, comboProp, orderStart, orderDelta)
+  
+  ' Don't repopulate if this has already been run
+  If Len(Session.Property(comboProp)) > 0 Then
+    Exit Function
+  End If
+
   Dim fso, strLine, idx
   Const ForReading = 1
   Const SEP_1 = "#"

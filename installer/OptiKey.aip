@@ -69,7 +69,7 @@
     <ROW Directory="urPK_Dir" Directory_Parent="Release_Dir" DefaultDir="ur-PK"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_ExePath" ComponentId="{D18F7A2E-4F9D-420B-B960-37244150FB70}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
+    <ROW Component="AI_ExePath" ComponentId="{073D123B-F477-4A68-83F4-1CE1C6D2DD68}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
     <ROW Component="APPDIR" ComponentId="{BCE9D9C0-E20E-46AB-A912-C0E4A61BE0EC}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="Attention.wav" ComponentId="{8879CD7F-FCEA-4305-8BCB-7CA5F455E9B1}" Directory_="Sounds_Dir" Attributes="0" KeyPath="Attention.wav" Type="0"/>
     <ROW Component="B612licenceeplv10.html" ComponentId="{3BDAA78F-016A-4B8E-8231-4E3B0E40A1F8}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
@@ -461,12 +461,9 @@
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="2"/>
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="DoAction" Argument="EyeTrackerComboSelected" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="[EYETRACKER_DICT]" Argument="&quot;&quot;" Condition="AI_INSTALL" Ordering="3"/>
-    <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="DoAction" Argument="SetPropertyEyeTrackerSelected" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="Languages" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="Languages" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="Languages" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="SetPropertyUiLanguageSelected" Condition="AI_INSTALL" Ordering="0"/>
-    <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="SetPropertyTypingLanguageSelected" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="PopulateTypingLanguagesCombo" Condition="AI_INSTALL" Ordering="4"/>
     <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="PopulateUiLanguagesCombo" Condition="AI_INSTALL" Ordering="3"/>
     <ROW Dialog_="Languages" Control_="ComboBox_UILanguage" Event="DoAction" Argument="UiLanguageSelected" Condition="AI_INSTALL" Ordering="0"/>
@@ -522,9 +519,9 @@
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
-    <ROW Action="SetPropertyEyeTrackerSelected" Type="51" Source="EYETRACKER_SELECTED" Target="MousePosition" WithoutSeq="true"/>
-    <ROW Action="SetPropertyTypingLanguageSelected" Type="51" Source="TYPING_LANGUAGE_SELECTED" Target="EnglishUK" WithoutSeq="true"/>
-    <ROW Action="SetPropertyUiLanguageSelected" Type="51" Source="UI_LANGUAGE_SELECTED" Target="EnglishUK" WithoutSeq="true"/>
+    <ROW Action="SetPropertyEyeTrackerSelected" Type="51" Source="EYETRACKER_SELECTED" Target="MousePosition"/>
+    <ROW Action="SetPropertyTypingLanguageSelected" Type="51" Source="TYPING_LANGUAGE_SELECTED" Target="EnglishUK"/>
+    <ROW Action="SetPropertyUiLanguageSelected" Type="51" Source="UI_LANGUAGE_SELECTED" Target="EnglishUK"/>
     <ROW Action="TypingLanguageSelected" Type="6" Source="LanguagesComboBox.vbs" Target="TypingLanguageSelected" WithoutSeq="true"/>
     <ROW Action="UiLanguageSelected" Type="6" Source="LanguagesComboBox.vbs" Target="UiLanguageSelected" WithoutSeq="true"/>
   </COMPONENT>
@@ -647,13 +644,16 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
-    <ROW Action="AI_DpiContentScale" Sequence="52"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="54"/>
+    <ROW Action="AI_DpiContentScale" Sequence="53"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="52"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="AI_ExtractTempFiles" Sequence="1001"/>
+    <ROW Action="SetPropertyUiLanguageSelected" Sequence="201"/>
+    <ROW Action="SetPropertyTypingLanguageSelected" Sequence="76"/>
+    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="51"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>

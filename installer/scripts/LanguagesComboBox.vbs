@@ -35,6 +35,11 @@ End  Function
 ' -----------------------------------------------------------------------------
 Function PopulateLanguageComboFromFile(filespec, comboProp, orderStart, orderDelta, selectedProp)
 
+  ' Don't repopulate if this has already been run
+  If Len(Session.Property(comboProp)) > 0 Then
+    Exit Function
+  End If
+
   ' TODO: extract method 90%-duped with tracker combo
   Dim fso, strLine, idx
   Const ForReading = 1
