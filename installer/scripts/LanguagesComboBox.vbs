@@ -1,25 +1,41 @@
 ' -----------------------------------------------------------------------------
-' @info Function that will populate the eye tracker ComboBox from a static text
-'       file
+' @info Attached to UI action, fills combo box
 ' -----------------------------------------------------------------------------
-Function PopulateEyeTrackerCombo()
-  Const comboProp = "COMBO_EYE_TRACKER"
+Function PopulateUiLanguagesCombo()
+  Const comboProp = "COMBO_UI_LANGUAGE"
+  Const selectedProp = "UI_LANGUAGE_SELECTED"
   Const orderStart = 10
   Const orderDelta = 5
 
-  ' This file contains the list of eye trackers, enums and descriptions
-  strFile = Session.Property("TempFolder") & "eyetrackers.txt"
-  PopulateEyeTrackerComboFromFile(strFile), comboProp, orderStart, orderDelta
+  ' This file contains the list of languages + enums 
+  strFile = Session.Property("TempFolder") & "languages.txt"
+  PopulateLanguageComboFromFile(strFile), comboProp, orderStart, orderDelta, selectedProp
 End  Function
 
 ' -----------------------------------------------------------------------------
-' @info Helper for PopulateEyeTrackerCombo. Reads the specified file line by line
+' @info Attached to UI action, fills combo box
+' -----------------------------------------------------------------------------
+Function PopulateTypingLanguagesCombo()
+  Const comboProp = "COMBO_TYPING_LANGUAGE"
+  Const selectedProp = "TYPING_LANGUAGE_SELECTED"
+  Const orderStart = 10
+  Const orderDelta = 5
+
+  ' This file contains the list of languages + enums 
+  strFile = Session.Property("TempFolder") & "languages.txt"
+  PopulateLanguageComboFromFile(strFile), comboProp, orderStart, orderDelta, selectedProp
+End  Function
+
+' -----------------------------------------------------------------------------
+' @info Reads the specified file line by line
 '       and constructs the value for the AI_COMBOBOX_DATA Property.
 '       After this it calls the predefined AI Custom Action "PopulateComboBox"
 '       which will retrieve and parse the AI_COMBOBOX_DATA Property and do the
 '       actual insertion.
 ' -----------------------------------------------------------------------------
-Function PopulateEyeTrackerComboFromFile(filespec, comboProp, orderStart, orderDelta)
+Function PopulateLanguageComboFromFile(filespec, comboProp, orderStart, orderDelta, selectedProp)
+
+  ' TODO: extract method 90%-duped with tracker combo
   Dim fso, strLine, idx
   Const ForReading = 1
   Const SEP_1 = "#"
@@ -55,28 +71,28 @@ Function PopulateEyeTrackerComboFromFile(filespec, comboProp, orderStart, orderD
     parts = Split(strLine, "|")
     ub = UBound(parts) ' largest idx, i.e. (size-1)
 
-    if ub >= 0 Then '(not empty)
-      tracker_label = parts(0)
-      tracker_enum = parts(1)      
-      tracker_extra_info = parts(2)
+    If ub >= 0 Then '(not empty)
+      lang_label = parts(0)
+      lang_enum = parts(1)   
 
       ' add this as entry to the combobox
-      AIComboData = AIComboData & SEP_2 & tracker_label & SEP_1 & tracker_label
-      
-      If idx = 0 Then
-        ' select the first item (index 0) in the ComboBox
-        Session.Property(comboProp) = tracker_label        
-        UpdateEyeTracker(tracker_enum), tracker_extra_info
-      End If    
+      AIComboData = AIComboData & SEP_2 & lang_label & SEP_1 & lang_label
+    
+      ' English UK is default'
+      if InStr(lang_label, "English") > 0 and InStr(lang_label, "UK") > 0 Then       
+        ' select the first item in the ComboBox
+        Session.Property(comboProp) = lang_label             
+        Session.Property(selectedProp) = lang_enum
+      End If
 
       ' store attached data in an installer property
-      Session.Property("EYETRACKER_" + tracker_label) = strLine
+      Session.Property("LANGUAGE_"+SanitisePropName(lang_label)) = lang_enum
 
-    End if
+    End If    
   Loop
   
   ' Close the file
-  srcFile.Close
+  srcFile.Close  
   
   ' Set the Property that will be used as input by the AI PopulateComboBox
   ' Custom Action
@@ -85,46 +101,58 @@ Function PopulateEyeTrackerComboFromFile(filespec, comboProp, orderStart, orderD
   ' Invoke the Custom Action -> this could also have been done from a 
   ' DoAction Control Event
   Session.DoAction("PopulateComboBox")  
+
 End  Function
 
+Function SanitisePropName(prop_name)
+    prop_name = Replace(prop_name," ","") 
+    prop_name = Replace(prop_name,")","") 
+    prop_name = Replace(prop_name,"(","") 
+    ' TODO: remove nonascii too!
+    SanitisePropName = prop_name
+End  Function
 
-' -----------------------------------------------------------------------------
-' @info Update UI and properties for new eye tracker
-' -----------------------------------------------------------------------------
-Function UpdateEyeTracker(tracker_enum, tracker_extra_info)
-  
-  ' insert line feeds if present
-  tracker_extra_info = Replace(tracker_extra_info,"\n",vbLf) 
-  
-  ' Update the text label displaying extra info
-  Session.Property("EYETRACKER_TEXT") = tracker_extra_info
-
-  ' Store the eyetracker enum as a property: we'll need to use this for writing to XML
-  Session.Property("EYETRACKER_SELECTED") = tracker_enum
-
-End Function
+' helper method if you want to log something for debugging
+Function Log(label, stuff)
+  Session.Property("Log") = "" ' to force 'value changed'
+  Session.Property("Log") = label + ":  " + stuff
+End  Function
 
 ' -----------------------------------------------------------------------------
 ' @info This function is executed when a new selection has been made in the 
-'       eye tracker combo box   
+'       UI language combo box   
 ' -----------------------------------------------------------------------------
-Function EyeTrackerSelected
-  Const comboProp = "COMBO_EYE_TRACKER"
+Function UiLanguageSelected
+  Const comboProp = "COMBO_UI_LANGUAGE"
   Const SEP_1 = "#"
   Const SEP_2 = "|"
   Dim strValue, order, orderDelta, AIListBoxData
   
   ' Get attached info from property
-  selectedTracker = Session.Property(comboProp)
-  trackerInfo = Session.Property("EYETRACKER_" + selectedTracker)
+  selectedLanguage = Session.Property(comboProp)
+  lang_enum = Session.Property("LANGUAGE_" + SanitisePropName(selectedLanguage))
 
-  Dim parts
-  parts = Split(trackerInfo, "|")
-  tracker_label = parts(0)
-  tracker_enum = parts(1)      
-  tracker_extra_info = parts(2)
+  ' Store the  enum as a property: we'll need to use this for writing to XML
+  Session.Property("UI_LANGUAGE_SELECTED") = lang_enum
+
+End Function
+
+' -----------------------------------------------------------------------------
+' @info This function is executed when a new selection has been made in the 
+'       typing language combo box   
+' -----------------------------------------------------------------------------
+Function TypingLanguageSelected
+  Const comboProp = "COMBO_TYPING_LANGUAGE"
+  Const SEP_1 = "#"
+  Const SEP_2 = "|"
+  Dim strValue, order, orderDelta, AIListBoxData
   
-  UpdateEyeTracker(tracker_enum), tracker_extra_info
+  ' Get attached info from property
+  selectedLanguage = Session.Property(comboProp)
+  lang_enum = Session.Property("LANGUAGE_" + SanitisePropName(selectedLanguage))
+
+  ' Store the enum as a property: we'll need to use this for writing to XML
+  Session.Property("TYPING_LANGUAGE_SELECTED") = lang_enum
 
 End Function
 
