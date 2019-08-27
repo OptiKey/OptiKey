@@ -229,7 +229,7 @@ namespace JuliusSweetland.OptiKey
                 {
                     try
                     {
-                        string ApplicationDataSubPath = @"JuliusSweetland\OptiKey";
+                        string ApplicationDataSubPath = @"OptiKey\OptiKey";
                         var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
                         var database = Path.Combine(path, @"Presage\database.db");
                         if (!File.Exists(database))
@@ -905,7 +905,7 @@ namespace JuliusSweetland.OptiKey
 
         protected static string GetDefaultUserKeyboardFolder()
         {
-            const string applicationDataSubPath = @"JuliusSweetland\OptiKey\Keyboards\";
+            const string applicationDataSubPath = @"OptiKey\OptiKey\Keyboards\";
 
             var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationDataSubPath);
 
@@ -937,7 +937,7 @@ namespace JuliusSweetland.OptiKey
 
         protected static string GetDefaultPluginsFolder()
         {
-            const string applicationDataSubPath = @"JuliusSweetland\OptiKey\Plugins\";
+            const string applicationDataSubPath = @"OptiKey\OptiKey\Plugins\";
 
             var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationDataSubPath);
 
@@ -974,7 +974,7 @@ namespace JuliusSweetland.OptiKey
                 if (Settings.Default.CommuniKateStagedForDeletion)
                 {
                     Log.Info("Deleting previously unpacked CommuniKate pageset.");
-                    string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\CommuniKate\";
+                    string ApplicationDataSubPath = @"OptiKey\OptiKey\CommuniKate\";
                     var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
                     if (Directory.Exists(path))
                     {

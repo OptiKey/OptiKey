@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("OptiKey Chat")]
 [assembly: AssemblyDescription("Easy Communication")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("JuliusSweetland")]
+[assembly: AssemblyCompany("OptiKey")]
 [assembly: AssemblyProduct("OptiKey Chat")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]

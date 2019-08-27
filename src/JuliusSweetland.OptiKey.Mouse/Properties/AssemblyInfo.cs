@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("OptiKey Mouse")]
 [assembly: AssemblyDescription("Full Cursor Control")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("JuliusSweetland")]
+[assembly: AssemblyCompany("OptiKey")]
 [assembly: AssemblyProduct("OptiKey Mouse")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
