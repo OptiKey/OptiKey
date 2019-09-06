@@ -11,14 +11,13 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
     /*
      * Computes symbol orientation for a symbol, based on current dock position     
      */
-    public class DockPositionToSymbolOrientation : IMultiValueConverter
+    public class DockPositionToSymbolOrientation : IValueConverter
     {
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Length == 1
-                && values.All(v => v != DependencyProperty.UnsetValue))
+            if (value != null)
             {
-                var dockPosition = (DockEdges)values[0];
+                var dockPosition = (DockEdges) value;
                 switch (dockPosition)
                 {
                     case DockEdges.Right:
@@ -33,13 +32,12 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
                     default: //case DockEdges.Top:
                         return SymbolOrientations.Top;
                 }
-        
             }
-            
+
             return SymbolOrientations.Top; //Default
         }
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
