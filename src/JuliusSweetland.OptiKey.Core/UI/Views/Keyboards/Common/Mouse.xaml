@@ -233,14 +233,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                               SymbolGeometry="{StaticResource CollapseDockIcon}"
                                                               Text="{x:Static resx:Resources.COLLAPSE_DOCK_SPLIT_WITH_NEWLINE}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
+                                                              SymbolOrientation="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition, Converter={StaticResource DockPositionToSymbolOrientation}}"
                                                               Value="{x:Static models:KeyValues.CollapseDockKey}">
-                                                    <controls:Key.SymbolOrientation>
-                                                        <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
-                                                            <MultiBinding.Bindings>
-                                                                <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
-                                                            </MultiBinding.Bindings>
-                                                        </MultiBinding>
-                                                    </controls:Key.SymbolOrientation>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="8" Grid.Column="7" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource BackIcon}"
@@ -333,14 +327,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                       SymbolGeometry="{StaticResource ExpandDockIcon}"
                                                                       Text="{x:Static resx:Resources.EXPAND_DOCK_SPLIT_WITH_NEWLINE}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
+                                                                      SymbolOrientation="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition, Converter={StaticResource DockPositionToSymbolOrientation}}"
                                                                       Value="{x:Static models:KeyValues.ExpandDockKey}">
-                                                            <controls:Key.SymbolOrientation>
-                                                                <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
-                                                                    <MultiBinding.Bindings>
-                                                                        <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
-                                                                    </MultiBinding.Bindings>
-                                                                </MultiBinding>
-                                                            </controls:Key.SymbolOrientation>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="0" Grid.Column="9"
                                                                       SymbolGeometry="{StaticResource BackIcon}"
@@ -572,14 +560,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                       SymbolGeometry="{StaticResource CollapseDockIcon}"
                                                                       Text="{x:Static resx:Resources.COLLAPSE_DOCK_SPLIT_WITH_NEWLINE}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
+                                                                      SymbolOrientation="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition, Converter={StaticResource DockPositionToSymbolOrientation}}"
                                                                       Value="{x:Static models:KeyValues.CollapseDockKey}">
-                                                            <controls:Key.SymbolOrientation>
-                                                                <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
-                                                                    <MultiBinding.Bindings>
-                                                                        <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
-                                                                    </MultiBinding.Bindings>
-                                                                </MultiBinding>
-                                                            </controls:Key.SymbolOrientation>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="16" Grid.Column="3" Grid.RowSpan="2"
                                                                       SymbolGeometry="{StaticResource BackIcon}"
@@ -672,14 +654,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                               SymbolGeometry="{StaticResource ExpandDockIcon}"
                                                                               Text="{x:Static resx:Resources.EXPAND_DOCK_SPLIT_WITH_NEWLINE}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText"
+                                                                              SymbolOrientation="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition, Converter={StaticResource DockPositionToSymbolOrientation}}"
                                                                               Value="{x:Static models:KeyValues.ExpandDockKey}">
-                                                                    <controls:Key.SymbolOrientation>
-                                                                        <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
-                                                                            <MultiBinding.Bindings>
-                                                                                <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
-                                                                            </MultiBinding.Bindings>
-                                                                        </MultiBinding>
-                                                                    </controls:Key.SymbolOrientation>
                                                                 </controls:Key>
                                                                 <controls:Key Grid.Row="9" Grid.Column="0"
                                                                               SymbolGeometry="{StaticResource BackIcon}"
