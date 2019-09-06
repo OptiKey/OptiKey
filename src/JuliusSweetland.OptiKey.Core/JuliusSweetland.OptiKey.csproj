@@ -445,6 +445,7 @@
     <Compile Include="UI\ValueConverters\EnumToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\InsertNewlinesBetweenWords.cs" />
     <Compile Include="UI\ValueConverters\BoolToCustomValues.cs" />
+    <Compile Include="UI\ValueConverters\DockPositionToSymbolOrientation.cs" />
     <Compile Include="UI\ValueConverters\TestConverter.cs" />
     <Compile Include="UI\ValueConverters\ListNotEmpty.cs" />
     <Compile Include="UI\ValueConverters\IsGreaterThan.cs" />
