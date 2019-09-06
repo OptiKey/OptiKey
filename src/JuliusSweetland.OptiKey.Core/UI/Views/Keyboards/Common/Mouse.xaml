@@ -22,7 +22,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ResourceDictionary>
                     <valueConverters:IntToSingularPluralStringFormatter x:Key="IntToSingularPluralStringFormatter" />
                     <valueConverters:WidthGreaterThanHeight DefaultValue="True" x:Key="WidthGreaterThanHeight" />
-                    <valueConverters:MinimiseAndDockPositionToSymbolOrientation x:Key="DockPositionToSymbolOrientation" />
+                    <valueConverters:DockPositionToSymbolOrientation x:Key="DockPositionToSymbolOrientation" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -238,7 +238,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                         <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
                                                             <MultiBinding.Bindings>
                                                                 <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
-                                                                <Binding Path="MainWindowState" Source="{x:Static properties:Settings.Default}" />
                                                             </MultiBinding.Bindings>
                                                         </MultiBinding>
                                                     </controls:Key.SymbolOrientation>
@@ -339,7 +338,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                 <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
                                                                     <MultiBinding.Bindings>
                                                                         <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
-                                                                        <Binding Path="MainWindowState" Source="{x:Static properties:Settings.Default}" />
                                                                     </MultiBinding.Bindings>
                                                                 </MultiBinding>
                                                             </controls:Key.SymbolOrientation>
@@ -579,7 +577,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                 <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
                                                                     <MultiBinding.Bindings>
                                                                         <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
-                                                                        <Binding Path="MainWindowState" Source="{x:Static properties:Settings.Default}" />
                                                                     </MultiBinding.Bindings>
                                                                 </MultiBinding>
                                                             </controls:Key.SymbolOrientation>
@@ -680,7 +677,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                         <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
                                                                             <MultiBinding.Bindings>
                                                                                 <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
-                                                                                <Binding Path="MainWindowState" Source="{x:Static properties:Settings.Default}" />
                                                                             </MultiBinding.Bindings>
                                                                         </MultiBinding>
                                                                     </controls:Key.SymbolOrientation>

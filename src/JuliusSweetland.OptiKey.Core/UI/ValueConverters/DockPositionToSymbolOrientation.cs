@@ -9,33 +9,31 @@ using JuliusSweetland.OptiKey.Enums;
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
     /*
-     * Computes symbol orientation for a 'Minimise' symbol, based on current dock position
-     * and the preference for Optikey gets minimis
+     * Computes symbol orientation for a symbol, based on current dock position     
      */
-    public class MinimiseAndDockPositionToSymbolOrientation : IMultiValueConverter
+    public class DockPositionToSymbolOrientation : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Length == 2
+            if (values.Length == 1
                 && values.All(v => v != DependencyProperty.UnsetValue))
             {
-                var minimisedPosition = (MinimisedEdges)values[0];
-                var dockPosition = (DockEdges)values[1];
-
-                switch (minimisedPosition == MinimisedEdges.SameAsDockedPosition ? dockPosition.ToMinimisedEdge() : minimisedPosition)
+                var dockPosition = (DockEdges)values[0];
+                switch (dockPosition)
                 {
-                    case MinimisedEdges.Right:
+                    case DockEdges.Right:
                         return SymbolOrientations.Right;
 
-                    case MinimisedEdges.Bottom:
+                    case DockEdges.Bottom:
                         return SymbolOrientations.Bottom;
 
-                    case MinimisedEdges.Left:
+                    case DockEdges.Left:
                         return SymbolOrientations.Left;
 
-                    default: //case MinimisedEdges.Top:
+                    default: //case DockEdges.Top:
                         return SymbolOrientations.Top;
                 }
+        
             }
             
             return SymbolOrientations.Top; //Default
