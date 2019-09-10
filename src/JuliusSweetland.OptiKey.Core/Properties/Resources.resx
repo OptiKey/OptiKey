@@ -2366,4 +2366,7 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
 עברית
 (ישראל)</value>
   </data>
+  <data name="MAGNIFIER_CENTER_ON_CURSOR" xml:space="preserve">
+    <value>Center Magnifier on Cursor</value>
+  </data>
 </root>
