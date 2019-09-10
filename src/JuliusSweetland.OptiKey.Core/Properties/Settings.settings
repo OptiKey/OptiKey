@@ -1385,5 +1385,8 @@
   &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
     </Setting>
+    <Setting Name="MagnifyCenterOnCursor" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
