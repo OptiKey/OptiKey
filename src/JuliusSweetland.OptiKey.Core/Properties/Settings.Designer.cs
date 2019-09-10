@@ -2912,5 +2912,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MagnifyCenterOnCursor {
+            get {
+                return ((string)(this["MagnifyCenterOnCursor"]));
+            }
+            set {
+                this["MagnifyCenterOnCursor"] = value;
+            }
+        }
     }
 }
