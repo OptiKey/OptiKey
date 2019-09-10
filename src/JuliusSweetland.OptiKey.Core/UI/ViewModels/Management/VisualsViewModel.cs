@@ -34,16 +34,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
-        
+
         #region Ctor
 
         public VisualsViewModel()
         {
             Load();
         }
-        
+
         #endregion
-        
+
         #region Properties
 
         public List<KeyValuePair<string, string>> Themes
@@ -159,7 +159,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     case RobotoUrl:
                         return new List<FontStretches>
                         {
-                            Enums.FontStretches.Normal, 
+                            Enums.FontStretches.Normal,
                             Enums.FontStretches.Condensed
                         };
 
@@ -229,21 +229,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                         switch (FontStretch)
                         {
                             case Enums.FontStretches.Normal:
-                                return new List<FontWeights> 
-                                            { 
-                                                Enums.FontWeights.Thin, 
-                                                Enums.FontWeights.Light, 
-                                                Enums.FontWeights.Regular, 
-                                                Enums.FontWeights.Medium, 
-                                                Enums.FontWeights.Bold, 
-                                                Enums.FontWeights.Black 
+                                return new List<FontWeights>
+                                            {
+                                                Enums.FontWeights.Thin,
+                                                Enums.FontWeights.Light,
+                                                Enums.FontWeights.Regular,
+                                                Enums.FontWeights.Medium,
+                                                Enums.FontWeights.Bold,
+                                                Enums.FontWeights.Black
                                             };
 
                             case Enums.FontStretches.Condensed:
-                                return new List<FontWeights> 
-                                            { 
-                                                Enums.FontWeights.Light, 
-                                                Enums.FontWeights.Regular, 
+                                return new List<FontWeights>
+                                            {
+                                                Enums.FontWeights.Light,
+                                                Enums.FontWeights.Regular,
                                                 Enums.FontWeights.Bold
                                             };
                         }
@@ -262,7 +262,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return null;
             }
         }
-        
+
         public List<KeyValuePair<string, Enums.Keyboards>> StartupKeyboards
         {
             get
@@ -319,7 +319,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
-        
+
         private string theme;
         public string Theme
         {
@@ -377,7 +377,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return toastNotificationHorizontalFillPercentage; }
             set { SetProperty(ref toastNotificationHorizontalFillPercentage, value); }
         }
-        
+
         private int toastNotificationVerticalFillPercentage;
         public int ToastNotificationVerticalFillPercentage
         {
@@ -418,6 +418,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return magnifyDestinationPercentageOfScreen; }
             set { SetProperty(ref magnifyDestinationPercentageOfScreen, value); }
+        }
+
+        private bool magnifyCenterOnCursor;
+        public bool MagnifyCenterOnCursor
+        {
+            get { return magnifyCenterOnCursor; }
+            set { SetProperty(ref magnifyCenterOnCursor, value); }
         }
 
         private bool conversationOnlyMode;
@@ -539,6 +546,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
+            MagnifyCenterOnCursor = Settings.Default.MagnifyCenterOnCursor;
             ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
             ConversationConfirmEnable = Settings.Default.ConversationConfirmEnable;
             ConversationConfirmOnlyMode = Settings.Default.ConversationConfirmOnlyMode;
@@ -569,6 +577,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
+            Settings.Default.MagnifyCenterOnCursor = MagnifyCenterOnCursor;
             Settings.Default.ConversationOnlyMode = ConversationOnlyMode;
             Settings.Default.ConversationConfirmEnable = ConversationConfirmEnable;
             Settings.Default.ConversationConfirmOnlyMode = ConversationConfirmOnlyMode;
