@@ -406,6 +406,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref cursorHeightInPixels, value); }
         }
 
+        private bool magnifierCenterOnScreen;
+        public bool MagnifierCenterOnScreen
+        {
+            get { return magnifierCenterOnScreen; }
+            set { SetProperty(ref magnifierCenterOnScreen, value); }
+        }
+
         private double magnifySourcePercentageOfScreen;
         public double MagnifySourcePercentageOfScreen
         {
@@ -537,6 +544,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ToastNotificationSecondsPerCharacter = Settings.Default.ToastNotificationSecondsPerCharacter;
             CursorWidthInPixels = Settings.Default.CursorWidthInPixels;
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
+            MagnifierCenterOnScreen = Settings.Default.MagnifierCenterOnScreen;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
@@ -567,6 +575,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ToastNotificationSecondsPerCharacter = ToastNotificationSecondsPerCharacter;
             Settings.Default.CursorWidthInPixels = CursorWidthInPixels;
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
+            Settings.Default.MagnifierCenterOnScreen = MagnifierCenterOnScreen;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.ConversationOnlyMode = ConversationOnlyMode;

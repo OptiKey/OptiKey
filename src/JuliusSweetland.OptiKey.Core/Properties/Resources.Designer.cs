@@ -3283,6 +3283,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Center Magnifier on Screen.
+        /// </summary>
+        public static string MAGNIFIER_CENTER_ON_SCREEN {
+            get {
+                return ResourceManager.GetString("MAGNIFIER_CENTER_ON_SCREEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Magnify destination (as % of screen):.
         /// </summary>
         public static string MAGNIFY_DESTINATION_LABEL {

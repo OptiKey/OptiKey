@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private Window window;
         private Screen screen;
         private Rect sourceArea;
-        
+
         #endregion
 
         #region Ctor
@@ -37,7 +37,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         #endregion
-        
+
         #region On Loaded
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -52,7 +52,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 if (sourcePoint != null)
                 {
-                    SetSizeAndPosition();
+                    SetSizeAndPosition(sourcePoint.Value);
 
                     try
                     {
@@ -65,7 +65,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             NotificationTypes.Error, () => {});
 
                         Log.ErrorFormat("Caught exception: {0}", ex);
-                        
+
                         //Reset as much as possible
                         mainViewModel.SelectionMode = SelectionModes.Key;
                         mainViewModel.MagnifiedPointSelectionAction = null;
@@ -81,11 +81,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     pointSelectionHandler = (pointSelectionSender, point) =>
                     {
                         mainViewModel.PointSelection -= pointSelectionHandler; //Only react to one PointSelection event
-                        
+
                         Point? destinationPoint = TranslateMagnifiedSelectionPoint(point);
-                        
+
                         IsOpen = false; //Close popup before clicking - destination point may be under the magnified image
-                        
+
                         if (mainViewModel.MagnifiedPointSelectionAction != null)
                         {
                             mainViewModel.MagnifiedPointSelectionAction(destinationPoint);
@@ -96,7 +96,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     IsOpen = true;
                 }
             });
-            
+
             //Subscribe to window location changes and re-evaluate the current screen and current position
             Observable.FromEventPattern<EventHandler, EventArgs>
                 (h => window.LocationChanged += h,
@@ -114,7 +114,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #region Set Size And Position
 
-        private void SetSizeAndPosition()
+        private void SetSizeAndPosition(Point point)
         {
             var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
             var screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
@@ -123,18 +123,33 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var screenHeight = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y);
 
             var destinationPercentage = Settings.Default.MagnifyDestinationPercentageOfScreen / 100d;
-
-            var distanceFromLeftBoundary = ((1d - destinationPercentage) / 2d) * screenWidth;
-            var distanceFromTopBoundary = ((1d - destinationPercentage) / 2d) * screenHeight;
-
-            HorizontalOffset = screenTopLeftInWpfCoords.X + distanceFromLeftBoundary;
-            VerticalOffset = screenTopLeftInWpfCoords.Y + distanceFromTopBoundary;
+            var centerOnScreen = Settings.Default.MagnifierCenterOnScreen;
 
             var width = destinationPercentage * screenWidth;
             var height = destinationPercentage * screenHeight;
 
             MaxWidth = MinWidth = Width = width;
             MaxHeight = MinHeight = Height = height;
+
+            var distanceFromLeftBoundary = screenTopLeftInWpfCoords.X + ((1d - destinationPercentage) / 2d) * screenWidth;
+            var distanceFromTopBoundary = screenTopLeftInWpfCoords.Y + ((1d - destinationPercentage) / 2d) * screenHeight;
+            var pointInWpfCoords = window.GetTransformFromDevice().Transform(new Point(point.X, point.Y));
+
+            if (!centerOnScreen)
+            {
+                if (pointInWpfCoords.X - (width / 2d) < 0)
+                    distanceFromLeftBoundary = 0;
+                else
+                    distanceFromLeftBoundary = pointInWpfCoords.X + (width / 2d);
+
+                if (pointInWpfCoords.Y + (height / 2d) > screenHeight)
+                    distanceFromTopBoundary = screenHeight + (height / 2d);
+                else
+                    distanceFromTopBoundary = pointInWpfCoords.Y - (height / 2d);
+            }
+
+            HorizontalOffset = distanceFromLeftBoundary;
+            VerticalOffset = distanceFromTopBoundary;
         }
 
         #endregion
@@ -144,13 +159,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private void DisplayScaledScreenshot(Point point)
         {
             var bitmap = CaptureScreenshot(point);
-            Child = new Image {Source = bitmap.ToBitmapImage()};
+            Child = new Image { Source = bitmap.ToBitmapImage() };
         }
 
         private Bitmap CaptureScreenshot(Point point)
         {
             var magnifySourcePercentage = Settings.Default.MagnifySourcePercentageOfScreen / 100d;
-            
+
             var captureWidth = magnifySourcePercentage * screen.Bounds.Width;
             captureWidth = captureWidth.CoerceToUpperLimit(screen.Bounds.Width);
 
@@ -173,15 +188,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             //Calculate source area
             sourceArea = new Rect(captureX, captureY, captureWidth, captureHeight);
-            
+
             //Create the bitmap to copy the screen shot into
             var bitmap = new Bitmap(Convert.ToInt32(captureWidth), Convert.ToInt32(captureHeight));
-            
+
             //Copy the screen image to the bitmap
             using (var graphic = Graphics.FromImage(bitmap))
             {
                 graphic.CopyFromScreen(
-                    new System.Drawing.Point(Convert.ToInt32(sourceArea.X), Convert.ToInt32(sourceArea.Y)), 
+                    new System.Drawing.Point(Convert.ToInt32(sourceArea.X), Convert.ToInt32(sourceArea.Y)),
                     System.Drawing.Point.Empty,
                     new System.Drawing.Size(Convert.ToInt32(sourceArea.Width), Convert.ToInt32(sourceArea.Height)));
             }
@@ -202,7 +217,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var imagePoint = image.PointFromScreen(point); //Convert screen to point on image co-ord system
             var imageWidth = image.ActualWidth;
             var imageHeight = image.ActualHeight;
-            
+
             if (imagePoint.X >= 0 && imagePoint.X < imageWidth
                 && imagePoint.Y >= 0 && imagePoint.Y < imageHeight)
             {

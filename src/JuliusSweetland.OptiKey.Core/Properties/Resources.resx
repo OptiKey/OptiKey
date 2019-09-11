@@ -594,6 +594,9 @@ CURSOR</value>
   <data name="MAGNIFIER" xml:space="preserve">
     <value>MAGNIFIER</value>
   </data>
+  <data name="MAGNIFIER_CENTER_ON_SCREEN" xml:space="preserve">
+    <value>Show magnifier window at center of screen</value>
+  </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
     <value>Magnify destination (as % of screen):</value>
   </data>
