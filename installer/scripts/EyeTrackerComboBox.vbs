@@ -69,9 +69,10 @@ Function PopulateEyeTrackerComboFromFile(filespec, comboProp, orderStart, orderD
       ' add this as entry to the combobox
       AIComboData = AIComboData & SEP_2 & tracker_label & SEP_1 & tracker_label
       
-      If idx = 0 Then
-        ' select the first item (index 0) in the ComboBox
-        Session.Property(comboProp) = tracker_label        
+      ' Mouse is default'
+      if InStr(tracker_label, "Mouse") > 0 Then       
+        ' select the first item in the ComboBox
+        Session.Property(comboProp) = tracker_label
         UpdateEyeTracker(tracker_enum), tracker_extra_info
       End If    
 
