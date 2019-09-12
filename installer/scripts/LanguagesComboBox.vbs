@@ -108,7 +108,10 @@ Function SanitisePropName(prop_name)
     prop_name = Replace(prop_name," ","") 
     prop_name = Replace(prop_name,")","") 
     prop_name = Replace(prop_name,"(","") 
-    ' TODO: remove nonascii too!
+
+    ' Specific to this format: take only label before "/" [the english bit]'
+    prop_name = Split(prop_name, "/")(0) 
+    
     SanitisePropName = prop_name
 End  Function
 
