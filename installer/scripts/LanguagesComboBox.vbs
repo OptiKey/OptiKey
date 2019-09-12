@@ -1,3 +1,23 @@
+Function ReadUTF8TextFile(FileName) 
+  ' By default files are read as ascii with OpenTextFile.
+  ' You can request Unicode, but it only supports a very specific UTF-16 encoding
+  ' So instead we use ADODB.Stream to read normal UTF-8 text files.
+  
+  ' Create Stream object
+  Dim BinaryStream
+  Set BinaryStream = CreateObject("ADODB.Stream")
+  BinaryStream.Type = 2 ':= binary data
+  BinaryStream.CharSet = "UTF-8"
+  
+  ' Read file
+  BinaryStream.Open
+  BinaryStream.LoadFromFile FileName
+  ReadUTF8TextFile = BinaryStream.ReadText
+  BinaryStream.Close()
+
+End Function
+
+
 ' -----------------------------------------------------------------------------
 ' @info Attached to UI action, fills combo box
 ' -----------------------------------------------------------------------------
@@ -25,19 +45,6 @@ Function PopulateLanguageComboFromFile(filespec, comboProp, orderStart, orderDel
   If Len(Session.Property(comboProp)) > 0 Then
     Exit Function
   End If
-
-  ' TODO: extract method 90%-duped with tracker combo
-  Dim fso, strLine, idx
-  Const ForReading = 1
-  Const SEP_1 = "#"
-  Const SEP_2 = "|"
-
-  Set fso = CreateObject("Scripting.FileSystemObject")  
-  If Not fso.FileExists(filespec) Then
-    Exit Function
-  End If
-
-  Set srcFile  = fso.OpenTextFile(filespec, ForReading, False)
   
   ' This will be used to specify the combobox control and data that will 
   ' be inserted in the control.
@@ -46,44 +53,46 @@ Function PopulateLanguageComboFromFile(filespec, comboProp, orderStart, orderDel
   ' OrderStart and OrderDelta are optional, as well as the Text for each 
   ' item. If the text is not specified, WI will show the value in the combo. 
   ' Values must be unique.
+  Const SEP_1 = "#"
+  Const SEP_2 = "|"
   AIComboData = comboProp & SEP_1 & CStr(orderStart) & SEP_1 & CStr(orderDelta)
-  
-  ' used as index; first env. var. will be selected in combo
-  idx = -1
-  
-  ' Read the source file, line by line
-  strLine = srcFile.ReadLine ' skip first line
-  Do While srcFile.AtEndOfStream <> True
-    idx = idx + 1
-    strLine = srcFile.ReadLine
+      
+  ' Read the source file
+  Dim strWholeFile, strLine, allLines, idx
+  strWholeFile = ReadUTF8TextFile(filespec)
 
-    ' Split by separator |
-    Dim parts
-    parts = Split(strLine, "|")
-    ub = UBound(parts) ' largest idx, i.e. (size-1)
-
-    If ub >= 0 Then '(not empty)
-      lang_label = parts(0)
-      lang_enum = parts(1)   
-
-      ' add this as entry to the combobox
-      AIComboData = AIComboData & SEP_2 & lang_label & SEP_1 & lang_label
+  'Go through line by line
+  allLines = Split(strWholeFile, vbLf)
+  idx = 0
+  for each strLine in allLines
     
-      ' English UK is default'
-      if InStr(lang_label, "English") > 0 and InStr(lang_label, "UK") > 0 Then       
-        ' select the first item in the ComboBox
-        Session.Property(comboProp) = lang_label             
-        LanguageSelected()
-      End If
+    if idx >0 Then ' Skip first line (header)
+      ' Split by separator |
+      Dim parts
+      parts = Split(strLine, "|")
+      ub = UBound(parts) ' largest idx, i.e. (size-1)
 
-      ' store attached data in an installer property
-      Session.Property("LANGUAGE_"+SanitisePropName(lang_label)) = lang_enum
+      If ub >= 0 Then '(not empty)
+        lang_label = parts(0)
+        lang_enum = parts(1)   
 
-    End If    
-  Loop
-  
-  ' Close the file
-  srcFile.Close  
+        ' add this as entry to the combobox
+        AIComboData = AIComboData & SEP_2 & lang_label & SEP_1 & lang_label
+      
+        ' English UK is default'
+        if InStr(lang_label, "English") > 0 and InStr(lang_label, "UK") > 0 Then       
+          ' select the first item in the ComboBox
+          Session.Property(comboProp) = lang_label             
+          LanguageSelected()
+        End If
+
+        ' store attached data in an installer property
+        Session.Property("LANGUAGE_"+SanitisePropName(lang_label)) = lang_enum
+
+      End If        
+    End If   
+    idx = idx + 1
+  next   
   
   ' Set the Property that will be used as input by the AI PopulateComboBox
   ' Custom Action
