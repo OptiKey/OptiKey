@@ -96,6 +96,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="InstallerTests.cs" />
     <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Extensions\PointExtensionsTests.cs" />
     <Compile Include="Extensions\KeyDownStatesExtensionsTests.cs" />
@@ -135,6 +136,10 @@
     <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj">
       <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
       <Name>JuliusSweetland.OptiKey.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.InstallerActions\JuliusSweetland.OptiKey.InstallerActions.csproj">
+      <Project>{e6ba1ed6-5724-4e21-a770-c31be8f424cf}</Project>
+      <Name>JuliusSweetland.OptiKey.InstallerActions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

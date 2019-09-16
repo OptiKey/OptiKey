@@ -22,6 +22,9 @@ Function PopulateLanguagesCombo()
   Const comboDefaultProp = "LANGUAGE_COMBO_DEFAULT" 
 
   PopulateComboFromProperties(comboProp), comboDataProp, comboDefaultProp
+  
+  Log ("SYSTEM_LANGUAGE"), Session.Property("SYSTEM_LANGUAGE")
+
 
 End  Function
 
