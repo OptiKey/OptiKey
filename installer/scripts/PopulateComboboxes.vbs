@@ -9,6 +9,7 @@ Function PopulateEyeTrackerCombo()
 
   PopulateComboFromProperties(comboProp), comboDataProp, comboDefaultProp
 
+  EyeTrackerSelected()
 End  Function
 
 
@@ -25,6 +26,7 @@ Function PopulateLanguagesCombo()
   
   Log ("SYSTEM_LANGUAGE"), Session.Property("SYSTEM_LANGUAGE")
 
+  LanguageSelected()
 
 End  Function
 
@@ -133,7 +135,7 @@ Function EyeTrackerSelected
   
   ' Get attached info from property
   selectedTracker = Session.Property(comboProp)
-  trackerInfo = Session.Property("TRACKER_" + selectedTracker)
+  trackerInfo = Session.Property("TRACKER_" + SanitisePropName(selectedTracker))
   tracker_enum = trackerInfo
 
   ' Dim parts
