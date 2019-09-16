@@ -10,22 +10,27 @@ namespace InstallerActions
 {
     public class CustomActions
     {
-        [CustomAction]
-        public static ActionResult CustomAction1(Session session)
+
+        private static string AppendItemToComboData(string combodata, string item)
         {
+            const string sep1 = "|";
+            const string sep2 = "#";
+            combodata += sep1 + item + sep2 + item;
+            return combodata;
+        }
 
-            // sending message to installation log
-            session.Log("Begin CustomAction1");
+        [CustomAction]
+        public static ActionResult LoadOptikeyProperties(Session session)
+        {
+            // Load Optikey installer options into installer properties
+            // Calling this DLL is quite expensive (slow) because it depends on all of Optikey,
+            // so this one action gets everything out the way in one go and caches in installer
+            // properties
+            
+            session.Log("Begin LoadOptikeyProperties");
 
-            List<KeyValuePair<string, PointsSources>> ps = PointingAndSelectingViewModel.PointsSources;
-            foreach (KeyValuePair<string, PointsSources> source in ps)
-            {
-                session.Log(source.Key + ": " + source.Value);
-                session["TEST_TEXT"] = source.Key + ": " + source.Value;
-            }
-
-            // getting a property
-            string Language = session["LANGUAGE_SELECTED"];
+            PopulateEyetrackersCombo(session);
+            PopulateLanguagesCombo(session);
 
             return ActionResult.Success;
         }
@@ -47,36 +52,28 @@ namespace InstallerActions
             // Get list of available eyetrackers from PointingAndSelectingViewModel
             List<KeyValuePair<string, PointsSources>> trackers = PointingAndSelectingViewModel.PointsSources;
 
-            // Construct property for combo data. 
-            // Format is:
-            // Property|Value1#Text1|Value2#Text2|Value3#Text3|...
-            const string sep1 = "|";
-            const string sep2 = "#";
-
-            const string comboProp = "COMBO_EYE_TRACKER";
-            String comboData = comboProp; // we'll append to this as we go
+            string comboData = ""; // we'll append to this as we go
+            string defaultTracker = "";
             foreach (KeyValuePair<string, PointsSources> tracker in trackers)
             {
-                session.Log(tracker.Key + ": " + tracker.Value);
+                string trackerLabel = tracker.Key;
+                string trackerEnum = tracker.Value.ToString();
+
+                // add to combobox prop
+                comboData = AppendItemToComboData(comboData, trackerLabel);
 
                 // save the mapping from label to enum in an installer property
-                string trackerLabel = tracker.Key;
-                comboData += sep1 + trackerLabel + sep2 + trackerLabel;
-
-                // store attached data in an installer property
-                session["TRACKER_" + SanitisePropName(trackerLabel)] = "" + tracker.Value;
+                session["TRACKER_" + SanitisePropName(trackerLabel)] = trackerEnum;
 
                 if (trackerLabel.Contains("Mouse"))
                 {
-                    session[comboProp] = trackerLabel;
+                    defaultTracker = trackerLabel;
                 }
             }
 
             // Set combobox data
-            session["AI_COMBOBOX_DATA"] = comboData;
-
-            // Invoke the action that populates with this data
-            session.DoAction("PopulateComboBox");
+            session["EYETRACKER_COMBO_DATA"] = comboData;
+            session["EYETRACKER_COMBO_DEFAULT"] = defaultTracker;
 
             return ActionResult.Success;
         }
@@ -89,43 +86,30 @@ namespace InstallerActions
             // Get list of available languages from WordsViewModel
             List<KeyValuePair<string, Languages>> languages = WordsViewModel.Languages;
 
-
             // Construct property for combo data. 
-            // Format is
-            // Property|Value1#Text1|Value2#Text2|Value3#Text3|...
-            const string sep1 = "|";
-            const string sep2 = "#";
-
-            const string comboProp = "COMBO_LANGUAGE";
-            String comboData = comboProp; // we'll append to this as we go
+            string comboData = ""; // we'll append to this as we go
+            string defaultLanguage = "";
             foreach (KeyValuePair<string, Languages> language in languages)
             {
-                session.Log(language.Key + ": " + language.Value);
+                string languageLabel = language.Key; // includes "english description (location) / native description (location)"
+                string languageEnum = language.Value.ToString();
 
-                // key is full language description, e.g. "Dutch (Belgium) / Nederlands (België)" [may include unicode]
-                // value is enum, e.g. DutchBelgium
-                
+                // add to combobox prop
+                comboData = AppendItemToComboData(comboData, languageLabel);
 
                 // save the mapping from label to enum in an installer property
-                string lang_label = language.Key;
-                comboData += sep1 + lang_label + sep2 + lang_label;
+                string languageLabelEnglish = languageLabel.Split('/')[0];
+                session["LANGUAGE_" + SanitisePropName(languageLabelEnglish)] = languageEnum;
 
-                // store attached data in an installer property
-                string lang_name_en = lang_label.Split('/')[0];
-
-                session["LANGUAGE_" + SanitisePropName(lang_name_en)] = "" + language.Value;
-
-                if (lang_label.Contains("English") && lang_label.Contains("UK"))
+                if (languageLabel.Contains("English") && languageLabel.Contains("UK"))
                 {
-                    session[comboProp] = lang_label;
+                    defaultLanguage = languageLabel;
                 }
             }
 
             // Set combobox data
-            session["AI_COMBOBOX_DATA"] = comboData;
-
-            // Invoke the action that populates with this data
-            session.DoAction("PopulateComboBox");
+            session["LANGUAGE_COMBO_DATA"] = comboData;
+            session["LANGUAGE_COMBO_DEFAULT"] = defaultLanguage;
 
             return ActionResult.Success;
         }
