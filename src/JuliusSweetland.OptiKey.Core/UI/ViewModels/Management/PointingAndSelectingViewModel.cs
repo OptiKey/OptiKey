@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #region Properties
 
-        public List<KeyValuePair<string, PointsSources>> PointsSources
+        public static List<KeyValuePair<string, PointsSources>> PointsSources
         {
             get
             {

@@ -32,7 +32,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #region Properties
 
-        public List<KeyValuePair<string, Languages>> Languages
+        public static List<KeyValuePair<string, Languages>> Languages
         {
             get
             {
