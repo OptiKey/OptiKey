@@ -52,6 +52,17 @@ namespace JuliusSweetland.OptiKey.UnitTests
             Assert.True(match.Contains("Denmark"));
         }
 
+
+        [Test]
+        public void TestSupportedLanguageAndCountryMultiple()
+        {
+            string langAndCountry = "English (US, Australia)";
+            string match = CustomActions.GetDefaultLanguage(langAndCountry);
+
+            Assert.True(match.Contains("English"));
+            Assert.True(match.Contains("US"));
+        }
+
         [Test]
         public void TestSupportedLanguageAndUnsupportedCountry()
         {
