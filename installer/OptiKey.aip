@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="16.2" PreviousModules="professional" Modules="enterprise" RootPath="." Language="en" Id="{C55701DB-71B1-4D1B-A086-01F7DA10962C}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="16.3" PreviousModules="professional" Modules="enterprise" RootPath="." Language="en" Id="{C55701DB-71B1-4D1B-A086-01F7DA10962C}">
   <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
     <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;FixupComponent"/>
   </COMPONENT>
@@ -470,7 +470,6 @@
     <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_RemoveTempFiles" Condition="1" Ordering="101"/>
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="2"/>
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="DoAction" Argument="EyeTrackerComboSelected" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="[EYETRACKER_DICT]" Argument="&quot;&quot;" Condition="AI_INSTALL" Ordering="3"/>
     <ROW Dialog_="Languages" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="Languages" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="Languages" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
