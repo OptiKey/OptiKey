@@ -751,6 +751,6 @@
     <ROW XmlElement="value_5" ParentElement="setting_3" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTSTRETCH]"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlFileComponent">
-    <ROW XmlFile="OptikeyPro.exe.config" FileName="OPTIKE~1.CON|OptikeyPro.exe.config" DirProperty="Release_Dir" Component="APPDIR" RootElement="configuration" Flags="89" Version="1.0" Encoding="UTF-8" IndentUnits="2"/>
+    <ROW XmlFile="OptikeyPro.exe.config" FileName="OPTIKE~1.CON|OptikeyPro.exe.config" DirProperty="Release_Dir" Component="APPDIR" RootElement="configuration" Flags="185" Version="1.0" Encoding="UTF-8" IndentUnits="2"/>
   </COMPONENT>
 </DOCUMENT>
