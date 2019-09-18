@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DICTIONARY type="multilanguage" ignore="en">  
+  <ENTRY id="Control.Text.EyeTracker#Description">
+    <STRING lang="en" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="en_GB" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="sq" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="bg" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="ar" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="ca" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="zh" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="zh_TW" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="hr" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="cs" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="nl" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="da" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="fa" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="fi" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="fr" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="de" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="he" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="el" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="hu" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="id" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="is" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="ja" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="it" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="kk" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="ko" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="nb" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="nn" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="pl" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="pt" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="pt_BR" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="ru" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="sr_SP_Cyrillic" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="sr_SP_Latin" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="sk" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="sl" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="es" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="sv" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="tr" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="uk" value="Please select the eye tracker you will be using with Optikey"/>
+  </ENTRY>
+  <ENTRY id="Control.Text.EyeTracker#Title">
+    <STRING lang="en" value="Eye tracker"/>
+    <STRING lang="en_GB" value="Eye tracker"/>
+    <STRING lang="sq" value="Eye tracker"/>
+    <STRING lang="bg" value="Eye tracker"/>
+    <STRING lang="ar" value="Eye tracker"/>
+    <STRING lang="ca" value="Eye tracker"/>
+    <STRING lang="zh" value="Eye tracker"/>
+    <STRING lang="zh_TW" value="Eye tracker"/>
+    <STRING lang="hr" value="Eye tracker"/>
+    <STRING lang="cs" value="Eye tracker"/>
+    <STRING lang="nl" value="Eye tracker"/>
+    <STRING lang="da" value="Eye tracker"/>
+    <STRING lang="fa" value="Eye tracker"/>
+    <STRING lang="fi" value="Eye tracker"/>
+    <STRING lang="fr" value="Eye tracker"/>
+    <STRING lang="de" value="Eye tracker"/>
+    <STRING lang="he" value="Eye tracker"/>
+    <STRING lang="el" value="Eye tracker"/>
+    <STRING lang="hu" value="Eye tracker"/>
+    <STRING lang="id" value="Eye tracker"/>
+    <STRING lang="is" value="Eye tracker"/>
+    <STRING lang="ja" value="Eye tracker"/>
+    <STRING lang="it" value="Eye tracker"/>
+    <STRING lang="kk" value="Eye tracker"/>
+    <STRING lang="ko" value="Eye tracker"/>
+    <STRING lang="nb" value="Eye tracker"/>
+    <STRING lang="nn" value="Eye tracker"/>
+    <STRING lang="pl" value="Eye tracker"/>
+    <STRING lang="pt" value="Eye tracker"/>
+    <STRING lang="pt_BR" value="Eye tracker"/>
+    <STRING lang="ru" value="Eye tracker"/>
+    <STRING lang="sr_SP_Cyrillic" value="Eye tracker"/>
+    <STRING lang="sr_SP_Latin" value="Eye tracker"/>
+    <STRING lang="sk" value="Eye tracker"/>
+    <STRING lang="sl" value="Eye tracker"/>
+    <STRING lang="es" value="Eye tracker"/>
+    <STRING lang="sv" value="Eye tracker"/>
+    <STRING lang="tr" value="Eye tracker"/>
+    <STRING lang="uk" value="Eye tracker"/>
+  </ENTRY>
+  <ENTRY id="Control.Text.Languages#Description">
+    <STRING lang="en" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="en_GB" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="sq" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="bg" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="ar" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="ca" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="zh" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="zh_TW" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="hr" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="cs" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="nl" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="da" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="fa" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="fi" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="fr" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="de" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="he" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="el" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="hu" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="id" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="is" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="ja" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="it" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="kk" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="ko" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="nb" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="nn" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="pl" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="pt" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="pt_BR" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="ru" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="sr_SP_Cyrillic" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="sr_SP_Latin" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="sk" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="sl" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="es" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="sv" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="tr" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="uk" value="Please select the main language you&apos;ll be using in Optikey"/>
+  </ENTRY>
+  <ENTRY id="Control.Text.Languages#Title">
+    <STRING lang="en" value="Language"/>
+    <STRING lang="en_GB" value="Language"/>
+    <STRING lang="sq" value="Language"/>
+    <STRING lang="bg" value="Language"/>
+    <STRING lang="ar" value="Language"/>
+    <STRING lang="ca" value="Language"/>
+    <STRING lang="zh" value="Language"/>
+    <STRING lang="zh_TW" value="Language"/>
+    <STRING lang="hr" value="Language"/>
+    <STRING lang="cs" value="Language"/>
+    <STRING lang="nl" value="Language"/>
+    <STRING lang="da" value="Language"/>
+    <STRING lang="fa" value="Language"/>
+    <STRING lang="fi" value="Language"/>
+    <STRING lang="fr" value="Language"/>
+    <STRING lang="de" value="Language"/>
+    <STRING lang="he" value="Language"/>
+    <STRING lang="el" value="Language"/>
+    <STRING lang="hu" value="Language"/>
+    <STRING lang="id" value="Language"/>
+    <STRING lang="is" value="Language"/>
+    <STRING lang="ja" value="Language"/>
+    <STRING lang="it" value="Language"/>
+    <STRING lang="kk" value="Language"/>
+    <STRING lang="ko" value="Language"/>
+    <STRING lang="nb" value="Language"/>
+    <STRING lang="nn" value="Language"/>
+    <STRING lang="pl" value="Language"/>
+    <STRING lang="pt" value="Language"/>
+    <STRING lang="pt_BR" value="Language"/>
+    <STRING lang="ru" value="Language"/>
+    <STRING lang="sr_SP_Cyrillic" value="Language"/>
+    <STRING lang="sr_SP_Latin" value="Language"/>
+    <STRING lang="sk" value="Language"/>
+    <STRING lang="sl" value="Language"/>
+    <STRING lang="es" value="Language"/>
+    <STRING lang="sv" value="Language"/>
+    <STRING lang="tr" value="Language"/>
+    <STRING lang="uk" value="Language"/>
+  </ENTRY>
+</DICTIONARY>
