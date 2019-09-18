@@ -82,9 +82,7 @@
     <ROW Component="EyeXFramework.dll" ComponentId="{9D6ED31D-C83E-4767-ADE9-0205B7E63E65}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
     <ROW Component="Interop.SpeechLib.dll" ComponentId="{CE8063AF-EC6D-451B-81B7-1D29652323FD}" Directory_="Release_Dir" Attributes="0" KeyPath="Interop.SpeechLib.dll"/>
     <ROW Component="IrisbondAPI.dll" ComponentId="{E2785C1C-AB56-4193-96A5-42A717380AF9}" Directory_="Release_Dir" Attributes="0" KeyPath="IrisbondAPI.dll"/>
-    <ROW Component="JuliusSweetland.OptiKey.InstallerActions.dll" ComponentId="{74537B43-59EE-46B7-81B4-E5755BD320B9}" Directory_="Release_Dir" Attributes="0" KeyPath="JuliusSweetland.OptiKey.InstallerActions.dll"/>
     <ROW Component="MahApps.Metro.dll" ComponentId="{C6CEA67D-DBB7-4416-BDD1-142695127C7E}" Directory_="Release_Dir" Attributes="0" KeyPath="MahApps.Metro.dll"/>
-    <ROW Component="Microsoft.Deployment.WindowsInstaller.dll" ComponentId="{8C765871-0D24-45BA-AF6B-98470AABDACE}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Deployment.WindowsInstaller.dll"/>
     <ROW Component="Microsoft.Expression.Interactions.dll" ComponentId="{728EFDFF-72F8-4308-BDF9-C040C264F825}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Expression.Interactions.dll"/>
     <ROW Component="Microsoft.Practices.ServiceLocation.dll" ComponentId="{68EDB8C4-22A5-4623-8863-46C6CB6926AB}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Practices.ServiceLocation.dll"/>
     <ROW Component="MouseKeyboardActivityMonitor.dll" ComponentId="{389BBA3F-480D-4A96-AA8A-ACD0A72D8534}" Directory_="Release_Dir" Attributes="0" KeyPath="MouseKeyboardActivityMonitor.dll"/>
@@ -119,6 +117,7 @@
     <ROW Component="OptiKey.resources.dll_8" ComponentId="{C65C17AD-2598-4C3F-999E-3C01E2B09020}" Directory_="fr_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_8"/>
     <ROW Component="OptiKey.resources.dll_9" ComponentId="{20628DC0-2F9E-48CA-9CD3-60B39CA758D6}" Directory_="hrHR_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_9"/>
     <ROW Component="OptiKeyStandardPlugins.dll" ComponentId="{05766651-42E4-42CD-AE1E-85AE895B6E52}" Directory_="Plugins_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll"/>
+    <ROW Component="OptiKeyStandardPlugins.dll_1" ComponentId="{57070272-A993-401F-A3AD-3B1BBDEDC40A}" Directory_="Release_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll_1"/>
     <ROW Component="OptikeyPro.exe" ComponentId="{67A1815C-0F41-4019-926F-5DF7C160A09B}" Directory_="Release_Dir" Attributes="0" KeyPath="OptikeyPro.exe"/>
     <ROW Component="PGRFlyCapture.dll" ComponentId="{9ECE2124-92BF-4733-8207-F48E20A4E48B}" Directory_="Release_Dir" Attributes="0" KeyPath="PGRFlyCapture.dll"/>
     <ROW Component="Prism.Wpf.dll" ComponentId="{39CC648E-4001-4AA8-8909-23E4364CA5CA}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.Wpf.dll"/>
@@ -326,11 +325,9 @@
     <ROW File="WindowsInput.xml" Component_="Bass.Net.xml" FileName="WINDOW~1.XML|WindowsInput.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\WindowsInput.xml" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_24" Component_="OptiKey.resources.dll_24" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\fi-FI\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_25" Component_="OptiKey.resources.dll_25" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\he-IL\OptiKey.resources.dll" SelfReg="false"/>
-    <ROW File="JuliusSweetland.OptiKey.InstallerActions.dll" Component_="JuliusSweetland.OptiKey.InstallerActions.dll" FileName="JULIUS~1.DLL|JuliusSweetland.OptiKey.InstallerActions.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\JuliusSweetland.OptiKey.InstallerActions.dll" SelfReg="false"/>
-    <ROW File="JuliusSweetland.OptiKey.InstallerActions.pdb" Component_="JuliusSweetland.OptiKey.InstallerActions.dll" FileName="JULIUS~1.PDB|JuliusSweetland.OptiKey.InstallerActions.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\JuliusSweetland.OptiKey.InstallerActions.pdb" SelfReg="false"/>
-    <ROW File="Microsoft.Deployment.WindowsInstaller.dll" Component_="Microsoft.Deployment.WindowsInstaller.dll" FileName="MICROS~3.DLL|Microsoft.Deployment.WindowsInstaller.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" SelfReg="false"/>
-    <ROW File="Microsoft.Deployment.WindowsInstaller.xml" Component_="Bass.Net.xml" FileName="MICROS~2.XML|Microsoft.Deployment.WindowsInstaller.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Microsoft.Deployment.WindowsInstaller.xml" SelfReg="false"/>
     <ROW File="OptiKey.exe.config" Component_="Bass.Net.xml" FileName="OPTIKE~2.CON|OptiKey.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKey.exe.config" SelfReg="false"/>
+    <ROW File="OptiKeyStandardPlugins.dll_1" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~1.DLL|OptiKeyStandardPlugins.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKeyStandardPlugins.dll" SelfReg="false"/>
+    <ROW File="OptiKeyStandardPlugins.pdb" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~2.PDB|OptiKeyStandardPlugins.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKeyStandardPlugins.pdb" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -618,8 +615,7 @@
     <ROW Feature_="MainFeature" Component_="AI_ExePath"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_24"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_25"/>
-    <ROW Feature_="MainFeature" Component_="JuliusSweetland.OptiKey.InstallerActions.dll"/>
-    <ROW Feature_="MainFeature" Component_="Microsoft.Deployment.WindowsInstaller.dll"/>
+    <ROW Feature_="MainFeature" Component_="OptiKeyStandardPlugins.dll_1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="OptikeyPro.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Core\Resources\Icons\Pro.ico" Index="0"/>
