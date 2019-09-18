@@ -124,6 +124,9 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 // save the mapping from label to enum in an installer property
                 session["TRACKER_" + SanitisePropName(trackerLabel)] = trackerEnum;
 
+                // also the extended info 
+                session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = tracker.Value.ToExtendedDescription();
+
                 if (trackerLabel.Contains("Mouse"))
                 {
                     defaultTracker = trackerLabel;

@@ -119,7 +119,7 @@ Function UpdateEyeTracker(tracker_enum, tracker_extra_info)
   tracker_extra_info = Replace(tracker_extra_info,"\n",vbLf) 
   
   ' Update the text label displaying extra info
-  'Session.Property("EYETRACKER_TEXT") = tracker_extra_info
+  Session.Property("EYETRACKER_TEXT") = tracker_extra_info
 
   ' Store the eyetracker enum as a property: we'll need to use this for writing to XML
   Session.Property("EYETRACKER_SELECTED") = tracker_enum
@@ -135,17 +135,10 @@ Function EyeTrackerSelected
   
   ' Get attached info from property
   selectedTracker = Session.Property(comboProp)
-  trackerInfo = Session.Property("TRACKER_" + SanitisePropName(selectedTracker))
-  tracker_enum = trackerInfo
+  tracker_enum = Session.Property("TRACKER_" + SanitisePropName(selectedTracker))
+  tracker_info = Session.Property("TRACKERINFO_" + SanitisePropName(selectedTracker))  
 
-  ' Dim parts
-  ' parts = Split(trackerInfo, "|")
-  ' tracker_label = parts(0)
-  ' tracker_enum = parts(1)    
-  tracker_extra_info = "TODO: populate this :)"
-  'tracker_extra_info = parts(2)
-  
-  UpdateEyeTracker(tracker_enum), tracker_extra_info
+  UpdateEyeTracker(tracker_enum), tracker_info
 
 End Function
 

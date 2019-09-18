@@ -152,6 +152,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This requires an Alienware 17 gaming laptop, using the built-in Tobii eye tracker.
+        /// </summary>
+        public static string ALIENWARE_17_INFO {
+            get {
+                return ResourceManager.GetString("ALIENWARE_17_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LETTERS.
         /// </summary>
         public static string ALPHA {
@@ -2003,9 +2012,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We recommend changing the font used in optikey to one which is fully compatible with Persian.
+        ///   Looks up a localized string similar to We recommend changing the font used in optiKey to one which is fully compatible with Persian.
         ///If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
-        ///Would you like optikey to automatically set the font to Nazli?.
+        ///Would you like OptiKey to automatically set the font to Nazli?.
         /// </summary>
         public static string FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE {
             get {
@@ -2090,6 +2099,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string GAZE_TRACKER {
             get {
                 return ResourceManager.GetString("GAZE_TRACKER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This requires the ITU Gaze Tracking Library, which is a framework for open source eye tracking using off-the-shelf components, such as webcams and videocameras..
+        /// </summary>
+        public static string GAZE_TRACKER_INFO {
+            get {
+                return ResourceManager.GetString("GAZE_TRACKER_INFO", resourceCulture);
             }
         }
         
@@ -2298,6 +2316,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string IRISBOND_DUO {
             get {
                 return ResourceManager.GetString("IRISBOND_DUO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you plan to use optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. \n\nIf you don&apos;t already have them they can be downloaded by going to https://www.irisbond.com/products/downloads and downloading the &apos;Drivers&apos; installer..
+        /// </summary>
+        public static string IRISBOND_DUO_INFO {
+            get {
+                return ResourceManager.GetString("IRISBOND_DUO_INFO", resourceCulture);
             }
         }
         
@@ -3801,6 +3828,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In this mode, optikey will use the mouse cursor as input instead of talking directly to an eye tracker. \n\nYou might want this if you&apos;re testing optikey out, or if you want to use it with an alternative input device such as a head mouse or any eye tracker not in this list.\n\nSee the optikey wiki for more information..
+        /// </summary>
+        public static string MOUSE_POSITION_INFO {
+            get {
+                return ResourceManager.GetString("MOUSE_POSITION_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mouse position sample interval (ms):.
         /// </summary>
         public static string MOUSE_POSITION_SAMPLE_INTERVAL_LABEL {
@@ -4932,7 +4968,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to optikey needs to restart to apply your changes.
+        ///   Looks up a localized string similar to Optikey needs to restart to apply your changes.
         ///Please click OK to continue with the restart, or CANCEL to discard your changes.
         /// </summary>
         public static string RESTART_MESSAGE {
@@ -5874,6 +5910,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please note that optikey is no longer compatible with older versions of the Tobii Windows control application. \n\nThis is only a problem if (a) you want to use optikey alongside Tobii Windows control, and (b) your Windows Control application is too old for optikey. \n\nPlease read the optikey wiki for more details..
+        /// </summary>
+        public static string TOBII_ASSISTIVE_INFO {
+            get {
+                return ResourceManager.GetString("TOBII_ASSISTIVE_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tobii Eye Tracker 4C.
         /// </summary>
         public static string TOBII_EYE_TRACKER_4C {
@@ -5924,6 +5969,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOBII_EYEX_ENGINE_NOT_RUNNING {
             get {
                 return ResourceManager.GetString("TOBII_EYEX_ENGINE_NOT_RUNNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option will work with any Tobii Gaming eye tracker (4C, EyeX, Steelseries, etc).
+        /// </summary>
+        public static string TOBII_EYEX_INFO {
+            get {
+                return ResourceManager.GetString("TOBII_EYEX_INFO", resourceCulture);
             }
         }
         
@@ -6345,6 +6399,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string VI_MYGAZE {
             get {
                 return ResourceManager.GetString("VI_MYGAZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Visual Interaction myGaze is only supported if you&apos;ve already installed the myGaze client drivers, which are no longer available for download. \n\nIf you don&apos;t have these drivers installed, you should select use &apos;mouse position&apos; instead, and use optikey in combination with the myGaze EyeMousePlay application to move the cursor..
+        /// </summary>
+        public static string VI_MYGAZE_INFO {
+            get {
+                return ResourceManager.GetString("VI_MYGAZE_INFO", resourceCulture);
             }
         }
         

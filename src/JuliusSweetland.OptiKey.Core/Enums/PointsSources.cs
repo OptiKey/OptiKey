@@ -46,5 +46,30 @@ namespace JuliusSweetland.OptiKey.Enums
 
             return pointSource.ToString();
         }
+
+        public static string ToExtendedDescription(this PointsSources pointSource)
+        {
+            switch (pointSource)
+            {
+                case PointsSources.Alienware17: return Resources.ALIENWARE_17_INFO;
+                case PointsSources.GazeTracker: return Resources.GAZE_TRACKER_INFO;
+                case PointsSources.IrisbondDuo: return Resources.IRISBOND_DUO_INFO;
+                case PointsSources.MousePosition: return Resources.MOUSE_POSITION_INFO;
+                case PointsSources.SteelseriesSentry: return "";
+                case PointsSources.TheEyeTribe: return "";
+                case PointsSources.TobiiEyeTracker4C: return "";
+                case PointsSources.TobiiEyeX: return Resources.TOBII_EYEX_INFO;
+                case PointsSources.TobiiRex: return Resources.TOBII_ASSISTIVE_INFO;
+                case PointsSources.TobiiPcEyeGo: return Resources.TOBII_ASSISTIVE_INFO;
+                case PointsSources.TobiiPcEyeGoPlus: return Resources.TOBII_ASSISTIVE_INFO;
+                case PointsSources.TobiiPcEyeMini: return Resources.TOBII_ASSISTIVE_INFO;
+                case PointsSources.TobiiX2_30: return Resources.TOBII_ASSISTIVE_INFO;
+                case PointsSources.TobiiX2_60: return Resources.TOBII_ASSISTIVE_INFO;
+                case PointsSources.VisualInteractionMyGaze: return Resources.VI_MYGAZE_INFO;
+            }
+
+            return pointSource.ToString();
+        }
     }
+
 }
