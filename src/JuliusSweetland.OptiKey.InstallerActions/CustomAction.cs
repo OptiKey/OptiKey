@@ -28,7 +28,7 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             // Calling this DLL is quite expensive (slow) because it depends on all of Optikey,
             // so this one action gets everything out the way in one go and caches in installer
             // properties
-            
+
             session.Log("Begin LoadOptikeyProperties");
 
             PopulateEyetrackersCombo(session);
@@ -45,78 +45,60 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             return prop_name;
         }
 
-        public static string GetDefaultLanguage(string sysLanguageAndCountry)
+        // Find best match in Optikey for a particular culture
+        public static string GetDefaultLanguageCode(CultureInfo cultureInfo)
         {
+
             // Some hard-coded defaults for language flavours to use if language matches but country doesn't
             // (these are the languages we have multi-country support for)
             Dictionary<string, string> countryDefaults = new Dictionary<string, string>
             {
-                { "English", "UK" },
-                { "French", "France" },
-                { "Dutch", "Netherlands" }
+                { "en", "en-GB" },
+                { "fr", "fr-FR" },
+                { "nl", "nl-NL" }
             };
 
-            // Get list of available languages to choose from
+            // Get list of available languages to choose from, as language tag in parts (e.g. en-GB gives ['en', 'GB'])
             List<KeyValuePair<string, Languages>> languagePairs = WordsViewModel.Languages;
-            List<string> languages = (from kvp in languagePairs select kvp.Key).ToList();
-            
-            // Fall-back is always English if we don't find better match
-            string defaultLanguage = "English (UK)";
+            List<string[]> languages = (from kvp in languagePairs select kvp.Value.ToCultureInfo().Name.Split('-')).ToList();
 
-            if (String.IsNullOrEmpty(sysLanguageAndCountry))
+            string sysLanguageCode = cultureInfo.Name; //  (e.g. en-GB)
+            string[] sysLanguageParts = sysLanguageCode.Split('-');
+
+            // We'll remove non-matching languages at increasing specificity
+            // e.g. language first, then country and any other specifiers
+            List<string[]> matchingLanguages = languages;
+            int idx = 0;
+            while (matchingLanguages.Count > 0 && idx < sysLanguageParts.Length)
             {
-                return defaultLanguage;
+                Predicate<string[]> matches = (parts) => (parts.Length > idx) && parts[idx].Equals(sysLanguageParts[idx]);
+                matchingLanguages = new List<string[]>(languages.FindAll(matches));
+                if (idx == 0 || matchingLanguages.Count > 0) // after idx == 0, previous pass is acceptable if nothing matches current pass
+                    languages = matchingLanguages;
+                idx++;
             }
-            else
+
+            // Now languages list contains zero, one or more viable options. 
+            switch (languages.Count)
             {
-                // Split system language into language and (optional) country(-ies)
-                char[] delimiterChars = { ' ', '(', ')', ',' };
-                string[] parts = sysLanguageAndCountry.Split(delimiterChars, System.StringSplitOptions.RemoveEmptyEntries);
-                string sysLanguage = parts[0];
-                var sysCountries = parts.ToList();
-                sysCountries.RemoveAt(0);
-                
-                // Look for language match(es)
-                Predicate<string> containsLanguage = s => s.Contains(sysLanguage);
-                List<string> matchingLanguages = new List<string>(languages.FindAll(containsLanguage));
-
-                if (matchingLanguages.Count == 0)
-                {
-                    return defaultLanguage;
-                }
-                else if (matchingLanguages.Count == 1)
-                {
-                    return matchingLanguages[0];
-                }
-                else
-                {
-                    // Fallback to first entry if we can't do better
-                    defaultLanguage = matchingLanguages[0];
-
-                    // Check for matching country
-                    Predicate<string> containsCountry = s => sysCountries.Any(s.Contains);
-                    string matchingCountry = languages.Find(containsCountry);
-
-                    if (!String.IsNullOrEmpty(matchingCountry))
+                case 0:
+                    // Fall-back is English if nothing matches at all
+                    return "en-GB";
+                case 1:
+                    return String.Join("-", languages[0]);
+                default:
+                    //Ambiguous match
+                    string sysCountry = sysLanguageParts[0];
+                    if (countryDefaults.ContainsKey(sysCountry))
                     {
-                        return matchingCountry;
+                        // We've hardcoded a preference for this language
+                        return countryDefaults[sysCountry];
                     }
                     else
                     {
-                        // Try to find 'best match' in our defaults
-                        if (countryDefaults.ContainsKey(sysLanguage))
-                        {
-                            var defaultCountry = countryDefaults[sysLanguage];
-                            Predicate<string> containsDefaultCountry = s => s.Contains(defaultCountry);
-                            string matchingDefaultCountry = languages.Find(containsDefaultCountry);
-                            if (!String.IsNullOrEmpty(matchingDefaultCountry))
-                            {
-                                return matchingDefaultCountry;
-                            }
-                        }
-                        return defaultLanguage;
+                        // Still ambiguous, just take first match
+                        return String.Join("-", languages[0]);
                     }
-                }
             }
         }
 
@@ -163,6 +145,10 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             // Get list of available languages from WordsViewModel
             List<KeyValuePair<string, Languages>> languages = WordsViewModel.Languages;
 
+            // Try to match default language to system language
+            string defaultLanguageCode = GetDefaultLanguageCode(CultureInfo.CurrentCulture);
+            string defaultLanguage = "";
+
             // Construct property for combo data. 
             string comboData = ""; // we'll append to this as we go
             foreach (KeyValuePair<string, Languages> language in languages)
@@ -176,12 +162,13 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 // save the mapping from label to enum in an installer property
                 string languageLabelEnglish = languageLabel.Split('/')[0];
                 session["LANGUAGE_" + SanitisePropName(languageLabelEnglish)] = languageEnum;
-            }
 
-            // Try to match default language to system language
-            string cultureName = CultureInfo.CurrentCulture.EnglishName;
-            string defaultLanguage = GetDefaultLanguage(cultureName);
-            session.Log("System language is "+ cultureName);
+                // is default?
+                if (language.Value.ToCultureInfo().Name.Equals(defaultLanguageCode))
+                {
+                    defaultLanguage = languageLabel;
+                }
+            }
 
             // Set combobox data
             session["LANGUAGE_COMBO_DATA"] = comboData;
