@@ -211,6 +211,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Resource Include="Symbol.ico" />
+    <None Include="App.config" />
     <None Include="log4net.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
