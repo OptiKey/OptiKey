@@ -129,39 +129,39 @@
     <STRING lang="sq" value="Language"/>
     <STRING lang="bg" value="Language"/>
     <STRING lang="ar" value="Language"/>
-    <STRING lang="ca" value="Language"/>
+    <STRING lang="ca" value="Idioma"/>
     <STRING lang="zh" value="Language"/>
     <STRING lang="zh_TW" value="Language"/>
-    <STRING lang="hr" value="Language"/>
-    <STRING lang="cs" value="Language"/>
-    <STRING lang="nl" value="Language"/>
-    <STRING lang="da" value="Language"/>
-    <STRING lang="fa" value="Language"/>
+    <STRING lang="hr" value="Jezik"/>
+    <STRING lang="cs" value="Jazyk"/>
+    <STRING lang="nl" value="Taal"/>
+    <STRING lang="da" value="Sprog"/>
+    <STRING lang="fa" value="زبان "/>
     <STRING lang="fi" value="Language"/>
-    <STRING lang="fr" value="Language"/>
-    <STRING lang="de" value="Language"/>
+    <STRING lang="fr" value="Langue"/>
+    <STRING lang="de" value="Sprache"/>
     <STRING lang="he" value="Language"/>
-    <STRING lang="el" value="Language"/>
+    <STRING lang="el" value="Γλώσσα"/>
     <STRING lang="hu" value="Language"/>
     <STRING lang="id" value="Language"/>
     <STRING lang="is" value="Language"/>
-    <STRING lang="ja" value="Language"/>
-    <STRING lang="it" value="Language"/>
+    <STRING lang="ja" value="言語"/>
+    <STRING lang="it" value="Lingua"/>
     <STRING lang="kk" value="Language"/>
-    <STRING lang="ko" value="Language"/>
+    <STRING lang="ko" value="언어"/>
     <STRING lang="nb" value="Language"/>
     <STRING lang="nn" value="Language"/>
-    <STRING lang="pl" value="Language"/>
-    <STRING lang="pt" value="Language"/>
-    <STRING lang="pt_BR" value="Language"/>
-    <STRING lang="ru" value="Language"/>
-    <STRING lang="sr_SP_Cyrillic" value="Language"/>
+    <STRING lang="pl" value="Język"/>
+    <STRING lang="pt" value="Idioma"/>
+    <STRING lang="pt_BR" value="Idioma"/>
+    <STRING lang="ru" value="Язык"/>
+    <STRING lang="sr_SP_Cyrillic" value="Језик"/>
     <STRING lang="sr_SP_Latin" value="Language"/>
-    <STRING lang="sk" value="Language"/>
-    <STRING lang="sl" value="Language"/>
-    <STRING lang="es" value="Language"/>
+    <STRING lang="sk" value="Jazyk"/>
+    <STRING lang="sl" value="Jezik"/>
+    <STRING lang="es" value="Idioma"/>
     <STRING lang="sv" value="Language"/>
-    <STRING lang="tr" value="Language"/>
-    <STRING lang="uk" value="Language"/>
+    <STRING lang="tr" value="Dil"/>
+    <STRING lang="uk" value="Мова"/>
   </ENTRY>
 </DICTIONARY>
