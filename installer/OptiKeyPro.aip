@@ -118,6 +118,7 @@
     <ROW Component="OptiKeyStandardPlugins.dll" ComponentId="{05766651-42E4-42CD-AE1E-85AE895B6E52}" Directory_="Plugins_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll"/>
     <ROW Component="OptiKeyStandardPlugins.dll_1" ComponentId="{57070272-A993-401F-A3AD-3B1BBDEDC40A}" Directory_="Release_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll_1"/>
     <ROW Component="OptikeyPro.exe" ComponentId="{67A1815C-0F41-4019-926F-5DF7C160A09B}" Directory_="Release_Dir" Attributes="0" KeyPath="OptikeyPro.exe"/>
+    <ROW Component="OptikeyPro.exe_1" ComponentId="{4BBF826E-3964-4801-B730-B13E261FB723}" Directory_="Release_Dir" Attributes="0" KeyPath="OptikeyPro.exe_1"/>
     <ROW Component="PGRFlyCapture.dll" ComponentId="{9ECE2124-92BF-4733-8207-F48E20A4E48B}" Directory_="Release_Dir" Attributes="0" KeyPath="PGRFlyCapture.dll"/>
     <ROW Component="Prism.Wpf.dll" ComponentId="{39CC648E-4001-4AA8-8909-23E4364CA5CA}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.Wpf.dll"/>
     <ROW Component="Prism.dll" ComponentId="{4E5C3507-908E-4DE5-8D47-C2E56B007CB6}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.dll"/>
@@ -233,8 +234,6 @@
     <ROW File="Octokit.dll" Component_="Octokit.dll" FileName="Octokit.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Octokit.dll" SelfReg="false"/>
     <ROW File="OptiKey.dll" Component_="OptiKey.dll" FileName="OptiKey.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKey.dll" SelfReg="false"/>
     <ROW File="OptiKey.pdb" Component_="OptiKey.dll" FileName="OptiKey.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKey.pdb" SelfReg="false"/>
-    <ROW File="OptikeyPro.exe.config" Component_="Bass.Net.xml" FileName="OPTIKE~1.CON|OptikeyPro.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptikeyPro.exe.config" SelfReg="false"/>
-    <ROW File="OptikeyPro.pdb" Component_="OptikeyPro.exe" FileName="OPTIKE~1.PDB|OptikeyPro.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptikeyPro.pdb" SelfReg="false"/>
     <ROW File="PGRFlyCapture.dll" Component_="PGRFlyCapture.dll" FileName="PGRFLY~1.DLL|PGRFlyCapture.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\PGRFlyCapture.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_15" Component_="OptiKey.resources.dll_15" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\pl-PL\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="presage.net.dll" Component_="presage.net.dll" FileName="PRESAG~1.DLL|presage.net.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\presage.net.dll" SelfReg="false"/>
@@ -326,6 +325,9 @@
     <ROW File="OptiKey.resources.dll_25" Component_="OptiKey.resources.dll_25" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\he-IL\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKeyStandardPlugins.dll_1" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~1.DLL|OptiKeyStandardPlugins.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKeyStandardPlugins.dll" SelfReg="false"/>
     <ROW File="OptiKeyStandardPlugins.pdb" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~2.PDB|OptiKeyStandardPlugins.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKeyStandardPlugins.pdb" SelfReg="false"/>
+    <ROW File="OptikeyPro.exe_1" Component_="OptikeyPro.exe_1" FileName="OPTIKE~2.EXE|Optikey Pro.exe" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Optikey Pro.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="OptikeyPro.exe.config_1" Component_="Bass.Net.xml" FileName="OPTIKE~2.CON|Optikey Pro.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Optikey Pro.exe.config" SelfReg="false"/>
+    <ROW File="OptikeyPro.pdb_1" Component_="OptikeyPro.exe_1" FileName="OPTIKE~3.PDB|Optikey Pro.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Optikey Pro.pdb" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -696,6 +698,7 @@
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_24"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_25"/>
     <ROW Feature_="MainFeature" Component_="OptiKeyStandardPlugins.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="OptikeyPro.exe_1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="OptikeyPro.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Core\Resources\Icons\Pro.ico" Index="0"/>
@@ -757,8 +760,8 @@
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="OptikeyPro" Directory_="SHORTCUTDIR" Name="OPTIKE~1|OptikeyPro" Component_="OptikeyPro.exe" Target="[#OptikeyPro.exe]" Hotkey="0" Icon_="OptikeyPro.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
-    <ROW Shortcut="OptikeyPro_1" Directory_="DesktopFolder" Name="OPTIKE~1|OptikeyPro" Component_="OptikeyPro.exe" Target="[#OptikeyPro.exe]" Hotkey="0" Icon_="OptikeyPro.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+    <ROW Shortcut="OptikeyPro" Directory_="SHORTCUTDIR" Name="OPTIKE~2|Optikey Pro" Component_="OptikeyPro.exe" Target="[#OptikeyPro.exe]" Hotkey="0" Icon_="OptikeyPro.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+    <ROW Shortcut="OptikeyPro_1" Directory_="DesktopFolder" Name="OPTIKE~2|Optikey Pro" Component_="OptikeyPro.exe" Target="[#OptikeyPro.exe]" Hotkey="0" Icon_="OptikeyPro.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>

@@ -713,8 +713,8 @@
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="OptikeySymbol" Directory_="SHORTCUTDIR" Name="OPTIKE~1|OptikeySymbol" Component_="OptikeySymbol.exe" Target="[#OptikeySymbol.exe]" Hotkey="0" Icon_="OptikeySymbol.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
-    <ROW Shortcut="OptikeySymbol_1" Directory_="DesktopFolder" Name="OPTIKE~1|OptikeySymbol" Component_="OptikeySymbol.exe" Target="[#OptikeySymbol.exe]" Hotkey="0" Icon_="OptikeySymbol.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+    <ROW Shortcut="OptikeySymbol" Directory_="SHORTCUTDIR" Name="OPTIKE~2|Optikey Symbol" Component_="OptikeySymbol.exe" Target="[#OptikeySymbol.exe]" Hotkey="0" Icon_="OptikeySymbol.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+    <ROW Shortcut="OptikeySymbol_1" Directory_="DesktopFolder" Name="OPTIKE~2|Optikey Symbol" Component_="OptikeySymbol.exe" Target="[#OptikeySymbol.exe]" Hotkey="0" Icon_="OptikeySymbol.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>
