@@ -414,50 +414,10 @@
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTracker\EyeTracker_sv.ail"/>
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTracker\EyeTracker_tr.ail"/>
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTracker\EyeTracker_uk.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_en.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_en_GB.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_sq.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_bg.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_ar.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_ca.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_zh.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_zh_TW.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_hr.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_cs.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_nl.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_da.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_fa.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_fi.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_fr.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_de.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_he.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_el.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_hu.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_id.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_is.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_ja.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_it.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_kk.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_ko.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_nb.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_nn.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_pl.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_pt.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_pt_BR.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_ru.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_sr_SP_Cyrillic.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_sr_SP_Latin.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_sk.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_sl.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_es.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_sv.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_tr.ail"/>
-    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_uk.ail"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
     <ROW Fragment="EyeTracker.aip" Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTracker\EyeTracker.aip"/>
-    <ROW Fragment="Languages.aip" Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages.aip"/>
     <ROW Fragment="LicenseAgreementDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\LicenseAgreementDlg.aip"/>
     <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
     <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
@@ -501,7 +461,6 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="EyeTracker" Control="EyeTrackerDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
-    <ROW Dialog_="Languages" Control="LanguagesDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
     <ROW Dialog_="NewDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="NewDialog" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
@@ -546,19 +505,16 @@
     <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
     <ROW Dialog_="ReadmeDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="ReadmeDlg" Control_="Back" Event="NewDialog" Argument="Languages" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ReadmeDlg" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="WelcomePrereqDlg" Control_="Next" Event="NewDialog" Argument="PrerequisitesDlg" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="PrerequisitesDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="PrerequisitesDlg" Control_="Back" Event="NewDialog" Argument="WelcomePrereqDlg" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="NewSeqDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="EyeTracker" Control_="Next" Event="NewDialog" Argument="Languages" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTracker" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="EyeTracker" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="PrepareDlg" Control_="Next" Event="DoAction" Argument="PopulateComboBox" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="NewDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="DoAction" Argument="PopulateEyeTrackerCombo.vbs" Condition="1 AND ( AI_COMBOBOX_DATA &lt;&gt; &quot;SUCCESS&quot; )" Ordering="2"/>
-    <ROW Dialog_="Languages" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="Languages" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="PopulateLanguagesCombo" Condition="AI_INSTALL" Ordering="3"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -781,41 +737,21 @@
     <ROW XmlAttribute="allowExeDefinition" XmlElement="section" Name="allowExeDefinition" Flags="14" Order="2" Value="MachineToLocalUser"/>
     <ROW XmlAttribute="name" XmlElement="sectionGroup" Name="name" Flags="15" Order="0" Value="userSettings"/>
     <ROW XmlAttribute="name_1" XmlElement="section" Name="name" Flags="15" Order="0" Value="JuliusSweetland.OptiKey.Symbol.Properties.Settings"/>
-    <ROW XmlAttribute="name_2" XmlElement="UiLanguage" Name="name" Flags="15" Order="0" Value="UiLanguage"/>
     <ROW XmlAttribute="name_3" XmlElement="setting_1" Name="name" Flags="15" Order="0" Value="PointsSource"/>
-    <ROW XmlAttribute="name_4" XmlElement="TypingLanguage" Name="name" Flags="15" Order="0" Value="KeyboardAndDictionaryLanguage"/>
-    <ROW XmlAttribute="name_5" XmlElement="setting" Name="name" Flags="15" Order="0" Value="FontWeight"/>
-    <ROW XmlAttribute="name_6" XmlElement="setting_2" Name="name" Flags="15" Order="0" Value="FontFamily"/>
-    <ROW XmlAttribute="name_7" XmlElement="setting_3" Name="name" Flags="15" Order="0" Value="FontStretch"/>
     <ROW XmlAttribute="requirePermission" XmlElement="section" Name="requirePermission" Flags="14" Order="3" Value="false"/>
-    <ROW XmlAttribute="serializeAs" XmlElement="UiLanguage" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="serializeAs_1" XmlElement="setting_1" Name="serializeAs" Flags="14" Order="1" Value="String"/>
-    <ROW XmlAttribute="serializeAs_2" XmlElement="TypingLanguage" Name="serializeAs" Flags="14" Order="1" Value="String"/>
-    <ROW XmlAttribute="serializeAs_3" XmlElement="setting" Name="serializeAs" Flags="14" Order="1" Value="String"/>
-    <ROW XmlAttribute="serializeAs_4" XmlElement="setting_2" Name="serializeAs" Flags="14" Order="1" Value="String"/>
-    <ROW XmlAttribute="serializeAs_5" XmlElement="setting_3" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="type" XmlElement="sectionGroup" Name="type" Flags="14" Order="1" Value="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     <ROW XmlAttribute="type_1" XmlElement="section" Name="type" Flags="14" Order="1" Value="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlElementComponent">
     <ROW XmlElement="JuliusSweetland.OptiKey.Symbol.Prop" ParentElement="userSettings" Name="JuliusSweetland.OptiKey.Symbol.Properties.Settings" Condition="1" Order="0" Flags="14"/>
-    <ROW XmlElement="TypingLanguage" ParentElement="JuliusSweetland.OptiKey.Symbol.Prop" Name="setting" Condition="1" Order="2" Flags="14"/>
-    <ROW XmlElement="UiLanguage" ParentElement="JuliusSweetland.OptiKey.Symbol.Prop" Name="setting" Condition="1" Order="1" Flags="14"/>
     <ROW XmlElement="configSections" ParentElement="configuration" Name="configSections" Condition="1" Order="0" Flags="14"/>
     <ROW XmlElement="configuration" Name="configuration" Condition="1" Order="0" Flags="30"/>
     <ROW XmlElement="section" ParentElement="sectionGroup" Name="section" Condition="1" Order="0" Flags="14"/>
     <ROW XmlElement="sectionGroup" ParentElement="configSections" Name="sectionGroup" Condition="1" Order="0" Flags="14"/>
-    <ROW XmlElement="setting" ParentElement="JuliusSweetland.OptiKey.Symbol.Prop" Name="setting" Condition="1" Order="3" Flags="14"/>
     <ROW XmlElement="setting_1" ParentElement="JuliusSweetland.OptiKey.Symbol.Prop" Name="setting" Condition="1" Order="0" Flags="14"/>
-    <ROW XmlElement="setting_2" ParentElement="JuliusSweetland.OptiKey.Symbol.Prop" Name="setting" Condition="1" Order="4" Flags="14"/>
-    <ROW XmlElement="setting_3" ParentElement="JuliusSweetland.OptiKey.Symbol.Prop" Name="setting" Condition="1" Order="5" Flags="14"/>
     <ROW XmlElement="userSettings" ParentElement="configuration" Name="userSettings" Condition="1" Order="1" Flags="14"/>
-    <ROW XmlElement="value" ParentElement="UiLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[LANGUAGE_SELECTED]"/>
     <ROW XmlElement="value_1" ParentElement="setting_1" Name="value" Condition="1" Order="0" Flags="14" Text="[EYETRACKER_SELECTED]"/>
-    <ROW XmlElement="value_2" ParentElement="TypingLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[LANGUAGE_SELECTED]"/>
-    <ROW XmlElement="value_3" ParentElement="setting" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTWEIGHT]"/>
-    <ROW XmlElement="value_4" ParentElement="setting_2" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTFAMILY]"/>
-    <ROW XmlElement="value_5" ParentElement="setting_3" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTSTRETCH]"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlFileComponent">
     <ROW XmlFile="OptikeySymbol.exe.config" FileName="OPTIKE~1.CON|OptikeySymbol.exe.config" DirProperty="Release_Dir" Component="APPDIR" RootElement="configuration" Flags="185" Version="1.0" Encoding="UTF-8" IndentUnits="2"/>
