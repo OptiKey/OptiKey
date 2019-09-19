@@ -24,12 +24,13 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
 
                 if (notificationWithServicesAndState == null
                     || notificationWithServicesAndState.AudioService == null
-                    || notificationWithServicesAndState.DictionaryService == null)
+                    || notificationWithServicesAndState.DictionaryService == null
+                    || notificationWithServicesAndState.WindowManipulationService == null)
                 {
                     throw new ApplicationException(Resources.REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW);
                 }
 
-                var childWindow = new ManagementWindow(notificationWithServicesAndState.AudioService, notificationWithServicesAndState.DictionaryService);
+                var childWindow = new ManagementWindow(notificationWithServicesAndState.AudioService, notificationWithServicesAndState.DictionaryService, notificationWithServicesAndState.WindowManipulationService);
                 
                 EventHandler closeHandler = null;
                 closeHandler = (sender, e) =>

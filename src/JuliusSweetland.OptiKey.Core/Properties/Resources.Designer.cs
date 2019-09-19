@@ -4427,6 +4427,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Opacity:.
+        /// </summary>
+        public static string OPACITY_LABEL {
+            get {
+                return ResourceManager.GetString("OPACITY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Optikey Chat : Easy Communication.
         /// </summary>
         public static string OPTIKEY_CHAT_DESCRIPTION {

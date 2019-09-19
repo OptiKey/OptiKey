@@ -123,7 +123,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 {
                     ModalWindow = modalManagementWindow,
                     AudioService = audioService,
-                    DictionaryService = dictionaryService
+                    DictionaryService = dictionaryService,
+                    WindowManipulationService = WindowManipulationService
                 },
                 _ =>
                 {

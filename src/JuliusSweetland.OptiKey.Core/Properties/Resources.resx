@@ -2405,4 +2405,7 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
     <value>The Visual Interaction myGaze is only supported if you've already installed the myGaze client drivers, which are no longer available for download. \n\nIf you don't have these drivers installed, you should select use 'mouse position' instead, and use optikey in combination with the myGaze EyeMousePlay application to move the cursor.</value>
   </data>
+  <data name="OPACITY_LABEL" xml:space="preserve">
+    <value>Opacity:</value>
+  </data>
 </root>

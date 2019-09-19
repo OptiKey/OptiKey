@@ -57,6 +57,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.THEME_LABEL}" 
@@ -67,33 +68,39 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               SelectedValuePath="Value"
                               SelectedValue="{Binding Theme, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.SCRATCHPAD_NUMBER_OF_LINES_LABEL}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.OPACITY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="10" Maximum="100" Interval="10"
+                                            Value="{Binding Opacity, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.SCRATCHPAD_NUMBER_OF_LINES_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1"
                                             Value="{Binding ScratchpadNumberOfLines, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_WIDTH_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Interval="10"
-                                            Value="{Binding CursorWidthInPixels, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_HEIGHT_LABEL}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_WIDTH_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding CursorHeightInPixels, Mode=TwoWay}" />
+                                            Value="{Binding CursorWidthInPixels, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SOURCE_LABEL}" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_HEIGHT_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="10" Interval="10"
+                                            Value="{Binding CursorHeightInPixels, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SOURCE_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="100"  Interval="10"
                                             Value="{Binding MagnifySourcePercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_DESTINATION_LABEL}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_DESTINATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="100" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 

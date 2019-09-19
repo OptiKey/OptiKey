@@ -10,6 +10,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         protected ManagementViewModel ManagementViewModel { get; set; }
         protected Mock<IAudioService> AudioService { get; private set; }
         protected Mock<IDictionaryService> DictionaryService { get; private set; }
+        protected Mock<IWindowManipulationService> WindowManipulationService { get; private set; }
 
         protected virtual bool ShouldConstruct { get { return true; } }
 
@@ -20,7 +21,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
 
             if (ShouldConstruct)
             {
-                ManagementViewModel = new ManagementViewModel(AudioService.Object, DictionaryService.Object);
+                ManagementViewModel = new ManagementViewModel(AudioService.Object, DictionaryService.Object, WindowManipulationService.Object);
             }
         }
     }
