@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,20 +117,2242 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling, move mouse to center of deadzone:</value>
+  <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>הוסף</value>
   </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>Color of scroll bounds drawn on the overlay:</value>
+  <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
+    <value>הוסף ערך חדש:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>Color of deadzone guides drawn on the overlay:</value>
+  <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>האם להוסיף את הביטוי '{0}' למילון עם קיצור '{1}'?</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>Screen
-Centered</value>
+  <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הוסף למילון</value>
+  </data>
+  <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>האם להוסיף את המילה '{0}' למילון?</value>
+  </data>
+  <data name="ADDED" xml:space="preserve">
+    <value>התווסף</value>
+  </data>
+  <data name="ADJUST_BY" xml:space="preserve">
+    <value>שנה ב{0} פיקסלים. שנה ב{0} פיקסלים</value>
+  </data>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>אותיות 1</value>
+  </data>
+  <data name="ALT" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="ANDROID_DARK" xml:space="preserve">
+    <value>אנדרואיד כהה</value>
+  </data>
+  <data name="ANDROID_LIGHT" xml:space="preserve">
+    <value>אנדרואיד בהיר</value>
+  </data>
+  <data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>אנדרואיד שני גוונים</value>
+  </data>
+  <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
+    <value>אותיות רישיות אוטומטית:</value>
+  </data>
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
+    <value>השלמת מילים אוטומטית:</value>
+  </data>
+  <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
+    <value>התאמת משפט אוטומטית</value>
+  </data>
+  <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
+    <value>הכנס רווח בין מילים:</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>אחורה</value>
   </data>
   <data name="BACK" xml:space="preserve">
-    <value> אחורה</value>
+    <value>אחורה</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>מחק
+אות
+אחורה</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>מחק
+מילה
+אחורה</value>
+  </data>
+  <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
+    <value>Bass לא הצליח להזרים מקובץ '{0}'</value>
+  </data>
+  <data name="BOTTOM" xml:space="preserve">
+    <value>תחתית</value>
+  </data>
+  <data name="BREAK" xml:space="preserve">
+    <value>BREAK</value>
+  </data>
+  <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
+    <value>הכיול בוטל עם הודעה: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>בטוח/ה שברצונך לבצע כיול מחדש?</value>
+  </data>
+  <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
+    <value>שגיאה קרתה במהלך הכיול. הודעה: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
+    <value>הכיול נכשל עם הודעה: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
+    <value>כיול לא יכול להסתיים ללא התערבות ידנית, לדוגמא: שימוש בעכבר. את/ה עלול להתקע בתהליך הכיול אילולא התערבות ידנית במחשב.
+האם את/ה בטוח/ה שברצונך להתחיל בתהליך הכיול?</value>
+  </data>
+  <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
+    <value>הכיול עצר מסיבה שאינה ידועה. הודעה: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
+    <value>הכיול בוצע בהצלחה! הדיוק (בממוצע לשגיאה = {0})</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>בטל</value>
+  </data>
+  <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
+    <value>פסק זמן ללכידה (מילי שניה):</value>
+  </data>
+  <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
+    <value>בדוק עדכונים בהפעלה:</value>
+  </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>נקה</value>
+  </data>
+  <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>לחץ
+וגרור</value>
+  </data>
+  <data name="CLICK_SOUND_1" xml:space="preserve">
+    <value>לחיצה 1</value>
+  </data>
+  <data name="CLICK_SOUND_2" xml:space="preserve">
+    <value>לחיצה 2</value>
+  </data>
+  <data name="CLICK_SOUND_3" xml:space="preserve">
+    <value>לחיצה 3</value>
+  </data>
+  <data name="CLICK_SOUND_4" xml:space="preserve">
+    <value>לחיצה 4</value>
+  </data>
+  <data name="CLICK_SOUND_5" xml:space="preserve">
+    <value>לחיצה 5</value>
+  </data>
+  <data name="CLICK_SOUND_6" xml:space="preserve">
+    <value>לחיצה 6</value>
+  </data>
+  <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>צמצם
+DOCK</value>
+  </data>
+  <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
+    <value>עובי הdock המצומצם (% מעובי ה-dock המלא):</value>
+  </data>
+  <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
+    <value>תפריט</value>
+  </data>
+  <data name="CONVERSATION" xml:space="preserve">
+    <value>שיחה</value>
+  </data>
+  <data name="CONVERSATION_LAYOUT" xml:space="preserve">
+    <value>אותיות שיחה</value>
+  </data>
+  <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
+    <value>מספרים וסמלים של שיחה</value>
+  </data>
+  <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>מצב שיחה בלבד:</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
+    <value>OptiKey שם לב שקובץ הגדרות המשתמש הושחת וחייב להיות תקין. זה יעשה על ידי שחזור גרסה ישנה או גרסת ברירת המחדל אם גרסה ישנה לא אפשרית.
+
+לחצ/י כן לאיפוס הגדרות המשתמש ואתחול.
+
+לחצ/י לא כדי לסגור כדי שתוכל/י לתקן או להעתיק באופן ידני את קובץ הגדרות המשתמש.</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
+    <value>שגיאה! קובץ הגדרות המשתמש משובש</value>
+  </data>
+  <data name="CRASH_MESSAGE" xml:space="preserve">
+    <value>חדשות רעות - OptiKey התרסק וחייב להסגר.
+
+נשמח לקבל איימיל עם הסבר למה קרה ואיך בכתובת: 
+optikeyfeedback@gmail.com
+
+תודה וסליחה על חוסר הנוחות.</value>
+  </data>
+  <data name="CRASH_TITLE" xml:space="preserve">
+    <value>אוי לא!</value>
+  </data>
+  <data name="CTRL" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="CURRENCIES" xml:space="preserve">
+    <value>מטבע</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
+    <value>מטבע 1</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
+    <value>מטבע 2</value>
+  </data>
+  <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
+    <value>גובה הסמן (פיקסלים):</value>
+  </data>
+  <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
+    <value>רוחב הסמן (פיקסלים):</value>
+  </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>קובץ מקלדת דינמית</value>
+  </data>
+  <data name="DANISH_DENMARK" xml:space="preserve">
+    <value>דנית (דנמרק) / (Dansk (Danmark</value>
+  </data>
+  <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>דנית
+(דנמרק) /
+Dansk 
+(Danmark)</value>
+  </data>
+  <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
+    <value>מצב ניפוי שגיאות:</value>
+  </data>
+  <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הפחת
+שקיפות</value>
+  </data>
+  <data name="DEL" xml:space="preserve">
+    <value>DEL</value>
+  </data>
+  <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>מחק</value>
+  </data>
+  <data name="DIACRITICS" xml:space="preserve">
+    <value>דיאקריטיקה</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
+    <value>דיאקריטיקה 1</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
+    <value>דיאקריטיקה 2</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
+    <value>דיאקריטיקה 3</value>
+  </data>
+  <data name="DICTIONARY" xml:space="preserve">
+    <value>מילון</value>
+  </data>
+  <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
+    <value>מילון משתמש לא נמצא והמילון המקורי לא נמצא בנתיב: '{0}'</value>
+  </data>
+  <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
+    <value>הצג X שניות עבור כל תו בהודעה:</value>
+  </data>
+  <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
+    <value>בצע במיקום נוכחי...</value>
+  </data>
+  <data name="DO_AT_POINT" xml:space="preserve">
+    <value>בצע בנקודה זו...</value>
+  </data>
+  <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>חץ
+למטה</value>
+  </data>
+  <data name="DURATION_FORMAT" xml:space="preserve">
+    <value> ({0:#,###}ms)</value>
+  </data>
+  <data name="END" xml:space="preserve">
+    <value>END</value>
+  </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>אנגלית (קנדה) / English (Canada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>אנגלית (הממלכה המאוחדת) / English (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>אנגלית (א''ב) / English (US)</value>
+  </data>
+  <data name="ENTER" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
+    <value>מצויין. '{0}' התווספה למילון.</value>
+  </data>
+  <data name="ERROR_SOUND_LABEL" xml:space="preserve">
+    <value>שגיאה:</value>
+  </data>
+  <data name="ESC" xml:space="preserve">
+    <value>ESC</value>
+  </data>
+  <data name="EXPAND" xml:space="preserve">
+    <value>הרחב</value>
+  </data>
+  <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הרחב
+DOCK</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הרחב
+למטה ושמאלה</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הרחב
+למטה וימינה</value>
+  </data>
+  <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הרחב
+למטה</value>
+  </data>
+  <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הרחב
+שמאלה</value>
+  </data>
+  <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הרחב
+ימינה</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הרחב
+למעלה ושמאלה</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הרחב
+למעלה וימינה</value>
+  </data>
+  <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הרחב
+למעלה</value>
+  </data>
+  <data name="FALLING_SOUND_1" xml:space="preserve">
+    <value>נופל 1</value>
+  </data>
+  <data name="FALLING_SOUND_2" xml:space="preserve">
+    <value>נופל 2</value>
+  </data>
+  <data name="FILL_PIE" xml:space="preserve">
+    <value>עיגול מתמלא</value>
+  </data>
+  <data name="FIXATIONS_DWELL" xml:space="preserve">
+    <value>התקבעות (השתהות)</value>
+  </data>
+  <data name="FONT" xml:space="preserve">
+    <value>גופן</value>
+  </data>
+  <data name="FONT_FAMILY_LABEL" xml:space="preserve">
+    <value>משפחת גופן:</value>
+  </data>
+  <data name="FONT_STRETCH_LABEL" xml:space="preserve">
+    <value>מתיחת גופן:</value>
+  </data>
+  <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
+    <value>משקל גופן:</value>
+  </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>צרפתית (צרפת) \ (Française France)</value>
+  </data>
+  <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
+    <value>עובי ה-dock ( כ-% מהמסך)</value>
+  </data>
+  <data name="GAZE_TRACKER" xml:space="preserve">
+    <value>עוקב אחר מבט</value>
+  </data>
+  <data name="GROW" xml:space="preserve">
+    <value>Grow</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>HOME</value>
+  </data>
+  <data name="HORIZONTAL_FILL" xml:space="preserve">
+    <value>מילוי אופקי (% מהמסך)</value>
+  </data>
+  <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
+    <value>השהייה לפני איפוס עקב התקבעות לא גמורה על מקש (ms):</value>
+  </data>
+  <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הגבר
+שקיפות</value>
+  </data>
+  <data name="INFO_SOUND_LABEL" xml:space="preserve">
+    <value>מידע:</value>
+  </data>
+  <data name="INS" xml:space="preserve">
+    <value>INS</value>
+  </data>
+  <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
+    <value>...but intelligently suppress auto-caps where it is probably unhelpful:</value>
+  </data>
+  <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
+    <value>שילוב השפה והמקלדת הנוכחיים לא תקפים</value>
+  </data>
+  <data name="JUMP" xml:space="preserve">
+    <value>הצמד</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הצמד
+למטה ושמאלה</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הצמד
+למטה וימינה</value>
+  </data>
+  <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הצמד
+למטה</value>
+  </data>
+  <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הצמד
+שמאלה</value>
+  </data>
+  <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הצמד
+ימינה</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הצמד
+למעלה ושמאלה</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הצמד
+למעלה וימינה</value>
+  </data>
+  <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הצמד
+למעלה</value>
+  </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Key text transformation:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>זמן להשלמת התקבעות על מקש (ms):</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>זמן לנעילת התקבעות על מקש (ms):</value>
+  </data>
+  <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>מקש לבחירת תו:</value>
+  </data>
+  <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>לחצן עכבר לבחירת תו:</value>
+  </data>
+  <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
+    <value>בחירת תו</value>
+  </data>
+  <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>מקור לבחירת תוים:</value>
+  </data>
+  <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>בחירת תו: {0}</value>
+  </data>
+  <data name="KEYBOARD_KEY" xml:space="preserve">
+    <value>תו מקלדת</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>שפה</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>שפת מקלדת: {0}</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>שפת מקלדת:</value>
+  </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>אפשר להגדיר את תיקיית המקלדות
+במסך ההגדרות (לשונית "ויזואלי")</value>
+  </data>
+  <data name="LEFT" xml:space="preserve">
+    <value>שמאל</value>
+  </data>
+  <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>חץ
+שמאלי</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>לחיצה
+שמאלית</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>לחיצה
+שמאלית כפולה</value>
+  </data>
+  <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>לחצן שמאלי
+למטה\למעלה</value>
+  </data>
+  <data name="LOOK" xml:space="preserve">
+    <value>מראה</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>הכל באותיות קטנות</value>
+  </data>
+  <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>עכבר
+מגנטי</value>
+  </data>
+  <data name="MAGNIFIER" xml:space="preserve">
+    <value>זכוכית מגדלת</value>
+  </data>
+  <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
+    <value>יעד הגדלה (ב% של המסך)</value>
+  </data>
+  <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
+    <value>מקור הגדלה (ב% של המסך)</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
+    <value>חלונית ניהול: ALT + M</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
+    <value>OptiKey ממשק ניהול</value>
+  </data>
+  <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
+    <value>כמות מקסימלית של התאמות מילוניות:</value>
+  </data>
+  <data name="MENU" xml:space="preserve">
+    <value>תפריט</value>
+  </data>
+  <data name="MENU_LAYOUT" xml:space="preserve">
+    <value>תפריט</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>לחיצה
+אמצעית</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>לחצן אמצעי
+למטה/למעלה</value>
+  </data>
+  <data name="MINIMISE" xml:space="preserve">
+    <value>מזער</value>
+  </data>
+  <data name="MINIMISED_LAYOUT" xml:space="preserve">
+    <value>ממוזער</value>
+  </data>
+  <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
+    <value>מיקום ממוזער:</value>
+  </data>
+  <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
+    <value>זמן השתהות מינימלי על מקש על מנת להכניסו למילה (ms)</value>
+  </data>
+  <data name="MISC" xml:space="preserve">
+    <value>שונות</value>
+  </data>
+  <data name="MOUSE" xml:space="preserve">
+    <value>עכבר</value>
+  </data>
+  <data name="MOUSE_BUTTON" xml:space="preserve">
+    <value>כפתור העכבר</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
+    <value>לחיצת עכבר 1</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
+    <value>לחיצת עכבר 2</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
+    <value>לחיצת עכבר 3</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
+    <value>לחיצת עכבר 4</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>לחיצת עכבר:</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
+    <value>לחיצת עכבר כפולה 1</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
+    <value>לחיצת עכבר כפולה 2</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
+    <value>לחיצת עכבר כפולה 3</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>לחיצת עכבר כפולה:</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
+    <value>התחלת לחיצת עכבר 1</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
+    <value>התחלת לחיצת עכבר 2</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
+    <value>התחלת לחיצת עכבר 3</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
+    <value>התחלת לחיצת עכבר 4</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
+    <value>התחלת לחיצת עכבר:</value>
+  </data>
+  <data name="MOUSE_LAYOUT" xml:space="preserve">
+    <value>עכבר</value>
+  </data>
+  <data name="MOUSE_POSITION" xml:space="preserve">
+    <value>מיקום העכבר</value>
+  </data>
+  <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
+    <value>זמן דגימת מיקום העכבר (ms)</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
+    <value>גלגל עכבר 1</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
+    <value>גלגל עכבר 2</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
+    <value>גלגל עכבר 3</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
+    <value>גלגל עכבר 4</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
+    <value>גלגל עכבר 5</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
+    <value>גלגל עכבר 6</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
+    <value>גלגל עכבר:</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
+    <value>שחרור לחיצת עכבר 1</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
+    <value>שחרור לחיצת עכבר 2</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
+    <value>שחרור לחיצת עכבר 3</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
+    <value>שחרור לחיצת עכבר 4</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
+    <value>שחרור לחיצת עכבר:</value>
+  </data>
+  <data name="MOVE" xml:space="preserve">
+    <value>הזז</value>
+  </data>
+  <data name="MOVE_BY" xml:space="preserve">
+    <value>הזז ב{0} פיקסלים: הזז ב {0} פיקסלים:</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הזז
+למטה ושמאלה</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הזז
+למטה וימינה</value>
+  </data>
+  <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הזז
+למטה</value>
+  </data>
+  <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הזז
+שמאלה</value>
+  </data>
+  <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הזז
+ימינה</value>
+  </data>
+  <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הזז
+אל</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הזז
+למעלה ושמאלה</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הזז
+למעלה וימינה</value>
+  </data>
+  <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הזז
+למעלה</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
+    <value>Multi-key captures</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
+    <value>Multi-key captures enabled:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION" xml:space="preserve">
+    <value>Multi-key Selection</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
+    <value>Multi-key selection ending:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MULTI-KEY
+SELECTION</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
+    <value>Multi-key selection starting:</value>
+  </data>
+  <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
+    <value>
+(הערך החדש במילון יכיל אותיות רישיות)</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>הבא</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>לא</value>
+  </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>לא נמצאו מקלדות</value>
+  </data>
+  <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
+    <value>זה לא נראה שלוח הכתיבה מכיל מילים או משפטים שלא קיימים כבר במילון</value>
+  </data>
+  <data name="NO_SOUND" xml:space="preserve">
+    <value>כלום</value>
+  </data>
+  <data name="NOTHING_NEW" xml:space="preserve">
+    <value>הממ, שום דבר חדש כאן!</value>
+  </data>
+  <data name="NOTIFICATIONS" xml:space="preserve">
+    <value>התראות</value>
+  </data>
+  <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+LK</value>
+  </data>
+  <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+SYM</value>
+  </data>
+  <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
+    <value>מספרים
+וסמלים</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
+    <value>מספרים וסמלים 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
+    <value>מספרים וסמלים 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
+    <value>מספרים וסמלים 3</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>אישור</value>
+  </data>
+  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>Optikey: הקלד · לחץ · דבר</value>
+  </data>
+  <data name="OTHER" xml:space="preserve">
+    <value>אחר</value>
+  </data>
+  <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
+    <value>החלון המרכזי לא זוהה, לא ניתן להמשיך</value>
+  </data>
+  <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+DN</value>
+  </data>
+  <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+UP</value>
+  </data>
+  <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
+    <value>מקשים פיזים</value>
+  </data>
+  <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>מקשים
+פיזים</value>
+  </data>
+  <data name="PLAY_SOUND" xml:space="preserve">
+    <value>נגן</value>
+  </data>
+  <data name="POINT_AND_SELECTING" xml:space="preserve">
+    <value>הצבעה ובחירה</value>
+  </data>
+  <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
+    <value>רדיוס התקבעות הצבעה (פיקסלים)</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>זמן להשלמת התקבעות הצבעה (ms)</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>זמן לנעילת התקבעות הצבעה (ms)</value>
+  </data>
+  <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
+    <value>רדיוס נעילת הצבעה (פיקסלים)</value>
+  </data>
+  <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
+    <value>בחירה: {0}</value>
+  </data>
+  <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>מקש מקלדת לבחירה:</value>
+  </data>
+  <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>לחצן עכבר לבחירה:</value>
+  </data>
+  <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>מקור לבחירה:</value>
+  </data>
+  <data name="POINTING" xml:space="preserve">
+    <value>הצבעה</value>
+  </data>
+  <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
+    <value>הצבעה: {0}</value>
+  </data>
+  <data name="PREV" xml:space="preserve">
+    <value>הקודם</value>
+  </data>
+  <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRNT
+SCR</value>
+  </data>
+  <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
+    <value>בעיה בטעינת המקלדת</value>
+  </data>
+  <data name="QUIT" xml:space="preserve">
+    <value>יציאה</value>
+  </data>
+  <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>האם את/ה לגמרי בטוח/ה שברצונך לצאת?</value>
+  </data>
+  <data name="QUIT_MESSAGE" xml:space="preserve">
+    <value>האם את/ה בטוח/ה שברצונך לצאת?</value>
+  </data>
+  <data name="RATE_LABEL" xml:space="preserve">
+    <value>קצב</value>
+  </data>
+  <data name="RE_CALIBRATE" xml:space="preserve">
+    <value>כייל מחדש</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>חזור על
+אחרון</value>
+  </data>
+  <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
+    <value>אודיו ו/או שירותי מילון לא סופקו (כפעולה בחלון הניהול)</value>
+  </data>
+  <data name="RESTART_MESSAGE" xml:space="preserve">
+    <value>OptiKey צריך לבצע אתחול מחדש על מנת לשמור את השינויים.
+אנא לחץ על אישור על מנת לבצע את האתחול, או לחץ על ביטול על מנת להתעלם מהשינויים.</value>
+  </data>
+  <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>שחזר</value>
+  </data>
+  <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
+    <value>להמשיך התקבעות לא גמורה על מקש מצריכה נעילה מחדש:</value>
+  </data>
+  <data name="RIGHT" xml:space="preserve">
+    <value>ימינה</value>
+  </data>
+  <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>חץ
+ימינה</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>לחיצה
+ימנית</value>
+  </data>
+  <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>לחצן ימני
+למטה/למעלה</value>
+  </data>
+  <data name="RISING_SOUND_1" xml:space="preserve">
+    <value>עולה 1</value>
+  </data>
+  <data name="RISING_SOUND_2" xml:space="preserve">
+    <value>עולה 2</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>רוסית (רוסיה) / (Русский (Россия</value>
+  </data>
+  <data name="SPANISH_SPAIN" xml:space="preserve">
+    <value>ספרדית (ספרד) / (Español (España</value>
+  </data>
+  <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
+    <value>אותו מיקום כמו הDOCK</value>
+  </data>
+  <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
+    <value>מספר שורות בלוח הכתיבה</value>
+  </data>
+  <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCR
+LK</value>
+  </data>
+  <data name="SCROLL_BY" xml:space="preserve">
+    <value>גלול קליק {0}:|גלול {0} קליקים:</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>גלול
+מטה</value>
+  </data>
+  <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>גלול
+שמאלה</value>
+  </data>
+  <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>גלול
+ימינה</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>גלול
+מעלה</value>
+  </data>
+  <data name="SELECTION" xml:space="preserve">
+    <value>בחירה</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
+    <value>התנהגות חיווי התקדמות בחירה:</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
+    <value>חיווי בחירה גודל סופי (%):</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
+    <value>חיווי בחירה גודל התחלתי (%):</value>
+  </data>
+  <data name="SHIFT" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
+    <value>הצג מסך פתיחה:</value>
+  </data>
+  <data name="SHRINK" xml:space="preserve">
+    <value>כווץ</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>כווץ
+למטה ושמאלה</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>כווץ
+למטה וימינה</value>
+  </data>
+  <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>כווץ
+למטה</value>
+  </data>
+  <data name="SHRINK_INDICATOR" xml:space="preserve">
+    <value>כווץ</value>
+  </data>
+  <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>כווץ
+שמאלה</value>
+  </data>
+  <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>כווץ
+ימינה</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>כווץ
+למעלה ושמאלה</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>כווץ
+למעלה וימינה</value>
+  </data>
+  <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>כווץ
+למעלה</value>
+  </data>
+  <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
+    <value>(לידיעתך מילים דומות הוכנסו כבר למילון: {0})</value>
+  </data>
+  <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>גודל
+ומיקום</value>
+  </data>
+  <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
+    <value>גודל ומיקום</value>
+  </data>
+  <data name="SLEEP" xml:space="preserve">
+    <value>שינה</value>
+  </data>
+  <data name="SOUND_EFFECTS" xml:space="preserve">
+    <value>אפקטים קוליים</value>
+  </data>
+  <data name="SOUNDS" xml:space="preserve">
+    <value>צלילים</value>
+  </data>
+  <data name="SOURCE_LABEL" xml:space="preserve">
+    <value>מקור:</value>
+  </data>
+  <data name="SPACE" xml:space="preserve">
+    <value>רווח</value>
+  </data>
+  <data name="SPEAK" xml:space="preserve">
+    <value>דבר</value>
+  </data>
+  <data name="SPEECH" xml:space="preserve">
+    <value>דיבור</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
+    <value>מקלדת בהפעלה:</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>קובץ מקלדת דינמית:</value>
+  </data>
+  <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
+    <value>סימן עצור:</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value>הצלחה</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
+    <value>התעלם ממקשים מיוחדים (CTRL, SHIFT, ALT, WIN) כאשר מבצעים פעולות עכבר:</value>
+  </data>
+  <data name="TAB" xml:space="preserve">
+    <value>TAB</value>
+  </data>
+  <data name="THE_EYE_TRIBE" xml:space="preserve">
+    <value>The Eye Tribe</value>
+  </data>
+  <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
+    <value>לא ניתן להפעיל את TheEyeTribe GazeManager! בדוק בבקשה שהשרת רץ והמכשיר מחובר ונסה שנית.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
+    <value>TheEyeTribe לא כויל. שום מידע לא יתקבל עד אשר הכיול יסתיים.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
+    <value>אי אפשר לבצע כיול. מנוע EyeX לא פנוי.</value>
+  </data>
+  <data name="THEME_LABEL" xml:space="preserve">
+    <value>ערכת נושא:</value>
+  </data>
+  <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
+    <value>זמן עד שהצבעה נהיית לא רלוונטית (ms):</value>
+  </data>
+  <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>החבא סמן</value>
+  </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>מילים באותיות רישיות</value>
+  </data>
+  <data name="TOBII_EYEX" xml:space="preserve">
+    <value>Tobii EyeX</value>
+  </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>כיול נגמר או בוטל, אבל הכל עובד שוב!</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>המנוע Tobii EyeX לא נמצא. אנא התקינו אותו ונסו שוב.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>המנוע Tobii EyeX לא פועל. אנא הפעילו אותו ונסו שוב.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go </value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
+  </data>
+  <data name="TONE_SOUND_1" xml:space="preserve">
+    <value>צליל 1</value>
+  </data>
+  <data name="TONE_SOUND_2" xml:space="preserve">
+    <value>צליל 2</value>
+  </data>
+  <data name="TONE_SOUND_3" xml:space="preserve">
+    <value>צליל 3</value>
+  </data>
+  <data name="TONE_SOUND_4" xml:space="preserve">
+    <value>צליל 4</value>
+  </data>
+  <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
+    <value>כפתור/מקש הפעלה נלחץ שוב</value>
+  </data>
+  <data name="TRIGGER_RELEASED" xml:space="preserve">
+    <value>כפתור/מקש הפעלה שוחרר</value>
+  </data>
+  <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
+    <value>לא הצלחתי לזהות לאיפה מופנית ההתייחסות שלך. יש בעיה עם מכשיר הקלט שלך? האם הוא מחובר, פועל, מכויל וכו' ?</value>
+  </data>
+  <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
+    <value>לא מסוגל לזהות את הרשאות המשתמש.</value>
+  </data>
+  <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
+    <value>הייתה בעיה להגדיר את השמע ל'{0}'{1}</value>
+  </data>
+  <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
+    <value>שגיאה קרתה, נא בדוק את הלוגים.</value>
+  </data>
+  <data name="UP" xml:space="preserve">
+    <value>חלק עליון</value>
+  </data>
+  <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>חץ
+למעלה</value>
+  </data>
+  <data name="UPDATE_AVAILABLE" xml:space="preserve">
+    <value>עדכון זמין!</value>
+  </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>הכל באותיות גדולות</value>
+  </data>
+  <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
+    <value>בקר בwww.optikey.org להורדת הגרסא האחרונה ({0})
+אפשר לכבות את בדיקת העדכונים ממסך ההגדרות (ALT + M).</value>
+  </data>
+  <data name="VERIFY_RESTART" xml:space="preserve">
+    <value>האם ניתן להפעיל את OptiKey מחדש?</value>
+  </data>
+  <data name="VERSION_DESCRIPTION" xml:space="preserve">
+    <value>גרסה: {0}</value>
+  </data>
+  <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
+    <value>מילוי אנכי (% מהמסך)</value>
+  </data>
+  <data name="VISUALS" xml:space="preserve">
+    <value>ויזואלי</value>
+  </data>
+  <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
+    <value>(מההגדרות)</value>
+  </data>
+  <data name="VOICE_LABEL" xml:space="preserve">
+    <value>קול:</value>
+  </data>
+  <data name="VOLUME_LABEL" xml:space="preserve">
+    <value>עוצמת קול</value>
+  </data>
+  <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
+    <value>אתר הבית: www.optikey.org</value>
+  </data>
+  <data name="WIN" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>OptiKey v{0}</value>
+  </data>
+  <data name="WORDS" xml:space="preserve">
+    <value>מילים</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>כן</value>
+  </data>
+  <data name="YESNO" xml:space="preserve">
+    <value>כן/לא</value>
+  </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>אותיות</value>
+  </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>גבוה</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>נמוך</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>בינוני</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>כלום</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Data stream processing amount:</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>גרמנית (גרמניה)  / (Deutsch Deutschland)</value>
+  </data>
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>שפת ממשק משתמש: {0}</value>
+  </data>
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
+    <value>שפת ממשק משתמש:</value>
+  </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>לדמות לחיצות מקש פיזיות כאשר מקלידים תוים:</value>
+  </data>
+  <data name="DUTCH_BELGIUM" xml:space="preserve">
+    <value>הולנדית  (בלגיה) / Nederlands (België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
+    <value>הולנדית (Netherlands) / Nederlands (הולנד)</value>
+  </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>צרפתית
+(צרפת) /
+Française
+(France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>גרמנית
+(גרמניה) /
+Deutsch
+(Deutschland)</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>השהה mouse magnification לפעולות גלילה:</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>רוסית
+(רוסיה) /
+Русский
+(Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ספרדית
+(ספרד) /
+Español
+(España)</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>תפריט מקלדת דינמית</value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>עובי מסגרת מקלדת שיחה (שמאל, עליון, ימין, תחתון, בפיקסלים):</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>מחק אות</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>מחק מילה</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>הצעה 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>הצעה 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>הצעה 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>הצעה 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>הצעה 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>הצעה 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>לחצני הצעות</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>הוסיף למילון</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>צמצם DOCK</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>חץ למטה</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F13" xml:space="preserve">
+    <value>F13</value>
+  </data>
+  <data name="F14" xml:space="preserve">
+    <value>F14</value>
+  </data>
+  <data name="F15" xml:space="preserve">
+    <value>F15</value>
+  </data>
+  <data name="F16" xml:space="preserve">
+    <value>F16</value>
+  </data>
+  <data name="F17" xml:space="preserve">
+    <value>F17</value>
+  </data>
+  <data name="F18" xml:space="preserve">
+    <value>F18</value>
+  </data>
+  <data name="F19" xml:space="preserve">
+    <value>F19</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>חץ שמאלה</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>חץ ימינה</value>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>חץ למעלה</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>לחץ וגרור</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>מטבע 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>מטבע 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>הפחת
+שקיפות</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>דיאקריטיקה 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>דיאקריטיקה 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>דיאקריטיקה 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>הרחב DOCK</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>הרחב למטה</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>הרחב למטה ושמאלה</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>הרחב למטה וימינה</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>הרחב שמאלה</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>הרחב ימינה</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>הרחב למעלה</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>הרחב למעלה ושמאלה</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>הרחב למעלה וימינה</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>הגבר שקיפות</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>מספרים וסמלים 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>מספרים וסמלים 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>מספרים וסמלים 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>מקשים פיזים</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>גודל ומיקום</value>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>סמן מגנטי</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>לחצן אמצעי</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>לחצן אמצעי למעלה/למטה</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>כמות תזוזה בפיקסלים</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>כמות התאמה בפיקסלים</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>שיחה 1</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>מספרים וסמלים של שיחה</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>הצמד למטה</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>הצמד למטה ושמאלה</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>הצמד למטה וימינה</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>הצמד שמאלה</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>הצמד ימינה</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>הצמד למעלה</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>הצמד למעלה ושמאלה</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>הצמד למעלה וימינה</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>לחיצה שמאלית</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>לחיצה שמאלית כפולה</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>לחצן שמאלי למטה/למעלה</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>הזז למטה</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>הזז למטה ושמאלה</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>הזז למטה וימינה</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>הזז שמאלה</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>הזז ימינה</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>הזז אל</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>הזז למעלה</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>הזז למעלה ושמאלה</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>הזז למעלה וימינה</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>MULTI-KEY SELECTION</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>חזור על אחרון</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>לחצן ימני</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>לחצן ימני למטה/למעלה</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>כמות גלילה בקליקים</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>גלול מטה</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>גלול שמאלה</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>גלול ימינה</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>גלול למעלה</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>כווץ למטה</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>כווץ למטה ושמאלה</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>כווץ למטה וימינה</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>כווץ שמאלה</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>כווץ ימינה</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>כווץ למעלה</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>כווץ למעלה ושמאלה</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>כווץ למעלה וימינה</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>שנה מקשי מקלדת:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>מקשי פעולות DOCK:</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>דריסת זמן ההתקבעות למקש מסוים (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>שנה מקשי שפה:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>שפה</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>מקשים אחרים:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>מקשים מיוחדים (CTRL, SHIFT, ALT, WIN):</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>מקשי עכבר (בצע במיקום הנוכחי):</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>מקשי עכבר (בצע בנקודת הצבעה):</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>מקשי עכבר (שונות):</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>מקשי הזז ושנה גודל:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>מקשים פיזים:</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>מקשים הצעות:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>ציין זמן להשלמה של מקשים בודדים:</value>
+  </data>
+  <data name="GREEK_GREECE" xml:space="preserve">
+    <value>יוונית (יוון) / Ελληνικά (Ελλάδα)</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>חלונית ניהול (הגדרות)</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>יציאה</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA" xml:space="preserve">
+    <value>גיאורגית (גיאורגיה) / ქართული (საქართველო)</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>גיאורגית
+(גיאורגיה) /
+ქართული
+(საქართველო)</value>
+  </data>
+  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>יוונית
+(יוון)/
+Ελληνικά
+(Ελλάδα)</value>
+  </data>
+  <data name="CROATIAN_CROATIA" xml:space="preserve">
+    <value>קרואטית (קרואטיה)  / Hrvatski (Hrvatska)</value>
+  </data>
+  <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>קרואטית
+ (קרואטיה) /
+ Hrvatski
+ (Hrvatska)</value>
+  </data>
+  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הולנדית
+(בלגיה) /
+Nederlands
+(België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>הולנדית
+(הולנד) /
+Nederlands
+(Nederland)</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>התעלם ממקשים מיוחדים (CTRL, SHIFT, ALT, WIN) לכל הפעולות עם העכבר:</value>
+  </data>
+  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>אנגלית
+(קנדה)
+/
+English 
+(Canada)</value>
+  </data>
+  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>אנגלית
+(הממלכה המאוחדת)
+/
+English
+(US)</value>
+  </data>
+  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>אנגלית
+(ארה"ב)
+/
+English
+(Canada)</value>
+  </data>
+  <data name="CATALAN_SPAIN" xml:space="preserve">
+    <value>קטלאנית (ספרד) / Català (Espanya)</value>
+  </data>
+  <data name="CATALAN_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>קטלאנית
+(ספרד) /
+Català
+(Espanya)</value>
+  </data>
+  <data name="TURKISH_TURKEY" xml:space="preserve">
+    <value>טורקית (טורקיה) / Türkçe (Türkiye)</value>
+  </data>
+  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>טורקית
+(טורקיה) /
+Türkçe
+(Türkiye)</value>
+  </data>
+  <data name="ITALIAN_ITALY" xml:space="preserve">
+    <value>איטלקית (איטליה) / Italiano (Italia)</value>
+  </data>
+  <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>איטלקית
+(איטליה) /
+Italiano
+(Italia)</value>
+  </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>קוריאנית (קוריאה) / 한국어 (한국)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>קוריאנית
+(קוריאה) /
+한국어
+(한국)</value>
+  </data>
+  <data name="SERBIAN_SERBIA" xml:space="preserve">
+    <value>סרבית (סרביה) / Српски (Србија)</value>
+  </data>
+  <data name="SERBIAN_SERBIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>סרבית
+(סרביה) /
+Српски
+(Србија)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
+    <value>סלובנית (סלובניה) / Slovensko (Slovenija)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>סלובנית
+(סלובניה) /
+Slovensko
+(Slovenija)</value>
+  </data>
+  <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>לא ניתן להפעיל את myGaze! בדוק בבקשה שהשרת רץ והמכשיר מחובר ונסה שנית.</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>אינטרקציה ויזואלית myGaze</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>הכיול נכשל</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>הכיול הצליח</value>
+  </data>
+  <data name="POLISH_POLAND" xml:space="preserve">
+    <value>פולנית (פולין) / Polski (Polska)</value>
+  </data>
+  <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>פולנית
+(פולין) /
+Polski
+(Polska)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
+    <value>פורטוגזית (פורטוגל) / Português (Portugal)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>פורטוגזית
+(פורטוגל) /
+Português
+(Portugal)</value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
+    <value>סלובקית (סלובקיה) / Slovenčina (Slovensko) </value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>סלובקית
+(סלובקיה) /
+Slovenčina
+(Slovensko)</value>
+  </data>
+  <data name="ALIENWARE_17" xml:space="preserve">
+    <value>Alienware 17 (EyeX)</value>
+  </data>
+  <data name="STEELSERIES_SENTRY" xml:space="preserve">
+    <value>Steelseries Sentry (EyeX)</value>
+  </data>
+  <data name="TOBII_EYE_TRACKER_4C" xml:space="preserve">
+    <value>Tobii Eye Tracker 4C</value>
+  </data>
+  <data name="TOBII_PCEYE_MINI" xml:space="preserve">
+    <value>Tobii PCEye Mini</value>
+  </data>
+  <data name="TOBII_X2_30" xml:space="preserve">
+    <value>Tobii X2-30</value>
+  </data>
+  <data name="TOBII_X2_60" xml:space="preserve">
+    <value>Tobii X2-60</value>
+  </data>
+  <data name="FORCE_CAPS_LOCK" xml:space="preserve">
+    <value>Force caps lock (shift locked down):</value>
+  </data>
+  <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>השתמש בתבנית אלף-בית</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Kalman Filter:</value>
+  </data>
+  <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
+    <value>הפעל/כבה מצב ידני</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
+    <value>צ'כית (צ'כיה) / Čeština (Česko)</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>צ'כית
+(צ'כיה) /
+Čeština
+(Česko)</value>
+  </data>
+  <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+    <value>Input mode changed</value>
+  </data>
+  <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+    <value>מצב ידני (עכבר) מנוטרל!</value>
+  </data>
+  <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
+    <value>מצב ידני (עכבר) מאופשר!</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
+    <value>Enable Conversation Confirm keyboard?</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Conversation Confirm only mode:</value>
+  </data>
+  <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
+    <value>אפשר מקשי יציאה?</value>
+  </data>
+  <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>השתמש בתבנית מקלדת simplified</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>דפדפן
+אחורה</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>דפדפן
+קדימה</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>דפדפן
+בית</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>דפדפן
+חיפוש</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>גלישה בדפדפן</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>גלישה
+בדפדפן</value>
+  </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>השתמש במסנתז הקול MaryTTS?</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>קול MaryTTS:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>מיקום MaryTTS (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>חפש</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>שגיאה: לא נמצא קובץ 'marytts-server.bat' תקין. אנא נסה שוב.</value>
+  </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Presage</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>אלגוריתם ההצעות:</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>MaryTTS לא זמין</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>חיזוי מילים של Presage לא זמין</value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>משנה את אלגוריתם ההצעות ל: {0}
+ניתן לשנות זאת בחזרה
+במסך ההגדרות (ALT + M)</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>Setting the speech voice to the system voice: {0}.
+You can check the path for MaryTTS
+and change the voice back to it
+from the Management Console (ALT + M).</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>השהייה לפני דיבור (ms):</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>השתמש בתבנית מקלדת CommuniKate</value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>הפעל תבנית מקלדת CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>קובץ CommuniKate top page obf:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>קובץ לא תקין</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>מיקום קובץ CommuniKate top page .obz:</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>OptiKey was unable to handshake with Presage. There are a few possible causes:
+    1.The DBFILENAME location specified in the presage.xml file (located in C:\Users\USER_NAME\.presage) does not exist - please check and correct this (or uninstall/reinstall Presage).
+    2.Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+
+Please uninstall Presage and install the 32 bit version of 0.9.2.
+OptiKey will attempt to continue, but there is a good chance it will crash shortly.
+The prediction method will be changed to NGram to prevent a crash on next run.</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>יש בעיה עם Presage</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>תיקיה שמכילה מקלדות דינמיות:</value>
+  </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>תיקיה שמכילה תוספים:</value>
+  </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>אותיות 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>שיחה 2</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>כל השינויים שערכת יימחקו, האם להמשיך?</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>בטל הגדרות</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>The Presage dictionary cannot be edited from here.
+It's default location is "C:\Program Files (x86)\presage\share\presage\database_en.db".
+It can be edited with a program which can read SQLite format 3 files 
+such as "DB Browser for SQLite" (which is a free program).</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>אותיות</value>
+  </data>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>קרתה תקלה בתהליך ההגדלה. אנא בטל את ההגדלה בהגדרות וצור קשר עם OptiKey לתמיכה נוספת.</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>שגיאה:</value>
+  </data>
+  <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>קריאה (זימון):</value>
+  </data>
+  <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>אפשר מקש קריאה (זימון)?</value>
+  </data>
+  <data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
+    <value>אפשר מקש "העתק מלוח הכתיבה"?</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>קריאה (זימון)</value>
+  </data>
+  <data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>קריאה (זימון)</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>CommuniKate כרגע מנוטרל (משתמש בQWERTY)</value>
+  </data>
+  <data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>סגנון מקלדת להקלדה:</value>
+  </data>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>השתמש בתבנית מקלדת ברירת מחדל</value>
+  </data>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>אופס! במהלך ההפעלה נתקלנו בתקלות הבאות:</value>
+  </data>
+  <data name="SELECT_VOICE" xml:space="preserve">
+    <value>בחר קול</value>
+  </data>
+  <data name="MORE" xml:space="preserve">
+    <value>עוד...</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>שפה וקול</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>שפה
+וקול</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>שפה וקול</value>
+  </data>
+  <data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>עוד...</value>
+  </data>
+  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>הצג קולות כשמשנים שפת מקלדת:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL" xml:space="preserve">
+    <value>הסתכל כדי לגלול</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>השתמש בשיטת "הסתכל כדי לגלול" אחרת לגלילה:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>הפוך כיוון גלילה:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Lock down bounds key to preserve chosen point, window, or region:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>לפני גלילה, הזז את העכבר למרכז השטח המת:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>לפני גלילה בתוך החלון, הבא את החלון לקידמה:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>אחרי בחירת נקודה במסך, הבא את החלון שבאותה נקודה לקידמת המסך:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>הפסק גלילה כאשר בוחרים לאן להזיז, להקליק או לגרור את העכבר:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>חזרה אוטומטית לגלילה לאחר מכן:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>הפסק גלילה בעת החלפת מקלדות:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>הראה מסך מעל (מצריך התחלה מחדש):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of scroll bounds drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of deadzone guides drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
+    <value>Thickness of scroll bounds drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
+    <value>Thickness of deadzone guides drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>שטח מת אופקי (בפיקסלים):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>שטח מת אנכי (בפיקסלים):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>בחר בין מהירויות הגלילה האלו:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>מהירות בסיסית "איטית" (בקליקים לשנייה):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>מהירות בסיסית "בינונית" (בקליקים לשנייה):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>מהירות בסיסית "מהירה" (בקליקים לשנייה):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>האצה "איטית" (קליקים לשנייה לפיקסל מהשטח המת):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>האצה "בינונית" (קליקים לשנייה לפיקסל מהשטח המת):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>האצה "מהירה" (קליקים לשנייה לפיקסל מהשטח המת):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>מקשי "הסתכל כדי לגלול":</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>הפעל/כבה גלילה:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT BOUNDS</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT INCREMENT</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT MODE</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT SPEED</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>הסתכל
+כדי לגלול</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>גלול ב{0} יחידת גלגל:
+(120 יחידות גלגל = קליק אחד)|גלול ב{0} יחידות גלגל:
+(120 יחידות גלגל = קליק אחד)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>מסך
+בנקודה</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>מסך
+ממורכז</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>חלון</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>אזור
+חלון</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>אזור
+מותאם אישית</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>אנכי</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>אופקי</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>משולב</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>חופשי</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>איטי</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>בינוני</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>מהיר</value>
+  </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>צרפתית  (קנדה)/ Française (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>צרפתית
+(קנדה) /
+Française
+(Canada)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>יפנית (יפן) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>יפנית
+(יפן) /
+日本語
+(日本)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>עוצמת קול CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>Speak CommuniKate button text when selected:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>Rate of speech when speaking CommuniKate button text:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>Volume of speech when speaking CommuniKate button text:</value>
+  </data>
+  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>בטוח שברצונך להפעיל/להפסיק מצב ידני?</value>
+  </data>
+  <data name="MANUAL_MODE" xml:space="preserve">
+    <value>מצב ידני</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>מיקום קובץ המידע (db.) של Presage:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>מספר ההצעות שPresage יציג:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>תוספים זמינים</value>
+  </data>
+  <data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>תוספים</value>
+  </data>
+  <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>רענן תוספים</value>
+  </data>
+  <data name="RESTART" xml:space="preserve">
+    <value>איתחול</value>
+  </data>
+  <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>ממש בטוח/ה שברצונך להתחיל מחדש את OptiKey?</value>
+  </data>
+  <data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>בטוח/ה שברצונך להתחיל מחדש את OptiKey?</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>מקלדת דינמית</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>גלישה בדפדפן</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>אוקראינית (אוקראינה) / Українська (Україна)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>אוקראינית
+(אוקראינה) /
+Українська
+(Україна)</value>
+  </data>
+  <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Data stream processing amount:</value>
+  </data>
+  <data name="IRISBOND_DUO" xml:space="preserve">
+    <value>Irisbond Duo</value>
+  </data>
+  <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>Irisbond Duo tracker could not be started.</value>
+  </data>
+  <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>לא נמצא Irisbond Duo tracker. אנא בדוק את החיבור ונסה שוב.</value>
+  </data>
+  <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
+    <value>כיול הושלם (בהצלחה או שלא), אבל הכל עובד שוב!</value>
+  </data>
+  <data name="COPY_ALL_FROM_SCRATCHPAD" xml:space="preserve">
+    <value>העתק הכל</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_DEFINITION_INVALID" xml:space="preserve">
+    <value>הגדרת מקלדת דינמית לא תקינה </value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
+    <value>הגובה שהוגדר למקלדת הדינמית גדול מדי (מעל 95% מהמסך)</value>
+  </data>
+  <data name="RESTART_UPPERCASE" xml:space="preserve">
+    <value>איתחול</value>
+  </data>
+  <data name="URDU_PAKISTAN" xml:space="preserve">
+    <value>אורדו (פקיסטן) / اردو (پاکستان)</value>
+  </data>
+  <data name="URDU_PAKISTAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>אורדו
+(פקיסטן) /
+اردو 
+(پاکستان)</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
+    <value>We recommend changing the UiLanguage to Urdu to ensure typed Urdu text flows from right to left in the scratchpad.
+Would you like OptiKey to automatically set the UiLanguage to Urdu?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
+    <value>We recommend changing the font used in OptiKey to one which is fully compatible with Urdu.
+If a font is used which is not Urdu specific then text, and especially numbers, may display incorrectly.
+Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value>
+  </data>
+  <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
+    <value>מומלץ להשתמש בגופן מותאם לשפה</value>
+  </data>
+  <data name="UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE" xml:space="preserve">
+    <value>שפות הממשק והמקלדת הן שונות</value>
+  </data>
+  <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
+    <value>Type diacritic marks (accents etc) after letters:</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
+    <value>We recommend changing the UiLanguage to Persian to ensure typed Persian text flows from right to left in the scratchpad.
+Would you like OptiKey to automatically set the UiLanguage to Persian?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
+    <value>We recommend changing the font used in OptiKey to one which is fully compatible with Persian.
+If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
+Would you like OptiKey to automatically set the font to Nazli?</value>
+  </data>
+  <data name="PERSIAN_IRAN" xml:space="preserve">
+    <value>פרסית (איראן) / فارسی (ایرانی)</value>
+  </data>
+  <data name="PERSIAN_IRAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>פרסית
+(איראן) /
+فارسی
+(ایرانی)</value>
   </data>
 </root>
