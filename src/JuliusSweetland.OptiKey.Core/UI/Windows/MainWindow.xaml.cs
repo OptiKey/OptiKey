@@ -93,9 +93,14 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             //Set the window size to 0x0 as this prevents a flicker where OptiKey would be displayed in the default position and then repositioned
             Width = 0;
             Height = 0;
-        }
 
-       
+            this.Closing += (sender, args) =>
+            {
+                //https://stackoverflow.com/questions/26863458/handle-the-close-event-via-task-bar
+                Log.Info("Main window closing event detected. In some circumstances, such as closing OptiKey from the taskbar when a background thread is running, OptiKey will not close and instead become a background process. Forcing a full shutdown.");
+                Application.Current.Shutdown();
+            };
+        }
 
         public IWindowManipulationService WindowManipulationService { get; set; }
 
