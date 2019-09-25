@@ -118,7 +118,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             return xmlKey.Label ?? xmlKey.Symbol;
 		}
 
-        private Key CreateKeyWithBasicProps(XmlKey xmlKey)
+        private Key CreateKeyWithBasicProps(XmlKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
             // Add the core properties from XML to a new key
             Key newKey = new Key();
@@ -164,14 +164,23 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
             else if (hasString)
             {
-                newKey.SharedSizeGroup = !(newKey.Text != null && newKey.Text.Length > 1) 
-                                         && !(newKey.ShiftDownText != null && newKey.ShiftDownText.Length > 1) 
-                                         && !(newKey.ShiftUpText != null && newKey.ShiftUpText.Length > 1) ? "KeyWithSingleLetter" : "KeyWithText";
+                var text = newKey.Text != null ? newKey.Text.Compose()
+                    : newKey.ShiftDownText != null ? newKey.ShiftDownText.Compose()
+                    : newKey.ShiftUpText?.Compose();
+
+                //Strip out circle character used to show diacritic marks
+                text = text?.Replace("\x25CC", string.Empty);
+                
+                newKey.SharedSizeGroup = text != null && text.Length > 1 ? "KeyWithText" : "KeyWithSingleLetter";
             }
 
             //Set width span and height span
-            newKey.WidthSpan = xmlKey.Width;
-            newKey.HeightSpan = xmlKey.Height;
+            newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
+            newKey.HeightSpan = (double)xmlKey.Height / (double)minKeyHeight;
+
+            newKey.UsePersianCompatibilityFont = xmlKey.UsePersianCompatibilityFont;
+            newKey.UseUnicodeCompatibilityFont = xmlKey.UseUnicodeCompatibilityFont;
+            newKey.UseUrduCompatibilityFont = xmlKey.UseUrduCompatibilityFont;
 
             return newKey;
         }
@@ -245,32 +254,41 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private void SetupKeys()
         {
             XmlKeys keys = keyboard.Keys;
-            
+
+            var allKeys = keys.ActionKeys.Cast<XmlKey>()
+                .Concat(keys.TextKeys.Cast<XmlKey>())
+                .Concat(keys.ChangeKeyboardKeys.Cast<XmlKey>())
+                .Concat(keys.PluginKeys.Cast<XmlKey>())
+                .ToList();
+
+            var minKeyWidth = allKeys.Select(k => k.Width).Min();
+            var minKeyHeight = allKeys.Select(k => k.Height).Min();
+
             // Iterate over each possible type of key and add to keyboard
             foreach (XmlActionKey key in keys.ActionKeys)
             {
-                AddActionKey(key);
+                AddActionKey(key, minKeyWidth, minKeyHeight);
             }
 
             foreach (XmlTextKey key in keys.TextKeys)
             {
-                AddTextKey(key);
+                AddTextKey(key, minKeyWidth, minKeyHeight);
             }
 
             foreach (XmlChangeKeyboardKey key in keys.ChangeKeyboardKeys)
             {
-                AddChangeKeyboardKey(key);
+                AddChangeKeyboardKey(key, minKeyWidth, minKeyHeight);
             }
 
             foreach (XmlPluginKey key in keys.PluginKeys)
             {
-                AddPluginKey(key);
+                AddPluginKey(key, minKeyWidth, minKeyHeight);
             }
         }
 
-        void AddPluginKey(XmlPluginKey xmlKey)
+        void AddPluginKey(XmlPluginKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
-            Key newKey = CreateKeyWithBasicProps(xmlKey);
+            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
 
             if (xmlKey.Plugin != null && xmlKey.Method != null)
             {
@@ -292,9 +310,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
-        void AddChangeKeyboardKey(XmlChangeKeyboardKey xmlKey)
+        void AddChangeKeyboardKey(XmlChangeKeyboardKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
-            Key newKey = CreateKeyWithBasicProps(xmlKey);
+            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
 
             if (xmlKey.DestinationKeyboard != null)
             {
@@ -313,9 +331,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);            
         }
 
-        void AddTextKey(XmlTextKey xmlKey)
+        void AddTextKey(XmlTextKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
-            Key newKey = CreateKeyWithBasicProps(xmlKey);
+            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
 
             if (xmlKey.Text != null)
             {
@@ -329,9 +347,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);            
         }
 
-        void AddActionKey(XmlActionKey xmlKey)
+        void AddActionKey(XmlActionKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
-            Key newKey = CreateKeyWithBasicProps(xmlKey);
+            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
 
             if (xmlKey.Action.HasValue)
             {
@@ -354,7 +372,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 this.BorderThickness = keyboard.BorderThickness.Value;
             }
         }
-
         private void SetupGrid()
         {
             XmlGrid grid = keyboard.Grid;

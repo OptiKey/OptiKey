@@ -38,5 +38,13 @@ namespace JuliusSweetland.OptiKey.Models
         public int Height
         { get; set; }
 
+        public bool UsePersianCompatibilityFont
+        { get; set; }
+
+        public bool UseUnicodeCompatibilityFont
+        { get; set; }
+
+        public bool UseUrduCompatibilityFont
+        { get; set; }
     }
 }
