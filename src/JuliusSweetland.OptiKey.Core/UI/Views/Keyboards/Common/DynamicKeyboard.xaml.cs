@@ -152,31 +152,45 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
 
             // Set shared size group
-            bool hasSymbol = newKey.SymbolGeometry != null;
-            bool hasString = xmlKey.Label != null || xmlKey.ShiftUpLabel != null || xmlKey.ShiftDownLabel != null;
-            if (hasSymbol && hasString)
+            if (!string.IsNullOrEmpty(xmlKey.SharedSizeGroup))
             {
-                newKey.SharedSizeGroup = "KeyWithSymbolAndText";
+                newKey.SharedSizeGroup = xmlKey.SharedSizeGroup;
             }
-            else if (hasSymbol)
+            else
             {
-                newKey.SharedSizeGroup = "KeyWithSymbol";            
-            }
-            else if (hasString)
-            {
-                var text = newKey.Text != null ? newKey.Text.Compose()
-                    : newKey.ShiftDownText != null ? newKey.ShiftDownText.Compose()
-                    : newKey.ShiftUpText?.Compose();
+                bool hasSymbol = newKey.SymbolGeometry != null;
+                bool hasString = xmlKey.Label != null || xmlKey.ShiftUpLabel != null || xmlKey.ShiftDownLabel != null;
+                if (hasSymbol && hasString)
+                {
+                    newKey.SharedSizeGroup = "KeyWithSymbolAndText";
+                }
+                else if (hasSymbol)
+                {
+                    newKey.SharedSizeGroup = "KeyWithSymbol";
+                }
+                else if (hasString)
+                {
+                    var text = newKey.Text != null ? newKey.Text.Compose()
+                        : newKey.ShiftDownText != null ? newKey.ShiftDownText.Compose()
+                        : newKey.ShiftUpText?.Compose();
 
-                //Strip out circle character used to show diacritic marks
-                text = text?.Replace("\x25CC", string.Empty);
-                
-                newKey.SharedSizeGroup = text != null && text.Length > 1 ? "KeyWithText" : "KeyWithSingleLetter";
+                    //Strip out circle character used to show diacritic marks
+                    text = text?.Replace("\x25CC", string.Empty);
+
+                    newKey.SharedSizeGroup = text != null && text.Length > 1 ? "KeyWithText" : "KeyWithSingleLetter";
+                }
             }
 
-            //Set width span and height span
-            newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
-            newKey.HeightSpan = (double)xmlKey.Height / (double)minKeyHeight;
+            //Auto set width span and height span
+            if (xmlKey.AutoScaleToOneKeyWidth)
+            {
+                newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
+            }
+
+            if (xmlKey.AutoScaleToOneKeyHeight)
+            {
+                newKey.HeightSpan = (double)xmlKey.Height / (double)minKeyHeight;
+            }
 
             newKey.UsePersianCompatibilityFont = xmlKey.UsePersianCompatibilityFont;
             newKey.UseUnicodeCompatibilityFont = xmlKey.UseUnicodeCompatibilityFont;
