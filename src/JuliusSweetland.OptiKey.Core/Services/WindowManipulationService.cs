@@ -55,6 +55,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Action<double> saveCollapsedDockThicknessAsPercentageOfFullDockThickness;
         private readonly Action<double> saveOpacity;
 
+        private double? overrideDockThicknessAsPercentageOfScreen;
         private int appBarCallBackId = -1;
 
         private delegate void ApplySizeAndPositionDelegate(Rect rect);
@@ -434,19 +435,25 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void ResizeDockToSpecificHeight(double heightAsPercentScreen, bool persistNewSize=false)
+        public void ResizeDockToSpecificHeight(double overrideDockThicknessAsPercentageOfScreen, bool persistNewSize = false)
         {
             Log.InfoFormat("ResizeDockToSpecificHeight called with height: {0} and persist?: {1}, current dock size = {2}",
-                heightAsPercentScreen, persistNewSize, getDockSize());
+                overrideDockThicknessAsPercentageOfScreen, persistNewSize, getDockSize());
+
+            Log.InfoFormat("Storing overrideDockThicknessAsPercentageOfScreen value as {0}", this.overrideDockThicknessAsPercentageOfScreen);
+            this.overrideDockThicknessAsPercentageOfScreen = overrideDockThicknessAsPercentageOfScreen;
 
             if (getWindowState() != WindowStates.Docked) return;
-            var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize(), heightAsPercentScreen);
+            var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx, persist: persistNewSize); 
         }
 
         public void ResizeDockToCollapsed()
         {
             Log.Info("ResizeDockToCollapsed called");
+
+            Log.Info("Clearing overrideDockThicknessAsPercentageOfScreen value");
+            this.overrideDockThicknessAsPercentageOfScreen = null;
 
             if (getWindowState() != WindowStates.Docked) return;
             saveDockSize(DockSizes.Collapsed);
@@ -457,6 +464,9 @@ namespace JuliusSweetland.OptiKey.Services
         public void ResizeDockToFull()
         {
             Log.Info("ResizeDockToFull called");
+
+            Log.Info("Clearing overrideDockThicknessAsPercentageOfScreen value");
+            this.overrideDockThicknessAsPercentageOfScreen = null;
 
             if (getWindowState() != WindowStates.Docked) return;
             saveDockSize(DockSizes.Full); 
@@ -719,7 +729,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private Rect CalculateDockSizeAndPositionInPx(DockEdges position, DockSizes size, double? overrideThicknessAsPercentage=null)
+        private Rect CalculateDockSizeAndPositionInPx(DockEdges position, DockSizes size)
         {
             Log.InfoFormat("CalculateDockSizeAndPositionInPx called with position:{0}, size:{1}", position, size);
 
@@ -729,9 +739,9 @@ namespace JuliusSweetland.OptiKey.Services
 
             double x, y, width, height;
             double thicknessAsPercentage;
-            if (overrideThicknessAsPercentage.HasValue)
+            if (overrideDockThicknessAsPercentageOfScreen.HasValue)
             {
-                thicknessAsPercentage = overrideThicknessAsPercentage.Value / 100;
+                thicknessAsPercentage = overrideDockThicknessAsPercentageOfScreen.Value / 100;
             }
             else
             {
@@ -740,6 +750,7 @@ namespace JuliusSweetland.OptiKey.Services
                     : (getFullDockThicknessAsPercentageOfScreen() *
                        getCollapsedDockThicknessAsPercentageOfFullDockThickness()) / 10000; //Percentage of a percentage
             }
+
             switch (position)
             {
                 case DockEdges.Top:
