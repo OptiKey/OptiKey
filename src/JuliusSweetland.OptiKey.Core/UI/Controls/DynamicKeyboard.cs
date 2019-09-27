@@ -15,6 +15,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 
         private string link;
 
+        private DockSizes originalDockSize;
         private double? overrideHeight;
 
         private Dictionary<Models.KeyValue, Enums.KeyDownStates> resetKeyStates;
@@ -51,6 +52,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
         public override void OnExit()
         {
             ResetOveriddenKeyStates();
+            ResetKeyboardLayout();
         }
 
         public void SetKeyOverrides(Dictionary<Models.KeyValue, Enums.KeyDownStates> overrideKeyStates)
@@ -84,6 +86,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 
         private void SetupKeyboardLayout()
         {
+            originalDockSize = Settings.Default.MainWindowDockSize;
+            Log.InfoFormat("Setting up keyboard layout. Storing original dock size so that it can be restored on exit. Original dock size={0}", originalDockSize);
+
+            Log.Info("Resizing dock to full");
+            windowManipulationService.ResizeDockToFull();
+
             if (overrideHeight.HasValue)
             {
                 if (overrideHeight.Value > 95)
@@ -113,22 +121,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             }
         }
 
-        private void RaiseError(string title, string message, NotificationTypes notificationType)
+        private void ResetKeyboardLayout()
         {
-            Log.Error("Error raised by dynamic keyboard. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)");
-
-            inputService.RequestSuspend();
-
-            if (raiseToastNotification(title, message, notificationType, () => inputService.RequestResume()))
+            Log.InfoFormat("Resetting dock size as leaving dynamic keyboard: original size = {0}", originalDockSize);
+            if(originalDockSize == DockSizes.Full)
             {
-                if (notificationType == NotificationTypes.Error)
-                {
-                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                }
-                else
-                {
-                    audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                }
+                windowManipulationService.ResizeDockToFull();
+            }
+            else
+            {
+                windowManipulationService.ResizeDockToCollapsed();
             }
         }
     }

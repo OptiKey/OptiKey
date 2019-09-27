@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.Services
         void Move(MoveToDirections direction, double? amountInPx);
         void ResizeDockToCollapsed();
         void ResizeDockToFull();
-        void ResizeDockToSpecificHeight(double heightAsPercentScreen, bool persistNewSize);
+        void ResizeDockToSpecificHeight(double overrideDockThicknessAsPercentageOfScreen, bool persistNewSize = false);
         void Restore();
         void RestoreSavedState();
         void SetOpacity(double opacity);
