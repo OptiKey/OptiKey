@@ -37,7 +37,25 @@ namespace JuliusSweetland.OptiKey.Models
         public XmlKeyStates InitialKeyStates
         { get; set; }
 
-        public double? Height
+        public string PersistNewState
+        { get; set; }
+
+        public string WindowState
+        { get; set; }
+
+        public string Position
+        { get; set; }
+
+        public string Width
+        { get; set; }
+
+        public string Height
+        { get; set; }
+
+        public string HorizontalOffset
+        { get; set; }
+
+        public string VerticalOffset
         { get; set; }
 
         public string Name
@@ -93,8 +111,8 @@ namespace JuliusSweetland.OptiKey.Models
 			get { return this.IsShiftAware ? "True" : "False"; }
 			set { this.IsShiftAware = XmlUtils.ConvertToBoolean(value); }
 		}
-
-		public static XmlKeyboard ReadFromFile(string inputFilename)
+        
+        public static XmlKeyboard ReadFromFile(string inputFilename)
         {
             XmlKeyboard keyboard;
 

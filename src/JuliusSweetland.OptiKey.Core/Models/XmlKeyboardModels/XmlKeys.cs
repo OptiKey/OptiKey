@@ -22,12 +22,16 @@ namespace JuliusSweetland.OptiKey.Models
         public List<XmlPluginKey> PluginKeys
         { get; set; }
 
+        [XmlElement(ElementName = "DynamicKey")]
+        public List<XmlDynamicKey> DynamicKeys
+        { get; set; }
+
         [XmlIgnore]
         public int Count
         {
             get
             {
-                return ActionKeys.Count + TextKeys.Count + ChangeKeyboardKeys.Count;
+                return ActionKeys.Count + TextKeys.Count + ChangeKeyboardKeys.Count + PluginKeys.Count + DynamicKeys.Count;
             }
         }
     }

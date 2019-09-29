@@ -229,6 +229,7 @@ namespace JuliusSweetland.OptiKey.Enums
         SlovenianSlovenia,
         SpanishSpain,
         Speak,
+        StepList,
         Suggestion1,
         Suggestion2,
         Suggestion3,

@@ -286,6 +286,7 @@
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyValueConverter.cs" />
     <Compile Include="Models\PluginMetadata.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlDynamicKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlPluginKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlChangeKeyboardKey.cs" />
