@@ -13,11 +13,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private string link;
-
         private DockSizes originalDockSize;
-        private double? overrideHeight;
-
+        //private double? overrideHeight;
+        private string persistNewState;
+        private string windowState;
+        private string position;
+        private string width;
+        private string height;
+        private string horizontalOffset;
+        private string verticalOffset;
         private Dictionary<Models.KeyValue, Enums.KeyDownStates> resetKeyStates;
         private Dictionary<Models.KeyValue, Enums.KeyDownStates> overrideKeyStates;
 
@@ -36,7 +40,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             string link) : base(backAction)
         {
             this.windowManipulationService = windowManipulationService;
-            this.link = link;
+            this.Link = link;
             this.keyStateService = keyStateService;
             this.inputService = inputService;
             this.audioService = audioService;
@@ -52,7 +56,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
         public override void OnExit()
         {
             ResetOveriddenKeyStates();
-            ResetKeyboardLayout();
         }
 
         public void SetKeyOverrides(Dictionary<Models.KeyValue, Enums.KeyDownStates> overrideKeyStates)
@@ -79,36 +82,61 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             }
         }
 
-        public void OverrideKeyboardLayout(double? height)
+        public void OverrideKeyboardLayout(string persistNewState, string windowState, string position, string width, string height, string horizontalOffset, string verticalOffset)
         {
-            this.overrideHeight = height;
+            this.persistNewState = persistNewState;
+            this.windowState = windowState;
+            this.position = position;
+            this.width = width;
+            this.height = height;
+            this.horizontalOffset = horizontalOffset;
+            this.verticalOffset = verticalOffset;
         }
 
         private void SetupKeyboardLayout()
         {
             originalDockSize = Settings.Default.MainWindowDockSize;
             Log.InfoFormat("Setting up keyboard layout. Storing original dock size so that it can be restored on exit. Original dock size={0}", originalDockSize);
-
-            Log.Info("Resizing dock to full");
-            windowManipulationService.ResizeDockToFull();
-
-            if (overrideHeight.HasValue)
+            
+            if (!string.IsNullOrWhiteSpace(windowState) ||
+                !string.IsNullOrWhiteSpace(position) ||
+                !string.IsNullOrWhiteSpace(width) ||
+                !string.IsNullOrWhiteSpace(height) ||
+                !string.IsNullOrWhiteSpace(horizontalOffset) ||
+                !string.IsNullOrWhiteSpace(verticalOffset))
             {
-                if (overrideHeight.Value > 95)
+                string errorMessage = null;
+                double validNumber;
+                if (!string.IsNullOrWhiteSpace(windowState) && !Enum.TryParse<WindowStates>(windowState, out _))
+                    errorMessage = "WindowState not valid";
+                else if (!string.IsNullOrWhiteSpace(position) && !Enum.TryParse<MoveToDirections>(position, out _))
+                    errorMessage = "Position not valid";
+                else if (!string.IsNullOrWhiteSpace(width) &&
+                    !(double.TryParse(width.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                    errorMessage = "Width must be between -9999 and 9999";
+                else if (!string.IsNullOrWhiteSpace(height) &&
+                    !(double.TryParse(height.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                    errorMessage = "Height must be between -9999 and 9999";
+                else if (!string.IsNullOrWhiteSpace(horizontalOffset) &&
+                    !(double.TryParse(horizontalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                    errorMessage = "Offset must be between -9999 and 9999";
+                else if (!string.IsNullOrWhiteSpace(verticalOffset) &&
+                    !(double.TryParse(verticalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                    errorMessage = "Offset must be between -9999 and 9999";
+
+                if (errorMessage != null)
                 {
-                    raiseToastNotification(Resources.DYNAMIC_KEYBOARD_DEFINITION_INVALID, Resources.DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD, 
+                    raiseToastNotification(Resources.DYNAMIC_KEYBOARD_DEFINITION_INVALID, errorMessage,
                         NotificationTypes.Error, () => { });
                     return;
                 }
-                Log.InfoFormat("Overriding dock height for dynamic keyboard: height = {0}", overrideHeight.Value);
-                windowManipulationService.ResizeDockToSpecificHeight(overrideHeight.Value, persistNewSize: false);
             }
+
+            Log.InfoFormat("Overriding size and position for dynamic keyboard");
+            windowManipulationService.MoveAndSize(persistNewState, windowState, position, width, height, horizontalOffset, verticalOffset);
         }
 
-        public string Link
-        {
-            get { return link; }
-        }
+        public string Link { get; }
 
         public void ResetOveriddenKeyStates()
         {
@@ -118,19 +146,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
                 {
                     keyStateService.KeyDownStates[entry.Key].Value = entry.Value;
                 }
-            }
-        }
-
-        private void ResetKeyboardLayout()
-        {
-            Log.InfoFormat("Resetting dock size as leaving dynamic keyboard: original size = {0}", originalDockSize);
-            if(originalDockSize == DockSizes.Full)
-            {
-                windowManipulationService.ResizeDockToFull();
-            }
-            else
-            {
-                windowManipulationService.ResizeDockToCollapsed();
             }
         }
     }

@@ -218,7 +218,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 // Extract any key states or layout overrides if present
                 var initialKeyStates = new Dictionary<KeyValue, KeyDownStates>();
-                double? overrideHeight = null;
+                string persistNewState = null;
+                string overrideWindowState = null;
+                string overridePosition = null;
+                string overrideWidth = null;
+                string overrideHeight = null;
+                string horizontalOffset = null;
+                string verticalOffset = null;
                 try
                 {
                     XmlKeyboard keyboard = XmlKeyboard.ReadFromFile(keyValue.KeyboardFilename);
@@ -238,7 +244,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                     }
 
+                    persistNewState = keyboard.PersistNewState;
+                    overrideWindowState = keyboard.WindowState;
+                    overridePosition = keyboard.Position;
+                    overrideWidth = keyboard.Width;
                     overrideHeight = keyboard.Height;
+                    horizontalOffset = keyboard.HorizontalOffset;
+                    verticalOffset = keyboard.VerticalOffset;
                 }
                 catch (Exception)
                 {
@@ -248,7 +260,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, mainWindowManipulationService, keyStateService,
                     inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename);
                 newDynKeyboard.SetKeyOverrides(initialKeyStates);
-                newDynKeyboard.OverrideKeyboardLayout(overrideHeight);
+                //newDynKeyboard.OverrideKeyboardLayout(overrideHeight);
+                newDynKeyboard.OverrideKeyboardLayout(persistNewState, overrideWindowState, overridePosition, overrideWidth, overrideHeight, horizontalOffset, verticalOffset);
                 Keyboard = newDynKeyboard;
 
                 // Clear the scratchpad when launching a dynamic keyboard.
@@ -629,6 +642,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.SelectVoice:
                     SelectVoice(singleKeyValue.String);
+                    break;
+
+                case FunctionKeys.StepList:
+                    StepList(singleKeyValue.String);
                     break;
 
                 case FunctionKeys.Plugin:
@@ -2372,6 +2389,49 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             NavigateToMenu();
+        }
+
+        private void StepList(string command)
+        {
+            if (!string.IsNullOrEmpty(command))
+            {
+                KeyValue singleKeyValue;
+                string[] stringSeparators = new string[] { "<" };
+                foreach (var vStep in command.Split(stringSeparators, StringSplitOptions.None).ToList())
+                {
+                    Log.DebugFormat("Performing StepList step: {0}.", vStep);
+                    if (vStep.StartsWith("Action>") &&
+                        (Enum.TryParse<FunctionKeys>(vStep.Substring(7), out FunctionKeys result)))
+                    {
+                        singleKeyValue = new KeyValue(result);
+                        HandleFunctionKeySelectionResult(singleKeyValue);
+                    }
+                    else if (vStep.StartsWith("Keyboard>") || vStep.StartsWith("KeyboardAndReturn>"))
+                    {
+                        Enums.Keyboards keyboardEnum;
+                        bool vReturn = (vStep.StartsWith("KeyboardAndReturn>"));
+                        int vIndex = (vStep.StartsWith("KeyboardAndReturn>")) ? 18 : 9;
+                        if (System.Enum.TryParse(vStep.Substring(vIndex), out keyboardEnum))
+                        {
+                            ChangeKeyboardKeyValue keyValue = new ChangeKeyboardKeyValue(keyboardEnum, vReturn);
+                            ProcessChangeKeyboardKeyValue(keyValue);
+                        }
+                        else
+                        {
+                            ChangeKeyboardKeyValue keyValue = new ChangeKeyboardKeyValue(vStep.Substring(vIndex), vReturn);
+                            ProcessChangeKeyboardKeyValue(keyValue);
+                        }
+                    }
+                    else if (vStep.StartsWith("Text>"))
+                    {
+                        keyboardOutputService.ProcessSingleKeyText(vStep.Substring(5));
+                    }
+                    else if (vStep.StartsWith("Wait>"))
+                    {
+                        System.Threading.Thread.Sleep(int.Parse(vStep.Substring(5)));
+                    }
+                }
+            }
         }
 
         private void RunPlugin(string command)

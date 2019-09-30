@@ -58,6 +58,31 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         private bool ValidateKeyboard()
         {
+            string errorMessage = null;
+            double validNumber;
+            if (!string.IsNullOrWhiteSpace(keyboard.WindowState) && !Enum.TryParse<WindowStates>(keyboard.WindowState, out _))
+                errorMessage = "WindowState not valid";
+            else if (!string.IsNullOrWhiteSpace(keyboard.Position) && !Enum.TryParse<MoveToDirections>(keyboard.Position, out _))
+                errorMessage = "Position not valid";
+            else if (!string.IsNullOrWhiteSpace(keyboard.Width) && 
+                !(double.TryParse(keyboard.Width.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                errorMessage = "Width must be between -9999 and 9999";
+            else if (!string.IsNullOrWhiteSpace(keyboard.Height) &&
+                !(double.TryParse(keyboard.Height.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                errorMessage = "Height must be between -9999 and 9999";
+            else if (!string.IsNullOrWhiteSpace(keyboard.HorizontalOffset) &&
+                !(double.TryParse(keyboard.HorizontalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                errorMessage = "Offset must be between -9999 and 9999";
+            else if (!string.IsNullOrWhiteSpace(keyboard.VerticalOffset) &&
+                !(double.TryParse(keyboard.VerticalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                errorMessage = "Offset must be between -9999 and 9999";
+
+            if (errorMessage != null)
+            {
+                SetupErrorLayout("Invalid keyboard file", errorMessage);
+                return false;
+            }
+
             if (keyboard.Grid == null)
             {
                 SetupErrorLayout("Invalid keyboard file", "No grid definition found");
@@ -85,8 +110,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 		{
 			var allKeys = keyboard.Keys.ActionKeys.Cast<XmlKey>()
 				.Concat(keyboard.Keys.ChangeKeyboardKeys)
-				.Concat(keyboard.Keys.PluginKeys)
-				.Concat(keyboard.Keys.TextKeys)
+				.Concat(keyboard.Keys.DynamicKeys)
+                .Concat(keyboard.Keys.PluginKeys)
+                .Concat(keyboard.Keys.TextKeys)
 				.ToList();
 
 			var duplicates = allKeys
@@ -129,9 +155,29 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
             else if (xmlKey.Label != null)
             {
+                string vLabel = xmlKey.Label.ToString();
+                string vText;
+                string vLookup;
+                while (vLabel.Contains("{Resource:"))
+                {
+                    vText = vLabel.Substring(vLabel.IndexOf("{Resource:"), vLabel.IndexOf("}", vLabel.IndexOf("{Resource:")) - vLabel.IndexOf("{Resource:") + 1);
+                    vLookup = Properties.Resources.ResourceManager.GetString(vText.Substring(10, vText.Length - 11).Trim());
+                    vLabel = vLabel.Replace(vText, vLookup);
+                }
+                while (vLabel.Contains("{Setting:"))
+                {
+                    vText = vLabel.Substring(vLabel.IndexOf("{Setting:"), vLabel.IndexOf("}", vLabel.IndexOf("{Setting:")) - vLabel.IndexOf("{Setting:") + 1);
+                    vLookup = Properties.Settings.Default[vText.Substring(9, vText.Length - 10).Trim()].ToString();
+                    vLabel = vLabel.Replace(vText, vLookup);
+                }
+
+                newKey.Text = vLabel.ToStringWithValidNewlines();
+            }
+            else if (xmlKey.Label != null)
+            {
                 newKey.Text = xmlKey.Label.ToStringWithValidNewlines();
             }
-            
+
             if (xmlKey.Symbol != null)
             {
                 Geometry geom = (Geometry)this.Resources[xmlKey.Symbol];
@@ -270,9 +316,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             XmlKeys keys = keyboard.Keys;
 
             var allKeys = keys.ActionKeys.Cast<XmlKey>()
-                .Concat(keys.TextKeys.Cast<XmlKey>())
                 .Concat(keys.ChangeKeyboardKeys.Cast<XmlKey>())
+                .Concat(keys.DynamicKeys.Cast<XmlKey>())
                 .Concat(keys.PluginKeys.Cast<XmlKey>())
+                .Concat(keys.TextKeys.Cast<XmlKey>())
                 .ToList();
 
             var minKeyWidth = allKeys.Select(k => k.Width).Min();
@@ -284,20 +331,128 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 AddActionKey(key, minKeyWidth, minKeyHeight);
             }
 
-            foreach (XmlTextKey key in keys.TextKeys)
-            {
-                AddTextKey(key, minKeyWidth, minKeyHeight);
-            }
-
             foreach (XmlChangeKeyboardKey key in keys.ChangeKeyboardKeys)
             {
                 AddChangeKeyboardKey(key, minKeyWidth, minKeyHeight);
+            }
+
+            foreach (XmlDynamicKey key in keys.DynamicKeys)
+            {
+                AddDynamicKey(key, minKeyWidth, minKeyHeight);
             }
 
             foreach (XmlPluginKey key in keys.PluginKeys)
             {
                 AddPluginKey(key, minKeyWidth, minKeyHeight);
             }
+
+            foreach (XmlTextKey key in keys.TextKeys)
+            {
+                AddTextKey(key, minKeyWidth, minKeyHeight);
+            }
+        }
+
+        void AddActionKey(XmlActionKey xmlKey, int minKeyWidth, int minKeyHeight)
+        {
+            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
+
+            if (xmlKey.Action.HasValue)
+            {
+                newKey.Value = new KeyValue(xmlKey.Action.Value);
+            }
+            else
+            {
+                Log.ErrorFormat("No FunctionKey found for key with label {0}", xmlKey.Label);
+            }
+
+            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
+        }
+
+        void AddChangeKeyboardKey(XmlChangeKeyboardKey xmlKey, int minKeyWidth, int minKeyHeight)
+        {
+            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
+
+            if (xmlKey.DestinationKeyboard != null)
+            {
+                var rootDir = Path.GetDirectoryName(inputFilename);
+                bool replaceCurrKeyboard = !xmlKey.ReturnToThisKeyboard;
+                Enums.Keyboards keyboardEnum;
+                newKey.Value = System.Enum.TryParse(xmlKey.DestinationKeyboard, out keyboardEnum)
+                    ? new ChangeKeyboardKeyValue(keyboardEnum, replaceCurrKeyboard)
+                    : new ChangeKeyboardKeyValue(Path.Combine(rootDir, xmlKey.DestinationKeyboard), replaceCurrKeyboard);
+            }
+            else
+            {
+                Log.ErrorFormat("No destination keyboard found for changekeyboard key with label {0}", xmlKey.Label);
+            }
+
+            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
+        }
+
+        void AddDynamicKey(XmlDynamicKey xmlKey, int minKeyWidth, int minKeyHeight)
+        {
+            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
+            if (xmlKey.Step != null)
+            {
+                var vStepList = "<StepList>";
+                var rootDir = Path.GetDirectoryName(inputFilename);
+                string vDestinationKeyboard;
+                Enums.Keyboards keyboardEnum;
+
+                foreach (var vStep in xmlKey.Step)
+                {
+                    if (!String.IsNullOrWhiteSpace(vStep.Action))
+                    {
+                        vStepList += "<Action>" + vStep.Action;
+                    }
+                    if (!String.IsNullOrWhiteSpace(vStep.DestinationKeyboard))
+                    {
+                        vDestinationKeyboard = System.Enum.TryParse(vStep.DestinationKeyboard, out keyboardEnum)
+                            ? keyboardEnum.ToString()
+                            : Path.Combine(rootDir, vStep.DestinationKeyboard);
+
+                        if (!String.IsNullOrWhiteSpace(vStep.ReturnToThisKeyboard) 
+                            && vStep.ReturnToThisKeyboard == "True")
+                            vStepList += "<KeyboardAndReturn>" + vDestinationKeyboard;
+                        else
+                            vStepList += "<Keyboard>" + vDestinationKeyboard;
+                    }
+                    if (!String.IsNullOrWhiteSpace(vStep.Text))
+                    {
+                        vStepList += "<Text>" + vStep.Text;
+                    }
+                    if (!String.IsNullOrWhiteSpace(vStep.Wait))
+                    {
+                        vStepList += "<Wait>" + vStep.Wait;
+                    }
+                    //Plugin commands are written here, but will be 
+                    //ignored until a new plugin command handler is written
+                    if (!String.IsNullOrWhiteSpace(vStep.Plugin) && !String.IsNullOrWhiteSpace(vStep.Method))
+                    {
+                        vStepList += "<Argment>";
+                        foreach (var vArg in vStep.Argument)
+                        {
+                            if (!String.IsNullOrWhiteSpace(vArg.Name))
+                            {
+                                vStepList += "<Name>" + vArg.Name;
+                            }
+                            if (!String.IsNullOrWhiteSpace(vArg.Value))
+                            {
+                                vStepList += "<Value>" + vArg.Value;
+                            }
+                        }
+                        vStepList += "</Argment>";
+                    }
+                }
+
+                newKey.Value = new KeyValue(FunctionKeys.StepList, vStepList);
+            }
+            else
+            {
+                Log.ErrorFormat("No value found in dynamic key with label {0}", xmlKey.Label);
+            }
+
+            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
         void AddPluginKey(XmlPluginKey xmlKey, int minKeyWidth, int minKeyHeight)
@@ -324,27 +479,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
-        void AddChangeKeyboardKey(XmlChangeKeyboardKey xmlKey, int minKeyWidth, int minKeyHeight)
-        {
-            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
-
-            if (xmlKey.DestinationKeyboard != null)
-            {
-                var rootDir = Path.GetDirectoryName(inputFilename);
-                bool replaceCurrKeyboard = !xmlKey.ReturnToThisKeyboard;
-                Enums.Keyboards keyboardEnum;
-                newKey.Value = System.Enum.TryParse(xmlKey.DestinationKeyboard, out keyboardEnum) 
-                    ? new ChangeKeyboardKeyValue(keyboardEnum, replaceCurrKeyboard) 
-                    : new ChangeKeyboardKeyValue(Path.Combine(rootDir, xmlKey.DestinationKeyboard), replaceCurrKeyboard);
-            }
-            else
-            {
-                Log.ErrorFormat("No destination keyboard found for changekeyboard key with label {0}", xmlKey.Label);
-            }
-
-            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);            
-        }
-
         void AddTextKey(XmlTextKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
             Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
@@ -359,22 +493,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
 
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);            
-        }
-
-        void AddActionKey(XmlActionKey xmlKey, int minKeyWidth, int minKeyHeight)
-        {
-            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
-
-            if (xmlKey.Action.HasValue)
-            {
-                newKey.Value = new KeyValue(xmlKey.Action.Value);
-            }
-            else
-            { 
-                Log.ErrorFormat("No FunctionKey found for key with label {0}", xmlKey.Label);
-            }
-
-            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
         private void SetupBorders()
