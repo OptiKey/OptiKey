@@ -947,6 +947,12 @@
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Fonts\B612-licence-epl-v10.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

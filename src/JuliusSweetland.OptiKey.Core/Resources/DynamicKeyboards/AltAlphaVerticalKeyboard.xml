@@ -1,5 +1,8 @@
+<!--
+Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
 <Keyboard>
-    <Name>SideCustomEN</Name>
+    <Name>Alt Alpha Vertical EN</Name>
     <ShowOutputPanel>True</ShowOutputPanel>
     <SymbolMargin>15</SymbolMargin>
     <BorderThickness>1,1,1,1</BorderThickness>
