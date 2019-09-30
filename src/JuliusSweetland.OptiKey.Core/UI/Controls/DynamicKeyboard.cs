@@ -107,9 +107,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             {
                 string errorMessage = null;
                 double validNumber;
-                if (!string.IsNullOrWhiteSpace(windowState) && !Enum.TryParse<WindowStates>(windowState, out _))
+                WindowStates validWindowState;
+                MoveToDirections validPosition;
+                if (!string.IsNullOrWhiteSpace(windowState) && !Enum.TryParse<WindowStates>(windowState, out validWindowState))
                     errorMessage = "WindowState not valid";
-                else if (!string.IsNullOrWhiteSpace(position) && !Enum.TryParse<MoveToDirections>(position, out _))
+                else if (!string.IsNullOrWhiteSpace(position) && !Enum.TryParse<MoveToDirections>(position, out validPosition))
                     errorMessage = "Position not valid";
                 else if (!string.IsNullOrWhiteSpace(width) &&
                     !(double.TryParse(width.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
