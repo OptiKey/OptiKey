@@ -13,8 +13,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private string link;
-
         private DockSizes originalDockSize;
         //private double? overrideHeight;
         private string persistNewState;
@@ -42,7 +40,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             string link) : base(backAction)
         {
             this.windowManipulationService = windowManipulationService;
-            this.link = link;
+            this.Link = link;
             this.keyStateService = keyStateService;
             this.inputService = inputService;
             this.audioService = audioService;
@@ -58,7 +56,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
         public override void OnExit()
         {
             ResetOveriddenKeyStates();
-            ResetKeyboardLayout();
         }
 
         public void SetKeyOverrides(Dictionary<Models.KeyValue, Enums.KeyDownStates> overrideKeyStates)
@@ -100,11 +97,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
         {
             originalDockSize = Settings.Default.MainWindowDockSize;
             Log.InfoFormat("Setting up keyboard layout. Storing original dock size so that it can be restored on exit. Original dock size={0}", originalDockSize);
-
-            //removed because this is launching after the new keyboard has already been setup
-            //Log.Info("Resizing dock to full");
-            //windowManipulationService.ResizeDockToFull();
-
+            
             if (!string.IsNullOrWhiteSpace(windowState) ||
                 !string.IsNullOrWhiteSpace(position) ||
                 !string.IsNullOrWhiteSpace(width) ||
@@ -141,13 +134,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 
             Log.InfoFormat("Overriding size and position for dynamic keyboard");
             windowManipulationService.MoveAndSize(persistNewState, windowState, position, width, height, horizontalOffset, verticalOffset);
-            
         }
 
-        public string Link
-        {
-            get { return link; }
-        }
+        public string Link { get; }
 
         public void ResetOveriddenKeyStates()
         {
@@ -158,20 +147,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
                     keyStateService.KeyDownStates[entry.Key].Value = entry.Value;
                 }
             }
-        }
-
-        private void ResetKeyboardLayout()
-        {
-            Log.InfoFormat("Resetting dock size as leaving dynamic keyboard: original size = {0}", originalDockSize);
-            //removed because this is launching after the new keyboard has already been setup
-            //if(originalDockSize == DockSizes.Full)
-            //{
-            //    windowManipulationService.ResizeDockToFull();
-            //}
-            //else
-            //{
-            //    windowManipulationService.ResizeDockToCollapsed();
-            //}
         }
     }
 }
