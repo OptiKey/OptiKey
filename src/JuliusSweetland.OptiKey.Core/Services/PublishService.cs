@@ -301,7 +301,10 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 Log.DebugFormat("Simulating scrolling the horizontal mouse wheel by {0} units", amount);
-                inputSimulator.Mouse.HorizontalScrollAbsolute(amount);
+                var tmpMouseWheelClickSize = inputSimulator.Mouse.MouseWheelClickSize;
+                inputSimulator.Mouse.MouseWheelClickSize = amount;
+                inputSimulator.Mouse.HorizontalScroll(1); //Scroll by one click, which is the absolute amount temporarily set in MouseWheelClickSize
+                inputSimulator.Mouse.MouseWheelClickSize = tmpMouseWheelClickSize;
             }
             catch (Exception exception)
             {
@@ -314,7 +317,10 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 Log.DebugFormat("Simulating scrolling the vertical mouse wheel by {0} units", amount);
-                inputSimulator.Mouse.VerticalScrollAbsolute(amount);
+                var tmpMouseWheelClickSize = inputSimulator.Mouse.MouseWheelClickSize;
+                inputSimulator.Mouse.MouseWheelClickSize = amount;
+                inputSimulator.Mouse.VerticalScroll(1); //Scroll by one click, which is the absolute amount temporarily set in MouseWheelClickSize
+                inputSimulator.Mouse.MouseWheelClickSize = tmpMouseWheelClickSize;
             }
             catch (Exception exception)
             {
