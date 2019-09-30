@@ -239,9 +239,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="."/>
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
-                      Text="'"
+                      Text="-"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="'"/>
+                      Value="-"/>
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
