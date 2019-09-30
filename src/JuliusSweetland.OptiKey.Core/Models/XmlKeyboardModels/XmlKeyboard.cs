@@ -37,8 +37,8 @@ namespace JuliusSweetland.OptiKey.Models
         public XmlKeyStates InitialKeyStates
         { get; set; }
 
-        public string PersistNewState
-        { get; set; }
+        //public string PersistNewState
+        //{ get; set; }
 
         public string WindowState
         { get; set; }

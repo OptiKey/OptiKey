@@ -244,7 +244,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                     }
 
-                    persistNewState = keyboard.PersistNewState;
+                    //persistNewState = keyboard.PersistNewState;
                     overrideWindowState = keyboard.WindowState;
                     overridePosition = keyboard.Position;
                     overrideWidth = keyboard.Width;
