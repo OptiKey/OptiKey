@@ -530,7 +530,8 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else if (newWindowState == WindowStates.Floating)
             {
-                if (Enum.TryParse(inPosition, out MoveToDirections newMovePosition))
+                MoveToDirections newMovePosition;
+                if (Enum.TryParse(inPosition, out newMovePosition))
                 {
                     switch (newMovePosition)
                     {

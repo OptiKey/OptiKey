@@ -2400,8 +2400,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 foreach (var vStep in command.Split(stringSeparators, StringSplitOptions.None).ToList())
                 {
                     Log.DebugFormat("Performing StepList step: {0}.", vStep);
+                    FunctionKeys result;
                     if (vStep.StartsWith("Action>") &&
-                        (Enum.TryParse<FunctionKeys>(vStep.Substring(7), out FunctionKeys result)))
+                        (Enum.TryParse<FunctionKeys>(vStep.Substring(7), out result)))
                     {
                         singleKeyValue = new KeyValue(result);
                         HandleFunctionKeySelectionResult(singleKeyValue);
