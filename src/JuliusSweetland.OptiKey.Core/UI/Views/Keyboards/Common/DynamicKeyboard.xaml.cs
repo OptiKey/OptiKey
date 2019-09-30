@@ -60,9 +60,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             string errorMessage = null;
             double validNumber;
-            if (!string.IsNullOrWhiteSpace(keyboard.WindowState) && !Enum.TryParse<WindowStates>(keyboard.WindowState, out _))
+            WindowStates windowState;
+            MoveToDirections position;
+            if (!string.IsNullOrWhiteSpace(keyboard.WindowState) && !Enum.TryParse<WindowStates>(keyboard.WindowState, out windowState))
                 errorMessage = "WindowState not valid";
-            else if (!string.IsNullOrWhiteSpace(keyboard.Position) && !Enum.TryParse<MoveToDirections>(keyboard.Position, out _))
+            else if (!string.IsNullOrWhiteSpace(keyboard.Position) && !Enum.TryParse<MoveToDirections>(keyboard.Position, out position))
                 errorMessage = "Position not valid";
             else if (!string.IsNullOrWhiteSpace(keyboard.Width) && 
                 !(double.TryParse(keyboard.Width.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
