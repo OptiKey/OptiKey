@@ -218,7 +218,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 // Extract any key states or layout overrides if present
                 var initialKeyStates = new Dictionary<KeyValue, KeyDownStates>();
-                string persistNewState = null;
+                bool persistNewState = false;
                 string overrideWindowState = null;
                 string overridePosition = null;
                 string overrideWidth = null;

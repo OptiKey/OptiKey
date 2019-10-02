@@ -37,8 +37,16 @@ namespace JuliusSweetland.OptiKey.Models
         public XmlKeyStates InitialKeyStates
         { get; set; }
 
-        public string PersistNewState
+        [XmlIgnore]
+        public bool PersistNewState
         { get; set; }
+
+        [XmlElement("PersistNewState")]
+        public string PersistNewStateBoolAsString
+        {
+            get { return this.PersistNewState ? "True" : "False"; }
+            set { this.PersistNewState = XmlUtils.ConvertToBoolean(value); }
+        }
 
         public string WindowState
         { get; set; }
