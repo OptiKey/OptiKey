@@ -221,6 +221,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 bool persistNewState = false;
                 string overrideWindowState = null;
                 string overridePosition = null;
+                string overrideDockSize = null;
                 string overrideWidth = null;
                 string overrideHeight = null;
                 string horizontalOffset = null;
@@ -247,6 +248,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     persistNewState = keyboard.PersistNewState;
                     overrideWindowState = keyboard.WindowState;
                     overridePosition = keyboard.Position;
+                    overrideDockSize = keyboard.DockSize;
                     overrideWidth = keyboard.Width;
                     overrideHeight = keyboard.Height;
                     horizontalOffset = keyboard.HorizontalOffset;
@@ -261,7 +263,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename);
                 newDynKeyboard.SetKeyOverrides(initialKeyStates);
                 //newDynKeyboard.OverrideKeyboardLayout(overrideHeight);
-                newDynKeyboard.OverrideKeyboardLayout(persistNewState, overrideWindowState, overridePosition, overrideWidth, overrideHeight, horizontalOffset, verticalOffset);
+                newDynKeyboard.OverrideKeyboardLayout(persistNewState, overrideWindowState, overridePosition, overrideDockSize, overrideWidth, overrideHeight, horizontalOffset, verticalOffset);
                 Keyboard = newDynKeyboard;
 
                 // Clear the scratchpad when launching a dynamic keyboard.

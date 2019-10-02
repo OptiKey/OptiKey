@@ -54,6 +54,9 @@ namespace JuliusSweetland.OptiKey.Models
         public string Position
         { get; set; }
 
+        public string DockSize
+        { get; set; }
+
         public string Width
         { get; set; }
 

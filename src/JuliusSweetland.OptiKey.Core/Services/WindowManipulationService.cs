@@ -455,12 +455,12 @@ namespace JuliusSweetland.OptiKey.Services
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx, persist: persistNewSize);
         }
 
-        public void MoveAndSize(bool inPersistNewState, string inWindowState, string inPosition, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset)
+        public void MoveAndSize(bool inPersistNewState, string inWindowState, string inPosition, string inDockSize, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset)
         {
             Log.InfoFormat("MoveAndSize called with PersistNewState {0}, WindowState {1}, Position {2}, Width {3}, Height {4}, horizontalOffset {5}, verticalOffset {6}", inPersistNewState, inWindowState, inPosition, inWidth, inHeight, inHorizontalOffset, inVerticalOffset);
 
-            //if not already in an override state then save the default value
-            if (!overrideKeyboard)
+            //if the new state is a temporary override and we are not already in an override state then save the default values
+            if (!inPersistNewState && !overrideKeyboard)
             {
                 overrideKeyboard = true;
                 defaultWindowState = getWindowState();
@@ -475,7 +475,7 @@ namespace JuliusSweetland.OptiKey.Services
                 ? newWindowState : getWindowState();
             
             double validNumber;
-            // if no value from file, use saved persistent width
+            // if no value from file, use default value
             // if value from file is numeric, use it as is
             // if value from file is numeric with % symbol, use it as percent
             var newWidth = string.IsNullOrWhiteSpace(inWidth) || !double.TryParse(inWidth.Replace("%", ""), out validNumber) 
@@ -504,7 +504,11 @@ namespace JuliusSweetland.OptiKey.Services
                 DockEdges newDockPosition = Enum.TryParse(inPosition, out newDockPosition)
                     ? newDockPosition : getDockPosition();
 
+                DockSizes newDockSize= Enum.TryParse(inDockSize, out newDockSize)
+                    ? newDockSize : getDockSize();
+
                 saveDockPosition(newDockPosition);
+                saveDockSize(newDockSize);
 
                 this.overrideDockThicknessAsPercentageOfScreen = (getDockPosition() == DockEdges.Top || getDockPosition() == DockEdges.Bottom)
                     ? (newHeight / screenBoundsInDp.Height) * 100 : (newWidth / screenBoundsInDp.Width) * 100;
@@ -515,7 +519,7 @@ namespace JuliusSweetland.OptiKey.Services
                     savePreviousWindowState(WindowStates.Docked);
                     RegisterAppBar();
                 }
-                var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
+                var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
                 SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
             }
             else if (newWindowState == WindowStates.Floating)
@@ -549,6 +553,18 @@ namespace JuliusSweetland.OptiKey.Services
                 window.Width = newWidth;
 
                 saveFloatingSizeAndPosition(new Rect(window.Left, window.Top, window.ActualWidth, window.ActualHeight));
+            }
+
+            //if the new state is to be permanent then save the new default values
+            if (inPersistNewState)
+            {
+                overrideKeyboard = false;
+                defaultWindowState = getWindowState();
+                defaultDockPosition = getDockPosition();
+                defaultDockSize = getDockSize();
+                defaulFullDockThickness = getFullDockThicknessAsPercentageOfScreen();
+                defaultCollapsedDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
+                defaultFloatingSizeAndPosition = getFloatingSizeAndPosition();
             }
         }
 
