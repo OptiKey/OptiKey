@@ -10,6 +10,7 @@
     <RootNamespace>JuliusSweetland.OptiKey.StandardPlugins</RootNamespace>
     <AssemblyName>OptiKeyStandardPlugins</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
