@@ -7,12 +7,12 @@ namespace JuliusSweetland.OptiKey.Models
 {
     public class XmlDynamicKey : XmlKey
     {
-        [XmlElement("Step")]
-        public List<DynamicStepList> Step
+        [XmlElement("Steps")]
+        public List<DynamicStep> Steps
         { get; set; }
     }
 
-    public class DynamicStepList
+    public class DynamicStep
     {
         public string Action
         { get; set; }
@@ -20,8 +20,16 @@ namespace JuliusSweetland.OptiKey.Models
         public string DestinationKeyboard
         { get; set; }
 
-        public string ReturnToThisKeyboard
+        [XmlIgnore]
+        public bool ReturnToThisKeyboard
         { get; set; }
+
+        [XmlElement("ReturnToThisKeyboard")]
+        public string ReturnToThisKeyboardAsString
+        {
+            get { return this.ReturnToThisKeyboard ? "True" : "False"; }
+            set { this.ReturnToThisKeyboard = XmlUtils.ConvertToBoolean(value); }
+        }
 
         public string Text
         { get; set; }

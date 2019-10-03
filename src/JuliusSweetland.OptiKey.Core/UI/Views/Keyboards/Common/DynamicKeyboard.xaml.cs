@@ -29,7 +29,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             InitializeComponent();
             inputFilename = inputFile;
-            
+
             // Read in XML file, exceptions get displayed to user
             if (string.IsNullOrEmpty(inputFilename))
             {
@@ -48,7 +48,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 return;
             }
 
-            if (ValidateKeyboard()) {
+            if (ValidateKeyboard())
+            {
                 // Setup all the UI components      
                 SetupGrid();
                 SetupKeys();
@@ -60,13 +61,16 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             string errorMessage = null;
             double validNumber;
-            WindowStates windowState;
-            MoveToDirections position;
-            if (!string.IsNullOrWhiteSpace(keyboard.WindowState) && !Enum.TryParse<WindowStates>(keyboard.WindowState, out windowState))
+            WindowStates validWindowState;
+            MoveToDirections validPosition;
+            DockSizes validDockSize;
+            if (!string.IsNullOrWhiteSpace(keyboard.WindowState) && !Enum.TryParse<WindowStates>(keyboard.WindowState, out validWindowState))
                 errorMessage = "WindowState not valid";
-            else if (!string.IsNullOrWhiteSpace(keyboard.Position) && !Enum.TryParse<MoveToDirections>(keyboard.Position, out position))
+            else if (!string.IsNullOrWhiteSpace(keyboard.Position) && !Enum.TryParse<MoveToDirections>(keyboard.Position, out validPosition))
                 errorMessage = "Position not valid";
-            else if (!string.IsNullOrWhiteSpace(keyboard.Width) && 
+            else if (!string.IsNullOrWhiteSpace(keyboard.DockSize) && !Enum.TryParse<DockSizes>(keyboard.DockSize, out validDockSize))
+                errorMessage = "DockSize not valid";
+            else if (!string.IsNullOrWhiteSpace(keyboard.Width) &&
                 !(double.TryParse(keyboard.Width.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
                 errorMessage = "Width must be between -9999 and 9999";
             else if (!string.IsNullOrWhiteSpace(keyboard.Height) &&
@@ -99,52 +103,52 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             if (keyboard.Grid.Rows < 1 || keyboard.Grid.Cols < 1)
             {
-                string content = "Grid size is " + keyboard.Grid.Rows + " rows and " 
+                string content = "Grid size is " + keyboard.Grid.Rows + " rows and "
                     + keyboard.Grid.Cols + " columns";
                 SetupErrorLayout("Incorrect grid definition", content);
                 return false;
             }
 
-			return ValidateRowsAndColumns();
+            return ValidateRowsAndColumns();
         }
 
-		private bool ValidateRowsAndColumns()
-		{
-			var allKeys = keyboard.Keys.ActionKeys.Cast<XmlKey>()
-				.Concat(keyboard.Keys.ChangeKeyboardKeys)
-				.Concat(keyboard.Keys.DynamicKeys)
+        private bool ValidateRowsAndColumns()
+        {
+            var allKeys = keyboard.Keys.ActionKeys.Cast<XmlKey>()
+                .Concat(keyboard.Keys.ChangeKeyboardKeys)
+                .Concat(keyboard.Keys.DynamicKeys)
                 .Concat(keyboard.Keys.PluginKeys)
                 .Concat(keyboard.Keys.TextKeys)
-				.ToList();
+                .ToList();
 
-			var duplicates = allKeys
-				.GroupBy(key => new Tuple<int, int>(key.Row, key.Col))
-				.Where(group => group.Count() > 1)
-				.Select(group => group.ToList())
-				.ToList();
+            var duplicates = allKeys
+                .GroupBy(key => new Tuple<int, int>(key.Row, key.Col))
+                .Where(group => group.Count() > 1)
+                .Select(group => group.ToList())
+                .ToList();
 
-			if (duplicates.Count == 0)
-				return true;
+            if (duplicates.Count == 0)
+                return true;
 
-			var errorMsg = duplicates.Select(keys =>
-				{
-					var keyStrings = keys.Select(key => GetKeyString(key)).Aggregate((seq, next) => $"{seq}, {next}");
-					return $"{keyStrings} ({keys.First().Row}, {keys.First().Col})";
-				})
-				.Aggregate((msg, key) => $"{msg}, {key}");
+            var errorMsg = duplicates.Select(keys =>
+            {
+                var keyStrings = keys.Select(key => GetKeyString(key)).Aggregate((seq, next) => $"{seq}, {next}");
+                return $"{keyStrings} ({keys.First().Row}, {keys.First().Col})";
+            })
+                .Aggregate((msg, key) => $"{msg}, {key}");
 
-			SetupErrorLayout("Duplicate row/column values for keys", errorMsg);
-			return false;
-		}
+            SetupErrorLayout("Duplicate row/column values for keys", errorMsg);
+            return false;
+        }
 
-		private string GetKeyString(XmlKey xmlKey)
-		{
-			var textKey = xmlKey as XmlTextKey;
-			if (textKey != null)
-				return textKey.Text;
+        private string GetKeyString(XmlKey xmlKey)
+        {
+            var textKey = xmlKey as XmlTextKey;
+            if (textKey != null)
+                return textKey.Text;
 
             return xmlKey.Label ?? xmlKey.Symbol;
-		}
+        }
 
         private Key CreateKeyWithBasicProps(XmlKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
@@ -253,14 +257,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             info = info.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None)[0];
 
             // Wrap to (approx) three lines
-            var len = info.Length;           
-            var maxLineLength = len/3.5;
+            var len = info.Length;
+            var maxLineLength = len / 3.5;
             Log.Info(maxLineLength);
             char[] space = new char[] { ' ' };
-            
+
             var charCount = 0;
             var allLines = info.Split(space)
-                .GroupBy(w =>  (int)((charCount += w.Length + 1) / maxLineLength))
+                .GroupBy(w => (int)((charCount += w.Length + 1) / maxLineLength))
                 .Select(g => string.Join(" ", g));
 
             return String.Join(Environment.NewLine, allLines);
@@ -288,7 +292,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             // Back key
             {
                 Key newKey = new Key();
-                newKey.SymbolGeometry = (System.Windows.Media.Geometry) App.Current.Resources["BackIcon"];
+                newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["BackIcon"];
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.BACK;
                 newKey.Value = KeyValues.BackFromKeyboardKey;
                 this.PlaceKeyInPosition(newKey, 3, 3);
@@ -312,7 +316,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 this.PlaceKeyInPosition(newKey, 3, 1, 1, 2);
             }
         }
-        
+
         private void SetupKeys()
         {
             XmlKeys keys = keyboard.Keys;
@@ -394,14 +398,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         void AddDynamicKey(XmlDynamicKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
             Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
-            if (xmlKey.Step != null)
+            if (xmlKey.Steps != null)
             {
                 var vStepList = "<StepList>";
                 var rootDir = Path.GetDirectoryName(inputFilename);
                 string vDestinationKeyboard;
                 Enums.Keyboards keyboardEnum;
 
-                foreach (var vStep in xmlKey.Step)
+                foreach (var vStep in xmlKey.Steps)
                 {
                     if (!String.IsNullOrWhiteSpace(vStep.Action))
                     {
@@ -413,11 +417,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             ? keyboardEnum.ToString()
                             : Path.Combine(rootDir, vStep.DestinationKeyboard);
 
-                        if (!String.IsNullOrWhiteSpace(vStep.ReturnToThisKeyboard) 
-                            && vStep.ReturnToThisKeyboard == "True")
-                            vStepList += "<KeyboardAndReturn>" + vDestinationKeyboard;
-                        else
-                            vStepList += "<Keyboard>" + vDestinationKeyboard;
+                        vStepList += (vStep.ReturnToThisKeyboard)
+                            ? "<KeyboardAndReturn>" + vDestinationKeyboard
+                            : "<Keyboard>" + vDestinationKeyboard;
                     }
                     if (!String.IsNullOrWhiteSpace(vStep.Text))
                     {
@@ -494,7 +496,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 Log.ErrorFormat("No value found in text key with label {0}", xmlKey.Label);
             }
 
-            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);            
+            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
         private void SetupBorders()
@@ -542,7 +544,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         }
 
         private void PlaceKeyInPosition(Key key, int row, int col, int rowspan = 1, int colspan = 1)
-        {         
+        {
             MainGrid.Children.Add(key);
             Grid.SetColumn(key, col);
             Grid.SetRow(key, row);
@@ -557,14 +559,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             if (s.Contains("\\n"))
                 s = s.Replace("\\n", Environment.NewLine);
-            
+
             return s;
         }
 
-		protected override void OnLoaded(object sender, RoutedEventArgs e)
-		{
-			base.OnLoaded(sender, e);
-			ShiftAware = keyboard != null && keyboard.IsShiftAware;
-		}
-	}
+        protected override void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            base.OnLoaded(sender, e);
+            ShiftAware = keyboard != null && keyboard.IsShiftAware;
+        }
+    }
 }
