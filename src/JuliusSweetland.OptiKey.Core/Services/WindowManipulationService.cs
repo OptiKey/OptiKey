@@ -60,7 +60,7 @@ namespace JuliusSweetland.OptiKey.Services
         private WindowStates defaultWindowState;
         private DockEdges defaultDockPosition;
         private DockSizes defaultDockSize;
-        private double defaulFullDockThickness;
+        private double defaultFullDockThickness;
         private double defaultCollapsedDockThickness;
         private Rect defaultFloatingSizeAndPosition;
         private int appBarCallBackId = -1;
@@ -466,7 +466,7 @@ namespace JuliusSweetland.OptiKey.Services
                 defaultWindowState = getWindowState();
                 defaultDockPosition = getDockPosition();
                 defaultDockSize = getDockSize();
-                defaulFullDockThickness = getFullDockThicknessAsPercentageOfScreen();
+                defaultFullDockThickness = getFullDockThicknessAsPercentageOfScreen();
                 defaultCollapsedDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
                 defaultFloatingSizeAndPosition = getFloatingSizeAndPosition();
             }
@@ -474,39 +474,53 @@ namespace JuliusSweetland.OptiKey.Services
             WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState)
                 ? newWindowState : getWindowState();
 
+            DockEdges newDockPosition = Enum.TryParse(inPosition, out newDockPosition) ? newDockPosition : getDockPosition();
+            DockSizes newDockSize = Enum.TryParse(inDockSize, out newDockSize) ? newDockSize : getDockSize();
+
+            var dockThicknessInPx = CalculateDockSizeAndPositionInPx(newDockPosition, newDockSize);
+
             double validNumber;
             // if no value from file, use default value
             // if value from file is numeric, use it as is
             // if value from file is numeric with % symbol, use it as percent
-            var newWidth = string.IsNullOrWhiteSpace(inWidth) || !double.TryParse(inWidth.Replace("%", ""), out validNumber)
-                || validNumber < -9999 || validNumber > 9999
-                ? getFloatingSizeAndPosition().Width : inWidth.Contains("%") && validNumber > 0
-                ? (validNumber / 100d) * screenBoundsInDp.Width : inWidth.Contains("%")
-                ? (validNumber / 100d + 1) * screenBoundsInDp.Width : validNumber > 0
-                ? validNumber / Graphics.DipScalingFactorX : validNumber / Graphics.DipScalingFactorX + screenBoundsInDp.Width;
-            var newHeight = string.IsNullOrWhiteSpace(inHeight) || !double.TryParse(inHeight.Replace("%", ""), out validNumber)
-                || validNumber < -9999 || validNumber > 9999
-                ? getFloatingSizeAndPosition().Height : inHeight.Contains("%") && validNumber > 0
-                ? (validNumber / 100d) * screenBoundsInDp.Height : inHeight.Contains("%")
-                ? (validNumber / 100d + 1) * screenBoundsInDp.Height : validNumber > 0
-                ? validNumber / Graphics.DipScalingFactorY : validNumber / Graphics.DipScalingFactorY + screenBoundsInDp.Height;
-            var horizontalOffset = string.IsNullOrWhiteSpace(inHorizontalOffset) || !double.TryParse(inHorizontalOffset.Replace("%", ""), out validNumber)
-                || validNumber < -9999 || validNumber > 9999
-                ? screenBoundsInDp.Left : inHorizontalOffset.Contains("%")
-                ? validNumber / 100d * screenBoundsInDp.Width : validNumber / Graphics.DipScalingFactorX;
-            var verticalOffset = string.IsNullOrWhiteSpace(inVerticalOffset) || !double.TryParse(inVerticalOffset.Replace("%", ""), out validNumber)
-                || validNumber < -9999 || validNumber > 9999
-                ? screenBoundsInDp.Top : inVerticalOffset.Contains("%")
-                ? validNumber / 100d * screenBoundsInDp.Height : validNumber / Graphics.DipScalingFactorY;
+            var newWidth = string.IsNullOrWhiteSpace(inWidth) || !double.TryParse(inWidth.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
+                ? newWindowState == WindowStates.Floating
+                    ? getFloatingSizeAndPosition().Width 
+                    : dockThicknessInPx.Width / Graphics.DipScalingFactorX //Scale to dp
+                : inWidth.Contains("%") && validNumber > 0
+                    ? (validNumber / 100d) * screenBoundsInDp.Width 
+                    : inWidth.Contains("%")
+                        ? (validNumber / 100d + 1) * screenBoundsInDp.Width 
+                        : validNumber > 0
+                            ? validNumber / Graphics.DipScalingFactorX 
+                            : validNumber / Graphics.DipScalingFactorX + screenBoundsInDp.Width;
+
+            var newHeight = string.IsNullOrWhiteSpace(inHeight) || !double.TryParse(inHeight.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
+                ? newWindowState == WindowStates.Floating
+                    ? getFloatingSizeAndPosition().Height
+                    : dockThicknessInPx.Height / Graphics.DipScalingFactorY //Scale to dp
+                : inHeight.Contains("%") && validNumber > 0
+                    ? (validNumber / 100d) * screenBoundsInDp.Height 
+                    : inHeight.Contains("%")
+                        ? (validNumber / 100d + 1) * screenBoundsInDp.Height 
+                        : validNumber > 0
+                            ? validNumber / Graphics.DipScalingFactorY 
+                            : validNumber / Graphics.DipScalingFactorY + screenBoundsInDp.Height;
+
+            var horizontalOffset = string.IsNullOrWhiteSpace(inHorizontalOffset) || !double.TryParse(inHorizontalOffset.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
+                ? screenBoundsInDp.Left 
+                : inHorizontalOffset.Contains("%")
+                    ? validNumber / 100d * screenBoundsInDp.Width 
+                    : validNumber / Graphics.DipScalingFactorX;
+
+            var verticalOffset = string.IsNullOrWhiteSpace(inVerticalOffset) || !double.TryParse(inVerticalOffset.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
+                ? screenBoundsInDp.Top 
+                : inVerticalOffset.Contains("%")
+                    ? validNumber / 100d * screenBoundsInDp.Height 
+                    : validNumber / Graphics.DipScalingFactorY;
 
             if (newWindowState == WindowStates.Docked)
             {
-                DockEdges newDockPosition = Enum.TryParse(inPosition, out newDockPosition)
-                    ? newDockPosition : getDockPosition();
-
-                DockSizes newDockSize = Enum.TryParse(inDockSize, out newDockSize)
-                    ? newDockSize : getDockSize();
-
                 saveDockPosition(newDockPosition);
                 saveDockSize(newDockSize);
 
@@ -519,6 +533,7 @@ namespace JuliusSweetland.OptiKey.Services
                     savePreviousWindowState(WindowStates.Docked);
                     RegisterAppBar();
                 }
+
                 var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
                 SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
             }
@@ -538,14 +553,14 @@ namespace JuliusSweetland.OptiKey.Services
                     newTop = (newMovePosition == MoveToDirections.Top || newMovePosition == MoveToDirections.TopLeft || newMovePosition == MoveToDirections.TopRight)
                         ? screenBoundsInDp.Top + verticalOffset
                         : (newMovePosition == MoveToDirections.Bottom || newMovePosition == MoveToDirections.BottomLeft || newMovePosition == MoveToDirections.BottomRight)
-                        ? screenBoundsInDp.Bottom - newHeight + verticalOffset
-                        : screenBoundsInDp.Height / 2d - newHeight / 2d + verticalOffset;
+                            ? screenBoundsInDp.Bottom - newHeight + verticalOffset
+                            : screenBoundsInDp.Height / 2d - newHeight / 2d + verticalOffset;
 
                     newLeft = (newMovePosition == MoveToDirections.Left || newMovePosition == MoveToDirections.TopLeft || newMovePosition == MoveToDirections.BottomLeft)
                         ? screenBoundsInDp.Left + horizontalOffset
                         : (newMovePosition == MoveToDirections.Right || newMovePosition == MoveToDirections.TopRight || newMovePosition == MoveToDirections.BottomRight)
-                        ? screenBoundsInDp.Right - newWidth + horizontalOffset
-                        : screenBoundsInDp.Width / 2d - newWidth / 2d + horizontalOffset;
+                            ? screenBoundsInDp.Right - newWidth + horizontalOffset
+                            : screenBoundsInDp.Width / 2d - newWidth / 2d + horizontalOffset;
                 }
                 window.Top = newTop;
                 window.Left = newLeft;
@@ -562,7 +577,7 @@ namespace JuliusSweetland.OptiKey.Services
                 defaultWindowState = getWindowState();
                 defaultDockPosition = getDockPosition();
                 defaultDockSize = getDockSize();
-                defaulFullDockThickness = getFullDockThicknessAsPercentageOfScreen();
+                defaultFullDockThickness = getFullDockThicknessAsPercentageOfScreen();
                 defaultCollapsedDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
                 defaultFloatingSizeAndPosition = getFloatingSizeAndPosition();
             }
@@ -604,7 +619,7 @@ namespace JuliusSweetland.OptiKey.Services
                 savePreviousWindowState(defaultWindowState);
                 saveDockPosition(defaultDockPosition);
                 saveDockSize(defaultDockSize);
-                saveFullDockThicknessAsPercentageOfScreen(defaulFullDockThickness);
+                saveFullDockThicknessAsPercentageOfScreen(defaultFullDockThickness);
                 saveCollapsedDockThicknessAsPercentageOfFullDockThickness(defaultCollapsedDockThickness);
                 saveFloatingSizeAndPosition(defaultFloatingSizeAndPosition);
 
