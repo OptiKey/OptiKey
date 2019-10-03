@@ -8,7 +8,6 @@
     <OutputType>Exe</OutputType>
     <AssemblyName>JuliusSweetland.OptiKey.AutoCompletePerformance</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <LangVersion>latest</LangVersion>
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <FileAlignment>512</FileAlignment>
     <RootNamespace>JuliusSweetland.OptiKey.AutoCompletePerformance</RootNamespace>
