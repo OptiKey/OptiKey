@@ -13,11 +13,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private DockSizes originalDockSize;
-        //private double? overrideHeight;
-        private string persistNewState;
+        private string link;
+
+        private bool persistNewState;
         private string windowState;
         private string position;
+        private string dockSize;
         private string width;
         private string height;
         private string horizontalOffset;
@@ -32,15 +33,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
         private readonly Func<string, string, NotificationTypes, Action, bool> raiseToastNotification;
 
         public DynamicKeyboard(Action backAction,
-            IWindowManipulationService windowManipulationService, 
-            IKeyStateService keyStateService, 
+            IWindowManipulationService windowManipulationService,
+            IKeyStateService keyStateService,
             IInputService inputService,
             IAudioService audioService,
             Func<string, string, NotificationTypes, Action, bool> raiseToastNotification,
             string link) : base(backAction)
         {
             this.windowManipulationService = windowManipulationService;
-            this.Link = link;
+            this.link = link;
             this.keyStateService = keyStateService;
             this.inputService = inputService;
             this.audioService = audioService;
@@ -82,11 +83,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             }
         }
 
-        public void OverrideKeyboardLayout(string persistNewState, string windowState, string position, string width, string height, string horizontalOffset, string verticalOffset)
+        public void OverrideKeyboardLayout(bool persistNewState, string windowState, string position, string dockSize, string width, string height, string horizontalOffset, string verticalOffset)
         {
             this.persistNewState = persistNewState;
             this.windowState = windowState;
             this.position = position;
+            this.dockSize = dockSize;
             this.width = width;
             this.height = height;
             this.horizontalOffset = horizontalOffset;
@@ -95,35 +97,36 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 
         private void SetupKeyboardLayout()
         {
-            originalDockSize = Settings.Default.MainWindowDockSize;
-            Log.InfoFormat("Setting up keyboard layout. Storing original dock size so that it can be restored on exit. Original dock size={0}", originalDockSize);
-            
-            if (!string.IsNullOrWhiteSpace(windowState) ||
-                !string.IsNullOrWhiteSpace(position) ||
-                !string.IsNullOrWhiteSpace(width) ||
-                !string.IsNullOrWhiteSpace(height) ||
-                !string.IsNullOrWhiteSpace(horizontalOffset) ||
-                !string.IsNullOrWhiteSpace(verticalOffset))
+            if (!string.IsNullOrWhiteSpace(windowState)
+                || !string.IsNullOrWhiteSpace(position)
+                || !string.IsNullOrWhiteSpace(dockSize)
+                || !string.IsNullOrWhiteSpace(width)
+                || !string.IsNullOrWhiteSpace(height)
+                || !string.IsNullOrWhiteSpace(horizontalOffset)
+                || !string.IsNullOrWhiteSpace(verticalOffset))
             {
                 string errorMessage = null;
                 double validNumber;
                 WindowStates validWindowState;
                 MoveToDirections validPosition;
+                DockSizes validDockSize;
                 if (!string.IsNullOrWhiteSpace(windowState) && !Enum.TryParse<WindowStates>(windowState, out validWindowState))
                     errorMessage = "WindowState not valid";
                 else if (!string.IsNullOrWhiteSpace(position) && !Enum.TryParse<MoveToDirections>(position, out validPosition))
                     errorMessage = "Position not valid";
-                else if (!string.IsNullOrWhiteSpace(width) &&
-                    !(double.TryParse(width.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                else if (!string.IsNullOrWhiteSpace(dockSize) && !Enum.TryParse<DockSizes>(dockSize, out validDockSize))
+                    errorMessage = "DockSize not valid";
+                else if (!string.IsNullOrWhiteSpace(width)
+                    && !(double.TryParse(width.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
                     errorMessage = "Width must be between -9999 and 9999";
-                else if (!string.IsNullOrWhiteSpace(height) &&
-                    !(double.TryParse(height.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                else if (!string.IsNullOrWhiteSpace(height)
+                    && !(double.TryParse(height.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
                     errorMessage = "Height must be between -9999 and 9999";
-                else if (!string.IsNullOrWhiteSpace(horizontalOffset) &&
-                    !(double.TryParse(horizontalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                else if (!string.IsNullOrWhiteSpace(horizontalOffset)
+                    && !(double.TryParse(horizontalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
                     errorMessage = "Offset must be between -9999 and 9999";
-                else if (!string.IsNullOrWhiteSpace(verticalOffset) &&
-                    !(double.TryParse(verticalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                else if (!string.IsNullOrWhiteSpace(verticalOffset)
+                    && !(double.TryParse(verticalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
                     errorMessage = "Offset must be between -9999 and 9999";
 
                 if (errorMessage != null)
@@ -135,10 +138,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             }
 
             Log.InfoFormat("Overriding size and position for dynamic keyboard");
-            windowManipulationService.MoveAndSize(persistNewState, windowState, position, width, height, horizontalOffset, verticalOffset);
+            windowManipulationService.MoveAndSize(persistNewState, windowState, position, dockSize, width, height, horizontalOffset, verticalOffset);
+
         }
 
-        public string Link { get; }
+        public string Link
+        {
+            get { return link; }
+        }
 
         public void ResetOveriddenKeyStates()
         {

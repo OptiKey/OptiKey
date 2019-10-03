@@ -37,13 +37,24 @@ namespace JuliusSweetland.OptiKey.Models
         public XmlKeyStates InitialKeyStates
         { get; set; }
 
-        //public string PersistNewState
-        //{ get; set; }
+        [XmlIgnore]
+        public bool PersistNewState
+        { get; set; }
+
+        [XmlElement("PersistNewState")]
+        public string PersistNewStateBoolAsString
+        {
+            get { return this.PersistNewState ? "True" : "False"; }
+            set { this.PersistNewState = XmlUtils.ConvertToBoolean(value); }
+        }
 
         public string WindowState
         { get; set; }
 
         public string Position
+        { get; set; }
+
+        public string DockSize
         { get; set; }
 
         public string Width
@@ -77,7 +88,8 @@ namespace JuliusSweetland.OptiKey.Models
         public string BorderThicknessAsString
         {
             get { return BorderThickness.ToString(); }
-            set {
+            set
+            {
                 try
                 {
                     ThicknessConverter thicknessConverter = new ThicknessConverter();
@@ -85,11 +97,11 @@ namespace JuliusSweetland.OptiKey.Models
                 }
                 catch (System.FormatException)
                 {
-                    Log.ErrorFormat("Cannot interpret \"{0}\" as thickness", value);                
+                    Log.ErrorFormat("Cannot interpret \"{0}\" as thickness", value);
                 }
             }
-        }        
-        
+        }
+
         [XmlIgnore]
         public bool Hidden
         { get; set; }
@@ -101,17 +113,17 @@ namespace JuliusSweetland.OptiKey.Models
             set { this.Hidden = XmlUtils.ConvertToBoolean(value); }
         }
 
-		[XmlIgnore]
-		public bool IsShiftAware
-		{ get; set; }
+        [XmlIgnore]
+        public bool IsShiftAware
+        { get; set; }
 
-		[XmlElement("IsShiftAware")]
-		public string IsShiftAwareAsString
-		{
-			get { return this.IsShiftAware ? "True" : "False"; }
-			set { this.IsShiftAware = XmlUtils.ConvertToBoolean(value); }
-		}
-        
+        [XmlElement("IsShiftAware")]
+        public string IsShiftAwareAsString
+        {
+            get { return this.IsShiftAware ? "True" : "False"; }
+            set { this.IsShiftAware = XmlUtils.ConvertToBoolean(value); }
+        }
+
         public static XmlKeyboard ReadFromFile(string inputFilename)
         {
             XmlKeyboard keyboard;
@@ -123,7 +135,7 @@ namespace JuliusSweetland.OptiKey.Models
                 string.IsNullOrEmpty(Path.GetExtension(inputFilename)))
             {
                 inputFilename += ".xml";
-            } 
+            }
 
             // Read in XML file (may throw)
             XmlSerializer serializer = new XmlSerializer(typeof(XmlKeyboard));

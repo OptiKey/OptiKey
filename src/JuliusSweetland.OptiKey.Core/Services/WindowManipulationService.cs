@@ -56,6 +56,13 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Action<double> saveOpacity;
 
         private double? overrideDockThicknessAsPercentageOfScreen;
+        bool overrideKeyboard = false;
+        private WindowStates defaultWindowState;
+        private DockEdges defaultDockPosition;
+        private DockSizes defaultDockSize;
+        private double defaulFullDockThickness;
+        private double defaultCollapsedDockThickness;
+        private Rect defaultFloatingSizeAndPosition;
         private int appBarCallBackId = -1;
 
         private delegate void ApplySizeAndPositionDelegate(Rect rect);
@@ -63,7 +70,7 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Ctor
-        
+
         internal WindowManipulationService(
             Window window,
             Func<double> getOpacity,
@@ -124,7 +131,7 @@ namespace JuliusSweetland.OptiKey.Services
         }
 
         #endregion
-        
+
         #region Events
 
         public event EventHandler SizeAndPositionInitialised;
@@ -337,7 +344,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             var windowState = getWindowState();
             if (windowState == WindowStates.Hidden) return;
-            
+
             if (windowState == WindowStates.Docked)
             {
                 UnRegisterAppBar();
@@ -415,7 +422,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else
             {
-                adjustment = MoveToEdge(direction, windowState, distanceToTopBoundaryIfFloating, 
+                adjustment = MoveToEdge(direction, windowState, distanceToTopBoundaryIfFloating,
                     distanceToBottomBoundaryIfFloating, distanceToLeftBoundaryIfFloating, distanceToRightBoundaryIfFloating);
             }
 
@@ -448,156 +455,122 @@ namespace JuliusSweetland.OptiKey.Services
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx, persist: persistNewSize);
         }
 
-        public void MoveAndSize(string inPersistNewState, string inWindowState, string inPosition, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset)
+        public void MoveAndSize(bool inPersistNewState, string inWindowState, string inPosition, string inDockSize, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset)
         {
             Log.InfoFormat("MoveAndSize called with PersistNewState {0}, WindowState {1}, Position {2}, Width {3}, Height {4}, horizontalOffset {5}, verticalOffset {6}", inPersistNewState, inWindowState, inPosition, inWidth, inHeight, inHorizontalOffset, inVerticalOffset);
 
-            bool vPersistNewState = !string.IsNullOrWhiteSpace(inPersistNewState) && inPersistNewState.ToLower() == "true" ? true : false;
-            var vPrevWindowState = getWindowState();
-            var vPrevDockPosition = getDockPosition();
-            var vPrevDockSize = getFullDockThicknessAsPercentageOfScreen();
-            var vPrevFloatingSize = getFloatingSizeAndPosition();
-            WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState) ? newWindowState : vPrevWindowState;
-            saveWindowState(newWindowState);
+            //if the new state is a temporary override and we are not already in an override state then save the default values
+            if (!inPersistNewState && !overrideKeyboard)
+            {
+                overrideKeyboard = true;
+                defaultWindowState = getWindowState();
+                defaultDockPosition = getDockPosition();
+                defaultDockSize = getDockSize();
+                defaulFullDockThickness = getFullDockThicknessAsPercentageOfScreen();
+                defaultCollapsedDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
+                defaultFloatingSizeAndPosition = getFloatingSizeAndPosition();
+            }
+
+            WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState)
+                ? newWindowState : getWindowState();
 
             double validNumber;
-            // if no value from file, use saved persistent width
+            // if no value from file, use default value
             // if value from file is numeric, use it as is
             // if value from file is numeric with % symbol, use it as percent
-            var width = string.IsNullOrWhiteSpace(inWidth) || !double.TryParse(inWidth.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999 ? getFloatingSizeAndPosition().Width :
-                inWidth.Contains("%") && validNumber > 0 ? (validNumber / 100d) * screenBoundsInDp.Width :
-                inWidth.Contains("%") ? (validNumber / 100d + 1) * screenBoundsInDp.Width :
-                validNumber > 0 ? validNumber :
-                validNumber + screenBoundsInDp.Width;
-            var height = string.IsNullOrWhiteSpace(inHeight) || !double.TryParse(inHeight.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999 ? getFloatingSizeAndPosition().Height :
-                inHeight.Contains("%") && validNumber > 0 ? (validNumber / 100d) * screenBoundsInDp.Height :
-                inHeight.Contains("%") ? (validNumber / 100d + 1) * screenBoundsInDp.Height :
-                validNumber > 0 ? validNumber :
-                validNumber + Graphics.VirtualScreenHeightInPixels / Graphics.DipScalingFactorY;
-            var horizontalOffset = string.IsNullOrWhiteSpace(inHorizontalOffset) || !double.TryParse(inHorizontalOffset.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999 ? screenBoundsInDp.Left :
-                inHorizontalOffset.Contains("%") ? validNumber / 100d * screenBoundsInDp.Width :
-                validNumber;
-            var verticalOffset = string.IsNullOrWhiteSpace(inVerticalOffset) || !double.TryParse(inVerticalOffset.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999 ? screenBoundsInDp.Top :
-                inVerticalOffset.Contains("%") ? validNumber / 100d * screenBoundsInDp.Height :
-                validNumber;
+            var newWidth = string.IsNullOrWhiteSpace(inWidth) || !double.TryParse(inWidth.Replace("%", ""), out validNumber)
+                || validNumber < -9999 || validNumber > 9999
+                ? getFloatingSizeAndPosition().Width : inWidth.Contains("%") && validNumber > 0
+                ? (validNumber / 100d) * screenBoundsInDp.Width : inWidth.Contains("%")
+                ? (validNumber / 100d + 1) * screenBoundsInDp.Width : validNumber > 0
+                ? validNumber / Graphics.DipScalingFactorX : validNumber / Graphics.DipScalingFactorX + screenBoundsInDp.Width;
+            var newHeight = string.IsNullOrWhiteSpace(inHeight) || !double.TryParse(inHeight.Replace("%", ""), out validNumber)
+                || validNumber < -9999 || validNumber > 9999
+                ? getFloatingSizeAndPosition().Height : inHeight.Contains("%") && validNumber > 0
+                ? (validNumber / 100d) * screenBoundsInDp.Height : inHeight.Contains("%")
+                ? (validNumber / 100d + 1) * screenBoundsInDp.Height : validNumber > 0
+                ? validNumber / Graphics.DipScalingFactorY : validNumber / Graphics.DipScalingFactorY + screenBoundsInDp.Height;
+            var horizontalOffset = string.IsNullOrWhiteSpace(inHorizontalOffset) || !double.TryParse(inHorizontalOffset.Replace("%", ""), out validNumber)
+                || validNumber < -9999 || validNumber > 9999
+                ? screenBoundsInDp.Left : inHorizontalOffset.Contains("%")
+                ? validNumber / 100d * screenBoundsInDp.Width : validNumber / Graphics.DipScalingFactorX;
+            var verticalOffset = string.IsNullOrWhiteSpace(inVerticalOffset) || !double.TryParse(inVerticalOffset.Replace("%", ""), out validNumber)
+                || validNumber < -9999 || validNumber > 9999
+                ? screenBoundsInDp.Top : inVerticalOffset.Contains("%")
+                ? validNumber / 100d * screenBoundsInDp.Height : validNumber / Graphics.DipScalingFactorY;
 
-            UnRegisterAppBar();
-                        
             if (newWindowState == WindowStates.Docked)
             {
-                var fullDockThicknessAsPercentageOfScreen = 0d;
-                DockEdges newDockPosition = Enum.TryParse(inPosition, out newDockPosition) ?
-                    newDockPosition : vPrevDockPosition;
+                DockEdges newDockPosition = Enum.TryParse(inPosition, out newDockPosition)
+                    ? newDockPosition : getDockPosition();
 
-                switch (newDockPosition)
-                {
-                    case DockEdges.Top:
-                        window.Top = screenBoundsInDp.Top;
-                        window.Left = screenBoundsInDp.Left;
-                        window.Height = height;
-                        window.Width = screenBoundsInDp.Width;
-                        fullDockThicknessAsPercentageOfScreen = (window.ActualHeight / screenBoundsInDp.Height) * 100;
-                        break;
-                    case DockEdges.Bottom:
-                        window.Top = screenBoundsInDp.Bottom - height;
-                        window.Left = screenBoundsInDp.Left;
-                        window.Height = height;
-                        window.Width = screenBoundsInDp.Width;
-                        fullDockThicknessAsPercentageOfScreen = (window.ActualHeight / screenBoundsInDp.Height) * 100;
-                        break;
-                    case DockEdges.Left:
-                        window.Top = screenBoundsInDp.Top;
-                        window.Left = screenBoundsInDp.Left;
-                        window.Height = screenBoundsInDp.Height;
-                        window.Width = width;
-                        fullDockThicknessAsPercentageOfScreen = (window.ActualWidth / screenBoundsInDp.Width) * 100;
-                        break;
-                    case DockEdges.Right:
-                        window.Top = screenBoundsInDp.Top;
-                        window.Left = screenBoundsInDp.Right - width;
-                        window.Height = screenBoundsInDp.Height;
-                        window.Width = width;
-                        fullDockThicknessAsPercentageOfScreen = (window.ActualWidth / screenBoundsInDp.Width) * 100;
-                        break;
-                }
+                DockSizes newDockSize = Enum.TryParse(inDockSize, out newDockSize)
+                    ? newDockSize : getDockSize();
 
-                saveDockSize(DockSizes.Full);
                 saveDockPosition(newDockPosition);
-                saveFullDockThicknessAsPercentageOfScreen(fullDockThicknessAsPercentageOfScreen);
-                RegisterAppBar();
-                var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(newDockPosition, DockSizes.Full);
-                SetAppBarSizeAndPosition(newDockPosition, dockSizeAndPositionInPx);
+                saveDockSize(newDockSize);
+
+                this.overrideDockThicknessAsPercentageOfScreen = (getDockPosition() == DockEdges.Top || getDockPosition() == DockEdges.Bottom)
+                    ? (newHeight / screenBoundsInDp.Height) * 100 : (newWidth / screenBoundsInDp.Width) * 100;
+
+                if (getWindowState() == WindowStates.Floating)
+                {
+                    saveWindowState(WindowStates.Docked);
+                    savePreviousWindowState(WindowStates.Docked);
+                    RegisterAppBar();
+                }
+                var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
             }
             else if (newWindowState == WindowStates.Floating)
             {
-                MoveToDirections newMovePosition;
-                if (Enum.TryParse(inPosition, out newMovePosition))
+                if (getWindowState() == WindowStates.Docked)
                 {
-                    switch (newMovePosition)
-                    {
-                        case MoveToDirections.Top:
-                            window.Top = screenBoundsInDp.Top + verticalOffset;
-                            window.Left = screenBoundsInDp.Width / 2d - width / 2d + horizontalOffset;
-                            break;
-                        case MoveToDirections.TopLeft:
-                            window.Top = screenBoundsInDp.Top + verticalOffset;
-                            window.Left = screenBoundsInDp.Left + horizontalOffset;
-                            break;
+                    UnRegisterAppBar();
+                    saveWindowState(WindowStates.Floating);
+                    savePreviousWindowState(WindowStates.Floating);
+                }
 
-                        case MoveToDirections.TopRight:
-                            window.Top = screenBoundsInDp.Top + verticalOffset;
-                            window.Left = screenBoundsInDp.Right - width + horizontalOffset;
-                            break;
-                        case MoveToDirections.Bottom:
-                            window.Top = screenBoundsInDp.Bottom - height + verticalOffset;
-                            window.Left = screenBoundsInDp.Width / 2d - width / 2d + horizontalOffset;
-                            break;
-                        case MoveToDirections.BottomLeft:
-                            window.Top = screenBoundsInDp.Bottom - height + verticalOffset;
-                            window.Left = screenBoundsInDp.Left + horizontalOffset;
-                            break;
-                        case MoveToDirections.BottomRight:
-                            window.Top = screenBoundsInDp.Bottom - height + verticalOffset;
-                            window.Left = screenBoundsInDp.Right - width + horizontalOffset;
-                            break;
-                        case MoveToDirections.Left:
-                            window.Top = screenBoundsInDp.Height / 2d - height / 2d + verticalOffset;
-                            window.Left = screenBoundsInDp.Left + horizontalOffset;
-                            break;
-                        case MoveToDirections.Right:
-                            window.Top = screenBoundsInDp.Height / 2d - height / 2d + verticalOffset;
-                            window.Left = screenBoundsInDp.Right - width + horizontalOffset;
-                            break;
-                    }
-                }
-                else
+                double newTop = getFloatingSizeAndPosition().Top;
+                double newLeft = getFloatingSizeAndPosition().Left;
+                if (Enum.TryParse(inPosition, out MoveToDirections newMovePosition))
                 {
-                    window.Top = getFloatingSizeAndPosition().Top;
-                    window.Left = getFloatingSizeAndPosition().Left;
-                }
-                window.Height = height;
-                window.Width = width;
+                    newTop = (newMovePosition == MoveToDirections.Top || newMovePosition == MoveToDirections.TopLeft || newMovePosition == MoveToDirections.TopRight)
+                        ? screenBoundsInDp.Top + verticalOffset
+                        : (newMovePosition == MoveToDirections.Bottom || newMovePosition == MoveToDirections.BottomLeft || newMovePosition == MoveToDirections.BottomRight)
+                        ? screenBoundsInDp.Bottom - newHeight + verticalOffset
+                        : screenBoundsInDp.Height / 2d - newHeight / 2d + verticalOffset;
 
-                if (vPersistNewState)
-                {
-                    saveFloatingSizeAndPosition(new Rect(window.Left, window.Top, window.ActualWidth, window.ActualHeight));
+                    newLeft = (newMovePosition == MoveToDirections.Left || newMovePosition == MoveToDirections.TopLeft || newMovePosition == MoveToDirections.BottomLeft)
+                        ? screenBoundsInDp.Left + horizontalOffset
+                        : (newMovePosition == MoveToDirections.Right || newMovePosition == MoveToDirections.TopRight || newMovePosition == MoveToDirections.BottomRight)
+                        ? screenBoundsInDp.Right - newWidth + horizontalOffset
+                        : screenBoundsInDp.Width / 2d - newWidth / 2d + horizontalOffset;
                 }
+                window.Top = newTop;
+                window.Left = newLeft;
+                window.Height = newHeight;
+                window.Width = newWidth;
+
+                saveFloatingSizeAndPosition(new Rect(window.Left, window.Top, window.ActualWidth, window.ActualHeight));
             }
-            if (!vPersistNewState)
-            { 
-                saveWindowState(vPrevWindowState);
-                saveDockPosition(vPrevDockPosition);
-                saveFullDockThicknessAsPercentageOfScreen(vPrevDockSize);
-                saveFloatingSizeAndPosition(vPrevFloatingSize);
+
+            //if the new state is to be permanent then save the new default values
+            if (inPersistNewState)
+            {
+                overrideKeyboard = false;
+                defaultWindowState = getWindowState();
+                defaultDockPosition = getDockPosition();
+                defaultDockSize = getDockSize();
+                defaulFullDockThickness = getFullDockThicknessAsPercentageOfScreen();
+                defaultCollapsedDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
+                defaultFloatingSizeAndPosition = getFloatingSizeAndPosition();
             }
         }
 
         public void ResizeDockToCollapsed()
         {
             Log.Info("ResizeDockToCollapsed called");
-
-            Log.Info("Clearing overrideDockThicknessAsPercentageOfScreen value");
-            this.overrideDockThicknessAsPercentageOfScreen = null;
 
             if (getWindowState() != WindowStates.Docked) return;
             saveDockSize(DockSizes.Collapsed);
@@ -609,13 +582,55 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Info("ResizeDockToFull called");
 
+            if (getWindowState() != WindowStates.Docked) return;
+            saveDockSize(DockSizes.Full);
+            var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
+            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
+        }
+
+        public void RollbackOverride()
+        {
+            Log.Info("RollbackOverride called");
+
             Log.Info("Clearing overrideDockThicknessAsPercentageOfScreen value");
             this.overrideDockThicknessAsPercentageOfScreen = null;
 
-            if (getWindowState() != WindowStates.Docked) return;
-            saveDockSize(DockSizes.Full); 
-            var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
-            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
+            if (overrideKeyboard)
+            {
+                Log.Info("Restoring keyboard to default values");
+                overrideKeyboard = false;
+                var currentWindowState = getWindowState();
+                saveWindowState(defaultWindowState);
+                savePreviousWindowState(defaultWindowState);
+                saveDockPosition(defaultDockPosition);
+                saveDockSize(defaultDockSize);
+                saveFullDockThicknessAsPercentageOfScreen(defaulFullDockThickness);
+                saveCollapsedDockThicknessAsPercentageOfFullDockThickness(defaultCollapsedDockThickness);
+                saveFloatingSizeAndPosition(defaultFloatingSizeAndPosition);
+
+                if (defaultWindowState == WindowStates.Docked)
+                {
+                    Log.InfoFormat("Rollback to docked edge {0}", defaultDockPosition.ToString());
+                    if (currentWindowState == WindowStates.Floating)
+                    {
+                        RegisterAppBar();
+                    }
+                    var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                    SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
+                }
+                else if (defaultWindowState == WindowStates.Floating)
+                {
+                    Log.Info("Rollback to floating default");
+                    if (currentWindowState == WindowStates.Docked)
+                    {
+                        UnRegisterAppBar();
+                    }
+                    window.Top = defaultFloatingSizeAndPosition.Top;
+                    window.Left = defaultFloatingSizeAndPosition.Left;
+                    window.Height = defaultFloatingSizeAndPosition.Height;
+                    window.Width = defaultFloatingSizeAndPosition.Width;
+                }
+            }
         }
 
         public void Restore()
@@ -624,7 +639,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             var windowState = getWindowState();
             if (windowState != WindowStates.Maximised && windowState != WindowStates.Minimised && windowState != WindowStates.Hidden) return;
-            saveWindowState(getPreviousWindowState()); 
+            saveWindowState(getPreviousWindowState());
             ApplySavedState();
             savePreviousWindowState(windowState);
         }
@@ -654,15 +669,15 @@ namespace JuliusSweetland.OptiKey.Services
 
             var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
             var yAdjustment = amountInPx / Graphics.DipScalingFactorY;
-            var yAdjustmentFromBottom = distanceToBottomBoundary < 0 
+            var yAdjustmentFromBottom = distanceToBottomBoundary < 0
                 ? distanceToBottomBoundary
                 : 0 - yAdjustment;
             var distanceToTopBoundary = window.Top - screenBoundsInDp.Top;
             var yAdjustmentFromTop = distanceToTopBoundary < 0 ? distanceToTopBoundary : 0 - yAdjustment;
-            
+
             var distanceToLeftBoundary = window.Left - screenBoundsInDp.Left;
             var xAdjustment = amountInPx / Graphics.DipScalingFactorX;
-            var xAdjustmentFromLeft = distanceToLeftBoundary < 0 
+            var xAdjustmentFromLeft = distanceToLeftBoundary < 0
                 ? distanceToLeftBoundary
                 : 0 - xAdjustment;
             var distanceToRightBoundary = screenBoundsInDp.Right - (window.Left + window.ActualWidth);
@@ -813,9 +828,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ApplyAndPersistSizeAndPosition(Rect rect)
         {
-            Log.InfoFormat("ApplyAndPersistSizeAndPosition called with rect.Top:{0}, rect.Bottom:{1}, rect.Left:{2}, rect.Right:{3}", 
+            Log.InfoFormat("ApplyAndPersistSizeAndPosition called with rect.Top:{0}, rect.Bottom:{1}, rect.Left:{2}, rect.Right:{3}",
                 rect.Top, rect.Bottom, rect.Left, rect.Right);
-            
+
             this.ApplySizeAndPosition(rect);
             PersistSizeAndPosition();
         }
@@ -925,7 +940,7 @@ namespace JuliusSweetland.OptiKey.Services
                     height = screenBoundsInPx.Height;
                     break;
             }
-            
+
             return new Rect(x, y, width, height);
         }
 
@@ -1008,7 +1023,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 //Coerce state
                 var fullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen();
-                if (fullDockThicknessAsPercentageOfScreen < MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN 
+                if (fullDockThicknessAsPercentageOfScreen < MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN
                     || fullDockThicknessAsPercentageOfScreen >= 100)
                 {
                     Log.WarnFormat("Saved full docked thickness of {0} is invalid. Restoring to default.", fullDockThicknessAsPercentageOfScreen);
@@ -1016,7 +1031,7 @@ namespace JuliusSweetland.OptiKey.Services
                     saveFullDockThicknessAsPercentageOfScreen(fullDockThicknessAsPercentageOfScreen);
                 }
                 double collapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
-                if (collapsedDockThicknessAsPercentageOfFullDockThickness < MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS 
+                if (collapsedDockThicknessAsPercentageOfFullDockThickness < MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS
                     || collapsedDockThicknessAsPercentageOfFullDockThickness >= 100)
                 {
                     Log.WarnFormat("Saved collased docked thickness of {0} is invalid. Restoring to default.", collapsedDockThicknessAsPercentageOfFullDockThickness);
@@ -1040,7 +1055,7 @@ namespace JuliusSweetland.OptiKey.Services
                         screenBoundsInDp.Top + screenBoundsInDp.Height / 6,
                         2 * (screenBoundsInDp.Width / 3), 2 * (screenBoundsInDp.Height / 3));
                     saveFloatingSizeAndPosition(floatingSizeAndPosition);
-                }    
+                }
             }
 
             ApplySavedState(true);
@@ -1326,7 +1341,7 @@ namespace JuliusSweetland.OptiKey.Services
                             }
                             else
                             {
-                                window.Left -= distanceToLeftBoundaryIfFloating; 
+                                window.Left -= distanceToLeftBoundaryIfFloating;
                             }
                             break;
 
@@ -1460,8 +1475,8 @@ namespace JuliusSweetland.OptiKey.Services
                     SizeAndPositionInitialised(this, new EventArgs());
                 }
             }
-        }
 
+        }
         private void RegisterAppBar()
         {
             Log.Info("RegisterAppBar called");
@@ -1491,10 +1506,10 @@ namespace JuliusSweetland.OptiKey.Services
             var windowState = getWindowState();
             var previousWindowState = getPreviousWindowState();
 
-            if (windowState != WindowStates.Docked 
+            if (windowState != WindowStates.Docked
                 && windowState != WindowStates.Floating)
             {
-                if (previousWindowState == WindowStates.Docked 
+                if (previousWindowState == WindowStates.Docked
                     || previousWindowState == WindowStates.Floating)
                 {
                     saveWindowState(previousWindowState);
@@ -1505,7 +1520,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
             }
 
-            if (previousWindowState != WindowStates.Docked 
+            if (previousWindowState != WindowStates.Docked
                 && previousWindowState != WindowStates.Floating)
             {
                 savePreviousWindowState(WindowStates.Docked);
@@ -1522,13 +1537,13 @@ namespace JuliusSweetland.OptiKey.Services
                 const int WS_EX_NOACTIVATE = 0x08000000;
                 const int GWL_EXSTYLE = -0x14;
 
-                PInvoke.SetWindowLong(windowHandle, GWL_EXSTYLE, 
+                PInvoke.SetWindowLong(windowHandle, GWL_EXSTYLE,
                     (int)PInvoke.GetWindowLong(windowHandle, GWL_EXSTYLE) | WS_EX_NOACTIVATE | WS_EX_APPWINDOW);
             }
         }
 
-      	private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition, bool isInitialising = false, bool persist = true)
-        { 
+        private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition, bool isInitialising = false, bool persist = true)
+        {
             Log.InfoFormat("SetAppBarSizeAndPosition called with dockPosition:{0}, sizeAndPosition.Top:{1}, sizeAndPosition.Bottom:{2}, sizeAndPosition.Left:{3}, sizeAndPosition.Right:{4}",
                     dockPosition, sizeAndPosition.Top, sizeAndPosition.Bottom, sizeAndPosition.Left, sizeAndPosition.Right);
             Log.InfoFormat("Screen bounds in px - Top:{0}, Left:{1}, Width:{2}, Height:{3}", screenBoundsInPx.Top, screenBoundsInPx.Left, screenBoundsInPx.Width, screenBoundsInPx.Height);
@@ -1543,7 +1558,7 @@ namespace JuliusSweetland.OptiKey.Services
             barData.rc.Top = (int)Math.Round(sizeAndPosition.Top);
             barData.rc.Right = (int)Math.Round(sizeAndPosition.Right);
             barData.rc.Bottom = (int)Math.Round(sizeAndPosition.Bottom);
-            
+
             //Submit a query for the proposed dock size and position, which might be updated
             PInvoke.SHAppBarMessage(AppBarMessages.QueryPos, ref barData);
 
@@ -1554,7 +1569,7 @@ namespace JuliusSweetland.OptiKey.Services
             switch (dockPosition)
             {
                 case DockEdges.Top:
-                    barData.rc.Bottom += barData.rc.Top - (int) Math.Round(sizeAndPosition.Top);
+                    barData.rc.Bottom += barData.rc.Top - (int)Math.Round(sizeAndPosition.Top);
                     break;
                 case DockEdges.Bottom:
                     barData.rc.Top -= (int)Math.Round(sizeAndPosition.Bottom) - barData.rc.Bottom;
@@ -1569,10 +1584,10 @@ namespace JuliusSweetland.OptiKey.Services
 
             Log.InfoFormat("Rect values adjusted (to compensate for other app bars) to barData.rc.Top:{0}, barData.rc.Bottom:{1}, barData.rc.Left:{2}, barData.rc.Right:{3}",
                     barData.rc.Top, barData.rc.Bottom, barData.rc.Left, barData.rc.Right);
-            
+
             //Then set the dock size and position, using the potentially updated barData
             PInvoke.SHAppBarMessage(AppBarMessages.SetPos, ref barData);
-            
+
             Log.InfoFormat("SetPos returned barData.rc.Top:{0}, barData.rc.Bottom:{1}, barData.rc.Left:{2}, barData.rc.Right:{3}",
                     barData.rc.Top, barData.rc.Bottom, barData.rc.Left, barData.rc.Right);
 
@@ -1584,7 +1599,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.InfoFormat("finalDockLeftInDp:{0}, finalDockTopInDp:{1}, finalDockWidthInDp:{2}, finalDockHeightInDp:{3}", finalDockLeftInDp, finalDockTopInDp, finalDockWidthInDp, finalDockHeightInDp);
             Log.InfoFormat("Screen bounds in dp - Top:{0}, Left:{1}, Width:{2}, Height:{3}", screenBoundsInDp.Top, screenBoundsInDp.Left, screenBoundsInDp.Width, screenBoundsInDp.Height);
 
-      	    if (isInitialising) return;
+            if (isInitialising) return;
 
             if (finalDockHeightInDp <= 0 || finalDockWidthInDp <= 0)
             {
@@ -1592,14 +1607,14 @@ namespace JuliusSweetland.OptiKey.Services
                 return;
             }
 
-      	    //Apply final size and position to the window. This is dispatched with ApplicationIdle priority 
-      	    //as WPF will send a resize after a new appbar is added. We need to apply the received size & position after this happens.
-      	    //RECT values are in pixels so I need to scale back to DIPs for WPF.
-      	    appBarBoundsInPx = new Rect(finalDockLeftInDp, finalDockTopInDp, finalDockWidthInDp, finalDockHeightInDp);
-      	    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
-      	        persist
-      	            ? new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition)
-      	            : new ApplySizeAndPositionDelegate(ApplySizeAndPosition), appBarBoundsInPx);
+            //Apply final size and position to the window. This is dispatched with ApplicationIdle priority 
+            //as WPF will send a resize after a new appbar is added. We need to apply the received size & position after this happens.
+            //RECT values are in pixels so I need to scale back to DIPs for WPF.
+            appBarBoundsInPx = new Rect(finalDockLeftInDp, finalDockTopInDp, finalDockWidthInDp, finalDockHeightInDp);
+            window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
+                persist
+                    ? new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition)
+                    : new ApplySizeAndPositionDelegate(ApplySizeAndPosition), appBarBoundsInPx);
         }
 
         private void UnRegisterAppBar()

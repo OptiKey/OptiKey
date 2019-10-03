@@ -142,7 +142,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public void AttachInputServiceEventHandlers()
         {
             Log.Info("AttachInputServiceEventHandlers called.");
-            
+
             inputService.PointsPerSecond += inputServicePointsPerSecondHandler;
             inputService.CurrentPosition += inputServiceCurrentPositionHandler;
             inputService.SelectionProgress += inputServiceSelectionProgressHandler;
@@ -159,12 +159,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             Log.Info("AttachInputServiceEventHandlers complete.");
         }
-        
+
 
         public void DetachInputServiceEventHandlers()
         {
             Log.Info("DetachInputServiceEventHandlers called.");
-            
+
             inputService.PointsPerSecond -= inputServicePointsPerSecondHandler;
             inputService.CurrentPosition -= inputServiceCurrentPositionHandler;
             inputService.SelectionProgress -= inputServiceSelectionProgressHandler;
@@ -205,7 +205,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (!(currentKeyboard is DynamicKeyboard))
                     {
                         mainWindowManipulationService.ResizeDockToFull();
-                    }                    
+                    }
                 };
             }
 
@@ -213,14 +213,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 SetKeyboardFromEnum(keyValue.BuiltInKeyboard.Value, mainWindowManipulationService, backAction);
             }
-            else {
+            else
+            {
                 // Set up new dynamic keyboard
 
                 // Extract any key states or layout overrides if present
                 var initialKeyStates = new Dictionary<KeyValue, KeyDownStates>();
-                string persistNewState = null;
+                bool persistNewState = false;
                 string overrideWindowState = null;
                 string overridePosition = null;
+                string overrideDockSize = null;
                 string overrideWidth = null;
                 string overrideHeight = null;
                 string horizontalOffset = null;
@@ -244,9 +246,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                     }
 
-                    //persistNewState = keyboard.PersistNewState;
+                    persistNewState = keyboard.PersistNewState;
                     overrideWindowState = keyboard.WindowState;
                     overridePosition = keyboard.Position;
+                    overrideDockSize = keyboard.DockSize;
                     overrideWidth = keyboard.Width;
                     overrideHeight = keyboard.Height;
                     horizontalOffset = keyboard.HorizontalOffset;
@@ -261,7 +264,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename);
                 newDynKeyboard.SetKeyOverrides(initialKeyStates);
                 //newDynKeyboard.OverrideKeyboardLayout(overrideHeight);
-                newDynKeyboard.OverrideKeyboardLayout(persistNewState, overrideWindowState, overridePosition, overrideWidth, overrideHeight, horizontalOffset, verticalOffset);
+                newDynKeyboard.OverrideKeyboardLayout(persistNewState, overrideWindowState, overridePosition, overrideDockSize, overrideWidth, overrideHeight, horizontalOffset, verticalOffset);
                 Keyboard = newDynKeyboard;
 
                 // Clear the scratchpad when launching a dynamic keyboard.
@@ -269,12 +272,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
             }
         }
-        
+
         private void ProcessBasicKeyValue(KeyValue singleKeyValue)
         {
             Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'",
                 singleKeyValue.String.ToPrintableString(), singleKeyValue.FunctionKey);
-          
+
             keyStateService.ProgressKeyDownState(singleKeyValue);
 
             if (!string.IsNullOrEmpty(singleKeyValue.String)
@@ -294,10 +297,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     //Single key function key
                     HandleFunctionKeySelectionResult(singleKeyValue);
-                }          
+                }
             }
         }
-      
+
         private void KeySelectionResult(KeyValue singleKeyValue, List<string> multiKeySelection)
         {
             // Pass single key to appropriate processing function
@@ -309,13 +312,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     ProcessChangeKeyboardKeyValue(kv_link);
                 }
-                else 
+                else
                 {
                     ProcessBasicKeyValue(singleKeyValue);
                 }
             }
-            
-            
+
+
             //Multi key selection
             if (multiKeySelection != null
                 && multiKeySelection.Any())
@@ -637,7 +640,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                         }
                     }
-                    
+
                     break;
 
                 case FunctionKeys.SelectVoice:
@@ -682,7 +685,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.Attention:
-                    audioService.PlaySound(Settings.Default.AttentionSoundFile, 
+                    audioService.PlaySound(Settings.Default.AttentionSoundFile,
                         Settings.Default.AttentionSoundVolume);
                     break;
 
@@ -703,8 +706,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Settings.Default.CommuniKateKeyboardCurrentContext = Settings.Default.CommuniKateDefaultBoard;
                             Settings.Default.CommuniKateKeyboardPrevious1Context = currentKeyboard.ToString();
                         }
-                      
-                        InitialiseKeyboard(this.mainWindowManipulationService);                     
+
+                        InitialiseKeyboard(this.mainWindowManipulationService);
                     }
                     break;
 
@@ -712,11 +715,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (CalibrationService != null)
                     {
                         Log.Info("Calibrate requested.");
-                            
+
                         var question = CalibrationService.CanBeCompletedWithoutManualIntervention
                             ? Resources.CALIBRATION_CONFIRMATION_MESSAGE
                             : Resources.CALIBRATION_REQUIRES_MANUAL_INTERACTION;
-                            
+
                         Keyboard = new YesNoQuestion(
                             question,
                             () =>
@@ -734,8 +737,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                                         RaiseToastNotification(Resources.CRASH_TITLE, calibrationResult.Exception != null
                                                 ? calibrationResult.Exception.Message
-                                                : calibrationResult.Message ?? Resources.UNKNOWN_CALIBRATION_ERROR, 
-                                            NotificationTypes.Error, 
+                                                : calibrationResult.Message ?? Resources.UNKNOWN_CALIBRATION_ERROR,
+                                            NotificationTypes.Error,
                                             () => inputService.RequestResume());
                                     }
                                 });
@@ -997,30 +1000,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     break;
 
-            case FunctionKeys.DynamicKeyboardNext:
-                {
-                    Log.Info("Changing keyboard to next DynamicKeyboard.");
+                case FunctionKeys.DynamicKeyboardNext:
+                    {
+                        Log.Info("Changing keyboard to next DynamicKeyboard.");
 
-                    Action backAction;
-                    var currentKeyboard2 = Keyboard;
-                    int pageIndex = 0;
-                    if (Keyboard is DynamicKeyboardSelector)
-                    {
-                        var kb = Keyboard as DynamicKeyboardSelector;
-                        backAction = kb.BackAction;
-                        pageIndex = kb.PageIndex + 1;
-                    }
-                    else
-                    {
-                        Log.Error("Unexpectedly entering DynamicKeyboardNext from somewhere other than DynamicKeyboard");
-                        backAction = () =>
+                        Action backAction;
+                        var currentKeyboard2 = Keyboard;
+                        int pageIndex = 0;
+                        if (Keyboard is DynamicKeyboardSelector)
                         {
-                            Keyboard = currentKeyboard2;
-                        };
+                            var kb = Keyboard as DynamicKeyboardSelector;
+                            backAction = kb.BackAction;
+                            pageIndex = kb.PageIndex + 1;
+                        }
+                        else
+                        {
+                            Log.Error("Unexpectedly entering DynamicKeyboardNext from somewhere other than DynamicKeyboard");
+                            backAction = () =>
+                            {
+                                Keyboard = currentKeyboard2;
+                            };
+                        }
+                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
                     }
-                    Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
-                }
-                break;
+                    break;
 
                 case FunctionKeys.CzechCzechRepublic:
                     SelectLanguage(Languages.CzechCzechRepublic);
@@ -1222,7 +1225,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (firstFinalPoint != null)
                         {
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
-                                
+
                             //This class reacts to the point selection event AFTER the MagnifyPopup reacts to it.
                             //This means that if the MagnifyPopup sets the nextPointSelectionAction from the
                             //MagnifiedPointSelectionAction then it will be called immediately i.e. for the same point.
@@ -1252,7 +1255,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 Thread.Sleep(Settings.Default.MouseDragDelayAfterLeftMouseButtonDownBeforeMove);
 
                                                 Vector stepVector = fp1 - fp2;
-                                                int steps = Settings.Default.MouseDragNumberOfSteps; 
+                                                int steps = Settings.Default.MouseDragNumberOfSteps;
                                                 stepVector = stepVector / steps;
 
                                                 do
@@ -1263,7 +1266,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                     Thread.Sleep(Settings.Default.MouseDragDelayBetweenEachStep);
                                                     steps--;
                                                 } while (steps > 0);
-                                                
+
                                                 mouseOutputService.MoveTo(fp2);
                                                 Thread.Sleep(Settings.Default.MouseDragDelayAfterMoveBeforeLeftMouseButtonUp);
                                                 audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
@@ -1538,7 +1541,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
                             simulateClick(finalPoint.Value);
                         }
-                            
+
                         ResetAndCleanupAfterMouseAction();
                         resumeLookToScroll();
                     });
@@ -1573,7 +1576,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         resumeLookToScroll();
                     });
                     break;
-                        
+
                 case FunctionKeys.MouseMoveAndRightClick:
                     Log.Info("Mouse move and right click selected.");
                     resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
@@ -1661,7 +1664,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                         ResetAndCleanupAfterMouseAction();
                         resumeLookToScroll();
-                    }, suppressMagnification:true);
+                    }, suppressMagnification: true);
                     break;
 
                 case FunctionKeys.MouseMoveAndScrollToLeft:
@@ -1754,51 +1757,51 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }, suppressMagnification: true);
                     break;
 
-                    case FunctionKeys.MouseScrollToTop:
+                case FunctionKeys.MouseScrollToTop:
 
-                        var currentPoint = mouseOutputService.GetCursorPosition();
-                        Log.InfoFormat("Mouse scroll to top selected at point ({0},{1}).", currentPoint.X, currentPoint.Y);
-                        Action<Point?> performScroll = point =>
+                    var currentPoint = mouseOutputService.GetCursorPosition();
+                    Log.InfoFormat("Mouse scroll to top selected at point ({0},{1}).", currentPoint.X, currentPoint.Y);
+                    Action<Point?> performScroll = point =>
+                    {
+                        if (point != null)
                         {
-                            if (point != null)
+                            Action<Point> simulateScrollToTop = fp =>
                             {
-                                Action<Point> simulateScrollToTop = fp =>
-                                {
-                                    Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    mouseOutputService.MoveAndScrollWheelUp(fp, Settings.Default.MouseScrollAmountInClicks, true);
-                                };
-                                lastMouseActionStateManager.LastMouseAction = () => simulateScrollToTop(point.Value);
-                                simulateScrollToTop(point.Value);
-                            }
-                        };
-                        performScroll(currentPoint);
-                        ResetAndCleanupAfterMouseAction();
+                                Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
+                                audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
+                                mouseOutputService.MoveAndScrollWheelUp(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                            };
+                            lastMouseActionStateManager.LastMouseAction = () => simulateScrollToTop(point.Value);
+                            simulateScrollToTop(point.Value);
+                        }
+                    };
+                    performScroll(currentPoint);
+                    ResetAndCleanupAfterMouseAction();
 
-                        break;
+                    break;
 
-                    case FunctionKeys.MouseScrollToBottom:
+                case FunctionKeys.MouseScrollToBottom:
 
-                        var currentPointScroll = mouseOutputService.GetCursorPosition();
-                        Log.InfoFormat("Mouse scroll to top selected at point ({0},{1}).", currentPointScroll.X, currentPointScroll.Y);
-                        Action<Point?> performScrollDown = point =>
+                    var currentPointScroll = mouseOutputService.GetCursorPosition();
+                    Log.InfoFormat("Mouse scroll to top selected at point ({0},{1}).", currentPointScroll.X, currentPointScroll.Y);
+                    Action<Point?> performScrollDown = point =>
+                    {
+                        if (point != null)
                         {
-                            if (point != null)
+                            Action<Point> simulateScrollToBottom = fp =>
                             {
-                                Action<Point> simulateScrollToBottom = fp =>
-                                {
-                                    Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    mouseOutputService.MoveAndScrollWheelDown(fp, Settings.Default.MouseScrollAmountInClicks, true);
-                                };
-                                lastMouseActionStateManager.LastMouseAction = () => simulateScrollToBottom(point.Value);
-                                simulateScrollToBottom(point.Value);
-                            }
-                        };
-                        performScrollDown(currentPointScroll);
-                        ResetAndCleanupAfterMouseAction();
+                                Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
+                                audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
+                                mouseOutputService.MoveAndScrollWheelDown(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                            };
+                            lastMouseActionStateManager.LastMouseAction = () => simulateScrollToBottom(point.Value);
+                            simulateScrollToBottom(point.Value);
+                        }
+                    };
+                    performScrollDown(currentPointScroll);
+                    ResetAndCleanupAfterMouseAction();
 
-                        break;
+                    break;
 
                 case FunctionKeys.MouseMoveTo:
                     Log.Info("Mouse move to selected.");
@@ -2095,7 +2098,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Info("Moving to top boundary.");
                     mainWindowManipulationService.Move(MoveToDirections.Top, null);
                     break;
-                        
+
                 case FunctionKeys.NextSuggestions:
                     Log.Info("Incrementing suggestions page.");
 
@@ -2282,7 +2285,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             nextPointSelectionAction = nextPoint =>
             {
-                if (!suppressMagnification 
+                if (!suppressMagnification
                     && keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                 {
                     ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
@@ -2374,7 +2377,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 NavigateToMenu();
             }
         }
-        
+
         private void SelectVoice(string voice)
         {
             if (Settings.Default.MaryTTSEnabled)
@@ -2400,9 +2403,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 foreach (var vStep in command.Split(stringSeparators, StringSplitOptions.None).ToList())
                 {
                     Log.DebugFormat("Performing StepList step: {0}.", vStep);
-                    FunctionKeys result;
                     if (vStep.StartsWith("Action>") &&
-                        (Enum.TryParse<FunctionKeys>(vStep.Substring(7), out result)))
+                        (Enum.TryParse<FunctionKeys>(vStep.Substring(7), out FunctionKeys result)))
                     {
                         singleKeyValue = new KeyValue(result);
                         HandleFunctionKeySelectionResult(singleKeyValue);
@@ -2479,7 +2481,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Keyboard = new Voice(CreateBackAction(), voiceKeyboard.RemainingVoices);
             }
         }
-        
+
         private Action CreateBackAction()
         {
             IKeyboard previousKeyboard = Keyboard;
