@@ -13,6 +13,7 @@ using System.Reflection;
 using log4net;
 using System.Xml;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -53,7 +54,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 // Setup all the UI components      
                 SetupGrid();
                 SetupKeys();
-                SetupBorders(); //TODO: Might be better to follow pattern for height overrides?
+                SetupStyle();
             }
         }
 
@@ -64,7 +65,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             WindowStates validWindowState;
             MoveToDirections validPosition;
             DockSizes validDockSize;
-            if (!string.IsNullOrWhiteSpace(keyboard.WindowState) && !Enum.TryParse<WindowStates>(keyboard.WindowState, out validWindowState))
+            if (!string.IsNullOrWhiteSpace(keyboard.WindowState) && Enum.TryParse(keyboard.WindowState, out validWindowState) 
+                && validWindowState != WindowStates.Docked && validWindowState != WindowStates.Floating && validWindowState != WindowStates.Maximised)
                 errorMessage = "WindowState not valid";
             else if (!string.IsNullOrWhiteSpace(keyboard.Position) && !Enum.TryParse<MoveToDirections>(keyboard.Position, out validPosition))
                 errorMessage = "Position not valid";
@@ -117,6 +119,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             var allKeys = keyboard.Keys.ActionKeys.Cast<XmlKey>()
                 .Concat(keyboard.Keys.ChangeKeyboardKeys)
                 .Concat(keyboard.Keys.DynamicKeys)
+                .Concat(keyboard.Keys.OutputKeys)
                 .Concat(keyboard.Keys.PluginKeys)
                 .Concat(keyboard.Keys.TextKeys)
                 .ToList();
@@ -248,6 +251,13 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             newKey.UseUnicodeCompatibilityFont = xmlKey.UseUnicodeCompatibilityFont;
             newKey.UseUrduCompatibilityFont = xmlKey.UseUrduCompatibilityFont;
 
+            if (!string.IsNullOrEmpty(xmlKey.BackgroundColor)
+               && (Regex.IsMatch(xmlKey.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
+                   || System.Drawing.Color.FromName(xmlKey.BackgroundColor).IsKnownColor))
+            {
+                newKey.BackgroundColourOverride = (SolidColorBrush)new BrushConverter().ConvertFrom(xmlKey.BackgroundColor);
+            }
+
             return newKey;
         }
 
@@ -324,6 +334,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             var allKeys = keys.ActionKeys.Cast<XmlKey>()
                 .Concat(keys.ChangeKeyboardKeys.Cast<XmlKey>())
                 .Concat(keys.DynamicKeys.Cast<XmlKey>())
+                .Concat(keys.OutputKeys.Cast<XmlKey>())
                 .Concat(keys.PluginKeys.Cast<XmlKey>())
                 .Concat(keys.TextKeys.Cast<XmlKey>())
                 .ToList();
@@ -345,6 +356,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             foreach (XmlDynamicKey key in keys.DynamicKeys)
             {
                 AddDynamicKey(key, minKeyWidth, minKeyHeight);
+            }
+
+            foreach (XmlOutputKey key in keys.OutputKeys)
+            {
+                AddOutputKey(key, minKeyWidth, minKeyHeight);
             }
 
             foreach (XmlPluginKey key in keys.PluginKeys)
@@ -459,6 +475,22 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
+        void AddOutputKey(XmlOutputKey xmlKey, int minKeyWidth, int minKeyHeight)
+        {
+            Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
+
+            if (xmlKey.Output != null)
+            {
+                newKey.Value = new KeyValue(xmlKey.Output);
+            }
+            else
+            {
+                Log.ErrorFormat("No value found in output key with row {0}, column {1}", xmlKey.Row, xmlKey.Col);
+            }
+
+            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width, xmlKey.Output);
+        }
+
         void AddPluginKey(XmlPluginKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
             Key newKey = CreateKeyWithBasicProps(xmlKey, minKeyWidth, minKeyHeight);
@@ -499,13 +531,27 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
-        private void SetupBorders()
+        private void SetupStyle()
         {
-            // Get border thickness, if specified, to override
+            // Get border and background values, if specified, to override
             if (keyboard.BorderThickness.HasValue)
             {
                 Log.InfoFormat("Setting border thickness for custom keyboard: {0}", keyboard.BorderThickness.Value);
                 this.BorderThickness = keyboard.BorderThickness.Value;
+            }
+            if (!string.IsNullOrEmpty(keyboard.BorderColor)
+                && (Regex.IsMatch(keyboard.BorderColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
+                    || System.Drawing.Color.FromName(keyboard.BorderColor).IsKnownColor))
+            {
+                Log.InfoFormat("Setting border color for custom keyboard: {0}", keyboard.BorderColor);
+                this.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom(keyboard.BorderColor);
+            }
+            if (!string.IsNullOrEmpty(keyboard.BackgroundColor)
+                &&  (Regex.IsMatch(keyboard.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
+                    || System.Drawing.Color.FromName(keyboard.BackgroundColor).IsKnownColor))
+            {
+                Log.InfoFormat("Setting background color for custom keyboard: {0}", keyboard.BackgroundColor);
+                this.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(keyboard.BackgroundColor);
             }
         }
         private void SetupGrid()
@@ -543,13 +589,34 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
         }
 
-        private void PlaceKeyInPosition(Key key, int row, int col, int rowspan = 1, int colspan = 1)
+        private void PlaceKeyInPosition(Key key, int row, int col, int rowspan = 1, int colspan = 1, string output ="")
         {
-            MainGrid.Children.Add(key);
-            Grid.SetColumn(key, col);
-            Grid.SetRow(key, row);
-            Grid.SetColumnSpan(key, colspan);
-            Grid.SetRowSpan(key, rowspan);
+            if (output == "Scratchpad")
+            {
+                var outputControl = new XmlScratchpad();
+                MainGrid.Children.Add(outputControl);
+                Grid.SetColumn(outputControl, col);
+                Grid.SetRow(outputControl, row);
+                Grid.SetColumnSpan(outputControl, colspan);
+                Grid.SetRowSpan(outputControl, rowspan);
+            }
+            //else if (output=="Suggestion")
+            //{
+            //    var outputControl = new XmlSuggestionRow();
+            //    MainGrid.Children.Add(outputControl);
+            //    Grid.SetColumn(outputControl, col);
+            //    Grid.SetRow(outputControl, row);
+            //    Grid.SetColumnSpan(outputControl, colspan);
+            //    Grid.SetRowSpan(outputControl, rowspan);
+            //}
+            else
+            {
+                MainGrid.Children.Add(key);
+                Grid.SetColumn(key, col);
+                Grid.SetRow(key, row);
+                Grid.SetColumnSpan(key, colspan);
+                Grid.SetRowSpan(key, rowspan);
+            }
         }
 
         public static string StringWithValidNewlines(string s)

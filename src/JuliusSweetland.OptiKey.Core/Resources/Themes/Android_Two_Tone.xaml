@@ -17,6 +17,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
         <ResourceDictionary>
             <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="KeyboardBackgroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="KeyboardBorderBrush" Color="{StaticResource Grey}" />
 
             <SolidColorBrush x:Key="KeyDefaultForegroundBrush" Color="{StaticResource White}" />
@@ -28,7 +29,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <SolidColorBrush x:Key="KeySelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="CapturingMultiKeySelectionBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="HighlightedKeyBorderBrush" Color="{StaticResource Green}"/>
-            
+
             <StaticResource x:Key="KeySelectionForeground" ResourceKey="Blue"/>
             <StaticResource x:Key="KeySelectionBorder" ResourceKey="Grey"/>
             <StaticResource x:Key="KeySelectionBackground" ResourceKey="Grey"/>

@@ -31,6 +31,9 @@ namespace JuliusSweetland.OptiKey.Models
             set { this.ReturnToThisKeyboard = XmlUtils.ConvertToBoolean(value); }
         }
 
+        public string Scratchpad
+        { get; set; }
+
         public string Text
         { get; set; }
 

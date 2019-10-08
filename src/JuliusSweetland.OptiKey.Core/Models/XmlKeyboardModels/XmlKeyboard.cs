@@ -3,7 +3,9 @@ using log4net;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace JuliusSweetland.OptiKey.Models
@@ -79,6 +81,12 @@ namespace JuliusSweetland.OptiKey.Models
         { get; set; }
 
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        public string BackgroundColor
+        { get; set; }
+
+        public string BorderColor
+        { get; set; }
 
         [XmlIgnore]
         public Thickness? BorderThickness

@@ -10,20 +10,24 @@ namespace JuliusSweetland.OptiKey.Models
         public List<XmlActionKey> ActionKeys
         { get; set; }
 
-        [XmlElement(ElementName = "TextKey")]
-        public List<XmlTextKey> TextKeys
-        { get; set; }
-
         [XmlElement(ElementName = "ChangeKeyboardKey")]
         public List<XmlChangeKeyboardKey> ChangeKeyboardKeys
+        { get; set; }
+
+        [XmlElement(ElementName = "DynamicKey")]
+        public List<XmlDynamicKey> DynamicKeys
+        { get; set; }
+
+        [XmlElement(ElementName = "OutputKey")]
+        public List<XmlOutputKey> OutputKeys
         { get; set; }
 
         [XmlElement(ElementName = "PluginKey")]
         public List<XmlPluginKey> PluginKeys
         { get; set; }
 
-        [XmlElement(ElementName = "DynamicKey")]
-        public List<XmlDynamicKey> DynamicKeys
+        [XmlElement(ElementName = "TextKey")]
+        public List<XmlTextKey> TextKeys
         { get; set; }
 
         [XmlIgnore]
@@ -31,7 +35,7 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                return ActionKeys.Count + TextKeys.Count + ChangeKeyboardKeys.Count + PluginKeys.Count + DynamicKeys.Count;
+                return ActionKeys.Count + ChangeKeyboardKeys.Count + DynamicKeys.Count + OutputKeys.Count + PluginKeys.Count + TextKeys.Count;
             }
         }
     }
