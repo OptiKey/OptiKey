@@ -13,6 +13,7 @@ using System.Reflection;
 using log4net;
 using System.Xml;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -53,7 +54,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 // Setup all the UI components      
                 SetupGrid();
                 SetupKeys();
-                SetupBorders(); //TODO: Might be better to follow pattern for height overrides?
+                SetupStyle();
             }
         }
 
@@ -64,7 +65,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             WindowStates validWindowState;
             MoveToDirections validPosition;
             DockSizes validDockSize;
-            if (!string.IsNullOrWhiteSpace(keyboard.WindowState) && !Enum.TryParse<WindowStates>(keyboard.WindowState, out validWindowState))
+            if (!string.IsNullOrWhiteSpace(keyboard.WindowState) && Enum.TryParse(keyboard.WindowState, out validWindowState) 
+                && validWindowState != WindowStates.Docked && validWindowState != WindowStates.Floating && validWindowState != WindowStates.Maximised)
                 errorMessage = "WindowState not valid";
             else if (!string.IsNullOrWhiteSpace(keyboard.Position) && !Enum.TryParse<MoveToDirections>(keyboard.Position, out validPosition))
                 errorMessage = "Position not valid";
@@ -247,6 +249,13 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             newKey.UsePersianCompatibilityFont = xmlKey.UsePersianCompatibilityFont;
             newKey.UseUnicodeCompatibilityFont = xmlKey.UseUnicodeCompatibilityFont;
             newKey.UseUrduCompatibilityFont = xmlKey.UseUrduCompatibilityFont;
+
+            if (!string.IsNullOrEmpty(xmlKey.BackgroundColor)
+               && (Regex.IsMatch(xmlKey.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
+                   || System.Drawing.Color.FromName(xmlKey.BackgroundColor).IsKnownColor))
+            {
+                newKey.BackgroundColourOverride = (SolidColorBrush)new BrushConverter().ConvertFrom(xmlKey.BackgroundColor);
+            }
 
             return newKey;
         }
@@ -499,13 +508,27 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
         }
 
-        private void SetupBorders()
+        private void SetupStyle()
         {
-            // Get border thickness, if specified, to override
+            // Get border and background values, if specified, to override
             if (keyboard.BorderThickness.HasValue)
             {
                 Log.InfoFormat("Setting border thickness for custom keyboard: {0}", keyboard.BorderThickness.Value);
                 this.BorderThickness = keyboard.BorderThickness.Value;
+            }
+            if (!string.IsNullOrEmpty(keyboard.BorderColor)
+                && (Regex.IsMatch(keyboard.BorderColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
+                    || System.Drawing.Color.FromName(keyboard.BorderColor).IsKnownColor))
+            {
+                Log.InfoFormat("Setting border color for custom keyboard: {0}", keyboard.BorderColor);
+                this.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom(keyboard.BorderColor);
+            }
+            if (!string.IsNullOrEmpty(keyboard.BackgroundColor)
+                &&  (Regex.IsMatch(keyboard.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
+                    || System.Drawing.Color.FromName(keyboard.BackgroundColor).IsKnownColor))
+            {
+                Log.InfoFormat("Setting background color for custom keyboard: {0}", keyboard.BackgroundColor);
+                this.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(keyboard.BackgroundColor);
             }
         }
         private void SetupGrid()

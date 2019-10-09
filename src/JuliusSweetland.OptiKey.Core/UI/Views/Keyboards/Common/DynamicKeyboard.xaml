@@ -12,7 +12,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        mc:Ignorable="d" 
-                       d:DesignHeight="300" d:DesignWidth="300">
+                       d:DesignHeight="300" d:DesignWidth="300"
+                       Background="{DynamicResource KeyboardBackgroundBrush}"
+                       BorderBrush="{DynamicResource KeyboardBorderBrush}">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -26,8 +28,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
-          x:Name="TopGrid">
+    <Grid x:Name="TopGrid">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" /> <!-- may be collapsed from code-->
@@ -43,15 +44,14 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                          ScratchpadWidthInKeys="8"
                          x:Name="OutputPanel"
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
-         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+        <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
-        <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
-              Grid.IsSharedSizeScope="True"
+        <Grid Grid.IsSharedSizeScope="True"
               x:Name="MainGrid"
               Grid.Row="1" Grid.Column="0"
               Grid.RowSpan="1" Grid.ColumnSpan="1" >
-        
-        <!-- Add Keys dynamically here -->
+
+            <!-- Add Keys dynamically here -->
 
         </Grid>
     </Grid>
