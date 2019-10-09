@@ -11,14 +11,15 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
                     xmlns:keyboardBase="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/OptiKey;component/Resources/Themes/Colours/Android.xaml" />
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
         <ResourceDictionary>
             <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="KeyboardBackgroundBrush" Color="{StaticResource White}" />
             <SolidColorBrush x:Key="KeyboardBorderBrush" Color="{StaticResource Grey}" />
-            
+
             <SolidColorBrush x:Key="KeyDefaultForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="KeyDefaultBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDefaultBackgroundBrush" Color="{StaticResource White}" />
@@ -27,11 +28,11 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <SolidColorBrush x:Key="KeySelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="CapturingMultiKeySelectionBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="HighlightedKeyBorderBrush" Color="{StaticResource Green}"/>
-            
+
             <StaticResource x:Key="KeySelectionForeground" ResourceKey="Blue"/>
             <StaticResource x:Key="KeySelectionBorder" ResourceKey="Grey"/>
             <StaticResource x:Key="KeySelectionBackground" ResourceKey="Grey"/>
-            
+
             <SolidColorBrush x:Key="KeyDownStateIsDownForegroundBrush" Color="{StaticResource Blue}" />
             <SolidColorBrush x:Key="KeyDownStateIsDownBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDownStateIsDownBackgroundBrush" Color="{StaticResource White}" />
@@ -48,17 +49,17 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Blue}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource White}" />
-            
+
             <SolidColorBrush x:Key="ScratchpadDisabledForegroundBrush" Color="{StaticResource LightGrey}" />
             <SolidColorBrush x:Key="ScratchpadDisabledBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadDisabledBackgroundBrush" Color="{StaticResource White}" />
 
             <SolidColorBrush x:Key="QuestionForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource White}" />
-            
+
             <SolidColorBrush x:Key="DebugTextForegroundBrush" Color="{StaticResource Green}" />
             <SolidColorBrush x:Key="ManualModeTextForegroundBrush" Color="{StaticResource Green}" />
-            
+
             <SolidColorBrush x:Key="CursorDefaultStrokeBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="CursorDefaultFillBrush" Color="{StaticResource White}" />
             <StaticResource x:Key="PointSelectionForeground" ResourceKey="Blue"/>
@@ -524,7 +525,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
-            
+
             <Style TargetType="{x:Type controls:Key}">
                 <Setter Property="Template">
                     <Setter.Value>

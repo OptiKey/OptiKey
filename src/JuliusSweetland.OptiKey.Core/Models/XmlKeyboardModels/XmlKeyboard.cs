@@ -80,6 +80,12 @@ namespace JuliusSweetland.OptiKey.Models
 
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
+        public string BackgroundColor
+        { get; set; }
+
+        public string BorderColor
+        { get; set; }
+
         [XmlIgnore]
         public Thickness? BorderThickness
         { get; set; }

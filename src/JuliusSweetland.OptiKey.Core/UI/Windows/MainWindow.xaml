@@ -17,9 +17,12 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         AllowsTransparency="True"
         ResizeMode="NoResize"
         Style="{DynamicResource MainWindowStyle}"
-        Tag="{Binding RelativeSource={RelativeSource Mode=Self}}">
-        <!--Don't set the window's Width and Height properties on the window itself - they are loaded and applied from settings-->
-    
+        Tag="{Binding RelativeSource={RelativeSource Mode=Self}}"
+        Background="Transparent"
+        BorderBrush="Transparent">
+    <!--Set background to transparent so keyboards can have transparent backgrounds-->
+    <!--Don't set the window's Width and Height properties on the window itself - they are loaded and applied from settings-->
+
     <Window.ContextMenu>
         <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}"
                      FlowDirection="{Binding Source={x:Static resx:Settings.Default}, Path=UiLanguageFlowDirection}">
@@ -35,7 +38,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <Image Source="..\..\Resources\Icons\ManualMode.ico" />
                 </MenuItem.Icon>
             </MenuItem>
-	    <MenuItem Header="{x:Static resx:Resources.BACK_TITLE_CASE}" 
+            <MenuItem Header="{x:Static resx:Resources.BACK_TITLE_CASE}" 
                       Command="{Binding BackCommand}">
                 <MenuItem.Icon>
                     <Image Source="..\..\Resources\Icons\Back.ico" />
@@ -55,13 +58,13 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             </MenuItem>
         </ContextMenu>
     </Window.ContextMenu>
-    
+
     <i:Interaction.Triggers>
         <interactionRequest:InteractionRequestTrigger 
             SourceObject="{Binding Path=ManagementWindowRequest, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}">
             <triggerActions:OpenManagementWindowAction />
         </interactionRequest:InteractionRequestTrigger>
     </i:Interaction.Triggers>
-    
+
     <views:MainView x:Name="MainView" />
 </Window>
