@@ -47,11 +47,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Languages>(Resources.ENGLISH_CANADA, Enums.Languages.EnglishCanada),
                     new KeyValuePair<string, Languages>(Resources.ENGLISH_UK, Enums.Languages.EnglishUK),
                     new KeyValuePair<string, Languages>(Resources.ENGLISH_US, Enums.Languages.EnglishUS),
+                    new KeyValuePair<string, Languages>(Resources.FINNISH_FINLAND, Enums.Languages.FinnishFinland),
                     new KeyValuePair<string, Languages>(Resources.FRENCH_CANADA, Enums.Languages.FrenchCanada),
                     new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, Enums.Languages.FrenchFrance),
                     new KeyValuePair<string, Languages>(Resources.GEORGIAN_GEORGIA, Enums.Languages.GeorgianGeorgia),
                     new KeyValuePair<string, Languages>(Resources.GERMAN_GERMANY, Enums.Languages.GermanGermany),
                     new KeyValuePair<string, Languages>(Resources.GREEK_GREECE, Enums.Languages.GreekGreece),
+                    new KeyValuePair<string, Languages>(Resources.HEBREW_ISRAEL, Enums.Languages.HebrewIsrael),
                     new KeyValuePair<string, Languages>(Resources.ITALIAN_ITALY, Enums.Languages.ItalianItaly),
                     new KeyValuePair<string, Languages>(Resources.JAPANESE_JAPAN, Enums.Languages.JapaneseJapan),
                     new KeyValuePair<string, Languages>(Resources.KOREAN_KOREA, Enums.Languages.KoreanKorea),
@@ -187,6 +189,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
                        || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS
+                       || KeyboardAndDictionaryLanguage == Enums.Languages.HebrewIsrael
                        || KeyboardAndDictionaryLanguage == Enums.Languages.JapaneseJapan
                        || KeyboardAndDictionaryLanguage == Enums.Languages.TurkishTurkey
                        || KeyboardAndDictionaryLanguage == Enums.Languages.GeorgianGeorgia

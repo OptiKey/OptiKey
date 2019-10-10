@@ -125,11 +125,13 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue F17Key = new KeyValue(FunctionKeys.F17);
         public static readonly KeyValue F18Key = new KeyValue(FunctionKeys.F18);
         public static readonly KeyValue F19Key = new KeyValue(FunctionKeys.F19);
+        public static readonly KeyValue FinnishFinlandKey = new KeyValue(FunctionKeys.FinnishFinland);
         public static readonly KeyValue FrenchFranceKey = new KeyValue(FunctionKeys.FrenchFrance);
         public static readonly KeyValue FrenchCanadaKey = new KeyValue(FunctionKeys.FrenchCanada);
         public static readonly KeyValue GeorgianGeorgiaKey = new KeyValue(FunctionKeys.GeorgianGeorgia);
         public static readonly KeyValue GermanGermanyKey = new KeyValue(FunctionKeys.GermanGermany);
         public static readonly KeyValue GreekGreeceKey = new KeyValue(FunctionKeys.GreekGreece);
+        public static readonly KeyValue HebrewIsraelKey = new KeyValue(FunctionKeys.HebrewIsrael);
         public static readonly KeyValue HomeKey = new KeyValue(FunctionKeys.Home);
         public static readonly KeyValue IncreaseOpacityKey = new KeyValue(FunctionKeys.IncreaseOpacity);
         public static readonly KeyValue InsertKey = new KeyValue(FunctionKeys.Insert);
@@ -310,6 +312,11 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.EnglishCanada, defaultList },
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
+                { Languages.FinnishFinland, "abcdefghijklmnopqrstuvwxyzåäö"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
                 { Languages.FrenchFrance, "abcdefghijklmnopqrstuvwxyzçé"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
@@ -331,6 +338,11 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToList()
                 },
                 { Languages.GreekGreece, "ασδφγηξκλ;ςερτυθιοπζχψωβνμ"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.HebrewIsrael, "אבגדהוזחטיכלמנסעפצקרשת"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()

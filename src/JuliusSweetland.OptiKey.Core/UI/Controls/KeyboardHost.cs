@@ -24,10 +24,12 @@ using CzechViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Czech;
 using DanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Danish;
 using DutchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Dutch;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
+using FinnishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Finnish;
 using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
 using GeorgianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Georgian;
 using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
 using GreekViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek;
+using HebrewViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Hebrew;
 using ItalianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Italian;
 using JapaneseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Japanese;
 using KoreanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Korean;
@@ -194,6 +196,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.DutchNetherlands:
                         newContent = new DutchViews.NetherlandsAlpha { DataContext = Keyboard };
                         break;
+                    case Languages.FinnishFinland:
+                        newContent = new FinnishViews.Alpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.FrenchCanada:
                         newContent = new FrenchViews.CanadaAlpha1 { DataContext = Keyboard };
                         break;
@@ -214,6 +219,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.GreekGreece:
                         newContent = new GreekViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.HebrewIsrael:
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new HebrewViews.SimplifiedAlpha1 { DataContext = Keyboard }
+                            : new HebrewViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.ItalianItaly:
                         newContent = new ItalianViews.Alpha1 { DataContext = Keyboard };
@@ -274,6 +284,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.HebrewIsrael:
+                        newContent = new HebrewViews.Alpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.JapaneseJapan:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new JapaneseViews.SimplifiedAlpha2 { DataContext = Keyboard }
@@ -316,6 +329,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.DutchNetherlands:
                         newContent = new DutchViews.NetherlandsConversationAlpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.FinnishFinland:
+                        newContent = new FinnishViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.FrenchCanada:
                         newContent = new FrenchViews.CanadaConversationAlpha1 { DataContext = Keyboard };
                         break;
@@ -336,6 +352,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             break;
                     case Languages.GreekGreece:
                         newContent = new GreekViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.HebrewIsrael:
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new HebrewViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
+                            : new HebrewViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.ItalianItaly:
                         newContent = new ItalianViews.ConversationAlpha1 { DataContext = Keyboard };

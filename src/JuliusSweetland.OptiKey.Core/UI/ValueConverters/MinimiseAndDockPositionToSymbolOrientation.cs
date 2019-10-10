@@ -8,6 +8,10 @@ using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
+    /*
+     * Computes symbol orientation for a 'Minimise' symbol, based on current dock position
+     * and the preference for Optikey gets minimis
+     */
     public class MinimiseAndDockPositionToSymbolOrientation : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

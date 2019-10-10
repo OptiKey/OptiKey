@@ -1212,7 +1212,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Presage dictionary cannot be edited from here.
         ///It&apos;s default location is &quot;C:\Program Files (x86)\presage\share\presage\database_en.db&quot;.
-        ///It can be edited with a program which can read SQLite format 3 files 
+        ///It can be edited with a program which can read SQLite format 3 files
         ///such as &quot;DB Browser for SQLite&quot; (which is a free program)..
         /// </summary>
         public static string DICTIONARY_IS_PRESAGE {
@@ -1967,6 +1967,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Finnish (Finland) / suomi (Suomi).
+        /// </summary>
+        public static string FINNISH_FINLAND {
+            get {
+                return ResourceManager.GetString("FINNISH_FINLAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finnish
+        /// (Finland) /
+        /// suomi
+        /// (Suomi).
+        /// </summary>
+        public static string FINNISH_FINLAND_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("FINNISH_FINLAND_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fixations (dwell).
         /// </summary>
         public static string FIXATIONS_DWELL {
@@ -2180,6 +2201,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string GROW {
             get {
                 return ResourceManager.GetString("GROW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hebrew (Israel) / עברית (ישראל).
+        /// </summary>
+        public static string HEBREW_ISRAEL {
+            get {
+                return ResourceManager.GetString("HEBREW_ISRAEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hebrew
+        ///(Israel) /
+        ///עברית
+        ///(ישראל).
+        /// </summary>
+        public static string HEBREW_ISRAEL_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("HEBREW_ISRAEL_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
@@ -3094,7 +3136,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scroll by {0} wheel unit: 
+        ///   Looks up a localized string similar to Scroll by {0} wheel unit:
         ///(120 wheel units = 1 click)|Scroll by {0} wheel units:
         ///(120 wheel units = 1 click).
         /// </summary>
@@ -3327,6 +3369,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MAGNIFIER {
             get {
                 return ResourceManager.GetString("MAGNIFIER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Center Magnifier on Screen.
+        /// </summary>
+        public static string MAGNIFIER_CENTER_ON_SCREEN {
+            get {
+                return ResourceManager.GetString("MAGNIFIER_CENTER_ON_SCREEN", resourceCulture);
             }
         }
         
@@ -6288,7 +6339,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Urdu
         ///(Pakistan) /
-        ///اردو 
+        ///اردو
         ///(پاکستان).
         /// </summary>
         public static string URDU_PAKISTAN_SPLIT_WITH_NEWLINE {

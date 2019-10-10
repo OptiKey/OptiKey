@@ -15,8 +15,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 
         private string link;
 
-        private double? overrideHeight;
-
+        private bool persistNewState;
+        private string windowState;
+        private string position;
+        private string dockSize;
+        private string width;
+        private string height;
+        private string horizontalOffset;
+        private string verticalOffset;
         private Dictionary<Models.KeyValue, Enums.KeyDownStates> resetKeyStates;
         private Dictionary<Models.KeyValue, Enums.KeyDownStates> overrideKeyStates;
 
@@ -27,8 +33,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
         private readonly Func<string, string, NotificationTypes, Action, bool> raiseToastNotification;
 
         public DynamicKeyboard(Action backAction,
-            IWindowManipulationService windowManipulationService, 
-            IKeyStateService keyStateService, 
+            IWindowManipulationService windowManipulationService,
+            IKeyStateService keyStateService,
             IInputService inputService,
             IAudioService audioService,
             Func<string, string, NotificationTypes, Action, bool> raiseToastNotification,
@@ -77,24 +83,62 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             }
         }
 
-        public void OverrideKeyboardLayout(double? height)
+        public void OverrideKeyboardLayout(bool persistNewState, string windowState, string position, string dockSize, string width, string height, string horizontalOffset, string verticalOffset)
         {
-            this.overrideHeight = height;
+            this.persistNewState = persistNewState;
+            this.windowState = windowState;
+            this.position = position;
+            this.dockSize = dockSize;
+            this.width = width;
+            this.height = height;
+            this.horizontalOffset = horizontalOffset;
+            this.verticalOffset = verticalOffset;
         }
 
         private void SetupKeyboardLayout()
         {
-            if (overrideHeight.HasValue)
+            if (!string.IsNullOrWhiteSpace(windowState)
+                || !string.IsNullOrWhiteSpace(position)
+                || !string.IsNullOrWhiteSpace(dockSize)
+                || !string.IsNullOrWhiteSpace(width)
+                || !string.IsNullOrWhiteSpace(height)
+                || !string.IsNullOrWhiteSpace(horizontalOffset)
+                || !string.IsNullOrWhiteSpace(verticalOffset))
             {
-                if (overrideHeight.Value > 95)
+                string errorMessage = null;
+                double validNumber;
+                WindowStates validWindowState;
+                MoveToDirections validPosition;
+                DockSizes validDockSize;
+                if (!string.IsNullOrWhiteSpace(windowState) && !Enum.TryParse<WindowStates>(windowState, out validWindowState))
+                    errorMessage = "WindowState not valid";
+                else if (!string.IsNullOrWhiteSpace(position) && !Enum.TryParse<MoveToDirections>(position, out validPosition))
+                    errorMessage = "Position not valid";
+                else if (!string.IsNullOrWhiteSpace(dockSize) && !Enum.TryParse<DockSizes>(dockSize, out validDockSize))
+                    errorMessage = "DockSize not valid";
+                else if (!string.IsNullOrWhiteSpace(width)
+                    && !(double.TryParse(width.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                    errorMessage = "Width must be between -9999 and 9999";
+                else if (!string.IsNullOrWhiteSpace(height)
+                    && !(double.TryParse(height.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                    errorMessage = "Height must be between -9999 and 9999";
+                else if (!string.IsNullOrWhiteSpace(horizontalOffset)
+                    && !(double.TryParse(horizontalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                    errorMessage = "Offset must be between -9999 and 9999";
+                else if (!string.IsNullOrWhiteSpace(verticalOffset)
+                    && !(double.TryParse(verticalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
+                    errorMessage = "Offset must be between -9999 and 9999";
+
+                if (errorMessage != null)
                 {
-                    raiseToastNotification(Resources.DYNAMIC_KEYBOARD_DEFINITION_INVALID, Resources.DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD, 
+                    raiseToastNotification(Resources.DYNAMIC_KEYBOARD_DEFINITION_INVALID, errorMessage,
                         NotificationTypes.Error, () => { });
                     return;
                 }
-                Log.InfoFormat("Overriding dock height for dynamic keyboard: height = {0}", overrideHeight.Value);
-                windowManipulationService.ResizeDockToSpecificHeight(overrideHeight.Value, persistNewSize: false);
             }
+
+            Log.InfoFormat("Overriding size and position for dynamic keyboard");
+            windowManipulationService.MoveAndSize(persistNewState, windowState, position, dockSize, width, height, horizontalOffset, verticalOffset);
         }
 
         public string Link
@@ -109,25 +153,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
                 foreach (var entry in resetKeyStates)
                 {
                     keyStateService.KeyDownStates[entry.Key].Value = entry.Value;
-                }
-            }
-        }
-
-        private void RaiseError(string title, string message, NotificationTypes notificationType)
-        {
-            Log.Error("Error raised by dynamic keyboard. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)");
-
-            inputService.RequestSuspend();
-
-            if (raiseToastNotification(title, message, notificationType, () => inputService.RequestResume()))
-            {
-                if (notificationType == NotificationTypes.Error)
-                {
-                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                }
-                else
-                {
-                    audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 }
             }
         }

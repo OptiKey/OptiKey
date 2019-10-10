@@ -1,0 +1,2350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Lisää</value>
+  </data>
+  <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
+    <value>Lisää uusi sana:</value>
+  </data>
+  <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Haluatko lisätä lauseen '{0}' sanakirjaan pikakomennolla '{1}'?</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LISÄÄ SANAKIRJAAN</value>
+  </data>
+  <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Haluatko lisätä sanan '{0}' sanakirjaan?</value>
+  </data>
+  <data name="ADDED" xml:space="preserve">
+    <value>Lisätty</value>
+  </data>
+  <data name="ADJUST_BY" xml:space="preserve">
+    <value>Muuta '{0}' pikselin verran|Muuta '{0}' pikselin verran</value>
+  </data>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>KIRJAIMET 1</value>
+  </data>
+  <data name="ALT" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="ANDROID_DARK" xml:space="preserve">
+    <value>Android Dark</value>
+  </data>
+  <data name="ANDROID_LIGHT" xml:space="preserve">
+    <value>Android Light</value>
+  </data>
+  <data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>Android Two Tone</value>
+  </data>
+  <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
+    <value>Muuta sanoihin iso alkukirjain:</value>
+  </data>
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
+    <value>Täydennä sanat:</value>
+  </data>
+  <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
+    <value>Automaattiset lauseen korjaukset</value>
+  </data>
+  <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
+    <value>Lisää välilyönti sanojen väliin:</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Takaisin</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
+    <value>TAKAISIN</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>YKSI
+TAAKSEPÄIN</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SANA
+TAAKSEPÄIN</value>
+  </data>
+  <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
+    <value>Bass ei voinut luoda virtaa tiedostosta '{0}'</value>
+  </data>
+  <data name="BOTTOM" xml:space="preserve">
+    <value>Alas</value>
+  </data>
+  <data name="BREAK" xml:space="preserve">
+    <value>TAUKO</value>
+  </data>
+  <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
+    <value>Kalibrointi keskeytettiin: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Haluatko varmasti kalibroida uudelleen?</value>
+  </data>
+  <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
+    <value>Kalibroinnin aikana tapahtui virhe: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
+    <value>Kalibrointi epäonnistui: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
+    <value>Kalibrointia ei voida suorittaa loppuun ilman manuaalista interventiota, esim. hiiren käyttöä. Saatat jäädä jumiin kalibrointiprosessiin, jos et pysty käyttämään tietokonetta käsillä.
+Haluatko varmasti kalibroida uudelleen?</value>
+  </data>
+  <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
+    <value>Kalibrointi pysähtyi tuntemattomasta syystä: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
+    <value>Kalibrointi onnistui! Tarkkuus (virheen keskiarvo = {0})</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>PERUUTA</value>
+  </data>
+  <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
+    <value>Kaappauksen aikakatkaisu (ms):</value>
+  </data>
+  <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
+    <value>Tarkista päivitykset käynnistyksessä:</value>
+  </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>TYHJENNÄ</value>
+  </data>
+  <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KLIKKAA
+&amp; RAAHAA</value>
+  </data>
+  <data name="CLICK_SOUND_1" xml:space="preserve">
+    <value>Klikkaus 1</value>
+  </data>
+  <data name="CLICK_SOUND_2" xml:space="preserve">
+    <value>Klikkaus 2</value>
+  </data>
+  <data name="CLICK_SOUND_3" xml:space="preserve">
+    <value>Klikkaus 3</value>
+  </data>
+  <data name="CLICK_SOUND_4" xml:space="preserve">
+    <value>Klikkaus 4</value>
+  </data>
+  <data name="CLICK_SOUND_5" xml:space="preserve">
+    <value>Klikkaus 5</value>
+  </data>
+  <data name="CLICK_SOUND_6" xml:space="preserve">
+    <value>Klikkaus 6</value>
+  </data>
+  <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PIENENNÄ
+PALKKI</value>
+  </data>
+  <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
+    <value>Pienennetyn palkin paksuus (% koko palkin paksuudesta):</value>
+  </data>
+  <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
+    <value>VALIKKO</value>
+  </data>
+  <data name="CONVERSATION" xml:space="preserve">
+    <value>KESKUSTELU</value>
+  </data>
+  <data name="CONVERSATION_LAYOUT" xml:space="preserve">
+    <value>Keskustelun kirjaimet</value>
+  </data>
+  <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
+    <value>Keskustelun numerot &amp; symbolit</value>
+  </data>
+  <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Keskustelutila</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
+    <value>OptiKey on havainnut, että käyttäjän asetustiedosto on vioittunut ja että se on korjattava. Tämä tehdään palauttamalla vanha versio tai jos se ei ole mahdollista, oletusversio.
+
+Paina Kyllä, jos haluat palauttaa käyttäjän asetukset ja käynnistää uudelleen.
+
+Paina Ei, jos haluat korjata tai kopioida käyttäjän asetustiedoston manuaalisesti.</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
+    <value>Voi ei! Käyttäjän asetustiedosto on korruptoitunut.</value>
+  </data>
+  <data name="CRASH_MESSAGE" xml:space="preserve">
+    <value>Huonoja uutisia - OptiKey kaatui ja se on suljettava.
+
+Sähköposti, jossa on yksityiskohtaisia tietoja siitä, mitä tapahtui, olisi erittäin hyödyllinen: optikeyfeedback@gmail.com
+
+Pahoittelut</value>
+  </data>
+  <data name="CRASH_TITLE" xml:space="preserve">
+    <value>Voi ei!</value>
+  </data>
+  <data name="CTRL" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="CURRENCIES" xml:space="preserve">
+    <value>VALUUTAT</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
+    <value>Valuutat 1</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
+    <value>Valuutat 2</value>
+  </data>
+  <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
+    <value>Osoittimen korkeus (pikseliä):</value>
+  </data>
+  <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
+    <value>Osoittimen leveys (pikseliä):</value>
+  </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>Dynaamisen näppäimistön tiedosto</value>
+  </data>
+  <data name="DANISH_DENMARK" xml:space="preserve">
+    <value>tanska (Tanska) / Dansk (Danmark)</value>
+  </data>
+  <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>tanska
+(Tanska) /
+Dansk
+(Danmark)</value>
+  </data>
+  <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
+    <value>Debugtila</value>
+  </data>
+  <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VÄHENNÄ
+PEITTOA</value>
+  </data>
+  <data name="DEL" xml:space="preserve">
+    <value>DEL</value>
+  </data>
+  <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DIACRITICS" xml:space="preserve">
+    <value>TARKKEET</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
+    <value>Tarkkeet 1</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
+    <value>Tarkkeet 2</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
+    <value>Tarkkeet 3</value>
+  </data>
+  <data name="DICTIONARY" xml:space="preserve">
+    <value>Sanakirja</value>
+  </data>
+  <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
+    <value>Käyttäjän sanakirjaa ei ole ja alkuperäistä sanakirjaa ei löytynyt polusta: '{0}'</value>
+  </data>
+  <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
+    <value>Näytä jokainen viestin kirjain X sekuntia:</value>
+  </data>
+  <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
+    <value>Tee nykyisessä paikassa...</value>
+  </data>
+  <data name="DO_AT_POINT" xml:space="preserve">
+    <value>Tee pisteessä...</value>
+  </data>
+  <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUOLI
+ALAS</value>
+  </data>
+  <data name="DURATION_FORMAT" xml:space="preserve">
+    <value> ({0:#,###}ms)</value>
+  </data>
+  <data name="END" xml:space="preserve">
+    <value>END</value>
+  </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>englanti (Kanada) / English (Canada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>englanti (Iso-Britannia) / English (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>englanti (Yhdysvallat) / English (US)</value>
+  </data>
+  <data name="ENTER" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
+    <value>Hienoa. '{0}' on lisätty sanakirjaan.</value>
+  </data>
+  <data name="ERROR_SOUND_LABEL" xml:space="preserve">
+    <value>Virhe:</value>
+  </data>
+  <data name="ESC" xml:space="preserve">
+    <value>ESC</value>
+  </data>
+  <data name="EXPAND" xml:space="preserve">
+    <value>LAAJENNA</value>
+  </data>
+  <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LAAJENNA
+PALKKI</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LAAJENNA
+ALAS &amp; VASEN</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LAAJENNA
+ALAS &amp; OIKEA</value>
+  </data>
+  <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LAAJENNA
+ALAS</value>
+  </data>
+  <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LAAJENNA
+VASEN</value>
+  </data>
+  <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LAAJENNA
+OIKEA</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LAAJENNA
+YLÖS &amp; VASEN</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LAAJENNA
+YLÖS &amp; OIKEA</value>
+  </data>
+  <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LAAJENNA
+YLÖS</value>
+  </data>
+  <data name="FALLING_SOUND_1" xml:space="preserve">
+    <value>Pudotus 1</value>
+  </data>
+  <data name="FALLING_SOUND_2" xml:space="preserve">
+    <value>Pudotus 2</value>
+  </data>
+  <data name="FILL_PIE" xml:space="preserve">
+    <value>Täytä siivu</value>
+  </data>
+  <data name="FIXATIONS_DWELL" xml:space="preserve">
+    <value>Kiinnitykset (oleskelu)</value>
+  </data>
+  <data name="FONT" xml:space="preserve">
+    <value>Kirjasin</value>
+  </data>
+  <data name="FONT_FAMILY_LABEL" xml:space="preserve">
+    <value>Kirjasinperhe</value>
+  </data>
+  <data name="FONT_STRETCH_LABEL" xml:space="preserve">
+    <value>Kirjasimen venytys</value>
+  </data>
+  <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
+    <value>Kirjasimen paino</value>
+  </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>ranska (Ranska) / Française (France)</value>
+  </data>
+  <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
+    <value>Koko palkin paksuus (% ruudusta):</value>
+  </data>
+  <data name="GAZE_TRACKER" xml:space="preserve">
+    <value>Katseen seuraaja</value>
+  </data>
+  <data name="GROW" xml:space="preserve">
+    <value>Kasvata</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>HOME</value>
+  </data>
+  <data name="HORIZONTAL_FILL" xml:space="preserve">
+    <value>Vaakasuora täyttö (% ruudusta):</value>
+  </data>
+  <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
+    <value>Keskeytyneen näppäinvalinnan elinaika (ms):</value>
+  </data>
+  <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LISÄÄ
+PEITTOA</value>
+  </data>
+  <data name="INFO_SOUND_LABEL" xml:space="preserve">
+    <value>Tiedot:</value>
+  </data>
+  <data name="INS" xml:space="preserve">
+    <value>INS</value>
+  </data>
+  <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
+    <value>...mutta estä iso alkukirjain kun siitä ei luultavasti ole hyötyä:</value>
+  </data>
+  <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
+    <value>Nykyinen näppäimistö- &amp; kielivalinta eivät sovi yhteen</value>
+  </data>
+  <data name="JUMP" xml:space="preserve">
+    <value>hYPPY</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HYPPY
+ALAS &amp; VASEN</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HYPPY
+ALAS &amp; OIKEA</value>
+  </data>
+  <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HYPPY
+ALAS</value>
+  </data>
+  <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HYPPY
+VASEN</value>
+  </data>
+  <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HYPPY
+OIKEA</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HYPPY
+YLÖS &amp; VASEN</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HYPPY
+YLÖS &amp; OIKEA</value>
+  </data>
+  <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HYPPY
+YLÖS</value>
+  </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Näppäimen tekstin muunto:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Näppäinvalinnan kesto (ms):</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Näppäinvalinnan lukitusaika (ms):</value>
+  </data>
+  <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Näppäinvalinnan näppäin:</value>
+  </data>
+  <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Näppäinvalinnan hiiren nappi:</value>
+  </data>
+  <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
+    <value>Näppäinvalinnta:</value>
+  </data>
+  <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Näppäinvalinnan lähde:</value>
+  </data>
+  <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>Näppäinvalinnta: {0}</value>
+  </data>
+  <data name="KEYBOARD_KEY" xml:space="preserve">
+    <value>Näppäimistön näppäin</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Kieli</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Näppäimistön kieli: {0}</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Näppäimistön kieli:</value>
+  </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>Näppäimistö-kansion voi määrittää \n Hallinnointikonsolissa (Ulkoasu-välilehti)</value>
+  </data>
+  <data name="LEFT" xml:space="preserve">
+    <value>Vasen</value>
+  </data>
+  <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VASEN
+NUOLI</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VASEN
+KLIKKAUS</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VASEN
+TUPLAKLIKKAUS</value>
+  </data>
+  <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VASEN
+ALAS/YLÖS</value>
+  </data>
+  <data name="LOOK" xml:space="preserve">
+    <value>Katso</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>Kaikki pienillä kirjaimilla</value>
+  </data>
+  <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MAGNEETTINEN
+KURSORI</value>
+  </data>
+  <data name="MAGNIFIER" xml:space="preserve">
+    <value>SUURENNUSLASI</value>
+  </data>
+  <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
+    <value>Suurennuksen kohde (% ruudusta):</value>
+  </data>
+  <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
+    <value>Suurennuksen lähde (% ruudusta):</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
+    <value>Hallinnointikonsoli: ALT + M</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
+    <value>OptiKey Hallinnointikonsoli</value>
+  </data>
+  <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
+    <value>Sanakirjan osumia enintään:</value>
+  </data>
+  <data name="MENU" xml:space="preserve">
+    <value>VALIKKO</value>
+  </data>
+  <data name="MENU_LAYOUT" xml:space="preserve">
+    <value>Valikko</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KESKI
+KLIKKAUS</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KESKI
+ALAS/YLÖS</value>
+  </data>
+  <data name="MINIMISE" xml:space="preserve">
+    <value>PIENENNÄ</value>
+  </data>
+  <data name="MINIMISED_LAYOUT" xml:space="preserve">
+    <value>Pienennetty</value>
+  </data>
+  <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
+    <value>,Pienennyksen sijainti:</value>
+  </data>
+  <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
+    <value>Vähimmäisoleiluaika näppäimellä (ms):</value>
+  </data>
+  <data name="MISC" xml:space="preserve">
+    <value>Sekalaista</value>
+  </data>
+  <data name="MOUSE" xml:space="preserve">
+    <value>HIIRI</value>
+  </data>
+  <data name="MOUSE_BUTTON" xml:space="preserve">
+    <value>Hiiren nappi</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
+    <value>Hiiren klikkaus 1</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
+    <value>Hiiren klikkaus 2</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
+    <value>Hiiren klikkaus 3</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
+    <value>Hiiren klikkaus 4</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Hiiren klikkaus:</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
+    <value>Hiiren tuplaklikkaus 1</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
+    <value>Hiiren tuplaklikkaus 2</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
+    <value>Hiiren tuplaklikkaus 3</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Hiiren tuplaklikkaus:</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
+    <value>Hiiri alas 1</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
+    <value>Hiiri alas 2</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
+    <value>Hiiri alas 3</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
+    <value>Hiiri alas 4</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
+    <value>Hiiri alas:</value>
+  </data>
+  <data name="MOUSE_LAYOUT" xml:space="preserve">
+    <value>Hiiri</value>
+  </data>
+  <data name="MOUSE_POSITION" xml:space="preserve">
+    <value>Hiiren sijainti</value>
+  </data>
+  <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
+    <value>Hiiren sijainnin näytteenoton väli (ms):</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
+    <value>Hiiren vieritys 1</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
+    <value>Hiiren vieritys 2</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
+    <value>Hiiren vieritys 3</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
+    <value>Hiiren vieritys 4</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
+    <value>Hiiren vieritys 5</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
+    <value>Hiiren vieritys 6</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
+    <value>Hiiren vieritys:</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
+    <value>Hiiri ylös 1</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
+    <value>Hiiri ylös 2</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
+    <value>Hiiri ylös 3</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
+    <value>Hiiri ylös 4</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
+    <value>Hiiri ylös:</value>
+  </data>
+  <data name="MOVE" xml:space="preserve">
+    <value>SIIRRÄ</value>
+  </data>
+  <data name="MOVE_BY" xml:space="preserve">
+    <value>Siirry {0} pikseli:|Siirry {0} pikseliä.</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SIIRRÄ
+ALAS &amp; VASEN</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SIIRRÄ
+ALAS &amp; OIKEA</value>
+  </data>
+  <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SIIRRÄ
+ALAS</value>
+  </data>
+  <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SIIRRÄ
+VASEN</value>
+  </data>
+  <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SIIRRÄ
+OIKEA</value>
+  </data>
+  <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SIIRRY</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SIIRRÄ
+YLÖS &amp; VASEN</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SIIRRÄ
+YLÖS &amp; OIKEA</value>
+  </data>
+  <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SIIRRÄ
+YLÖS</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
+    <value>Moninäppäinkaappaus</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
+    <value>Moninäppäinkaappaus päällä:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION" xml:space="preserve">
+    <value>Moninäppäinvalinta</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
+    <value>Moninäppäinvalinnan lopetus:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MONINÄPPÄIN-
+VALINTA</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
+    <value>Moninäppäinvalinnan aloitus:</value>
+  </data>
+  <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
+    <value>
+(Uusi sanakirjalisäys sisältää isoja kirjaimia)</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>SEURAAVA</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>EI</value>
+  </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>Näppäimistöä ei löydy</value>
+  </data>
+  <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
+    <value>Tekstikentän sanat ja lauseet on jo lisätty sanakirjaan.</value>
+  </data>
+  <data name="NO_SOUND" xml:space="preserve">
+    <value>Ei yhtään</value>
+  </data>
+  <data name="NOTHING_NEW" xml:space="preserve">
+    <value>Hmm, tyhjää täynnä!</value>
+  </data>
+  <data name="NOTIFICATIONS" xml:space="preserve">
+    <value>Ilmoitukset</value>
+  </data>
+  <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+LK</value>
+  </data>
+  <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+SYM</value>
+  </data>
+  <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
+    <value>NUMEROT
+&amp; SYMBOLIT</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
+    <value>Numerot &amp; symbolit 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
+    <value>Numerot &amp; symbolit 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
+    <value>Numerot &amp; symbolit 3</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>OptiKey : Kirjoita · Klikkaa · Puhu</value>
+  </data>
+  <data name="OTHER" xml:space="preserve">
+    <value>Muu</value>
+  </data>
+  <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
+    <value>Emoikkunaa ei tunnistettu. Ei voi jatkaa.</value>
+  </data>
+  <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+DN</value>
+  </data>
+  <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+UP</value>
+  </data>
+  <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
+    <value>Fyysiset näppäimet</value>
+  </data>
+  <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FYYSISET
+NÄPPÄIMET</value>
+  </data>
+  <data name="PLAY_SOUND" xml:space="preserve">
+    <value>Toista</value>
+  </data>
+  <data name="POINT_AND_SELECTING" xml:space="preserve">
+    <value>Osoitus &amp; valinta</value>
+  </data>
+  <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
+    <value>Kiinnityspisteen säde (pikseliä):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Kiinnitykseen vaadittu aika (ms):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Kiinnityksen lukitsemiseen vaadittu aika (ms):</value>
+  </data>
+  <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
+    <value>Lukituspisteen säde (ms):</value>
+  </data>
+  <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
+    <value>Pisteen valinta: {0}</value>
+  </data>
+  <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Pisteen valinnan näppäin:</value>
+  </data>
+  <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Pisteen valinnan hiiren nappi:</value>
+  </data>
+  <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Pisteen valinnan lähde:</value>
+  </data>
+  <data name="POINTING" xml:space="preserve">
+    <value>Osoitus</value>
+  </data>
+  <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
+    <value>Osoitus: {0}</value>
+  </data>
+  <data name="PREV" xml:space="preserve">
+    <value>EDELLINEN</value>
+  </data>
+  <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRNT
+SCR</value>
+  </data>
+  <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
+    <value>ONGELMA NÄPPÄIMISTÖN LATAAMISESSA</value>
+  </data>
+  <data name="QUIT" xml:space="preserve">
+    <value>POISTU</value>
+  </data>
+  <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Oletko todella varma, että haluat poistua?</value>
+  </data>
+  <data name="QUIT_MESSAGE" xml:space="preserve">
+    <value>Oletko varma, että haluat poistua?</value>
+  </data>
+  <data name="RATE_LABEL" xml:space="preserve">
+    <value>Nopeus:</value>
+  </data>
+  <data name="RE_CALIBRATE" xml:space="preserve">
+    <value>KALIBROI UUDELLEEN</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>TOISTA
+EDELLINEN</value>
+  </data>
+  <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
+    <value>Ääni- ja / tai sanakirjapalvelu (t) ei toimitettu hallintaikkunan toimintaan.</value>
+  </data>
+  <data name="RESTART_MESSAGE" xml:space="preserve">
+    <value>OptiKey pitää käynnistää uudelleen, jotta muutokset tulevat voimaan.
+Paina OK jatkaaksesi uudelleenkäynnistystä, tai CANCEL, jos haluat hylätä muutokset</value>
+  </data>
+  <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Palauta</value>
+  </data>
+  <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Keskeytyneen valinnan jatkaminen vaatii uuden lukituksen:</value>
+  </data>
+  <data name="RIGHT" xml:space="preserve">
+    <value>Oikea</value>
+  </data>
+  <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>OIKEA
+NUOLI</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>OIKEA
+NAPPI</value>
+  </data>
+  <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>OIKEA
+ALAS/YLÖS</value>
+  </data>
+  <data name="RISING_SOUND_1" xml:space="preserve">
+    <value>Nosto 1</value>
+  </data>
+  <data name="RISING_SOUND_2" xml:space="preserve">
+    <value>Nosto 2</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>venäjä (Venäjä) / Русский (Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN" xml:space="preserve">
+    <value>espanja (Espanja) / Español (España)</value>
+  </data>
+  <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
+    <value>Sama kuin kiinnitetty sijainti</value>
+  </data>
+  <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
+    <value>Tekstikentän rivien lukumäärä:</value>
+  </data>
+  <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCR
+LK</value>
+  </data>
+  <data name="SCROLL_BY" xml:space="preserve">
+    <value>Selaa {0} pykälä:|Selaa {0} pykälää.</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SELAUS
+ALAS</value>
+  </data>
+  <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SELAUS
+VASEN</value>
+  </data>
+  <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SELAUS
+OIKEA</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SELAUS
+YLÖS</value>
+  </data>
+  <data name="SELECTION" xml:space="preserve">
+    <value>Valinta</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
+    <value>Valinnan etenemisen käyttäytyminen:</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
+    <value>Valinnan etenemisen koko lopussa (%):</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
+    <value>Valinnan etenemisen koko alussa (%):</value>
+  </data>
+  <data name="SHIFT" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
+    <value>Näytä alkukuva käynnistettäessä:</value>
+  </data>
+  <data name="SHRINK" xml:space="preserve">
+    <value>KUTISTA</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KUTISTA
+ALAS &amp; VASEN</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KUTISTA
+ALAS &amp; OIKEA</value>
+  </data>
+  <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KUTISTA
+ALAS</value>
+  </data>
+  <data name="SHRINK_INDICATOR" xml:space="preserve">
+    <value>Kutista</value>
+  </data>
+  <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KUTISTA
+VASEN</value>
+  </data>
+  <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KUTISTA
+OIKEA</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KUTISTA
+YLÖS &amp; VASEN</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KUTISTA
+YLÖS &amp; OIKEA</value>
+  </data>
+  <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KUTISTA
+YLÖS</value>
+  </data>
+  <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
+    <value>(Tiedoksi: Sanakirja sisältää jo samankaltaisia syötteitä. {0})</value>
+  </data>
+  <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KOKO &amp;
+SIJAINTI</value>
+  </data>
+  <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
+    <value>Koko &amp; sijainti</value>
+  </data>
+  <data name="SLEEP" xml:space="preserve">
+    <value>NUKU</value>
+  </data>
+  <data name="SOUND_EFFECTS" xml:space="preserve">
+    <value>Ääniefektit</value>
+  </data>
+  <data name="SOUNDS" xml:space="preserve">
+    <value>Äänet</value>
+  </data>
+  <data name="SOURCE_LABEL" xml:space="preserve">
+    <value>Lähde:</value>
+  </data>
+  <data name="SPACE" xml:space="preserve">
+    <value>VÄLI</value>
+  </data>
+  <data name="SPEAK" xml:space="preserve">
+    <value>PUHU</value>
+  </data>
+  <data name="SPEECH" xml:space="preserve">
+    <value>Puhe</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Aloitusnäppäimistö:</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>Dynaamisen näppäimistön tiedosto:</value>
+  </data>
+  <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
+    <value>Lopetussignaali:</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value>Onnistui</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Estä muutosnäppäimet hiirinäppäimistössä:</value>
+  </data>
+  <data name="TAB" xml:space="preserve">
+    <value>TAB</value>
+  </data>
+  <data name="THE_EYE_TRIBE" xml:space="preserve">
+    <value>The Eye Tribe</value>
+  </data>
+  <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
+    <value>TheEyeTribe GazeManageria ei voi aktivoida! Tarkista, että palvelin on käynnissä, ja että laite on kytketty, ja yritä uudelleen.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
+    <value>TheEyeTribea ei ole kalibroitu. Dataa voidaan vastaanottaa vasta onnistuneen kalibroinnin jälkeen.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
+    <value>Kalibrointi ei onnistu, koska EyeX moottoria ei löydy.</value>
+  </data>
+  <data name="THEME_LABEL" xml:space="preserve">
+    <value>Teema:</value>
+  </data>
+  <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
+    <value>Aika, jonka jälkeen pisteestä tulee turha (ms):</value>
+  </data>
+  <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>Piilota kursori</value>
+  </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Sanat on optimoitu</value>
+  </data>
+  <data name="TOBII_EYEX" xml:space="preserve">
+    <value>Tobii EyeX</value>
+  </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibrointi tehty, tai mahdollisesti peruttu, mutta kaikki toimii taas!</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii EyeX Engineä ei löydy. Asenna Tobii EyeX Engine ja yritä uudelleen.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii EyeX Engine ei ole käynnissä. Käynnistä Tobii EyeX Engine ja yritä uudelleen.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go</value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
+  </data>
+  <data name="TONE_SOUND_1" xml:space="preserve">
+    <value>Ääni 1</value>
+  </data>
+  <data name="TONE_SOUND_2" xml:space="preserve">
+    <value>Ääni 2</value>
+  </data>
+  <data name="TONE_SOUND_3" xml:space="preserve">
+    <value>Ääni 3</value>
+  </data>
+  <data name="TONE_SOUND_4" xml:space="preserve">
+    <value>Ääni 4</value>
+  </data>
+  <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
+    <value>Liipasinnappia/-näppäintä painettiin uudelleen</value>
+  </data>
+  <data name="TRIGGER_RELEASED" xml:space="preserve">
+    <value>Liipasinnappi/-näppäin vapautettiin</value>
+  </data>
+  <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
+    <value>En voi havaita, mihin suuntaat huomiosi. Onko syöttölaitteessa ongelmia? Onko se kytketty, päällä, kalibroitu jne.?</value>
+  </data>
+  <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
+    <value>Tämän hetkistä tasoa ei voi määrittää.</value>
+  </data>
+  <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
+    <value>Äänen asettamisessa oli ongelma: ' {0}' {1}</value>
+  </data>
+  <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
+    <value>Jokin meni pieleen, mutta en tiedä mikä - tarkista logit</value>
+  </data>
+  <data name="UP" xml:space="preserve">
+    <value>Päällä</value>
+  </data>
+  <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUOLI
+YLÖS</value>
+  </data>
+  <data name="UPDATE_AVAILABLE" xml:space="preserve">
+    <value>PÄIVITYS SAATAVILLA!</value>
+  </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>Kaikki isoilla kirjaimilla</value>
+  </data>
+  <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
+    <value>Voit ladata uusimman version ({0}) osoitteesta www.optikey.org
+Voit estää päivitystarkastuksen hallintakonsolista (ALT + M).</value>
+  </data>
+  <data name="VERIFY_RESTART" xml:space="preserve">
+    <value>Saanko käynnistää OptiKeyn uudelleen?</value>
+  </data>
+  <data name="VERSION_DESCRIPTION" xml:space="preserve">
+    <value>Versio: {0}</value>
+  </data>
+  <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
+    <value>Pystysuora täyttö (% ruudusta):</value>
+  </data>
+  <data name="VISUALS" xml:space="preserve">
+    <value>Ulkoasu</value>
+  </data>
+  <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
+    <value>(asetuksista)</value>
+  </data>
+  <data name="VOICE_LABEL" xml:space="preserve">
+    <value>Ääni:</value>
+  </data>
+  <data name="VOLUME_LABEL" xml:space="preserve">
+    <value>Äänenvoimakkuus:</value>
+  </data>
+  <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
+    <value>Web-osoite: www.optikey.org</value>
+  </data>
+  <data name="WIN" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>OptiKey v{0}</value>
+  </data>
+  <data name="WORDS" xml:space="preserve">
+    <value>Sanat</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>KYLLÄ</value>
+  </data>
+  <data name="YESNO" xml:space="preserve">
+    <value>KYLLÄ/EI</value>
+  </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Kirjaimet</value>
+  </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>Korkea</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>Matala</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>Keski</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Ei yhtään</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Datan käsittelyaste:</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>saksa (Saksa) / Deutsch (Deutschland)</value>
+  </data>
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Käyttöliittymän  kieli: {0}</value>
+  </data>
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Käyttöliittymän kieli:</value>
+  </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Simuloi fyysinen näppäimen painallus merkkejä lisättäessä:</value>
+  </data>
+  <data name="DUTCH_BELGIUM" xml:space="preserve">
+    <value>hollanti (Belgia) / Nederlands (België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
+    <value>hollanti (Alankomaat) / Nederlands (Nederland)</value>
+  </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ranska
+(Ranska) /
+Française
+(France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>saksa
+(Saksa) /
+Deutsch
+(Deutschland)</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Estä hiiren suurennus vierittäessä:</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>venäjä
+(Venäjä) /
+Русский
+(Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>espanja
+(Espanja) /
+Español
+(España)</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Dynaaminen näppäimistö -valikko</value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Keskustelunäppäimistön kehyksen paksuus (vasen, ylä, oikea, ala px):</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>PYYHI
+MERKKI</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>PYYHI
+sANA</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>EHDOTUS 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>EHDOTUS 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>EHDOTUS 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>EHDOTUS 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>EHDOTUS 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>EHDOTUS 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Ehdotusnäppäimet:</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>LISÄÄ SANAKIRJAAN</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>PIENENNÄ PALKKI</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>NUOLI ALAS</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F13" xml:space="preserve">
+    <value>F13</value>
+  </data>
+  <data name="F14" xml:space="preserve">
+    <value>F14</value>
+  </data>
+  <data name="F15" xml:space="preserve">
+    <value>F15</value>
+  </data>
+  <data name="F16" xml:space="preserve">
+    <value>F16</value>
+  </data>
+  <data name="F17" xml:space="preserve">
+    <value>F17</value>
+  </data>
+  <data name="F18" xml:space="preserve">
+    <value>F18</value>
+  </data>
+  <data name="F19" xml:space="preserve">
+    <value>F19</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>VASEN NUOLI</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>OIKEA NUOLI</value>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>NUOLI YLÖS</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>KLIKKAA &amp; VEDÄ</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>VALUUTAT 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>VALUUTAT 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>VÄHENNÄ PEITTOA</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>TARKKEET 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>TARKKEET 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>TARKKEET 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>LAAJENNA PALKKI</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>KASVATA ALAS</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>KASVATA ALAS &amp; VASEN</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>KASVATA ALAS &amp; OIKEA</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>KASVATA VASEN</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>KASVATA OIKEA</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>KASVATA YLÖS</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>KASVATA YLÖS &amp; VASEN</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>KASVATA YLÖS &amp; OIKEA</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>LISÄÄ PEITTOA</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>NUMEROT &amp; SYMBOLIT 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>NUMEROT &amp; SYMBOLIT 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>NUMEROT &amp; SYMBOLIT 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>FYYSISET NÄPPÄIMET</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>KOKO &amp; SIJAINTI</value>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>MAGNEETTINEN KURSORI</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>KESKI KLIKKAUS</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>KESKI ALAS/YLÖS</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>SIIRRON PITUUS PIKSELEINÄ</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>MUUTOKSEN SUURUUS PIKSELEINÄ</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>KESKUSTELU KIRJAIMET 1</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>KESKUSTELU NUMEROT  &amp; SYMBOLIT 1</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>HYPPY ALAS</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>HYPPY ALAS &amp; VASEN</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>HYPPY ALAS &amp; OIKEA</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>HYPPY VASEN</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>HYPPY OIKEA</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>HYPPY YLÖS</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>HYPPY YLÖS &amp; VASEN</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>HYPPY YLÖS &amp; OIKEA</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>VASEN KLIKKAUS</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>VASEN TUPLA KLIKKAUS</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>VASEN ALAS/YLÖS</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>SIIRRY ALAS</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>SIIRRY ALAS &amp; VASEN</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>SIIRRY ALAS &amp; OIKEA</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>SIIRRY VASEN</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>SIIRRY OIKEA</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>SIIRRY</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>SIIRRY YLÖS</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>SIIRRY YLÖS &amp; VASEN</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>SIIRRY YLÖS &amp; OIKEA</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>MONINÄPPÄINVALINTA</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>TOISTA EDELLINEN</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>OIKEA KLIKKAUS</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>OIKEA ALAS/YLÖS</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>VIERITETTÄVÄ MÄÄRÄ KLIKKAUKSINA</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>VIERITÄ ALAS</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>VIERITÄ VASEN</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>VIERITÄ OIKEA</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>VIERITÄ YLÖS</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>KUTISTA ALAS</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>KUTISTA ALAS &amp; VASEN</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>KUTISTA ALAS &amp; OIKEA</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>KUTISTA VASEN</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>KUTISTA OIKEA</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>KUTISTA YLÖS</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>KUTISTA YLÖS &amp; VASEN</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>KUTISTA YLÖS &amp; OIKEA</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>VAIHDA NÄPPÄIMISTÖN NÄPPÄIMIÄ:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>KIINNITÄ TOIMINTA N'ÄPPÄIMET:</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Yksittäisten näppäinten kiinnitysaikojen ohitukset (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>VAIHDA KIELINÄPPÄIMET:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>KIELI</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>SEKALAISET NÄPPÄIMET:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>MUOKKAUSNÄPPÄIMET:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>HIIREN (TEE NYKYISESSÄ SIJAINNISSA) NÄPPÄIMET:</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>HIIREN (TEE PISTEESSÄ) NÄPPÄIMET:</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>HIIREN (SEKALAISET) NÄPPÄIMET:</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>SIIRRÄ &amp; MUUTA KOKOA -NÄPPÄIMET:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>FYYSISET NÄPPÄIMET:</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>EHDOTUKSEN NÄPPÄIMET:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Määritä yksittäisten näppäinten suoritusajat:</value>
+  </data>
+  <data name="GREEK_GREECE" xml:space="preserve">
+    <value>kreikka (Kreikka) / Ελληνικά (Ελλάδα)</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Hallintakonsoli (asetukset)</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Lopeta</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA" xml:space="preserve">
+    <value>georgia (Georgia) / ქართული (საქართველო)</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>georgia
+(Georgia) /
+ქართული
+(საქართველო)</value>
+  </data>
+  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>kreikka
+(kreikka) /
+Ελληνικά
+(Ελλάδα)</value>
+  </data>
+  <data name="CROATIAN_CROATIA" xml:space="preserve">
+    <value>kroatia (Kroatia) / Hrvatski (Hrvatska)</value>
+  </data>
+  <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>kroatia
+(Kroatia) /
+Hrvatski
+(Hrvatska)</value>
+  </data>
+  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>hollanti
+(Belgia) /
+Nederlands
+(België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>hollanti
+(Alankomaat) /
+Nederlands
+(Nederland)</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Estä muutosnäppäimet hiiren toiminnoille:</value>
+  </data>
+  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+englanti
+(Kanada)
+</value>
+  </data>
+  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+englanti
+(UK)
+</value>
+  </data>
+  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+englanti
+(US)
+</value>
+  </data>
+  <data name="CATALAN_SPAIN" xml:space="preserve">
+    <value>katalaani (Espanja) / Català (Espanya)</value>
+  </data>
+  <data name="CATALAN_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>katalaani
+(Espanja) /
+Català
+(Espanya)</value>
+  </data>
+  <data name="TURKISH_TURKEY" xml:space="preserve">
+    <value>turkki (Turkki) / Türkçe (Türkiye)</value>
+  </data>
+  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>turkki
+(Turkki) /
+Türkçe
+(Türkiye)</value>
+  </data>
+  <data name="ITALIAN_ITALY" xml:space="preserve">
+    <value>italia (Italia) / Italiano (Italia)</value>
+  </data>
+  <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>italia
+(Italia) /
+Italiano
+(Italia)</value>
+  </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>korea (Korea) / 한국어 (한국)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>korea
+(Korea) /
+한국어
+(한국)</value>
+  </data>
+  <data name="SERBIAN_SERBIA" xml:space="preserve">
+    <value>serbia (Serbia) / Српски (Србија)</value>
+  </data>
+  <data name="SERBIAN_SERBIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>serbia
+(Serbia) /
+Српски
+(Србија)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
+    <value>slovenia (Slovenia) / Slovensko (Slovenija)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>slovenia
+(Slovenia) /
+Slovensko
+(Slovenija)</value>
+  </data>
+  <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>Ei voi yhdistää myGazeen! Tarkista, että palvelin on päällä ja että laite on kytketty ja yritä uudelleen.</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>Visuaalinen vuorovaikutus myGaze</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Kalibrointi epäonnistui!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibrointi onnistui!</value>
+  </data>
+  <data name="POLISH_POLAND" xml:space="preserve">
+    <value>puola (Puola) / Polski (Polska)</value>
+  </data>
+  <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>puola
+(Puola) /
+Polski
+(Polska)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
+    <value>portugali (Portugali) / Português (Portugal)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>portugali
+(Portugali) /
+Português
+(Portugal)</value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
+    <value>slovakia (Slovakia) / Slovenčina (Slovensko) </value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>slovakia
+(Slovakia) /
+Slovenčina
+(Slovensko)</value>
+  </data>
+  <data name="ALIENWARE_17" xml:space="preserve">
+    <value>Alienware 17 (EyeX)</value>
+  </data>
+  <data name="STEELSERIES_SENTRY" xml:space="preserve">
+    <value>Steelseries Sentry (EyeX)</value>
+  </data>
+  <data name="TOBII_EYE_TRACKER_4C" xml:space="preserve">
+    <value>Tobii Eye Tracker 4C</value>
+  </data>
+  <data name="TOBII_PCEYE_MINI" xml:space="preserve">
+    <value>Tobii PCEye Mini</value>
+  </data>
+  <data name="TOBII_X2_30" xml:space="preserve">
+    <value>Tobii X2-30</value>
+  </data>
+  <data name="TOBII_X2_60" xml:space="preserve">
+    <value>Tobii X2-60</value>
+  </data>
+  <data name="FORCE_CAPS_LOCK" xml:space="preserve">
+    <value>Pakota Caps lock (Vaihto painettu pohjaan):</value>
+  </data>
+  <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Käytä aakkosnäppäimistölayouttia</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Kalman-suodatin:</value>
+  </data>
+  <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
+    <value>Vaihda manuaalitila</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
+    <value>tsekki (Tsekki) / Čeština (Česko)</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>tsekki
+(Tsekki) /
+Čeština
+(Česko)</value>
+  </data>
+  <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+    <value>Syöttötila vaihtui</value>
+  </data>
+  <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+    <value>Manuaalinen (hiiri) tila vaihtui!</value>
+  </data>
+  <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
+    <value>Manuaalinen (hiiri) tila päällä!</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
+    <value>Ota käyttöön Keskustelun vahvistus -näppäimistö?</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Vain Keskustelun vahvistus -tila:</value>
+  </data>
+  <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
+    <value>Ota käyttöön Lopeta-näppäimet?</value>
+  </data>
+  <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Käytä yksinkertaistettua näppäimistölayouttia</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Selaimen
+takaisin</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Selaimen
+eteenpäin</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Selaimen
+kotinäppäin</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Selaimen
+etsintä</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>Web-selaus</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Web-
+selaus</value>
+  </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>Käytä MaryTTS:ää puheen syntetisointiin?</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS:n kieli:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>MaryTTS:n sijainti (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>Etsi</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>VIRHE: kelvollista 'marytts-server.bat' tiedostoa ei valittu. Ole hyvä ja yritä uudelleen.</value>
+  </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>Tavallinen</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Presage</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>Ehdotustapa:</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>MaryTTS ei ole saatavilla</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>Presage sanaennustaminen ei ole saatavilla</value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>Asetetaan ehdotustavaksi: {0}.
+Voit vaihtaa asetuksen takaisin
+Hallintakonsolista (ALT + M).</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>Puheäänen asettaminen järjestelmän äänelle: {0}.
+Voit tarkistaa MaryTTS: n polun ja
+vaihtaa äänen takaisin sen 
+hallintakonsolista (ALT + M).</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>Viive ennen puhetta (ms):</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Käytä CommuniKate-näppäimistölayouttia</value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Ota käyttöön CommuniKate-näppäimistölayout</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>CommuniKaten yläsivun obf-tiedosto:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>Virheellinen tiedosto</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>CommuniKaten yläsivun obz-tiedoston sijainti:</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>OptiKey ei kyennyt kättelemään Presagea. On olemassa muutamia mahdollisia syitä:
+1. Presage.xml-tiedostossa määritettyä DBFILENAME-sijaintia (joka sijaitsee C:\Users\USER_NAME\.presage) ei ole olemassa - tarkista ja korjaa tämä (tai poista ja asenna Presage uudelleen).
+2. Joko 64-bittinen Presage-versio on asennettu (OptiKey tukee vain 32-bittistä versiota) tai Presage-tiedostot on siirretty, poistettu tai vioittuneet.
+
+Poista Presage ja asenna 32-bittinen versio 0.9.2.
+OptiKey yrittää jatkaa, mutta on mahdollista, että se kaatuu pian.
+Ennustamismenetelmä muutetaan NGramiksi kaatumisen estämiseksi.</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>Presagen kanssa on ongelma</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>Dynaamisten näppäimistöjen kansio:</value>
+  </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>Laajennusten kansio:</value>
+  </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>KIRJAIMET 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>KESKUSTELU ALPHA 2</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>Kaikki asetuksiin tehdyt muutokset menetetään. Haluatko jatkaa?</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>Peruuta asetukset</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>Presage-sanakirjaa ei voi muokata tästä.
+Sen oletussijainti on "C:\Program Files (x86)\presage\share\presage\database_en.db".
+Sitä voi muokata ohjelmilla, jotka tukevat SQLLite format 3 -tiedostoja,
+kuten "DB Browser for SQLite" (joka on ilmainen ohjelma).</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>KIRJAIMET</value>
+  </data>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>Suurennustoiminnossa tapahtui virhe. Poista suurennus käytöstä ja ota yhteyttä OptiKeyhin lisäavun saamiseksi.</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>Virhe:</value>
+  </data>
+  <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>Huomio:</value>
+  </data>
+  <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>Ota käyttöön huomionäppäin?</value>
+  </data>
+  <data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
+    <value>Ota käyttöön tekstikentän kopioinäppäin?</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>HUOMIO</value>
+  </data>
+  <data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>Huomio</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>CommuniKate ei ole käytössä (käytä QWERTY)</value>
+  </data>
+  <data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Kirjoituksen näppäimistötyyppi:</value>
+  </data>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Käytä oletus näppäimistölayouttia</value>
+  </data>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>Voi ei! Käynnistettäessä tapahtui seuraavat virheet:</value>
+  </data>
+  <data name="SELECT_VOICE" xml:space="preserve">
+    <value>VALITSE ÄÄNI</value>
+  </data>
+  <data name="MORE" xml:space="preserve">
+    <value>Lisää...</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Kieli &amp; ääni</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Kieli &amp;
+ääni:</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>KIELI &amp; ÄÄNI</value>
+  </data>
+  <data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>LISÄÄ...</value>
+  </data>
+  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>Näytä äänet näppäimistön kieltä vaihdettaessa:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL" xml:space="preserve">
+    <value>Vieritys katseella</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>Käytä vieritykseen vaihtoehtoista Vieritys katseella -tapaa:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Käänteinen vierityksen suunta:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Lukitus sitoo näppäimen valitun pisteen, ikkunan tai alueen säilyttämiseksi:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Siirrä hiiri keskelle deadzonea ennen vieritystä:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Tuo ikkuna etualalle ennen ikkunan vieritystä:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>Tuo valitussa pisteessä oleva ikkuna etualalle:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Keskeytä vieritys hiiren toiminnon valinnan ajaksi:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Jatka vieritystä automaattisesti jälkeenpäin:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>Keskeytä vieritys näppäimistöä vaihdettaessa:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Näytä peiteikkuna (vaatii uudelleenkäynnistyksen):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Peiteikkunaan piirrettyjen vieritysrajojen väri:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Peiteikkunaan piirrettyjen deadzone-opasteiden väri:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
+    <value>Peiteikkunaan piirrettyjen vieritysrajojen paksuus:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
+    <value>Peiteikkunaan piirrettyjen deadzone-opasteiden paksuus:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Vaakasuora deadzone (pikseleinä):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Pystysuora deadzone (pikseleinä):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Käy läpi nämä vierityslisäykset:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>'Hidas' perusnopeus (klikkauksia sekunnissa):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Keski' perusnopeus (klikkauksia sekunnissa):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>'Nopea' perusnopeus (klikkauksia sekunnissa):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>'Hidas' kiihtyvyys (klikkauksia sekunnissa per pikseli deadzonesta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Keski' kiihtyvyys (klikkauksia sekunnissa per pikseli deadzonesta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>'Nopea' kiihtyvyys (klikkauksia sekunnissa per pikseli deadzonesta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>VIERITÄ KATSEELLA -NÄPPÄIMET:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>VAIHDA VIERITYSTÄ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>SEURAAVAT RAJAT</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>SEURAAVA LISÄYS</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>SEURAAVA TILA</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>SEURAAVA NOPEUS</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>Vieritä
+katseella</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Vieritä {0} pyörän yksikkö:
+(120 pyörän yksikköä = 1 klikkaus)|Vieritä {0} pyörän yksikköä:
+(120 pyörän yksikköä = 1 klikkaus)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Ruutu
+pisteessä</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Keskitetty ruutu</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Ikkuna</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Ikkunan
+alue</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Vapaa
+alue</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Pystysuora</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Vaakasuora</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>Risti</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Vapaa</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Hidas</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Keski</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Nopea</value>
+  </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>ranska (Kanada) / Française (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ranska
+(Kanada) /
+Française
+(Canada)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>japani (Japani) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>japani
+(Japani) /
+日本語
+(日本)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>CommuniKaten äänenvoimakkuus:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>Puhu CommuniKaten napin teksti valittaessa:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>Puheen nopeus CommuniKaten napin tekstiä puhuttaessa:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>Puheen äänenvoimakkuus CommuniKaten napin tekstiä puhuttaessa:</value>
+  </data>
+  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>Haluatko varmasti siirtyä manuaalitilaan tai pois siitä?</value>
+  </data>
+  <data name="MANUAL_MODE" xml:space="preserve">
+    <value>MANUAALITILA</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>Presagen tietokannan .db-tiedoston sijainti:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>Näytettävien Presagen ehdotusten lukumäärä:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>Tarjolla olevat laajennukset</value>
+  </data>
+  <data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>Laajennukset</value>
+  </data>
+  <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>Päivitä laajennukset</value>
+  </data>
+  <data name="RESTART" xml:space="preserve">
+    <value>Käynnistä uudelleen</value>
+  </data>
+  <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Oletko todella varma, että haluat käynnistää OptiKeyn uudelleen?</value>
+  </data>
+  <data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>Haluatko käynnistää OptiKeyn uudelleen?</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>DYNAAMINEN NÄPPÄIMISTÖ</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>WEB-SELAUS</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>ukraina (Ukraina) / Українська (Україна)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ukraina
+(Ukraina) /
+Українська
+(Україна)</value>
+  </data>
+  <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Datan käsittelyaste:</value>
+  </data>
+  <data name="IRISBOND_DUO" xml:space="preserve">
+    <value>Irisbond Duo</value>
+  </data>
+  <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>Irisbond Duo trackeriä ei voitu käynnistää.</value>
+  </data>
+  <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>Irisbond Duo trackeriä ei löydy. Tarkista trackerin yhteys ja yritä uudelleen.</value>
+  </data>
+  <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
+    <value>Kalibrointi päättyi (onnistui tai epäonnistui), mutta kaikki toimii taas!</value>
+  </data>
+  <data name="COPY_ALL_FROM_SCRATCHPAD" xml:space="preserve">
+    <value>Kopioi kaikki</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_DEFINITION_INVALID" xml:space="preserve">
+    <value>Dynaamisen näppäimistön määritys on virheellinen</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
+    <value>Dynaamisen näppäimistön määritelty korkeus on liian iso (&gt;95% ruudusta)</value>
+  </data>
+  <data name="RESTART_UPPERCASE" xml:space="preserve">
+    <value>Käynnistä uudelleen</value>
+  </data>
+  <data name="URDU_PAKISTAN" xml:space="preserve">
+    <value>Urdu (Pakistan) / اردو (پاکستان)</value>
+  </data>
+  <data name="URDU_PAKISTAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Urdu
+(Pakistan) /
+اردو 
+(پاکستان)</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
+    <value>Suosittelemme käyttöliittymän kielen vaihtamista urduksi, jotta kirjoitettu urdu-teksti virtaa oikealta vasemmalle tekstikentässä.
+Haluatko OptiKeyn asettavan käyttöliittymän kielen automaattisesti urduksi?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
+    <value>Suosittelemme, että vaihdat OptiKeyssä käytetyn fontin sellaiseen, joka on täysin yhteensopiva urdun kanssa.
+Jos käytetään fonttia, joka ei ole yhteensopiva urdun kanssa, teksti ja erityisesti numerot saattavat näkyä väärin.
+Haluatko, että OptiKey asettaa automaattisesti fontiksi Nafees Web Naskh?</value>
+  </data>
+  <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
+    <value>Suositellaan kielispesifistä fonttia</value>
+  </data>
+  <data name="UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE" xml:space="preserve">
+    <value>Käyttöliittymän ja näppäimistön/sanakirjan kieli eivät täsmää</value>
+  </data>
+  <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
+    <value>Lisää tarkkeet (heittomerkit jne.) kirjaimen jälkeen:</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
+    <value>Suosittelemme käyttöliittymän kielen muuttamista persiaksi, jotta varmistetaan, että kirjoitettu persialainen teksti virtaa oikealta vasemmalle tekstikentässä.
+Haluatko, että OptiKey asettaa käyttöliittymän kielen automaattisesti persiaksi?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
+    <value>Suosittelemme, että vaihdat OptiKeyssä käytetyn fontin sellaiseen, joka on täysin yhteensopiva persian kanssa.
+Jos käytetään fonttia, joka ei ole yhteensopiva persian kanssa, teksti ja erityisesti numerot saattavat näkyä väärin.
+Haluatko, että OptiKey asettaa automaattisesti fontiksi Nazil?</value>
+  </data>
+  <data name="PERSIAN_IRAN" xml:space="preserve">
+    <value>persia (Iran) / فارسی (ایرانی)</value>
+  </data>
+  <data name="PERSIAN_IRAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>persia
+(Iran) /
+فارسی
+(ایرانی)</value>
+  </data>
+</root>

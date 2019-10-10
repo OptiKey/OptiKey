@@ -26,9 +26,12 @@ The following information should be specified in an issue ticket:
 
 Licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
 
+# Contributing
+
+Contributions to this project are always welcome. If you'd like to help translate Optikey to another language, fix bugs or add new features, check out our [Contributing page](https://github.com/OptiKey/OptiKey/wiki/Contribute). 
+
 # Contact
 
 To ask a question, or to discuss information that is not on the [**OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/), please use <optikeyfeedback@gmail.com> to contact Julius.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/rqj43c5p8jt86kjo/branch/master?svg=true)](https://ci.appveyor.com/project/OptiKey/optikey)
 [![Build status](https://dev.azure.com/optikey/optikey/_apis/build/status/OptiKey.OptiKey)](https://dev.azure.com/optikey/optikey/_build/latest?definitionId=-1)

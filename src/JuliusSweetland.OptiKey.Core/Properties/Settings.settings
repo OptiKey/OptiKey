@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JuliusSweetland.OptiKey.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="KeySelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Keys" Scope="User">
@@ -165,6 +165,9 @@
       <Value Profile="(Default)">90</Value>
     </Setting>
     <Setting Name="MouseMagnifierLockedDown" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MagnifierCenterOnScreen" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="MagnifySourcePercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
@@ -545,6 +548,21 @@
     <Setting Name="PresageNumberOfSuggestions" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">11</Value>
     </Setting>
+    <Setting Name="IrisbondProcessingLevel" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="IrisbondCalibrationTargetCount" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">9</Value>
+    </Setting>
+    <Setting Name="EnableCopyAllScratchpadKey" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="TypeDiacriticsAfterLetters" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UiLanguageFlowDirection" Roaming="true" Type="System.Windows.FlowDirection" Scope="User">
+      <Value Profile="(Default)">LeftToRight</Value>
+    </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByKeyValues" Roaming="true" Type="JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;dictionary&gt;
@@ -851,6 +869,16 @@
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
+        &lt;functionKey&gt;FinnishFinland&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;  
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
         &lt;functionKey&gt;FrenchCanada&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
@@ -901,6 +929,16 @@
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
+        &lt;functionKey&gt;HebrewIsrael&lt;/functionKey&gt;
+      &lt;/keyValue&gt;
+    &lt;/key&gt;
+    &lt;value&gt;
+      &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
+    &lt;/value&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;key&gt;
+      &lt;keyValue&gt;
         &lt;functionKey&gt;ItalianItaly&lt;/functionKey&gt;
       &lt;/keyValue&gt;
     &lt;/key&gt;
@@ -937,7 +975,7 @@
     &lt;value&gt;
       &lt;ticks&gt;PT1.75S&lt;/ticks&gt;
     &lt;/value&gt;
-  &lt;/item&gt;  
+  &lt;/item&gt;
   &lt;item&gt;
     &lt;key&gt;
       &lt;keyValue&gt;
@@ -1349,21 +1387,6 @@
     &lt;/value&gt;
   &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
-    </Setting>
-    <Setting Name="IrisbondProcessingLevel" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels" Scope="User">
-      <Value Profile="(Default)">None</Value>
-    </Setting>
-    <Setting Name="IrisbondCalibrationTargetCount" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">9</Value>
-    </Setting>
-    <Setting Name="EnableCopyAllScratchpadKey" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="TypeDiacriticsAfterLetters" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="UiLanguageFlowDirection" Roaming="true" Type="System.Windows.FlowDirection" Scope="User">
-      <Value Profile="(Default)">LeftToRight</Value>
     </Setting>
   </Settings>
 </SettingsFile>

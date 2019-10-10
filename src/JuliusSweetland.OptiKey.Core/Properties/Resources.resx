@@ -594,6 +594,9 @@ CURSOR</value>
   <data name="MAGNIFIER" xml:space="preserve">
     <value>MAGNIFIER</value>
   </data>
+  <data name="MAGNIFIER_CENTER_ON_SCREEN" xml:space="preserve">
+    <value>Show magnifier window at center of screen</value>
+  </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
     <value>Magnify destination (as % of screen):</value>
   </data>
@@ -1845,7 +1848,7 @@ Slovenčina
     <value>Kalman Filter:</value>
   </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
-    <value>Toggle Manual Mode</value>
+    <value>Toggle Mouse Control Mode</value>
   </data>
   <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
     <value>Czech (Czech Rep.) / Čeština (Česko)</value>
@@ -1860,10 +1863,10 @@ Slovenčina
     <value>Input mode changed</value>
   </data>
   <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
-    <value>Manual (mouse) mode disabled!</value>
+    <value>Mouse (manual) mode disabled!</value>
   </data>
   <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
-    <value>Manual (mouse) mode enabled!</value>
+    <value>Mouse (manual) mode enabled!</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
     <value>Enable Conversation Confirm keyboard?</value>
@@ -1998,7 +2001,7 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>The Presage dictionary cannot be edited from here.
 It's default location is "C:\Program Files (x86)\presage\share\presage\database_en.db".
-It can be edited with a program which can read SQLite format 3 files 
+It can be edited with a program which can read SQLite format 3 files
 such as "DB Browser for SQLite" (which is a free program).</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
@@ -2154,7 +2157,7 @@ such as "DB Browser for SQLite" (which is a free program).</value>
 Scroll</value>
   </data>
   <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Scroll by {0} wheel unit: 
+    <value>Scroll by {0} wheel unit:
 (120 wheel units = 1 click)|Scroll by {0} wheel units:
 (120 wheel units = 1 click)</value>
   </data>
@@ -2232,7 +2235,7 @@ Française
     <value>Are you sure you would like to switch to/from manual mode?</value>
   </data>
   <data name="MANUAL_MODE" xml:space="preserve">
-    <value>MANUAL MODE</value>
+    <value>MOUSE CONTROL MODE</value>
   </data>
   <data name="COMMUNIKATE" xml:space="preserve">
     <value>CommuniKate</value>
@@ -2309,7 +2312,7 @@ Française
   <data name="URDU_PAKISTAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Urdu
 (Pakistan) /
-اردو 
+اردو
 (پاکستان)</value>
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
@@ -2347,6 +2350,24 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
 (Iran) /
 فارسی
 (ایرانی)</value>
+  </data>
+  <data name="FINNISH_FINLAND" xml:space="preserve">
+    <value>Finnish (Finland) / suomi (Suomi)</value>
+  </data>
+  <data name="FINNISH_FINLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Finnish
+ (Finland) /
+ suomi
+ (Suomi)</value>
+  </data>
+  <data name="HEBREW_ISRAEL" xml:space="preserve">
+    <value>Hebrew (Israel) / עברית (ישראל)</value>
+  </data>
+  <data name="HEBREW_ISRAEL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Hebrew
+(Israel) /
+עברית
+(ישראל)</value>
   </data>
   <data name="LOAD_DICTIONARY" xml:space="preserve">
     <value>Load dictionary</value>

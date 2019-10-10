@@ -15,11 +15,13 @@ namespace JuliusSweetland.OptiKey.Enums
         EnglishCanada,
         EnglishUK,
         EnglishUS,
+        FinnishFinland,
         FrenchCanada,
         FrenchFrance,
         GeorgianGeorgia,
         GermanGermany,
         GreekGreece,
+        HebrewIsrael,
         ItalianItaly,
         JapaneseJapan,
         KoreanKorea,
@@ -51,11 +53,13 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.EnglishCanada: return Resources.ENGLISH_CANADA;
                 case Languages.EnglishUK: return Resources.ENGLISH_UK;
                 case Languages.EnglishUS: return Resources.ENGLISH_US;
+                case Languages.FinnishFinland: return Resources.FINNISH_FINLAND;
                 case Languages.FrenchCanada: return Resources.FRENCH_CANADA;
                 case Languages.FrenchFrance: return Resources.FRENCH_FRANCE;
                 case Languages.GeorgianGeorgia: return Resources.GEORGIAN_GEORGIA;
                 case Languages.GermanGermany: return Resources.GERMAN_GERMANY;
                 case Languages.GreekGreece: return Resources.GREEK_GREECE;
+                case Languages.HebrewIsrael: return Resources.HEBREW_ISRAEL;
                 case Languages.ItalianItaly: return Resources.ITALIAN_ITALY;
                 case Languages.JapaneseJapan: return Resources.JAPANESE_JAPAN;
                 case Languages.KoreanKorea: return Resources.KOREAN_KOREA;
@@ -88,11 +92,13 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.EnglishUS: return CultureInfo.GetCultureInfo("en-US");
                 case Languages.EnglishUK: return CultureInfo.GetCultureInfo("en-GB");
                 case Languages.EnglishCanada: return CultureInfo.GetCultureInfo("en-CA");
+                case Languages.FinnishFinland: return CultureInfo.GetCultureInfo("fi-FI");
                 case Languages.FrenchCanada: return CultureInfo.GetCultureInfo("fr-CA");
                 case Languages.FrenchFrance: return CultureInfo.GetCultureInfo("fr-FR");
                 case Languages.GeorgianGeorgia: return CultureInfo.GetCultureInfo("ka-GE");
                 case Languages.GermanGermany: return CultureInfo.GetCultureInfo("de-DE");
                 case Languages.GreekGreece: return CultureInfo.GetCultureInfo("el-GR");
+                case Languages.HebrewIsrael: return CultureInfo.GetCultureInfo("he-IL");
                 case Languages.ItalianItaly: return CultureInfo.GetCultureInfo("it-IT");
                 case Languages.JapaneseJapan: return CultureInfo.GetCultureInfo("ja-JP");
                 case Languages.KoreanKorea: return CultureInfo.GetCultureInfo("ko-KR");

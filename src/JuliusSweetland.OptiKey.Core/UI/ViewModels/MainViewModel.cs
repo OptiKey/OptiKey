@@ -129,6 +129,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 DeactivateLookToScrollUponSwitchingKeyboards();
                 keyboard?.OnExit(); // previous keyboard
                 SetProperty(ref keyboard, value);
+                if (!(keyboard is Keyboards.DynamicKeyboard))
+                    mainWindowManipulationService.RollbackOverride();
                 keyboard?.OnEnter(); // new keyboard
                 Log.InfoFormat("Keyboard changed to {0}", value);                
             }
