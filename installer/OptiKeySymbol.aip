@@ -233,7 +233,6 @@
     <ROW File="Octokit.dll" Component_="Octokit.dll" FileName="Octokit.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Octokit.dll" SelfReg="false"/>
     <ROW File="OptiKey.dll" Component_="OptiKey.dll" FileName="OptiKey.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptiKey.dll" SelfReg="false"/>
     <ROW File="OptiKey.pdb" Component_="OptiKey.dll" FileName="OptiKey.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptiKey.pdb" SelfReg="false"/>
-    <ROW File="OptikeySymbol.exe.config" Component_="Bass.Net.xml" FileName="OPTIKE~1.CON|OptikeySymbol.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptikeySymbol.exe.config" SelfReg="false"/>
     <ROW File="OptikeySymbol.pdb" Component_="OptikeySymbol.exe" FileName="OPTIKE~1.PDB|OptikeySymbol.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptikeySymbol.pdb" SelfReg="false"/>
     <ROW File="PGRFlyCapture.dll" Component_="PGRFlyCapture.dll" FileName="PGRFLY~1.DLL|PGRFlyCapture.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\PGRFlyCapture.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_15" Component_="OptiKey.resources.dll_15" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\pl-PL\OptiKey.resources.dll" SelfReg="false"/>
@@ -331,7 +330,7 @@
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="SetupFiles" Languages="en;en_GB;sq;bg;ar;ca;zh;zh_TW;hr;cs;nl;da;fa;fi;fr;de;he;el;hu;id;is;ja;it;kk;ko;nb;nn;pl;pt;pt_BR;ru;sr_SP_Cyrillic;sr_SP_Latin;sk;sl;es;sv;tr;uk" LangOpt="1" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" UseLargeSchema="true" Unicode="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="SetupFiles" Languages="en;en_GB;sq;bg;ar;ca;zh;zh_TW;hr;cs;nl;da;fa;fi;fr;de;he;el;hu;id;is;ja;it;kk;ko;nb;nn;pl;pt;pt_BR;ru;sr_SP_Cyrillic;sr_SP_Latin;sk;sl;es;sv;tr;uk" LangOpt="1" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" Options="2" UseLargeSchema="true" Unicode="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
