@@ -11,12 +11,12 @@
     <STRING lang="zh_TW" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="hr" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="cs" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="nl" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="nl" value="Selecteer een eyetracker die u gaat gebruiken met Optikey"/>
     <STRING lang="da" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="fa" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="fi" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="fr" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="de" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="fr" value="Veuillez sélectionner le traqueur de mouvement oculaire que vous utiliserez avec Optikey"/>
+    <STRING lang="de" value="Bitte wählen Sie den Eyetracker aus, den Sie mit Optikey verwenden wollen"/>
     <STRING lang="he" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="el" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="hu" value="Please select the eye tracker you will be using with Optikey"/>
@@ -29,7 +29,7 @@
     <STRING lang="nb" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="nn" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="pl" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="pt" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="pt" value="Por favor selecione o eye tracker que vai utilizar com Optikey "/>
     <STRING lang="pt_BR" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="ru" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="sr_SP_Cyrillic" value="Please select the eye tracker you will be using with Optikey"/>
@@ -52,12 +52,12 @@
     <STRING lang="zh_TW" value="Eye tracker"/>
     <STRING lang="hr" value="Eye tracker"/>
     <STRING lang="cs" value="Eye tracker"/>
-    <STRING lang="nl" value="Eye tracker"/>
+    <STRING lang="nl" value="Eyetracker"/>
     <STRING lang="da" value="Eye tracker"/>
     <STRING lang="fa" value="Eye tracker"/>
     <STRING lang="fi" value="Eye tracker"/>
     <STRING lang="fr" value="Eye tracker"/>
-    <STRING lang="de" value="Eye tracker"/>
+    <STRING lang="de" value="Eyetracker"/>
     <STRING lang="he" value="Eye tracker"/>
     <STRING lang="el" value="Eye tracker"/>
     <STRING lang="hu" value="Eye tracker"/>
@@ -93,12 +93,12 @@
     <STRING lang="zh_TW" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="hr" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="cs" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="nl" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="nl" value="Selecteer de taal die u voornamelijk gaat gebruiken in Optikey"/>
     <STRING lang="da" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="fa" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="fi" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="fr" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="de" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="fr" value="Veuillez sélectionner la langue utilisée par Optikey"/>
+    <STRING lang="de" value="Bitte wählen Sie die Sprache aus, die Sie mit Optikey verwenden wollen."/>
     <STRING lang="he" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="el" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="hu" value="Please select the main language you&apos;ll be using in Optikey"/>
@@ -111,8 +111,8 @@
     <STRING lang="nb" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="nn" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="pl" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="pt" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="pt_BR" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="pt" value="Por favor selecione o idioma de preferência para Optikey"/>
+    <STRING lang="pt_BR" value="Por favor selecione o idioma de preferência para Optikey"/>
     <STRING lang="ru" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="sr_SP_Cyrillic" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="sr_SP_Latin" value="Please select the main language you&apos;ll be using in Optikey"/>

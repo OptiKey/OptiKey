@@ -827,9 +827,6 @@ SYMBOLE</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Tippen· Klicken· Sprechen</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Andere</value>
   </data>
@@ -1620,5 +1617,17 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   </data>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>SPRACHE</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Chat : Einfache Kommunikation</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Mouse : Volle Cursorkontrolle</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Pro : Computerkontrolle &amp; Kommunikation</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Symbol : Open Symbol Kommunikation</value>
   </data>
 </root>

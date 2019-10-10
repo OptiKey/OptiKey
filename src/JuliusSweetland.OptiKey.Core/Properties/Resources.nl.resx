@@ -807,9 +807,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Typ · Klik · Spreek</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Overige</value>
   </data>
@@ -1593,5 +1590,17 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   </data>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>TAAL:</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Chat : Gemakkelijke Communicatie</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Mouse : Volledige Cursorbesturing</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Pro : Computerbesturing &amp; Communicatie</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Symbol : Communicatie op Basis van Symbolen</value>
   </data>
 </root>

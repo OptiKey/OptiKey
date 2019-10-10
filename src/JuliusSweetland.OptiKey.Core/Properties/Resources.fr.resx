@@ -803,9 +803,6 @@ SYMBOLES</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Tappez · Clickez · Parlez</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Autre</value>
   </data>
@@ -1596,5 +1593,17 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   </data>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>LANGUE</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Chat : Communiquer simplement</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Mouse : Contrôler le curseur de la souris</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Pro : Permet de contrôler de l’ordinateur et de communiquer</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Symbol : Communiquer par symbols</value>
   </data>
 </root>
