@@ -1,4 +1,6 @@
 // Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+
+using System;
 using System.Reflection;
 using System.Xml;
 using log4net;
@@ -24,10 +26,24 @@ namespace JuliusSweetland.OptiKey.Models
                 }
                 catch (System.Exception)
                 {
-                    Log.ErrorFormat("Cannot convert string '{0}' to boolean", value);
+                    Log.ErrorFormat("Cannot convert xml string '{0}' to boolean", value);
                 }
                 return bVal;
             }
+        }
+
+        public static int ConvertToInt(string value)
+        {
+            int iVal = default(int);
+            try
+            {
+                iVal = XmlConvert.ToInt32(value);
+            }
+            catch (System.Exception)
+            {
+                Log.ErrorFormat("Cannot convert xml string '{0}' to int", value);
+            }
+            return iVal;
         }
     }
 }
