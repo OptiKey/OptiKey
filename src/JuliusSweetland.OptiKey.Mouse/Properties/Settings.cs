@@ -39,7 +39,7 @@ namespace JuliusSweetland.OptiKey.Mouse.Properties
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Mouse")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public virtual global::JuliusSweetland.OptiKey.Enums.Keyboards StartupKeyboard
+        public override global::JuliusSweetland.OptiKey.Enums.Keyboards StartupKeyboard
         {
             get
             {
