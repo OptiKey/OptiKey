@@ -220,15 +220,7 @@
       <HintPath>..\..\packages\InputSimulatorPlus.1.0.7\lib\net20\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+  <ItemGroup>    
     <Compile Include="Enums\KeyboardLayouts.cs" />
     <Compile Include="Enums\LookToScrollBounds.cs" />
     <Compile Include="Enums\LookToScrollModes.cs" />
