@@ -64,6 +64,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        private bool allowMultipleInstances;
+        public bool AllowMultipleInstances
+        {
+            get { return allowMultipleInstances; }
+            set
+            {
+                SetProperty(ref allowMultipleInstances, value);
+            }
+        }
+
         private string pluginsLocation;
         public string PluginsLocation
         {
@@ -158,6 +168,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
             PluginsLocation = Settings.Default.PluginsLocation;
             EnablePlugins = Settings.Default.EnablePlugins;
+            AllowMultipleInstances = Settings.Default.AllowMultipleInstances;
         }
 
         public void ApplyChanges()
@@ -176,6 +187,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
             Settings.Default.PluginsLocation = PluginsLocation;
             Settings.Default.EnablePlugins = EnablePlugins;
+            Settings.Default.AllowMultipleInstances = AllowMultipleInstances;
         }
 
         #endregion

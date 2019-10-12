@@ -74,6 +74,14 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" 
                               IsEnabled="{Binding Source='EnableCommuniKateKeyboardLayout', Converter={StaticResource EnabledIfNotOverridden}}"/>
 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.ALLOW_MULTIPLE_INSTANCES}"
+                               VerticalAlignment="Center" Margin="5" Visibility="Visible" />
+                    <CheckBox Grid.Row="4" Grid.Column="1"
+                              VerticalAlignment="Center" Visibility="Visible"
+                              IsChecked="{Binding AllowMultipleInstances, Mode=TwoWay}" 
+                              IsEnabled="{Binding Source='AllowMultipleInstances', Converter={StaticResource EnabledIfNotOverridden}}"/>
+
+
                 </Grid>
             </GroupBox>
             <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.CONVERSATION_OPTIONS}">

@@ -161,6 +161,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow multiple instances of this optikey app to run simultaneously.
+        /// </summary>
+        public static string ALLOW_MULTIPLE_INSTANCES {
+            get {
+                return ResourceManager.GetString("ALLOW_MULTIPLE_INSTANCES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LETTERS.
         /// </summary>
         public static string ALPHA {

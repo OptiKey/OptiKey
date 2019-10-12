@@ -2429,4 +2429,7 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
   <data name="OPACITY_LABEL" xml:space="preserve">
     <value>Opacity:</value>
   </data>
+  <data name="ALLOW_MULTIPLE_INSTANCES" xml:space="preserve">
+    <value>Allow multiple instances of this optikey app to run simultaneously</value>
+  </data>
 </root>
