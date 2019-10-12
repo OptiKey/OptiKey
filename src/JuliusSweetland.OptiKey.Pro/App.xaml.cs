@@ -33,6 +33,7 @@ using Octokit;
 using presage;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
+using WindowsRecipes.TaskbarSingleInstance;
 using Application = System.Windows.Application;
 
 namespace JuliusSweetland.OptiKey.Pro
@@ -47,9 +48,17 @@ namespace JuliusSweetland.OptiKey.Pro
         [STAThread]
         public static void Main()
         {
-            var application = new App();
-            application.InitializeComponent();
-            application.Run();
+            using (SingleInstanceManager manager = SingleInstanceManager.Initialize(GetSingleInstanceManagerSetup()))
+            {
+                var application = new App();
+                application.InitializeComponent();
+                application.Run();
+            }
+        }
+
+        private static SingleInstanceManagerSetup GetSingleInstanceManagerSetup()
+        {
+            return new SingleInstanceManagerSetup("OptikeyPro");
         }
 
         #endregion

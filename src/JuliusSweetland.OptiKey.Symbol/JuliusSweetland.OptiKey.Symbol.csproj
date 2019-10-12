@@ -923,6 +923,14 @@
       <Project>{0c8f0372-2d55-41bc-9730-4ace3ed67452}</Project>
       <Name>JuliusSweetland.OptiKey.StandardPlugins</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SingleInstance.Wpf\SingleInstance.Wpf.csproj">
+      <Project>{2a8b4ae0-48be-4a49-9c9c-654c195c8ab2}</Project>
+      <Name>SingleInstance.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SingleInstance\SingleInstance.csproj">
+      <Project>{36b2699d-69d9-486e-8253-e63230cb50e2}</Project>
+      <Name>SingleInstance</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
