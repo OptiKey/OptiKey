@@ -272,6 +272,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.MULTI_KEY_CAPTURES_ENABLED_LABEL}"
+                               IsEnabled="{Binding Source='MultiKeySelectionEnabled', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="0" Grid.Column="1"
                               VerticalAlignment="Center"

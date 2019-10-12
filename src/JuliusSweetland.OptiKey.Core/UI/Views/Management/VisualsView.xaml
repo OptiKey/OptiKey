@@ -111,6 +111,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                             IsChecked="{Binding MagnifierCenterOnScreen, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
+                               IsEnabled="{Binding Source='ConversationOnlyMode', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -140,6 +141,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </CheckBox>
 
                     <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ENABLE_LABEL}" 
+                               IsEnabled="{Binding Source='ConversationConfirmEnable', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="9" Grid.Column="1" 
                               VerticalAlignment="Center"
@@ -181,6 +183,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </CheckBox>
 
                     <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_LABEL}" 
+                               IsEnabled="{Binding Source='StartupKeyboard', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">

@@ -47,6 +47,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_QUIT_KEYS_LABEL}" 
+                               IsEnabled="{Binding Source='EnableQuitKeys', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="0" Grid.Column="1" 
                               VerticalAlignment="Center"
@@ -54,6 +55,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               IsChecked="{Binding EnableQuitKeys, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_ATTENTION_KEY_LABEL}" 
+                               IsEnabled="{Binding Source='EnableAttentionKey', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="1" Grid.Column="1" 
                               VerticalAlignment="Center"
@@ -61,6 +63,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               IsChecked="{Binding EnableAttentionKey, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COPY_SCRATCHPAD_KEY_LABEL}" 
+                               IsEnabled="{Binding Source='EnableCopyAllScratchpadKey', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="2" Grid.Column="1" 
                               VerticalAlignment="Center"
@@ -68,6 +71,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               IsChecked="{Binding EnableCopyAllScratchpadKey, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
+                               IsEnabled="{Binding Source='EnableCommuniKateKeyboardLayout', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" Visibility="Visible" />
                     <CheckBox Grid.Row="3" Grid.Column="1"
                               VerticalAlignment="Center" Visibility="Visible"
@@ -75,7 +79,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               IsEnabled="{Binding Source='EnableCommuniKateKeyboardLayout', Converter={StaticResource EnabledIfNotOverridden}}"/>
 
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.ALLOW_MULTIPLE_INSTANCES}"
-                               VerticalAlignment="Center" Margin="5" Visibility="Visible" />
+                               IsEnabled="{Binding Source='AllowMultipleInstances', Converter={StaticResource EnabledIfNotOverridden}}"
+                               VerticalAlignment="Center" Margin="5" Visibility="Visible"/>
                     <CheckBox Grid.Row="4" Grid.Column="1"
                               VerticalAlignment="Center" Visibility="Visible"
                               IsChecked="{Binding AllowMultipleInstances, Mode=TwoWay}" 
