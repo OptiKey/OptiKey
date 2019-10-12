@@ -51,6 +51,22 @@ namespace JuliusSweetland.OptiKey.Mouse.Properties
             }
         }
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool AllowMultipleInstances
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
+
         #endregion
 
 

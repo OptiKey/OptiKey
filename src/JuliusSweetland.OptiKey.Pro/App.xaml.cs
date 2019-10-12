@@ -48,28 +48,36 @@ namespace JuliusSweetland.OptiKey.Pro
         [STAThread]
         public static void Main()
         {
-            using (SingleInstanceManager manager = SingleInstanceManager.Initialize(GetSingleInstanceManagerSetup()))
+            // Setup derived settings class
+            Settings.Initialise();
+            String appName = "OptikeyPro";
+
+            Action runApp = () =>
             {
                 var application = new App();
                 application.InitializeComponent();
                 application.Run();
+            };
+
+            if (Settings.Default.AllowMultipleInstances)
+            {
+                runApp();
+            }
+            else
+            {
+                using (SingleInstanceManager manager = SingleInstanceManager.Initialize(
+                    new SingleInstanceManagerSetup(appName)))
+                {
+                    runApp();
+                }
             }
         }
-
-        private static SingleInstanceManagerSetup GetSingleInstanceManagerSetup()
-        {
-            return new SingleInstanceManagerSetup("OptikeyPro");
-        }
-
         #endregion
 
         #region Ctor
 
         public App()
         {
-            // Setup derived settings class
-            Settings.Initialise();
-
             // Core setup for all OptiKey apps
             Initialise();
         }
