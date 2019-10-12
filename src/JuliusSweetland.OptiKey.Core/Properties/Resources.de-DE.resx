@@ -275,7 +275,7 @@ Klicken Sie Nein wenn sie selbst die Datei reparieren oder kopieren wollen.</val
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Schlechte Nachrichten - optikey ist gestürzt und muss geschlossen werden.
 
-Eine email mit Angaben was passiert ist wäre sehr hilfreich: optikeyfeedback@gmail.com
+Eine email mit Angaben was passiert ist wäre sehr hilfreich: crash@optikey.org
 
 Entschuldigung für die Unannehmlichkeiten.</value>
   </data>

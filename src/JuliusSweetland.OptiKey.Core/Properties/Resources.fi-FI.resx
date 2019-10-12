@@ -279,7 +279,7 @@ Paina Ei, jos haluat korjata tai kopioida käyttäjän asetustiedoston manuaalis
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Huonoja uutisia - OptiKey kaatui ja se on suljettava.
 
-Sähköposti, jossa on yksityiskohtaisia tietoja siitä, mitä tapahtui, olisi erittäin hyödyllinen: optikeyfeedback@gmail.com
+Sähköposti, jossa on yksityiskohtaisia tietoja siitä, mitä tapahtui, olisi erittäin hyödyllinen: crash@optikey.org
 
 Pahoittelut</value>
   </data>

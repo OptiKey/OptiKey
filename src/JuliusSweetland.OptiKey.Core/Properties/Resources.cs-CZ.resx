@@ -316,7 +316,7 @@ Zvolte Ne, jestli chcete ukončit aplikaci a manuálně opravit nebo zkopírovat
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Špatné zprávy - optikey přestal reagovat a musí být ukončen.
 Ocenili bysme mail s popisem problému:
-optikeyfeedback@gmail.com
+crash@optikey.org
 za vzniklou situaci se omlouváme.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">

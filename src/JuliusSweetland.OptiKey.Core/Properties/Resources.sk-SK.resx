@@ -274,7 +274,7 @@ Zvoľte Nie ak chcete ukončiť aplikáciu a manuálne opraviť alebo skopírova
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Zlé správy - optikey sa potkol sám o seba a musí byť ukončený. 
-Ocenili by sme email s popisom incidentu: optikeyfeedback@gmail.com
+Ocenili by sme email s popisom incidentu: crash@optikey.org
 Za vzniknutú situáciu sa ospravedlňujeme.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">

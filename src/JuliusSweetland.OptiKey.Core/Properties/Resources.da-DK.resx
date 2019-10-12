@@ -277,7 +277,7 @@ Klik Nej for at lukke, så du manuelt kan reparere eller kopiere dine brugerinds
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Dårlige nyheder - optikey ser ud til at have problemer og er nødt til at lukke.
 
-En email med detaljer om hændelsen ville være meget behjælpelig: optikeyfeedback@gmail.com
+En email med detaljer om hændelsen ville være meget behjælpelig: crash@optikey.org
 
 Vi beklager ulejligheden.</value>
   </data>

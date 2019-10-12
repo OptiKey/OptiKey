@@ -274,7 +274,7 @@ Clickez sur OUI pourremettre les valeurs par défaut ou sur NON pour fermer opti
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Mauvaise nouvelle - optikey s'est crashé.
 
-Un email avec les circonstances de l'accident sera très utile : optikeyfeedback@gmail.com
+Un email avec les circonstances de l'accident sera très utile : crash@optikey.org
 
 Avec toutes nos excuses.</value>
   </data>

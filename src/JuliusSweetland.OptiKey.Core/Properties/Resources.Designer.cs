@@ -899,7 +899,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Bad news - optikey has tripped over its feet and has to close down.
         ///
-        ///An email with details of what happened would be very helpful: optikeyfeedback@gmail.com
+        ///An email with details of what happened would be very helpful: crash@optikey.org
         ///
         ///Sorry for the inconvenience..
         /// </summary>
@@ -3373,7 +3373,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Center Magnifier on Screen.
+        ///   Looks up a localized string similar to Show magnifier window at center of screen.
         /// </summary>
         public static string MAGNIFIER_CENTER_ON_SCREEN {
             get {
@@ -3436,7 +3436,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MANUAL MODE.
+        ///   Looks up a localized string similar to MOUSE CONTROL MODE.
         /// </summary>
         public static string MANUAL_MODE {
             get {
@@ -3454,7 +3454,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual (mouse) mode disabled!.
+        ///   Looks up a localized string similar to Mouse (manual) mode disabled!.
         /// </summary>
         public static string MANUAL_MODE_DISABLED {
             get {
@@ -3463,7 +3463,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual (mouse) mode enabled!.
+        ///   Looks up a localized string similar to Mouse (manual) mode enabled!.
         /// </summary>
         public static string MANUAL_MODE_ENABLED {
             get {
@@ -6096,7 +6096,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Toggle Manual Mode.
+        ///   Looks up a localized string similar to Toggle Mouse Control Mode.
         /// </summary>
         public static string TOGGLE_MANUAL_MODE {
             get {

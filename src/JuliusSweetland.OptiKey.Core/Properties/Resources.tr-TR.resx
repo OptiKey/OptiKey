@@ -274,7 +274,7 @@ Dosyaları manuel olarak ya da yedeklemek için Hayır'ı tıklayın</value>
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Kötü haber - optikey'in ayağı kaydı ve kapanması gerekiyor.
 
-Neler olduğuna dair bir e-posta yollayarak yardımcı olursan seviniriz: optikeyfeedback@gmail.com
+Neler olduğuna dair bir e-posta yollayarak yardımcı olursan seviniriz: crash@optikey.org
 
 Yaşanan sorundan dolayı özür dileriz.</value>
   </data>

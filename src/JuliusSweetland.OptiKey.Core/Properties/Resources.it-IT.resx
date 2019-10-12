@@ -274,7 +274,7 @@ Clicca NO per chiudere in modo da riparare manualmente o copiare i il tuo file d
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Cattive notizie - optikey si è arrestato il mondo anomalo.
-Per capire il problema puoi aiutare inviando una email con i dettagli a optikeyfeedback@gmail.com
+Per capire il problema puoi aiutare inviando una email con i dettagli a crash@optikey.org
 Spiacente per il disagio.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
