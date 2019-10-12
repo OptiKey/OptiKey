@@ -63,12 +63,6 @@ namespace JuliusSweetland.OptiKey.Chat
 
         #endregion
 
-        #region Private Member Vars
-
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-     
-        #endregion
-
         #region Ctor
 
         public App()

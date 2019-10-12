@@ -62,12 +62,6 @@ namespace JuliusSweetland.OptiKey.Mouse
         }
 
         #endregion
-        
-        #region Private Member Vars
-
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-     
-        #endregion
 
         #region Ctor
 
