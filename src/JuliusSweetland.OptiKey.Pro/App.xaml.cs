@@ -43,6 +43,7 @@ namespace JuliusSweetland.OptiKey.Pro
     /// </summary>
     public partial class App : OptiKeyApp
     {
+        private static SplashScreen splashScreen;
 
         #region Main
         [STAThread]
@@ -54,6 +55,10 @@ namespace JuliusSweetland.OptiKey.Pro
 
             Action runApp = () =>
             {
+
+                splashScreen = new SplashScreen("/Resources/Icons/OptikeyProSplash.png");
+                splashScreen.Show(false);
+
                 var application = new App();
                 application.InitializeComponent();
                 application.Run();
@@ -91,6 +96,10 @@ namespace JuliusSweetland.OptiKey.Pro
             try
             {
                 Log.Info("Boot strapping the services and UI.");
+
+                // We manually close this because automatic closure steals focus from the 
+                // dynamic splash screen. 
+                splashScreen.Close(TimeSpan.FromSeconds(0.5f));
 
                 //Apply theme
                 applyTheme();

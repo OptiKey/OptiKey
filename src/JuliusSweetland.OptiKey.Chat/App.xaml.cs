@@ -43,6 +43,7 @@ namespace JuliusSweetland.OptiKey.Chat
     /// </summary>
     public partial class App : OptiKeyApp
     {
+        private static SplashScreen splashScreen;
 
         #region Main
         [STAThread]
@@ -50,6 +51,10 @@ namespace JuliusSweetland.OptiKey.Chat
         {
             using (SingleInstanceManager manager = SingleInstanceManager.Initialize(GetSingleInstanceManagerSetup()))
             {
+
+                splashScreen = new SplashScreen("/Resources/Icons/OptikeyChatSplash.png");
+                splashScreen.Show(false);
+
                 var application = new App();
                 application.InitializeComponent();
                 application.Run();
@@ -84,6 +89,10 @@ namespace JuliusSweetland.OptiKey.Chat
             try
             {
                 Log.Info("Boot strapping the services and UI.");
+
+                // We manually close this because automatic closure steals focus from the 
+                // dynamic splash screen. 
+                splashScreen.Close(TimeSpan.FromSeconds(0.5f));
 
                 //Apply theme
                 applyTheme();

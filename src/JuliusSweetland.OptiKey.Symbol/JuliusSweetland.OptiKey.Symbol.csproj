@@ -211,6 +211,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <SplashScreen Include="Resources\Icons\OptikeySymbolSplash.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </SplashScreen>
     <Resource Include="Symbol.ico" />
     <None Include="App.config" />
     <None Include="log4net.config">
