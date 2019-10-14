@@ -31,7 +31,7 @@
     <STRING lang="pl" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="pt" value="Por favor selecione o eye tracker que vai utilizar com Optikey "/>
     <STRING lang="pt_BR" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="ru" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="ru" value="Пожалуйста, выберите трекер для работы с OptiKey"/>
     <STRING lang="sr_SP_Cyrillic" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="sr_SP_Latin" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="sk" value="Please select the eye tracker you will be using with Optikey"/>
@@ -39,7 +39,7 @@
     <STRING lang="es" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="sv" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="tr" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="uk" value="Please select the eye tracker you will be using with Optikey"/>
+    <STRING lang="uk" value="Будь ласка, оберіть метод стеження за оком, яким Ви користуватимитесь в Optikey"/>
   </ENTRY>
   <ENTRY id="Control.Text.EyeTracker#Title">
     <STRING lang="en" value="Eye tracker"/>
@@ -72,7 +72,7 @@
     <STRING lang="pl" value="Eye tracker"/>
     <STRING lang="pt" value="Eye tracker"/>
     <STRING lang="pt_BR" value="Eye tracker"/>
-    <STRING lang="ru" value="Eye tracker"/>
+    <STRING lang="ru" value="Трекер глаз"/>
     <STRING lang="sr_SP_Cyrillic" value="Eye tracker"/>
     <STRING lang="sr_SP_Latin" value="Eye tracker"/>
     <STRING lang="sk" value="Eye tracker"/>
@@ -80,7 +80,7 @@
     <STRING lang="es" value="Eye tracker"/>
     <STRING lang="sv" value="Eye tracker"/>
     <STRING lang="tr" value="Eye tracker"/>
-    <STRING lang="uk" value="Eye tracker"/>
+    <STRING lang="uk" value="Метод cтеження за оком"/>
   </ENTRY>
   <ENTRY id="Control.Text.Languages#Description">
     <STRING lang="en" value="Please select the main language you&apos;ll be using in Optikey"/>
@@ -113,7 +113,7 @@
     <STRING lang="pl" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="pt" value="Por favor selecione o idioma de preferência para Optikey"/>
     <STRING lang="pt_BR" value="Por favor selecione o idioma de preferência para Optikey"/>
-    <STRING lang="ru" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="ru" value="Пожалуйста, выберите основной язык для работы с OptiKey"/>
     <STRING lang="sr_SP_Cyrillic" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="sr_SP_Latin" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="sk" value="Please select the main language you&apos;ll be using in Optikey"/>
@@ -121,7 +121,7 @@
     <STRING lang="es" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="sv" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="tr" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="uk" value="Please select the main language you&apos;ll be using in Optikey"/>
+    <STRING lang="uk" value="Будь ласка, оберіть основну мову"/>
   </ENTRY>
   <ENTRY id="Control.Text.Languages#Title">
     <STRING lang="en" value="Language"/>

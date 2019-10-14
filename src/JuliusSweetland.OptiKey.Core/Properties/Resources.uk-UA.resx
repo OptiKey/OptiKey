@@ -837,9 +837,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>ОК</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey :  Набір · Клік · Вимова</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Інше</value>
   </data>
@@ -2198,5 +2195,17 @@ Française
   </data>
   <data name="MANUAL_MODE" xml:space="preserve">
     <value>РУЧНИЙ РЕЖИМ</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Чат: легка комунікація</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Мишка: повне керування курсором миші</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Про: керування та комунікація з комп'ютером</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Символ: комунікація символами</value>
   </data>
 </root>

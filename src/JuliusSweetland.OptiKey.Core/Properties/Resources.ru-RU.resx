@@ -843,9 +843,6 @@ LK</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Type · Click · Speak</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Другое</value>
   </data>
@@ -2329,5 +2326,17 @@ Française
   </data>
   <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
     <value>Введите диакритические знаки (ударения и т. д.) после букв:</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Чат : Простое общение</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Мышь : Полный контроль над курсором</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Про : Управление компьютером &amp; общение</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Символ : Свободное общение символами</value>
   </data>
 </root>
