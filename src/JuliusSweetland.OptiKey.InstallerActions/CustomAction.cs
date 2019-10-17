@@ -180,6 +180,28 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             return ActionResult.Success;
         }
 
+        private static string GetPointsSourceDetails(PointsSources pointSource, CultureInfo culture)
+        {
+            switch (pointSource)
+            {
+                // TODO check for culture not in dict, default empty?
+                case PointsSources.Alienware17: return InstallerStrings.ALIENWARE_17_INFO[culture];
+                case PointsSources.GazeTracker: return InstallerStrings.GAZE_TRACKER_INFO[culture];
+                case PointsSources.IrisbondDuo: return InstallerStrings.IRISBOND_DUO_INFO[culture];
+                case PointsSources.MousePosition: return InstallerStrings.MOUSE_POSITION_INFO[culture];
+                case PointsSources.TobiiEyeX: return InstallerStrings.TOBII_EYEX_INFO[culture];
+                case PointsSources.TobiiRex: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                case PointsSources.TobiiPcEyeGo: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                case PointsSources.TobiiPcEyeGoPlus: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                case PointsSources.TobiiPcEyeMini: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                case PointsSources.TobiiX2_30: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                case PointsSources.TobiiX2_60: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                case PointsSources.VisualInteractionMyGaze: return InstallerStrings.VI_MYGAZE_INFO[culture];
+                default: return "";
+            }
+
+        }
+
 
     }
 }
