@@ -1587,6 +1587,6 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
       <value>Za uporabo Optikey s pomožno oči tracker, ali boste potrebovali novo različico nadzor Tobii Windows Control, ali motor Tobii sledenje oči. Če želite uporabljati staro različico aplikacije za nadzor Tobii Windows Control (Tobii Gaze Interaction Software), potem boste morali za nadzor optikey namesto uporabe položaj miške. Za več informacij si oglejte www.optikey.org/help</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Visual Interaction myGaze je podprta le, če ste že namestili gonilnike strank myGaze, ki niso več na voljo za prenos. Če nimate nameščene ti vozniki, morate izbrati uporaba "položaj miške" namesto, in uporabo optikey v kombinaciji z uporabo myGaze EyeMousePlay premakniti kazalec.</value>
+      <value>Visual Interaction myGaze je podprta le, če ste že namestili gonilnike strank myGaze, ki niso več na voljo za prenos. Če nimate nameščene ti vozniki, morate izbrati uporaba 'položaj miške' namesto, in uporabo optikey v kombinaciji z uporabo myGaze EyeMousePlay premakniti kazalec.</value>
   </data>  
 </root>
