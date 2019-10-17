@@ -40,6 +40,7 @@
     <ROW Directory="Release_Dir" Directory_Parent="APPDIR" DefaultDir=".:Release"/>
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="Sizeandpositionexamples_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="SIZEAN~1|Size and position examples"/>
     <ROW Directory="Sounds_Dir" Directory_Parent="Resources_Dir" DefaultDir="Sounds"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="caES_Dir" Directory_Parent="Release_Dir" DefaultDir="ca-ES"/>
@@ -78,6 +79,8 @@
     <ROW Component="Bass.Net.xml" ComponentId="{5663EE9E-7EEA-445E-AE58-C433652390E0}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.xml" Type="0"/>
     <ROW Component="BigHackerKeyboard.xml" ComponentId="{F1C16098-0D1F-4D35-941F-116A4233E832}" Directory_="DynamicKeyboards_Dir" Attributes="0" KeyPath="BigHackerKeyboard.xml" Type="0"/>
     <ROW Component="CatalanSpain.dic" ComponentId="{62A3C1D9-0A3A-43B1-AA37-8430ACE17256}" Directory_="Dictionaries_Dir" Attributes="0" KeyPath="CatalanSpain.dic" Type="0"/>
+    <ROW Component="ControlzEx.dll" ComponentId="{6A1A4E91-A976-4CB6-8047-096F3CEE19E3}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
+    <ROW Component="DockBottom.xml" ComponentId="{AB443EB5-5728-4F83-99E6-96088D256592}" Directory_="Sizeandpositionexamples_Dir" Attributes="0" KeyPath="DockBottom.xml" Type="0"/>
     <ROW Component="EyeXFramework.dll" ComponentId="{EABB8F26-962D-4E7A-89C1-84FFBC4D413E}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
     <ROW Component="Interop.SpeechLib.dll" ComponentId="{C617EA44-DF5C-40FA-9136-2D44E54A0FFC}" Directory_="Release_Dir" Attributes="0" KeyPath="Interop.SpeechLib.dll"/>
     <ROW Component="IrisbondAPI.dll" ComponentId="{3F41CE04-68B7-4629-9AF9-1FB8C1AAB4FE}" Directory_="Release_Dir" Attributes="0" KeyPath="IrisbondAPI.dll"/>
@@ -143,6 +146,8 @@
     <ROW Component="Tobii.EyeX.Client.Net20.dll" ComponentId="{EF8013AB-90C4-445E-8ADD-A920F625DB08}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.Net20.dll"/>
     <ROW Component="Tobii.EyeX.Client.dll" ComponentId="{79C907C1-3A00-4055-82C2-DD07B04BB254}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll"/>
     <ROW Component="WindowsInput.dll" ComponentId="{DC9CBABB-FBD8-41D9-8E3C-A100F9E5A46D}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
+    <ROW Component="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" ComponentId="{2CE74D7F-4298-495D-8017-509FD65339A5}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
+    <ROW Component="WindowsRecipes.TaskbarSingleInstance.dll" ComponentId="{F36566E6-B3AC-41E4-88DA-25838D4FC862}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsRecipes.TaskbarSingleInstance.dll"/>
     <ROW Component="back.png" ComponentId="{3B47BD52-08E6-42F8-8EB8-0C9C721DFC4E}" Directory_="CommuniKate_Dir" Attributes="0" KeyPath="back.png" Type="0"/>
     <ROW Component="bass.dll" ComponentId="{C0B5CFEC-6640-489D-98EC-4A31F635858B}" Directory_="Release_Dir" Attributes="0" KeyPath="bass.dll"/>
     <ROW Component="database.zip" ComponentId="{E969E3DC-1089-488B-9194-A8FD7450037F}" Directory_="Presage_Dir" Attributes="0" KeyPath="database.zip" Type="0"/>
@@ -325,6 +330,28 @@
     <ROW File="OptiKey.resources.dll_25" Component_="OptiKey.resources.dll_25" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\he-IL\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKeyStandardPlugins.dll_1" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~1.DLL|OptiKeyStandardPlugins.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptiKeyStandardPlugins.dll" SelfReg="false"/>
     <ROW File="OptiKeyStandardPlugins.pdb" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~2.PDB|OptiKeyStandardPlugins.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptiKeyStandardPlugins.pdb" SelfReg="false"/>
+    <ROW File="ControlzEx.dll" Component_="ControlzEx.dll" FileName="CONTRO~1.DLL|ControlzEx.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\ControlzEx.dll" SelfReg="false"/>
+    <ROW File="ControlzEx.pdb" Component_="ControlzEx.dll" FileName="CONTRO~1.PDB|ControlzEx.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\ControlzEx.pdb" SelfReg="false"/>
+    <ROW File="FinnishFinland.dic" Component_="CatalanSpain.dic" FileName="FINNIS~1.DIC|FinnishFinland.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Dictionaries\FinnishFinland.dic" SelfReg="false"/>
+    <ROW File="HebrewIsrael.dic" Component_="CatalanSpain.dic" FileName="HEBREW~1.DIC|HebrewIsrael.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Dictionaries\HebrewIsrael.dic" SelfReg="false"/>
+    <ROW File="OptikeySymbol.exe.config" Component_="Bass.Net.xml" FileName="OPTIKE~1.CON|OptikeySymbol.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptikeySymbol.exe.config" SelfReg="false"/>
+    <ROW File="AltAlphaHorizontalKeyboard.xml" Component_="BigHackerKeyboard.xml" FileName="ALTALP~1.XML|AltAlphaHorizontalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml" SelfReg="false"/>
+    <ROW File="AltAlphaVerticalKeyboard.xml" Component_="BigHackerKeyboard.xml" FileName="ALTALP~2.XML|AltAlphaVerticalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml" SelfReg="false"/>
+    <ROW File="DockBottom.xml" Component_="DockBottom.xml" FileName="DOCKBO~1.XML|DockBottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Size and position examples\DockBottom.xml" SelfReg="false"/>
+    <ROW File="DockTop.xml" Component_="DockBottom.xml" FileName="DockTop.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Size and position examples\DockTop.xml" SelfReg="false"/>
+    <ROW File="FloatBottom.xml" Component_="DockBottom.xml" FileName="FLOATB~1.XML|FloatBottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatBottom.xml" SelfReg="false"/>
+    <ROW File="FloatCenter.xml" Component_="DockBottom.xml" FileName="FLOATC~1.XML|FloatCenter.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatCenter.xml" SelfReg="false"/>
+    <ROW File="FloatDemo.xml" Component_="DockBottom.xml" FileName="FLOATD~1.XML|FloatDemo.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatDemo.xml" SelfReg="false"/>
+    <ROW File="FloatLeft.xml" Component_="DockBottom.xml" FileName="FLOATL~1.XML|FloatLeft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatLeft.xml" SelfReg="false"/>
+    <ROW File="FloatRight.xml" Component_="DockBottom.xml" FileName="FLOATR~1.XML|FloatRight.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatRight.xml" SelfReg="false"/>
+    <ROW File="FloatTop.xml" Component_="DockBottom.xml" FileName="FloatTop.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatTop.xml" SelfReg="false"/>
+    <ROW File="WindowsInput.pdb" Component_="WindowsInput.dll" FileName="WINDOW~1.PDB|WindowsInput.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsInput.pdb" SelfReg="false"/>
+    <ROW File="WindowsRecipes.TaskbarSingleInstance.dll" Component_="WindowsRecipes.TaskbarSingleInstance.dll" FileName="WINDOW~2.DLL|WindowsRecipes.TaskbarSingleInstance.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsRecipes.TaskbarSingleInstance.dll" SelfReg="false"/>
+    <ROW File="WindowsRecipes.TaskbarSingleInstance.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.dll" FileName="WINDOW~2.PDB|WindowsRecipes.TaskbarSingleInstance.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsRecipes.TaskbarSingleInstance.pdb" SelfReg="false"/>
+    <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" FileName="WINDOW~3.DLL|WindowsRecipes.TaskbarSingleInstance.Wpf.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.dll" SelfReg="false"/>
+    <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" FileName="WINDOW~3.PDB|WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" SelfReg="false"/>
+    <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Component_="Bass.Net.xml" FileName="WINDOW~2.XML|WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.xml" SelfReg="false"/>
+    <ROW File="WindowsRecipes.TaskbarSingleInstance.xml" Component_="Bass.Net.xml" FileName="WINDOW~3.XML|WindowsRecipes.TaskbarSingleInstance.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsRecipes.TaskbarSingleInstance.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -460,6 +487,9 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="EyeTracker" Control="EyeTrackerDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
+    <ROW Dialog_="EyeTracker" Control="Description" Type="Text" X="25" Y="23" Width="295" Height="21" Attributes="196611" Text="Please select the eye tracker you will be using with Optikey" Order="700" TextLocId="Control.Text.EyeTracker#Description" MsiKey="EyeTracker#Description"/>
+    <ROW Dialog_="EyeTracker" Control="Text_1" Type="Text" X="31" Y="89" Width="271" Height="71" Attributes="65539" Property="EYETRACKER_TEXT" Text="[EYETRACKER_TEXT]" Order="1100" TextLocId="-" MsiKey="EyeTracker#Text_1"/>
+    <ROW Dialog_="EyeTracker" Control="Hyperlink_1" Type="Hyperlink" X="236" Y="218" Width="124" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;http://www.optikey.org/help&quot;&gt;http://www.optikey.org/help&lt;/a&gt;" Order="1200"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
     <ROW Dialog_="NewDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="NewDialog" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
@@ -467,7 +497,7 @@
     <ROW Dialog_="NewDialog" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="400"/>
     <ROW Dialog_="NewDialog" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
     <ROW Dialog_="NewDialog" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
-    <ROW Dialog_="NewDialog" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="New Dialog Description..." Order="700"/>
+    <ROW Dialog_="NewDialog" Control="Description" Type="Text" X="25" Y="23" Width="295" Height="21" Attributes="196611" Text="New Dialog Description..." Order="700"/>
     <ROW Dialog_="NewDialog" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800"/>
     <ROW Dialog_="NewDialog" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="New Dialog" TextStyle="[DlgTitleFont]" Order="900"/>
     <ROW Dialog_="NewSeqDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
@@ -478,7 +508,10 @@
     <ROW Dialog_="NewSeqDialog" Control="Description" Type="Text" X="135" Y="86" Width="220" Height="60" Attributes="196611" Text="Which eye tracker will you use with Optikey?" Order="600"/>
     <ROW Dialog_="NewSeqDialog" Control="BottomLine" Type="Line" X="0" Y="234" Width="372" Height="0" Attributes="1" Order="700"/>
     <ROW Dialog_="NewSeqDialog" Control="ComboBox_eyetracker" Type="ComboBox" X="135" Y="105" Width="56" Height="12" Attributes="3" Property="COMBOBOX_1_PROP" Text="wibble" Order="800"/>
+    <ROW Dialog_="PrerequisitesDlg" Control="Description" Type="Text" X="25" Y="23" Width="295" Height="21" Attributes="196611" Text="Select which prerequisites will be installed" Order="700" TextLocId="Control.Text.PrerequisitesDlg#Description" MsiKey="PrerequisitesDlg#Description"/>
     <ROW Dialog_="ReadmeDlg" Control="ReadmeText" Type="ScrollableText" X="20" Y="60" Width="330" Height="150" Attributes="7" Text="resources\MESSAGE FOR USER DURING INSTALL.rtf" Order="400" TextLocId="-" MsiKey="ReadmeDlg#ReadmeText"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control="Description" Type="Text" X="25" Y="23" Width="295" Height="21" Attributes="196611" Text="You have chosen to remove the program from your computer." Order="900" TextLocId="Control.Text.VerifyRemoveDlg#Description" MsiKey="VerifyRemoveDlg#Description"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="Description" Type="Text" X="25" Y="23" Width="295" Height="21" Attributes="196611" Text="The [Wizard] is ready to begin the repair of [ProductName]." Order="900" TextLocId="Control.Text.VerifyRepairDlg#Description" MsiKey="VerifyRepairDlg#Description"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
@@ -651,6 +684,10 @@
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_24"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_25"/>
     <ROW Feature_="MainFeature" Component_="OptiKeyStandardPlugins.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="ControlzEx.dll"/>
+    <ROW Feature_="MainFeature" Component_="DockBottom.xml"/>
+    <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.dll"/>
+    <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="OptikeySymbol.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Core\Resources\Icons\Symbol.ico" Index="0"/>
