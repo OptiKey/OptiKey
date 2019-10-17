@@ -113,13 +113,15 @@ End  Function
 ' -----------------------------------------------------------------------------
 ' @info Update UI and properties for new eye tracker
 ' -----------------------------------------------------------------------------
-Function UpdateEyeTracker(tracker_enum, tracker_extra_info)
+Function UpdateEyeTracker(tracker_enum, tracker_extra_info, tracker_extra_info_en)
   
   ' insert line feeds if present
   tracker_extra_info = Replace(tracker_extra_info,"\n",vbLf) 
+  tracker_extra_info_en = Replace(tracker_extra_info_en,"\n",vbLf) 
   
   ' Update the text label displaying extra info
   Session.Property("EYETRACKER_TEXT") = tracker_extra_info
+  Session.Property("EYETRACKER_TEXT_EN") = tracker_extra_info_en
 
   ' Store the eyetracker enum as a property: we'll need to use this for writing to XML
   Session.Property("EYETRACKER_SELECTED") = tracker_enum
@@ -137,8 +139,9 @@ Function EyeTrackerSelected
   selectedTracker = Session.Property(comboProp)
   tracker_enum = Session.Property("TRACKER_" + SanitisePropName(selectedTracker))
   tracker_info = Session.Property("TRACKERINFO_" + SanitisePropName(selectedTracker))  
+  tracker_info_en = Session.Property("TRACKERINFO_EN_" + SanitisePropName(selectedTracker))  
 
-  UpdateEyeTracker(tracker_enum), tracker_info
+  UpdateEyeTracker(tracker_enum), tracker_info, tracker_info_en
 
 End Function
 

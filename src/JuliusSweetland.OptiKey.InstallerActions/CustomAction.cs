@@ -127,9 +127,20 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 // save the mapping from label to enum in an installer property
                 session["TRACKER_" + SanitisePropName(trackerLabel)] = trackerEnum;
 
-                // also the extended info 
+                // also the extended info, translated and original text 
                 string details = GetPointsSourceDetails(tracker.Value, closestCulture);
+                string details_english = GetPointsSourceDetails(tracker.Value, new CultureInfo("en-GB"));
+                if (details == details_english)
+                {
+                    details_english = "";
+                }
+                else
+                {
+                    details_english = "Automatically translated from original text:\n" + details_english;
+                }
+            
                 session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = details;
+                session["TRACKERINFO_EN_" + SanitisePropName(trackerLabel)] = details_english;
 
                 if (trackerLabel.Contains("Mouse"))
                 {
