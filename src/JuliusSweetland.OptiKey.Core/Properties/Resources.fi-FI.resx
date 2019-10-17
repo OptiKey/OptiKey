@@ -2357,13 +2357,13 @@ Haluatko, että OptiKey asettaa automaattisesti fontiksi Nazil?</value>
       <value>Jos aiot käyttää optikey kanssa Irisbond Duo silmänseurain niin varmista, että sinulla on Irisbond Duo ajurit asennettu. Nämä voi ladata https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>Tässä tilassa optikey käyttää hiiren kursori syötteenä puhumisen sijasta suoraan silmänseurain. Haluat ehkä tämä Jos testaat optikey pois, tai jos haluat käyttää sitä vaihtoehtoista raaka laite, kuten pään hiiren tai silmänseurain ole luettelossa. Lisätietoja katso www.optikey.org/help</value>
+      <value>Tässä tilassa optikey käyttää hiiren kursori syötteenä puhumisen sijasta suoraan silmänseurain. Haluat ehkä tämä Jos testaat optikey pois, tai jos haluat käyttää sitä vaihtoehtoista raaka laite, kuten pään hiiren tai silmänseurain ole luettelossa. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Tämä vaihtoehto toimii kaikilla Tobii Gaming silmänseurain (4C, EyeX, Alienware, Steelseries jne)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Käyttää Optikey kanssa avustavien silmänseurain, sinun täytyy joko uuden Tobii Windows Control tai Tobii Eye Tracking moottori. Jos joudut käyttämään vanhaa versiota Tobii Windows Control (Tobii Gaze Interaction Software), sinun täytyy valvoa optikey hiirellä asentoon sijasta. Lisätietoja katso www.optikey.org/help</value>
+      <value>Käyttää Optikey kanssa avustavien silmänseurain, sinun täytyy joko uuden Tobii Windows Control tai Tobii Eye Tracking moottori. Jos joudut käyttämään vanhaa versiota Tobii Windows Control (Tobii Gaze Interaction Software), sinun täytyy valvoa optikey hiirellä asentoon sijasta. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Visual Interaction myGaze tuetaan vain, jos olet jo asentanut myGaze asiakkaan ohjaimiin, joita ei enää ladattavissa. Jos sinulla ei ole näitä ajurit on asennettu, kannattaa valita käyttöön 'hiiren sijainti' sijaan, ja käyttää optikey yhdessä myGaze EyeMousePlay sovelluksen siirtää osoitinta.</value>

@@ -1646,7 +1646,7 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
       <value>Diese Option wird mit jedem Tobii Eyetracker Gaming arbeiten (4C, EyeX, Alienware, Steel, usw.)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>So verwenden Optikey mit einem unterstützenden Eye-Tracker, benötigen Sie entweder die neue Version von Tobii Windows Control oder die Tobii Eye Tracking-Engine. Wenn Sie die alte Version der Tobii Windows Control (Tobii Gaze Interaction Software) verwenden müssen, dann müssen Sie optikey mit Mausposition statt steuern. Weitere Informationen finden Sie www.optikey.org/help</value>
+      <value>So verwenden Optikey mit einem unterstützenden Eye-Tracker, benötigen Sie entweder die neue Version von Tobii Windows Control oder die Tobii Eye Tracking-Engine. Wenn Sie die alte Version der Tobii Windows Control (Tobii Gaze Interaction Software) verwenden müssen, dann müssen Sie optikey mit Mausposition statt steuern. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Die visuelle Interaktion myGaze wird nur dann unterstützt, wenn Sie bereits die myGaze Client-Treiber installiert haben, die nicht mehr zum Download zur Verfügung. Wenn Sie nicht über diese Treiber installiert haben, sollten Sie den Einsatz ‚Mausposition‘ statt, wählen und in Kombination mit der Anwendung myGaze EyeMousePlay verwenden optikey, um den Cursor zu bewegen.</value>

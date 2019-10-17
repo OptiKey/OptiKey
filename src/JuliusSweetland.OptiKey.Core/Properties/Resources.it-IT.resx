@@ -1828,7 +1828,7 @@ tipo "DB Browser for SQLite" (che è programma free).</value>
       <value>Se si prevede di utilizzare optikey con l'eye tracker Irisbond Duo quindi si prega di assicurarsi di avere i driver installati Irisbond Duo. Questi possono essere scaricati dal https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>In questa modalità, optikey userà il cursore del mouse come input invece di parlare direttamente ad un inseguitore occhio. Si potrebbe desiderare questo se si sta testando optikey fuori, o se si desidera utilizzare con un dispositivo di input alternativo come un mouse testa o qualsiasi occhio non inseguitore in questa lista. Per ulteriori informazioni, vedere www.optikey.org/help</value>
+      <value>In questa modalità, optikey userà il cursore del mouse come input invece di parlare direttamente ad un inseguitore occhio. Si potrebbe desiderare questo se si sta testando optikey fuori, o se si desidera utilizzare con un dispositivo di input alternativo come un mouse testa o qualsiasi occhio non inseguitore in questa lista. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Questa opzione funziona con qualsiasi occhio inseguitore Tobii Gaming (4C, EyeX, Alienware, Steelseries, ecc)</value>

@@ -2365,7 +2365,7 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
       <value>אם אתם מתכננים להשתמש optikey עם גשש עין Irisbond Duo אז אנא ודא שיש לך את הנהגים Irisbond Duo מותקן. אלו ניתן להוריד מאתר https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>במצב זה, optikey ישתמש סמן העכבר כקלט במקום לדבר ישירות גשש העין. אולי אתה רוצה את זה אם אתה בודק את optikey, או אם אתה רוצה להשתמש בו עם מכשיר קלט חלופי כגון עכבר ראש או גשש כל עין לא ברשימה זו. לקבלת מידע נוסף, ראה www.optikey.org/help</value>
+      <value>במצב זה, optikey ישתמש סמן העכבר כקלט במקום לדבר ישירות גשש העין. אולי אתה רוצה את זה אם אתה בודק את optikey, או אם אתה רוצה להשתמש בו עם מכשיר קלט חלופי כגון עכבר ראש או גשש כל עין לא ברשימה זו.</value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>אפשרות זו תעבוד עם גשש כל עין גיימינג Tobii (4C, EyeX, Alienware, Steelseries, וכו ')</value>

@@ -1597,13 +1597,13 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
       <value>Ako namjeravate koristiti optikey s Irisbond Duo oka tracker zatim provjerite imate li Irisbond Duo upravljačke programe instalirane. To se može skinuti s https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>U ovom načinu rada, optikey će koristiti pokazivač miša kao ulaz umjesto da govori izravno na oku tracker. Možda želite to ako ste optikey testiranje, ili ako želite koristiti ga s alternativnim ulaznog uređaja, kao što je glava miša ili bilo kojeg oka tracker nije na popisu. Za više informacija, pogledajte www.optikey.org/help</value>
+      <value>U ovom načinu rada, optikey će koristiti pokazivač miša kao ulaz umjesto da govori izravno na oku tracker. Možda želite to ako ste optikey testiranje, ili ako želite koristiti ga s alternativnim ulaznog uređaja, kao što je glava miša ili bilo kojeg oka tracker nije na popisu.</value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Ova opcija će raditi s bilo Tobii Gaming oka tracker (4C, EyeX, Alienware, SteelSeries, itd)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Za korištenje Optikey s pomoćnim oka Tracker Tobii, bilo je potrebno novu verziju Tobii Windows Control, odnosno motor Tobii očiju praćenje. Ako trebate koristiti staru verziju upravljačkog primjene Tobii Windows Control (Tobii Gaze Interaction Software), onda ćete morati kontrolirati optikey pomoću položaja miša umjesto. Za više informacija, pogledajte www.optikey.org/help</value>
+      <value>Za korištenje Optikey s pomoćnim oka Tracker Tobii, bilo je potrebno novu verziju Tobii Windows Control, odnosno motor Tobii očiju praćenje. Ako trebate koristiti staru verziju upravljačkog primjene Tobii Windows Control (Tobii Gaze Interaction Software), onda ćete morati kontrolirati optikey pomoću položaja miša umjesto.</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Vizualni Interakcija myGaze podržana je samo ako ste već instalirali myGaze klijent vozača, koji više nisu dostupna za preuzimanje. Ako nemate ove upravljački programi instalirani, trebali biste odabrati koristiti „miša poziciju”, umjesto, i koristiti optikey u kombinaciji s myGaze EyeMousePlay prijave za pomicanje kursora.</value>

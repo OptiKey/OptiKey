@@ -1583,16 +1583,16 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
       <value>To vyžaduje, aby Gaze Tracking knižnicu ITU, čo je framework pre sledovanie pomocou off-the-shelf komponenty, ako sú kamery a videokameru s otvoreným zdrojovým kódom oka.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Ak máte v pláne používať optikey s očné tracker Irisbond Duo, potom si prosím skontrolujte, či máte k dispozícii ovládače Irisbond Duo nainštalované. Tie možno stiahnuť z https://www.irisbond.com/products/downloads.</value>
+      <value>Ak máte v pláne používať optikey s očné tracker Irisbond Duo, potom si prosím skontrolujte, či máte k dispozícii ovládače Irisbond Duo nainštalované. </value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>V tomto režime bude optikey použite kurzor myši ako vstup namiesto rozprávanie priamo do očí tracker. Možno budete chcieť to, ak testujete optikey von, alebo ak chcete použiť alternatívne vstupné zariadenia, ako je napríklad hlava myši alebo akékoľvek očné tracker nie je v tomto zozname. Pre viac informácií viď www.optikey.org/help</value>
+      <value>V tomto režime bude optikey použite kurzor myši ako vstup namiesto rozprávanie priamo do očí tracker. Možno budete chcieť to, ak testujete optikey von, alebo ak chcete použiť alternatívne vstupné zariadenia, ako je napríklad hlava myši alebo akékoľvek očné tracker nie je v tomto zozname. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Táto voľba bude fungovať s akýmkoľvek Tobi Gaming očí tracker (4C, EyeX, Alienware, SteelSeries, etc)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Ak chcete používať Optikey s asistenčnou očí tracker, musíte buď novú verziu systému Windows Control, alebo motora Tobi Eye Tracking. Ak potrebujete použiť starú verziu ovládacieho programu Tobi Windows (vrátane nastavenia Tobi Gaze interakcie), potom sa budete musieť riadiť optikey pomocou pozíciu myši miesto. Pre viac informácií viď www.optikey.org/help</value>
+      <value>Ak chcete používať Optikey s asistenčnou očí tracker, musíte buď novú verziu systému Windows Control, alebo motora Tobi Eye Tracking. Ak potrebujete použiť starú verziu ovládacieho programu Tobi Windows (vrátane nastavenia Tobi Gaze interakcie), potom sa budete musieť riadiť optikey pomocou pozíciu myši miesto. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Visual Interaction myGaze je podporovaná len v prípade, že ste už nainštalovali klientskych ovládačov myGaze, ktoré už nie sú k dispozícii na stiahnutie. Ak nechcete mať nainštalované tieto ovládače, mali by ste zvoliť použitia, pozíciu myši 'miesto, a použitie optikey v kombinácii s aplikáciou myGaze EyeMousePlay pre pohyb kurzora.</value>

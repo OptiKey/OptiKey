@@ -1960,13 +1960,13 @@ Optikey는 계속 실행 하려고 하지만 곧 중단 될 수 있습니다.
       <value>당신이 Irisbond 듀오 눈 추적기와 optikey 사용하려면 다음이 설치 Irisbond 듀오 드라이버가 있는지 확인하십시오. 이들은 https://www.irisbond.com/products/downloads에서 다운로드 할 수 있습니다.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>이 모드에서, optikey는 눈 추적기에 직접 말하는 대신 입력으로 마우스 커서를 사용합니다. 당신은 당신이 optikey을 테스트하는 경우이 원하는, 또는 수 당신은 머리 마우스 또는이 목록에없는 어떤 눈 추적 장치 같은 대체 입력 장치와 함께 사용하려는 경우. 자세한 내용은 www.optikey.org/help 참조</value>
+      <value>이 모드에서, optikey는 눈 추적기에 직접 말하는 대신 입력으로 마우스 커서를 사용합니다. 당신은 당신이 optikey을 테스트하는 경우이 원하는, 또는 수 당신은 머리 마우스 또는이 목록에없는 어떤 눈 추적 장치 같은 대체 입력 장치와 함께 사용하려는 경우. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>어떤 Tobii 게임 눈 추적기 (4C, EyeX, 에일리언웨어 (Alienware), SteelSeries의 등)와 함께 작동합니다이 옵션</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Tobii 보조 안구 추적기와 Optikey 사용하려면,  Tobii Windows Control  윈도우 제어, 또는 Tobii 눈 추적 엔진의 새 버전이 필요합니다. 당신이 (Tobii Gaze Interaction Software) Tobii 윈도우 제어 응용 프로그램의 이전 버전을 사용해야하는 경우, 당신은 대신 마우스 위치를 사용하여 optikey 제어해야합니다. 자세한 내용은 www.optikey.org/help 참조</value>
+      <value>Tobii 보조 안구 추적기와 Optikey 사용하려면,  Tobii Windows Control  윈도우 제어, 또는 Tobii 눈 추적 엔진의 새 버전이 필요합니다. 당신이 (Tobii Gaze Interaction Software) Tobii 윈도우 제어 응용 프로그램의 이전 버전을 사용해야하는 경우, 당신은 대신 마우스 위치를 사용하여 optikey 제어해야합니다. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>이미 더 이상 다운로드 할 수있는 myGaze 클라이언트 드라이버를 설치 한 경우 시각적 상호 작용 myGaze에만 지원됩니다. 당신이이 드라이버가 설치되어 있지 않은 경우, 당신은 대신 사용 '마우스 위치'를 선택하고 커서를 이동 myGaze EyeMousePlay 응용 프로그램과 함께 optikey 사용해야합니다.</value>

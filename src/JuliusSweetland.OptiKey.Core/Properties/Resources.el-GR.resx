@@ -1638,13 +1638,13 @@ Deutsch (Deutschland)</value>
       <value>Αν σκοπεύετε να χρησιμοποιήσετε optikey με το tracker μάτι Irisbond Duo, στη συνέχεια, βεβαιωθείτε ότι έχετε τα προγράμματα οδήγησης Irisbond Duo εγκατασταθεί. Αυτά μπορείτε να το κατεβάσετε από https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>Σε αυτή τη λειτουργία, optikey θα χρησιμοποιήσει το δείκτη του ποντικιού ως είσοδο αντί να μιλάμε απευθείας σε ένα ιχνηλάτη οφθαλμού. Μπορεί να θέλετε αυτό, αν είστε δοκιμές optikey έξω, ή αν θέλετε να το χρησιμοποιήσετε με μια εναλλακτική συσκευή εισόδου, όπως ένα ποντίκι κεφαλής ή όχι κάθε ιχνηλάτη ματιών σε αυτή τη λίστα. Για περισσότερες πληροφορίες, δείτε www.optikey.org/help</value>
+      <value>Σε αυτή τη λειτουργία, optikey θα χρησιμοποιήσει το δείκτη του ποντικιού ως είσοδο αντί να μιλάμε απευθείας σε ένα ιχνηλάτη οφθαλμού. Μπορεί να θέλετε αυτό, αν είστε δοκιμές optikey έξω, ή αν θέλετε να το χρησιμοποιήσετε με μια εναλλακτική συσκευή εισόδου, όπως ένα ποντίκι κεφαλής ή όχι κάθε ιχνηλάτη ματιών σε αυτή τη λίστα. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Αυτή η επιλογή θα συνεργαστεί με οποιοδήποτε tracker μάτι Tobii Gaming (4C, EyeX, Alienware, Steelseries, κλπ)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Για να χρησιμοποιήσετε Optikey με βοηθητικές tracker μάτι, θα πρέπει είτε τη νέα έκδοση των Windows Control, ή τον κινητήρα Tobii Eye Tracking. Εάν πρέπει να χρησιμοποιήσετε την παλιά έκδοση της εφαρμογής ελέγχου Tobii Windows Control (Tobii Gaze Interaction Software), τότε θα πρέπει να ελέγχει optikey χρησιμοποιώντας τη θέση του ποντικιού αντ 'αυτού. Για περισσότερες πληροφορίες, δείτε www.optikey.org/help</value>
+      <value>Για να χρησιμοποιήσετε Optikey με βοηθητικές tracker μάτι, θα πρέπει είτε τη νέα έκδοση των Windows Control, ή τον κινητήρα Tobii Eye Tracking. Εάν πρέπει να χρησιμοποιήσετε την παλιά έκδοση της εφαρμογής ελέγχου Tobii Windows Control (Tobii Gaze Interaction Software), τότε θα πρέπει να ελέγχει optikey χρησιμοποιώντας τη θέση του ποντικιού αντ 'αυτού. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Η myGaze Visual Αλληλεπίδραση υποστηρίζεται μόνο αν έχετε ήδη εγκαταστήσει τα προγράμματα οδήγησης πελάτη myGaze, η οποία δεν είναι πλέον διαθέσιμο για download. Εάν δεν έχετε εγκαταστήσει αυτά τα προγράμματα οδήγησης, θα πρέπει να επιλέξετε τη χρήση «θέση του ποντικιού» αντ 'αυτού, και η χρήση optikey σε συνδυασμό με την εφαρμογή myGaze EyeMousePlay για να μετακινήσετε το δρομέα.</value>
