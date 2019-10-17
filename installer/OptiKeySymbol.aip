@@ -487,6 +487,9 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="EyeTracker" Control="EyeTrackerDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
+    <ROW Dialog_="EyeTracker" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" MsiKey="EyeTracker#Next" Options="1"/>
+    <ROW Dialog_="EyeTracker" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" MsiKey="EyeTracker#Cancel" Options="1"/>
+    <ROW Dialog_="EyeTracker" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" MsiKey="EyeTracker#Back" Options="1"/>
     <ROW Dialog_="EyeTracker" Control="Description" Type="Text" X="25" Y="23" Width="295" Height="21" Attributes="196611" Text="Please select the eye tracker you will be using with Optikey" Order="700" TextLocId="Control.Text.EyeTracker#Description" MsiKey="EyeTracker#Description"/>
     <ROW Dialog_="EyeTracker" Control="Text_1" Type="Text" X="31" Y="89" Width="271" Height="71" Attributes="65539" Property="EYETRACKER_TEXT" Text="[EYETRACKER_TEXT]" Order="1100" TextLocId="-" MsiKey="EyeTracker#Text_1"/>
     <ROW Dialog_="EyeTracker" Control="Hyperlink_1" Type="Hyperlink" X="236" Y="218" Width="124" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;http://www.optikey.org/help&quot;&gt;http://www.optikey.org/help&lt;/a&gt;" Order="1200"/>
