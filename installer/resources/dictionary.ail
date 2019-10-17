@@ -3,43 +3,43 @@
   <ENTRY id="Control.Text.EyeTracker#Description">
     <STRING lang="en" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="en_GB" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="sq" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="bg" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="ar" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="ca" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="zh" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="zh_TW" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="hr" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="cs" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="nl" value="Selecteer een eyetracker die u gaat gebruiken met Optikey"/>
-    <STRING lang="da" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="fa" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="fi" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="fr" value="Veuillez sélectionner le traqueur de mouvement oculaire que vous utiliserez avec Optikey"/>
     <STRING lang="de" value="Bitte wählen Sie den Eyetracker aus, den Sie mit Optikey verwenden wollen"/>
-    <STRING lang="he" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="el" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="hu" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="id" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="is" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="ja" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="it" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="kk" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="ko" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="nb" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="nn" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="pl" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="pt" value="Por favor selecione o eye tracker que vai utilizar com Optikey "/>
     <STRING lang="pt_BR" value="Por favor selecione o eye tracker que vai utilizar com Optikey "/>
     <STRING lang="ru" value="Пожалуйста, выберите трекер для работы с OptiKey"/>
-    <STRING lang="sr_SP_Cyrillic" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="sr_SP_Latin" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="sk" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="sl" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="es" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="sv" value="Please select the eye tracker you will be using with Optikey"/>
-    <STRING lang="tr" value="Please select the eye tracker you will be using with Optikey"/>
     <STRING lang="uk" value="Будь ласка, оберіть метод стеження за оком, яким Ви користуватимитесь в Optikey"/>
+    <STRING lang="es" value="Por favor seleccione el eye tracker (rastreo ocular) que desea usar con Optikey"/>
+    <!--the following are autotranslated -->
+    <STRING lang="bg" value="Моля, изберете тракерът око ще се използва с optikey"/>
+    <STRING lang="sq" value="Ju lutemi zgjidhni tracker sy ju do të jetë duke përdorur me optikey"/> 
+    <STRING lang="ar" value="يرجى اختيار تعقب العين التي سوف تستخدم مع optikey"/>
+    <STRING lang="ca" value="Seleccioneu el seguiment de l'ull que utilitzarà amb optikey"/>
+    <STRING lang="zh" value="请选择您将与optikey使用眼动仪"/>
+    <STRING lang="zh_TW" value="请选择您将与optikey使用眼动仪"/>
+    <STRING lang="hr" value="Odaberite očiju lokatora ćete koristiti optikey"/>
+    <STRING lang="cs" value="Prosím, vyberte tracker očí budete používat s optikey"/>
+    <STRING lang="da" value="Vælg øjet tracker, du vil bruge med optikey"/>
+    <STRING lang="fa" value="لطفا ردیاب چشم شما خواهد شد با استفاده از optikey را انتخاب کنید"/>
+    <STRING lang="fi" value="Valitse silmänseurain käytät optikey"/>
+    <STRING lang="he" value="בחר את גשש העין תשתמש עם optikey"/>
+    <STRING lang="el" value="Επιλέξτε το tracker μάτι που θα χρησιμοποιείτε με optikey"/>
+    <STRING lang="hu" value="Kérjük, válassza ki a szemkövetővel akkor használja a optikey"/>
+    <STRING lang="id" value="Pilih tracker mata Anda akan menggunakan dengan optikey"/>
+    <STRING lang="is" value="Vinsamlegast veldu auga rekja spor einhvers sem þú verður að nota með optikey"/>
+    <STRING lang="ja" value="あなたはoptikeyで使用するアイトラッカーを選択してください"/>
+    <STRING lang="it" value="Si prega di selezionare l'eye tracker che verrà utilizzato con optikey"/>
+    <STRING lang="kk" value="Егер сіз optikey пайдалану болады көз трекер таңдаңыз"/>
+    <STRING lang="ko" value="당신이 optikey로 사용하게 될 안구 추적기를 선택하세요"/>
+    <STRING lang="nb" value="Vennligst velg tracker øyet du skal bruke med optikey"/>  
+    <STRING lang="pl" value="Proszę wybrać trackera oczu będzie używany z optikey"/>
+    <STRING lang="sr_SP_Cyrillic" value="Молимо Вас да изаберете праћења ока ћеш бити користите са optikey"/>
+    <STRING lang="sr_SP_Latin" value="Molimo Vas da izaberete praćenja oka ćeš biti koristite sa optikey"/>
+    <STRING lang="sk" value="Prosím, vyberte tracker očí budete používať s optikey"/>
+    <STRING lang="sl" value="Izberite tracker oči boste uporabljali z optikey"/>
+    <STRING lang="sv" value="Välj ögat tracker du kommer att använda med optikey"/>
+    <STRING lang="tr" value="optikey ile kullanacağınız göz izci seçiniz"/>               
   </ENTRY>
   <ENTRY id="Control.Text.EyeTracker#Title">
     <STRING lang="en" value="Eye tracker"/>
@@ -67,13 +67,12 @@
     <STRING lang="it" value="Eye tracker"/>
     <STRING lang="kk" value="Eye tracker"/>
     <STRING lang="ko" value="Eye tracker"/>
-    <STRING lang="nb" value="Eye tracker"/>
-    <STRING lang="nn" value="Eye tracker"/>
+    <STRING lang="nb" value="Eye tracker"/>    
     <STRING lang="pl" value="Eye tracker"/>
     <STRING lang="pt" value="Eye tracker"/>
     <STRING lang="pt_BR" value="Eye tracker"/>
     <STRING lang="ru" value="Трекер глаз"/>
-    <STRING lang="sr_SP_Cyrillic" value="Eye tracker"/>
+    <STRING lang="sr_SP_Cyrillic" value="Еyе трацкер"/>
     <STRING lang="sr_SP_Latin" value="Eye tracker"/>
     <STRING lang="sk" value="Eye tracker"/>
     <STRING lang="sl" value="Eye tracker"/>
@@ -85,83 +84,83 @@
   <ENTRY id="Control.Text.Languages#Description">
     <STRING lang="en" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="en_GB" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="sq" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="bg" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="ar" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="ca" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="zh" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="zh_TW" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="hr" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="cs" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="nl" value="Selecteer de taal die u voornamelijk gaat gebruiken in Optikey"/>
-    <STRING lang="da" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="fa" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="fi" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="fr" value="Veuillez sélectionner la langue utilisée par Optikey"/>
     <STRING lang="de" value="Bitte wählen Sie die Sprache aus, die Sie mit Optikey verwenden wollen."/>
-    <STRING lang="he" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="el" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="hu" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="id" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="is" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="ja" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="it" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="kk" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="ko" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="nb" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="nn" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="pl" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="pt" value="Por favor selecione o idioma de preferência para Optikey"/>
     <STRING lang="pt_BR" value="Por favor selecione o idioma de preferência para Optikey"/>
     <STRING lang="ru" value="Пожалуйста, выберите основной язык для работы с OptiKey"/>
-    <STRING lang="sr_SP_Cyrillic" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="sr_SP_Latin" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="sk" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="sl" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="es" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="sv" value="Please select the main language you&apos;ll be using in Optikey"/>
-    <STRING lang="tr" value="Please select the main language you&apos;ll be using in Optikey"/>
     <STRING lang="uk" value="Будь ласка, оберіть основну мову"/>
+    <STRING lang="es" value="Por favor seleccione el idioma que desea usar con Optikey"/>   
+    <!--the following are autotranslated -->
+    <STRING lang="sq" value="Ju lutem zgjidhni gjuhën kryesore ju do të jetë duke përdorur në optikey"/>
+    <STRING lang="bg" value="Моля, изберете основния език ще се използва в optikey"/>
+    <STRING lang="ar" value="يرجى تحديد اللغة الرئيسية التي سوف تستخدم في optikey"/>
+    <STRING lang="ca" value="Seleccioneu l'idioma principal que utilitzarà en optikey"/>
+    <STRING lang="zh" value="请选择您要使用在optikey的主要语言"/>
+    <STRING lang="zh_TW" value="请选择您要使用在optikey的主要语言"/>
+    <STRING lang="hr" value="Molimo odaberite glavni jezik koji ćete koristiti u optikey"/>
+    <STRING lang="cs" value="Prosím zvolte hlavní jazyk, který budete používat v optikey"/>
+    <STRING lang="da" value="Vælg den vigtigste sprog, du skal bruge i optikey"/>
+    <STRING lang="fa" value="لطفا زبان اصلی شما خواهید بود در optikey استفاده از را انتخاب کنید"/>
+    <STRING lang="fi" value="Valitse pääkielen jota käytät optikey"/>
+    <STRING lang="he" value="אנא בחר את השפה העיקרית תשתמש ב optikey"/>
+    <STRING lang="el" value="Επιλέξτε την κύρια γλώσσα που θα χρησιμοποιείτε στο optikey"/>
+    <STRING lang="hu" value="Kérjük, válassza ki a fő nyelv lesz használva a optikey"/>
+    <STRING lang="id" value="Pilih bahasa utama Anda akan menggunakan di optikey"/>
+    <STRING lang="is" value="Vinsamlegast veldu helstu tungumál sem þú munt nota í optikey"/>
+    <STRING lang="ja" value="あなたはoptikeyで使うことになる主な言語を選択してください"/>
+    <STRING lang="it" value="Si prega di selezionare la lingua principale che verrà usato in optikey"/>
+    <STRING lang="kk" value="Сіз optikey пайдалану боласыз негізгі тілді таңдаңыз"/>
+    <STRING lang="ko" value="당신이 optikey에서 사용하게 될 주요 언어를 선택하세요"/>
+    <STRING lang="nb" value="Velg hovedspråket du skal bruke i optikey"/>   
+    <STRING lang="pl" value="Proszę wybrać główny język będzie używany w optikey"/>
+    <STRING lang="sr_SP_Cyrillic" value="Молимо одаберите главни језик који ћете користити у optikey"/>
+    <STRING lang="sr_SP_Latin" value="Molimo odaberite glavni jezik koji ćete koristiti u optikey"/>
+    <STRING lang="sk" value="Prosím zvoľte hlavný jazyk, ktorý budete používať v optikey"/>
+    <STRING lang="sl" value="Izberite glavni jezik, ki ga bo lahko uporabil pri optikey"/>
+    <STRING lang="sv" value="Välj huvudspråk du kommer att använda i optikey"/>
+    <STRING lang="tr" value="optikey kullanarak olacak ana dili seçiniz"/>
   </ENTRY>
   <ENTRY id="Control.Text.Languages#Title">
     <STRING lang="en" value="Language"/>
     <STRING lang="en_GB" value="Language"/>
-    <STRING lang="sq" value="Language"/>
-    <STRING lang="bg" value="Language"/>
-    <STRING lang="ar" value="Language"/>
     <STRING lang="ca" value="Idioma"/>
-    <STRING lang="zh" value="Language"/>
-    <STRING lang="zh_TW" value="Language"/>
     <STRING lang="hr" value="Jezik"/>
     <STRING lang="cs" value="Jazyk"/>
     <STRING lang="nl" value="Taal"/>
     <STRING lang="da" value="Sprog"/>
-    <STRING lang="fa" value="زبان "/>
-    <STRING lang="fi" value="Language"/>
     <STRING lang="fr" value="Langue"/>
     <STRING lang="de" value="Sprache"/>
-    <STRING lang="he" value="Language"/>
     <STRING lang="el" value="Γλώσσα"/>
-    <STRING lang="hu" value="Language"/>
-    <STRING lang="id" value="Language"/>
-    <STRING lang="is" value="Language"/>
     <STRING lang="ja" value="言語"/>
     <STRING lang="it" value="Lingua"/>
-    <STRING lang="kk" value="Language"/>
     <STRING lang="ko" value="언어"/>
-    <STRING lang="nb" value="Language"/>
-    <STRING lang="nn" value="Language"/>
     <STRING lang="pl" value="Język"/>
     <STRING lang="pt" value="Idioma"/>
     <STRING lang="pt_BR" value="Idioma"/>
     <STRING lang="ru" value="Язык"/>
     <STRING lang="sr_SP_Cyrillic" value="Језик"/>
-    <STRING lang="sr_SP_Latin" value="Language"/>
     <STRING lang="sk" value="Jazyk"/>
     <STRING lang="sl" value="Jezik"/>
     <STRING lang="es" value="Idioma"/>
-    <STRING lang="sv" value="Language"/>
     <STRING lang="tr" value="Dil"/>
     <STRING lang="uk" value="Мова"/>
+    <!--the following are autotranslated -->
+    <STRING lang="bg" value="език"/>
+    <STRING lang="sq" value="Gjuhe"/>
+    <STRING lang="ar" value="لغة"/>    
+    <STRING lang="zh" value="语言"/>
+    <STRING lang="zh_TW" value="语言"/>
+    <STRING lang="fa" value="زبان"/>
+    <STRING lang="fi" value="Kieli"/>    
+    <STRING lang="he" value="שפה"/>    
+    <STRING lang="hu" value="Nyelv"/>
+    <STRING lang="id" value="Bahasa"/>
+    <STRING lang="is" value="Tungumál"/>    
+    <STRING lang="kk" value="тіл"/>
+    <STRING lang="nb" value="Språk"/>      
+    <STRING lang="sr_SP_Latin" value="Jezik"/>        
+    <STRING lang="sv" value="Språk"/>        
   </ENTRY>
 </DICTIONARY>
