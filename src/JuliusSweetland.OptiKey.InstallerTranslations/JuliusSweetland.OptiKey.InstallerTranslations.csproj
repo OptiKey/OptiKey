@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="InstallerStrings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj" />
   </ItemGroup>
 
