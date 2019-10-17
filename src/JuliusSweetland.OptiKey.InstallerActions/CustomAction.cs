@@ -108,6 +108,9 @@ namespace JuliusSweetland.OptiKey.InstallerActions
         {
             session.Log("Begin PopulateEyetrackersCombo");
 
+            string closestLanguageCode = GetDefaultLanguageCode(CultureInfo.CurrentCulture);
+            CultureInfo closestCulture = new CultureInfo(closestLanguageCode);
+
             // Get list of available eyetrackers from PointingAndSelectingViewModel
             List<KeyValuePair<string, PointsSources>> trackers = PointingAndSelectingViewModel.PointsSources;
 
@@ -125,7 +128,8 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 session["TRACKER_" + SanitisePropName(trackerLabel)] = trackerEnum;
 
                 // also the extended info 
-                session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = tracker.Value.ToExtendedDescription();
+                string details = GetPointsSourceDetails(tracker.Value, closestCulture);
+                session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = details;
 
                 if (trackerLabel.Contains("Mouse"))
                 {
