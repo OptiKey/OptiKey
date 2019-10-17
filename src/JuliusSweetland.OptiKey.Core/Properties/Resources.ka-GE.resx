@@ -2202,4 +2202,25 @@ Optikey შეეცდება გააგრძელოს მუშაო�
   <data name="MANUAL_MODE" xml:space="preserve">
     <value>მანუალური რეჟიმი</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+      <value>ეს მოითხოვს Alienware 17 სათამაშო ნოუთბუქი გამოყენებით ჩაშენებული Tobii თვალის ისტორიაზე.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>ეს მოითხოვს ITU Gaze Tracking ბიბლიოთეკა, რომელიც არის ჩარჩო ღია თვალის მიდევნება გამოყენებით off-the- შელფზე კომპონენტები, როგორიცაა კამერები და ვიდეოკამერა.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>თუ თქვენ აპირებთ გამოიყენოთ optikey ერთად Irisbond Duo თვალის tracker მაშინ, გთხოვთ, დარწმუნდით, რომ თქვენ გაქვთ Irisbond Duo მძღოლები დამონტაჟებული. ეს შეიძლება იყოს გადმოწერილი https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>ამ რეჟიმში, optikey გამოიყენოთ მაუსის კურსორი შეტანის ლაპარაკის ნაცვლად პირდაპირ თვალის ისტორიაზე. დაგვჭირდება, თუ თქვენ ტესტირების optikey out, ან თუ გსურთ გამოიყენოთ ეს ალტერნატივა შეტანის მოწყობილობა როგორიცაა ხელმძღვანელი მაუსის ან თვალის tracker არა ამ სიაში. დამატებითი ინფორმაციისთვის, იხილეთ www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>ეს ვარიანტი იმუშავებს ნებისმიერ Tobii Gaming თვალის tracker (4C, EyeX, Alienware, SteelSeries, და ა.შ.)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>იმისათვის, რომ გამოიყენოთ Optikey ერთად Tobii დამხმარე თვალის tracker, თქვენ არც უნდა ახალი ვერსია Windows Control, ან Tobii Eye Tracking სისტემა. თუ თქვენ უნდა გამოვიყენოთ ძველი ვერსია Tobii Windows კონტროლის პროგრამა (Tobii Gaze Interaction Software), მაშინ თქვენ უნდა აკონტროლოთ optikey მაუსის პოზიცია ნაცვლად. დამატებითი ინფორმაციისთვის, იხილეთ www.optikey.org/help</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>ვიზუალური ურთიერთქმედება myGaze მხოლოდ მხარი, თუ თქვენ უკვე დაყენებული myGaze კლიენტს მძღოლები, რომლებიც აღარ ხელმისაწვდომია. თუ თქვენ არ გაქვთ ამ დრაივერები დაყენებული, თქვენ უნდა აირჩიოთ გამოყენება "მაუსის პოზიცია" ნაცვლად და გამოიყენონ optikey კომბინაციაში myGaze EyeMousePlay განაცხადის გადატანა კურსორი.</value>
+  </data>  
 </root>

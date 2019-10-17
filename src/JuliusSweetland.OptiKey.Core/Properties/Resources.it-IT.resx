@@ -1818,4 +1818,25 @@ tipo "DB Browser for SQLite" (che è programma free).</value>
   <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Utilizza layout della tastiera default</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Ciò richiede un computer portatile di gioco Alienware 17, utilizzando l'eye tracker Tobii built-in.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Ciò richiede il monitoraggio Gaze Biblioteca ITU, che è un quadro di riferimento per aprire gli occhi fonte di monitoraggio utilizzando off-the-shelf componenti, come webcam e videocamere.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Se si prevede di utilizzare optikey con l'eye tracker Irisbond Duo quindi si prega di assicurarsi di avere i driver installati Irisbond Duo. Questi possono essere scaricati dal https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>In questa modalità, optikey userà il cursore del mouse come input invece di parlare direttamente ad un inseguitore occhio. Si potrebbe desiderare questo se si sta testando optikey fuori, o se si desidera utilizzare con un dispositivo di input alternativo come un mouse testa o qualsiasi occhio non inseguitore in questa lista. Per ulteriori informazioni, vedere www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Questa opzione funziona con qualsiasi occhio inseguitore Tobii Gaming (4C, EyeX, Alienware, Steelseries, ecc)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Per utilizzare Optikey con un eye tracker assistive, vi sia bisogno della nuova versione Tobii Windows Control, o il motore Tobii Eye Tracking. Se è necessario utilizzare la vecchia versione dell'applicazione di Tobii Windows Control (Tobii Gaze Interaction Software), allora si avrà bisogno di controllare optikey usando posizione del mouse, invece. Per ulteriori informazioni, vedere www.optikey.org/help</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>L'interazione myGaze visiva è supportato solo se hai già installato i driver client myGaze, che non sono più disponibili per il download. Se non si dispone di questi driver installati, è necessario selezionare 'posizione del mouse' uso, invece, e utilizzare optikey in combinazione con l'applicazione myGaze EyeMousePlay per spostare il cursore.</value>
+  </data>
 </root>

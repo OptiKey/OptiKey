@@ -1603,4 +1603,25 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
     <value>Optikey Symbol : Communicatie op Basis van Symbolen</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+      <value>Dit vereist een Alienware 17 gaming laptop, met behulp van de ingebouwde Tobii eye tracker.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Dit vereist dat de ITU Gaze Tracking Library, dat is een raamwerk voor open source eye tracking met behulp van off-the-shelf componenten, zoals webcams en videocamera's.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Als u van plan bent om optikey gebruiken met de Irisbond Duo eye tracker dan kunt u ervoor zorgen dat u de Irisbond Duo drivers geïnstalleerd. Deze kan worden gedownload van https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>In deze modus zal optikey de muiscursor als input gebruiken in plaats van rechtstreeks in gesprek met een eye tracker. Je zou dit wilt als je optikey bent het testen van, of als u het wilt gebruiken met een alternatief invoerapparaat, zoals een kop muis of een eye tracker niet in deze lijst. Voor meer informatie, zie www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Deze optie zal werken met elke Tobii Gaming eye tracker (4C, EyeX, Alienware, Steelseries, etc)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Om gebruik te maken Optikey met een ondersteunende eye tracker, moet u ofwel de nieuwe versie van Tobii Windows Control, of de Tobii Eye Tracking motor nodig. Als u de oude versie van de Tobii Windows Control toepassing (Tobii Gaze Interaction Software) gebruikt, dan zul je nodig hebt om te controleren optikey met de muis positie plaats. Voor meer informatie, zie www.optikey.org/help</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>De Visual Interaction myGaze wordt alleen ondersteund als u reeds de myGaze client drivers, die niet meer beschikbaar zijn voor download hebt geïnstalleerd. Als u niet over deze stuurprogramma's zijn geïnstalleerd, moet u gebruik maken 'mouse positie' te selecteren in plaats daarvan, en gebruik optikey in combinatie met de myGaze EyeMousePlay applicatie om de cursor te verplaatsen.</value>
+  </data>  
 </root>

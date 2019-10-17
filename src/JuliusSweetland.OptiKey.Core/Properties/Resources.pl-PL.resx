@@ -1981,4 +1981,25 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
   <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Użyj domyślnego układu klawiatury (domyślnie)</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Wymaga to Alienware 17 gier laptopa, za pomocą wbudowanego w Tobii oczu trackera.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Wymaga ITU Gaze Tracking biblioteka, która jest szkieletem dla open source śledzenia za pomocą off-the-shelf składników, takich jak kamery internetowe i kamer wideo oka.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Jeśli masz zamiar użyć optikey okiem trackera Irisbond Duo następnie upewnij się, że masz zainstalowane sterowniki Irisbond Duo. Można je pobrać z https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>W tym trybie będzie optikey użyć kursora myszy jako wejście zamiast mówić bezpośrednio do śledzenia oczu. Może chcesz to jeśli testujesz optikey się, lub jeśli chcesz używać go z alternatywnego urządzenia wejściowego, takich jak mysz głowy ani nie tracker oko w tej liście. Aby uzyskać więcej informacji, zobacz www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Opcja ta będzie współpracować z dowolnym Tobii Gaming eye tracker (4c, EyeX, Alienware, Steelseries, etc)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Aby korzystać Optikey z Tobii wspomagających eye tracker, albo trzeba nową wersję Tobii Windows Control lub silnika Tobii Eye Tracking. Jeśli musisz używać starej wersji aplikacji Tobii Windows Control (Tobii Gaze Interaction Software), a następnie trzeba będzie kontrolować optikey użyciu pozycji myszy zamiast. Aby uzyskać więcej informacji, zobacz www.optikey.org/help</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>Visual Interaction myGaze jest obsługiwana tylko wtedy, gdy masz już zainstalowane sterowniki klienckie myGaze, które nie są już dostępne do pobrania. Jeśli nie masz zainstalowane te sterowniki, należy wybrać pozycję myszy użyć „” zamiast, i używać optikey w połączeniu z aplikacją myGaze EyeMousePlay aby przesunąć kursor.</value>
+  </data>
 </root>

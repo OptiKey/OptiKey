@@ -1595,4 +1595,25 @@ Kontrolu aktualizacií můžete vypnout v nastavení (ALT + M).</value>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>JAZYK</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+      <value>To vyžaduje Alienware 17 herní notebook, pomocí zabudovaného-in Tobii očí tracker.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>To vyžaduje, aby Gaze Tracking knihovnu ITU, což je framework pro sledování pomocí off-the-shelf komponenty, jako jsou kamery a videokameru s otevřeným zdrojovým kódem oka.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Pokud máte v plánu používat optikey s oční tracker Irisbond Duo, pak si prosím zkontrolujte, zda máte k dispozici ovladače Irisbond Duo nainstalovány. Ty lze stáhnout z https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>V tomto režimu bude optikey použijte kurzor myši jako vstup namísto mluvení přímo do očí tracker. Možná budete chtít to, pokud testujete optikey ven, nebo chcete-li použít alternativní vstupní zařízení, jako je například hlava myši nebo jakékoliv oční tracker není v tomto seznamu. Pro více informací viz www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Tato volba bude fungovat s jakýmkoli Tobii Gaming očí tracker (4C, EyeX, Alienware, SteelSeries, etc)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Chcete-li používat Optikey s asistenční očí tracker, musíte buď novou verzi systému Windows Control, nebo motoru Tobii Eye Tracking. Pokud potřebujete použít starou verzi ovládacího aplikace Tobii Windows Control (Tobii Gaze Interaction Software), pak se budete muset řídit optikey pomocí pozici myši místo. Pro více informací viz www.optikey.org/help</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>Visual Interaction myGaze je podporována pouze v případě, že jste již nainstalovali klientských ovladačů myGaze, které již nejsou k dispozici ke stažení. Pokud nechcete mít nainstalovány tyto ovladače, měli byste zvolit použití ‚pozici myši‘ místo, a použití optikey v kombinaci s aplikací myGaze EyeMousePlay pro pohyb kurzoru.</value>
+  </data>  
 </root>

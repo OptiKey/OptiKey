@@ -1582,4 +1582,25 @@ KÜÇÜLT</value>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>DİL</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Bu yerleşik Tobii göz izleyici kullanarak, bir Alienware 17 oyun dizüstü gerektirir.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Bu tür web kamerası ve Videokameralara olarak kullanıma hazır bileşenleri kullanarak izleme açık kaynak göz için bir çerçevedir İTÜ Gaze Takip Kütüphane gerektirir.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Eğer Irisbond Duo göz izleme ile optikey kullanmayı planlıyorsanız o zaman yüklü Irisbond Duo sürücüleri olduğundan emin olun. Bu https://www.irisbond.com/products/downloads indirilebilir.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>Bu modda, optikey bir göz izleme doğrudan konuşmak yerine girdi olarak fare imlecini kullanacaktır. Sen optikey test ediyoruz eğer bunu istiyorum olabilecek veya böyle bir kafa fare veya bu listede herhangi bir göz izleme gibi alternatif bir giriş cihazı ile kullanmak istiyorum. Daha fazla bilgi için, bkz www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>herhangi Tobii Oyun göz izleme (4C, EyeX, Alienware, SteelSeries, vs) ile çalışacak Bu seçenek</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Bir yardımcı göz izleme ile optikey kullanmak için, ya da Tobii Windows Control veya Tobii Eye Tracking motorunun yeni sürümü gerekir. Eğer (Tobii Gaze Interaction Software) Tobii Windows Control eski bir sürümünü kullanmanız gerekiyorsa, o zaman bunun yerine fare konumunu kullanarak optikey kontrol etmek gerekir. Daha fazla bilgi için, bkz www.optikey.org/help</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>Zaten artık indirilebilir myGaze istemci sürücüleri, yükledim eğer Görsel Etkileşim myGaze desteklenir. Eğer bu sürücülerin yüklü olmayan, bunun yerine kullanılması 'fare konumunu' seçin ve imleci hareket ettirmek için myGaze EyeMousePlay uygulaması ile birlikte optikey kullanmalıdır.</value>
+  </data>
 </root>

@@ -2049,4 +2049,25 @@ Region</value>
   <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
     <value>Calibration completed (success or failure), but everything is working again!</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Ово захтева КСПС 17 играчки лаптоп, користећи уграђени Tobii очи трацкер.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Ово захтева ИТУ поглед праћење библиотеку која је оквир за опен соурце око праћење помоћу офф-тхе-схелф компоненте, као што су камере и видео камере.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Ако планирате да користите optikey са Ирисбонд Дуо ока трагач онда пазите да имате Ирисбонд Дуо управљачке програме инсталиране. Они се могу преузети са хттпс://ввв.ирисбонд.цом/продуцтс/довнлоадс.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>У овом режиму, optikey ће користити курсор миша као улаз уместо да говоримо директно на тракер ока. Можда ћете желети ово ако optikey тестира, или ако желите да га користите са алтернативним улазног уређаја као што су миш главе или било трагач ока није на овој листи. За више информација, погледајте www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Ова опција ће радити са свим Tobii Гаминг ока Трацкер (4Ц, ЕиеКс, Алиенваре, СтеелСериес, итд)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Да бисте користили optikey са помоћним очију трагач, ти или треба нову верзију Tobii Windows Control , или софтвер Tobii Eye Tracking. Ако морате да користите стару верзију  Tobii Windows  Control (Tobii Gaze Interaction Software), онда ћете морати да контролишете optikey користећи позицију миша уместо тога. За више информација, погледајте www.optikey.org/help</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>Висуал Интеракција миГазе је подржан само ако сте већ инсталирали клијент драјвере миГазе, које више нису доступни за преузимање. Ако немате те возачи инсталиран, треба да одаберете користити 'позицију миша' уместо тога, и користити optikey у комбинацији са применом миГазе ЕиеМоусеПлаи за померање курсора.</value>
+  </data>
 </root>

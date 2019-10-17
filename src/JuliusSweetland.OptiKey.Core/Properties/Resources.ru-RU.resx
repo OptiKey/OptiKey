@@ -2339,4 +2339,25 @@ Française
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
     <value>Optikey Символ : Свободное общение символами</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+      <value>Это требует Alienware 17 игровой ноутбук, используя встроенный в Tobii глаз трекер.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Это требует МСЭ Gaze слежения библиотека, которая является основой для открытого исходного кода отслеживания глаз с помощью внедорожных готовых компонентов, таких как веб-камер и видеокамерами.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Если вы планируете использовать optikey с глазами трекера Irisbond Duo, пожалуйста, убедитесь, что у вас есть драйвера Irisbond Duo установлен. Они могут быть загружены с https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>В этом режиме, optikey будет использовать курсор мыши в качестве входных данных, вместо того, чтобы говорить непосредственно с трекером глаз. Вы можете захотеть этого, если вы тестируете optikey вне, или если вы хотите использовать его с альтернативным устройством ввода, такие как головки мыши или любой глаз трекер не в этом списке. Для получения дополнительной информации см www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Эта опция будет работать с любым глазом трекера Tobii Gaming (4C, EyeX, Alienware, Steelseries, и т.д.)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Для того, чтобы использовать Optikey с Tobii  реабилитационным трекером глаз, вам необходимо либо новую версия Tobii Windows Control или двигатель Tobii отслеживания глаз. Если вам нужно использовать старую версию приложения Tobii Windows Control  (Tobii Gaze Interaction Software), то вам нужно будет контролировать optikey используя положение мыши вместо этого. Для получения дополнительной информации см www.optikey.org/help</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>Визуальное взаимодействие myGaze поддерживается только, если вы уже установили клиентские драйверы myGaze, которые больше не доступны для скачивания. Если вы не установили эти драйвера, вы должны выбрать использовать «положение мыши» вместо этого, и использовать optikey в сочетании с приложением myGaze EyeMousePlay для перемещения курсора.</value>
+  </data>  
 </root>

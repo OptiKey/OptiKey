@@ -2355,4 +2355,25 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
 فارسی
 (ایرانی)</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+      <value>זה דורש משחקים ניידים 17 Alienware, באמצעות גשש עין מובנית Tobii.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>זה דורש לספריית מעקב מבט ITU, המהווה מסגרת עין קוד פתוחה מעקב באמצעות ה- off- מדף רכיבים, כגון מצלמות ו למצלמות.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>אם אתם מתכננים להשתמש optikey עם גשש עין Irisbond Duo אז אנא ודא שיש לך את הנהגים Irisbond Duo מותקן. אלו ניתן להוריד מאתר https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>במצב זה, optikey ישתמש סמן העכבר כקלט במקום לדבר ישירות גשש העין. אולי אתה רוצה את זה אם אתה בודק את optikey, או אם אתה רוצה להשתמש בו עם מכשיר קלט חלופי כגון עכבר ראש או גשש כל עין לא ברשימה זו. לקבלת מידע נוסף, ראה www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>אפשרות זו תעבוד עם גשש כל עין גיימינג Tobii (4C, EyeX, Alienware, Steelseries, וכו ')</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>כדי להשתמש Optikey עם גשש Tobii העין ,שאתה צריך את הגרסה החדשה של הבקרה של Tobii Windows Control, או מנוע עקיבת העין Tobii</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>MyGaze האינטראקציה החזותי נתמך רק אם כבר התקין את מנהלי הלקוח myGaze, אשר כבר אינם זמינות להורדה. אם אין לך נהגים אלה מותקנים, אתה צריך לבחור השימוש עמדת העכבר 'במקום, ולהשתמש optikey בשילוב עם יישום myGaze EyeMousePlay כדי להזיז את הסמן.</value>
+  </data>  
 </root>
