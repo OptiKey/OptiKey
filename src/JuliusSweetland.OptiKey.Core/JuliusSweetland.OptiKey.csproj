@@ -290,7 +290,6 @@
     <Compile Include="Models\XmlKeyboardModels\XmlSuggestionCol.xaml.cs">
       <DependentUpon>XmlSuggestionCol.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\XmlKeyboardModels\XmlVisualItems.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlDynamicKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlPluginKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />

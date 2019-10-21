@@ -13,8 +13,5 @@ namespace JuliusSweetland.OptiKey.Models
         {
             InitializeComponent();
         }
-
-        public int Row { get; set; }
-        public int Col { get; set; }
     }
 }
