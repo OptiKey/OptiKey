@@ -138,7 +138,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             }
 
             Log.InfoFormat("Overriding size and position for dynamic keyboard");
-            windowManipulationService.MoveAndSize(persistNewState, windowState, position, dockSize, width, height, horizontalOffset, verticalOffset);
+            windowManipulationService.OverrideSizeAndPosition(persistNewState, windowState, position, dockSize, width, height, horizontalOffset, verticalOffset);
         }
 
         public string Link

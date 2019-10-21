@@ -128,7 +128,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (SelectionMode == SelectionModes.Key
                     && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                 {
-                    KeySelectionResult(singleKeyValue, multiKeySelection);
+                    if (singleKeyValue.FunctionKey != null && singleKeyValue.FunctionKey.Value == FunctionKeys.StepList)
+                        StepList(singleKeyValue, multiKeySelection);
+                    else
+                        KeySelectionResult(singleKeyValue, multiKeySelection);
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
@@ -645,10 +648,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.SelectVoice:
                     SelectVoice(singleKeyValue.String);
-                    break;
-
-                case FunctionKeys.StepList:
-                    StepList(singleKeyValue.String);
                     break;
 
                 case FunctionKeys.Plugin:
@@ -2394,20 +2393,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             NavigateToMenu();
         }
 
-        private void StepList(string command)
+        private void StepList(KeyValue singleKeyValue, List<string> multiKeySelection)
         {
-            if (!string.IsNullOrEmpty(command))
+            if (!string.IsNullOrEmpty(singleKeyValue.String))
             {
-                KeyValue singleKeyValue;
+                KeyValue keyValue;
                 string[] stringSeparators = new string[] { "<" };
-                foreach (var vStep in command.Split(stringSeparators, StringSplitOptions.None).ToList())
+                foreach (var vStep in singleKeyValue.String.Split(stringSeparators, StringSplitOptions.None).ToList())
                 {
                     Log.DebugFormat("Performing StepList step: {0}.", vStep);
                     if (vStep.StartsWith("Action>") &&
                         (Enum.TryParse<FunctionKeys>(vStep.Substring(7), out FunctionKeys result)))
                     {
-                        singleKeyValue = new KeyValue(result);
-                        HandleFunctionKeySelectionResult(singleKeyValue);
+                        keyValue = new KeyValue(result);
+                        KeySelectionResult(keyValue, multiKeySelection);
                     }
                     else if (vStep.StartsWith("Keyboard>") || vStep.StartsWith("KeyboardAndReturn>"))
                     {
@@ -2416,18 +2415,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         int vIndex = (vStep.StartsWith("KeyboardAndReturn>")) ? 18 : 9;
                         if (System.Enum.TryParse(vStep.Substring(vIndex), out keyboardEnum))
                         {
-                            ChangeKeyboardKeyValue keyValue = new ChangeKeyboardKeyValue(keyboardEnum, vReturn);
-                            ProcessChangeKeyboardKeyValue(keyValue);
+                            keyValue = new ChangeKeyboardKeyValue(keyboardEnum, vReturn);
                         }
                         else
                         {
-                            ChangeKeyboardKeyValue keyValue = new ChangeKeyboardKeyValue(vStep.Substring(vIndex), vReturn);
-                            ProcessChangeKeyboardKeyValue(keyValue);
+                            keyValue = new ChangeKeyboardKeyValue(vStep.Substring(vIndex), vReturn);
                         }
+                        KeySelectionResult(keyValue, multiKeySelection);
                     }
                     else if (vStep.StartsWith("Text>"))
                     {
-                        keyboardOutputService.ProcessSingleKeyText(vStep.Substring(5));
+                        keyValue = new KeyValue(vStep.Substring(5));
+                        KeySelectionResult(keyValue, multiKeySelection);
                     }
                     else if (vStep.StartsWith("Wait>"))
                     {

@@ -14,6 +14,7 @@ using log4net;
 using System.Xml;
 using System.Windows;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -49,13 +50,24 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 return;
             }
 
-            if (ValidateKeyboard())
+            if (!ValidateKeyboard()) { return; }
+
+            // New logic for content keyboard
+            if (keyboard.Content != null)
             {
-                // Setup all the UI components      
-                SetupGrid();
-                SetupKeys();
-                SetupStyle();
+                if (!ValidateVisualItems()) { return; }
+                SetupGrid(); // Setup all the UI components 
+                SetupVisualItems(); 
             }
+            // Legacy logic
+            else
+            {
+                if (!ValidateKeys()) { return; }
+                SetupGrid(); // Setup all the UI components 
+                SetupKeys();
+            }
+
+            SetupStyle(); // Set the override border and background colors 
         }
 
         private bool ValidateKeyboard()
@@ -85,36 +97,23 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 !(double.TryParse(keyboard.VerticalOffset.Replace("%", ""), out validNumber) && validNumber >= -9999 && validNumber <= 9999))
                 errorMessage = "Offset must be between -9999 and 9999";
 
+            else if (keyboard.Grid == null)
+                errorMessage = "No grid definition found";
+            else if (keyboard.Grid.Rows < 1 || keyboard.Grid.Cols < 1)
+                errorMessage = "Grid size is " + keyboard.Grid.Rows + " rows and " + keyboard.Grid.Cols + " columns";
+            else if ((keyboard.Keys == null || keyboard.Keys.Count == 0) && keyboard.Content == null)
+                errorMessage = "No key or content definitions found";
+
             if (errorMessage != null)
             {
                 SetupErrorLayout("Invalid keyboard file", errorMessage);
                 return false;
             }
 
-            if (keyboard.Grid == null)
-            {
-                SetupErrorLayout("Invalid keyboard file", "No grid definition found");
-                return false;
-            }
-
-            if (keyboard.Keys == null || keyboard.Keys.Count == 0)
-            {
-                SetupErrorLayout("Invalid keyboard file", "No key definitions found");
-                return false;
-            }
-
-            if (keyboard.Grid.Rows < 1 || keyboard.Grid.Cols < 1)
-            {
-                string content = "Grid size is " + keyboard.Grid.Rows + " rows and "
-                    + keyboard.Grid.Cols + " columns";
-                SetupErrorLayout("Incorrect grid definition", content);
-                return false;
-            }
-
-            return ValidateRowsAndColumns();
+            return true;
         }
 
-        private bool ValidateRowsAndColumns()
+        private bool ValidateKeys()
         {
             var allKeys = keyboard.Keys.ActionKeys.Cast<XmlKey>()
                 .Concat(keyboard.Keys.ChangeKeyboardKeys)
@@ -324,6 +323,399 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 Key newKey = new Key();
                 this.PlaceKeyInPosition(newKey, 3, 1, 1, 2);
             }
+        }
+
+        private bool ValidateVisualItems()
+        {
+            //start with a list of all grid cells marked empty
+            List<List<int>> openGrid = new List<List<int>>();
+            for (int r = 0; r < keyboard.Grid.Rows; r++)
+            {
+                List<int> gridRow = new List<int>();
+                for (int c = 0; c < keyboard.Grid.Cols; c++)
+                {
+                    gridRow.Add(c);
+                }
+                openGrid.Add(gridRow);
+            }
+
+            //begin processing items with a reserved row and column
+            var itemPosition = keyboard.Content.Items.ToList();
+            foreach (XmlVisualItem visualItem in itemPosition.Where(x => x.Row > -1 && x.Col > -1))
+            {
+                var vIndex = keyboard.Content.Items.IndexOf(visualItem);
+                var vLabel = "Suggestion";
+                if (visualItem is XmlDynamicItem dynamicKey) { vLabel = dynamicKey.Label; }
+                else if (visualItem is XmlScratchpadItem) { vLabel = "Scratchpad"; }
+
+                if (visualItem.Col + visualItem.Width > keyboard.Grid.Cols || visualItem.Row + visualItem.Height > keyboard.Grid.Rows)
+                {
+                    SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
+                        + (vIndex + 1) + " of " + itemPosition.Count
+                        + " labeled '" + vLabel
+                        + "' at row " + visualItem.Row + " column " + visualItem.Col);
+                    return false;
+                }
+                //find space to allocate and remove it from available
+                for (int row = visualItem.Row; row < (visualItem.Row + visualItem.Height); row++)
+                {
+                    for (int col = visualItem.Col; col < (visualItem.Col + visualItem.Width); col++)
+                    {
+                        if (!openGrid.ElementAt(row).Exists(x => x.Equals(col))) //if the column is unavailable
+                        {
+                            SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
+                                + (vIndex + 1) + " of " + itemPosition.Count
+                                + " labeled '" + vLabel
+                                + "' at row " + visualItem.Row + " column " + visualItem.Col);
+                            return false;
+                        }
+                        else
+                            openGrid.ElementAt(row).Remove(col);
+                    }
+                }
+            }
+            //end section 1: processing items with a reserved row and column
+
+            //begin section 2: processing items that need a row and/or column assigned
+            //the items are processed in the same order they were listed in the xml file
+            //if a row or column is reserved it is handled as an indication to jump forward 
+            //to that row or column and mark any/all skipped spaces as empty
+            foreach (XmlVisualItem visualItem in itemPosition.Where(x => !(x.Row > -1 && x.Col > -1)))
+            {
+                var vIndex = itemPosition.IndexOf(visualItem);
+                var vLabel = "Suggestion";
+                if (visualItem is XmlDynamicItem dynamicKey) { vLabel = dynamicKey.Label; }
+                else if (visualItem is XmlScratchpadItem) { vLabel = "Scratchpad"; }
+
+            //find first row with enough available width for the item
+            findAvailableRow:
+                //if row is reserved then block all preceding columns in all preceding rows
+                if (visualItem.Row > -1)
+                {
+                    for (int row = 0; row < visualItem.Row; row++)
+                    {
+                        while(openGrid.ElementAt(row).Count() > 0)
+                        {
+                            openGrid.ElementAt(row).RemoveAt(0);
+                        }
+                    }
+                }
+                var vItemColumn = 0;
+                var vRowsConfirmed = 0;
+                var startRow = openGrid.FindIndex(x => (x.Count() >= visualItem.Width));
+                if (startRow < 0 || (visualItem.Row > -1 && startRow > visualItem.Row)) //if not found
+                {
+                    SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
+                        + (vIndex + 1) + " of " + itemPosition
+                        + " labeled '" + vLabel + "' having width "
+                        + visualItem.Width + " and height " + visualItem.Height);
+                    return false;
+                }
+                for (int row = startRow; row < keyboard.Grid.Rows; row++)
+                {
+                findAvailableColumn:
+                    //if column is reserved then block all preceding columns in the row
+                    if (visualItem.Col > -1)
+                    {
+                        while (openGrid.ElementAt(row).First() < visualItem.Col)
+                        {
+                            openGrid.ElementAt(row).RemoveAt(0);
+                        }
+                    }
+                    //if height > 1 and we are searching subsequent rows then need to start at the confirmed start column
+                    var startColumn = (vRowsConfirmed > 0) ? vItemColumn : openGrid.ElementAt(row).First();
+                    for (int col = startColumn; col < (startColumn + visualItem.Width); col++)
+                    {
+                        //if an open space is found remove it from available
+                        if (openGrid.ElementAt(row).Exists(x => x == col))
+                        {
+                            openGrid.ElementAt(row).Remove(col);
+                        }
+                        //if an open space is not found then we need to reset because the item width has not been satisfied
+                        else
+                        {
+                            vItemColumn = 0;
+                            vRowsConfirmed = 0;
+
+                            //if this row has additional space then continue checking this row
+                            if (openGrid.ElementAt(row).Count() > 0) { goto findAvailableColumn; }
+
+                            //if this row has no additional space but another row does then advance to that row
+                            else { goto findAvailableRow; }
+                        }
+                    }
+                    //if we make it past the column loop then we have a confirmed start column and row
+                    vItemColumn = startColumn;
+                    vRowsConfirmed++;
+
+                    if (vRowsConfirmed == visualItem.Height)
+                    {
+                        visualItem.Col = vItemColumn;
+                        visualItem.Row = 1 + row - visualItem.Height;
+                        break;
+                    }
+                } //loop back to process the next row
+
+                if (vRowsConfirmed < visualItem.Height)
+                {
+                    SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
+                        + (vIndex + 1) + " of " + itemPosition.Count
+                        + " labeled '" + vLabel + "' having width "
+                        + visualItem.Width + " and height " + visualItem.Height);
+                    return false;
+                }
+                keyboard.Content.Items.RemoveAt(vIndex);
+                keyboard.Content.Items.Insert(vIndex, visualItem);
+            }
+            //end section 2: processing items that need a row and/or column assigned
+
+            return true;
+        }
+
+        private void SetupVisualItems()
+        { 
+            var minKeyWidth = keyboard.Content.Items.Select(k => k.Width).Min();
+            var minKeyHeight = keyboard.Content.Items.Select(k => k.Height).Min();
+
+            // Iterate over each item and add to keyboard
+            foreach (var visualItem in keyboard.Content.Items)
+            {
+                if (visualItem is XmlDynamicItem xmlDynamicKey)
+                {
+                    AddDynamicItem(xmlDynamicKey, minKeyWidth, minKeyHeight);
+                }
+                else if (visualItem is XmlScratchpadItem xmlScratchpadItem)
+                {
+                    //TODO: add code to enable background color override for scratchpad & suggestions
+                    //if (!string.IsNullOrEmpty(item.BackgroundColor)
+                    //   && (Regex.IsMatch(item.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
+                    //       || System.Drawing.Color.FromName(item.BackgroundColor).IsKnownColor))
+                    //{
+                    //    scratchpad.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(item.BackgroundColor);
+                    //}
+
+                    var scratchpad = new XmlScratchpad();
+                    MainGrid.Children.Add(scratchpad);
+                    Grid.SetColumn(scratchpad, visualItem.Col);
+                    Grid.SetRow(scratchpad, visualItem.Row);
+                    Grid.SetColumnSpan(scratchpad, visualItem.Width);
+                    Grid.SetRowSpan(scratchpad, visualItem.Height);
+                }
+                else if (visualItem is XmlSuggestionRowItem xmlSuggestionRow)
+                {
+                    var suggestionRow = new XmlSuggestionRow();
+                    MainGrid.Children.Add(suggestionRow);
+                    Grid.SetColumn(suggestionRow, visualItem.Col);
+                    Grid.SetRow(suggestionRow, visualItem.Row);
+                    Grid.SetColumnSpan(suggestionRow, visualItem.Width);
+                    Grid.SetRowSpan(suggestionRow, visualItem.Height);
+                }
+                else if (visualItem is XmlSuggestionColItem xmlSuggestionCol)
+                {
+                    var suggestionCol = new XmlSuggestionCol();
+                    MainGrid.Children.Add(suggestionCol);
+                    Grid.SetColumn(suggestionCol, visualItem.Col);
+                    Grid.SetRow(suggestionCol, visualItem.Row);
+                    Grid.SetColumnSpan(suggestionCol, visualItem.Width);
+                    Grid.SetRowSpan(suggestionCol, visualItem.Height);
+                }
+            }
+        }
+
+        void AddDynamicItem(XmlDynamicItem xmlDynamicKey, int minKeyWidth, int minKeyHeight)
+        {
+            Key newKey = CreateKeyFromItem(xmlDynamicKey, minKeyWidth, minKeyHeight);
+            if (xmlDynamicKey.Steps.Count > 0)
+            {
+                var vStepList = "";
+                var rootDir = Path.GetDirectoryName(inputFilename);
+
+                foreach (XmlDynamicItem vStep in xmlDynamicKey.Steps)
+                {
+                    if (vStep is DynamicAction vAction)
+                    {
+                        //TODO: add code to enable proper functionality 
+                        //of keydown an keyup states executed from a dynamic keyboard
+                        //also dwell duration and cooldown
+                        //also locking behavior
+                        FunctionKeys actionEnum;
+                        if (!Enum.TryParse(vAction.Value, out actionEnum))
+                            Log.ErrorFormat("Could not parse {0} as function key", vAction.Value);
+                        else if (actionEnum == FunctionKeys.Sleep
+                            || actionEnum == FunctionKeys.LeftShift
+                            || actionEnum ==FunctionKeys.LeftCtrl
+                            || actionEnum == FunctionKeys.LeftAlt
+                            || actionEnum == FunctionKeys.LeftWin)
+                        {
+                            newKey.Value = new KeyValue(actionEnum);
+                            PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
+                            return;
+                        }
+                        else
+                            vStepList += "<Action>" + vAction.Value;   
+                    }
+                    else if (vStep is DynamicLink vLink)
+                    {
+                        if (string.IsNullOrEmpty(vLink.Value))
+                            Log.ErrorFormat("Destination Keyboard not found for {0} ", vLink.Label);
+                        else
+                        {
+                            string vDestinationKeyboard = Enum.TryParse(vLink.Value, out Enums.Keyboards keyboardEnum)
+                            ? keyboardEnum.ToString()
+                            : Path.Combine(rootDir, vLink.Value);
+
+                            vStepList += (xmlDynamicKey.ReturnToThisKeyboard)
+                                ? "<KeyboardAndReturn>" + vDestinationKeyboard
+                                : "<Keyboard>" + vDestinationKeyboard;
+                        }
+                    }
+                    else if (vStep is DynamicText vText)
+                    {
+                        if (string.IsNullOrEmpty(vText.Value))
+                            Log.ErrorFormat("Text not found for {0} ", vText.Label);
+                        else
+                            vStepList += "<Text>" + vText.Value;
+                    }
+                    else if (vStep is DynamicWait vWait)
+                    {
+                        int waitInt;
+                        if (!int.TryParse(vWait.Value, out waitInt))
+                            Log.ErrorFormat("Could not parse wait {0} as int value", vWait.Label);
+                        else
+                            vStepList += "<Wait>" + vWait.Value;
+                    }
+                    //TODO:
+                    //Plugin commands are written here, but will be 
+                    //ignored until a new plugin command handler is written
+                    //if (!String.IsNullOrWhiteSpace(vStep.Plugin) && !String.IsNullOrWhiteSpace(vStep.Method))
+                    //{
+                    //    vStepList += "<Argment>";
+                    //    foreach (var vArg in vStep.Argument)
+                    //    {
+                    //        if (!String.IsNullOrWhiteSpace(vArg.Name))
+                    //        {
+                    //            vStepList += "<Name>" + vArg.Name;
+                    //        }
+                    //        if (!String.IsNullOrWhiteSpace(vArg.Value))
+                    //        {
+                    //            vStepList += "<Value>" + vArg.Value;
+                    //        }
+                    //    }
+                    //    vStepList += "</Argment>";
+                    //}
+                }
+
+                vStepList = (vStepList == "") ? vStepList : "<StepList>" + vStepList;
+                newKey.Value = new KeyValue(FunctionKeys.StepList, vStepList);
+            }
+            else
+            {
+                Log.ErrorFormat("No value found in dynamic key with label {0}", xmlDynamicKey.Label);
+            }
+
+            PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
+        }
+
+        private Key CreateKeyFromItem(XmlDynamicItem xmlKey, int minKeyWidth, int minKeyHeight)
+        {
+            // Add the core properties from XML to a new key
+            Key newKey = new Key();
+            if (xmlKey.Label != null)
+            {
+                string vLabel = xmlKey.Label.ToString();
+                string vText;
+                string vLookup;
+                while (vLabel.Contains("{Resource:"))
+                {
+                    vText = vLabel.Substring(vLabel.IndexOf("{Resource:"), vLabel.IndexOf("}", vLabel.IndexOf("{Resource:")) - vLabel.IndexOf("{Resource:") + 1);
+                    vLookup = Properties.Resources.ResourceManager.GetString(vText.Substring(10, vText.Length - 11).Trim());
+                    vLabel = vLabel.Replace(vText, vLookup);
+                }
+                while (vLabel.Contains("{Setting:"))
+                {
+                    vText = vLabel.Substring(vLabel.IndexOf("{Setting:"), vLabel.IndexOf("}", vLabel.IndexOf("{Setting:")) - vLabel.IndexOf("{Setting:") + 1);
+                    vLookup = Properties.Settings.Default[vText.Substring(9, vText.Length - 10).Trim()].ToString();
+                    vLabel = vLabel.Replace(vText, vLookup);
+                }
+
+                newKey.Text = vLabel.ToStringWithValidNewlines();
+            }
+
+            if (xmlKey.ShiftDownLabel != null)
+            {
+                newKey.ShiftDownText = xmlKey.ShiftDownLabel.ToStringWithValidNewlines();
+            }
+
+            if (xmlKey.Symbol != null)
+            {
+                Geometry geom = (Geometry)this.Resources[xmlKey.Symbol];
+                if (geom != null)
+                {
+                    newKey.SymbolGeometry = geom;
+                }
+                else
+                {
+                    Log.ErrorFormat("Could not parse {0} as symbol geometry", xmlKey.Symbol);
+                }
+            }
+
+            // Add same symbol margin to all keys
+            if (keyboard.SymbolMargin.HasValue)
+            {
+                newKey.SymbolMargin = keyboard.SymbolMargin.Value;
+            }
+
+            // Set shared size group
+            if (!string.IsNullOrEmpty(xmlKey.SharedSizeGroup))
+            {
+                newKey.SharedSizeGroup = xmlKey.SharedSizeGroup;
+            }
+            else
+            {
+                bool hasSymbol = newKey.SymbolGeometry != null;
+                bool hasString = xmlKey.Label != null || xmlKey.ShiftDownLabel != null;
+                if (hasSymbol && hasString)
+                {
+                    newKey.SharedSizeGroup = "KeyWithSymbolAndText";
+                }
+                else if (hasSymbol)
+                {
+                    newKey.SharedSizeGroup = "KeyWithSymbol";
+                }
+                else if (hasString)
+                {
+                    var text = newKey.Text != null ? newKey.Text.Compose() : newKey.ShiftDownText?.Compose();
+
+                    //Strip out circle character used to show diacritic marks
+                    text = text?.Replace("\x25CC", string.Empty);
+
+                    newKey.SharedSizeGroup = text != null && text.Length > 1 ? "KeyWithText" : "KeyWithSingleLetter";
+                }
+            }
+
+            //Auto set width span and height span
+            if (xmlKey.AutoScaleToOneKeyWidth)
+            {
+                newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
+            }
+
+            if (xmlKey.AutoScaleToOneKeyHeight)
+            {
+                newKey.HeightSpan = (double)xmlKey.Height / (double)minKeyHeight;
+            }
+
+            newKey.UsePersianCompatibilityFont = xmlKey.UsePersianCompatibilityFont;
+            newKey.UseUnicodeCompatibilityFont = xmlKey.UseUnicodeCompatibilityFont;
+            newKey.UseUrduCompatibilityFont = xmlKey.UseUrduCompatibilityFont;
+
+            if (!string.IsNullOrEmpty(xmlKey.BackgroundColor)
+               && (Regex.IsMatch(xmlKey.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
+                   || System.Drawing.Color.FromName(xmlKey.BackgroundColor).IsKnownColor))
+            {
+                newKey.BackgroundColourOverride = (SolidColorBrush)new BrushConverter().ConvertFrom(xmlKey.BackgroundColor);
+            }
+
+            return newKey;
         }
 
         private void SetupKeys()

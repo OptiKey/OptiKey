@@ -286,6 +286,11 @@
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyValueConverter.cs" />
     <Compile Include="Models\PluginMetadata.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlDynamicItem.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlSuggestionCol.xaml.cs">
+      <DependentUpon>XmlSuggestionCol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\XmlKeyboardModels\XmlVisualItems.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlDynamicKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlPluginKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />
@@ -424,6 +429,12 @@
     <Compile Include="UI\Controls\KeyboardView.cs" />
     <Compile Include="UI\Controls\DynamicKeyboard.cs" />
     <Compile Include="UI\Controls\DynamicKeyboardSelector.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlSuggestionRow.xaml.cs">
+      <DependentUpon>XmlSuggestionRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\XmlKeyboardModels\XmlScratchpad.xaml.cs">
+      <DependentUpon>XmlScratchpad.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Controls\ToastNotification.cs" />
     <Compile Include="UI\Controls\Cursor.cs" />
     <Compile Include="UI\Controls\ToastNotificationPopup.cs" />
@@ -1384,6 +1395,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Models\XmlKeyboardModels\XmlSuggestionCol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Icons\KeySymbols.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1405,6 +1420,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Controls\CK20Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\XmlKeyboardModels\XmlSuggestionRow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\XmlKeyboardModels\XmlScratchpad.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

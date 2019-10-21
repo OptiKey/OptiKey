@@ -19,7 +19,12 @@ namespace JuliusSweetland.OptiKey.Models
         public XmlGrid Grid
         { get; set; }
 
-        public XmlKeys Keys
+        [XmlElement("Keys")]
+        public XmlKeys Keys 
+        { get; set; }
+
+        [XmlElement("Content")]
+        public XmlVisualItem Content
         { get; set; }
 
         // The following are all optional
