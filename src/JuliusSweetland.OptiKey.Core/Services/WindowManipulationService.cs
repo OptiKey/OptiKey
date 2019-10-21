@@ -411,6 +411,7 @@ namespace JuliusSweetland.OptiKey.Services
             if (overrideKeyboard)
             {
                 overrideKeyboard = false;
+                savePreviousWindowState(defaultWindowState);
                 saveDockSize(defaultDockSize);
                 saveDockPosition(defaultDockPosition);
                 saveFloatingSizeAndPosition(defaultFloatingSizeAndPosition);
