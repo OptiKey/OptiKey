@@ -641,8 +641,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.Text = vLabel.ToStringWithValidNewlines();
             }
 
-            if (xmlKey.ShiftDownLabel != null)
+            if (xmlKey.Label != null && xmlKey.ShiftDownLabel != null)
             {
+                newKey.ShiftUpText = xmlKey.Label.ToStringWithValidNewlines();
                 newKey.ShiftDownText = xmlKey.ShiftDownLabel.ToStringWithValidNewlines();
             }
 
