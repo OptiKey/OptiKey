@@ -9,6 +9,7 @@ namespace JuliusSweetland.OptiKey.Services
     {
         event EventHandler SizeAndPositionInitialised;
 
+        bool OverrideKeyboard { get; }
         bool SizeAndPositionIsInitialised { get; }
         Rect WindowBounds { get; }
         WindowStates WindowState { get; }

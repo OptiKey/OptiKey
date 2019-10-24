@@ -55,7 +55,6 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Action<double> saveCollapsedDockThicknessAsPercentageOfFullDockThickness;
         private readonly Action<double> saveOpacity;
 
-        bool overrideKeyboard = false;
         private WindowStates defaultWindowState;
         private DockEdges defaultDockPosition;
         private DockSizes defaultDockSize;
@@ -140,6 +139,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
 
+        public bool OverrideKeyboard { get; private set; } = false;
         public bool SizeAndPositionIsInitialised { get; private set; }
 
         public Rect WindowBounds
@@ -387,35 +387,19 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Info("Minimise called");
 
             //if minimising from an override keyboard then first set the thicknesses back to the default values
-            if (overrideKeyboard)
+            if (OverrideKeyboard)
             {
                 saveFullDockThicknessAsPercentageOfScreen(defaultFullDockThickness);
                 saveCollapsedDockThicknessAsPercentageOfFullDockThickness(defaultCollapsedDockThickness);
             }
 
-            var windowState = getWindowState();
-            if (windowState != WindowStates.Minimised)
-            {
-                savePreviousWindowState(windowState);
-            }
+            if (getWindowState() != WindowStates.Minimised)
+                savePreviousWindowState(getWindowState());
             if (getWindowState() == WindowStates.Docked)
-            {
                 UnRegisterAppBar();
-            }
             saveWindowState(WindowStates.Minimised);
             ApplySavedState();
 
-            //if minimising an override keyboard then set the dock size and position back to the default values
-            //when reloading the override keyboard, it will call OverrideSizeAndPosition
-            //which will store the default values and then set the dock size and position to the override values
-            if (overrideKeyboard)
-            {
-                overrideKeyboard = false;
-                savePreviousWindowState(defaultWindowState);
-                saveDockSize(defaultDockSize);
-                saveDockPosition(defaultDockPosition);
-                saveFloatingSizeAndPosition(defaultFloatingSizeAndPosition);
-            }
         }
 
         public void Move(MoveToDirections direction, double? amountInPx)
@@ -463,11 +447,10 @@ namespace JuliusSweetland.OptiKey.Services
         public void OverrideSizeAndPosition(bool inPersistNewState, string inWindowState, string inPosition, string inDockSize, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset)
         {
             Log.InfoFormat("OverrideSizeAndPosition called with PersistNewState {0}, WindowState {1}, Position {2}, Width {3}, Height {4}, horizontalOffset {5}, verticalOffset {6}", inPersistNewState, inWindowState, inPosition, inWidth, inHeight, inHorizontalOffset, inVerticalOffset);
-            
-            //if the new state is a temporary override and we are not in an override state then save the default values
-            if (!inPersistNewState && !overrideKeyboard)
+
+            //if the previous state was not an override then save the default values
+            if (!OverrideKeyboard && getWindowState() != WindowStates.Minimised)
             {
-                overrideKeyboard = true;
                 defaultWindowState = getWindowState();
                 defaultDockPosition = getDockPosition();
                 defaultDockSize = getDockSize();
@@ -475,10 +458,10 @@ namespace JuliusSweetland.OptiKey.Services
                 defaultCollapsedDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
                 defaultFloatingSizeAndPosition = getFloatingSizeAndPosition();
             }
-            //if the new state is to persist and we were in an override state then rollback to the default values before continuing
-            if (inPersistNewState && overrideKeyboard)
+            //if the new state is to persist or if returning from minimized 
+            //then rollback to the default values before continuing
+            if (inPersistNewState || getWindowState() == WindowStates.Minimised)
             {
-                overrideKeyboard = false;
                 saveDockPosition(defaultDockPosition);
                 saveDockSize(defaultDockSize);
                 saveFullDockThicknessAsPercentageOfScreen(defaultFullDockThickness);
@@ -597,7 +580,7 @@ namespace JuliusSweetland.OptiKey.Services
             //if the new state is to persist then save the new default values
             if (inPersistNewState)
             {
-                overrideKeyboard = false;
+                OverrideKeyboard = false;
                 defaultWindowState = newWindowState;
                 if (newWindowState == WindowStates.Docked)
                 {
@@ -610,6 +593,10 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     defaultFloatingSizeAndPosition = getFloatingSizeAndPosition();
                 }
+            }
+            else
+            {
+                OverrideKeyboard = true;
             }
         }
 
@@ -637,10 +624,10 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Info("RollbackOverride called");
 
-            if (!overrideKeyboard) return;
+            if (!OverrideKeyboard || getWindowState() == WindowStates.Minimised) { return; }
 
             Log.Info("Restoring keyboard to default values");
-            overrideKeyboard = false;
+            OverrideKeyboard = false;
             saveDockPosition(defaultDockPosition);
             saveDockSize(defaultDockSize);
             saveFullDockThicknessAsPercentageOfScreen(defaultFullDockThickness);
@@ -693,6 +680,9 @@ namespace JuliusSweetland.OptiKey.Services
         public void Restore()
         {
             Log.Info("Restore called");
+
+            //if override keyboard then do nothing and let OverrideSizeAndPosition handle it later on
+            if (OverrideKeyboard) { return; }
 
             var windowState = getWindowState();
             if (windowState != WindowStates.Maximised && windowState != WindowStates.Minimised && windowState != WindowStates.Hidden) return;

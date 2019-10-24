@@ -57,6 +57,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
         public override void OnExit()
         {
             ResetOveriddenKeyStates();
+            windowManipulationService.RollbackOverride();
         }
 
         public void SetKeyOverrides(Dictionary<Models.KeyValue, Enums.KeyDownStates> overrideKeyStates)
