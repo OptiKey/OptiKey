@@ -8,14 +8,14 @@ using JuliusSweetland.OptiKey.Native.Common.Structs;
 
 namespace JuliusSweetland.OptiKey.Native
 {
-    public static class PInvoke 
-    { 
-        [DllImport("kernel32.Dll")] 
-        public static extern short GetVersionEx(ref OSVERSIONINFO o); 
+    public static class PInvoke
+    {
+        [DllImport("kernel32.Dll")]
+        public static extern short GetVersionEx(ref OSVERSIONINFO o);
 
-        [DllImport("user32.dll")] 
-        public static extern int GetSystemMetrics(int smIndex); 
-  
+        [DllImport("user32.dll")]
+        public static extern int GetSystemMetrics(int smIndex);
+
         [DllImport("advapi32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool OpenProcessToken(IntPtr ProcessHandle, UInt32 DesiredAccess, out IntPtr TokenHandle);
@@ -68,7 +68,7 @@ namespace JuliusSweetland.OptiKey.Native
 
         [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr", CharSet = CharSet.Auto)]
         private static extern long GetWindowLongPtr64(IntPtr hWnd, int nIndex);
-        
+
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         public static extern short VkKeyScanEx(char ch, IntPtr dwhkl);
 
@@ -120,5 +120,8 @@ namespace JuliusSweetland.OptiKey.Native
 
         [DllImport("user32.dll")]
         public static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
     }
-} 
+}

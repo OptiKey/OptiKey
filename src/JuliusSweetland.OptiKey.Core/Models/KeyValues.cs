@@ -423,7 +423,14 @@ namespace JuliusSweetland.OptiKey.Models
                     MultiKeySelectionIsOnKey
                 };
 
-                if(!Settings.Default.TypeDiacriticsAfterLetters)
+                //ignore for now. future funtionality
+                //var defaultList = "abcdefghijklmnopqrstuvwxyz"
+                //    .ToCharArray()
+                //    .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                //    .ToList();
+                //keys = keys.Concat(defaultList).ToList();
+
+                if (!Settings.Default.TypeDiacriticsAfterLetters)
                 {
                     //By default TypeDiacriticsAfterLetters is false and the default behaviour
                     //is for the user to press down the diacritic key and then the letter.
@@ -465,6 +472,13 @@ namespace JuliusSweetland.OptiKey.Models
                     MultiKeySelectionIsOnKey,
                     SleepKey
                 };
+
+                //ignore for now. future funtionality
+                //var defaultList = "abcdefghijklmnopqrstuvwxyz"
+                //    .ToCharArray()
+                //    .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                //    .ToList();
+                //keys = keys.Concat(defaultList).ToList();
 
                 if (Settings.Default.KeySelectionTriggerSource == TriggerSources.KeyboardKeyDownsUps)
                 {

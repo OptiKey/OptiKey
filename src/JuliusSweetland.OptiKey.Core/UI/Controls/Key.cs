@@ -381,6 +381,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(DisabledBackgroundColourOverrideProperty, value); }
         }
 
+        public static readonly DependencyProperty BackgroundOpacityProperty =
+            DependencyProperty.Register("BackgroundOpacity", typeof(double), typeof(Key), new PropertyMetadata(defaultValue: 1.0));
+
+        public double BackgroundOpacity
+        {
+            get { return (double)GetValue(BackgroundOpacityProperty); }
+            set { SetValue(BackgroundOpacityProperty, value); }
+        }
+
         public static readonly DependencyProperty DisabledBackgroundOpacityProperty =
             DependencyProperty.Register("DisabledBackgroundOpacity", typeof(double), typeof(Key), new PropertyMetadata((1.0)));
 

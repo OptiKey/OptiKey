@@ -36,7 +36,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IKeyboardOutputService keyboardOutputService;
         private readonly IMouseOutputService mouseOutputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
-        private readonly List<INotifyErrors> errorNotifyingServices; 
+        private readonly List<INotifyErrors> errorNotifyingServices;
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         private readonly StringBuilder pendingErrorToastNotificationContent = new StringBuilder();
 
@@ -56,7 +56,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
-        
+
         #endregion
 
         #region Ctor
@@ -129,10 +129,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 DeactivateLookToScrollUponSwitchingKeyboards();
                 keyboard?.OnExit(); // previous keyboard
                 SetProperty(ref keyboard, value);
-                if (!(keyboard is Keyboards.DynamicKeyboard))
+                if (!(keyboard is DynamicKeyboard))
                     mainWindowManipulationService.RollbackOverride();
                 keyboard?.OnEnter(); // new keyboard
-                Log.InfoFormat("Keyboard changed to {0}", value);                
+                Log.InfoFormat("Keyboard changed to {0}", value);
             }
         }
 
@@ -250,7 +250,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             get { return pointsPerSecond; }
             set { SetProperty(ref pointsPerSecond, value); }
         }
-        
+
         public string ApplicationAndSystemInfo
         {
             get
@@ -271,7 +271,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             get { return scratchpadIsDisabled; }
             set { SetProperty(ref scratchpadIsDisabled, value); }
         }
-        
+
         public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
 
         #endregion
@@ -305,23 +305,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case Enums.Keyboards.ConversationAlpha:
                     case Enums.Keyboards.ConversationConfirm:
                     case Enums.Keyboards.ConversationNumericAndSymbols:
-                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard, 
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
                             windowManipulationService, () =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha1());
-                            windowManipulationService.Restore();
-                            windowManipulationService.ResizeDockToFull();
-                        });
+                            {
+                                Keyboard = new Menu(() => Keyboard = new Alpha1());
+                                windowManipulationService.Restore();
+                                windowManipulationService.ResizeDockToFull();
+                            });
                         break;
 
                     case Enums.Keyboards.Minimised:
                         SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
                             windowManipulationService, () =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha1());
-                            windowManipulationService.Restore();
-                            windowManipulationService.ResizeDockToFull();
-                        });
+                            {
+                                Keyboard = new Menu(() => Keyboard = new Alpha1());
+                                windowManipulationService.Restore();
+                                windowManipulationService.ResizeDockToFull();
+                            });
                         break;
 
                     case Enums.Keyboards.CustomKeyboardFile:
@@ -334,9 +334,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     default:
                         SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
                             windowManipulationService, () =>
-                        {
-                            Keyboard = new Alpha1(); 
-                        });
+                            {
+                                Keyboard = new Alpha1();
+                            });
                         break;
                 }
             }
@@ -431,7 +431,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 default:
-                    Log.ErrorFormat("Cannot load keyboard: {0}, this is not a valid StartupKeyboard", 
+                    Log.ErrorFormat("Cannot load keyboard: {0}, this is not a valid StartupKeyboard",
                         Settings.Default.StartupKeyboard);
                     break;
             }
@@ -488,7 +488,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     inputService.RequestSuspend();
                     audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                    RaiseToastNotification(Resources.NOTHING_NEW, Resources.NO_NEW_ENTRIES_IN_SCRATCHPAD, 
+                    RaiseToastNotification(Resources.NOTHING_NEW, Resources.NO_NEW_ENTRIES_IN_SCRATCHPAD,
                         NotificationTypes.Normal, () => { inputService.RequestResume(); });
                 }
             }
@@ -506,7 +506,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 var candidate = candidates.First();
 
                 var prompt = candidate.Contains(' ')
-                    ? string.Format(Resources.ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE, 
+                    ? string.Format(Resources.ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE,
                         candidate, candidate.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: true))
                     : string.Format(Resources.ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE, candidate);
 
@@ -522,7 +522,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 if (similarEntries.Any())
                 {
-                    string similarEntriesPrompt = string.Format(Resources.SIMILAR_DICTIONARY_ENTRIES_EXIST, 
+                    string similarEntriesPrompt = string.Format(Resources.SIMILAR_DICTIONARY_ENTRIES_EXIST,
                         string.Join(", ", similarEntries.Select(se => string.Format("'{0}'", se))));
 
                     prompt = string.Concat(prompt, "\n\n", similarEntriesPrompt);
@@ -616,7 +616,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(resizeDockIfCollapsedDockingNotSupported);
             resizeDockIfCollapsedDockingNotSupported(KeyboardSupportsCollapsedDock);
         }
-        
+
         private void ResetSelectionProgress()
         {
             PointSelectionProgress = null;
@@ -660,7 +660,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                 inputService.RequestSuspend();
                 ToastNotification(this, new NotificationEventArgs(
-                    Resources.STARTUP_CRASH_TITLE, 
+                    Resources.STARTUP_CRASH_TITLE,
                     pendingErrorToastNotificationContent.ToString(), NotificationTypes.Error, () =>
                     {
                         pendingErrorToastNotificationContent.Clear();

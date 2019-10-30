@@ -1,24 +1,23 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-using JuliusSweetland.OptiKey.Enums;
+﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - AllRights Reserved
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public class XmlDynamicKey : XmlKey
+    public class XmlDynamicKey : XmlDynamicItem
     {
-        [XmlElement("Steps")]
-        public List<DynamicStep> Steps
-        { get; set; }
-    }
+        public XmlDynamicKey() { }
 
-    public class DynamicStep
-    {
-        public string Action
-        { get; set; }
-
-        public string DestinationKeyboard
-        { get; set; }
+        [XmlElement("Action", typeof(DynamicAction))]
+        [XmlElement("DestinationKeyboard", typeof(DynamicLink))]
+        //ignore for now. future funtionality
+        //[XmlElement("KeyDown", typeof(DynamicKeyDown))]
+        //[XmlElement("KeyUp", typeof(DynamicKeyUp))]
+        //[XmlElement("KeyToggle", typeof(DynamicKeyToggle))]
+        //[XmlElement("Loop", typeof(XmlDynamicKey))]
+        [XmlElement("Text", typeof(DynamicText))]
+        [XmlElement("Wait", typeof(DynamicWait))]
+        public List<XmlDynamicKey> Steps { get; } = new List<XmlDynamicKey>();
 
         [XmlIgnore]
         public bool ReturnToThisKeyboard
@@ -31,12 +30,63 @@ namespace JuliusSweetland.OptiKey.Models
             set { this.ReturnToThisKeyboard = XmlUtils.ConvertToBoolean(value); }
         }
 
-        public string Text
-        { get; set; }
+        //ignore for now. future funtionality
+        //public int Count { get; set; } //If the item in the list is a Loop, then Count is the number of repetitions
+        public string Label { get; set; } //Either set this, the Symbol, or both. This value become the Text value on the created Key.
+        public string ShiftDownLabel { get; set; } //Optional - only required to display an alternate Text value when the shift key is down.
+        public string Symbol { get; set; }
+        public string SharedSizeGroup { get; set; } //Optional - only required to break out a key, or set of keys, to size separately, otherwise size grouping is determined automatically
+        public bool AutoScaleToOneKeyWidth { get; set; } = true;
+        public bool AutoScaleToOneKeyHeight { get; set; } = true;
+        public bool UsePersianCompatibilityFont { get; set; }
+        public bool UseUnicodeCompatibilityFont { get; set; }
+        public bool UseUrduCompatibilityFont { get; set; }
+    }
 
-        public string Wait
-        { get; set; }
+    public class DynamicAction : XmlDynamicKey
+    {
+        [XmlText]
+        public string Value { get; set; }
+    }
 
+    public class DynamicLink : XmlDynamicKey
+    {
+        [XmlText]
+        public string Value { get; set; }
+    }
+
+    public class DynamicKeyDown : XmlDynamicKey
+    {
+        [XmlText]
+        public string Value { get; set; }
+    }
+
+    public class DynamicKeyUp : XmlDynamicKey
+    {
+        [XmlText]
+        public string Value { get; set; }
+    }
+
+    public class DynamicKeyToggle : XmlDynamicKey
+    {
+        [XmlText]
+        public string Value { get; set; }
+    }
+
+    public class DynamicText : XmlDynamicKey
+    {
+        [XmlText]
+        public string Value { get; set; }
+    }
+
+    public class DynamicWait : XmlDynamicKey
+    {
+        [XmlText]
+        public string Value { get; set; }
+    }
+
+    public class DynamicPlugin : XmlDynamicKey
+    {
         public string Plugin
         { get; set; }
 
@@ -44,11 +94,11 @@ namespace JuliusSweetland.OptiKey.Models
         { get; set; }
 
         [XmlElement("Argument")]
-        public List<DynamicPluginArgument> Argument
+        public List<DynamicArgument> Argument
         { get; set; }
     }
 
-    public class DynamicPluginArgument
+    public class DynamicArgument
     {
         public string Name
         { get; set; }
