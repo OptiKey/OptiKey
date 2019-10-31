@@ -128,7 +128,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (SelectionMode == SelectionModes.Key
                     && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                 {
-                    KeySelectionResult(singleKeyValue, multiKeySelection);
+                        KeySelectionResult(singleKeyValue, multiKeySelection);
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
@@ -200,12 +200,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 backAction = () =>
                 {
+                    mainWindowManipulationService.ResizeDockToFull();
                     Keyboard = currentKeyboard;
-
-                    if (!(currentKeyboard is DynamicKeyboard))
-                    {
-                        mainWindowManipulationService.ResizeDockToFull();
-                    }
                 };
             }
 
@@ -216,20 +212,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             else
             {
                 // Set up new dynamic keyboard
-
-                // Extract any key states or layout overrides if present
+                XmlKeyboard keyboard = new XmlKeyboard();
+                // Extract any key states if present
                 var initialKeyStates = new Dictionary<KeyValue, KeyDownStates>();
-                bool persistNewState = false;
-                string overrideWindowState = null;
-                string overridePosition = null;
-                string overrideDockSize = null;
-                string overrideWidth = null;
-                string overrideHeight = null;
-                string horizontalOffset = null;
-                string verticalOffset = null;
                 try
                 {
-                    XmlKeyboard keyboard = XmlKeyboard.ReadFromFile(keyValue.KeyboardFilename);
+                    keyboard = XmlKeyboard.ReadFromFile(keyValue.KeyboardFilename);
                     XmlKeyStates states = keyboard.InitialKeyStates;
 
                     if (states != null)
@@ -245,15 +233,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                         }
                     }
-
-                    persistNewState = keyboard.PersistNewState;
-                    overrideWindowState = keyboard.WindowState;
-                    overridePosition = keyboard.Position;
-                    overrideDockSize = keyboard.DockSize;
-                    overrideWidth = keyboard.Width;
-                    overrideHeight = keyboard.Height;
-                    horizontalOffset = keyboard.HorizontalOffset;
-                    verticalOffset = keyboard.VerticalOffset;
                 }
                 catch (Exception)
                 {
@@ -261,10 +240,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
 
                 DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, mainWindowManipulationService, keyStateService,
-                    inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename);
-                newDynKeyboard.SetKeyOverrides(initialKeyStates);
-                //newDynKeyboard.OverrideKeyboardLayout(overrideHeight);
-                newDynKeyboard.OverrideKeyboardLayout(persistNewState, overrideWindowState, overridePosition, overrideDockSize, overrideWidth, overrideHeight, horizontalOffset, verticalOffset);
+                    inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename, initialKeyStates, 
+                    keyboard.PersistNewState, keyboard.WindowState, keyboard.Position, keyboard.DockSize, 
+                    keyboard.Width, keyboard.Height, keyboard.HorizontalOffset, keyboard.VerticalOffset);
                 Keyboard = newDynKeyboard;
 
                 // Clear the scratchpad when launching a dynamic keyboard.
