@@ -38,7 +38,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             IInputService inputService,
             IAudioService audioService,
             Func<string, string, NotificationTypes, Action, bool> raiseToastNotification,
-            string link) : base(backAction)
+            string link,
+            Dictionary<Models.KeyValue, Enums.KeyDownStates> overrideKeyStates = null,
+            bool persistNewState = false, 
+            string windowState = "", 
+            string position = "", 
+            string dockSize = "", 
+            string width = "", 
+            string height = "", 
+            string horizontalOffset = "", 
+            string verticalOffset = "") : base(backAction)
         {
             this.windowManipulationService = windowManipulationService;
             this.link = link;
@@ -46,6 +55,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             this.inputService = inputService;
             this.audioService = audioService;
             this.raiseToastNotification = raiseToastNotification;
+            this.overrideKeyStates = overrideKeyStates;
+            this.persistNewState = persistNewState;
+            this.windowState = windowState;
+            this.position = position;
+            this.dockSize = dockSize;
+            this.width = width;
+            this.height = height;
+            this.horizontalOffset = horizontalOffset;
+            this.verticalOffset = verticalOffset;
         }
 
         public override void OnEnter()
@@ -57,11 +75,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
         public override void OnExit()
         {
             ResetOveriddenKeyStates();
-        }
-
-        public void SetKeyOverrides(Dictionary<Models.KeyValue, Enums.KeyDownStates> overrideKeyStates)
-        {
-            this.overrideKeyStates = overrideKeyStates;
         }
 
         public void ApplyKeyOverrides()
@@ -81,18 +94,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
                     keyStateService.KeyDownStates[entry.Key].Value = entry.Value;
                 }
             }
-        }
-
-        public void OverrideKeyboardLayout(bool persistNewState, string windowState, string position, string dockSize, string width, string height, string horizontalOffset, string verticalOffset)
-        {
-            this.persistNewState = persistNewState;
-            this.windowState = windowState;
-            this.position = position;
-            this.dockSize = dockSize;
-            this.width = width;
-            this.height = height;
-            this.horizontalOffset = horizontalOffset;
-            this.verticalOffset = verticalOffset;
         }
 
         private void SetupKeyboardLayout()
@@ -138,7 +139,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             }
 
             Log.InfoFormat("Overriding size and position for dynamic keyboard");
-            windowManipulationService.MoveAndSize(persistNewState, windowState, position, dockSize, width, height, horizontalOffset, verticalOffset);
+            windowManipulationService.OverridePersistedState(persistNewState, windowState, position, dockSize, width, height, horizontalOffset, verticalOffset);
         }
 
         public string Link
