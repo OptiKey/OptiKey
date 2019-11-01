@@ -2369,13 +2369,13 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
 עברית
 (ישראל)</value>
   </data>
-<data name="HUNGARIAN_HUNGARY" xml:space="preserve">
-    <value>Magyar (Magyarország) / Hungarian (Hungary)</value>
+  <data name="HUNGARIAN_HUNGARY" xml:space="preserve">
+    <value>Hungarian (Hungary) / Magyar (Magyarország)</value>
   </data>
   <data name="HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Magyar
-(Magyarország) /
-Hungarian
-(Hungary)</value>
+    <value>Hungarian
+(Hungary) /
+Magyar
+(Magyarország)</value>
   </data>
 </root>

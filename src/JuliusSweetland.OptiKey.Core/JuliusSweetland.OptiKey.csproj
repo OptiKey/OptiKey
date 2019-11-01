@@ -951,7 +951,9 @@
     </Content>
     <EmbeddedResource Include="Properties\Resources.hu-HU.resx" />
     <None Include="app.config" />
-    <None Include="Dictionaries\HungarianHungary.dic" />
+    <Content Include="Dictionaries\HungarianHungary.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

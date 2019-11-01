@@ -2199,7 +2199,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Magyar (Magyarország) / Hungarian (Hungary).
+        ///   Looks up a localized string similar to Hungarian (Hungary) / Magyar (Magyarország).
         /// </summary>
         public static string HUNGARIAN_HUNGARY {
             get {
@@ -2208,10 +2208,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Magyar
-        ///(Magyarország) /
-        ///Hungarian
-        ///(Hungary).
+        ///   Looks up a localized string similar to Hungarian
+        ///(Hungary) /
+        ///Magyar
+        ///(Magyarország).
         /// </summary>
         public static string HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE {
             get {
