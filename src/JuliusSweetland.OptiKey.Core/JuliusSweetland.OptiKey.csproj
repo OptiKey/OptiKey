@@ -594,6 +594,12 @@
     <Compile Include="UI\Views\Keyboards\Hebrew\SimplifiedConversationAlpha1.xaml.cs">
       <DependentUpon>SimplifiedConversationAlpha1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Hungarian\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hungarian\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Persian\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
@@ -943,7 +949,11 @@
     <Content Include="Dictionaries\HebrewIsrael.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Properties\Resources.hu-HU.resx" />
     <None Include="app.config" />
+    <Content Include="Dictionaries\HungarianHungary.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -1525,6 +1535,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Hebrew\SimplifiedConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hungarian\Alpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hungarian\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

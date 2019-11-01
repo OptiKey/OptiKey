@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -2199,6 +2199,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hungarian (Hungary) / Magyar (Magyarország).
+        /// </summary>
+        public static string HUNGARIAN_HUNGARY {
+            get {
+                return ResourceManager.GetString("HUNGARIAN_HUNGARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hungarian
+        ///(Hungary) /
+        ///Magyar
+        ///(Magyarország).
+        /// </summary>
+        public static string HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incomplete key fixation time to live (ms):.
         /// </summary>
         public static string INCOMPLETE_KEY_FIXATION_TTL_LABEL {
@@ -3283,7 +3304,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Center Magnifier on Screen.
+        ///   Looks up a localized string similar to Show magnifier window at center of screen.
         /// </summary>
         public static string MAGNIFIER_CENTER_ON_SCREEN {
             get {
@@ -3346,7 +3367,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MANUAL MODE.
+        ///   Looks up a localized string similar to MOUSE CONTROL MODE.
         /// </summary>
         public static string MANUAL_MODE {
             get {
@@ -3364,7 +3385,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual (mouse) mode disabled!.
+        ///   Looks up a localized string similar to Mouse (manual) mode disabled!.
         /// </summary>
         public static string MANUAL_MODE_DISABLED {
             get {
@@ -3373,7 +3394,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual (mouse) mode enabled!.
+        ///   Looks up a localized string similar to Mouse (manual) mode enabled!.
         /// </summary>
         public static string MANUAL_MODE_ENABLED {
             get {
@@ -4675,7 +4696,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         ///    2.Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
         ///
         ///Please uninstall Presage and install the 32 bit version of 0.9.2.
-        ///OptiKey will attempt  [rest of string was truncated]&quot;;.
+        ///OptiKey will att [rest of string was truncated]&quot;;.
         /// </summary>
         public static string PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE {
             get {
@@ -5943,7 +5964,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Toggle Manual Mode.
+        ///   Looks up a localized string similar to Toggle Mouse Control Mode.
         /// </summary>
         public static string TOGGLE_MANUAL_MODE {
             get {
