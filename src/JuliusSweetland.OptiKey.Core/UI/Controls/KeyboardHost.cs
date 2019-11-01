@@ -30,6 +30,7 @@ using GeorgianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Georgian;
 using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
 using GreekViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek;
 using HebrewViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Hebrew;
+using HungarianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Hungarian;
 using ItalianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Italian;
 using JapaneseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Japanese;
 using KoreanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Korean;
@@ -225,6 +226,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             ? (object)new HebrewViews.SimplifiedAlpha1 { DataContext = Keyboard }
                             : new HebrewViews.Alpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.HungarianHungary:
+                        newContent = new HungarianViews.Alpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.ItalianItaly:
                         newContent = new ItalianViews.Alpha1 { DataContext = Keyboard };
                         break;
@@ -357,6 +361,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new HebrewViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
                             : new HebrewViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.HungarianHungary:
+                        newContent = new HungarianViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.ItalianItaly:
                         newContent = new ItalianViews.ConversationAlpha1 { DataContext = Keyboard };

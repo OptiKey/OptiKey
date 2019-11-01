@@ -35,7 +35,8 @@ namespace JuliusSweetland.OptiKey.Enums
         SpanishSpain,
         TurkishTurkey,
         UkrainianUkraine,
-        UrduPakistan
+        UrduPakistan,
+        HungarianHungary
     }
 
     public static partial class EnumExtensions
@@ -74,6 +75,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return Resources.TURKISH_TURKEY;
                 case Languages.UkrainianUkraine: return Resources.UKRAINIAN_UKRAINE;
                 case Languages.UrduPakistan: return Resources.URDU_PAKISTAN;
+                case Languages.HungarianHungary: return Resources.HUNGARIAN_HUNGARY;
             }
 
             return language.ToString();
@@ -113,6 +115,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return CultureInfo.GetCultureInfo("tr-TR");
                 case Languages.UkrainianUkraine: return CultureInfo.GetCultureInfo("uk-UA");
                 case Languages.UrduPakistan: return CultureInfo.GetCultureInfo("ur-PK");
+                case Languages.HungarianHungary: return CultureInfo.GetCultureInfo("hu-HU");
             }
             return CultureInfo.GetCultureInfo("en-GB");
         }

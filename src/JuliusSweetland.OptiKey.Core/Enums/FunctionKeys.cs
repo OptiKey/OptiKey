@@ -89,6 +89,7 @@ namespace JuliusSweetland.OptiKey.Enums
         GreekGreece,
         HebrewIsrael,
         Home,
+        HungarianHungary,
         IncreaseOpacity,
         Insert,
         ItalianItaly,
