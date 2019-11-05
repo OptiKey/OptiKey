@@ -838,9 +838,6 @@ LK</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : タイプ・クリック・マイク</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>その他</value>
   </data>
@@ -2018,4 +2015,17 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>あなたは既に、もはやダウンロードできますmyGazeクライアントドライバをインストールした場合のVisual対話myGazeのみがサポートされています。あなたはこれらのドライバがインストールされていない場合は、代わりに使用「マウスの位置」を選択して、カーソルを移動しmyGaze EyeMousePlayアプリケーションとの組み合わせでOptikey使用する必要があります。</value>
   </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>コンピュータ制御・通信</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>簡単にコミュニケーション</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>フル・カーソル制御</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>シンボルを用いた通信</value>
+  </data>
+
 </root>

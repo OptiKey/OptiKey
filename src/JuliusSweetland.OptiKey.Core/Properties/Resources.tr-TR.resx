@@ -812,9 +812,6 @@ SEMBOLLER</value>
   <data name="OK" xml:space="preserve">
     <value>TAMAM</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Yaz · Tıkla · Konuş</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Diğer</value>
   </data>
@@ -1602,5 +1599,17 @@ KÜÇÜLT</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Zaten artık indirilebilir myGaze istemci sürücüleri, yükledim eğer Görsel Etkileşim myGaze desteklenir. Eğer bu sürücülerin yüklü olmayan, bunun yerine kullanılması 'fare konumunu' seçin ve imleci hareket ettirmek için myGaze EyeMousePlay uygulaması ile birlikte Optikey kullanmalıdır.</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Bilgisayar Kontrol ve Haberleşme</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Kolay İletişim</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Tam İmleç Denetimi</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Sembollerle Haberleşme</value>
   </data>
 </root>

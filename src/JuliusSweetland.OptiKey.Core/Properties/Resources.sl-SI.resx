@@ -802,9 +802,6 @@ SIMB</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Tipkaj · Klikaj · Govori </value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Drugo</value>
   </data>
@@ -1589,4 +1586,16 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Visual Interaction myGaze je podprta le, če ste že namestili gonilnike strank myGaze, ki niso več na voljo za prenos. Če nimate nameščene ti vozniki, morate izbrati uporaba 'položaj miške' namesto, in uporabo Optikey v kombinaciji z uporabo myGaze EyeMousePlay premakniti kazalec.</value>
   </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Nadzor Computer &amp; Communication</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Enostavno Sporočilo</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Popoln nadzor kazalca</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Komunikacija s simboli</value>
+  </data>
 </root>

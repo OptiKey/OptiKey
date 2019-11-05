@@ -810,9 +810,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Type · Click · Speak</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Altro</value>
   </data>
@@ -1839,4 +1836,16 @@ tipo "DB Browser for SQLite" (che è programma free).</value>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>L'interazione myGaze visiva è supportato solo se hai già installato i driver client myGaze, che non sono più disponibili per il download. Se non si dispone di questi driver installati, è necessario selezionare 'posizione del mouse' uso, invece, e utilizzare Optikey in combinazione con l'applicazione myGaze EyeMousePlay per spostare il cursore.</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Controllo del computer e comunicazione</value>
+</data>
+<data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Comunicazione facile</value>
+</data>
+<data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Controllo completo del cursore</value>
+</data>
+<data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Comunicazione con i simboli</value>
+</data>
 </root>

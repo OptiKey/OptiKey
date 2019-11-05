@@ -838,9 +838,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Pisz· Klikaj · Mów</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Inne</value>
   </data>
@@ -2001,5 +1998,17 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Visual Interaction myGaze jest obsługiwana tylko wtedy, gdy masz już zainstalowane sterowniki klienckie myGaze, które nie są już dostępne do pobrania. Jeśli nie masz zainstalowane te sterowniki, należy wybrać pozycję myszy użyć „” zamiast, i używać Optikey w połączeniu z aplikacją myGaze EyeMousePlay aby przesunąć kursor.</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Komputerowe sterowanie i komunikacja</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>łatwa komunikacja</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Pełne sterowanie kursorem</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Komunikacja z symboli</value>
   </data>
 </root>

@@ -803,10 +803,7 @@ I SÍMBOLS</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
-  </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Escriu · Fes clic · Parla</value>
-  </data>
+  </data>  
   <data name="OTHER" xml:space="preserve">
     <value>Altres</value>
   </data>
@@ -1605,5 +1602,17 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>La Interacció Visual myGaze només s'admet si ja ha instal·lat els controladors de client myGaze, que ja no estan disponibles per a baixar. Si no heu instal·lat aquests conductors, cal seleccionar l'ús 'posició del ratolí' en el seu lloc, i utilitzar Optikey en combinació amb l'aplicació myGaze EyeMousePlay per moure el cursor.</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Control d'ordinador i Comunicació</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>fàcil Comunicació</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Control del cursor completa</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>La comunicació amb els símbols</value>
   </data>
 </root>

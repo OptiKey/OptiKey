@@ -819,9 +819,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Skriv · Klik · Tal</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Andet</value>
   </data>
@@ -1705,4 +1702,16 @@ Türkçe
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Visual Interaction myGaze understøttes kun, hvis du allerede har installeret de myGaze klient drivere, som ikke længere er tilgængelig for download. Hvis du ikke har disse drivere installeret, skal du vælge anvendelse 'museposition' i stedet, og bruge Optikey i kombination med myGaze EyeMousePlay ansøgning for at flytte markøren.</value>
   </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Computer-sikring og kommunikation</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Nem kommunikation</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Fuld Cursor Kontrol</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Kommunikation med symboler</value>
+  </data>
 </root>

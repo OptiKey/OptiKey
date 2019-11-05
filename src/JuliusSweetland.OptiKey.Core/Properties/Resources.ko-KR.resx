@@ -833,9 +833,6 @@ LK</value>
   <data name="OK" xml:space="preserve">
     <value>확인</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Type · Click · Speak</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>기타</value>
   </data>
@@ -1970,5 +1967,17 @@ Optikey는 계속 실행 하려고 하지만 곧 중단 될 수 있습니다.
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>이미 더 이상 다운로드 할 수있는 myGaze 클라이언트 드라이버를 설치 한 경우 시각적 상호 작용 myGaze에만 지원됩니다. 당신이이 드라이버가 설치되어 있지 않은 경우, 당신은 대신 사용 '마우스 위치'를 선택하고 커서를 이동 myGaze EyeMousePlay 응용 프로그램과 함께 Optikey 사용해야합니다.</value>
+  </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>컴퓨터 제어 및 통신</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>간편한 통신</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>전체 커서 제어</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>기호와의 통신</value>
   </data>  
 </root>

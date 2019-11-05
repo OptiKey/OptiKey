@@ -799,9 +799,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Tipkaj · Klikni · Govori</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Ostalo</value>
   </data>
@@ -1607,5 +1604,17 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Vizualni Interakcija myGaze podržana je samo ako ste već instalirali myGaze klijent vozača, koji više nisu dostupna za preuzimanje. Ako nemate ove upravljački programi instalirani, trebali biste odabrati koristiti „miša poziciju”, umjesto, i koristiti Optikey u kombinaciji s myGaze EyeMousePlay prijave za pomicanje kursora.</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Kontrola računala i komunikacija</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Jednostavno Komunikacija</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Potpuno upravljanje pokazivačem</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Komunikacija sa simbolima</value>
   </data>
 </root>

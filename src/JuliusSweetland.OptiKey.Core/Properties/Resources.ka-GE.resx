@@ -838,9 +838,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey: დაბეჭდე . დააწკაპუნე . ილაპარაკე</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>სხვა</value>
   </data>
@@ -2223,4 +2220,17 @@ Optikey შეეცდება გააგრძელოს მუშაო�
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>ვიზუალური ურთიერთქმედება myGaze მხოლოდ მხარი, თუ თქვენ უკვე დაყენებული myGaze კლიენტს მძღოლები, რომლებიც აღარ ხელმისაწვდომია. თუ თქვენ არ გაქვთ ამ დრაივერები დაყენებული, თქვენ უნდა აირჩიოთ გამოყენება 'მაუსის პოზიცია' ნაცვლად და გამოიყენონ Optikey კომბინაციაში myGaze EyeMousePlay განაცხადის გადატანა კურსორი.</value>
   </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>კომპიუტერული კონტროლი და საკომუნიკაციო</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Easy ურთიერთობა</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>სრული კურსორის კონტროლი</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>ურთიერთობა გამოყენებით სიმბოლიკა
+  </value>
+  </data>
 </root>

@@ -839,10 +839,7 @@ LK</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>باشه</value>
-  </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>Optikey: تایپ کنید · کلیک کنید · صحبت کنید</value>
-  </data>
+  </data>  
   <data name="OTHER" xml:space="preserve">
     <value>دیگر</value>
   </data>
@@ -2366,5 +2363,17 @@ Française
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>myGaze تعامل ویژوال تنها پشتیبانی اگر شما در حال حاضر نصب درایور مشتری myGaze، که دیگر برای دانلود موجود است. اگر شما لازم نیست که این درایور نصب شده است، شما باید با استفاده از 'موقعیت ماوس'' را انتخاب کنید به جای آن، و استفاده از Optikey در ترکیب با نرم افزار myGaze EyeMousePlay به حرکت مکان نما.</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>کنترل کامپیوتر و ارتباطات</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>ارتباط آسان</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>کنترل نشانگر کامل</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>ارتباط با استفاده از نمادها</value>
   </data>
 </root>

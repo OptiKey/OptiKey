@@ -839,9 +839,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Kirjoita · Klikkaa · Puhu</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Muu</value>
   </data>
@@ -2368,4 +2365,16 @@ Haluatko, että Optikey asettaa automaattisesti fontiksi Nazil?</value>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Visual Interaction myGaze tuetaan vain, jos olet jo asentanut myGaze asiakkaan ohjaimiin, joita ei enää ladattavissa. Jos sinulla ei ole näitä ajurit on asennettu, kannattaa valita käyttöön 'hiiren sijainti' sijaan, ja käyttää Optikey yhdessä myGaze EyeMousePlay sovelluksen siirtää osoitinta.</value>
   </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Tietokone Ohjaus &amp; Communication</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Helppo Viestintä</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Täysi Kohdistimen ohjaus</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Viestintä symbolien</value>
+  </data>
 </root>

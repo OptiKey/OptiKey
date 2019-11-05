@@ -844,9 +844,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>אישור</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>Optikey: הקלד · לחץ · דבר</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>אחר</value>
   </data>
@@ -2376,4 +2373,16 @@ Would you like Optikey to automatically set the font to Nazli?</value>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>MyGaze האינטראקציה החזותי נתמך רק אם כבר התקין את מנהלי הלקוח myGaze, אשר כבר אינם זמינות להורדה. אם אין לך נהגים אלה מותקנים, אתה צריך לבחור השימוש עמדת העכבר 'במקום, ולהשתמש Optikey בשילוב עם יישום myGaze EyeMousePlay כדי להזיז את הסמן.</value>
   </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>בקרת מחשב ותקשורת</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>תקשורת קלה</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>בקרת סמן מלאה</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>תקשורת עם סמלים</value>
+  </data>
 </root>

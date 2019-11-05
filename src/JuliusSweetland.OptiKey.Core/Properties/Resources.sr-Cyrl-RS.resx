@@ -818,9 +818,6 @@ LK</value>
   <data name="OK" xml:space="preserve">
     <value>ОК</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Куцај · Кликни · Говори</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Остало</value>
   </data>
@@ -2069,5 +2066,17 @@ Region</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Висуал Интеракција миГазе је подржан само ако сте већ инсталирали клијент драјвере миГазе, које више нису доступни за преузимање. Ако немате те возачи инсталиран, треба да одаберете користити 'позицију миша' уместо тога, и користити Optikey у комбинацији са применом миГазе ЕиеМоусеПлаи за померање курсора.</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Компјутерска контрола и комуникације</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Eаси Комуникација</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Фулл Курсор контрола</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Комуникација са симболима</value>
   </data>
 </root>

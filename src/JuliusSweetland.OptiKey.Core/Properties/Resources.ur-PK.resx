@@ -840,9 +840,6 @@ LK (ہندسوں کو تالا لگانے کی کلید)</value>
   <data name="OK" xml:space="preserve">
     <value>ٹھیک ہے</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>آپٹیکی: ٹائپ کریں · کلک کریں . بولیں</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>دیگر</value>
   </data>
@@ -2356,5 +2353,17 @@ Française
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>آپ نے پہلے ہی myGaze کلائنٹ ڈرائیوروں، جس میں اب کوئی ڈاؤن لوڈ کے لئے دستیاب ہیں نصب ہے تو بصری تعامل myGaze صرف حمایت کی ہے. اگر آپ ان کے ڈرائیوروں نصب نہیں ہے تو، آپ کو استعمال کے 'ماؤس پوزیشن' کو منتخب کرنا چاہئے بجائے، اور کرسر کو منتقل کرنے myGaze EyeMousePlay درخواست کے ساتھ مجموعہ میں Optikey استعمال کرتے ہیں.</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>کمپیوٹر کنٹرول اور مواصلاتی</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>آرام سے مواصلات</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>مکمل کرسر کنٹرول</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>نشان کے ساتھ مواصلات</value>
   </data>
 </root>

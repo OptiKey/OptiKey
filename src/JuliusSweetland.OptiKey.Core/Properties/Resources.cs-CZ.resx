@@ -1095,9 +1095,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey : Piš · Klikej · Mluv</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Ostatní</value>
   </data>
@@ -1616,4 +1613,16 @@ Kontrolu aktualizacií můžete vypnout v nastavení (ALT + M).</value>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Visual Interaction myGaze je podporována pouze v případě, že jste již nainstalovali klientských ovladačů myGaze, které již nejsou k dispozici ke stažení. Pokud nechcete mít nainstalovány tyto ovladače, měli byste zvolit použití ‚pozici myši‘ místo, a použití Optikey v kombinaci s aplikací myGaze EyeMousePlay pro pohyb kurzoru.</value>
   </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Počítačové řízení a komunikace</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Snadná komunikace</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Úplné řízení kurzoru</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Komunikace pomocí Symboly</value>
+  </data>
 </root>
