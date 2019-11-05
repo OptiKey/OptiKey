@@ -275,7 +275,7 @@ Wybierz Nie aby zamknąć i naprawić lub skopiować plik ustawień użytkownika
     <value>O o! Plik ustawień użytkownika wygląda na zniszczony. </value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Zła wiadomośc- optikey musi zostać zamknięty. 
+    <value>Zła wiadomośc- Optikey musi zostać zamknięty. 
 
 E-mail zawierający informacje na temat tego co się stało byłby bardzo pomocny:crash@optikey.org
 
@@ -603,7 +603,7 @@ KURSOR</value>
     <value>Konsola zarządzania: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Konsola Zarządzania optikey</value>
+    <value>Konsola Zarządzania Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maksymalna liczba dopasowań słownika:</value>
@@ -1190,7 +1190,7 @@ STRZAŁKA</value>
 Możesz wyłączyć sprawdzanie dostępnych aktualizacji z konsoli (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Czy mogę zrestartować optikey?</value>
+    <value>Czy mogę zrestartować Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Wersja: {0}</value>
@@ -1917,7 +1917,7 @@ w Ustawieniach (ALT + M)</value>
     <value>Ścieżka do pliku .obz zawierającego pierwszą stronę CommuniKate</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>Zainstalowano 64-bitową wersję Presage (optikey wspiera jedynie wersję 32-bitową), Presage został przeniesiony, usunięty lub jest uszkodzony.
+    <value>Zainstalowano 64-bitową wersję Presage (Optikey wspiera jedynie wersję 32-bitową), Presage został przeniesiony, usunięty lub jest uszkodzony.
 Odinstaluj Presage i zainstaluj  edycję 32-bitową w wersji 0.9.2
 Optikey podejmie próbę dalszego działania, ale nie będzie ono stabilne 
 Przy kolejnym starcie aplikacji metoda predykcji zostanie zmieniona na NGram.</value>
@@ -1955,7 +1955,7 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
     <value>LITERY</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>Wystąpił błąd podczas powiększania. Wyłącz opcję powiększenia i skontaktuj się z działem wsparcia optikey w celu uzyskania dalszej pomocy.</value>
+    <value>Wystąpił błąd podczas powiększania. Wyłącz opcję powiększenia i skontaktuj się z działem wsparcia Optikey w celu uzyskania dalszej pomocy.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Błąd:</value>
@@ -1988,18 +1988,18 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
       <value>Wymaga ITU Gaze Tracking biblioteka, która jest szkieletem dla open source śledzenia za pomocą off-the-shelf składników, takich jak kamery internetowe i kamer wideo oka.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Jeśli masz zamiar użyć optikey okiem trackera Irisbond Duo następnie upewnij się, że masz zainstalowane sterowniki Irisbond Duo. Można je pobrać z https://www.irisbond.com/products/downloads.</value>
+      <value>Jeśli masz zamiar użyć Optikey okiem trackera Irisbond Duo następnie upewnij się, że masz zainstalowane sterowniki Irisbond Duo. Można je pobrać z https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>W tym trybie będzie optikey użyć kursora myszy jako wejście zamiast mówić bezpośrednio do śledzenia oczu. Może chcesz to jeśli testujesz optikey się, lub jeśli chcesz używać go z alternatywnego urządzenia wejściowego, takich jak mysz głowy ani nie tracker oko w tej liście. </value>
+      <value>W tym trybie będzie Optikey użyć kursora myszy jako wejście zamiast mówić bezpośrednio do śledzenia oczu. Może chcesz to jeśli testujesz Optikey się, lub jeśli chcesz używać go z alternatywnego urządzenia wejściowego, takich jak mysz głowy ani nie tracker oko w tej liście. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Opcja ta będzie współpracować z dowolnym Tobii Gaming eye tracker (4c, EyeX, Alienware, Steelseries, etc)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Aby korzystać Optikey z Tobii wspomagających eye tracker, albo trzeba nową wersję Tobii Windows Control lub silnika Tobii Eye Tracking. Jeśli musisz używać starej wersji aplikacji Tobii Windows Control (Tobii Gaze Interaction Software), a następnie trzeba będzie kontrolować optikey użyciu pozycji myszy zamiast. </value>
+      <value>Aby korzystać Optikey z Tobii wspomagających eye tracker, albo trzeba nową wersję Tobii Windows Control lub silnika Tobii Eye Tracking. Jeśli musisz używać starej wersji aplikacji Tobii Windows Control (Tobii Gaze Interaction Software), a następnie trzeba będzie kontrolować Optikey użyciu pozycji myszy zamiast. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Visual Interaction myGaze jest obsługiwana tylko wtedy, gdy masz już zainstalowane sterowniki klienckie myGaze, które nie są już dostępne do pobrania. Jeśli nie masz zainstalowane te sterowniki, należy wybrać pozycję myszy użyć „” zamiast, i używać optikey w połączeniu z aplikacją myGaze EyeMousePlay aby przesunąć kursor.</value>
+      <value>Visual Interaction myGaze jest obsługiwana tylko wtedy, gdy masz już zainstalowane sterowniki klienckie myGaze, które nie są już dostępne do pobrania. Jeśli nie masz zainstalowane te sterowniki, należy wybrać pozycję myszy użyć „” zamiast, i używać Optikey w połączeniu z aplikacją myGaze EyeMousePlay aby przesunąć kursor.</value>
   </data>
 </root>

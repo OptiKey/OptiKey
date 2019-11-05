@@ -268,7 +268,7 @@
     <value>حالت گفتگو</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey مشخص کرده است که فایل تنظیمات کاربر شما خراب شده است و باید تعمیر شود. این کار با بازگرداندن یک نسخه قدیمی یا نسخه پیش فرض انجام می شود اگر این امکان پذیر نیست.
+    <value>Optikey مشخص کرده است که فایل تنظیمات کاربر شما خراب شده است و باید تعمیر شود. این کار با بازگرداندن یک نسخه قدیمی یا نسخه پیش فرض انجام می شود اگر این امکان پذیر نیست.
 
 برای تنظیم مجدد تنظیمات کاربر و راه اندازی مجدد روی بله کلیک کنید.
 
@@ -278,7 +278,7 @@
     <value>اوه اوه! به نظر می رسد فایل تنظیمات کاربر خراب شده باشد.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>خبر بد - OptiKey با خود به مشکل برخورده است و باید بسته شود. 
+    <value>خبر بد - Optikey با خود به مشکل برخورده است و باید بسته شود. 
 ایمیل با جزئیات مربوط به آنچه اتفاق افتاده بسیار مفید خواهد بود: crash@optikey.org
 
 برای این دردسر متأسفیم.</value>
@@ -603,7 +603,7 @@ Dansk
     <value>کنسول مدیریت: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>کنسول مدیریت OptiKey</value>
+    <value>کنسول مدیریت Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>حداکثر تعداد واژگان لغتنامه:</value>
@@ -841,7 +841,7 @@ LK</value>
     <value>باشه</value>
   </data>
   <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey: تایپ کنید · کلیک کنید · صحبت کنید</value>
+    <value>Optikey: تایپ کنید · کلیک کنید · صحبت کنید</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>دیگر</value>
@@ -933,7 +933,7 @@ SCR</value>
     <value>سرویس(های) صوتی و/یا لغتنامه به پنجره مدیریت دستور لازم را نداده/نداده اند.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey برای اعمال تغییرات شما نیاز به راه اندازی مجدد دارد. لطفا روی باشه کلیک کنید تا با راه اندازی مجدد ادامه یابد، یا لغو برای رد تغییرات خود</value>
+    <value>Optikey برای اعمال تغییرات شما نیاز به راه اندازی مجدد دارد. لطفا روی باشه کلیک کنید تا با راه اندازی مجدد ادامه یابد، یا لغو برای رد تغییرات خود</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>بازگرداندن</value>
@@ -1192,7 +1192,7 @@ LK</value>
 شما می توانید بررسی های بروزرسانی را از کنسول مدیریت غیرفعال کنید (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>ممکن است OptiKey را مجدد راه اندازی کنم؟</value>
+    <value>ممکن است Optikey را مجدد راه اندازی کنم؟</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>نسخه: {0}</value>
@@ -1219,7 +1219,7 @@ LK</value>
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>کلمات</value>
@@ -1962,12 +1962,12 @@ Slovenčina
     <value>موقعیت صفحه بالای فایل .obz کیبورد CommuniKate:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>OptiKey قادر به برقراری ارتباط با Pressage نبود. چند دلیل ممکن وجود دارد:
+    <value>Optikey قادر به برقراری ارتباط با Pressage نبود. چند دلیل ممکن وجود دارد:
 1. محل DBFILENAME مشخص شده در فایل presage.xml (واقع در C:\Users\USER_NAME\.presage) وجود ندارد - لطفا این را بررسی و اصلاح کنید (یا حذف یا نصب مجدد Presage).
- 2. یک نسخه 64 بیتی Presage نصب شده است (OptiKey تنها نسخه ی 32 بیتی را پشتیبانی می کند)، یا فایل های Presage منتقل، حذف، یا خراب شده است.
+ 2. یک نسخه 64 بیتی Presage نصب شده است (Optikey تنها نسخه ی 32 بیتی را پشتیبانی می کند)، یا فایل های Presage منتقل، حذف، یا خراب شده است.
 
 لطفا Presage را  حذف و نسخه32 بیتی 0.9.2 را نصب کنید .
-OptiKey سعی خواهد کرد تا ادامه یابد، اما احتمال زیادی است که بزودی از کار بیافتد. روش پیشبینی به NGram تغییر خواهد کرد تا از، از کار افتادن در اجرای بعدی جلوگیری شود.</value>
+Optikey سعی خواهد کرد تا ادامه یابد، اما احتمال زیادی است که بزودی از کار بیافتد. روش پیشبینی به NGram تغییر خواهد کرد تا از، از کار افتادن در اجرای بعدی جلوگیری شود.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
     <value>مشکلی با پیشبینی "Presage" رخ داده</value>
@@ -2003,7 +2003,7 @@ OptiKey سعی خواهد کرد تا ادامه یابد، اما احتمال 
     <value>حروف</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>یک خطا در طول فرایند بزرگنمایی رخ داده است. لطفاً بزرگنمایی را غیرفعال کنید و برای پشتیبانی بیشتر با OptiKey تماس بگیرید.</value>
+    <value>یک خطا در طول فرایند بزرگنمایی رخ داده است. لطفاً بزرگنمایی را غیرفعال کنید و برای پشتیبانی بیشتر با Optikey تماس بگیرید.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>خطا:</value>
@@ -2254,10 +2254,10 @@ Française
     <value>راه اندازی مجدد</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>آیا شما کاملا مطمئن هستید که می خواهید OptiKey را دوباره راه اندازی کنید؟</value>
+    <value>آیا شما کاملا مطمئن هستید که می خواهید Optikey را دوباره راه اندازی کنید؟</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>آیا مطمئن هستید که می خواهید OptiKey را دوباره راه اندازی کنید؟</value>
+    <value>آیا مطمئن هستید که می خواهید Optikey را دوباره راه اندازی کنید؟</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>کیبورد پویا</value>
@@ -2312,12 +2312,12 @@ Française
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
     <value>ما تغییر زبان رابط کاربری را به اردو برای اطمینان از جهت تایپ متن اردو از راست به چپ در چرک نویس توصیه می کنیم.
-آیا مایل هستید تا OptiKey زبان رابط کاربری را به صورت خودکار به اردو تنظیم کنید؟</value>
+آیا مایل هستید تا Optikey زبان رابط کاربری را به صورت خودکار به اردو تنظیم کنید؟</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
-    <value>ما تغییر فونت مورد استفاده در OptiKey را به فونتی که کاملاً با اردو سازگار است را توصیه می کنیم. 
+    <value>ما تغییر فونت مورد استفاده در Optikey را به فونتی که کاملاً با اردو سازگار است را توصیه می کنیم. 
 اگر یک فونت مورد استفاده قرار گرفته که مخصوص اردو نیست، در نتیجه متن و به خصوص اعداد ممکن است نادرست نمایش داده شود.
-آیا می خواهید OptiKey به صورت اتومات فونت را به Nafees Web Naskh تنظیم کند؟</value>
+آیا می خواهید Optikey به صورت اتومات فونت را به Nafees Web Naskh تنظیم کند؟</value>
   </data>
   <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
     <value>یک فونت مخصوص زبان توصیه شده است</value>
@@ -2330,12 +2330,12 @@ Française
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
     <value>ما تغییر زبان رابط کاربری به فارسی را برای اطمینان از اینکه متن فارسی تایپ شده در چرک نویس از راست به چپ جریان دارد توصیه میکنیم.
-آیا مایل هستید OptiKey به صورت خودکار رابط کاربری را به فارسی تنظیم کند؟</value>
+آیا مایل هستید Optikey به صورت خودکار رابط کاربری را به فارسی تنظیم کند؟</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
-    <value>ما تغییر فونت مورد استفاده در OptiKey را به فونتی که کاملاً با فارسی سازگار است توصیه می کنیم.
+    <value>ما تغییر فونت مورد استفاده در Optikey را به فونتی که کاملاً با فارسی سازگار است توصیه می کنیم.
 اگر فونتی که استفاده می شود فارسی نباشد در نتیجه امکان دارد متون و مخصوصاً اعداد به طور غلط نمایش داده شود.
-آیا مایل هستید OptiKey به صورت خودکار فونت را به Nazli تنظیم کند؟</value>
+آیا مایل هستید Optikey به صورت خودکار فونت را به Nazli تنظیم کند؟</value>
   </data>
   <data name="PERSIAN_IRAN" xml:space="preserve">
     <value>Persian (Iran) / فارسی (ایرانی)</value>
@@ -2353,18 +2353,18 @@ Française
       <value>این امر مستلزم ITU نگاه ردیابی کتابخانه است که چارچوبی برای چشم منبع باز ردیابی با استفاده از خارج از قفسه قطعات، مانند وب کم و دوربین فیلمبرداری.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>اگر شما قصد استفاده از optikey با ردیاب چشم Irisbond اواز یا موسیقی دو پس لطفا مطمئن شوید که شما باید درایور Irisbond اواز یا موسیقی دو نصب شده است. این را می توان از https://www.irisbond.com/products/downloads دریافت کنید.</value>
+      <value>اگر شما قصد استفاده از Optikey با ردیاب چشم Irisbond اواز یا موسیقی دو پس لطفا مطمئن شوید که شما باید درایور Irisbond اواز یا موسیقی دو نصب شده است. این را می توان از https://www.irisbond.com/products/downloads دریافت کنید.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>در این حالت، optikey ماوس را به عنوان ورودی به جای صحبت کردن به طور مستقیم به یک ردیاب چشم استفاده کنید. شما ممکن است این می خواهید اگر شما در حال آزمایش optikey کردن، و یا اگر شما می خواهید به استفاده از آن با یک دستگاه ورودی های جایگزین مانند یک موش سر و یا هر ردیاب چشم در این لیست است. </value>
+      <value>در این حالت، Optikey ماوس را به عنوان ورودی به جای صحبت کردن به طور مستقیم به یک ردیاب چشم استفاده کنید. شما ممکن است این می خواهید اگر شما در حال آزمایش Optikey کردن، و یا اگر شما می خواهید به استفاده از آن با یک دستگاه ورودی های جایگزین مانند یک موش سر و یا هر ردیاب چشم در این لیست است. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>این گزینه با هر Tobii بازی ردیاب چشم (4C، EyeX ها، Alienware، استیل، و غیره) کار خواهد کرد</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>ببه منظور استفاده از این نرم افزار Optikey با ردیاب چشم Tobii، شما هم نیاز به نسخه جدید Tobii Windows Control و یا موتور Tobii ردیابی چشم. اگر شما نیاز به استفاده از نسخه های قدیمی نرم Tobii Windows Control (Tobii Gaze Interaction System)، سپس شما نیاز به کنترل optikey با استفاده از موقعیت ماوس به جای. </value>
+      <value>ببه منظور استفاده از این نرم افزار Optikey با ردیاب چشم Tobii، شما هم نیاز به نسخه جدید Tobii Windows Control و یا موتور Tobii ردیابی چشم. اگر شما نیاز به استفاده از نسخه های قدیمی نرم Tobii Windows Control (Tobii Gaze Interaction System)، سپس شما نیاز به کنترل Optikey با استفاده از موقعیت ماوس به جای. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>myGaze تعامل ویژوال تنها پشتیبانی اگر شما در حال حاضر نصب درایور مشتری myGaze، که دیگر برای دانلود موجود است. اگر شما لازم نیست که این درایور نصب شده است، شما باید با استفاده از 'موقعیت ماوس'' را انتخاب کنید به جای آن، و استفاده از optikey در ترکیب با نرم افزار myGaze EyeMousePlay به حرکت مکان نما.</value>
+      <value>myGaze تعامل ویژوال تنها پشتیبانی اگر شما در حال حاضر نصب درایور مشتری myGaze، که دیگر برای دانلود موجود است. اگر شما لازم نیست که این درایور نصب شده است، شما باید با استفاده از 'موقعیت ماوس'' را انتخاب کنید به جای آن، و استفاده از Optikey در ترکیب با نرم افزار myGaze EyeMousePlay به حرکت مکان نما.</value>
   </data>
 </root>

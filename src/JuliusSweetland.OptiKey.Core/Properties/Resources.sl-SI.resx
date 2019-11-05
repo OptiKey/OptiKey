@@ -272,7 +272,7 @@ Klikni "Ne" za zaprtje, tako da voste lahko ročno popravili ali skopirali vašo
     <value>O, ne! Izgleda, da je datoteka z uporabniškimi nastavitvami poškodovana.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Slaba novica - optikey se je sesula in se mora ponovno zagnati.
+    <value>Slaba novica - Optikey se je sesula in se mora ponovno zagnati.
 
 Priporočamo se za e-pošto s podrbonostmi, kaj se je zgodilo na:
 crash@optikey.org
@@ -568,7 +568,7 @@ KAZALEC</value>
     <value>Upravljalno okno: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Upravljalno okno optikey</value>
+    <value>Upravljalno okno Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Največje število zadetkov slovarja:</value>
@@ -895,7 +895,7 @@ ZADNJO</value>
     <value>Zvok in/ali Slovar niso omogočeni v upravljalnem oknu.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Za upoštevanje sprememb se mora optikey ponovno zagnati.
+    <value>Za upoštevanje sprememb se mora Optikey ponovno zagnati.
 Prosimo, pritisnite OK za nadaljevanje ponovnega zagona ali PREKLIČI za zavrnitev sprememb.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1131,7 +1131,7 @@ PUŠČICA</value>
 Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Lahko ponovno zaženem optikey?</value>
+    <value>Lahko ponovno zaženem Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Različica: {0}</value>
@@ -1575,18 +1575,18 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
       <value>To zahteva ITU pogled sledenje knjižnice, ki je okvir za odprtokodne oko sledenje uporabo off-the-polici komponent, kot so spletne kamere in videokamere.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Če nameravate uporabljati optikey z oči tracker Irisbond Duo potem se prepričajte, da imate gonilnike Irisbond Duo namestili. Te lahko prenesete s https://www.irisbond.com/products/downloads.</value>
+      <value>Če nameravate uporabljati Optikey z oči tracker Irisbond Duo potem se prepričajte, da imate gonilnike Irisbond Duo namestili. Te lahko prenesete s https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>V tem načinu bo optikey uporabite miško kot vhod, namesto da bi govoril neposredno v sledilnik oči. Morda boste to želeli, če ste testiranje optikey ven, ali če želite, da ga uporabljate z alternativnim vhodne naprave, kot so glave miško ali katere koli oči tracker ni na tem seznamu. </value>
+      <value>V tem načinu bo Optikey uporabite miško kot vhod, namesto da bi govoril neposredno v sledilnik oči. Morda boste to želeli, če ste testiranje Optikey ven, ali če želite, da ga uporabljate z alternativnim vhodne naprave, kot so glave miško ali katere koli oči tracker ni na tem seznamu. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Ta možnost bo delo s katero koli Tobii Gaming oči tracker (4C, EyeX, Alienware, SteelSeries, itd)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Za uporabo Optikey s pomožno oči tracker, ali boste potrebovali novo različico nadzor Tobii Windows Control, ali motor Tobii sledenje oči. Če želite uporabljati staro različico aplikacije za nadzor Tobii Windows Control (Tobii Gaze Interaction Software), potem boste morali za nadzor optikey namesto uporabe položaj miške.</value>
+      <value>Za uporabo Optikey s pomožno oči tracker, ali boste potrebovali novo različico nadzor Tobii Windows Control, ali motor Tobii sledenje oči. Če želite uporabljati staro različico aplikacije za nadzor Tobii Windows Control (Tobii Gaze Interaction Software), potem boste morali za nadzor Optikey namesto uporabe položaj miške.</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Visual Interaction myGaze je podprta le, če ste že namestili gonilnike strank myGaze, ki niso več na voljo za prenos. Če nimate nameščene ti vozniki, morate izbrati uporaba 'položaj miške' namesto, in uporabo optikey v kombinaciji z uporabo myGaze EyeMousePlay premakniti kazalec.</value>
+      <value>Visual Interaction myGaze je podprta le, če ste že namestili gonilnike strank myGaze, ki niso več na voljo za prenos. Če nimate nameščene ti vozniki, morate izbrati uporaba 'položaj miške' namesto, in uporabo Optikey v kombinaciji z uporabo myGaze EyeMousePlay premakniti kazalec.</value>
   </data>  
 </root>

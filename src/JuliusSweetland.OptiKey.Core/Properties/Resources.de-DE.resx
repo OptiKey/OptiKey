@@ -273,7 +273,7 @@ Klicken Sie Nein wenn sie selbst die Datei reparieren oder kopieren wollen.</val
     <value>Oh ha! Die Benutzereinstellungsdatei sieht beschädigt aus.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Schlechte Nachrichten - optikey ist gestürzt und muss geschlossen werden.
+    <value>Schlechte Nachrichten - Optikey ist gestürzt und muss geschlossen werden.
 
 Eine email mit Angaben was passiert ist wäre sehr hilfreich: crash@optikey.org
 
@@ -1160,7 +1160,7 @@ HOCH</value>
 Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT + M) abschalten.</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Darf Ich optikey neustarten?</value>
+    <value>Darf Ich Optikey neustarten?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version: {0}</value>
@@ -1637,18 +1637,18 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
       <value>Dies erfordert die ITU-Tracking-Anstarren-Bibliothek, die ein Rahmen für die Open-Source-Auge ist off-the-shelf-Komponenten-Tracking verwenden, wie Webcams und Videokameras.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Wenn Sie verwenden optikey mit dem Irisbond Duo Eye-Tracker planen dann stellen Sie Sie bitte die Irisbond Duo Treiber installiert. Diese können von https://www.irisbond.com/products/downloads heruntergeladen werden.</value>
+      <value>Wenn Sie verwenden Optikey mit dem Irisbond Duo Eye-Tracker planen dann stellen Sie Sie bitte die Irisbond Duo Treiber installiert. Diese können von https://www.irisbond.com/products/downloads heruntergeladen werden.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>In diesem Modus wird optikey den Mauszeiger als Eingabe verwenden, anstatt direkt mit einem Eye-Tracker zu reden. Sie könnten dies wünschen, wenn Sie optikey aus sind testen, oder wenn Sie wollen, dass es mit einer alternativen Eingabegerät verwenden, wie beispielsweise eine Kopfmaus oder einem Eye-Tracker nicht in dieser Liste. Weitere Informationen finden Sie www.optikey.org/help</value>
+      <value>In diesem Modus wird Optikey den Mauszeiger als Eingabe verwenden, anstatt direkt mit einem Eye-Tracker zu reden. Sie könnten dies wünschen, wenn Sie Optikey aus sind testen, oder wenn Sie wollen, dass es mit einer alternativen Eingabegerät verwenden, wie beispielsweise eine Kopfmaus oder einem Eye-Tracker nicht in dieser Liste. Weitere Informationen finden Sie www.optikey.org/help</value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Diese Option wird mit jedem Tobii Eyetracker Gaming arbeiten (4C, EyeX, Alienware, Steel, usw.)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>So verwenden Optikey mit einem unterstützenden Eye-Tracker, benötigen Sie entweder die neue Version von Tobii Windows Control oder die Tobii Eye Tracking-Engine. Wenn Sie die alte Version der Tobii Windows Control (Tobii Gaze Interaction Software) verwenden müssen, dann müssen Sie optikey mit Mausposition statt steuern. </value>
+      <value>So verwenden Optikey mit einem unterstützenden Eye-Tracker, benötigen Sie entweder die neue Version von Tobii Windows Control oder die Tobii Eye Tracking-Engine. Wenn Sie die alte Version der Tobii Windows Control (Tobii Gaze Interaction Software) verwenden müssen, dann müssen Sie Optikey mit Mausposition statt steuern. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Die visuelle Interaktion myGaze wird nur dann unterstützt, wenn Sie bereits die myGaze Client-Treiber installiert haben, die nicht mehr zum Download zur Verfügung. Wenn Sie nicht über diese Treiber installiert haben, sollten Sie den Einsatz ‚Mausposition‘ statt, wählen und in Kombination mit der Anwendung myGaze EyeMousePlay verwenden optikey, um den Cursor zu bewegen.</value>
+      <value>Die visuelle Interaktion myGaze wird nur dann unterstützt, wenn Sie bereits die myGaze Client-Treiber installiert haben, die nicht mehr zum Download zur Verfügung. Wenn Sie nicht über diese Treiber installiert haben, sollten Sie den Einsatz ‚Mausposition‘ statt, wählen und in Kombination mit der Anwendung myGaze EyeMousePlay verwenden Optikey, um den Cursor zu bewegen.</value>
   </data>  
 </root>

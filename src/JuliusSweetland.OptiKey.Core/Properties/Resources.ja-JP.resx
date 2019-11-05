@@ -274,7 +274,7 @@
     <value>ユーザー設定ファイルが破損しています。</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>残念なお知らせ‐optikeyは停止しました。
+    <value>残念なお知らせ‐Optikeyは停止しました。
 
 起こったことの詳細を報告していただけると助かります:
 crash@optikey.org
@@ -931,7 +931,7 @@ SCR</value>
     <value>オーディオ　および/または　辞書機能()は管理ウィンドウアクションに提供されませんでした。</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>変更を適用するにはoptikey の再起動が必要です。
+    <value>変更を適用するにはOptikey の再起動が必要です。
 再起動する場合はOKを、変更を破棄する場合はCANCELをクリックしてください。</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1932,7 +1932,7 @@ Slovenčina
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
     <value>日本語版は利用できません
-Either a 64 bit version of Presage is installed (optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+Either a 64 bit version of Presage is installed (Optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
 Please uninstall Presage and install the 32 bit version of 0.9.2.
 Optikey will attempt to continue, but there is a good chance it will crash shortly.
 The prediction method will be changed to NGram to prevent a crash on next run.</value>
@@ -1971,7 +1971,7 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
     <value>文字入力</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>倍率変更中にエラーが発生しました。倍率変更を中止し、optikeyチームへご連絡ください。</value>
+    <value>倍率変更中にエラーが発生しました。倍率変更を中止し、Optikeyチームへご連絡ください。</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>エラー:</value>
@@ -2004,18 +2004,18 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
       <value>これは、ウェブカメラやビデオカメラなどの既製コンポーネントを用いて、オープンソースのアイトラッキングのためのフレームワークであるITU視線トラッキングライブラリを必要とします。</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>あなたはIrisbondデュオアイトラッカーでoptikey使用する予定の場合、あなたはIrisbondデュオドライバがインストールされていることを確認してください。これらは、https://www.irisbond.com/products/downloadsからダウンロードすることができます。</value>
+      <value>あなたはIrisbondデュオアイトラッカーでOptikey使用する予定の場合、あなたはIrisbondデュオドライバがインストールされていることを確認してください。これらは、https://www.irisbond.com/products/downloadsからダウンロードすることができます。</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>このモードでは、optikeyはアイトラッカーに直接話すのではなく、入力として、マウスカーソルを使用します。あなたがoptikeyをテストしている場合は、これをお勧めします、またはあなたは、このようなヘッドマウスなどの代替入力デバイス、または任意のアイトラッカーではない、このリストには、それを使用したい場合。</value>
+      <value>このモードでは、Optikeyはアイトラッカーに直接話すのではなく、入力として、マウスカーソルを使用します。あなたがOptikeyをテストしている場合は、これをお勧めします、またはあなたは、このようなヘッドマウスなどの代替入力デバイス、または任意のアイトラッカーではない、このリストには、それを使用したい場合。</value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>このオプションは、任意のトビーゲームアイトラッカー（4C、EyeX、エイリアンウェア、SteelSeriesの、など）で動作します</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>支援アイトラッカーでOptikey使用するには、次のいずれかは、Windows Control、または Tobii アイトラッキングエンジンの新しいバージョンが必要です。あなたは（Tobii Gaze Interaction Software）、Tobii Windows Control アプリケーションの古いバージョンを使用する必要がある場合は、代わりにマウスの位置を使用してoptikey制御する必要があります。</value>
+      <value>支援アイトラッカーでOptikey使用するには、次のいずれかは、Windows Control、または Tobii アイトラッキングエンジンの新しいバージョンが必要です。あなたは（Tobii Gaze Interaction Software）、Tobii Windows Control アプリケーションの古いバージョンを使用する必要がある場合は、代わりにマウスの位置を使用してOptikey制御する必要があります。</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>あなたは既に、もはやダウンロードできますmyGazeクライアントドライバをインストールした場合のVisual対話myGazeのみがサポートされています。あなたはこれらのドライバがインストールされていない場合は、代わりに使用「マウスの位置」を選択して、カーソルを移動しmyGaze EyeMousePlayアプリケーションとの組み合わせでoptikey使用する必要があります。</value>
+      <value>あなたは既に、もはやダウンロードできますmyGazeクライアントドライバをインストールした場合のVisual対話myGazeのみがサポートされています。あなたはこれらのドライバがインストールされていない場合は、代わりに使用「マウスの位置」を選択して、カーソルを移動しmyGaze EyeMousePlayアプリケーションとの組み合わせでOptikey使用する必要があります。</value>
   </data>  
 </root>

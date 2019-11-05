@@ -275,7 +275,7 @@ Clica No per tancar de manera que es pugui reparar  de forma manual o copiar el 
     <value>Oh-Oh! El fitxer de configuració d'usuari sembla que està malmès.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Les males notícies - optikey ha ensopegat amb els seus peus i ha de tancar.
+    <value>Les males notícies - Optikey ha ensopegat amb els seus peus i ha de tancar.
 
 Seria molt útil rebre un correu electrònic amb els detalls del que ha passat: crash@optikey.org
 
@@ -571,7 +571,7 @@ MAGNÈTIC</value>
     <value>Consola d'administració: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Consola d'administració d'optikey</value>
+    <value>Consola d'administració d'Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Nombre màxim de coincidències al diccionari:</value>
@@ -1133,7 +1133,7 @@ AMUNT</value>
 Pots desactivar la comprovació d'actualitzacions des de la Consola d'administració (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Puc reiniciar optikey?</value>
+    <value>Puc reiniciar Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versió: {0}</value>
@@ -1592,18 +1592,18 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
       <value>Això requereix que el Gaze biblioteca de seguiment UIT, que és un marc per ull de codi obert de seguiment utilitzant components off-the-shelf, com ara càmeres web i càmeres de vídeo.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Si intenteu fer ús optikey amb el rastrejador ocular Irisbond Duo, si us plau segur de tindre els controladors instal·lats Irisbond Duo. Aquests es poden descarregar des https://www.irisbond.com/products/downloads.</value>
+      <value>Si intenteu fer ús Optikey amb el rastrejador ocular Irisbond Duo, si us plau segur de tindre els controladors instal·lats Irisbond Duo. Aquests es poden descarregar des https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>En aquesta manera, optikey farà servir el cursor del ratolí com a entrada en lloc de parlar directament a un seguidor d'ulls. És possible que vulgueu això si s'està provant optikey a terme, o desitja utilitzar-lo amb un dispositiu d'entrada alternatiu, com un ratolí de cap o qualsevol rastrejador ocular no en aquesta llista. </value>
+      <value>En aquesta manera, Optikey farà servir el cursor del ratolí com a entrada en lloc de parlar directament a un seguidor d'ulls. És possible que vulgueu això si s'està provant Optikey a terme, o desitja utilitzar-lo amb un dispositiu d'entrada alternatiu, com un ratolí de cap o qualsevol rastrejador ocular no en aquesta llista. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Aquesta opció funciona amb qualsevol Eyetracker de Tobii joc (4C, EyeX, Alienware, SteelSeries, etc.)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Per utilitzar Optikey amb un rastrejador ocular d'assistència, ja sigui que necessita la nova versió de Tobii Windows Control, o el motor de Tobii Eye Tracking. Si cal utilitzar la versió antiga de l'aplicació Tobii Windows Control (Tobii Gaze Interaction Software), aleshores us farà falta per controlar optikey utilitzant la posició del ratolí en lloc. </value>
+      <value>Per utilitzar Optikey amb un rastrejador ocular d'assistència, ja sigui que necessita la nova versió de Tobii Windows Control, o el motor de Tobii Eye Tracking. Si cal utilitzar la versió antiga de l'aplicació Tobii Windows Control (Tobii Gaze Interaction Software), aleshores us farà falta per controlar Optikey utilitzant la posició del ratolí en lloc. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>La Interacció Visual myGaze només s'admet si ja ha instal·lat els controladors de client myGaze, que ja no estan disponibles per a baixar. Si no heu instal·lat aquests conductors, cal seleccionar l'ús 'posició del ratolí' en el seu lloc, i utilitzar optikey en combinació amb l'aplicació myGaze EyeMousePlay per moure el cursor.</value>
+      <value>La Interacció Visual myGaze només s'admet si ja ha instal·lat els controladors de client myGaze, que ja no estan disponibles per a baixar. Si no heu instal·lat aquests conductors, cal seleccionar l'ús 'posició del ratolí' en el seu lloc, i utilitzar Optikey en combinació amb l'aplicació myGaze EyeMousePlay per moure el cursor.</value>
   </data>
 </root>

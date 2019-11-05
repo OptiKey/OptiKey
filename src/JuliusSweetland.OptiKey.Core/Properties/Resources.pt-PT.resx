@@ -268,7 +268,7 @@ DOCA</value>
     <value>Modo apenas conversação:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>O optikey detetou que o seu ficheiro de configurações de utilizador está danificado e tem de ser reparado. Isto será feito através do restauro de uma versão mais antiga, ou por uma versão padrão se isso não for possível.
+    <value>O Optikey detetou que o seu ficheiro de configurações de utilizador está danificado e tem de ser reparado. Isto será feito através do restauro de uma versão mais antiga, ou por uma versão padrão se isso não for possível.
 
 Clique Sim para restaurar as configurações de utilizador e reiniciar.
 
@@ -278,7 +278,7 @@ Clique Não para fechar a janela e reparar ou copiar o ficheiro de configuraçõ
     <value>Oh não! O ficheiro de configurações de utilizador parece estar danificado.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Más notícias - O optikey tropeçou e tem de se desligar.
+    <value>Más notícias - O Optikey tropeçou e tem de se desligar.
 
 Um e-mail com os detalhes do que se passou é muito útil: crash@optikey.org
 
@@ -603,7 +603,7 @@ MAGNÉTICO</value>
     <value>Consola de gestão: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Consola de gestão do optikey</value>
+    <value>Consola de gestão do Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Número máximo de correspondências de dicionário:</value>
@@ -929,7 +929,7 @@ SCR</value>
     <value>Áudio e/ou serviço(s) do dicionário não foram fornecidos para a ação da janela de gestão .</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>O optikey precisa de reiniciar para aplicar as alterações.
+    <value>O Optikey precisa de reiniciar para aplicar as alterações.
 Prima OK para reiniciar, ou CANCELAR para anular as alterações.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1189,7 +1189,7 @@ CIMA</value>
 Pode desligar as notificações de atualizações a partir da Consola de gestão (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Posso reiniciar o optikey?</value>
+    <value>Posso reiniciar o Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versão: {0}</value>
@@ -1958,12 +1958,12 @@ na Consola de gestão (ALT + M).</value>
     <value>Localização do ficheiro .obz da página de topo CommuniKate:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>O optikey não conseguiu fazer a comunicação (handshake) com o Presage. Pode ser devido a:
+    <value>O Optikey não conseguiu fazer a comunicação (handshake) com o Presage. Pode ser devido a:
     1.A localização de DBFILENAME especificada no ficheiro presage.xml (localizada em C:\Utilizadores\NOME_DO_UTILIZADOR\.presage ou C:\Users\USER_NAME\.presage) não existe - por favor verifique e corrija isto (ou desinstale/reinstale o Presage).
-    2.Ou está instalada uma versão 64 bits do Presage (o optikey apenas suporta a versão 32 bits) ou os ficheiros do Presage foram movidos para outro local, eliminados ou estão corrompidos.
+    2.Ou está instalada uma versão 64 bits do Presage (o Optikey apenas suporta a versão 32 bits) ou os ficheiros do Presage foram movidos para outro local, eliminados ou estão corrompidos.
 
 Por favor desinstale o Presage e instale a versão 32 bits do 0.9.2.
-O optikey irá tentar continuar, mas há grande probabilidade de bloquear.
+O Optikey irá tentar continuar, mas há grande probabilidade de bloquear.
 O método de previsão será alterado para o NGram para que o programa não bloqueie da próxima vez.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
@@ -2000,7 +2000,7 @@ como o "DB Browser for SQLite" (que é um programa livre).</value>
     <value>LETRAS</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>Surgiu um erro durante o processo de magnificação. Por favor desative a magnificação e contacte a comunidade do optikey para apoio adicional.</value>
+    <value>Surgiu um erro durante o processo de magnificação. Por favor desative a magnificação e contacte a comunidade do Optikey para apoio adicional.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Erro:</value>
@@ -2251,10 +2251,10 @@ Française
     <value>Reiniciar</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Tem a certeza absoluta que quer reiniciar o optikey?</value>
+    <value>Tem a certeza absoluta que quer reiniciar o Optikey?</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>Tem a certeza que quer reiniciar o optikey?</value>
+    <value>Tem a certeza que quer reiniciar o Optikey?</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>TECLADO DINÂMICO</value>
@@ -2309,12 +2309,12 @@ Française
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
     <value>Recomendamos alterar o idioma da interface para urdu para se certificar que o texto digitado flui da direita para a esquerda no rascunho.
-Gostaria que o optikey alterasse automaticamente o idioma para urdu?</value>
+Gostaria que o Optikey alterasse automaticamente o idioma para urdu?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
-    <value>Recomendamos alterar o tipo de letra usada pelo optikey para uma que seja totalmente compatível com o urdu.
+    <value>Recomendamos alterar o tipo de letra usada pelo Optikey para uma que seja totalmente compatível com o urdu.
 Se for usada um tipo de letra que não é específica do urdu, o texto e especialmente os números, podem ser mostrados incorretamente.
-Gostaria que o optikey alterasse automaticamente para o tipo de letra Nafees Web Naskh?</value>
+Gostaria que o Optikey alterasse automaticamente para o tipo de letra Nafees Web Naskh?</value>
   </data>
   <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
     <value>É recomendável um tipo de letra específico</value>
@@ -2353,18 +2353,18 @@ Gostaria que o optikey alterasse automaticamente para o tipo de letra Nafees Web
       <value>Isto requer a ITU Gaze Rastreamento Biblioteca, que é um quadro de olho open source de monitoramento usando componentes off-the-shelf, como webcams e câmeras de vídeo.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Se você planeja usar optikey com o tracker olho Irisbond Duo, por favor, certifique-se de ter os drivers Irisbond Duo instalados. Estes podem ser descarregados a partir https://www.irisbond.com/products/downloads.</value>
+      <value>Se você planeja usar Optikey com o tracker olho Irisbond Duo, por favor, certifique-se de ter os drivers Irisbond Duo instalados. Estes podem ser descarregados a partir https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>Neste modo, optikey vai usar o cursor do mouse como entrada em vez de falar diretamente a um rastreador ocular. Você pode querer isso, se você está testando optikey para fora, ou se você quiser usá-lo com um dispositivo de entrada alternativo, como um mouse de cabeça ou não qualquer rastreador olho nesta lista. Para mais informações, consulte www.optikey.org/help</value>
+      <value>Neste modo, Optikey vai usar o cursor do mouse como entrada em vez de falar diretamente a um rastreador ocular. Você pode querer isso, se você está testando Optikey para fora, ou se você quiser usá-lo com um dispositivo de entrada alternativo, como um mouse de cabeça ou não qualquer rastreador olho nesta lista. Para mais informações, consulte www.optikey.org/help</value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Esta opção irá funcionar com qualquer rastreador olho Tobii Gaming (4C, EyeX, Alienware, Steelseries, etc)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Para usar Optikey um gerenciador de visão assistiva, você nem precisa a nova versão do Tobii Windows Control, ou o motor Eye Tracking Tobii. Se você precisa usar a versão antiga do aplicativo de Tobii Windows Control (Tobii Gaze Interaction Software), então você vai precisar para controlar optikey usando posição do mouse em seu lugar. Para mais informações, consulte www.optikey.org/help</value>
+      <value>Para usar Optikey um gerenciador de visão assistiva, você nem precisa a nova versão do Tobii Windows Control, ou o motor Eye Tracking Tobii. Se você precisa usar a versão antiga do aplicativo de Tobii Windows Control (Tobii Gaze Interaction Software), então você vai precisar para controlar Optikey usando posição do mouse em seu lugar. Para mais informações, consulte www.optikey.org/help</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>O Interaction myGaze Visual é suportado apenas se você já tiver instalado os drivers cliente myGaze, que já não estão disponíveis para download. Se você não tem esses drivers instalados, você deve selecionar o uso 'posição do mouse' em vez, e usar optikey em combinação com a aplicação myGaze EyeMousePlay para mover o cursor.</value>
+      <value>O Interaction myGaze Visual é suportado apenas se você já tiver instalado os drivers cliente myGaze, que já não estão disponíveis para download. Se você não tem esses drivers instalados, você deve selecionar o uso 'posição do mouse' em vez, e usar Optikey em combinação com a aplicação myGaze EyeMousePlay para mover o cursor.</value>
   </data>  
 </root>

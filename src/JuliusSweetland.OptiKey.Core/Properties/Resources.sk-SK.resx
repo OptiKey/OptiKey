@@ -273,7 +273,7 @@ Zvoľte Nie ak chcete ukončiť aplikáciu a manuálne opraviť alebo skopírova
     <value>Uh-oh! Zdá sa že súbor s používateľskými nastaveniami je poškodený.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Zlé správy - optikey sa potkol sám o seba a musí byť ukončený. 
+    <value>Zlé správy - Optikey sa potkol sám o seba a musí byť ukončený. 
 Ocenili by sme email s popisom incidentu: crash@optikey.org
 Za vzniknutú situáciu sa ospravedlňujeme.</value>
   </data>
@@ -568,7 +568,7 @@ KURZOR</value>
     <value>Nastavania: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Nastavenia optikey</value>
+    <value>Nastavenia Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maximálny počet nálezov zo slovníka:</value>
@@ -895,7 +895,7 @@ POSLEDNÉ</value>
     <value>Servis(y) pre Audio a/alebo Slovník nie sú dostupné oknu s nastaveniami.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Pre aplikovanie vašich zmien je potrebné reštartovať optikey. Stlačte OK ak chcete reštartovať, alebo ZRUŠIŤ ak chcete zrušiť zmeny.</value>
+    <value>Pre aplikovanie vašich zmien je potrebné reštartovať Optikey. Stlačte OK ak chcete reštartovať, alebo ZRUŠIŤ ak chcete zrušiť zmeny.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>Obnoviť</value>
@@ -1132,7 +1132,7 @@ HORE</value>
 Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Môžem reštartovať optikey?</value>
+    <value>Môžem reštartovať Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Verzia: {0}</value>
@@ -1583,18 +1583,18 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
       <value>To vyžaduje, aby Gaze Tracking knižnicu ITU, čo je framework pre sledovanie pomocou off-the-shelf komponenty, ako sú kamery a videokameru s otvoreným zdrojovým kódom oka.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Ak máte v pláne používať optikey s očné tracker Irisbond Duo, potom si prosím skontrolujte, či máte k dispozícii ovládače Irisbond Duo nainštalované. </value>
+      <value>Ak máte v pláne používať Optikey s očné tracker Irisbond Duo, potom si prosím skontrolujte, či máte k dispozícii ovládače Irisbond Duo nainštalované. </value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>V tomto režime bude optikey použite kurzor myši ako vstup namiesto rozprávanie priamo do očí tracker. Možno budete chcieť to, ak testujete optikey von, alebo ak chcete použiť alternatívne vstupné zariadenia, ako je napríklad hlava myši alebo akékoľvek očné tracker nie je v tomto zozname. </value>
+      <value>V tomto režime bude Optikey použite kurzor myši ako vstup namiesto rozprávanie priamo do očí tracker. Možno budete chcieť to, ak testujete Optikey von, alebo ak chcete použiť alternatívne vstupné zariadenia, ako je napríklad hlava myši alebo akékoľvek očné tracker nie je v tomto zozname. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Táto voľba bude fungovať s akýmkoľvek Tobi Gaming očí tracker (4C, EyeX, Alienware, SteelSeries, etc)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Ak chcete používať Optikey s asistenčnou očí tracker, musíte buď novú verziu systému Windows Control, alebo motora Tobi Eye Tracking. Ak potrebujete použiť starú verziu ovládacieho programu Tobi Windows (vrátane nastavenia Tobi Gaze interakcie), potom sa budete musieť riadiť optikey pomocou pozíciu myši miesto. </value>
+      <value>Ak chcete používať Optikey s asistenčnou očí tracker, musíte buď novú verziu systému Windows Control, alebo motora Tobi Eye Tracking. Ak potrebujete použiť starú verziu ovládacieho programu Tobi Windows (vrátane nastavenia Tobi Gaze interakcie), potom sa budete musieť riadiť Optikey pomocou pozíciu myši miesto. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Visual Interaction myGaze je podporovaná len v prípade, že ste už nainštalovali klientskych ovládačov myGaze, ktoré už nie sú k dispozícii na stiahnutie. Ak nechcete mať nainštalované tieto ovládače, mali by ste zvoliť použitia, pozíciu myši 'miesto, a použitie optikey v kombinácii s aplikáciou myGaze EyeMousePlay pre pohyb kurzora.</value>
+      <value>Visual Interaction myGaze je podporovaná len v prípade, že ste už nainštalovali klientskych ovládačov myGaze, ktoré už nie sú k dispozícii na stiahnutie. Ak nechcete mať nainštalované tieto ovládače, mali by ste zvoliť použitia, pozíciu myši 'miesto, a použitie Optikey v kombinácii s aplikáciou myGaze EyeMousePlay pre pohyb kurzora.</value>
   </data>
 </root>

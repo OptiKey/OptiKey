@@ -278,7 +278,7 @@
     <value>Ого! Пользовательские настройки повреждены.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Плохие новости - optikey поломался и должен выключиться.
+    <value>Плохие новости - Optikey поломался и должен выключиться.
 
 Пожалуйсто, вышлите описание того, что именно случилось на этот майл: crash@optikey.org
 
@@ -934,7 +934,7 @@ SCR</value>
     <value>Сервис(-ы) Аудио и/или Словаря не был/были предоставлены .</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Перезагрузите optikey  что бы применить ваши иземенения.
+    <value>Перезагрузите Optikey  что бы применить ваши иземенения.
 Пожалуйста нажмите "ОК" что бы перезагрузить или "ОТМЕНА" что бы отменить изменения</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1194,7 +1194,7 @@ LK</value>
 Вы можете отключить проверку обновелний в настройках (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Могу ли я перезагрузить optikey?</value>
+    <value>Могу ли я перезагрузить Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Версия: {0}</value>
@@ -1962,12 +1962,12 @@ Slovenčina
     <value>Расположение верхней страницы CommuniKate .obz файла:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>OptiKey не смог с Presage. Несколько возможных причин:
+    <value>Optikey не смог с Presage. Несколько возможных причин:
    1.DBFILENAME, путь к которому указан в presage.xml файлу (расположен в C:\Users\USER_NAME\.presage), не существует пожалуйста, проверьте и исправьте это (или удалите/переустановите Presage).
-   2.Установлена 64-битная версия Presage (OptiKey поддерживает только 32-битную версию), или файлы Presage был перемещены, удалены или повреждены.
+   2.Установлена 64-битная версия Presage (Optikey поддерживает только 32-битную версию), или файлы Presage был перемещены, удалены или повреждены.
 
 Пожалуйста, удалите Presage и установите 32-битную версию 0.9.2.
-OptiKey продолжит работу, но есть большая вероятность, что приложение будет закрыто с ошибкой.
+Optikey продолжит работу, но есть большая вероятность, что приложение будет закрыто с ошибкой.
 Метод предложение будет заменен на NGram для избежания ошибок при следующем запуске.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
@@ -2003,7 +2003,7 @@ OptiKey продолжит работу, но есть большая вероя
     <value>БУКВЫ</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>Во время работы увеличения возникла ошибка. Пожалуйста, выключите увеличение и свяжитесь с OptiKey для получение технической поддержки.</value>
+    <value>Во время работы увеличения возникла ошибка. Пожалуйста, выключите увеличение и свяжитесь с Optikey для получение технической поддержки.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Ошибка:</value>
@@ -2253,10 +2253,10 @@ Française
     <value>Перезапуск</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Вы абсолютно уверены, что хотите перезапустить OptiKey?</value>
+    <value>Вы абсолютно уверены, что хотите перезапустить Optikey?</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>Вы уверены, что хотите перезапустить OptiKey?</value>
+    <value>Вы уверены, что хотите перезапустить Optikey?</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>ДИНАМИЧЕСКАЯ КЛАВИАТУРА</value>
@@ -2311,12 +2311,12 @@ Française
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
     <value>Мы рекомендуем изменить UiLanguage на Urdu, чтобы печатать набранный текст на урду справа налево в блокноте.
-Хотите, чтобы OptiKey автоматически установил UiLanguage на урду?</value>
+Хотите, чтобы Optikey автоматически установил UiLanguage на урду?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
-    <value>Мы рекомендуем изменить шрифт, используемый в OptiKey, на тот, который полностью совместим с урду.
+    <value>Мы рекомендуем изменить шрифт, используемый в Optikey, на тот, который полностью совместим с урду.
 Если используется шрифт, не относящийся к урду, то текст, особенно цифры, могут отображаться неправильно.
-Вы хотите, чтобы OptiKey автоматически установил шрифт Nafees Web Naskh?</value>
+Вы хотите, чтобы Optikey автоматически установил шрифт Nafees Web Naskh?</value>
   </data>
   <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
     <value>Рекомендуется использовать шрифт для конкретного языка</value>
@@ -2346,18 +2346,18 @@ Française
       <value>Это требует МСЭ Gaze слежения библиотека, которая является основой для открытого исходного кода отслеживания глаз с помощью внедорожных готовых компонентов, таких как веб-камер и видеокамерами.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Если вы планируете использовать optikey с глазами трекера Irisbond Duo, пожалуйста, убедитесь, что у вас есть драйвера Irisbond Duo установлен. Они могут быть загружены с https://www.irisbond.com/products/downloads.</value>
+      <value>Если вы планируете использовать Optikey с глазами трекера Irisbond Duo, пожалуйста, убедитесь, что у вас есть драйвера Irisbond Duo установлен. Они могут быть загружены с https://www.irisbond.com/products/downloads.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>В этом режиме, optikey будет использовать курсор мыши в качестве входных данных, вместо того, чтобы говорить непосредственно с трекером глаз. Вы можете захотеть этого, если вы тестируете optikey вне, или если вы хотите использовать его с альтернативным устройством ввода, такие как головки мыши или любой глаз трекер не в этом списке. </value>
+      <value>В этом режиме, Optikey будет использовать курсор мыши в качестве входных данных, вместо того, чтобы говорить непосредственно с трекером глаз. Вы можете захотеть этого, если вы тестируете Optikey вне, или если вы хотите использовать его с альтернативным устройством ввода, такие как головки мыши или любой глаз трекер не в этом списке. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Эта опция будет работать с любым глазом трекера Tobii Gaming (4C, EyeX, Alienware, Steelseries, и т.д.)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Для того, чтобы использовать Optikey с Tobii  реабилитационным трекером глаз, вам необходимо либо новую версия Tobii Windows Control или двигатель Tobii отслеживания глаз. Если вам нужно использовать старую версию приложения Tobii Windows Control  (Tobii Gaze Interaction Software), то вам нужно будет контролировать optikey используя положение мыши вместо этого. </value>
+      <value>Для того, чтобы использовать Optikey с Tobii  реабилитационным трекером глаз, вам необходимо либо новую версия Tobii Windows Control или двигатель Tobii отслеживания глаз. Если вам нужно использовать старую версию приложения Tobii Windows Control  (Tobii Gaze Interaction Software), то вам нужно будет контролировать Optikey используя положение мыши вместо этого. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Визуальное взаимодействие myGaze поддерживается только, если вы уже установили клиентские драйверы myGaze, которые больше не доступны для скачивания. Если вы не установили эти драйвера, вы должны выбрать использовать «положение мыши» вместо этого, и использовать optikey в сочетании с приложением myGaze EyeMousePlay для перемещения курсора.</value>
+      <value>Визуальное взаимодействие myGaze поддерживается только, если вы уже установили клиентские драйверы myGaze, которые больше не доступны для скачивания. Если вы не установили эти драйвера, вы должны выбрать использовать «положение мыши» вместо этого, и использовать Optikey в сочетании с приложением myGaze EyeMousePlay для перемещения курсора.</value>
   </data>  
 </root>

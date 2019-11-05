@@ -272,7 +272,7 @@ Dosyaları manuel olarak ya da yedeklemek için Hayır'ı tıklayın</value>
     <value>Olamaz! Kullanıcı ayarları dosyası bozulmuş gibi görünüyor.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Kötü haber - optikey'in ayağı kaydı ve kapanması gerekiyor.
+    <value>Kötü haber - Optikey'in ayağı kaydı ve kapanması gerekiyor.
 
 Neler olduğuna dair bir e-posta yollayarak yardımcı olursan seviniriz: crash@optikey.org
 
@@ -905,7 +905,7 @@ TEKRARLA</value>
     <value>İşitsel ve/veya Sözlük sevisi(servisleri) yönetim penceresinin eylemine aktarılamadı</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Değişikliklerin geçerli olabilmesi için optikey yeniden başlatılmalıdır. Yeniden başlatmak için OK tuşuna, değişikleri iptal etmek için CANCEL tuşuna tıklayınız.</value>
+    <value>Değişikliklerin geçerli olabilmesi için Optikey yeniden başlatılmalıdır. Yeniden başlatmak için OK tuşuna, değişikleri iptal etmek için CANCEL tuşuna tıklayınız.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>Geriyükle</value>
@@ -1589,18 +1589,18 @@ KÜÇÜLT</value>
       <value>Bu tür web kamerası ve Videokameralara olarak kullanıma hazır bileşenleri kullanarak izleme açık kaynak göz için bir çerçevedir İTÜ Gaze Takip Kütüphane gerektirir.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Eğer Irisbond Duo göz izleme ile optikey kullanmayı planlıyorsanız o zaman yüklü Irisbond Duo sürücüleri olduğundan emin olun. Bu https://www.irisbond.com/products/downloads indirilebilir.</value>
+      <value>Eğer Irisbond Duo göz izleme ile Optikey kullanmayı planlıyorsanız o zaman yüklü Irisbond Duo sürücüleri olduğundan emin olun. Bu https://www.irisbond.com/products/downloads indirilebilir.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>Bu modda, optikey bir göz izleme doğrudan konuşmak yerine girdi olarak fare imlecini kullanacaktır. Sen optikey test ediyoruz eğer bunu istiyorum olabilecek veya böyle bir kafa fare veya bu listede herhangi bir göz izleme gibi alternatif bir giriş cihazı ile kullanmak istiyorum. Daha fazla bilgi için, bkz www.optikey.org/help</value>
+      <value>Bu modda, Optikey bir göz izleme doğrudan konuşmak yerine girdi olarak fare imlecini kullanacaktır. Sen Optikey test ediyoruz eğer bunu istiyorum olabilecek veya böyle bir kafa fare veya bu listede herhangi bir göz izleme gibi alternatif bir giriş cihazı ile kullanmak istiyorum. Daha fazla bilgi için, bkz www.optikey.org/help</value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>herhangi Tobii Oyun göz izleme (4C, EyeX, Alienware, SteelSeries, vs) ile çalışacak Bu seçenek</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Bir yardımcı göz izleme ile optikey kullanmak için, ya da Tobii Windows Control veya Tobii Eye Tracking motorunun yeni sürümü gerekir. Eğer (Tobii Gaze Interaction Software) Tobii Windows Control eski bir sürümünü kullanmanız gerekiyorsa, o zaman bunun yerine fare konumunu kullanarak optikey kontrol etmek gerekir. Daha fazla bilgi için, bkz www.optikey.org/help</value>
+      <value>Bir yardımcı göz izleme ile Optikey kullanmak için, ya da Tobii Windows Control veya Tobii Eye Tracking motorunun yeni sürümü gerekir. Eğer (Tobii Gaze Interaction Software) Tobii Windows Control eski bir sürümünü kullanmanız gerekiyorsa, o zaman bunun yerine fare konumunu kullanarak Optikey kontrol etmek gerekir. Daha fazla bilgi için, bkz www.optikey.org/help</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Zaten artık indirilebilir myGaze istemci sürücüleri, yükledim eğer Görsel Etkileşim myGaze desteklenir. Eğer bu sürücülerin yüklü olmayan, bunun yerine kullanılması 'fare konumunu' seçin ve imleci hareket ettirmek için myGaze EyeMousePlay uygulaması ile birlikte optikey kullanmalıdır.</value>
+      <value>Zaten artık indirilebilir myGaze istemci sürücüleri, yükledim eğer Görsel Etkileşim myGaze desteklenir. Eğer bu sürücülerin yüklü olmayan, bunun yerine kullanılması 'fare konumunu' seçin ve imleci hareket ettirmek için myGaze EyeMousePlay uygulaması ile birlikte Optikey kullanmalıdır.</value>
   </data>
 </root>

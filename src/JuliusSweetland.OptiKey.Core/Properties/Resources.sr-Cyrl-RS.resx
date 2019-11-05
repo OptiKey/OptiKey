@@ -273,7 +273,7 @@
     <value>Грешка! Ваша датотека корисничких подешавања је покварена.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Лоша вест - optikey се срушио.
+    <value>Лоша вест - Optikey се срушио.
 Били бисмо захвални на слању обавештења са детаљима како је до тога дошло на адресу crash@optikey.org
 Извињавамо се због непријатности.</value>
   </data>
@@ -582,7 +582,7 @@
     <value>Управљачка конзола: ALT + М</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Управљачка конзола optikey-а</value>
+    <value>Управљачка конзола Optikey-а</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Максималан број подударања са речником:</value>
@@ -1165,7 +1165,7 @@ LK</value>
 Можете искључити ажурирања из управљачке конзоле (Alt + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Могу ли поновно покренути optikey?</value>
+    <value>Могу ли поновно покренути Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Верзија: {0}</value>
@@ -1754,7 +1754,7 @@ from the Management Console (ALT + M).</value>
     <value>Location of CommuniKate top page .obz file:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>Either a 64 bit version of Presage is installed (optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+    <value>Either a 64 bit version of Presage is installed (Optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
 Please uninstall Presage and install the 32 bit version of 0.9.2.
 Optikey will attempt to continue, but there is a good chance it will crash shortly.
 The prediction method will be changed to NGram to prevent a crash on next run.</value>
@@ -1793,7 +1793,7 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>СЛОВА</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>An error has occurred during the magnification process. Please disable magnification and contact optikey for further support.</value>
+    <value>An error has occurred during the magnification process. Please disable magnification and contact Optikey for further support.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Error:</value>
@@ -2023,10 +2023,10 @@ Region</value>
     <value>Restart</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Are you absolutely sure that you'd like to restart optikey?</value>
+    <value>Are you absolutely sure that you'd like to restart Optikey?</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>Are you sure you'd like to restart optikey?</value>
+    <value>Are you sure you'd like to restart Optikey?</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>DYNAMIC KEYBOARD</value>
@@ -2056,18 +2056,18 @@ Region</value>
       <value>Ово захтева ИТУ поглед праћење библиотеку која је оквир за опен соурце око праћење помоћу офф-тхе-схелф компоненте, као што су камере и видео камере.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Ако планирате да користите optikey са Ирисбонд Дуо ока трагач онда пазите да имате Ирисбонд Дуо управљачке програме инсталиране. Они се могу преузети са хттпс://ввв.ирисбонд.цом/продуцтс/довнлоадс.</value>
+      <value>Ако планирате да користите Optikey са Ирисбонд Дуо ока трагач онда пазите да имате Ирисбонд Дуо управљачке програме инсталиране. Они се могу преузети са хттпс://ввв.ирисбонд.цом/продуцтс/довнлоадс.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>У овом режиму, optikey ће користити курсор миша као улаз уместо да говоримо директно на тракер ока. Можда ћете желети ово ако optikey тестира, или ако желите да га користите са алтернативним улазног уређаја као што су миш главе или било трагач ока није на овој листи. </value>
+      <value>У овом режиму, Optikey ће користити курсор миша као улаз уместо да говоримо директно на тракер ока. Можда ћете желети ово ако Optikey тестира, или ако желите да га користите са алтернативним улазног уређаја као што су миш главе или било трагач ока није на овој листи. </value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
       <value>Ова опција ће радити са свим Tobii Гаминг ока Трацкер (4Ц, ЕиеКс, Алиенваре, СтеелСериес, итд)</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Да бисте користили optikey са помоћним очију трагач, ти или треба нову верзију Tobii Windows Control , или софтвер Tobii Eye Tracking. Ако морате да користите стару верзију  Tobii Windows  Control (Tobii Gaze Interaction Software), онда ћете морати да контролишете optikey користећи позицију миша уместо тога. </value>
+      <value>Да бисте користили Optikey са помоћним очију трагач, ти или треба нову верзију Tobii Windows Control , или софтвер Tobii Eye Tracking. Ако морате да користите стару верзију  Tobii Windows  Control (Tobii Gaze Interaction Software), онда ћете морати да контролишете Optikey користећи позицију миша уместо тога. </value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Висуал Интеракција миГазе је подржан само ако сте већ инсталирали клијент драјвере миГазе, које више нису доступни за преузимање. Ако немате те возачи инсталиран, треба да одаберете користити 'позицију миша' уместо тога, и користити optikey у комбинацији са применом миГазе ЕиеМоусеПлаи за померање курсора.</value>
+      <value>Висуал Интеракција миГазе је подржан само ако сте већ инсталирали клијент драјвере миГазе, које више нису доступни за преузимање. Ако немате те возачи инсталиран, треба да одаберете користити 'позицију миша' уместо тога, и користити Optikey у комбинацији са применом миГазе ЕиеМоусеПлаи за померање курсора.</value>
   </data>
 </root>
