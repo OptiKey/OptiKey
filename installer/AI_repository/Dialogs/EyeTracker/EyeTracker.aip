@@ -8,7 +8,7 @@
     <ROW Dialog_="EyeTracker" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
     <ROW Dialog_="EyeTracker" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
     <ROW Dialog_="EyeTracker" Control="Description" Type="Text" X="25" Y="23" Width="294" Height="21" Attributes="196611" Order="700" TextLocId="Control.Text.EyeTracker#Description"/>
-    <ROW Dialog_="EyeTracker" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Order="800" TextLocId="Control.Text.EyeTracker#Logo"/>
+    <ROW Dialog_="EyeTracker" Control="Logo" Type="Text" Text="Advanced Installer" X="4" Y="228" Width="70" Height="12" Attributes="1" Order="800" TextLocId="-" MsiKey="Languages#Logo"/>
     <ROW Dialog_="EyeTracker" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" TextStyle="DlgFontBold8_3C91A0DD_328D_4BC3_BF7" Order="900" TextLocId="Control.Text.EyeTracker#Title"/>
     <ROW Dialog_="EyeTracker" Control="MyComboBox" Type="ComboBox" X="25" Y="61" Width="279" Height="16" Attributes="3" Property="COMBO_EYE_TRACKER" Order="1000" TextLocId="Control.Text.EyeTracker#MyComboBox"/>
     <ROW Dialog_="EyeTracker" Control="Text_1" Type="Text" X="31" Y="89" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT" Text="[EYETRACKER_TEXT]" Order="1100" TextLocId="-"/>
