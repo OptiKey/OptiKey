@@ -4,9 +4,9 @@
     <ROW Name="PopulateComboboxes.vbs_1AF024D1_2FE7_45A3_9606_257FA4DC" SourcePath="PopulateComboboxes.vbs"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
-    <ROW Dialog_="Languages" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Order="100" TextLocId="Control.Text.Languages#Next" Options="1"/>
-    <ROW Dialog_="Languages" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Order="200" TextLocId="Control.Text.Languages#Cancel" Options="1"/>
-    <ROW Dialog_="Languages" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Order="300" TextLocId="Control.Text.Languages#Back" Options="1"/>
+    <ROW Dialog_="Languages" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Order="100" Text="[ButtonText_Next]" MsiKey="Languages#Next" Options="1"/>
+    <ROW Dialog_="Languages" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Order="200" Text="[ButtonText_Cancel]" MsiKey="Languages#Cancel" Options="1"/>
+    <ROW Dialog_="Languages" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Order="300" Text="[ButtonText_Back]" MsiKey="Languages#Back" Options="1"/>
     <ROW Dialog_="Languages" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Order="400" TextLocId="Control.Text.Languages#BannerBitmap"/>
     <ROW Dialog_="Languages" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
     <ROW Dialog_="Languages" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
