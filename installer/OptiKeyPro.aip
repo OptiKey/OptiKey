@@ -640,6 +640,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="EyeTracker" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg" MsiKey="EyeTracker"/>
+    <ROW Dialog="Languages" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg" MsiKey="Languages"/>
     <ROW Dialog="NewDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="NewSeqDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
   </COMPONENT>
