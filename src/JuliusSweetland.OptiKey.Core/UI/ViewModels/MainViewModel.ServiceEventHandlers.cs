@@ -8,7 +8,10 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
+using System.Windows.Threading;
 using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -128,6 +131,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (SelectionMode == SelectionModes.Key
                     && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                 {
+                    if (singleKeyValue != null && singleKeyValue.FunctionKey != null && singleKeyValue.FunctionKey.Value == FunctionKeys.StepList)
+                    {
+                        StepList(singleKeyValue, multiKeySelection);
+
+                        //do stuff on another thread 
+                        //var cTask = Task.Run(() => StepList(singleKeyValue, multiKeySelection));
+                        //var result = await cTask;
+                    }
+                    else
                         KeySelectionResult(singleKeyValue, multiKeySelection);
                 }
                 else if (SelectionMode == SelectionModes.Point)
@@ -240,8 +252,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
 
                 DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, mainWindowManipulationService, keyStateService,
-                    inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename, initialKeyStates, 
-                    keyboard.PersistNewState, keyboard.WindowState, keyboard.Position, keyboard.DockSize, 
+                    inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename, initialKeyStates,
+                    keyboard.PersistNewState, keyboard.WindowState, keyboard.Position, keyboard.DockSize,
                     keyboard.Width, keyboard.Height, keyboard.HorizontalOffset, keyboard.VerticalOffset);
                 Keyboard = newDynKeyboard;
 
@@ -623,10 +635,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.SelectVoice:
                     SelectVoice(singleKeyValue.String);
-                    break;
-
-                case FunctionKeys.StepList:
-                    StepList(singleKeyValue.String);
                     break;
 
                 case FunctionKeys.Plugin:
@@ -2372,47 +2380,117 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             NavigateToMenu();
         }
 
-        private void StepList(string command)
+        public void StepList(KeyValue singleKeyValue, List<string> multiKeySelection)
         {
-            if (!string.IsNullOrEmpty(command))
+            if (!string.IsNullOrEmpty(singleKeyValue.String))
             {
-                KeyValue singleKeyValue;
-                string[] stringSeparators = new string[] { "<" };
-                foreach (var vStep in command.Split(stringSeparators, StringSplitOptions.None).ToList())
+                Log.InfoFormat("StepList called with singleKeyValue [{0}]", singleKeyValue.String);
+
+                List<string> commandList = singleKeyValue.String.Split('<').ToList();
+                if (commandList.Any())
                 {
-                    Log.DebugFormat("Performing StepList step: {0}.", vStep);
-                    if (vStep.StartsWith("Action>") &&
-                        (Enum.TryParse<FunctionKeys>(vStep.Substring(7), out FunctionKeys result)))
-                    {
-                        singleKeyValue = new KeyValue(result);
-                        HandleFunctionKeySelectionResult(singleKeyValue);
-                    }
-                    else if (vStep.StartsWith("Keyboard>") || vStep.StartsWith("KeyboardAndReturn>"))
-                    {
-                        Enums.Keyboards keyboardEnum;
-                        bool vReturn = (vStep.StartsWith("KeyboardAndReturn>"));
-                        int vIndex = (vStep.StartsWith("KeyboardAndReturn>")) ? 18 : 9;
-                        if (System.Enum.TryParse(vStep.Substring(vIndex), out keyboardEnum))
-                        {
-                            ChangeKeyboardKeyValue keyValue = new ChangeKeyboardKeyValue(keyboardEnum, vReturn);
-                            ProcessChangeKeyboardKeyValue(keyValue);
-                        }
-                        else
-                        {
-                            ChangeKeyboardKeyValue keyValue = new ChangeKeyboardKeyValue(vStep.Substring(vIndex), vReturn);
-                            ProcessChangeKeyboardKeyValue(keyValue);
-                        }
-                    }
-                    else if (vStep.StartsWith("Text>"))
-                    {
-                        keyboardOutputService.ProcessSingleKeyText(vStep.Substring(5));
-                    }
-                    else if (vStep.StartsWith("Wait>"))
-                    {
-                        System.Threading.Thread.Sleep(int.Parse(vStep.Substring(5)));
-                    }
+                    var cTask = Task.Run(() => StepListCommands(singleKeyValue, multiKeySelection, commandList));
                 }
             }
+        }
+
+        private async Task<int> StepListCommands(KeyValue singleKeyValue, List<string> multiKeySelection, List<string> commandList)
+        {
+            Log.InfoFormat("StepListCommands called with a list of {0} commands", commandList.Count);
+            if (commandList.Contains("Wait>"))
+            {
+                //if there is a wait command then make this task async by using await
+                await Task.Delay(10);
+            }
+            KeyValue keyValue;
+            while (commandList.Any())
+            {
+                Log.InfoFormat("Performing StepList step: {0}.", commandList.First());
+
+                if (commandList.First().StartsWith("Loop>"))
+                {
+                    var count = Int32.Parse(commandList.First().Substring(5));
+                    //if this loop has a nested loop then set the end of the loopList to that of the last end loop command
+                    var vEnd = (commandList.FindIndex(1, x => x.StartsWith("Loop>")) > 0 
+                        && commandList.FindIndex(1, x => x.StartsWith("Loop>")) < commandList.IndexOf("/Loop>"))
+                        ? commandList.LastIndexOf("/Loop>") - 1
+                        : commandList.IndexOf("/Loop>") - 1;                    
+                    for (int i = 0; i < count; i++)
+                    {
+                        var loopList = commandList.GetRange(1, vEnd);
+                        StepListCommands(singleKeyValue, multiKeySelection, loopList);
+                    }
+                    commandList.RemoveRange(0, vEnd);
+                }
+                else if (commandList.First().StartsWith("Action>") &&
+                    (Enum.TryParse<FunctionKeys>(commandList.First().Substring(7), out FunctionKeys result)))
+                {
+                    keyValue = new KeyValue(result);
+                    KeySelectionResult(keyValue, multiKeySelection);
+                }
+                else if (commandList.First().StartsWith("Keyboard>") || commandList.First().StartsWith("KeyboardAndReturn>"))
+                {
+                    Enums.Keyboards keyboardEnum;
+                    bool vReturn = (commandList.First().StartsWith("KeyboardAndReturn>"));
+                    int vIndex = (commandList.First().StartsWith("KeyboardAndReturn>")) ? 18 : 9;
+                    if (System.Enum.TryParse(commandList.First().Substring(vIndex), out keyboardEnum))
+                    {
+                        keyValue = new ChangeKeyboardKeyValue(keyboardEnum, vReturn);
+                    }
+                    else
+                    {
+                        keyValue = new ChangeKeyboardKeyValue(commandList.First().Substring(vIndex), vReturn);
+                    }
+                    KeySelectionResult(keyValue, multiKeySelection);
+                }
+                else if (commandList.First().StartsWith("KeyDown>"))
+                {
+                    keyValue = new KeyValue(commandList.First().Substring(8));
+                    int delayMs = 0;
+                    keyboardOutputService.ProcessSingleKeyPress(keyValue.String, KeyPressKeyValue.KeyPressType.Press, delayMs);
+                    if (keyStateService.KeyDownStates[singleKeyValue].Value != KeyDownStates.Down)
+                    {
+                        keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.Down;
+                    }
+                }
+                else if (commandList.First().StartsWith("KeyUp>"))
+                {
+                    keyValue = new KeyValue(commandList.First().Substring(6));
+                    int delayMs = 0;
+                    keyboardOutputService.ProcessSingleKeyPress(keyValue.String, KeyPressKeyValue.KeyPressType.Release, delayMs);
+                    if (keyStateService.KeyDownStates[singleKeyValue].Value != KeyDownStates.Up)
+                    {
+                        keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.Up;
+                    }
+                }
+                else if (commandList.First().StartsWith("KeyToggle>"))
+                {
+                    keyValue = new KeyValue(commandList.First().Substring(10));
+                    int delayMs = 0;
+                    if (keyStateService.KeyDownStates[singleKeyValue].Value != KeyDownStates.Up)
+                    {
+                        keyboardOutputService.ProcessSingleKeyPress(keyValue.String, KeyPressKeyValue.KeyPressType.Release, delayMs);
+                        keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.Up;
+                    }
+                    else
+                    {
+                        keyboardOutputService.ProcessSingleKeyPress(keyValue.String, KeyPressKeyValue.KeyPressType.Press, delayMs);
+                        keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.Down;
+                    }
+                }
+                else if (commandList.First().StartsWith("Text>"))
+                {
+                    keyValue = new KeyValue(commandList.First().Substring(5));
+                    KeySelectionResult(keyValue, multiKeySelection);
+                }
+                else if (commandList.First().StartsWith("Wait>"))
+                {
+                    Thread.Sleep(int.Parse(commandList.First().Substring(5)));
+                }
+                if (commandList.Any())
+                    commandList.RemoveAt(0);
+            }
+            return 0;
         }
 
         private void RunPlugin(string command)
