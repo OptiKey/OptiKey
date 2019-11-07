@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using log4net;
-using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -19,7 +19,12 @@ namespace JuliusSweetland.OptiKey.Models
         public XmlGrid Grid
         { get; set; }
 
+        [XmlElement("Keys")]
         public XmlKeys Keys
+        { get; set; }
+
+        [XmlElement("Content")]
+        public XmlDynamicItem Content
         { get; set; }
 
         // The following are all optional

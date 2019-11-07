@@ -57,6 +57,27 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public void KeyToggle(VirtualKeyCode virtualKeyCode)
+        {
+            try
+            {
+                if (inputDeviceStateAdaptor.IsKeyDown(virtualKeyCode))
+                {
+                    Log.DebugFormat("Simulating key toggle {0} is down - calling KeyUp", virtualKeyCode);
+                    inputSimulator.Keyboard.KeyUp(virtualKeyCode);
+                }
+                else
+                {
+                    Log.DebugFormat("Simulating key toggle {0} is up - calling KeyDown", virtualKeyCode);
+                    inputSimulator.Keyboard.KeyDown(virtualKeyCode);
+                }
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
         public void KeyUp(VirtualKeyCode virtualKeyCode)
         {
             try

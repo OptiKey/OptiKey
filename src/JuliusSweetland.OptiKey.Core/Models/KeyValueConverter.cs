@@ -2,11 +2,14 @@
 using System;
 using System.ComponentModel;
 using System.Globalization;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.Models
 {
     public sealed class KeyValueConverter : TypeConverter
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         // The ITypeDescriptorContext interface provides the context for the
         // conversion. Typically, this interface is used at design time to 
         // provide information about the design-time container.
@@ -23,8 +26,14 @@ namespace JuliusSweetland.OptiKey.Models
         public override object ConvertFrom(ITypeDescriptorContext context,
             CultureInfo culture, object value)
         {
+            if (value == null)
+            {
+                Log.Warn("Unable to convert from string (to KeyValue) as value was null. This can occur if a selection begins before the keyboard is fully initialised.");
+                return null;
+            }
+
             var text = value as string;
-            if (text!=null)
+            if (text != null)
             {
                 return new KeyValue(text);
             }
@@ -34,6 +43,12 @@ namespace JuliusSweetland.OptiKey.Models
         public override object ConvertTo(ITypeDescriptorContext context,
             CultureInfo culture, object value, Type destinationType)
         {
+            if (value == null)
+            {
+                Log.Warn("Unable to convert to string (from KeyValue) as value was null. This can occur if a selection begins before the keyboard is fully initialised.");
+                return null;
+            }
+
             if (destinationType == typeof(string))
             {
                 return ((KeyValue)value).String;

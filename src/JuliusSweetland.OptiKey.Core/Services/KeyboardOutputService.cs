@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
@@ -490,7 +491,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type, int delayMs = 0)
+        public async Task ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type, int delayMs = 0)
         {
             // TODO: This is a stub for future use
             throw new NotImplementedException();            
