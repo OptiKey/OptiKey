@@ -286,7 +286,9 @@
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyValueConverter.cs" />
     <Compile Include="Models\PluginMetadata.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlDynamicItem.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlDynamicKey.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlMultiStepKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlPluginKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlChangeKeyboardKey.cs" />
@@ -309,6 +311,15 @@
     <Compile Include="Models\SerializableDictionaryOfTimeSpanByKeyValues.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlKeys.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlKeyStates.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlScratchpad.xaml.cs">
+      <DependentUpon>XmlScratchpad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\XmlKeyboardModels\XmlSuggestionCol.xaml.cs">
+      <DependentUpon>XmlSuggestionCol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\XmlKeyboardModels\XmlSuggestionRow.xaml.cs">
+      <DependentUpon>XmlSuggestionRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\XmlKeyboardModels\XmlTextKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlUtils.cs" />
     <Compile Include="Native\Common\Enums\AppBarEdge.cs" />
@@ -1384,6 +1395,18 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Models\XmlKeyboardModels\XmlScratchpad.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\XmlKeyboardModels\XmlSuggestionCol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\XmlKeyboardModels\XmlSuggestionRow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Icons\KeySymbols.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

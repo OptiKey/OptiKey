@@ -9,6 +9,7 @@ namespace JuliusSweetland.OptiKey.Services
         void KeyDown(VirtualKeyCode virtualKeyCode);
         void KeyUp(VirtualKeyCode virtualKeyCode);
         void KeyDownUp(VirtualKeyCode virtualKeyCode);
+        void KeyToggle(VirtualKeyCode virtualKeyCode);
         void LeftMouseButtonClick();
         void LeftMouseButtonDoubleClick();
         void LeftMouseButtonDown();

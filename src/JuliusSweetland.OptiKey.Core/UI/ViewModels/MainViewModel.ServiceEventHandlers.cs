@@ -118,7 +118,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            inputServiceSelectionResultHandler = (o, tuple) =>
+            inputServiceSelectionResultHandler = async (o, tuple) =>
             {
                 Log.Info("SelectionResult event received from InputService.");
 
@@ -133,7 +133,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     if (singleKeyValue != null && singleKeyValue.FunctionKey != null && singleKeyValue.FunctionKey.Value == FunctionKeys.StepList)
                     {
-                        StepList(singleKeyValue, multiKeySelection);
+                        await StepList(singleKeyValue, multiKeySelection);
 
                         //do stuff on another thread 
                         //var cTask = Task.Run(() => StepList(singleKeyValue, multiKeySelection));
@@ -2380,7 +2380,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             NavigateToMenu();
         }
 
-        public void StepList(KeyValue singleKeyValue, List<string> multiKeySelection)
+        public async Task StepList(KeyValue singleKeyValue, List<string> multiKeySelection)
         {
             if (!string.IsNullOrEmpty(singleKeyValue.String))
             {
@@ -2389,7 +2389,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 List<string> commandList = singleKeyValue.String.Split('<').ToList();
                 if (commandList.Any())
                 {
-                    var cTask = Task.Run(() => StepListCommands(singleKeyValue, multiKeySelection, commandList));
+                    await StepListCommands(singleKeyValue, multiKeySelection, commandList);
                 }
             }
         }
@@ -2400,7 +2400,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (commandList.Contains("Wait>"))
             {
                 //if there is a wait command then make this task async by using await
-                await Task.Delay(10);
+                await Task.Delay(100);
             }
             KeyValue keyValue;
             while (commandList.Any())
@@ -2411,14 +2411,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     var count = Int32.Parse(commandList.First().Substring(5));
                     //if this loop has a nested loop then set the end of the loopList to that of the last end loop command
-                    var vEnd = (commandList.FindIndex(1, x => x.StartsWith("Loop>")) > 0 
+                    var vEnd = (commandList.FindIndex(1, x => x.StartsWith("Loop>")) > 0
                         && commandList.FindIndex(1, x => x.StartsWith("Loop>")) < commandList.IndexOf("/Loop>"))
                         ? commandList.LastIndexOf("/Loop>") - 1
-                        : commandList.IndexOf("/Loop>") - 1;                    
+                        : commandList.IndexOf("/Loop>") - 1;
                     for (int i = 0; i < count; i++)
                     {
                         var loopList = commandList.GetRange(1, vEnd);
-                        StepListCommands(singleKeyValue, multiKeySelection, loopList);
+                        await StepListCommands(singleKeyValue, multiKeySelection, loopList);
                     }
                     commandList.RemoveRange(0, vEnd);
                 }

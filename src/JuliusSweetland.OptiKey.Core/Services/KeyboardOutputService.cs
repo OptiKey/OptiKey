@@ -66,7 +66,7 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Properties
-        
+
         public string Text
         {
             get { return text; }
@@ -142,7 +142,7 @@ namespace JuliusSweetland.OptiKey.Services
                         {
                             backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
                         }
-                        
+
                         if (backOneCount == 1)
                         {
                             var inProgressWord = Text.InProgressWord(Text.Length);
@@ -477,7 +477,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             var capturedTextAfterComposition = CombineStringWithActiveDeadKeys(capturedText);
             ProcessText(capturedTextAfterComposition, true);
-            
+
             lastProcessedTextWasSuggestion = false;
 
             //Special handling for simplified keyboards
@@ -493,9 +493,86 @@ namespace JuliusSweetland.OptiKey.Services
         public void ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type, int delayMs = 0)
         {
             // TODO: This is a stub for future use
-            throw new NotImplementedException();            
+            //throw new NotImplementedException();
+
+            if (keyStateService.SimulateKeyStrokes)
+            {
+                char character;
+                var virtualKeyCode = Enum.TryParse(key, out FunctionKeys functionKey)
+                    ? functionKey.ToVirtualKeyCode() : null;
+                if (virtualKeyCode != null)
+                {
+                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1} (using hard coded mapping)",
+                        key, virtualKeyCode);
+                    if (type == KeyPressKeyValue.KeyPressType.Press)
+                        publishService.KeyDown(virtualKeyCode.Value);
+                    else if (type == KeyPressKeyValue.KeyPressType.Release)
+                        publishService.KeyUp(virtualKeyCode.Value);
+                    else 
+                        publishService.KeyToggle(virtualKeyCode.Value);
+
+                    return;
+                }
+
+                if (!Settings.Default.PublishVirtualKeyCodesForCharacters)
+                {
+                    Log.InfoFormat("Publishing '{0}' as text", key);
+                    publishService.TypeText(key);
+                    return;
+                }
+
+                //Get keyboard layout of currently focused window
+                IntPtr hWnd = PInvoke.GetForegroundWindow();
+                int lpdwProcessId;
+                int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
+                IntPtr keyboardLayout = PInvoke.GetKeyboardLayout(winThreadProcId);
+
+                //Convert this into a culture string for logging
+                string keyboardCulture = "Unknown";
+                var installedInputLanguages = InputLanguage.InstalledInputLanguages;
+                for (int i = 0; i < installedInputLanguages.Count; i++)
+                {
+                    if (keyboardLayout == installedInputLanguages[i].Handle)
+                    {
+                        keyboardCulture = installedInputLanguages[i].Culture.DisplayName;
+                        break;
+                    }
+                }
+
+                if (char.TryParse(key, out character))
+                {
+                    //Attempt to lookup virtual key code (and modifier states)
+                    var vkKeyScan = PInvoke.VkKeyScanEx(character, keyboardLayout);
+                    var vkCode = vkKeyScan & 0xff;
+                    var shift = (vkKeyScan & 0x100) > 0;
+                    var ctrl = (vkKeyScan & 0x200) > 0;
+                    var alt = (vkKeyScan & 0x400) > 0;
+
+                    if (vkKeyScan != -1)
+                    {
+                        Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
+                            character.ToPrintableString(), vkCode, shift ? "+SHIFT" : null,
+                            ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
+
+                        if (type == KeyPressKeyValue.KeyPressType.Press)
+                            publishService.KeyDown((VirtualKeyCode)vkCode);
+                        else if (type == KeyPressKeyValue.KeyPressType.Release)
+                            publishService.KeyUp((VirtualKeyCode)vkCode);
+                        else
+                            publishService.KeyToggle((VirtualKeyCode)vkCode);
+
+                        return;
+                    }
+                }
+                else
+                {
+                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (OS keyboard layout:{1})",
+                        key, keyboardCulture);
+                    publishService.TypeText(key);
+                }
+            }
         }
-        
+
         private string CombineStringWithActiveDeadKeys(string input)
         {
             Log.InfoFormat("Combing dead keys (diacritics) on '{0}'", input);
@@ -548,11 +625,11 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.Debug("Suppressing auto space before this capture as the last text change was null or white space.");
                 suppressNextAutoSpace = true;
             }
-			else if(!Settings.Default.KeyboardAndDictionaryLanguage.SupportsAutoSpace()) //Language does not support auto space
-			{
-				Log.DebugFormat("Suppressing auto space before this capture as the KeyboardAndDictionaryLanguage {0} does not support auto space.", Settings.Default.KeyboardAndDictionaryLanguage);
+            else if (!Settings.Default.KeyboardAndDictionaryLanguage.SupportsAutoSpace()) //Language does not support auto space
+            {
+                Log.DebugFormat("Suppressing auto space before this capture as the KeyboardAndDictionaryLanguage {0} does not support auto space.", Settings.Default.KeyboardAndDictionaryLanguage);
                 suppressNextAutoSpace = true;
-			}
+            }
             else if (new StringInfo(lastProcessedText).LengthInTextElements == 1
                      && new StringInfo(newText).LengthInTextElements == 1
                      && !lastProcessedTextWasSuggestion
@@ -572,7 +649,7 @@ namespace JuliusSweetland.OptiKey.Services
                 suppressNextAutoSpace = true;
             }
             else if (lastProcessedText.Length == 1
-                && !new[] {'.', '!', '?', ',', ':', ';', ')', ']', '}', '>'}.Contains(lastProcessedText.First())
+                && !new[] { '.', '!', '?', ',', ':', ';', ')', ']', '}', '>' }.Contains(lastProcessedText.First())
                 && !char.IsLetter(lastProcessedText.First()))
             {
                 //The current capture (which we know is a letter or multi-key capture) follows a single character
@@ -640,7 +717,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         //Remove (from the end of the string) the part of the in-progress word which will be changed by composition
-                        Text = Text.Substring(0, Text.Length - countOfCharactersToRemove); 
+                        Text = Text.Substring(0, Text.Length - countOfCharactersToRemove);
 
                         //Remove changed in-progress word suffix string from external applications by outputting backspaces - the new suffix will be published seperately
                         for (var backCount = 0; backCount < countOfCharactersToRemove; backCount++) //Don't include newTextProcessed as it does not exist on Text yet
@@ -952,7 +1029,7 @@ namespace JuliusSweetland.OptiKey.Services
                     for (var index = 0; index < suggestionChars.Length; index++)
                     {
                         bool makeUppercase = false;
-                        if(nextWord || inProgressWord == null)
+                        if (nextWord || inProgressWord == null)
                         {
                             if (index == 0 && (leftShiftIsDown || leftShiftIsLockedDown)) //First character should be uppercase
                             {
