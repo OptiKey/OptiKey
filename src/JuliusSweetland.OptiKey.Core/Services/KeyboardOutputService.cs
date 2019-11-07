@@ -493,8 +493,82 @@ namespace JuliusSweetland.OptiKey.Services
 
         public async Task ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type, int delayMs = 0)
         {
-            // TODO: This is a stub for future use
-            throw new NotImplementedException();            
+            if (keyStateService.SimulateKeyStrokes)
+            {
+                char character;
+                var virtualKeyCode = Enum.TryParse(key, out FunctionKeys functionKey)
+                    ? functionKey.ToVirtualKeyCode() : null;
+                if (virtualKeyCode != null)
+                {
+                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1} (using hard coded mapping)",
+                        key, virtualKeyCode);
+                    if (type == KeyPressKeyValue.KeyPressType.Press)
+                        publishService.KeyDown(virtualKeyCode.Value);
+                    else if (type == KeyPressKeyValue.KeyPressType.Release)
+                        publishService.KeyUp(virtualKeyCode.Value);
+                    else
+                        publishService.KeyToggle(virtualKeyCode.Value);
+
+                    return;
+                }
+
+                if (!Settings.Default.PublishVirtualKeyCodesForCharacters)
+                {
+                    Log.InfoFormat("Publishing '{0}' as text", key);
+                    publishService.TypeText(key);
+                    return;
+                }
+
+                //Get keyboard layout of currently focused window
+                IntPtr hWnd = PInvoke.GetForegroundWindow();
+                int lpdwProcessId;
+                int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
+                IntPtr keyboardLayout = PInvoke.GetKeyboardLayout(winThreadProcId);
+
+                //Convert this into a culture string for logging
+                string keyboardCulture = "Unknown";
+                var installedInputLanguages = InputLanguage.InstalledInputLanguages;
+                for (int i = 0; i < installedInputLanguages.Count; i++)
+                {
+                    if (keyboardLayout == installedInputLanguages[i].Handle)
+                    {
+                        keyboardCulture = installedInputLanguages[i].Culture.DisplayName;
+                        break;
+                    }
+                }
+
+                if (char.TryParse(key, out character))
+                {
+                    //Attempt to lookup virtual key code (and modifier states)
+                    var vkKeyScan = PInvoke.VkKeyScanEx(character, keyboardLayout);
+                    var vkCode = vkKeyScan & 0xff;
+                    var shift = (vkKeyScan & 0x100) > 0;
+                    var ctrl = (vkKeyScan & 0x200) > 0;
+                    var alt = (vkKeyScan & 0x400) > 0;
+
+                    if (vkKeyScan != -1)
+                    {
+                        Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
+                            character.ToPrintableString(), vkCode, shift ? "+SHIFT" : null,
+                            ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
+
+                        if (type == KeyPressKeyValue.KeyPressType.Press)
+                            publishService.KeyDown((VirtualKeyCode)vkCode);
+                        else if (type == KeyPressKeyValue.KeyPressType.Release)
+                            publishService.KeyUp((VirtualKeyCode)vkCode);
+                        else
+                            publishService.KeyToggle((VirtualKeyCode)vkCode);
+
+                        return;
+                    }
+                }
+                else
+                {
+                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (OS keyboard layout:{1})",
+                        key, keyboardCulture);
+                    publishService.TypeText(key);
+                }
+            }
         }
         
         private string CombineStringWithActiveDeadKeys(string input)
