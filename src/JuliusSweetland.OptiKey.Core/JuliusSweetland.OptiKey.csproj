@@ -279,6 +279,7 @@
     <Compile Include="Extensions\RectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\SvgViewboxAttachedProperties.cs" />
+    <Compile Include="Extensions\TaskExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
