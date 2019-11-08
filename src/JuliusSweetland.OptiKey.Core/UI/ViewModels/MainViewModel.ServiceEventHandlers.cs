@@ -115,29 +115,38 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 Log.Info("SelectionResult event received from InputService.");
 
-                var points = tuple.Item1;
-                var singleKeyValue = tuple.Item2;
-                var multiKeySelection = tuple.Item3;
-
-                SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
-
-                if (SelectionMode == SelectionModes.Key
-                    && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
+                try
                 {
-                    if (singleKeyValue != null && singleKeyValue.FunctionKey != null && singleKeyValue.FunctionKey.Value == FunctionKeys.StepList)
+                    var points = tuple.Item1;
+                    var singleKeyValue = tuple.Item2;
+                    var multiKeySelection = tuple.Item3;
+
+                    SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
+
+                    if (SelectionMode == SelectionModes.Key
+                        && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                     {
-                        await StepList(singleKeyValue, multiKeySelection);
-
-                        //do stuff on another thread 
-                        //var cTask = Task.Run(() => StepList(singleKeyValue, multiKeySelection));
-                        //var result = await cTask;
+                        if (singleKeyValue != null && singleKeyValue.FunctionKey != null && singleKeyValue.FunctionKey.Value == FunctionKeys.StepList)
+                        {
+                            await StepList(singleKeyValue, multiKeySelection);
+                        }
+                        else
+                        {
+                            KeySelectionResult(singleKeyValue, multiKeySelection);
+                        }
                     }
-                    else
-                        KeySelectionResult(singleKeyValue, multiKeySelection);
+                    else if (SelectionMode == SelectionModes.Point)
+                    {
+                        //SelectionResult event has no real meaning when dealing with point selection
+                    }
                 }
-                else if (SelectionMode == SelectionModes.Point)
+                catch(Exception ex)
                 {
-                    //SelectionResult event has no real meaning when dealing with point selection
+                    Log.Error("Exception caught by inputServiceSelectionResultHandler", ex);
+                    
+                    RaiseToastNotification(OptiKey.Properties.Resources.ERROR_TITLE,
+                        OptiKey.Properties.Resources.ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT,
+                        NotificationTypes.Error, () => { });
                 }
             };
 

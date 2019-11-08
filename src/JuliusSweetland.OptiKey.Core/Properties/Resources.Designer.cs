@@ -1499,6 +1499,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error has occurred during the handling of a key selection.
+        /// </summary>
+        public static string ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT {
+            get {
+                return ResourceManager.GetString("ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support..
         /// </summary>
         public static string ERROR_MAGNIFYING {
