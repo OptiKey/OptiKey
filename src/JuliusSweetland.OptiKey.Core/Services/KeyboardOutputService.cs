@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
@@ -66,7 +67,7 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Properties
-        
+
         public string Text
         {
             get { return text; }
@@ -142,7 +143,7 @@ namespace JuliusSweetland.OptiKey.Services
                         {
                             backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
                         }
-                        
+
                         if (backOneCount == 1)
                         {
                             var inProgressWord = Text.InProgressWord(Text.Length);
@@ -477,7 +478,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             var capturedTextAfterComposition = CombineStringWithActiveDeadKeys(capturedText);
             ProcessText(capturedTextAfterComposition, true);
-            
+
             lastProcessedTextWasSuggestion = false;
 
             //Special handling for simplified keyboards
@@ -490,12 +491,62 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type, int delayMs = 0)
+        public async Task ProcessSingleKeyPress(string inKey, KeyPressKeyValue.KeyPressType type)
         {
-            // TODO: This is a stub for future use
-            throw new NotImplementedException();            
+            Log.InfoFormat("Processing input value {0} with key press type {1}", inKey, type);
+
+            FunctionKeys funKey;
+            var virtualKeyCode = (Enum.TryParse(inKey, out funKey)) ? funKey.ToVirtualKeyCode() : null;
+
+            if (virtualKeyCode != null)
+            {
+                if (type == KeyPressKeyValue.KeyPressType.Press)
+                    publishService.KeyDown(virtualKeyCode.Value);
+                else if (type == KeyPressKeyValue.KeyPressType.Release)
+                    publishService.KeyUp(virtualKeyCode.Value);
+                else
+                    publishService.KeyDownUp(virtualKeyCode.Value);
+            }
+            else
+            {
+                //Get keyboard layout of currently focused window
+                IntPtr hWnd = PInvoke.GetForegroundWindow();
+                int lpdwProcessId;
+                int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
+                IntPtr keyboardLayout = PInvoke.GetKeyboardLayout(winThreadProcId);
+
+                //Convert this into a culture string for logging
+                string keyboardCulture = "Unknown";
+                var installedInputLanguages = InputLanguage.InstalledInputLanguages;
+                for (int i = 0; i < installedInputLanguages.Count; i++)
+                {
+                    if (keyboardLayout == installedInputLanguages[i].Handle)
+                    {
+                        keyboardCulture = installedInputLanguages[i].Culture.DisplayName;
+                        break;
+                    }
+                }
+                foreach (var chaKey in inKey)
+                {
+                    var vkKeyScan = PInvoke.VkKeyScanEx(chaKey, keyboardLayout);
+                    var vkCode = vkKeyScan & 0xff;
+                    if (vkKeyScan != -1)
+                    {
+                        if (type == KeyPressKeyValue.KeyPressType.Press)
+                            publishService.KeyDown((VirtualKeyCode)vkCode);
+                        else if (type == KeyPressKeyValue.KeyPressType.Release)
+                            publishService.KeyUp((VirtualKeyCode)vkCode);
+                        else
+                            publishService.KeyDownUp((VirtualKeyCode)vkCode);
+                    }
+                    else
+                    {
+                        Log.InfoFormat("No virtual key code found for '{0}'", chaKey);
+                    }
+                }
+            }
         }
-        
+
         private string CombineStringWithActiveDeadKeys(string input)
         {
             Log.InfoFormat("Combing dead keys (diacritics) on '{0}'", input);
@@ -548,11 +599,11 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.Debug("Suppressing auto space before this capture as the last text change was null or white space.");
                 suppressNextAutoSpace = true;
             }
-			else if(!Settings.Default.KeyboardAndDictionaryLanguage.SupportsAutoSpace()) //Language does not support auto space
-			{
-				Log.DebugFormat("Suppressing auto space before this capture as the KeyboardAndDictionaryLanguage {0} does not support auto space.", Settings.Default.KeyboardAndDictionaryLanguage);
+            else if(!Settings.Default.KeyboardAndDictionaryLanguage.SupportsAutoSpace()) //Language does not support auto space
+            {
+                Log.DebugFormat("Suppressing auto space before this capture as the KeyboardAndDictionaryLanguage {0} does not support auto space.", Settings.Default.KeyboardAndDictionaryLanguage);
                 suppressNextAutoSpace = true;
-			}
+            }
             else if (new StringInfo(lastProcessedText).LengthInTextElements == 1
                      && new StringInfo(newText).LengthInTextElements == 1
                      && !lastProcessedTextWasSuggestion
@@ -640,7 +691,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         //Remove (from the end of the string) the part of the in-progress word which will be changed by composition
-                        Text = Text.Substring(0, Text.Length - countOfCharactersToRemove); 
+                        Text = Text.Substring(0, Text.Length - countOfCharactersToRemove);
 
                         //Remove changed in-progress word suffix string from external applications by outputting backspaces - the new suffix will be published seperately
                         for (var backCount = 0; backCount < countOfCharactersToRemove; backCount++) //Don't include newTextProcessed as it does not exist on Text yet
