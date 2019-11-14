@@ -22,6 +22,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
         private readonly NotifyingConcurrentDictionary<KeyValue, bool> keyHighlightStates;
+        private readonly NotifyingConcurrentDictionary<KeyValue, bool> keyRunningStates;
         private readonly KeyEnabledStates keyEnabledStates;
         private readonly Action<KeyValue> fireKeySelectionEvent;
         private readonly Dictionary<bool, KeyStateServiceState> state = new Dictionary<bool, KeyStateServiceState>();
@@ -44,6 +45,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             this.keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
             this.keyHighlightStates = new NotifyingConcurrentDictionary<KeyValue, bool>();
+            this.keyRunningStates = new NotifyingConcurrentDictionary<KeyValue, bool>();
             this.keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
 
             InitialiseKeyDownStates();
@@ -64,6 +66,7 @@ namespace JuliusSweetland.OptiKey.Services
         public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get { return keySelectionProgress; } }
         public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get { return keyDownStates; } }
         public NotifyingConcurrentDictionary<KeyValue, bool> KeyHighlightStates { get { return keyHighlightStates; } }
+        public NotifyingConcurrentDictionary<KeyValue, bool> KeyRunningStates { get { return keyRunningStates; } }
         public KeyEnabledStates KeyEnabledStates { get { return keyEnabledStates; } }
 
         #endregion

@@ -23,7 +23,7 @@ namespace JuliusSweetland.OptiKey.Models
         { get; set; }
 
         [XmlElement(ElementName = "DynamicKey")]
-        public List<XmlDynamicKey> DynamicKeys
+        public List<XmlMultiStepKey> MultiStepKeys
         { get; set; }
 
         [XmlIgnore]
@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                return ActionKeys.Count + TextKeys.Count + ChangeKeyboardKeys.Count + PluginKeys.Count + DynamicKeys.Count;
+                return ActionKeys.Count + TextKeys.Count + ChangeKeyboardKeys.Count + PluginKeys.Count + MultiStepKeys.Count;
             }
         }
     }

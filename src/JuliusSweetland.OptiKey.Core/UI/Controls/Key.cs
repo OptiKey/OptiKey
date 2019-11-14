@@ -86,7 +86,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .Subscribe(_ => calculateIsEnabled());
             onUnloaded.Add(keyEnabledSubscription);
             calculateIsEnabled();
-            
+
             //Calculate IsCurrent
             Action<KeyValue> calculateIsCurrent = value => IsCurrent = value != null && Value != null && value.Equals(Value);
             var currentPositionSubscription = mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
@@ -106,8 +106,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             //Calculate DisplayShiftDownText
             //Display shift down text (upper case text) if shift is locked down, or down (but NOT when we are capturing a multi key selection)
-            Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) => 
-                    DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown 
+            Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) =>
+                    DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown
                     || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
 
             var capturingMultiKeySelectionSubscription = capturingStateManager
@@ -121,7 +121,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             onUnloaded.Add(leftShiftKeyStateSubscription);
             calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, capturingStateManager.CapturingMultiKeySelection);
-            
+
             //Publish own version of KeySelection event
             var keySelectionSubscription = Observable.FromEventPattern<KeyValue>(
                 handler => mainViewModel.KeySelection += handler,
@@ -137,7 +137,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 });
             onUnloaded.Add(keySelectionSubscription);
         }
-        
+
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             if (onUnloaded != null
@@ -172,7 +172,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public bool DisplayShiftDownText
         {
-            get { return (bool) GetValue(DisplayShiftDownTextProperty); }
+            get { return (bool)GetValue(DisplayShiftDownTextProperty); }
             set { SetValue(DisplayShiftDownTextProperty, value); }
         }
 
@@ -181,7 +181,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public bool IsCurrent
         {
-            get { return (bool) GetValue(IsCurrentProperty); }
+            get { return (bool)GetValue(IsCurrentProperty); }
             set { SetValue(IsCurrentProperty, value); }
         }
 
@@ -200,7 +200,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public double SelectionProgress
         {
-            get { return (double) GetValue(SelectionProgressProperty); }
+            get { return (double)GetValue(SelectionProgressProperty); }
             set { SetValue(SelectionProgressProperty, value); }
         }
 
@@ -209,17 +209,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public bool SelectionInProgress
         {
-            get { return (bool) GetValue(SelectionInProgressProperty); }
+            get { return (bool)GetValue(SelectionInProgressProperty); }
             set { SetValue(SelectionInProgressProperty, value); }
         }
-        
+
         //Specify if this key spans multiple keys horizontally - used to keep the contents proportional to other keys
         public static readonly DependencyProperty WidthSpanProperty =
             DependencyProperty.Register("WidthSpan", typeof(double), typeof(Key), new PropertyMetadata(1d));
 
         public double WidthSpan
         {
-            get { return (double) GetValue(WidthSpanProperty); }
+            get { return (double)GetValue(WidthSpanProperty); }
             set { SetValue(WidthSpanProperty, value); }
         }
 
@@ -229,7 +229,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public double HeightSpan
         {
-            get { return (double) GetValue(HeightSpanProperty); }
+            get { return (double)GetValue(HeightSpanProperty); }
             set { SetValue(HeightSpanProperty, value); }
         }
 
@@ -247,17 +247,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public string SharedSizeGroup
         {
-            get { return (string) GetValue(SharedSizeGroupProperty); }
+            get { return (string)GetValue(SharedSizeGroupProperty); }
             set { SetValue(SharedSizeGroupProperty, value); }
         }
-        
+
         public static readonly DependencyProperty SymbolGeometryProperty =
-            DependencyProperty.Register("SymbolGeometry", typeof (Geometry), typeof (Key),
+            DependencyProperty.Register("SymbolGeometry", typeof(Geometry), typeof(Key),
             new PropertyMetadata(default(Geometry), OnSymbolGeometryOrTextChanged));
 
         public Geometry SymbolGeometry
         {
-            get { return (Geometry) GetValue(SymbolGeometryProperty); }
+            get { return (Geometry)GetValue(SymbolGeometryProperty); }
             set { SetValue(SymbolGeometryProperty, value); }
         }
 
@@ -276,7 +276,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private static void TextChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var key = dependencyObject as Key;
-            
+
             if (key != null)
             {
                 var value = dependencyPropertyChangedEventArgs.NewValue as string;
@@ -307,7 +307,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public string Text
         {
-            get { return (string) GetValue(TextProperty); }
+            get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
 
@@ -331,12 +331,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty ShiftDownTextProperty =
-            DependencyProperty.Register("ShiftDownText", typeof (string), typeof (Key),
+            DependencyProperty.Register("ShiftDownText", typeof(string), typeof(Key),
             new PropertyMetadata(default(string), OnSymbolGeometryOrTextChanged));
 
         public string ShiftDownText
         {
-            get { return (string) GetValue(ShiftDownTextProperty); }
+            get { return (string)GetValue(ShiftDownTextProperty); }
             set { SetValue(ShiftDownTextProperty, value); }
         }
 
@@ -351,8 +351,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
-        public bool HasText { get { return !string.IsNullOrEmpty(ShiftUpText) ||
-                                           !string.IsNullOrEmpty(ShiftDownText); } }
+        public bool HasText
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(ShiftUpText) ||
+                       !string.IsNullOrEmpty(ShiftDownText);
+            }
+        }
 
         public static readonly DependencyProperty OnlyVisibleWhenInUseProperty =
             DependencyProperty.Register("OnlyVisibleWhenInUse", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
@@ -379,6 +385,33 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(DisabledBackgroundColourOverrideProperty); }
             set { SetValue(DisabledBackgroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty KeyDownBackgroundOverrideProperty =
+            DependencyProperty.Register("KeyDownBackgroundOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush KeyDownBackgroundOverride
+        {
+            get { return (Brush)GetValue(KeyDownBackgroundOverrideProperty); }
+            set { SetValue(KeyDownBackgroundOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty KeyDownOpacityOverrideProperty =
+            DependencyProperty.Register("KeyDownOpacityOverride", typeof(double), typeof(Key), new PropertyMetadata(defaultValue: 1.0));
+
+        public double KeyDownOpacityOverride
+        {
+            get { return (double)GetValue(KeyDownOpacityOverrideProperty); }
+            set { SetValue(KeyDownOpacityOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty OpacityOverrideProperty =
+            DependencyProperty.Register("OpacityOverride", typeof(double), typeof(Key), new PropertyMetadata(defaultValue: 1.0));
+
+        public double OpacityOverride
+        {
+            get { return (double)GetValue(OpacityOverrideProperty); }
+            set { SetValue(OpacityOverrideProperty, value); }
         }
 
         public static readonly DependencyProperty DisabledBackgroundOpacityProperty =

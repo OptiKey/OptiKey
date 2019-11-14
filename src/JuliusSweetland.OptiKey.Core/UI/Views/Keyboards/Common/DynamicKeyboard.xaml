@@ -12,18 +12,12 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        mc:Ignorable="d" 
-                       d:DesignHeight="300" d:DesignWidth="300"
-                       Background="{DynamicResource KeyboardBackgroundBrush}"
-                       BorderBrush="{DynamicResource KeyboardBorderBrush}">
+                       d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
-                <ResourceDictionary>
-                    <valueConverters:WidthGreaterThanHeight DefaultValue="True" x:Key="WidthGreaterThanHeight" />
-                    <valueConverters:MinimiseAndDockPositionToSymbolOrientation x:Key="MinimiseAndDockPositionToSymbolOrientation" />
-                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -40,19 +34,12 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
         <!-- Optional output row at top, may be collapsed from code -->
         <controls:Output Grid.Row="0" Grid.Column="0"
-                         Grid.RowSpan="1" Grid.ColumnSpan="1" 
                          ScratchpadWidthInKeys="8"
                          x:Name="OutputPanel"
-                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
-        <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
-        <Grid Grid.IsSharedSizeScope="True"
-              x:Name="MainGrid"
-              Grid.Row="1" Grid.Column="0"
-              Grid.RowSpan="1" Grid.ColumnSpan="1" >
-
+        <Grid Grid.IsSharedSizeScope="True" x:Name="MainGrid" Grid.Row="1" Grid.Column="0">
             <!-- Add Keys dynamically here -->
-
         </Grid>
     </Grid>
 </controls:KeyboardView>
