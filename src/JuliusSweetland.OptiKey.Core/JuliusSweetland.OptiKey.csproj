@@ -434,8 +434,8 @@
       <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
-    <Compile Include="UI\Controls\DynamicKeyboard.cs" />
-    <Compile Include="UI\Controls\DynamicKeyboardSelector.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboardSelector.cs" />
     <Compile Include="UI\Controls\ToastNotification.cs" />
     <Compile Include="UI\Controls\Cursor.cs" />
     <Compile Include="UI\Controls\ToastNotificationPopup.cs" />

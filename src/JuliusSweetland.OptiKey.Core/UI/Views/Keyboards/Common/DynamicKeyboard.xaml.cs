@@ -15,6 +15,8 @@ using System.Xml;
 using System.Windows;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using JuliusSweetland.OptiKey.UI.Utilities;
+using JuliusSweetland.OptiKey.UI.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -24,12 +26,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
     public partial class DynamicKeyboard : KeyboardView
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly MainWindow mainWindow;
         private string inputFilename;
         private XmlKeyboard keyboard;
 
-        public DynamicKeyboard(string inputFile)
+        public DynamicKeyboard(MainWindow parentWindow, string inputFile)
         {
             InitializeComponent();
+            this.mainWindow = parentWindow;
             inputFilename = inputFile;
 
             // Read in XML file, exceptions get displayed to user
@@ -983,14 +987,24 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     || System.Drawing.Color.FromName(keyboard.BorderColor).IsKnownColor))
             {
                 Log.InfoFormat("Setting border color for custom keyboard: {0}", keyboard.BorderColor);
-                this.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom(keyboard.BorderColor);
+                var borderBrushOverride = (SolidColorBrush) new BrushConverter().ConvertFrom(keyboard.BorderColor);
+                this.BorderBrush = borderBrushOverride;
+                if(mainWindow != null)
+                {
+                    mainWindow.BorderBrushOverride = borderBrushOverride;
+                }
             }
             if (!string.IsNullOrEmpty(keyboard.BackgroundColor)
                 && (Regex.IsMatch(keyboard.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
                     || System.Drawing.Color.FromName(keyboard.BackgroundColor).IsKnownColor))
             {
                 Log.InfoFormat("Setting background color for custom keyboard: {0}", keyboard.BackgroundColor);
-                this.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(keyboard.BackgroundColor);
+                var backgroundColour = (SolidColorBrush) new BrushConverter().ConvertFrom(keyboard.BackgroundColor);
+                this.Background = backgroundColour;
+                if (mainWindow != null)
+                {
+                    mainWindow.BackgroundColourOverride = backgroundColour;
+                }
             }
         }
         private void SetupGrid()

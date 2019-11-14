@@ -17,6 +17,7 @@ using System.Reactive.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using JuliusSweetland.OptiKey.UI.Windows;
 using CatalanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Catalan;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using CroatianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Croatian;
@@ -55,6 +56,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
+        private MainWindow mainWindow;
         private CompositeDisposable currentKeyboardKeyValueSubscriptions = new CompositeDisposable();
 
         #endregion
@@ -102,7 +104,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             keyboardHost.GenerateContent();
                         }
                     }));
-
+        
         public IKeyboard Keyboard
         {
             get { return (IKeyboard)GetValue(KeyboardProperty); }
@@ -139,6 +141,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             BuildPointToKeyMap();
 
             SubscribeToSizeChanges();
+
+            mainWindow = VisualAndLogicalTreeHelper.FindVisualParent<MainWindow>(this);
 
             var parentWindow = Window.GetWindow(this);
 
@@ -565,7 +569,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
             {
                 var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
-                newContent = new CommonViews.DynamicKeyboard(kb.Link) { DataContext = Keyboard };
+                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link) { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)
             {

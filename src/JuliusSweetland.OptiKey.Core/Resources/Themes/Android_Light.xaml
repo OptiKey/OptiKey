@@ -98,9 +98,18 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             </valueConverters:FontFamilyNotIn>
 
             <Style x:Key="MainWindowStyle" TargetType="{x:Type windows:MainWindow}" BasedOn="{StaticResource {x:Type Window}}">
+                <Setter Property="Background" Value="{StaticResource KeyboardBackgroundBrush}" />
                 <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Style.Triggers>
+                    <!--Is the main window's background colour overridden - this can be set by a dynamic keyboard-->
+                    <DataTrigger Binding="{Binding Path=BackgroundColourOverride, RelativeSource={RelativeSource Self}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
+                        <Setter Property="Background" Value="{Binding Path=BackgroundColourOverride, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
+                    </DataTrigger>
+                    <!--Is the main window's border brush overridden - this can be set by a dynamic keyboard-->
+                    <DataTrigger Binding="{Binding Path=BorderBrushOverride, RelativeSource={RelativeSource Self}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
+                        <Setter Property="BorderBrush" Value="{Binding Path=BorderBrushOverride, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
+                    </DataTrigger>
                     <!--Is the keyboard an IConversationKeyboard-->
                     <DataTrigger Binding="{Binding DataContext.Keyboard, ElementName=MainView, Converter={StaticResource ObjectIsType}, ConverterParameter={x:Type keyboardBase:IConversationKeyboard}, Mode=OneWay}" Value="True">
                         <Setter Property="BorderThickness" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationBorderThickness}" />

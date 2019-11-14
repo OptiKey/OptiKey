@@ -163,7 +163,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             //if the key is in a running state and gets pressed, then stop it
                             if (keyStateService.KeyRunningStates[singleKeyValue].Value)
                             {
-                                Log.InfoFormat("StepList key triggerred while in a running state. Ending key: {0}", singleKeyValue.String);
+                                Log.InfoFormat("StepList key triggered while in a running state. Ending key: {0}", singleKeyValue.String);
                                 keyStateService.KeyRunningStates[singleKeyValue].Value = false;
                             }
                             else
