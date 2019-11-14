@@ -493,7 +493,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public async Task ProcessSingleKeyPress(string inKey, KeyPressKeyValue.KeyPressType type)
         {
-            Log.InfoFormat("Processing input value {0} with key press type {1}", inKey, type);
+            Log.InfoFormat("ProcessSingleKeyPress called for key [{0}] press type [{1}]", inKey, type);
 
             FunctionKeys funKey;
             var virtualKeyCode = (Enum.TryParse(inKey, out funKey)) ? funKey.ToVirtualKeyCode() : null;
