@@ -400,72 +400,94 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 var vLabel = "Suggestion";
                 if (dynamicItem is XmlDynamicKey dynamicKey) { vLabel = dynamicKey.Label; }
                 else if (dynamicItem is XmlDynamicScratchpad) { vLabel = "Scratchpad"; }
+                
+                bool itemPositionConfirmed = false;
+                while (!itemPositionConfirmed)
+                {
+                    var vItemColumn = 0;
+                    var vRowsConfirmed = 0;
 
-            //find first row with enough available width for the item
-            findAvailableRow:
-                //if row is designated then block all preceding columns in all preceding rows
-                if (dynamicItem.Row > -1)
-                {
-                    for (int row = 0; row < dynamicItem.Row; row++)
+                    //set start row to first row with enough available width for the item
+                    var startRow = dynamicItem.Row > -1 ? (openGrid.ElementAt(dynamicItem.Row).Count >= dynamicItem.Width ? dynamicItem.Row : -1)
+                        : openGrid.FindIndex(x => (x.Count() >= dynamicItem.Width));
+                    //if a start row with enough empty space is not found then return an error
+                    if (startRow < 0)
                     {
-                        if (openGrid.ElementAt(row).Count > 0)
-                            openGrid.ElementAt(row).RemoveRange(0, openGrid.ElementAt(row).Count);
+                        SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
+                            + (vIndex + 1) + " of " + itemPosition
+                            + " labeled '" + vLabel + "' having width "
+                            + dynamicItem.Width + " and height " + dynamicItem.Height);
+                        return false;
                     }
-                }
-                var vItemColumn = 0;
-                var vRowsConfirmed = 0;
-                var startRow = openGrid.FindIndex(x => (x.Count() >= dynamicItem.Width));
-                if (startRow < 0 || (dynamicItem.Row > -1 && startRow > dynamicItem.Row)) //if not found
-                {
-                    SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
-                        + (vIndex + 1) + " of " + itemPosition
-                        + " labeled '" + vLabel + "' having width "
-                        + dynamicItem.Width + " and height " + dynamicItem.Height);
-                    return false;
-                }
-                for (int row = startRow; row < keyboard.Grid.Rows; row++)
-                {
-                    if (dynamicItem.Col > -1)
+                    //block all preceding columns in all preceding rows
+                    for (int row = 0; row < startRow; row++)
                     {
-                        //if column exists then block all preceding columns in the row
-                        if (openGrid.ElementAt(row).Exists(x => x == dynamicItem.Col))
-                            openGrid.ElementAt(row).RemoveAll(x => x < dynamicItem.Col);
-                        //else block the whole row and check another 
-                        else
+                        if (openGrid.ElementAt(row).Any())
+                            openGrid.ElementAt(row).Clear();
+                    }
+                    for (int row = startRow; row < keyboard.Grid.Rows; row++)
+                    {
+                        if (dynamicItem.Col > -1)
                         {
-                            openGrid.ElementAt(row).RemoveRange(0, openGrid.ElementAt(row).Count);
-                            goto findAvailableRow;
+                            //if column exists then block all preceding columns in the row
+                            if (openGrid.ElementAt(row).Exists(x => x == dynamicItem.Col))
+                                openGrid.ElementAt(row).RemoveAll(x => x < dynamicItem.Col);
+                            //else block the whole row and check another 
+                            else
+                            {
+                                openGrid.ElementAt(row).Clear();
+                                break;
+                            }
                         }
-                    }
-                    //if height > 1 and we are searching subsequent rows then we need to start at the confirmed start column
-                    var startColumn = (vRowsConfirmed > 0) ? vItemColumn : (dynamicItem.Col > -1) ? dynamicItem.Col : openGrid.ElementAt(row).First();
-                    for (int col = startColumn; col < (startColumn + dynamicItem.Width); col++)
-                    {
-                        //if an open space is found remove it from available
-                        if (openGrid.ElementAt(row).Exists(x => x == col))
-                            openGrid.ElementAt(row).Remove(col);
-                        //if an open space is not found then we need to reset because the item width has not been satisfied
-                        else
+                        //if height > 1 and we are searching subsequent rows then we need to start at the confirmed start column
+                        var vColsConfirmed = 0;
+                        var startColumn = (vRowsConfirmed > 0) ? vItemColumn : (dynamicItem.Col > -1) ? dynamicItem.Col : openGrid.ElementAt(row).First();
+                        while (openGrid.ElementAt(row).Any())
                         {
-                            //if this row does not have enough additional space then block what remains
-                            if (openGrid.ElementAt(row).Count < dynamicItem.Width)
-                                openGrid.ElementAt(row).RemoveRange(0, openGrid.ElementAt(row).Count);
-                            goto findAvailableRow;
+                            //if the next open space is adjacent then increment columns confirmed
+                            if (openGrid.ElementAt(row).First() == startColumn + vColsConfirmed)
+                            {
+                                vColsConfirmed++;
+                                openGrid.ElementAt(row).RemoveAt(0);
+                                //stop searching if we meet the width requiement
+                                if (vColsConfirmed == dynamicItem.Width)
+                                    break;
+                            }
+                            //else if this row does not have enough additional space then block what remains and break
+                            else if (openGrid.ElementAt(row).Count < dynamicItem.Width || dynamicItem.Col > -1)
+                            {
+                                openGrid.ElementAt(row).Clear();
+                                break;
+                            }
+                            //else if the next open space is not adjacent then we need to reset
+                            else
+                            {
+                                vColsConfirmed = 0;
+                                startColumn = openGrid.ElementAt(row).First();
+                            }
                         }
-                    }
-                    //if we make it past the column loop then we have a confirmed start column and row
-                    vItemColumn = startColumn;
-                    vRowsConfirmed++;
 
-                    if (vRowsConfirmed == dynamicItem.Height)
-                    {
-                        dynamicItem.Col = vItemColumn;
-                        dynamicItem.Row = 1 + row - dynamicItem.Height;
-                        break;
-                    }
-                } //loop back to process the next row
+                        if (vColsConfirmed == dynamicItem.Width)
+                        {
+                            vItemColumn = startColumn;
+                            vRowsConfirmed++;
 
-                if (vRowsConfirmed < dynamicItem.Height)
+                            if (vRowsConfirmed == dynamicItem.Height)
+                            {
+                                dynamicItem.Col = vItemColumn;
+                                dynamicItem.Row = 1 + row - dynamicItem.Height;
+                                itemPositionConfirmed = true;
+                                break;
+                            }
+                        }
+                    } //loop back to process the next row
+                }
+
+                if (itemPositionConfirmed)
+                {
+                    SetupDynamicItem(dynamicItem, minKeyWidth, minKeyHeight);
+                }
+                else
                 {
                     SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
                         + (vIndex + 1) + " of " + itemPosition.Count
@@ -473,7 +495,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         + dynamicItem.Width + " and height " + dynamicItem.Height);
                     return false;
                 }
-                SetupDynamicItem(dynamicItem, minKeyWidth, minKeyHeight);
             }
             //end section 2: processing items that need a row and/or column assigned
 
