@@ -2502,7 +2502,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (commandList.First().StartsWith("Loop>"))
                 {
                     var loopCount = Int32.Parse(commandList.First().Substring(5));
-                    Log.InfoFormat("StepListCommand: Looping {0} times", loopCount);
+                    var logMessage = loopCount > 0 ? loopCount + " times" : "indefinitely until stopped";
+                    Log.InfoFormat("StepListCommand: Looping {0}", logMessage);
 
                     //determine if there is a loop nested in this one or if this is a solo loop
                     //for a loop with additional nested loops, find the final end loop (/Loop>) command
@@ -2513,11 +2514,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         ? commandList.LastIndexOf("/Loop>") - 1
                         : commandList.IndexOf("/Loop>") - 1;
 
-                    for (int i = 0; i < loopCount; i++)
+                    while (keyStateService.KeyRunningStates[singleKeyValue].Value)
                     {
-                        var loopList = commandList.GetRange(1, vEnd);
                         //when calling another instance do so with a larger nestLevel
-                        await StepListCommands(singleKeyValue, multiKeySelection, loopList, nestLevel+1);
+                        await StepListCommands(singleKeyValue, multiKeySelection, commandList.GetRange(1, vEnd), nestLevel + 1);
+
+                        //we need to throttle if in a perpetual loop with no pre-defined wait 
+                        if (loopCount < 1 && !commandList.GetRange(1, vEnd).Exists(x => x.StartsWith("Wait>")))
+                        {
+                            int waitMs = 500;
+                            Log.InfoFormat("Throttling perpetual loop for {0}ms", waitMs);
+                            await Task.Delay(waitMs);
+                        }
+
+                        //if we completed the final iteration then break out of the loop
+                        if (loopCount == 1)
+                            break;
+                        //only decrement the counter if we are not in perpetual loop
+                        if (loopCount > 1)
+                            loopCount--;
                     }
                     //remove all the commands that were sent to the nested loop
                     commandList.RemoveRange(0, vEnd);
