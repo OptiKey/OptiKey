@@ -975,28 +975,13 @@
     <Content Include="Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Size and position examples\DockBottom.xml">
+    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Size and position examples\DockTop.xml">
+    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Qwerty_6x12.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Size and position examples\FloatBottom.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Size and position examples\FloatCenter.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Size and position examples\FloatDemo.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Size and position examples\FloatLeft.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Size and position examples\FloatRight.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Size and position examples\FloatTop.xml">
+    <Content Include="Resources\DynamicKeyboards\Samples\MyQwertyLeft.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Fonts\B612-licence-epl-v10.html">
