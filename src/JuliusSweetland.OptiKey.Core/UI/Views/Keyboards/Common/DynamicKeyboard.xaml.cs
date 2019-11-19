@@ -1,3 +1,4 @@
+
 // Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.Models;
@@ -575,7 +576,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         private void AddDynamicKey(XmlDynamicKey xmlDynamicKey, int minKeyWidth, int minKeyHeight)
         {
-            if (xmlDynamicKey.KeySteps.Count > 0)
+            if (xmlDynamicKey.KeySteps.Any())
             {
                 var vStepList = AddDynamicStepList(xmlDynamicKey, minKeyWidth, minKeyHeight);
                 if (vStepList != "")
@@ -591,7 +592,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private string AddDynamicStepList(XmlDynamicKey xmlDynamicKey, int minKeyWidth, int minKeyHeight)
         {
             var vStepList = "";
-            if (xmlDynamicKey.KeySteps.Count > 0)
+            if (xmlDynamicKey.KeySteps.Any())
             {
                 var rootDir = Path.GetDirectoryName(inputFilename);
 
@@ -630,7 +631,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             ? keyboardEnum.ToString()
                             : Path.Combine(rootDir, vLink.Value);
 
-                            vStepList += (xmlDynamicKey.ReturnToThisKeyboard)                            
+                            vStepList += (vLink.BackReturnsHere)
                                 ? "<KeyboardAndReturn>" + vDestinationKeyboard
                                 : "<Keyboard>" + vDestinationKeyboard;
                         }
