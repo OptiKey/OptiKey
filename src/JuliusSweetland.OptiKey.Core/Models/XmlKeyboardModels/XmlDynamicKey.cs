@@ -9,7 +9,7 @@ namespace JuliusSweetland.OptiKey.Models
         public XmlDynamicKey() { }
 
         [XmlElement("Action", typeof(DynamicAction))]
-        [XmlElement("DestinationKeyboard", typeof(DynamicLink))]
+        [XmlElement("ChangeKeyboard", typeof(DynamicLink))]
         [XmlElement("KeyDown", typeof(DynamicKeyDown))]
         [XmlElement("KeyUp", typeof(DynamicKeyUp))]
         [XmlElement("KeyToggle", typeof(DynamicKeyToggle))]
@@ -17,27 +17,16 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("Text", typeof(DynamicText))]
         [XmlElement("Wait", typeof(DynamicWait))]
         public List<XmlDynamicKey> KeySteps { get; } = new List<XmlDynamicKey>();
-
-        [XmlIgnore]
-        public bool ReturnToThisKeyboard
-        { get; set; }
-
-        [XmlElement("ReturnToThisKeyboard")]
-        public string ReturnToThisKeyboardAsString
-        {
-            get { return this.ReturnToThisKeyboard ? "True" : "False"; }
-            set { this.ReturnToThisKeyboard = XmlUtils.ConvertToBoolean(value); }
-        }
-
+        
         public string Label { get; set; } //Either set this, the Symbol, or both. This value become the Text value on the created Key.
         public string ShiftDownLabel { get; set; } //Optional - only required to display an alternate Text value when the shift key is down.
         public string Symbol { get; set; }
-        public string SharedSizeGroup { get; set; } //Optional - only required to break out a key, or set of keys, to size separately, otherwise size grouping is determined automatically
-        public bool AutoScaleToOneKeyWidth { get; set; } = true;
-        public bool AutoScaleToOneKeyHeight { get; set; } = true;
-        public bool UsePersianCompatibilityFont { get; set; }
-        public bool UseUnicodeCompatibilityFont { get; set; }
-        public bool UseUrduCompatibilityFont { get; set; }
+        [XmlAttribute] public bool AutoScaleToOneKeyWidth { get; set; } = true;
+        [XmlAttribute] public bool AutoScaleToOneKeyHeight { get; set; } = true;
+        [XmlAttribute] public string SharedSizeGroup { get; set; } //Optional - only required to break out a key, or set of keys, to size separately, otherwise size grouping is determined automatically
+        [XmlAttribute] public bool UsePersianCompatibilityFont { get; set; }
+        [XmlAttribute] public bool UseUnicodeCompatibilityFont { get; set; }
+        [XmlAttribute] public bool UseUrduCompatibilityFont { get; set; }
     }
 
     public class DynamicAction : XmlDynamicKey
@@ -50,6 +39,17 @@ namespace JuliusSweetland.OptiKey.Models
     {
         [XmlText]
         public string Value { get; set; }
+
+        [XmlIgnore]
+        public bool BackReturnsHere
+        { get; set; }
+
+        [XmlAttribute("BackReturnsHere")]
+        public string BackReturnsHereAsString
+        {
+            get { return this.BackReturnsHere ? "True" : "False"; }
+            set { this.BackReturnsHere = XmlUtils.ConvertToBoolean(value); }
+        }
     }
 
     public class DynamicKeyDown : XmlDynamicKey
@@ -75,7 +75,7 @@ namespace JuliusSweetland.OptiKey.Models
         public DynamicLoop() { }
 
         [XmlElement("Action", typeof(DynamicAction))]
-        [XmlElement("DestinationKeyboard", typeof(DynamicLink))]
+        [XmlElement("ChangeKeyboard", typeof(DynamicLink))]
         [XmlElement("KeyDown", typeof(DynamicKeyDown))]
         [XmlElement("KeyUp", typeof(DynamicKeyUp))]
         [XmlElement("KeyToggle", typeof(DynamicKeyToggle))]
@@ -84,7 +84,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("Wait", typeof(DynamicWait))]
         public List<XmlDynamicKey> LoopSteps { get; } = new List<XmlDynamicKey>();
 
-        public int Count { get; set; } = 1; //The number of loop repetitions
+        [XmlAttribute] public int Count { get; set; } = 1; //The number of loop repetitions
     }
 
     public class DynamicText : XmlDynamicKey

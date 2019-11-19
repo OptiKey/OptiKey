@@ -37,6 +37,7 @@ namespace JuliusSweetland.OptiKey.Services
         private Rect appBarBoundsInPx;
         private Rect screenBoundsInPx;
         private Rect screenBoundsInDp;
+        private Func<bool> getPersistedState;
         private readonly Func<double> getOpacity;
         private readonly Func<WindowStates> getWindowState;
         private readonly Func<WindowStates> getPreviousWindowState;
@@ -46,6 +47,8 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Func<double> getFullDockThicknessAsPercentageOfScreen;
         private readonly Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness;
         private readonly Func<MinimisedEdges> getMinimisedPosition;
+        private readonly Action<bool> savePersistedState;
+        private readonly Action<double> saveOpacity;
         private readonly Action<WindowStates> saveWindowState;
         private readonly Action<WindowStates> savePreviousWindowState;
         private readonly Action<Rect> saveFloatingSizeAndPosition;
@@ -53,15 +56,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Action<DockSizes> saveDockSize;
         private readonly Action<double> saveFullDockThicknessAsPercentageOfScreen;
         private readonly Action<double> saveCollapsedDockThicknessAsPercentageOfFullDockThickness;
-        private readonly Action<double> saveOpacity;
 
-        private bool persistedState = true;
-        private WindowStates defaultWindowState;
-        private DockEdges defaultDockPosition;
-        private DockSizes defaultDockSize;
-        private double defaultFullDockThickness;
-        private double defaultCollapsedDockThickness;
-        private Rect defaultFloatingSizeAndPosition;
         private int appBarCallBackId = -1;
 
         private delegate void ApplySizeAndPositionDelegate(Rect rect);
@@ -72,6 +67,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         internal WindowManipulationService(
             Window window,
+            Func<bool> getPersistedState,
             Func<double> getOpacity,
             Func<WindowStates> getWindowState,
             Func<WindowStates> getPreviousWindowState,
@@ -81,6 +77,7 @@ namespace JuliusSweetland.OptiKey.Services
             Func<double> getFullDockThicknessAsPercentageOfScreen,
             Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness,
             Func<MinimisedEdges> getMinimisedPosition,
+            Action<bool> savePersistedState,
             Action<double> saveOpacity,
             Action<WindowStates> saveWindowState,
             Action<WindowStates> savePreviousWindowState,
@@ -91,6 +88,7 @@ namespace JuliusSweetland.OptiKey.Services
             Action<double> saveCollapsedDockThicknessAsPercentageOfFullDockThickness)
         {
             this.window = window;
+            this.getPersistedState = getPersistedState;
             this.getOpacity = getOpacity;
             this.getWindowState = getWindowState;
             this.getPreviousWindowState = getPreviousWindowState;
@@ -100,6 +98,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.getCollapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness;
             this.getMinimisedPosition = getMinimisedPosition;
             this.getFloatingSizeAndPosition = getFloatingSizeAndPosition;
+            this.savePersistedState = savePersistedState;
             this.saveOpacity = saveOpacity;
             this.saveWindowState = saveWindowState;
             this.savePreviousWindowState = savePreviousWindowState;
@@ -385,13 +384,11 @@ namespace JuliusSweetland.OptiKey.Services
         public void Minimise()
         {
             Log.Info("Minimise called");
+            var persistedState = getPersistedState();
 
-            //if minimising from a temporary state then first set the thicknesses back to the default values
+            //if minimising from a temporary state then switch to the persisted state to minimize
             if (!persistedState)
-            {
-                saveFullDockThicknessAsPercentageOfScreen(defaultFullDockThickness);
-                saveCollapsedDockThicknessAsPercentageOfFullDockThickness(defaultCollapsedDockThickness);
-            }
+                savePersistedState(true);
 
             if (getWindowState() != WindowStates.Minimised)
                 savePreviousWindowState(getWindowState());
@@ -399,6 +396,9 @@ namespace JuliusSweetland.OptiKey.Services
                 UnRegisterAppBar();
             saveWindowState(WindowStates.Minimised);
             ApplySavedState();
+
+            if (!persistedState)
+                savePersistedState(persistedState);
         }
 
         public void Move(MoveToDirections direction, double? amountInPx)
@@ -447,27 +447,6 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("OverridePersistedState called with PersistNewState {0}, WindowState {1}, Position {2}, Width {3}, Height {4}, horizontalOffset {5}, verticalOffset {6}", inPersistNewState, inWindowState, inPosition, inWidth, inHeight, inHorizontalOffset, inVerticalOffset);
 
-            //if the previous state was the persisted state then save the default values
-            if (persistedState && getWindowState() != WindowStates.Minimised)
-            {
-                defaultWindowState = getWindowState();
-                defaultDockPosition = getDockPosition();
-                defaultDockSize = getDockSize();
-                defaultFullDockThickness = getFullDockThicknessAsPercentageOfScreen();
-                defaultCollapsedDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
-                defaultFloatingSizeAndPosition = getFloatingSizeAndPosition();
-            }
-            //if the new state is to persist or if returning from minimized 
-            //then rollback to the default values before continuing
-            if (inPersistNewState || getWindowState() == WindowStates.Minimised)
-            {
-                saveDockPosition(defaultDockPosition);
-                saveDockSize(defaultDockSize);
-                saveFullDockThicknessAsPercentageOfScreen(defaultFullDockThickness);
-                saveCollapsedDockThicknessAsPercentageOfFullDockThickness(defaultCollapsedDockThickness);
-                saveFloatingSizeAndPosition(defaultFloatingSizeAndPosition);
-            }
-
             WindowStates oldWindowState = getWindowState();
             WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState) ? newWindowState : getWindowState();
             DockEdges newDockPosition = Enum.TryParse(inPosition, out newDockPosition) ? newDockPosition : getDockPosition();
@@ -515,6 +494,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (newWindowState == WindowStates.Docked)
             {
+                savePersistedState(inPersistNewState);
                 saveDockPosition(newDockPosition);
                 saveDockSize(newDockSize);
                 
@@ -544,8 +524,11 @@ namespace JuliusSweetland.OptiKey.Services
                         ? screenBoundsInDp.Right - newWidth + horizontalOffset
                         : screenBoundsInDp.Width / 2d - newWidth / 2d + horizontalOffset;
                 }
+                savePersistedState(inPersistNewState);
                 saveFloatingSizeAndPosition(new Rect(newLeft, newTop, newWidth, newHeight));
             }
+            else
+                savePersistedState(inPersistNewState);
 
             if (oldWindowState == WindowStates.Docked && newWindowState != WindowStates.Docked)
                 UnRegisterAppBar();
@@ -554,27 +537,6 @@ namespace JuliusSweetland.OptiKey.Services
             saveWindowState(newWindowState);
             ApplySavedState();
 
-            //if the new state is to persist then save the new default values
-            if (inPersistNewState)
-            {
-                persistedState = true;
-                defaultWindowState = newWindowState;
-                if (newWindowState == WindowStates.Docked)
-                {
-                    defaultDockPosition = getDockPosition();
-                    defaultDockSize = getDockSize();
-                    defaultFullDockThickness = getFullDockThicknessAsPercentageOfScreen();
-                    defaultCollapsedDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
-                }
-                if (newWindowState == WindowStates.Floating)
-                {
-                    defaultFloatingSizeAndPosition = getFloatingSizeAndPosition();
-                }
-            }
-            else
-            {
-                persistedState = false;
-            }
         }
 
         public void ResizeDockToCollapsed()
@@ -601,20 +563,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Info("RestorePersistedState called");
             
-            if (persistedState || getWindowState() == WindowStates.Minimised) { return; }
+            if (getPersistedState() || getWindowState() == WindowStates.Minimised) { return; }
 
             Log.Info("Restoring keyboard to default values");
-            if (getWindowState() == WindowStates.Docked && defaultWindowState != WindowStates.Docked)
+            savePersistedState(true);
+            if (getPreviousWindowState() == WindowStates.Docked && getWindowState() != WindowStates.Docked)
                 UnRegisterAppBar();
-
-            persistedState = true;
-            savePreviousWindowState(getWindowState());
-            saveWindowState(defaultWindowState);
-            saveDockPosition(defaultDockPosition);
-            saveDockSize(defaultDockSize);
-            saveFullDockThicknessAsPercentageOfScreen(defaultFullDockThickness);
-            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(defaultCollapsedDockThickness);
-            saveFloatingSizeAndPosition(defaultFloatingSizeAndPosition);
 
             ApplySavedState();
         }
@@ -623,7 +577,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Info("Restore called");
 
-            if (!persistedState) return;
+            if (!getPersistedState()) return;
 
             var windowState = getWindowState();
             if (windowState != WindowStates.Maximised && windowState != WindowStates.Minimised && windowState != WindowStates.Hidden) return;
