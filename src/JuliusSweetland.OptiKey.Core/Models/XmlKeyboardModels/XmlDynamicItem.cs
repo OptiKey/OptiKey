@@ -14,14 +14,14 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("SuggestionCol", typeof(XmlDynamicSuggestionCol))]
         public List<XmlDynamicItem> Items { get; } = new List<XmlDynamicItem>();
 
-        public int Row { get; set; } = -1;
-        public int Col { get; set; } = -1;
-        public int Width { get; set; } = 1;
-        public int Height { get; set; } = 1;
-        public string BackgroundColor { get; set; }
-        public string Opacity { get; set; }
-        public string KeyDownBackground { get; set; }
-        public string KeyDownOpacity { get; set; }
+        [XmlAttribute] public int Row { get; set; } = -1;
+        [XmlAttribute] public int Col { get; set; } = -1;
+        [XmlAttribute] public int Width { get; set; } = 1;
+        [XmlAttribute] public int Height { get; set; } = 1;
+        [XmlAttribute] public string BackgroundColor { get; set; }
+        [XmlAttribute] public string Opacity { get; set; }
+        [XmlAttribute] public string KeyDownBackground { get; set; }
+        [XmlAttribute] public string KeyDownOpacity { get; set; }
     }
 
     public class XmlDynamicScratchpad : XmlDynamicItem { }
