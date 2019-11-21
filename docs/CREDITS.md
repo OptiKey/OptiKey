@@ -47,6 +47,7 @@ I would like to extend my thanks/credit to the following people, websites & orga
 * K.lbl
 * Samual Haddad
 * Amy Vining
+* Ömer Ney
 
 ## Resources
 

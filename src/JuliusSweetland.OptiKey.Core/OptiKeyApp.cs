@@ -50,8 +50,17 @@ namespace JuliusSweetland.OptiKey
 
         #region protected Member Vars
 
-        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        protected Action applyTheme;
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly Action applyTheme;
+
+        private bool persistedState = true;
+        private WindowStates tempWindowState;
+        private DockEdges tempDockPosition;
+        private DockSizes tempDockSize;
+        private double tempFullDockThickness;
+        private double tempCollapsedDockThickness;
+        private Rect tempFloatingSizeAndPosition;
+
 
         #endregion
 
@@ -303,6 +312,14 @@ namespace JuliusSweetland.OptiKey
                 {
                     if (Settings.Default.Debug)
                     {
+                        Log.DebugFormat("Getting persistedState with value '{0}'", persistedState);
+                    }
+                    return persistedState;
+                },
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
                         Log.DebugFormat("Getting MainWindowOpacity from settings with value '{0}'", Settings.Default.MainWindowOpacity);
                     }
                     return Settings.Default.MainWindowOpacity;
@@ -311,9 +328,15 @@ namespace JuliusSweetland.OptiKey
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Getting MainWindowState from settings with value '{0}'", Settings.Default.MainWindowState);
+                        if (persistedState)
+                            Log.DebugFormat("Getting MainWindowState from settings with value '{0}'", Settings.Default.MainWindowState);
+                        else
+                            Log.DebugFormat("Getting tempWindowState with value '{0}'", Settings.Default.MainWindowState);
                     }
-                    return Settings.Default.MainWindowState;
+                    if (persistedState)
+                        return Settings.Default.MainWindowState;
+                    else
+                        return tempWindowState;
                 },
                 () =>
                 {
@@ -327,41 +350,71 @@ namespace JuliusSweetland.OptiKey
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Getting MainWindowFloatingSizeAndPosition from settings with value '{0}'", Settings.Default.MainWindowFloatingSizeAndPosition);
+                        if (persistedState)
+                            Log.DebugFormat("Getting MainWindowFloatingSizeAndPosition from settings with value '{0}'", Settings.Default.MainWindowFloatingSizeAndPosition);
+                        else
+                            Log.DebugFormat("Getting tempFloatingSizeAndPosition with value '{0}'", tempFloatingSizeAndPosition);
                     }
-                    return Settings.Default.MainWindowFloatingSizeAndPosition;
+                    if (persistedState)
+                        return Settings.Default.MainWindowFloatingSizeAndPosition;
+                    else
+                        return tempFloatingSizeAndPosition;
                 },
                 () =>
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Getting MainWindowDockPosition from settings with value '{0}'", Settings.Default.MainWindowDockPosition);
+                        if (persistedState)
+                            Log.DebugFormat("Getting MainWindowDockPosition from settings with value '{0}'", Settings.Default.MainWindowDockPosition);
+                        else
+                            Log.DebugFormat("Getting tempDockPosition with value '{0}'", tempDockPosition);
                     }
-                    return Settings.Default.MainWindowDockPosition;
+                    if (persistedState)
+                        return Settings.Default.MainWindowDockPosition;
+                    else
+                        return tempDockPosition;
                 },
                 () =>
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Getting MainWindowDockSize from settings with value '{0}'", Settings.Default.MainWindowDockSize);
+                        if (persistedState)
+                            Log.DebugFormat("Getting MainWindowDockSize from settings with value '{0}'", Settings.Default.MainWindowDockSize);
+                        else
+                            Log.DebugFormat("Getting tempDockSize with value '{0}'", tempDockSize);
                     }
-                    return Settings.Default.MainWindowDockSize;
+                    if (persistedState)
+                        return Settings.Default.MainWindowDockSize;
+                    else
+                        return tempDockSize;
                 },
                 () =>
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Getting MainWindowFullDockThicknessAsPercentageOfScreen from settings with value '{0}'", Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen);
+                        if (persistedState)
+                            Log.DebugFormat("Getting MainWindowFullDockThicknessAsPercentageOfScreen from settings with value '{0}'", Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen);
+                        else
+                            Log.DebugFormat("Getting tempFullDockThickness with value '{0}'", tempFullDockThickness);
                     }
-                    return Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
+                    if (persistedState)
+                        return Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
+                    else
+                        return tempFullDockThickness;
                 },
                 () =>
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Getting MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness from settings with value '{0}'", Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness);
+                        if (persistedState)
+                            Log.DebugFormat("Getting MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness from settings with value '{0}'", Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness);
+                        else
+                            Log.DebugFormat("Getting tempCollapsedDockThickness with value '{0}'", tempCollapsedDockThickness);
                     }
-                    return Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
+                    if (persistedState)
+                        return Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
+                    else
+                        return tempCollapsedDockThickness;
                 },
                 () =>
                 {
@@ -375,6 +428,14 @@ namespace JuliusSweetland.OptiKey
                 {
                     if (Settings.Default.Debug)
                     {
+                        Log.DebugFormat("Storing persistedState with value '{0}'", o);
+                    }
+                    persistedState = o;
+                },
+                o =>
+                {
+                    if (Settings.Default.Debug)
+                    {
                         Log.DebugFormat("Storing MainWindowOpacity to settings with value '{0}'", o);
                     }
                     Settings.Default.MainWindowOpacity = o;
@@ -383,9 +444,15 @@ namespace JuliusSweetland.OptiKey
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Storing MainWindowState to settings with value '{0}'", state);
+                        if (persistedState)
+                            Log.DebugFormat("Storing MainWindowState to settings with value '{0}'", state);
+                        else
+                            Log.DebugFormat("Storing tempWindowState with value '{0}'", state);
                     }
-                    Settings.Default.MainWindowState = state;
+                    if (persistedState)
+                        Settings.Default.MainWindowState = state;
+                    else
+                        tempWindowState = state;
                 },
                 state =>
                 {
@@ -399,41 +466,71 @@ namespace JuliusSweetland.OptiKey
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Storing MainWindowFloatingSizeAndPosition to settings with value '{0}'", rect);
+                        if (persistedState)
+                            Log.DebugFormat("Storing MainWindowFloatingSizeAndPosition to settings with value '{0}'", rect);
+                        else
+                            Log.DebugFormat("Storing tempFloatingSizeAndPosition with value '{0}'", rect);
                     }
-                    Settings.Default.MainWindowFloatingSizeAndPosition = rect;
+                    if (persistedState)
+                        Settings.Default.MainWindowFloatingSizeAndPosition = rect;
+                    else
+                        tempFloatingSizeAndPosition = rect;
                 },
                 pos =>
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Storing MainWindowDockPosition to settings with value '{0}'", pos);
+                        if (persistedState)
+                            Log.DebugFormat("Storing MainWindowDockPosition to settings with value '{0}'", pos);
+                        else
+                            Log.DebugFormat("Storing tempDockPosition with value '{0}'", pos);
                     }
-                    Settings.Default.MainWindowDockPosition = pos;
+                    if (persistedState)
+                        Settings.Default.MainWindowDockPosition = pos;
+                    else
+                        tempDockPosition = pos;
                 },
                 size =>
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Storing MainWindowDockSize to settings with value '{0}'", size);
+                        if (persistedState)
+                            Log.DebugFormat("Storing MainWindowDockSize to settings with value '{0}'", size);
+                        else
+                            Log.DebugFormat("Storing tempDockSize with value '{0}'", size);
                     }
-                    Settings.Default.MainWindowDockSize = size;
+                    if (persistedState)
+                        Settings.Default.MainWindowDockSize = size;
+                    else
+                        tempDockSize = size;
                 },
                 t =>
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Storing MainWindowFullDockThicknessAsPercentageOfScreen to settings with value '{0}'", t);
+                        if (persistedState)
+                            Log.DebugFormat("Storing MainWindowFullDockThicknessAsPercentageOfScreen to settings with value '{0}'", t);
+                        else
+                            Log.DebugFormat("Storing tempFullDockThickness with value '{0}'", t);
                     }
-                    Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t;
+                    if (persistedState)
+                        Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t;
+                    else
+                        tempFullDockThickness = t;
                 },
                 t =>
                 {
                     if (Settings.Default.Debug)
                     {
-                        Log.DebugFormat("Storing MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness to settings with value '{0}'", t);
+                        if (persistedState)
+                            Log.DebugFormat("Storing MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness to settings with value '{0}'", t);
+                        else
+                            Log.DebugFormat("Storing tempCollapsedDockThickness with value '{0}'", t);
                     }
-                    Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t;
+                    if (persistedState)
+                        Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t;
+                    else
+                        tempCollapsedDockThickness = t;
                 });
         }
 

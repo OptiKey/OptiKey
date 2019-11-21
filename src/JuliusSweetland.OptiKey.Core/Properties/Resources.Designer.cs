@@ -1533,9 +1533,20 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("ENTRY_ADDED_TO_DICTIONARY", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact optikey for further support..
+        ///   Looks up a localized string similar to An error has occurred during the handling of a key selection.
+        /// </summary>
+        public static string ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT
+        {
+            get
+            {
+                return ResourceManager.GetString("ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support..
         /// </summary>
         public static string ERROR_MAGNIFYING {
             get {
@@ -2267,6 +2278,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string HORIZONTAL_FILL {
             get {
                 return ResourceManager.GetString("HORIZONTAL_FILL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hungarian (Hungary) / Magyar (Magyarország).
+        /// </summary>
+        public static string HUNGARIAN_HUNGARY {
+            get {
+                return ResourceManager.GetString("HUNGARIAN_HUNGARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hungarian
+        ///(Hungary) /
+        ///Magyar
+        ///(Magyarország).
+        /// </summary>
+        public static string HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
@@ -4816,7 +4848,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Optikey was unable to handshake with Presage. There are a few possible causes:
         ///    1.The DBFILENAME location specified in the presage.xml file (located in C:\Users\USER_NAME\.presage) does not exist - please check and correct this (or uninstall/reinstall Presage).
-        ///    2.Either a 64 bit version of Presage is installed (optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+        ///    2.Either a 64 bit version of Presage is installed (Optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
         ///
         ///Please uninstall Presage and install the 32 bit version of 0.9.2.
         ///Optikey will att [rest of string was truncated]&quot;;.

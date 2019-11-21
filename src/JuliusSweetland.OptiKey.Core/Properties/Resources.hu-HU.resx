@@ -1,0 +1,2342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Hozzáadás</value>
+  </data>
+  <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
+    <value>Új bejegyzés hozzáadása:</value>
+  </data>
+  <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Hozzá szeretnéd adni a(z) '{0}' kifejezést a szótárhoz a(z) '{1}' rövidítéssel?</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HOZZÁADÁS A
+SZÓTÁRHOZ</value>
+  </data>
+  <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Hozzá szeretnéd adni a(z) '{0}' szót a szótárhoz?</value>
+  </data>
+  <data name="ADDED" xml:space="preserve">
+    <value>Hozzáadva</value>
+  </data>
+  <data name="ADJUST_BY" xml:space="preserve">
+    <value>Állítás {0} pixellel Állítás {0} pixellel</value>
+  </data>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>BETŰK 1</value>
+  </data>
+  <data name="ALT" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="ANDROID_DARK" xml:space="preserve">
+    <value>Sötét megjelenés</value>
+  </data>
+  <data name="ANDROID_LIGHT" xml:space="preserve">
+    <value>Világos megjelenés</value>
+  </data>
+  <data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>Két színárnyalatú megjelenés</value>
+  </data>
+  <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
+    <value>Automatikusan nagybetűvel írva:</value>
+  </data>
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
+    <value>Automatikusan befejezett szavak:</value>
+  </data>
+  <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
+    <value>Automatikus mondatpontosítás</value>
+  </data>
+  <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
+    <value>Automatikus szóköz szavak közt:</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
+    <value>VISSZA</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VISSZA
+EGY BETŰT</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VISSZA
+EGY SZÓT</value>
+  </data>
+  <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
+    <value>A Bass nem tudta létrehozni a/az '{0}' stream fájlt</value>
+  </data>
+  <data name="BOTTOM" xml:space="preserve">
+    <value>Alsó</value>
+  </data>
+  <data name="BREAK" xml:space="preserve">
+    <value>SZÜNET</value>
+  </data>
+  <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
+    <value>Kalibráció megszakítva a(z) '{0}' üzenettel</value>
+  </data>
+  <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Biztosan újrakalibrálsz?</value>
+  </data>
+  <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
+    <value>Egy hiba lépett fel a kalibrálás során. Üzenet: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
+    <value>A kalibráció megszakadt a(z) '{0}' üzenettel</value>
+  </data>
+  <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
+    <value>A kalibráció nem végezhető el manuális beavatkozás nélkül, például egy egér segítsége nélkül. Elakadhatsz a kalibrálási folyamat során, ha nem tudod manuálisan vezérelni a számítógépet.
+Biztosan szeretnél újrakalibrálni?</value>
+  </data>
+  <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
+    <value>A kalibrálás megszakadt egy ismeretlen okból. Üzenet: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
+    <value>A kalibrálás sikeres volt! Pontosság (Avg Error Degree = {0})</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>MÉGSEM</value>
+  </data>
+  <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
+    <value>Rögzítési időkorlát (ms):</value>
+  </data>
+  <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
+    <value>Frissítések automatikus keresése indításkor:</value>
+  </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>TÖRÖL</value>
+  </data>
+  <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ragadd meg
+&amp; húzd</value>
+  </data>
+  <data name="CLICK_SOUND_1" xml:space="preserve">
+    <value>Kattintás 1</value>
+  </data>
+  <data name="CLICK_SOUND_2" xml:space="preserve">
+    <value>Kattintás 2</value>
+  </data>
+  <data name="CLICK_SOUND_3" xml:space="preserve">
+    <value>Kattintás 3</value>
+  </data>
+  <data name="CLICK_SOUND_4" xml:space="preserve">
+    <value>Kattintás 4</value>
+  </data>
+  <data name="CLICK_SOUND_5" xml:space="preserve">
+    <value>Kattintás 5</value>
+  </data>
+  <data name="CLICK_SOUND_6" xml:space="preserve">
+    <value>Kattintás 6</value>
+  </data>
+  <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>DOKK KICSINYÍTÉSE</value>
+  </data>
+  <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
+    <value>Összecsukható dokk vastagsága (a teljes dokk vastagsághoz viszonyított %-ban):</value>
+  </data>
+  <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
+    <value>MENÜ</value>
+  </data>
+  <data name="CONVERSATION" xml:space="preserve">
+    <value>TÁRSALGÁS</value>
+  </data>
+  <data name="CONVERSATION_LAYOUT" xml:space="preserve">
+    <value>Társalgási Betűk</value>
+  </data>
+  <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
+    <value>Társalgási Számok és Szimbólumok</value>
+  </data>
+  <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Kizárólag Társalgási mód:</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
+    <value>Az OtpiKey érzékelte hogy a felhasználói beállítások fájlja sérültté vált és javításra szorul. Ez megtehető egy korábbi verzióra való visszaállítással, vagy egy alapértelmezett verzióra, ha ez nem lehetséges.
+
+Kattintson az Igen-re a felhasználói beállítások visszaállításához, majd indítsa újra.
+
+Kattintson a Nem-re a bezárásnál, hogy ön manuálisan javítsa vagy másolja a felhasználói beállításokat.</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
+    <value>Ajjaj! A felhasználói beállítások sérültnek tűnnek.</value>
+  </data>
+  <data name="CRASH_MESSAGE" xml:space="preserve">
+    <value>Rossz hírek - Az OptiKey problémát észlelt a működés során és le kell állnia.
+
+Rendkívül hasznos lenne ha küldene egy e-mailt a történtekről: optikeyfeedback@gmail.com
+
+Elnézést kérünk a kellemetlenségekért.</value>
+  </data>
+  <data name="CRASH_TITLE" xml:space="preserve">
+    <value>Ajjaj!</value>
+  </data>
+  <data name="CTRL" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="CURRENCIES" xml:space="preserve">
+    <value>PÉNZNEMEK</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
+    <value>Pénznemek 1</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
+    <value>Pénznemek 2</value>
+  </data>
+  <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
+    <value>Kurzor magassága (pixelben):</value>
+  </data>
+  <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
+    <value>Kurzor szélessége (pixelben):</value>
+  </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>A dinamikus billentyűzet elrendezése</value>
+  </data>
+  <data name="DANISH_DENMARK" xml:space="preserve">
+    <value>Dán (Dánia) / Danish (Denmark)</value>
+  </data>
+  <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Dán
+(Dánia) /
+Danish
+(Denmark)</value>
+  </data>
+  <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
+    <value>Hibakeresési mód:</value>
+  </data>
+  <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ÁTTETSZŐSÉG
+CSÖKKENTÉSE</value>
+  </data>
+  <data name="DEL" xml:space="preserve">
+    <value>DEL</value>
+  </data>
+  <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="DIACRITICS" xml:space="preserve">
+    <value>MELLÉKJELEK</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
+    <value>Mellékjelek 1</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
+    <value>Mellékjelek 2</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
+    <value>Mellékjelek 3</value>
+  </data>
+  <data name="DICTIONARY" xml:space="preserve">
+    <value>Szótár</value>
+  </data>
+  <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
+    <value>Nem létezik a felhasználói szótár és az eredeti szótár nem található a(z) '{0}' útvonalon</value>
+  </data>
+  <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
+    <value>Megjelenítés karakterenkénti X másodpercig:</value>
+  </data>
+  <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
+    <value>Csinálja a jelenlegi helyben...</value>
+  </data>
+  <data name="DO_AT_POINT" xml:space="preserve">
+    <value>Csinálja azon a ponton</value>
+  </data>
+  <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LEFELE
+NYÍL</value>
+  </data>
+  <data name="DURATION_FORMAT" xml:space="preserve">
+    <value>({0:#,###}ms)</value>
+  </data>
+  <data name="END" xml:space="preserve">
+    <value>VÉGE</value>
+  </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>Angol (Kanada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>Angol (Egyesült Királyság)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>Angol (Amerikai)</value>
+  </data>
+  <data name="ENTER" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
+    <value>Nagyszerű. '{0}' hozzá lett adva szótárhoz.</value>
+  </data>
+  <data name="ERROR_SOUND_LABEL" xml:space="preserve">
+    <value>Hiba:</value>
+  </data>
+  <data name="ESC" xml:space="preserve">
+    <value>ESC</value>
+  </data>
+  <data name="EXPAND" xml:space="preserve">
+    <value>NÖVELÉS</value>
+  </data>
+  <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>DOKK
+NÖVELÉSE</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NÖVELÉS
+LEFELE &amp; BALRA</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NÖVELÉS
+LEFELE &amp; JOBBRA</value>
+  </data>
+  <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NÖVELÉS
+LEFELE</value>
+  </data>
+  <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NÖVELÉS
+BALRA</value>
+  </data>
+  <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NÖVELÉS
+JOBBRA</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NÖVELÉS
+FELFELE &amp; BALRA</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NÖVELÉS
+FELFELE &amp; JOBBRA</value>
+  </data>
+  <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NÖVELÉS
+FELFELE</value>
+  </data>
+  <data name="FALLING_SOUND_1" xml:space="preserve">
+    <value>Esés 1</value>
+  </data>
+  <data name="FALLING_SOUND_2" xml:space="preserve">
+    <value>Esés 2</value>
+  </data>
+  <data name="FILL_PIE" xml:space="preserve">
+    <value>Kitöltés kördiagramként</value>
+  </data>
+  <data name="FIXATIONS_DWELL" xml:space="preserve">
+    <value>Rögzítések (tartózkodási helyen)</value>
+  </data>
+  <data name="FONT" xml:space="preserve">
+    <value>Betűstílus</value>
+  </data>
+  <data name="FONT_FAMILY_LABEL" xml:space="preserve">
+    <value>Betűtípus:</value>
+  </data>
+  <data name="FONT_STRETCH_LABEL" xml:space="preserve">
+    <value>Betűtípus</value>
+  </data>
+  <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
+    <value>Betűvastagság:</value>
+  </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>Francia (Franciaország) / French (France)</value>
+  </data>
+  <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
+    <value>Teljes dokk vastagság (a képernyőhöz viszonyított %-ban)</value>
+  </data>
+  <data name="GAZE_TRACKER" xml:space="preserve">
+    <value>Szemnyomkövető</value>
+  </data>
+  <data name="GROW" xml:space="preserve">
+    <value>Növelés</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>KEZDŐLAP</value>
+  </data>
+  <data name="HORIZONTAL_FILL" xml:space="preserve">
+    <value>Vízszintes kitöltés (a képernyőhöz viszonyított %-ban)</value>
+  </data>
+  <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
+    <value>Befejezetlen billentyű rögzítési ideje az elvégzéshez (ms):</value>
+  </data>
+  <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ÁTTETSZŐSÉG
+NÖVELÉSE</value>
+  </data>
+  <data name="INFO_SOUND_LABEL" xml:space="preserve">
+    <value>Információk:</value>
+  </data>
+  <data name="INS" xml:space="preserve">
+    <value>INSERT</value>
+  </data>
+  <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
+    <value>...de intelligensen elfojtott automatikus nagybetű, ahol valószínűleg nem segítőkész:</value>
+  </data>
+  <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
+    <value>A jelenlegi billentyűzet–nyelv-kombináció nem érvényes</value>
+  </data>
+  <data name="JUMP" xml:space="preserve">
+    <value>UGRÁS</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UGRÁS
+BALRA &amp; LE</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UGRÁS
+JOBBRA &amp; LE</value>
+  </data>
+  <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UGRÁS
+LE</value>
+  </data>
+  <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UGRÁS
+BALRA</value>
+  </data>
+  <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UGRÁS
+JOBBRA</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UGRÁS
+BALRA FEL</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UGRÁS
+JOBBRA FEL</value>
+  </data>
+  <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UGRÁS
+FEL</value>
+  </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Gomb szövegének megváltoztatása:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Gomb rögzítésének ideje (ms):</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>A gomb célbavételének ideje (ms):</value>
+  </data>
+  <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Billentyűzetválasztó gomb:</value>
+  </data>
+  <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Gomb kiválasztása egér gombjával:</value>
+  </data>
+  <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
+    <value>Billentyű kiválasztása:</value>
+  </data>
+  <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Billentyű kiválasztás forrása:</value>
+  </data>
+  <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>Billentyű kiválasztása: {0}</value>
+  </data>
+  <data name="KEYBOARD_KEY" xml:space="preserve">
+    <value>Billentyűzetgomb</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Nyelv</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Billentyűzet nyelve: {0}</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Billentyűzet nyelve:</value>
+  </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>A billentyűzetek mappája beállítható a \n Vezérlői konzolban (Vizuális lap)</value>
+  </data>
+  <data name="LEFT" xml:space="preserve">
+    <value>Balra</value>
+  </data>
+  <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>BALRA
+NYÍL</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>BAL
+KATTINTÁS</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>BAL
+DUPLA KATTINTÁS</value>
+  </data>
+  <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>BALRA
+LE/FEL</value>
+  </data>
+  <data name="LOOK" xml:space="preserve">
+    <value>Nézet</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>Minden kisbetűvel</value>
+  </data>
+  <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MÁGNESES
+KURZOR</value>
+  </data>
+  <data name="MAGNIFIER" xml:space="preserve">
+    <value>NAGYÍTÓ</value>
+  </data>
+  <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
+    <value>Növelje a rendelkezési helyét (a képernyőhöz viszonyított %-ban):</value>
+  </data>
+  <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
+    <value>Növelje a forrást (a képernyőhöz viszonyított %-ban):</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
+    <value>Vezérlői konzol: ALT + M</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
+    <value>OptiKey Vezérlői Konzol</value>
+  </data>
+  <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
+    <value>A szótár egyezésének maximális száma:</value>
+  </data>
+  <data name="MENU" xml:space="preserve">
+    <value>MENÜ</value>
+  </data>
+  <data name="MENU_LAYOUT" xml:space="preserve">
+    <value>Menü</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KÖZÉPSŐ
+KATTINTÁS</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KÖZÉPEN
+LE/FEL</value>
+  </data>
+  <data name="MINIMISE" xml:space="preserve">
+    <value>LEKICSINYÍTÉS</value>
+  </data>
+  <data name="MINIMISED_LAYOUT" xml:space="preserve">
+    <value>Lekicsinyítve</value>
+  </data>
+  <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
+    <value>Lekicsinyített pozíció:</value>
+  </data>
+  <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
+    <value>Minimum nyomási idő egy gombon, hogy érvényesnek minősüljön (ms):</value>
+  </data>
+  <data name="MISC" xml:space="preserve">
+    <value>Vegyes</value>
+  </data>
+  <data name="MOUSE" xml:space="preserve">
+    <value>EGÉR</value>
+  </data>
+  <data name="MOUSE_BUTTON" xml:space="preserve">
+    <value>Egérgomb</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
+    <value>Egérrel való kattintás 1</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
+    <value>Egérrel való kattintás 2</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
+    <value>Egérrel való kattintás 3</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
+    <value>Egérrel való kattintás 4</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Egérrel való kattintás:</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
+    <value>Egérrel való dupla kattintás 1</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
+    <value>Egérrel való dupla kattintás 2</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
+    <value>Egérrel való dupla kattintás 3</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Egérrel való dupla kattintás:</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
+    <value>Egér le 1</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
+    <value>Egér le 2</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
+    <value>Egér le 3</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
+    <value>Egér le 4</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
+    <value>Egér le:</value>
+  </data>
+  <data name="MOUSE_LAYOUT" xml:space="preserve">
+    <value>Egér</value>
+  </data>
+  <data name="MOUSE_POSITION" xml:space="preserve">
+    <value>Egér pozíciója</value>
+  </data>
+  <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
+    <value>A kurzor pozíciója legyen az alaphelyzet (ms):</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
+    <value>Egérrel való görgetés 1</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
+    <value>Egérrel való görgetés 2</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
+    <value>Egérrel való görgetés 3</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
+    <value>Egérrel való görgetés 4</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
+    <value>Egérrel való görgetés 5</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
+    <value>Egérrel való görgetés 6</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
+    <value>Egérrel való görgetés:</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
+    <value>Egér fel 1</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
+    <value>Egér fel 2</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
+    <value>Egér fel 3</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
+    <value>Egér fel 4</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
+    <value>Egér fel:</value>
+  </data>
+  <data name="MOVE" xml:space="preserve">
+    <value>MOZGATÁS</value>
+  </data>
+  <data name="MOVE_BY" xml:space="preserve">
+    <value>Mozgatás {0} pixellel:|Mozgatás {0} pixellel:</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOZGATÁS
+BALRA &amp; LEFELE</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOZGATÁS
+JOBBRA &amp; LEFELE</value>
+  </data>
+  <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOZGATÁS
+LEFELE</value>
+  </data>
+  <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOZGATÁS
+BALRA</value>
+  </data>
+  <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOZGATÁS
+JOBBRA</value>
+  </data>
+  <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOZGATÁS IDE:</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOZGATÁS
+BALRA &amp; FEL</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOZGATÁS
+JOBBRA &amp; FEL</value>
+  </data>
+  <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOZGATÁS
+FEL</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
+    <value>Több billentyű rögzítése </value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
+    <value>Több billentyűs rögzítés engedélyezve:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION" xml:space="preserve">
+    <value>Több billentyűs kiválasztás</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
+    <value>Több billentyűs kiválasztás befejezése</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>TÖBB BILLENTYŰS 
+KIVÁLASZTÁS</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
+    <value>Több billentyűs kiválasztás indítása:</value>
+  </data>
+  <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
+    <value>
+(Az új szótárbejegyzés nagybetűket fog tartalmazni)</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>KÖVETKEZŐ</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>NEM</value>
+  </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>Nem található billentyűzet</value>
+  </data>
+  <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
+    <value>Úgy tűnik, hogy a vágólap nem tartalmaz olyan szót vagy kifejezést amiket már nem ismer a szótár</value>
+  </data>
+  <data name="NO_SOUND" xml:space="preserve">
+    <value>Semmi</value>
+  </data>
+  <data name="NOTHING_NEW" xml:space="preserve">
+    <value>Hmm, nincs itt semmi új!</value>
+  </data>
+  <data name="NOTIFICATIONS" xml:space="preserve">
+    <value>Értesítések</value>
+  </data>
+  <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+LOCK</value>
+  </data>
+  <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Számok
+Szimbólumok</value>
+  </data>
+  <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
+    <value>Számok
+&amp; Szimbólumok</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
+    <value>SZÁMOK &amp; SZIMBÓLUMOK 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
+    <value>SZÁMOK &amp; SZIMBÓLUMOK 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
+    <value>SZÁMOK &amp; SZIMBÓLUMOK 3</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>OptiKey: Gépelés · Kattintás · Beszéd</value>
+  </data>
+  <data name="OTHER" xml:space="preserve">
+    <value>Egyéb</value>
+  </data>
+  <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
+    <value>A szülőablakot nem lehet azonosítani. Folytatás nem lehetséges</value>
+  </data>
+  <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PAGE
+DOWN</value>
+  </data>
+  <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PAGE
+UP</value>
+  </data>
+  <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
+    <value>Funkció billentyűk elrendezése</value>
+  </data>
+  <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FUNKCIÓBILLENTYŰK</value>
+  </data>
+  <data name="PLAY_SOUND" xml:space="preserve">
+    <value>Lejátszás</value>
+  </data>
+  <data name="POINT_AND_SELECTING" xml:space="preserve">
+    <value>Mutatás &amp; Kijelölés</value>
+  </data>
+  <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
+    <value>Pont rögzítési sugara (pixelben):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Pont rögzítési ideje (ms):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>A pont célbavételének ideje (ms):</value>
+  </data>
+  <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
+    <value>Pont célbavételének sugara (pixelben):</value>
+  </data>
+  <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
+    <value>Pont kijelölése: {0}</value>
+  </data>
+  <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Pont kijelölése billentyűvel:</value>
+  </data>
+  <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Pont kijelölése egérgombbal:</value>
+  </data>
+  <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Pont kijelölés forrása:</value>
+  </data>
+  <data name="POINTING" xml:space="preserve">
+    <value>Mutatás</value>
+  </data>
+  <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
+    <value>Mutatás: {0}</value>
+  </data>
+  <data name="PREV" xml:space="preserve">
+    <value>ELŐZŐ</value>
+  </data>
+  <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRINT
+SCREEN</value>
+  </data>
+  <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
+    <value>PROBLÉMA A BILLENTYŰZET BETÖLTÉSEKOR</value>
+  </data>
+  <data name="QUIT" xml:space="preserve">
+    <value>KILÉPÉS</value>
+  </data>
+  <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Teljesen biztos, hogy ki akarsz lépni?</value>
+  </data>
+  <data name="QUIT_MESSAGE" xml:space="preserve">
+    <value>Biztos, hogy ki akarsz lépni?</value>
+  </data>
+  <data name="RATE_LABEL" xml:space="preserve">
+    <value>Értékelés:</value>
+  </data>
+  <data name="RE_CALIBRATE" xml:space="preserve">
+    <value>ÚJRAKALIBRÁLÁS</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UTOLSÓ
+MEGISMÉTLÉSE</value>
+  </data>
+  <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
+    <value>Audio és/vagy Szótár szolgáltatás(ok) nem készültek el a Vezérlési Ablak műveletéhez. </value>
+  </data>
+  <data name="RESTART_MESSAGE" xml:space="preserve">
+    <value>Újraindítás szükséges a változtatások alkalmazásához.
+Kérlek kattints az OK -ra hogy újrainduljon, vagy a MEGSZAKÍTÁS -ra hogy visszavond a változtatásokat.</value>
+  </data>
+  <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Visszaállítás</value>
+  </data>
+  <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Befejezetlen gomb rögzítésének folytatásához gomb újra rögzítése szükséges</value>
+  </data>
+  <data name="RIGHT" xml:space="preserve">
+    <value>Jobbra</value>
+  </data>
+  <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>JOBBRA
+NYÍL</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Jobb
+Klikk</value>
+  </data>
+  <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>JOBBRA
+LE / FEL</value>
+  </data>
+  <data name="RISING_SOUND_1" xml:space="preserve">
+    <value>Emelkedés 1</value>
+  </data>
+  <data name="RISING_SOUND_2" xml:space="preserve">
+    <value>Emelkedés 2</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>Orosz (Oroszország) / Russian (Russia)</value>
+  </data>
+  <data name="SPANISH_SPAIN" xml:space="preserve">
+    <value>Spanyol (Spanyolország) / Español (España)</value>
+  </data>
+  <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
+    <value>Ugyanaz mint a dokk pozíciója</value>
+  </data>
+  <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
+    <value>Vágólap # sora</value>
+  </data>
+  <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCROLL
+LOCK</value>
+  </data>
+  <data name="SCROLL_BY" xml:space="preserve">
+    <value>Görgetés {0} kattintással:|Görgetés {0} kattintással:</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>GÖRGETÉS
+LEFELE</value>
+  </data>
+  <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>GÖRGETÉS
+BALRA</value>
+  </data>
+  <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>GÖRGETÉS
+JOBBRA</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>GÖRGETÉS
+FELFELE</value>
+  </data>
+  <data name="SELECTION" xml:space="preserve">
+    <value>Kiválasztás</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
+    <value>Folyamatjelző viselkedésének kiválasztása</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
+    <value>Folyamatjelző mutatók végméretének kiválasztása(%)</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
+    <value>Folyamatjelző mutatók kezdő méretének kiválasztása(%)</value>
+  </data>
+  <data name="SHIFT" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
+    <value>A kezdőképernyő mutatása indításkor</value>
+  </data>
+  <data name="SHRINK" xml:space="preserve">
+    <value>CSÖKKENTÉS</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>LEKICSINYÍTÉS
+LE &amp; BALRA</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CSÖKKENTÉS
+JOBBRA, LEFELE</value>
+  </data>
+  <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CSÖKKENTÉS
+LEFELE</value>
+  </data>
+  <data name="SHRINK_INDICATOR" xml:space="preserve">
+    <value>Csökkentés</value>
+  </data>
+  <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CSÖKKENTÉS
+BALRA</value>
+  </data>
+  <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CSÖKKENTÉS
+JOBBRA</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CSÖKKENTÉS
+BALRA, FELFELE</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CSÖKKENTÉS
+JOBBRA, FELFELE</value>
+  </data>
+  <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CSÖKKENTÉS
+FEL</value>
+  </data>
+  <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
+    <value>(Már vannak hasonló bejegyzések a szótárban: {0})</value>
+  </data>
+  <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MÉRET ÉS
+POZÍCIÓ</value>
+  </data>
+  <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
+    <value>Méret és pozíció</value>
+  </data>
+  <data name="SLEEP" xml:space="preserve">
+    <value>Alvás</value>
+  </data>
+  <data name="SOUND_EFFECTS" xml:space="preserve">
+    <value>Hangeffektek</value>
+  </data>
+  <data name="SOUNDS" xml:space="preserve">
+    <value>Hangok</value>
+  </data>
+  <data name="SOURCE_LABEL" xml:space="preserve">
+    <value>Forrás:</value>
+  </data>
+  <data name="SPACE" xml:space="preserve">
+    <value>SZÓKÖZ</value>
+  </data>
+  <data name="SPEAK" xml:space="preserve">
+    <value>Kimondás</value>
+  </data>
+  <data name="SPEECH" xml:space="preserve">
+    <value>Beszéd</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Billentyűzet betöltése:</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>Dinamikus billentyűzet fájl:</value>
+  </data>
+  <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
+    <value>Stop jelzés:</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value>Siker</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Törölje a módosító gombokat amikor az egér a billentyűzeten van:</value>
+  </data>
+  <data name="TAB" xml:space="preserve">
+    <value>TAB</value>
+  </data>
+  <data name="THE_EYE_TRIBE" xml:space="preserve">
+    <value>The Eye Tribe</value>
+  </data>
+  <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
+    <value>Nem lehet aktiválni a TheEyeTribe GazeManager-t! Kérlek ellenőrizd, hogy az eszközön elérhető-e az internetkapcsolat, majd próbáld újra.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
+    <value>TheEyeTribe nem lett kalibrálva. Nem fog érkezni adat, amíg a kalibráció el nem készült.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
+    <value>Sikertelen kalibrálás, mert az EyeX nem elérhető.</value>
+  </data>
+  <data name="THEME_LABEL" xml:space="preserve">
+    <value>Téma:</value>
+  </data>
+  <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
+    <value>Az idő, amíg a pont irreleváns (ms):</value>
+  </data>
+  <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>Kurzor elrejtése</value>
+  </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Nagybetűs szavak</value>
+  </data>
+  <data name="TOBII_EYEX" xml:space="preserve">
+    <value>Tobii EyeX</value>
+  </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>A kalibráció elkészült, vagy lehetséges meg lett tagadva, de minden működik újra!</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii EyeX Engine nem található. Kérem telepítse az EyeX Engine-t és próbálja meg újra.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii EyeX Engine nem fut. Kérem indítsa el és próbálja meg újra.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go</value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
+  </data>
+  <data name="TONE_SOUND_1" xml:space="preserve">
+    <value>Tónus 1</value>
+  </data>
+  <data name="TONE_SOUND_2" xml:space="preserve">
+    <value>Tónus 2</value>
+  </data>
+  <data name="TONE_SOUND_3" xml:space="preserve">
+    <value>Tónus 3</value>
+  </data>
+  <data name="TONE_SOUND_4" xml:space="preserve">
+    <value>Tónus 4</value>
+  </data>
+  <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
+    <value>Gomb újbóli lenyomása</value>
+  </data>
+  <data name="TRIGGER_RELEASED" xml:space="preserve">
+    <value>Gomb visszavonása</value>
+  </data>
+  <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
+    <value>Nem tudtam észlelni, hova figyel. Valami gond van a bemeneti eszközzel? Csatlakoztatva van, be van kapcsolva, kalibrálva van, stb...?</value>
+  </data>
+  <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
+    <value>Nem lehet meghatározni az aktuális magasságot.</value>
+  </data>
+  <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
+    <value>Probléma merült fel a hang '{0}'{1}-re állításakor</value>
+  </data>
+  <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
+    <value>Valami nem működik, de nem tudom mi - kérlek nézd meg a logot.</value>
+  </data>
+  <data name="UP" xml:space="preserve">
+    <value>Felül/Fölső</value>
+  </data>
+  <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FELFELE
+NYÍL</value>
+  </data>
+  <data name="UPDATE_AVAILABLE" xml:space="preserve">
+    <value>FRISSÍTÉS ÉRHETŐ EL!</value>
+  </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>Minden nagybetűvel</value>
+  </data>
+  <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
+    <value>Látogasd meg a www.optikey.org weboldalt a legfrisebb verzió ({0}) letöltéséhez
+A frissítés ellenőrzését a Vezérlői konzolból (ALT + M) kapcsolhatod ki</value>
+  </data>
+  <data name="VERIFY_RESTART" xml:space="preserve">
+    <value>Újraindíthatom az OptiKey-t?</value>
+  </data>
+  <data name="VERSION_DESCRIPTION" xml:space="preserve">
+    <value>Verzió: {0}</value>
+  </data>
+  <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
+    <value>Függőleges kitöltés (a képernyőhöz viszonyított %-ban)</value>
+  </data>
+  <data name="VISUALS" xml:space="preserve">
+    <value>Visuális</value>
+  </data>
+  <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
+    <value>(a beállításokból)</value>
+  </data>
+  <data name="VOICE_LABEL" xml:space="preserve">
+    <value>Hang:</value>
+  </data>
+  <data name="VOLUME_LABEL" xml:space="preserve">
+    <value>Hangerő:</value>
+  </data>
+  <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
+    <value>Weboldal: www.optikey.org</value>
+  </data>
+  <data name="WIN" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>OptiKey v{0}</value>
+  </data>
+  <data name="WORDS" xml:space="preserve">
+    <value>Szavak</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>IGEN</value>
+  </data>
+  <data name="YESNO" xml:space="preserve">
+    <value>IGEN/NEM</value>
+  </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Betűk</value>
+  </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>Magas</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>Alacsony</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>Közepes</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Semmi</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Adatfolyam-feldolgozási mennyiség:</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>Német (Németország) / Deutsch (Deutschland)</value>
+  </data>
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>A felhasználói felület nyelve: {0}</value>
+  </data>
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Felhasználófelület nyelve:</value>
+  </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Szimulálja a fizikai billentyűket a karakterek beírásakor:</value>
+  </data>
+  <data name="DUTCH_BELGIUM" xml:space="preserve">
+    <value>Holland (Belgium) / Dutch (Belgium)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
+    <value>Holland (Hollandia) / Dutch (Netherlands)</value>
+  </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Francia
+(Franciaország) /
+French
+(France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Német
+(Németország) /
+German
+(Germany)</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Törölje az egér nagyítást a görgető tevékenységeknél:</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Orosz
+(Oroszország) / 
+Russian
+(Russia) </value>
+  </data>
+  <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Spanyol
+(Spanyolország) / 
+Spanish
+(Spain)</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Dinamikus billentyűzet menüje</value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>A beszélgető billentyűzet szegélyének vastagsága (bal,felül, jobbra,alul képpontban)</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>Betű törlése</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>Szó törlése</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>JAVASLAT 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>JAVASLAT 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>JAVASLAT 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>JAVASLAT 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>JAVASLAT 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>JAVASLAT 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Javasolt gombok</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>Hozzáadás a szótárhoz</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>Kicsinyített dokk</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>LE NYÍL</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F13" xml:space="preserve">
+    <value>F13</value>
+  </data>
+  <data name="F14" xml:space="preserve">
+    <value>F14</value>
+  </data>
+  <data name="F15" xml:space="preserve">
+    <value>F15</value>
+  </data>
+  <data name="F16" xml:space="preserve">
+    <value>F16</value>
+  </data>
+  <data name="F17" xml:space="preserve">
+    <value>F17</value>
+  </data>
+  <data name="F18" xml:space="preserve">
+    <value>F18</value>
+  </data>
+  <data name="F19" xml:space="preserve">
+    <value>F19</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>BAL NYÍL</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>JOBB NYÍL</value>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>FEL NYÍL</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>RAGADD MEG &amp; HÚZD</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>Pénznem 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>PÉNZNEMEK 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>ÁTTETSZŐSÉG CSÖKKENTÉSE</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>Mellékjelek 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>Mellékjelek 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>Mellékjelek 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>DOKK KIBŐVÍTÉSE</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>BŐVÍTÉS LEFELE.</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>BŐVÍTÉS LE &amp; BALRA</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>BŐVÍTÉS LE &amp; JOBBRA</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>BŐVÍTÉS BALRA</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>BŐVÍTÉS JOBBRA</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>BŐVÍTÉS FEL</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>BŐVÍTÉS FEL &amp; BALRA</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>BŐVÍTÉS FEL &amp; JOBBRA</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>ÁTTETSZŐSÉG NÖVELÉSE</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>SZÁMOK &amp; SZIMBÓLUMOK 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>SZÁMOK &amp; SZIMBÓLUMOK 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>SZÁMOK &amp; SZIMBÓLUMOK 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>FUNKCIÓ GOMBOK</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>MÉRET &amp; POZÍCIÓ</value>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>MÁGNESES KURZOR</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>KÖZÉPSŐ EGÉRGOMB</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>KÖZÉP LE/FEL</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>MOZGATÁS MÉRTÉKE KÉPPONTOKBAN</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>IGAZÍTÁS MÉRTÉKE KÉPPONTOKBAN</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>Beszélgetés alfa 1</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>TÁRSALGÁSI SZÁMOK &amp; SZIMBÓLUMOK</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>UGRÁS LE</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>UGRÁS LE &amp; BALRA</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>UGRÁS LE &amp; JOBBRA</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>UGRÁS BALRA</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>UGRÁS JOBBRA</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>UGRÁS FEL</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>UGRÁS FEL &amp; BALRA</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>UGRÁS FEL &amp; JOBBRA</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>BAL KLIKK</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>BAL DUPLA KATTINTÁS</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>BAL LE/FEL</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>MOZGATÁS LE</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>MOZGATÁS LE &amp; BALRA</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>MOZGATÁS LE &amp; JOBBRA</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>MOZGATÁS BALRA</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>MOZGATÁS JOBBRA</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>MOZGATÁS IDE:</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>MOZGATÁS FEL</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>MOZGATÁS FEL &amp; BALRA</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>MOZGATÁS FEL &amp; JOBBRA</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>TÖBB BILLENTYŰ KIVÁLASZTÁSA</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LOCK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PAGE DOWN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PAGE UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRINT SCREEN</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>UTOLSÓ ISMÉTLÉSE</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>JOBB KLIKK</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>JOBB LE/FEL</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCROLL LOCK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>GÖRGETÉS MENNYISÉGE KATTINTÁSBAN</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>GÖRGETÉS LE</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>GÖRGETÉS BALRA</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>GÖRGETÉS JOBBRA</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>GÖRGETÉS UP</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>KICSINYÍTÉS LEFELE</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>KICSINYÍTÉS LE &amp; BALRA</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>KICSINYÍTÉS LE &amp; JOBBRA</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>KICSINYÍTÉS LEFELE</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>KICSINYÍTÉS JOBBRA</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>KICSINYÍTÉS FELFELE</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>KICSINYÍTÉS FEL &amp; BALRA</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>KICSINYÍTÉS FEL &amp; JOBBRA</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>BILLENTYŰZET GOMBJAINAK MEGCSERÉLÉSE:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>Dokkoló gombok</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Felülírás egyedi gomb rögzítéshez (ms)</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>NYELVI GOMBOK CSERÉLÉSE:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>NYELV</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>VEGYES BILLENTYŰK:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>MÓDOSÍTOTT BILLENTYŰK:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>KURZOR (CSINÁLJA A JELENLEGI HEYEN) GOMBOK:</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>KURZOR (CSINÁLJA A PONTBAN) GOMBOK:</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>KURZOR (VEGYES) GOMBOK:</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>GOMBOK MOZGATÁSA &amp; ÚJRAMÉRETEZÉSE:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>FUNKCIÓ GOMBOK:</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>Javasolt gombok</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Elvégzési idő meghatározása az egyéni gomboknál: </value>
+  </data>
+  <data name="GREEK_GREECE" xml:space="preserve">
+    <value>Görög (Görögország) / Greek (Greece)</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Vezérlői konzol (Beállítások)</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Kilépés</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA" xml:space="preserve">
+    <value>Grúz (Grúzia) / ქართული (საქართველო)</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Grúzia
+(Grúz) /
+ქართული
+(საქართველო)</value>
+  </data>
+  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Görög
+(Görögország) /
+Greek
+(Greece)</value>
+  </data>
+  <data name="CROATIAN_CROATIA" xml:space="preserve">
+    <value>Horvát (Horvátország) / Croatian (Croatia)</value>
+  </data>
+  <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Horvát
+(Horvátország) /
+Croatian
+(Croatia)</value>
+  </data>
+  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Holland
+(Belgium) /
+Dutch
+(Belgium) </value>
+  </data>
+  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Holland
+(Horvátország) /
+Dutch
+(Horvátország) </value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Törölje a módosító gombokat az összes egérművelethez:</value>
+  </data>
+  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Angol
+(Kanadai)
+</value>
+  </data>
+  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Angol
+(Nagy-Britanniai)
+</value>
+  </data>
+  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Angol
+(Amerikai)
+</value>
+  </data>
+  <data name="CATALAN_SPAIN" xml:space="preserve">
+    <value>Katalán (Spanyolország) / Català (Espanya)</value>
+  </data>
+  <data name="CATALAN_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Katalán
+(Spanyolország)
+Català
+(Espanya)</value>
+  </data>
+  <data name="TURKISH_TURKEY" xml:space="preserve">
+    <value>Török (Törökország) / Turkish (Turkey)</value>
+  </data>
+  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Török
+(Törökország) /
+Turkish
+(Turkey)</value>
+  </data>
+  <data name="ITALIAN_ITALY" xml:space="preserve">
+    <value>Olasz (Olaszország) / Italian (Italy)</value>
+  </data>
+  <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Olasz
+(Olaszország) /
+Italian
+(Italy)</value>
+  </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>Koreai (Korea) / Korean (Korea)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Koreai
+(Korea) /
+Korean
+(Korea)</value>
+  </data>
+  <data name="SERBIAN_SERBIA" xml:space="preserve">
+    <value>Szerb (Szerbia) / Serbian (Serbia)</value>
+  </data>
+  <data name="SERBIAN_SERBIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Szerb
+(Szerbia) /
+Serbian
+(Serbia)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
+    <value>Szlovén (Szlovénia) / Slovenian (Slovenia)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Szlovén
+(Szlovénia) /
+Slovenian
+(Slovenia)</value>
+  </data>
+  <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>Nem sikerült csatlakozni a myGaze-hez! Kérlek ellenőrizd, hogy az eszközön elérhető-e az internetkapcsolat, majd próbáld újra.</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>Vizuális Együttműködés a myGaze-el</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Sikertelen kalibráció!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Sikeres kalibráció!</value>
+  </data>
+  <data name="POLISH_POLAND" xml:space="preserve">
+    <value>Lengyel (Lengyelország) / Polish (Poland)</value>
+  </data>
+  <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Lengyel
+(Lengyelország) /
+Polish
+(Poland)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
+    <value>Portugál (Portugália) / Portuguese (Portugal)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Portugál
+(Portugália) /
+Portuguese
+(Portugal)</value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
+    <value>Szlovák (Szlovákia) / Slovak (Slovakia)</value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Szlovák
+(Szlovákia) /
+Slovak
+(Slovakia)</value>
+  </data>
+  <data name="ALIENWARE_17" xml:space="preserve">
+    <value>Alienware 17 (EyeX)</value>
+  </data>
+  <data name="STEELSERIES_SENTRY" xml:space="preserve">
+    <value>Steelseries Sentry (EyeX)</value>
+  </data>
+  <data name="TOBII_EYE_TRACKER_4C" xml:space="preserve">
+    <value>Tobii Eye Tracker 4C</value>
+  </data>
+  <data name="TOBII_PCEYE_MINI" xml:space="preserve">
+    <value>Tobii PCEye Mini</value>
+  </data>
+  <data name="TOBII_X2_30" xml:space="preserve">
+    <value>Tobii X2-30</value>
+  </data>
+  <data name="TOBII_X2_60" xml:space="preserve">
+    <value>Tobii X2-60</value>
+  </data>
+  <data name="FORCE_CAPS_LOCK" xml:space="preserve">
+    <value>Erőltetett Caps Lock (Shift nyomva tartása):</value>
+  </data>
+  <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Betűkiosztású billentyűzet használata</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Kálmán szürő</value>
+  </data>
+  <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
+    <value>Kapcsoló a manuális módhoz </value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
+    <value>Cseh (Csehország) / Czech (Czech Rep.)</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Cseh
+(Csehország) /
+Czech
+(Czech Rep.)</value>
+  </data>
+  <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+    <value>Bemeneti mód változott</value>
+  </data>
+  <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+    <value>Manuális (egér) mód kikapcsolása!</value>
+  </data>
+  <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
+    <value>Manuális (egér) mód bekapcsolva!</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
+    <value>Engedélyezi a Társalgási Megerősítő billentyűzetet?</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Kizárólag Társalgási mód:</value>
+  </data>
+  <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
+    <value>Bekapcsolja a kilépés gombokat?</value>
+  </data>
+  <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Szimpla billentyűkiosztás használata</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Böngészés
+Vissza</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Böngészés
+Előre</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Böngészés
+Otthon</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Böngészés
+Keresés</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>Web böngészés</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Web
+Böngészés</value>
+  </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>Használja a MaryTTS beszéd szintetizátort</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS hang:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>MaryTTS helye (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>Találat</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>HIBA: az érvényes 'marytts-server.bat' fájl nem lett kiválasztva. Kérem próbálja meg újra.</value>
+  </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>Alap</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Előjel</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>Javaslat eljárása:</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>MaryTTS nem elérhető</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>Előjel szó kiegészítése nem lehetséges</value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>Állítsa be az ajánlott metódust: {0}
+Vissza tudja változtatni
+a Vezérlői Konzolból (ALT + M)</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>Állítsa a beszéd hangját a rendszer hangjára: {0}
+Le tudja ellenőrizni a MaryTTS útját
+és vissza tudja változtatni
+a Vezérlői Konzolból (ALT + M).</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>Beszéd elötti várakozás (ms)</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>CommuniKate billentyűzetkiosztás használata</value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>CommuniKate billentyűzetkiosztás engedélyezése:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>CommuniKate felső oldal obf fájl:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>Érvénytelen fájl</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>A CommuniKate felső .obz fájl helye:</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>Optikey nem tudott megegyezni az Előjelekkel. Itt van néhány lehetséges ok:
+  1. A DBFILENAME meghatározott helye a presage.xml fájlban van  (melynek elérési útvonala:  C:\Users\USER_NAME\.presage) nem található - kérem ellenőrizze és javítsa ki ezt (vagy távolítsa el/telepítse újra az Előjeleket).
+  2.A kettő közül a 64-bites verziójú Előjeleket telepítette (Az Optikey csak a 32-bites verziót támogatja), vagy az Előjelek fájl át lett helyezve, vagy törölve lett, vagy hibás.
+
+Kérem távolítsa el az Előjeleket és telepítse le a 32-bites 0.9.2. verziót.
+Az Optikey megpróbája folytatni, de nagy valószínűséggel, rövidesen összeomlik.
+A megjósolt metódus meg lesz változtatva NGram-ra, hogy meggátolja az összeomlást a következő futásnál.</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>Probléma van az előjellel</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>A mappa dinamikus billentyűzetet tartalmaz</value>
+  </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>A mappa nem tartalmaz kiegészítő modulokat.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>BETŰK 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>Beszélgetés alfa 2</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>Minden változtatás elvetése, biztosan folytatod?</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>Beállítások visszavonása</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>Az előjel szótár nem szerkeszthető innen. Az alap helye C:\Program Files (x86)\presage\share\presage\database_en.db". Olyan programmal szerkeszthető amely tud SQLite 3 formátumú fáljokat mint "DB Browser for SQLite" (ami ingyenes program)</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>BETŰK</value>
+  </data>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>Egy hiba lépett fel a nagyítás alatt. Kérlek tiltsd le a nagyítást és vedd fel a kapcsolatot az OptiKeyvel további támogatásért</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>Hiba:</value>
+  </data>
+  <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>Figyelem:</value>
+  </data>
+  <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>Engedélyezi a 'Figyelem' gombot ?</value>
+  </data>
+  <data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
+    <value>Engedélyezi a 'Másolás vágólapra' gombot?</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>FIGYELEM</value>
+  </data>
+  <data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>Figyelem</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>CommuniKate jelenleg letiltva (használja a QWERTZ kiosztást)</value>
+  </data>
+  <data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Billentyűzet stílusa gépeléshez:</value>
+  </data>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Alap billentyűzetkiosztás használata</value>
+  </data>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>Oh! Az indítás során a következő hibákkal találkoztunk:</value>
+  </data>
+  <data name="SELECT_VOICE" xml:space="preserve">
+    <value>Hang kiválasztása</value>
+  </data>
+  <data name="MORE" xml:space="preserve">
+    <value>Több...</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Nyelv &amp; Hang</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Nyelv
+&amp; Hang</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>Nyelv &amp; Hang</value>
+  </data>
+  <data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>Több...</value>
+  </data>
+  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>Hangok megjelnítése billentyűzet nyelv váltáskor</value>
+  </data>
+  <data name="LOOK_TO_SCROLL" xml:space="preserve">
+    <value>Görgető előtérben</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>Használja az alternatív "tekintettel való görgetést" metódust a görgetéshez:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Fordított görgetési irány</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Az adott gombok lenyomva tartása a kiválasztott pont, ablak, vagy terület megőrzéséhez:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Mielőtt görgetsz, mozgasd a kurzort a holtsáv közepére</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Mielőtt görgetsz egy ablakban, hozd az előtérbe</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>Miután választasz egy képernyő pontot, húzz oda bámilyen ablakot</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Görgetés leállítása amikor kiválasztja, hogy hova mozogjon, kattintson vagy húzzon az egér:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Automatikusan folytatja a görgetést:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>Görgetés megállítása bilentyűzet váltáskor</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Átfedőablak megjelenítése (újraindítás szükséges)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>A görgő határainak színe a rétegen:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>A végpont határainak színe a rétegen:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
+    <value>A görgő vastagsága a rétegen:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
+    <value>A végpont vastagsága a rétegen:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Vízszintes végpont (képpontban)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Függőleges végpont (képpontban)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Görgesse át ezeket a görgetési lépéseket:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>Lassú alap sebesség ("kattintás" per másodpercben)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>Közepes alap sebesség ("kattintás" per másodpercben)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>Gyors alap sebesség ("kattintás" per másodpercben)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>Lassú gyorsulás (kattintás per másodpercben / képpont)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>Közepes gyorsulás (kattintás per másodpercben / képpont)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>Gyors gyorsulás (kattintás per másodpercben / képpont)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>Görgető gombok előtérben</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Görgetés</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Következő határ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Következő növekedés</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Következő mód</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Következő sebesség</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>Előtérbe
+Görgető</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Görgessen {0} kerék számot:
+(120 kerék szám = 1 kattintás) Görgessen {0} kerék számot:
+(120 kerék szám = 1 kattintás) </value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Képernyőn
+Mutatás</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Középre igazított</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Ablak</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Ablak
+Terület</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Egyedi
+Terület</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Függőleges</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Vízszintes</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>Kereszt</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Szabad</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Lassú</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Közepes</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Gyors</value>
+  </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>Francia (Kanada) / French (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Francia
+(Kanada) /
+French
+(Canada)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>Japán (Japán) / Japanese (Japan)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Japán
+(Japán) /
+Japanese
+(Japan)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>CommuniKate hang erőssége:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>Ha a szöveg ki van választva, CommuniKate olvassa fel:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>CommuniKate beszédének/felolvasásának értékelése:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>A beszéd erőssége miközben CommuniKate felolvassa a szöveget:</value>
+  </data>
+  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>Biztos vagy abban, hogy szeretnéd el szeretnél váltani a manuális módról/ra?</value>
+  </data>
+  <data name="MANUAL_MODE" xml:space="preserve">
+    <value>Manuális mód</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>A Presage adatbázis .db fájl helye:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>A megjelenítendő Presage javaslatok száma:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>Elérhető bővítmények</value>
+  </data>
+  <data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>Bővítmények</value>
+  </data>
+  <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>Bővítmények újratöltése</value>
+  </data>
+  <data name="RESTART" xml:space="preserve">
+    <value>Újraindítás</value>
+  </data>
+  <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Teljesen biztos vagy abban, hogy újra szeretnéd indítani az OptiKey-t?</value>
+  </data>
+  <data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>Biztos vagy benne, hogy újraindítod az OptiKey-t?</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>Dinamikus billentyűzet</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>WEB Böngészés</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>Ukrán (Ukrajna) / Ukrainian (Ukraine)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ukrán
+(Ukrajna) /
+Ukrainian
+(Ukraine)</value>
+  </data>
+  <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Adatfolyam-feldolgozási mennyiség:</value>
+  </data>
+  <data name="IRISBOND_DUO" xml:space="preserve">
+    <value>Irisbond Duo</value>
+  </data>
+  <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>Irisbond Duo követő nem tudott elindulni.</value>
+  </data>
+  <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>Irisbond Duo követő nem található. Kérem ellenőrizze le a követő csatlakozását és probálja újra.</value>
+  </data>
+  <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
+    <value>Kalibráció elkészült (sikeres vagy sikertelen), de minden működik újra!</value>
+  </data>
+  <data name="COPY_ALL_FROM_SCRATCHPAD" xml:space="preserve">
+    <value>Összes másolása</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_DEFINITION_INVALID" xml:space="preserve">
+    <value>Dinamikus billentyűzet definiálása érvénytelen</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
+    <value>A meghatározott magasság a dinamikus billentyűzetnek túl nagy ( &gt; a képernyő 95%-nál)</value>
+  </data>
+  <data name="RESTART_UPPERCASE" xml:space="preserve">
+    <value>Újraindítás</value>
+  </data>
+  <data name="URDU_PAKISTAN" xml:space="preserve">
+    <value>Urdu (Pakisztán) / Urdu (Pakistan)</value>
+  </data>
+  <data name="URDU_PAKISTAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Urdu
+(Pakisztán) /
+Urdu
+(Pakistan)</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
+    <value>Azt ajánljuk, hogy változtassa meg a felület nyelvét Urdu-ra, hogy biztosítsuk az Urdu szöveg iránya jobbról balra legyen a vágólapon.
+Szeretné hogy az OptiKey automatikusan Urdu nyelvre állítsa a felület nyelvét?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
+    <value>Azt ajánljuk változtassa meg a betűtípust amit az OptiKey-ben használ, hogy egyszer teljesen kompatibilis legyen az Urdu nyelvvel. Ha olyan betűtípus van használatban ami nem Urdu nyelvre van specializálva, akkor a szöveg és különösen a számok, hibásan jelennek meg. Szeretné hogy az OptiKey automatikusan a Nafees Web Naskh betűtípust használja?</value>
+  </data>
+  <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
+    <value>A nyelvhez speciális betűtípus szükséges</value>
+  </data>
+  <data name="UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE" xml:space="preserve">
+    <value>Felület és Billentyűzet/Szótár nyelvek különböznek</value>
+  </data>
+  <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
+    <value>Írj megkülönböztető jeleket (akcentus stb) a betűk után:</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
+    <value>Javasoljuk az UiLanguage használatát Perzsa nyelven, hogy biztosítsuk a begépelt Perzsa szöveg jobbról balra folyjon a vágólapon.
+Szeretnéd ha az OptiKey automatikusan beállítaná a Perzsa nyelvet az UiLanguage-nek?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
+    <value>Azt ajánljuk változtassa meg a betűtípust amit az OptiKey-ben használ, hogy egyszer teljesen kompatibilis legyen a Perzsa nyelvvel.
+Ha olyan betűtípus van használatban ami nem Perzsa nyelvre van specializálva, akkor a szöveg és különösen a számok, hibásan jelennek meg.
+Szeretné hogy az OptiKey automatikusan a Nazli betűtípust használja?</value>
+  </data>
+  <data name="PERSIAN_IRAN" xml:space="preserve">
+    <value>Perzsa (Perzsia) / Persian (Iran)</value>
+  </data>
+  <data name="PERSIAN_IRAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Perzsa
+(Perzsia) /
+Persian
+(Iran)</value>
+  </data>
+</root>

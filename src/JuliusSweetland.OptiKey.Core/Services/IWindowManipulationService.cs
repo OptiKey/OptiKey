@@ -22,12 +22,11 @@ namespace JuliusSweetland.OptiKey.Services
         void Move(MoveToDirections direction, double? amountInPx);
         void ResizeDockToCollapsed();
         void ResizeDockToFull();
-        void ResizeDockToSpecificHeight(double overrideDockThicknessAsPercentageOfScreen, bool persistNewSize = false);
         void Restore();
         void RestoreSavedState();
         void SetOpacity(double opacity);
         void Shrink(ShrinkFromDirections direction, double amountInPx);
-        void MoveAndSize(bool inPersistNewState, string inWindowState, string inPosition, string inDockSize, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset);
-        void RollbackOverride();
+        void OverridePersistedState(bool inPersistNewState, string inWindowState, string inPosition, string inDockSize, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset);
+        void RestorePersistedState();
     }
 }
