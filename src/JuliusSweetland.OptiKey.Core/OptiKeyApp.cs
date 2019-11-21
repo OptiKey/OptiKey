@@ -50,8 +50,8 @@ namespace JuliusSweetland.OptiKey
 
         #region protected Member Vars
 
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly Action applyTheme;
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        protected Action applyTheme;
 
         private bool persistedState = true;
         private WindowStates tempWindowState;
