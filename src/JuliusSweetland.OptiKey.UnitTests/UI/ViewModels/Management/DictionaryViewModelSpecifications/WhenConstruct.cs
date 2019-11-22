@@ -39,11 +39,13 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.Management.DictionaryV
         {
             Assert.IsNotNull(DictionaryViewModel.AddCommand);
             Assert.IsNotNull(DictionaryViewModel.ToggleDeleteCommand);
+            Assert.IsNotNull(DictionaryViewModel.LoadCommand);
         }
 
         [Test]
         public void ThenEntriesShouldBeLoaded()
         {
+            DictionaryViewModel.Load();
             Assert.IsNotNull(DictionaryViewModel.Entries);
             Assert.AreEqual(DictionaryEntries.Count, DictionaryViewModel.Entries.Count);
         }

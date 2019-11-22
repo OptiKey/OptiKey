@@ -81,7 +81,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
         #region Methods
 
-        private void Load()
+        public void Load()
         {
             var allDictionaryEntries = dictionaryService.GetAllEntries();
             Entries = allDictionaryEntries != null
