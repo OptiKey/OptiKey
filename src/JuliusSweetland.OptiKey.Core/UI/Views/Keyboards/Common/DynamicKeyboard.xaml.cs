@@ -358,16 +358,23 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             foreach (XmlDynamicItem dynamicItem in itemPosition.Where(x => x.Row > -1 && x.Col > -1))
             {
                 var vIndex = keyboard.Content.Items.IndexOf(dynamicItem);
-                var vLabel = "Suggestion";
-                if (dynamicItem is XmlDynamicKey dynamicKey) { vLabel = dynamicKey.Label; }
-                else if (dynamicItem is XmlDynamicScratchpad) { vLabel = "Scratchpad"; }
+                var vLabel = " with type of Suggestion";
+                if (dynamicItem is XmlDynamicKey dynamicKey)
+                {
+                    vLabel = (!string.IsNullOrEmpty(dynamicKey.Label)) ? " with label '" + dynamicKey.Label + "'"
+                        : (!string.IsNullOrEmpty(dynamicKey.Symbol)) ? " with symbol '" + dynamicKey.Symbol + "'"
+                        : " with no label or symbol";
+                }
+                else if (dynamicItem is XmlDynamicScratchpad)
+                {
+                    vLabel = " with type of Scratchpad";
+                }
 
                 if (dynamicItem.Col + dynamicItem.Width > keyboard.Grid.Cols || dynamicItem.Row + dynamicItem.Height > keyboard.Grid.Rows)
                 {
                     SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
-                        + (vIndex + 1) + " of " + itemPosition.Count
-                        + " labeled '" + vLabel
-                        + "' at row " + dynamicItem.Row + " column " + dynamicItem.Col);
+                        + (vIndex + 1) + " of " + itemPosition.Count + vLabel
+                        + " at row " + dynamicItem.Row + " column " + dynamicItem.Col);
                     return false;
                 }
                 //find space to allocate and remove it from available
@@ -378,9 +385,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         if (!openGrid.ElementAt(row).Exists(x => x.Equals(col))) //if the column is unavailable
                         {
                             SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
-                                + (vIndex + 1) + " of " + itemPosition.Count
-                                + " labeled '" + vLabel
-                                + "' at row " + dynamicItem.Row + " column " + dynamicItem.Col);
+                                + (vIndex + 1) + " of " + itemPosition.Count + vLabel
+                                + " at row " + dynamicItem.Row + " column " + dynamicItem.Col);
                             return false;
                         }
                         else
@@ -398,10 +404,18 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             foreach (XmlDynamicItem dynamicItem in itemPosition.Where(x => !(x.Row > -1 && x.Col > -1)))
             {
                 var vIndex = itemPosition.IndexOf(dynamicItem);
-                var vLabel = "Suggestion";
-                if (dynamicItem is XmlDynamicKey dynamicKey) { vLabel = dynamicKey.Label; }
-                else if (dynamicItem is XmlDynamicScratchpad) { vLabel = "Scratchpad"; }
-                
+                var vLabel = " with type of Suggestion";
+                if (dynamicItem is XmlDynamicKey dynamicKey)
+                {
+                    vLabel = (!string.IsNullOrEmpty(dynamicKey.Label)) ? " with label '" + dynamicKey.Label + "'"
+                        : (!string.IsNullOrEmpty(dynamicKey.Symbol)) ? " with symbol '" + dynamicKey.Symbol + "'"
+                        : " with no label or symbol";
+                }
+                else if (dynamicItem is XmlDynamicScratchpad)
+                {
+                    vLabel = " with type of Scratchpad";
+                }
+
                 bool itemPositionConfirmed = false;
                 while (!itemPositionConfirmed)
                 {
@@ -415,8 +429,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     if (startRow < 0)
                     {
                         SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
-                            + (vIndex + 1) + " of " + itemPosition
-                            + " labeled '" + vLabel + "' having width "
+                            + (vIndex + 1) + " of " + itemPosition.Count + vLabel + " having width "
                             + dynamicItem.Width + " and height " + dynamicItem.Height);
                         return false;
                     }
@@ -491,8 +504,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 else
                 {
                     SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
-                        + (vIndex + 1) + " of " + itemPosition.Count
-                        + " labeled '" + vLabel + "' having width "
+                        + (vIndex + 1) + " of " + itemPosition.Count + vLabel + " having width "
                         + dynamicItem.Width + " and height " + dynamicItem.Height);
                     return false;
                 }
@@ -516,11 +528,15 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 Grid.SetRow(scratchpad, dynamicItem.Row);
                 Grid.SetColumnSpan(scratchpad, dynamicItem.Width);
                 Grid.SetRowSpan(scratchpad, dynamicItem.Height);
-                if (!string.IsNullOrEmpty(dynamicItem.BackgroundColor)
-                    && (Regex.IsMatch(dynamicItem.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
-                    || System.Drawing.Color.FromName(dynamicItem.BackgroundColor).IsKnownColor))
+
+                SolidColorBrush colorBrush;
+                if (ValidColor(dynamicItem.BackgroundColor, out colorBrush))
                 {
-                    scratchpad.Scratchpad.BackgroundColourOverride = (SolidColorBrush)new BrushConverter().ConvertFrom(dynamicItem.BackgroundColor);
+                    scratchpad.Scratchpad.BackgroundColourOverride = colorBrush;
+                }
+                if (ValidColor(dynamicItem.ForegroundColor, out colorBrush))
+                {
+                    scratchpad.Scratchpad.Foreground = colorBrush;
                 }
 
                 double vOpacity = 1;
@@ -537,12 +553,16 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 Grid.SetRow(suggestionRow, dynamicItem.Row);
                 Grid.SetColumnSpan(suggestionRow, dynamicItem.Width);
                 Grid.SetRowSpan(suggestionRow, dynamicItem.Height);
-                if (!string.IsNullOrEmpty(dynamicItem.BackgroundColor)
-                    && (Regex.IsMatch(dynamicItem.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
-                    || System.Drawing.Color.FromName(dynamicItem.BackgroundColor).IsKnownColor))
+
+                SolidColorBrush colorBrush;
+                if (ValidColor(dynamicItem.BackgroundColor, out colorBrush))
                 {
-                    suggestionRow.BackgroundColourOverride = (SolidColorBrush)new BrushConverter().ConvertFrom(dynamicItem.BackgroundColor);
-                    suggestionRow.DisabledBackgroundColourOverride = (SolidColorBrush)new BrushConverter().ConvertFrom(dynamicItem.BackgroundColor);
+                    suggestionRow.Background = colorBrush;
+                    suggestionRow.DisabledBackgroundColourOverride = colorBrush;
+                }
+                if (ValidColor(dynamicItem.ForegroundColor, out colorBrush))
+                {
+                    suggestionRow.Foreground = colorBrush;
                 }
 
                 double vOpacity = 1;
@@ -559,11 +579,16 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 Grid.SetRow(suggestionCol, dynamicItem.Row);
                 Grid.SetColumnSpan(suggestionCol, dynamicItem.Width);
                 Grid.SetRowSpan(suggestionCol, dynamicItem.Height);
-                if (!string.IsNullOrEmpty(dynamicItem.BackgroundColor)
-                    && (Regex.IsMatch(dynamicItem.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
-                    || System.Drawing.Color.FromName(dynamicItem.BackgroundColor).IsKnownColor))
+
+                SolidColorBrush colorBrush;
+                if (ValidColor(dynamicItem.BackgroundColor, out colorBrush))
                 {
-                    suggestionCol.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(dynamicItem.BackgroundColor);
+                    suggestionCol.Background = colorBrush;
+                    suggestionCol.DisabledBackgroundColourOverride = colorBrush;
+                }
+                if (ValidColor(dynamicItem.ForegroundColor, out colorBrush))
+                {
+                    suggestionCol.Foreground = colorBrush;
                 }
 
                 double vOpacity = 1;
@@ -586,6 +611,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     newKey.Value = new KeyValue(FunctionKeys.StepList, vStepList);
                     PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
                 }
+            }
+            //place a key that performs no action
+            else
+            {
+                Key newKey = CreateDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
+                PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
             }
         }
 
@@ -672,34 +703,34 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         else
                             vStepList += "<Wait>" + vWait.Value;
                     }
+                    else if (vStep is DynamicPlugin vPlugin)
+                    {
+                        if (string.IsNullOrWhiteSpace(vPlugin.Name))
+                            Log.ErrorFormat("Plugin not found for {0} ", vPlugin.Label);
+                        else if (string.IsNullOrWhiteSpace(vPlugin.Method))
+                            Log.ErrorFormat("Method not found for {0} ", vPlugin.Label);
+                        else
+                        {
+                            vStepList += "<Plugin>" + vPlugin.Name + "<Method>" + vPlugin.Method;
+                            foreach (var vArg in vPlugin.Argument)
+                            {
+                                vStepList += "<Argument>";
+                                if (!string.IsNullOrWhiteSpace(vArg.Name))
+                                    vStepList += "<Name>" + vArg.Name;
+                                if (!string.IsNullOrWhiteSpace(vArg.Value))
+                                    vStepList += "<Value>" + vArg.Value;
+                            }
+                            vStepList += "</Plugin>";
+                        }
+                    }
                     else if (vStep is DynamicLoop vkeyLoop) //this is last because all types are XmlDynamicKey, but we only want to go deeper if we hit a Loop flag
                     {
                         var vReturn = AddDynamicStepList(vkeyLoop, minKeyWidth, minKeyHeight);
                         if (vReturn != "")
-                            //this is the only type where we need to include a closing flag
                             vStepList += "<Loop>" + vkeyLoop.Count.ToString() + vReturn + "</Loop>";
                         else
                             return "";
                     }
-                    //TODO:
-                    //Plugin commands are written here, but will be 
-                    //ignored until a new plugin command handler is written
-                    //if (!String.IsNullOrWhiteSpace(vStep.Plugin) && !String.IsNullOrWhiteSpace(vStep.Method))
-                    //{
-                    //    vStepList += "<Argment>";
-                    //    foreach (var vArg in vStep.Argument)
-                    //    {
-                    //        if (!String.IsNullOrWhiteSpace(vArg.Name))
-                    //        {
-                    //            vStepList += "<Name>" + vArg.Name;
-                    //        }
-                    //        if (!String.IsNullOrWhiteSpace(vArg.Value))
-                    //        {
-                    //            vStepList += "<Value>" + vArg.Value;
-                    //        }
-                    //    }
-                    //    vStepList += "</Argment>";
-                    //}
                 }
             }
             else
@@ -804,29 +835,38 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             newKey.UseUnicodeCompatibilityFont = xmlKey.UseUnicodeCompatibilityFont;
             newKey.UseUrduCompatibilityFont = xmlKey.UseUrduCompatibilityFont;
 
-            if (!string.IsNullOrEmpty(xmlKey.BackgroundColor)
-               && (Regex.IsMatch(xmlKey.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
-                   || System.Drawing.Color.FromName(xmlKey.BackgroundColor).IsKnownColor))
+            SolidColorBrush colorBrush;
+            if (ValidColor(xmlKey.BackgroundColor, out colorBrush))
             {
-                newKey.BackgroundColourOverride = (SolidColorBrush)new BrushConverter().ConvertFrom(xmlKey.BackgroundColor);
+                newKey.BackgroundColourOverride = colorBrush;
+            }
+
+            if (ValidColor(xmlKey.ForegroundColor, out colorBrush))
+            {
+                newKey.ForegroundColourOverride = colorBrush;
+                newKey.DisabledForegroundColourOverride = colorBrush;
+            }
+
+            if (ValidColor(xmlKey.KeyDisabledBackground, out colorBrush))
+            {
+                newKey.DisabledBackgroundColourOverride = colorBrush;
+            }
+
+            if (ValidColor(xmlKey.KeyDownBackground, out colorBrush))
+            {
+                newKey.KeyDownBackgroundOverride = colorBrush;
             }
 
             double vOpacity = 1;
-            if (!string.IsNullOrEmpty(xmlKey.Opacity) && double.TryParse(xmlKey.Opacity, out vOpacity))
-            {
-                newKey.OpacityOverride = vOpacity;
-            }
-
-            if (!string.IsNullOrEmpty(xmlKey.KeyDownBackground)
-               && (Regex.IsMatch(xmlKey.KeyDownBackground, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
-                   || System.Drawing.Color.FromName(xmlKey.KeyDownBackground).IsKnownColor))
-            {
-                newKey.KeyDownBackgroundOverride = (SolidColorBrush)new BrushConverter().ConvertFrom(xmlKey.KeyDownBackground);
-            }
-
             if (!string.IsNullOrEmpty(xmlKey.KeyDownOpacity) && double.TryParse(xmlKey.KeyDownOpacity, out vOpacity))
             {
                 newKey.KeyDownOpacityOverride = vOpacity;
+            }
+
+            if (!string.IsNullOrEmpty(xmlKey.Opacity) && double.TryParse(xmlKey.Opacity, out vOpacity))
+            {
+                newKey.OpacityOverride = vOpacity;
+                newKey.DisabledBackgroundOpacity = vOpacity;
             }
 
             return newKey;
@@ -998,6 +1038,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         private void SetupStyle()
         {
+            if (mainWindow != null)
+            {
+                mainWindow.BorderBrushOverride = null;
+                mainWindow.BackgroundColourOverride = null;
+            }
             // Get border and background values, if specified, to override
             if (keyboard.BorderThickness.HasValue)
             {
@@ -1088,6 +1133,19 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             base.OnLoaded(sender, e);
             ShiftAware = keyboard != null && keyboard.IsShiftAware;
+        }
+
+        private bool ValidColor(string color, out SolidColorBrush colorBrush)
+        {
+            if (!string.IsNullOrEmpty(color)
+                && (Regex.IsMatch(color, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
+                || System.Drawing.Color.FromName(color).IsKnownColor))
+            {
+                colorBrush = (SolidColorBrush)new BrushConverter().ConvertFrom(color);
+                return true;
+            }
+            colorBrush = null;
+            return false;
         }
     }
 }

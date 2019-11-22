@@ -40,23 +40,21 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
           </Argument>
         </Arguments>
         <SampleConfig>
-          <![CDATA[<PluginKey>
-	<Label>APICall</Label>
-	<Row>6</Row>
-	<Col>2</Col>
-	<Plugin>HttpCall</Plugin>
-	<Method>GET</Method>
-	<Arguments>
-	  <Argument>
-		<Name>uri</Name>
-		<Value>http://www.google.com</Value>
-	  </Argument>
-	  <Argument>
-		<Name>timeout</Name>
-		<Value>10000</Value>
-	  </Argument>
-	</Arguments>
-</PluginKey>]]>
+          <![CDATA[<DynamicKey>
+  <Label>APICall</Label>
+  <Plugin>
+    <Name>HttpCall</Name>
+    <Method>GET</Method>
+    <Argument>
+      <Name>uri</Name>
+      <Value>http://www.google.com</Value>
+    </Argument>
+    <Argument>
+      <Name>timeout</Name>
+      <Value>10000</Value>
+    </Argument>
+  </Plugin>
+</DynamicKey>]]>
         </SampleConfig>
       </Method>
       <Method>
@@ -102,35 +100,33 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
           </Argument>
         </Arguments>
         <SampleConfig>
-          <![CDATA[<PluginKey>
-	<Label>APICall</Label>
-	<Row>6</Row>
-	<Col>2</Col>
-	<Plugin>HttpCall</Plugin>
-	<Method>POST</Method>
-	<Arguments>
-	  <Argument>
-		<Name>uri</Name>
-		<Value>http://www.google.com</Value>
-	  </Argument>
-	  <Argument>
-		<Name>timeout</Name>
-		<Value>10000</Value>
-	  </Argument>
-	  <Argument>
-		<Name>accept</Name>
-		<Value>application/json</Value>
-	  </Argument>
-	  <Argument>
-		<Name>contentType</Name>
-		<Value>application/json; charset=utf-8</Value>
-	  </Argument>
-	  <Argument>
-		<Name>payload</Name>
-		<Value>{}</Value>
-	  </Argument>
-    </Arguments>
-</PluginKey>]]>
+          <![CDATA[<DynamicKey>
+  <Label>APICall</Label>
+  <Plugin>
+    <Name>HttpCall</Name>
+    <Method>POST</Method>
+    <Argument>
+      <Name>uri</Name>
+      <Value>http://www.google.com</Value>
+    </Argument>
+    <Argument>
+      <Name>timeout</Name>
+      <Value>10000</Value>
+    </Argument>
+    <Argument>
+      <Name>accept</Name>
+      <Value>application/json</Value>
+    </Argument>
+    <Argument>
+      <Name>contentType</Name>
+      <Value>application/json; charset=utf-8</Value>
+    </Argument>
+    <Argument>
+      <Name>payload</Name>
+      <Value>{}</Value>
+    </Argument>
+  </Plugin>
+</DynamicKey>]]>
         </SampleConfig>
       </Method>
     </Methods>
@@ -153,19 +149,17 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
           </Argument>
         </Arguments>
         <SampleConfig>
-          <![CDATA[<PluginKey>
-	<Label>Notepad</Label>
-	<Row>6</Row>
-	<Col>2</Col>
-	<Plugin>ExternalProgram</Plugin>
-	<Method>RUN</Method>
-	<Arguments>
-	  <Argument>
-		<Name>command</Name>
-		<Value>notepad.exe</Value>
-	  </Argument>
-	</Arguments>
-</PluginKey>]]>
+          <![CDATA[<DynamicKey>
+  <Label>Notepad</Label>
+  <Plugin>
+    <Name>ExternalProgram</Name>
+    <Method>RUN</Method>
+    <Argument>
+      <Name>command</Name>
+      <Value>notepad.exe</Value>
+    </Argument>
+  </Plugin>
+</DynamicKey>]]>
         </SampleConfig>
       </Method>
     </Methods>
