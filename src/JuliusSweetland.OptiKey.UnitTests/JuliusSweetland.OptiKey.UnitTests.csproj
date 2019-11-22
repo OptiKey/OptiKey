@@ -95,7 +95,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="InstallerTests.cs" />
     <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Extensions\PointExtensionsTests.cs" />
     <Compile Include="Extensions\KeyDownStatesExtensionsTests.cs" />
