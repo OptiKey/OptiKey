@@ -19,9 +19,11 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public int Width { get; set; } = 1;
         [XmlAttribute] public int Height { get; set; } = 1;
         [XmlAttribute] public string BackgroundColor { get; set; }
-        [XmlAttribute] public string Opacity { get; set; }
+        [XmlAttribute] public string ForegroundColor { get; set; }
+        [XmlAttribute] public string KeyDisabledBackground { get; set; }
         [XmlAttribute] public string KeyDownBackground { get; set; }
         [XmlAttribute] public string KeyDownOpacity { get; set; }
+        [XmlAttribute] public string Opacity { get; set; }
     }
 
     public class XmlDynamicScratchpad : XmlDynamicItem { }

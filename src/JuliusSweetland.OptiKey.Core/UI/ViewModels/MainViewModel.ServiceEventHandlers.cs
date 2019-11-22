@@ -136,8 +136,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 <DynamicKey>
                                   <Label>Type 1-a, 3-b's</Label>
                                   <Text>a</Text>
-                                  <Loop>
-                                      <Count>3</Count>
+                                  <Loop Count="3">
                                       <Text>b</Text>
                                   </Loop>
                                 </DynamicKey>
@@ -681,7 +680,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.Plugin:
-                    RunPlugin(singleKeyValue.String);
+                    RunPlugin_Legacy(singleKeyValue.String);
                     break;
             }
         }
@@ -2607,6 +2606,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.InfoFormat("StepListCommand: Wait of {0}ms", waitMs);
                         await Task.Delay(waitMs);
                     }
+                    else if (commandList.First().StartsWith("Plugin>"))
+                    {
+                        Log.InfoFormat("StepListCommand: ", string.Join("", commandList.GetRange(0, commandList.IndexOf("/Plugin>"))));
+                        //send the plugin commands to RunDynamicPlugin and remove them from the commandList
+                        RunDynamicPlugin(commandList.GetRange(0, commandList.IndexOf("/Plugin>")));
+                        commandList.RemoveRange(0, commandList.IndexOf("/Plugin>"));
+                    }
                 }
 
                 if (commandList.Any())
@@ -2616,7 +2622,58 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void RunPlugin(string command)
+        private void RunDynamicPlugin(List<string> pluginCommands)
+        {
+            Log.InfoFormat("Running plugin [{0}]", string.Join("", pluginCommands));
+
+            // Build plugin context
+            Dictionary<string, string> context = BuildPluginContext();
+
+            try
+            {
+                // Build the plugin key from the commands
+                DynamicPlugin pluginKey = new DynamicPlugin();
+                List <DynamicArgument> dynamicArgument = new List <DynamicArgument>();
+                while (pluginCommands.Any())
+                {
+                    if (pluginCommands.First().StartsWith("Plugin>"))
+                    {
+                        pluginKey.Name = pluginCommands.First().Substring(7);
+                    }
+                    else if (pluginCommands.First().StartsWith("Method>"))
+                    {
+                        pluginKey.Method = pluginCommands.First().Substring(7);
+                    }
+                    else if (pluginCommands.First().StartsWith("Argument>"))
+                    {
+                        dynamicArgument.Add(new DynamicArgument());
+                        pluginKey.Argument = dynamicArgument;
+                    }
+                    else if (pluginCommands.First().StartsWith("Name>"))
+                    {
+                        pluginKey.Argument.Last().Name = pluginCommands.First().Substring(5);
+                    }
+                    else if (pluginCommands.First().StartsWith("Value>"))
+                    {
+                        pluginKey.Argument.Last().Value = pluginCommands.First().Substring(6);
+                    }
+                    pluginCommands.RemoveAt(0);
+                }
+
+                PluginEngine.RunDynamicPlugin(context, pluginKey);
+            }
+            catch (Exception exception)
+            {
+                Log.Error("Error running plugin.", exception);
+                while (exception.InnerException != null) exception = exception.InnerException;
+                if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
+                {
+                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                }
+            }
+        }
+
+        private void RunPlugin_Legacy(string command)
         {
             //FIXME: Log Message is logging entire XML
             Log.InfoFormat("Running plugin [{0}]", command);
@@ -2628,7 +2685,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(XmlPluginKey));
                 StringReader rdr = new StringReader(command);
-                PluginEngine.RunPlugin(context, (XmlPluginKey)serializer.Deserialize(rdr));
+                PluginEngine.RunPlugin_Legacy(context, (XmlPluginKey)serializer.Deserialize(rdr));
             }
             catch (Exception exception)
             {
