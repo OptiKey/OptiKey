@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="dotnet $(TargetPath) &amp;&amp; xcopy /f /y &quot;$(ProjectDir)*.cs&quot; &quot;$(SolutionDir)src\JuliusSweetland.OptiKey.InstallerActions\&quot;&#xD;&#xA;" />
+    <Exec Command="dotnet $(TargetPath) &amp;&amp; xcopy /f /y &quot;$(ProjectDir)InstallerStrings.cs&quot; &quot;$(SolutionDir)src\JuliusSweetland.OptiKey.InstallerActions\&quot;&#xD;&#xA;" />
   </Target>
 
 </Project>
