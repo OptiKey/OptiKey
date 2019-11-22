@@ -161,7 +161,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allow multiple instances of this optikey app to run simultaneously.
+        ///   Looks up a localized string similar to Allow multiple instances of this Optikey app to run simultaneously.
         /// </summary>
         public static string ALLOW_MULTIPLE_INSTANCES {
             get {
@@ -906,7 +906,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bad news - optikey has tripped over its feet and has to close down.
+        ///   Looks up a localized string similar to Bad news - Optikey has tripped over its feet and has to close down.
         ///
         ///An email with details of what happened would be very helpful: crash@optikey.org
         ///
@@ -1101,7 +1101,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to We recommend changing the UiLanguage to Persian to ensure typed Persian text flows from right to left in the scratchpad.
-        ///Would you like OptiKey to automatically set the UiLanguage to Persian?.
+        ///Would you like Optikey to automatically set the UiLanguage to Persian?.
         /// </summary>
         public static string DEFAULT_UILANGUAGE_TO_PERSIAN {
             get {
@@ -1111,7 +1111,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to We recommend changing the UiLanguage to Urdu to ensure typed Urdu text flows from right to left in the scratchpad.
-        ///Would you like optikey to automatically set the UiLanguage to Urdu?.
+        ///Would you like Optikey to automatically set the UiLanguage to Urdu?.
         /// </summary>
         public static string DEFAULT_UILANGUAGE_TO_URDU {
             get {
@@ -1546,7 +1546,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support..
+        ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact Optikey for further support..
         /// </summary>
         public static string ERROR_MAGNIFYING {
             get {
@@ -2055,7 +2055,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to We recommend changing the font used in optiKey to one which is fully compatible with Persian.
         ///If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
-        ///Would you like OptiKey to automatically set the font to Nazli?.
+        ///Would you like Optikey to automatically set the font to Nazli?.
         /// </summary>
         public static string FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE {
             get {
@@ -2064,9 +2064,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We recommend changing the font used in optikey to one which is fully compatible with Urdu.
+        ///   Looks up a localized string similar to We recommend changing the font used in Optikey to one which is fully compatible with Urdu.
         ///If a font is used which is not Urdu specific then text, and especially numbers, may display incorrectly.
-        ///Would you like optikey to automatically set the font to Nafees Web Naskh?.
+        ///Would you like Optikey to automatically set the font to Nafees Web Naskh?.
         /// </summary>
         public static string FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE {
             get {
@@ -2403,7 +2403,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you plan to use optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. \n\nIf you don&apos;t already have them they can be downloaded by going to https://www.irisbond.com/products/downloads and downloading the &apos;Drivers&apos; installer..
+        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/products/downloads..
         /// </summary>
         public static string IRISBOND_DUO_INFO {
             get {
@@ -3920,7 +3920,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In this mode, optikey will use the mouse cursor as input instead of talking directly to an eye tracker. \n\nYou might want this if you&apos;re testing optikey out, or if you want to use it with an alternative input device such as a head mouse or any eye tracker not in this list.\n\nSee the optikey wiki for more information..
+        ///   Looks up a localized string similar to In this mode, Optikey will use the mouse cursor as input instead of talking directly to an eye tracker. You might want this if you&apos;re testing Optikey out, or if you want to use it with an alternative input device such as a head mouse or any eye tracker not in this list..
         /// </summary>
         public static string MOUSE_POSITION_INFO {
             get {
@@ -5005,7 +5005,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you absolutely sure that you&apos;d like to restart optikey?.
+        ///   Looks up a localized string similar to Are you absolutely sure that you&apos;d like to restart Optikey?.
         /// </summary>
         public static string REFRESH_CONFIRMATION_MESSAGE {
             get {
@@ -5014,7 +5014,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you&apos;d like to restart optikey?.
+        ///   Looks up a localized string similar to Are you sure you&apos;d like to restart Optikey?.
         /// </summary>
         public static string REFRESH_MESSAGE {
             get {
@@ -6011,7 +6011,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please note that optikey is no longer compatible with older versions of the Tobii Windows control application. \n\nThis is only a problem if (a) you want to use optikey alongside Tobii Windows control, and (b) your Windows Control application is too old for optikey. \n\nPlease read the optikey wiki for more details..
+        ///   Looks up a localized string similar to To use Optikey with an assistive eye tracker, you either need the new version of Windows Control, or the Tobii Eye Tracking engine. If you need to use the old version of the Tobii Windows control application (including Tobii Gaze Interaction settings), then you will need to control Optikey using mouse position instead..
         /// </summary>
         public static string TOBII_ASSISTIVE_INFO {
             get {
@@ -6074,7 +6074,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This option will work with any Tobii Gaming eye tracker (4C, EyeX, Steelseries, etc).
+        ///   Looks up a localized string similar to This option will work with any Tobii Gaming eye tracker (4C, EyeX, Alienware, Steelseries, etc).
         /// </summary>
         public static string TOBII_EYEX_INFO {
             get {
@@ -6468,7 +6468,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to May I restart optikey?.
+        ///   Looks up a localized string similar to May I restart Optikey?.
         /// </summary>
         public static string VERIFY_RESTART {
             get {
@@ -6504,7 +6504,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Visual Interaction myGaze is only supported if you&apos;ve already installed the myGaze client drivers, which are no longer available for download. \n\nIf you don&apos;t have these drivers installed, you should select use &apos;mouse position&apos; instead, and use optikey in combination with the myGaze EyeMousePlay application to move the cursor..
+        ///   Looks up a localized string similar to The Visual Interaction myGaze is only supported if you&apos;ve already installed the myGaze client drivers, which are no longer available for download. If you don&apos;t have these drivers installed, you should select use &apos;mouse position&apos; instead, and use Optikey in combination with the myGaze EyeMousePlay application to move the cursor..
         /// </summary>
         public static string VI_MYGAZE_INFO {
             get {
