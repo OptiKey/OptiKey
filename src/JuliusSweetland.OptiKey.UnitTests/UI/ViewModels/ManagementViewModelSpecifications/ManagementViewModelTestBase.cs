@@ -18,6 +18,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         {
             AudioService = new Mock<IAudioService>();
             DictionaryService = new Mock<IDictionaryService>();
+            WindowManipulationService = new Mock<IWindowManipulationService>();
 
             if (ShouldConstruct)
             {
