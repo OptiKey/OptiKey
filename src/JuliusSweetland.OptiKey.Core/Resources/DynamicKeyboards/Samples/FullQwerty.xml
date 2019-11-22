@@ -1,0 +1,91 @@
+<Keyboard>
+    <Name>FullQwerty</Name>
+	<WindowState>Floating</WindowState>
+	<Position>Bottom</Position>
+	<Width>100%</Width>
+	<Height>-80</Height>
+	<VerticalOffset>-80</VerticalOffset>
+    <SymbolMargin>10</SymbolMargin>
+    <BorderThickness>1,1,1,1</BorderThickness>
+	<BackgroundColor>Transparent</BackgroundColor>
+	<BorderColor>Transparent</BorderColor>
+    <Grid>
+        <Rows>14</Rows>
+        <Cols>16</Cols>
+    </Grid>
+    <Content>
+        <DynamicKey Col="15" Height="2"><Label>Back</Label><Symbol>BackIcon</Symbol><Action>BackFromKeyboard</Action></DynamicKey>
+        <DynamicKey Col="15" Height="3"><Action>MouseMoveAndLeftClick</Action><Label>Left Click</Label><Symbol>MouseLeftClickIcon</Symbol></DynamicKey>
+        <DynamicKey Col="15" Height="2"><Action>MouseMoveAndRightClick</Action><Label>Right Click</Label><Symbol>MouseRightClickIcon</Symbol></DynamicKey>
+        <DynamicKey Col="15" Height="2"><Action>LookToScrollActive</Action><Label>Scroll</Label><Symbol>LookToScrollActiveIcon</Symbol></DynamicKey>
+        <DynamicKey Col="15" Height="1"><Action>Sleep</Action><Label>Sleep</Label><Symbol>SleepIcon</Symbol></DynamicKey>
+		
+        <DynamicKey Row="10"><Action>Escape</Action><Label>Esc</Label></DynamicKey>
+        <DynamicKey><Text>1</Text><Label>1</Label><ShiftDownLabel>!</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>2</Text><Label>2</Label><ShiftDownLabel>@</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>3</Text><Label>3</Label><ShiftDownLabel>#</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>4</Text><Label>4</Label><ShiftDownLabel>$</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>5</Text><Label>5</Label><ShiftDownLabel>%</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>6</Text><Label>6</Label><ShiftDownLabel>^</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>7</Text><Label>7</Label><ShiftDownLabel>&amp;</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>8</Text><Label>8</Label><ShiftDownLabel>*</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>9</Text><Label>9</Label><ShiftDownLabel>(</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>0</Text><Label>0</Label><ShiftDownLabel>)</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Label>More</Label><Symbol>KeyboardIcon</Symbol><ChangeKeyboard BackReturnsHere="true">FullSymbol</ChangeKeyboard></DynamicKey>
+        <DynamicKey><Action>Delete</Action><Label>Del</Label></DynamicKey>
+        <DynamicKey><Action>PgUp</Action><Label>Pg Up</Label></DynamicKey>
+        <DynamicKey><Action>BackOne</Action><Label>Backspace</Label><Symbol>BackOneIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>Home</Action><Label>Home</Label></DynamicKey>
+        
+        <DynamicKey><Text>&#9;</Text><Label>Tab</Label><Symbol>TabIcon</Symbol></DynamicKey>
+        <DynamicKey><Text>q</Text><Label>q</Label><ShiftDownLabel>Q</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>w</Text><Label>w</Label><ShiftDownLabel>W</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>e</Text><Label>e</Label><ShiftDownLabel>E</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>r</Text><Label>r</Label><ShiftDownLabel>R</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>t</Text><Label>t</Label><ShiftDownLabel>T</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>y</Text><Label>y</Label><ShiftDownLabel>Y</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>u</Text><Label>u</Label><ShiftDownLabel>U</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>i</Text><Label>i</Label><ShiftDownLabel>I</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>o</Text><Label>o</Label><ShiftDownLabel>O</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>p</Text><Label>p</Label><ShiftDownLabel>P</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>-</Text><Label>-</Label><ShiftDownLabel>_</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>=</Text><Label>=</Label><ShiftDownLabel>+</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Action>PgDn</Action><Label>Pg Dn</Label></DynamicKey>
+        <DynamicKey><Action>ArrowUp</Action><Symbol>UpArrowKeyIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>End</Action><Label>End</Label></DynamicKey>
+                
+        <DynamicKey><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
+		<DynamicKey><Text>a</Text><Label>a</Label><ShiftDownLabel>A</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>s</Text><Label>s</Label><ShiftDownLabel>S</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>d</Text><Label>d</Label><ShiftDownLabel>D</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>f</Text><Label>f</Label><ShiftDownLabel>F</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>g</Text><Label>g</Label><ShiftDownLabel>G</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>h</Text><Label>h</Label><ShiftDownLabel>H</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>j</Text><Label>j</Label><ShiftDownLabel>J</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>k</Text><Label>k</Label><ShiftDownLabel>K</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>l</Text><Label>l</Label><ShiftDownLabel>L</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>;</Text><Label>;</Label><ShiftDownLabel>:</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>'</Text><Label>'</Label><ShiftDownLabel>"</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>ArrowLeft</Action><Symbol>LeftArrowKeyIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>ArrowDown</Action><Symbol>DownArrowKeyIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>ArrowRight</Action><Symbol>RightArrowKeyIcon</Symbol></DynamicKey>
+        
+        <DynamicKey><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>
+        <DynamicKey><Action>LeftAlt</Action><Label>Alt</Label></DynamicKey>
+        <DynamicKey><Text>z</Text><Label>z</Label><ShiftDownLabel>Z</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>x</Text><Label>x</Label><ShiftDownLabel>X</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>c</Text><Label>c</Label><ShiftDownLabel>C</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>v</Text><Label>v</Label><ShiftDownLabel>V</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>&#32;</Text><Label>Space</Label><Symbol>SpaceIcon</Symbol></DynamicKey>
+        <DynamicKey><Text>b</Text><Label>b</Label><ShiftDownLabel>B</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>n</Text><Label>n</Label><ShiftDownLabel>N</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>m</Text><Label>m</Label><ShiftDownLabel>M</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>,</Text><Label>,</Label><ShiftDownLabel>&lt;</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>.</Text><Label>.</Label><ShiftDownLabel>&gt;</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Text>/</Text><Label>/</Label><ShiftDownLabel>?</ShiftDownLabel></DynamicKey>
+        <DynamicKey><Action>LeftAlt</Action><Label>Alt</Label></DynamicKey>
+        <DynamicKey><Width>1</Width><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>
+        <DynamicKey><Text>&#13;</Text><Label>Enter</Label><Symbol>EnterIcon</Symbol></DynamicKey>
+    </Content>
+</Keyboard>
