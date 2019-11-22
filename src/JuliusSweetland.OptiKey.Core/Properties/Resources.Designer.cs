@@ -1497,18 +1497,16 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("ENTRY_ADDED_TO_DICTIONARY", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to An error has occurred during the handling of a key selection.
         /// </summary>
-        public static string ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT
-        {
-            get
-            {
+        public static string ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT {
+            get {
                 return ResourceManager.GetString("ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact OptiKey for further support..
         /// </summary>
