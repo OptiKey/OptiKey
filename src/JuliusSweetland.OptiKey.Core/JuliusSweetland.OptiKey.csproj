@@ -975,13 +975,19 @@
     <Content Include="Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Qwerty_6x12.xml">
+    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Left.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\MyQwertyLeft.xml">
+    <Content Include="Resources\DynamicKeyboards\Samples\FullQwerty.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Samples\FullSymbol.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Fonts\B612-licence-epl-v10.html">
