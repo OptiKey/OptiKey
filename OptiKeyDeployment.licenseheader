@@ -1,0 +1,13 @@
+extensions: designer.cs generated.cs
+extensions: .cs .cpp .h
+// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+extensions: .aspx .ascx
+<%-- 
+Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+--%>
+extensions: .vb
+'Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+extensions:  .xml .xaml .config .xsd
+<!--
+Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
