@@ -2,6 +2,7 @@
 using System;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.UnitTests.Properties;
 using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.UI.Models
@@ -9,6 +10,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.Models
     [TestFixture]
     public class KeyValueTest
     {
+        [SetUp]
+        public void BaseSetUp()
+        {
+            Settings.Initialise();
+        }
+
         [Test]
         public void TestEqualityWithFunctionKeys()
         {

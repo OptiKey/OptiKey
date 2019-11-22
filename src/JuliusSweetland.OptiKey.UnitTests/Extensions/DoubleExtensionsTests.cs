@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.UnitTests.Properties;
 using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Extensions
@@ -7,6 +8,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
     [TestFixture]
     public class DoubleExtensionsTests
     {
+        [SetUp]
+        public void BaseSetUp()
+        {
+            Settings.Initialise();
+        }
+
         [Test]
         public void TestCoerceToUpperLimit()
         {
