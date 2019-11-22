@@ -2378,4 +2378,7 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
 Magyar
 (Magyarország)</value>
   </data>
+  <data name="ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT" xml:space="preserve">
+    <value>An error has occurred during the handling of a key selection</value>
+  </data>
 </root>
