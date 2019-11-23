@@ -231,7 +231,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             if (MessageBox.Show(Properties.Resources.REFRESH_MESSAGE, Properties.Resources.RESTART, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                System.Windows.Forms.Application.Restart();
+                OptiKeyApp.RestartApp();
                 Application.Current.Shutdown();
             }
         }

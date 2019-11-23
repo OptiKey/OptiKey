@@ -49,7 +49,7 @@ namespace JuliusSweetland.OptiKey.Mouse
         [STAThread]
         public static void Main()
         {
-            using (SingleInstanceManager manager = SingleInstanceManager.Initialize(GetSingleInstanceManagerSetup()))
+            using (_manager = SingleInstanceManager.Initialize(GetSingleInstanceManagerSetup()))
             {
 
                 splashScreen = new SplashScreen("/Resources/Icons/OptikeyMouseSplash.png");

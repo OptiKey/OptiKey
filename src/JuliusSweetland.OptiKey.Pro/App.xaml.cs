@@ -70,7 +70,7 @@ namespace JuliusSweetland.OptiKey.Pro
             }
             else
             {
-                using (SingleInstanceManager manager = SingleInstanceManager.Initialize(
+                using (_manager = SingleInstanceManager.Initialize(
                     new SingleInstanceManagerSetup(appName)))
                 {
                     runApp();

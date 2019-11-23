@@ -31,6 +31,7 @@ using Octokit;
 using presage;
 using Application = System.Windows.Application;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
+using WindowsRecipes.TaskbarSingleInstance;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -69,6 +70,19 @@ namespace JuliusSweetland.OptiKey
         public OptiKeyApp()
         {
             
+        }
+
+        // This will be assigned from within derived apps
+        protected static SingleInstanceManager _manager;
+
+        public static void RestartApp()
+        {
+            // Release single-instance mutex if we've got one
+            if (_manager != null)
+            {
+                _manager.Dispose();
+            }
+            System.Windows.Forms.Application.Restart();
         }
 
         // Previously in core OptiKey ctr, now called by derived classes after setting up Settings class
@@ -611,7 +625,7 @@ namespace JuliusSweetland.OptiKey
                     File.Delete(filename);
                     try
                     {
-                        System.Windows.Forms.Application.Restart();
+                        RestartApp();
                     }
                     catch {} //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
                 }
