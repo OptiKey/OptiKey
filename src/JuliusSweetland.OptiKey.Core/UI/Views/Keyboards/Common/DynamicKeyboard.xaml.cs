@@ -1038,39 +1038,29 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         private void SetupStyle()
         {
-            if (mainWindow != null)
-            {
-                mainWindow.BorderBrushOverride = null;
-                mainWindow.BackgroundColourOverride = null;
-            }
+            SolidColorBrush colorBrush;
             // Get border and background values, if specified, to override
             if (keyboard.BorderThickness.HasValue)
             {
                 Log.InfoFormat("Setting border thickness for custom keyboard: {0}", keyboard.BorderThickness.Value);
                 this.BorderThickness = keyboard.BorderThickness.Value;
             }
-            if (!string.IsNullOrEmpty(keyboard.BorderColor)
-                && (Regex.IsMatch(keyboard.BorderColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
-                    || System.Drawing.Color.FromName(keyboard.BorderColor).IsKnownColor))
+            if (ValidColor(keyboard.BorderColor, out colorBrush))
             {
                 Log.InfoFormat("Setting border color for custom keyboard: {0}", keyboard.BorderColor);
-                var borderBrushOverride = (SolidColorBrush) new BrushConverter().ConvertFrom(keyboard.BorderColor);
-                this.BorderBrush = borderBrushOverride;
+                this.BorderBrush = colorBrush;
                 if(mainWindow != null)
                 {
-                    mainWindow.BorderBrushOverride = borderBrushOverride;
+                    mainWindow.BorderBrushOverride = colorBrush;
                 }
             }
-            if (!string.IsNullOrEmpty(keyboard.BackgroundColor)
-                && (Regex.IsMatch(keyboard.BackgroundColor, "^(#[0-9A-Fa-f]{3})$|^(#[0-9A-Fa-f]{6})$")
-                    || System.Drawing.Color.FromName(keyboard.BackgroundColor).IsKnownColor))
+            if (ValidColor(keyboard.BackgroundColor, out colorBrush))
             {
                 Log.InfoFormat("Setting background color for custom keyboard: {0}", keyboard.BackgroundColor);
-                var backgroundColour = (SolidColorBrush) new BrushConverter().ConvertFrom(keyboard.BackgroundColor);
-                this.Background = backgroundColour;
+                this.Background = colorBrush;
                 if (mainWindow != null)
                 {
-                    mainWindow.BackgroundColourOverride = backgroundColour;
+                    mainWindow.BackgroundColourOverride = colorBrush;
                 }
             }
         }
