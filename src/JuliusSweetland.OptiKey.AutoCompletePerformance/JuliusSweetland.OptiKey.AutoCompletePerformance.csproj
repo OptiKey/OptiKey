@@ -93,7 +93,7 @@
   <ItemGroup>
     <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj">
       <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
-      <Name>JuliusSweetland.OptiKey</Name>
+      <Name>JuliusSweetland.OptiKey.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
