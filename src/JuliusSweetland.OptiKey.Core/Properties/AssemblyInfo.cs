@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OptiKey")]
+[assembly: AssemblyTitle("Optikey")]
 [assembly: AssemblyDescription("Free, Open Source, Assistive On-Screen Keyboard")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("OptiKey")]
-[assembly: AssemblyProduct("OptiKey")]
+[assembly: AssemblyCompany("Optikey")]
+[assembly: AssemblyProduct("Optikey")]
 [assembly: AssemblyCopyright("Licensed under the terms of the GNU GPL v3")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

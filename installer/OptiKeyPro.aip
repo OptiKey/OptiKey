@@ -11,10 +11,10 @@
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="CTRLS" Value="2"/>
-    <ROW Property="Manufacturer" Value="OptiKey"/>
+    <ROW Property="Manufacturer" Value="Optikey"/>
     <ROW Property="ProductCode" Value="1025:{48778F44-44EB-404C-8E21-DE7E41D43F34} 1026:{9F0FDE34-D686-42B7-9512-072D4C8BB184} 1027:{BFD3B950-F2A2-4AAB-8396-7807C34349BE} 1028:{F8B12AF8-CA13-43DD-9A1C-12211DFDA3B4} 1029:{F6F2B57B-917A-4650-8F77-96621C536FA2} 1030:{2983A17C-69C7-4354-94BB-2C9073DB626A} 1031:{C546AC79-1D5D-452C-9359-156FCBECE075} 1032:{9674073D-EDBD-4803-8B7E-7EFD2271676B} 1033:{0175AF6D-5986-45A9-8BBB-7A7FC9165D84} 1035:{86D3BD64-2F4D-40A3-9B17-1B536B447577} 1036:{03E58ADA-0CFD-4968-8F22-47A3C97793BC} 1037:{E8938823-8DBC-4AC5-AD22-61D2E789DCFC} 1038:{47F3068C-D127-416E-8C92-CD7F291A5B7E} 1039:{06BE6401-BBDD-4FC0-B62A-1116E5F79CE5} 1040:{D6D5BBDB-2084-42F8-A4E8-DB6BC4917CD6} 1041:{BE13DFC9-0188-484A-9133-C8E7286685F9} 1042:{CAE04F33-E02A-497A-823C-21951821B7A9} 1043:{D39AD0FB-1644-469E-AA29-24219F9E7222} 1044:{F2FDC03F-FE4C-46CC-BDCA-BE23A7EBCD18} 1045:{497AA382-9A92-4599-8E57-7F67A79DDAC8} 1046:{45FFF212-BEB8-4F0F-B980-2307D8899FBF} 1049:{E0910837-8BF7-4592-8D92-8F7804DABD73} 1050:{10CCD708-08DB-491E-A482-0A25AB069F5A} 1051:{C8AB788A-A3BB-423C-B323-83A83210BA05} 1052:{A002F0BA-F554-4AAB-BEE8-1D3996BF3EFE} 1053:{90A82D32-E06A-4AA1-BE2B-5423B6D0EE0B} 1055:{F0C51341-B3B3-4624-B4B3-2E6039069603} 1057:{74914CFB-CD7B-4FD4-8341-62ED5F2733A4} 1058:{D0BDCF36-97ED-401B-B0B9-7402C4DD45D7} 1060:{6F271332-3226-4D39-B97C-71F799993B62} 1065:{2146B314-15B9-4BC6-9AAD-1499FE808619} 1087:{5F6A76DD-7F57-412F-A1D9-9BB519B04AE7} 2052:{769E68A5-9066-46E9-A41C-549413AABD5C} 2057:{EBF8A1A5-B5FD-47D0-9806-B3ED0B46B349} 2068:{F6099A9B-2B64-44FC-9A44-3B8F56FD1D34} 2070:{C87D07A7-BB11-4080-8364-3C84648A3C86} 2074:{33AC52E9-6735-476E-A0C7-5F69A6652035} 3082:{82B2478C-2FC7-4841-B7B4-6A45856DA37E} 3098:{7881181D-71D0-49DB-94E4-7D072F84DD5A} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
-    <ROW Property="ProductName" Value="OptiKey Pro"/>
+    <ROW Property="ProductName" Value="Optikey Pro"/>
     <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
@@ -40,6 +40,7 @@
     <ROW Directory="Release_Dir" Directory_Parent="APPDIR" DefaultDir=".:Release"/>
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="Samples_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="Samples"/>
     <ROW Directory="Sizeandpositionexamples_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="SIZEAN~1|Size and position examples"/>
     <ROW Directory="Sounds_Dir" Directory_Parent="Resources_Dir" DefaultDir="Sounds"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
@@ -55,6 +56,7 @@
     <ROW Directory="fr_Dir" Directory_Parent="Release_Dir" DefaultDir="fr"/>
     <ROW Directory="heIL_Dir" Directory_Parent="Release_Dir" DefaultDir="he-IL"/>
     <ROW Directory="hrHR_Dir" Directory_Parent="Release_Dir" DefaultDir="hr-HR"/>
+    <ROW Directory="huHU_Dir" Directory_Parent="Release_Dir" DefaultDir="hu-HU"/>
     <ROW Directory="itIT_Dir" Directory_Parent="Release_Dir" DefaultDir="it-IT"/>
     <ROW Directory="jaJP_Dir" Directory_Parent="Release_Dir" DefaultDir="ja-JP"/>
     <ROW Directory="kaGE_Dir" Directory_Parent="Release_Dir" DefaultDir="ka-GE"/>
@@ -80,7 +82,7 @@
     <ROW Component="BigHackerKeyboard.xml" ComponentId="{68EE60EC-B0FC-40FC-8CEA-52516F15BAB8}" Directory_="DynamicKeyboards_Dir" Attributes="0" KeyPath="BigHackerKeyboard.xml" Type="0"/>
     <ROW Component="CatalanSpain.dic" ComponentId="{93D84D0E-188C-4542-854C-BD7DB9B0FBA1}" Directory_="Dictionaries_Dir" Attributes="0" KeyPath="CatalanSpain.dic" Type="0"/>
     <ROW Component="ControlzEx.dll" ComponentId="{A508E47D-C583-4BA0-AE5A-4FF37EB93ED6}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
-    <ROW Component="DockBottom.xml" ComponentId="{E8E1A8B0-B7C1-4D92-BDF4-F261E2530770}" Directory_="Sizeandpositionexamples_Dir" Attributes="0" KeyPath="DockBottom.xml" Type="0"/>
+    <ROW Component="Demo_Gamepad.xml" ComponentId="{C5503639-FD33-4B06-8143-BED65F511FB4}" Directory_="Samples_Dir" Attributes="0" KeyPath="Demo_Gamepad.xml" Type="0"/>
     <ROW Component="EyeXFramework.dll" ComponentId="{9D6ED31D-C83E-4767-ADE9-0205B7E63E65}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
     <ROW Component="Interop.SpeechLib.dll" ComponentId="{CE8063AF-EC6D-451B-81B7-1D29652323FD}" Directory_="Release_Dir" Attributes="0" KeyPath="Interop.SpeechLib.dll"/>
     <ROW Component="IrisbondAPI.dll" ComponentId="{E2785C1C-AB56-4193-96A5-42A717380AF9}" Directory_="Release_Dir" Attributes="0" KeyPath="IrisbondAPI.dll"/>
@@ -111,6 +113,7 @@
     <ROW Component="OptiKey.resources.dll_23" ComponentId="{C44767F0-D992-403C-AF12-D3753DEBABE7}" Directory_="urPK_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_23"/>
     <ROW Component="OptiKey.resources.dll_24" ComponentId="{7D7DFAB3-F3BD-40AD-A2F0-21E283341E4B}" Directory_="fiFI_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_24"/>
     <ROW Component="OptiKey.resources.dll_25" ComponentId="{FBE037A1-1C63-464E-9983-F8A941C3EE5F}" Directory_="heIL_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_25"/>
+    <ROW Component="OptiKey.resources.dll_26" ComponentId="{A9F32067-5823-4E2B-99CB-2A2A994A677D}" Directory_="huHU_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_26"/>
     <ROW Component="OptiKey.resources.dll_3" ComponentId="{923C85E6-77BE-4B15-9773-51B9DF977DCE}" Directory_="deDE_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_3"/>
     <ROW Component="OptiKey.resources.dll_4" ComponentId="{A0668507-2FAE-4BAF-90D7-4E24910BD8DF}" Directory_="elGR_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_4"/>
     <ROW Component="OptiKey.resources.dll_5" ComponentId="{EAA071D3-DE1F-40DA-BEB3-D1D01C984EAB}" Directory_="enUS_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_5"/>
@@ -134,6 +137,7 @@
     <ROW Component="SharpVectors.Rendering.Gdi.dll" ComponentId="{6FA8D075-1F99-4AD9-A6DC-84A4C1A92936}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Gdi.dll"/>
     <ROW Component="SharpVectors.Rendering.Wpf.dll" ComponentId="{89DDAE18-F3F2-431C-B766-C1257146C5B4}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Wpf.dll"/>
     <ROW Component="SharpVectors.Runtime.dll" ComponentId="{7067AB68-2E8E-4464-89D7-FC7D366CE858}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Runtime.dll"/>
+    <ROW Component="Sizeandpositionexamples" ComponentId="{FBFDF1D7-7DD4-495E-BBE5-8A15C4465593}" Directory_="Sizeandpositionexamples_Dir" Attributes="0"/>
     <ROW Component="System.IO.Compression.dll" ComponentId="{8783BC9E-4E70-4D56-8674-E40CA21373F3}" Directory_="Release_Dir" Attributes="0" KeyPath="System.IO.Compression.dll"/>
     <ROW Component="System.Reactive.Core.dll" ComponentId="{63F265B3-9617-4CFB-910B-F1D73EC88461}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Core.dll"/>
     <ROW Component="System.Reactive.Interfaces.dll" ComponentId="{4664881A-CBD3-4071-9898-E623AD9982BD}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Interfaces.dll"/>
@@ -337,14 +341,6 @@
     <ROW File="OptiKeyStandardPlugins.pdb" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~2.PDB|OptiKeyStandardPlugins.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKeyStandardPlugins.pdb" SelfReg="false"/>
     <ROW File="AltAlphaHorizontalKeyboard.xml" Component_="BigHackerKeyboard.xml" FileName="ALTALP~1.XML|AltAlphaHorizontalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml" SelfReg="false"/>
     <ROW File="AltAlphaVerticalKeyboard.xml" Component_="BigHackerKeyboard.xml" FileName="ALTALP~2.XML|AltAlphaVerticalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml" SelfReg="false"/>
-    <ROW File="DockBottom.xml" Component_="DockBottom.xml" FileName="DOCKBO~1.XML|DockBottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Size and position examples\DockBottom.xml" SelfReg="false"/>
-    <ROW File="DockTop.xml" Component_="DockBottom.xml" FileName="DockTop.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Size and position examples\DockTop.xml" SelfReg="false"/>
-    <ROW File="FloatBottom.xml" Component_="DockBottom.xml" FileName="FLOATB~1.XML|FloatBottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatBottom.xml" SelfReg="false"/>
-    <ROW File="FloatCenter.xml" Component_="DockBottom.xml" FileName="FLOATC~1.XML|FloatCenter.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatCenter.xml" SelfReg="false"/>
-    <ROW File="FloatDemo.xml" Component_="DockBottom.xml" FileName="FLOATD~1.XML|FloatDemo.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatDemo.xml" SelfReg="false"/>
-    <ROW File="FloatLeft.xml" Component_="DockBottom.xml" FileName="FLOATL~1.XML|FloatLeft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatLeft.xml" SelfReg="false"/>
-    <ROW File="FloatRight.xml" Component_="DockBottom.xml" FileName="FLOATR~1.XML|FloatRight.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatRight.xml" SelfReg="false"/>
-    <ROW File="FloatTop.xml" Component_="DockBottom.xml" FileName="FloatTop.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Size and position examples\FloatTop.xml" SelfReg="false"/>
     <ROW File="WindowsInput.pdb" Component_="WindowsInput.dll" FileName="WINDOW~1.PDB|WindowsInput.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\WindowsInput.pdb" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.dll" Component_="WindowsRecipes.TaskbarSingleInstance.dll" FileName="WINDOW~2.DLL|WindowsRecipes.TaskbarSingleInstance.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\WindowsRecipes.TaskbarSingleInstance.dll" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.dll" FileName="WINDOW~2.PDB|WindowsRecipes.TaskbarSingleInstance.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\WindowsRecipes.TaskbarSingleInstance.pdb" SelfReg="false"/>
@@ -352,6 +348,13 @@
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" FileName="WINDOW~3.PDB|WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Component_="Bass.Net.xml" FileName="WINDOW~2.XML|WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.xml" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.xml" Component_="Bass.Net.xml" FileName="WINDOW~3.XML|WindowsRecipes.TaskbarSingleInstance.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\WindowsRecipes.TaskbarSingleInstance.xml" SelfReg="false"/>
+    <ROW File="HungarianHungary.dic" Component_="CatalanSpain.dic" FileName="HUNGAR~1.DIC|HungarianHungary.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Dictionaries\HungarianHungary.dic" SelfReg="false"/>
+    <ROW File="OptiKey.resources.dll_26" Component_="OptiKey.resources.dll_26" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\hu-HU\OptiKey.resources.dll" SelfReg="false"/>
+    <ROW File="OptiKey.dll.config" Component_="Bass.Net.xml" FileName="OPTIKE~2.CON|OptiKey.dll.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKey.dll.config" SelfReg="false"/>
+    <ROW File="OptiKey.exe.config" Component_="Bass.Net.xml" FileName="OPTIKE~3.CON|OptiKey.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\OptiKey.exe.config" SelfReg="false"/>
+    <ROW File="Demo_Gamepad.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_G~1.XML|Demo_Gamepad.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml" SelfReg="false"/>
+    <ROW File="Demo_Qwerty_6x12.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_Q~1.XML|Demo_Qwerty_6x12.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Qwerty_6x12.xml" SelfReg="false"/>
+    <ROW File="MyQwertyLeft.xml" Component_="Demo_Gamepad.xml" FileName="MYQWER~1.XML|MyQwertyLeft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\Resources\DynamicKeyboards\Samples\MyQwertyLeft.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -590,6 +593,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="Sizeandpositionexamples_Dir" Component_="Sizeandpositionexamples" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -726,9 +730,11 @@
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_25"/>
     <ROW Feature_="MainFeature" Component_="ControlzEx.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKeyStandardPlugins.dll_1"/>
-    <ROW Feature_="MainFeature" Component_="DockBottom.xml"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
+    <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_26"/>
+    <ROW Feature_="MainFeature" Component_="Demo_Gamepad.xml"/>
+    <ROW Feature_="MainFeature" Component_="Sizeandpositionexamples"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="OptikeyPro.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Core\Resources\Icons\Pro.ico" Index="0"/>
