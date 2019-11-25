@@ -90,7 +90,9 @@ namespace InstallerTranslation
             file.WriteLine("\t\t{");
             foreach (KeyValuePair<Languages, string> entry in dict)
             {
-                file.WriteLine(entryString, entry.Key, entry.Value);
+                string value = entry.Value;
+                value = value.Replace("\"", "\\\""); // escape any double quotes
+                file.WriteLine(entryString, entry.Key, value);
             }
             file.WriteLine("\t\t};");
         }
