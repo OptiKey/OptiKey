@@ -173,6 +173,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             //Clear out point to key map
             PointToKeyValueMap = null;
 
+            //Clear any potential main window color overrides
+            if (mainWindow != null)
+            {
+                mainWindow.BackgroundColourOverride = null;
+                mainWindow.BorderBrushOverride = null;
+            }
+
             object newContent = ErrorContent;
 
             if (Keyboard is ViewModelKeyboards.Alpha1)
