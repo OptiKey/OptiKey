@@ -638,19 +638,19 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         FunctionKeys actionEnum;
                         if (!Enum.TryParse(vAction.Value, out actionEnum))
                             Log.ErrorFormat("Could not parse {0} as function key", vAction.Value);
-                        else if (actionEnum == FunctionKeys.Sleep
-                            || actionEnum == FunctionKeys.LeftShift
-                            || actionEnum == FunctionKeys.LeftCtrl
-                            || actionEnum == FunctionKeys.LeftAlt
-                            || actionEnum == FunctionKeys.LeftWin)
-                        {
-                            Key newKey = CreateDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
-                            newKey.Value = new KeyValue(actionEnum);
-                            PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
-                            return "";
-                        }
                         else
-                            vStepList += "<Action>" + vAction.Value;
+                        {
+                            var actionKeyValue = new KeyValue(actionEnum);
+                            if (KeyValues.KeysWhichCanBeLockedDown.Contains(actionKeyValue))
+                            {
+                                Key newKey = CreateDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
+                                newKey.Value = actionKeyValue;
+                                PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
+                                return "";
+                            }
+                            else
+                                vStepList += "<Action>" + vAction.Value;
+                        }
                     }
                     else if (vStep is DynamicLink vLink)
                     {
