@@ -1,6 +1,6 @@
 ﻿# OptiKey Localization guide
 
-This document will outline the steps one needs to take to successfully localize OptiKey in a Latin-based language. Unfortunately, support for languages having a complex alphabet such as Japanese, Chinese etc. is not yet ready for prime-time use.
+This document will outline the steps one needs to take to successfully localize OptiKey in a new language. Any language which is based on a standard script (e.g. Latin script, or Cyrillic script) should be easy to add. Unfortunately, support for languages where glyphs combine into symbols (e.g. Japanese), or sounds into words (e.g. Pinyin -> Chinese) is a little more complex and is not covered by the guide. Please contact help@optikey.org to discuss localising into a language with more complex requirements.
 
 ## Introduction: Adding a new Locale
 
