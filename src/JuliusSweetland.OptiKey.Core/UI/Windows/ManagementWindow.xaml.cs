@@ -14,12 +14,13 @@ namespace JuliusSweetland.OptiKey.UI.Windows
     {
         public ManagementWindow(
             IAudioService audioService,
-            IDictionaryService dictionaryService)
+            IDictionaryService dictionaryService,
+            IWindowManipulationService windowManipulationService)
         {
             InitializeComponent();
 
             //Instantiate ManagementViewModel and set as DataContext of ManagementView
-            var managementViewModel = new ManagementViewModel(audioService, dictionaryService);
+            var managementViewModel = new ManagementViewModel(audioService, dictionaryService, windowManipulationService);
             this.ManagementView.DataContext = managementViewModel;
         }
     }

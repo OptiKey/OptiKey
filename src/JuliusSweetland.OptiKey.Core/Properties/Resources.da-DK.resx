@@ -265,7 +265,7 @@ DOCK</value>
     <value>Samtale tilstand:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey kan ikke læse brugerindstillingerne, da filen er ødelagt og må repareres. Dette gøres ved at genindlæse en tidligere udgave, eller standardindstillingerne hvis det ikke er muligt.
+    <value>Optikey kan ikke læse brugerindstillingerne, da filen er ødelagt og må repareres. Dette gøres ved at genindlæse en tidligere udgave, eller standardindstillingerne hvis det ikke er muligt.
 
 Klik Ja for at nulstille brugerindstillinger og genstarte.
 
@@ -275,9 +275,9 @@ Klik Nej for at lukke, så du manuelt kan reparere eller kopiere dine brugerinds
     <value>Åh-åh! Filen med brugerindstillinger ser ud til at være ødelagt.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Dårlige nyheder - OptiKey ser ud til at have problemer og er nødt til at lukke.
+    <value>Dårlige nyheder - Optikey ser ud til at have problemer og er nødt til at lukke.
 
-En email med detaljer om hændelsen ville være meget behjælpelig: optikeyfeedback@gmail.com
+En email med detaljer om hændelsen ville være meget behjælpelig: crash@optikey.org
 
 Vi beklager ulejligheden.</value>
   </data>
@@ -586,7 +586,7 @@ MARKØR</value>
     <value>Administrationskonsol: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Administrationskonsol</value>
+    <value>Optikey Administrationskonsol</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maksimalt antal ordbogs forekomster:</value>
@@ -819,9 +819,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Skriv · Klik · Tal</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Andet</value>
   </data>
@@ -912,7 +909,7 @@ SIDSTE</value>
     <value>Lyd og/eller Orbogs service(er) blev ikke leveret til administration vindue handlingen.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey er nødt til at genstarte for at udføre ændringerne.
+    <value>Optikey er nødt til at genstarte for at udføre ændringerne.
 Klik på OK for at genstarte, eller ANNULLER for at annullere ændringerne.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1151,7 +1148,7 @@ PIL</value>
 Du kan slå tjek for opdateringer fra i Administrationskonsollen (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Må jeg genstarte OptiKey?</value>
+    <value>Må jeg genstarte Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version: {0}</value>
@@ -1178,7 +1175,7 @@ Du kan slå tjek for opdateringer fra i Administrationskonsollen (ALT + M).</val
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Ord</value>
@@ -1683,5 +1680,38 @@ Türkçe
   </data>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>SPROG</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+      <value>Dette kræver en Alienware 17 gaming laptop, ved hjælp af den indbyggede Tobii øje tracker.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Dette kræver ITU Gaze Tracking Bibliotek, som er en ramme for open source eyetracking hjælp off-the-shelf komponenter, såsom webcams og videokameraer.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Hvis du planlægger at bruge Optikey med Irisbond Duo øje tracker så skal du sørge for at du har de Irisbond Duo drivere installeret. Disse kan downloades fra https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>I denne tilstand vil Optikey bruge musemarkøren som input i stedet for at tale direkte til et øje tracker. Du vil måske dette, hvis du tester Optikey ud, eller hvis du ønsker at bruge den med en alternativ indgang enhed, såsom et hoved mus eller en hvilken som helst øje tracker ikke på denne liste. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Denne mulighed vil arbejde med alle Tobii Gaming øje tracker (4C, EyeX, Alienware, Steelseries, etc.)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>For at bruge Optikey med et hjælpemiddel øje tracker, du enten har brug for den nye version af Windows Control eller Tobii Eye Tracking motor. Hvis du skal bruge den gamle version af Tobii Windows Control ansøgning (Tobii Gaze Interaction Software), så bliver du nødt til at kontrollere Optikey ved hjælp af musen position i stedet. </value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>Visual Interaction myGaze understøttes kun, hvis du allerede har installeret de myGaze klient drivere, som ikke længere er tilgængelig for download. Hvis du ikke har disse drivere installeret, skal du vælge anvendelse 'museposition' i stedet, og bruge Optikey i kombination med myGaze EyeMousePlay ansøgning for at flytte markøren.</value>
+  </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Computer-sikring og kommunikation</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Nem kommunikation</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Fuld Cursor Kontrol</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Kommunikation med symboler</value>
   </data>
 </root>

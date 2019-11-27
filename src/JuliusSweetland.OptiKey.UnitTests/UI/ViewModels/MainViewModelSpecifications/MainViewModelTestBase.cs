@@ -5,6 +5,8 @@ using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using Moq;
 using System.Collections.Generic;
+using JuliusSweetland.OptiKey.UnitTests.Properties;
+using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifications
 {
@@ -57,6 +59,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
                 MainViewModel.KeySelection += (s, e) => IsKeySelectionEventHandlerCalled = true;
                 MainViewModel.PointSelection += (s, e) => IsPointSelectionEventHandlerCalled = true;
             }
+        }
+
+        [SetUp]
+        public void BaseSetUp()
+        {
+            Settings.Initialise();
         }
     }
 }

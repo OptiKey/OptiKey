@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FRAGMENT Type="ReadOnly" CreateVersion="16.3" RootPath="." Language="en">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="PopulateComboboxes.vbs_1AF024D1_2FE7_45A3_9606_257FA4DC" SourcePath="PopulateComboboxes.vbs"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="Languages" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Order="100" Text="[ButtonText_Next]" MsiKey="Languages#Next" Options="1"/>
+    <ROW Dialog_="Languages" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Order="200" Text="[ButtonText_Cancel]" MsiKey="Languages#Cancel" Options="1"/>
+    <ROW Dialog_="Languages" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Order="300" Text="[ButtonText_Back]" MsiKey="Languages#Back" Options="1"/>
+    <ROW Dialog_="Languages" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Order="400" TextLocId="Control.Text.Languages#BannerBitmap"/>
+    <ROW Dialog_="Languages" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="Languages" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="Languages" Control="Description" Type="Text" X="25" Y="23" Width="294" Height="21" Attributes="196611" Order="700" TextLocId="Control.Text.Languages#Description"/>
+    <ROW Dialog_="Languages" Control="Logo" Type="Text" Text="Advanced Installer" X="4" Y="228" Width="70" Height="12" Attributes="1" Order="800" TextLocId="-" MsiKey="Languages#Logo"/>
+    <ROW Dialog_="Languages" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" TextStyle="DlgFontBold8_1AF024D1_2FE7_45A3_960" Order="900" TextLocId="Control.Text.Languages#Title"/>
+    <ROW Dialog_="Languages" Control="ComboBox_Language" Type="ComboBox" X="25" Y="61" Width="279" Height="16" Attributes="3" Property="COMBO_LANGUAGE" Order="1000" TextLocId="Control.Text.Languages#ComboBox_Language"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="Languages" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
+    <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="DoAction" Argument="LanguageSelected_1AF024D1_2FE7_45A3" Condition="AI_INSTALL" Ordering="0"/>
+    <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3" Type="6" Source="PopulateComboboxes.vbs_1AF024D1_2FE7_45A3_9606_257FA4DC" Target="LanguageSelected" WithoutSeq="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
+    <ROW Dialog="Languages" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.Languages"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiTextStyleComponent">
+    <ROW TextStyle="DlgFontBold8_1AF024D1_2FE7_45A3_960" FaceName="Tahoma" Size="8" Color="0" StyleBits="1"/>
+  </COMPONENT>
+</FRAGMENT>

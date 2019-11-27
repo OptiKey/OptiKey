@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -280,7 +280,7 @@ Clique Não para fechar a janela e reparar ou copiar o ficheiro de configuraçõ
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Más notícias - O Optikey tropeçou e tem de se desligar.
 
-Um e-mail com os detalhes do que se passou é muito útil: optikeyfeedback@gmail.com
+Um e-mail com os detalhes do que se passou é muito útil: crash@optikey.org
 
 Pedimos desculpa pelo incómodo.</value>
   </data>
@@ -839,9 +839,6 @@ E SÍMBOLOS</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Escrever · Clicar · Falar</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Outro</value>
   </data>
@@ -1192,7 +1189,7 @@ CIMA</value>
 Pode desligar as notificações de atualizações a partir da Consola de gestão (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Posso reiniciar o OptiKey?</value>
+    <value>Posso reiniciar o Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versão: {0}</value>
@@ -1219,7 +1216,7 @@ Pode desligar as notificações de atualizações a partir da Consola de gestão
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Palavras</value>
@@ -1961,12 +1958,12 @@ na Consola de gestão (ALT + M).</value>
     <value>Localização do ficheiro .obz da página de topo CommuniKate:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>O OptiKey não conseguiu fazer a comunicação (handshake) com o Presage. Pode ser devido a:
+    <value>O Optikey não conseguiu fazer a comunicação (handshake) com o Presage. Pode ser devido a:
     1.A localização de DBFILENAME especificada no ficheiro presage.xml (localizada em C:\Utilizadores\NOME_DO_UTILIZADOR\.presage ou C:\Users\USER_NAME\.presage) não existe - por favor verifique e corrija isto (ou desinstale/reinstale o Presage).
-    2.Ou está instalada uma versão 64 bits do Presage (o OptiKey apenas suporta a versão 32 bits) ou os ficheiros do Presage foram movidos para outro local, eliminados ou estão corrompidos.
+    2.Ou está instalada uma versão 64 bits do Presage (o Optikey apenas suporta a versão 32 bits) ou os ficheiros do Presage foram movidos para outro local, eliminados ou estão corrompidos.
 
 Por favor desinstale o Presage e instale a versão 32 bits do 0.9.2.
-O OptiKey irá tentar continuar, mas há grande probabilidade de bloquear.
+O Optikey irá tentar continuar, mas há grande probabilidade de bloquear.
 O método de previsão será alterado para o NGram para que o programa não bloqueie da próxima vez.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
@@ -2003,7 +2000,7 @@ como o "DB Browser for SQLite" (que é um programa livre).</value>
     <value>LETRAS</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>Surgiu um erro durante o processo de magnificação. Por favor desative a magnificação e contacte a comunidade do OptiKey para apoio adicional.</value>
+    <value>Surgiu um erro durante o processo de magnificação. Por favor desative a magnificação e contacte a comunidade do Optikey para apoio adicional.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Erro:</value>
@@ -2254,10 +2251,10 @@ Française
     <value>Reiniciar</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Tem a certeza absoluta que quer reiniciar o OptiKey?</value>
+    <value>Tem a certeza absoluta que quer reiniciar o Optikey?</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>Tem a certeza que quer reiniciar o OptiKey?</value>
+    <value>Tem a certeza que quer reiniciar o Optikey?</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>TECLADO DINÂMICO</value>
@@ -2312,12 +2309,12 @@ Française
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
     <value>Recomendamos alterar o idioma da interface para urdu para se certificar que o texto digitado flui da direita para a esquerda no rascunho.
-Gostaria que o OptiKey alterasse automaticamente o idioma para urdu?</value>
+Gostaria que o Optikey alterasse automaticamente o idioma para urdu?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
-    <value>Recomendamos alterar o tipo de letra usada pelo OptiKey para uma que seja totalmente compatível com o urdu.
+    <value>Recomendamos alterar o tipo de letra usada pelo Optikey para uma que seja totalmente compatível com o urdu.
 Se for usada um tipo de letra que não é específica do urdu, o texto e especialmente os números, podem ser mostrados incorretamente.
-Gostaria que o OptiKey alterasse automaticamente para o tipo de letra Nafees Web Naskh?</value>
+Gostaria que o Optikey alterasse automaticamente para o tipo de letra Nafees Web Naskh?</value>
   </data>
   <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
     <value>É recomendável um tipo de letra específico</value>
@@ -2337,4 +2334,37 @@ Gostaria que o OptiKey alterasse automaticamente para o tipo de letra Nafees Web
 فارسی
 (ایرانی)</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Chat : Comunicação Fácil</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Mouse : Controlo Completo do Cursor</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Pro : Controlo do Computador &amp; Comunicação</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Symbol : Comunicação com Símbolos</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+      <value>Isso requer um notebook para jogos Alienware 17, usando o rastreador olho Tobii embutido.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Isto requer a ITU Gaze Rastreamento Biblioteca, que é um quadro de olho open source de monitoramento usando componentes off-the-shelf, como webcams e câmeras de vídeo.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Se você planeja usar Optikey com o tracker olho Irisbond Duo, por favor, certifique-se de ter os drivers Irisbond Duo instalados. Estes podem ser descarregados a partir https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>Neste modo, Optikey vai usar o cursor do mouse como entrada em vez de falar diretamente a um rastreador ocular. Você pode querer isso, se você está testando Optikey para fora, ou se você quiser usá-lo com um dispositivo de entrada alternativo, como um mouse de cabeça ou não qualquer rastreador olho nesta lista. Para mais informações, consulte www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Esta opção irá funcionar com qualquer rastreador olho Tobii Gaming (4C, EyeX, Alienware, Steelseries, etc)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Para usar Optikey um gerenciador de visão assistiva, você nem precisa a nova versão do Tobii Windows Control, ou o motor Eye Tracking Tobii. Se você precisa usar a versão antiga do aplicativo de Tobii Windows Control (Tobii Gaze Interaction Software), então você vai precisar para controlar Optikey usando posição do mouse em seu lugar. Para mais informações, consulte www.optikey.org/help</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>O Interaction myGaze Visual é suportado apenas se você já tiver instalado os drivers cliente myGaze, que já não estão disponíveis para download. Se você não tem esses drivers instalados, você deve selecionar o uso 'posição do mouse' em vez, e usar Optikey em combinação com a aplicação myGaze EyeMousePlay para mover o cursor.</value>
+  </data>  
 </root>

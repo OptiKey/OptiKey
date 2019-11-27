@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DICTIONARY type="singlelanguage" lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="dictionary.xsd">
+  <STRING id="Control.Text.EyeTracker#Back" value="[ButtonText_Back]"/>
+  <STRING id="Control.Text.EyeTracker#BannerBitmap" value="[BannerBitmap]"/>
+  <STRING id="Control.Text.EyeTracker#Cancel" value="[ButtonText_Cancel]"/>
+  <STRING id="Control.Text.EyeTracker#Description" value="Please select the eye tracker you will be using with Optikey"/>
+  <STRING id="Control.Text.EyeTracker#Hyperlink_1" value="&lt;a href=&quot;http://www.optikey.org/help&quot;&gt;http://www.optikey.org/help&lt;/a&gt;"/>
+  <STRING id="Control.Text.EyeTracker#Logo" value="Advanced Installer"/>
+  <STRING id="Control.Text.EyeTracker#MyComboBox" value="{1024}"/>
+  <STRING id="Control.Text.EyeTracker#Next" value="[ButtonText_Next]"/>
+  <STRING id="Control.Text.EyeTracker#Text_2" value="[EYETRACKER_TEXT_EN]"/>
+  <STRING id="Control.Text.EyeTracker#Title" value="Eye tracker"/>
+  <STRING id="Dialog.EyeTracker" value="[ProductName] [Setup]"/>
+</DICTIONARY>

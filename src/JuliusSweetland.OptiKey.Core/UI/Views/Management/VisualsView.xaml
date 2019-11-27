@@ -8,8 +8,21 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+                <ResourceDictionary>
+                    <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
@@ -55,29 +68,29 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               SelectedValuePath="Value"
                               SelectedValue="{Binding Theme, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.SCRATCHPAD_NUMBER_OF_LINES_LABEL}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.OPACITY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="10" Maximum="100" Interval="10"
+                                            Value="{Binding Opacity, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.SCRATCHPAD_NUMBER_OF_LINES_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1"
                                             Value="{Binding ScratchpadNumberOfLines, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_WIDTH_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Interval="10"
-                                            Value="{Binding CursorWidthInPixels, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_HEIGHT_LABEL}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_WIDTH_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding CursorHeightInPixels, Mode=TwoWay}" />
+                                            Value="{Binding CursorWidthInPixels, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFIER_CENTER_ON_SCREEN}" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_HEIGHT_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="4" Grid.Column="1" 
-                                            VerticalAlignment="Center"
-                                            IsChecked="{Binding MagnifierCenterOnScreen, Mode=TwoWay}" />
+                    <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="10" Interval="10"
+                                            Value="{Binding CursorHeightInPixels, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SOURCE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
@@ -91,25 +104,14 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                             Minimum="10" Maximum="100" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_QUIT_KEYS_LABEL}" 
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFIER_CENTER_ON_SCREEN}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="7" Grid.Column="1" 
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding EnableQuitKeys, Mode=TwoWay}" />
+                                            VerticalAlignment="Center"
+                                            IsChecked="{Binding MagnifierCenterOnScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_ATTENTION_KEY_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="8" Grid.Column="1" 
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding EnableAttentionKey, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COPY_SCRATCHPAD_KEY_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="9" Grid.Column="1" 
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding EnableCopyAllScratchpadKey, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
+                               IsEnabled="{Binding Source='ConversationOnlyMode', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -122,9 +124,10 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="10" Grid.Column="1" 
+                    <CheckBox Grid.Row="8" Grid.Column="1" 
                               VerticalAlignment="Center"
-                              IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}">
+                              IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}"
+                              IsEnabled="{Binding Source='ConversationOnlyMode', Converter={StaticResource EnabledIfNotOverridden}}">
                         <CheckBox.Style>
                             <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
                                 <Setter Property="Visibility" Value="Visible" />
@@ -137,13 +140,15 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ENABLE_LABEL}" 
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ENABLE_LABEL}" 
+                               IsEnabled="{Binding Source='ConversationConfirmEnable', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="11" Grid.Column="1" 
+                    <CheckBox Grid.Row="9" Grid.Column="1" 
                               VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='ConversationConfirmEnable', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding ConversationConfirmEnable, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ONLY_MODE_LABEL}" 
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ONLY_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -159,7 +164,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="12" Grid.Column="1" 
+                    <CheckBox Grid.Row="10" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ConversationConfirmOnlyMode, Mode=TwoWay}">
                         <CheckBox.Style>
@@ -177,7 +182,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_LABEL}" 
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_LABEL}" 
+                               IsEnabled="{Binding Source='StartupKeyboard', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -193,11 +199,12 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>    
                     </TextBlock>
-                    <ComboBox Grid.Row="13" Grid.Column="1" 
+                    <ComboBox Grid.Row="11" Grid.Column="1" 
                               ItemsSource="{Binding StartupKeyboards}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding StartupKeyboard, Mode=TwoWay}">
+                              SelectedValue="{Binding StartupKeyboard, Mode=TwoWay}"
+                              IsEnabled="{Binding Source='StartupKeyboard', Converter={StaticResource EnabledIfNotOverridden}}">
                         <ComboBox.Style>
                             <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
                                 <Setter Property="Visibility" Value="Visible" />
@@ -213,7 +220,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_FILE_LOCATION_LABEL}" 
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_FILE_LOCATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -227,7 +234,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <StackPanel Grid.Row="14" Grid.Column="1" Orientation="Horizontal">
+                    <StackPanel Grid.Row="12" Grid.Column="1" Orientation="Horizontal">
                         <TextBlock Name="txtStartupKeyboardLocation"
                                    Text="{Binding StartupKeyboardFile, Mode=TwoWay}" 
                                    HorizontalAlignment="Left" 
@@ -261,29 +268,29 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </Button>
                     </StackPanel>
 
-                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.MINIMISED_POSITION_LABEL}" 
+                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.MINIMISED_POSITION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="15" Grid.Column="1" 
+                    <ComboBox Grid.Row="13" Grid.Column="1" 
                               ItemsSource="{Binding MinimisedPositions}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MinimisedPosition, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="16" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="14" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="90" Interval="10"
                                             Value="{Binding MainWindowFullDockThicknessAsPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
+                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="17" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="15" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="90" Interval="10"
                                             Value="{Binding MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL}" 
+                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <StackPanel Grid.Row="18" Grid.Column="1" Orientation="Horizontal">
+                    <StackPanel Grid.Row="16" Grid.Column="1" Orientation="Horizontal">
                         <TextBlock Name="txtKeyboardsLocation"
                                    Text="{Binding DynamicKeyboardsLocation, Mode=TwoWay}" 
                                    HorizontalAlignment="Left" 

@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OptiKey")]
+[assembly: AssemblyTitle("Optikey")]
 [assembly: AssemblyDescription("Free, Open Source, Assistive On-Screen Keyboard")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("JuliusSweetland")]
-[assembly: AssemblyProduct("OptiKey")]
+[assembly: AssemblyCompany("Optikey")]
+[assembly: AssemblyProduct("Optikey")]
 [assembly: AssemblyCopyright("Licensed under the terms of the GNU GPL v3")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -39,10 +39,6 @@ using System.Windows;
     //(used if a resource is not found in the page, 
     // app, or any theme specific resource dictionaries)
 )]
-
-
-//Configure log4net - the alternative is to call "log4net.Config.XmlConfigurator.Configure();" as early as possible
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 
 
 // Version information for an assembly consists of the following four values:

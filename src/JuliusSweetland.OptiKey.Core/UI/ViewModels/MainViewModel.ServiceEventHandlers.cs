@@ -2211,7 +2211,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new YesNoQuestion(Resources.REFRESH_MESSAGE,
                         () =>
                         {
-                            System.Windows.Forms.Application.Restart();
+                            OptiKeyApp.RestartApp();
                             Application.Current.Shutdown();
                         },
                         () => { Keyboard = keyboardBeforeQuit; });

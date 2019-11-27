@@ -265,7 +265,7 @@ PANEL</value>
     <value>Modo de solo conversación:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey ha detectado que su archivo de configuración está corrupto y debe ser reparado. Para esto se usará una versión más antigua, y si esto no es posible una versión por defecto.
+    <value>Optikey ha detectado que su archivo de configuración está corrupto y debe ser reparado. Para esto se usará una versión más antigua, y si esto no es posible una versión por defecto.
 
 Haga clic en Sí para restaurar su configuración y reiniciar.
 
@@ -275,9 +275,9 @@ Hagal clic en No para reparar manualmente o hacer una copia de su archivo de con
     <value>¡Ups! Al parecer el archivo de configuración de usuario está corrupto.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Malas noticias - OptiKey ha tenido un traspié y deberá cerrarse.
+    <value>Malas noticias - Optikey ha tenido un traspié y deberá cerrarse.
 
-Nos sería muy útil tener detalles de lo que ha ocurrido: optikeyfeedback@gmail.com
+Nos sería muy útil tener detalles de lo que ha ocurrido: crash@optikey.org
 
 Perdón por las molestias.</value>
   </data>
@@ -580,7 +580,7 @@ MAGNÉTICO</value>
     <value>Consola de administración: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Consola de administración de OptiKey</value>
+    <value>Consola de administración de Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Número máximo de coincidencias en diccionario:</value>
@@ -817,9 +817,6 @@ Y SÍMBOLOS</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey: Escribir · Cliquear · Hablar</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Otros</value>
   </data>
@@ -910,7 +907,7 @@ PANT</value>
     <value>No se entregaron servicio(s) de Audio y/o de Diccionario a la acción de ventana de administración.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey necesita reiniciarse para aplicar los cambios
+    <value>Optikey necesita reiniciarse para aplicar los cambios
 Por favor toque OK para continuar con el reinicio, o CANCELAR para descartar los cambios</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1149,7 +1146,7 @@ ARRIBA</value>
 Para dejar de revisar si existen nuevas versiones del software, diríjase a la Consola de Administración (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>¿Me permite reiniciar OptiKey?</value>
+    <value>¿Me permite reiniciar Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versión: {0}</value>
@@ -1176,7 +1173,7 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Palabras</value>
@@ -1606,5 +1603,38 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   </data>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>LENGUAJE</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Esto requiere una computadora portátil del juego de Alienware 17, mediante el rastreador ocular de Tobii incorporado.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Esto requiere que el Gaze biblioteca de seguimiento UIT, que es un marco para ojo de código abierto de seguimiento utilizando componentes off-the-shelf, tales como webcams y videocámaras.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Si va a utilizar Optikey con el rastreador ocular Irisbond Duo, por favor asegúrese de que tiene los controladores instalados Irisbond Duo. Estos se pueden descargar desde https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>En este modo, Optikey utilizará el cursor del ratón como entrada en lugar de hablar directamente a un seguidor de ojos. Es posible que desee esto si se está probando Optikey a cabo, o si desea utilizarlo con un dispositivo de entrada alternativo, como un ratón de cabeza o cualquier rastreador ocular no en esta lista. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Esta opción funciona con cualquier rastreador ocular de Tobii juego (4C, EyeX, Alienware, Steelseries, etc)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Para utilizar Optikey con un rastreador ocular de asistencia, ya sea que necesita la nueva versión de Tobii Windows Control, o el motor de Tobii Eye Tracking. Si es necesario utilizar la versión antigua de la aplicación Tobii Windows Control (Tobii Gaze Interaction Software), entonces necesitará para controlar Optikey utilizando la posición del ratón en lugar. </value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>La Interacción Visual myGaze sólo se admite si ya ha instalado los controladores de cliente myGaze, que ya no están disponibles para su descarga. Si no ha instalado estos conductores, hay que seleccionar el uso 'posición del ratón' en su lugar, y utilizar Optikey en combinación con la aplicación myGaze EyeMousePlay para mover el cursor.</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value> Control a través del ordenador y comunicación</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Comunicación sencilla</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Control total del cursor</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Comunicación simbólica</value>
   </data>
 </root>

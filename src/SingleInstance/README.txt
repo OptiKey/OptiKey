@@ -1,0 +1,1 @@
+Apache license, from https://code.msdn.microsoft.com/Windows-7-Taskbar-Single-4120eafd

@@ -267,7 +267,7 @@ PALKKI</value>
     <value>Keskustelutila</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey on havainnut, että käyttäjän asetustiedosto on vioittunut ja että se on korjattava. Tämä tehdään palauttamalla vanha versio tai jos se ei ole mahdollista, oletusversio.
+    <value>Optikey on havainnut, että käyttäjän asetustiedosto on vioittunut ja että se on korjattava. Tämä tehdään palauttamalla vanha versio tai jos se ei ole mahdollista, oletusversio.
 
 Paina Kyllä, jos haluat palauttaa käyttäjän asetukset ja käynnistää uudelleen.
 
@@ -277,9 +277,9 @@ Paina Ei, jos haluat korjata tai kopioida käyttäjän asetustiedoston manuaalis
     <value>Voi ei! Käyttäjän asetustiedosto on korruptoitunut.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Huonoja uutisia - OptiKey kaatui ja se on suljettava.
+    <value>Huonoja uutisia - Optikey kaatui ja se on suljettava.
 
-Sähköposti, jossa on yksityiskohtaisia tietoja siitä, mitä tapahtui, olisi erittäin hyödyllinen: optikeyfeedback@gmail.com
+Sähköposti, jossa on yksityiskohtaisia tietoja siitä, mitä tapahtui, olisi erittäin hyödyllinen: crash@optikey.org
 
 Pahoittelut</value>
   </data>
@@ -603,7 +603,7 @@ KURSORI</value>
     <value>Hallinnointikonsoli: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Hallinnointikonsoli</value>
+    <value>Optikey Hallinnointikonsoli</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Sanakirjan osumia enintään:</value>
@@ -839,9 +839,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Kirjoita · Klikkaa · Puhu</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Muu</value>
   </data>
@@ -932,7 +929,7 @@ EDELLINEN</value>
     <value>Ääni- ja / tai sanakirjapalvelu (t) ei toimitettu hallintaikkunan toimintaan.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey pitää käynnistää uudelleen, jotta muutokset tulevat voimaan.
+    <value>Optikey pitää käynnistää uudelleen, jotta muutokset tulevat voimaan.
 Paina OK jatkaaksesi uudelleenkäynnistystä, tai CANCEL, jos haluat hylätä muutokset</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1192,7 +1189,7 @@ YLÖS</value>
 Voit estää päivitystarkastuksen hallintakonsolista (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Saanko käynnistää OptiKeyn uudelleen?</value>
+    <value>Saanko käynnistää Optikeyn uudelleen?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Versio: {0}</value>
@@ -1219,7 +1216,7 @@ Voit estää päivitystarkastuksen hallintakonsolista (ALT + M).</value>
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Sanat</value>
@@ -1963,12 +1960,12 @@ hallintakonsolista (ALT + M).</value>
     <value>CommuniKaten yläsivun obz-tiedoston sijainti:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>OptiKey ei kyennyt kättelemään Presagea. On olemassa muutamia mahdollisia syitä:
+    <value>Optikey ei kyennyt kättelemään Presagea. On olemassa muutamia mahdollisia syitä:
 1. Presage.xml-tiedostossa määritettyä DBFILENAME-sijaintia (joka sijaitsee C:\Users\USER_NAME\.presage) ei ole olemassa - tarkista ja korjaa tämä (tai poista ja asenna Presage uudelleen).
-2. Joko 64-bittinen Presage-versio on asennettu (OptiKey tukee vain 32-bittistä versiota) tai Presage-tiedostot on siirretty, poistettu tai vioittuneet.
+2. Joko 64-bittinen Presage-versio on asennettu (Optikey tukee vain 32-bittistä versiota) tai Presage-tiedostot on siirretty, poistettu tai vioittuneet.
 
 Poista Presage ja asenna 32-bittinen versio 0.9.2.
-OptiKey yrittää jatkaa, mutta on mahdollista, että se kaatuu pian.
+Optikey yrittää jatkaa, mutta on mahdollista, että se kaatuu pian.
 Ennustamismenetelmä muutetaan NGramiksi kaatumisen estämiseksi.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
@@ -2005,7 +2002,7 @@ kuten "DB Browser for SQLite" (joka on ilmainen ohjelma).</value>
     <value>KIRJAIMET</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>Suurennustoiminnossa tapahtui virhe. Poista suurennus käytöstä ja ota yhteyttä OptiKeyhin lisäavun saamiseksi.</value>
+    <value>Suurennustoiminnossa tapahtui virhe. Poista suurennus käytöstä ja ota yhteyttä Optikeyhin lisäavun saamiseksi.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>Virhe:</value>
@@ -2255,10 +2252,10 @@ Française
     <value>Käynnistä uudelleen</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Oletko todella varma, että haluat käynnistää OptiKeyn uudelleen?</value>
+    <value>Oletko todella varma, että haluat käynnistää Optikeyn uudelleen?</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>Haluatko käynnistää OptiKeyn uudelleen?</value>
+    <value>Haluatko käynnistää Optikeyn uudelleen?</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>DYNAAMINEN NÄPPÄIMISTÖ</value>
@@ -2313,12 +2310,12 @@ Française
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
     <value>Suosittelemme käyttöliittymän kielen vaihtamista urduksi, jotta kirjoitettu urdu-teksti virtaa oikealta vasemmalle tekstikentässä.
-Haluatko OptiKeyn asettavan käyttöliittymän kielen automaattisesti urduksi?</value>
+Haluatko Optikeyn asettavan käyttöliittymän kielen automaattisesti urduksi?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
-    <value>Suosittelemme, että vaihdat OptiKeyssä käytetyn fontin sellaiseen, joka on täysin yhteensopiva urdun kanssa.
+    <value>Suosittelemme, että vaihdat Optikeyssä käytetyn fontin sellaiseen, joka on täysin yhteensopiva urdun kanssa.
 Jos käytetään fonttia, joka ei ole yhteensopiva urdun kanssa, teksti ja erityisesti numerot saattavat näkyä väärin.
-Haluatko, että OptiKey asettaa automaattisesti fontiksi Nafees Web Naskh?</value>
+Haluatko, että Optikey asettaa automaattisesti fontiksi Nafees Web Naskh?</value>
   </data>
   <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
     <value>Suositellaan kielispesifistä fonttia</value>
@@ -2331,12 +2328,12 @@ Haluatko, että OptiKey asettaa automaattisesti fontiksi Nafees Web Naskh?</valu
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
     <value>Suosittelemme käyttöliittymän kielen muuttamista persiaksi, jotta varmistetaan, että kirjoitettu persialainen teksti virtaa oikealta vasemmalle tekstikentässä.
-Haluatko, että OptiKey asettaa käyttöliittymän kielen automaattisesti persiaksi?</value>
+Haluatko, että Optikey asettaa käyttöliittymän kielen automaattisesti persiaksi?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
-    <value>Suosittelemme, että vaihdat OptiKeyssä käytetyn fontin sellaiseen, joka on täysin yhteensopiva persian kanssa.
+    <value>Suosittelemme, että vaihdat Optikeyssä käytetyn fontin sellaiseen, joka on täysin yhteensopiva persian kanssa.
 Jos käytetään fonttia, joka ei ole yhteensopiva persian kanssa, teksti ja erityisesti numerot saattavat näkyä väärin.
-Haluatko, että OptiKey asettaa automaattisesti fontiksi Nazil?</value>
+Haluatko, että Optikey asettaa automaattisesti fontiksi Nazil?</value>
   </data>
   <data name="PERSIAN_IRAN" xml:space="preserve">
     <value>persia (Iran) / فارسی (ایرانی)</value>
@@ -2346,5 +2343,38 @@ Haluatko, että OptiKey asettaa automaattisesti fontiksi Nazil?</value>
 (Iran) /
 فارسی
 (ایرانی)</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+      <value>Tämä edellyttää Alienware 17 pelaamista kannettava tietokone, käyttämällä sisäänrakennettua Tobii silmänseurain.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Tämä edellyttää ITU Gaze -seurantakirjastoa, joka on kehyksen avoimen lähdekoodin katseenseuranta käyttäen suoraan hyllyltä komponentteja, kuten web-kameroita ja videokameroita.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Jos aiot käyttää Optikey kanssa Irisbond Duo silmänseurain niin varmista, että sinulla on Irisbond Duo ajurit asennettu. Nämä voi ladata https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>Tässä tilassa Optikey käyttää hiiren kursori syötteenä puhumisen sijasta suoraan silmänseurain. Haluat ehkä tämä Jos testaat Optikey pois, tai jos haluat käyttää sitä vaihtoehtoista raaka laite, kuten pään hiiren tai silmänseurain ole luettelossa. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Tämä vaihtoehto toimii kaikilla Tobii Gaming silmänseurain (4C, EyeX, Alienware, Steelseries jne)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Käyttää Optikey kanssa avustavien silmänseurain, sinun täytyy joko uuden Tobii Windows Control tai Tobii Eye Tracking moottori. Jos joudut käyttämään vanhaa versiota Tobii Windows Control (Tobii Gaze Interaction Software), sinun täytyy valvoa Optikey hiirellä asentoon sijasta. </value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>Visual Interaction myGaze tuetaan vain, jos olet jo asentanut myGaze asiakkaan ohjaimiin, joita ei enää ladattavissa. Jos sinulla ei ole näitä ajurit on asennettu, kannattaa valita käyttöön 'hiiren sijainti' sijaan, ja käyttää Optikey yhdessä myGaze EyeMousePlay sovelluksen siirtää osoitinta.</value>
+  </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Tietokone Ohjaus &amp; Communication</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Helppo Viestintä</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Täysi Kohdistimen ohjaus</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Viestintä symbolien</value>
   </data>
 </root>

@@ -105,6 +105,7 @@
     <Compile Include="Services\AutoComplete\NGramAutoCompleteTests.cs" />
     <Compile Include="Services\AutoComplete\BasicAutoCompleteTests.cs" />
     <Compile Include="Services\KeyboardOutputServiceTests.cs" />
+    <Compile Include="Properties\Settings.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="UI\Models\KeyValueTest.cs" />
     <Compile Include="UI\Utilities\DrawingUtilsTests.cs" />
@@ -131,12 +132,15 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.csproj">
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj">
       <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
-      <Name>JuliusSweetland.OptiKey</Name>
+      <Name>JuliusSweetland.OptiKey.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.InstallerActions\JuliusSweetland.OptiKey.InstallerActions.csproj">
+      <Project>{e6ba1ed6-5724-4e21-a770-c31be8f424cf}</Project>
+      <Name>JuliusSweetland.OptiKey.InstallerActions</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
 using log4net;
 using Prism.Mvvm;
 using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
@@ -37,8 +38,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
         #region Ctor
 
-        public VisualsViewModel()
+        public VisualsViewModel(IWindowManipulationService windowManipulationService)
         {
+            this.windowManipulationService = windowManipulationService;
             Load();
         }
         
@@ -57,6 +59,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, string>(Resources.ANDROID_TWO_TONE, "/Resources/Themes/Android_Two_Tone.xaml")
                 };
             }
+        }
+
+        private int opacity;
+        public int Opacity
+        {
+            get { return opacity; }
+            set { SetProperty(ref opacity, value); }
         }
 
         public List<KeyValuePair<string, string>> FontFamilies
@@ -493,27 +502,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
-        private bool enableQuitKeys;
-        public bool EnableQuitKeys
-        {
-            get { return enableQuitKeys; }
-            set { SetProperty(ref enableQuitKeys, value); }
-        }
-
-        private bool enableAttentionKey;
-        public bool EnableAttentionKey
-        {
-            get { return enableAttentionKey; }
-            set { SetProperty(ref enableAttentionKey, value); }
-        }
-
-        private bool enableCopyAllScratchpadKey;
-        public bool EnableCopyAllScratchpadKey
-        {
-            get { return enableCopyAllScratchpadKey; }
-            set { SetProperty(ref enableCopyAllScratchpadKey, value); }
-        }
-
         private string dynamicKeyboardsLocation;
         public string DynamicKeyboardsLocation
         {
@@ -522,6 +510,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         private string startupKeyboardFile;
+        private IWindowManipulationService windowManipulationService;
+
         public string StartupKeyboardFile
         {
             get { return startupKeyboardFile; }
@@ -535,6 +525,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private void Load()
         {
             Theme = Settings.Default.Theme;
+            Opacity = (int)(100.0f*Settings.Default.MainWindowOpacity);
             FontFamily = Settings.Default.FontFamily;
             FontStretch = (FontStretches)Enum.Parse(typeof(FontStretches), Settings.Default.FontStretch);
             FontWeight = (FontWeights)Enum.Parse(typeof(FontWeights), Settings.Default.FontWeight);
@@ -556,9 +547,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
-            EnableQuitKeys = Settings.Default.EnableQuitKeys;
-            EnableAttentionKey = Settings.Default.EnableAttentionKey;
-            EnableCopyAllScratchpadKey = Settings.Default.EnableCopyAllScratchpadKey;
             DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
             StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
         }
@@ -566,6 +554,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public void ApplyChanges()
         {
             Settings.Default.Theme = Theme;
+            Settings.Default.MainWindowOpacity = (double) Opacity / 100.0f;
             Settings.Default.FontFamily = FontFamily;
             Settings.Default.FontStretch = FontStretch.ToString();
             Settings.Default.FontWeight = FontWeight.ToString();
@@ -587,11 +576,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
-            Settings.Default.EnableQuitKeys = EnableQuitKeys;
-            Settings.Default.EnableAttentionKey = EnableAttentionKey;
-            Settings.Default.EnableCopyAllScratchpadKey = EnableCopyAllScratchpadKey;
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
+
+            // Apply opacity to window
+            windowManipulationService.SetOpacity(Settings.Default.MainWindowOpacity);
         }
 
         #endregion
