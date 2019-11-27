@@ -225,6 +225,41 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml">
+      <Link>Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
+      <Link>Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
+      <Link>Resources\DynamicKeyboards\Samples\Demo_Bottom.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml">
+      <Link>Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Left.xml">
+      <Link>Resources\DynamicKeyboards\Samples\Demo_Left.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullQwerty.xml">
+      <Link>Resources\DynamicKeyboards\Samples\FullQwerty.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullSymbol.xml">
+      <Link>Resources\DynamicKeyboards\Samples\FullSymbol.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\B612-licence-epl-v10.html">
       <Link>Resources\Fonts\B612-licence-epl-v10.html</Link>
     </Content>
