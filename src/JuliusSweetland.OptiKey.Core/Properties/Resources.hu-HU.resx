@@ -2339,4 +2339,37 @@ Szeretné hogy az OptiKey automatikusan a Nazli betűtípust használja?</value>
 Persian
 (Iran)</value>
   </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Ez megköveteli egy Alienware 17 játék laptop segítségével a beépített Tobii szemkövetővel.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>Ez megköveteli az ITU Gaze Tracking Library, amely keretet nyílt szemmel követés segítségével off-the-shelf alkatrészek, mint például webkamerák és videokamerák.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Ha azt tervezi, hogy használja optikey a Irisbond Duo szemkövetővel akkor kérjük, győződjön meg róla, a Irisbond Duo illesztőprogramok telepítése. Ezeket lehet letölteni https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>Ebben az üzemmódban Optikey fogja használni a kurzort a beviteli helyett beszél közvetlenül az szemkövetővel. Érdemes ezt, ha tesztelés Optikey ki, vagy ha szeretné használni egy alternatív beviteli eszköz, például egy fej egér vagy szemkövetővel nem szerepel a listában.</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Ez az opció fog működni minden Tobii Gaming szemkövetővel (4C, EyeX, Alienware, SteelSeries, stb)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Ahhoz, hogy használni Optikey egy segítő szemkövetővel, akkor sem kell az új verzió a Windows Control vagy a Tobii Eye Tracking motort. Ha kell használni a régi verziót a Tobii Windows-vezérlési alkalmazás (beleértve Tobii Gaze Interaction beállítások), akkor meg kell, hogy ellenőrizzék optikey egér segítségével összesen helyett.</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>A Visual Interaction myGaze csak akkor támogatott, ha már telepítve van a myGaze kliens illesztőprogramokat, amelyek már nem tölthető le. Ha nem rendelkezik a fenti illesztőprogramok telepítve, akkor válassza ki use egér pozíció "helyett, és használat optikey kombinálva myGaze EyeMousePlay alkalmazás mozgatni a kurzort.</value>
+  </data>      
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+      <value>Computer Control és kommunikáció</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Egyszerű közlemény</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Teljes Kurzorvezérlés</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Symbol közleménye</value>
+  </data>
 </root>

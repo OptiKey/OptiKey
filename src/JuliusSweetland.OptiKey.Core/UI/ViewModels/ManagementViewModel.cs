@@ -25,15 +25,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public ManagementViewModel(
             IAudioService audioService,
-            IDictionaryService dictionaryService)
+            IDictionaryService dictionaryService,
+            IWindowManipulationService windowManipulationService)
         {
             //Instantiate child VMs
             DictionaryViewModel = new DictionaryViewModel(dictionaryService);
             OtherViewModel = new OtherViewModel();
             PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
             SoundsViewModel = new SoundsViewModel(audioService);
-            VisualsViewModel = new VisualsViewModel();
-            PluginsViewModel = new PluginsViewModel();
+            VisualsViewModel = new VisualsViewModel(windowManipulationService);
+            FeaturesViewModel = new FeaturesViewModel();
             WordsViewModel = new WordsViewModel(dictionaryService);
             
             //Instantiate interaction requests and commands
@@ -55,7 +56,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     || PointingAndSelectingViewModel.ChangesRequireRestart
                     || SoundsViewModel.ChangesRequireRestart
                     || VisualsViewModel.ChangesRequireRestart
-                    || PluginsViewModel.ChangesRequireRestart
+                    || FeaturesViewModel.ChangesRequireRestart
                     || WordsViewModel.ChangesRequireRestart;
             }
         }
@@ -65,7 +66,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
         public SoundsViewModel SoundsViewModel { get; private set; }
         public VisualsViewModel VisualsViewModel { get; private set; }
-        public PluginsViewModel PluginsViewModel { get; private set; }
+        public FeaturesViewModel FeaturesViewModel { get; private set; }
         public WordsViewModel WordsViewModel { get; private set; }
         
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
@@ -187,7 +188,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             PointingAndSelectingViewModel.ApplyChanges();
             SoundsViewModel.ApplyChanges();
             VisualsViewModel.ApplyChanges();
-            PluginsViewModel.ApplyChanges();
+            FeaturesViewModel.ApplyChanges();
             WordsViewModel.ApplyChanges();
         }
 
@@ -209,9 +210,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             Log.Info("Applying management changes and attempting to restart OptiKey");
                             ApplyChanges();
+                            Settings.Default.Save();
                             try
                             {
-                                System.Windows.Forms.Application.Restart();
+                                OptiKeyApp.RestartApp();
                             }
                             catch { } //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
                             Application.Current.Shutdown();

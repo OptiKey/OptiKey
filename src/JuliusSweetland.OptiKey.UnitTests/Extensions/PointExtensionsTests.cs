@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.UnitTests.Properties;
 using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Extensions
@@ -9,6 +10,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
     [TestFixture]
     public class PointExtensionsTests
     {
+        [SetUp]
+        public void BaseSetUp()
+        {
+            Settings.Initialise();
+        }
+
         [Test]
         public void TestCalculateCentrePoint()
         {

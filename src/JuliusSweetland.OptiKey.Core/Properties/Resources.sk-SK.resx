@@ -265,7 +265,7 @@ DOK</value>
     <value>Iba konverzácia:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey zistil e váš súbor s používateľskými nastaveniami bol poškodený a musí byť opravený. Oprava bude realizovaný obnovením staršej verzie, alebo pôvodenj verzie ak to nie je možné. 
+    <value>Optikey zistil e váš súbor s používateľskými nastaveniami bol poškodený a musí byť opravený. Oprava bude realizovaný obnovením staršej verzie, alebo pôvodenj verzie ak to nie je možné. 
 Zvoľte Áno ak chcete resetovať používateľské nastavenia a reštartovať aplikáciu.
 Zvoľte Nie ak chcete ukončiť aplikáciu a manuálne opraviť alebo skopírovať súbor s používateľskými nastaveniami.</value>
   </data>
@@ -273,8 +273,8 @@ Zvoľte Nie ak chcete ukončiť aplikáciu a manuálne opraviť alebo skopírova
     <value>Uh-oh! Zdá sa že súbor s používateľskými nastaveniami je poškodený.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Zlé správy - OptiKey sa potkol sám o seba a musí byť ukončený. 
-Ocenili by sme email s popisom incidentu: optikeyfeedback@gmail.com
+    <value>Zlé správy - Optikey sa potkol sám o seba a musí byť ukončený. 
+Ocenili by sme email s popisom incidentu: crash@optikey.org
 Za vzniknutú situáciu sa ospravedlňujeme.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
@@ -568,7 +568,7 @@ KURZOR</value>
     <value>Nastavania: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Nastavenia OptiKey</value>
+    <value>Nastavenia Optikey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Maximálny počet nálezov zo slovníka:</value>
@@ -802,9 +802,6 @@ A SYMBOLY</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Píš · Klikaj · Hovor</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Ostatné</value>
   </data>
@@ -895,7 +892,7 @@ POSLEDNÉ</value>
     <value>Servis(y) pre Audio a/alebo Slovník nie sú dostupné oknu s nastaveniami.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>Pre aplikovanie vašich zmien je potrebné reštartovať OptiKey. Stlačte OK ak chcete reštartovať, alebo ZRUŠIŤ ak chcete zrušiť zmeny.</value>
+    <value>Pre aplikovanie vašich zmien je potrebné reštartovať Optikey. Stlačte OK ak chcete reštartovať, alebo ZRUŠIŤ ak chcete zrušiť zmeny.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>Obnoviť</value>
@@ -1132,7 +1129,7 @@ HORE</value>
 Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Môžem reštartovať OptiKey?</value>
+    <value>Môžem reštartovať Optikey?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Verzia: {0}</value>
@@ -1159,7 +1156,7 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Slová</value>
@@ -1575,5 +1572,38 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   </data>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>JAZYK</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>To si vyžaduje Alienware 17 herný notebook, pomocou zabudovaného-in TOBI očí tracker.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>To vyžaduje, aby Gaze Tracking knižnicu ITU, čo je framework pre sledovanie pomocou off-the-shelf komponenty, ako sú kamery a videokameru s otvoreným zdrojovým kódom oka.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>Ak máte v pláne používať Optikey s očné tracker Irisbond Duo, potom si prosím skontrolujte, či máte k dispozícii ovládače Irisbond Duo nainštalované. </value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>V tomto režime bude Optikey použite kurzor myši ako vstup namiesto rozprávanie priamo do očí tracker. Možno budete chcieť to, ak testujete Optikey von, alebo ak chcete použiť alternatívne vstupné zariadenia, ako je napríklad hlava myši alebo akékoľvek očné tracker nie je v tomto zozname. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>Táto voľba bude fungovať s akýmkoľvek Tobi Gaming očí tracker (4C, EyeX, Alienware, SteelSeries, etc)</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>Ak chcete používať Optikey s asistenčnou očí tracker, musíte buď novú verziu systému Windows Control, alebo motora Tobi Eye Tracking. Ak potrebujete použiť starú verziu ovládacieho programu Tobi Windows (vrátane nastavenia Tobi Gaze interakcie), potom sa budete musieť riadiť Optikey pomocou pozíciu myši miesto. </value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>Visual Interaction myGaze je podporovaná len v prípade, že ste už nainštalovali klientskych ovládačov myGaze, ktoré už nie sú k dispozícii na stiahnutie. Ak nechcete mať nainštalované tieto ovládače, mali by ste zvoliť použitia, pozíciu myši 'miesto, a použitie Optikey v kombinácii s aplikáciou myGaze EyeMousePlay pre pohyb kurzora.</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Počítačové riadenie a komunikácie</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>Jednoduchá komunikácia</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>Úplné riadenie kurzoru</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>Komunikácia s Symboly</value>
   </data>
 </root>

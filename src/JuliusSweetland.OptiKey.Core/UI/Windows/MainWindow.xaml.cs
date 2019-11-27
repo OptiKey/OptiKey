@@ -147,7 +147,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 {
                     ModalWindow = modalManagementWindow,
                     AudioService = audioService,
-                    DictionaryService = dictionaryService
+                    DictionaryService = dictionaryService,
+                    WindowManipulationService = WindowManipulationService
                 },
                 _ =>
                 {
@@ -159,6 +160,29 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 });
 
             Log.Info("RequestManagementWindow complete.");
+        }
+
+        public void SetMainViewModel(MainViewModel mainViewModel)
+        {
+            MainView.DataContext = mainViewModel;
+        }
+
+        public void AddOnMainViewLoadedAction(Action postMainViewLoaded)
+        {
+            if (MainView.IsLoaded)
+            {
+                postMainViewLoaded();
+            }
+            else
+            {
+                RoutedEventHandler loadedHandler = null;
+                loadedHandler = (s, a) =>
+                {
+                    postMainViewLoaded();
+                    MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
+                };
+                MainView.Loaded += loadedHandler;
+            }
         }
 
         private void ToggleManualMode()
@@ -207,7 +231,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             if (MessageBox.Show(Properties.Resources.REFRESH_MESSAGE, Properties.Resources.RESTART, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                System.Windows.Forms.Application.Restart();
+                OptiKeyApp.RestartApp();
                 Application.Current.Shutdown();
             }
         }

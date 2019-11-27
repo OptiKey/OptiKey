@@ -25,6 +25,28 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              <RowDefinition Height="*"/>
              <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBlock}">
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="True">
+                        <Setter Property="Foreground" Value="Black" />
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Foreground" Value="Gray" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="{x:Type CheckBox}">
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="True">
+                        <Setter Property="Foreground" Value="White" />
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Foreground" Value="Gray" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
         <TabControl Grid.IsSharedSizeScope="True">
             <TabItem Header="{x:Static resx:Resources.VISUALS}">
                 <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
@@ -41,8 +63,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <TabItem Header="{x:Static resx:Resources.DICTIONARY}">
                 <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem Header="{x:Static resx:Resources.PLUGINS_LABEL}">
-                <management:PluginsView DataContext="{Binding PluginsViewModel, Mode=OneWay}" />
+            <TabItem Header="{x:Static resx:Resources.FEATURES_LABEL}">
+                <management:FeaturesView DataContext="{Binding FeaturesViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem Header="{x:Static resx:Resources.OTHER}">
                 <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />

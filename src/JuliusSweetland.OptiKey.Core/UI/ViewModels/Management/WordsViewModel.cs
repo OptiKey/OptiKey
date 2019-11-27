@@ -32,7 +32,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #region Properties
 
-        public List<KeyValuePair<string, Languages>> Languages
+        public static List<KeyValuePair<string, Languages>> Languages
         {
             get
             {
@@ -90,10 +90,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     keyboardLayouts.Add(new KeyValuePair<string, KeyboardLayouts>(Resources.USE_SIMPLIFIED_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Simplified));
                 }
-                if (EnableCommuniKateKeyboardLayout)
-                {
-                    keyboardLayouts.Add(new KeyValuePair<string, KeyboardLayouts>(Resources.USE_COMMUNIKATE_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Communikate));
-                }
+                
+                // TODO: should this ever be unavailable?
+                keyboardLayouts.Add(new KeyValuePair<string, KeyboardLayouts>(Resources.USE_COMMUNIKATE_KEYBOARD_LAYOUT, Enums.KeyboardLayouts.Communikate));
+                
 
                 return keyboardLayouts;
             }
@@ -119,8 +119,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 SetProperty(ref this.keyboardAndDictionaryLanguage, value);
                 OnPropertyChanged(() => UseAlphabeticalKeyboardLayoutIsVisible);
-                OnPropertyChanged(() => EnableCommuniKateKeyboardLayout);
-                OnPropertyChanged(() => UseCommuniKateKeyboardLayoutByDefault);
                 OnPropertyChanged(() => UseSimplifiedKeyboardLayoutIsVisible);
                 OnPropertyChanged(() => KeyboardLayouts);
 
@@ -198,84 +196,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                        || KeyboardAndDictionaryLanguage == Enums.Languages.GeorgianGeorgia
                        || KeyboardAndDictionaryLanguage == Enums.Languages.GermanGermany;
             }
-        }
-
-        private bool enableCommuniKateKeyboardLayout;
-        public bool EnableCommuniKateKeyboardLayout
-        {
-            get { return enableCommuniKateKeyboardLayout; }
-            set
-            {
-                SetProperty(ref enableCommuniKateKeyboardLayout, value);
-                OnPropertyChanged(() => KeyboardLayouts);
-            }
-        }
-
-        private string communiKatePagesetLocation;
-        public string CommuniKatePagesetLocation
-        {
-            get { return communiKatePagesetLocation; }
-            set { SetProperty(ref communiKatePagesetLocation, value); }
-        }
-
-        private bool communiKateStagedForDeletion;
-        public bool CommuniKateStagedForDeletion
-        {
-            get { return communiKateStagedForDeletion; }
-            set { SetProperty(ref communiKateStagedForDeletion, value); }
-        }
-
-        private bool useCommuniKateKeyboardLayoutByDefault;
-        public bool UseCommuniKateKeyboardLayoutByDefault
-        {
-            get
-            {
-                return KeyboardLayout == Enums.KeyboardLayouts.Communikate
-                      && EnableCommuniKateKeyboardLayout;
-            }
-            set
-            {
-                SetProperty(ref useCommuniKateKeyboardLayoutByDefault,
-                      KeyboardLayout == Enums.KeyboardLayouts.Communikate
-                      && EnableCommuniKateKeyboardLayout);
-            }
-        }
-
-        private bool usingCommuniKateKeyboardLayout;
-        public bool UsingCommuniKateKeyboardLayout
-        {
-            get { return usingCommuniKateKeyboardLayout; }
-            set { SetProperty(ref usingCommuniKateKeyboardLayout, useCommuniKateKeyboardLayoutByDefault); }
-        }
-
-        private int communiKateSoundVolume;
-        public int CommuniKateSoundVolume
-        {
-            get { return communiKateSoundVolume; }
-            set { SetProperty(ref communiKateSoundVolume, value); }
-        }
-
-        private bool communiKateSpeakSelected;
-        public bool CommuniKateSpeakSelected
-        {
-            get { return communiKateSpeakSelected; }
-            set { SetProperty(ref communiKateSpeakSelected, value); }
-        }
-
-        private int communiKateSpeakSelectedVolume;
-        public int CommuniKateSpeakSelectedVolume
-        {
-            get { return communiKateSpeakSelectedVolume; }
-            set { SetProperty(ref communiKateSpeakSelectedVolume, value); }
-        }
-
-        private int communiKateSpeakSelectedRate;
-        public int CommuniKateSpeakSelectedRate
-        {
-            get { return communiKateSpeakSelectedRate; }
-            set { SetProperty(ref communiKateSpeakSelectedRate, value); }
-        }
-
+        }        
+        
         public bool PresageSettingsAreVisible
         {
             get { return SuggestionMethod == Enums.SuggestionMethods.Presage; }
@@ -367,7 +289,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return Settings.Default.UiLanguage != UiLanguage
                     || ForceCapsLock != Settings.Default.ForceCapsLock
                     || Settings.Default.SuggestionMethod != SuggestionMethod
-                    || Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation
                     || Settings.Default.PresageDatabaseLocation != PresageDatabaseLocation
                     || Settings.Default.PresageNumberOfSuggestions != PresageNumberOfSuggestions; }
         }
@@ -383,15 +304,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             UiLanguage = Settings.Default.UiLanguage;
             KeyboardLayout = Settings.Default.KeyboardLayout;
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
-            EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
-            CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
-            CommuniKateStagedForDeletion = Settings.Default.CommuniKateStagedForDeletion;
-            UseCommuniKateKeyboardLayoutByDefault = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
-            UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
-            CommuniKateSoundVolume = Settings.Default.CommuniKateSoundVolume;
-            CommuniKateSpeakSelected = Settings.Default.CommuniKateSpeakSelected;
-            CommuniKateSpeakSelectedVolume = Settings.Default.CommuniKateSpeakSelectedVolume;
-            CommuniKateSpeakSelectedRate = Settings.Default.CommuniKateSpeakSelectedRate;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
             ForceCapsLock = Settings.Default.ForceCapsLock;
             TypeDiacriticsAfterLetters = Settings.Default.TypeDiacriticsAfterLetters;
@@ -415,16 +327,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.DisplayVoicesWhenChangingKeyboardLanguage = DisplayVoicesWhenChangingKeyboardLanguage;
             Settings.Default.UiLanguage = UiLanguage;
             Settings.Default.KeyboardLayout = KeyboardLayout;
-            Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;
-            Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
-            Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;
-            Settings.Default.CommuniKateStagedForDeletion = CommuniKateStagedForDeletion;
-            Settings.Default.UseCommuniKateKeyboardLayoutByDefault = UseCommuniKateKeyboardLayoutByDefault;
-            Settings.Default.UsingCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayoutByDefault;
-            Settings.Default.CommuniKateSoundVolume = CommuniKateSoundVolume;
-            Settings.Default.CommuniKateSpeakSelected = CommuniKateSpeakSelected;
-            Settings.Default.CommuniKateSpeakSelectedVolume = CommuniKateSpeakSelectedVolume;
-            Settings.Default.CommuniKateSpeakSelectedRate = CommuniKateSpeakSelectedRate;
+            Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;          
+            // TODO: Remove these bools, the state is tangled.
+            Settings.Default.UseCommuniKateKeyboardLayoutByDefault = (KeyboardLayout == Enums.KeyboardLayouts.Communikate);
+            Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;            
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;
             Settings.Default.ForceCapsLock = ForceCapsLock;
             Settings.Default.TypeDiacriticsAfterLetters = TypeDiacriticsAfterLetters;

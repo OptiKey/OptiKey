@@ -269,7 +269,7 @@ DOCK</value>
     <value>מצב שיחה בלבד:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey שם לב שקובץ הגדרות המשתמש הושחת וחייב להיות תקין. זה יעשה על ידי שחזור גרסה ישנה או גרסת ברירת המחדל אם גרסה ישנה לא אפשרית.
+    <value>Optikey שם לב שקובץ הגדרות המשתמש הושחת וחייב להיות תקין. זה יעשה על ידי שחזור גרסה ישנה או גרסת ברירת המחדל אם גרסה ישנה לא אפשרית.
 
 לחצ/י כן לאיפוס הגדרות המשתמש ואתחול.
 
@@ -279,10 +279,10 @@ DOCK</value>
     <value>שגיאה! קובץ הגדרות המשתמש משובש</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>חדשות רעות - OptiKey התרסק וחייב להסגר.
+    <value>חדשות רעות - Optikey התרסק וחייב להסגר.
 
 נשמח לקבל איימיל עם הסבר למה קרה ואיך בכתובת: 
-optikeyfeedback@gmail.com
+crash@optikey.org
 
 תודה וסליחה על חוסר הנוחות.</value>
   </data>
@@ -607,7 +607,7 @@ DOCK</value>
     <value>חלונית ניהול: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey ממשק ניהול</value>
+    <value>Optikey ממשק ניהול</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>כמות מקסימלית של התאמות מילוניות:</value>
@@ -844,9 +844,6 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>אישור</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>Optikey: הקלד · לחץ · דבר</value>
-  </data>
   <data name="OTHER" xml:space="preserve">
     <value>אחר</value>
   </data>
@@ -937,7 +934,7 @@ SCR</value>
     <value>אודיו ו/או שירותי מילון לא סופקו (כפעולה בחלון הניהול)</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey צריך לבצע אתחול מחדש על מנת לשמור את השינויים.
+    <value>Optikey צריך לבצע אתחול מחדש על מנת לשמור את השינויים.
 אנא לחץ על אישור על מנת לבצע את האתחול, או לחץ על ביטול על מנת להתעלם מהשינויים.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
@@ -1197,7 +1194,7 @@ LK</value>
 אפשר לכבות את בדיקת העדכונים ממסך ההגדרות (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>האם ניתן להפעיל את OptiKey מחדש?</value>
+    <value>האם ניתן להפעיל את Optikey מחדש?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>גרסה: {0}</value>
@@ -1224,7 +1221,7 @@ LK</value>
     <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
+    <value>Optikey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>מילים</value>
@@ -1970,12 +1967,12 @@ from the Management Console (ALT + M).</value>
     <value>מיקום קובץ CommuniKate top page .obz:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>OptiKey was unable to handshake with Presage. There are a few possible causes:
+    <value>Optikey was unable to handshake with Presage. There are a few possible causes:
     1.The DBFILENAME location specified in the presage.xml file (located in C:\Users\USER_NAME\.presage) does not exist - please check and correct this (or uninstall/reinstall Presage).
-    2.Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+    2.Either a 64 bit version of Presage is installed (Optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
 
 Please uninstall Presage and install the 32 bit version of 0.9.2.
-OptiKey will attempt to continue, but there is a good chance it will crash shortly.
+Optikey will attempt to continue, but there is a good chance it will crash shortly.
 The prediction method will be changed to NGram to prevent a crash on next run.</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
@@ -2012,7 +2009,7 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>אותיות</value>
   </data>
   <data name="ERROR_MAGNIFYING" xml:space="preserve">
-    <value>קרתה תקלה בתהליך ההגדלה. אנא בטל את ההגדלה בהגדרות וצור קשר עם OptiKey לתמיכה נוספת.</value>
+    <value>קרתה תקלה בתהליך ההגדלה. אנא בטל את ההגדלה בהגדרות וצור קשר עם Optikey לתמיכה נוספת.</value>
   </data>
   <data name="ERROR_TITLE" xml:space="preserve">
     <value>שגיאה:</value>
@@ -2263,10 +2260,10 @@ Française
     <value>איתחול</value>
   </data>
   <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>ממש בטוח/ה שברצונך להתחיל מחדש את OptiKey?</value>
+    <value>ממש בטוח/ה שברצונך להתחיל מחדש את Optikey?</value>
   </data>
   <data name="REFRESH_MESSAGE" xml:space="preserve">
-    <value>בטוח/ה שברצונך להתחיל מחדש את OptiKey?</value>
+    <value>בטוח/ה שברצונך להתחיל מחדש את Optikey?</value>
   </data>
   <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>מקלדת דינמית</value>
@@ -2321,12 +2318,12 @@ Française
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
     <value>We recommend changing the UiLanguage to Urdu to ensure typed Urdu text flows from right to left in the scratchpad.
-Would you like OptiKey to automatically set the UiLanguage to Urdu?</value>
+Would you like Optikey to automatically set the UiLanguage to Urdu?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
-    <value>We recommend changing the font used in OptiKey to one which is fully compatible with Urdu.
+    <value>We recommend changing the font used in Optikey to one which is fully compatible with Urdu.
 If a font is used which is not Urdu specific then text, and especially numbers, may display incorrectly.
-Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value>
+Would you like Optikey to automatically set the font to Nafees Web Naskh?</value>
   </data>
   <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
     <value>מומלץ להשתמש בגופן מותאם לשפה</value>
@@ -2339,12 +2336,12 @@ Would you like OptiKey to automatically set the font to Nafees Web Naskh?</value
   </data>
   <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
     <value>We recommend changing the UiLanguage to Persian to ensure typed Persian text flows from right to left in the scratchpad.
-Would you like OptiKey to automatically set the UiLanguage to Persian?</value>
+Would you like Optikey to automatically set the UiLanguage to Persian?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
-    <value>We recommend changing the font used in OptiKey to one which is fully compatible with Persian.
+    <value>We recommend changing the font used in Optikey to one which is fully compatible with Persian.
 If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
-Would you like OptiKey to automatically set the font to Nazli?</value>
+Would you like Optikey to automatically set the font to Nazli?</value>
   </data>
   <data name="PERSIAN_IRAN" xml:space="preserve">
     <value>פרסית (איראן) / فارسی (ایرانی)</value>
@@ -2354,5 +2351,38 @@ Would you like OptiKey to automatically set the font to Nazli?</value>
 (איראן) /
 فارسی
 (ایرانی)</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+      <value>זה דורש משחקים ניידים 17 Alienware, באמצעות גשש עין מובנית Tobii.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+      <value>זה דורש לספריית מעקב מבט ITU, המהווה מסגרת עין קוד פתוחה מעקב באמצעות ה- off- מדף רכיבים, כגון מצלמות ו למצלמות.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+      <value>אם אתם מתכננים להשתמש Optikey עם גשש עין Irisbond Duo אז אנא ודא שיש לך את הנהגים Irisbond Duo מותקן. אלו ניתן להוריד מאתר https://www.irisbond.com/products/downloads.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+      <value>במצב זה, Optikey ישתמש סמן העכבר כקלט במקום לדבר ישירות גשש העין. אולי אתה רוצה את זה אם אתה בודק את Optikey, או אם אתה רוצה להשתמש בו עם מכשיר קלט חלופי כגון עכבר ראש או גשש כל עין לא ברשימה זו.</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+      <value>אפשרות זו תעבוד עם גשש כל עין גיימינג Tobii (4C, EyeX, Alienware, Steelseries, וכו ')</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+      <value>כדי להשתמש Optikey עם גשש Tobii העין ,שאתה צריך את הגרסה החדשה של הבקרה של Tobii Windows Control, או מנוע עקיבת העין Tobii</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+      <value>MyGaze האינטראקציה החזותי נתמך רק אם כבר התקין את מנהלי הלקוח myGaze, אשר כבר אינם זמינות להורדה. אם אין לך נהגים אלה מותקנים, אתה צריך לבחור השימוש עמדת העכבר 'במקום, ולהשתמש Optikey בשילוב עם יישום myGaze EyeMousePlay כדי להזיז את הסמן.</value>
+  </data>  
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>בקרת מחשב ותקשורת</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+      <value>תקשורת קלה</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+      <value>בקרת סמן מלאה</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+      <value>תקשורת עם סמלים</value>
   </data>
 </root>

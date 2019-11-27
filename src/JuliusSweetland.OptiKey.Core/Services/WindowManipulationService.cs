@@ -64,8 +64,8 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Ctor
-
-        internal WindowManipulationService(
+        
+        public WindowManipulationService(
             Window window,
             Func<bool> getPersistedState,
             Func<double> getOpacity,

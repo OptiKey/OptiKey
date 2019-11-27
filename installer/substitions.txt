@@ -1,0 +1,41 @@
+
+This file contains substitutions used to convert a new project based
+on the OptikeyPro template to use a different app.
+
+This isn't intended to be run automatically, but should document everything
+that was required when substitutions were done by hand.
+
+The order may be important.
+
+
+
+perl -pi -e 's/OptiKey\.Pro\.Propert\"/OptiKey\.Chat\.Proper\"/g' OptiKeyChat.aip
+perl -pi -e 's/OptiKey\.Pro/OptiKey\.Chat/g' OptiKeyChat.aip
+perl -pi -e 's/Pro.ico/Chat.ico/g' OptiKeyChat.aip
+perl -pi -e 's/C:\\code\\OptiKey\\/..\\/g' OptiKeyChat.aip
+perl -pi -e 's/OptikeyPro\b/OptikeyChat/g' OptiKeyChat.aip
+
+
+# this one is sneaky: when you save a template and then use in new project, the rootpath gets changes
+# and results in files always being saved in absolute form
+perl -pi -e 's/RootPath=\"\.\.\\installer\*\"/\RootPath=\"\.\"/g' OptiKeyChat.aip
+
+perl -pi -e 's/C:\\code\\OptiKey\\/..\\/g' OptiKeyChat.aip
+
+
+
+
+
+
+perl -pi -e 's/OptiKey\.Pro\.Propert\"/OptiKey\.Symbol\.Prop\"/g' OptiKeySymbol.aip
+perl -pi -e 's/OptiKey\.Pro/OptiKey\.Symbol/g' OptiKeySymbol.aip
+perl -pi -e 's/Pro.ico/Symbol.ico/g' OptiKeySymbol.aip
+perl -pi -e 's/OptikeyPro/OptikeySymbol/g' OptiKeySymbol.aip
+perl -pi -e 's/OptikeyPro\b/OptikeySymbol/g' OptiKeySymbol.aip
+
+perl -pi -e 's/RootPath=\"\.\.\\installer\*\"/\RootPath=\"\.\"/g' OptiKeySymbol.aip
+perl -pi -e 's/C:\\code\\OptiKey\\/..\\/g' OptiKeySymbol.aip
+
+
+
+

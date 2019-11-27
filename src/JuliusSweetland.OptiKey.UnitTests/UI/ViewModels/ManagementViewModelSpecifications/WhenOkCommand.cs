@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
 
             if (changed)
             {
-                base.ManagementViewModel.WordsViewModel.CommuniKatePagesetLocation = "new location";
+                base.ManagementViewModel.FeaturesViewModel.CommuniKatePagesetLocation = "new location";
                 base.ManagementViewModel.SoundsViewModel.MaryTTSLocation = "new location";
             }
 

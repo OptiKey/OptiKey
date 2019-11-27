@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services.Suggestions;
+using JuliusSweetland.OptiKey.UnitTests.Properties;
 using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
@@ -12,7 +13,13 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         private IManagedSuggestions autoComplete;
 		protected static object[] SuggestionsTestCaseSource { get; private set; }
 
-		[Test]
+        [SetUp]
+        public void BaseSetUp()
+        {
+            Settings.Initialise();
+        }
+
+        [Test]
         public void AddEntry_called_with_existing_entry_does_not_update_usage_count()
         {
             ConfigureProvider();

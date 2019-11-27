@@ -19,8 +19,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         protected override void Arrange()
         {
             base.Arrange();
-
-            base.ManagementViewModel.WordsViewModel.CommuniKatePagesetLocation = "new location";
+            
+            base.ManagementViewModel.FeaturesViewModel.CommuniKatePagesetLocation = "new location";
             base.ManagementViewModel.SoundsViewModel.MaryTTSLocation = "new location";
 
             base.ManagementViewModel.ConfirmationRequest.Raised += (s, e) =>

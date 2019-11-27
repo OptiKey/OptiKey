@@ -311,7 +311,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             // Back key
             {
                 Key newKey = new Key();
-                newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["BackIcon"];
+                newKey.SymbolGeometry = (System.Windows.Media.Geometry)Application.Current.Resources["BackIcon"];
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.BACK;
                 newKey.Value = KeyValues.BackFromKeyboardKey;
                 this.PlaceKeyInPosition(newKey, 3, 3);
