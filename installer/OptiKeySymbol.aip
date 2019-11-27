@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="16.3" PreviousModules="professional" Modules="enterprise" RootPath="." Language="en" Id="{16641705-202C-47CE-B551-2E86C3C1D8D3}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="16.5" Modules="enterprise" RootPath="." Language="en" Id="{16641705-202C-47CE-B551-2E86C3C1D8D3}">
   <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
     <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;FixupComponent"/>
   </COMPONENT>
@@ -12,10 +12,10 @@
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Optikey"/>
-    <ROW Property="ProductCode" Value="1025:{FC3EB21B-40F7-4937-B643-4E76966EF29F} 1026:{C7556DE6-73D7-4881-9B2D-32F283D1B28F} 1027:{BC23D549-9F9D-4CCC-BBBE-D2A0D37D9A4F} 1028:{1676435C-C944-45C4-9FF9-A775A69892E5} 1029:{0B87747F-3810-46D9-8855-7EC8445B30EC} 1030:{F6B7E48F-BC7E-4B30-93CB-0B67F9221DD0} 1031:{55DEF634-660A-428A-889C-61C741796AFE} 1032:{27C70806-3A0F-4C3B-BDDE-B0F8230FAF54} 1033:{232B1227-7B24-4C80-9958-4F8F6D17242F} 1035:{2181B000-6812-4863-A0A1-E790082BFF71} 1036:{DF8B9A6F-247E-4765-9298-E36502FD07DE} 1037:{B64A5769-F056-4687-B642-8A120FABEDCA} 1038:{935E008F-B575-4F06-BB37-7050834FE719} 1039:{BA4B4B52-11C7-4950-82E3-BDD668384510} 1040:{6547B977-DC1F-46AA-9D98-D63B11BA0D67} 1041:{5B4E8D28-99DC-4985-9B9F-15F7F1770E95} 1042:{45045AF4-8DD9-4555-A152-D2D548FCF8D1} 1043:{06727405-E594-438E-84E5-7E3212A414D6} 1044:{218C35D8-88A7-46E5-8BCF-0E9075E9F40C} 1045:{34D088DE-8829-4AD3-B082-97ACB4EBBEAA} 1046:{AB2549D1-1518-4D56-8A8A-75C3ADBC4635} 1049:{2C889DD3-EE48-44C7-A706-BE10FED43057} 1050:{8BD23B56-86A0-4F6C-93BA-797BDF505C9D} 1051:{EEAD0C4D-EFBA-45A2-A9B8-B6A66DA29DE6} 1052:{FFF967E4-1E71-499D-86BF-E766132C9631} 1053:{DC684A11-4BAC-4524-B26E-2895F5C09D70} 1055:{36274FD1-FFCB-4EB0-8CBF-2DC2BE558FB6} 1057:{1D93A822-BA5E-4954-AC9F-0F37F9A2E35C} 1058:{238DB7E7-F548-4727-A35C-619664A8E73F} 1060:{D7451C55-1F2F-4756-995D-DA2370E5A96A} 1065:{FDF61F1D-ADFA-406C-9F29-4092B5E014EE} 1087:{FF0F3888-A69B-4E6D-BD6E-7A47A914D2C2} 2052:{0F766DD2-281F-4B1F-A542-B9EFEE604D16} 2057:{79FAA10C-A417-4C79-B694-D7FF6782F864} 2068:{2CB22A7C-C27D-4D9E-AC79-1C11F1AC8CD5} 2070:{B3EF2FF1-52A7-4CB4-A71A-02F1BD06937B} 2074:{B98CB3FE-337D-499C-88AE-CADBAB0D3817} 3082:{BE5F9464-DB59-4A00-9B5F-FCB8AE1EE3CF} 3098:{8EA86204-D2D3-4C4A-9F99-4847E0A24103} " Type="16"/>
+    <ROW Property="ProductCode" Value="1025:{56B44B9E-5735-4871-8D6E-1BF8030F2397} 1026:{B8CFAB0E-5FD6-43EC-885C-18CBB07DCE85} 1027:{8A42E763-D9CD-42FC-9B77-929B899921C8} 1028:{03548B1D-F427-4A43-A286-3C4141C2F5BD} 1029:{20785FF7-7899-40AF-9D68-4FC122F28D1D} 1030:{2B830279-181B-4A33-A350-778609BD1E1A} 1031:{542BBC3B-7864-43C6-880B-5373C8F4AA62} 1032:{8A0B033B-6905-4A77-9188-9ECEB9CF70D7} 1033:{A2018224-AF39-4DC2-B443-43073E76AFDE} 1035:{74A648DD-8956-4B42-B2AB-39124840EBF9} 1036:{ADAD8BA2-0150-4308-A57A-F0046DEEBD46} 1037:{12A5F5F5-D75D-4391-AB8F-60D83F7213F6} 1038:{16DCD220-2C3C-4A82-803E-025D6AF24232} 1039:{3717D767-A637-4502-B9B2-504753EE2E5D} 1040:{8D92B383-008D-4C27-A93C-C98A70D011A1} 1041:{8AF43441-8C51-410B-9C6F-86BBAA84688D} 1042:{AA553879-4C77-4823-8E7A-25DCE5FABDAB} 1043:{C73D5187-B7FC-48F5-8980-E499FE5B1589} 1044:{A7BCB408-2735-4C6A-B34E-FE6251D9430A} 1045:{2D28A018-4574-4DC1-939B-66FC8D8FD3CB} 1046:{D27E777E-5C54-4ED7-A1A4-105B4FDF9684} 1049:{1DF42CDA-8598-479A-A159-CC9C18F4CE37} 1050:{CF4038F9-91DE-4681-B312-99C6D4E66EA0} 1051:{6F62EC5F-1C14-4FDB-A59F-D350305A326E} 1052:{E37E0E5F-C5E9-4B86-B7EF-F8450B7BC7E7} 1053:{EB0E19A6-2282-4BE8-9D2C-1D8744DA2578} 1055:{34658EC8-9F6C-41BB-BAF5-162C6824D4A3} 1057:{64007E80-8ACE-49C7-9678-F615D92D31C3} 1058:{66C187CA-6473-4882-8EE9-B11E060CEBB8} 1060:{C47F2297-AF8C-4F9F-8236-D6AF8CCA7501} 1065:{4C13A3E8-7E12-4057-ADDE-1873C21BD6A8} 1087:{5AD6C05F-93CC-4C87-A3F1-444B3DA6547F} 2052:{D01488A1-1A3A-4A88-867A-7C4D094D1638} 2057:{E7A4FE9D-088E-42DD-AE51-CC3476C82048} 2068:{3B5BF7C6-EEF5-4301-A7CF-93FCFE27B584} 2070:{6D756F4D-5482-44D6-AC3C-5F1B2C28A6FB} 2074:{55BB3AE3-5182-4A9B-851D-9BC1D1ACD404} 3082:{F5772196-B86F-4A27-9ED8-5279073B8EF8} 3098:{60F1DEF4-5B8E-4D07-A8B9-D6E08507B49B} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Optikey Symbol"/>
-    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="3.0.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{951C90E2-0E35-4732-AAF8-285C1A134F6F}"/>
@@ -41,7 +41,6 @@
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
     <ROW Directory="Samples_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="Samples"/>
-    <ROW Directory="Sizeandpositionexamples_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="SIZEAN~1|Size and position examples"/>
     <ROW Directory="Sounds_Dir" Directory_Parent="Resources_Dir" DefaultDir="Sounds"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="caES_Dir" Directory_Parent="Release_Dir" DefaultDir="ca-ES"/>
@@ -137,7 +136,6 @@
     <ROW Component="SharpVectors.Rendering.Gdi.dll" ComponentId="{445CC295-ADF6-428A-A9B2-31DEA28DA208}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Gdi.dll"/>
     <ROW Component="SharpVectors.Rendering.Wpf.dll" ComponentId="{0F9F93F7-B209-4E02-A2FB-62957FF08EB9}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Wpf.dll"/>
     <ROW Component="SharpVectors.Runtime.dll" ComponentId="{1C6B237A-9A01-4FCA-B933-2669CDD0E40D}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Runtime.dll"/>
-    <ROW Component="Sizeandpositionexamples" ComponentId="{166D0C4D-39F7-4D60-8CB3-36CA54BB1A0A}" Directory_="Sizeandpositionexamples_Dir" Attributes="0"/>
     <ROW Component="System.IO.Compression.dll" ComponentId="{94C9B7A1-F407-4297-9943-534DAA2406B0}" Directory_="Release_Dir" Attributes="0" KeyPath="System.IO.Compression.dll"/>
     <ROW Component="System.Reactive.Core.dll" ComponentId="{13386147-7C82-473C-A62D-8253FEA88D65}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Core.dll"/>
     <ROW Component="System.Reactive.Interfaces.dll" ComponentId="{6CA31418-841C-42D2-89C4-D3064C5C06C5}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Interfaces.dll"/>
@@ -353,8 +351,10 @@
     <ROW File="OptiKey.dll.config" Component_="Bass.Net.xml" FileName="OPTIKE~2.CON|OptiKey.dll.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptiKey.dll.config" SelfReg="false"/>
     <ROW File="OptiKey.exe.config" Component_="Bass.Net.xml" FileName="OPTIKE~3.CON|OptiKey.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptiKey.exe.config" SelfReg="false"/>
     <ROW File="Demo_Gamepad.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_G~1.XML|Demo_Gamepad.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml" SelfReg="false"/>
-    <ROW File="Demo_Qwerty_6x12.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_Q~1.XML|Demo_Qwerty_6x12.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Qwerty_6x12.xml" SelfReg="false"/>
-    <ROW File="MyQwertyLeft.xml" Component_="Demo_Gamepad.xml" FileName="MYQWER~1.XML|MyQwertyLeft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\MyQwertyLeft.xml" SelfReg="false"/>
+    <ROW File="Demo_Bottom.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_B~1.XML|Demo_Bottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml" SelfReg="false"/>
+    <ROW File="Demo_Left.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_L~1.XML|Demo_Left.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Left.xml" SelfReg="false"/>
+    <ROW File="FullQwerty.xml" Component_="Demo_Gamepad.xml" FileName="FULLQW~1.XML|FullQwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\FullQwerty.xml" SelfReg="false"/>
+    <ROW File="FullSymbol.xml" Component_="Demo_Gamepad.xml" FileName="FULLSY~1.XML|FullSymbol.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\FullSymbol.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -443,6 +443,9 @@
     <ROW Path="&lt;AI_DICTS&gt;ui_tr.ail"/>
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTracker\EyeTracker_uk.ail"/>
     <ROW Path="&lt;AI_DICTS&gt;ui_uk.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="c498665547b6f58ba59d50661f735b151ff7bf04 Subject: Open Source Developer, Julius Sweetland&#10;Issuer: Certum Code Signing CA SHA2&#10;Valid from 02/21/2019 to 02/21/2020&#10;User\MY"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
@@ -552,7 +555,6 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
-    <ROW Directory_="Sizeandpositionexamples_Dir" Component_="Sizeandpositionexamples" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -692,7 +694,6 @@
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_26"/>
     <ROW Feature_="MainFeature" Component_="Demo_Gamepad.xml"/>
-    <ROW Feature_="MainFeature" Component_="Sizeandpositionexamples"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="OptikeySymbol.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Core\Resources\Icons\Symbol.ico" Index="0"/>
