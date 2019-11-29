@@ -35,8 +35,10 @@
     <ROW Directory="Dictionaries_Dir" Directory_Parent="Release_Dir" DefaultDir="DICTIO~1|Dictionaries"/>
     <ROW Directory="DynamicKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
+    <ROW Directory="Optikey_Dir" Directory_Parent="ProgramMenuFolder" DefaultDir="Optikey"/>
     <ROW Directory="Plugins_Dir" Directory_Parent="Resources_Dir" DefaultDir="Plugins"/>
     <ROW Directory="Presage_Dir" Directory_Parent="Resources_Dir" DefaultDir="Presage"/>
+    <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
     <ROW Directory="Release_Dir" Directory_Parent="APPDIR" DefaultDir=".:Release"/>
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
@@ -122,6 +124,7 @@
     <ROW Component="OptiKey.resources.dll_9" ComponentId="{4F15B944-66A8-4FB0-BF71-F7320C14A7AF}" Directory_="hrHR_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_9"/>
     <ROW Component="OptiKeyStandardPlugins.dll" ComponentId="{039A3E5E-AFB7-4DB4-AD26-2591F92F291A}" Directory_="Plugins_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll"/>
     <ROW Component="OptiKeyStandardPlugins.dll_1" ComponentId="{52A13A8A-F5C7-4C1E-BA67-29873D6830C1}" Directory_="Release_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll_1"/>
+    <ROW Component="Optikey" ComponentId="{DA946DC6-6B53-4693-AC0F-8E7AB2BBBC04}" Directory_="Optikey_Dir" Attributes="0"/>
     <ROW Component="OptikeySymbol.exe" ComponentId="{BB65C873-08B6-408C-9B84-EF718C89D00C}" Directory_="Release_Dir" Attributes="0" KeyPath="OptikeySymbol.exe"/>
     <ROW Component="PGRFlyCapture.dll" ComponentId="{8661EA8B-3E86-4FDC-8175-21AD7863AC16}" Directory_="Release_Dir" Attributes="0" KeyPath="PGRFlyCapture.dll"/>
     <ROW Component="Prism.Wpf.dll" ComponentId="{3ADDE65C-9A43-490D-B019-8E561915E0CD}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.Wpf.dll"/>
@@ -360,7 +363,7 @@
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="SetupFiles" Languages="en;en_GB;fr;es;fa;sq;ar;bg;ca;zh;zh_TW;hr;cs;da;nl;fi;de;el;he;hu;is;id;it;ja;kk;ko;nn;nb;pl;pt;pt_BR;ru;sr_SP_Cyrillic;sr_SP_Latin;sk;sl;sv;tr;uk" LangOpt="1" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" Options="2" UseLargeSchema="true" Unicode="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="SetupFiles" Languages="en;en_GB;fr;es;fa;sq;ar;bg;ca;zh;zh_TW;hr;cs;da;nl;fi;de;el;he;hu;is;id;it;ja;kk;ko;nn;nb;pl;pt;pt_BR;ru;sr_SP_Cyrillic;sr_SP_Latin;sk;sl;sv;tr;uk" LangOpt="1" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\Temp install files\[|ProductName]" ExtUI="true" Options="2" UseLargeSchema="true" Unicode="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
@@ -555,6 +558,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="Optikey_Dir" Component_="Optikey" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -594,7 +598,7 @@
     <ROW Action="PopulateComboBox" Type="1" Source="aicustact.dll" Target="PopulateComboBox" WithoutSeq="true" Options="1"/>
     <ROW Action="PopulateEyeTrackerCombo.vbs" Type="6" Source="PopulateComboboxes.vbs" Target="PopulateEyeTrackerCombo" WithoutSeq="true"/>
     <ROW Action="PopulateLanguagesCombo" Type="6" Source="PopulateComboboxes.vbs" Target="PopulateLanguagesCombo" WithoutSeq="true"/>
-    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
     <ROW Action="SetPropertyEyeTrackerSelected" Type="51" Source="EYETRACKER_SELECTED" Target="MousePosition"/>
@@ -694,6 +698,7 @@
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_26"/>
     <ROW Feature_="MainFeature" Component_="Demo_Gamepad.xml"/>
+    <ROW Feature_="MainFeature" Component_="Optikey"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="OptikeySymbol.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Core\Resources\Icons\Symbol.ico" Index="0"/>
@@ -751,13 +756,13 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
     <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
-    <ROW Registry="AI_InstallLanguage" Root="-1" Key="Software\Caphyon\Advanced Installer\[ProductCode]" Name="AI_InstallLanguage" Value="[ProductLanguage]" Component_="ProductInformation"/>
     <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
     <ROW Shortcut="OptikeySymbol" Directory_="SHORTCUTDIR" Name="OPTIKE~2|Optikey Symbol" Component_="OptikeySymbol.exe" Target="[#OptikeySymbol.exe]" Hotkey="0" Icon_="OptikeySymbol.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
     <ROW Shortcut="OptikeySymbol_1" Directory_="DesktopFolder" Name="OPTIKE~2|Optikey Symbol" Component_="OptikeySymbol.exe" Target="[#OptikeySymbol.exe]" Hotkey="0" Icon_="OptikeySymbol.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+    <ROW Shortcut="OptikeySymbol_2" Directory_="Optikey_Dir" Name="OPTIKE~1|OptikeySymbol" Component_="OptikeySymbol.exe" Target="[#OptikeySymbol.exe]" Hotkey="0" Icon_="OptikeySymbol.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>

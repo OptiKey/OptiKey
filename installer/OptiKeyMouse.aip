@@ -35,8 +35,10 @@
     <ROW Directory="Dictionaries_Dir" Directory_Parent="Release_Dir" DefaultDir="DICTIO~1|Dictionaries"/>
     <ROW Directory="DynamicKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
+    <ROW Directory="Optikey_Dir" Directory_Parent="ProgramMenuFolder" DefaultDir="Optikey"/>
     <ROW Directory="Plugins_Dir" Directory_Parent="Resources_Dir" DefaultDir="Plugins"/>
     <ROW Directory="Presage_Dir" Directory_Parent="Resources_Dir" DefaultDir="Presage"/>
+    <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
     <ROW Directory="Release_Dir" Directory_Parent="APPDIR" DefaultDir=".:Release"/>
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
@@ -122,6 +124,7 @@
     <ROW Component="OptiKey.resources.dll_9" ComponentId="{03D72442-00AF-482C-B56B-A6A048E59E5D}" Directory_="hrHR_Dir" Attributes="0" KeyPath="OptiKey.resources.dll_9"/>
     <ROW Component="OptiKeyStandardPlugins.dll" ComponentId="{F01C7C34-9885-4BC2-830B-E64F9BC95A69}" Directory_="Plugins_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll"/>
     <ROW Component="OptiKeyStandardPlugins.dll_1" ComponentId="{483B47F5-6A69-46F4-9854-C39B30239917}" Directory_="Release_Dir" Attributes="0" KeyPath="OptiKeyStandardPlugins.dll_1"/>
+    <ROW Component="Optikey" ComponentId="{1AB60262-9278-439A-BEE6-43E745F14C75}" Directory_="Optikey_Dir" Attributes="0"/>
     <ROW Component="OptikeyMouse.exe" ComponentId="{D8B0EA00-BE69-46E7-B2FF-999B857BCF81}" Directory_="Release_Dir" Attributes="0" KeyPath="OptikeyMouse.exe"/>
     <ROW Component="PGRFlyCapture.dll" ComponentId="{24626A59-5FE9-4BBE-AD51-9664E96FCD8E}" Directory_="Release_Dir" Attributes="0" KeyPath="PGRFlyCapture.dll"/>
     <ROW Component="Prism.Wpf.dll" ComponentId="{1FD0D01A-6D74-44F3-84F7-7813215679D2}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.Wpf.dll"/>
@@ -360,7 +363,7 @@
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="SetupFiles" Languages="en;en_GB;sq;bg;ar;ca;zh;zh_TW;hr;cs;nl;da;fa;fi;fr;de;he;el;hu;id;is;ja;it;kk;ko;nb;nn;pl;pt;pt_BR;ru;sr_SP_Cyrillic;sr_SP_Latin;sk;sl;es;sv;tr;uk" LangOpt="1" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" Options="2" UseLargeSchema="true" Unicode="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="SetupFiles" Languages="en;en_GB;sq;bg;ar;ca;zh;zh_TW;hr;cs;nl;da;fa;fi;fr;de;he;el;hu;id;is;ja;it;kk;ko;nb;nn;pl;pt;pt_BR;ru;sr_SP_Cyrillic;sr_SP_Latin;sk;sl;es;sv;tr;uk" LangOpt="1" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\Temp install files\[|ProductName]" ExtUI="true" Options="2" UseLargeSchema="true" Unicode="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
@@ -596,6 +599,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="Optikey_Dir" Component_="Optikey" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -635,7 +639,7 @@
     <ROW Action="PopulateComboBox" Type="1" Source="aicustact.dll" Target="PopulateComboBox" WithoutSeq="true" Options="1"/>
     <ROW Action="PopulateEyeTrackerCombo.vbs" Type="6" Source="PopulateComboboxes.vbs" Target="PopulateEyeTrackerCombo" WithoutSeq="true"/>
     <ROW Action="PopulateLanguagesCombo" Type="6" Source="PopulateComboboxes.vbs" Target="PopulateLanguagesCombo" WithoutSeq="true"/>
-    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
     <ROW Action="SetPropertyEyeTrackerSelected" Type="51" Source="EYETRACKER_SELECTED" Target="MousePosition"/>
@@ -736,6 +740,7 @@
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_26"/>
     <ROW Feature_="MainFeature" Component_="Demo_Gamepad.xml"/>
+    <ROW Feature_="MainFeature" Component_="Optikey"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="OptikeyMouse.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Core\Resources\Icons\Mouse.ico" Index="0"/>
@@ -798,6 +803,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
     <ROW Shortcut="OptikeyMouse" Directory_="SHORTCUTDIR" Name="OPTIKE~2|Optikey Mouse" Component_="OptikeyMouse.exe" Target="[#OptikeyMouse.exe]" Hotkey="0" Icon_="OptikeyMouse.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+    <ROW Shortcut="OptikeyMouse_1" Directory_="Optikey_Dir" Name="OPTIKE~1|OptikeyMouse" Component_="OptikeyMouse.exe" Target="[#OptikeyMouse.exe]" Hotkey="0" Icon_="OptikeyMouse.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
     <ROW Shortcut="OptikeyPro_1" Directory_="DesktopFolder" Name="OPTIKE~2|Optikey Mouse" Component_="OptikeyMouse.exe" Target="[#OptikeyMouse.exe]" Hotkey="0" Icon_="OptikeyMouse.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
