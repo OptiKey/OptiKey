@@ -41,7 +41,7 @@
     <ApplicationIcon>Chat.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>C:\Users\Julius\Documents\GitHub\OptiKey\src\JuliusSweetland.OptiKey.Core\app.manifest</ApplicationManifest>
+    <ApplicationManifest>..\JuliusSweetland.OptiKey.Core\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
