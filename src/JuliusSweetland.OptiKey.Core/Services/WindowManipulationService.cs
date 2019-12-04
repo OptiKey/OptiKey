@@ -110,13 +110,9 @@ namespace JuliusSweetland.OptiKey.Services
 
             windowHandle = new WindowInteropHelper(window).EnsureHandle();
             screen = window.GetScreen();
-            screenBoundsInPx = new Rect(screen.Bounds.Left, screen.Bounds.Top, screen.Bounds.Width, screen.Bounds.Height);
+
+            UpdateScreenSizeAndPosition();
             Log.DebugFormat("Screen bounds in Px: {0}", screenBoundsInPx);
-            var screenBoundsTopLeftInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.TopLeft);
-            var screenBoundsBottomRightInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.BottomRight);
-            screenBoundsInDp = new Rect(screenBoundsTopLeftInDp.X, screenBoundsTopLeftInDp.Y,
-                screenBoundsBottomRightInDp.X - screenBoundsTopLeftInDp.X,
-                screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
             Log.DebugFormat("Screen bounds in Dp: {0}", screenBoundsInDp);
 
             PreventInvalidRestoreState();
@@ -838,8 +834,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.InfoFormat("CalculateDockSizeAndPositionInPx called with position:{0}, size:{1}", position, size);
 
             // Check if screen bounds have changed (e.g. change in resolution)
-            screen = window.GetScreen();
-            screenBoundsInPx = new Rect(screen.Bounds.Left, screen.Bounds.Top, screen.Bounds.Width, screen.Bounds.Height);
+            UpdateScreenSizeAndPosition();
 
             double x, y, width, height;
             double thicknessAsPercentage = size == DockSizes.Full
@@ -879,6 +874,18 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             return new Rect(x, y, width, height);
+        }
+
+        private void UpdateScreenSizeAndPosition()
+        {
+            screen = window.GetScreen();
+            screenBoundsInPx = new Rect(screen.Bounds.Left, screen.Bounds.Top, screen.Bounds.Width, screen.Bounds.Height);
+            Log.DebugFormat("Screen bounds in Px: {0}", screenBoundsInPx);
+            var screenBoundsTopLeftInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.TopLeft);
+            var screenBoundsBottomRightInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.BottomRight);
+            screenBoundsInDp = new Rect(screenBoundsTopLeftInDp.X, screenBoundsTopLeftInDp.Y,
+                screenBoundsBottomRightInDp.X - screenBoundsTopLeftInDp.X,
+                screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
         }
 
         private Rect CalculateMinimisedSizeAndPosition()
