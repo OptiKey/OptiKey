@@ -199,6 +199,12 @@ namespace JuliusSweetland.OptiKey.Mouse
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;
                 }
+
+                Current.Exit += (o, args) =>
+                {
+                    mainWindowManipulationService.PersistSizeAndPosition();
+                    Settings.Default.Save();
+                };
             }
             catch (Exception ex)
             {
