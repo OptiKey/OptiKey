@@ -1384,7 +1384,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void PersistSizeAndPosition()
+        public void PersistSizeAndPosition()
         {
             Log.Info("PersistSizeAndPosition called");
 
