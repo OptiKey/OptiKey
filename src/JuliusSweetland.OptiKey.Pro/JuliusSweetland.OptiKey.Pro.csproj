@@ -662,9 +662,6 @@
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\Back.ico">
       <Link>Resources\Icons\Back.ico</Link>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\Main.ico">
-      <Link>Resources\Icons\Main.ico</Link>
-    </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\Management.ico">
       <Link>Resources\Icons\Management.ico</Link>
     </Resource>

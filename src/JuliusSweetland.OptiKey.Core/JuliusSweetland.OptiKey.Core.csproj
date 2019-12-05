@@ -58,7 +58,8 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Icons\Main.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -977,7 +978,6 @@
     </Content>
     <EmbeddedResource Include="Properties\Resources.ka-GE.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
-    <Resource Include="Resources\Icons\Main.ico" />
     <None Include="..\..\LICENSE.txt">
       <Link>LICENSE.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
