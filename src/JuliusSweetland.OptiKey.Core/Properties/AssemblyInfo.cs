@@ -40,6 +40,8 @@ using System.Windows;
     // app, or any theme specific resource dictionaries)
 )]
 
+//Configure log4net - the alternative is to call "log4net.Config.XmlConfigurator.Configure();" as early as possible
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -57,7 +59,7 @@ using System.Windows;
 //MAJOR version when you make incompatible API changes,
 //MINOR version when you add functionality in a backwards-compatible manner, and
 //PATCH version when you make backwards-compatible bug fixes (in the Version class this is the Build number).
-[assembly: AssemblyVersion("3.0.1")]
+[assembly: AssemblyVersion("3.0.2")]
 
 [assembly: InternalsVisibleTo("JuliusSweetland.OptiKey.UnitTests")]
 [assembly: InternalsVisibleTo("JuliusSweetland.OptiKey.AutoCompletePerformance")]

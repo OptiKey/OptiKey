@@ -46,12 +46,17 @@ using System.Windows;
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
-//      Minor Version
+//      Minor Version 
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Build and Revision Numbers
+// You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-//[assembly: AssemblyVersion("1.0.0.0")]
-//[assembly: AssemblyFileVersion("1.0.0.0")]
+//
+//SEMANTIC VERSIONING (http://semver.org)
+//Given a version number MAJOR.MINOR.PATCH, increment the:
+//MAJOR version when you make incompatible API changes,
+//MINOR version when you add functionality in a backwards-compatible manner, and
+//PATCH version when you make backwards-compatible bug fixes (in the Version class this is the Build number).
+[assembly: AssemblyVersion("3.0.2")]
