@@ -956,6 +956,42 @@ namespace JuliusSweetland.OptiKey.Services
             return new Rect(x, y, width, height);
         }
 
+        // TODO: For optikey proper, call this from the resizing functions where appropriate
+        public void ChangeState(WindowStates newState, DockEdges dockPosition)
+        {
+            var windowState = getWindowState();
+            var dockPos = getDockPosition();
+
+            if (windowState == newState && dockPosition == dockPos)
+            {
+                return;
+            }
+
+            if (newState == WindowStates.Docked)
+            {
+                if (windowState != WindowStates.Docked)
+                {  
+                    RegisterAppBar();
+                }
+                saveWindowState(WindowStates.Docked);
+                savePreviousWindowState(WindowStates.Docked);
+                saveDockPosition(dockPosition);
+                
+                window.ResizeMode = ResizeMode.NoResize;
+
+                ResizeDockToFull();
+            }
+            else
+            {
+                UnRegisterAppBar();
+                saveWindowState(WindowStates.Floating);
+                savePreviousWindowState(WindowStates.Floating);
+                window.ResizeMode = ResizeMode.CanResizeWithGrip;
+                Restore();
+            }
+        }
+
+
         private void CoerceSavedStateAndApply()
         {
             Log.Info("CoerceSavedStateAndApply called.");
