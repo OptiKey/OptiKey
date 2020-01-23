@@ -2447,4 +2447,7 @@ Magyar
   <data name="TOP" xml:space="preserve">
     <value>Top</value>
   </data>
+  <data name="DOCK_POSITION_LABEL" xml:space="preserve">
+    <value>Dock position</value>
+  </data>
 </root>
