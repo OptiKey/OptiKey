@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
+using JuliusSweetland.OptiKey.Enums;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Properties {
@@ -7,6 +8,9 @@ namespace JuliusSweetland.OptiKey.Properties {
     public abstract class Settings : global::System.Configuration.ApplicationSettingsBase {
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        // Derived classes must specify what app they are
+        public abstract AppType GetApp();
 
         private static Settings defaultInstance;
         
