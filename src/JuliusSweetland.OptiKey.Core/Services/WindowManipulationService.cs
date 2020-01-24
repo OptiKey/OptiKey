@@ -1035,32 +1035,38 @@ namespace JuliusSweetland.OptiKey.Services
             return new Rect(x, y, width, height);
         }
 
-        // TODO: For optikey proper, call this from the resizing functions where appropriate
         public void ChangeState(WindowStates newState, DockEdges dockPosition)
         {
             var windowState = getWindowState();
             var dockPos = getDockPosition();
 
+            bool changeCurrentState = !(windowState == WindowStates.Minimised || windowState == WindowStates.Hidden);
             if (newState == WindowStates.Docked)
             {
                 if (windowState != WindowStates.Docked)
                 {  
                     RegisterAppBar(true);
-                }
-                saveWindowState(WindowStates.Docked);
+                }   
                 savePreviousWindowState(WindowStates.Docked);
                 saveDockPosition(dockPosition);
-                ResizeDockToFull();
+                if (changeCurrentState)
+                {
+                    saveWindowState(WindowStates.Docked);
+                    ResizeDockToFull();
+                }
             }
             else
             {
+                ResizeDockToFull(); // in case we're in Collapsed state
                 UnRegisterAppBar();
-                saveWindowState(WindowStates.Floating);
                 savePreviousWindowState(WindowStates.Floating);
-                Restore();
+                if (changeCurrentState)
+                {
+                    saveWindowState(WindowStates.Floating);
+                    Restore();
+                }
             }
         }
-
 
         private void CoerceSavedStateAndApply()
         {
