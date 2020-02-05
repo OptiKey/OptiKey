@@ -618,7 +618,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                         try
                         {
-                            using (ZipArchive archive = ZipFile.Open(pageset, ZipArchiveMode.Read))
+                            using (ZipArchive archive = ZipFile.Open(pageset, ZipArchiveMode.Read, Encoding.UTF8))
                             {
                                 // archive.ExtractToDirectory(path);
                                 foreach (var Entry in archive.Entries)

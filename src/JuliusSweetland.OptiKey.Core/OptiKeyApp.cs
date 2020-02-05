@@ -259,7 +259,7 @@ namespace JuliusSweetland.OptiKey
                         {
                             try
                             {
-                                using (ZipArchive archive = ZipFile.Open(@".\Resources\Presage\database.zip", ZipArchiveMode.Read))
+                                using (ZipArchive archive = ZipFile.Open(@".\Resources\Presage\database.zip", ZipArchiveMode.Read, Encoding.UTF8))
                                 {
                                     archive.ExtractToDirectory(path);
                                 }
