@@ -554,14 +554,17 @@ namespace JuliusSweetland.OptiKey.Services
                         ? screenBoundsInDp.Right - newWidth + horizontalOffset
                         : screenBoundsInDp.Width / 2d - newWidth / 2d + horizontalOffset;
                 }
+                if (oldWindowState == WindowStates.Docked)
+                    UnRegisterAppBar();
                 savePersistedState(inPersistNewState);
                 saveFloatingSizeAndPosition(new Rect(newLeft, newTop, newWidth, newHeight));
             }
             else
+            {
+                if (oldWindowState == WindowStates.Docked)
+                    UnRegisterAppBar();
                 savePersistedState(inPersistNewState);
-
-            if (oldWindowState == WindowStates.Docked && newWindowState != WindowStates.Docked)
-                UnRegisterAppBar();
+            }
 
             savePreviousWindowState(oldWindowState);
             saveWindowState(newWindowState);
