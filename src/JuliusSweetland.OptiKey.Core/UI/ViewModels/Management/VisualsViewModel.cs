@@ -6,7 +6,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
-using MahApps.Metro.Controls;
+using MahApps.Metro.Controls; //FYI this is only included in a VM to use the IsCloseTo double comparison method
 using Prism.Mvvm;
 using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
 using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
