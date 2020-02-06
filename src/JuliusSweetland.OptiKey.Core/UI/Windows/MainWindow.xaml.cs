@@ -46,11 +46,6 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             InitializeComponent();
 
-            if (Settings.Default.MainWindowState == WindowStates.Floating ||
-                Settings.Default.MainWindowPreviousState == WindowStates.Floating)
-            {
-                this.ResizeMode = ResizeMode.CanResizeWithGrip;
-            }
             this.audioService = audioService;
             this.dictionaryService = dictionaryService;
             this.inputService = inputService;
