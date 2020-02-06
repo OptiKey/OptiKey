@@ -135,25 +135,19 @@ namespace JuliusSweetland.OptiKey.Services
 
         private const Int32 WM_ENTERSIZEMOVE = 0x0231;
         private const Int32 WM_EXITSIZEMOVE = 0x0232;
-        private const Int32 WM_NCLBUTTONDBLCLK = 0x00A3; 
-
+        
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            switch (msg)
+            if (msg == WM_ENTERSIZEMOVE)
             {
-                case WM_ENTERSIZEMOVE:
-                    mouseResizeUnderway = true;
-                    break;
-                case WM_EXITSIZEMOVE:
-
-                    // This message is sent at the end of a user-resize (via window drag handles)
-                    Log.Info("WM_EXITSIZEMOVE called");
-                    mouseResizeUnderway = false;
-                    CoerceDockSizeAndPosition();
-                    break;
-                case WM_NCLBUTTONDBLCLK:
-                    handled = true;  //prevent double click from maximizing the window.
-                    break;
+                mouseResizeUnderway = true;
+            }
+            if (msg == WM_EXITSIZEMOVE)
+            {
+                // This message is sent at the end of a user-resize (via window drag handles)
+                Log.Info("WM_EXITSIZEMOVE called");
+                mouseResizeUnderway = false;
+                CoerceDockSizeAndPosition();
             }
             return IntPtr.Zero;
         }
