@@ -213,12 +213,6 @@ namespace JuliusSweetland.OptiKey.Pro
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;
                 }
-
-                Current.Exit += (o, args) =>
-                {
-                    mainWindowManipulationService.PersistSizeAndPosition();
-                    Settings.Default.Save();
-                };
             }
             catch (Exception ex)
             {

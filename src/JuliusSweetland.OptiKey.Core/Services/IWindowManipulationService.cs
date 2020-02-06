@@ -20,7 +20,6 @@ namespace JuliusSweetland.OptiKey.Services
         void Maximise();
         void Minimise();
         void Move(MoveToDirections direction, double? amountInPx);
-        void PersistSizeAndPosition();
         void ResizeDockToCollapsed();
         void ResizeDockToFull();
         void Restore();

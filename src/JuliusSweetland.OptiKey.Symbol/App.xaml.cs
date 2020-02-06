@@ -199,12 +199,6 @@ namespace JuliusSweetland.OptiKey.Symbol
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;
                 }
-
-                Current.Exit += (o, args) =>
-                {
-                    mainWindowManipulationService.PersistSizeAndPosition();
-                    Settings.Default.Save();
-                };
             }
             catch (Exception ex)
             {
