@@ -18,7 +18,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
-                    <valueConverters:BoolToCustomValues x:Key="InverseBooleanToVisibilityConverter" TrueValue="Collapsed" FalseValue="Visible" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -314,13 +313,11 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
 
                     <TextBlock Grid.Row="17" Grid.Column="0" Text="Window state" 
-                               Visibility="{Binding MaximisedApp, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="17" Grid.Column="1" 
                               ItemsSource="{Binding MainWindowStates}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              Visibility="{Binding MaximisedApp, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
                               SelectedValue="{Binding MainWindowState, Mode=TwoWay}" />
 
 

@@ -558,17 +558,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref mainWindowState, value); }
         }
 
-        public bool MaximisedApp
-        {
-            get
-            {
-                // Is this an always-maximised app?
-                AppType appType = Settings.Default.GetApp();
-                return (appType == AppType.Chat || appType == AppType.Symbol);
-            }
-        }
-
-
         #endregion
 
         #region Methods
