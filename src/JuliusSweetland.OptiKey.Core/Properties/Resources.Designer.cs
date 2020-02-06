@@ -6180,15 +6180,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Top.
-        /// </summary>
-        public static string TOP {
-            get {
-                return ResourceManager.GetString("TOP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Trigger button/key pressed again.
         /// </summary>
         public static string TRIGGER_PRESSED_AGAIN {

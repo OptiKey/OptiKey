@@ -2444,7 +2444,4 @@ Magyar
   <data name="ALLOW_MULTIPLE_INSTANCES" xml:space="preserve">
     <value>Allow multiple instances of this Optikey app to run simultaneously</value>
   </data>
-  <data name="TOP" xml:space="preserve">
-    <value>Top</value>
-  </data>
 </root>

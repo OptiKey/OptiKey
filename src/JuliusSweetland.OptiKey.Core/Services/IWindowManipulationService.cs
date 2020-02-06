@@ -13,7 +13,6 @@ namespace JuliusSweetland.OptiKey.Services
         Rect WindowBounds { get; }
         WindowStates WindowState { get; }
 
-        void ChangeState(WindowStates state, DockEdges dockPosition);
         void Expand(ExpandToDirections direction, double amountInPx);
         double GetOpacity();
         void Hide();
