@@ -877,29 +877,29 @@ namespace JuliusSweetland.OptiKey.Services
             switch (windowState)
             {
                 case WindowStates.Docked:
-                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     window.WindowState = System.Windows.WindowState.Normal;
+                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(dockPosition, getDockSize());
                     RegisterAppBar();
                     SetAppBarSizeAndPosition(dockPosition, dockSizeAndPositionInPx, isInitialising);
                     break;
 
                 case WindowStates.Floating:
-                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     window.WindowState = System.Windows.WindowState.Normal;
+                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                         new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), getFloatingSizeAndPosition());
                     break;
 
                 case WindowStates.Maximised:
-                    window.ResizeMode = ResizeMode.NoResize;
                     window.WindowState = System.Windows.WindowState.Maximized;
+                    window.ResizeMode = ResizeMode.NoResize;
                     PublishSizeAndPositionInitialised();
                     break;
 
                 case WindowStates.Minimised:
-                    window.ResizeMode = ResizeMode.NoResize;
                     window.WindowState = System.Windows.WindowState.Normal;
+                    window.ResizeMode = ResizeMode.NoResize;
                     var minimisedSizeAndPosition = CalculateMinimisedSizeAndPosition();
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                         new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), minimisedSizeAndPosition);
