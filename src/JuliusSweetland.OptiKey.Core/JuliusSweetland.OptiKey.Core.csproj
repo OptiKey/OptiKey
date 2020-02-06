@@ -222,7 +222,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\AppType.cs" />
     <Compile Include="Enums\KeyboardLayouts.cs" />
     <Compile Include="Enums\LookToScrollBounds.cs" />
     <Compile Include="Enums\LookToScrollModes.cs" />
