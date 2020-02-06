@@ -1285,15 +1285,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dock position.
-        /// </summary>
-        public static string DOCK_POSITION_LABEL {
-            get {
-                return ResourceManager.GetString("DOCK_POSITION_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to DOWN ARROW.
         /// </summary>
         public static string DOWN_ARROW {

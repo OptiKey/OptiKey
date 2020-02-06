@@ -558,6 +558,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref mainWindowState, value); }
         }
 
+        private double mainWindowOpacity;
+        public double MainWindowOpacity
+        {
+            get { return mainWindowOpacity; }
+            set { SetProperty(ref mainWindowOpacity, value); }
+        }
+
         #endregion
 
         #region Methods
@@ -591,6 +598,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
             DockPosition = Settings.Default.MainWindowDockPosition;
             MainWindowState = Settings.Default.MainWindowState;
+            MainWindowOpacity = Settings.Default.MainWindowOpacity;
         }
 
         public void ApplyChanges()
@@ -629,7 +637,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 // this also saves the changes
                 windowManipulationService.ChangeState(MainWindowState, DockPosition);
             }
-            windowManipulationService.SetOpacity(Settings.Default.MainWindowOpacity);
+            windowManipulationService.SetOpacity(MainWindowOpacity);
 
             // TODO: deal with currently-minimised state?? necessary for Optikey proper
         }
