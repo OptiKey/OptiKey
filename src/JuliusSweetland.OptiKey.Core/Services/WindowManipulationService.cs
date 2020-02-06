@@ -3,7 +3,6 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Enums;
@@ -13,7 +12,6 @@ using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -60,7 +58,6 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Action<double> saveCollapsedDockThicknessAsPercentageOfFullDockThickness;
 
         private int appBarCallBackId = -1;
-        private bool mouseResizeUnderway = false;
 
         private delegate void ApplySizeAndPositionDelegate(Rect rect);
 
@@ -125,31 +122,6 @@ namespace JuliusSweetland.OptiKey.Services
             window.SizeChanged += (sender, args) => Log.Info($"Window SizeChange event detected from {args.PreviousSize} to {args.NewSize}. (Window state is {window.WindowState}, location is left:{window.Left}, right:{window.Left + window.Width}, top:{window.Top}, bottom:{window.Top + window.Height}).");
 
             window.Closed += (_, __) => UnRegisterAppBar();
-
-            HwndSource hwndSource = HwndSource.FromHwnd(windowHandle);
-            if (hwndSource != null)
-            {
-                hwndSource.AddHook(WndProc);
-            }
-        }
-
-        private const Int32 WM_ENTERSIZEMOVE = 0x0231;
-        private const Int32 WM_EXITSIZEMOVE = 0x0232;
-        
-        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            if (msg == WM_ENTERSIZEMOVE)
-            {
-                mouseResizeUnderway = true;
-            }
-            if (msg == WM_EXITSIZEMOVE)
-            {
-                // This message is sent at the end of a user-resize (via window drag handles)
-                Log.Info("WM_EXITSIZEMOVE called");
-                mouseResizeUnderway = false;
-                CoerceDockSizeAndPosition();
-            }
-            return IntPtr.Zero;
         }
 
         #endregion
@@ -786,21 +758,13 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (wParam.ToInt32() == (int)AppBarNotify.PositionChanged)
                 {
-                    if (!mouseResizeUnderway)
-                    {
-                        Log.Info("AppBarPositionChangeCallback called with PositionChanged message.");
-                        UpdateAppBarPosition();
-                        handled = true;
-                    }
+                    Log.Info("AppBarPositionChangeCallback called with PositionChanged message.");
+                    var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                    SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
+                    handled = true;
                 }
             }
             return IntPtr.Zero;
-        }
-
-        private void UpdateAppBarPosition()
-        {
-            var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
-            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
         }
 
         private void ApplyAndPersistSizeAndPosition(Rect rect)
@@ -810,20 +774,6 @@ namespace JuliusSweetland.OptiKey.Services
 
             this.ApplySizeAndPosition(rect);
             PersistSizeAndPosition();
-        }
-
-        private void CoerceDockSizeAndPosition()
-        {
-            Log.InfoFormat("CoerceDockSizeAndPosition called");
-
-            double thicknessAsPercentage = screenBoundsInPx.Height / window.Height;
-
-            // this only allows change in height, not width (since we only dock at top/bottom this is ok)
-            var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
-            var yAdjustmentToBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : 0;
-            saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentToBottom) / screenBoundsInDp.Height) * 100);
-
-            UpdateAppBarPosition();
         }
 
         private void ApplySizeAndPosition(Rect rect)
@@ -1015,6 +965,11 @@ namespace JuliusSweetland.OptiKey.Services
             var windowState = getWindowState();
             var dockPos = getDockPosition();
 
+            if (windowState == newState && dockPosition == dockPos)
+            {
+                return;
+            }
+
             if (newState == WindowStates.Docked)
             {
                 if (windowState != WindowStates.Docked)
@@ -1024,6 +979,9 @@ namespace JuliusSweetland.OptiKey.Services
                 saveWindowState(WindowStates.Docked);
                 savePreviousWindowState(WindowStates.Docked);
                 saveDockPosition(dockPosition);
+                
+                window.ResizeMode = ResizeMode.NoResize;
+
                 ResizeDockToFull();
             }
             else
@@ -1031,6 +989,7 @@ namespace JuliusSweetland.OptiKey.Services
                 UnRegisterAppBar();
                 saveWindowState(WindowStates.Floating);
                 savePreviousWindowState(WindowStates.Floating);
+                window.ResizeMode = ResizeMode.CanResizeWithGrip;
                 Restore();
             }
         }
@@ -1574,7 +1533,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.InfoFormat("Screen bounds in px - Top:{0}, Left:{1}, Width:{2}, Height:{3}", screenBoundsInPx.Top, screenBoundsInPx.Left, screenBoundsInPx.Width, screenBoundsInPx.Height);
 
             if (getWindowState() != WindowStates.Docked) return;
-            
+
             var barData = new APPBARDATA();
             barData.cbSize = Marshal.SizeOf(barData);
             barData.hWnd = windowHandle;

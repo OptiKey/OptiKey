@@ -6,7 +6,6 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
-using MahApps.Metro.Controls; //FYI this is only included in a VM to use the IsCloseTo double comparison method
 using Prism.Mvvm;
 using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
 using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
@@ -630,9 +629,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
             
             // Changes to window state, these methods will save the new values also
-            if (Settings.Default.MainWindowState != MainWindowState || 
-                Settings.Default.MainWindowDockPosition != DockPosition ||
-                Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(MainWindowFullDockThicknessAsPercentageOfScreen))
+            if (Settings.Default.MainWindowState != MainWindowState || Settings.Default.MainWindowDockPosition != DockPosition)
             {
                 // this also saves the changes
                 windowManipulationService.ChangeState(MainWindowState, DockPosition);

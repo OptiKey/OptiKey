@@ -14,7 +14,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         Title="OptiKey"
         Topmost="True"
         AllowsTransparency="True"
-        ResizeMode="CanResizeWithGrip"
+        ResizeMode="NoResize"
         Style="{DynamicResource MainWindowStyle}"
         Tag="{Binding RelativeSource={RelativeSource Mode=Self}}">
     <!--Set background to transparent so keyboards can have transparent backgrounds-->
