@@ -243,13 +243,14 @@ namespace JuliusSweetland.OptiKey.Services
                         speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
                         speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
                     }
-                    catch (Exception exception)
+                    catch //(Exception exception)
                     {
-                        var customException = new ApplicationException(string.Format(Resources.UNABLE_TO_SET_VOICE_WARNING,
-                            voiceToUse, voice == null ? Resources.VOICE_COMES_FROM_SETTINGS : null), exception);
-                        PublishError(this, customException);
+                        //Commenting out the raising of an error notification for now
+                        //var customException = new ApplicationException(string.Format(Resources.UNABLE_TO_SET_VOICE_WARNING,
+                        //    voiceToUse, voice == null ? Resources.VOICE_COMES_FROM_SETTINGS : null), exception);
+                        //PublishError(this, customException);
 
-                        Log.Info("Switching to legacy speech mode and trying again...");
+                        Log.Warn($"Unable to speak using SpeechSynthesizer and voice '{voiceToUse}'. Switching to legacy speech mode and trying again...");
                         useLegacyMicrosoftSpeechForVoices.Add(voiceToUse);
                     }
                 }
