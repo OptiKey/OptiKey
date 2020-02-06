@@ -821,23 +821,14 @@ namespace JuliusSweetland.OptiKey.Services
         private void CoerceDockSizeAndPosition()
         {
             Log.InfoFormat("CoerceDockSizeAndPosition called");
-            
-            // If app has been manually resized in a way that doesn't respect the docking, recompute appropriate dock position 
-            DockEdges dockEdge = getDockPosition();
-            if (dockEdge == DockEdges.Bottom || dockEdge == DockEdges.Top) {
-                double thicknessAsPercentage = screenBoundsInPx.Height / window.Height;
 
-                var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
-                var yAdjustmentToBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : 0;
-                saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentToBottom) / screenBoundsInDp.Height) * 100);
-            }
-            else
-            {
-                var distanceToLeftBoundary = window.Left - screenBoundsInDp.Left;
-                var xAdjustmentToLeft = distanceToLeftBoundary < 0 ? distanceToLeftBoundary : 0;
+            double thicknessAsPercentage = screenBoundsInPx.Height / window.Height;
 
-                saveFullDockThicknessAsPercentageOfScreen(((window.ActualWidth + xAdjustmentToLeft) / screenBoundsInDp.Width) * 100);
-            }
+            // this only allows change in height, not width (since we only dock at top/bottom this is ok)
+            var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
+            var yAdjustmentToBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : 0;
+            saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentToBottom) / screenBoundsInDp.Height) * 100);
+
             UpdateAppBarPosition();
         }
 
