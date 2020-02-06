@@ -601,15 +601,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
             StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
             DockPosition = Settings.Default.MainWindowDockPosition;
-            if (Settings.Default.MainWindowState == WindowStates.Docked ||
-                Settings.Default.MainWindowState == WindowStates.Floating)
-            {
-                MainWindowState = Settings.Default.MainWindowState;
-            }
-            else
-            {
-                MainWindowState = Settings.Default.MainWindowPreviousState;
-            }
+            MainWindowState = Settings.Default.MainWindowState;
         }
 
         public void ApplyChanges()
