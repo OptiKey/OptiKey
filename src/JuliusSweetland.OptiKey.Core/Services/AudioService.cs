@@ -42,8 +42,8 @@ namespace JuliusSweetland.OptiKey.Services
         private WaitOrTimerCallback legacySpeakCompleted;
         private EventHandler onMaryTtsSpeakCompleted;
 
-        private bool legacySpeechMode;
-        private readonly Dictionary<string, int> legacyVoiceToTokenIndexLookup = new Dictionary<string, int>();
+        private readonly HashSet<string> useLegacyMicrosoftSpeechForVoices = new HashSet<string>();
+        private readonly Dictionary<string, int> legacyMicrosoftSpeechVoiceToTokenIndexLookup = new Dictionary<string, int>();
 
         #endregion
 
@@ -87,7 +87,7 @@ namespace JuliusSweetland.OptiKey.Services
                         Speak(textToSpeak, onComplete, volume, rate, voice);
                         return true;
                     }
-                    CancelSpeech();
+                    CancelSpeech(voice);
                 }
             }
             catch (Exception exception)
@@ -181,10 +181,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Private methods
 
-        private void CancelSpeech()
+        private void CancelSpeech(string voice = null)
         {
-            Log.Info("Cancelling all speech");
-            if (legacySpeechMode)
+            var voiceToUse = voice ?? Settings.Default.SpeechVoice;
+            Log.Info($"Cancelling all speech (voice = {voiceToUse})");
+            if (useLegacyMicrosoftSpeechForVoices.Contains(voiceToUse))
             {
                 Log.Warn("Cancel speech attempted, but using legacy speech synthesiser which does not support this.");
                 return;
@@ -234,7 +235,7 @@ namespace JuliusSweetland.OptiKey.Services
             var voiceToUse = voice ?? Settings.Default.SpeechVoice;
             if (!string.IsNullOrWhiteSpace(voiceToUse))
             {
-                if (!legacySpeechMode)
+                if (!useLegacyMicrosoftSpeechForVoices.Contains(voiceToUse))
                 {
                     try
                     {
@@ -249,11 +250,11 @@ namespace JuliusSweetland.OptiKey.Services
                         PublishError(this, customException);
 
                         Log.Info("Switching to legacy speech mode and trying again...");
-                        legacySpeechMode = true;
+                        useLegacyMicrosoftSpeechForVoices.Add(voiceToUse);
                     }
                 }
 
-                if (legacySpeechMode)
+                if (useLegacyMicrosoftSpeechForVoices.Contains(voiceToUse))
                 {
                     Log.Info("Attempting speech using legacy mode.");
                     try
@@ -265,9 +266,9 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         var availableVoices = legacySpeechSynthesiser.GetVoices(string.Empty, string.Empty);
-                        if (legacyVoiceToTokenIndexLookup.ContainsKey(voiceToUse))
+                        if (legacyMicrosoftSpeechVoiceToTokenIndexLookup.ContainsKey(voiceToUse))
                         {
-                            int voiceIndex = legacyVoiceToTokenIndexLookup[voiceToUse];
+                            int voiceIndex = legacyMicrosoftSpeechVoiceToTokenIndexLookup[voiceToUse];
                             Log.InfoFormat($"{voiceToUse} voice token exists at index {voiceIndex}. Setting voice on legacy speech synthesiser.");
                             legacySpeechSynthesiser.Voice = availableVoices.Item(voiceIndex);
                             Log.Info("Voice token set.");
@@ -280,7 +281,7 @@ namespace JuliusSweetland.OptiKey.Services
                                 if (voiceToken.GetDescription() == voiceToUse)
                                 {
                                     Log.InfoFormat($"{voiceToUse} voice token found at index {voiceIndex}. Setting voice on legacy speech synthesiser.");
-                                    legacyVoiceToTokenIndexLookup.Add(voiceToUse, voiceIndex);
+                                    legacyMicrosoftSpeechVoiceToTokenIndexLookup.Add(voiceToUse, voiceIndex);
                                     legacySpeechSynthesiser.Voice = voiceToken;
                                     Log.Info("Voice token set.");
                                     break;
@@ -298,7 +299,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             //Speak
-            if (!legacySpeechMode)
+            if (!useLegacyMicrosoftSpeechForVoices.Contains(voiceToUse))
             {
                 onSpeakCompleted = (sender, args) =>
                 {
