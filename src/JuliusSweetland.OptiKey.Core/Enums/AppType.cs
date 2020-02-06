@@ -6,7 +6,6 @@ namespace JuliusSweetland.OptiKey.Enums
         Pro,
         Mouse,
         Chat,
-        Symbol,
-        Tests
+        Symbol
     }
 }
