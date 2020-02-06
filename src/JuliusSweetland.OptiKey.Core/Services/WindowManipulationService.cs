@@ -974,7 +974,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (windowState != WindowStates.Docked)
                 {  
-                    RegisterAppBar(true);
+                    RegisterAppBar();
                 }
                 saveWindowState(WindowStates.Docked);
                 savePreviousWindowState(WindowStates.Docked);
@@ -1460,12 +1460,11 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
         }
-
-        private void RegisterAppBar(bool force=false)
+        private void RegisterAppBar()
         {
             Log.Info("RegisterAppBar called");
 
-            if (!force && getWindowState() != WindowStates.Docked) return;
+            if (getWindowState() != WindowStates.Docked) return;
 
             Log.Debug("WindowState is Docked, continuing to register app bar");
 
