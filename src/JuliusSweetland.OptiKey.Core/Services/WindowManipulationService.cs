@@ -577,10 +577,6 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Info("ResizeDockToCollapsed called");
 
             if (getWindowState() != WindowStates.Docked) return;
-
-            // Turn off grab handles, to avoid ambiguous requests
-            window.ResizeMode = ResizeMode.NoResize;
-
             saveDockSize(DockSizes.Collapsed);
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Collapsed);
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
@@ -591,10 +587,6 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Info("ResizeDockToFull called");
             
             if (getWindowState() != WindowStates.Docked) return;
-
-            // Turn grab handles back on
-            window.ResizeMode = ResizeMode.CanResizeWithGrip;
-
             saveDockSize(DockSizes.Full);
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
@@ -829,9 +821,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void CoerceDockSizeAndPosition()
         {
             Log.InfoFormat("CoerceDockSizeAndPosition called");
-
-            if (getWindowState() != WindowStates.Docked) return;
-
+            
             // If app has been manually resized in a way that doesn't respect the docking, recompute appropriate dock position 
             DockEdges dockEdge = getDockPosition();
             if (dockEdge == DockEdges.Bottom || dockEdge == DockEdges.Top) {
@@ -878,7 +868,6 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 case WindowStates.Docked:
                     window.WindowState = System.Windows.WindowState.Normal;
-                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(dockPosition, getDockSize());
                     RegisterAppBar();
                     SetAppBarSizeAndPosition(dockPosition, dockSizeAndPositionInPx, isInitialising);
@@ -886,20 +875,17 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case WindowStates.Floating:
                     window.WindowState = System.Windows.WindowState.Normal;
-                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                         new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), getFloatingSizeAndPosition());
                     break;
 
                 case WindowStates.Maximised:
                     window.WindowState = System.Windows.WindowState.Maximized;
-                    window.ResizeMode = ResizeMode.NoResize;
                     PublishSizeAndPositionInitialised();
                     break;
 
                 case WindowStates.Minimised:
                     window.WindowState = System.Windows.WindowState.Normal;
-                    window.ResizeMode = ResizeMode.NoResize;
                     var minimisedSizeAndPosition = CalculateMinimisedSizeAndPosition();
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                         new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), minimisedSizeAndPosition);
