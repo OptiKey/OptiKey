@@ -1116,7 +1116,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Docked")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowState {
+        public virtual global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowState {
             get {
                 return ((global::JuliusSweetland.OptiKey.Enums.WindowStates)(this["MainWindowState"]));
             }
@@ -1142,7 +1142,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Docked")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowPreviousState {
+        public virtual global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowPreviousState {
             get {
                 return ((global::JuliusSweetland.OptiKey.Enums.WindowStates)(this["MainWindowPreviousState"]));
             }

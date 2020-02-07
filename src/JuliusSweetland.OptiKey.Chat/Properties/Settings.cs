@@ -27,6 +27,33 @@ namespace JuliusSweetland.OptiKey.Chat.Properties
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Maximised")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability
+            .Roaming)]
+        public override global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowState
+        {
+            get { return WindowStates.Maximised; }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Maximised")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowPreviousState
+        {
+            get { return WindowStates.Maximised; }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public override bool ConversationOnlyMode
