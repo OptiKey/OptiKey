@@ -363,6 +363,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <Symbol>EnterIcon</Symbol>
             <Text>&#13;</Text>
         </DynamicKey>
+      
+      <!--
         <DynamicKey>
 			<Label>APICall</Label>
 			<Plugin>
@@ -378,6 +380,25 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 				</Argument>
 			</Plugin>
         </DynamicKey>
+      -->
+      <DynamicKey>
+        <Label>Translate</Label>
+        <Plugin>
+          <Name>TranslationKey</Name>
+          <Method>TRANSLATE</Method>
+          <Argument>
+            <Name>text</Name>
+            <Value>notepad.exe</Value>
+          </Argument>
+        </Plugin>
+      </DynamicKey>
+      
+      
+      
+      
+      
+      
+      
         <DynamicKey>
             <Action>ArrowLeft</Action>
             <Symbol>LeftArrowKeyIcon</Symbol>

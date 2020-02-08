@@ -164,4 +164,38 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
       </Method>
     </Methods>
   </Plugin>
+
+  <Plugin>
+    <Id>TranslationKey</Id>
+    <Impl>JuliusSweetland.OptiKey.StandardPlugins.TranslationKey</Impl>
+    <Name>Translation Key plugin</Name>
+    <Description>This is a todo description.</Description>
+    <Methods>
+      <Method>
+        <Name>TRANSLATE</Name>
+        <Description>This is a todo description.</Description>
+        <Arguments>
+          <Argument>
+            <Name>text</Name>
+            <Description>text todo</Description>
+            <Sample>sample text</Sample>
+            <Required>true</Required>
+          </Argument>
+        </Arguments>
+        <SampleConfig>
+          <![CDATA[<DynamicKey>
+  <Label>Notepad</Label>
+  <Plugin>
+    <Name>ExternalProgram</Name>
+    <Method>RUN</Method>
+    <Argument>
+      <Name>command</Name>
+      <Value>notepad.exe</Value>
+    </Argument>
+  </Plugin>
+</DynamicKey>]]>
+        </SampleConfig>
+      </Method>
+    </Methods>
+  </Plugin>
 </Plugins>
