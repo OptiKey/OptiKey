@@ -28,6 +28,10 @@ namespace JuliusSweetland.OptiKey.Models
         { get; set; }
 
         // The following are all optional
+        [XmlElement("StyleGroup")]
+        public List<XmlStyleGroup> StyleGroups
+        { get; set; }
+
         [XmlIgnore]
         public bool ShowOutputPanel
         { get; set; }
