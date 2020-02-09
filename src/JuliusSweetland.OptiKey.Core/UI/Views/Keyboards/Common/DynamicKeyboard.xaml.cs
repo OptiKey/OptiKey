@@ -60,7 +60,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             // New logic for content keyboard
             if (keyboard.Content != null)
             {
-                SetupGrid(); // Setup all the UI components 
+                SetupGrid(); // Setup all the UI components
                 if (!SetupDynamicItems()) { return; }
             }
             // Legacy logic
@@ -116,7 +116,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             return true;
         }
-
+        
         private bool ValidateKeys()
         {
             var allKeys = keyboard.Keys.ActionKeys.Cast<XmlKey>()
@@ -790,10 +790,21 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.SymbolMargin = keyboard.SymbolMargin.Value;
             }
 
+            // Set content group
+            XmlStyleGroup vStyleGroup = new XmlStyleGroup();
+            if (!string.IsNullOrEmpty(xmlKey.StyleGroup))
+            {
+                vStyleGroup = keyboard.StyleGroups.Find(x => x.Name == xmlKey.StyleGroup);
+            }
+
             // Set shared size group
             if (!string.IsNullOrEmpty(xmlKey.SharedSizeGroup))
             {
                 newKey.SharedSizeGroup = xmlKey.SharedSizeGroup;
+            }
+            else if (vStyleGroup != null && !string.IsNullOrEmpty(vStyleGroup.SharedSizeGroup))
+            {
+                newKey.SharedSizeGroup = vStyleGroup.SharedSizeGroup;
             }
             else
             {
@@ -821,22 +832,29 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
 
             //Auto set width span and height span
-            if (xmlKey.AutoScaleToOneKeyWidth)
+            if ((xmlKey.AutoScaleToOneKeyWidth) || (vStyleGroup != null && vStyleGroup.AutoScaleToOneKeyWidth))
             {
                 newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
             }
 
-            if (xmlKey.AutoScaleToOneKeyHeight)
+            if ((xmlKey.AutoScaleToOneKeyHeight) || (vStyleGroup != null && vStyleGroup.AutoScaleToOneKeyHeight))
             {
                 newKey.HeightSpan = (double)xmlKey.Height / (double)minKeyHeight;
             }
 
-            newKey.UsePersianCompatibilityFont = xmlKey.UsePersianCompatibilityFont;
-            newKey.UseUnicodeCompatibilityFont = xmlKey.UseUnicodeCompatibilityFont;
-            newKey.UseUrduCompatibilityFont = xmlKey.UseUrduCompatibilityFont;
+            if ((xmlKey.UsePersianCompatibilityFont) || (vStyleGroup != null && vStyleGroup.UsePersianCompatibilityFont))
+                newKey.UsePersianCompatibilityFont = true;
+            if ((xmlKey.UseUnicodeCompatibilityFont) || (vStyleGroup != null && vStyleGroup.UseUnicodeCompatibilityFont))
+                newKey.UseUnicodeCompatibilityFont = true;
+            if ((xmlKey.UseUrduCompatibilityFont) || (vStyleGroup != null && vStyleGroup.UseUrduCompatibilityFont))
+                newKey.UseUrduCompatibilityFont = true;
 
             SolidColorBrush colorBrush;
             if (ValidColor(xmlKey.BackgroundColor, out colorBrush))
+            {
+                newKey.BackgroundColourOverride = colorBrush;
+            }
+            else if (vStyleGroup != null && ValidColor(vStyleGroup.BackgroundColor, out colorBrush))
             {
                 newKey.BackgroundColourOverride = colorBrush;
             }
@@ -846,13 +864,26 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.ForegroundColourOverride = colorBrush;
                 newKey.DisabledForegroundColourOverride = colorBrush;
             }
+            else if (vStyleGroup != null && ValidColor(vStyleGroup.ForegroundColor, out colorBrush))
+            {
+                newKey.ForegroundColourOverride = colorBrush;
+                newKey.DisabledForegroundColourOverride = colorBrush;
+            }
 
             if (ValidColor(xmlKey.KeyDisabledBackground, out colorBrush))
             {
                 newKey.DisabledBackgroundColourOverride = colorBrush;
             }
+            else if (vStyleGroup != null && ValidColor(vStyleGroup.KeyDisabledBackground, out colorBrush))
+            {
+                newKey.DisabledBackgroundColourOverride = colorBrush;
+            }
 
             if (ValidColor(xmlKey.KeyDownBackground, out colorBrush))
+            {
+                newKey.KeyDownBackgroundOverride = colorBrush;
+            }
+            else if (vStyleGroup != null && ValidColor(vStyleGroup.KeyDownBackground, out colorBrush))
             {
                 newKey.KeyDownBackgroundOverride = colorBrush;
             }
@@ -862,8 +893,17 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 newKey.KeyDownOpacityOverride = vOpacity;
             }
+            else if (vStyleGroup != null && !string.IsNullOrEmpty(vStyleGroup.KeyDownOpacity) && double.TryParse(vStyleGroup.KeyDownOpacity, out vOpacity))
+            {
+                newKey.KeyDownOpacityOverride = vOpacity;
+            }
 
             if (!string.IsNullOrEmpty(xmlKey.Opacity) && double.TryParse(xmlKey.Opacity, out vOpacity))
+            {
+                newKey.OpacityOverride = vOpacity;
+                newKey.DisabledBackgroundOpacity = vOpacity;
+            }
+            else if (vStyleGroup != null && !string.IsNullOrEmpty(vStyleGroup.Opacity) && double.TryParse(vStyleGroup.Opacity, out vOpacity))
             {
                 newKey.OpacityOverride = vOpacity;
                 newKey.DisabledBackgroundOpacity = vOpacity;

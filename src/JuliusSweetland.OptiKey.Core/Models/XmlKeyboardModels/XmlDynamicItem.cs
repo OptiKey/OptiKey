@@ -24,6 +24,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public string KeyDownBackground { get; set; }
         [XmlAttribute] public string KeyDownOpacity { get; set; }
         [XmlAttribute] public string Opacity { get; set; }
+        [XmlAttribute] public string StyleGroup { get; set; }
     }
 
     public class XmlDynamicScratchpad : XmlDynamicItem { }

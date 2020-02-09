@@ -280,6 +280,7 @@
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyValueConverter.cs" />
     <Compile Include="Models\PluginMetadata.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlStyleGroup.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlSuggestionCol.xaml.cs">
       <DependentUpon>XmlSuggestionCol.xaml</DependentUpon>
     </Compile>
