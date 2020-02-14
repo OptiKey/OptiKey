@@ -31,13 +31,20 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private string inputFilename;
         private XmlKeyboard keyboard;
         private IDictionary<string, List<KeyValue>> keyValueByRef;
+        private IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey;
+        private IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey;
 
-        public DynamicKeyboard(MainWindow parentWindow, string inputFile, IDictionary<string, List<KeyValue>> keyValueByRef = null)
+        public DynamicKeyboard(MainWindow parentWindow, string inputFile,
+            IDictionary<string, List<KeyValue>> keyValueByRef = null,
+            IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey = null,
+            IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey = null)
         {
             InitializeComponent();
             this.mainWindow = parentWindow;
             inputFilename = inputFile;
             this.keyValueByRef = keyValueByRef;
+            this.overrideLockOnTimeByKey = overrideLockOnTimeByKey;
+            this.overrideTimeToCompleteByKey = overrideTimeToCompleteByKey;
 
             // Read in XML file, exceptions get displayed to user
             if (string.IsNullOrEmpty(inputFilename))
@@ -614,7 +621,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
                     var keyValueAsList = new List<KeyValue>();
                     keyValueAsList.Add(newKey.Value);
-
                     if (!keyValueByRef.ContainsKey("ALL"))
                         keyValueByRef.Add("ALL", keyValueAsList);
                     else if (!keyValueByRef["ALL"].Contains(newKey.Value))
@@ -629,6 +635,21 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             else if (!keyValueByRef[vKeyRef.Value.ToUpper()].Contains(newKey.Value))
                                 keyValueByRef[vKeyRef.Value.ToUpper()].Add(newKey.Value);
                         }
+                    }
+                    TimeSpan vTimeSpan;
+                    if (xmlDynamicKey.LockOnTime > 0)
+                    {
+                        if (overrideLockOnTimeByKey.TryGetValue(newKey.Value, out vTimeSpan) && vTimeSpan != TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime)))
+                            overrideLockOnTimeByKey[newKey.Value] = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime));
+                        else
+                            overrideLockOnTimeByKey.Add(newKey.Value, TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime)));
+                    }
+                    if (xmlDynamicKey.CompletionTime > 0)
+                    {
+                        if (overrideTimeToCompleteByKey.TryGetValue(newKey.Value, out vTimeSpan) && vTimeSpan != TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime)))
+                            overrideTimeToCompleteByKey[newKey.Value] = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime));
+                        else
+                            overrideTimeToCompleteByKey.Add(newKey.Value, TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime)));
                     }
                 }
             }
@@ -666,6 +687,21 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                                 Key newKey = CreateDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
                                 newKey.Value = actionKeyValue;
                                 PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
+                                TimeSpan vTimeSpan;
+                                if (xmlDynamicKey.LockOnTime > 0)
+                                {
+                                    if (overrideLockOnTimeByKey.TryGetValue(newKey.Value, out vTimeSpan) && vTimeSpan != TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime)))
+                                        overrideLockOnTimeByKey[newKey.Value] = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime));
+                                    else
+                                        overrideLockOnTimeByKey.Add(newKey.Value, TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime)));
+                                }
+                                if (xmlDynamicKey.CompletionTime > 0)
+                                {
+                                    if (overrideTimeToCompleteByKey.TryGetValue(newKey.Value, out vTimeSpan) && vTimeSpan != TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime)))
+                                        overrideTimeToCompleteByKey[newKey.Value] = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime));
+                                    else
+                                        overrideTimeToCompleteByKey.Add(newKey.Value, TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime)));
+                                }
                                 return "";
                             }
                             else
@@ -682,8 +718,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             ? keyboardEnum.ToString()
                             : Path.Combine(rootDir, vLink.Value);
 
-                                vStepList += (vLink.BackReturnsHere)
-                                    ? "<KeyboardAndReturn>" + vDestinationKeyboard
+                            vStepList += (vLink.BackReturnsHere)
+                                ? "<KeyboardAndReturn>" + vDestinationKeyboard
                                     : "<Keyboard>" + vDestinationKeyboard;
                         }
                     }
