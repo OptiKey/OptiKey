@@ -131,6 +131,26 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(PointToKeyValueMapProperty, value); }
         }
 
+        public static readonly DependencyProperty OverrideLockOnTimeByKeyProperty =
+            DependencyProperty.Register("OverrideLockOnTimeByKey", typeof(IDictionary<KeyValue, TimeSpan>), typeof(KeyboardHost),
+                new PropertyMetadata(default(IDictionary<KeyValue, TimeSpan>)));
+
+        public IDictionary<KeyValue, TimeSpan> OverrideLockOnTimeByKey
+        {
+            get { return (IDictionary<KeyValue, TimeSpan>)GetValue(OverrideLockOnTimeByKeyProperty); }
+            set { SetValue(OverrideLockOnTimeByKeyProperty, value); }
+        }
+        
+        public static readonly DependencyProperty OverrideTimeToCompleteByKeyProperty =
+            DependencyProperty.Register("OverrideTimeToCompleteByKey", typeof(IDictionary<KeyValue, TimeSpan>), typeof(KeyboardHost),
+                new PropertyMetadata(default(IDictionary<KeyValue, TimeSpan>)));
+
+        public IDictionary<KeyValue, TimeSpan> OverrideTimeToCompleteByKey
+        {
+            get { return (IDictionary<KeyValue, TimeSpan>)GetValue(OverrideTimeToCompleteByKeyProperty); }
+            set { SetValue(OverrideTimeToCompleteByKeyProperty, value); }
+        }
+
         public static readonly DependencyProperty ErrorContentProperty =
             DependencyProperty.Register("ErrorContent", typeof(object), typeof(KeyboardHost), new PropertyMetadata(default(object)));
 
@@ -190,9 +210,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 mainWindow.BorderBrushOverride = null;
             }
 
-            //Clear the dictionary
+            //Clear the dictionaries
             if (KeyValueByRef != null)
                 KeyValueByRef.Clear();
+            if (OverrideLockOnTimeByKey != null)
+                OverrideLockOnTimeByKey.Clear();
+            if (OverrideTimeToCompleteByKey != null)
+                OverrideTimeToCompleteByKey.Clear();
 
             object newContent = ErrorContent;
 
@@ -590,7 +614,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
             {
                 var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
-                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link, KeyValueByRef) { DataContext = Keyboard };
+                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link, KeyValueByRef,
+                    OverrideLockOnTimeByKey, OverrideTimeToCompleteByKey) { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)
             {

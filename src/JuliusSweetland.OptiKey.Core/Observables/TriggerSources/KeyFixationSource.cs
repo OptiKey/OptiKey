@@ -28,10 +28,12 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             FunctionKeys.SelectVoice
         };
 
-        private readonly TimeSpan lockOnTime;
+        private readonly TimeSpan defaultLockOnTime;
         private readonly bool resumeRequiresLockOn;
         private readonly TimeSpan defaultTimeToCompleteTrigger;
         private readonly IDictionary<KeyValue, TimeSpan> timeToCompleteTriggerByKey;
+        private readonly IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey;
+        private readonly IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey;
         private readonly TimeSpan incompleteFixationTtl;
         private readonly ConcurrentDictionary<KeyValue, long> incompleteFixationProgress;
         private readonly ConcurrentDictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
@@ -44,18 +46,22 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         #region Ctor
 
         public KeyFixationSource(
-            TimeSpan lockOnTime,
+            TimeSpan defaultLockOnTime,
             bool resumeRequiresLockOn,
             TimeSpan defaultTimeToCompleteTrigger,
             IDictionary<KeyValue, TimeSpan> timeToCompleteTriggerByKey,
             TimeSpan incompleteFixationTtl,
+            IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey,
+            IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey,
             IPointSource pointSource)
         {
-            this.lockOnTime = lockOnTime;
+            this.defaultLockOnTime = defaultLockOnTime;
             this.resumeRequiresLockOn = resumeRequiresLockOn;
             this.defaultTimeToCompleteTrigger = defaultTimeToCompleteTrigger;
             this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey ?? new Dictionary<KeyValue, TimeSpan>();
             this.incompleteFixationTtl = incompleteFixationTtl;
+            this.overrideLockOnTimeByKey = overrideLockOnTimeByKey;
+            this.overrideTimeToCompleteByKey = overrideTimeToCompleteByKey;
             this.pointSource = pointSource;
 
             incompleteFixationProgress = new ConcurrentDictionary<KeyValue, long>();
@@ -145,7 +151,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         //Check if the current lock-on is complete - if so start a new fixation
                                         if (lockOnStart != null
                                             && latestPointAndKeyValue.Value.KeyValue != null
-                                            && latestPointAndKeyValue.Timestamp.Subtract(lockOnStart.Value.Timestamp) >= lockOnTime)
+                                            && latestPointAndKeyValue.Timestamp.Subtract(lockOnStart.Value.Timestamp) >= GetTimeToLockOn(latestPointAndKeyValue.Value.KeyValue))
                                         {
                                             fixationStart = latestPointAndKeyValue.Timestamp;
                                             fixationCentrePointAndKeyValue = new PointAndKeyValue(latestPointAndKeyValue.Value.Point, latestPointAndKeyValue.Value.KeyValue);
@@ -285,12 +291,31 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                 FunctionKeys functionKey = keyValue.FunctionKey.Value;
 
                 if (FunctionKeysWithIgnoredStringValue.Contains(functionKey))
-                {
                     keyValue = new KeyValue(functionKey);
-                }
             }
 
-            return timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
+            TimeSpan vTimeSpan;
+            if (overrideTimeToCompleteByKey.TryGetValue(keyValue, out vTimeSpan))
+                return vTimeSpan;
+            else
+                return timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
+        }
+
+        TimeSpan GetTimeToLockOn(KeyValue keyValue)
+        {
+            if (keyValue.FunctionKey.HasValue)
+            {
+                FunctionKeys functionKey = keyValue.FunctionKey.Value;
+
+                if (FunctionKeysWithIgnoredStringValue.Contains(functionKey))
+                    keyValue = new KeyValue(functionKey);
+            }
+
+            TimeSpan vTimeSpan;
+            if (overrideLockOnTimeByKey.TryGetValue(keyValue, out vTimeSpan))
+                return vTimeSpan;
+            else
+                return defaultLockOnTime;
         }
 
         #endregion

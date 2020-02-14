@@ -25,6 +25,8 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public string KeyDownOpacity { get; set; }
         [XmlAttribute] public string Opacity { get; set; }
         [XmlAttribute] public string StyleGroup { get; set; }
+        [XmlAttribute] public int LockOnTime { get; set; } = -1;
+        [XmlAttribute] public int CompletionTime { get; set; } = -1;
     }
 
     public class XmlDynamicScratchpad : XmlDynamicItem { }

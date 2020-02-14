@@ -62,7 +62,6 @@ namespace JuliusSweetland.OptiKey
         private double tempCollapsedDockThickness;
         private Rect tempFloatingSizeAndPosition;
 
-
         #endregion
 
         #region Ctor
@@ -672,10 +671,12 @@ namespace JuliusSweetland.OptiKey
             IAudioService audioService,
             ICalibrationService calibrationService,
             ICapturingStateManager capturingStateManager,
-            List<INotifyErrors> errorNotifyingServices)
+            List<INotifyErrors> errorNotifyingServices,
+            IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey,
+            IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey)
         {
             Log.Info("Creating InputService.");
-
+            
             //Instantiate point source
             IPointSource pointSource;
             switch (Settings.Default.PointsSource)
@@ -742,8 +743,8 @@ namespace JuliusSweetland.OptiKey
                     throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
             }
 
-            //Instantiate key trigger source
-            ITriggerSource keySelectionTriggerSource;
+        //Instantiate key trigger source
+        ITriggerSource keySelectionTriggerSource;
             switch (Settings.Default.KeySelectionTriggerSource)
             {
                 case TriggerSources.Fixations:
@@ -755,6 +756,8 @@ namespace JuliusSweetland.OptiKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
                         : null,
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
+                       overrideLockOnTimeByKey,
+                       overrideTimeToCompleteByKey,
                        pointSource);
                     break;
 
