@@ -2443,8 +2443,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     foreach (var downKey in commandList.FindAll(x => (x.StartsWith("KeyToggle>") || x.StartsWith("KeyDown>"))).Distinct())
                     {
                         var keyUpCandidate = new KeyValue(downKey.Substring(downKey.IndexOf(">") + 1));
-                        if (keyStateService.KeyDownStates[keyUpCandidate].Value == KeyDownStates.Up)
-                            keyDownList.Add(keyUpCandidate);
+                        keyDownList.Add(keyUpCandidate);
                     }
 
                     await StepListCommands(singleKeyValue, multiKeySelection, commandList, 0);
