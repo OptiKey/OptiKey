@@ -30,12 +30,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private readonly MainWindow mainWindow;
         private string inputFilename;
         private XmlKeyboard keyboard;
+        private IDictionary<string, List<KeyValue>> keyValueByRef;
 
-        public DynamicKeyboard(MainWindow parentWindow, string inputFile)
+        public DynamicKeyboard(MainWindow parentWindow, string inputFile, IDictionary<string, List<KeyValue>> keyValueByRef = null)
         {
             InitializeComponent();
             this.mainWindow = parentWindow;
             inputFilename = inputFile;
+            this.keyValueByRef = keyValueByRef;
 
             // Read in XML file, exceptions get displayed to user
             if (string.IsNullOrEmpty(inputFilename))
@@ -610,6 +612,24 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     Key newKey = CreateDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
                     newKey.Value = new KeyValue(FunctionKeys.StepList, vStepList);
                     PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
+                    var keyValueAsList = new List<KeyValue>();
+                    keyValueAsList.Add(newKey.Value);
+
+                    if (!keyValueByRef.ContainsKey("ALL"))
+                        keyValueByRef.Add("ALL", keyValueAsList);
+                    else if (!keyValueByRef["ALL"].Contains(newKey.Value))
+                        keyValueByRef["ALL"].Add(newKey.Value);
+
+                    foreach (XmlDynamicKey vXmlKey in xmlDynamicKey.KeySteps)
+                    {
+                        if (vXmlKey is DynamicKeyRef vKeyRef)
+                        {
+                            if (!keyValueByRef.ContainsKey(vKeyRef.Value.ToUpper()))
+                                keyValueByRef.Add(vKeyRef.Value.ToUpper(), keyValueAsList);
+                            else if (!keyValueByRef[vKeyRef.Value.ToUpper()].Contains(newKey.Value))
+                                keyValueByRef[vKeyRef.Value.ToUpper()].Add(newKey.Value);
+                        }
+                    }
                 }
             }
             //place a key that performs no action
@@ -662,29 +682,36 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             ? keyboardEnum.ToString()
                             : Path.Combine(rootDir, vLink.Value);
 
-                            vStepList += (vLink.BackReturnsHere)
-                                ? "<KeyboardAndReturn>" + vDestinationKeyboard
-                                : "<Keyboard>" + vDestinationKeyboard;
+                                vStepList += (vLink.BackReturnsHere)
+                                    ? "<KeyboardAndReturn>" + vDestinationKeyboard
+                                    : "<Keyboard>" + vDestinationKeyboard;
                         }
                     }
                     else if (vStep is DynamicKeyDown vKeyDown)
                     {
                         if (string.IsNullOrEmpty(vKeyDown.Value))
-                            Log.ErrorFormat("Text not found for {0} ", vKeyDown.Label);
+                            Log.ErrorFormat("KeyDown text not found for {0} ", vKeyDown.Label);
                         else
                             vStepList += "<KeyDown>" + vKeyDown.Value;
                     }
                     else if (vStep is DynamicKeyUp vKeyUp)
                     {
                         if (string.IsNullOrEmpty(vKeyUp.Value))
-                            Log.ErrorFormat("Text not found for {0} ", vKeyUp.Label);
+                            Log.ErrorFormat("KeyUp text not found for {0} ", vKeyUp.Label);
                         else
                             vStepList += "<KeyUp>" + vKeyUp.Value;
+                    }
+                    else if (vStep is DynamicKeyUpByRef vKeyUpByRef)
+                    {
+                        if (string.IsNullOrEmpty(vKeyUpByRef.Value))
+                            Log.ErrorFormat("KeyUpByRef text not found for {0} ", vKeyUpByRef.Label);
+                        else
+                            vStepList += "<KeyUpByRef>" + vKeyUpByRef.Value.ToUpper();
                     }
                     else if (vStep is DynamicKeyToggle vKeyToggle)
                     {
                         if (string.IsNullOrEmpty(vKeyToggle.Value))
-                            Log.ErrorFormat("Text not found for {0} ", vKeyToggle.Label);
+                            Log.ErrorFormat("KeyToggle text not found for {0} ", vKeyToggle.Label);
                         else
                             vStepList += "<KeyToggle>" + vKeyToggle.Value;
                     }
@@ -790,7 +817,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.SymbolMargin = keyboard.SymbolMargin.Value;
             }
 
-            // Set content group
+            // Set style group
             XmlStyleGroup vStyleGroup = new XmlStyleGroup();
             if (!string.IsNullOrEmpty(xmlKey.StyleGroup))
             {

@@ -2438,7 +2438,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     var keyDownList = new List<KeyValue>();
                     keyStateService.KeyRunningStates[singleKeyValue].Value = true;
                     keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.LockedDown;
-
+                    
                     //populate keyDownList with the keys having potential to be pressed and not released
                     foreach (var downKey in commandList.FindAll(x => (x.StartsWith("KeyToggle>") || x.StartsWith("KeyDown>"))).Distinct())
                     {
@@ -2592,6 +2592,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.InfoFormat("StepListCommand: Key up on [{0}] key", commandKeyValue.String);
                         await keyboardOutputService.ProcessSingleKeyPress(commandKeyValue.String, KeyPressKeyValue.KeyPressType.Release);
                         keyStateService.KeyDownStates[commandKeyValue].Value = KeyDownStates.Up;
+                    }
+                    else if (commandList.First().StartsWith("KeyUpByRef>"))
+                    {
+                        var commandKeyRef = commandList.First().Substring(11);
+                        Log.InfoFormat("StepListCommand: Key up on [{0}] KeyRef", commandKeyRef);
+
+                        var listKeyValueByRef = keyStateService.KeyValueByRef[commandKeyRef];
+
+                        if (listKeyValueByRef != null && listKeyValueByRef.Any())
+                        {
+                            foreach (var keyValue in listKeyValueByRef)
+                            {
+                                if (keyStateService.KeyDownStates[keyValue].Value != KeyDownStates.Up)
+                                {
+                                    await keyboardOutputService.ProcessSingleKeyPress(keyValue.String, KeyPressKeyValue.KeyPressType.Release);
+                                    keyStateService.KeyDownStates[keyValue].Value = KeyDownStates.Up;
+                                }
+                            }
+                        }
                     }
                     else if (commandList.First().StartsWith("Text>"))
                     {
