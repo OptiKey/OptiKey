@@ -120,6 +120,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public IWindowManipulationService MainWindowManipulationService { get { return mainWindowManipulationService; } }
 
+        public IDictionary<string, List<KeyValue>> KeyValueByRef { get { return KeyStateService.KeyValueByRef; } }
+
         private IKeyboard keyboard;
         public IKeyboard Keyboard
         {

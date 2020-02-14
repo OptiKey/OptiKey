@@ -110,6 +110,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (IKeyboard)GetValue(KeyboardProperty); }
             set { SetValue(KeyboardProperty, value); }
         }
+        
+        public static readonly DependencyProperty KeyValueByRefProperty =
+            DependencyProperty.Register("KeyValueByRef", typeof(IDictionary<string, List<KeyValue>>), typeof(KeyboardHost),
+                new PropertyMetadata(default(IDictionary<string, List<KeyValue>>)));
+
+        public IDictionary<string, List<KeyValue>> KeyValueByRef
+        {
+            get { return (IDictionary<string, List<KeyValue>>)GetValue(KeyValueByRefProperty); }
+            set { SetValue(KeyValueByRefProperty, value); }
+        }
 
         public static readonly DependencyProperty PointToKeyValueMapProperty =
             DependencyProperty.Register("PointToKeyValueMap", typeof(Dictionary<Rect, KeyValue>),
@@ -179,6 +189,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 mainWindow.BackgroundColourOverride = null;
                 mainWindow.BorderBrushOverride = null;
             }
+
+            //Clear the dictionary
+            if (KeyValueByRef != null)
+                KeyValueByRef.Clear();
 
             object newContent = ErrorContent;
 
@@ -576,7 +590,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
             {
                 var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
-                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link) { DataContext = Keyboard };
+                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link, KeyValueByRef) { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)
             {
