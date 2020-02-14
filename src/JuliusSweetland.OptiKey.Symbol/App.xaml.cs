@@ -120,6 +120,8 @@ namespace JuliusSweetland.OptiKey.Symbol
                 }
 
                 var presageInstallationProblem = PresageInstallationProblemsDetected();
+                IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey = new Dictionary<KeyValue, TimeSpan>();
+                IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey = new Dictionary<KeyValue, TimeSpan>();
 
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
@@ -132,7 +134,8 @@ namespace JuliusSweetland.OptiKey.Symbol
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
                 IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
-                IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
+                IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService,
+                    calibrationService, capturingStateManager, errorNotifyingServices, overrideLockOnTimeByKey, overrideTimeToCompleteByKey);
                 IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
@@ -154,7 +157,8 @@ namespace JuliusSweetland.OptiKey.Symbol
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
+                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
+                    errorNotifyingServices, overrideLockOnTimeByKey, overrideTimeToCompleteByKey);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 
