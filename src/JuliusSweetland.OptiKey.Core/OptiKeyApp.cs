@@ -672,8 +672,7 @@ namespace JuliusSweetland.OptiKey
             ICalibrationService calibrationService,
             ICapturingStateManager capturingStateManager,
             List<INotifyErrors> errorNotifyingServices,
-            IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey,
-            IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey)
+            IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey)
         {
             Log.Info("Creating InputService.");
             
@@ -756,8 +755,7 @@ namespace JuliusSweetland.OptiKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
                         : null,
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
-                       overrideLockOnTimeByKey,
-                       overrideTimeToCompleteByKey,
+                       overrideTimesByKey,
                        pointSource);
                     break;
 

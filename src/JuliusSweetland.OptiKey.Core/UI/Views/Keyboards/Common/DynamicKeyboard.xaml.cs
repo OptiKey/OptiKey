@@ -31,20 +31,17 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private string inputFilename;
         private XmlKeyboard keyboard;
         private IDictionary<string, List<KeyValue>> keyValueByRef;
-        private IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey;
-        private IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey;
+        private IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
 
         public DynamicKeyboard(MainWindow parentWindow, string inputFile,
             IDictionary<string, List<KeyValue>> keyValueByRef = null,
-            IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey = null,
-            IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey = null)
+            IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey = null)
         {
             InitializeComponent();
             this.mainWindow = parentWindow;
             inputFilename = inputFile;
             this.keyValueByRef = keyValueByRef;
-            this.overrideLockOnTimeByKey = overrideLockOnTimeByKey;
-            this.overrideTimeToCompleteByKey = overrideTimeToCompleteByKey;
+            this.overrideTimesByKey = overrideTimesByKey;
 
             // Read in XML file, exceptions get displayed to user
             if (string.IsNullOrEmpty(inputFilename))
@@ -391,7 +388,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 {
                     for (int col = dynamicItem.Col; col < (dynamicItem.Col + dynamicItem.Width); col++)
                     {
-                        if (!openGrid.ElementAt(row).Exists(x => x.Equals(col))) //if the column is unavailable
+                        if (!openGrid[row].Exists(x => x == col)) //if the column is unavailable
                         {
                             SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
                                 + (vIndex + 1) + " of " + itemPosition.Count + vLabel
@@ -399,7 +396,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             return false;
                         }
                         else
-                            openGrid.ElementAt(row).Remove(col);
+                            openGrid[row].Remove(col);
                     }
                 }
                 SetupDynamicItem(dynamicItem, minKeyWidth, minKeyHeight);
@@ -432,7 +429,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     var vRowsConfirmed = 0;
 
                     //set start row to first row with enough available width for the item
-                    var startRow = dynamicItem.Row > -1 ? (openGrid.ElementAt(dynamicItem.Row).Count >= dynamicItem.Width ? dynamicItem.Row : -1)
+                    var startRow = dynamicItem.Row > -1 ? (openGrid[dynamicItem.Row].Count >= dynamicItem.Width ? dynamicItem.Row : -1)
                         : openGrid.FindIndex(x => (x.Count() >= dynamicItem.Width));
                     //if a start row with enough empty space is not found then return an error
                     if (startRow < 0)
@@ -445,48 +442,48 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     //block all preceding columns in all preceding rows
                     for (int row = 0; row < startRow; row++)
                     {
-                        if (openGrid.ElementAt(row).Any())
-                            openGrid.ElementAt(row).Clear();
+                        if (openGrid[row].Any())
+                            openGrid[row].Clear();
                     }
                     for (int row = startRow; row < keyboard.Grid.Rows; row++)
                     {
                         if (dynamicItem.Col > -1)
                         {
                             //if column exists then block all preceding columns in the row
-                            if (openGrid.ElementAt(row).Exists(x => x == dynamicItem.Col))
-                                openGrid.ElementAt(row).RemoveAll(x => x < dynamicItem.Col);
+                            if (openGrid[row].Exists(x => x == dynamicItem.Col))
+                                openGrid[row].RemoveAll(x => x < dynamicItem.Col);
                             //else block the whole row and check another 
                             else
                             {
-                                openGrid.ElementAt(row).Clear();
+                                openGrid[row].Clear();
                                 break;
                             }
                         }
                         //if height > 1 and we are searching subsequent rows then we need to start at the confirmed start column
                         var vColsConfirmed = 0;
-                        var startColumn = (vRowsConfirmed > 0) ? vItemColumn : (dynamicItem.Col > -1) ? dynamicItem.Col : openGrid.ElementAt(row).First();
-                        while (openGrid.ElementAt(row).Any())
+                        var startColumn = (vRowsConfirmed > 0) ? vItemColumn : (dynamicItem.Col > -1) ? dynamicItem.Col : openGrid[row].First();
+                        while (openGrid[row].Any())
                         {
                             //if the next open space is adjacent then increment columns confirmed
-                            if (openGrid.ElementAt(row).First() == startColumn + vColsConfirmed)
+                            if (openGrid[row].First() == startColumn + vColsConfirmed)
                             {
                                 vColsConfirmed++;
-                                openGrid.ElementAt(row).RemoveAt(0);
+                                openGrid[row].RemoveAt(0);
                                 //stop searching if we meet the width requiement
                                 if (vColsConfirmed == dynamicItem.Width)
                                     break;
                             }
                             //else if this row does not have enough additional space then block what remains and break
-                            else if (openGrid.ElementAt(row).Count < dynamicItem.Width || dynamicItem.Col > -1)
+                            else if (openGrid[row].Count < dynamicItem.Width || dynamicItem.Col > -1)
                             {
-                                openGrid.ElementAt(row).Clear();
+                                openGrid[row].Clear();
                                 break;
                             }
                             //else if the next open space is not adjacent then we need to reset
                             else
                             {
                                 vColsConfirmed = 0;
-                                startColumn = openGrid.ElementAt(row).First();
+                                startColumn = openGrid[row].First();
                             }
                         }
 
@@ -615,49 +612,33 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 var vStepList = AddDynamicStepList(xmlDynamicKey, minKeyWidth, minKeyHeight);
                 if (vStepList != "")
                 {
-                    vStepList = (vStepList == "") ? vStepList : "<StepList>" + vStepList;
-                    Key newKey = CreateDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
-                    newKey.Value = new KeyValue(FunctionKeys.StepList, vStepList);
-                    PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
-                    var keyValueAsList = new List<KeyValue>();
-                    keyValueAsList.Add(newKey.Value);
-                    if (!keyValueByRef.ContainsKey("ALL"))
-                        keyValueByRef.Add("ALL", keyValueAsList);
-                    else if (!keyValueByRef["ALL"].Contains(newKey.Value))
-                        keyValueByRef["ALL"].Add(newKey.Value);
+                    vStepList = "<StepList>" + vStepList;
+                    var xmlKeyValue = new KeyValue(FunctionKeys.StepList, vStepList);
+                    CreateDynamicKey(xmlDynamicKey, xmlKeyValue, minKeyWidth, minKeyHeight);
 
-                    foreach (XmlDynamicKey vXmlKey in xmlDynamicKey.KeySteps)
+                    var newKeyValueList = new List<KeyValue>();
+                    newKeyValueList.Add(xmlKeyValue);
+
+                    //add this item's KeyValue to the 'ALL' KeyRef list
+                    if (!keyValueByRef.ContainsKey("ALL"))
+                        keyValueByRef.Add("ALL", newKeyValueList);
+                    else if (!keyValueByRef["ALL"].Contains(xmlKeyValue))
+                        keyValueByRef["ALL"].Add(xmlKeyValue);
+
+                    //add this item's KeyValue to the KeyRef lists included in its definition
+                    foreach (DynamicKeyRef vKeyRef in xmlDynamicKey.KeyRefs)
                     {
-                        if (vXmlKey is DynamicKeyRef vKeyRef)
-                        {
-                            if (!keyValueByRef.ContainsKey(vKeyRef.Value.ToUpper()))
-                                keyValueByRef.Add(vKeyRef.Value.ToUpper(), keyValueAsList);
-                            else if (!keyValueByRef[vKeyRef.Value.ToUpper()].Contains(newKey.Value))
-                                keyValueByRef[vKeyRef.Value.ToUpper()].Add(newKey.Value);
-                        }
-                    }
-                    TimeSpan vTimeSpan;
-                    if (xmlDynamicKey.LockOnTime > 0)
-                    {
-                        if (overrideLockOnTimeByKey.TryGetValue(newKey.Value, out vTimeSpan) && vTimeSpan != TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime)))
-                            overrideLockOnTimeByKey[newKey.Value] = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime));
-                        else
-                            overrideLockOnTimeByKey.Add(newKey.Value, TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime)));
-                    }
-                    if (xmlDynamicKey.CompletionTime > 0)
-                    {
-                        if (overrideTimeToCompleteByKey.TryGetValue(newKey.Value, out vTimeSpan) && vTimeSpan != TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime)))
-                            overrideTimeToCompleteByKey[newKey.Value] = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime));
-                        else
-                            overrideTimeToCompleteByKey.Add(newKey.Value, TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime)));
+                        if (!keyValueByRef.ContainsKey(vKeyRef.Value.ToUpper()))
+                            keyValueByRef.Add(vKeyRef.Value.ToUpper(), newKeyValueList);
+                        else if (!keyValueByRef[vKeyRef.Value.ToUpper()].Contains(xmlKeyValue))
+                            keyValueByRef[vKeyRef.Value.ToUpper()].Add(xmlKeyValue);
                     }
                 }
             }
             //place a key that performs no action
             else
             {
-                Key newKey = CreateDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
-                PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
+                CreateDynamicKey(xmlDynamicKey, null, minKeyWidth, minKeyHeight);
             }
         }
 
@@ -672,36 +653,15 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 {
                     if (vStep is DynamicAction vAction)
                     {
-                        //TODO: add code to enable proper functionality 
-                        //of keydown an keyup states executed from a dynamic keyboard
-                        //also dwell duration and cooldown
-                        //also locking behavior
                         FunctionKeys actionEnum;
                         if (!Enum.TryParse(vAction.Value, out actionEnum))
                             Log.ErrorFormat("Could not parse {0} as function key", vAction.Value);
                         else
                         {
-                            var actionKeyValue = new KeyValue(actionEnum);
-                            if (KeyValues.KeysWhichCanBeLockedDown.Contains(actionKeyValue))
+                            var xmlKeyValue = new KeyValue(actionEnum);
+                            if (xmlDynamicKey.KeySteps.Count() == 1 && KeyValues.KeysWhichCanBeLockedDown.Contains(xmlKeyValue))
                             {
-                                Key newKey = CreateDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
-                                newKey.Value = actionKeyValue;
-                                PlaceKeyInPosition(newKey, xmlDynamicKey.Row, xmlDynamicKey.Col, xmlDynamicKey.Height, xmlDynamicKey.Width);
-                                TimeSpan vTimeSpan;
-                                if (xmlDynamicKey.LockOnTime > 0)
-                                {
-                                    if (overrideLockOnTimeByKey.TryGetValue(newKey.Value, out vTimeSpan) && vTimeSpan != TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime)))
-                                        overrideLockOnTimeByKey[newKey.Value] = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime));
-                                    else
-                                        overrideLockOnTimeByKey.Add(newKey.Value, TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.LockOnTime)));
-                                }
-                                if (xmlDynamicKey.CompletionTime > 0)
-                                {
-                                    if (overrideTimeToCompleteByKey.TryGetValue(newKey.Value, out vTimeSpan) && vTimeSpan != TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime)))
-                                        overrideTimeToCompleteByKey[newKey.Value] = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime));
-                                    else
-                                        overrideTimeToCompleteByKey.Add(newKey.Value, TimeSpan.FromMilliseconds(Convert.ToDouble(xmlDynamicKey.CompletionTime)));
-                                }
+                                CreateDynamicKey(xmlDynamicKey, xmlKeyValue, minKeyWidth, minKeyHeight);
                                 return "";
                             }
                             else
@@ -803,10 +763,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             return vStepList;
         }
 
-        private Key CreateDynamicKey(XmlDynamicKey xmlKey, int minKeyWidth, int minKeyHeight)
+        private Key CreateDynamicKey(XmlDynamicKey xmlKey, KeyValue xmlKeyValue, int minKeyWidth, int minKeyHeight)
         {
             // Add the core properties from XML to a new key
             Key newKey = new Key();
+            newKey.Value = xmlKeyValue;
+
             if (xmlKey.Label != null)
             {
                 string vLabel = xmlKey.Label.ToString();
@@ -853,11 +815,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.SymbolMargin = keyboard.SymbolMargin.Value;
             }
 
-            // Set style group
-            XmlStyleGroup vStyleGroup = new XmlStyleGroup();
-            if (!string.IsNullOrEmpty(xmlKey.StyleGroup))
+            //Find key's KeyGroups into a list 
+            List<XmlKeyGroup> keyGroupList = new List<XmlKeyGroup>();
+            foreach (KeyGroup keyGroup in xmlKey.KeyGroups)
             {
-                vStyleGroup = keyboard.StyleGroups.Find(x => x.Name == xmlKey.StyleGroup);
+                keyGroupList.Add(keyboard.KeyGroups.Find(x => x.Name == keyGroup.Value));
             }
 
             // Set shared size group
@@ -865,9 +827,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 newKey.SharedSizeGroup = xmlKey.SharedSizeGroup;
             }
-            else if (vStyleGroup != null && !string.IsNullOrEmpty(vStyleGroup.SharedSizeGroup))
+            else if (keyGroupList != null && keyGroupList.Exists(x => x.SharedSizeGroup != null))
             {
-                newKey.SharedSizeGroup = vStyleGroup.SharedSizeGroup;
+                newKey.SharedSizeGroup = keyGroupList.Find(x => x.SharedSizeGroup != null).SharedSizeGroup;
             }
             else
             {
@@ -895,82 +857,194 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
 
             //Auto set width span and height span
-            if ((xmlKey.AutoScaleToOneKeyWidth) || (vStyleGroup != null && vStyleGroup.AutoScaleToOneKeyWidth))
-            {
+            if (xmlKey.AutoScaleToOneKeyWidth)
                 newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
-            }
+            else if (keyGroupList != null && keyGroupList.Exists(x => x.AutoScaleToOneKeyWidth))
+                newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
 
-            if ((xmlKey.AutoScaleToOneKeyHeight) || (vStyleGroup != null && vStyleGroup.AutoScaleToOneKeyHeight))
-            {
+            if (xmlKey.AutoScaleToOneKeyHeight)
                 newKey.HeightSpan = (double)xmlKey.Height / (double)minKeyHeight;
-            }
+            else if (keyGroupList != null && keyGroupList.Exists(x => x.AutoScaleToOneKeyHeight))
+                newKey.HeightSpan = (double)xmlKey.Height / (double)minKeyHeight;
 
-            if ((xmlKey.UsePersianCompatibilityFont) || (vStyleGroup != null && vStyleGroup.UsePersianCompatibilityFont))
+            if (xmlKey.UsePersianCompatibilityFont)
                 newKey.UsePersianCompatibilityFont = true;
-            if ((xmlKey.UseUnicodeCompatibilityFont) || (vStyleGroup != null && vStyleGroup.UseUnicodeCompatibilityFont))
+            else if (keyGroupList != null && keyGroupList.Exists(x => x.UsePersianCompatibilityFont))
+                newKey.UsePersianCompatibilityFont = true;
+
+            if (xmlKey.UseUnicodeCompatibilityFont)
                 newKey.UseUnicodeCompatibilityFont = true;
-            if ((xmlKey.UseUrduCompatibilityFont) || (vStyleGroup != null && vStyleGroup.UseUrduCompatibilityFont))
+            else if (keyGroupList != null && keyGroupList.Exists(x => x.UseUnicodeCompatibilityFont))
+                newKey.UseUnicodeCompatibilityFont = true;
+
+            if (xmlKey.UseUrduCompatibilityFont)
+                newKey.UseUrduCompatibilityFont = true;
+            else if (keyGroupList != null && keyGroupList.Exists(x => x.UseUrduCompatibilityFont))
                 newKey.UseUrduCompatibilityFont = true;
 
             SolidColorBrush colorBrush;
-            if (ValidColor(xmlKey.BackgroundColor, out colorBrush))
-            {
-                newKey.BackgroundColourOverride = colorBrush;
-            }
-            else if (vStyleGroup != null && ValidColor(vStyleGroup.BackgroundColor, out colorBrush))
-            {
-                newKey.BackgroundColourOverride = colorBrush;
-            }
-
             if (ValidColor(xmlKey.ForegroundColor, out colorBrush))
-            {
                 newKey.ForegroundColourOverride = colorBrush;
-                newKey.DisabledForegroundColourOverride = colorBrush;
-            }
-            else if (vStyleGroup != null && ValidColor(vStyleGroup.ForegroundColor, out colorBrush))
-            {
+            else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.ForegroundColor, out colorBrush)))
                 newKey.ForegroundColourOverride = colorBrush;
-                newKey.DisabledForegroundColourOverride = colorBrush;
-            }
 
+            if (ValidColor(xmlKey.KeyDisabledForeground, out colorBrush))
+                newKey.DisabledForegroundColourOverride = colorBrush;
+            else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.KeyDisabledForeground, out colorBrush)))
+                newKey.DisabledForegroundColourOverride = colorBrush;
+
+            if (ValidColor(xmlKey.BackgroundColor, out colorBrush))
+                newKey.BackgroundColourOverride = colorBrush;
+            else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.BackgroundColor, out colorBrush)))
+                newKey.BackgroundColourOverride = colorBrush;
+            
             if (ValidColor(xmlKey.KeyDisabledBackground, out colorBrush))
-            {
                 newKey.DisabledBackgroundColourOverride = colorBrush;
-            }
-            else if (vStyleGroup != null && ValidColor(vStyleGroup.KeyDisabledBackground, out colorBrush))
-            {
+            else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.KeyDisabledBackground, out colorBrush)))
                 newKey.DisabledBackgroundColourOverride = colorBrush;
-            }
 
             if (ValidColor(xmlKey.KeyDownBackground, out colorBrush))
-            {
                 newKey.KeyDownBackgroundOverride = colorBrush;
-            }
-            else if (vStyleGroup != null && ValidColor(vStyleGroup.KeyDownBackground, out colorBrush))
-            {
+            else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.KeyDownBackground, out colorBrush)))
                 newKey.KeyDownBackgroundOverride = colorBrush;
-            }
 
             double vOpacity = 1;
-            if (!string.IsNullOrEmpty(xmlKey.KeyDownOpacity) && double.TryParse(xmlKey.KeyDownOpacity, out vOpacity))
-            {
-                newKey.KeyDownOpacityOverride = vOpacity;
-            }
-            else if (vStyleGroup != null && !string.IsNullOrEmpty(vStyleGroup.KeyDownOpacity) && double.TryParse(vStyleGroup.KeyDownOpacity, out vOpacity))
-            {
-                newKey.KeyDownOpacityOverride = vOpacity;
-            }
-
             if (!string.IsNullOrEmpty(xmlKey.Opacity) && double.TryParse(xmlKey.Opacity, out vOpacity))
-            {
                 newKey.OpacityOverride = vOpacity;
-                newKey.DisabledBackgroundOpacity = vOpacity;
-            }
-            else if (vStyleGroup != null && !string.IsNullOrEmpty(vStyleGroup.Opacity) && double.TryParse(vStyleGroup.Opacity, out vOpacity))
-            {
+            else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.Opacity) && double.TryParse(x.Opacity, out vOpacity)))
                 newKey.OpacityOverride = vOpacity;
+
+            if (!string.IsNullOrEmpty(xmlKey.KeyDisabledOpacity) && double.TryParse(xmlKey.KeyDisabledOpacity, out vOpacity))
                 newKey.DisabledBackgroundOpacity = vOpacity;
+            else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.KeyDisabledOpacity) && double.TryParse(x.KeyDisabledOpacity, out vOpacity)))
+                newKey.DisabledBackgroundOpacity = vOpacity;
+
+            if (!string.IsNullOrEmpty(xmlKey.KeyDownOpacity) && double.TryParse(xmlKey.KeyDownOpacity, out vOpacity))
+                newKey.KeyDownOpacityOverride = vOpacity;
+            else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.KeyDownOpacity) && double.TryParse(x.KeyDownOpacity, out vOpacity)))
+                newKey.KeyDownOpacityOverride = vOpacity;
+
+            if (xmlKeyValue != null)
+            {
+                TimeSpanOverrides timeSpanOverrides;
+                if (xmlKey.LockOnTime > 0)
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.LockOnTime));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides();
+                        timeSpanOverrides.LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.LockOnTime));
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+                else if (keyGroupList != null && keyGroupList.Exists(x => x.LockOnTime > 0))
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockOnTime > 0).LockOnTime));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides();
+                        timeSpanOverrides.LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockOnTime > 0).LockOnTime));
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+
+                if (xmlKey.CompletionTime > 0)
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.CompletionTime));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides();
+                        timeSpanOverrides.CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.CompletionTime));
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+                else if (keyGroupList != null && keyGroupList.Exists(x => x.CompletionTime > 0))
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.CompletionTime > 0).CompletionTime));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides();
+                        timeSpanOverrides.CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.CompletionTime > 0).CompletionTime));
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+
+                if (xmlKey.RepeatDelay > 0)
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatDelay));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides();
+                        timeSpanOverrides.RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatDelay));
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+                else if (keyGroupList != null && keyGroupList.Exists(x => x.RepeatDelay > 0))
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatDelay > 0).RepeatDelay));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides();
+                        timeSpanOverrides.RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatDelay > 0).RepeatDelay));
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+
+                if (xmlKey.RepeatRate > 0)
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatRate));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides();
+                        timeSpanOverrides.RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatRate));
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+                else if (keyGroupList != null && keyGroupList.Exists(x => x.RepeatRate > 0))
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatRate > 0).RepeatRate));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides();
+                        timeSpanOverrides.RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatRate > 0).RepeatRate));
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
             }
+            
+            PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
 
             return newKey;
         }

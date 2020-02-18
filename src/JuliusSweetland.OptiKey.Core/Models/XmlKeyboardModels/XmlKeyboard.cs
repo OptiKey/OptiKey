@@ -28,8 +28,8 @@ namespace JuliusSweetland.OptiKey.Models
         { get; set; }
 
         // The following are all optional
-        [XmlElement("StyleGroup")]
-        public List<XmlStyleGroup> StyleGroups
+        [XmlElement("KeyGroup")]
+        public List<XmlKeyGroup> KeyGroups
         { get; set; }
 
         [XmlIgnore]

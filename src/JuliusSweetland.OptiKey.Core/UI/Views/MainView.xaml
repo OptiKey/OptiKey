@@ -29,8 +29,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
                                KeyValueByRef="{Binding KeyValueByRef, Mode=OneWay}"
                                PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}"
-                               OverrideLockOnTimeByKey="{Binding OverrideLockOnTimeByKey, Mode=OneWay}"
-                               OverrideTimeToCompleteByKey="{Binding OverrideTimeToCompleteByKey, Mode=OneWay}">
+                               OverrideTimesByKey="{Binding OverrideTimesByKey, Mode=OneWay}">
             
             <controls:KeyboardHost.ErrorContent>
                 <Border Background="Black">

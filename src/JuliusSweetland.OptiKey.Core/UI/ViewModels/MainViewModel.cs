@@ -56,8 +56,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
-        private IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey;
-        private IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey;
+        private IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
 
         #endregion
 
@@ -76,8 +75,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IMouseOutputService mouseOutputService,
             IWindowManipulationService mainWindowManipulationService,
             List<INotifyErrors> errorNotifyingServices,
-            IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey,
-            IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey)
+            IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey)
         {
             this.audioService = audioService;
             this.calibrationService = calibrationService;
@@ -91,8 +89,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.mouseOutputService = mouseOutputService;
             this.mainWindowManipulationService = mainWindowManipulationService;
             this.errorNotifyingServices = errorNotifyingServices;
-            this.overrideLockOnTimeByKey = overrideLockOnTimeByKey;
-            this.overrideTimeToCompleteByKey = overrideTimeToCompleteByKey;
+            this.overrideTimesByKey = overrideTimesByKey;
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
@@ -127,8 +124,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public IWindowManipulationService MainWindowManipulationService { get { return mainWindowManipulationService; } }
 
         public IDictionary<string, List<KeyValue>> KeyValueByRef { get { return KeyStateService.KeyValueByRef; } }
-        public IDictionary<KeyValue, TimeSpan> OverrideLockOnTimeByKey { get { return overrideLockOnTimeByKey; } }
-        public IDictionary<KeyValue, TimeSpan> OverrideTimeToCompleteByKey { get { return overrideTimeToCompleteByKey; } }
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return overrideTimesByKey; } }
 
         private IKeyboard keyboard;
         public IKeyboard Keyboard
