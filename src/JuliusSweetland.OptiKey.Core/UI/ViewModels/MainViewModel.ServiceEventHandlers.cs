@@ -128,7 +128,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (singleKeyValue != null && singleKeyValue.FunctionKey != null && singleKeyValue.FunctionKey.Value == FunctionKeys.StepList)
                         {
                             /*
-                            StepList function keys what results when a keyboard's Dynamic key definition specifies multiple actions
+                            StepList functions allow Dynamic keys to perform multiple actions
                             The singleKeyValue in this case is a string encompassing all the commands defined by the original DynamicKey
                             
                             Here is an example Dynamic key definition and the singleKeyValue it would produce
@@ -2452,14 +2452,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     //that were pressed and not released then execute KeyUp processing
                     if (!keyStateService.KeyRunningStates[singleKeyValue].Value && keyDownList != null && keyDownList.Any())
                     {
-                        foreach (var keyUpCandidate in keyDownList)
+                        foreach (var keyUpCandidate in keyDownList.Where(x => keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
                         {
-                            if (keyStateService.KeyDownStates[keyUpCandidate].Value != KeyDownStates.Up)
-                            {
-                                Log.InfoFormat("StepList canceled. Sending key up on [{0}] key", keyUpCandidate.String);
-                                await keyboardOutputService.ProcessSingleKeyPress(keyUpCandidate.String, KeyPressKeyValue.KeyPressType.Release);
-                                keyStateService.KeyDownStates[keyUpCandidate].Value = KeyDownStates.Up;
-                            }
+                            Log.InfoFormat("StepList canceled. Sending key up on [{0}] key", keyUpCandidate.String);
+                            await keyboardOutputService.ProcessSingleKeyPress(keyUpCandidate.String, KeyPressKeyValue.KeyPressType.Release);
+                            keyStateService.KeyDownStates[keyUpCandidate].Value = KeyDownStates.Up;
                         }
                     }
                     else
@@ -2469,13 +2466,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         //if the StepList left any keys down then return without changing the StepList key to Up
                         if (keyDownList != null && keyDownList.Any())
                         {
-                            foreach (var keyUpCandidate in keyDownList)
+                            foreach (var keyUpCandidate in keyDownList.Where(x => keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
                             {
-                                if (keyStateService.KeyDownStates[keyUpCandidate].Value != KeyDownStates.Up)
-                                {
-                                    Log.InfoFormat("StepList {0} finished without changing state to Up because key [{1}] is down", singleKeyValue.String, keyUpCandidate.String);
-                                    return;
-                                }
+                                Log.InfoFormat("StepList {0} finished without changing state to Up because key [{1}] is down", singleKeyValue.String, keyUpCandidate.String);
+                                return;
                             }
                         }
                     }
@@ -2598,17 +2592,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         var commandKeyRef = commandList.First().Substring(11);
                         Log.InfoFormat("StepListCommand: Key up on [{0}] KeyRef", commandKeyRef);
 
-                        var listKeyValueByRef = keyStateService.KeyValueByRef[commandKeyRef];
-
-                        if (listKeyValueByRef != null && listKeyValueByRef.Any())
+                        List<KeyValue> listKeyValueByRef;
+                        if (keyStateService.KeyValueByRef.TryGetValue(commandKeyRef, out listKeyValueByRef))
                         {
-                            foreach (var keyValue in listKeyValueByRef)
+                            foreach (var keyValue in listKeyValueByRef.Where(x => keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
                             {
-                                if (keyStateService.KeyDownStates[keyValue].Value != KeyDownStates.Up)
-                                {
-                                    await keyboardOutputService.ProcessSingleKeyPress(keyValue.String, KeyPressKeyValue.KeyPressType.Release);
-                                    keyStateService.KeyDownStates[keyValue].Value = KeyDownStates.Up;
-                                }
+                                await keyboardOutputService.ProcessSingleKeyPress(keyValue.String, KeyPressKeyValue.KeyPressType.Release);
+                                keyStateService.KeyDownStates[keyValue].Value = KeyDownStates.Up;
                             }
                         }
                     }

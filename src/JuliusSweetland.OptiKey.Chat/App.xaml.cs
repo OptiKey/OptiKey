@@ -120,8 +120,7 @@ namespace JuliusSweetland.OptiKey.Chat
                 }
 
                 var presageInstallationProblem = PresageInstallationProblemsDetected();
-                IDictionary<KeyValue, TimeSpan> overrideLockOnTimeByKey = new Dictionary<KeyValue, TimeSpan>();
-                IDictionary<KeyValue, TimeSpan> overrideTimeToCompleteByKey = new Dictionary<KeyValue, TimeSpan>();
+                IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey = new Dictionary<KeyValue, TimeSpanOverrides>();
 
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
@@ -135,7 +134,7 @@ namespace JuliusSweetland.OptiKey.Chat
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
                 IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
                 IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService,
-                    calibrationService, capturingStateManager, errorNotifyingServices, overrideLockOnTimeByKey, overrideTimeToCompleteByKey);
+                    calibrationService, capturingStateManager, errorNotifyingServices, overrideTimesByKey);
                 IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
@@ -158,7 +157,7 @@ namespace JuliusSweetland.OptiKey.Chat
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
-                    errorNotifyingServices, overrideLockOnTimeByKey, overrideTimeToCompleteByKey);
+                    errorNotifyingServices, overrideTimesByKey);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 
