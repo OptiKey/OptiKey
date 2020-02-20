@@ -441,6 +441,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(DisabledForegroundColourOverrideProperty, value); }
         }
 
+        public static readonly DependencyProperty KeyDownForegroundOverrideProperty =
+            DependencyProperty.Register("KeyDownForegroundOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush KeyDownForegroundOverride
+        {
+            get { return (Brush)GetValue(KeyDownForegroundOverrideProperty); }
+            set { SetValue(KeyDownForegroundOverrideProperty, value); }
+        }
+
         public static readonly DependencyProperty HoverForegroundColourOverrideProperty =
             DependencyProperty.Register("HoverForegroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 

@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public class XmlDynamicKey : XmlDynamicItem
+    public class XmlDynamicKey : XmlDynamicItem , IXmlKey
     {
         public XmlDynamicKey() { }
 
@@ -13,17 +13,12 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("KeyDown", typeof(DynamicKeyDown))]
         [XmlElement("KeyUp", typeof(DynamicKeyUp))]
         [XmlElement("KeyToggle", typeof(DynamicKeyToggle))]
-        [XmlElement("KeyUpByRef", typeof(DynamicKeyUpByRef))]
         [XmlElement("Loop", typeof(DynamicLoop))]
         [XmlElement("Plugin", typeof(DynamicPlugin))]
         [XmlElement("Text", typeof(DynamicText))]
         [XmlElement("Wait", typeof(DynamicWait))]
         public List<XmlDynamicKey> KeySteps { get; } = new List<XmlDynamicKey>();
-
-        [XmlElement("KeyRef")]
-        public List<DynamicKeyRef> KeyRefs
-        { get; set; }
-
+        
         public string Label { get; set; } //Either set this, the Symbol, or both. This value become the Text value on the created Key.
         public string ShiftDownLabel { get; set; } //Optional - only required to display an alternate Text value when the shift key is down.
         public string Symbol { get; set; }
@@ -76,18 +71,6 @@ namespace JuliusSweetland.OptiKey.Models
         public string Value { get; set; }
     }
 
-    public class DynamicKeyRef
-    {
-        [XmlText]
-        public string Value { get; set; }
-    }
-
-    public class DynamicKeyUpByRef : XmlDynamicKey
-    {
-        [XmlText]
-        public string Value { get; set; }
-    }
-
     public class DynamicLoop : XmlDynamicKey
     {
         public DynamicLoop() { }
@@ -97,7 +80,6 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("KeyDown", typeof(DynamicKeyDown))]
         [XmlElement("KeyUp", typeof(DynamicKeyUp))]
         [XmlElement("KeyToggle", typeof(DynamicKeyToggle))]
-        [XmlElement("KeyUpByRef", typeof(DynamicKeyUpByRef))]
         [XmlElement("Loop", typeof(DynamicLoop))]
         [XmlElement("Plugin", typeof(DynamicPlugin))]
         [XmlElement("Text", typeof(DynamicText))]

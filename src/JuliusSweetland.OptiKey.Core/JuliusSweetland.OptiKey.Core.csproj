@@ -222,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\KeyboardLayouts.cs" />
+    <Compile Include="Enums\KeyCommands.cs" />
     <Compile Include="Enums\LookToScrollBounds.cs" />
     <Compile Include="Enums\LookToScrollModes.cs" />
     <Compile Include="Enums\LookToScrollSpeeds.cs" />
@@ -277,10 +278,12 @@
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
+    <Compile Include="Models\KeyCommand.cs" />
     <Compile Include="Models\TimeSpanOverrides.cs" />
     <Compile Include="Models\KeyValueConverter.cs" />
     <Compile Include="Models\PluginMetadata.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlKeyGroup.cs" />
+    <Compile Include="Models\XmlKeyboardModels\IXmlKeys.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlSuggestionCol.xaml.cs">
       <DependentUpon>XmlSuggestionCol.xaml</DependentUpon>
     </Compile>
@@ -291,7 +294,6 @@
       <DependentUpon>XmlScratchpad.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\XmlKeyboardModels\XmlDynamicItem.cs" />
-    <Compile Include="Models\XmlKeyboardModels\XmlMultiStepKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlDynamicKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlPluginKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />

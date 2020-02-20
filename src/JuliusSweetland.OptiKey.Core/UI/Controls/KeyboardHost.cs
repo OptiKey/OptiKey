@@ -111,14 +111,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(KeyboardProperty, value); }
         }
         
-        public static readonly DependencyProperty KeyValueByRefProperty =
-            DependencyProperty.Register("KeyValueByRef", typeof(IDictionary<string, List<KeyValue>>), typeof(KeyboardHost),
+        public static readonly DependencyProperty KeyValueByGroupProperty =
+            DependencyProperty.Register("KeyValueByGroup", typeof(IDictionary<string, List<KeyValue>>), typeof(KeyboardHost),
                 new PropertyMetadata(default(IDictionary<string, List<KeyValue>>)));
 
-        public IDictionary<string, List<KeyValue>> KeyValueByRef
+        public IDictionary<string, List<KeyValue>> KeyValueByGroup
         {
-            get { return (IDictionary<string, List<KeyValue>>)GetValue(KeyValueByRefProperty); }
-            set { SetValue(KeyValueByRefProperty, value); }
+            get { return (IDictionary<string, List<KeyValue>>)GetValue(KeyValueByGroupProperty); }
+            set { SetValue(KeyValueByGroupProperty, value); }
         }
 
         public static readonly DependencyProperty PointToKeyValueMapProperty =
@@ -201,8 +201,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
 
             //Clear the dictionaries
-            if (KeyValueByRef != null)
-                KeyValueByRef.Clear();
+            if (KeyValueByGroup != null)
+                KeyValueByGroup.Clear();
             if (OverrideTimesByKey != null)
                 OverrideTimesByKey.Clear();
 
@@ -602,7 +602,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
             {
                 var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
-                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link, KeyValueByRef,
+                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link, KeyValueByGroup,
                     OverrideTimesByKey) { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)

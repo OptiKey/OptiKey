@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Runtime.Serialization;
@@ -151,5 +152,8 @@ namespace JuliusSweetland.OptiKey.Models
             return (FunctionKey != null) ||
                    (!string.IsNullOrEmpty(String)); 
         }
+
+        public List<KeyCommand> Commands { get; set; }
+        public List<KeyValue> KeyDowns { get; set; }
     }
 }

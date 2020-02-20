@@ -4,7 +4,7 @@ using log4net;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public class XmlKey
+    public class XmlKey : IXmlKey
     {
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 

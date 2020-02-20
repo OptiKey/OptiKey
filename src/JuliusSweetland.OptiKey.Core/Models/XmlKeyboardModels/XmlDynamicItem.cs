@@ -24,6 +24,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public int Height { get; set; } = 1;
         [XmlAttribute] public string ForegroundColor { get; set; }
         [XmlAttribute] public string KeyDisabledForeground { get; set; }
+        [XmlAttribute] public string KeyDownForeground { get; set; }
         [XmlAttribute] public string BackgroundColor { get; set; }
         [XmlAttribute] public string KeyDisabledBackground { get; set; }
         [XmlAttribute] public string KeyDownBackground { get; set; }
