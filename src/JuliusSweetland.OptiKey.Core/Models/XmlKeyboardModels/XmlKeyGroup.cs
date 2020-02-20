@@ -9,6 +9,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public string Name { get; set; } //This is the name used to identify the set of characteristics
         [XmlAttribute] public string ForegroundColor { get; set; }
         [XmlAttribute] public string KeyDisabledForeground { get; set; }
+        [XmlAttribute] public string KeyDownForeground { get; set; }
         [XmlAttribute] public string BackgroundColor { get; set; }
         [XmlAttribute] public string KeyDisabledBackground { get; set; }
         [XmlAttribute] public string KeyDownBackground { get; set; }
