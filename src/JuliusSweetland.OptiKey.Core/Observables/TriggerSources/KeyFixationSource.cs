@@ -306,6 +306,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             TimeSpanOverrides vOverrides;
             if (overrideTimesByKey.TryGetValue(keyValue, out vOverrides))
             {
+                //if key is repeating apply the RepeatRate
                 if (isRepeating)
                 {
                     return vOverrides.RepeatRate > TimeSpan.Zero ? vOverrides.RepeatRate

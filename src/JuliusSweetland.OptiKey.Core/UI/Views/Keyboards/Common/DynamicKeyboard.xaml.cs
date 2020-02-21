@@ -906,8 +906,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides();
-                        timeSpanOverrides.LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.LockOnTime));
+                        timeSpanOverrides = new TimeSpanOverrides() { LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.LockOnTime)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -920,8 +919,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides();
-                        timeSpanOverrides.LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockOnTime > 0).LockOnTime));
+                        timeSpanOverrides = new TimeSpanOverrides() { LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockOnTime > 0).LockOnTime)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -935,8 +933,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides();
-                        timeSpanOverrides.CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.CompletionTime));
+                        timeSpanOverrides = new TimeSpanOverrides() { CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.CompletionTime)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -949,8 +946,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides();
-                        timeSpanOverrides.CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.CompletionTime > 0).CompletionTime));
+                        timeSpanOverrides = new TimeSpanOverrides() { CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.CompletionTime)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -964,8 +960,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides();
-                        timeSpanOverrides.RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatDelay));
+                        timeSpanOverrides = new TimeSpanOverrides() { RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatDelay)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -978,8 +973,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides();
-                        timeSpanOverrides.RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatDelay > 0).RepeatDelay));
+                        timeSpanOverrides = new TimeSpanOverrides() { RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatDelay)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -993,8 +987,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides();
-                        timeSpanOverrides.RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatRate));
+                        timeSpanOverrides = new TimeSpanOverrides() { RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatRate)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -1007,8 +1000,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides();
-                        timeSpanOverrides.RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatRate > 0).RepeatRate));
+                        timeSpanOverrides = new TimeSpanOverrides() { RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatRate)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
