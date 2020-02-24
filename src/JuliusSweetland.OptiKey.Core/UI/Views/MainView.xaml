@@ -27,6 +27,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
     <Grid>
         <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
+                               KeyFamily="{Binding KeyFamily, Mode=OneWay}"
                                KeyValueByGroup="{Binding KeyValueByGroup, Mode=OneWay}"
                                PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}"
                                OverrideTimesByKey="{Binding OverrideTimesByKey, Mode=OneWay}">

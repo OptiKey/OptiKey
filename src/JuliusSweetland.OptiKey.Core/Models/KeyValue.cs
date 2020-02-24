@@ -154,6 +154,5 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         public List<KeyCommand> Commands { get; set; }
-        public List<KeyValue> KeyDowns { get; set; }
     }
 }

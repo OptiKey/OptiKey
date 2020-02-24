@@ -123,7 +123,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public IWindowManipulationService MainWindowManipulationService { get { return mainWindowManipulationService; } }
 
-        public IDictionary<string, List<KeyValue>> KeyValueByGroup { get { return KeyStateService.KeyValueByGroup; } }
+        public List<Tuple<KeyValue, KeyValue>> KeyFamily { get { return keyStateService.KeyFamily; } }
+        public IDictionary<string, List<KeyValue>> KeyValueByGroup { get { return keyStateService.KeyValueByGroup; } }
         public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return overrideTimesByKey; } }
 
         private IKeyboard keyboard;

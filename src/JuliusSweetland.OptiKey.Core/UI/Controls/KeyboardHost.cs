@@ -110,7 +110,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (IKeyboard)GetValue(KeyboardProperty); }
             set { SetValue(KeyboardProperty, value); }
         }
-        
+
+        public static readonly DependencyProperty KeyFamilyProperty =
+            DependencyProperty.Register("KeyFamily", typeof(List<Tuple<KeyValue, KeyValue>>), typeof(KeyboardHost),
+                new PropertyMetadata(default(List<Tuple<KeyValue, KeyValue>>)));
+
+        public List<Tuple<KeyValue, KeyValue>> KeyFamily
+        {
+            get { return (List<Tuple<KeyValue, KeyValue>>)GetValue(KeyFamilyProperty); }
+            set { SetValue(KeyFamilyProperty, value); }
+        }
+
         public static readonly DependencyProperty KeyValueByGroupProperty =
             DependencyProperty.Register("KeyValueByGroup", typeof(IDictionary<string, List<KeyValue>>), typeof(KeyboardHost),
                 new PropertyMetadata(default(IDictionary<string, List<KeyValue>>)));
@@ -201,6 +211,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
 
             //Clear the dictionaries
+            if (KeyFamily != null)
+                KeyFamily.Clear();
             if (KeyValueByGroup != null)
                 KeyValueByGroup.Clear();
             if (OverrideTimesByKey != null)
@@ -602,7 +614,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
             {
                 var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
-                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link, KeyValueByGroup,
+                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link, KeyFamily, KeyValueByGroup,
                     OverrideTimesByKey) { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)

@@ -17,7 +17,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("Plugin", typeof(DynamicPlugin))]
         [XmlElement("Text", typeof(DynamicText))]
         [XmlElement("Wait", typeof(DynamicWait))]
-        public List<XmlDynamicKey> KeySteps { get; } = new List<XmlDynamicKey>();
+        public List<XmlDynamicKey> Commands { get; } = new List<XmlDynamicKey>();
         
         public string Label { get; set; } //Either set this, the Symbol, or both. This value become the Text value on the created Key.
         public string ShiftDownLabel { get; set; } //Optional - only required to display an alternate Text value when the shift key is down.
@@ -84,7 +84,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("Plugin", typeof(DynamicPlugin))]
         [XmlElement("Text", typeof(DynamicText))]
         [XmlElement("Wait", typeof(DynamicWait))]
-        public List<XmlDynamicKey> LoopSteps { get; } = new List<XmlDynamicKey>();
+        public List<XmlDynamicKey> LoopCommands { get; } = new List<XmlDynamicKey>();
 
         [XmlAttribute] public int Count { get; set; } = 1; //The number of loop repetitions
     }
