@@ -303,27 +303,26 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             }
 
             //check if this key has any override times
-            TimeSpanOverrides vOverrides;
-            if (overrideTimesByKey.TryGetValue(keyValue, out vOverrides))
+            if (overrideTimesByKey.TryGetValue(keyValue, out var timeSpanOverrides))
             {
                 //if key is repeating apply the RepeatRate
                 if (isRepeating)
                 {
-                    return vOverrides.RepeatRate > TimeSpan.Zero ? vOverrides.RepeatRate
-                        : vOverrides.CompletionTime > TimeSpan.Zero ? vOverrides.CompletionTime
+                    return timeSpanOverrides.RepeatRate > TimeSpan.Zero ? timeSpanOverrides.RepeatRate
+                        : timeSpanOverrides.CompletionTime > TimeSpan.Zero ? timeSpanOverrides.CompletionTime
                         : timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
                 }
                 //if we have the same KeyValue and haven't started repetitive keystroke then use the RepeatDelay time
                 else if (lastKeyValue != null && keyValue == lastKeyValue)
                 {
-                    return vOverrides.RepeatDelay > TimeSpan.Zero ? vOverrides.RepeatDelay
-                        : vOverrides.CompletionTime > TimeSpan.Zero ? vOverrides.CompletionTime
+                    return timeSpanOverrides.RepeatDelay > TimeSpan.Zero ? timeSpanOverrides.RepeatDelay
+                        : timeSpanOverrides.CompletionTime > TimeSpan.Zero ? timeSpanOverrides.CompletionTime
                         : timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
                 }
                 //if fixating on a new key use the normal CompletionTime
                 else
                 {
-                    return vOverrides.CompletionTime > TimeSpan.Zero ? vOverrides.CompletionTime
+                    return timeSpanOverrides.CompletionTime > TimeSpan.Zero ? timeSpanOverrides.CompletionTime
                         : timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
                 }
             }
@@ -345,9 +344,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                     keyValue = new KeyValue(functionKey);
             }
 
-            TimeSpanOverrides vOverrides;
-            if (overrideTimesByKey.TryGetValue(keyValue, out vOverrides))
-                return vOverrides.LockOnTime;
+            if (overrideTimesByKey.TryGetValue(keyValue, out var timeSpanOverrides))
+                return timeSpanOverrides.LockOnTime;
             else 
                 return defaultLockOnTime;
         }

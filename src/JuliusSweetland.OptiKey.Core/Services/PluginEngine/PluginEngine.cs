@@ -81,7 +81,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
             if (key.Argument.Any())
             {
                 // FIXME: This logic does not support two methods with the same name and different arguments
-                methodArgs = new List<String>();
+                methodArgs = new List<string>();
                 foreach (MethodInfo pluginMethod in plugin.Type.GetMethods())
                 {
                     if (pluginMethod.Name.Equals(key.Method))

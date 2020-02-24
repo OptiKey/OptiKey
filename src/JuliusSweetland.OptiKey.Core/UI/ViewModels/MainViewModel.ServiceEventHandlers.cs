@@ -2442,29 +2442,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.InfoFormat("CommandList called with command count: {0}, nest level: {1}", commandList.Count, nestLevel);
             
-            foreach(KeyCommand vCommand in commandList)
+            foreach(KeyCommand keyCommand in commandList)
             {
                 //if an external process has ordered this key to stop then return
                 if (!keyStateService.KeyRunningStates[singleKeyValue].Value) 
                     return;
 
-                if (vCommand.Name == KeyCommands.Loop)
+                if (keyCommand.Name == KeyCommands.Loop)
                 {
-                    var loopCount = Int32.Parse(vCommand.Value);
+                    var loopCount = Int32.Parse(keyCommand.Value);
                     var logMessage = loopCount > 0 ? loopCount + " times" : "indefinitely until stopped";
                     Log.InfoFormat("CommandList: Looping {0}", logMessage);
 
                     while (keyStateService.KeyRunningStates[singleKeyValue].Value)
                     {
                         var loopCommandList = new List<KeyCommand>();
-                        loopCommandList.AddRange(vCommand.LoopCommands);
+                        loopCommandList.AddRange(keyCommand.LoopCommands);
 
                         //when calling another instance do so with a larger nestLevel
                         await CommandList(singleKeyValue, multiKeySelection, loopCommandList, nestLevel + 1);
 
                         //we need to throttle if in a perpetual loop with no nested loop and no pre-defined wait 
-                        if (loopCount < 1 && !vCommand.LoopCommands.Exists(x => x.Name == KeyCommands.Loop)
-                            && !vCommand.LoopCommands.Exists(x => x.Name == KeyCommands.Wait))
+                        if (loopCount < 1 && !keyCommand.LoopCommands.Exists(x => x.Name == KeyCommands.Loop)
+                            && !keyCommand.LoopCommands.Exists(x => x.Name == KeyCommands.Wait))
                         {
                             int waitMs = 500;
                             Log.InfoFormat("Throttling perpetual loop for {0}ms", waitMs);
@@ -2481,68 +2481,68 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else
                 {
-                    if (vCommand.Name == KeyCommands.Action)
+                    if (keyCommand.Name == KeyCommands.Action)
                     {
-                        Log.InfoFormat("CommandList: Press function key: {0}", vCommand.KeyValue.FunctionKey.ToString());
-                        KeySelectionResult(vCommand.KeyValue, multiKeySelection);
+                        Log.InfoFormat("CommandList: Press function key: {0}", keyCommand.KeyValue.FunctionKey.ToString());
+                        KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
                     }
-                    else if (vCommand.Name == KeyCommands.ChangeKeyboard)
+                    else if (keyCommand.Name == KeyCommands.ChangeKeyboard)
                     {
                         Log.InfoFormat("CommandList: Change keyboard");
-                        KeySelectionResult(vCommand.KeyValue, multiKeySelection);
+                        KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
                     }
-                    else if (vCommand.Name == KeyCommands.KeyDown)
+                    else if (keyCommand.Name == KeyCommands.KeyDown)
                     {
-                        Log.InfoFormat("CommandList: Key down on [{0}] key", vCommand.KeyValue.String);
-                        await keyboardOutputService.ProcessSingleKeyPress(vCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                        keyStateService.KeyDownStates[vCommand.KeyValue].Value = KeyDownStates.LockedDown;
+                        Log.InfoFormat("CommandList: Key down on [{0}] key", keyCommand.KeyValue.String);
+                        await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
+                        keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
                     }
-                    else if (vCommand.Name == KeyCommands.KeyToggle)
+                    else if (keyCommand.Name == KeyCommands.KeyToggle)
                     {
-                        if (keyStateService.KeyDownStates[vCommand.KeyValue].Value != KeyDownStates.Up)
+                        if (keyStateService.KeyDownStates[keyCommand.KeyValue].Value != KeyDownStates.Up)
                         {
-                            Log.InfoFormat("CommandList: Toggle key up on [{0}] key", vCommand.KeyValue.String);
-                            await KeyUpProcessing(singleKeyValue, vCommand.KeyValue);
+                            Log.InfoFormat("CommandList: Toggle key up on [{0}] key", keyCommand.KeyValue.String);
+                            await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
                         }
                         else
                         {
-                            Log.InfoFormat("CommandList: Toggle key down on [{0}] key", vCommand.KeyValue.String);
-                            await keyboardOutputService.ProcessSingleKeyPress(vCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                            keyStateService.KeyDownStates[vCommand.KeyValue].Value = KeyDownStates.LockedDown;
+                            Log.InfoFormat("CommandList: Toggle key down on [{0}] key", keyCommand.KeyValue.String);
+                            await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
+                            keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
                         }
                     }
-                    else if (vCommand.Name == KeyCommands.KeyUp)
+                    else if (keyCommand.Name == KeyCommands.KeyUp)
                     {
-                        Log.InfoFormat("CommandList: Key up on [{0}]", vCommand.KeyValue.String);
-                        await KeyUpProcessing(singleKeyValue, vCommand.KeyValue);
+                        Log.InfoFormat("CommandList: Key up on [{0}]", keyCommand.KeyValue.String);
+                        await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
 
                         //the KeyUp value could be a KeyGroup so add any matches from KeyValueByGroup
-                        if (keyStateService.KeyValueByGroup.ContainsKey(vCommand.KeyValue.String.ToUpper()))
+                        if (keyStateService.KeyValueByGroup.ContainsKey(keyCommand.KeyValue.String.ToUpper()))
                         {
                             var keyValueList = new List<KeyValue>();
-                            keyValueList.Add(vCommand.KeyValue);
-                            keyValueList.AddRange(KeyStateService.KeyValueByGroup[vCommand.KeyValue.String.ToUpper()]);
+                            keyValueList.Add(keyCommand.KeyValue);
+                            keyValueList.AddRange(KeyStateService.KeyValueByGroup[keyCommand.KeyValue.String.ToUpper()]);
                             foreach (var keyValue in keyValueList.Where(x => keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
                             {
                                 await KeyUpProcessing(singleKeyValue, keyValue);
                             }
                         }
                     }
-                    else if (vCommand.Name == KeyCommands.Text)
+                    else if (keyCommand.Name == KeyCommands.Text)
                     {
-                        Log.InfoFormat("CommandList: Text of [{0}]", vCommand.KeyValue.String);
-                        KeySelectionResult(vCommand.KeyValue, multiKeySelection);
+                        Log.InfoFormat("CommandList: Text of [{0}]", keyCommand.KeyValue.String);
+                        KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
                     }
-                    else if (vCommand.Name == KeyCommands.Wait)
+                    else if (keyCommand.Name == KeyCommands.Wait)
                     {
-                        var waitMs = int.Parse(vCommand.Value);
+                        var waitMs = int.Parse(keyCommand.Value);
                         Log.InfoFormat("CommandList: Wait of {0}ms", waitMs);
                         await Task.Delay(waitMs);
                     }
-                    else if (vCommand.Name == KeyCommands.Plugin)
+                    else if (keyCommand.Name == KeyCommands.Plugin)
                     {
-                        Log.InfoFormat("CommandList: Plugin [{0}]", vCommand.Value);
-                        RunDynamicPlugin(vCommand.Plugin);
+                        Log.InfoFormat("CommandList: Plugin [{0}]", keyCommand.Value);
+                        RunDynamicPlugin(keyCommand.Plugin);
                     }
                 }
             }
