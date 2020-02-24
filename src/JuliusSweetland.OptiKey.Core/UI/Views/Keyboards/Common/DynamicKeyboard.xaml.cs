@@ -30,18 +30,19 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private readonly MainWindow mainWindow;
         private string inputFilename;
         private XmlKeyboard keyboard;
+        private List<Tuple<KeyValue, KeyValue>> keyFamily;
         private IDictionary<string, List<KeyValue>> keyValueByGroup;
         private IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
-        //keyDownList is a collection of KeyValues that could potentially be left down when a key is triggerred
-        private List<KeyValue> keyDownList;
 
-        public DynamicKeyboard(MainWindow parentWindow, string inputFile,
+        public DynamicKeyboard(MainWindow parentWindow, string inputFile, 
+            List<Tuple<KeyValue, KeyValue>> keyFamily = null,
             IDictionary<string, List<KeyValue>> keyValueByGroup = null,
             IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey = null)
         {
             InitializeComponent();
             this.mainWindow = parentWindow;
             inputFilename = inputFile;
+            this.keyFamily = keyFamily;
             this.keyValueByGroup = keyValueByGroup;
             this.overrideTimesByKey = overrideTimesByKey;
 
@@ -526,7 +527,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             if (dynamicItem is XmlDynamicKey xmlDynamicKey)
             {
-                keyDownList = new List<KeyValue>();
                 AddDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
             }
             else if (dynamicItem is XmlDynamicScratchpad xmlScratchpadItem)
@@ -596,38 +596,16 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         private void AddDynamicKey(XmlDynamicKey xmlDynamicKey, int minKeyWidth, int minKeyHeight)
         {
-            if (xmlDynamicKey.KeySteps.Any())
+            if (xmlDynamicKey.Commands.Any())
             {
                 var vCommandList = AddCommandList(xmlDynamicKey, minKeyWidth, minKeyHeight);
                 if (vCommandList != null && vCommandList.Any())
                 {
-                    var xmlKeyValue = new KeyValue("Key" + "-" + xmlDynamicKey.Row.ToString() + "-" + xmlDynamicKey.Col.ToString())
+                    var xmlKeyValue = new KeyValue("R" + xmlDynamicKey.Row.ToString() + "-C" + xmlDynamicKey.Col.ToString())
                     {
-                        Commands = vCommandList, KeyDowns = keyDownList
+                        Commands = vCommandList
                     };
                     CreateDynamicKey(xmlDynamicKey, xmlKeyValue, minKeyWidth, minKeyHeight);
-
-                    var newKeyValueList = new List<KeyValue>();
-                    newKeyValueList.Add(xmlKeyValue);
-
-                    //add this item's KeyValue to the 'ALL' KeyGroup list
-                    if (!keyValueByGroup.ContainsKey("ALL"))
-                        keyValueByGroup.Add("ALL", newKeyValueList);
-                    else if (!keyValueByGroup["ALL"].Contains(xmlKeyValue))
-                        keyValueByGroup["ALL"].Add(xmlKeyValue);
-
-                    //add this item's KeyValue to each KeyGroup referenced in its definition
-                    foreach (KeyGroup vKeyGroup in xmlDynamicKey.KeyGroups)
-                    {
-                        if (!keyValueByGroup.ContainsKey(vKeyGroup.Value.ToUpper()))
-                            keyValueByGroup.Add(vKeyGroup.Value.ToUpper(), newKeyValueList);
-                        else if (!keyValueByGroup[vKeyGroup.Value.ToUpper()].Contains(xmlKeyValue))
-                            keyValueByGroup[vKeyGroup.Value.ToUpper()].Add(xmlKeyValue);
-
-                        //add each new KeyValue from this item's keyDownList to the KeyGroup
-                        keyValueByGroup[vKeyGroup.Value.ToUpper()].AddRange(keyDownList
-                            .Where(x => !keyValueByGroup[vKeyGroup.Value.ToUpper()].Contains(x)));
-                    }
                 }
             }
             //place a key that performs no action
@@ -637,31 +615,32 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         private List<KeyCommand> AddCommandList(XmlDynamicKey xmlDynamicKey, int minKeyWidth, int minKeyHeight)
         {
+            var xmlKeyValue = new KeyValue("R" + xmlDynamicKey.Row.ToString() + "-C" + xmlDynamicKey.Col.ToString());
             var vCommandList = new List<KeyCommand>();
             KeyValue commandKeyValue;
-            if (xmlDynamicKey.KeySteps.Any())
+            if (xmlDynamicKey.Commands.Any())
             {
                 var rootDir = Path.GetDirectoryName(inputFilename);
-                foreach (XmlDynamicKey vStep in xmlDynamicKey.KeySteps)
+                foreach (XmlDynamicKey vCommand in xmlDynamicKey.Commands)
                 {
-                    if (vStep is DynamicAction vAction)
+                    if (vCommand is DynamicAction vAction)
                     {
                         FunctionKeys actionEnum;
                         if (!Enum.TryParse(vAction.Value, out actionEnum))
                             Log.ErrorFormat("Could not parse {0} as function key", vAction.Value);
                         else
                         {
-                            var xmlKeyValue = new KeyValue(actionEnum);
-                            if (xmlDynamicKey.KeySteps.Count() == 1 && KeyValues.KeysWhichCanBeLockedDown.Contains(xmlKeyValue))
+                            commandKeyValue = new KeyValue(actionEnum);
+                            if (xmlDynamicKey.Commands.Count() == 1 && KeyValues.KeysWhichCanBeLockedDown.Contains(commandKeyValue))
                             {
-                                CreateDynamicKey(xmlDynamicKey, xmlKeyValue, minKeyWidth, minKeyHeight);
+                                CreateDynamicKey(xmlDynamicKey, commandKeyValue, minKeyWidth, minKeyHeight);
                                 return null;
                             }
                             else
                                 vCommandList.Add(new KeyCommand(KeyCommands.Action, new KeyValue(actionEnum)));
                         }
                     }
-                    else if (vStep is DynamicLink vLink)
+                    else if (vCommand is DynamicLink vLink)
                     {
                         if (string.IsNullOrEmpty(vLink.Value))
                             Log.ErrorFormat("Destination Keyboard not found for {0} ", vLink.Label);
@@ -675,43 +654,45 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             vCommandList.Add(new KeyCommand(KeyCommands.ChangeKeyboard, commandKeyValue));
                         }
                     }
-                    else if (vStep is DynamicKeyDown vKeyDown)
+                    else if (vCommand is DynamicKeyDown vKeyDown)
                     {
                         if (string.IsNullOrEmpty(vKeyDown.Value))
                             Log.ErrorFormat("KeyDown text not found for {0} ", vKeyDown.Label);
                         else
                         {
-                            vCommandList.Add(new KeyCommand(KeyCommands.KeyDown, new KeyValue(vKeyDown.Value)));
-                            if (!keyDownList.Contains(new KeyValue(vKeyDown.Value)))
-                                keyDownList.Add(new KeyValue(vKeyDown.Value));
+                            commandKeyValue = new KeyValue(vKeyDown.Value);
+                            vCommandList.Add(new KeyCommand(KeyCommands.KeyDown, commandKeyValue));
+                            if (!keyFamily.Contains(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue)))
+                                keyFamily.Add(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue));
                         }
                     }
-                    else if (vStep is DynamicKeyToggle vKeyToggle)
+                    else if (vCommand is DynamicKeyToggle vKeyToggle)
                     {
                         if (string.IsNullOrEmpty(vKeyToggle.Value))
                             Log.ErrorFormat("KeyToggle text not found for {0} ", vKeyToggle.Label);
                         else
                         {
-                            vCommandList.Add(new KeyCommand(KeyCommands.KeyToggle, new KeyValue(vKeyToggle.Value)));
-                            if (!keyDownList.Contains(new KeyValue(vKeyToggle.Value)))
-                                keyDownList.Add(new KeyValue(vKeyToggle.Value));
+                            commandKeyValue = new KeyValue(vKeyToggle.Value);
+                            vCommandList.Add(new KeyCommand(KeyCommands.KeyToggle, commandKeyValue));
+                            if (!keyFamily.Contains(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue)))
+                                keyFamily.Add(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue));
                         }
                     }
-                    else if (vStep is DynamicKeyUp vKeyUp)
+                    else if (vCommand is DynamicKeyUp vKeyUp)
                     {
                         if (string.IsNullOrEmpty(vKeyUp.Value))
                             Log.ErrorFormat("KeyUp text not found for {0} ", vKeyUp.Label);
                         else
                             vCommandList.Add(new KeyCommand(KeyCommands.KeyUp, new KeyValue(vKeyUp.Value)));
                     }
-                    else if (vStep is DynamicText vText)
+                    else if (vCommand is DynamicText vText)
                     {
                         if (string.IsNullOrEmpty(vText.Value))
                             Log.ErrorFormat("Text not found for {0} ", vText.Label);
                         else
                             vCommandList.Add(new KeyCommand(KeyCommands.Text, new KeyValue(vText.Value)));
                     }
-                    else if (vStep is DynamicWait vWait)
+                    else if (vCommand is DynamicWait vWait)
                     {
                         int waitInt;
                         if (!int.TryParse(vWait.Value, out waitInt))
@@ -719,7 +700,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         else
                             vCommandList.Add(new KeyCommand() { Name = KeyCommands.Wait, Value = vWait.Value } );
                     }
-                    else if (vStep is DynamicPlugin vPlugin)
+                    else if (vCommand is DynamicPlugin vPlugin)
                     {
                         if (string.IsNullOrWhiteSpace(vPlugin.Name))
                             Log.ErrorFormat("Plugin not found for {0} ", vPlugin.Label);
@@ -728,7 +709,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         else
                             vCommandList.Add(new KeyCommand() { Name = KeyCommands.Plugin, Plugin = vPlugin } );
                     }
-                    else if (vStep is DynamicLoop vkeyLoop)
+                    else if (vCommand is DynamicLoop vkeyLoop)
                     {
                         var vReturn = AddCommandList(vkeyLoop, minKeyWidth, minKeyHeight);
                         if (vReturn != null && vReturn.Any())
@@ -748,8 +729,22 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private Key CreateDynamicKey(XmlDynamicKey xmlKey, KeyValue xmlKeyValue, int minKeyWidth, int minKeyHeight)
         {
             // Add the core properties from XML to a new key
-            Key newKey = new Key();
-            newKey.Value = xmlKeyValue;
+            Key newKey = new Key() { Value = xmlKeyValue };
+            
+            //add this item's KeyValue to the 'ALL' KeyGroup list
+            if (!keyValueByGroup.ContainsKey("ALL"))
+                keyValueByGroup.Add("ALL", new List<KeyValue> { xmlKeyValue });
+            else if (!keyValueByGroup["ALL"].Contains(xmlKeyValue))
+                keyValueByGroup["ALL"].Add(xmlKeyValue);
+
+            //add this item's KeyValue to each KeyGroup referenced in its definition
+            foreach (KeyGroup vKeyGroup in xmlKey.KeyGroups)
+            {
+                if (!keyValueByGroup.ContainsKey(vKeyGroup.Value.ToUpper()))
+                    keyValueByGroup.Add(vKeyGroup.Value.ToUpper(), new List<KeyValue> { xmlKeyValue });
+                else if (!keyValueByGroup[vKeyGroup.Value.ToUpper()].Contains(xmlKeyValue))
+                    keyValueByGroup[vKeyGroup.Value.ToUpper()].Add(xmlKeyValue);
+            }
 
             if (xmlKey.Label != null)
             {
@@ -946,7 +941,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides() { CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.CompletionTime)) };
+                        timeSpanOverrides = new TimeSpanOverrides() { CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.CompletionTime > 0).CompletionTime)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -973,7 +968,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides() { RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatDelay)) };
+                        timeSpanOverrides = new TimeSpanOverrides() { RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatDelay > 0).RepeatDelay)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -1000,7 +995,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides() { RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatRate)) };
+                        timeSpanOverrides = new TimeSpanOverrides() { RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatRate > 0).RepeatRate)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
@@ -1038,7 +1033,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             foreach (XmlDynamicKey key in keys.DynamicKeys)
             {
-                keyDownList = new List<KeyValue>();
                 AddDynamicKey(key, minKeyWidth, minKeyHeight);
             }
 

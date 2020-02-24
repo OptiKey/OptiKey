@@ -2410,13 +2410,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 //if the Task was stopped by an external process and there are any keys
                 //that were pressed and not released then execute KeyUp processing
-                if (!keyStateService.KeyRunningStates[singleKeyValue].Value && singleKeyValue.KeyDowns != null && singleKeyValue.KeyDowns.Any())
+                if (!keyStateService.KeyRunningStates[singleKeyValue].Value)
                 {
-                    foreach (var keyUpCandidate in singleKeyValue.KeyDowns.Where(x => keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
+                    foreach (var keyUpCandidate in keyStateService.KeyFamily.Where(x => x.Item1 == singleKeyValue
+                        && keyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up))
                     {
-                        Log.InfoFormat("CommandKey canceled. Sending key up on [{0}] key", keyUpCandidate.String);
-                        await keyboardOutputService.ProcessSingleKeyPress(keyUpCandidate.String, KeyPressKeyValue.KeyPressType.Release);
-                        keyStateService.KeyDownStates[keyUpCandidate].Value = KeyDownStates.Up;
+                        Log.InfoFormat("CommandKey canceled. Sending key up on [{0}] key", keyUpCandidate.Item2.String);
+                        await keyboardOutputService.ProcessSingleKeyPress(keyUpCandidate.Item2.String, KeyPressKeyValue.KeyPressType.Release);
+                        keyStateService.KeyDownStates[keyUpCandidate.Item2].Value = KeyDownStates.Up;
                     }
                 }
                 else
@@ -2424,13 +2425,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     keyStateService.KeyRunningStates[singleKeyValue].Value = false;
 
                     //if the Task left any keys down then return without changing the singleKeyValue to Up
-                    if (singleKeyValue.KeyDowns != null && singleKeyValue.KeyDowns.Any())
+                    var keyUpCandidate = keyStateService.KeyFamily.Find(x => x.Item1 == singleKeyValue
+                        && keyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up);
+                    if (keyUpCandidate != null)
                     {
-                        foreach (var keyUpCandidate in singleKeyValue.KeyDowns.Where(x => keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
-                        {
-                            Log.InfoFormat("CommandKey {0} finished without changing state to Up because key [{1}] is down", singleKeyValue.String, keyUpCandidate.String);
-                            return;
-                        }
+                        Log.InfoFormat("CommandKey {0} finished without changing state to Up because key [{1}] is down", singleKeyValue.String, keyUpCandidate.Item2.String);
+                        return;
                     }
                 }
                 //if no keys are down then change the CommandKey singleKeyValue to Up
@@ -2442,9 +2442,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.InfoFormat("CommandList called with command count: {0}, nest level: {1}", commandList.Count, nestLevel);
             
-            while (commandList.Any())
+            foreach(KeyCommand vCommand in commandList)
             {
-                var vCommand = commandList.First();
                 //if an external process has ordered this key to stop then return
                 if (!keyStateService.KeyRunningStates[singleKeyValue].Value) 
                     return;
@@ -2496,40 +2495,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         Log.InfoFormat("CommandList: Key down on [{0}] key", vCommand.KeyValue.String);
                         await keyboardOutputService.ProcessSingleKeyPress(vCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                        keyStateService.KeyDownStates[vCommand.KeyValue].Value = KeyDownStates.Down;
+                        keyStateService.KeyDownStates[vCommand.KeyValue].Value = KeyDownStates.LockedDown;
                     }
                     else if (vCommand.Name == KeyCommands.KeyToggle)
                     {
                         if (keyStateService.KeyDownStates[vCommand.KeyValue].Value != KeyDownStates.Up)
                         {
                             Log.InfoFormat("CommandList: Toggle key up on [{0}] key", vCommand.KeyValue.String);
-                            await keyboardOutputService.ProcessSingleKeyPress(vCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release);
-                            keyStateService.KeyDownStates[vCommand.KeyValue].Value = KeyDownStates.Up;
+                            await KeyUpProcessing(singleKeyValue, vCommand.KeyValue);
                         }
                         else
                         {
                             Log.InfoFormat("CommandList: Toggle key down on [{0}] key", vCommand.KeyValue.String);
                             await keyboardOutputService.ProcessSingleKeyPress(vCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                            keyStateService.KeyDownStates[vCommand.KeyValue].Value = KeyDownStates.Down;
+                            keyStateService.KeyDownStates[vCommand.KeyValue].Value = KeyDownStates.LockedDown;
                         }
                     }
                     else if (vCommand.Name == KeyCommands.KeyUp)
                     {
                         Log.InfoFormat("CommandList: Key up on [{0}]", vCommand.KeyValue.String);
-                        await keyboardOutputService.ProcessSingleKeyPress(vCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release);
-                        keyStateService.KeyDownStates[vCommand.KeyValue].Value = KeyDownStates.Up;
-                        
-                        var keyValueList = new List<KeyValue>();
-                        keyValueList.Add(vCommand.KeyValue);
+                        await KeyUpProcessing(singleKeyValue, vCommand.KeyValue);
 
                         //the KeyUp value could be a KeyGroup so add any matches from KeyValueByGroup
                         if (keyStateService.KeyValueByGroup.ContainsKey(vCommand.KeyValue.String.ToUpper()))
-                            keyValueList.AddRange(KeyStateService.KeyValueByGroup[vCommand.KeyValue.String.ToUpper()]);
-
-                        foreach (var keyValue in keyValueList.Where(x => keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
                         {
-                            await keyboardOutputService.ProcessSingleKeyPress(keyValue.String, KeyPressKeyValue.KeyPressType.Release);
-                            keyStateService.KeyDownStates[keyValue].Value = KeyDownStates.Up;
+                            var keyValueList = new List<KeyValue>();
+                            keyValueList.Add(vCommand.KeyValue);
+                            keyValueList.AddRange(KeyStateService.KeyValueByGroup[vCommand.KeyValue.String.ToUpper()]);
+                            foreach (var keyValue in keyValueList.Where(x => keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
+                            {
+                                await KeyUpProcessing(singleKeyValue, keyValue);
+                            }
                         }
                     }
                     else if (vCommand.Name == KeyCommands.Text)
@@ -2545,14 +2541,42 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else if (vCommand.Name == KeyCommands.Plugin)
                     {
-                        Log.InfoFormat("CommandList: ", vCommand.Value);
+                        Log.InfoFormat("CommandList: Plugin [{0}]", vCommand.Value);
                         RunDynamicPlugin(vCommand.Plugin);
                     }
                 }
-
-                if (commandList.Any())
-                    commandList.RemoveAt(0);
             }
+        }
+
+        private async Task KeyUpProcessing(KeyValue singleKeyValue, KeyValue commandKey)
+        {
+            await keyboardOutputService.ProcessSingleKeyPress(commandKey.String, KeyPressKeyValue.KeyPressType.Release);
+            keyStateService.KeyDownStates[commandKey].Value = KeyDownStates.Up;
+
+            //if the released key has any children then release them as well 
+            foreach (var childKey in keyStateService.KeyFamily.Where(x => x.Item1 == commandKey
+                && KeyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up))
+            {
+                await keyboardOutputService.ProcessSingleKeyPress(childKey.Item2.String, KeyPressKeyValue.KeyPressType.Release);
+                keyStateService.KeyDownStates[childKey.Item2].Value = KeyDownStates.Up;
+            }
+
+            //if the released key has a parent 
+            //and the parent is not up
+            //and the parent is not running
+            //and the parent has no child that is not released
+            //then release the parent
+            foreach (var parentKey in keyStateService.KeyFamily.Where(x => x.Item2 == commandKey
+                && KeyStateService.KeyDownStates[x.Item1].Value != KeyDownStates.Up
+                && !KeyStateService.KeyRunningStates[x.Item1].Value
+                && !keyStateService.KeyFamily.Exists(y => y.Item1 == x.Item1 && KeyStateService.KeyDownStates[y.Item2].Value != KeyDownStates.Up)))
+            {
+                await keyboardOutputService.ProcessSingleKeyPress(parentKey.Item1.String, KeyPressKeyValue.KeyPressType.Release);
+                keyStateService.KeyDownStates[parentKey.Item1].Value = KeyDownStates.Up;
+            }
+
+            if (commandKey != singleKeyValue && keyStateService.KeyRunningStates[commandKey].Value != false)
+                keyStateService.KeyRunningStates[commandKey].Value = false;
         }
 
         private void RunDynamicPlugin(DynamicPlugin pluginKey)
