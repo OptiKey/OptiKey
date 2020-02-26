@@ -2288,6 +2288,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
                     break;
 
+                case FunctionKeys.Translation:
+                    {
+                        Log.Info("Translating text from scratchpad to clipboard.");
+                        string textFromScratchpad = KeyboardOutputService.Text;
+
+                        if (!string.IsNullOrEmpty(textFromScratchpad))
+                        {
+                            //TranslationObj.Translate(textFromScratchpad);
+                        }
+                    }
+                    break;
+
                 case FunctionKeys.TurkishTurkey:
                     SelectLanguage(Languages.TurkishTurkey);
                     break;

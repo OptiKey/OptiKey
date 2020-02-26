@@ -238,6 +238,7 @@ namespace JuliusSweetland.OptiKey.Enums
         Suggestion5,
         Suggestion6,
         ToggleCaseOfPreviousCharacter,
+        Translation,
         TurkishTurkey,
         UkrainianUkraine,
         UrduPakistan,

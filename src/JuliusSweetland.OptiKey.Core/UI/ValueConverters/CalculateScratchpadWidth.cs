@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values == null || values.Length != 4)
+            if (values == null || values.Length != 5)
             {
                 return new GridLength(DefaultGridLength, GridUnitType.Star);
             }
@@ -21,6 +21,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
             bool attentionKeyEnabled = (bool)values[1];
             bool ckKeyEnabled = (bool)values[2];
             bool copyAllScratchpadEnabled = (bool)values[3];
+            bool translationKeyEnabled = (bool)values[4];
 
             if (scratchpadWidthInKeys <= 0)
             {
@@ -38,6 +39,11 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
             }
 
             if (copyAllScratchpadEnabled)
+            {
+                --scratchpadWidthInKeys;
+            }
+
+            if (translationKeyEnabled)
             {
                 --scratchpadWidthInKeys;
             }

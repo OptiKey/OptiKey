@@ -271,6 +271,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Suggestion6Key = new KeyValue(FunctionKeys.Suggestion6);
         public static readonly KeyValue TabKey = new KeyValue("\x09");
         public static readonly KeyValue ToggleCaseOfPreviousCharacterKey = new KeyValue(FunctionKeys.ToggleCaseOfPreviousCharacter);
+        public static readonly KeyValue TranslationKey = new KeyValue(FunctionKeys.Translation);
         public static readonly KeyValue TurkishTurkeyKey = new KeyValue(FunctionKeys.TurkishTurkey);
         public static readonly KeyValue UkrainianUkraineKey = new KeyValue(FunctionKeys.UkrainianUkraine);
         public static readonly KeyValue UrduPakistanKey = new KeyValue(FunctionKeys.UrduPakistan);

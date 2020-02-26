@@ -54,6 +54,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref enableCopyAllScratchpadKey, value); }
         }
 
+        private bool enableTranslationKey;
+
+        public bool EnableTranslationKey
+        {
+            get { return enableTranslationKey; }
+            set { SetProperty(ref enableTranslationKey, value); }
+        }
+
         private bool enableCommuniKateKeyboardLayout;
         public bool EnableCommuniKateKeyboardLayout
         {
@@ -157,6 +165,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
             EnableAttentionKey = Settings.Default.EnableAttentionKey;
             EnableCopyAllScratchpadKey = Settings.Default.EnableCopyAllScratchpadKey;
+            EnableTranslationKey = Settings.Default.EnableTranslationKey;
 
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
             CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
@@ -176,6 +185,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
             Settings.Default.EnableAttentionKey = EnableAttentionKey;
             Settings.Default.EnableCopyAllScratchpadKey = EnableCopyAllScratchpadKey;
+            Settings.Default.EnableTranslationKey = EnableTranslationKey;
 
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;

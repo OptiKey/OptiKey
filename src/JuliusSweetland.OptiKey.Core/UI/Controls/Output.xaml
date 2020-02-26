@@ -21,7 +21,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ResourceDictionary>
                     <valueConverters:SuggestionsPaged x:Key="SuggestionsPaged" />
                     <valueConverters:BoolToCustomValues TrueValue="1*" FalseValue="0*" x:Key="BoolToCustomValues" />
-                    <valueConverters:CalculateScratchpadWidth DefaultGridLength="8" x:Key="CalculateScratchpadWidth" />
+                    <valueConverters:CalculateScratchpadWidth DefaultGridLength="9" x:Key="CalculateScratchpadWidth" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -44,11 +44,13 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <Binding Path="EnableAttentionKey" Source="{x:Static resx:Settings.Default}" />
                         <Binding Path="EnableCommuniKateKeyboardLayout" Source="{x:Static resx:Settings.Default}" />
                         <Binding Path="EnableCopyAllScratchpadKey" Source="{x:Static resx:Settings.Default}" />
+                        <Binding Path="EnableTranslationKey" Source="{x:Static resx:Settings.Default}" />
                     </MultiBinding>
                 </ColumnDefinition.Width>
             </ColumnDefinition>
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCommuniKateKeyboardLayout, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCopyAllScratchpadKey, Converter={StaticResource BoolToCustomValues}}" />
+            <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableTranslationKey, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -228,5 +230,11 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SleepKey}"/>
+        
+        <controls:Key Grid.Row="1" Grid.Column="8"
+                      SymbolGeometry="{StaticResource CopyAllIcon}" 
+                      Text="{x:Static resx:Resources.ENABLE_TRANSLATION_KEY_LABEL}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.TranslationKey}"/>
     </Grid>
 </UserControl>

@@ -86,7 +86,13 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               IsChecked="{Binding AllowMultipleInstances, Mode=TwoWay}" 
                               IsEnabled="{Binding Source='AllowMultipleInstances', Converter={StaticResource EnabledIfNotOverridden}}"/>
 
-
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_TRANSLATION_KEY_LABEL}" 
+                               IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}"
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="5" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}"
+                              IsChecked="{Binding EnableTranslationKey, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
             
