@@ -1980,6 +1980,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj">
+      <Project>{0C8F0372-2D55-41BC-9730-4ACE3ED67452}</Project>
+      <Name>JuliusSweetland.OptiKey.StandardPlugins</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SingleInstance.Wpf\SingleInstance.Wpf.csproj">
       <Project>{2a8b4ae0-48be-4a49-9c9c-654c195c8ab2}</Project>
       <Name>SingleInstance.Wpf</Name>

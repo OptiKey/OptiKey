@@ -2290,12 +2290,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.Translation:
                     {
-                        Log.Info("Translating text from scratchpad to clipboard.");
+                        Log.Info("Translating text from scratchpad.");
                         string textFromScratchpad = KeyboardOutputService.Text;
 
                         if (!string.IsNullOrEmpty(textFromScratchpad))
                         {
-                            //TranslationObj.Translate(textFromScratchpad);
+                            Task<string> task = Task.Run(async () => await translator.Translate(textFromScratchpad));
+                            task.Wait();
+                            string result = task.Result;
+
+                            Console.WriteLine("Retrieved text in mvm: " + result); // 
                         }
                     }
                     break;

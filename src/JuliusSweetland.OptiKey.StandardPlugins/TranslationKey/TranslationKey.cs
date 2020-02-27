@@ -14,31 +14,22 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
     {
         HttpClient client = new HttpClient();
 
-        public void TRANSLATE(string text)
-        {
-            sendRequest();
-        }
-
-        private async void sendRequest()
+        public async Task<string> Translate(string text)
         {
             HttpResponseMessage response = await client.GetAsync(
                 "https://translate.yandex.net/api/v1.5/tr.json/translate?" +
                 "lang=de&" +
                 "key=trnsl.1.1.20200208T211513Z.c27ba519478a018a.0686d91c86a4321b32b41b0c30551aef47556314&" +
-                "text=Hello");
+                "text=" + text);
+
             response.EnsureSuccessStatusCode();
 
             //string responseCode = response.StatusCode.ToString();
             string responseBody = await response.Content.ReadAsStringAsync();
-            Debug.Print("res is: " + responseBody);
-
-            Stream str = new FileStream(".", FileMode.Create, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(str);
-            sw.WriteLine(responseBody);
-
-            Process.Start("notepad.exe", ".");
+            if (!string.IsNullOrEmpty(responseBody)){
+                return responseBody;
+            }
+            return "";
         }
-      
     }
-
 }
