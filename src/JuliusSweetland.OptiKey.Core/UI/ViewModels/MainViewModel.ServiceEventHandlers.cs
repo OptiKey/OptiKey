@@ -685,7 +685,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
+        private async void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
         {
             var currentKeyboard = Keyboard;
             Action resumeLookToScroll;
@@ -2294,14 +2294,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         string textFromScratchpad = KeyboardOutputService.Text;
 
                         if (!string.IsNullOrEmpty(textFromScratchpad))
-                        {
-                            Task<string> task = Task.Run(async () => await translator.Translate(textFromScratchpad));
-                            task.Wait();
-                            string result = task.Result;
+                        { 
+                            string result = await translator.Translate(textFromScratchpad);
 
-                            
-                            // {"code":200,"lang":"en-de","text":["Hallo"]}
-                            Console.WriteLine("Retrieved text in mvm: " + result); // 
+                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                            keyboardOutputService.Text = result;
+                            Clipboard.SetText(result);
                         }
                     }
                     break;
