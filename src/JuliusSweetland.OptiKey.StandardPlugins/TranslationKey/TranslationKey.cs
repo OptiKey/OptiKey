@@ -7,6 +7,7 @@ using System.Diagnostics;
 
 using System.Net.Http;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace JuliusSweetland.OptiKey.StandardPlugins
 {
@@ -24,12 +25,19 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
 
             response.EnsureSuccessStatusCode();
 
-            //string responseCode = response.StatusCode.ToString();
             string responseBody = await response.Content.ReadAsStringAsync();
             if (!string.IsNullOrEmpty(responseBody)){
-                return responseBody;
+                YandexResponse obj = JsonConvert.DeserializeObject<YandexResponse>(responseBody);
+                return obj.text[0];
             }
-            return "";
+            return "Error translating text.";
         }
+    }
+
+    class YandexResponse
+    {
+        public int code { get; set; }
+        public string lang { get; set; }
+        public List<string> text { get; set; }
     }
 }

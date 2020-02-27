@@ -2299,6 +2299,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             task.Wait();
                             string result = task.Result;
 
+                            
+                            // {"code":200,"lang":"en-de","text":["Hallo"]}
                             Console.WriteLine("Retrieved text in mvm: " + result); // 
                         }
                     }
