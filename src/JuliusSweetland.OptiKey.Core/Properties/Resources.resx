@@ -2447,4 +2447,7 @@ Magyar
   <data name="ENABLE_TRANSLATION_KEY_LABEL" xml:space="preserve">
     <value>Enable translation key?</value>
   </data>
+  <data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Translation Target Language:</value>
+  </data>
 </root>

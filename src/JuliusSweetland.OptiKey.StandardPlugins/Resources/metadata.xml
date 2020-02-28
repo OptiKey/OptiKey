@@ -166,8 +166,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
   </Plugin>
 
   <Plugin>
-    <Id>TranslationKey</Id>
-    <Impl>JuliusSweetland.OptiKey.StandardPlugins.TranslationKey</Impl>
+    <Id>Translation</Id>
+    <Impl>JuliusSweetland.OptiKey.StandardPlugins.Translation</Impl>
     <Name>Translation Key plugin</Name>
     <Description>This is a todo description.</Description>
     <Methods>

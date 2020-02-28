@@ -6189,6 +6189,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Translation Target Language:.
+        /// </summary>
+        public static string TRANSLATION_TARGET_LANGUAGE_LABEL {
+            get {
+                return ResourceManager.GetString("TRANSLATION_TARGET_LANGUAGE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trigger button/key pressed again.
         /// </summary>
         public static string TRIGGER_PRESSED_AGAIN {

@@ -11,6 +11,8 @@ using Prism.Mvvm;
 using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
 using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
 
+using JuliusSweetland.OptiKey.StandardPlugins.Translation.Enums;
+
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
     public class FeaturesViewModel : BindableBase
@@ -61,6 +63,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return enableTranslationKey; }
             set { SetProperty(ref enableTranslationKey, value); }
         }
+
+        private string translationTargetLanguage;
+        public string TranslationTargetLanguage
+        {
+            get { return translationTargetLanguage; }
+            set { SetProperty(ref translationTargetLanguage, value); }
+        }
+
+        public static List<KeyValuePair<string, TranslationTargetLanguages>> AvailableTranslationTargetLanguages
+        {
+            get
+            {
+                return new List<KeyValuePair<string, TranslationTargetLanguages>>
+                {
+                    new KeyValuePair<string, TranslationTargetLanguages>(Resources.CATALAN_SPAIN, TranslationTargetLanguages.A)
+                };
+            }
+        }
+
 
         private bool enableCommuniKateKeyboardLayout;
         public bool EnableCommuniKateKeyboardLayout
