@@ -671,8 +671,7 @@ namespace JuliusSweetland.OptiKey
             IAudioService audioService,
             ICalibrationService calibrationService,
             ICapturingStateManager capturingStateManager,
-            List<INotifyErrors> errorNotifyingServices,
-            IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey)
+            List<INotifyErrors> errorNotifyingServices)
         {
             Log.Info("Creating InputService.");
             
@@ -742,8 +741,8 @@ namespace JuliusSweetland.OptiKey
                     throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
             }
 
-        //Instantiate key trigger source
-        ITriggerSource keySelectionTriggerSource;
+            //Instantiate key trigger source
+            ITriggerSource keySelectionTriggerSource;
             switch (Settings.Default.KeySelectionTriggerSource)
             {
                 case TriggerSources.Fixations:
@@ -755,7 +754,6 @@ namespace JuliusSweetland.OptiKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
                         : null,
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
-                       overrideTimesByKey,
                        pointSource);
                     break;
 
