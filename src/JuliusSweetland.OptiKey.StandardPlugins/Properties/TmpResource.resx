@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,128 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  <data name="AZERBAIJANI" xml:space="preserve">
-    <value>Azerbaijani</value>
+  <data name="A" xml:space="preserve">
+    <value>abc2</value>
   </data>
   <data name="ALBANIAN" xml:space="preserve">
-    <value>Albanian</value>
+    <value>a1</value>
   </data>
-  
-  <data name="ARMENIAN" xml:space="preserve">
-    <value>Armenian</value>
+  <data name="AZERBAIJANI" xml:space="preserve">
+    <value>ab</value>
   </data>
-  <data name="BASHKIR" xml:space="preserve">
-    <value>Bashkir</value>
-  </data>
-  <data name="BELARUSIAN" xml:space="preserve">
-    <value>Belarusian</value>
-  </data>
-  <data name="BULGARIAN" xml:space="preserve">
-    <value>Bulgarian</value>
-  </data>
-  <data name="CATALAN" xml:space="preserve">
-    <value>Catalan</value>
-  </data>
-  <data name="CROATIAN" xml:space="preserve">
-    <value>Croatian</value>
-  </data>
-  <data name="CZECH" xml:space="preserve">
-    <value>Czech</value>
-  </data>
-  <data name="DANISH" xml:space="preserve">
-    <value>Danish</value>
-  </data>
-  <data name="DUTCH" xml:space="preserve">
-    <value>Dutch</value>
-  </data>
-  <data name="ENGLISH" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="ESTONIAN" xml:space="preserve">
-    <value>Estonian</value>
-  </data>
-  <data name="FINNISH" xml:space="preserve">
-    <value>Finnish</value>
-  </data>
-  <data name="FRENCH" xml:space="preserve">
-    <value>French</value>
-  </data>
-  <data name="GEORGIAN" xml:space="preserve">
-    <value>Georgian</value>
-  </data>
-  <data name="GERMAN" xml:space="preserve">
-    <value>German</value>
-  </data>
-  <data name="GREEK" xml:space="preserve">
-    <value>Greek</value>
-  </data>
-  <data name="HEBREW" xml:space="preserve">
-    <value>Hebrew</value>
-  </data>
-  <data name="HUNGARIAN" xml:space="preserve">
-    <value>Hungarian</value>
-  </data>
-  <data name="ITALIAN" xml:space="preserve">
-    <value>Italian</value>
-  </data>
-  <data name="KAZAKH" xml:space="preserve">
-    <value>Kazakh</value>
-  </data>
-  <data name="LATVIAN" xml:space="preserve">
-    <value>Latvian</value>
-  </data>
-  <data name="LITHUANIAN" xml:space="preserve">
-    <value>Lithuanian</value>
-  </data>
-  <data name="MACEDONIAN" xml:space="preserve">
-    <value>Macedonian</value>
-  </data>
-  
-  
-  <data name="NORWEGIAN" xml:space="preserve">
-    <value>Norwegian</value>
-  </data>
-  <data name="PERSIAN" xml:space="preserve">
-    <value>Persian</value>
-  </data>
-  <data name="POLISH" xml:space="preserve">
-    <value>Polish</value>
-  </data>
-  <data name="PORTUGUESE" xml:space="preserve">
-    <value>Portuguese</value>
-  </data>
-  <data name="ROMANIAN" xml:space="preserve">
-    <value>Romanian</value>
-  </data>
-  <data name="RUSSIAN" xml:space="preserve">
-    <value>Russian</value>
-  </data>
-  <data name="SERBIAN" xml:space="preserve">
-    <value>Serbian</value>
-  </data>
-  <data name="SLOVAK" xml:space="preserve">
-    <value>Slovak</value>
-  </data>
-  <data name="SLOVENIAN" xml:space="preserve">
-    <value>Slovenian</value>
-  </data>
-  <data name="SPANISH" xml:space="preserve">
-    <value>Spanish</value>
-  </data>
-  <data name="SWEDISH" xml:space="preserve">
-    <value>Swedish</value>
-  </data>
-  <data name="TATAR" xml:space="preserve">
-    <value>Tatar</value>
-  </data>
-  <data name="TURKISH" xml:space="preserve">
-    <value>Turkish</value>
-  </data>
-  <data name="UKRAINIAN" xml:space="preserve">
-    <value>Ukrainian</value>
-  </data>
-  
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="metadata" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\metadata.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

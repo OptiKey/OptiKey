@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -61,20 +61,47 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to a1.
+        /// </summary>
+        public static string ALBANIAN {
+            get {
+                return ResourceManager.GetString("ALBANIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to abc2.
+        /// </summary>
+        public static string AZ {
+            get {
+                return ResourceManager.GetString("AZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ab.
+        /// </summary>
+        public static string AZERBAIJANI {
+            get {
+                return ResourceManager.GetString("AZERBAIJANI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;!--
+        ///Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+        ///--&gt;
         ///&lt;Plugins&gt;
         ///  &lt;Plugin&gt;
         ///    &lt;Id&gt;HttpCall&lt;/Id&gt;
+        ///    &lt;Impl&gt;JuliusSweetland.OptiKey.StandardPlugins.HttpCall&lt;/Impl&gt;
         ///    &lt;Name&gt;HTTP/HTTPS Call Plugin&lt;/Name&gt;
         ///    &lt;Description&gt;This plugins enables OptiKey to call a external HTTP/HTTPS uri every time a plugin key is pressed&lt;/Description&gt;
         ///    &lt;Methods&gt;
         ///      &lt;Method&gt;
         ///        &lt;Name&gt;GET&lt;/Name&gt;
-        ///        &lt;Description&gt;Calls an HTTP/HTTPS uri using &quot;GET&quot; HTTP method.&lt;/Description&gt;
-        ///        &lt;Arguments&gt;
-        ///          &lt;Argument&gt;
-        ///            &lt;Name&gt;uri&lt;/Name&gt;
-        ///            &lt;Description&gt;URI that will  [rest of string was truncated]&quot;;.
+        ///        &lt;Description&gt;Calls an HTTP/H [rest of string was truncated]&quot;;.
         /// </summary>
         public static string metadata {
             get {
