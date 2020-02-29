@@ -1568,8 +1568,6 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Info("UnRegisterAppBar called");
 
-            if (getWindowState() != WindowStates.Docked) return;
-
             var abd = new APPBARDATA();
             abd.cbSize = Marshal.SizeOf(abd);
             abd.hWnd = windowHandle;

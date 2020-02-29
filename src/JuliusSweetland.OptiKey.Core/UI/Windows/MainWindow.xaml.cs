@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
+using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using JuliusSweetland.OptiKey.Enums;
@@ -103,6 +103,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             };
         }
 
+        public IList<Tuple<KeyValue, KeyValue>> KeyFamily { get { return keyStateService.KeyFamily; } }
+        public IDictionary<string, List<KeyValue>> KeyValueByGroup { get { return keyStateService.KeyValueByGroup; } }
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey  { get { return inputService.OverrideTimesByKey; } }
         public IWindowManipulationService WindowManipulationService { get; set; }
 
         public InteractionRequest<NotificationWithServicesAndState> ManagementWindowRequest { get { return managementWindowRequest; } }

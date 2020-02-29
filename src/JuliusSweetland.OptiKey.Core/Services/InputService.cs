@@ -26,10 +26,9 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
         private readonly object suspendRequestLock = new object();
-
         private IPointSource pointSource;
         private int suspendRequestCount;
-        
+
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point, KeyValue>> currentPositionEvent;
         private event EventHandler<Point> livePositionEvent;
@@ -69,6 +68,8 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Properties
+
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return keySelectionTriggerSource.OverrideTimesByKey; } }
 
         public IPointSource PointSource
         {
