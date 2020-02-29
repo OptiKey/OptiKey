@@ -1544,6 +1544,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error has occured during the translation of text.
+        /// </summary>
+        public static string ERROR_DURING_TRANSLATION {
+            get {
+                return ResourceManager.GetString("ERROR_DURING_TRANSLATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error has occurred during the handling of a key selection.
         /// </summary>
         public static string ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT {

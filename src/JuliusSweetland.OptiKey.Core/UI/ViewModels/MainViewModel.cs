@@ -40,7 +40,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly List<INotifyErrors> errorNotifyingServices; 
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         private readonly StringBuilder pendingErrorToastNotificationContent = new StringBuilder();
-        private readonly TranslationKey translator;
+        private readonly Translator translator;
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
         private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
@@ -93,7 +93,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
 
-            this.translator = new TranslationKey();
+            this.translator = new Translator();
 
             SetupInputServiceEventHandlers();
             InitialiseKeyboard(mainWindowManipulationService);

@@ -2648,6 +2648,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             {
                 this["EnableTranslationKey"] = value;
             }
+        }    
+            
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual string TranslationTargetLanguage
+        {
+            get
+            {
+                return (string)(this["TranslationTargetLanguage"]);
+            }
+            set
+            {
+                this["TranslationTargetLanguage"] = value;
+            }
         }
 
         [global::System.Configuration.UserScopedSettingAttribute()]

@@ -61,7 +61,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to a1.
+        ///   Looks up a localized string similar to Albanian.
         /// </summary>
         public static string ALBANIAN {
             get {
@@ -70,20 +70,227 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to abc2.
+        ///   Looks up a localized string similar to Arabic.
         /// </summary>
-        public static string AZ {
+        public static string ARABIC {
             get {
-                return ResourceManager.GetString("AZ", resourceCulture);
+                return ResourceManager.GetString("ARABIC", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ab.
+        ///   Looks up a localized string similar to Armenian.
+        /// </summary>
+        public static string ARMENIAN {
+            get {
+                return ResourceManager.GetString("ARMENIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azerbaijani.
         /// </summary>
         public static string AZERBAIJANI {
             get {
                 return ResourceManager.GetString("AZERBAIJANI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bashkir.
+        /// </summary>
+        public static string BASHKIR {
+            get {
+                return ResourceManager.GetString("BASHKIR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Belarusian.
+        /// </summary>
+        public static string BELARUSIAN {
+            get {
+                return ResourceManager.GetString("BELARUSIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bulgarian.
+        /// </summary>
+        public static string BULGARIAN {
+            get {
+                return ResourceManager.GetString("BULGARIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Catalan.
+        /// </summary>
+        public static string CATALAN {
+            get {
+                return ResourceManager.GetString("CATALAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Croatian.
+        /// </summary>
+        public static string CROATIAN {
+            get {
+                return ResourceManager.GetString("CROATIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Czech.
+        /// </summary>
+        public static string CZECH {
+            get {
+                return ResourceManager.GetString("CZECH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Danish.
+        /// </summary>
+        public static string DANISH {
+            get {
+                return ResourceManager.GetString("DANISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dutch.
+        /// </summary>
+        public static string DUTCH {
+            get {
+                return ResourceManager.GetString("DUTCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string ENGLISH {
+            get {
+                return ResourceManager.GetString("ENGLISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estonian.
+        /// </summary>
+        public static string ESTONIAN {
+            get {
+                return ResourceManager.GetString("ESTONIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finnish.
+        /// </summary>
+        public static string FINNISH {
+            get {
+                return ResourceManager.GetString("FINNISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to French.
+        /// </summary>
+        public static string FRENCH {
+            get {
+                return ResourceManager.GetString("FRENCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Georgian.
+        /// </summary>
+        public static string GEORGIAN {
+            get {
+                return ResourceManager.GetString("GEORGIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to German.
+        /// </summary>
+        public static string GERMAN {
+            get {
+                return ResourceManager.GetString("GERMAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greek.
+        /// </summary>
+        public static string GREEK {
+            get {
+                return ResourceManager.GetString("GREEK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hebrew.
+        /// </summary>
+        public static string HEBREW {
+            get {
+                return ResourceManager.GetString("HEBREW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hungarian.
+        /// </summary>
+        public static string HUNGARIAN {
+            get {
+                return ResourceManager.GetString("HUNGARIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Italian.
+        /// </summary>
+        public static string ITALIAN {
+            get {
+                return ResourceManager.GetString("ITALIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kazakh.
+        /// </summary>
+        public static string KAZAKH {
+            get {
+                return ResourceManager.GetString("KAZAKH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latvian.
+        /// </summary>
+        public static string LATVIAN {
+            get {
+                return ResourceManager.GetString("LATVIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lithuanian.
+        /// </summary>
+        public static string LITHUANIAN {
+            get {
+                return ResourceManager.GetString("LITHUANIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Macedonian.
+        /// </summary>
+        public static string MACEDONIAN {
+            get {
+                return ResourceManager.GetString("MACEDONIAN", resourceCulture);
             }
         }
         
@@ -106,6 +313,132 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         public static string metadata {
             get {
                 return ResourceManager.GetString("metadata", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Norwegian.
+        /// </summary>
+        public static string NORWEGIAN {
+            get {
+                return ResourceManager.GetString("NORWEGIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Persian.
+        /// </summary>
+        public static string PERSIAN {
+            get {
+                return ResourceManager.GetString("PERSIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polish.
+        /// </summary>
+        public static string POLISH {
+            get {
+                return ResourceManager.GetString("POLISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portuguese.
+        /// </summary>
+        public static string PORTUGUESE {
+            get {
+                return ResourceManager.GetString("PORTUGUESE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Romanian.
+        /// </summary>
+        public static string ROMANIAN {
+            get {
+                return ResourceManager.GetString("ROMANIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Russian.
+        /// </summary>
+        public static string RUSSIAN {
+            get {
+                return ResourceManager.GetString("RUSSIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serbian.
+        /// </summary>
+        public static string SERBIAN {
+            get {
+                return ResourceManager.GetString("SERBIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slovak.
+        /// </summary>
+        public static string SLOVAK {
+            get {
+                return ResourceManager.GetString("SLOVAK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slovenian.
+        /// </summary>
+        public static string SLOVENIAN {
+            get {
+                return ResourceManager.GetString("SLOVENIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spanish.
+        /// </summary>
+        public static string SPANISH {
+            get {
+                return ResourceManager.GetString("SPANISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swedish.
+        /// </summary>
+        public static string SWEDISH {
+            get {
+                return ResourceManager.GetString("SWEDISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tatar.
+        /// </summary>
+        public static string TATAR {
+            get {
+                return ResourceManager.GetString("TATAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turkish.
+        /// </summary>
+        public static string TURKISH {
+            get {
+                return ResourceManager.GetString("TURKISH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ukrainian.
+        /// </summary>
+        public static string UKRAINIAN {
+            get {
+                return ResourceManager.GetString("UKRAINIAN", resourceCulture);
             }
         }
     }

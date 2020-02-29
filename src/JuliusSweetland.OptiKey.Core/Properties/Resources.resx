@@ -2450,4 +2450,7 @@ Magyar
   <data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
     <value>Translation Target Language:</value>
   </data>
+  <data name="ERROR_DURING_TRANSLATION" xml:space="preserve">
+    <value>An error has occured during the translation of text</value>
+  </data>
 </root>

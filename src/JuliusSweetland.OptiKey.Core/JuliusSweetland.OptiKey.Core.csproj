@@ -1981,7 +1981,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj">
-      <Project>{0C8F0372-2D55-41BC-9730-4ACE3ED67452}</Project>
+      <Project>{0c8f0372-2d55-41bc-9730-4ace3ed67452}</Project>
       <Name>JuliusSweetland.OptiKey.StandardPlugins</Name>
     </ProjectReference>
     <ProjectReference Include="..\SingleInstance.Wpf\SingleInstance.Wpf.csproj">

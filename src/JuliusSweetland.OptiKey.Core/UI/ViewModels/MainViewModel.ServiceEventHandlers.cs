@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
+using JuliusSweetland.OptiKey.StandardPlugins;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
@@ -2295,11 +2296,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                         if (!string.IsNullOrEmpty(textFromScratchpad))
                         { 
-                            string result = await translator.Translate(textFromScratchpad);
+                            Translator.Response response = await translator.Translate(textFromScratchpad);
+                            if (response.status == "Error")
+                            {
+                                string errorToShow;
 
-                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
-                            keyboardOutputService.Text = result;
-                            Clipboard.SetText(result);
+                                if (!string.IsNullOrEmpty(response.exceptionMessage)) {
+                                    errorToShow = response.exceptionMessage;
+                                }
+                                else {
+                                    errorToShow = "Response was probably empty!";
+                                }
+
+                                RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, errorToShow, NotificationTypes.Error, () =>
+                                {
+                                    inputService.RequestResume();
+                                });
+                            }
+                            else
+                            {
+                                keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                                keyboardOutputService.Text = response.translatedText;
+                                Clipboard.SetText(response.translatedText);
+                            }
                         }
                     }
                     break;

@@ -12,6 +12,7 @@ using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
 using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
 using JuliusSweetland.OptiKey.StandardPlugins.Translation.Languages;
 using JuliusSweetland.OptiKey.StandardPlugins.Properties;
+using JuliusSweetland.OptiKey.StandardPlugins;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
@@ -67,8 +68,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private string translationTargetLanguage;
         public string TranslationTargetLanguage
         {
-            get { return translationTargetLanguage; }
-            set { SetProperty(ref translationTargetLanguage, value); }
+            get { return translationTargetLanguage; } // needed?
+            set 
+            {
+                SetProperty(ref translationTargetLanguage, value);// needed?
+                Translator.TranslationTargetLanguage = value;
+            }
         }
 
         public static List<KeyValuePair<string, string>> AvailableTranslationTargetLanguages
@@ -226,6 +231,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EnableAttentionKey = Settings.Default.EnableAttentionKey;
             EnableCopyAllScratchpadKey = Settings.Default.EnableCopyAllScratchpadKey;
             EnableTranslationKey = Settings.Default.EnableTranslationKey;
+            TranslationTargetLanguage = Settings.Default.TranslationTargetLanguage;
 
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
             CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
@@ -246,6 +252,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.EnableAttentionKey = EnableAttentionKey;
             Settings.Default.EnableCopyAllScratchpadKey = EnableCopyAllScratchpadKey;
             Settings.Default.EnableTranslationKey = EnableTranslationKey;
+            Settings.Default.TranslationTargetLanguage = TranslationTargetLanguage;
 
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;
