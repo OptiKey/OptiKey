@@ -2301,13 +2301,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 string errorToShow;
 
-                                if (!string.IsNullOrEmpty(response.exceptionMessage)) {
+                                if (response.exceptionMessage == "") {
                                     errorToShow = response.exceptionMessage;
                                 }
                                 else {
-                                    errorToShow = "Response was probably empty!";
+                                    errorToShow = "Response from translation was probably empty!";
                                 }
 
+                                Log.Error("Error/exception during translation: " + errorToShow);
                                 RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, errorToShow, NotificationTypes.Error, () =>
                                 {
                                     inputService.RequestResume();

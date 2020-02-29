@@ -34,7 +34,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
         /*
          * Want to return the translation status, translated text and exception content
          *  the exception must be passed back to raise as toast notification,
-         *      cant access toast notification here due to circular dependency
+         *      cant access toast notification here due to circular dependency 
          */
         public async Task<Response> Translate(string text)
         {
@@ -69,6 +69,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
             }
             catch (HttpRequestException exception)
             {
+                response.status = "Error";
                 response.exceptionMessage = exception.Message;
                 return response;
             }
