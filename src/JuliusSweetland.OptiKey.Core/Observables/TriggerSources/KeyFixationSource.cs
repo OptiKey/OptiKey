@@ -50,7 +50,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             TimeSpan defaultTimeToCompleteTrigger,
             IDictionary<KeyValue, TimeSpan> timeToCompleteTriggerByKey,
             TimeSpan incompleteFixationTtl,
-            IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey,
             IPointSource pointSource)
         {
             this.defaultLockOnTime = defaultLockOnTime;
@@ -58,7 +57,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             this.defaultTimeToCompleteTrigger = defaultTimeToCompleteTrigger;
             this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey ?? new Dictionary<KeyValue, TimeSpan>();
             this.incompleteFixationTtl = incompleteFixationTtl;
-            this.overrideTimesByKey = overrideTimesByKey;
+            this.overrideTimesByKey = new Dictionary<KeyValue, TimeSpanOverrides>();
             this.pointSource = pointSource;
 
             incompleteFixationProgress = new ConcurrentDictionary<KeyValue, long>();
@@ -72,6 +71,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         public RunningStates State { get; set; }
 
         public KeyEnabledStates KeyEnabledStates { get; set; }
+
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return overrideTimesByKey; } }
 
         /// <summary>
         /// Change the point and key value source. N.B. After setting this any existing subscription 

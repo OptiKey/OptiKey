@@ -25,7 +25,6 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         protected Mock<IMouseOutputService> MouseOutputService { get; private set; }
         protected Mock<ISuggestionStateService> SuggestionService { get; private set; }
         protected List<INotifyErrors> ErrorNotifyingServices { get; private set; }
-        protected IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get; private set; }
         protected bool IsKeySelectionEventHandlerCalled { get; private set; }
         protected bool IsPointSelectionEventHandlerCalled { get; private set; }
 
@@ -55,7 +54,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
                 MainViewModel = new MainViewModel(AudioService.Object, CalibrationService.Object, DictionaryService.Object,
                     KeyStateService.Object, SuggestionService.Object, CapturingStateManager.Object, LastMouseActionStateManager.Object,
                     InputService.Object, KeyboardOutputService.Object, MouseOutputService.Object, MainWindowManipulationService.Object,
-                    ErrorNotifyingServices, OverrideTimesByKey);
+                    ErrorNotifyingServices);
 
                 MainViewModel.KeySelection += (s, e) => IsKeySelectionEventHandlerCalled = true;
                 MainViewModel.PointSelection += (s, e) => IsPointSelectionEventHandlerCalled = true;

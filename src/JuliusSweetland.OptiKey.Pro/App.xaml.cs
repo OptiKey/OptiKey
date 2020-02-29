@@ -127,7 +127,6 @@ namespace JuliusSweetland.OptiKey.Pro
                 }
 
                 var presageInstallationProblem = PresageInstallationProblemsDetected();
-                IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey = new Dictionary<KeyValue, TimeSpanOverrides>();
 
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
@@ -142,7 +141,7 @@ namespace JuliusSweetland.OptiKey.Pro
                 IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager,
                     lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
                 IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService,
-                    calibrationService, capturingStateManager, errorNotifyingServices, overrideTimesByKey);
+                    calibrationService, capturingStateManager, errorNotifyingServices);
                 IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService,
                     suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
@@ -167,7 +166,7 @@ namespace JuliusSweetland.OptiKey.Pro
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
-                    errorNotifyingServices, overrideTimesByKey);
+                    errorNotifyingServices);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 

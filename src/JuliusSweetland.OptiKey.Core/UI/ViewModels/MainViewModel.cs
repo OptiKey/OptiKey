@@ -56,7 +56,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
-        private IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
 
         #endregion
 
@@ -74,8 +73,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IKeyboardOutputService keyboardOutputService,
             IMouseOutputService mouseOutputService,
             IWindowManipulationService mainWindowManipulationService,
-            List<INotifyErrors> errorNotifyingServices,
-            IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey)
+            List<INotifyErrors> errorNotifyingServices)
         {
             this.audioService = audioService;
             this.calibrationService = calibrationService;
@@ -89,7 +87,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.mouseOutputService = mouseOutputService;
             this.mainWindowManipulationService = mainWindowManipulationService;
             this.errorNotifyingServices = errorNotifyingServices;
-            this.overrideTimesByKey = overrideTimesByKey;
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
@@ -123,9 +120,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public IWindowManipulationService MainWindowManipulationService { get { return mainWindowManipulationService; } }
 
-        public List<Tuple<KeyValue, KeyValue>> KeyFamily { get { return keyStateService.KeyFamily; } }
-        public IDictionary<string, List<KeyValue>> KeyValueByGroup { get { return keyStateService.KeyValueByGroup; } }
-        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return overrideTimesByKey; } }
 
         private IKeyboard keyboard;
         public IKeyboard Keyboard
@@ -136,9 +130,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 DeactivateLookToScrollUponSwitchingKeyboards();
                 keyboard?.OnExit(); // previous keyboard
                 SetProperty(ref keyboard, value);
-                //if loading a built in keyboard always check if the default state needs to be restored
-                if (!(keyboard is DynamicKeyboard))
-                    mainWindowManipulationService.RestorePersistedState();
                 keyboard?.OnEnter(); // new keyboard
                 Log.InfoFormat("Keyboard changed to {0}", value);
             }
@@ -333,10 +324,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case Enums.Keyboards.CustomKeyboardFile:
-                        // No BackAction if we're starting from a custom keyboard, since it should be 
-                        // the root menu.
                         SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () => { });
+                            windowManipulationService, () =>
+                            {
+                                Keyboard = new Menu(() => Keyboard = new Alpha1());
+                            });
                         break;
 
                     default:
@@ -382,8 +374,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.CustomKeyboardFile:
-                    Keyboard = new DynamicKeyboard(backAction, mainWindowManipulationService,
-                                   keyStateService, inputService, audioService, RaiseToastNotification, Settings.Default.StartupKeyboardFile);
+                    Keyboard = new DynamicKeyboard(backAction, keyStateService, Settings.Default.StartupKeyboardFile);
                     break;
 
                 case Enums.Keyboards.Diacritics1:

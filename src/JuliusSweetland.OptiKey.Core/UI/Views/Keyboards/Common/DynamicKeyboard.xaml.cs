@@ -16,6 +16,7 @@ using System.Windows;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using JuliusSweetland.OptiKey.UI.Windows;
+using JuliusSweetland.OptiKey.Services;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -28,14 +29,18 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private readonly MainWindow mainWindow;
         private readonly string inputFilename;
         private readonly XmlKeyboard keyboard;
-        private readonly List<Tuple<KeyValue, KeyValue>> keyFamily;
+        private readonly IList<Tuple<KeyValue, KeyValue>> keyFamily;
         private readonly IDictionary<string, List<KeyValue>> keyValueByGroup;
         private readonly IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
+        private readonly IWindowManipulationService windowManipulationService;
 
-        public DynamicKeyboard(MainWindow parentWindow, string inputFile, 
-            List<Tuple<KeyValue, KeyValue>> keyFamily = null,
-            IDictionary<string, List<KeyValue>> keyValueByGroup = null,
-            IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey = null)
+        public DynamicKeyboard(
+            MainWindow parentWindow, 
+            string inputFile, 
+            IList<Tuple<KeyValue, KeyValue>> keyFamily, 
+            IDictionary<string, List<KeyValue>> keyValueByGroup, 
+            IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey,
+            IWindowManipulationService windowManipulationService)
         {
             InitializeComponent();
             this.mainWindow = parentWindow;
@@ -43,6 +48,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             this.keyFamily = keyFamily;
             this.keyValueByGroup = keyValueByGroup;
             this.overrideTimesByKey = overrideTimesByKey;
+            this.windowManipulationService = windowManipulationService;
 
             // Read in XML file, exceptions get displayed to user
             if (string.IsNullOrEmpty(inputFilename))
@@ -117,9 +123,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 return false;
             }
 
+            Log.InfoFormat("Overriding size and position for dynamic keyboard");
+            windowManipulationService.OverridePersistedState(keyboard.PersistNewState, keyboard.WindowState, keyboard.Position, keyboard.DockSize, keyboard.Width, keyboard.Height, keyboard.HorizontalOffset, keyboard.VerticalOffset);
+
             return true;
         }
-        
+
         private bool ValidateKeys()
         {
             var allKeys = keyboard.Keys.ActionKeys.Cast<IXmlKey>()

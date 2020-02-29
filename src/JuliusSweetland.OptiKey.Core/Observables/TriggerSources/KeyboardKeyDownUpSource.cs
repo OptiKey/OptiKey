@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
+using System.Collections.Generic;
 using System.Reactive.Linq;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
@@ -108,6 +109,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                 return sequence;
             }
         }
+
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey => throw new NotImplementedException();
 
         #endregion
     }

@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Observables.PointSources;
 using MouseKeyboardActivityMonitor;
 using MouseKeyboardActivityMonitor.WinApi;
 using MouseButtons = System.Windows.Forms.MouseButtons;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
@@ -96,6 +97,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                 return sequence;
             }
         }
+
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey => throw new NotImplementedException();
 
         #endregion
     }
