@@ -32,9 +32,10 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
         }
 
         /*
-         * Want to return the translation status, translated text and exception content
-         *  the exception must be passed back to raise as toast notification,
-         *      cant access toast notification here due to circular dependency 
+         * Returns the translation status, translated text and exception content
+         * 
+         * This class cant access the toast notification / logger, due to circular dependency it would create,
+         * therefore the exception must be passed back to MainViewModel to raise as toast notification / logged.
          */
         public async Task<Response> Translate(string text)
         {

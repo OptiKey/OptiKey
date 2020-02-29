@@ -2305,7 +2305,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     errorToShow = response.exceptionMessage;
                                 }
                                 else {
-                                    errorToShow = "Response from translation was probably empty!";
+                                    errorToShow = "Response from translation was probably empty! is target language set?";
                                 }
 
                                 Log.Error("Error/exception during translation: " + errorToShow);
