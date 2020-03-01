@@ -2317,7 +2317,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             else
                             {
                                 keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
-                                keyboardOutputService.Text = response.translatedText;
+                                // Must include Powered by Yandex.Translate as license requirement
+                                keyboardOutputService.Text = response.translatedText + " (Powered by Yandex.Translate)";
                                 Clipboard.SetText(response.translatedText);
                             }
                         }
