@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JuliusSweetland.OptiKey.StandardPlugins {
+namespace JuliusSweetland.OptiKey.Services.Translation {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

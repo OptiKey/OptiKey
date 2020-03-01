@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using System.CodeDom.Compiler;
 using System.CodeDom;
 
-namespace JuliusSweetland.OptiKey.StandardPlugins
+namespace JuliusSweetland.OptiKey.Services.Translation
 {
     public class Translator
     {
@@ -38,6 +38,8 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
          */
         public async Task<Response> Translate(string text)
         {
+            Console.WriteLine("translate called with: " + text); 
+
             Response response;
             response.status = ""; response.translatedText = ""; response.exceptionMessage = "";
                 
@@ -69,10 +71,11 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
             }
             catch (HttpRequestException exception)
             {
+                Console.WriteLine("ex msg: " + exception.Message);
                 response.status = "Error";
                 response.exceptionMessage = exception.Message;
                 return response;
-            }
+            } 
         }
 
         private string ToLiteral(string input)

@@ -117,14 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AZERBAIJANI" xml:space="preserve">
-    <value>Azerbaijani</value>
-  </data>
   <data name="ALBANIAN" xml:space="preserve">
     <value>Albanian</value>
   </data>
+  <data name="ARABIC" xml:space="preserve">
+    <value>Arabic</value>
+  </data>
   <data name="ARMENIAN" xml:space="preserve">
     <value>Armenian</value>
+  </data>
+  <data name="AZERBAIJANI" xml:space="preserve">
+    <value>Azerbaijani</value>
   </data>
   <data name="BASHKIR" xml:space="preserve">
     <value>Bashkir</value>
@@ -233,12 +236,5 @@
   </data>
   <data name="UKRAINIAN" xml:space="preserve">
     <value>Ukrainian</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="metadata" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\metadata.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="ARABIC" xml:space="preserve">
-    <value>Arabic</value>
   </data>
 </root>

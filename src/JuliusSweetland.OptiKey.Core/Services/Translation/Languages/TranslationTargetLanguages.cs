@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JuliusSweetland.OptiKey.StandardPlugins.Translation.Languages
+namespace JuliusSweetland.OptiKey.Services.Translation.Languages
 {
     public class TranslationTargetLanguages
     {

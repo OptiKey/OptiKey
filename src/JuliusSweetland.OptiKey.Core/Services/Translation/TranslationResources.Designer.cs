@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
+namespace JuliusSweetland.OptiKey.Services.Translation {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class TranslationResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal TranslationResources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JuliusSweetland.OptiKey.StandardPlugins.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JuliusSweetland.OptiKey.Services.Translation.TranslationResources", typeof(TranslationResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Albanian.
         /// </summary>
-        public static string ALBANIAN {
+        internal static string ALBANIAN {
             get {
                 return ResourceManager.GetString("ALBANIAN", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Arabic.
         /// </summary>
-        public static string ARABIC {
+        internal static string ARABIC {
             get {
                 return ResourceManager.GetString("ARABIC", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Armenian.
         /// </summary>
-        public static string ARMENIAN {
+        internal static string ARMENIAN {
             get {
                 return ResourceManager.GetString("ARMENIAN", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Azerbaijani.
         /// </summary>
-        public static string AZERBAIJANI {
+        internal static string AZERBAIJANI {
             get {
                 return ResourceManager.GetString("AZERBAIJANI", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Bashkir.
         /// </summary>
-        public static string BASHKIR {
+        internal static string BASHKIR {
             get {
                 return ResourceManager.GetString("BASHKIR", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Belarusian.
         /// </summary>
-        public static string BELARUSIAN {
+        internal static string BELARUSIAN {
             get {
                 return ResourceManager.GetString("BELARUSIAN", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Bulgarian.
         /// </summary>
-        public static string BULGARIAN {
+        internal static string BULGARIAN {
             get {
                 return ResourceManager.GetString("BULGARIAN", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Catalan.
         /// </summary>
-        public static string CATALAN {
+        internal static string CATALAN {
             get {
                 return ResourceManager.GetString("CATALAN", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Croatian.
         /// </summary>
-        public static string CROATIAN {
+        internal static string CROATIAN {
             get {
                 return ResourceManager.GetString("CROATIAN", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Czech.
         /// </summary>
-        public static string CZECH {
+        internal static string CZECH {
             get {
                 return ResourceManager.GetString("CZECH", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Danish.
         /// </summary>
-        public static string DANISH {
+        internal static string DANISH {
             get {
                 return ResourceManager.GetString("DANISH", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Dutch.
         /// </summary>
-        public static string DUTCH {
+        internal static string DUTCH {
             get {
                 return ResourceManager.GetString("DUTCH", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
-        public static string ENGLISH {
+        internal static string ENGLISH {
             get {
                 return ResourceManager.GetString("ENGLISH", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Estonian.
         /// </summary>
-        public static string ESTONIAN {
+        internal static string ESTONIAN {
             get {
                 return ResourceManager.GetString("ESTONIAN", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Finnish.
         /// </summary>
-        public static string FINNISH {
+        internal static string FINNISH {
             get {
                 return ResourceManager.GetString("FINNISH", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to French.
         /// </summary>
-        public static string FRENCH {
+        internal static string FRENCH {
             get {
                 return ResourceManager.GetString("FRENCH", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Georgian.
         /// </summary>
-        public static string GEORGIAN {
+        internal static string GEORGIAN {
             get {
                 return ResourceManager.GetString("GEORGIAN", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to German.
         /// </summary>
-        public static string GERMAN {
+        internal static string GERMAN {
             get {
                 return ResourceManager.GetString("GERMAN", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Greek.
         /// </summary>
-        public static string GREEK {
+        internal static string GREEK {
             get {
                 return ResourceManager.GetString("GREEK", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Hebrew.
         /// </summary>
-        public static string HEBREW {
+        internal static string HEBREW {
             get {
                 return ResourceManager.GetString("HEBREW", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Hungarian.
         /// </summary>
-        public static string HUNGARIAN {
+        internal static string HUNGARIAN {
             get {
                 return ResourceManager.GetString("HUNGARIAN", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Italian.
         /// </summary>
-        public static string ITALIAN {
+        internal static string ITALIAN {
             get {
                 return ResourceManager.GetString("ITALIAN", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Kazakh.
         /// </summary>
-        public static string KAZAKH {
+        internal static string KAZAKH {
             get {
                 return ResourceManager.GetString("KAZAKH", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Latvian.
         /// </summary>
-        public static string LATVIAN {
+        internal static string LATVIAN {
             get {
                 return ResourceManager.GetString("LATVIAN", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Lithuanian.
         /// </summary>
-        public static string LITHUANIAN {
+        internal static string LITHUANIAN {
             get {
                 return ResourceManager.GetString("LITHUANIAN", resourceCulture);
             }
@@ -288,38 +288,16 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Macedonian.
         /// </summary>
-        public static string MACEDONIAN {
+        internal static string MACEDONIAN {
             get {
                 return ResourceManager.GetString("MACEDONIAN", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;!--
-        ///Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-        ///--&gt;
-        ///&lt;Plugins&gt;
-        ///  &lt;Plugin&gt;
-        ///    &lt;Id&gt;HttpCall&lt;/Id&gt;
-        ///    &lt;Impl&gt;JuliusSweetland.OptiKey.StandardPlugins.HttpCall&lt;/Impl&gt;
-        ///    &lt;Name&gt;HTTP/HTTPS Call Plugin&lt;/Name&gt;
-        ///    &lt;Description&gt;This plugins enables OptiKey to call a external HTTP/HTTPS uri every time a plugin key is pressed&lt;/Description&gt;
-        ///    &lt;Methods&gt;
-        ///      &lt;Method&gt;
-        ///        &lt;Name&gt;GET&lt;/Name&gt;
-        ///        &lt;Description&gt;Calls an HTTP/H [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string metadata {
-            get {
-                return ResourceManager.GetString("metadata", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Norwegian.
         /// </summary>
-        public static string NORWEGIAN {
+        internal static string NORWEGIAN {
             get {
                 return ResourceManager.GetString("NORWEGIAN", resourceCulture);
             }
@@ -328,7 +306,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Persian.
         /// </summary>
-        public static string PERSIAN {
+        internal static string PERSIAN {
             get {
                 return ResourceManager.GetString("PERSIAN", resourceCulture);
             }
@@ -337,7 +315,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Polish.
         /// </summary>
-        public static string POLISH {
+        internal static string POLISH {
             get {
                 return ResourceManager.GetString("POLISH", resourceCulture);
             }
@@ -346,7 +324,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Portuguese.
         /// </summary>
-        public static string PORTUGUESE {
+        internal static string PORTUGUESE {
             get {
                 return ResourceManager.GetString("PORTUGUESE", resourceCulture);
             }
@@ -355,7 +333,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Romanian.
         /// </summary>
-        public static string ROMANIAN {
+        internal static string ROMANIAN {
             get {
                 return ResourceManager.GetString("ROMANIAN", resourceCulture);
             }
@@ -364,7 +342,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Russian.
         /// </summary>
-        public static string RUSSIAN {
+        internal static string RUSSIAN {
             get {
                 return ResourceManager.GetString("RUSSIAN", resourceCulture);
             }
@@ -373,7 +351,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Serbian.
         /// </summary>
-        public static string SERBIAN {
+        internal static string SERBIAN {
             get {
                 return ResourceManager.GetString("SERBIAN", resourceCulture);
             }
@@ -382,7 +360,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Slovak.
         /// </summary>
-        public static string SLOVAK {
+        internal static string SLOVAK {
             get {
                 return ResourceManager.GetString("SLOVAK", resourceCulture);
             }
@@ -391,7 +369,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Slovenian.
         /// </summary>
-        public static string SLOVENIAN {
+        internal static string SLOVENIAN {
             get {
                 return ResourceManager.GetString("SLOVENIAN", resourceCulture);
             }
@@ -400,7 +378,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Spanish.
         /// </summary>
-        public static string SPANISH {
+        internal static string SPANISH {
             get {
                 return ResourceManager.GetString("SPANISH", resourceCulture);
             }
@@ -409,7 +387,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Swedish.
         /// </summary>
-        public static string SWEDISH {
+        internal static string SWEDISH {
             get {
                 return ResourceManager.GetString("SWEDISH", resourceCulture);
             }
@@ -418,7 +396,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Tatar.
         /// </summary>
-        public static string TATAR {
+        internal static string TATAR {
             get {
                 return ResourceManager.GetString("TATAR", resourceCulture);
             }
@@ -427,7 +405,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Turkish.
         /// </summary>
-        public static string TURKISH {
+        internal static string TURKISH {
             get {
                 return ResourceManager.GetString("TURKISH", resourceCulture);
             }
@@ -436,7 +414,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Ukrainian.
         /// </summary>
-        public static string UKRAINIAN {
+        internal static string UKRAINIAN {
             get {
                 return ResourceManager.GetString("UKRAINIAN", resourceCulture);
             }

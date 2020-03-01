@@ -10,9 +10,9 @@ using log4net;
 using Prism.Mvvm;
 using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
 using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
-using JuliusSweetland.OptiKey.StandardPlugins.Translation.Languages;
-using JuliusSweetland.OptiKey.StandardPlugins.Properties;
-using JuliusSweetland.OptiKey.StandardPlugins;
+
+using JuliusSweetland.OptiKey.Services.Translation.Languages;
+using JuliusSweetland.OptiKey.Services.Translation;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
@@ -82,46 +82,46 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.AZERBAIJANI, TranslationTargetLanguages.AZERBAIJANI),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.ALBANIAN, TranslationTargetLanguages.ALBANIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.ARABIC, TranslationTargetLanguages.ARABIC),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.ARMENIAN, TranslationTargetLanguages.ARMENIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.BASHKIR, TranslationTargetLanguages.BASHKIR),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.BELARUSIAN, TranslationTargetLanguages.BELARUSIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.BULGARIAN, TranslationTargetLanguages.BULGARIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.CATALAN, TranslationTargetLanguages.CATALAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.CROATIAN, TranslationTargetLanguages.CROATIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.CZECH, TranslationTargetLanguages.CZECH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.DANISH, TranslationTargetLanguages.DANISH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.DUTCH, TranslationTargetLanguages.DUTCH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.ENGLISH, TranslationTargetLanguages.ENGLISH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.ESTONIAN, TranslationTargetLanguages.ESTONIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.FINNISH, TranslationTargetLanguages.FINNISH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.FRENCH, TranslationTargetLanguages.FRENCH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.GEORGIAN, TranslationTargetLanguages.GEORGIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.GERMAN, TranslationTargetLanguages.GERMAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.GREEK, TranslationTargetLanguages.GREEK),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.HEBREW, TranslationTargetLanguages.HEBREW),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.HUNGARIAN, TranslationTargetLanguages.HUNGARIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.ITALIAN, TranslationTargetLanguages.ITALIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.KAZAKH, TranslationTargetLanguages.KAZAKH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.LATVIAN, TranslationTargetLanguages.LATVIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.LITHUANIAN, TranslationTargetLanguages.LITHUANIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.MACEDONIAN, TranslationTargetLanguages.MACEDONIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.NORWEGIAN, TranslationTargetLanguages.NORWEGIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.PERSIAN, TranslationTargetLanguages.PERSIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.POLISH, TranslationTargetLanguages.POLISH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.PORTUGUESE, TranslationTargetLanguages.PORTUGUESE),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.ROMANIAN, TranslationTargetLanguages.ROMANIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.RUSSIAN, TranslationTargetLanguages.RUSSIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.SERBIAN, TranslationTargetLanguages.SERBIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.SLOVAK, TranslationTargetLanguages.SLOVAK),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.SLOVENIAN, TranslationTargetLanguages.SLOVENIAN),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.SPANISH, TranslationTargetLanguages.SPANISH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.SWEDISH, TranslationTargetLanguages.SWEDISH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.TATAR, TranslationTargetLanguages.TATAR),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.TURKISH, TranslationTargetLanguages.TURKISH),
-                    new KeyValuePair<string, string>(StandardPlugins.Properties.Resources.UKRAINIAN, TranslationTargetLanguages.UKRAINIAN)
+                    new KeyValuePair<string, string>(TranslationResources.AZERBAIJANI, TranslationTargetLanguages.AZERBAIJANI),
+                    new KeyValuePair<string, string>(TranslationResources.ALBANIAN, TranslationTargetLanguages.ALBANIAN),
+                    new KeyValuePair<string, string>(TranslationResources.ARABIC, TranslationTargetLanguages.ARABIC),
+                    new KeyValuePair<string, string>(TranslationResources.ARMENIAN, TranslationTargetLanguages.ARMENIAN),
+                    new KeyValuePair<string, string>(TranslationResources.BASHKIR, TranslationTargetLanguages.BASHKIR),
+                    new KeyValuePair<string, string>(TranslationResources.BELARUSIAN, TranslationTargetLanguages.BELARUSIAN),
+                    new KeyValuePair<string, string>(TranslationResources.BULGARIAN, TranslationTargetLanguages.BULGARIAN),
+                    new KeyValuePair<string, string>(TranslationResources.CATALAN, TranslationTargetLanguages.CATALAN),
+                    new KeyValuePair<string, string>(TranslationResources.CROATIAN, TranslationTargetLanguages.CROATIAN),
+                    new KeyValuePair<string, string>(TranslationResources.CZECH, TranslationTargetLanguages.CZECH),
+                    new KeyValuePair<string, string>(TranslationResources.DANISH, TranslationTargetLanguages.DANISH),
+                    new KeyValuePair<string, string>(TranslationResources.DUTCH, TranslationTargetLanguages.DUTCH),
+                    new KeyValuePair<string, string>(TranslationResources.ENGLISH, TranslationTargetLanguages.ENGLISH),
+                    new KeyValuePair<string, string>(TranslationResources.ESTONIAN, TranslationTargetLanguages.ESTONIAN),
+                    new KeyValuePair<string, string>(TranslationResources.FINNISH, TranslationTargetLanguages.FINNISH),
+                    new KeyValuePair<string, string>(TranslationResources.FRENCH, TranslationTargetLanguages.FRENCH),
+                    new KeyValuePair<string, string>(TranslationResources.GEORGIAN, TranslationTargetLanguages.GEORGIAN),
+                    new KeyValuePair<string, string>(TranslationResources.GERMAN, TranslationTargetLanguages.GERMAN),
+                    new KeyValuePair<string, string>(TranslationResources.GREEK, TranslationTargetLanguages.GREEK),
+                    new KeyValuePair<string, string>(TranslationResources.HEBREW, TranslationTargetLanguages.HEBREW),
+                    new KeyValuePair<string, string>(TranslationResources.HUNGARIAN, TranslationTargetLanguages.HUNGARIAN),
+                    new KeyValuePair<string, string>(TranslationResources.ITALIAN, TranslationTargetLanguages.ITALIAN),
+                    new KeyValuePair<string, string>(TranslationResources.KAZAKH, TranslationTargetLanguages.KAZAKH),
+                    new KeyValuePair<string, string>(TranslationResources.LATVIAN, TranslationTargetLanguages.LATVIAN),
+                    new KeyValuePair<string, string>(TranslationResources.LITHUANIAN, TranslationTargetLanguages.LITHUANIAN),
+                    new KeyValuePair<string, string>(TranslationResources.MACEDONIAN, TranslationTargetLanguages.MACEDONIAN),
+                    new KeyValuePair<string, string>(TranslationResources.NORWEGIAN, TranslationTargetLanguages.NORWEGIAN),
+                    new KeyValuePair<string, string>(TranslationResources.PERSIAN, TranslationTargetLanguages.PERSIAN),
+                    new KeyValuePair<string, string>(TranslationResources.POLISH, TranslationTargetLanguages.POLISH),
+                    new KeyValuePair<string, string>(TranslationResources.PORTUGUESE, TranslationTargetLanguages.PORTUGUESE),
+                    new KeyValuePair<string, string>(TranslationResources.ROMANIAN, TranslationTargetLanguages.ROMANIAN),
+                    new KeyValuePair<string, string>(TranslationResources.RUSSIAN, TranslationTargetLanguages.RUSSIAN),
+                    new KeyValuePair<string, string>(TranslationResources.SERBIAN, TranslationTargetLanguages.SERBIAN),
+                    new KeyValuePair<string, string>(TranslationResources.SLOVAK, TranslationTargetLanguages.SLOVAK),
+                    new KeyValuePair<string, string>(TranslationResources.SLOVENIAN, TranslationTargetLanguages.SLOVENIAN),
+                    new KeyValuePair<string, string>(TranslationResources.SPANISH, TranslationTargetLanguages.SPANISH),
+                    new KeyValuePair<string, string>(TranslationResources.SWEDISH, TranslationTargetLanguages.SWEDISH),
+                    new KeyValuePair<string, string>(TranslationResources.TATAR, TranslationTargetLanguages.TATAR),
+                    new KeyValuePair<string, string>(TranslationResources.TURKISH, TranslationTargetLanguages.TURKISH),
+                    new KeyValuePair<string, string>(TranslationResources.UKRAINIAN, TranslationTargetLanguages.UKRAINIAN)
                 };
             }
         }
