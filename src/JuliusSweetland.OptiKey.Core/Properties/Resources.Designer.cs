@@ -6198,6 +6198,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Translate.
+        /// </summary>
+        public static string TRANSLATE {
+            get {
+                return ResourceManager.GetString("TRANSLATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Translation Target Language:.
         /// </summary>
         public static string TRANSLATION_TARGET_LANGUAGE_LABEL {

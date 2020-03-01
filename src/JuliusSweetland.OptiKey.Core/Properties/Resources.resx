@@ -2453,4 +2453,7 @@ Magyar
   <data name="ERROR_DURING_TRANSLATION" xml:space="preserve">
     <value>An error has occured during the translation of text</value>
   </data>
+  <data name="TRANSLATE" xml:space="preserve">
+    <value>Translate</value>
+  </data>
 </root>
