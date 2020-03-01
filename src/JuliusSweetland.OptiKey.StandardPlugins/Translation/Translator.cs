@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.IO;
 using Newtonsoft.Json;
-using JuliusSweetland.OptiKey.StandardPlugins.Properties;
 using System.CodeDom.Compiler;
 using System.CodeDom;
 
@@ -49,7 +48,7 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
                 HttpResponseMessage httpResponseMessage = await client.GetAsync(
                     "https://translate.yandex.net/api/v1.5/tr.json/translate?" +
                     "lang=" + TranslationTargetLanguage +
-                    "&key=trnsl.1.1.20200208T211513Z.c27ba519478a018a.0686d91c86a4321b32b41b0c30551aef47556314" +
+                    "&key=" + TranslationAPI.Default.ApiKey +
                     "&text=" + text);
 
                 httpResponseMessage.EnsureSuccessStatusCode();
