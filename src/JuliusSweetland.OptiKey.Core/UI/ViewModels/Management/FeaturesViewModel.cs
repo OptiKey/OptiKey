@@ -68,10 +68,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private string translationTargetLanguage;
         public string TranslationTargetLanguage
         {
-            get { return translationTargetLanguage; } // needed?
+            get { return translationTargetLanguage; }
             set 
             {
-                SetProperty(ref translationTargetLanguage, value);// needed?
+                SetProperty(ref translationTargetLanguage, value);
                 Translator.TranslationTargetLanguage = value;
             }
         }
@@ -125,7 +125,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
-
 
         private bool enableCommuniKateKeyboardLayout;
         public bool EnableCommuniKateKeyboardLayout
