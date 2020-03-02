@@ -2309,9 +2309,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 }
 
                                 Log.Error("Error/exception during translation: " + errorToShow);
+                                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                                 RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, errorToShow, NotificationTypes.Error, () =>
                                 {
-                                    inputService.RequestResume();
+                                     inputService.RequestResume();
                                 });
                             }
                             else
@@ -2320,6 +2321,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 // Must include Powered by Yandex.Translate as license requirement
                                 keyboardOutputService.Text = response.translatedText + " (Powered by Yandex.Translate)";
                                 Clipboard.SetText(response.translatedText);
+                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                             }
                         }
                     }
