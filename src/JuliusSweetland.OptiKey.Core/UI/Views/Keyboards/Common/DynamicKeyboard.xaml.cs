@@ -626,6 +626,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             }
                             else
                                 commandList.Add(new KeyCommand(KeyCommands.Action, new KeyValue(actionEnum)));
+
+                            if (KeyValues.KeysWhichCanBeLockedDown.Contains(commandKeyValue) 
+                                && !keyFamily.Contains(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue)))
+                            {
+                                keyFamily.Add(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue));
+                            }
                         }
                     }
                     else if (dynamicKey is DynamicLink dynamicLink)
