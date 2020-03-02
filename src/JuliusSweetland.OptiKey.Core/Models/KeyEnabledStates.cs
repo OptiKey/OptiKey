@@ -82,6 +82,9 @@ namespace JuliusSweetland.OptiKey.Models
                 }
 
                 //Key is not Sleep, but we are sleeping
+                //KeyFamily is the collection of parent KeyValues (Item1) and the KeyValues of child commands (Item2) 
+                //that could be locked down when the parent key is triggered. 
+                //Do not disable any parent key that has a child Sleep command
                 if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
                     && keyValue != KeyValues.SleepKey
                     && !keyFamily.Exists(x => x.Item1 == keyValue && x.Item2 == KeyValues.SleepKey))
