@@ -3,7 +3,9 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services.Translation;
+using JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifications;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.Protected;
@@ -11,7 +13,7 @@ using Moq.Protected;
 namespace JuliusSweetland.OptiKey.UnitTests.Services.Translation
 {
     [TestClass]
-    public class TranslationServiceTests
+    public class TranslationServiceTests : MainViewModelTestBase
     {
         /*
          * Tests the correct request is sent and mocked response is converted properly
@@ -19,6 +21,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.Translation
         [TestMethod]
         public async Task TestTranslateAsync()
         {
+            base.BaseSetUp();
+
             // ARRANGE
             var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
             handlerMock
@@ -33,7 +37,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.Translation
                .ReturnsAsync(new HttpResponseMessage()
                {
                    StatusCode = HttpStatusCode.OK,
-                   Content = new StringContent("{'text':['Hallo'],'lang':'de','code':'200'}"),
+                   Content = new StringContent("{'text':['Hallo'],'lang':'en','code':'200'}"),
                })
                .Verifiable();
 
@@ -44,7 +48,6 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.Translation
             };
 
             var subjectUnderTest = new TranslationService(httpClient);
-            TranslationService.TranslationTargetLanguage = "de";
                 
             // ACT
             TranslationService.Response result = await subjectUnderTest.translate("hello");
@@ -58,7 +61,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.Translation
 
             // also check the 'http' call was like we expected it
             var expectedUri = new Uri("https://translate.yandex.net/api/v1.5/tr.json/translate?" +
-                    "lang=" + TranslationService.TranslationTargetLanguage +
+                    "lang=" + Settings.Default.TranslationTargetLanguage +
                     "&key=" + TranslationAPI.Default.ApiKey +
                     "&text=" + "hello");
 
