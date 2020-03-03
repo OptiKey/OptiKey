@@ -17,9 +17,9 @@ namespace JuliusSweetland.OptiKey.Services.Translation
     {
         private HttpClient client;
         public static string TranslationTargetLanguage;
-        public TranslationService()
+        public TranslationService(HttpClient httpClient)
         {
-            this.client = new HttpClient();
+            this.client = httpClient;
         }
 
         public struct Response
@@ -32,7 +32,7 @@ namespace JuliusSweetland.OptiKey.Services.Translation
         /*
          * Returns the translation status, translated text and exception content
          */
-        public async Task<Response> Translate(string text)
+        public async Task<Response> translate(string text)
         {
             Response response;
             response.status = ""; response.translatedText = ""; response.exceptionMessage = "";

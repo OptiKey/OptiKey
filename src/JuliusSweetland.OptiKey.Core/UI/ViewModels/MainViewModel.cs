@@ -17,7 +17,7 @@ using log4net;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
 using System.Text;
-using JuliusSweetland.OptiKey.StandardPlugins;
+using System.Net.Http;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -94,7 +94,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
 
-            this.translationService = new TranslationService();
+            this.translationService = new TranslationService(new HttpClient());
 
             SetupInputServiceEventHandlers();
             InitialiseKeyboard(mainWindowManipulationService);
