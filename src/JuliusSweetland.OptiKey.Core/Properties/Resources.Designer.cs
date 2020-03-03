@@ -1445,6 +1445,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use a different Yandex Translation API key?.
+        /// </summary>
+        public static string ENABLE_SEPARATE_TRANSLATION_API_KEY_LABEL {
+            get {
+                return ResourceManager.GetString("ENABLE_SEPARATE_TRANSLATION_API_KEY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable translation key?.
         /// </summary>
         public static string ENABLE_TRANSLATION_KEY_LABEL {
@@ -5399,6 +5408,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL {
             get {
                 return ResourceManager.GetString("SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to API Key:.
+        /// </summary>
+        public static string SEPARATE_TRANSLATION_API_KEY_LABEL {
+            get {
+                return ResourceManager.GetString("SEPARATE_TRANSLATION_API_KEY_LABEL", resourceCulture);
             }
         }
         

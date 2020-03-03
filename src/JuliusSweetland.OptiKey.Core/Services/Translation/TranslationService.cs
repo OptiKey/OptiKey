@@ -10,13 +10,14 @@ using System.IO;
 using Newtonsoft.Json;
 using System.CodeDom.Compiler;
 using System.CodeDom;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services.Translation
 {
     public class TranslationService
     {
         private HttpClient client;
-        public static string TranslationTargetLanguage;
+        private string apiKeyToUse;
 
         public TranslationService(HttpClient httpClient)
         {
@@ -37,15 +38,23 @@ namespace JuliusSweetland.OptiKey.Services.Translation
         {
             Response response;
             response.status = ""; response.translatedText = ""; response.exceptionMessage = "";
-                
+
+            if (!string.IsNullOrEmpty(Settings.Default.SeparateTranslationApiKey)) {
+                this.apiKeyToUse = Settings.Default.SeparateTranslationApiKey;
+            }
+            else
+            {
+                this.apiKeyToUse = TranslationAPI.Default.ApiKey;
+            }
+
             try
             {
                 string escapedText = ToLiteral(text);
 
                 HttpResponseMessage httpResponseMessage = await client.GetAsync(
                     "https://translate.yandex.net/api/v1.5/tr.json/translate?" +
-                    "lang=" + TranslationTargetLanguage +
-                    "&key=" + TranslationAPI.Default.ApiKey +
+                    "lang=" + Settings.Default.TranslationTargetLanguage +
+                    "&key=" + this.apiKeyToUse +
                     "&text=" + text);
 
                 httpResponseMessage.EnsureSuccessStatusCode();

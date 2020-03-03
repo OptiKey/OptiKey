@@ -2670,6 +2670,38 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual bool EnableSeparateTranslationApiKey
+        {
+            get
+            {
+                return ((bool)(this["EnableSeparateTranslationApiKey"]));
+            }
+            set
+            {
+                this["EnableSeparateTranslationApiKey"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual string SeparateTranslationApiKey
+        {
+            get
+            {
+                return ((string)(this["SeparateTranslationApiKey"]));
+            }
+            set
+            {
+                this["SeparateTranslationApiKey"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool TypeDiacriticsAfterLetters {
             get {
                 return ((bool)(this["TypeDiacriticsAfterLetters"]));
