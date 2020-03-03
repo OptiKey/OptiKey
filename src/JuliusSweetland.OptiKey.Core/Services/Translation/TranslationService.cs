@@ -17,6 +17,7 @@ namespace JuliusSweetland.OptiKey.Services.Translation
     {
         private HttpClient client;
         public static string TranslationTargetLanguage;
+
         public TranslationService(HttpClient httpClient)
         {
             this.client = httpClient;
@@ -83,6 +84,7 @@ namespace JuliusSweetland.OptiKey.Services.Translation
             }
         }
     }
+
     class YandexResponse
     {
         public int code { get; set; }
