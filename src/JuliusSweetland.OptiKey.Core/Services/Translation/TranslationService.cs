@@ -13,33 +13,27 @@ using System.CodeDom;
 
 namespace JuliusSweetland.OptiKey.Services.Translation
 {
-    public class Translator
+    public class TranslationService
     {
         private HttpClient client;
         public static string TranslationTargetLanguage;
-  
+        public TranslationService()
+        {
+            this.client = new HttpClient();
+        }
+
         public struct Response
         {
             public string status;
             public string translatedText;
             public string exceptionMessage;
         }
-
-        public Translator()
-        {
-            this.client = new HttpClient();
-        }
-
+        
         /*
          * Returns the translation status, translated text and exception content
-         * 
-         * This class cant access the toast notification / logger, due to circular dependency it would create,
-         * therefore the exception must be passed back to MainViewModel to raise as toast notification / logged.
          */
         public async Task<Response> Translate(string text)
         {
-            Console.WriteLine("translate called with: " + text); 
-
             Response response;
             response.status = ""; response.translatedText = ""; response.exceptionMessage = "";
                 
@@ -71,7 +65,6 @@ namespace JuliusSweetland.OptiKey.Services.Translation
             }
             catch (HttpRequestException exception)
             {
-                Console.WriteLine("ex msg: " + exception.Message);
                 response.status = "Error";
                 response.exceptionMessage = exception.Message;
                 return response;

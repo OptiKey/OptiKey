@@ -417,7 +417,7 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Services\Translation\Translator.cs" />
+    <Compile Include="Services\Translation\TranslationService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
     <Compile Include="Services\KeyboardOutputService.cs" />
     <Compile Include="Services\PublishService.cs" />

@@ -72,7 +72,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set 
             {
                 SetProperty(ref translationTargetLanguage, value);
-                Translator.TranslationTargetLanguage = value;
+                TranslationService.TranslationTargetLanguage = value;
             }
         }
 

@@ -2296,7 +2296,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                         if (!string.IsNullOrEmpty(textFromScratchpad))
                         { 
-                            Translator.Response response = await translator.Translate(textFromScratchpad);
+                            TranslationService.Response response = await translationService.Translate(textFromScratchpad);
                             if (response.status == "Error")
                             {
                                 string errorToShow;
