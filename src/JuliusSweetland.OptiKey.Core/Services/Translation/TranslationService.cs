@@ -19,6 +19,7 @@ namespace JuliusSweetland.OptiKey.Services.Translation
     {
         private HttpClient client;
         private string apiKeyToUse;
+        public const string LICENSE_TEXT = "(Powered by Yandex.Translate)";
 
         public TranslationService(HttpClient httpClient)
         {

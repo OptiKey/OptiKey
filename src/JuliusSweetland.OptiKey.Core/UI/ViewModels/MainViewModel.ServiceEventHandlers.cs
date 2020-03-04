@@ -2280,8 +2280,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.Speak:
+                    string textToSpeak = "";
+                    if (!string.IsNullOrEmpty(keyboardOutputService.Text))
+                    {
+                        if (keyboardOutputService.Text.Contains(TranslationService.LICENSE_TEXT))
+                        {
+                            textToSpeak = keyboardOutputService.Text.Replace(TranslationService.LICENSE_TEXT, "");
+                        }
+                        else
+                        {
+                            textToSpeak = keyboardOutputService.Text;
+                        }
+                    }
+
                     var speechStarted = audioService.SpeakNewOrInterruptCurrentSpeech(
-                        keyboardOutputService.Text,
+                        textToSpeak,
                         () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
                         Settings.Default.SpeechVolume,
                         Settings.Default.SpeechRate,
@@ -2319,7 +2332,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
                                 // Must include Powered by Yandex.Translate as license requirement
-                                keyboardOutputService.Text = response.translatedText + " (Powered by Yandex.Translate)";
+                                keyboardOutputService.Text = response.translatedText + " " + TranslationService.LICENSE_TEXT;
                                 Clipboard.SetText(response.translatedText);
                                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                             }
