@@ -28,9 +28,16 @@ namespace JuliusSweetland.OptiKey.Services.Translation
 
         public struct Response
         {
-            public string status;
-            public string translatedText;
-            public string exceptionMessage;
+            public Response(string status, string translatedText, string exceptionMessage)
+            {
+                Status = status;
+                TranslatedText = translatedText;
+                ExceptionMessage = exceptionMessage;
+            }
+
+            public string Status { get; }
+            public string TranslatedText { get; }
+            public string ExceptionMessage { get; }
         }
         
         /*
@@ -39,7 +46,6 @@ namespace JuliusSweetland.OptiKey.Services.Translation
         public async Task<Response> translate(string text)
         {
             Response response;
-            response.status = ""; response.translatedText = ""; response.exceptionMessage = "";
 
             if (!string.IsNullOrEmpty(Settings.Default.OverriddenTranslationApiKey)) {
                 this.apiKeyToUse = Settings.Default.OverriddenTranslationApiKey;
@@ -65,20 +71,18 @@ namespace JuliusSweetland.OptiKey.Services.Translation
                 if (!string.IsNullOrEmpty(httpResponseBody))
                 {
                     YandexResponse obj = JsonConvert.DeserializeObject<YandexResponse>(httpResponseBody);
-                    response.translatedText = obj.text[0];
-                    response.status = "Success";
+                    response = new Response("Success", obj.text[0], "");
                 }
                 else
                 {
-                    response.status = "Error";
+                    response = new Response("Error", "", "Translation response was empty! is target language set?");
                 }
 
                 return response;
             }
             catch (HttpRequestException exception)
-            {
-                response.status = "Error";
-                response.exceptionMessage = exception.Message;
+            {   
+                response = new Response("Error", "", exception.Message);
                 return response;
             } 
         }
@@ -94,12 +98,12 @@ namespace JuliusSweetland.OptiKey.Services.Translation
                 }
             }
         }
-    }
 
-    class YandexResponse
-    {
-        public int code { get; set; }
-        public string lang { get; set; }
-        public List<string> text { get; set; }
+        private class YandexResponse
+        {
+            public int code { get; set; }
+            public string lang { get; set; }
+            public List<string> text { get; set; }
+        }
     }
 }

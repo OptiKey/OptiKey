@@ -2310,20 +2310,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (!string.IsNullOrEmpty(textFromScratchpad))
                         { 
                             TranslationService.Response response = await translationService.translate(textFromScratchpad);
-                            if (response.status == "Error")
+                            if (response.Status == "Error")
                             {
-                                string errorToShow;
-
-                                if (response.exceptionMessage == "") {
-                                    errorToShow = response.exceptionMessage;
-                                }
-                                else {
-                                    errorToShow = "Translation response was empty! is target language set?";
-                                }
-
-                                Log.Error("Error/exception during translation: " + errorToShow);
+                                Log.Error("Error/exception during translation: " + response.ExceptionMessage);
                                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                                RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, errorToShow, NotificationTypes.Error, () =>
+                                RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, ExceptionMessage, NotificationTypes.Error, () =>
                                 {
                                      inputService.RequestResume();
                                 });
@@ -2332,8 +2323,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
                                 // Must include Powered by Yandex.Translate as license requirement
-                                keyboardOutputService.Text = response.translatedText + " " + TranslationService.LICENSE_TEXT;
-                                Clipboard.SetText(response.translatedText);
+                                keyboardOutputService.Text = response.TranslatedText + " " + TranslationService.LICENSE_TEXT;
+                                Clipboard.SetText(response.TranslatedText);
                                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                             }
                         }
