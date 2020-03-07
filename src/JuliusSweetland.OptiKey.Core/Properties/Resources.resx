@@ -2453,10 +2453,10 @@ Magyar
   <data name="TRANSLATE" xml:space="preserve">
     <value>Translate</value>
   </data>
-  <data name="ENABLE_SEPARATE_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
+  <data name="ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
     <value>Use a different Yandex Translation API key?</value>
   </data>
-  <data name="SEPARATE_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
+  <data name="OVERRIDDEN_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
     <value>API Key:</value>
   </data>
   <data name="ENABLE_TRANSLATION_KEY_LABEL" xml:space="preserve">

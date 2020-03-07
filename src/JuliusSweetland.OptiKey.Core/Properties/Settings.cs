@@ -2670,15 +2670,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public virtual bool EnableSeparateTranslationApiKey
+        public virtual bool EnableOverrideTranslationApiKey
         {
             get
             {
-                return ((bool)(this["EnableSeparateTranslationApiKey"]));
+                return ((bool)(this["EnableOverrideTranslationApiKey"]));
             }
             set
             {
-                this["EnableSeparateTranslationApiKey"] = value;
+                this["EnableOverrideTranslationApiKey"] = value;
             }
         }
 
@@ -2686,15 +2686,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public virtual string SeparateTranslationApiKey
+        public virtual string OverriddenTranslationApiKey
         {
             get
             {
-                return ((string)(this["SeparateTranslationApiKey"]));
+                return ((string)(this["OverriddenTranslationApiKey"]));
             }
             set
             {
-                this["SeparateTranslationApiKey"] = value;
+                this["OverriddenTranslationApiKey"] = value;
             }
         }
 

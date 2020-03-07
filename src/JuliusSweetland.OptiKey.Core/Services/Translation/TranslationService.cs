@@ -41,8 +41,8 @@ namespace JuliusSweetland.OptiKey.Services.Translation
             Response response;
             response.status = ""; response.translatedText = ""; response.exceptionMessage = "";
 
-            if (!string.IsNullOrEmpty(Settings.Default.SeparateTranslationApiKey)) {
-                this.apiKeyToUse = Settings.Default.SeparateTranslationApiKey;
+            if (!string.IsNullOrEmpty(Settings.Default.OverriddenTranslationApiKey)) {
+                this.apiKeyToUse = Settings.Default.OverriddenTranslationApiKey;
             }
             else
             {

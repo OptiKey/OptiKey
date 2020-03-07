@@ -125,22 +125,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
-        private bool enableSeparateTranslationApiKey;
+        private bool enableOverrideTranslationApiKey;
 
-        public bool EnableSeparateTranslationApiKey
+        public bool EnableOverrideTranslationApiKey
         {
-            get { return enableSeparateTranslationApiKey; }
-            set { SetProperty(ref enableSeparateTranslationApiKey, value); }
+            get { return enableOverrideTranslationApiKey; }
+            set { SetProperty(ref enableOverrideTranslationApiKey, value); }
         }
 
-        private string separateTranslationApiKey;
-        public string SeparateTranslationApiKey
+        private string overriddenTranslationApiKey;
+        public string OverriddenTranslationApiKey
         {
-            get { return separateTranslationApiKey; }
-            set
-            {
-                SetProperty(ref separateTranslationApiKey, value);
-            }
+            get { return overriddenTranslationApiKey; }
+            set { SetProperty(ref overriddenTranslationApiKey, value); }
         }
 
         private bool enableCommuniKateKeyboardLayout;
@@ -248,8 +245,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EnableCopyAllScratchpadKey = Settings.Default.EnableCopyAllScratchpadKey;
             EnableTranslationKey = Settings.Default.EnableTranslationKey;
             TranslationTargetLanguage = Settings.Default.TranslationTargetLanguage;
-            EnableSeparateTranslationApiKey = Settings.Default.EnableSeparateTranslationApiKey;
-            SeparateTranslationApiKey = Settings.Default.SeparateTranslationApiKey;
+            EnableOverrideTranslationApiKey = Settings.Default.EnableOverrideTranslationApiKey;
+            OverriddenTranslationApiKey = Settings.Default.OverriddenTranslationApiKey;
 
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
             CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
@@ -271,8 +268,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.EnableCopyAllScratchpadKey = EnableCopyAllScratchpadKey;
             Settings.Default.EnableTranslationKey = EnableTranslationKey;
             Settings.Default.TranslationTargetLanguage = TranslationTargetLanguage;
-            Settings.Default.EnableSeparateTranslationApiKey = EnableSeparateTranslationApiKey;
-            Settings.Default.SeparateTranslationApiKey = SeparateTranslationApiKey;
+            Settings.Default.EnableOverrideTranslationApiKey = EnableOverrideTranslationApiKey;
+            Settings.Default.OverriddenTranslationApiKey = OverriddenTranslationApiKey;
 
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;

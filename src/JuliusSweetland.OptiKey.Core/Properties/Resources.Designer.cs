@@ -1427,6 +1427,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use a different Yandex Translation API key?.
+        /// </summary>
+        public static string ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL {
+            get {
+                return ResourceManager.GetString("ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable plugins.
         /// </summary>
         public static string ENABLE_PLUGINS {
@@ -1441,15 +1450,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string ENABLE_QUIT_KEYS_LABEL {
             get {
                 return ResourceManager.GetString("ENABLE_QUIT_KEYS_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use a different Yandex Translation API key?.
-        /// </summary>
-        public static string ENABLE_SEPARATE_TRANSLATION_API_KEY_LABEL {
-            get {
-                return ResourceManager.GetString("ENABLE_SEPARATE_TRANSLATION_API_KEY_LABEL", resourceCulture);
             }
         }
         
@@ -4598,6 +4598,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to API Key:.
+        /// </summary>
+        public static string OVERRIDDEN_TRANSLATION_API_KEY_LABEL {
+            get {
+                return ResourceManager.GetString("OVERRIDDEN_TRANSLATION_API_KEY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parent Window could not be identified. Unable to continue.
         /// </summary>
         public static string PARENT_WINDOW_COULD_NOT_BE_FOUND {
@@ -5408,15 +5417,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL {
             get {
                 return ResourceManager.GetString("SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to API Key:.
-        /// </summary>
-        public static string SEPARATE_TRANSLATION_API_KEY_LABEL {
-            get {
-                return ResourceManager.GetString("SEPARATE_TRANSLATION_API_KEY_LABEL", resourceCulture);
             }
         }
         
