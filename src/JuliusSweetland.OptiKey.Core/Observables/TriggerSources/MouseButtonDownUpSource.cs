@@ -98,8 +98,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             }
         }
 
-        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey => throw new NotImplementedException();
-
         #endregion
     }
 }
