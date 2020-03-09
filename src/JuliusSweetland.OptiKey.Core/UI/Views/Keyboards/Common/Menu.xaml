@@ -88,16 +88,16 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbolAndText"
                       Value="{x:Static models:KeyValues.DynamicKeyboardKey}"/>
 
-        <controls:Key Grid.Row="2" Grid.Column="0"
-                      SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
-                      Text="{x:Static resx:Resources.DECREASE_OPACITY_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.DecreaseOpacityKey}"/>
-        <controls:Key Grid.Row="2" Grid.Column="1"
-                      SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
-                      Text="{x:Static resx:Resources.INCREASE_OPACITY_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.IncreaseOpacityKey}"/>
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1"
+                    SymbolGeometry="{StaticResource SleepIcon}"
+                    Text="{x:Static resx:Resources.SLEEP}"
+                    SharedSizeGroup="KeyWithSymbol"
+                    Value="{x:Static models:KeyValues.SleepKey}"/>
+        <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"
+                      SymbolGeometry="{StaticResource BrowserIcon}"
+                      Text="{x:Static resx:Resources.WEB_BROWSING_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.WebBrowsingKeyboardKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="2"
                       SymbolGeometry="{StaticResource LanguageIcon}"
                       Text="{x:Static resx:Resources.LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE}"

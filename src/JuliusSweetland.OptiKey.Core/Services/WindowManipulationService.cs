@@ -464,6 +464,9 @@ namespace JuliusSweetland.OptiKey.Services
                             ? validNumber / Graphics.DipScalingFactorX
                 : validNumber / Graphics.DipScalingFactorX + screenBoundsInDp.Width;
 
+            newWidth = newWidth > (MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Width
+                ? newWidth : (MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Width;
+
             var newHeight = string.IsNullOrWhiteSpace(inHeight) || !double.TryParse(inHeight.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
                 ? newWindowState == WindowStates.Floating
                     ? getFloatingSizeAndPosition().Height
@@ -475,6 +478,9 @@ namespace JuliusSweetland.OptiKey.Services
                         : validNumber > 0
                             ? validNumber / Graphics.DipScalingFactorY
                 : validNumber / Graphics.DipScalingFactorY + screenBoundsInDp.Height;
+
+            newHeight = newHeight > (MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Height
+                ? newHeight : (MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Height;
 
             var horizontalOffset = string.IsNullOrWhiteSpace(inHorizontalOffset) || !double.TryParse(inHorizontalOffset.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
                 ? screenBoundsInDp.Left

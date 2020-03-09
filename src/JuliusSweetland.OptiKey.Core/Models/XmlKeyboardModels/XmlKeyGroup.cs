@@ -23,8 +23,6 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public bool UseUnicodeCompatibilityFont { get; set; }
         [XmlAttribute] public bool UseUrduCompatibilityFont { get; set; }
         [XmlAttribute] public int LockOnTime { get; set; } = -1;
-        [XmlAttribute] public int CompletionTime { get; set; } = -1;
-        [XmlAttribute] public int RepeatDelay { get; set; } = -1;
-        [XmlAttribute] public int RepeatRate { get; set; } = -1;
+        [XmlAttribute] public string CompletionTimes { get; set; }
     }
 }
