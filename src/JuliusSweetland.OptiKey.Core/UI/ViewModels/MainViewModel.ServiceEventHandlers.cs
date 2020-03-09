@@ -2280,21 +2280,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.Speak:
-                    string textToSpeak = "";
-                    if (!string.IsNullOrEmpty(keyboardOutputService.Text))
-                    {
-                        if (keyboardOutputService.Text.Contains(TranslationService.LICENSE_TEXT))
-                        {
-                            textToSpeak = keyboardOutputService.Text.Replace(TranslationService.LICENSE_TEXT, "");
-                        }
-                        else
-                        {
-                            textToSpeak = keyboardOutputService.Text;
-                        }
-                    }
-
                     var speechStarted = audioService.SpeakNewOrInterruptCurrentSpeech(
-                        textToSpeak,
+                        keyboardOutputService.Text,
                         () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
                         Settings.Default.SpeechVolume,
                         Settings.Default.SpeechRate,
@@ -2309,12 +2296,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                         if (!string.IsNullOrEmpty(textFromScratchpad))
                         { 
-                            TranslationService.Response response = await translationService.translate(textFromScratchpad);
+                            TranslationService.Response response = await translationService.Translate(textFromScratchpad);
                             if (response.Status == "Error")
                             {
-                                Log.Error("Error/exception during translation: " + response.ExceptionMessage);
+                                Log.Error($"Error/exception during translation: {response.ExceptionMessage}");
                                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                                RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, ExceptionMessage, NotificationTypes.Error, () =>
+                                RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, response.ExceptionMessage, NotificationTypes.Error, () =>
                                 {
                                      inputService.RequestResume();
                                 });
@@ -2322,8 +2309,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             else
                             {
                                 keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
-                                // Must include Powered by Yandex.Translate as license requirement
-                                keyboardOutputService.Text = response.TranslatedText + " " + TranslationService.LICENSE_TEXT;
+                                keyboardOutputService.Text = response.TranslatedText;
                                 Clipboard.SetText(response.TranslatedText);
                                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                             }

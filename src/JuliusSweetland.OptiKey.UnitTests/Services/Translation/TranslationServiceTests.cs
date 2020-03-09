@@ -51,14 +51,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.Translation
             var subjectUnderTest = new TranslationService(httpClient);
                 
             // ACT
-            TranslationService.Response result = await subjectUnderTest.translate("hello");
+            TranslationService.Response result = await subjectUnderTest.Translate("hello");
 
             // ASSERT
             Assert.IsNotNull(result);
             // Mocked Http response should be converted into the response struct within TranslationService
-            Assert.AreEqual("", result.exceptionMessage);
-            Assert.AreEqual("Success", result.status);
-            Assert.AreEqual("Hallo", result.translatedText);
+            Assert.AreEqual("", result.ExceptionMessage);
+            Assert.AreEqual("Success", result.Status);
+            Assert.AreEqual("Hallo", result.TranslatedText);
 
             // also check the 'http' call was like we expected it
             var expectedUri = new Uri("https://translate.yandex.net/api/v1.5/tr.json/translate?" +

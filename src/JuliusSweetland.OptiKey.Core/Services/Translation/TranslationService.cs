@@ -19,7 +19,6 @@ namespace JuliusSweetland.OptiKey.Services.Translation
     {
         private HttpClient client;
         private string apiKeyToUse;
-        public const string LICENSE_TEXT = "(Powered by Yandex.Translate)";
 
         public TranslationService(HttpClient httpClient)
         {
@@ -43,7 +42,7 @@ namespace JuliusSweetland.OptiKey.Services.Translation
         /*
          * Returns the translation status, translated text and exception content
          */
-        public async Task<Response> translate(string text)
+        public async Task<Response> Translate(string text)
         {
             Response response;
 
@@ -71,7 +70,7 @@ namespace JuliusSweetland.OptiKey.Services.Translation
                 if (!string.IsNullOrEmpty(httpResponseBody))
                 {
                     YandexResponse obj = JsonConvert.DeserializeObject<YandexResponse>(httpResponseBody);
-                    response = new Response("Success", obj.text[0], "");
+                    response = new Response("Success", obj.Text[0], "");
                 }
                 else
                 {
@@ -101,9 +100,9 @@ namespace JuliusSweetland.OptiKey.Services.Translation
 
         private class YandexResponse
         {
-            public int code { get; set; }
-            public string lang { get; set; }
-            public List<string> text { get; set; }
+            public int Code { get; set; }
+            public string Lang { get; set; }
+            public List<string> Text { get; set; }
         }
     }
 }
