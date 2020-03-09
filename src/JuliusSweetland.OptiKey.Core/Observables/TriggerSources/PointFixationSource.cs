@@ -48,6 +48,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         public RunningStates State { get; set; }
 
         public KeyEnabledStates KeyEnabledStates { get; set; } //Irrelevant on point trigger
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get; set; } //Irrelevant on point trigger
 
         /// <summary>
         /// Change the point and key value source. N.B. After setting this any existing subscription 
@@ -175,8 +176,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                 return sequence;
             }
         }
-
-        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey => throw new NotImplementedException();
 
         #endregion
     }

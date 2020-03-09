@@ -28,6 +28,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly object suspendRequestLock = new object();
         private IPointSource pointSource;
         private int suspendRequestCount;
+        private readonly IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
 
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point, KeyValue>> currentPositionEvent;
@@ -57,11 +58,12 @@ namespace JuliusSweetland.OptiKey.Services
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
 
-            //Fixation key triggers also need the enabled state info
+            //Fixation key triggers also need the enabled state info and override times
             var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
             if (fixationTrigger != null)
             {
                 fixationTrigger.KeyEnabledStates = keyStateService.KeyEnabledStates;
+                overrideTimesByKey = fixationTrigger.OverrideTimesByKey;
             }
         }
 
@@ -69,7 +71,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
 
-        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return keySelectionTriggerSource.OverrideTimesByKey; } }
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return overrideTimesByKey; } }
 
         public IPointSource PointSource
         {
