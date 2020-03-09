@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
@@ -16,6 +17,7 @@ using log4net;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
 using System.Text;
+using System.Net.Http;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -39,6 +41,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly List<INotifyErrors> errorNotifyingServices; 
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         private readonly StringBuilder pendingErrorToastNotificationContent = new StringBuilder();
+        private readonly TranslationService translationService;
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
         private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
@@ -90,6 +93,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
+
+            this.translationService = new TranslationService(new HttpClient());
 
             SetupInputServiceEventHandlers();
             InitialiseKeyboard(mainWindowManipulationService);

@@ -2633,7 +2633,71 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["EnableCopyAllScratchpadKey"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual bool EnableTranslationKey
+        {
+            get
+            {
+                return ((bool)(this["EnableTranslationKey"]));
+            }
+            set
+            {
+                this["EnableTranslationKey"] = value;
+            }
+        }    
+            
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual string TranslationTargetLanguage
+        {
+            get
+            {
+                return (string)(this["TranslationTargetLanguage"]);
+            }
+            set
+            {
+                this["TranslationTargetLanguage"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual bool EnableOverrideTranslationApiKey
+        {
+            get
+            {
+                return ((bool)(this["EnableOverrideTranslationApiKey"]));
+            }
+            set
+            {
+                this["EnableOverrideTranslationApiKey"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual string OverriddenTranslationApiKey
+        {
+            get
+            {
+                return ((string)(this["OverriddenTranslationApiKey"]));
+            }
+            set
+            {
+                this["OverriddenTranslationApiKey"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]

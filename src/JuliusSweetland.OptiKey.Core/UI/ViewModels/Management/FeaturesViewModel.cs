@@ -11,6 +11,9 @@ using Prism.Mvvm;
 using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
 using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
 
+using JuliusSweetland.OptiKey.Services.Translation.Languages;
+using JuliusSweetland.OptiKey.Services.Translation;
+
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
     public class FeaturesViewModel : BindableBase
@@ -52,6 +55,89 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return enableCopyAllScratchpadKey; }
             set { SetProperty(ref enableCopyAllScratchpadKey, value); }
+        }
+
+        private bool enableTranslationKey;
+
+        public bool EnableTranslationKey
+        {
+            get { return enableTranslationKey; }
+            set { SetProperty(ref enableTranslationKey, value); }
+        }
+
+        private string translationTargetLanguage;
+        public string TranslationTargetLanguage
+        {
+            get { return translationTargetLanguage; }
+            set 
+            {
+                SetProperty(ref translationTargetLanguage, value);
+            }
+        }
+
+        public static List<KeyValuePair<string, string>> AvailableTranslationTargetLanguages
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>(TranslationResources.AZERBAIJANI, TranslationTargetLanguages.AZERBAIJANI),
+                    new KeyValuePair<string, string>(TranslationResources.ALBANIAN, TranslationTargetLanguages.ALBANIAN),
+                    new KeyValuePair<string, string>(TranslationResources.ARABIC, TranslationTargetLanguages.ARABIC),
+                    new KeyValuePair<string, string>(TranslationResources.ARMENIAN, TranslationTargetLanguages.ARMENIAN),
+                    new KeyValuePair<string, string>(TranslationResources.BASHKIR, TranslationTargetLanguages.BASHKIR),
+                    new KeyValuePair<string, string>(TranslationResources.BELARUSIAN, TranslationTargetLanguages.BELARUSIAN),
+                    new KeyValuePair<string, string>(TranslationResources.BULGARIAN, TranslationTargetLanguages.BULGARIAN),
+                    new KeyValuePair<string, string>(TranslationResources.CATALAN, TranslationTargetLanguages.CATALAN),
+                    new KeyValuePair<string, string>(TranslationResources.CROATIAN, TranslationTargetLanguages.CROATIAN),
+                    new KeyValuePair<string, string>(TranslationResources.CZECH, TranslationTargetLanguages.CZECH),
+                    new KeyValuePair<string, string>(TranslationResources.DANISH, TranslationTargetLanguages.DANISH),
+                    new KeyValuePair<string, string>(TranslationResources.DUTCH, TranslationTargetLanguages.DUTCH),
+                    new KeyValuePair<string, string>(TranslationResources.ENGLISH, TranslationTargetLanguages.ENGLISH),
+                    new KeyValuePair<string, string>(TranslationResources.ESTONIAN, TranslationTargetLanguages.ESTONIAN),
+                    new KeyValuePair<string, string>(TranslationResources.FINNISH, TranslationTargetLanguages.FINNISH),
+                    new KeyValuePair<string, string>(TranslationResources.FRENCH, TranslationTargetLanguages.FRENCH),
+                    new KeyValuePair<string, string>(TranslationResources.GEORGIAN, TranslationTargetLanguages.GEORGIAN),
+                    new KeyValuePair<string, string>(TranslationResources.GERMAN, TranslationTargetLanguages.GERMAN),
+                    new KeyValuePair<string, string>(TranslationResources.GREEK, TranslationTargetLanguages.GREEK),
+                    new KeyValuePair<string, string>(TranslationResources.HEBREW, TranslationTargetLanguages.HEBREW),
+                    new KeyValuePair<string, string>(TranslationResources.HUNGARIAN, TranslationTargetLanguages.HUNGARIAN),
+                    new KeyValuePair<string, string>(TranslationResources.ITALIAN, TranslationTargetLanguages.ITALIAN),
+                    new KeyValuePair<string, string>(TranslationResources.KAZAKH, TranslationTargetLanguages.KAZAKH),
+                    new KeyValuePair<string, string>(TranslationResources.LATVIAN, TranslationTargetLanguages.LATVIAN),
+                    new KeyValuePair<string, string>(TranslationResources.LITHUANIAN, TranslationTargetLanguages.LITHUANIAN),
+                    new KeyValuePair<string, string>(TranslationResources.MACEDONIAN, TranslationTargetLanguages.MACEDONIAN),
+                    new KeyValuePair<string, string>(TranslationResources.NORWEGIAN, TranslationTargetLanguages.NORWEGIAN),
+                    new KeyValuePair<string, string>(TranslationResources.PERSIAN, TranslationTargetLanguages.PERSIAN),
+                    new KeyValuePair<string, string>(TranslationResources.POLISH, TranslationTargetLanguages.POLISH),
+                    new KeyValuePair<string, string>(TranslationResources.PORTUGUESE, TranslationTargetLanguages.PORTUGUESE),
+                    new KeyValuePair<string, string>(TranslationResources.ROMANIAN, TranslationTargetLanguages.ROMANIAN),
+                    new KeyValuePair<string, string>(TranslationResources.RUSSIAN, TranslationTargetLanguages.RUSSIAN),
+                    new KeyValuePair<string, string>(TranslationResources.SERBIAN, TranslationTargetLanguages.SERBIAN),
+                    new KeyValuePair<string, string>(TranslationResources.SLOVAK, TranslationTargetLanguages.SLOVAK),
+                    new KeyValuePair<string, string>(TranslationResources.SLOVENIAN, TranslationTargetLanguages.SLOVENIAN),
+                    new KeyValuePair<string, string>(TranslationResources.SPANISH, TranslationTargetLanguages.SPANISH),
+                    new KeyValuePair<string, string>(TranslationResources.SWEDISH, TranslationTargetLanguages.SWEDISH),
+                    new KeyValuePair<string, string>(TranslationResources.TATAR, TranslationTargetLanguages.TATAR),
+                    new KeyValuePair<string, string>(TranslationResources.TURKISH, TranslationTargetLanguages.TURKISH),
+                    new KeyValuePair<string, string>(TranslationResources.UKRAINIAN, TranslationTargetLanguages.UKRAINIAN)
+                };
+            }
+        }
+
+        private bool enableOverrideTranslationApiKey;
+
+        public bool EnableOverrideTranslationApiKey
+        {
+            get { return enableOverrideTranslationApiKey; }
+            set { SetProperty(ref enableOverrideTranslationApiKey, value); }
+        }
+
+        private string overriddenTranslationApiKey;
+        public string OverriddenTranslationApiKey
+        {
+            get { return overriddenTranslationApiKey; }
+            set { SetProperty(ref overriddenTranslationApiKey, value); }
         }
 
         private bool enableCommuniKateKeyboardLayout;
@@ -157,6 +243,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
             EnableAttentionKey = Settings.Default.EnableAttentionKey;
             EnableCopyAllScratchpadKey = Settings.Default.EnableCopyAllScratchpadKey;
+            EnableTranslationKey = Settings.Default.EnableTranslationKey;
+            TranslationTargetLanguage = Settings.Default.TranslationTargetLanguage;
+            EnableOverrideTranslationApiKey = Settings.Default.EnableOverrideTranslationApiKey;
+            OverriddenTranslationApiKey = Settings.Default.OverriddenTranslationApiKey;
 
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
             CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
@@ -176,6 +266,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
             Settings.Default.EnableAttentionKey = EnableAttentionKey;
             Settings.Default.EnableCopyAllScratchpadKey = EnableCopyAllScratchpadKey;
+            Settings.Default.EnableTranslationKey = EnableTranslationKey;
+            Settings.Default.TranslationTargetLanguage = TranslationTargetLanguage;
+            Settings.Default.EnableOverrideTranslationApiKey = EnableOverrideTranslationApiKey;
+            Settings.Default.OverriddenTranslationApiKey = OverriddenTranslationApiKey;
 
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;

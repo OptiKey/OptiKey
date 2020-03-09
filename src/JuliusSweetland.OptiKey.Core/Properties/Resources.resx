@@ -2444,4 +2444,22 @@ Magyar
   <data name="ALLOW_MULTIPLE_INSTANCES" xml:space="preserve">
     <value>Allow multiple instances of this Optikey app to run simultaneously</value>
   </data>
+  <data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Translation Target Language:</value>
+  </data>
+  <data name="ERROR_DURING_TRANSLATION" xml:space="preserve">
+    <value>An error has occured during the translation of text</value>
+  </data>
+  <data name="TRANSLATE" xml:space="preserve">
+    <value>Translate</value>
+  </data>
+  <data name="ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
+    <value>Use a different Yandex Translation API key?</value>
+  </data>
+  <data name="OVERRIDDEN_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
+    <value>API Key:</value>
+  </data>
+  <data name="ENABLE_TRANSLATION_KEY_LABEL" xml:space="preserve">
+    <value>Enable translation key? (translated text automatically copied to clipboard)</value>
+  </data>
 </root>
