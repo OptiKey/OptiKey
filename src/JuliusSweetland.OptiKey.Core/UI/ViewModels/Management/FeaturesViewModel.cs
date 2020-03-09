@@ -269,7 +269,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.EnableTranslationKey = EnableTranslationKey;
             Settings.Default.TranslationTargetLanguage = TranslationTargetLanguage;
             Settings.Default.EnableOverrideTranslationApiKey = EnableOverrideTranslationApiKey;
-            Settings.Default.OverriddenTranslationApiKey = OverriddenTranslationApiKey;
+            if (EnableOverrideTranslationApiKey)
+            {
+                Settings.Default.OverriddenTranslationApiKey = OverriddenTranslationApiKey;
+            }
 
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;

@@ -2460,6 +2460,6 @@ Magyar
     <value>API Key:</value>
   </data>
   <data name="ENABLE_TRANSLATION_KEY_LABEL" xml:space="preserve">
-    <value>Enable translation key? (translated text automatically copied to clipboard)</value>
+    <value>Enable translation key? (translation auto copied)</value>
   </data>
 </root>

@@ -221,9 +221,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             </ContentControl.Style>
         </ContentControl>
 
-
         <controls:Key Grid.Row="1" Grid.Column="6"
-                      SymbolGeometry="{StaticResource CopyAllIcon}" 
+                      SymbolGeometry="{StaticResource LanguageIcon}" 
                       Text="{x:Static resx:Resources.TRANSLATE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.TranslationKey}"/>
@@ -237,8 +236,5 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SleepKey}"/>
-
-
-
     </Grid>
 </UserControl>

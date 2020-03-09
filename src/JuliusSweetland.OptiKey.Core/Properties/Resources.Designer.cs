@@ -1454,7 +1454,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable translation key? (translated text automatically copied to clipboard).
+        ///   Looks up a localized string similar to Enable translation key? (translation auto copied).
         /// </summary>
         public static string ENABLE_TRANSLATION_KEY_LABEL {
             get {

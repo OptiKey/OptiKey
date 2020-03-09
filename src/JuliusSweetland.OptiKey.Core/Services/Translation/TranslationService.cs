@@ -46,7 +46,9 @@ namespace JuliusSweetland.OptiKey.Services.Translation
         {
             Response response;
 
-            if (!string.IsNullOrEmpty(Settings.Default.OverriddenTranslationApiKey)) {
+            if (Settings.Default.EnableOverrideTranslationApiKey //Override key may be set, but should not be used unless enabled
+                && !string.IsNullOrEmpty(Settings.Default.OverriddenTranslationApiKey)) 
+            {
                 this.apiKeyToUse = Settings.Default.OverriddenTranslationApiKey;
             }
             else
