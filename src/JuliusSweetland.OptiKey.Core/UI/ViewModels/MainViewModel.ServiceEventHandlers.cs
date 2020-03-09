@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
+using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
@@ -652,7 +653,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
+        private async void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
         {
             var currentKeyboard = Keyboard;
             Action resumeLookToScroll;
@@ -2253,6 +2254,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Settings.Default.SpeechRate,
                         Settings.Default.SpeechVoice);
                     KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
+                case FunctionKeys.Translation:
+                    {
+                        Log.Info("Translating text from scratchpad.");
+                        string textFromScratchpad = KeyboardOutputService.Text;
+
+                        if (!string.IsNullOrEmpty(textFromScratchpad))
+                        { 
+                            TranslationService.Response response = await translationService.Translate(textFromScratchpad);
+                            if (response.Status == "Error")
+                            {
+                                Log.Error($"Error/exception during translation: {response.ExceptionMessage}");
+                                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                                RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, response.ExceptionMessage, NotificationTypes.Error, () =>
+                                {
+                                     inputService.RequestResume();
+                                });
+                            }
+                            else
+                            {
+                                keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                                keyboardOutputService.Text = response.TranslatedText;
+                                Clipboard.SetText(response.TranslatedText);
+                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                            }
+                        }
+                    }
                     break;
 
                 case FunctionKeys.TurkishTurkey:

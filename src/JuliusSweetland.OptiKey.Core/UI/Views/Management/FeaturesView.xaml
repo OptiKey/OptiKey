@@ -15,6 +15,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     <UserControl.Resources>
         <CollectionViewSource x:Key="AvailablePluginsCollectionViewSource" Source="{Binding AvailablePlugins}" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <valueConverters:MultiBoolToVisibilityConverter x:Key="MultiBoolToVisibilityConverter" />
         <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
     </UserControl.Resources>
 
@@ -36,6 +37,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -72,9 +74,9 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
                                IsEnabled="{Binding Source='EnableCommuniKateKeyboardLayout', Converter={StaticResource EnabledIfNotOverridden}}"
-                               VerticalAlignment="Center" Margin="5" Visibility="Visible" />
+                               VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="3" Grid.Column="1"
-                              VerticalAlignment="Center" Visibility="Visible"
+                              VerticalAlignment="Center" 
                               IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" 
                               IsEnabled="{Binding Source='EnableCommuniKateKeyboardLayout', Converter={StaticResource EnabledIfNotOverridden}}"/>
 
@@ -82,11 +84,62 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                IsEnabled="{Binding Source='AllowMultipleInstances', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" Visibility="Visible"/>
                     <CheckBox Grid.Row="4" Grid.Column="1"
-                              VerticalAlignment="Center" Visibility="Visible"
+                              VerticalAlignment="Center"
                               IsChecked="{Binding AllowMultipleInstances, Mode=TwoWay}" 
                               IsEnabled="{Binding Source='AllowMultipleInstances', Converter={StaticResource EnabledIfNotOverridden}}"/>
 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_TRANSLATION_KEY_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="5" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}"
+                              IsChecked="{Binding EnableTranslationKey, Mode=TwoWay}" />
 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.TRANSLATION_TARGET_LANGUAGE_LABEL}"
+                               VerticalAlignment="Center" Margin="5"
+                               Visibility="{Binding EnableTranslationKey, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <ComboBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
+                              ItemsSource="{Binding AvailableTranslationTargetLanguages}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding TranslationTargetLanguage, Mode=TwoWay}"
+                              IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}"
+                              Visibility="{Binding EnableTranslationKey, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL}" 
+                               VerticalAlignment="Center" Margin="5"
+                               Visibility="{Binding EnableTranslationKey, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <CheckBox Grid.Row="7" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}"
+                              IsChecked="{Binding EnableOverrideTranslationApiKey, Mode=TwoWay}"
+                              Visibility="{Binding EnableTranslationKey, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    
+                    <TextBlock Grid.Row="8" Grid.Column="0" 
+                               Text="{x:Static resx:Resources.OVERRIDDEN_TRANSLATION_API_KEY_LABEL}" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Visibility>
+                            <MultiBinding Converter="{StaticResource MultiBoolToVisibilityConverter}">
+                                <MultiBinding.Bindings>
+                                    <Binding Path="EnableTranslationKey" />
+                                    <Binding Path="EnableOverrideTranslationApiKey" />
+                                </MultiBinding.Bindings>
+                            </MultiBinding>
+                        </TextBlock.Visibility>
+                    </TextBlock>
+                    <TextBox Grid.Row="8" Grid.Column="1"
+                             VerticalAlignment="Center"
+                             Text="{Binding OverriddenTranslationApiKey, Mode=TwoWay}"
+                             IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}">
+                        <TextBox.Visibility>
+                             <MultiBinding Converter="{StaticResource MultiBoolToVisibilityConverter}">
+                                 <MultiBinding.Bindings>
+                                     <Binding Path="EnableTranslationKey" />
+                                     <Binding Path="EnableOverrideTranslationApiKey" />
+                                 </MultiBinding.Bindings>
+                             </MultiBinding>
+                         </TextBox.Visibility>
+                     </TextBox>
                 </Grid>
             </GroupBox>
             

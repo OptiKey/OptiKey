@@ -9,7 +9,7 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public interface IKeyboardOutputService : INotifyPropertyChanged
     {
-        string Text { get; }
+        string Text { get; set; }
         void ProcessFunctionKey(FunctionKeys functionKey);
         void ProcessSingleKeyText(string capturedText);
         Task ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type);

@@ -71,7 +71,7 @@ namespace JuliusSweetland.OptiKey.Services
         public string Text
         {
             get { return text; }
-            private set { SetProperty(ref text, value); }
+            set { SetProperty(ref text, value); }
         }
 
         public bool KeyboardIsShiftAware //Not on interface as only accessed via databinding

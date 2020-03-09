@@ -410,6 +410,18 @@
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\IrisbondDuoPointService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
+    <Compile Include="Services\Translation\Languages\TranslationTargetLanguages.cs" />
+    <Compile Include="Services\Translation\TranslationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TranslationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Translation\TranslationAPI.Designer.cs">
+      <DependentUpon>TranslationAPI.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Services\Translation\TranslationService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
     <Compile Include="Services\KeyboardOutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
@@ -427,6 +439,8 @@
       <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
+    <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
+    <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboardSelector.cs" />
     <Compile Include="UI\Controls\ToastNotification.cs" />
@@ -940,6 +954,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.hu-HU.resx" />
+    <EmbeddedResource Include="Services\Translation\TranslationResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TranslationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.config" />
     <Content Include="Dictionaries\HungarianHungary.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -981,6 +999,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.ka-GE.resx" />
+    <None Include="Services\Translation\TranslationAPI.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>TranslationAPI.Designer.cs</LastGenOutput>
+    </None>
     <Resource Include="Resources\Icons\Management.ico" />
     <None Include="..\..\LICENSE.txt">
       <Link>LICENSE.txt</Link>

@@ -106,6 +106,7 @@
     <Compile Include="Services\AutoComplete\BasicAutoCompleteTests.cs" />
     <Compile Include="Services\KeyboardOutputServiceTests.cs" />
     <Compile Include="Properties\Settings.cs" />
+    <Compile Include="Services\Translation\TranslationServiceTests.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="UI\Models\KeyValueTest.cs" />
     <Compile Include="UI\Utilities\DrawingUtilsTests.cs" />
