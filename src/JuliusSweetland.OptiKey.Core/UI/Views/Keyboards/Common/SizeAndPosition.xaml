@@ -231,10 +231,28 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                           Text="{x:Static resx:Resources.JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithSymbolAndText"
                                           Value="{x:Static models:KeyValues.MoveToBottomAndRightBoundariesKey}"/>
-                            <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="11"
+                            <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                                          SymbolGeometry="{StaticResource SleepIcon}"
+                                          Text="{x:Static resx:Resources.SLEEP}"
+                                          SharedSizeGroup="KeyWithSymbol"
+                                          Value="{x:Static models:KeyValues.SleepKey}"/>
+                            <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3"
                                           Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.ADJUST_BY}}"
                                           SharedSizeGroup="KeyWithSymbolAndText"
                                           Value="{x:Static models:KeyValues.MoveAndResizeAdjustmentAmountKey}"/>
+                            <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="1"
+                                          SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
+                                          Text="{x:Static resx:Resources.DECREASE_OPACITY_SPLIT_WITH_NEWLINE}"
+                                          SharedSizeGroup="KeyWithSymbolAndText"
+                                          Value="{x:Static models:KeyValues.DecreaseOpacityKey}"/>
+                            <controls:Key Grid.Row="4" Grid.Column="9"
+                                          Text="{x:Static resx:Resources.OPACITY_LABEL}"
+                                          SharedSizeGroup="KeyWithText" />
+                            <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="1"
+                                          SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
+                                          Text="{x:Static resx:Resources.INCREASE_OPACITY_SPLIT_WITH_NEWLINE}"
+                                          SharedSizeGroup="KeyWithSymbolAndText"
+                                          Value="{x:Static models:KeyValues.IncreaseOpacityKey}"/>
                             <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="3"
                                           SymbolGeometry="{StaticResource BackIcon}"
                                           Text="{x:Static resx:Resources.BACK}"
@@ -449,11 +467,27 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                   Text="{x:Static resx:Resources.JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithSymbolAndText"
                                                   Value="{x:Static models:KeyValues.MoveToBottomAndRightBoundariesKey}"/>
-                                    <controls:Key Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"
+
+                                    <controls:Key Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="1"
+                                                  SymbolGeometry="{StaticResource SleepIcon}"
+                                                  Text="{x:Static resx:Resources.SLEEP}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.SleepKey}"/>
+                                    <controls:Key Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3"
                                                   Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.ADJUST_BY}}"
                                                   SharedSizeGroup="KeyWithSymbolAndText"
                                                   Value="{x:Static models:KeyValues.MoveAndResizeAdjustmentAmountKey}"/>
-                                    <controls:Key Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="3"
+                                    <controls:Key Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="1"
+                                                  SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
+                                                  Text="{x:Static resx:Resources.DECREASE_OPACITY_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithSymbolAndText"
+                                                  Value="{x:Static models:KeyValues.DecreaseOpacityKey}"/>
+                                    <controls:Key Grid.Row="8" Grid.Column="5"  Grid.ColumnSpan="1"
+                                                  SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
+                                                  Text="{x:Static resx:Resources.INCREASE_OPACITY_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithSymbolAndText"
+                                                  Value="{x:Static models:KeyValues.IncreaseOpacityKey}"/>
+                                    <controls:Key Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="1"
                                                   SymbolGeometry="{StaticResource BackIcon}"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithSymbolAndText"

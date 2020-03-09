@@ -32,9 +32,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public string KeyDisabledOpacity { get; set; }
         [XmlAttribute] public string KeyDownOpacity { get; set; }
         [XmlAttribute] public int LockOnTime { get; set; } = -1;
-        [XmlAttribute] public int CompletionTime { get; set; } = -1;
-        [XmlAttribute] public int RepeatDelay { get; set; } = -1;
-        [XmlAttribute] public int RepeatRate { get; set; } = -1;
+        [XmlAttribute] public string CompletionTimes { get; set; }
     }
 
     public class XmlDynamicScratchpad : XmlDynamicItem { }

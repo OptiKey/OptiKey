@@ -17,6 +17,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using JuliusSweetland.OptiKey.UI.Windows;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.UI.ValueConverters;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -321,7 +322,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 var newKey = new Key
                 {
-                    SymbolGeometry = (System.Windows.Media.Geometry) Application.Current.Resources["BackIcon"],
+                    SymbolGeometry = (Geometry)Application.Current.Resources["BackIcon"],
                     Text = Properties.Resources.BACK,
                     Value = KeyValues.BackFromKeyboardKey
                 };
@@ -780,7 +781,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             //Create a list and add all the keyboard's attribute KeyGroup that are referenced by this key
             List<XmlKeyGroup> keyGroupList = new List<XmlKeyGroup>();
-            keyGroupList.AddRange(keyboard.KeyGroups.Where(x => xmlKey.KeyGroups.Exists(y => y.Value == x.Name)));
+            keyGroupList.AddRange(keyboard.KeyGroups.Where(x => x.Name.ToUpper() == "ALL" || xmlKey.KeyGroups.Exists(y => y.Value == x.Name)));
 
             // Set shared size group
             if (!string.IsNullOrEmpty(xmlKey.SharedSizeGroup))
@@ -843,26 +844,34 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.DisabledForegroundColourOverride = colorBrush;
             else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.KeyDisabledForeground, out colorBrush)))
                 newKey.DisabledForegroundColourOverride = colorBrush;
+            else if (newKey.ForegroundColourOverride != null)
+                newKey.DisabledForegroundColourOverride = new SolidColorBrush(HlsColor.Fade(((SolidColorBrush)newKey.ForegroundColourOverride).Color, .15)); 
 
             if (ValidColor(xmlKey.KeyDownForeground, out colorBrush))
                 newKey.KeyDownForegroundOverride = colorBrush;
             else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.KeyDownForeground, out colorBrush)))
                 newKey.KeyDownForegroundOverride = colorBrush;
+            else if (newKey.ForegroundColourOverride != null)
+                newKey.KeyDownForegroundOverride = new SolidColorBrush(HlsColor.Fade(((SolidColorBrush)newKey.ForegroundColourOverride).Color, .15));
 
             if (ValidColor(xmlKey.BackgroundColor, out colorBrush))
                 newKey.BackgroundColourOverride = colorBrush;
             else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.BackgroundColor, out colorBrush)))
                 newKey.BackgroundColourOverride = colorBrush;
-            
+
             if (ValidColor(xmlKey.KeyDisabledBackground, out colorBrush))
                 newKey.DisabledBackgroundColourOverride = colorBrush;
             else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.KeyDisabledBackground, out colorBrush)))
                 newKey.DisabledBackgroundColourOverride = colorBrush;
+            else if (newKey.BackgroundColourOverride != null)
+                newKey.DisabledBackgroundColourOverride = new SolidColorBrush(HlsColor.Fade(((SolidColorBrush)newKey.BackgroundColourOverride).Color, .15));
 
             if (ValidColor(xmlKey.KeyDownBackground, out colorBrush))
                 newKey.KeyDownBackgroundOverride = colorBrush;
             else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.KeyDownBackground, out colorBrush)))
                 newKey.KeyDownBackgroundOverride = colorBrush;
+            else if (newKey.BackgroundColourOverride != null)
+                newKey.KeyDownBackgroundOverride = new SolidColorBrush(HlsColor.Fade(((SolidColorBrush)newKey.BackgroundColourOverride).Color, .15));
 
             double opacity = 1;
             if (!string.IsNullOrEmpty(xmlKey.Opacity) && double.TryParse(xmlKey.Opacity, out opacity))
@@ -874,11 +883,15 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.DisabledBackgroundOpacity = opacity;
             else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.KeyDisabledOpacity) && double.TryParse(x.KeyDisabledOpacity, out opacity)))
                 newKey.DisabledBackgroundOpacity = opacity;
+            else if (newKey.OpacityOverride < 1d)
+                newKey.DisabledBackgroundOpacity = newKey.OpacityOverride;
 
             if (!string.IsNullOrEmpty(xmlKey.KeyDownOpacity) && double.TryParse(xmlKey.KeyDownOpacity, out opacity))
                 newKey.KeyDownOpacityOverride = opacity;
             else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.KeyDownOpacity) && double.TryParse(x.KeyDownOpacity, out opacity)))
                 newKey.KeyDownOpacityOverride = opacity;
+            else if (newKey.OpacityOverride < 1d)
+                newKey.DisabledBackgroundOpacity = newKey.OpacityOverride;
 
             if (xmlKeyValue != null)
             {
@@ -910,83 +923,29 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                 }
 
-                if (xmlKey.CompletionTime > 0)
+                if (!string.IsNullOrEmpty (xmlKey.CompletionTimes))
                 {
                     if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
                     {
-                        timeSpanOverrides.CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.CompletionTime));
+                        timeSpanOverrides.CompletionTimes = xmlKey.CompletionTimes.Split(',').ToList(); 
                         overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides() { CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.CompletionTime)) };
+                        timeSpanOverrides = new TimeSpanOverrides() { CompletionTimes = xmlKey.CompletionTimes.Split(',').ToList() };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
-                else if (keyGroupList != null && keyGroupList.Exists(x => x.CompletionTime > 0))
+                else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.CompletionTimes)))
                 {
                     if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
                     {
-                        timeSpanOverrides.CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.CompletionTime > 0).CompletionTime));
-                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                        timeSpanOverrides.CompletionTimes = keyGroupList.Find(x => !string.IsNullOrEmpty(x.CompletionTimes)).CompletionTimes.Split(',').ToList();
+                    overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides() { CompletionTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.CompletionTime > 0).CompletionTime)) };
-                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
-                    }
-                }
-
-                if (xmlKey.RepeatDelay > 0)
-                {
-                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
-                    {
-                        timeSpanOverrides.RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatDelay));
-                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
-                    }
-                    else
-                    {
-                        timeSpanOverrides = new TimeSpanOverrides() { RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatDelay)) };
-                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
-                    }
-                }
-                else if (keyGroupList != null && keyGroupList.Exists(x => x.RepeatDelay > 0))
-                {
-                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
-                    {
-                        timeSpanOverrides.RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatDelay > 0).RepeatDelay));
-                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
-                    }
-                    else
-                    {
-                        timeSpanOverrides = new TimeSpanOverrides() { RepeatDelay = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatDelay > 0).RepeatDelay)) };
-                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
-                    }
-                }
-
-                if (xmlKey.RepeatRate > 0)
-                {
-                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
-                    {
-                        timeSpanOverrides.RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatRate));
-                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
-                    }
-                    else
-                    {
-                        timeSpanOverrides = new TimeSpanOverrides() { RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.RepeatRate)) };
-                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
-                    }
-                }
-                else if (keyGroupList != null && keyGroupList.Exists(x => x.RepeatRate > 0))
-                {
-                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
-                    {
-                        timeSpanOverrides.RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatRate > 0).RepeatRate));
-                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
-                    }
-                    else
-                    {
-                        timeSpanOverrides = new TimeSpanOverrides() { RepeatRate = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.RepeatRate > 0).RepeatRate)) };
+                        timeSpanOverrides = new TimeSpanOverrides() { CompletionTimes = keyGroupList.Find(x => !string.IsNullOrEmpty(x.CompletionTimes)).CompletionTimes.Split(',').ToList() };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }

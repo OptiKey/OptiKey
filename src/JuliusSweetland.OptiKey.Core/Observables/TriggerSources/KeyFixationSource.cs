@@ -98,7 +98,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         DateTimeOffset fixationStart = DateTimeOffset.MinValue;
                         PointAndKeyValue fixationCentrePointAndKeyValue = null;
                         KeyValue lastKeyValue = null;
-                        bool isRepeating = false;
+                        int repetition = 1;
                         
                         Action disposeAllSubscriptions = null;
 
@@ -115,7 +115,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                 //if the latest key is not the same as the last key press then reset values
                                 if (lastKeyValue != null && !lastKeyValue.Equals(latestPointAndKeyValue.Value.KeyValue))
                                 {
-                                    isRepeating = false;
+                                    repetition = 1;
                                     lastKeyValue = null;
                                 }
 
@@ -229,7 +229,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             }
                                         }
 
-                                        var timeToCompleteTrigger = GetTimeToCompleteTrigger(fixationCentrePointAndKeyValue.KeyValue, lastKeyValue, isRepeating);
+                                        var timeToCompleteTrigger = GetTimeToCompleteTrigger(fixationCentrePointAndKeyValue.KeyValue, lastKeyValue, repetition);
                                         var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
 
                                         //Publish a high signal if progress is 1 (100%), otherwise just publish progress (filter out 0 as this is a progress reset signal)
@@ -247,7 +247,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                                 t.Dispose();
                                             }
 
-                                            isRepeating = (lastKeyValue != null && fixationCentrePointAndKeyValue.KeyValue.Equals(lastKeyValue));
+                                            repetition = (lastKeyValue != null && fixationCentrePointAndKeyValue.KeyValue.Equals(lastKeyValue)) ? repetition + 1 : 1;
                                             lastKeyValue = fixationCentrePointAndKeyValue.KeyValue;
                                             fixationStart = latestPointAndKeyValue.Timestamp;
                                             incompleteFixationProgress.Clear();
@@ -293,7 +293,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         
         #region Methods
 
-        TimeSpan GetTimeToCompleteTrigger(KeyValue keyValue, KeyValue lastKeyValue, bool isRepeating)
+        TimeSpan GetTimeToCompleteTrigger(KeyValue keyValue, KeyValue lastKeyValue, int repetition)
         { 
             if (keyValue.FunctionKey.HasValue)
             {
@@ -304,28 +304,14 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             }
 
             //check if this key has any override times
-            if (overrideTimesByKey.TryGetValue(keyValue, out var timeSpanOverrides))
+            if (overrideTimesByKey.TryGetValue(keyValue, out var timeSpanOverrides) && timeSpanOverrides.CompletionTimes != null)
             {
-                //if key is repeating apply the RepeatRate
-                if (isRepeating)
-                {
-                    return timeSpanOverrides.RepeatRate > TimeSpan.Zero ? timeSpanOverrides.RepeatRate
-                        : timeSpanOverrides.CompletionTime > TimeSpan.Zero ? timeSpanOverrides.CompletionTime
-                        : timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
-                }
-                //if we have the same KeyValue and haven't started repetitive keystroke then use the RepeatDelay time
-                else if (lastKeyValue != null && keyValue == lastKeyValue)
-                {
-                    return timeSpanOverrides.RepeatDelay > TimeSpan.Zero ? timeSpanOverrides.RepeatDelay
-                        : timeSpanOverrides.CompletionTime > TimeSpan.Zero ? timeSpanOverrides.CompletionTime
-                        : timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
-                }
-                //if fixating on a new key use the normal CompletionTime
+                if (lastKeyValue == null || keyValue != lastKeyValue)
+                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes.First()));
+                else if (timeSpanOverrides.CompletionTimes.Count() > repetition)
+                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes[repetition]));
                 else
-                {
-                    return timeSpanOverrides.CompletionTime > TimeSpan.Zero ? timeSpanOverrides.CompletionTime
-                        : timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
-                }
+                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes.Last()));
             }
             //if this key does not have overrides then get the time from setting or use the default
             else

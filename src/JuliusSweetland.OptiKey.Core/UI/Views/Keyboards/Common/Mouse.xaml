@@ -72,9 +72,14 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                               Text="{x:Static resx:Resources.SIZE_AND_POSITION_SPLIT_WITH_NEWLINE}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.SizeAndPositionKeyboardKey}"/>
-                                                <controls:Key Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                                                <controls:Key Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="1"
                                                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseMoveAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.MOVE_BY}}"
                                                               Value="{x:Static models:KeyValues.MouseMoveAmountInPixelsKey}"/>
+                                                <controls:Key Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                              Text="{x:Static resx:Resources.MOVE_UP_SPLIT_WITH_NEWLINE}"
+                                                              SharedSizeGroup="KeyWithSymbolAndText"
+                                                              Value="{x:Static models:KeyValues.MouseMoveToTopKey}"/>
                                                 <controls:Key Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource MouseMoveToIcon}"
                                                               Text="{x:Static resx:Resources.MOVE_TO_SPLIT_WITH_NEWLINE}"
@@ -100,21 +105,16 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                               Text="{x:Static resx:Resources.LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.MouseLeftDoubleClickKey}"/>
-                                                <controls:Key Grid.Row="3" Grid.Column="0" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
-                                                              Text="{x:Static resx:Resources.MOVE_UP_SPLIT_WITH_NEWLINE}"
-                                                              SharedSizeGroup="KeyWithSymbolAndText"
-                                                              Value="{x:Static models:KeyValues.MouseMoveToTopKey}"/>
                                                 <controls:Key Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
-                                                              Text="{x:Static resx:Resources.MOVE_DOWN_SPLIT_WITH_NEWLINE}"
-                                                              SharedSizeGroup="KeyWithSymbolAndText"
-                                                              Value="{x:Static models:KeyValues.MouseMoveToBottomKey}"/>
-                                                <controls:Key Grid.Row="3" Grid.Column="2" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
                                                               Text="{x:Static resx:Resources.MOVE_LEFT_SPLIT_WITH_NEWLINE}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.MouseMoveToLeftKey}"/>
+                                                <controls:Key Grid.Row="3" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                              Text="{x:Static resx:Resources.MOVE_DOWN_SPLIT_WITH_NEWLINE}"
+                                                              SharedSizeGroup="KeyWithSymbolAndText"
+                                                              Value="{x:Static models:KeyValues.MouseMoveToBottomKey}"/>
                                                 <controls:Key Grid.Row="3" Grid.Column="3" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
                                                               Text="{x:Static resx:Resources.MOVE_RIGHT_SPLIT_WITH_NEWLINE}"
@@ -148,13 +148,25 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                               Text="{x:Static resx:Resources.RE_CALIBRATE}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.CalibrateKey}"/>
-                                                <controls:Key Grid.Row="6" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                                                <controls:Key Grid.Row="6" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="1"
                                                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseScrollAmountInClicks, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.SCROLL_BY}}"
                                                               Value="{x:Static models:KeyValues.MouseScrollAmountInClicksKey}"
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
-                                                <controls:Key Grid.Row="6" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3"
+                                                <controls:Key Grid.Row="6" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="1"
                                                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollIncrement, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT}}"
                                                               Value="{x:Static models:KeyValues.LookToScrollIncrementKey}"
+                                                              Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
+                                                <controls:Key Grid.Row="6" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseScrollToTopIcon}"
+                                                              Text="{x:Static resx:Resources.SCROLL_UP_SPLIT_WITH_NEWLINE}"
+                                                              SharedSizeGroup="KeyWithSymbolAndText"
+                                                              Value="{x:Static models:KeyValues.MouseMoveAndScrollToTopKey}"
+                                                              Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
+                                                <controls:Key Grid.Row="6" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource LookToScrollModeIcon}}"
+                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource LookToScrollModeLookup}}"
+                                                              SharedSizeGroup="KeyWithSymbolAndText"
+                                                              Value="{x:Static models:KeyValues.LookToScrollModeKey}"
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
                                                 <controls:Key Grid.Row="6" Grid.Column="3" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource MouseDragIcon}"
@@ -181,41 +193,34 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                               Text="{x:Static resx:Resources.LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.MouseMoveAndLeftDoubleClickKey}"/>
-                                                <controls:Key Grid.Row="8" Grid.Column="0" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseScrollToTopIcon}"
-                                                              Text="{x:Static resx:Resources.SCROLL_UP_SPLIT_WITH_NEWLINE}"
-                                                              SharedSizeGroup="KeyWithSymbolAndText"
-                                                              Value="{x:Static models:KeyValues.MouseMoveAndScrollToTopKey}"
-                                                              Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
-                                                <controls:Key Grid.Row="8" Grid.Column="0" Grid.RowSpan="2"
-                                                              SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource LookToScrollModeIcon}}"
-                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource LookToScrollModeLookup}}"
-                                                              SharedSizeGroup="KeyWithSymbolAndText"
-                                                              Value="{x:Static models:KeyValues.LookToScrollModeKey}"
-                                                              Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
+                                                <controls:Key Grid.Row="8" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="1"
+                                                              SymbolGeometry="{StaticResource SleepIcon}"
+                                                              Text="{x:Static resx:Resources.SLEEP}"
+                                                              SharedSizeGroup="KeyWithSymbol"
+                                                              Value="{x:Static models:KeyValues.SleepKey}"/>
                                                 <controls:Key Grid.Row="8" Grid.Column="1" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseScrollToBottomIcon}"
-                                                              Text="{x:Static resx:Resources.SCROLL_DOWN_SPLIT_WITH_NEWLINE}"
-                                                              SharedSizeGroup="KeyWithSymbolAndText"
-                                                              Value="{x:Static models:KeyValues.MouseMoveAndScrollToBottomKey}"
-                                                              Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
-                                                <controls:Key Grid.Row="8" Grid.Column="1" Grid.RowSpan="2"
-                                                              SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsIcon}}"
-                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsLookup}}"
-                                                              SharedSizeGroup="KeyWithSymbolAndText"
-                                                              Value="{x:Static models:KeyValues.LookToScrollBoundsKey}"
-                                                              Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
-                                                <controls:Key Grid.Row="8" Grid.Column="2" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource MouseScrollToLeftIcon}"
                                                               Text="{x:Static resx:Resources.SCROLL_LEFT_SPLIT_WITH_NEWLINE}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.MouseMoveAndScrollToLeftKey}"
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
-                                                <controls:Key Grid.Row="8" Grid.Column="2" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="8" Grid.Column="1" Grid.RowSpan="2"
                                                               SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, Converter={StaticResource LookToScrollSpeedIcon}}"
                                                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollSpeed, Converter={StaticResource LookToScrollSpeedLookup}}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.LookToScrollSpeedKey}"
+                                                              Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
+                                                <controls:Key Grid.Row="8" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseScrollToBottomIcon}"
+                                                              Text="{x:Static resx:Resources.SCROLL_DOWN_SPLIT_WITH_NEWLINE}"
+                                                              SharedSizeGroup="KeyWithSymbolAndText"
+                                                              Value="{x:Static models:KeyValues.MouseMoveAndScrollToBottomKey}"
+                                                              Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource HiddenWhenLookToScroll}}"/>
+                                                <controls:Key Grid.Row="8" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsIcon}}"
+                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollBounds, Converter={StaticResource LookToScrollBoundsLookup}}"
+                                                              SharedSizeGroup="KeyWithSymbolAndText"
+                                                              Value="{x:Static models:KeyValues.LookToScrollBoundsKey}"
                                                               Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollEnabled, Converter={StaticResource VisibleWhenLookToScroll}}"/>
                                                 <controls:Key Grid.Row="8" Grid.Column="3" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource MouseScrollToRightIcon}"
