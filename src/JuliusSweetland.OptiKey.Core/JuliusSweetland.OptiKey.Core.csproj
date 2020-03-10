@@ -439,6 +439,7 @@
       <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
+    <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboard.cs" />
