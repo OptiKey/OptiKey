@@ -234,7 +234,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
                                           SymbolGeometry="{StaticResource SleepIcon}"
                                           Text="{x:Static resx:Resources.SLEEP}"
-                                          SharedSizeGroup="KeyWithSymbol"
+                                          SharedSizeGroup="KeyWithSymbolAndText"
                                           Value="{x:Static models:KeyValues.SleepKey}"/>
                             <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3"
                                           Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.ADJUST_BY}}"
@@ -468,10 +468,10 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                   SharedSizeGroup="KeyWithSymbolAndText"
                                                   Value="{x:Static models:KeyValues.MoveToBottomAndRightBoundariesKey}"/>
 
-                                    <controls:Key Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="1"
+                                    <controls:Key Grid.Row="8" Grid.Column="0"
                                                   SymbolGeometry="{StaticResource SleepIcon}"
                                                   Text="{x:Static resx:Resources.SLEEP}"
-                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  SharedSizeGroup="KeyWithSymbolAndText"
                                                   Value="{x:Static models:KeyValues.SleepKey}"/>
                                     <controls:Key Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3"
                                                   Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.ADJUST_BY}}"

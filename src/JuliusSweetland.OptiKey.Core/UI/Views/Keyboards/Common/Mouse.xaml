@@ -196,7 +196,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                 <controls:Key Grid.Row="8" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="1"
                                                               SymbolGeometry="{StaticResource SleepIcon}"
                                                               Text="{x:Static resx:Resources.SLEEP}"
-                                                              SharedSizeGroup="KeyWithSymbol"
+                                                              SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.SleepKey}"/>
                                                 <controls:Key Grid.Row="8" Grid.Column="1" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource MouseScrollToLeftIcon}"
