@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Ctor
-        
+
         public WindowManipulationService(
             Window window,
             Func<bool> getPersistedState,
@@ -499,7 +499,7 @@ namespace JuliusSweetland.OptiKey.Services
                 savePersistedState(inPersistNewState);
                 saveDockPosition(newDockPosition);
                 saveDockSize(newDockSize);
-                
+
                 var newFullDockThicknessPercent = (newDockPosition == DockEdges.Top || newDockPosition == DockEdges.Bottom)
                     ? (100 * newHeight / screenBoundsInDp.Height) : (100 * newWidth / screenBoundsInDp.Width);
 
@@ -557,7 +557,7 @@ namespace JuliusSweetland.OptiKey.Services
         public void ResizeDockToFull()
         {
             Log.Info("ResizeDockToFull called");
-            
+
             if (getWindowState() != WindowStates.Docked) return;
             saveDockSize(DockSizes.Full);
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
@@ -567,7 +567,7 @@ namespace JuliusSweetland.OptiKey.Services
         public void RestorePersistedState()
         {
             Log.Info("RestorePersistedState called");
-            
+
             if (getPersistedState() || getWindowState() == WindowStates.Minimised) { return; }
 
             Log.Info("Restoring keyboard to default values");
@@ -576,6 +576,7 @@ namespace JuliusSweetland.OptiKey.Services
                 UnRegisterAppBar();
 
             ApplySavedState();
+            ResizeDockToFull();
         }
 
         public void Restore()
