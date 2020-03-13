@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Ctor
-        
+
         public WindowManipulationService(
             Window window,
             Func<bool> getPersistedState,
@@ -464,6 +464,9 @@ namespace JuliusSweetland.OptiKey.Services
                             ? validNumber / Graphics.DipScalingFactorX
                 : validNumber / Graphics.DipScalingFactorX + screenBoundsInDp.Width;
 
+            newWidth = newWidth > (MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Width
+                ? newWidth : (MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Width;
+
             var newHeight = string.IsNullOrWhiteSpace(inHeight) || !double.TryParse(inHeight.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
                 ? newWindowState == WindowStates.Floating
                     ? getFloatingSizeAndPosition().Height
@@ -475,6 +478,9 @@ namespace JuliusSweetland.OptiKey.Services
                         : validNumber > 0
                             ? validNumber / Graphics.DipScalingFactorY
                 : validNumber / Graphics.DipScalingFactorY + screenBoundsInDp.Height;
+
+            newHeight = newHeight > (MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Height
+                ? newHeight : (MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Height;
 
             var horizontalOffset = string.IsNullOrWhiteSpace(inHorizontalOffset) || !double.TryParse(inHorizontalOffset.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
                 ? screenBoundsInDp.Left
@@ -493,7 +499,7 @@ namespace JuliusSweetland.OptiKey.Services
                 savePersistedState(inPersistNewState);
                 saveDockPosition(newDockPosition);
                 saveDockSize(newDockSize);
-                
+
                 var newFullDockThicknessPercent = (newDockPosition == DockEdges.Top || newDockPosition == DockEdges.Bottom)
                     ? (100 * newHeight / screenBoundsInDp.Height) : (100 * newWidth / screenBoundsInDp.Width);
 
@@ -551,7 +557,7 @@ namespace JuliusSweetland.OptiKey.Services
         public void ResizeDockToFull()
         {
             Log.Info("ResizeDockToFull called");
-            
+
             if (getWindowState() != WindowStates.Docked) return;
             saveDockSize(DockSizes.Full);
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
@@ -561,7 +567,7 @@ namespace JuliusSweetland.OptiKey.Services
         public void RestorePersistedState()
         {
             Log.Info("RestorePersistedState called");
-            
+
             if (getPersistedState() || getWindowState() == WindowStates.Minimised) { return; }
 
             Log.Info("Restoring keyboard to default values");
@@ -570,6 +576,7 @@ namespace JuliusSweetland.OptiKey.Services
                 UnRegisterAppBar();
 
             ApplySavedState();
+            ResizeDockToFull();
         }
 
         public void Restore()
