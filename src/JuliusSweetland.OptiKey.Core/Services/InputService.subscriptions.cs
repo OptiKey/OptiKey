@@ -127,7 +127,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void ProcessSelectionTrigger(TriggerSignal triggerSignal)
+        private async void ProcessSelectionTrigger(TriggerSignal triggerSignal)
         {
             if (triggerSignal.Signal >= 1
                 && !CapturingMultiKeySelection)
@@ -190,6 +190,8 @@ namespace JuliusSweetland.OptiKey.Services
                             else
                             {
                                 PublishSelection(triggerSignal.PointAndKeyValue);
+
+                                await Task.Delay(20); //Add a short delay to give time for the selection animation 
 
                                 PublishSelectionResult(new Tuple<List<Point>, KeyValue, List<string>>(
                                     new List<Point> { triggerSignal.PointAndKeyValue.Point },
