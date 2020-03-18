@@ -21,7 +21,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         private IDisposable pointsPerSecondSubscription;
         private IDisposable currentPositionSubscription;
-        private IDisposable livePositionSubscription;
         private IDisposable selectionProgressSubscription;
         private IDisposable selectionTriggerSubscription;
         private IDisposable multiKeySelectionSubscription;
@@ -63,24 +62,8 @@ namespace JuliusSweetland.OptiKey.Services
                     SelectionMode == SelectionModes.Key 
                         ? tp.Value.KeyValue 
                         : null))
-                .DistinctUntilChanged()
                 .ObserveOnDispatcher() //Subscribe on UI thread
                 .Subscribe(PublishCurrentPosition);
-        }
-
-        #endregion
-
-        #region Create Live Position Subscription
-
-        private void CreateLivePositionSubscription()
-        {
-            Log.Debug("Creating subscription to PointSource for live position.");
-
-            livePositionSubscription = pointSource.Sequence
-                .Where(tp => tp.Value != null)
-                .Select(tp => tp.Value.Point)
-                .ObserveOnDispatcher() //Subscribe on UI thread
-                .Subscribe(PublishLivePosition);
         }
 
         #endregion

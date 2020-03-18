@@ -32,7 +32,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point, KeyValue>> currentPositionEvent;
-        private event EventHandler<Point> livePositionEvent;
         private event EventHandler<Tuple<PointAndKeyValue, double>> selectionProgressEvent;
         private event EventHandler<PointAndKeyValue> selectionEvent;
         private event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> selectionResultEvent;
@@ -239,43 +238,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        #region Live Position
-
-        public event EventHandler<Point> LivePosition
-        {
-            add
-            {
-                if (livePositionEvent == null)
-                {
-                    Log.Info("LivePosition event has first subscriber.");
-                }
-
-                livePositionEvent += value;
-
-                if (livePositionSubscription == null)
-                {
-                    CreateLivePositionSubscription();
-                }
-            }
-            remove
-            {
-                livePositionEvent -= value;
-
-                if (livePositionEvent == null)
-                {
-                    Log.Info("Last listener of LivePosition event has unsubscribed. Disposing of livePositionSubscription.");
-
-                    if (livePositionSubscription != null)
-                    {
-                        livePositionSubscription.Dispose();
-                        livePositionSubscription = null;
-                    }
-                }
-            }
-        }
-
-        #endregion
-
         #region Selection Progress
 
         public event EventHandler<Tuple<PointAndKeyValue, double>> SelectionProgress
@@ -414,20 +376,6 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.DebugFormat("Publishing CurrentPosition event with Point:{0} KeyValue:{1}", currentPosition.Item1, currentPosition.Item2);
 
                 currentPositionEvent(this, currentPosition);
-            }
-        }
-
-        #endregion
-
-        #region Publish Live Position
-
-        private void PublishLivePosition(Point livePosition)
-        {
-            if (livePositionEvent != null)
-            {
-                Log.DebugFormat("Publishing LivePosition event with Point:{0}", livePosition);
-
-                livePositionEvent(this, livePosition);
             }
         }
 

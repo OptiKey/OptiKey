@@ -48,12 +48,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     mouseOutputService.MoveTo(CurrentPositionPoint);
                 }
-            };
 
-            if (Settings.Default.LookToScrollEnabled)
-            {
-                inputServiceLivePositionHandler = (o, position) => UpdateLookToScroll(position);
-            }
+                if (Settings.Default.LookToScrollEnabled)
+                {
+                    UpdateLookToScroll(CurrentPositionPoint);
+                }
+            };
 
             inputServiceSelectionProgressHandler = (o, progress) =>
             {
@@ -176,12 +176,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputService.PointToKeyValueMap = pointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
-
-            if (Settings.Default.LookToScrollEnabled)
-            {
-                inputService.LivePosition += inputServiceLivePositionHandler;
-            }
-
+            
             Log.Info("AttachInputServiceEventHandlers complete.");
         }
 
@@ -195,12 +190,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputService.SelectionProgress -= inputServiceSelectionProgressHandler;
             inputService.Selection -= inputServiceSelectionHandler;
             inputService.SelectionResult -= inputServiceSelectionResultHandler;
-
-            if (Settings.Default.LookToScrollEnabled)
-            {
-                inputService.LivePosition -= inputServiceLivePositionHandler;
-            }
-
+            
             Log.Info("DetachInputServiceEventHandlers complete.");
         }
 

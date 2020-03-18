@@ -241,7 +241,6 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-
                     <CheckBox Grid.Row="6" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding PointsMousePositionHideCursor, Mode=TwoWay}">
