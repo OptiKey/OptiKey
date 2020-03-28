@@ -2421,9 +2421,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 var commandList = new List<KeyCommand>();
                 commandList.AddRange(singleKeyValue.Commands);
                 keyStateService.KeyRunningStates[singleKeyValue].Value = true;
-                keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.LockedDown;
+
+                TimeSpanOverrides timeSpanOverrides = 
+                    inputService.OverrideTimesByKey.TryGetValue(singleKeyValue, out timeSpanOverrides) ? timeSpanOverrides : null;
+
+                //if there is an override lock down time then do not set the key to LockedDown
+                keyStateService.KeyDownStates[singleKeyValue].Value = timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero 
+                    ? KeyDownStates.Down : KeyDownStates.LockedDown;
 
                 await CommandList(singleKeyValue, multiKeySelection, commandList, 0);
+                
+                //if there is an override lock down time then run this key until the gaze stops or another trigger stops it
+                if (timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero)
+                {
+                    //keep the key running until triggered to stop (key lock down), or focus has been lost (key up)
+                    while (keyStateService.KeyRunningStates[singleKeyValue].Value)
+                    {
+                        await Task.Delay(10);
+                        //if the timeout is equal to the min it means the key no longer has focus and has timed out
+                        keyStateService.KeyRunningStates[singleKeyValue].Value = (timeSpanOverrides.Timeout > DateTimeOffset.MinValue) 
+                            ? keyStateService.KeyRunningStates[singleKeyValue].Value : false;
+                    }
+                    //if the timeout has not been set to the min then we lock down the key and return
+                    if (timeSpanOverrides.Timeout > DateTimeOffset.MinValue)
+                    {
+                        keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.LockedDown;
+                        return;
+                    }
+                }
 
                 //if the Task was stopped by an external process and there are any keys
                 //that were pressed and not released then execute KeyUp processing
@@ -2446,6 +2471,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         && keyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up);
                     if (keyUpCandidate != null)
                     {
+                        keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.LockedDown;
                         Log.InfoFormat("CommandKey {0} finished without changing state to Up because key [{1}] is down", singleKeyValue.String, keyUpCandidate.Item2.String);
                         return;
                     }

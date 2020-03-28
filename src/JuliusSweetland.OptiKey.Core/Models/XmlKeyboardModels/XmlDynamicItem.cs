@@ -33,6 +33,8 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public string KeyDownOpacity { get; set; }
         [XmlAttribute] public int LockOnTime { get; set; } = -1;
         [XmlAttribute] public string CompletionTimes { get; set; }
+        [XmlAttribute] public int TimeRequiredToLockDown { get; set; } = -1;
+        [XmlAttribute] public int KeyDownTimeout { get; set; } = -1;
     }
 
     public class XmlDynamicScratchpad : XmlDynamicItem { }

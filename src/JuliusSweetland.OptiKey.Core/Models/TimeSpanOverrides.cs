@@ -8,5 +8,8 @@ namespace JuliusSweetland.OptiKey.Models
     {
         public TimeSpan LockOnTime { get; set; }
         public List<string> CompletionTimes { get; set; }
+        public TimeSpan TimeRequiredToLockDown { get; set; }
+        public TimeSpan KeyDownTimeout { get; set; }
+        public DateTimeOffset Timeout { get; set; }
     }
 }
