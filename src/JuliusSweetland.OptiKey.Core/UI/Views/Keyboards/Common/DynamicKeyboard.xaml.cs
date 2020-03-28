@@ -949,6 +949,60 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
+
+                if (xmlKey.TimeRequiredToLockDown > 0)
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.TimeRequiredToLockDown = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.TimeRequiredToLockDown));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides() { TimeRequiredToLockDown = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.TimeRequiredToLockDown)) };
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+                else if (keyGroupList != null && keyGroupList.Exists(x => x.TimeRequiredToLockDown > 0))
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.TimeRequiredToLockDown = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.TimeRequiredToLockDown > 0).TimeRequiredToLockDown));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides() { TimeRequiredToLockDown = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.TimeRequiredToLockDown > 0).TimeRequiredToLockDown)) };
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+
+                if (xmlKey.KeyDownTimeout > 0)
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.KeyDownTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.KeyDownTimeout));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides() { KeyDownTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.KeyDownTimeout)) };
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
+                else if (keyGroupList != null && keyGroupList.Exists(x => x.KeyDownTimeout > 0))
+                {
+                    if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
+                    {
+                        timeSpanOverrides.KeyDownTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.KeyDownTimeout > 0).KeyDownTimeout));
+                        overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
+                    }
+                    else
+                    {
+                        timeSpanOverrides = new TimeSpanOverrides() { KeyDownTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.KeyDownTimeout > 0).KeyDownTimeout)) };
+                        overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
+                    }
+                }
             }
             
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
