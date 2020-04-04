@@ -32,9 +32,16 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public string KeyDisabledOpacity { get; set; }
         [XmlAttribute] public string KeyDownOpacity { get; set; }
         [XmlAttribute] public int LockOnTime { get; set; } = -1;
+        //This is a comma separated list of times required to trigger keystrokes
+        //When used the time to trigger the first keystroke is overridden and the time to trigger repetitive keystrokes can be shortened
         [XmlAttribute] public string CompletionTimes { get; set; }
+        //The amount of time a continuous gaze is required to lock down a key
+        //When used the key will be pressed down when triggerred and remain down as long as gaze is fixed on key
         [XmlAttribute] public int TimeRequiredToLockDown { get; set; } = -1;
-        [XmlAttribute] public int KeyDownTimeout { get; set; } = -1;
+        //The purpose of this is to allow the key to be quickly released if TimeRequiredToLockDown is used
+        //It is the amount of time focus can be lost before resetting the key
+        //When used this will override the keyFixationTimeout
+        [XmlAttribute] public int LockDownAttemptTimeout { get; set; } = -1;
     }
 
     public class XmlDynamicScratchpad : XmlDynamicItem { }
