@@ -2449,11 +2449,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         await Task.Delay(10);
                         //if the timeout is equal to the min it means the key no longer has focus and has timed out
-                        keyStateService.KeyRunningStates[singleKeyValue].Value = (timeSpanOverrides.Timeout > DateTimeOffset.MinValue) 
+                        keyStateService.KeyRunningStates[singleKeyValue].Value = (timeSpanOverrides.LockDownCancelTime > DateTimeOffset.MinValue) 
                             ? keyStateService.KeyRunningStates[singleKeyValue].Value : false;
                     }
                     //if the timeout has not been set to the min then we lock down the key and return
-                    if (timeSpanOverrides.Timeout > DateTimeOffset.MinValue)
+                    if (timeSpanOverrides.LockDownCancelTime > DateTimeOffset.MinValue)
                     {
                         keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.LockedDown;
                         return;

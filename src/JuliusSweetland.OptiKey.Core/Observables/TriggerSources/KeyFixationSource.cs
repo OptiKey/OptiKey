@@ -199,21 +199,20 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue; //Access to modified closure
 
                                             //check for an override timeout value for this key
-                                            TimeSpan overrideTimeout = (overrideTimesByKey != null
-                                                && overrideTimesByKey.TryGetValue(fixationCentrePointAndKeyValueCopy.KeyValue
-                                                , out TimeSpanOverrides timeSpanOverrides))
-                                                ? timeSpanOverrides.KeyDownTimeout : TimeSpan.Zero;
+                                            TimeSpan lockDownAttemptTimeout = (overrideTimesByKey != null
+                                                && overrideTimesByKey.TryGetValue(fixationCentrePointAndKeyValueCopy.KeyValue, out TimeSpanOverrides timeSpanOverrides))
+                                                ? timeSpanOverrides.LockDownAttemptTimeout : TimeSpan.Zero;
 
                                             //set the timeout to either the override or default value
-                                            var fixationTimeout = overrideTimeout > TimeSpan.Zero ? overrideTimeout : incompleteFixationTtl;
+                                            var fixationTimeout = lockDownAttemptTimeout > TimeSpan.Zero ? lockDownAttemptTimeout : incompleteFixationTtl;
 
                                             incompleteFixationTimeouts[fixationCentrePointAndKeyValue.KeyValue] =
                                                 Observable.Timer(fixationTimeout).Subscribe(_ =>
                                                 {
                                                     long removedProgress;
                                                     IDisposable removedTimeout;
-                                                    if (overrideTimeout > TimeSpan.Zero)
-                                                        overrideTimesByKey[fixationCentrePointAndKeyValueCopy.KeyValue].Timeout = DateTimeOffset.MinValue;
+                                                    if (lockDownAttemptTimeout > TimeSpan.Zero)
+                                                        overrideTimesByKey[fixationCentrePointAndKeyValueCopy.KeyValue].LockDownCancelTime = DateTimeOffset.MinValue;
                                                     incompleteFixationProgress.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out removedProgress);
                                                     incompleteFixationTimeouts.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out removedTimeout);
                                                     observer.OnNext(new TriggerSignal(null, 0, fixationCentrePointAndKeyValueCopy));
@@ -263,7 +262,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             lastKeyValue = fixationCentrePointAndKeyValue.KeyValue;
                                             if (overrideTimesByKey != null && overrideTimesByKey.ContainsKey(lastKeyValue))
                                             {
-                                                overrideTimesByKey[lastKeyValue].Timeout = DateTimeOffset.Now 
+                                                overrideTimesByKey[lastKeyValue].LockDownCancelTime = DateTimeOffset.Now 
                                                     + overrideTimesByKey[lastKeyValue].TimeRequiredToLockDown;
                                             }
                                             fixationStart = latestPointAndKeyValue.Timestamp;
