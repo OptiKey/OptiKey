@@ -2565,7 +2565,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             var keyValueList = new List<KeyValue>();
                             keyValueList.Add(keyCommand.KeyValue);
                             keyValueList.AddRange(KeyStateService.KeyValueByGroup[keyCommand.KeyValue.String.ToUpper()]);
-                            foreach (var keyValue in keyValueList.Where(x => keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
+                            foreach (var keyValue in keyValueList.Where(x => x != null && keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
                             {
                                 await KeyUpProcessing(singleKeyValue, keyValue);
                             }
