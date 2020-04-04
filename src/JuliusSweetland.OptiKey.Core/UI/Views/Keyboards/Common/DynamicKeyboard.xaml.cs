@@ -977,29 +977,29 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     }
                 }
 
-                if (xmlKey.KeyDownTimeout > 0)
+                if (xmlKey.LockDownAttemptTimeout > 0)
                 {
                     if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
                     {
-                        timeSpanOverrides.KeyDownTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.KeyDownTimeout));
+                        timeSpanOverrides.LockDownAttemptTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.LockDownAttemptTimeout));
                         overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides() { KeyDownTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.KeyDownTimeout)) };
+                        timeSpanOverrides = new TimeSpanOverrides() { LockDownAttemptTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(xmlKey.LockDownAttemptTimeout)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
-                else if (keyGroupList != null && keyGroupList.Exists(x => x.KeyDownTimeout > 0))
+                else if (keyGroupList != null && keyGroupList.Exists(x => x.LockDownAttemptTimeout > 0))
                 {
                     if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
                     {
-                        timeSpanOverrides.KeyDownTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.KeyDownTimeout > 0).KeyDownTimeout));
+                        timeSpanOverrides.LockDownAttemptTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockDownAttemptTimeout > 0).LockDownAttemptTimeout));
                         overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides() { KeyDownTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.KeyDownTimeout > 0).KeyDownTimeout)) };
+                        timeSpanOverrides = new TimeSpanOverrides() { LockDownAttemptTimeout = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockDownAttemptTimeout > 0).LockDownAttemptTimeout)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
