@@ -2603,14 +2603,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private async Task KeyUpProcessing(KeyValue singleKeyValue, KeyValue commandKey)
         {
-            await keyboardOutputService.ProcessSingleKeyPress(commandKey.String, KeyPressKeyValue.KeyPressType.Release);
+            var inKey = commandKey.FunctionKey.HasValue
+                ? commandKey.FunctionKey.Value.ToString() : commandKey.String;
+            await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
             keyStateService.KeyDownStates[commandKey].Value = KeyDownStates.Up;
 
             //if the released key has any children then release them as well 
             foreach (var childKey in keyStateService.KeyFamily.Where(x => x.Item1 == commandKey
                 && KeyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up))
             {
-                await keyboardOutputService.ProcessSingleKeyPress(childKey.Item2.String, KeyPressKeyValue.KeyPressType.Release);
+                inKey = childKey.Item2.FunctionKey.HasValue
+                    ? childKey.Item2.FunctionKey.Value.ToString() : childKey.Item2.String;
+                await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
                 keyStateService.KeyDownStates[childKey.Item2].Value = KeyDownStates.Up;
             }
 
