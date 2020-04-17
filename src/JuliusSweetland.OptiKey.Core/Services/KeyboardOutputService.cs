@@ -1097,6 +1097,62 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        private void PressKeyWithModifiers(short vkKeyScan, KeyPressKeyValue.KeyPressType type)
+        {
+            // vkKeyScan is valid result from VkKeyScanEx
+            // Low-order byte contains virtual key code, higher-order byte contains modifier flag(s)
+            var vkCode = vkKeyScan & 0xff;
+            var shift = (vkKeyScan & 0x100) > 0;
+            var ctrl = (vkKeyScan & 0x200) > 0;
+            var alt = (vkKeyScan & 0x400) > 0;
+
+            bool releaseShift = false;
+            bool releaseCtrl = false;
+            bool releaseAlt = false;
+
+            if (shift && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
+            {
+                publishService.KeyDown(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
+                releaseShift = true;
+            }
+            if (ctrl && keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value == KeyDownStates.Up)
+            {
+                publishService.KeyDown(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
+                releaseCtrl = true;
+            }
+            if (alt && keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value == KeyDownStates.Up)
+            {
+                publishService.KeyDown(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
+                releaseAlt = true;
+            }
+
+            switch (type)
+            {
+                case KeyPressKeyValue.KeyPressType.Press:
+                    publishService.KeyDown((VirtualKeyCode)vkCode);
+                    break;
+                case KeyPressKeyValue.KeyPressType.Release:
+                    publishService.KeyUp((VirtualKeyCode)vkCode);
+                    break;
+                case KeyPressKeyValue.KeyPressType.PressAndRelease:
+                    publishService.KeyDownUp((VirtualKeyCode)vkCode);
+                    break;
+            }
+
+            if (releaseShift)
+            {
+                publishService.KeyUp(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
+            }
+            if (releaseCtrl)
+            {
+                publishService.KeyUp(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
+            }
+            if (releaseAlt)
+            {
+                publishService.KeyUp(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
+            }
+        }
+
         private void PublishKeyPress(char character)
         {
             if (keyStateService.SimulateKeyStrokes)
@@ -1137,53 +1193,19 @@ namespace JuliusSweetland.OptiKey.Services
 
                 //Attempt to lookup virtual key code (and modifier states)
                 var vkKeyScan = PInvoke.VkKeyScanEx(character, keyboardLayout);
-                var vkCode = vkKeyScan & 0xff;
-                var shift = (vkKeyScan & 0x100) > 0;
-                var ctrl = (vkKeyScan & 0x200) > 0;
-                var alt = (vkKeyScan & 0x400) > 0;
-
                 if (vkKeyScan != -1)
                 {
+                    this.PressKeyWithModifiers(vkKeyScan, KeyPressKeyValue.KeyPressType.PressAndRelease);
+
+                    // translate vkKeyScan return value for logging
+                    var vkCode = vkKeyScan & 0xff;
+                    var shift = (vkKeyScan & 0x100) > 0;
+                    var ctrl = (vkKeyScan & 0x200) > 0;
+                    var alt = (vkKeyScan & 0x400) > 0;
+
                     Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
                         character.ToPrintableString(), vkCode, shift ? "+SHIFT" : null,
                         ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
-
-                    bool releaseShift = false;
-                    bool releaseCtrl = false;
-                    bool releaseAlt = false;
-
-                    if (shift && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
-                    {
-                        publishService.KeyDown(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
-                        releaseShift = true;
-                    }
-
-                    if (ctrl && keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value == KeyDownStates.Up)
-                    {
-                        publishService.KeyDown(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
-                        releaseCtrl = true;
-                    }
-
-                    if (alt && keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value == KeyDownStates.Up)
-                    {
-                        publishService.KeyDown(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
-                        releaseAlt = true;
-                    }
-
-                    publishService.KeyDownUp((VirtualKeyCode)vkCode);
-
-                    if (releaseShift)
-                    {
-                        publishService.KeyUp(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
-                    }
-                    if (releaseCtrl)
-                    {
-                        publishService.KeyUp(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
-                    }
-                    if (releaseAlt)
-                    {
-                        publishService.KeyUp(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
-                    }
                 }
                 else
                 {
