@@ -517,16 +517,11 @@ namespace JuliusSweetland.OptiKey.Services
 
                 foreach (var chaKey in inKey)
                 {
-                    var vkKeyScan = PInvoke.VkKeyScanEx(chaKey, keyboardLayout);
-                    var vkCode = vkKeyScan & 0xff;
+                    // Attempt to lookup virtual key code (and modifier states)
+                    short vkKeyScan = PInvoke.VkKeyScanEx(chaKey, keyboardLayout);
                     if (vkKeyScan != -1)
                     {
-                        if (type == KeyPressKeyValue.KeyPressType.Press)
-                            publishService.KeyDown((VirtualKeyCode)vkCode);
-                        else if (type == KeyPressKeyValue.KeyPressType.Release)
-                            publishService.KeyUp((VirtualKeyCode)vkCode);
-                        else
-                            publishService.KeyDownUp((VirtualKeyCode)vkCode);
+                        this.PressKeyWithModifiers(vkKeyScan, type);
                     }
                     else
                     {
