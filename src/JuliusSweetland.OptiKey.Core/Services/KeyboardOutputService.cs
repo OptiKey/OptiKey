@@ -515,17 +515,6 @@ namespace JuliusSweetland.OptiKey.Services
                 int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
                 IntPtr keyboardLayout = PInvoke.GetKeyboardLayout(winThreadProcId);
 
-                //Convert this into a culture string for logging
-                string keyboardCulture = "Unknown";
-                var installedInputLanguages = InputLanguage.InstalledInputLanguages;
-                for (int i = 0; i < installedInputLanguages.Count; i++)
-                {
-                    if (keyboardLayout == installedInputLanguages[i].Handle)
-                    {
-                        keyboardCulture = installedInputLanguages[i].Culture.DisplayName;
-                        break;
-                    }
-                }
                 foreach (var chaKey in inKey)
                 {
                     var vkKeyScan = PInvoke.VkKeyScanEx(chaKey, keyboardLayout);
