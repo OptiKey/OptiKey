@@ -495,9 +495,9 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("ProcessSingleKeyPress called for key [{0}] press type [{1}]", inKey, type);
 
+            // Special case for function keys
             FunctionKeys funKey;
             var virtualKeyCode = (Enum.TryParse(inKey, out funKey)) ? funKey.ToVirtualKeyCode() : null;
-
             if (virtualKeyCode != null)
             {
                 if (type == KeyPressKeyValue.KeyPressType.Press)
@@ -509,24 +509,10 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else
             {
-                //Get keyboard layout of currently focused window
-                IntPtr hWnd = PInvoke.GetForegroundWindow();
-                int lpdwProcessId;
-                int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
-                IntPtr keyboardLayout = PInvoke.GetKeyboardLayout(winThreadProcId);
-
+                // Actual key presses
                 foreach (var chaKey in inKey)
                 {
-                    // Attempt to lookup virtual key code (and modifier states)
-                    short vkKeyScan = PInvoke.VkKeyScanEx(chaKey, keyboardLayout);
-                    if (vkKeyScan != -1)
-                    {
-                        this.PressKeyWithModifiers(vkKeyScan, type);
-                    }
-                    else
-                    {
-                        Log.InfoFormat("No virtual key code found for '{0}'", chaKey);
-                    }
+                    this.PressKey(chaKey, type);
                 }
             }
         }
@@ -1081,59 +1067,94 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void PressKeyWithModifiers(short vkKeyScan, KeyPressKeyValue.KeyPressType type)
+        private void PressKey(char character, KeyPressKeyValue.KeyPressType type)
         {
-            // vkKeyScan is valid result from VkKeyScanEx
-            // Low-order byte contains virtual key code, higher-order byte contains modifier flag(s)
-            var vkCode = vkKeyScan & 0xff;
-            var shift = (vkKeyScan & 0x100) > 0;
-            var ctrl = (vkKeyScan & 0x200) > 0;
-            var alt = (vkKeyScan & 0x400) > 0;
 
-            bool releaseShift = false;
-            bool releaseCtrl = false;
-            bool releaseAlt = false;
+            //Get keyboard layout of currently focused window
+            IntPtr hWnd = PInvoke.GetForegroundWindow();
+            int lpdwProcessId;
+            int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
+            IntPtr keyboardLayout = PInvoke.GetKeyboardLayout(winThreadProcId);
 
-            if (shift && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
+            //Convert this into a culture string for logging
+            string keyboardCulture = "Unknown";
+            var installedInputLanguages = InputLanguage.InstalledInputLanguages;
+            for (int i = 0; i < installedInputLanguages.Count; i++)
             {
-                publishService.KeyDown(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
-                releaseShift = true;
-            }
-            if (ctrl && keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value == KeyDownStates.Up)
-            {
-                publishService.KeyDown(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
-                releaseCtrl = true;
-            }
-            if (alt && keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value == KeyDownStates.Up)
-            {
-                publishService.KeyDown(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
-                releaseAlt = true;
-            }
-
-            switch (type)
-            {
-                case KeyPressKeyValue.KeyPressType.Press:
-                    publishService.KeyDown((VirtualKeyCode)vkCode);
+                if (keyboardLayout == installedInputLanguages[i].Handle)
+                {
+                    keyboardCulture = installedInputLanguages[i].Culture.DisplayName;
                     break;
-                case KeyPressKeyValue.KeyPressType.Release:
-                    publishService.KeyUp((VirtualKeyCode)vkCode);
-                    break;
-                case KeyPressKeyValue.KeyPressType.PressAndRelease:
-                    publishService.KeyDownUp((VirtualKeyCode)vkCode);
-                    break;
+                }
             }
 
-            if (releaseShift)
+            //Attempt to lookup virtual key code (and modifier states)
+            var vkKeyScan = PInvoke.VkKeyScanEx(character, keyboardLayout);
+            if (vkKeyScan != -1)
             {
-                publishService.KeyUp(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
+
+                // vkKeyScan is valid result from VkKeyScanEx
+                // Low-order byte contains virtual key code, higher-order byte contains modifier flag(s)
+                var vkCode = vkKeyScan & 0xff;
+                var shift = (vkKeyScan & 0x100) > 0;
+                var ctrl = (vkKeyScan & 0x200) > 0;
+                var alt = (vkKeyScan & 0x400) > 0;
+
+                bool releaseShift = false;
+                bool releaseCtrl = false;
+                bool releaseAlt = false;
+
+                if (shift && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
+                {
+                    publishService.KeyDown(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
+                    releaseShift = true;
+                }
+                if (ctrl && keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value == KeyDownStates.Up)
+                {
+                    publishService.KeyDown(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
+                    releaseCtrl = true;
+                }
+                if (alt && keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value == KeyDownStates.Up)
+                {
+                    publishService.KeyDown(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
+                    releaseAlt = true;
+                }
+
+                switch (type)
+                {
+                    case KeyPressKeyValue.KeyPressType.Press:
+                        publishService.KeyDown((VirtualKeyCode)vkCode);
+                        break;
+                    case KeyPressKeyValue.KeyPressType.Release:
+                        publishService.KeyUp((VirtualKeyCode)vkCode);
+                        break;
+                    case KeyPressKeyValue.KeyPressType.PressAndRelease:
+                        publishService.KeyDownUp((VirtualKeyCode)vkCode);
+                        break;
+                }
+
+                if (releaseShift)
+                {
+                    publishService.KeyUp(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
+                }
+                if (releaseCtrl)
+                {
+                    publishService.KeyUp(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
+                }
+                if (releaseAlt)
+                {
+                    publishService.KeyUp(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
+                }
+
+                Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
+                    character.ToPrintableString(), vkCode, shift ? "+SHIFT" : null,
+                    ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
             }
-            if (releaseCtrl)
+            else
             {
-                publishService.KeyUp(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
-            }
-            if (releaseAlt)
-            {
-                publishService.KeyUp(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
+                Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (OS keyboard layout:{1})",
+                    character.ToPrintableString(), keyboardCulture);
+                publishService.TypeText(character.ToString());
             }
         }
 
@@ -1141,6 +1162,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyStateService.SimulateKeyStrokes)
             {
+                // Special characters
                 var virtualKeyCode = character.ToVirtualKeyCode();
                 if (virtualKeyCode != null)
                 {
@@ -1150,6 +1172,7 @@ namespace JuliusSweetland.OptiKey.Services
                     return;
                 }
 
+                // Type text without publishing key presses
                 if (!Settings.Default.PublishVirtualKeyCodesForCharacters)
                 {
                     Log.InfoFormat("Publishing '{0}' as text", character.ToPrintableString());
@@ -1157,46 +1180,9 @@ namespace JuliusSweetland.OptiKey.Services
                     return;
                 }
 
-                //Get keyboard layout of currently focused window
-                IntPtr hWnd = PInvoke.GetForegroundWindow();
-                int lpdwProcessId;
-                int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
-                IntPtr keyboardLayout = PInvoke.GetKeyboardLayout(winThreadProcId);
+                // Actually press (and release) key
+                this.PressKey(character, KeyPressKeyValue.KeyPressType.PressAndRelease);
 
-                //Convert this into a culture string for logging
-                string keyboardCulture = "Unknown";
-                var installedInputLanguages = InputLanguage.InstalledInputLanguages;
-                for (int i = 0; i < installedInputLanguages.Count; i++)
-                {
-                    if (keyboardLayout == installedInputLanguages[i].Handle)
-                    {
-                        keyboardCulture = installedInputLanguages[i].Culture.DisplayName;
-                        break;
-                    }
-                }
-
-                //Attempt to lookup virtual key code (and modifier states)
-                var vkKeyScan = PInvoke.VkKeyScanEx(character, keyboardLayout);
-                if (vkKeyScan != -1)
-                {
-                    this.PressKeyWithModifiers(vkKeyScan, KeyPressKeyValue.KeyPressType.PressAndRelease);
-
-                    // translate vkKeyScan return value for logging
-                    var vkCode = vkKeyScan & 0xff;
-                    var shift = (vkKeyScan & 0x100) > 0;
-                    var ctrl = (vkKeyScan & 0x200) > 0;
-                    var alt = (vkKeyScan & 0x400) > 0;
-
-                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
-                        character.ToPrintableString(), vkCode, shift ? "+SHIFT" : null,
-                        ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
-                }
-                else
-                {
-                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (OS keyboard layout:{1})",
-                        character.ToPrintableString(), keyboardCulture);
-                    publishService.TypeText(character.ToString());
-                }
             }
         }
 
