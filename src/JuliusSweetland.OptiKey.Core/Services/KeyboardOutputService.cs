@@ -506,15 +506,28 @@ namespace JuliusSweetland.OptiKey.Services
                     publishService.KeyUp(virtualKeyCode.Value);
                 else
                     publishService.KeyDownUp(virtualKeyCode.Value);
+                return;
             }
-            else
+
+            // If not an Optikey FunctionKey, check if it matches a virtual key name
+            VirtualKeyCode vkCode;
+            if (Enum.TryParse(inKey, true, out vkCode)) // ignore case
             {
-                // Actual key presses
-                foreach (var chaKey in inKey)
-                {
-                    this.PressKey(chaKey, type);
-                }
+                if (type == KeyPressKeyValue.KeyPressType.Press)
+                    publishService.KeyDown(vkCode);
+                else if (type == KeyPressKeyValue.KeyPressType.Release)
+                    publishService.KeyUp(vkCode);
+                else
+                    publishService.KeyDownUp(vkCode);
+                return;
             }
+            
+            // Otherwise a vanilla key press
+            foreach (var chaKey in inKey)
+            {
+                this.PressKey(chaKey, type);
+            }
+        
         }
 
         private string CombineStringWithActiveDeadKeys(string input)
