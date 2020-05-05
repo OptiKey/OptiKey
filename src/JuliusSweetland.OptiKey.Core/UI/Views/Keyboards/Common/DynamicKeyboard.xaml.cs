@@ -642,8 +642,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         else
                         {
                             commandKeyValue = Enum.TryParse(dynamicLink.Value, out Enums.Keyboards keyboardEnum)
-                                ? new ChangeKeyboardKeyValue(keyboardEnum, dynamicLink.BackReturnsHere)
-                                : new ChangeKeyboardKeyValue(Path.Combine(rootDir, dynamicLink.Value), dynamicLink.BackReturnsHere);
+                                ? new ChangeKeyboardKeyValue(keyboardEnum, !dynamicLink.BackReturnsHere)
+                                : new ChangeKeyboardKeyValue(Path.Combine(rootDir, dynamicLink.Value), !dynamicLink.BackReturnsHere);
                             
                             commandList.Add(new KeyCommand(KeyCommands.ChangeKeyboard, commandKeyValue));
                         }
