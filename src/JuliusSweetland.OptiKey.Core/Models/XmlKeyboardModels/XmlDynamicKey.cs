@@ -43,7 +43,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         [XmlIgnore]
         public bool BackReturnsHere
-        { get; set; }
+        { get; set; } = true;
 
         [XmlAttribute("BackReturnsHere")]
         public string BackReturnsHereAsString
