@@ -321,7 +321,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
             //check if this key has any override times
             if (overrideTimesByKey.TryGetValue(keyValue, out var timeSpanOverrides) 
-                && timeSpanOverrides.TimeRequiredToLockDown != null && keystroke == 2)
+                && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero && keystroke == 2)
             {
                 return timeSpanOverrides.TimeRequiredToLockDown;
             }
