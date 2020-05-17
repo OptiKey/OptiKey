@@ -1,5 +1,4 @@
 <Keyboard>
-    <Name>FullSymbol</Name>
     <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
 	<WindowState>Floating</WindowState>
 	<Position>Bottom</Position>
@@ -15,6 +14,7 @@
         <Cols>16</Cols>
     </Grid>
     <Content>
+
         <DynamicKey Col="15" Height="2"><Label>Back</Label><Symbol>BackIcon</Symbol><Action>BackFromKeyboard</Action></DynamicKey>
         <DynamicKey Col="15" Height="3"><Action>MouseMoveAndLeftClick</Action><Label>Left Click</Label><Symbol>MouseLeftClickIcon</Symbol></DynamicKey>
         <DynamicKey Col="15" Height="2"><Action>MouseMoveAndRightClick</Action><Label>Right Click</Label><Symbol>MouseRightClickIcon</Symbol></DynamicKey>
@@ -32,7 +32,7 @@
         <DynamicKey><Action>F8</Action><Label>F8</Label></DynamicKey>
         <DynamicKey><Action>F9</Action><Label>F9</Label></DynamicKey>
         <DynamicKey><Action>F10</Action><Label>F10</Label></DynamicKey>
-        <DynamicKey><Label>Abc</Label><Symbol>KeyboardIcon</Symbol><ChangeKeyboard BackReturnsHere="false">FullQwerty</ChangeKeyboard></DynamicKey>
+        <DynamicKey BackgroundColor="white" ForegroundColor="black" KeyDisabledBackground="gray"><Label>Back</Label><Symbol>BackIcon</Symbol><ChangeKeyboard BackReturnsHere="false">FullQwerty</ChangeKeyboard></DynamicKey>
         <DynamicKey><Action>Delete</Action><Label>Del</Label></DynamicKey>
         <DynamicKey><Action>PgUp</Action><Label>Pg Up</Label></DynamicKey>
         <DynamicKey><Action>BackOne</Action><Label>Backspace</Label><Symbol>BackOneIcon</Symbol></DynamicKey>
@@ -41,7 +41,11 @@
         <DynamicKey Row="11"><Text>&#9;</Text><Label>Tab</Label><Symbol>TabIcon</Symbol></DynamicKey>
         <DynamicKey><Action>F11</Action><Label>F11</Label></DynamicKey>
         <DynamicKey><Action>F12</Action><Label>F12</Label></DynamicKey>
-        <DynamicKey Width="6" KeyDisabledBackground="#575757"></DynamicKey>
+        <DynamicKey Width="2" KeyDisabledBackground="#575757"></DynamicKey>
+        <DynamicKey><Action>MouseLeftDoubleClick</Action><Label>Double Click</Label><Symbol>MouseLeftDoubleClickIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>MouseLeftClick</Action><Label>Left Click</Label><Symbol>MouseLeftClickIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>MouseMoveToTop</Action><Symbol>ArrowPointingToTopIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>MouseRightClick</Action><Label>Right Click</Label><Symbol>MouseRightClickIcon</Symbol></DynamicKey>
         <DynamicKey Col="9"><Text>~</Text><Label>~</Label></DynamicKey>
         <DynamicKey><Text>{</Text><Label>{</Label></DynamicKey>
         <DynamicKey><Text>}</Text><Label>}</Label></DynamicKey>
@@ -50,8 +54,11 @@
         <DynamicKey><Action>ArrowUp</Action><Symbol>UpArrowKeyIcon</Symbol></DynamicKey>
         <DynamicKey><Action>End</Action><Label>End</Label></DynamicKey>
         
-        <DynamicKey Row="12"><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>     		
-        <DynamicKey Width="8" KeyDisabledBackground="#575757"><Label></Label></DynamicKey>
+        <DynamicKey Row="12"><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
+        <DynamicKey Width="5" KeyDisabledBackground="#575757"><Label></Label></DynamicKey>	
+        <DynamicKey><Action>MouseMoveToLeft</Action><Symbol>ArrowPointingToLeftIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>MouseMoveTo</Action><Label>Move Mouse</Label><Symbol>MouseMoveToIcon</Symbol></DynamicKey>
+        <DynamicKey><Action>MouseMoveToRight</Action><Symbol>ArrowPointingToRightIcon</Symbol></DynamicKey>
         <DynamicKey Col="9"><Text>`</Text><Label>`</Label></DynamicKey>
         <DynamicKey><Text>[</Text><Label>[</Label></DynamicKey>		
         <DynamicKey><Text>]</Text><Label>]</Label></DynamicKey>
@@ -63,13 +70,13 @@
         <DynamicKey Row="13"><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>
         <DynamicKey><Action>LeftAlt</Action><Label>Alt</Label></DynamicKey>
 		<DynamicKey Width="3" KeyDisabledBackground="#575757"><Label></Label></DynamicKey>
-        <DynamicKey Col="5"><Action>MouseMoveAndLeftDoubleClick</Action><Label>Double Click</Label><Symbol>MouseLeftDoubleClickIcon</Symbol></DynamicKey>
-        <DynamicKey><Action>MouseMoveAndLeftClick</Action><Label>Left Click</Label><Symbol>MouseLeftClickIcon</Symbol></DynamicKey>
-        <DynamicKey><Action>MouseMoveAndRightClick</Action><Label>Right Click</Label><Symbol>MouseRightClickIcon</Symbol></DynamicKey>
-        <DynamicKey><Action>MouseDrag</Action><Label>Drag</Label><Symbol>MouseDragIcon</Symbol></DynamicKey>
-        <DynamicKey><Action>MouseMagnifier</Action><Label>Magnifier</Label><Symbol>MouseMagnifierIcon</Symbol></DynamicKey>
         <DynamicKey><Action>LookToScrollActive</Action><Label>Scroll</Label><Symbol>LookToScrollActiveIcon</Symbol></DynamicKey>
-        <DynamicKey BackgroundColor="white" ForegroundColor="black">><Label>Menu</Label><Symbol>MenuIcon</Symbol><ChangeKeyboard BackReturnsHere="false">Menu</ChangeKeyboard></DynamicKey>    
+		<DynamicKey Width="1" KeyDisabledBackground="#575757"><Label></Label></DynamicKey>
+        <DynamicKey><Action>MouseMoveToBottom</Action><Symbol>ArrowPointingToBottomIcon</Symbol></DynamicKey>
+		<DynamicKey Width="1" KeyDisabledBackground="#575757"><Label></Label></DynamicKey>
+        <DynamicKey><Action>MouseMagnifier</Action><Label>Magnifier</Label><Symbol>MouseMagnifierIcon</Symbol></DynamicKey>
+        <DynamicKey><Label>Sleep</Label><Symbol>SleepIcon</Symbol><Action>Sleep</Action></DynamicKey>
+        <DynamicKey><Label>Menu</Label><Symbol>MenuIcon</Symbol><ChangeKeyboard BackReturnsHere="false">Menu</ChangeKeyboard></DynamicKey>    
         <DynamicKey><Action>Minimise</Action><Label>Hide</Label><Symbol>ExpandDockIcon</Symbol></DynamicKey>    
         <DynamicKey Col="13"><Action>LeftAlt</Action><Label>Alt</Label></DynamicKey>
         <DynamicKey><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>

@@ -2,42 +2,84 @@
     <Name>Demo_Left</Name>
     <HideFromKeyboardMenu>False</HideFromKeyboardMenu>
     <ShowOutputPanel>False</ShowOutputPanel>
-	  <PersistNewState></PersistNewState> 
-	  <WindowState>Floating</WindowState>
-	  <Position>BottomLeft</Position>
-	  <Width>50%</Width>
-	  <Height>90%</Height>
-    <VerticalOffset>-80</VerticalOffset>
+	<PersistNewState></PersistNewState> 
+	<WindowState>Floating</WindowState>
+	<Position>BottomLeft</Position>
+	<Width>50%</Width>
+	<Height>90%</Height>
+	<VerticalOffset>-80</VerticalOffset>
     <SymbolMargin>10</SymbolMargin>
     <BorderThickness>1,1,1,1</BorderThickness>
     <Grid>
         <Rows>7</Rows>
         <Cols>12</Cols>
     </Grid>
-    <Content>
-		
-        <DynamicKey><ChangeKeyboard BackReturnsHere="true">Menu</ChangeKeyboard><Label>Menu</Label><Symbol>MenuIcon</Symbol></DynamicKey>
-		    <SuggestionRow Width="8" DisabledBackground="white" />
-		
-        <DynamicKey Col="9"><Action>PgUp</Action><Label>Pg Up</Label></DynamicKey>
+    <Content>		
+        <DynamicKey>
+			<ChangeKeyboard BackReturnsHere="true">Menu</ChangeKeyboard>
+			<Label>Menu</Label>
+			<Symbol>MenuIcon</Symbol>
+		</DynamicKey>
+		<SuggestionRow Width="8" DisabledBackground="white" />		
+        <DynamicKey Col="9">
+			<Action>PgUp</Action>
+			<Label>Pg Up</Label>
+		</DynamicKey>
         <DynamicKey></DynamicKey>
-        <DynamicKey Col="11"><Action>Home</Action><Label>Home</Label></DynamicKey>
-		
-        <DynamicKey Width="1"><Action>BackFromKeyboard</Action><Label>Back</Label><Symbol>BackIcon</Symbol></DynamicKey>
-		    <DynamicKey Row="1"><Action>ClearScratchpad</Action><Label>Clear</Label><Symbol>ClearIcon</Symbol></DynamicKey>
-		    <Scratchpad Width="5"/>
-		    <DynamicKey><Action>CopyAllFromScratchpad</Action><Label>Copy</Label><Symbol>CopyAllIcon</Symbol></DynamicKey>
-		    <DynamicKey><Action>Speak</Action><Label>Speak</Label><Symbol>SpeakIcon</Symbol></DynamicKey>
-				
-        <DynamicKey Col="9"><Action>PgDn</Action><Label>Pg Dn</Label></DynamicKey>
-        <DynamicKey><Action>ArrowUp</Action><Symbol>UpArrowKeyIcon</Symbol></DynamicKey>
-        <DynamicKey><Action>End</Action><Label>End</Label></DynamicKey>
-
-        <DynamicKey><Action>Sleep</Action><Label>Sleep</Label><Symbol>SleepIcon</Symbol></DynamicKey>
-		
-		    <DynamicKey Col="9"><Action>ArrowLeft</Action><Symbol>LeftArrowKeyIcon</Symbol></DynamicKey>
-        <DynamicKey><Action>ArrowDown</Action><Symbol>DownArrowKeyIcon</Symbol></DynamicKey>
-        <DynamicKey><Action>ArrowRight</Action><Symbol>RightArrowKeyIcon</Symbol></DynamicKey>
+        <DynamicKey Col="11">
+			<Action>Home</Action>
+			<Label>Home</Label>
+		</DynamicKey>
+		<DynamicKey Width="1">
+			<Action>BackFromKeyboard</Action>
+			<Label>Back</Label>
+			<Symbol>BackIcon</Symbol>
+		</DynamicKey>
+		<DynamicKey Row="1">
+			<Action>ClearScratchpad</Action>
+			<Label>Clear</Label>
+			<Symbol>ClearIcon</Symbol>
+		</DynamicKey>
+		<Scratchpad Width="5"/>
+		<DynamicKey>
+			<Action>CopyAllFromScratchpad</Action>
+			<Label>Copy</Label>
+			<Symbol>CopyAllIcon</Symbol>
+		</DynamicKey>
+		<DynamicKey>
+			<Action>Speak</Action>
+			<Label>Speak</Label>
+			<Symbol>SpeakIcon</Symbol>
+		</DynamicKey>						
+		<DynamicKey Col="9">
+			<Action>PgDn</Action>
+			<Label>Pg Dn</Label>
+		</DynamicKey>
+		<DynamicKey>
+			<Action>ArrowUp</Action>
+			<Symbol>UpArrowKeyIcon</Symbol>
+		</DynamicKey>
+		<DynamicKey>
+			<Action>End</Action>
+			<Label>End</Label>
+		</DynamicKey>
+		<DynamicKey>
+			<Action>Sleep</Action>
+			<Label>Sleep</Label>
+			<Symbol>SleepIcon</Symbol>
+		</DynamicKey>
+		<DynamicKey Col="9">
+			<Action>ArrowLeft</Action>
+			<Symbol>LeftArrowKeyIcon</Symbol>
+		</DynamicKey>
+		<DynamicKey>
+			<Action>ArrowDown</Action>
+			<Symbol>DownArrowKeyIcon</Symbol>
+		</DynamicKey>
+		<DynamicKey>
+			<Action>ArrowRight</Action>
+			<Symbol>RightArrowKeyIcon</Symbol>
+		</DynamicKey>
 
         <DynamicKey Row="3"><Action>Escape</Action><Label>Esc</Label></DynamicKey>
         <DynamicKey><Text>1</Text><Label>1</Label><ShiftDownLabel>!</ShiftDownLabel></DynamicKey>
@@ -66,7 +108,7 @@
         <DynamicKey><Action>BackOne</Action><Label>Backspace</Label><Symbol>BackOneIcon</Symbol></DynamicKey>
                 
         <DynamicKey><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
-		    <DynamicKey><Text>a</Text><Label>a</Label><ShiftDownLabel>A</ShiftDownLabel></DynamicKey>
+		<DynamicKey><Text>a</Text><Label>a</Label><ShiftDownLabel>A</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>s</Text><Label>s</Label><ShiftDownLabel>S</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>d</Text><Label>d</Label><ShiftDownLabel>D</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>f</Text><Label>f</Label><ShiftDownLabel>F</ShiftDownLabel></DynamicKey>
