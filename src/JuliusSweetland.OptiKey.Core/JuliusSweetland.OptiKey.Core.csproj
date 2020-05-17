@@ -956,10 +956,10 @@
     <Content Include="Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml">
+    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Left.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Left.xml">
+    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\DynamicKeyboards\Samples\FullQwerty.xml">
