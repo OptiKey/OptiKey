@@ -250,15 +250,16 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             {
                                                 t.Dispose();
                                             }
-
-                                            keystroke = (lastKeyValue != null && fixationCentrePointAndKeyValue.KeyValue.Equals(lastKeyValue)) ? keystroke + 1 : 1;
-                                            lastKeyValue = fixationCentrePointAndKeyValue.KeyValue;
-                                            if (overrideTimesByKey != null && overrideTimesByKey.ContainsKey(lastKeyValue))
+                                            if (overrideTimesByKey != null && overrideTimesByKey.ContainsKey(fixationCentrePointAndKeyValue.KeyValue))
                                             {
-                                                overrideTimesByKey[lastKeyValue].LockDownCancelTime = DateTimeOffset.Now 
+                                                keystroke = (fixationCentrePointAndKeyValue.KeyValue.Equals(lastKeyValue)) ? keystroke + 1 : 1;
+                                                lastKeyValue = fixationCentrePointAndKeyValue.KeyValue;
+                                                   overrideTimesByKey[lastKeyValue].LockDownCancelTime = DateTimeOffset.Now 
                                                     + overrideTimesByKey[lastKeyValue].TimeRequiredToLockDown;
+                                                fixationStart = latestPointAndKeyValue.Timestamp;
                                             }
-                                            fixationStart = latestPointAndKeyValue.Timestamp;
+                                            else
+                                                fixationCentrePointAndKeyValue = null;
                                             incompleteFixationProgress.Clear();
                                             incompleteFixationTimeouts.Clear();
                                             lockOnStart = null;
