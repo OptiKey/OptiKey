@@ -108,6 +108,24 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             };
         }
 
+
+        void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // This prevents win7 aerosnap, which otherwise might snap to edges and expand unexpectedly
+                ResizeMode origResizeMode = this.ResizeMode;
+                this.ResizeMode = System.Windows.ResizeMode.NoResize;
+                this.UpdateLayout();
+                
+                DragMove();
+                
+                // Restore original resize mode 
+                this.ResizeMode = origResizeMode;
+                this.UpdateLayout();
+            }
+        }
+
         public IWindowManipulationService WindowManipulationService { get; set; }
 
         public InteractionRequest<NotificationWithServicesAndState> ManagementWindowRequest { get { return managementWindowRequest; } }
