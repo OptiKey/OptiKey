@@ -137,10 +137,21 @@ namespace JuliusSweetland.OptiKey.Services
         private const Int32 WM_EXITSIZEMOVE = 0x0232;
         private const Int32 WM_NCLBUTTONDBLCLK = 0x00A3; 
 
+        private const Int32 WM_SYSCOMMAND = 0x112;
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch (msg)
             {
+                case WM_SYSCOMMAND:
+                    // This prevents Windows aero-snap on edges whilst move is underway
+                    switch (wParam.ToInt32() & 0xFFF0) // lower-order bits are used internally
+                    {
+                        case 0xF010: // SC_MOVE
+                        case 0xF000: // SC_SIZE
+                            window.ResizeMode = ResizeMode.NoResize;
+                            break;
+                    }
+                    break;
                 case WM_ENTERSIZEMOVE:
                     mouseResizeUnderway = true;
                     break;
@@ -150,6 +161,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Log.Info("WM_EXITSIZEMOVE called");
                     mouseResizeUnderway = false;
                     CoerceDockSizeAndPosition();
+                    // restore resize grips 
+                    window.ResizeMode = System.Windows.ResizeMode.CanResizeWithGrip;
                     break;
                 case WM_NCLBUTTONDBLCLK:
                     handled = true;  //prevent double click from maximizing the window.
