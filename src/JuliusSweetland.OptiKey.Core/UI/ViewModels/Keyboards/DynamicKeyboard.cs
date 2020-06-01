@@ -136,10 +136,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
                         NotificationTypes.Error, () => { });
                     return;
                 }
-            }
 
-            Log.InfoFormat("Overriding size and position for dynamic keyboard");
-            windowManipulationService.OverridePersistedState(persistNewState, windowState, position, dockSize, width, height, horizontalOffset, verticalOffset);
+                Log.InfoFormat("Overriding size and position for dynamic keyboard");
+                windowManipulationService.OverridePersistedState(persistNewState, windowState, position, dockSize, width, height, horizontalOffset, verticalOffset);
+            }
         }
 
         public string Link
