@@ -411,6 +411,11 @@ namespace JuliusSweetland.OptiKey.Services
             ApplySavedState();
         }
 
+        public bool GetPersistedState()
+        {
+            return getPersistedState();
+        }
+
         public void Minimise()
         {
             Log.Info("Minimise called");

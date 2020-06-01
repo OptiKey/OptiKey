@@ -16,6 +16,7 @@ namespace JuliusSweetland.OptiKey.Services
         void ChangeState(WindowStates state, DockEdges dockPosition);
         void Expand(ExpandToDirections direction, double amountInPx);
         double GetOpacity();
+        bool GetPersistedState();
         void Hide();
         void IncrementOrDecrementOpacity(bool increment);
         void Maximise();

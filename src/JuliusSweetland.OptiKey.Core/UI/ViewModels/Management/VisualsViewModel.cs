@@ -71,6 +71,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref opacity, value); }
         }
 
+        private bool persistedWindowState;
+        public bool PersistedWindowState
+        {
+            get { return windowManipulationService.GetPersistedState(); }
+        }
+
         public List<KeyValuePair<string, string>> FontFamilies
         {
             get
