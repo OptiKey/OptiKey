@@ -94,6 +94,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Key = Key.Enter
             });
 
+            // Enable mouse drag on keyboard
+            MainView.KeyboardHost.MouseDown += OnMouseDown;
+
             Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
 
             //Set the window size to 0x0 as this prevents a flicker where OptiKey would be displayed in the default position and then repositioned

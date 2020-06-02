@@ -26,8 +26,10 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     </i:Interaction.Triggers>
 
     <Grid>
-        <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
-                               PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
+        <controls:KeyboardHost 
+            x:Name="KeyboardHost"
+            Keyboard="{Binding Keyboard, Mode=OneWay}"
+            PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
             
             <controls:KeyboardHost.ErrorContent>
                 <Border Background="Black">
