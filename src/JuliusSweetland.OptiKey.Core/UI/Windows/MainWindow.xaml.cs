@@ -117,6 +117,12 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
+            // Don't take focus away from any existing toast notifications
+            if (MainView.ToastNotificationPopup.IsOpen)
+            {
+                return;
+            }
+
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 // This prevents win7 aerosnap, which otherwise might snap to edges and expand unexpectedly
