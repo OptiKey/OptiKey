@@ -52,6 +52,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     RaiseNotificationChain();
                 }
             };
+
+            Loaded -= OnLoaded;
         }
 
         // Consumer, pick up a message and display; when done, pick up the next one
