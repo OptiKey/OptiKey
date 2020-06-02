@@ -320,7 +320,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               ItemsSource="{Binding MainWindowStates}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              Visibility="{Binding MaximisedApp, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                              Visibility="{Binding MaximisedApp, Converter={StaticResource InvertedBoolToVisibilityConverter}}"
                               SelectedValue="{Binding MainWindowState, Mode=TwoWay}" 
                               Style="{StaticResource VisibilityOfPositionProperties}"/>
 
