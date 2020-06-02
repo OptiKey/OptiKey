@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Windows;
 using JuliusSweetland.OptiKey.Native;
@@ -50,6 +50,16 @@ namespace JuliusSweetland.OptiKey.Static
         public static double VirtualScreenHeightInPixels
         {
             get { return SystemParameters.VirtualScreenHeight * DipScalingFactorY; }
+        }
+
+        public static double PrimaryScreenWidthInPixels
+        {
+            get { return SystemParameters.PrimaryScreenWidth * DipScalingFactorX; }
+        }
+
+        public static double PrimaryScreenHeightInPixels
+        {
+            get { return SystemParameters.PrimaryScreenHeight * DipScalingFactorY; }
         }
 
         public static Rect DipsToPixels(Rect bounds)

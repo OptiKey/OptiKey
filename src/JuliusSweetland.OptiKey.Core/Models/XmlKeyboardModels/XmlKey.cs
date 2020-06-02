@@ -1,10 +1,10 @@
-// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System.Reflection;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public class XmlKey
+    public class XmlKey : IXmlKey
     {
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="16.6" Modules="enterprise" RootPath="." Language="en" Id="{78D22808-9442-4164-B7A6-4F0DCAD1BC17}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.0" Modules="enterprise" RootPath="." Language="en" Id="{78D22808-9442-4164-B7A6-4F0DCAD1BC17}">
   <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
-    <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;FixupComponent"/>
+    <ROW Name="HiddenItems" Value="AppXAppDetailsComponent;FixupComponent;AppXCapabilitiesComponent;AppXDependenciesComponent;AppXProductDetailsComponent;AppXVisualAssetsComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;MsiXDiffComponent;MsixManifestEditorComponent"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
@@ -13,10 +13,10 @@
     <ROW Property="ARPPRODUCTICON" Value="Mouse.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Optikey"/>
-    <ROW Property="ProductCode" Value="1025:{40529B55-D170-435B-9ED4-D097F2423351} 1026:{DAB66D03-8349-4817-9095-4B4089836BCA} 1027:{033132A5-28CA-4988-AF35-2EEE956B80CB} 1028:{A81D2DBD-6ECB-4987-A94A-12794E598D27} 1029:{76301C9D-D4F5-4BAA-94E6-8D6221BD37A5} 1030:{9DDC0B18-E522-4390-9585-CCE7708EED3D} 1031:{4E807DA0-2726-40AC-9038-9F8A8B580F80} 1032:{3CFD1FBC-6621-49AB-B1F6-8B0E71140015} 1033:{669152AF-2986-4B52-8BEA-D54910801861} 1035:{07DED338-2515-46D8-A6C4-22074780B6FC} 1036:{4A3918B8-5EB3-4F3A-8E39-5B68D8DF5466} 1037:{041BC2DE-CB28-4790-8445-9E2E1B9A6F54} 1038:{8A755DCA-B00C-4788-BF3E-2EDC972F0DD8} 1039:{9989588B-7FBC-441C-85DF-8F87FED8E819} 1040:{03B914F2-75A2-4840-9A49-4DC1A74C24D9} 1041:{A18ED5C1-6C9D-4931-81F7-47E66A8E8802} 1042:{078A9981-E4AB-475B-90DD-5083F0131DCA} 1043:{F232F979-DA6A-4401-B53D-77E7F37940D0} 1044:{7AF63860-90CB-4F44-8332-61EEFF17DA85} 1045:{C4FEB37D-F5D1-4FB2-BD99-34BBCE2F23D0} 1046:{2B6F2512-5C60-4C9D-A83F-05EEE09AF995} 1049:{4CE257E4-6194-4AD1-9EBE-D6154BFD48C1} 1050:{519CD3D9-509E-46F4-9C73-17ED866F4274} 1051:{82BA7AF8-1ABB-45E0-B770-B8EDF2331413} 1052:{69680E22-88F4-4266-94CF-22AE93086C21} 1053:{26FE474F-6FBC-4A4B-9BF0-0074C66F15CF} 1055:{00871ED7-B306-430E-B467-AF59FF379E7F} 1057:{FE2E8260-5215-408D-A278-A51607C2738C} 1058:{3CC5753E-921F-4C8B-8C64-C57C4D34279B} 1060:{C16CFEBA-CB7D-47CC-A8C2-FEF897EF9610} 1065:{C879D275-C2C3-439C-A242-BEF269F97682} 1087:{3A7EDE81-4DCF-4B7D-8D8F-66DCF8BE75C4} 2052:{7D2CD8E0-2E7E-43C9-B438-9A3CE0F50BFA} 2057:{D1140B87-0EE0-4580-B158-335746452843} 2068:{37DAE2B5-2209-4E72-9AF4-273A6899BD7D} 2070:{B5E36132-2655-4AFE-BB9E-448EC2959833} 2074:{D6D008C0-5C04-4FEE-9FBA-58CDDFCB9FBA} 3082:{6A7B7915-583F-45F8-93F6-80ABB9C6EE33} 3098:{9ED3112D-B898-4DF7-A8FB-8B2FEFA00D4C} " Type="16"/>
+    <ROW Property="ProductCode" Value="1025:{E2DC09F1-72EC-49DA-B322-026B4BC31362} 1026:{5D3D1E74-5090-4660-9C05-1C98B380C760} 1027:{CD31CA84-C86E-4B02-9927-B8E4D09CD7C4} 1028:{D30118EE-AEC6-4BC7-8F76-14E4D58952DC} 1029:{3ACD4F5E-A66D-4DA3-A804-CC31AA97EE6A} 1030:{186A359E-0054-4BD9-8D28-D6AB6C27C9B1} 1031:{01021D33-C5E2-4497-86BC-193F95D30816} 1032:{2195B1B0-F0CF-4E33-A9CC-727AC4DF06B5} 1033:{88799C5D-962E-4BF7-A38B-594833CBFC3D} 1035:{30156CE3-4D35-494E-B197-C2D988DCB47B} 1036:{65DFFF83-61F1-4AFB-A45A-06F456E790B6} 1037:{0D76DF88-AD71-4C62-B2BA-D096B93B1C71} 1038:{12395EC6-DC80-4334-A306-A08D1E2D35CB} 1039:{8FD8BF60-8FBF-4570-894A-35B7D54A757E} 1040:{285D130C-5B19-48C2-93D1-CA923BBEF8CC} 1041:{C6D88803-8F0F-4334-917A-63521B41162F} 1042:{180F3E56-5CB6-4EDC-BFA7-AF5BC9926B9B} 1043:{177322BF-8143-4042-9BD5-0C3C7694BB80} 1044:{3E12022B-8532-4B62-AD96-0DC70A1F471B} 1045:{0944FF2B-54D6-4A06-B949-9FA46B411A0A} 1046:{02B4F654-5783-4208-AC19-E23324BFE5DE} 1049:{4A56C542-F5AC-48A5-B4B7-1A3CF5703AAE} 1050:{31912693-BDE5-48BC-858F-367596EE53D6} 1051:{40278B35-CBDC-401A-84C6-ADA579845D07} 1052:{9153EB63-BDAC-4808-9CE1-026A114EEB32} 1053:{DFC70FD9-4852-4AF3-B8C6-17267BF4E001} 1055:{08138465-57AC-4F1C-8337-892D42257DFC} 1057:{3285AA53-8D9D-4FFD-9177-DB305756DFCA} 1058:{3098E531-C809-4104-8079-F7FC6E28B4BE} 1060:{82D5F434-10B8-4F83-A638-CACCB1E8BC35} 1065:{11C7E79E-572E-41D4-8C7C-8F8D969D571B} 1087:{F6AEEBF8-6681-486E-9B4F-D206BC247834} 2052:{54AFB798-7387-4303-85CA-0A7362E73192} 2057:{58F13EA4-10C0-4530-BFD3-29A42CD75948} 2068:{83AC7648-87A1-4FE1-84E8-D0765EE309D4} 2070:{E83E5C1B-938E-41AB-ACA9-25167FFE4C25} 2074:{61059E35-B2A9-4D31-B441-6D54C0EE9555} 3082:{2702C3AC-A53B-4F14-95B0-1515A4F224F7} 3098:{0E9F5EE2-7396-4193-936E-10D10BD06553} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Optikey Mouse"/>
-    <ROW Property="ProductVersion" Value="3.0.2" Type="32"/>
+    <ROW Property="ProductVersion" Value="3.0.6" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{929305B5-DA16-4E8E-B2A2-470A58C6CF5E}"/>
@@ -253,7 +253,6 @@
     <ROW File="Octokit.dll" Component_="Octokit.dll" FileName="Octokit.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Octokit.dll" SelfReg="false"/>
     <ROW File="OptiKey.dll" Component_="OptiKey.dll" FileName="OptiKey.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\OptiKey.dll" SelfReg="false"/>
     <ROW File="OptiKey.dll.config" Component_="Bass.Net.xml" FileName="OPTIKE~1.CON|OptiKey.dll.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\OptiKey.dll.config" SelfReg="false"/>
-    <ROW File="OptiKey.exe.config" Component_="Bass.Net.xml" FileName="OPTIKE~2.CON|OptiKey.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\OptiKey.exe.config" SelfReg="false"/>
     <ROW File="OptiKey.pdb" Component_="OptiKey.dll" FileName="OptiKey.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\OptiKey.pdb" SelfReg="false"/>
     <ROW File="OptikeyMouse.exe.config" Component_="Bass.Net.xml" FileName="OPTIKE~3.CON|OptikeyMouse.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\OptikeyMouse.exe.config" SelfReg="false"/>
     <ROW File="OptikeyMouse.pdb" Component_="OptikeyMouse.exe" FileName="OPTIKE~1.PDB|OptikeyMouse.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\OptikeyMouse.pdb" SelfReg="false"/>
@@ -273,7 +272,6 @@
     <ROW File="AltAlphaVerticalKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="ALTALP~2.XML|AltAlphaVerticalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml" SelfReg="false"/>
     <ROW File="BigHackerKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="BIGHAC~1.XML|BigHackerKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Resources\DynamicKeyboards\BigHackerKeyboard.xml" SelfReg="false"/>
     <ROW File="Demo_Bottom.xml" Component_="Demo_Bottom.xml" FileName="DEMO_B~1.XML|Demo_Bottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml" SelfReg="false"/>
-    <ROW File="Demo_Gamepad.xml" Component_="Demo_Bottom.xml" FileName="DEMO_G~1.XML|Demo_Gamepad.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml" SelfReg="false"/>
     <ROW File="Demo_Left.xml" Component_="Demo_Bottom.xml" FileName="DEMO_L~1.XML|Demo_Left.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Left.xml" SelfReg="false"/>
     <ROW File="FullQwerty.xml" Component_="Demo_Bottom.xml" FileName="FULLQW~1.XML|FullQwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Resources\DynamicKeyboards\Samples\FullQwerty.xml" SelfReg="false"/>
     <ROW File="FullSymbol.xml" Component_="Demo_Bottom.xml" FileName="FULLSY~1.XML|FullSymbol.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Resources\DynamicKeyboards\Samples\FullSymbol.xml" SelfReg="false"/>
@@ -359,6 +357,7 @@
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" FileName="WINDOW~3.PDB|WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Component_="Bass.Net.xml" FileName="WINDOW~2.XML|WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.xml" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.xml" Component_="Bass.Net.xml" FileName="WINDOW~3.XML|WindowsRecipes.TaskbarSingleInstance.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\WindowsRecipes.TaskbarSingleInstance.xml" SelfReg="false"/>
+    <ROW File="Demo_Minecraft.xml" Component_="Demo_Bottom.xml" FileName="DEMO_M~1.XML|Demo_Minecraft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -488,7 +487,7 @@
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_uk.ail"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
-    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="c498665547b6f58ba59d50661f735b151ff7bf04 Subject: Open Source Developer, Julius Sweetland&#10;Issuer: Certum Code Signing CA SHA2&#10;Valid from 02/21/2019 to 02/21/2020&#10;User\MY"/>
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="3c0496c07462e804d3bd4b13d8f40004a4cda39d Subject: Open Source Developer, Julius Sweetland&#10;Issuer: Certum Code Signing CA SHA2&#10;Valid from 02/20/2020 to 02/19/2021&#10;User\MY"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
@@ -815,7 +814,7 @@
     <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
-    <ROW PrereqKey="EEDF697C58FF44AEA12537BBFB266D19" DisplayName=".NET Framework 4.6 (web installer)" SetupFileUrl="Prerequisites\.NET Framework 4.6\NDP46-KB3045560-Web.exe" Location="0" ExactSize="0" WinNTVersions="Windows XP SP3 x86, Windows Server 2003 SP2 x86, Windows Vista RTM x86, Windows Vista SP1 x86, Windows 7 RTM x86, Windows 10 x86" WinNT64Versions="Windows XP SP2 x64, Windows Server 2003 SP2 x64, Windows Vista RTM x64, Windows Vista SP1 x64, Windows 7 RTM x64, Windows Server 2008 R2 RTM x64, Windows 10 x64, Windows Server x64" Operator="1" NoUiComLine="/q /norestart" Options="xy" TargetName=".NET Framework 4.6\NDP46-KB3045560-Web.exe"/>
+    <ROW PrereqKey="EEDF697C58FF44AEA12537BBFB266D19" DisplayName=".NET Framework 4.6 (web installer)" SetupFileUrl="Prerequisites\.NET Framework 4.6\NDP46-KB3045560-Web.exe" Location="0" ExactSize="0" WinNTVersions="Windows Vista RTM x86, Windows Vista SP1 x86, Windows 7 RTM x86, Windows 10 x86" WinNT64Versions="Windows Vista RTM x64, Windows Vista SP1 x64, Windows 7 RTM x64, Windows Server 2008 R2 RTM x64, Windows 10 x64, Windows Server x64" Operator="1" NoUiComLine="/q /norestart" Options="xy" TargetName=".NET Framework 4.6\NDP46-KB3045560-Web.exe"/>
     <ATTRIBUTE name="PrereqsOrder" value="EEDF697C58FF44AEA12537BBFB266D19"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">

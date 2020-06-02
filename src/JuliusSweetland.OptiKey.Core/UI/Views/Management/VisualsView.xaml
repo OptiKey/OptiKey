@@ -1,5 +1,5 @@
 <!--
-Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
 <UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.Management.VisualsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -18,7 +18,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
-                    <valueConverters:BoolToCustomValues x:Key="InverseBooleanToVisibilityConverter" TrueValue="Collapsed" FalseValue="Visible" />
+                    <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <!-- hide position-related props if size&position can't be changed, disable if this is temporary -->
@@ -138,8 +138,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFIER_CENTER_ON_SCREEN}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="7" Grid.Column="1" 
-                                            VerticalAlignment="Center"
-                                            IsChecked="{Binding MagnifierCenterOnScreen, Mode=TwoWay}" />
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding MagnifierCenterOnScreen, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
                                IsEnabled="{Binding Source='ConversationOnlyMode', Converter={StaticResource EnabledIfNotOverridden}}"
@@ -158,18 +158,8 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <CheckBox Grid.Row="8" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}"
-                              IsEnabled="{Binding Source='ConversationOnlyMode', Converter={StaticResource EnabledIfNotOverridden}}">
-                        <CheckBox.Style>
-                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                                <Setter Property="Visibility" Value="Visible" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ConversationConfirmOnlyMode}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </CheckBox.Style>
-                    </CheckBox>
+                              IsEnabled="{Binding Source='ConversationOnlyMode', Converter={StaticResource EnabledIfNotOverridden}}"
+                              Visibility="{Binding ConversationConfirmOnlyMode, Converter={StaticResource InvertedBoolToVisibilityConverter}}" />
 
                     <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ENABLE_LABEL}" 
                                IsEnabled="{Binding Source='ConversationConfirmEnable', Converter={StaticResource EnabledIfNotOverridden}}"

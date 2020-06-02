@@ -1,4 +1,4 @@
-// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
+using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
@@ -47,12 +48,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     mouseOutputService.MoveTo(CurrentPositionPoint);
                 }
-            };
 
-            if (Settings.Default.LookToScrollEnabled)
-            {
-                inputServiceLivePositionHandler = (o, position) => UpdateLookToScroll(position);
-            }
+                if (Settings.Default.LookToScrollEnabled)
+                {
+                    UpdateLookToScroll(CurrentPositionPoint);
+                }
+            };
 
             inputServiceSelectionProgressHandler = (o, progress) =>
             {
@@ -125,50 +126,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (SelectionMode == SelectionModes.Key && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                     {
-                        if (singleKeyValue != null && singleKeyValue.FunctionKey != null && singleKeyValue.FunctionKey.Value == FunctionKeys.StepList)
-                        {
-                            /*
-                            StepList function keys what results when a keyboard's Dynamic key definition specifies multiple actions
-                            The singleKeyValue in this case is a string encompassing all the commands defined by the original DynamicKey
-                            
-                            Here is an example Dynamic key definition and the singleKeyValue it would produce
-                            DynamicKey:
-                                <DynamicKey>
-                                  <Label>Type 1-a, 3-b's</Label>
-                                  <Text>a</Text>
-                                  <Loop Count="3">
-                                      <Text>b</Text>
-                                  </Loop>
-                                </DynamicKey>
-
-                            singleKeyValue:
-                                <StepList><Text>a<Loop>3<Text>b</Loop>
-
-                            The application handles the singleKeyValue string by converting it into a list of commands and then creating commandKeyValue as needed
-
-                            commandList:
-                                Text>a
-                                Loop>3
-                                Text>b
-                                /Loop>
-
-                            commandKeyValues:
-                                a
-                                b
-                                b
-                                b
-                            */
-
+                        //DynamicKeys can have a list of Commands and perform multiple actions
+                        if (singleKeyValue != null && singleKeyValue.Commands != null && singleKeyValue.Commands.Any())
+                        {                            
                             //if the key is in a running state and gets pressed, then stop it
                             if (keyStateService.KeyRunningStates[singleKeyValue].Value)
                             {
-                                Log.InfoFormat("StepList key triggered while in a running state. Ending key: {0}", singleKeyValue.String);
+                                Log.InfoFormat("CommandKey key triggered while in a running state. Ending key: {0}", singleKeyValue.String);
                                 keyStateService.KeyRunningStates[singleKeyValue].Value = false;
                             }
                             else
                             {
-                                Log.InfoFormat("Starting StepList key: {0}", singleKeyValue.String);
-                                await StepList(singleKeyValue, multiKeySelection);
+                                Log.InfoFormat("Starting CommandKey key: {0}", singleKeyValue.String);
+                                await CommandKey(singleKeyValue, multiKeySelection);
                             }
                         }
                         else
@@ -206,12 +176,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputService.PointToKeyValueMap = pointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
-
-            if (Settings.Default.LookToScrollEnabled)
-            {
-                inputService.LivePosition += inputServiceLivePositionHandler;
-            }
-
+            
             Log.Info("AttachInputServiceEventHandlers complete.");
         }
 
@@ -225,12 +190,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputService.SelectionProgress -= inputServiceSelectionProgressHandler;
             inputService.Selection -= inputServiceSelectionHandler;
             inputService.SelectionResult -= inputServiceSelectionResultHandler;
-
-            if (Settings.Default.LookToScrollEnabled)
-            {
-                inputService.LivePosition -= inputServiceLivePositionHandler;
-            }
-
+            
             Log.Info("DetachInputServiceEventHandlers complete.");
         }
 
@@ -294,10 +254,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     // will get caught and handled when DynamicKeyboard is created so we are good to ignore here 
                 }
 
-                DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, mainWindowManipulationService, keyStateService,
-                    inputService, audioService, RaiseToastNotification, keyValue.KeyboardFilename, initialKeyStates,
-                    keyboard.PersistNewState, keyboard.WindowState, keyboard.Position, keyboard.DockSize,
-                    keyboard.Width, keyboard.Height, keyboard.HorizontalOffset, keyboard.VerticalOffset);
+                DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, keyStateService,
+                    keyValue.KeyboardFilename, initialKeyStates);
                 Keyboard = newDynKeyboard;
 
                 // Clear the scratchpad when launching a dynamic keyboard.
@@ -685,7 +643,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
+        private async void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
         {
             var currentKeyboard = Keyboard;
             Action resumeLookToScroll;
@@ -2288,6 +2246,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
                     break;
 
+                case FunctionKeys.Translation:
+                    {
+                        Log.Info("Translating text from scratchpad.");
+                        string textFromScratchpad = KeyboardOutputService.Text;
+
+                        if (!string.IsNullOrEmpty(textFromScratchpad))
+                        { 
+                            TranslationService.Response response = await translationService.Translate(textFromScratchpad);
+                            if (response.Status == "Error")
+                            {
+                                Log.Error($"Error/exception during translation: {response.ExceptionMessage}");
+                                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                                RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, response.ExceptionMessage, NotificationTypes.Error, () =>
+                                {
+                                     inputService.RequestResume();
+                                });
+                            }
+                            else
+                            {
+                                keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                                keyboardOutputService.Text = response.TranslatedText;
+                                Clipboard.SetText(response.TranslatedText);
+                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                            }
+                        }
+                    }
+                    break;
+
                 case FunctionKeys.TurkishTurkey:
                     SelectLanguage(Languages.TurkishTurkey);
                     break;
@@ -2426,100 +2412,102 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             NavigateToMenu();
         }
 
-        public async Task StepList(KeyValue singleKeyValue, List<string> multiKeySelection)
+        private async Task CommandKey(KeyValue singleKeyValue, List<string> multiKeySelection)
         {
-            if (!string.IsNullOrEmpty(singleKeyValue.String))
+            if (singleKeyValue.Commands != null && singleKeyValue.Commands.Any())
             {
-                Log.InfoFormat("StepList called with singleKeyValue: {0}", singleKeyValue.String);
+                Log.InfoFormat("CommandKey called with singleKeyValue: {0}", singleKeyValue.String);
 
-                List<string> commandList = singleKeyValue.String.Substring(11).Split('<').ToList();
-                if (commandList.Any())
+                var commandList = new List<KeyCommand>();
+                commandList.AddRange(singleKeyValue.Commands);
+                keyStateService.KeyRunningStates[singleKeyValue].Value = true;
+
+                TimeSpanOverrides timeSpanOverrides = 
+                    inputService.OverrideTimesByKey.TryGetValue(singleKeyValue, out timeSpanOverrides) ? timeSpanOverrides : null;
+
+                //if there is an override lock down time then do not set the key to LockedDown
+                keyStateService.KeyDownStates[singleKeyValue].Value = timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero 
+                    ? KeyDownStates.Down : KeyDownStates.LockedDown;
+
+                await CommandList(singleKeyValue, multiKeySelection, commandList, 0);
+                
+                //if there is an override lock down time then run this key until the gaze stops or another trigger stops it
+                if (timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero)
                 {
-                    var keyDownList = new List<KeyValue>();
-                    keyStateService.KeyRunningStates[singleKeyValue].Value = true;
-                    keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.LockedDown;
-
-                    //populate keyDownList with the keys having potential to be pressed and not released
-                    foreach (var downKey in commandList.FindAll(x => (x.StartsWith("KeyToggle>") || x.StartsWith("KeyDown>"))).Distinct())
+                    //keep the key running until triggered to stop (key lock down), or focus has been lost (key up)
+                    while (keyStateService.KeyRunningStates[singleKeyValue].Value)
                     {
-                        var keyUpCandidate = new KeyValue(downKey.Substring(downKey.IndexOf(">") + 1));
-                        if (keyStateService.KeyDownStates[keyUpCandidate].Value == KeyDownStates.Up)
-                            keyDownList.Add(keyUpCandidate);
+                        await Task.Delay(10);
+                        //if the timeout is equal to the min it means the key no longer has focus and has timed out
+                        keyStateService.KeyRunningStates[singleKeyValue].Value = (timeSpanOverrides.LockDownCancelTime > DateTimeOffset.MinValue) 
+                            ? keyStateService.KeyRunningStates[singleKeyValue].Value : false;
                     }
-
-                    await StepListCommands(singleKeyValue, multiKeySelection, commandList, 0);
-
-                    //if the StepList was stopped by an external process and there are any keys
-                    //that were pressed and not released then execute KeyUp processing
-                    if (!keyStateService.KeyRunningStates[singleKeyValue].Value && keyDownList != null && keyDownList.Any())
+                    //if the timeout has not been set to the min then we lock down the key and return
+                    if (timeSpanOverrides.LockDownCancelTime > DateTimeOffset.MinValue)
                     {
-                        foreach (var keyUpCandidate in keyDownList)
-                        {
-                            if (keyStateService.KeyDownStates[keyUpCandidate].Value != KeyDownStates.Up)
-                            {
-                                Log.InfoFormat("StepList canceled. Sending key up on [{0}] key", keyUpCandidate.String);
-                                await keyboardOutputService.ProcessSingleKeyPress(keyUpCandidate.String, KeyPressKeyValue.KeyPressType.Release);
-                                keyStateService.KeyDownStates[keyUpCandidate].Value = KeyDownStates.Up;
-                            }
-                        }
+                        keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.LockedDown;
+                        return;
                     }
-                    else
-                    {
-                        keyStateService.KeyRunningStates[singleKeyValue].Value = false;
-
-                        //if the StepList left any keys down then return without changing the StepList key to Up
-                        if (keyDownList != null && keyDownList.Any())
-                        {
-                            foreach (var keyUpCandidate in keyDownList)
-                            {
-                                if (keyStateService.KeyDownStates[keyUpCandidate].Value != KeyDownStates.Up)
-                                {
-                                    Log.InfoFormat("StepList {0} finished without changing state to Up because key [{1}] is down", singleKeyValue.String, keyUpCandidate.String);
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                    //if no keys are down then change the StepList key to Up
-                    keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.Up;
                 }
+
+                //if the Task was stopped by an external process and there are any keys
+                //that were pressed and not released then execute KeyUp processing
+                if (!keyStateService.KeyRunningStates[singleKeyValue].Value)
+                {
+                    foreach (var keyUpCandidate in keyStateService.KeyFamily.Where(x => x.Item1 == singleKeyValue
+                        && keyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up))
+                    {
+                        Log.InfoFormat("CommandKey canceled. Sending key up on [{0}] key", keyUpCandidate.Item2.String);
+                        await keyboardOutputService.ProcessSingleKeyPress(keyUpCandidate.Item2.String, KeyPressKeyValue.KeyPressType.Release);
+                        keyStateService.KeyDownStates[keyUpCandidate.Item2].Value = KeyDownStates.Up;
+                    }
+                }
+                else
+                {
+                    keyStateService.KeyRunningStates[singleKeyValue].Value = false;
+
+                    //if the Task left any keys down then return without changing the singleKeyValue to Up
+                    var keyUpCandidate = keyStateService.KeyFamily.Find(x => x.Item1 == singleKeyValue
+                        && keyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up);
+                    if (keyUpCandidate != null)
+                    {
+                        keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.LockedDown;
+                        Log.InfoFormat("CommandKey {0} finished without changing state to Up because key [{1}] is down", singleKeyValue.String, keyUpCandidate.Item2.String);
+                        return;
+                    }
+                }
+                //if no keys are down then change the CommandKey singleKeyValue to Up
+                keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.Up;
             }
         }
 
-        private async Task StepListCommands(KeyValue singleKeyValue, List<string> multiKeySelection, List<string> commandList, int nestLevel)
+        private async Task CommandList(KeyValue singleKeyValue, List<string> multiKeySelection, List<KeyCommand> commandList, int nestLevel)
         {
-            Log.InfoFormat("StepListCommands called with command count: {0}, nest level: {1}", commandList.Count, nestLevel);
+            Log.InfoFormat("CommandList called with command count: {0}, nest level: {1}", commandList.Count, nestLevel);
             
-            while (commandList.Any())
+            foreach(KeyCommand keyCommand in commandList)
             {
                 //if an external process has ordered this key to stop then return
                 if (!keyStateService.KeyRunningStates[singleKeyValue].Value) 
-                {
                     return;
-                }
 
-                if (commandList.First().StartsWith("Loop>"))
+                if (keyCommand.Name == KeyCommands.Loop)
                 {
-                    var loopCount = Int32.Parse(commandList.First().Substring(5));
+                    var loopCount = Int32.Parse(keyCommand.Value);
                     var logMessage = loopCount > 0 ? loopCount + " times" : "indefinitely until stopped";
-                    Log.InfoFormat("StepListCommand: Looping {0}", logMessage);
-
-                    //determine if there is a loop nested in this one or if this is a solo loop
-                    //for a loop with additional nested loops, find the final end loop (/Loop>) command
-                    //for a solo loop, find the first end loop (/Loop>) command 
-                    //pass all commands between Loop> and /Loop> to a new instance
-                    var vEnd = (commandList.FindIndex(1, x => x.StartsWith("Loop>")) > 0
-                        && commandList.FindIndex(1, x => x.StartsWith("Loop>")) < commandList.IndexOf("/Loop>"))
-                        ? commandList.LastIndexOf("/Loop>") - 1
-                        : commandList.IndexOf("/Loop>") - 1;
+                    Log.InfoFormat("CommandList: Looping {0}", logMessage);
 
                     while (keyStateService.KeyRunningStates[singleKeyValue].Value)
                     {
-                        //when calling another instance do so with a larger nestLevel
-                        await StepListCommands(singleKeyValue, multiKeySelection, commandList.GetRange(1, vEnd), nestLevel + 1);
+                        var loopCommandList = new List<KeyCommand>();
+                        loopCommandList.AddRange(keyCommand.LoopCommands);
 
-                        //we need to throttle if in a perpetual loop with no pre-defined wait 
-                        if (loopCount < 1 && !commandList.GetRange(1, vEnd).Exists(x => x.StartsWith("Wait>")))
+                        //when calling another instance do so with a larger nestLevel
+                        await CommandList(singleKeyValue, multiKeySelection, loopCommandList, nestLevel + 1);
+
+                        //we need to throttle if in a perpetual loop with no nested loop and no pre-defined wait 
+                        if (loopCount < 1 && !keyCommand.LoopCommands.Exists(x => x.Name == KeyCommands.Loop)
+                            && !keyCommand.LoopCommands.Exists(x => x.Name == KeyCommands.Wait))
                         {
                             int waitMs = 500;
                             Log.InfoFormat("Throttling perpetual loop for {0}ms", waitMs);
@@ -2533,133 +2521,119 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (loopCount > 1)
                             loopCount--;
                     }
-                    //remove all the commands that were sent to the nested loop
-                    commandList.RemoveRange(0, vEnd);
                 }
                 else
                 {
-                    KeyValue commandKeyValue;
-                    if (commandList.First().StartsWith("Action>") &&
-                        (Enum.TryParse<FunctionKeys>(commandList.First().Substring(7), out FunctionKeys actionFunctionKey)))
+                    if (keyCommand.Name == KeyCommands.Action)
                     {
-                        Log.InfoFormat("StepListCommand: Press function key: {0}", actionFunctionKey);
-                        commandKeyValue = new KeyValue(actionFunctionKey);
-                        KeySelectionResult(commandKeyValue, multiKeySelection);
+                        Log.InfoFormat("CommandList: Press function key: {0}", keyCommand.KeyValue.FunctionKey.ToString());
+                        KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
                     }
-                    else if (commandList.First().StartsWith("Keyboard>") || commandList.First().StartsWith("KeyboardAndReturn>"))
+                    else if (keyCommand.Name == KeyCommands.ChangeKeyboard)
                     {
-                        Enums.Keyboards keyboardEnum;
-                        bool vReturn = (commandList.First().StartsWith("KeyboardAndReturn>"));
-                        int vIndex = vReturn ? 18 : 9;
-                        if (System.Enum.TryParse(commandList.First().Substring(vIndex), out keyboardEnum))
+                        Log.InfoFormat("CommandList: Change keyboard");
+                        KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
+                    }
+                    else if (keyCommand.Name == KeyCommands.KeyDown)
+                    {
+                        Log.InfoFormat("CommandList: Key down on [{0}] key", keyCommand.KeyValue.String);
+                        await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
+                        keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+                    }
+                    else if (keyCommand.Name == KeyCommands.KeyToggle)
+                    {
+                        if (keyStateService.KeyDownStates[keyCommand.KeyValue].Value != KeyDownStates.Up)
                         {
-                            Log.InfoFormat("StepListCommand: Change keyboard to [{0}]. Replace previous keyboard=[{1}]", keyboardEnum, vReturn);
-                            commandKeyValue = new ChangeKeyboardKeyValue(keyboardEnum, vReturn);
+                            Log.InfoFormat("CommandList: Toggle key up on [{0}] key", keyCommand.KeyValue.String);
+                            await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
                         }
                         else
                         {
-                            commandKeyValue = new ChangeKeyboardKeyValue(commandList.First().Substring(vIndex), vReturn);
-                            Log.InfoFormat("StepListCommand: Change keyboard to string [{0}]. Replace previous keyboard=[{1}]", commandKeyValue.String, vReturn);
+                            Log.InfoFormat("CommandList: Toggle key down on [{0}] key", keyCommand.KeyValue.String);
+                            await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
+                            keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
                         }
-                        KeySelectionResult(commandKeyValue, multiKeySelection);
                     }
-                    else if (commandList.First().StartsWith("KeyToggle>"))
+                    else if (keyCommand.Name == KeyCommands.KeyUp)
                     {
-                        commandKeyValue = new KeyValue(commandList.First().Substring(10));
+                        Log.InfoFormat("CommandList: Key up on [{0}]", keyCommand.KeyValue.String);
+                        await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
 
-                        if (keyStateService.KeyDownStates[commandKeyValue].Value != KeyDownStates.Up)
+                        //the KeyUp value could be a KeyGroup so add any matches from KeyValueByGroup
+                        if (keyStateService.KeyValueByGroup.ContainsKey(keyCommand.KeyValue.String.ToUpper()))
                         {
-                            Log.InfoFormat("StepListCommand: Toggle key up on [{0}] key", commandKeyValue.String);
-                            await keyboardOutputService.ProcessSingleKeyPress(commandKeyValue.String, KeyPressKeyValue.KeyPressType.Release);
-                            keyStateService.KeyDownStates[commandKeyValue].Value = KeyDownStates.Up;
-                        }
-                        else
-                        {
-                            Log.InfoFormat("StepListCommand: Toggle key down on [{0}] key", commandKeyValue.String);
-                            await keyboardOutputService.ProcessSingleKeyPress(commandKeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                            keyStateService.KeyDownStates[commandKeyValue].Value = KeyDownStates.Down;
+                            var keyValueList = new List<KeyValue>();
+                            keyValueList.Add(keyCommand.KeyValue);
+                            keyValueList.AddRange(KeyStateService.KeyValueByGroup[keyCommand.KeyValue.String.ToUpper()]);
+                            foreach (var keyValue in keyValueList.Where(x => x != null && keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
+                            {
+                                await KeyUpProcessing(singleKeyValue, keyValue);
+                            }
                         }
                     }
-                    else if (commandList.First().StartsWith("KeyDown>"))
+                    else if (keyCommand.Name == KeyCommands.Text)
                     {
-                        commandKeyValue = new KeyValue(commandList.First().Substring(8));
-                        Log.InfoFormat("StepListCommand: Key down on [{0}] key", commandKeyValue.String);
-                        await keyboardOutputService.ProcessSingleKeyPress(commandKeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                        keyStateService.KeyDownStates[commandKeyValue].Value = KeyDownStates.Down;
+                        Log.InfoFormat("CommandList: Text of [{0}]", keyCommand.KeyValue.String);
+                        KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
                     }
-                    else if (commandList.First().StartsWith("KeyUp>"))
+                    else if (keyCommand.Name == KeyCommands.Wait)
                     {
-                        commandKeyValue = new KeyValue(commandList.First().Substring(6));
-                        Log.InfoFormat("StepListCommand: Key up on [{0}] key", commandKeyValue.String);
-                        await keyboardOutputService.ProcessSingleKeyPress(commandKeyValue.String, KeyPressKeyValue.KeyPressType.Release);
-                        keyStateService.KeyDownStates[commandKeyValue].Value = KeyDownStates.Up;
-                    }
-                    else if (commandList.First().StartsWith("Text>"))
-                    {
-                        commandKeyValue = new KeyValue(commandList.First().Substring(5));
-                        Log.InfoFormat("StepListCommand: Text of [{0}]", commandKeyValue.String);
-                        KeySelectionResult(commandKeyValue, multiKeySelection);
-                    }
-                    else if (commandList.First().StartsWith("Wait>"))
-                    {
-                        var waitMs = int.Parse(commandList.First().Substring(5));
-                        Log.InfoFormat("StepListCommand: Wait of {0}ms", waitMs);
+                        var waitMs = int.Parse(keyCommand.Value);
+                        Log.InfoFormat("CommandList: Wait of {0}ms", waitMs);
                         await Task.Delay(waitMs);
                     }
-                    else if (commandList.First().StartsWith("Plugin>"))
+                    else if (keyCommand.Name == KeyCommands.Plugin)
                     {
-                        Log.InfoFormat("StepListCommand: ", string.Join("", commandList.GetRange(0, commandList.IndexOf("/Plugin>"))));
-                        //send the plugin commands to RunDynamicPlugin and remove them from the commandList
-                        RunDynamicPlugin(commandList.GetRange(0, commandList.IndexOf("/Plugin>")));
-                        commandList.RemoveRange(0, commandList.IndexOf("/Plugin>"));
+                        Log.InfoFormat("CommandList: Plugin [{0}]", keyCommand.Value);
+                        RunDynamicPlugin(keyCommand.Plugin);
                     }
-                }
-
-                if (commandList.Any())
-                {
-                    commandList.RemoveAt(0);
                 }
             }
         }
 
-        private void RunDynamicPlugin(List<string> pluginCommands)
+        private async Task KeyUpProcessing(KeyValue singleKeyValue, KeyValue commandKey)
         {
-            Log.InfoFormat("Running plugin [{0}]", string.Join("", pluginCommands));
+            var inKey = commandKey.FunctionKey.HasValue
+                ? commandKey.FunctionKey.Value.ToString() : commandKey.String;
+            await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
+            keyStateService.KeyDownStates[commandKey].Value = KeyDownStates.Up;
+
+            //if the released key has any children then release them as well 
+            foreach (var childKey in keyStateService.KeyFamily.Where(x => x.Item1 == commandKey
+                && KeyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up))
+            {
+                inKey = childKey.Item2.FunctionKey.HasValue
+                    ? childKey.Item2.FunctionKey.Value.ToString() : childKey.Item2.String;
+                await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
+                keyStateService.KeyDownStates[childKey.Item2].Value = KeyDownStates.Up;
+            }
+
+            //if the released key has a parent 
+            //and the parent is not up
+            //and the parent is not running
+            //and the parent has no child that is not released
+            //then release the parent
+            foreach (var parentKey in keyStateService.KeyFamily.Where(x => x.Item2 == commandKey
+                && KeyStateService.KeyDownStates[x.Item1].Value != KeyDownStates.Up
+                && !KeyStateService.KeyRunningStates[x.Item1].Value
+                && !keyStateService.KeyFamily.Exists(y => y.Item1 == x.Item1 && KeyStateService.KeyDownStates[y.Item2].Value != KeyDownStates.Up)))
+            {
+                await keyboardOutputService.ProcessSingleKeyPress(parentKey.Item1.String, KeyPressKeyValue.KeyPressType.Release);
+                keyStateService.KeyDownStates[parentKey.Item1].Value = KeyDownStates.Up;
+            }
+
+            if (commandKey != singleKeyValue && keyStateService.KeyRunningStates[commandKey].Value != false)
+                keyStateService.KeyRunningStates[commandKey].Value = false;
+        }
+
+        private void RunDynamicPlugin(DynamicPlugin pluginKey)
+        {
+            Log.InfoFormat("Running plugin [{0}]", pluginKey.Name);
 
             // Build plugin context
             Dictionary<string, string> context = BuildPluginContext();
-
             try
             {
-                // Build the plugin key from the commands
-                DynamicPlugin pluginKey = new DynamicPlugin();
-                List <DynamicArgument> dynamicArgument = new List <DynamicArgument>();
-                while (pluginCommands.Any())
-                {
-                    if (pluginCommands.First().StartsWith("Plugin>"))
-                    {
-                        pluginKey.Name = pluginCommands.First().Substring(7);
-                    }
-                    else if (pluginCommands.First().StartsWith("Method>"))
-                    {
-                        pluginKey.Method = pluginCommands.First().Substring(7);
-                    }
-                    else if (pluginCommands.First().StartsWith("Argument>"))
-                    {
-                        dynamicArgument.Add(new DynamicArgument());
-                        pluginKey.Argument = dynamicArgument;
-                    }
-                    else if (pluginCommands.First().StartsWith("Name>"))
-                    {
-                        pluginKey.Argument.Last().Name = pluginCommands.First().Substring(5);
-                    }
-                    else if (pluginCommands.First().StartsWith("Value>"))
-                    {
-                        pluginKey.Argument.Last().Value = pluginCommands.First().Substring(6);
-                    }
-                    pluginCommands.RemoveAt(0);
-                }
-
                 PluginEngine.RunDynamicPlugin(context, pluginKey);
             }
             catch (Exception exception)

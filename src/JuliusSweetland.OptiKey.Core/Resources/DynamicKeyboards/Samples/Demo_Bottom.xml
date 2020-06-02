@@ -1,128 +1,76 @@
 <Keyboard>
     <Name>Demo_Bottom</Name>
     <HideFromKeyboardMenu>False</HideFromKeyboardMenu>
-	<!--PersistNewState: if true this keyboard's state, size, and position settings will become the default values to carry forward when changing keyboards-->
-	<!--if not true this keyboard's settings are temporary, and will not carry forward-->
 	<PersistNewState></PersistNewState>  
-	<!--WindowState: Floating, Docked, Maximised - if not declared the previous value or saved default will be used-->
 	<WindowState>Floating</WindowState>
-	<!--DockSize: Full, Collapsed - if not declared the previous value or saved default will be used-->
 	<DockSize>Full</DockSize>
-	<!--Position: TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight - if not declared the previous value or saved default will be used-->
 	<Position>BottomLeft</Position> 
-	<!--Width and Height: -9999 to 9999. % implies percent of screen. if negative then use the sum of the value and the screen's dimension-->
-	<!--i.e. if a Width of -300 is sent and the screen is 1920 wide then the keyboard width will be set to 1620 by way of ((-300) + (1920) = (1620))-->
 	<Width>90%</Width>
 	<Height>40%</Height>  
-	<!--Horizontal and Vertical Offset: -9999 to 9999. % implies percent of screen. if negative then offset left or up-->
 	<HorizontalOffset></HorizontalOffset>
 	<VerticalOffset>-80</VerticalOffset>
     <SymbolMargin>4</SymbolMargin>
     <BorderThickness>1,1,1,1</BorderThickness>
-	<BackgroundColor>Transparent</BackgroundColor>
-	<BorderColor>Transparent</BorderColor>
-	<!--Grid is required-->
+	<BackgroundColor></BackgroundColor>
+	<BorderColor></BorderColor>
     <Grid>
         <Rows>6</Rows>
         <Cols>12</Cols>
     </Grid>
+	<KeyGroup Name="SG1" BackgroundColor="darkred" KeyDisabledOpacity=".5" CompletionTimes="1000,750,500,250" />
+	<KeyGroup Name="SG2" BackgroundColor="darkgray" KeyDisabledOpacity=".5"  CompletionTimes="600" />
+	<KeyGroup Name="SG3" BackgroundColor="darkblue" KeyDisabledOpacity=".5" CompletionTimes="1000,500" />
 	<Content>
-		<!--		
-		Content may have 0, 1 or many occurrences of each of the following elements:
-			DynamicKey
-			Scratchpad 
-			SuggestionCol
-			SuggestionRow
-			
-		Content items may have the following optional attributes:
-			Row - if not declared it will be set by the positioning algorithm
-			Col - if not declared it will be set by the positioning algorithm
-			Width - if not declared it will default to 1
-			Height - if not declared it will default to 1
-			BackgroundColor - For valid colors refer to https://docs.microsoft.com/en-us/dotnet/api/system.drawing.color
-			ForegroundColor
-			KeyDisabledBackground
-			KeyDownBackground
-			KeyDownOpacity - a numeric value between 0 and 1 where 0 is transparent and 1 is fully opaque
-			Opacity
-		Example: 
-			<Scratchpad Row="0" Col="0" Width="8" Height="1" BackgroundColor="black" Opacity="1" KeyDownBackground="gray" KeyDownOpacity="1" />
-
-		DynamicKey may have the following optional attributes:
-			AutoScaleToOneKeyWidth - only required to modify scaling behavior when key width is greater than 1. if not declared it will default to "true"
-			AutoScaleToOneKeyHeight - only required to modify scaling behavior when key height is greater than 1. if not declared it will default to "true"
-			SharedSizeGroup - only required to break out a key, or set of keys, to size separately, otherwise size grouping is determined automatically
-			UsePersianCompatibilityFont
-			UseUnicodeCompatibilityFont
-			UseUrduCompatibilityFont
-			
-		DynamicKey may have 0 or 1 occurrence of the following visual elements:
-			Label - either set this, the Symbol, or both. This value become the text value on the created Key.
-			ShiftDownLabel - only required to display an alternate text value when the shift key is down.
-			Symbol - this is the image on the key
-			
-		DynamicKey may have 0, 1 or many occurrences of the following command elements:
-			Action - an action key
-			ChangeKeyboard - a built in or dynamic keyboard
-			KeyDown - a character or action key to press and not release
-			KeyToggle - a character or action key change state
-			KeyUp - a character or action key to release
-			Loop - a wrapper used to enclose a set of commands which are to be performed repetitively
-			Text - a character or string of characters to type
-			Wait - time to wait in milliseconds before executing the next command
-
-		ChangeKeyboard command may have the following optional attribute:
-			BackReturnsHere - if "true" the back key on the destination keyboard will return here. default to "true" 
-			
-		Loop command may have the following optional attribute:
-			Count - if a value greater than 0 is not declared the key will remain down and the commands will loop perpetually until the key is triggered to stop
-		Loop command may have 0, 1 or many occurrences of the following command elements:
-			Action - 
-			ChangeKeyboard - 
-			KeyDown - 
-			KeyToggle - 
-			KeyUp - 
-			Loop - loops can be nested within other loops
-			Text - 
-			Wait - if a wait is not declared for the loop then a default delay will be applied to throttle the loop
-		Example:
-			<Loop Count="0">
-				<KeyToggle>x</KeyToggle>
-				<Wait>500</Wait>
-			</Loop>
-			
-		Positioning Algorithm:
-			1. Position all content items that have both row and col defined 
-			2. Position all remaining items in listed order  
-			3. If an item has a row or column defined jump forward to that row or column and mark any/all skipped spaces as empty
-		-->
-		
-		<DynamicKey Row="0" Col="2"><Action>PreviousSuggestions</Action><Symbol>SuggestionLeftIcon</Symbol></DynamicKey>
+        <DynamicKey Row="0" Col="0">
+			<Label>Sleep</Label>
+			<Symbol>SleepIcon</Symbol>
+			<Action>Sleep</Action>
+		</DynamicKey>
+		<DynamicKey Row="0" Col="2">
+			<Action>PreviousSuggestions</Action>
+			<Symbol>SuggestionLeftIcon</Symbol>
+		</DynamicKey>
 		<SuggestionRow Width="6" />
-		<DynamicKey Row="0"><Action>NextSuggestions</Action><Symbol>SuggestionRightIcon</Symbol></DynamicKey>
-        <DynamicKey Row="0" Col="11"><Label>Menu</Label><Symbol>MenuIcon</Symbol><ChangeKeyboard>Menu</ChangeKeyboard></DynamicKey>
-		
-		<DynamicKey SharedSizeGroup="SmallFont" Row="1" BackgroundColor="gray"><Label>Name: Content Demo</Label></DynamicKey>
-        <DynamicKey Row="0" Col="0"><Label>Sleep</Label><Symbol>SleepIcon</Symbol><Action>Sleep</Action></DynamicKey>
-		<DynamicKey Row="1" ><Action>ClearScratchpad</Action><Label>Clear</Label><Symbol>ClearIcon</Symbol></DynamicKey>
-		<Scratchpad Width="8" />
-		<DynamicKey><Action>CopyAllFromScratchpad</Action><Label>Copy</Label><Symbol>CopyAllIcon</Symbol></DynamicKey>
-        <DynamicKey Row="1" Col="11"><Label>Back</Label><Symbol>BackIcon</Symbol><Action>BackFromKeyboard</Action></DynamicKey>	
+		<DynamicKey Row="0">
+			<Action>NextSuggestions</Action>
+			<Symbol>SuggestionRightIcon</Symbol>
+		</DynamicKey>
+		<DynamicKey Row="1" Col="2">
+			<Action>ClearScratchpad</Action>
+			<Label>Clear</Label>
+			<Symbol>ClearIcon</Symbol>
+		</DynamicKey>
+		<Scratchpad Width="6" />
+		<DynamicKey>
+			<Action>CopyAllFromScratchpad</Action>
+			<Label>Copy</Label>
+			<Symbol>CopyAllIcon</Symbol>
+		</DynamicKey>
+		<DynamicKey Row="1" Col="11">
+			<Label>Back</Label>
+			<Symbol>BackIcon</Symbol>
+			<Action>BackFromKeyboard</Action>
+		</DynamicKey>		
+        <DynamicKey Row="0" Col="11">
+			<Label>Menu</Label>
+			<Symbol>MenuIcon</Symbol>
+			<ChangeKeyboard>Menu</ChangeKeyboard>
+		</DynamicKey>
 
-        <DynamicKey Row="2"><Action>Escape</Action><Label>Esc</Label></DynamicKey>
-        <DynamicKey><Text>1</Text><Label>1</Label><ShiftDownLabel>!</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>2</Text><Label>2</Label><ShiftDownLabel>@</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>2</Text><Label>2</Label><ShiftDownLabel>#</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>4</Text><Label>4</Label><ShiftDownLabel>$</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>5</Text><Label>5</Label><ShiftDownLabel>%</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>6</Text><Label>6</Label><ShiftDownLabel>^</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>7</Text><Label>7</Label><ShiftDownLabel>&amp;</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>8</Text><Label>8</Label><ShiftDownLabel>*</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>9</Text><Label>9</Label><ShiftDownLabel>(</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>0</Text><Label>0</Label><ShiftDownLabel>)</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Action>Delete</Action><Label>Del</Label></DynamicKey>	
+        <DynamicKey Row="2"><KeyGroup>SG1</KeyGroup><Action>Escape</Action><Label>Esc</Label></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>1</Text><Label>1</Label><ShiftDownLabel>!</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>2</Text><Label>2</Label><ShiftDownLabel>@</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>3</Text><Label>3</Label><ShiftDownLabel>#</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>4</Text><Label>4</Label><ShiftDownLabel>$</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>5</Text><Label>5</Label><ShiftDownLabel>%</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>6</Text><Label>6</Label><ShiftDownLabel>^</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>7</Text><Label>7</Label><ShiftDownLabel>&amp;</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>8</Text><Label>8</Label><ShiftDownLabel>*</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>9</Text><Label>9</Label><ShiftDownLabel>(</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG2</KeyGroup><Text>0</Text><Label>0</Label><ShiftDownLabel>)</ShiftDownLabel></DynamicKey>
+        <DynamicKey><KeyGroup>SG1</KeyGroup><Action>Delete</Action><Label>Del</Label></DynamicKey>	
         
-        <DynamicKey><Text>&#9;</Text><Label>Tab</Label><Symbol>TabIcon</Symbol></DynamicKey>
+        <DynamicKey><KeyGroup>SG1</KeyGroup><Text>&#9;</Text><Label>Tab</Label><Symbol>TabIcon</Symbol></DynamicKey>
         <DynamicKey><Text>q</Text><Label>q</Label><ShiftDownLabel>Q</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>w</Text><Label>w</Label><ShiftDownLabel>W</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>e</Text><Label>e</Label><ShiftDownLabel>E</ShiftDownLabel></DynamicKey>
@@ -133,9 +81,9 @@
         <DynamicKey><Text>i</Text><Label>i</Label><ShiftDownLabel>I</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>o</Text><Label>o</Label><ShiftDownLabel>O</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>p</Text><Label>p</Label><ShiftDownLabel>P</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Action>BackOne</Action><Label>Backspace</Label><Symbol>BackOneIcon</Symbol></DynamicKey>
+        <DynamicKey><KeyGroup>SG1</KeyGroup><Action>BackOne</Action><Label>Backspace</Label><Symbol>BackOneIcon</Symbol></DynamicKey>
                 
-        <DynamicKey><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
+        <DynamicKey><KeyGroup>SG3</KeyGroup><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
 		<DynamicKey><Text>a</Text><Label>a</Label><ShiftDownLabel>A</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>s</Text><Label>s</Label><ShiftDownLabel>S</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>d</Text><Label>d</Label><ShiftDownLabel>D</ShiftDownLabel></DynamicKey>
@@ -146,10 +94,10 @@
         <DynamicKey><Text>k</Text><Label>k</Label><ShiftDownLabel>K</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>l</Text><Label>l</Label><ShiftDownLabel>L</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>'</Text><Label>'</Label><ShiftDownLabel>"</ShiftDownLabel></DynamicKey>
-        <DynamicKey><Text>&#13;</Text><Label>Enter</Label><Symbol>EnterIcon</Symbol></DynamicKey>
+        <DynamicKey><KeyGroup>SG1</KeyGroup><Text>&#13;</Text><Label>Enter</Label><Symbol>EnterIcon</Symbol></DynamicKey>
         
-        <DynamicKey><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>
-        <DynamicKey><Action>LeftAlt</Action><Label>Alt</Label></DynamicKey>
+        <DynamicKey><KeyGroup>SG3</KeyGroup><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>
+        <DynamicKey><KeyGroup>SG3</KeyGroup><Action>LeftAlt</Action><Label>Alt</Label></DynamicKey>
         <DynamicKey><Text>z</Text><Label>z</Label><ShiftDownLabel>Z</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>x</Text><Label>x</Label><ShiftDownLabel>X</ShiftDownLabel></DynamicKey>
         <DynamicKey><Text>c</Text><Label>c</Label><ShiftDownLabel>C</ShiftDownLabel></DynamicKey>

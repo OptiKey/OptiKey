@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
 using JuliusSweetland.OptiKey.Enums;
 
@@ -160,6 +160,16 @@ namespace JuliusSweetland.OptiKey.Symbol.Properties
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public override bool EnableCopyAllScratchpadKey
+        {
+            get { return false; }
+            set { /* no-op */ }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override bool EnableTranslationKey
         {
             get { return false; }
             set { /* no-op */ }

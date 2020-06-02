@@ -1,0 +1,150 @@
+<!--
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<Keyboard>
+    <Name>Demo_Minecraft</Name>
+    <SymbolMargin>10</SymbolMargin>
+    <BorderThickness>1,1,1,1</BorderThickness>
+	<BackgroundColor>Transparent</BackgroundColor>
+	<BorderColor>Transparent</BorderColor>
+	<WindowState>Floating</WindowState>
+	<Position>BottomLeft</Position>
+	<Width>100%</Width>
+	<Height>-80</Height>
+	<VerticalOffset>-80</VerticalOffset>
+    <Grid>
+		<Rows>28</Rows>
+		<Cols>40</Cols>
+    </Grid>	
+	<KeyGroup Name="Default" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="100" CompletionTimes="100,1000" />
+	<KeyGroup Name="Clear" BackgroundColor="black" Opacity=".5" KeyDownOpacity=".01" LockOnTime="100" CompletionTimes="100,1000" />
+	<KeyGroup Name="SlowKeys" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="100" CompletionTimes="500,1000" />
+    <Content>
+        <DynamicKey Width="4" Height="2"><KeyGroup>SlowKeys</KeyGroup><Text>e</Text><Label>Inv</Label></DynamicKey>				
+        <DynamicKey Width="4" Height="2"><KeyGroup>SlowKeys</KeyGroup><Action>F5</Action><Label>View</Label></DynamicKey>
+		
+        <DynamicKey Row="0" Col="12" Width="4" Height="2"><Label>Slow</Label>
+			<KeyGroup>Default</KeyGroup>
+			<KeyGroup>WalkRef</KeyGroup>
+			<KeyUp>ArrowDownRef</KeyUp>
+			<KeyUp>RunRef</KeyUp>
+			<KeyToggle>w</KeyToggle>
+		</DynamicKey>
+        <DynamicKey Row="0" Col="16" Width="4" Height="2" CompletionTimes="100,500,1000" TimeRequiredToLockDown="500" LockDownAttemptTimeout="50"><Symbol>DownArrowKeyIcon</Symbol>
+			<KeyGroup>Default</KeyGroup>
+			<KeyGroup>ArrowDownRef</KeyGroup>
+			<KeyUp>WalkRef</KeyUp>
+			<KeyUp>RunRef</KeyUp>
+			<KeyUp>ArrowUpRef</KeyUp>
+			<KeyToggle>ArrowDown</KeyToggle>
+		</DynamicKey>
+        <DynamicKey Row="0" Col="20" Width="4" Height="2" CompletionTimes="100,500,1000" TimeRequiredToLockDown="500" LockDownAttemptTimeout="50"><Symbol>UpArrowKeyIcon</Symbol>
+			<KeyGroup>Default</KeyGroup>
+			<KeyGroup>ArrowUpRef</KeyGroup>
+			<KeyUp>ArrowDownRef</KeyUp>
+			<KeyToggle>ArrowUp</KeyToggle>
+		</DynamicKey>		
+        <DynamicKey Row="0" Col="24" Width="4" Height="2"><Label>Run</Label>
+			<KeyGroup>Default</KeyGroup>
+			<KeyGroup>RunRef</KeyGroup>
+			<KeyUp>ArrowDownRef</KeyUp>
+			<KeyUp>WalkRef</KeyUp>
+			<Loop Count="0">
+				<KeyDown>r</KeyDown>
+				<Wait>100</Wait>
+				<KeyUp>r</KeyUp>
+				<Wait>1000</Wait>
+			</Loop>
+		</DynamicKey>
+        <DynamicKey Row="0" Col="0" Width="4" Height="2" CompletionTimes="100,500,1000" TimeRequiredToLockDown="500" LockDownAttemptTimeout="50">
+			<KeyGroup>Default</KeyGroup>
+			<KeyGroup>ArrowLeft</KeyGroup>
+			<Symbol>LeftArrowKeyIcon</Symbol>
+			<KeyUp>ArrowRight</KeyUp>
+			<KeyToggle>ArrowLeft</KeyToggle>
+		</DynamicKey>		
+        <DynamicKey Row="0" Col="36" Width="4" Height="2" CompletionTimes="100,500,1000" TimeRequiredToLockDown="500" LockDownAttemptTimeout="50">
+			<KeyGroup>Default</KeyGroup>
+			<KeyGroup>ArrowRight</KeyGroup>
+			<KeyUp>ArrowLeft</KeyUp>
+			<Symbol>RightArrowKeyIcon</Symbol>
+			<KeyToggle>ArrowRight</KeyToggle>
+		</DynamicKey>		
+					
+        <DynamicKey Row="0" Col="28" Width="4" Height="2"><Label>Jump</Label>
+			<KeyGroup>Default</KeyGroup>
+			<KeyToggle>&#32;</KeyToggle>
+		</DynamicKey>		
+		
+        <DynamicKey Row="0" Col="32" Width="4" Height="2"><Label>Fly</Label>
+			<KeyGroup>Default</KeyGroup>
+			<KeyDown>&#32;</KeyDown>
+			<Wait>50</Wait>
+			<KeyUp>&#32;</KeyUp>
+			<Wait>100</Wait>
+			<KeyDown>&#32;</KeyDown>
+		</DynamicKey>		
+	
+		<DynamicKey Row="6" Col="38" Width="2" Height="4" BackgroundColor="blue" KeyDownBackground="gray" Opacity=".6" KeyDownOpacity=".9">
+			<KeyGroup>Default</KeyGroup><Label>Melee</Label>
+			<Loop Count="0">
+				<KeyDown>a</KeyDown>
+				<Wait>50</Wait>
+				<KeyUp>a</KeyUp>
+				<Wait>50</Wait>
+			</Loop>
+		</DynamicKey>
+		
+		<DynamicKey Row="10" Col="38" Width="2" Height="4" BackgroundColor="green" KeyDownBackground="gray" Opacity=".6" KeyDownOpacity=".9">
+			<KeyGroup>Default</KeyGroup><Label>Hit</Label>
+			<Text>a</Text>
+		</DynamicKey>
+		
+		<DynamicKey Row="14" Col="38" Width="2" Height="4" BackgroundColor="red" KeyDownBackground="gray" Opacity=".6" KeyDownOpacity=".9">
+			<KeyGroup>Default</KeyGroup><Label>Build</Label>
+			<KeyToggle>b</KeyToggle>
+		</DynamicKey>
+		
+		<DynamicKey Row="24" Col="0" Width="5" Height="4">
+			<KeyGroup>SlowKeys</KeyGroup>
+			<Label>Sleep</Label>
+			<Symbol>SleepIcon</Symbol>
+			<Action>Sleep</Action>
+		</DynamicKey>
+        <DynamicKey Row="24" Width="4" Height="2"><KeyGroup>SlowKeys</KeyGroup><Action>Escape</Action><Label>Esc</Label></DynamicKey>
+        <DynamicKey Row="26" Width="4" Height="2"><KeyGroup>SlowKeys</KeyGroup><Text>q</Text><Label>Drop</Label></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>[</Text><Label>[</Label></DynamicKey>		
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>1</Text><Label>1</Label><ShiftDownLabel>!</ShiftDownLabel></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>2</Text><Label>2</Label><ShiftDownLabel>@</ShiftDownLabel></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>3</Text><Label>3</Label><ShiftDownLabel>#</ShiftDownLabel></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>4</Text><Label>4</Label><ShiftDownLabel>$</ShiftDownLabel></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>5</Text><Label>5</Label><ShiftDownLabel>%</ShiftDownLabel></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>6</Text><Label>6</Label><ShiftDownLabel>^</ShiftDownLabel></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>7</Text><Label>7</Label><ShiftDownLabel>&amp;</ShiftDownLabel></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>8</Text><Label>8</Label><ShiftDownLabel>*</ShiftDownLabel></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>9</Text><Label>9</Label><ShiftDownLabel>(</ShiftDownLabel></DynamicKey>
+        <DynamicKey Width="2" Height="2"><KeyGroup>Clear</KeyGroup><Text>]</Text><Label>]</Label></DynamicKey>
+		
+        <DynamicKey Row="24" Col="31" Width="4" Height="2">
+			<KeyGroup>SlowKeys</KeyGroup>
+			<Label>Command</Label>
+			<KeyUp>All</KeyUp>
+			<Text>/</Text>
+		</DynamicKey>
+        <DynamicKey Row="26" Col="31" Width="4" Height="2">
+			<KeyGroup>SlowKeys</KeyGroup>
+			<Label>Hide</Label>
+			<Symbol>ExpandDockIcon</Symbol>
+			<KeyUp>All</KeyUp>
+			<Action>Minimise</Action>
+		</DynamicKey>
+        <DynamicKey Row="24" Col="35" Width="5" Height="4">
+			<KeyGroup>SlowKeys</KeyGroup>
+			<Label>Back</Label>
+			<Symbol>BackIcon</Symbol>
+			<KeyUp>All</KeyUp>
+			<Action>BackFromKeyboard</Action>
+		</DynamicKey>
+
+    </Content>
+</Keyboard>

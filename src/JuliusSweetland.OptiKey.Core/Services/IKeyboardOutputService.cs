@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public interface IKeyboardOutputService : INotifyPropertyChanged
     {
-        string Text { get; }
+        string Text { get; set; }
         void ProcessFunctionKey(FunctionKeys functionKey);
         void ProcessSingleKeyText(string capturedText);
         Task ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type);

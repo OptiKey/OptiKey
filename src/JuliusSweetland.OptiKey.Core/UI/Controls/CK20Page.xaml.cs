@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -618,7 +618,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                         try
                         {
-                            using (ZipArchive archive = ZipFile.Open(pageset, ZipArchiveMode.Read))
+                            using (ZipArchive archive = ZipFile.Open(pageset, ZipArchiveMode.Read, Encoding.UTF8))
                             {
                                 // archive.ExtractToDirectory(path);
                                 foreach (var Entry in archive.Entries)

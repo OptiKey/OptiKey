@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.ComponentModel;
 using System.Globalization;
@@ -439,6 +439,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Brush)GetValue(DisabledForegroundColourOverrideProperty); }
             set { SetValue(DisabledForegroundColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty KeyDownForegroundOverrideProperty =
+            DependencyProperty.Register("KeyDownForegroundOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush KeyDownForegroundOverride
+        {
+            get { return (Brush)GetValue(KeyDownForegroundOverrideProperty); }
+            set { SetValue(KeyDownForegroundOverrideProperty, value); }
         }
 
         public static readonly DependencyProperty HoverForegroundColourOverrideProperty =

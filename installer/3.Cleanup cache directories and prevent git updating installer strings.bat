@@ -5,5 +5,6 @@ rd /s /q "OptiKeySymbol-cache"
 
 del /q "*.back.aip"
 
-git update-index --skip-worktree ../src/JuliusSweetland.OptiKey.InstallerActions/InstallerStrings.cs
+REM git update-index --skip-worktree ../src/JuliusSweetland.OptiKey.InstallerActions/InstallerStrings.cs
+git checkout -- ../src/JuliusSweetland.OptiKey.InstallerActions/InstallerStrings.cs
 pause

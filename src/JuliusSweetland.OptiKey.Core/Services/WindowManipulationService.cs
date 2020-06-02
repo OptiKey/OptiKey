@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -67,7 +67,7 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Ctor
-        
+
         public WindowManipulationService(
             Window window,
             Func<bool> getPersistedState,
@@ -516,6 +516,9 @@ namespace JuliusSweetland.OptiKey.Services
                             ? validNumber / Graphics.DipScalingFactorX
                 : validNumber / Graphics.DipScalingFactorX + screenBoundsInDp.Width;
 
+            newWidth = newWidth > (MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Width
+                ? newWidth : (MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Width;
+
             var newHeight = string.IsNullOrWhiteSpace(inHeight) || !double.TryParse(inHeight.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
                 ? newWindowState == WindowStates.Floating
                     ? getFloatingSizeAndPosition().Height
@@ -527,6 +530,9 @@ namespace JuliusSweetland.OptiKey.Services
                         : validNumber > 0
                             ? validNumber / Graphics.DipScalingFactorY
                 : validNumber / Graphics.DipScalingFactorY + screenBoundsInDp.Height;
+
+            newHeight = newHeight > (MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Height
+                ? newHeight : (MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100d) * screenBoundsInDp.Height;
 
             var horizontalOffset = string.IsNullOrWhiteSpace(inHorizontalOffset) || !double.TryParse(inHorizontalOffset.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
                 ? screenBoundsInDp.Left
@@ -545,7 +551,7 @@ namespace JuliusSweetland.OptiKey.Services
                 savePersistedState(inPersistNewState);
                 saveDockPosition(newDockPosition);
                 saveDockSize(newDockSize);
-                
+
                 var newFullDockThicknessPercent = (newDockPosition == DockEdges.Top || newDockPosition == DockEdges.Bottom)
                     ? (100 * newHeight / screenBoundsInDp.Height) : (100 * newWidth / screenBoundsInDp.Width);
 
@@ -572,14 +578,17 @@ namespace JuliusSweetland.OptiKey.Services
                         ? screenBoundsInDp.Right - newWidth + horizontalOffset
                         : screenBoundsInDp.Width / 2d - newWidth / 2d + horizontalOffset;
                 }
+                if (oldWindowState == WindowStates.Docked)
+                    UnRegisterAppBar();
                 savePersistedState(inPersistNewState);
                 saveFloatingSizeAndPosition(new Rect(newLeft, newTop, newWidth, newHeight));
             }
             else
+            {
+                if (oldWindowState == WindowStates.Docked)
+                    UnRegisterAppBar();
                 savePersistedState(inPersistNewState);
-
-            if (oldWindowState == WindowStates.Docked && newWindowState != WindowStates.Docked)
-                UnRegisterAppBar();
+            }
 
             savePreviousWindowState(oldWindowState);
             saveWindowState(newWindowState);
@@ -604,7 +613,7 @@ namespace JuliusSweetland.OptiKey.Services
         public void ResizeDockToFull()
         {
             Log.Info("ResizeDockToFull called");
-            
+
             if (getWindowState() != WindowStates.Docked) return;
 
             // Turn grab handles back on
@@ -618,7 +627,7 @@ namespace JuliusSweetland.OptiKey.Services
         public void RestorePersistedState()
         {
             Log.Info("RestorePersistedState called");
-            
+
             if (getPersistedState() || getWindowState() == WindowStates.Minimised) { return; }
 
             Log.Info("Restoring keyboard to default values");
@@ -627,6 +636,7 @@ namespace JuliusSweetland.OptiKey.Services
                 UnRegisterAppBar();
 
             ApplySavedState();
+            ResizeDockToFull();
         }
 
         public void Restore()
@@ -1695,8 +1705,6 @@ namespace JuliusSweetland.OptiKey.Services
         private void UnRegisterAppBar()
         {
             Log.Info("UnRegisterAppBar called");
-
-            if (getWindowState() != WindowStates.Docked) return;
 
             var abd = new APPBARDATA();
             abd.cbSize = Marshal.SizeOf(abd);

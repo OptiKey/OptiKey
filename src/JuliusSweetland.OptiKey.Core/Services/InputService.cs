@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,13 +26,12 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
         private readonly object suspendRequestLock = new object();
-
         private IPointSource pointSource;
         private int suspendRequestCount;
-        
+        private readonly IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
+
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point, KeyValue>> currentPositionEvent;
-        private event EventHandler<Point> livePositionEvent;
         private event EventHandler<Tuple<PointAndKeyValue, double>> selectionProgressEvent;
         private event EventHandler<PointAndKeyValue> selectionEvent;
         private event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> selectionResultEvent;
@@ -58,17 +57,20 @@ namespace JuliusSweetland.OptiKey.Services
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
 
-            //Fixation key triggers also need the enabled state info
+            //Fixation key triggers also need the enabled state info and override times
             var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
             if (fixationTrigger != null)
             {
                 fixationTrigger.KeyEnabledStates = keyStateService.KeyEnabledStates;
+                overrideTimesByKey = fixationTrigger.OverrideTimesByKey;
             }
         }
 
         #endregion
 
         #region Properties
+
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return overrideTimesByKey; } }
 
         public IPointSource PointSource
         {
@@ -236,43 +238,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        #region Live Position
-
-        public event EventHandler<Point> LivePosition
-        {
-            add
-            {
-                if (livePositionEvent == null)
-                {
-                    Log.Info("LivePosition event has first subscriber.");
-                }
-
-                livePositionEvent += value;
-
-                if (livePositionSubscription == null)
-                {
-                    CreateLivePositionSubscription();
-                }
-            }
-            remove
-            {
-                livePositionEvent -= value;
-
-                if (livePositionEvent == null)
-                {
-                    Log.Info("Last listener of LivePosition event has unsubscribed. Disposing of livePositionSubscription.");
-
-                    if (livePositionSubscription != null)
-                    {
-                        livePositionSubscription.Dispose();
-                        livePositionSubscription = null;
-                    }
-                }
-            }
-        }
-
-        #endregion
-
         #region Selection Progress
 
         public event EventHandler<Tuple<PointAndKeyValue, double>> SelectionProgress
@@ -411,20 +376,6 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.DebugFormat("Publishing CurrentPosition event with Point:{0} KeyValue:{1}", currentPosition.Item1, currentPosition.Item2);
 
                 currentPositionEvent(this, currentPosition);
-            }
-        }
-
-        #endregion
-
-        #region Publish Live Position
-
-        private void PublishLivePosition(Point livePosition)
-        {
-            if (livePositionEvent != null)
-            {
-                Log.DebugFormat("Publishing LivePosition event with Point:{0}", livePosition);
-
-                livePositionEvent(this, livePosition);
             }
         }
 

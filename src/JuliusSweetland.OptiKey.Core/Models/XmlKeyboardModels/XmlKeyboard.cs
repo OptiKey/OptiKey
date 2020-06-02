@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using log4net;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +28,10 @@ namespace JuliusSweetland.OptiKey.Models
         { get; set; }
 
         // The following are all optional
+        [XmlElement("KeyGroup")]
+        public List<XmlKeyGroup> KeyGroups
+        { get; set; }
+
         [XmlIgnore]
         public bool ShowOutputPanel
         { get; set; }

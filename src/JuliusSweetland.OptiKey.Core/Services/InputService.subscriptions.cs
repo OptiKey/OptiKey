@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         private IDisposable pointsPerSecondSubscription;
         private IDisposable currentPositionSubscription;
-        private IDisposable livePositionSubscription;
         private IDisposable selectionProgressSubscription;
         private IDisposable selectionTriggerSubscription;
         private IDisposable multiKeySelectionSubscription;
@@ -63,24 +62,8 @@ namespace JuliusSweetland.OptiKey.Services
                     SelectionMode == SelectionModes.Key 
                         ? tp.Value.KeyValue 
                         : null))
-                .DistinctUntilChanged()
                 .ObserveOnDispatcher() //Subscribe on UI thread
                 .Subscribe(PublishCurrentPosition);
-        }
-
-        #endregion
-
-        #region Create Live Position Subscription
-
-        private void CreateLivePositionSubscription()
-        {
-            Log.Debug("Creating subscription to PointSource for live position.");
-
-            livePositionSubscription = pointSource.Sequence
-                .Where(tp => tp.Value != null)
-                .Select(tp => tp.Value.Point)
-                .ObserveOnDispatcher() //Subscribe on UI thread
-                .Subscribe(PublishLivePosition);
         }
 
         #endregion
@@ -144,7 +127,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void ProcessSelectionTrigger(TriggerSignal triggerSignal)
+        private async void ProcessSelectionTrigger(TriggerSignal triggerSignal)
         {
             if (triggerSignal.Signal >= 1
                 && !CapturingMultiKeySelection)
@@ -207,6 +190,8 @@ namespace JuliusSweetland.OptiKey.Services
                             else
                             {
                                 PublishSelection(triggerSignal.PointAndKeyValue);
+
+                                await Task.Delay(20); //Add a short delay to give time for the selection animation 
 
                                 PublishSelectionResult(new Tuple<List<Point>, KeyValue, List<string>>(
                                     new List<Point> { triggerSignal.PointAndKeyValue.Point },

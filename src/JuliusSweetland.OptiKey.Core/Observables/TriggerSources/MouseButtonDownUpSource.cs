@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Reactive.Linq;
 using System.Windows.Forms;
@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Observables.PointSources;
 using MouseKeyboardActivityMonitor;
 using MouseKeyboardActivityMonitor.WinApi;
 using MouseButtons = System.Windows.Forms.MouseButtons;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {

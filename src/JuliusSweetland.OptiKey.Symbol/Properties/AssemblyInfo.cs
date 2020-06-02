@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Optikey")]
 [assembly: AssemblyProduct("Open Symbol Communication")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -59,4 +59,4 @@ using System.Windows;
 //MAJOR version when you make incompatible API changes,
 //MINOR version when you add functionality in a backwards-compatible manner, and
 //PATCH version when you make backwards-compatible bug fixes (in the Version class this is the Build number).
-[assembly: AssemblyVersion("3.0.2")]
+[assembly: AssemblyVersion("3.0.6")]

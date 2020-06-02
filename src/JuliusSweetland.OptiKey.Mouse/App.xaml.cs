@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
 using System;
 using System.Collections.Generic;
@@ -132,7 +132,8 @@ namespace JuliusSweetland.OptiKey.Mouse
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
                 IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
-                IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
+                IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService,
+                    calibrationService, capturingStateManager, errorNotifyingServices);
                 IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
@@ -154,7 +155,8 @@ namespace JuliusSweetland.OptiKey.Mouse
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
+                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
+                    errorNotifyingServices);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 

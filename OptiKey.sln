@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2048
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Core", "src\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 	ProjectSection(ProjectDependencies) = postProject

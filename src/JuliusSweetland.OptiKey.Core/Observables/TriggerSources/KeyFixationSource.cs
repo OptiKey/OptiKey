@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -28,14 +28,15 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             FunctionKeys.SelectVoice
         };
 
-        private readonly TimeSpan lockOnTime;
+        private readonly TimeSpan defaultLockOnTime;
         private readonly bool resumeRequiresLockOn;
         private readonly TimeSpan defaultTimeToCompleteTrigger;
         private readonly IDictionary<KeyValue, TimeSpan> timeToCompleteTriggerByKey;
+        private readonly IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
         private readonly TimeSpan incompleteFixationTtl;
         private readonly ConcurrentDictionary<KeyValue, long> incompleteFixationProgress;
         private readonly ConcurrentDictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
-
+        
         private IPointSource pointSource;
         private IObservable<TriggerSignal> sequence;
 
@@ -44,18 +45,19 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         #region Ctor
 
         public KeyFixationSource(
-            TimeSpan lockOnTime,
+            TimeSpan defaultLockOnTime,
             bool resumeRequiresLockOn,
             TimeSpan defaultTimeToCompleteTrigger,
             IDictionary<KeyValue, TimeSpan> timeToCompleteTriggerByKey,
             TimeSpan incompleteFixationTtl,
             IPointSource pointSource)
         {
-            this.lockOnTime = lockOnTime;
+            this.defaultLockOnTime = defaultLockOnTime;
             this.resumeRequiresLockOn = resumeRequiresLockOn;
             this.defaultTimeToCompleteTrigger = defaultTimeToCompleteTrigger;
             this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey ?? new Dictionary<KeyValue, TimeSpan>();
             this.incompleteFixationTtl = incompleteFixationTtl;
+            this.overrideTimesByKey = new Dictionary<KeyValue, TimeSpanOverrides>();
             this.pointSource = pointSource;
 
             incompleteFixationProgress = new ConcurrentDictionary<KeyValue, long>();
@@ -69,6 +71,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         public RunningStates State { get; set; }
 
         public KeyEnabledStates KeyEnabledStates { get; set; }
+
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return overrideTimesByKey; } }
 
         /// <summary>
         /// Change the point and key value source. N.B. After setting this any existing subscription 
@@ -93,6 +97,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         Timestamped<PointAndKeyValue>? lockOnStart = null; 
                         DateTimeOffset fixationStart = DateTimeOffset.MinValue;
                         PointAndKeyValue fixationCentrePointAndKeyValue = null;
+                        KeyValue lastKeyValue = null;
+                        int keystroke = 1;
                         
                         Action disposeAllSubscriptions = null;
 
@@ -106,13 +112,19 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             {
                                 Timestamped<PointAndKeyValue> latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
 
+                                //if the latest key is not the same as the last key press then reset values
+                                if (lastKeyValue != null && !lastKeyValue.Equals(latestPointAndKeyValue.Value.KeyValue))
+                                {
+                                    keystroke = 1;
+                                    lastKeyValue = null;
+                                }
+
                                 if (fixationCentrePointAndKeyValue == null
                                     && !resumeRequiresLockOn)
                                 {
                                     //Does the latest point continue an incomplete fixation? Continue it immediately, i.e. don't require a lock on again
-                                    long storedProgress;
                                     if (latestPointAndKeyValue.Value.KeyValue != null
-                                        && incompleteFixationProgress.TryGetValue(latestPointAndKeyValue.Value.KeyValue, out storedProgress))
+                                        && incompleteFixationProgress.TryGetValue(latestPointAndKeyValue.Value.KeyValue, out _))
                                     {
                                         fixationStart = latestPointAndKeyValue.Timestamp;
                                         fixationCentrePointAndKeyValue = new PointAndKeyValue(latestPointAndKeyValue.Value.Point, latestPointAndKeyValue.Value.KeyValue);
@@ -145,7 +157,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         //Check if the current lock-on is complete - if so start a new fixation
                                         if (lockOnStart != null
                                             && latestPointAndKeyValue.Value.KeyValue != null
-                                            && latestPointAndKeyValue.Timestamp.Subtract(lockOnStart.Value.Timestamp) >= lockOnTime)
+                                            && latestPointAndKeyValue.Timestamp.Subtract(lockOnStart.Value.Timestamp) >= GetTimeToLockOn(latestPointAndKeyValue.Value.KeyValue))
                                         {
                                             fixationStart = latestPointAndKeyValue.Timestamp;
                                             fixationCentrePointAndKeyValue = new PointAndKeyValue(latestPointAndKeyValue.Value.Point, latestPointAndKeyValue.Value.KeyValue);
@@ -173,24 +185,29 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                                     (_, existingProgress) => existingProgress + fixationSpan.Ticks);
 
                                             //Dispose of existing incomplete fixation timeout for this key
-                                            IDisposable timeout;
-                                            if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out timeout))
+                                            if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out var timeout))
                                             {
-                                                if (timeout != null)
-                                                {
-                                                    timeout.Dispose();
-                                                }
+                                                timeout?.Dispose();
                                             }
 
                                             //Setup new incomplete fixation timeout
                                             PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue; //Access to modified closure
+
+                                            //check for an override timeout value for this key
+                                            TimeSpan lockDownAttemptTimeout = (overrideTimesByKey != null
+                                                && overrideTimesByKey.TryGetValue(fixationCentrePointAndKeyValueCopy.KeyValue, out TimeSpanOverrides timeSpanOverrides))
+                                                ? timeSpanOverrides.LockDownAttemptTimeout : TimeSpan.Zero;
+
+                                            //set the timeout to either the override or default value
+                                            var fixationTimeout = lockDownAttemptTimeout > TimeSpan.Zero ? lockDownAttemptTimeout : incompleteFixationTtl;
+
                                             incompleteFixationTimeouts[fixationCentrePointAndKeyValue.KeyValue] =
-                                                Observable.Timer(incompleteFixationTtl).Subscribe(_ =>
+                                                Observable.Timer(fixationTimeout).Subscribe(_ =>
                                                 {
-                                                    long removedProgress;
-                                                    IDisposable removedTimeout;
-                                                    incompleteFixationProgress.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out removedProgress);
-                                                    incompleteFixationTimeouts.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out removedTimeout);
+                                                    if (lockDownAttemptTimeout > TimeSpan.Zero)
+                                                        overrideTimesByKey[fixationCentrePointAndKeyValueCopy.KeyValue].LockDownCancelTime = DateTimeOffset.MinValue;
+                                                    incompleteFixationProgress.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out var _);
+                                                    incompleteFixationTimeouts.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out var _);
                                                     observer.OnNext(new TriggerSignal(null, 0, fixationCentrePointAndKeyValueCopy));
                                                 });
                                         }
@@ -203,20 +220,15 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         //We have created or added to a fixation - update state vars, publish our progress and reset if necessary
                                         var fixationSpan = latestPointAndKeyValue.Timestamp.Subtract(fixationStart);
 
-                                        long storedProgress;
-                                        incompleteFixationProgress.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out storedProgress);
+                                        incompleteFixationProgress.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out var storedProgress);
 
                                         //Dispose of the timeout for the current fixation as it is in progress again
-                                        IDisposable timeout;
-                                        if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out timeout))
+                                        if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out var timeout))
                                         {
-                                            if (timeout != null)
-                                            {
-                                                timeout.Dispose();
-                                            }
+                                            timeout?.Dispose();
                                         }
 
-                                        var timeToCompleteTrigger = GetTimeToCompleteTrigger(fixationCentrePointAndKeyValue.KeyValue);
+                                        var timeToCompleteTrigger = GetTimeToCompleteTrigger(fixationCentrePointAndKeyValue.KeyValue, lastKeyValue, keystroke);
                                         var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
 
                                         //Publish a high signal if progress is 1 (100%), otherwise just publish progress (filter out 0 as this is a progress reset signal)
@@ -233,8 +245,21 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             {
                                                 t.Dispose();
                                             }
-
-                                            fixationCentrePointAndKeyValue = null;
+                                            //Temporary logic: if override times exist then we can presume that a dynamic keyboard with overrides is being user
+                                            //The logic here would be to NOT require lock on again, hence why fixationCentrePointAndKeyValue is not cleared out.
+                                            if (overrideTimesByKey != null && overrideTimesByKey.ContainsKey(fixationCentrePointAndKeyValue.KeyValue))
+                                            {
+                                                keystroke = (fixationCentrePointAndKeyValue.KeyValue.Equals(lastKeyValue)) ? keystroke + 1 : 1;
+                                                lastKeyValue = fixationCentrePointAndKeyValue.KeyValue;
+                                                   overrideTimesByKey[lastKeyValue].LockDownCancelTime = DateTimeOffset.Now 
+                                                    + overrideTimesByKey[lastKeyValue].TimeRequiredToLockDown;
+                                                fixationStart = latestPointAndKeyValue.Timestamp;
+                                            }
+                                            else
+                                            {
+                                                //Otherwise assume default keyboard so lock on is required each time (as this is the old logic)
+                                                fixationCentrePointAndKeyValue = null;
+                                            }
                                             incompleteFixationProgress.Clear();
                                             incompleteFixationTimeouts.Clear();
                                             lockOnStart = null;
@@ -278,7 +303,45 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         
         #region Methods
 
-        TimeSpan GetTimeToCompleteTrigger(KeyValue keyValue)
+        TimeSpan GetTimeToCompleteTrigger(KeyValue keyValue, KeyValue lastKeyValue, int keystroke)
+        { 
+            if (keyValue.FunctionKey.HasValue)
+            {
+                FunctionKeys functionKey = keyValue.FunctionKey.Value;
+
+                if (FunctionKeysWithIgnoredStringValue.Contains(functionKey))
+                {
+                    keyValue = new KeyValue(functionKey);
+                }
+            }
+
+            //check if this key has any override times
+            if (overrideTimesByKey.TryGetValue(keyValue, out var timeSpanOverrides) 
+                && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero && keystroke == 2)
+            {
+                return timeSpanOverrides.TimeRequiredToLockDown;
+            }
+
+            if (overrideTimesByKey.TryGetValue(keyValue, out timeSpanOverrides) && timeSpanOverrides.CompletionTimes != null)
+            {
+                if (lastKeyValue == null || keyValue != lastKeyValue)
+                {
+                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes.First()));
+                }
+
+                if (timeSpanOverrides.CompletionTimes.Count > keystroke)
+                {
+                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes[keystroke]));
+                }
+
+                return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes.Last()));
+            }
+
+            //if this key does not have overrides then get the time from setting or use the default
+            return timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
+        }
+
+        TimeSpan GetTimeToLockOn(KeyValue keyValue)
         {
             if (keyValue.FunctionKey.HasValue)
             {
@@ -290,7 +353,12 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                 }
             }
 
-            return timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
+            if (overrideTimesByKey.TryGetValue(keyValue, out var timeSpanOverrides))
+            {
+                return timeSpanOverrides.LockOnTime;
+            }
+            
+            return defaultLockOnTime;
         }
 
         #endregion

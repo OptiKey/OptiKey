@@ -1,10 +1,11 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using Prism.Mvvm;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Data;
 
@@ -19,6 +20,7 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly ICalibrationService calibrationService;
+        private readonly List<Tuple<KeyValue, KeyValue>> keyFamily;
 
         #endregion
 
@@ -36,6 +38,7 @@ namespace JuliusSweetland.OptiKey.Models
             this.capturingStateManager = capturingStateManager;
             this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.calibrationService = calibrationService;
+            this.keyFamily = keyStateService.KeyFamily;
 
             suggestionService.OnPropertyChanges(ss => ss.Suggestions).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
@@ -79,8 +82,12 @@ namespace JuliusSweetland.OptiKey.Models
                 }
 
                 //Key is not Sleep, but we are sleeping
+                //KeyFamily is the collection of parent KeyValues (Item1) and the KeyValues of child commands (Item2) 
+                //that could be locked down when the parent key is triggered. 
+                //Do not disable any parent key that has a child Sleep command
                 if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
-                    && keyValue != KeyValues.SleepKey)
+                    && keyValue != KeyValues.SleepKey
+                    && !keyFamily.Exists(x => x.Item1 == keyValue && x.Item2 == KeyValues.SleepKey))
                 {
                     return false;
                 }

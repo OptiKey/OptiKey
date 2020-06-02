@@ -1,0 +1,2 @@
+Settings -> Repository Manager
+Click top of tree "Settings" -> "Change repository path" -> Set the "Optikey\installer\" directory

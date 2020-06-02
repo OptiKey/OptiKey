@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 namespace JuliusSweetland.OptiKey.Enums
 {
     public enum FunctionKeys
@@ -230,7 +230,6 @@ namespace JuliusSweetland.OptiKey.Enums
         SlovenianSlovenia,
         SpanishSpain,
         Speak,
-        StepList,
         Suggestion1,
         Suggestion2,
         Suggestion3,
@@ -238,6 +237,7 @@ namespace JuliusSweetland.OptiKey.Enums
         Suggestion5,
         Suggestion6,
         ToggleCaseOfPreviousCharacter,
+        Translation,
         TurkishTurkey,
         UkrainianUkraine,
         UrduPakistan,

@@ -1,10 +1,10 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - AllRights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - AllRights Reserved
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public class XmlDynamicKey : XmlDynamicItem
+    public class XmlDynamicKey : XmlDynamicItem , IXmlKey
     {
         public XmlDynamicKey() { }
 
@@ -17,7 +17,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("Plugin", typeof(DynamicPlugin))]
         [XmlElement("Text", typeof(DynamicText))]
         [XmlElement("Wait", typeof(DynamicWait))]
-        public List<XmlDynamicKey> KeySteps { get; } = new List<XmlDynamicKey>();
+        public List<XmlDynamicKey> Commands { get; } = new List<XmlDynamicKey>();
         
         public string Label { get; set; } //Either set this, the Symbol, or both. This value become the Text value on the created Key.
         public string ShiftDownLabel { get; set; } //Optional - only required to display an alternate Text value when the shift key is down.
@@ -43,7 +43,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         [XmlIgnore]
         public bool BackReturnsHere
-        { get; set; }
+        { get; set; } = true;
 
         [XmlAttribute("BackReturnsHere")]
         public string BackReturnsHereAsString
@@ -84,7 +84,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("Plugin", typeof(DynamicPlugin))]
         [XmlElement("Text", typeof(DynamicText))]
         [XmlElement("Wait", typeof(DynamicWait))]
-        public List<XmlDynamicKey> LoopSteps { get; } = new List<XmlDynamicKey>();
+        public List<XmlDynamicKey> LoopCommands { get; } = new List<XmlDynamicKey>();
 
         [XmlAttribute] public int Count { get; set; } = 1; //The number of loop repetitions
     }

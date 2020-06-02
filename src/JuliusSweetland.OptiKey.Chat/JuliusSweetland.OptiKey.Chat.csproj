@@ -241,13 +241,13 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Bottom.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml">
+      <Link>Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml</Link>
+        <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
+      <Link>Resources\DynamicKeyboards\Samples\Demo_Bottom.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

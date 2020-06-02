@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Linq;
 using System.Windows;
@@ -104,9 +104,10 @@ namespace JuliusSweetland.OptiKey.Services
                 
                 //N.B. InputSimulator does not deal in pixels. The position should be a scaled point between 0 and 65535. 
                 //https://inputsimulator.codeplex.com/discussions/86530
-                inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(
-                    Math.Ceiling(65535 * (point.X / Graphics.VirtualScreenWidthInPixels)),
-                    Math.Ceiling(65535 * (point.Y / Graphics.VirtualScreenHeightInPixels)));
+
+                inputSimulator.Mouse.MoveMouseTo(
+                    Math.Ceiling(65535 * (point.X / Graphics.PrimaryScreenWidthInPixels)),
+                    Math.Ceiling(65535 * (point.Y / Graphics.PrimaryScreenHeightInPixels)));
             }
             catch (Exception exception)
             {

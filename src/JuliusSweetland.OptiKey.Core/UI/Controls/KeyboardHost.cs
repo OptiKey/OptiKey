@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -57,6 +57,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private MainWindow mainWindow;
+        private IList<Tuple<KeyValue, KeyValue>> keyFamily;
+        private IDictionary<string, List<KeyValue>> keyValueByGroup;
+        private IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
+        private IWindowManipulationService windowManipulationService;
         private CompositeDisposable currentKeyboardKeyValueSubscriptions = new CompositeDisposable();
 
         #endregion
@@ -110,6 +114,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (IKeyboard)GetValue(KeyboardProperty); }
             set { SetValue(KeyboardProperty, value); }
         }
+
 
         public static readonly DependencyProperty PointToKeyValueMapProperty =
             DependencyProperty.Register("PointToKeyValueMap", typeof(Dictionary<Rect, KeyValue>),
@@ -173,11 +178,25 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             //Clear out point to key map
             PointToKeyValueMap = null;
 
+            mainWindow = mainWindow != null ? mainWindow : VisualAndLogicalTreeHelper.FindVisualParent<MainWindow>(this);
+
             //Clear any potential main window color overrides
             if (mainWindow != null)
             {
+                keyFamily = mainWindow.KeyFamily;
+                keyValueByGroup = mainWindow.KeyValueByGroup;
+                overrideTimesByKey = mainWindow.OverrideTimesByKey;
+                windowManipulationService = mainWindow.WindowManipulationService;
                 mainWindow.BackgroundColourOverride = null;
                 mainWindow.BorderBrushOverride = null;
+
+                //Clear the dictionaries
+                keyFamily.Clear();
+                keyValueByGroup.Clear();
+                overrideTimesByKey.Clear();
+
+                if (!(Keyboard is ViewModelKeyboards.DynamicKeyboard))
+                    windowManipulationService.RestorePersistedState();
             }
 
             object newContent = ErrorContent;
@@ -576,7 +595,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
             {
                 var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
-                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link) { DataContext = Keyboard };
+                newContent = new CommonViews.DynamicKeyboard(mainWindow, kb.Link, keyFamily, keyValueByGroup, overrideTimesByKey, windowManipulationService) { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)
             {

@@ -1,4 +1,4 @@
-// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
@@ -16,6 +17,7 @@ using log4net;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
 using System.Text;
+using System.Net.Http;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -39,10 +41,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly List<INotifyErrors> errorNotifyingServices; 
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         private readonly StringBuilder pendingErrorToastNotificationContent = new StringBuilder();
+        private readonly TranslationService translationService;
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
         private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
-        private EventHandler<Point> inputServiceLivePositionHandler;
         private EventHandler<Tuple<PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
         private EventHandler<PointAndKeyValue> inputServiceSelectionHandler;
         private EventHandler<Tuple<List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
@@ -91,6 +93,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
 
+            this.translationService = new TranslationService(new HttpClient());
+
             SetupInputServiceEventHandlers();
             InitialiseKeyboard(mainWindowManipulationService);
             AttachScratchpadEnabledListener();
@@ -120,6 +124,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public IWindowManipulationService MainWindowManipulationService { get { return mainWindowManipulationService; } }
 
+
         private IKeyboard keyboard;
         public IKeyboard Keyboard
         {
@@ -129,9 +134,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 DeactivateLookToScrollUponSwitchingKeyboards();
                 keyboard?.OnExit(); // previous keyboard
                 SetProperty(ref keyboard, value);
-                //if loading a built in keyboard always check if the default state needs to be restored
-                if (!(keyboard is DynamicKeyboard))
-                    mainWindowManipulationService.RestorePersistedState();
                 keyboard?.OnEnter(); // new keyboard
                 Log.InfoFormat("Keyboard changed to {0}", value);
             }
@@ -326,10 +328,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case Enums.Keyboards.CustomKeyboardFile:
-                        // No BackAction if we're starting from a custom keyboard, since it should be 
-                        // the root menu.
                         SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () => { });
+                            windowManipulationService, () =>
+                            {
+                                Keyboard = new Menu(() => Keyboard = new Alpha1());
+                            });
                         break;
 
                     default:
@@ -375,8 +378,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.CustomKeyboardFile:
-                    Keyboard = new DynamicKeyboard(backAction, mainWindowManipulationService,
-                                   keyStateService, inputService, audioService, RaiseToastNotification, Settings.Default.StartupKeyboardFile);
+                    Keyboard = new DynamicKeyboard(backAction, keyStateService, Settings.Default.StartupKeyboardFile);
                     break;
 
                 case Enums.Keyboards.Diacritics1:

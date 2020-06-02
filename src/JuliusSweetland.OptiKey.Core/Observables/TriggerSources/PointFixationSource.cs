@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +48,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         public RunningStates State { get; set; }
 
         public KeyEnabledStates KeyEnabledStates { get; set; } //Irrelevant on point trigger
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get; set; } //Irrelevant on point trigger
 
         /// <summary>
         /// Change the point and key value source. N.B. After setting this any existing subscription 

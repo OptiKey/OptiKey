@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services;
@@ -49,7 +49,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             SuggestionService = new Mock<ISuggestionStateService>();
             ErrorNotifyingServices = new List<INotifyErrors>();
 
-            if(ShouldConstruct)
+            if (ShouldConstruct)
             {
                 MainViewModel = new MainViewModel(AudioService.Object, CalibrationService.Object, DictionaryService.Object,
                     KeyStateService.Object, SuggestionService.Object, CapturingStateManager.Object, LastMouseActionStateManager.Object,

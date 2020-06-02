@@ -1,5 +1,5 @@
 ﻿<!--
-Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
 <UserControl x:Class="JuliusSweetland.OptiKey.UI.Controls.Output"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -44,13 +44,15 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <Binding Path="EnableAttentionKey" Source="{x:Static resx:Settings.Default}" />
                         <Binding Path="EnableCommuniKateKeyboardLayout" Source="{x:Static resx:Settings.Default}" />
                         <Binding Path="EnableCopyAllScratchpadKey" Source="{x:Static resx:Settings.Default}" />
+                        <Binding Path="EnableTranslationKey" Source="{x:Static resx:Settings.Default}" />
                     </MultiBinding>
                 </ColumnDefinition.Width>
             </ColumnDefinition>
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCommuniKateKeyboardLayout, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCopyAllScratchpadKey, Converter={StaticResource BoolToCustomValues}}" />
+            <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableTranslationKey, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" /> 
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0"
@@ -59,7 +61,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.PreviousSuggestionsKey}">
         </controls:Key>
-        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6">
+        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -127,7 +129,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 </controls:Key.Text>
             </controls:Key>
         </Grid>
-        <controls:Key Grid.Row="0" Grid.Column="7"
+        <controls:Key Grid.Row="0" Grid.Column="8"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
@@ -218,12 +220,18 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 </Style>
             </ContentControl.Style>
         </ContentControl>
+
         <controls:Key Grid.Row="1" Grid.Column="6"
+                      SymbolGeometry="{StaticResource LanguageIcon}" 
+                      Text="{x:Static resx:Resources.TRANSLATE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.TranslationKey}"/>
+        <controls:Key Grid.Row="1" Grid.Column="7"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
                       Text="{x:Static resx:Resources.SPEAK}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SpeakKey}"/>
-        <controls:Key Grid.Row="1" Grid.Column="7"
+        <controls:Key Grid.Row="1" Grid.Column="8"
                       SymbolGeometry="{StaticResource SleepIcon}"
                       Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol"

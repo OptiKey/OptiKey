@@ -1,5 +1,5 @@
 ﻿<!--
-Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
 <UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.MainView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -28,6 +28,7 @@ Copyright (c) 2019 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     <Grid>
         <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
                                PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
+            
             <controls:KeyboardHost.ErrorContent>
                 <Border Background="Black">
                     <Viewbox>
