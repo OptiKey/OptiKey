@@ -607,15 +607,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
             StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
             DockPosition = Settings.Default.MainWindowDockPosition;
-            if (Settings.Default.MainWindowState == WindowStates.Docked ||
-                Settings.Default.MainWindowState == WindowStates.Floating)
-            {
-                MainWindowState = Settings.Default.MainWindowState;
-            }
-            else
-            {
-                MainWindowState = Settings.Default.MainWindowPreviousState;
-            }
+            MainWindowState = Settings.Default.MainWindowState;
         }
 
         public void ApplyChanges()
@@ -645,18 +637,28 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
-            
-            // Changes to window state, these methods will save the new values also
-            if (Settings.Default.MainWindowState != MainWindowState || 
-                Settings.Default.MainWindowDockPosition != DockPosition ||
-                Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(MainWindowFullDockThicknessAsPercentageOfScreen))
+
+
+            // We don't apply changes to window/size position if Optikey's state has changed to one in which re-positioning isn't supported
+            bool allowReposition = windowManipulationService.GetPersistedState() &&
+                                   Settings.Default.MainWindowState != WindowStates.Maximised &&
+                                   Settings.Default.MainWindowState != WindowStates.Minimised &&
+                                   Settings.Default.MainWindowState != WindowStates.Hidden;
+            if (allowReposition) 
             {
-                // this also saves the changes
-                windowManipulationService.ChangeState(MainWindowState, DockPosition);
+                // Changes to window state, these methods will save the new values also
+                if (Settings.Default.MainWindowState != MainWindowState ||
+                    Settings.Default.MainWindowDockPosition != DockPosition ||
+                    Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(
+                        MainWindowFullDockThicknessAsPercentageOfScreen))
+                {
+                    // this also saves the changes
+                    windowManipulationService.ChangeState(MainWindowState, DockPosition);
+                }
             }
+
             windowManipulationService.SetOpacity(Settings.Default.MainWindowOpacity);
 
-            // TODO: deal with currently-minimised state?? necessary for Optikey proper
         }
 
         #endregion
