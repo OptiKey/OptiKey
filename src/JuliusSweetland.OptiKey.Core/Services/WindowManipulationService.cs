@@ -204,6 +204,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Public Methods
 
+        public void DisableResize()
+        {
+            window.ResizeMode = ResizeMode.NoResize;
+        }
+
         public void SetResizeState()
         {
             var windowState = getWindowState();
