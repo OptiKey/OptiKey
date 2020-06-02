@@ -410,10 +410,14 @@ namespace JuliusSweetland.OptiKey.Services
         public void Maximise()
         {
             Log.Info("Maximise called");
+            var persistedState = getPersistedState();
 
             var windowState = getWindowState();
             if (windowState != WindowStates.Maximised)
             {
+                // make sure current state has been saved
+                if (persistedState)
+                    PersistSizeAndPosition();
                 savePreviousWindowState(windowState);
             }
             if (getWindowState() == WindowStates.Docked)
@@ -436,10 +440,14 @@ namespace JuliusSweetland.OptiKey.Services
 
             //if minimising from a temporary state then switch to the persisted state to minimize
             if (!persistedState)
-                savePersistedState(true);
+                savePersistedState(true); // smelly, but probs ok
 
             if (getWindowState() != WindowStates.Minimised)
+            {
+                if (persistedState)
+                    PersistSizeAndPosition();
                 savePreviousWindowState(getWindowState());
+            }
             if (getWindowState() == WindowStates.Docked)
                 UnRegisterAppBar();
             saveWindowState(WindowStates.Minimised);
@@ -494,6 +502,10 @@ namespace JuliusSweetland.OptiKey.Services
         public void OverridePersistedState(bool inPersistNewState, string inWindowState, string inPosition, string inDockSize, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset)
         {
             Log.InfoFormat("OverridePersistedState called with PersistNewState {0}, WindowState {1}, Position {2}, Width {3}, Height {4}, horizontalOffset {5}, verticalOffset {6}", inPersistNewState, inWindowState, inPosition, inWidth, inHeight, inHorizontalOffset, inVerticalOffset);
+
+            // make sure current state has been saved before overriding
+            if (GetPersistedState())
+                PersistSizeAndPosition();
 
             WindowStates oldWindowState = getWindowState();
             WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState) ? newWindowState : getWindowState();
