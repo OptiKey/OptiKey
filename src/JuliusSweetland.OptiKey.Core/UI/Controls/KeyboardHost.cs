@@ -191,9 +191,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 mainWindow.BorderBrushOverride = null;
 
                 //Clear the dictionaries
-                keyFamily.Clear();
-                keyValueByGroup.Clear();
-                overrideTimesByKey.Clear();
+                keyFamily?.Clear();
+                keyValueByGroup?.Clear();
+                overrideTimesByKey?.Clear();
 
                 if (!(Keyboard is ViewModelKeyboards.DynamicKeyboard))
                     windowManipulationService.RestorePersistedState();
