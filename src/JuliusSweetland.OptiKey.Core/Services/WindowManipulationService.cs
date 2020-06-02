@@ -204,6 +204,24 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Public Methods
 
+        public void SetResizeState()
+        {
+            var windowState = getWindowState();
+            switch (windowState)
+            {
+                case WindowStates.Docked:
+                case WindowStates.Floating:
+                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
+                    break;
+
+                case WindowStates.Maximised:
+                case WindowStates.Minimised:
+                case WindowStates.Hidden:
+                    window.ResizeMode = ResizeMode.NoResize;
+                    break;
+            }
+        }
+
         public void Expand(ExpandToDirections direction, double amountInPx)
         {
             Log.InfoFormat("Expand called with direction {0} and amount (px) {1}", direction, amountInPx);
@@ -911,10 +929,11 @@ namespace JuliusSweetland.OptiKey.Services
             var windowState = getWindowState();
             window.Opacity = getOpacity();
             var dockPosition = getDockPosition();
+
+            SetResizeState();
             switch (windowState)
             {
                 case WindowStates.Docked:
-                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     window.WindowState = System.Windows.WindowState.Normal;
                     var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(dockPosition, getDockSize());
                     RegisterAppBar();
@@ -922,20 +941,17 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case WindowStates.Floating:
-                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     window.WindowState = System.Windows.WindowState.Normal;
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                         new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), getFloatingSizeAndPosition());
                     break;
 
                 case WindowStates.Maximised:
-                    window.ResizeMode = ResizeMode.NoResize;
                     window.WindowState = System.Windows.WindowState.Maximized;
                     PublishSizeAndPositionInitialised();
                     break;
 
                 case WindowStates.Minimised:
-                    window.ResizeMode = ResizeMode.NoResize;
                     window.WindowState = System.Windows.WindowState.Normal;
                     var minimisedSizeAndPosition = CalculateMinimisedSizeAndPosition();
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
