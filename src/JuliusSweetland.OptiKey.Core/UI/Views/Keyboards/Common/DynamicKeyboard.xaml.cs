@@ -124,8 +124,20 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 return false;
             }
 
-            Log.InfoFormat("Overriding size and position for dynamic keyboard");
-            windowManipulationService.OverridePersistedState(keyboard.PersistNewState, keyboard.WindowState, keyboard.Position, keyboard.DockSize, keyboard.Width, keyboard.Height, keyboard.HorizontalOffset, keyboard.VerticalOffset);
+            // If the keyboard overrides any size/position values, tell the windowsManipulationService that it shouldn't be persisting state changes
+            if (!string.IsNullOrWhiteSpace(keyboard.WindowState)
+                || !string.IsNullOrWhiteSpace(keyboard.Position)
+                || !string.IsNullOrWhiteSpace(keyboard.DockSize)
+                || !string.IsNullOrWhiteSpace(keyboard.Width)
+                || !string.IsNullOrWhiteSpace(keyboard.Height)
+                || !string.IsNullOrWhiteSpace(keyboard.HorizontalOffset)
+                || !string.IsNullOrWhiteSpace(keyboard.VerticalOffset))
+            {
+                Log.InfoFormat("Overriding size and position for dynamic keyboard");
+                windowManipulationService.OverridePersistedState(keyboard.PersistNewState, keyboard.WindowState,
+                    keyboard.Position, keyboard.DockSize, keyboard.Width, keyboard.Height, keyboard.HorizontalOffset,
+                    keyboard.VerticalOffset);
+            }
 
             return true;
         }
