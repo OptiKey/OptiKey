@@ -33,6 +33,12 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <DataTrigger Binding="{Binding PersistedWindowState}" Value="True">
                         <Setter Property="IsEnabled" Value="True" />
                     </DataTrigger>
+                    <DataTrigger Binding="{Binding MainWindowState}" Value="Maximised">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MainWindowState}" Value="Minimised">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
             <!-- as above, but collapse if not docked -->
