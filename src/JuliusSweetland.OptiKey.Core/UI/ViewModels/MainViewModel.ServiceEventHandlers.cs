@@ -2422,8 +2422,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 commandList.AddRange(singleKeyValue.Commands);
                 keyStateService.KeyRunningStates[singleKeyValue].Value = true;
 
-                TimeSpanOverrides timeSpanOverrides = 
-                    inputService.OverrideTimesByKey.TryGetValue(singleKeyValue, out timeSpanOverrides) ? timeSpanOverrides : null;
+                TimeSpanOverrides timeSpanOverrides = null;
+                inputService.OverrideTimesByKey?.TryGetValue(singleKeyValue, out timeSpanOverrides);
 
                 //if there is an override lock down time then do not set the key to LockedDown
                 keyStateService.KeyDownStates[singleKeyValue].Value = timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero 
