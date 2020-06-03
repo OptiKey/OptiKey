@@ -207,6 +207,7 @@ namespace JuliusSweetland.OptiKey.Services
         public void DisableResize()
         {
             window.ResizeMode = ResizeMode.NoResize;
+            window.UpdateLayout();
         }
 
         public void SetResizeState()
@@ -225,6 +226,7 @@ namespace JuliusSweetland.OptiKey.Services
                     window.ResizeMode = ResizeMode.NoResize;
                     break;
             }
+            window.UpdateLayout();
         }
 
         public void Expand(ExpandToDirections direction, double amountInPx)
