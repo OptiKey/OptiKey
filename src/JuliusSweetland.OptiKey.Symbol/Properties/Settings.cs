@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
+using JuliusSweetland.OptiKey.Enums;
+
 namespace JuliusSweetland.OptiKey.Symbol.Properties
 {
 
@@ -12,10 +14,42 @@ namespace JuliusSweetland.OptiKey.Symbol.Properties
             InitialiseWithDerivedSettings(defaultInstance);
         }
 
+        public override AppType GetApp()
+        {
+            return AppType.Symbol;
+        }
+
         /*
          * Override all the settings relating to Communikate keyboard setup, to lock user into
          * Communikate conversation mode only.
          */
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Maximised")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability
+            .Roaming)]
+        public override global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowState
+        {
+            get { return WindowStates.Maximised; }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Maximised")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowPreviousState
+        {
+            get { return WindowStates.Maximised; }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

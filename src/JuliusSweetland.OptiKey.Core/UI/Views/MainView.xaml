@@ -26,8 +26,10 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     </i:Interaction.Triggers>
 
     <Grid>
-        <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
-                               PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
+        <controls:KeyboardHost 
+            x:Name="KeyboardHost"
+            Keyboard="{Binding Keyboard, Mode=OneWay}"
+            PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
             
             <controls:KeyboardHost.ErrorContent>
                 <Border Background="Black">
@@ -71,7 +73,8 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
         <controls:MagnifyPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True" />
         
-        <controls:ToastNotificationPopup Placement="AbsolutePoint"  AllowsTransparency="True" IsOpen="False">
+        <controls:ToastNotificationPopup x:Name="ToastNotificationPopup"
+            Placement="AbsolutePoint"  AllowsTransparency="True" IsOpen="False">
             <controls:ToastNotification RenderTransformOrigin="0,1">
                 <controls:ToastNotification.RenderTransform>
                     <ScaleTransform ScaleY="1" />

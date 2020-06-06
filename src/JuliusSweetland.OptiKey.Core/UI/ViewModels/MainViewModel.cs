@@ -634,6 +634,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             bool notificationRaised = false;
 
+            // Disabling resize handles temporarily prevents mouse capture by the non-client area around the main keyboard
+            this.mainWindowManipulationService.DisableResize();
+            callback += () => this.mainWindowManipulationService.SetResizeState();
+
             if (ToastNotification != null)
             {
                 ToastNotification(this, new NotificationEventArgs(title, content, notificationType, callback));
