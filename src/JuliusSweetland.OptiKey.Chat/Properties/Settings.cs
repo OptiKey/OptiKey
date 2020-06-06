@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
+using JuliusSweetland.OptiKey.Enums;
+
 namespace JuliusSweetland.OptiKey.Chat.Properties
 {
 
@@ -12,11 +14,43 @@ namespace JuliusSweetland.OptiKey.Chat.Properties
             InitialiseWithDerivedSettings(defaultInstance);
         }
 
+        public override AppType GetApp()
+        {
+            return AppType.Chat;
+        }
+
         /*
          * Override the settings relating to conversation mode, to lock user into
          * conversation mode only.
          */
         #region App-specific settings
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Maximised")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability
+            .Roaming)]
+        public override global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowState
+        {
+            get { return WindowStates.Maximised; }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Maximised")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public override global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowPreviousState
+        {
+            get { return WindowStates.Maximised; }
+            set
+            {
+                // no-op, can't be changed in this app
+            }
+        }
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

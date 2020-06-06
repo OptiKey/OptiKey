@@ -46,6 +46,11 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             InitializeComponent();
 
+            if (Settings.Default.MainWindowState == WindowStates.Floating ||
+                Settings.Default.MainWindowState == WindowStates.Docked)
+            {
+                this.ResizeMode = ResizeMode.CanResizeWithGrip;
+            }
             this.audioService = audioService;
             this.dictionaryService = dictionaryService;
             this.inputService = inputService;
@@ -89,6 +94,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Key = Key.Enter
             });
 
+            // Enable mouse drag on keyboard
+            MainView.KeyboardHost.MouseDown += OnMouseDown;
+
             Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
 
             //Set the window size to 0x0 as this prevents a flicker where OptiKey would be displayed in the default position and then repositioned
@@ -106,6 +114,30 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         public IList<Tuple<KeyValue, KeyValue>> KeyFamily { get { return keyStateService.KeyFamily; } }
         public IDictionary<string, List<KeyValue>> KeyValueByGroup { get { return keyStateService.KeyValueByGroup; } }
         public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey  { get { return inputService.OverrideTimesByKey; } }
+
+        void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Don't take focus away from any existing toast notifications
+            if (MainView.ToastNotificationPopup.IsOpen)
+            {
+                return;
+            }
+
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // This prevents win7 aerosnap, which otherwise might snap to edges and expand unexpectedly
+                ResizeMode origResizeMode = this.ResizeMode;
+                this.ResizeMode = System.Windows.ResizeMode.NoResize;
+                this.UpdateLayout();
+                
+                DragMove();
+                
+                // Restore original resize mode 
+                this.ResizeMode = origResizeMode;
+                this.UpdateLayout();
+            }
+        }
+
         public IWindowManipulationService WindowManipulationService { get; set; }
 
         public InteractionRequest<NotificationWithServicesAndState> ManagementWindowRequest { get { return managementWindowRequest; } }

@@ -21,6 +21,37 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <!-- hide position-related props if size&position can't be changed, disable if this is temporary -->
+            <Style x:Key="VisibilityOfPositionProperties"
+                   TargetType="{x:Type FrameworkElement}">
+                <Setter Property="Visibility" Value="Visible" />
+                <Setter Property="IsEnabled" Value="False" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding MaximisedApp}" Value="True">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding PersistedWindowState}" Value="True">
+                        <Setter Property="IsEnabled" Value="True" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MainWindowState}" Value="Maximised">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MainWindowState}" Value="Minimised">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <!-- as above, but collapse if not docked -->
+            <Style x:Key="VisibilityOfDockProperties"
+                   TargetType="{x:Type FrameworkElement}"
+                   BasedOn="{StaticResource VisibilityOfPositionProperties}">
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding MainWindowState}" Value="Docked">
+                        <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -59,6 +90,10 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.THEME_LABEL}" 
@@ -72,6 +107,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.OPACITY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                                            StringFormat="{}{0:N1} %"
                                             Minimum="10" Maximum="100" Interval="10"
                                             Value="{Binding Opacity, Mode=TwoWay}" />
 
@@ -267,21 +303,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MinimisedPosition, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="14" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Maximum="90" Interval="10"
-                                            Value="{Binding MainWindowFullDockThicknessAsPercentageOfScreen, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="15" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Maximum="90" Interval="10"
-                                            Value="{Binding MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <StackPanel Grid.Row="16" Grid.Column="1" Orientation="Horizontal">
+                    <StackPanel Grid.Row="14" Grid.Column="1" Orientation="Horizontal">
                         <TextBlock Name="txtKeyboardsLocation"
                                    Text="{Binding DynamicKeyboardsLocation, Mode=TwoWay}" 
                                    HorizontalAlignment="Left" 
@@ -294,6 +318,43 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
                             </Button>
                      </StackPanel>
+
+
+                    <TextBlock Grid.Row="15" Grid.Column="0" Text="Window state" 
+                               VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfPositionProperties}"/>
+                    <ComboBox Grid.Row="15" Grid.Column="1" 
+                              ItemsSource="{Binding MainWindowStates}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              Visibility="{Binding MaximisedApp, Converter={StaticResource InvertedBoolToVisibilityConverter}}"
+                              SelectedValue="{Binding MainWindowState, Mode=TwoWay}" 
+                              Style="{StaticResource VisibilityOfPositionProperties}"/>
+
+                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.DOCK_POSITION_LABEL}" 
+                           VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfDockProperties}"/>
+                    <ComboBox Grid.Row="16" Grid.Column="1" 
+                              ItemsSource="{Binding DockPositions}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding DockPosition, Mode=TwoWay}" 
+                              Style="{StaticResource VisibilityOfDockProperties}"/>
+
+                    <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfDockProperties}"/>
+                    <controls:NumericUpDown Grid.Row="17" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="10" Maximum="90" Interval="10"
+                                            StringFormat="{}{0:N1} %"
+                                            Value="{Binding MainWindowFullDockThicknessAsPercentageOfScreen, Mode=TwoWay}" 
+                                            Style="{StaticResource VisibilityOfDockProperties}"/>
+
+                    <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
+                               VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfDockProperties}"/>
+                    <controls:NumericUpDown Grid.Row="18" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="10" Maximum="90" Interval="10"
+                                            StringFormat="{}{0:N1} %"
+                                            Value="{Binding MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, Mode=TwoWay}" 
+                                            Style="{StaticResource VisibilityOfDockProperties}"/>
+
                 </Grid>
             </GroupBox>
 
@@ -355,12 +416,14 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.HORIZONTAL_FILL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
+                                            StringFormat="{}{0:N1} %"
                                             Minimum="1" Maximum="100" Interval="5"
                                             Value="{Binding ToastNotificationHorizontalFillPercentage, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.VERTICAL_FILL_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                                            StringFormat="{}{0:N1} %"
                                             Minimum="1" Maximum="100" Interval="5"
                                             Value="{Binding ToastNotificationVerticalFillPercentage, Mode=TwoWay}" />
 

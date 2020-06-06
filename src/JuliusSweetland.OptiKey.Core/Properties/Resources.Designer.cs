@@ -1285,6 +1285,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dock position.
+        /// </summary>
+        public static string DOCK_POSITION_LABEL {
+            get {
+                return ResourceManager.GetString("DOCK_POSITION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DOWN ARROW.
         /// </summary>
         public static string DOWN_ARROW {
@@ -6216,6 +6225,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Top.
+        /// </summary>
+        public static string TOP {
+            get {
+                return ResourceManager.GetString("TOP", resourceCulture);
+            }
+        }
+
+	/// <summary>
         ///   Looks up a localized string similar to Translate.
         /// </summary>
         public static string TRANSLATE {
@@ -6232,6 +6250,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("TRANSLATION_TARGET_LANGUAGE_LABEL", resourceCulture);
             }
         }
+        
         
         /// <summary>
         ///   Looks up a localized string similar to Trigger button/key pressed again.

@@ -2444,6 +2444,12 @@ Magyar
   <data name="ALLOW_MULTIPLE_INSTANCES" xml:space="preserve">
     <value>Allow multiple instances of this Optikey app to run simultaneously</value>
   </data>
+  <data name="TOP" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="DOCK_POSITION_LABEL" xml:space="preserve">
+    <value>Dock position</value>
+  </data>
   <data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
     <value>Translation Target Language:</value>
   </data>

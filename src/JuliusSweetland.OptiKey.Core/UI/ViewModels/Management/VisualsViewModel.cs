@@ -6,6 +6,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
+using MahApps.Metro.Controls;
 using Prism.Mvvm;
 using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
 using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
@@ -35,8 +36,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
-        
+
         #region Ctor
+
+        private IWindowManipulationService windowManipulationService;
 
         public VisualsViewModel(IWindowManipulationService windowManipulationService)
         {
@@ -66,6 +69,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return opacity; }
             set { SetProperty(ref opacity, value); }
+        }
+
+        private bool persistedWindowState;
+        public bool PersistedWindowState
+        {
+            get { return windowManipulationService.GetPersistedState(); }
         }
 
         public List<KeyValuePair<string, string>> FontFamilies
@@ -301,6 +310,31 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        public List<KeyValuePair<string, Enums.DockEdges>> DockPositions
+        {
+            get
+            {
+                return new List<KeyValuePair<string, Enums.DockEdges>>
+                {
+                    new KeyValuePair<string, Enums.DockEdges>(Resources.TOP, Enums.DockEdges.Top),
+                    new KeyValuePair<string, Enums.DockEdges>(Resources.BOTTOM, Enums.DockEdges.Bottom),
+                    new KeyValuePair<string, Enums.DockEdges>(Resources.LEFT, Enums.DockEdges.Left),
+                    new KeyValuePair<string, Enums.DockEdges>(Resources.RIGHT, Enums.DockEdges.Right),
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, Enums.WindowStates>> MainWindowStates
+        {
+            get
+            {
+                return new List<KeyValuePair<string, Enums.WindowStates>>
+                {
+                    new KeyValuePair<string, Enums.WindowStates>("Floating", Enums.WindowStates.Floating),
+                    new KeyValuePair<string, Enums.WindowStates>("Docked", Enums.WindowStates.Docked),
+                };
+            }
+        }
         public List<KeyValuePair<string, Enums.MinimisedEdges>> MinimisedPositions
         {
             get
@@ -371,6 +405,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return keyCase; }
             set { SetProperty(ref keyCase, value); }
+        }
+
+        private Enums.DockEdges dockPosition;
+        public Enums.DockEdges DockPosition
+        {
+            get { return dockPosition; }
+            set { SetProperty(ref dockPosition, value); }
         }
 
         private int scratchpadNumberOfLines;
@@ -510,13 +551,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         private string startupKeyboardFile;
-        private IWindowManipulationService windowManipulationService;
-
         public string StartupKeyboardFile
         {
             get { return startupKeyboardFile; }
             set { SetProperty(ref startupKeyboardFile, value); }
         }
+
+        private WindowStates mainWindowState;
+        public WindowStates MainWindowState
+        {
+            get { return mainWindowState; }
+            set { SetProperty(ref mainWindowState, value); }
+        }
+
+        public bool MaximisedApp
+        {
+            get
+            {
+                // Is this an always-maximised app?
+                AppType appType = Settings.Default.GetApp();
+                return (appType == AppType.Chat || appType == AppType.Symbol);
+            }
+        }
+
 
         #endregion
 
@@ -549,6 +606,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
             DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
             StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
+            DockPosition = Settings.Default.MainWindowDockPosition;
+            MainWindowState = Settings.Default.MainWindowState;
         }
 
         public void ApplyChanges()
@@ -579,8 +638,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
 
-            // Apply opacity to window
+
+            // We don't apply changes to window/size position if Optikey's state has changed to one in which re-positioning isn't supported
+            bool allowReposition = windowManipulationService.GetPersistedState() &&
+                                   Settings.Default.MainWindowState != WindowStates.Maximised &&
+                                   Settings.Default.MainWindowState != WindowStates.Minimised &&
+                                   Settings.Default.MainWindowState != WindowStates.Hidden;
+            if (allowReposition) 
+            {
+                // Changes to window state, these methods will save the new values also
+                if (Settings.Default.MainWindowState != MainWindowState ||
+                    Settings.Default.MainWindowDockPosition != DockPosition ||
+                    Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(
+                        MainWindowFullDockThicknessAsPercentageOfScreen))
+                {
+                    // this also saves the changes
+                    windowManipulationService.ChangeState(MainWindowState, DockPosition);
+                }
+            }
+
             windowManipulationService.SetOpacity(Settings.Default.MainWindowOpacity);
+
         }
 
         #endregion
