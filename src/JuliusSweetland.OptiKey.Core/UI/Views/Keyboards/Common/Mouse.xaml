@@ -72,7 +72,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                               Text="{x:Static resx:Resources.SIZE_AND_POSITION_SPLIT_WITH_NEWLINE}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.SizeAndPositionKeyboardKey}"/>
-                                                <controls:Key Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="1"
+                                                <controls:Key Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"
                                                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseMoveAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.MOVE_BY}}"
                                                               Value="{x:Static models:KeyValues.MouseMoveAmountInPixelsKey}"/>
                                                 <controls:Key Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"
@@ -105,6 +105,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                               Text="{x:Static resx:Resources.LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE}"
                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                               Value="{x:Static models:KeyValues.MouseLeftDoubleClickKey}"/>
+                                                <controls:Key Grid.Row="3" Grid.Column="0" Grid.RowSpan="2"/>
                                                 <controls:Key Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
                                                               Text="{x:Static resx:Resources.MOVE_LEFT_SPLIT_WITH_NEWLINE}"
@@ -444,6 +445,8 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                             <RowDefinition Height="*" />
                                                             <RowDefinition Height="*" />
                                                             <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
@@ -606,33 +609,32 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                       Text="{x:Static resx:Resources.LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
                                                                       Value="{x:Static models:KeyValues.MouseMoveAndLeftDoubleClickKey}"/>
+
                                                         <controls:Key Grid.Row="16" Grid.Column="0" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource MouseMagnifierIcon}"
-                                                                      Text="{x:Static resx:Resources.MAGNIFIER}"
+                                                                      SymbolGeometry="{StaticResource SizeAndPositionIcon}"
+                                                                      Text="{x:Static resx:Resources.SIZE_AND_POSITION_SPLIT_WITH_NEWLINE}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
-                                                                      Value="{x:Static models:KeyValues.MouseMagnifierKey}"/>
+                                                                      Value="{x:Static models:KeyValues.SizeAndPositionKeyboardKey}"/>
                                                         <controls:Key Grid.Row="16" Grid.Column="1" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
-                                                                      Text="{x:Static resx:Resources.REPEAT_LAST_SPLIT_WITH_NEWLINE}"
+                                                                      SymbolGeometry="{StaticResource SleepIcon}"
+                                                                      Text="{x:Static resx:Resources.SLEEP}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
-                                                                      Value="{x:Static models:KeyValues.RepeatLastMouseActionKey}"/>
+                                                                      Value="{x:Static models:KeyValues.SleepKey}"/>
                                                         <controls:Key Grid.Row="16" Grid.Column="2" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource CollapseDockIcon}"
-                                                                      Text="{x:Static resx:Resources.COLLAPSE_DOCK_SPLIT_WITH_NEWLINE}"
+                                                                      SymbolGeometry="{StaticResource CalibrateIcon}"
+                                                                      Text="{x:Static resx:Resources.RE_CALIBRATE}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
-                                                                      SymbolOrientation="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition, Converter={StaticResource DockPositionToSymbolOrientation}}"
-                                                                      Value="{x:Static models:KeyValues.CollapseDockKey}">
-                                                        </controls:Key>
-                                                        
-                                                        <ContentControl Grid.Row="16" Grid.Column="3" Grid.RowSpan="2">
+                                                                      Value="{x:Static models:KeyValues.CalibrateKey}"/>
+                                                        <ContentControl Grid.Row="16" Grid.Column="3" Grid.RowSpan="4">
                                                             <ContentControl.Style>
                                                                 <Style TargetType="{x:Type ContentControl}">
                                                                     <Setter Property="Content">
                                                                         <Setter.Value>
                                                                             <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                                      Text="{x:Static resx:Resources.BACK}"
-                                                                      SharedSizeGroup="KeyWithSymbol"
-                                                                      Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                                                                  Text="{x:Static resx:Resources.BACK}"
+                                                                                  SharedSizeGroup="KeyWithSymbol"
+                                                                                  HeightSpan="2"
+                                                                                  Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
                                                                         </Setter.Value>
                                                                     </Setter>
                                                                     <Style.Triggers>
@@ -650,6 +652,24 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                                 </Style>
                                                             </ContentControl.Style>
                                                         </ContentControl>
+
+                                                        <controls:Key Grid.Row="18" Grid.Column="0" Grid.RowSpan="2"
+                                                                      SymbolGeometry="{StaticResource MouseMagnifierIcon}"
+                                                                      Text="{x:Static resx:Resources.MAGNIFIER}"
+                                                                      SharedSizeGroup="KeyWithSymbolAndText"
+                                                                      Value="{x:Static models:KeyValues.MouseMagnifierKey}"/>
+                                                        <controls:Key Grid.Row="18" Grid.Column="1" Grid.RowSpan="2"
+                                                                      SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
+                                                                      Text="{x:Static resx:Resources.REPEAT_LAST_SPLIT_WITH_NEWLINE}"
+                                                                      SharedSizeGroup="KeyWithSymbolAndText"
+                                                                      Value="{x:Static models:KeyValues.RepeatLastMouseActionKey}"/>
+                                                        <controls:Key Grid.Row="18" Grid.Column="2" Grid.RowSpan="2"
+                                                                      SymbolGeometry="{StaticResource CollapseDockIcon}"
+                                                                      Text="{x:Static resx:Resources.COLLAPSE_DOCK_SPLIT_WITH_NEWLINE}"
+                                                                      SharedSizeGroup="KeyWithSymbolAndText"
+                                                                      SymbolOrientation="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition, Converter={StaticResource DockPositionToSymbolOrientation}}"
+                                                                      Value="{x:Static models:KeyValues.CollapseDockKey}">
+                                                        </controls:Key>
                                                     </Grid>
                                                 </Setter.Value>
                                             </Setter>
