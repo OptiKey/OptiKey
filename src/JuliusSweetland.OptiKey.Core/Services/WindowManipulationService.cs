@@ -215,9 +215,16 @@ namespace JuliusSweetland.OptiKey.Services
             var windowState = getWindowState();
             switch (windowState)
             {
-                case WindowStates.Docked:
+                
                 case WindowStates.Floating:
                     window.ResizeMode = ResizeMode.CanResizeWithGrip;
+                    break;
+
+                case WindowStates.Docked:
+                    if (getDockSize() == DockSizes.Full)
+                        window.ResizeMode = ResizeMode.CanResizeWithGrip;
+                    else
+                        window.ResizeMode = ResizeMode.NoResize;
                     break;
 
                 case WindowStates.Maximised:
