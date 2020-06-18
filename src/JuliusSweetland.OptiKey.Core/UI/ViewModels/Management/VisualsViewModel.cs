@@ -643,7 +643,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             bool allowReposition = windowManipulationService.GetPersistedState() &&
                                    Settings.Default.MainWindowState != WindowStates.Maximised &&
                                    Settings.Default.MainWindowState != WindowStates.Minimised &&
-                                   Settings.Default.MainWindowState != WindowStates.Hidden;
+                                   Settings.Default.MainWindowState != WindowStates.Hidden &&
+                                   Settings.Default.MainWindowDockSize != DockSizes.Collapsed;
+
             if (allowReposition) 
             {
                 // Changes to window state, these methods will save the new values also
