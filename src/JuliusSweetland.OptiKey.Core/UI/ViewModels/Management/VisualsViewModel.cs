@@ -632,7 +632,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.StartupKeyboard = StartupKeyboard;
             Settings.Default.MainWindowMinimisedPosition = MinimisedPosition;
             Settings.Default.KeyCase = KeyCase;
-            Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
@@ -651,9 +650,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 // Changes to window state, these methods will save the new values also
                 if (Settings.Default.MainWindowState != MainWindowState ||
                     Settings.Default.MainWindowDockPosition != DockPosition ||
-                    Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(
+                    !Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(
                         MainWindowFullDockThicknessAsPercentageOfScreen))
                 {
+                    Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
+
                     // this also saves the changes
                     windowManipulationService.ChangeState(MainWindowState, DockPosition);
                 }
