@@ -2051,6 +2051,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Floating position (left, top, width, height).
+        /// </summary>
+        public static string FLOATING_POSITION_LABEL {
+            get {
+                return ResourceManager.GetString("FLOATING_POSITION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Font.
         /// </summary>
         public static string FONT {

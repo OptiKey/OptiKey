@@ -2450,6 +2450,9 @@ Magyar
   <data name="DOCK_POSITION_LABEL" xml:space="preserve">
     <value>Dock position</value>
   </data>
+  <data name="FLOATING_POSITION_LABEL" xml:space="preserve">
+    <value>Floating position (left, top, width, height)</value>
+  </data>
   <data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
     <value>Translation Target Language:</value>
   </data>
