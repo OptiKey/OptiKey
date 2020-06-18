@@ -52,6 +52,17 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
+            <!-- as above, but collapse if not floating -->
+            <Style x:Key="VisibilityOfFloatingProperties"
+                   TargetType="{x:Type FrameworkElement}"
+                   BasedOn="{StaticResource VisibilityOfPositionProperties}">
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding MainWindowState}" Value="Floating">
+                        <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -329,6 +340,11 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               Visibility="{Binding MaximisedApp, Converter={StaticResource InvertedBoolToVisibilityConverter}}"
                               SelectedValue="{Binding MainWindowState, Mode=TwoWay}" 
                               Style="{StaticResource VisibilityOfPositionProperties}"/>
+                    
+                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.FLOATING_POSITION_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfFloatingProperties}"/>
+                    <TextBox Grid.Row="16" Grid.Column="1" Text="{Binding FloatingSizeAndPosition, Mode=TwoWay}" 
+                             VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfFloatingProperties}"/>
 
                     <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.DOCK_POSITION_LABEL}" 
                            VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfDockProperties}"/>

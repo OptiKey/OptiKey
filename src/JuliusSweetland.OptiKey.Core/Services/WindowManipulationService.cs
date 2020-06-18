@@ -1134,6 +1134,7 @@ namespace JuliusSweetland.OptiKey.Services
                 if (changeCurrentState)
                 {
                     saveWindowState(WindowStates.Floating);
+                    CoerceSavedStateAndApply();
                     Restore();
                 }
             }

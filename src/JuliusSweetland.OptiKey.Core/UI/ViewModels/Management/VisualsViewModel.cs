@@ -51,6 +51,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
         #region Properties
 
+        private Rect floatingSizeAndPosition;
+        public Rect FloatingSizeAndPosition
+        {
+            get { return floatingSizeAndPosition; }
+            set { SetProperty(ref floatingSizeAndPosition, value); }
+        }
+
         public List<KeyValuePair<string, string>> Themes
         {
             get
@@ -581,6 +588,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
+            FloatingSizeAndPosition = Settings.Default.MainWindowFloatingSizeAndPosition;
             Theme = Settings.Default.Theme;
             Opacity = (int)(100.0f*Settings.Default.MainWindowOpacity);
             FontFamily = Settings.Default.FontFamily;
@@ -651,9 +659,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 if (Settings.Default.MainWindowState != MainWindowState ||
                     Settings.Default.MainWindowDockPosition != DockPosition ||
                     !Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(
-                        MainWindowFullDockThicknessAsPercentageOfScreen))
+                        MainWindowFullDockThicknessAsPercentageOfScreen) ||
+                    !Settings.Default.MainWindowFloatingSizeAndPosition.IsCloseTo(FloatingSizeAndPosition))
                 {
                     Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
+                    Settings.Default.MainWindowFloatingSizeAndPosition = FloatingSizeAndPosition;
 
                     // this also saves the changes
                     windowManipulationService.ChangeState(MainWindowState, DockPosition);
