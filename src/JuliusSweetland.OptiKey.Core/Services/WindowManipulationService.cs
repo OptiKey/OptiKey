@@ -669,19 +669,24 @@ namespace JuliusSweetland.OptiKey.Services
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
         }
 
-        public void RestorePersistedState()
+        public void RestorePersistedState(bool saveState = false)
         {
             Log.Info("RestorePersistedState called");
 
             if (getPersistedState() || getWindowState() == WindowStates.Minimised) { return; }
 
-            Log.Info("Restoring keyboard to default values");
-            savePersistedState(true);
-            if (getPreviousWindowState() == WindowStates.Docked && getWindowState() != WindowStates.Docked)
+            if (getPreviousWindowState() != WindowStates.Docked && getWindowState() == WindowStates.Docked)
                 UnRegisterAppBar();
 
-            ApplySavedState();
-            ResizeDockToFull();
+            savePersistedState(saveState);
+
+            if (saveState)
+            {
+                Log.Info("Restoring keyboard to default values");
+
+                ApplySavedState();
+                ResizeDockToFull();
+            }
         }
 
         public void Restore()
