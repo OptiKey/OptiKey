@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Services
         void SetOpacity(double opacity);
         void Shrink(ShrinkFromDirections direction, double amountInPx);
         void OverridePersistedState(bool inPersistNewState, string inWindowState, string inPosition, string inDockSize, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset);
-        void RestorePersistedState();
+        void RestorePersistedState(bool saveState);
         void DisableResize();
         void SetResizeState();
     }
