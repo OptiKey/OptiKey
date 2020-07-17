@@ -51,6 +51,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
         #region Properties
 
+        private Rect floatingSizeAndPosition;
+        public Rect FloatingSizeAndPosition
+        {
+            get { return floatingSizeAndPosition; }
+            set { SetProperty(ref floatingSizeAndPosition, value); }
+        }
+
         public List<KeyValuePair<string, string>> Themes
         {
             get
@@ -581,6 +588,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
+            FloatingSizeAndPosition = Settings.Default.MainWindowFloatingSizeAndPosition;
             Theme = Settings.Default.Theme;
             Opacity = (int)(100.0f*Settings.Default.MainWindowOpacity);
             FontFamily = Settings.Default.FontFamily;
@@ -632,7 +640,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.StartupKeyboard = StartupKeyboard;
             Settings.Default.MainWindowMinimisedPosition = MinimisedPosition;
             Settings.Default.KeyCase = KeyCase;
-            Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
@@ -643,15 +650,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             bool allowReposition = windowManipulationService.GetPersistedState() &&
                                    Settings.Default.MainWindowState != WindowStates.Maximised &&
                                    Settings.Default.MainWindowState != WindowStates.Minimised &&
-                                   Settings.Default.MainWindowState != WindowStates.Hidden;
+                                   Settings.Default.MainWindowState != WindowStates.Hidden &&
+                                   Settings.Default.MainWindowDockSize != DockSizes.Collapsed;
+
             if (allowReposition) 
             {
                 // Changes to window state, these methods will save the new values also
                 if (Settings.Default.MainWindowState != MainWindowState ||
                     Settings.Default.MainWindowDockPosition != DockPosition ||
-                    Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(
-                        MainWindowFullDockThicknessAsPercentageOfScreen))
+                    !Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(
+                        MainWindowFullDockThicknessAsPercentageOfScreen) ||
+                    !Settings.Default.MainWindowFloatingSizeAndPosition.IsCloseTo(FloatingSizeAndPosition))
                 {
+                    Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
+                    Settings.Default.MainWindowFloatingSizeAndPosition = FloatingSizeAndPosition;
+
                     // this also saves the changes
                     windowManipulationService.ChangeState(MainWindowState, DockPosition);
                 }

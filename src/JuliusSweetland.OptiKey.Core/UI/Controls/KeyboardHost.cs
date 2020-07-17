@@ -196,7 +196,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 overrideTimesByKey?.Clear();
 
                 if (!(Keyboard is ViewModelKeyboards.DynamicKeyboard))
-                    windowManipulationService.RestorePersistedState();
+                {
+                    if (Keyboard is ViewModelKeyboards.ConversationAlpha1 
+                        || Keyboard is ViewModelKeyboards.ConversationAlpha2
+                        || Keyboard is ViewModelKeyboards.ConversationConfirm
+                        || Keyboard is ViewModelKeyboards.ConversationNumericAndSymbols)
+                        windowManipulationService.RestorePersistedState(false);
+                    else
+                        windowManipulationService.RestorePersistedState(true);
+                }
             }
 
             object newContent = ErrorContent;
