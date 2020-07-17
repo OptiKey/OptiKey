@@ -21,6 +21,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 dt.Tick += (o, eventArgs) =>
                 {
                     this.Close();
+                    OptiKeyApp.RestartApp();
                 };
                 dt.Start();
             };
