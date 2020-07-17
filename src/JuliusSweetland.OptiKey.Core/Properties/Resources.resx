@@ -397,11 +397,13 @@ DOCK</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPAND
-DOWN &amp; LEFT</value>
+DOWN
+&amp; LEFT</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPAND
-DOWN &amp; RIGHT</value>
+DOWN
+&amp; RIGHT</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPAND
@@ -417,11 +419,13 @@ RIGHT</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPAND
-UP &amp; LEFT</value>
+UP &amp;
+LEFT</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPAND
-UP &amp; RIGHT</value>
+UP &amp;
+RIGHT</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPAND
@@ -493,11 +497,13 @@ OPACITY</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>JUMP
-DOWN &amp; LEFT</value>
+DOWN
+&amp; LEFT</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>JUMP
-DOWN &amp; RIGHT</value>
+DOWN
+&amp; RIGHT</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>JUMP
@@ -513,11 +519,13 @@ RIGHT</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>JUMP
-UP &amp; LEFT</value>
+UP &amp;
+LEFT</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>JUMP
-UP &amp; RIGHT</value>
+UP &amp;
+RIGHT</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>JUMP
@@ -738,15 +746,19 @@ DOWN/UP</value>
     <value>MOVE</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>Move by {0} pixel:|Move by {0} pixels:</value>
+    <value>Move by
+{0} pixel:|Move by 
+{0} pixels:</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVE
-DOWN &amp; LEFT</value>
+DOWN
+&amp; LEFT</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVE
-DOWN &amp; RIGHT</value>
+DOWN
+&amp; RIGHT</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVE
@@ -766,11 +778,13 @@ TO</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVE
-UP &amp; LEFT</value>
+UP &amp;
+LEFT</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVE
-UP &amp; RIGHT</value>
+UP &amp;
+RIGHT</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVE
@@ -984,7 +998,9 @@ DOWN/UP</value>
 LK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>Scroll by {0} click:|Scroll by {0} clicks:</value>
+    <value>Scroll by 
+{0} click:|Scroll by 
+{0} clicks:</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SCROLL
@@ -1025,11 +1041,13 @@ UP</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SHRINK
-DOWN &amp; LEFT</value>
+DOWN
+&amp; LEFT</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SHRINK
-DOWN &amp; RIGHT</value>
+DOWN
+&amp; RIGHT</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SHRINK
@@ -1048,11 +1066,13 @@ RIGHT</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SHRINK
-UP &amp; LEFT</value>
+UP &amp;
+LEFT</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SHRINK
-UP &amp; RIGHT</value>
+UP &amp;
+RIGHT</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SHRINK
