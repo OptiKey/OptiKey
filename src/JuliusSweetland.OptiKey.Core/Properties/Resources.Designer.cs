@@ -6101,6 +6101,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tobii Eye Tracker 5.
+        /// </summary>
+        public static string TOBII_EYE_TRACKER_5 {
+            get {
+                return ResourceManager.GetString("TOBII_EYE_TRACKER_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tobii EyeX.
         /// </summary>
         public static string TOBII_EYEX {
@@ -6146,7 +6155,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This option will work with any Tobii Gaming eye tracker (4C, EyeX, Alienware, Steelseries, etc).
+        ///   Looks up a localized string similar to This option will work with any Tobii Gaming eye tracker (5, 4C, EyeX, Alienware, Steelseries, etc).
         /// </summary>
         public static string TOBII_EYEX_INFO {
             get {

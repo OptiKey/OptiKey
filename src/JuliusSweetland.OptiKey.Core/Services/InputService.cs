@@ -28,7 +28,6 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly object suspendRequestLock = new object();
         private IPointSource pointSource;
         private int suspendRequestCount;
-        private readonly IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
 
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point, KeyValue>> currentPositionEvent;
@@ -58,11 +57,10 @@ namespace JuliusSweetland.OptiKey.Services
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
 
             //Fixation key triggers also need the enabled state info and override times
-            var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
-            if (fixationTrigger != null)
+            if (keySelectionTriggerSource is IFixationTriggerSource fixationTrigger)
             {
                 fixationTrigger.KeyEnabledStates = keyStateService.KeyEnabledStates;
-                overrideTimesByKey = fixationTrigger.OverrideTimesByKey;
+                OverrideTimesByKey = fixationTrigger.OverrideTimesByKey;
             }
         }
 
@@ -70,7 +68,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
 
-        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get { return overrideTimesByKey; } }
+        public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get; }
 
         public IPointSource PointSource
         {
@@ -103,7 +101,7 @@ namespace JuliusSweetland.OptiKey.Services
         private SelectionModes selectionMode;
         public SelectionModes SelectionMode
         {
-            get { return selectionMode; }
+            get => selectionMode;
             set
             {
                 if (SetProperty(ref selectionMode, value))
@@ -133,14 +131,14 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (selectionProgressEvent != null)
                     {
-                        Log.Debug("SelectionProgress event has at least one listener - subscribing to relevent selection progress source");
+                        Log.Debug("SelectionProgress event has at least one listener - subscribing to relevant selection progress source");
                         CreateSelectionProgressSubscription(value);
                     }
 
                     if (selectionEvent != null 
                         || selectionResultEvent != null)
                     {
-                        Log.Debug("Selection event has at least one listener - subscribing to relevent selection trigger source");
+                        Log.Debug("Selection event has at least one listener - subscribing to relevant selection trigger source");
                         CreateSelectionSubscriptions(value);
                     }
                 }
@@ -152,7 +150,7 @@ namespace JuliusSweetland.OptiKey.Services
         private bool capturingMultiKeySelection;
         public bool CapturingMultiKeySelection
         {
-            get { return capturingMultiKeySelection; }
+            get => capturingMultiKeySelection;
             private set
             {
                 SetProperty(ref capturingMultiKeySelection, value);
@@ -419,11 +417,11 @@ namespace JuliusSweetland.OptiKey.Services
             if (selectionResultEvent != null)
             {
                 Log.DebugFormat("Publishing Selection Result event with {0} point(s), FunctionKey:'{1}', String:'{2}', Best match '{3}', Suggestion count:{4}",
-                        selectionResult.Item1 != null ? selectionResult.Item1.Count : (int?)null,
+                        selectionResult.Item1?.Count,
                         selectionResult.Item2 != null ? selectionResult.Item2.FunctionKey : null,  
                         selectionResult.Item2 != null ? selectionResult.Item2.String.ToPrintableString() : "",
                         selectionResult.Item3 != null && selectionResult.Item3.Any() ? selectionResult.Item3.First() : null,
-                        selectionResult.Item3 != null ? selectionResult.Item3.Count : (int?)null);
+                        selectionResult.Item3?.Count);
 
                 selectionResultEvent(this, selectionResult);
             }
@@ -436,10 +434,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void PublishError(object sender, Exception ex)
         {
             Log.Error("Publishing Error event (if there are any listeners)", ex);
-            if (Error != null)
-            {
-                Error(sender, ex);
-            }
+            Error?.Invoke(sender, ex);
         }
 
         #endregion

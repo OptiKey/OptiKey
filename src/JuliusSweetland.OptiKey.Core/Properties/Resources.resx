@@ -2491,4 +2491,7 @@ Magyar
   <data name="ENABLE_TRANSLATION_KEY_LABEL" xml:space="preserve">
     <value>Enable translation key? (translation auto copied)</value>
   </data>
+  <data name="TOBII_EYE_TRACKER_5" xml:space="preserve">
+    <value>Tobii Eye Tracker 5</value>
+  </data>
 </root>

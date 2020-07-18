@@ -67,6 +67,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiEyeTracker4C}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiEyeTracker5}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiEyeX}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
@@ -108,6 +111,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiEyeTracker4C}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiEyeTracker5}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiEyeX}">
