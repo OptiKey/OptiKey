@@ -249,6 +249,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             if (MessageBox.Show(Properties.Resources.QUIT_MESSAGE, Properties.Resources.QUIT, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
+                Settings.Default.CleanShutdown = true;
                 Application.Current.Shutdown();
             }
         }
