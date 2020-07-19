@@ -2773,6 +2773,37 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
         }
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("false")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual bool CleanShutdown
+        {
+            get
+            {
+                return ((bool)(this["CleanShutdown"]));
+            }
+            set
+            {
+                this["CleanShutdown"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual bool AttemptRestartUponCrash
+        {
+            get
+            {
+                return ((bool)(this["AttemptRestartUponCrash"]));
+            }
+            set
+            {
+                this["AttemptRestartUponCrash"] = value;
+            }
+        }
 
         public bool IsOverridden(string propName)
         {
