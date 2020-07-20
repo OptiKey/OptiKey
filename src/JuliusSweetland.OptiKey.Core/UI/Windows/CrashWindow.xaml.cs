@@ -21,6 +21,14 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 dt.Tick += (o, eventArgs) =>
                 {
                     this.Close();
+
+                    // The first crash might attempt a restart, but subsequent crashes shouldn't
+                    if (Settings.Default.AttemptRestartUponCrash && Settings.Default.CleanShutdown)
+                    {
+                        Settings.Default.CleanShutdown = false;
+                        Settings.Default.Save();
+                        OptiKeyApp.RestartApp();
+                    }
                 };
                 dt.Start();
             };

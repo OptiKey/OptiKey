@@ -213,6 +213,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Settings.Default.Save();
                             try
                             {
+                                Settings.Default.CleanShutdown = true;
                                 OptiKeyApp.RestartApp();
                             }
                             catch { } //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
