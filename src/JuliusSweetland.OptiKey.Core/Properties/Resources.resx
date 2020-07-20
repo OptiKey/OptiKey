@@ -2453,7 +2453,7 @@ Magyar
     <value>To use Optikey with an assistive eye tracker, you either need the new version of Windows Control, or the Tobii Eye Tracking engine. If you need to use the old version of the Tobii Windows control application (including Tobii Gaze Interaction settings), then you will need to control Optikey using mouse position instead.</value>
   </data>
   <data name="TOBII_EYEX_INFO" xml:space="preserve">
-    <value>This option will work with any Tobii Gaming eye tracker (4C, EyeX, Alienware, Steelseries, etc)</value>
+    <value>This option will work with any Tobii Gaming eye tracker (5, 4C, EyeX, Alienware, Steelseries, etc)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
     <value>The Visual Interaction myGaze is only supported if you've already installed the myGaze client drivers, which are no longer available for download. If you don't have these drivers installed, you should select use 'mouse position' instead, and use Optikey in combination with the myGaze EyeMousePlay application to move the cursor.</value>
