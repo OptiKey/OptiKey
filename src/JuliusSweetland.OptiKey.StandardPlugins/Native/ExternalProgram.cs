@@ -7,7 +7,8 @@ using System.Diagnostics;
  * It has only one method
  * 
  * 1) RUN
- *    . command: the complete command lina that will be executed by the plugin
+ *    . command: the command that will be executed by the plugin
+ *    . parameters: parameters to be passed along with the command
  * 
  * Please refer to OptiKey wiki for more information on registering and developing extensions.
  */
@@ -17,9 +18,12 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
     public class ExternalProgram
     {
         // Simply run it.
-        public void RUN(string command)
+        public void RUN(string command, string parameters = "")
         {
-            Process.Start(command);
+            if (parameters == "")
+                Process.Start(command);
+            else
+                Process.Start(command, parameters);
         }
     }
 }
