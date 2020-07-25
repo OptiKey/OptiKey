@@ -143,9 +143,15 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <Arguments>
           <Argument>
             <Name>command</Name>
-            <Description>command line that will be executed</Description>
+            <Description>command that will be executed</Description>
             <Sample>notepad.exe</Sample>
             <Required>true</Required>
+          </Argument>
+          <Argument>
+            <Name>parameters</Name>
+            <Description>parameters to be passed along with the command</Description>
+            <Sample>document.txt</Sample>
+            <Required>false</Required>
           </Argument>
         </Arguments>
         <SampleConfig>
@@ -157,6 +163,10 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     <Argument>
       <Name>command</Name>
       <Value>notepad.exe</Value>
+    </Argument>
+    <Argument>
+      <Name>parameters</Name>
+      <Value>document.txt</Value>
     </Argument>
   </Plugin>
 </DynamicKey>]]>
