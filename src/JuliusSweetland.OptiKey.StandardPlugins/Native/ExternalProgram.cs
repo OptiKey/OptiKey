@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using System;
 using System.Diagnostics;
 
 /**
@@ -18,9 +19,9 @@ namespace JuliusSweetland.OptiKey.StandardPlugins
     public class ExternalProgram
     {
         // Simply run it.
-        public void RUN(string command, string parameters = "")
+        public void RUN(string command, string parameters = null)
         {
-            if (parameters == "")
+            if (String.IsNullOrEmpty(parameters))
                 Process.Start(command);
             else
                 Process.Start(command, parameters);
