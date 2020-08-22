@@ -443,14 +443,10 @@ namespace JuliusSweetland.OptiKey.Services
         public void Maximise()
         {
             Log.Info("Maximise called");
-            var persistedState = getPersistedState();
 
             var windowState = getWindowState();
             if (windowState != WindowStates.Maximised)
             {
-                // make sure current state has been saved
-                if (persistedState)
-                    PersistSizeAndPosition();
                 savePreviousWindowState(windowState);
             }
             if (getWindowState() == WindowStates.Docked)
@@ -477,8 +473,6 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (getWindowState() != WindowStates.Minimised)
             {
-                if (persistedState)
-                    PersistSizeAndPosition();
                 savePreviousWindowState(getWindowState());
             }
             if (getWindowState() == WindowStates.Docked)
@@ -536,9 +530,6 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("OverridePersistedState called with PersistNewState {0}, WindowState {1}, Position {2}, Width {3}, Height {4}, horizontalOffset {5}, verticalOffset {6}", inPersistNewState, inWindowState, inPosition, inWidth, inHeight, inHorizontalOffset, inVerticalOffset);
 
-            // make sure current state has been saved before overriding
-            if (GetPersistedState())
-                PersistSizeAndPosition();
 
             WindowStates oldWindowState = getWindowState();
             WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState) ? newWindowState : getWindowState();
@@ -669,7 +660,7 @@ namespace JuliusSweetland.OptiKey.Services
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
         }
 
-        public void RestorePersistedState(bool saveState = false)
+        public void RestorePersistedState()
         {
             Log.Info("RestorePersistedState called");
 
@@ -678,15 +669,11 @@ namespace JuliusSweetland.OptiKey.Services
             if (getPreviousWindowState() != WindowStates.Docked && getWindowState() == WindowStates.Docked)
                 UnRegisterAppBar();
 
-            savePersistedState(saveState);
+            savePersistedState(true);
+            Log.Info("Restoring keyboard to default values");
 
-            if (saveState)
-            {
-                Log.Info("Restoring keyboard to default values");
-
-                ApplySavedState();
-                ResizeDockToFull();
-            }
+            ApplySavedState();
+            ResizeDockToFull();
         }
 
         public void Restore()
