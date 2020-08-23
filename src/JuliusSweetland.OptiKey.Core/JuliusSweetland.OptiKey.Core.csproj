@@ -585,6 +585,12 @@
     <Compile Include="UI\Views\Keyboards\Hungarian\ConversationAlpha1.xaml.cs">
       <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Italian\AlphabeticalAlpha1.xaml.cs">
+      <DependentUpon>AlphabeticalAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Italian\AlphabeticalConversationAlpha1.xaml.cs">
+      <DependentUpon>AlphabeticalConversationAlpha1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Persian\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
@@ -1556,6 +1562,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Hungarian\ConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Italian\AlphabeticalAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Italian\AlphabeticalConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
