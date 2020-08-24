@@ -443,10 +443,14 @@ namespace JuliusSweetland.OptiKey.Services
         public void Maximise()
         {
             Log.Info("Maximise called");
+            var persistedState = getPersistedState();
 
             var windowState = getWindowState();
             if (windowState != WindowStates.Maximised)
             {
+                // make sure current state has been saved
+                if (persistedState)
+                    PersistSizeAndPosition();
                 savePreviousWindowState(windowState);
             }
             if (getWindowState() == WindowStates.Docked)
@@ -473,6 +477,8 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (getWindowState() != WindowStates.Minimised)
             {
+                if (persistedState)
+                    PersistSizeAndPosition();
                 savePreviousWindowState(getWindowState());
             }
             if (getWindowState() == WindowStates.Docked)
@@ -530,6 +536,9 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("OverridePersistedState called with PersistNewState {0}, WindowState {1}, Position {2}, Width {3}, Height {4}, horizontalOffset {5}, verticalOffset {6}", inPersistNewState, inWindowState, inPosition, inWidth, inHeight, inHorizontalOffset, inVerticalOffset);
 
+            // make sure current state has been saved before overriding
+            if (GetPersistedState())
+                PersistSizeAndPosition();
 
             WindowStates oldWindowState = getWindowState();
             WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState) ? newWindowState : getWindowState();
