@@ -131,21 +131,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             MaxWidth = MinWidth = Width = width;
             MaxHeight = MinHeight = Height = height;
 
+            // Screen-centered version (TODO: use Popup Placement="Centre" instead?)
             var distanceFromLeftBoundary = screenTopLeftInWpfCoords.X + ((1d - destinationPercentage) / 2d) * screenWidth;
             var distanceFromTopBoundary = screenTopLeftInWpfCoords.Y + ((1d - destinationPercentage) / 2d) * screenHeight;
             var pointInWpfCoords = window.GetTransformFromDevice().Transform(new Point(point.X, point.Y));
 
+            // Point-centered version 
             if (!centerOnScreen)
             {
-                if (pointInWpfCoords.X - (width / 2d) < 0)
-                    distanceFromLeftBoundary = 0;
-                else
-                    distanceFromLeftBoundary = pointInWpfCoords.X + (width / 2d);
+                distanceFromLeftBoundary = (pointInWpfCoords.X - (width / 2d)).CoerceToLowerLimit(0);
+                distanceFromLeftBoundary.CoerceToUpperLimit(screenWidth - width);
 
-                if (pointInWpfCoords.Y + (height / 2d) > screenHeight)
-                    distanceFromTopBoundary = screenHeight + (height / 2d);
-                else
-                    distanceFromTopBoundary = pointInWpfCoords.Y - (height / 2d);
+                distanceFromTopBoundary = (pointInWpfCoords.Y - (height / 2d)).CoerceToLowerLimit(0);
+                distanceFromTopBoundary.CoerceToUpperLimit(screenHeight - height);
             }
 
             HorizontalOffset = distanceFromLeftBoundary;
