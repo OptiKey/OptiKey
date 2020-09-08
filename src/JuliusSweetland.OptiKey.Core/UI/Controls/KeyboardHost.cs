@@ -195,12 +195,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 keyValueByGroup?.Clear();
                 overrideTimesByKey?.Clear();
 
+                //https://github.com/OptiKey/OptiKey/pull/715
+                //Fixing issue where navigating between dynamic and conversation keyboards causing sizing problems:
+                //https://github.com/AdamRoden: "I think that because we use a dispatcher to apply the saved size and position,
+                //we get in a situation where the main thread maximizes the window before it gets resized by the dispatcher thread.
+                //My fix basically says, "don't try restoring the persisted state if we're navigating a maximized keyboard.""
                 if (!(Keyboard is ViewModelKeyboards.DynamicKeyboard)
                     && !(Keyboard is ViewModelKeyboards.ConversationAlpha1)
                     && !(Keyboard is ViewModelKeyboards.ConversationAlpha2)
                     && !(Keyboard is ViewModelKeyboards.ConversationConfirm)
                     && !(Keyboard is ViewModelKeyboards.ConversationNumericAndSymbols))
-                   windowManipulationService.RestorePersistedState();
+                {
+                    windowManipulationService.RestorePersistedState();
+                }
             }
 
             object newContent = ErrorContent;
