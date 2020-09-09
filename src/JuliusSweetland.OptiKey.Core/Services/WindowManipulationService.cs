@@ -523,8 +523,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("OverridePersistedState called with PersistNewState {0}, WindowState {1}, Position {2}, Width {3}, Height {4}, horizontalOffset {5}, verticalOffset {6}", inPersistNewState, inWindowState, inPosition, inWidth, inHeight, inHorizontalOffset, inVerticalOffset);
             
-            if (getPersistedState())
-                PersistSizeAndPosition();
+            PersistSizeAndPosition();
 
             WindowStates activeWindowState = getWindowState();
             WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState) ? newWindowState : getWindowState();
@@ -1554,6 +1553,8 @@ namespace JuliusSweetland.OptiKey.Services
         public void PersistSizeAndPosition()
         {
             Log.Info("PersistSizeAndPosition called");
+
+            if (!getPersistedState() || !SizeAndPositionIsInitialised) return;
 
             var windowState = getWindowState();
             switch (windowState)
