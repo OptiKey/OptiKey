@@ -523,7 +523,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("OverridePersistedState called with PersistNewState {0}, WindowState {1}, Position {2}, Width {3}, Height {4}, horizontalOffset {5}, verticalOffset {6}", inPersistNewState, inWindowState, inPosition, inWidth, inHeight, inHorizontalOffset, inVerticalOffset);
             
-            if (getPersistedState())
+            if (SizeAndPositionIsInitialised && getPersistedState())
                 PersistSizeAndPosition();
 
             WindowStates activeWindowState = getWindowState();
