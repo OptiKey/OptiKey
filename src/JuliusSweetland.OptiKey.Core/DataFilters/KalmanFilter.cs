@@ -19,8 +19,9 @@ namespace JuliusSweetland.OptiKey.DataFilters
 
         public double Update(double measurement)
         {
-            Gain = (EstimationConfidence + ProcessNoise) / (EstimationConfidence + ProcessNoise + MeasurementNoise);
-            EstimationConfidence = MeasurementNoise * (EstimationConfidence + ProcessNoise) / (MeasurementNoise + EstimationConfidence + ProcessNoise);
+            //The Kalman filter was not delivering the desired result so it has been replaced with a custom calculation
+            Gain = System.Math.Abs(measurement - EstimatedValue) > 500
+                ? .5 : .001 + System.Math.Abs(measurement - EstimatedValue) / 1000d;
             double result = EstimatedValue + (measurement - EstimatedValue) * Gain;
             EstimatedValue = result;
             return result;
