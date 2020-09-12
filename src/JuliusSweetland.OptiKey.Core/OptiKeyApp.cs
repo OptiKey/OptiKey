@@ -785,7 +785,7 @@ namespace JuliusSweetland.OptiKey
                         Settings.Default.PointSelectionTriggerFixationLockOnTime,
                         Settings.Default.PointSelectionTriggerFixationCompleteTime,
                         Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
-                        Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
+                        Settings.Default.PointSelectionTriggerFixationRadiusInPixels,
                         pointSource);
                     break;
 
