@@ -62,7 +62,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.ERROR_TITLE,
                             OptiKey.Properties.Resources.ERROR_MAGNIFYING,
-                            NotificationTypes.Error, () => {});
+                            NotificationTypes.Error, () => { });
 
                         Log.ErrorFormat("Caught exception: {0}", ex);
 
@@ -148,6 +148,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             HorizontalOffset = distanceFromLeftBoundary;
             VerticalOffset = distanceFromTopBoundary;
+
+            Log.Debug($"MagnifyPopup SetSizeAndPosition set Width={width}, Height={height}, HorizontalOffset={HorizontalOffset}, VerticalOffset={VerticalOffset}");
         }
 
         #endregion
@@ -187,6 +189,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             //Calculate source area
             sourceArea = new Rect(captureX, captureY, captureWidth, captureHeight);
 
+            if (sourceArea.Width <= 0)
+                throw new ArgumentOutOfRangeException(nameof(sourceArea.Width), $"SourceArea.Width was {sourceArea.Width}, which is invalid");
+
+            if (sourceArea.Height <= 0)
+                throw new ArgumentOutOfRangeException(nameof(sourceArea.Height), $"SourceArea.Height was {sourceArea.Height}, which is invalid");
+
             //Create the bitmap to copy the screen shot into
             var bitmap = new Bitmap(Convert.ToInt32(captureWidth), Convert.ToInt32(captureHeight));
 
@@ -198,6 +206,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     System.Drawing.Point.Empty,
                     new System.Drawing.Size(Convert.ToInt32(sourceArea.Width), Convert.ToInt32(sourceArea.Height)));
             }
+
+            Log.Debug($"MagnifyPopup CaptureScreenshot sourceArea calculated as {sourceArea}");
 
             return bitmap;
         }
