@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -27,6 +28,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private Screen screen;
         private Rect sourceArea;
 
+        private readonly SerialDisposable magnifyAtPointPropertyChangedSubscription = new SerialDisposable();
+
         #endregion
 
         #region Ctor
@@ -38,7 +41,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #endregion
 
-        #region On Loaded
+        #region OnLoaded / OnUnloaded
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -47,57 +50,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             screen = window.GetScreen();
             var mainViewModel = DataContext as MainViewModel;
 
-            Log.Info($"Screen detected following an OnLoaded event. Bounds={screen.Bounds}, WorkingArea={screen.WorkingArea} and IsPrimary={screen.Primary}");
-
-            //Listen for MagnifyPoint changes
-            mainViewModel.OnPropertyChanges(vm => vm.MagnifyAtPoint).Subscribe(sourcePoint =>
-            {
-                if (sourcePoint != null)
-                {
-                    SetSizeAndPosition(sourcePoint.Value);
-
-                    try
-                    {
-                        DisplayScaledScreenshot(sourcePoint.Value);
-                    }
-                    catch (System.ComponentModel.Win32Exception ex)
-                    {
-                        mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.ERROR_TITLE,
-                            OptiKey.Properties.Resources.ERROR_MAGNIFYING,
-                            NotificationTypes.Error, () => { });
-
-                        Log.ErrorFormat("Caught exception: {0}", ex);
-
-                        //Reset as much as possible
-                        mainViewModel.SelectionMode = SelectionModes.Key;
-                        mainViewModel.MagnifiedPointSelectionAction = null;
-                        mainViewModel.MagnifyAtPoint = null;
-                        mainViewModel.MagnifiedPointSelectionAction = null;
-                        mainViewModel.ShowCursor = false;
-
-                        //Return so the rest of the workflow is avoided
-                        return;
-                    }
-
-                    EventHandler<Point> pointSelectionHandler = null;
-                    pointSelectionHandler = (pointSelectionSender, point) =>
-                    {
-                        mainViewModel.PointSelection -= pointSelectionHandler; //Only react to one PointSelection event
-
-                        Point? destinationPoint = TranslateMagnifiedSelectionPoint(point);
-
-                        IsOpen = false; //Close popup before clicking - destination point may be under the magnified image
-
-                        if (mainViewModel.MagnifiedPointSelectionAction != null)
-                        {
-                            mainViewModel.MagnifiedPointSelectionAction(destinationPoint);
-                        }
-                    };
-                    mainViewModel.PointSelection += pointSelectionHandler;
-
-                    IsOpen = true;
-                }
-            });
+            Log.Info($"Screen details resolved following an OnLoaded event. Bounds={screen.Bounds}, WorkingArea={screen.WorkingArea} and IsPrimary={screen.Primary}");
 
             //Subscribe to window location changes and re-evaluate the current screen and current position
             Observable.FromEventPattern<EventHandler, EventArgs>
@@ -107,10 +60,64 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .ObserveOnDispatcher()
                 .Subscribe(_ =>
                 {
-                    Log.Info("Window's LocationChanged event detected.");
                     screen = window.GetScreen();
-                    Log.Info($"Screen detected following a Window.LocationChanged event. Bounds={screen.Bounds}, WorkingArea={screen.WorkingArea} and IsPrimary={screen.Primary}");
+                    Log.Info($"Screen details resolved following a Window.LocationChanged event. Bounds={screen.Bounds}, WorkingArea={screen.WorkingArea} and IsPrimary={screen.Primary}");
                 });
+
+            //Listen for MagnifyPoint changes
+            magnifyAtPointPropertyChangedSubscription.Disposable =
+                mainViewModel.OnPropertyChanges(vm => vm.MagnifyAtPoint)
+                    .ObserveOnDispatcher()
+                    .Subscribe(sourcePoint =>
+                    {
+                        if (sourcePoint != null)
+                        {
+                            SetSizeAndPosition(sourcePoint.Value);
+
+                            try
+                            {
+                                DisplayScaledScreenshot(sourcePoint.Value);
+                            }
+                            catch (System.ComponentModel.Win32Exception ex)
+                            {
+                                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.ERROR_TITLE,
+                                    OptiKey.Properties.Resources.ERROR_MAGNIFYING,
+                                    NotificationTypes.Error, () => { });
+
+                                Log.ErrorFormat("Caught exception: {0}", ex);
+
+                                //Reset as much as possible
+                                mainViewModel.SelectionMode = SelectionModes.Key;
+                                mainViewModel.MagnifiedPointSelectionAction = null;
+                                mainViewModel.MagnifyAtPoint = null;
+                                mainViewModel.MagnifiedPointSelectionAction = null;
+                                mainViewModel.ShowCursor = false;
+
+                                //Return so the rest of the workflow is avoided
+                                return;
+                            }
+
+                            EventHandler<Point> pointSelectionHandler = null;
+                            pointSelectionHandler = (pointSelectionSender, point) =>
+                            {
+                                mainViewModel.PointSelection -= pointSelectionHandler; //Only react to one PointSelection event
+
+                                Point? destinationPoint = TranslateMagnifiedSelectionPoint(point);
+
+                                IsOpen = false; //Close popup before clicking - destination point may be under the magnified image
+
+                                if (mainViewModel.MagnifiedPointSelectionAction != null)
+                                {
+                                    mainViewModel.MagnifiedPointSelectionAction(destinationPoint);
+                                }
+                            };
+                            mainViewModel.PointSelection += pointSelectionHandler;
+
+                            IsOpen = true;
+                        }
+                    });
+
+            Loaded -= OnLoaded; //Unhook event handler - only set this up once!
         }
 
         #endregion
@@ -152,7 +159,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             HorizontalOffset = distanceFromLeftBoundary;
             VerticalOffset = distanceFromTopBoundary;
 
-            Log.Info($"MagnifyPopup SetSizeAndPosition set Width={width}, Height={height}, HorizontalOffset={HorizontalOffset}, VerticalOffset={VerticalOffset}");
+            Log.Info($"SetSizeAndPosition set Width={width}, Height={height}, HorizontalOffset={HorizontalOffset}, VerticalOffset={VerticalOffset}");
         }
 
         #endregion
@@ -210,7 +217,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     new System.Drawing.Size(Convert.ToInt32(sourceArea.Width), Convert.ToInt32(sourceArea.Height)));
             }
 
-            Log.Info($"MagnifyPopup CaptureScreenshot sourceArea calculated as {sourceArea}");
+            Log.Info($"CaptureScreenshot sourceArea calculated as {sourceArea}");
 
             return bitmap;
         }
