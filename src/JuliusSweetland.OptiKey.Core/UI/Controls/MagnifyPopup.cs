@@ -47,6 +47,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             screen = window.GetScreen();
             var mainViewModel = DataContext as MainViewModel;
 
+            Log.Info($"Screen detected following an OnLoaded event. Bounds={screen.Bounds}, WorkingArea={screen.WorkingArea} and IsPrimary={screen.Primary}");
+
             //Listen for MagnifyPoint changes
             mainViewModel.OnPropertyChanges(vm => vm.MagnifyAtPoint).Subscribe(sourcePoint =>
             {
@@ -105,8 +107,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .ObserveOnDispatcher()
                 .Subscribe(_ =>
                 {
-                    Log.Debug("Window's LocationChanged event detected.");
+                    Log.Info("Window's LocationChanged event detected.");
                     screen = window.GetScreen();
+                    Log.Info($"Screen detected following a Window.LocationChanged event. Bounds={screen.Bounds}, WorkingArea={screen.WorkingArea} and IsPrimary={screen.Primary}");
                 });
         }
 
@@ -149,7 +152,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             HorizontalOffset = distanceFromLeftBoundary;
             VerticalOffset = distanceFromTopBoundary;
 
-            Log.Debug($"MagnifyPopup SetSizeAndPosition set Width={width}, Height={height}, HorizontalOffset={HorizontalOffset}, VerticalOffset={VerticalOffset}");
+            Log.Info($"MagnifyPopup SetSizeAndPosition set Width={width}, Height={height}, HorizontalOffset={HorizontalOffset}, VerticalOffset={VerticalOffset}");
         }
 
         #endregion
@@ -207,7 +210,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     new System.Drawing.Size(Convert.ToInt32(sourceArea.Width), Convert.ToInt32(sourceArea.Height)));
             }
 
-            Log.Debug($"MagnifyPopup CaptureScreenshot sourceArea calculated as {sourceArea}");
+            Log.Info($"MagnifyPopup CaptureScreenshot sourceArea calculated as {sourceArea}");
 
             return bitmap;
         }
