@@ -205,6 +205,8 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 case PointsSources.IrisbondDuo: return InstallerStrings.IRISBOND_DUO_INFO[culture];
                 case PointsSources.MousePosition: return InstallerStrings.MOUSE_POSITION_INFO[culture];
                 case PointsSources.TobiiEyeX: return InstallerStrings.TOBII_EYEX_INFO[culture];
+                case PointsSources.TobiiEyeTracker4C: return InstallerStrings.TOBII_EYEX_INFO[culture];
+                case PointsSources.TobiiEyeTracker5: return InstallerStrings.TOBII_EYEX_INFO[culture];
                 case PointsSources.TobiiRex: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
                 case PointsSources.TobiiPcEyeGo: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
                 case PointsSources.TobiiPcEyeGoPlus: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
