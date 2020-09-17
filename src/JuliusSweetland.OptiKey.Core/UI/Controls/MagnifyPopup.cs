@@ -153,12 +153,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             // Point-centered version 
             if (!centerOnScreen)
             {
-                var croppedWidth = 2 * Math.Min(pointInWpfCoords.X - screenTopLeftInWpfCoords.X, screenBottomRightInWpfCoords.X - pointInWpfCoords.X);
-                var croppedHeight = 2 * Math.Min(pointInWpfCoords.Y - screenTopLeftInWpfCoords.Y, screenBottomRightInWpfCoords.Y - pointInWpfCoords.Y);
+                var widthCropped = Math.Min(pointInWpfCoords.X - screenTopLeftInWpfCoords.X, screenBottomRightInWpfCoords.X - pointInWpfCoords.X)
+                    .CoerceToUpperLimit(width / 2d) + width / 2d;
+                var heightCropped = Math.Min(pointInWpfCoords.Y - screenTopLeftInWpfCoords.Y, screenBottomRightInWpfCoords.Y - pointInWpfCoords.Y)
+                    .CoerceToUpperLimit(height / 2d) + height / 2d;
 
-                destinationPercentage = Math.Min(Math.Min(destinationPercentage, croppedWidth / screenWidth), croppedHeight / screenHeight)
-                    .CoerceToLowerLimit(destinationPercentage / 2d);
-                
+                var minSize = destinationPercentage - .6 * Math.Pow(destinationPercentage, 2);
+                destinationPercentage = (widthCropped / screenWidth).Clamp(minSize, destinationPercentage);
+                destinationPercentage = (heightCropped / screenHeight).Clamp(minSize, destinationPercentage);
+
                 width = destinationPercentage * screenWidth;
                 height = destinationPercentage * screenHeight;
 
