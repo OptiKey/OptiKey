@@ -14,5 +14,10 @@ namespace JuliusSweetland.OptiKey.Extensions
         {
             return Math.Max(value, lowerLimit);
         }
+
+        public static double Clamp(this double value, double lowerLimit, double upperLimit)
+        {
+            return Math.Min(Math.Max(value, lowerLimit), upperLimit);
+        }
     }
 }
