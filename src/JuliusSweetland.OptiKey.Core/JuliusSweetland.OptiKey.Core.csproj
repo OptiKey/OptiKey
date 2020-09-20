@@ -425,6 +425,8 @@
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Alpha3.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboardSelector.cs" />
     <Compile Include="UI\Controls\ToastNotification.cs" />
@@ -580,6 +582,18 @@
     <Compile Include="UI\Views\Keyboards\Common\CommuniKate.xaml.cs">
       <DependentUpon>CommuniKate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Hindi\ConversationNumericAndSymbols.xaml.cs">
+      <DependentUpon>ConversationNumericAndSymbols.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hindi\NumericAndSymbols1.xaml.cs">
+      <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hindi\NumericAndSymbols2.xaml.cs">
+      <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hindi\NumericAndSymbols3.xaml.cs">
+      <DependentUpon>NumericAndSymbols3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Hungarian\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
@@ -591,6 +605,18 @@
     </Compile>
     <Compile Include="UI\Views\Keyboards\Italian\AlphabeticalConversationAlpha1.xaml.cs">
       <DependentUpon>AlphabeticalConversationAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hindi\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hindi\Alpha2.xaml.cs">
+      <DependentUpon>Alpha2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hindi\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Hindi\ConversationAlpha2.xaml.cs">
+      <DependentUpon>ConversationAlpha2.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Persian\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
@@ -950,6 +976,9 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <Content Include="Dictionaries\HungarianHungary.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\HindiIndia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="NOTES AND DISCLAIMER.txt">
@@ -1558,6 +1587,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Keyboards\Hindi\ConversationNumericAndSymbols.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hindi\NumericAndSymbols1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hindi\NumericAndSymbols2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hindi\NumericAndSymbols3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\Hungarian\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1571,6 +1616,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Italian\AlphabeticalConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hindi\Alpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hindi\Alpha2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hindi\ConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Hindi\ConversationAlpha2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

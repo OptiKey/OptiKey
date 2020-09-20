@@ -31,6 +31,7 @@ using GeorgianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Georgian;
 using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
 using GreekViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek;
 using HebrewViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Hebrew;
+using HindiViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Hindi;
 using HungarianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Hungarian;
 using ItalianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Italian;
 using JapaneseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Japanese;
@@ -267,7 +268,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             ? (object)new HebrewViews.SimplifiedAlpha1 { DataContext = Keyboard }
                             : new HebrewViews.Alpha1 { DataContext = Keyboard };
                         break;
-                    case Languages.HungarianHungary:
+                    case Languages.HindiIndia:
+                        newContent = new HindiViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                        case Languages.HungarianHungary:
                         newContent = new HungarianViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.ItalianItaly:
@@ -334,6 +338,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.HebrewIsrael:
                         newContent = new HebrewViews.Alpha2 { DataContext = Keyboard };
                         break;
+                    case Languages.HindiIndia:
+                        newContent = new HindiViews.Alpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.JapaneseJapan:
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new JapaneseViews.SimplifiedAlpha2 { DataContext = Keyboard }
@@ -350,6 +357,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                 }
             }
+            //else if (Keyboard is ViewModelKeyboards.Alpha3)
+            //{
+            //    switch (Settings.Default.KeyboardAndDictionaryLanguage)
+            //    {
+            //        case Languages.PlaceholderForALanguageWith3AlphaKeyboards:
+            //            newContent = new PlaceholderForALanguageWith3AlphaKeyboardsViews.Alpha3 {DataContext = Keyboard};
+            //            break;
+            //    }
+            //}
             else if (Keyboard is ViewModelKeyboards.ConversationAlpha1)
             {
                 if (Settings.Default.UsingCommuniKateKeyboardLayout)
@@ -404,6 +420,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new HebrewViews.SimplifiedConversationAlpha1 { DataContext = Keyboard }
                             : new HebrewViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.HindiIndia:
+                        newContent = new HindiViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.HungarianHungary:
                         newContent = new HungarianViews.ConversationAlpha1 { DataContext = Keyboard };
@@ -467,6 +486,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.HindiIndia:
+                        newContent = new HindiViews.ConversationAlpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.JapaneseJapan:
                         newContent = new JapaneseViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
@@ -481,6 +503,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                 }
             }
+            //else if (Keyboard is ViewModelKeyboards.ConversationAlpha3)
+            //{
+            //    switch (Settings.Default.KeyboardAndDictionaryLanguage)
+            //    {
+            //        case Languages.PlaceholderForALanguageWith3AlphaKeyboards:
+            //            newContent = new PlaceholderForALanguageWith3AlphaKeyboardsViews.ConversationAlpha3 { DataContext = Keyboard };
+            //            break;
+            //    }
+            //}
             else if (Keyboard is ViewModelKeyboards.ConversationConfirm)
             {
                 newContent = new CommonViews.ConversationConfirm { DataContext = Keyboard };
@@ -489,6 +520,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.HindiIndia:
+                        newContent = new HindiViews.ConversationNumericAndSymbols { DataContext = Keyboard };
+                        break;
                     case Languages.PersianIran:
                         newContent = new PersianViews.ConversationNumericAndSymbols { DataContext = Keyboard };
                         break;
@@ -550,6 +584,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.HindiIndia:
+                        newContent = new HindiViews.NumericAndSymbols1 { DataContext = Keyboard };
+                        break;
                     case Languages.PersianIran:
                         newContent = new PersianViews.NumericAndSymbols1 { DataContext = Keyboard };
                         break;
@@ -565,6 +602,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.HindiIndia:
+                        newContent = new HindiViews.NumericAndSymbols2 { DataContext = Keyboard };
+                        break;
                     case Languages.PersianIran:
                         newContent = new PersianViews.NumericAndSymbols2 { DataContext = Keyboard };
                         break;
@@ -580,6 +620,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.HindiIndia:
+                        newContent = new HindiViews.NumericAndSymbols3 { DataContext = Keyboard };
+                        break;
                     case Languages.PersianIran:
                         newContent = new PersianViews.NumericAndSymbols3 { DataContext = Keyboard };
                         break;

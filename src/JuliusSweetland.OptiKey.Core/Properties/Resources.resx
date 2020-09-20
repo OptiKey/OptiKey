@@ -2494,4 +2494,13 @@ Magyar
   <data name="TOBII_EYE_TRACKER_5" xml:space="preserve">
     <value>Tobii Eye Tracker 5</value>
   </data>
+  <data name="HINDI_INDIA" xml:space="preserve">
+    <value>Hindi (India) / हिन्दी (भारत)</value>
+  </data>
+  <data name="HINDI_INDIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Hindi
+(India) /
+हिन्दी
+(भारत)</value>
+  </data>
 </root>

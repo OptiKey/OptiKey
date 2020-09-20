@@ -47,6 +47,26 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CombiningCircumflexKey = new KeyValue("\x0302");
         public static readonly KeyValue CombiningCommaAboveOrSmoothBreathingKey = new KeyValue("\x0313");
         public static readonly KeyValue CombiningCyrillicPsiliPneumataOrSmoothBreathingKey = new KeyValue("\x0486");
+
+        //Hindi characters - these are NOT actually combining characters, but spacing characters which appear to combine - left here in case I'm wrong and I need them back!
+        //public static readonly KeyValue CombiningDevanagariSignAnusvara = new KeyValue("\x0902");
+        //public static readonly KeyValue CombiningDevanagariSignCandrabindu = new KeyValue("\x0901"); //Combining version in 301 - why?
+        //public static readonly KeyValue CombiningDevanagariSignNukta = new KeyValue("\x093C");
+        //public static readonly KeyValue CombiningDevanagariSignVirama = new KeyValue("\x094D");
+        //public static readonly KeyValue CombiningDevanagariSignVisarga = new KeyValue("\x0903");
+        //public static readonly KeyValue CombiningDevanagariVowelSignAA = new KeyValue("\x093E");
+        //public static readonly KeyValue CombiningDevanagariVowelSignAI = new KeyValue("\x0948");
+        //public static readonly KeyValue CombiningDevanagariVowelSignAU = new KeyValue("\x094C");
+        //public static readonly KeyValue CombiningDevanagariVowelSignCandraE = new KeyValue("\x0945");
+        //public static readonly KeyValue CombiningDevanagariVowelSignCandraO = new KeyValue("\x0949");
+        //public static readonly KeyValue CombiningDevanagariVowelSignE = new KeyValue("\x0947");
+        //public static readonly KeyValue CombiningDevanagariVowelSignI = new KeyValue("\x093F");
+        //public static readonly KeyValue CombiningDevanagariVowelSignII = new KeyValue("\x0940");
+        //public static readonly KeyValue CombiningDevanagariVowelSignO = new KeyValue("\x094B");
+        //public static readonly KeyValue CombiningDevanagariVowelSignU = new KeyValue("\x0941");
+        //public static readonly KeyValue CombiningDevanagariVowelSignUU = new KeyValue("\x0942");
+        //public static readonly KeyValue CombiningDevanagariVowelSignVocalicR = new KeyValue("\x0943");
+        
         public static readonly KeyValue CombiningDiaeresisOrUmlautKey = new KeyValue("\x0308");
         public static readonly KeyValue CombiningDotAboveKey = new KeyValue("\x0307");
         public static readonly KeyValue CombiningDotAboveRightKey = new KeyValue("\x0358");
@@ -132,6 +152,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue GermanGermanyKey = new KeyValue(FunctionKeys.GermanGermany);
         public static readonly KeyValue GreekGreeceKey = new KeyValue(FunctionKeys.GreekGreece);
         public static readonly KeyValue HebrewIsraelKey = new KeyValue(FunctionKeys.HebrewIsrael);
+        public static readonly KeyValue HindiIndiaKey = new KeyValue(FunctionKeys.HindiIndia);
         public static readonly KeyValue HomeKey = new KeyValue(FunctionKeys.Home);
         public static readonly KeyValue HungarianHungaryKey = new KeyValue(FunctionKeys.HungarianHungary);
         public static readonly KeyValue IncreaseOpacityKey = new KeyValue(FunctionKeys.IncreaseOpacity);
