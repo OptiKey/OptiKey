@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
+using System.Diagnostics;
 using System.Reactive.Disposables;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,32 +11,32 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
     public static class TextBoxBehaviours
     {
         public static readonly DependencyProperty CaretElementProperty =
-            DependencyProperty.RegisterAttached("CaretElement", typeof(UIElement), typeof(TextBoxBehaviours),
-            new PropertyMetadata(default(UIElement), CaretElementChanged));
+            DependencyProperty.RegisterAttached("CaretElement", typeof(FrameworkElement), typeof(TextBoxBehaviours),
+            new PropertyMetadata(default(FrameworkElement), CaretElementChanged));
 
         private static void CaretElementChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var textBox = dependencyObject as TextBox;
-            var caretElement = dependencyPropertyChangedEventArgs.NewValue as UIElement;
-
-            if (textBox != null
-                && caretElement != null)
+            if (dependencyObject is TextBox textBox
+                && dependencyPropertyChangedEventArgs.NewValue is FrameworkElement caretElement)
             {
-                PositionCaret(textBox, caretElement);
-
-                var compositeDisposable = new CompositeDisposable
+                CompositeDisposable compositeDisposable = null;
+                textBox.Loaded += (_, __) =>
                 {
-                    textBox.OnPropertyChanges<string>(TextBox.TextProperty).Subscribe(_ => PositionCaret(textBox, caretElement)),
-                    textBox.OnPropertyChanges<double>(Control.FontSizeProperty).Subscribe(_ => PositionCaret(textBox, caretElement)),
-                    textBox.OnPropertyChanges<double>(FrameworkElement.ActualWidthProperty).Subscribe(_ => PositionCaret(textBox, caretElement)),
-                    textBox.OnPropertyChanges<double>(FrameworkElement.ActualHeightProperty).Subscribe(_ => PositionCaret(textBox, caretElement))
+                    PositionCaret(textBox, caretElement);
+
+                    compositeDisposable = new CompositeDisposable
+                    {
+                        textBox.OnPropertyChanges<string>(TextBox.TextProperty).Subscribe(___ => PositionCaret(textBox, caretElement)),
+                        textBox.OnPropertyChanges<double>(Control.FontSizeProperty).Subscribe(___ => PositionCaret(textBox, caretElement)),
+                        textBox.OnPropertyChanges<double>(FrameworkElement.ActualWidthProperty).Subscribe(___ => PositionCaret(textBox, caretElement)),
+                        textBox.OnPropertyChanges<double>(FrameworkElement.ActualHeightProperty).Subscribe(___ => PositionCaret(textBox, caretElement))
+                    };
                 };
 
                 textBox.Unloaded += (_, __) =>
                 {
-                    compositeDisposable.Dispose();
-                    textBox = null;
-                    caretElement = null;
+                    compositeDisposable?.Dispose();
+                    compositeDisposable = null;
                 };
             }
         }

@@ -2311,6 +2311,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hindi (India) / हिन्दी (भारत).
+        /// </summary>
+        public static string HINDI_INDIA {
+            get {
+                return ResourceManager.GetString("HINDI_INDIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hindi
+        ///(India) /
+        ///हिन्दी
+        ///(भारत).
+        /// </summary>
+        public static string HINDI_INDIA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("HINDI_INDIA_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HOME.
         /// </summary>
         public static string HOME {

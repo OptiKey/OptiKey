@@ -670,6 +670,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new Alpha2();
                     break;
 
+                case FunctionKeys.Alpha3Keyboard:
+                    Log.Info("Changing keyboard to Alpha3.");
+                    Keyboard = new Alpha3();
+                    break;
+
                 case FunctionKeys.Attention:
                     audioService.PlaySound(Settings.Default.AttentionSoundFile,
                         Settings.Default.AttentionSoundVolume);
@@ -769,20 +774,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     var opacityBeforeConversationAlpha1 = mainWindowManipulationService.GetOpacity();
                     Action conversationAlpha1BackAction = currentKeyboard is ConversationAlpha2
                         ? ((ConversationAlpha2)currentKeyboard).BackAction
-                        : currentKeyboard is ConversationNumericAndSymbols
-                            ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
-                            : currentKeyboard is SimplifiedConversationAlpha
-                                ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
-                                : currentKeyboard is ConversationConfirm
-                                    ? ((ConversationConfirm)currentKeyboard).BackAction
-                                    : () =>
-                                    {
-                                        Log.Info("Restoring window size.");
-                                        mainWindowManipulationService.Restore();
-                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha1);
-                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha1);
-                                        Keyboard = currentKeyboard;
-                                    };
+                        : currentKeyboard is ConversationAlpha3
+                            ? ((ConversationAlpha3)currentKeyboard).BackAction
+                            : currentKeyboard is ConversationNumericAndSymbols
+                                ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                                : currentKeyboard is SimplifiedConversationAlpha
+                                    ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
+                                    : currentKeyboard is ConversationConfirm
+                                        ? ((ConversationConfirm)currentKeyboard).BackAction
+                                        : () =>
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                            Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha1);
+                                            mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha1);
+                                            Keyboard = currentKeyboard;
+                                        };
                     Keyboard = new ConversationAlpha1(conversationAlpha1BackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
@@ -795,7 +802,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     var opacityBeforeConversationAlpha2 = mainWindowManipulationService.GetOpacity();
                     Action conversationAlpha2BackAction = currentKeyboard is ConversationAlpha1
                         ? ((ConversationAlpha1)currentKeyboard).BackAction
-                        : currentKeyboard is ConversationNumericAndSymbols
+                        : currentKeyboard is ConversationAlpha3
+                            ? ((ConversationAlpha3)currentKeyboard).BackAction
+                            : currentKeyboard is ConversationNumericAndSymbols
+                                ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                                : currentKeyboard is SimplifiedConversationAlpha
+                                    ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
+                                    : currentKeyboard is ConversationConfirm
+                                        ? ((ConversationConfirm)currentKeyboard).BackAction
+                                        : () =>
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                            Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha2);
+                                            mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha2);
+                                            Keyboard = currentKeyboard;
+                                        };
+                    Keyboard = new ConversationAlpha2(conversationAlpha2BackAction);
+                    Log.Info("Maximising window.");
+                    mainWindowManipulationService.Maximise();
+                    Log.InfoFormat("Setting opacity to 1 (fully opaque)");
+                    mainWindowManipulationService.SetOpacity(1);
+                    break;
+
+                case FunctionKeys.ConversationAlpha3Keyboard:
+                    Log.Info("Changing keyboard to ConversationAlpha3.");
+                    var opacityBeforeConversationAlpha3 = mainWindowManipulationService.GetOpacity();
+                    Action conversationAlpha3BackAction = currentKeyboard is ConversationAlpha1
+                        ? ((ConversationAlpha1)currentKeyboard).BackAction
+                        : currentKeyboard is ConversationAlpha2
+                            ? ((ConversationAlpha2)currentKeyboard).BackAction
+                            : currentKeyboard is ConversationNumericAndSymbols
                             ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
                             : currentKeyboard is SimplifiedConversationAlpha
                                 ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
@@ -805,11 +842,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     {
                                         Log.Info("Restoring window size.");
                                         mainWindowManipulationService.Restore();
-                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha2);
-                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha2);
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha3);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha3);
                                         Keyboard = currentKeyboard;
                                     };
-                    Keyboard = new ConversationAlpha2(conversationAlpha2BackAction);
+                    Keyboard = new ConversationAlpha3(conversationAlpha3BackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
                     Log.InfoFormat("Setting opacity to 1 (fully opaque)");
@@ -1134,6 +1171,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.HebrewIsrael:
                     SelectLanguage(Languages.HebrewIsrael);
+                    break;
+
+                case FunctionKeys.HindiIndia:
+                    SelectLanguage(Languages.HindiIndia);
                     break;
 
                 case FunctionKeys.HungarianHungary:

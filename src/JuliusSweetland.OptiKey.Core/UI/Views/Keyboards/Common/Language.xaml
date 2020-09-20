@@ -116,69 +116,70 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.HebrewIsraelKey}"/>
                             <controls:Key Grid.Row="2" Grid.Column="4"
+                                          Text="{x:Static resx:Resources.HINDI_INDIA_SPLIT_WITH_NEWLINE}"
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static models:KeyValues.HindiIndiaKey}"/>
+                            <controls:Key Grid.Row="2" Grid.Column="5"
                                             Text="{x:Static resx:Resources.HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE}"
                                             SharedSizeGroup="KeyWithText"
                                             Value="{x:Static models:KeyValues.HungarianHungaryKey}"/>    
-                            <controls:Key Grid.Row="2" Grid.Column="5"
+                            <controls:Key Grid.Row="3" Grid.Column="0"
                                           Text="{x:Static resx:Resources.ITALIAN_ITALY_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.ItalianItalyKey}"/>
-                            <controls:Key Grid.Row="3" Grid.Column="0"
+                            <controls:Key Grid.Row="3" Grid.Column="1"
                                           Text="{x:Static resx:Resources.JAPANESE_JAPAN_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.JapaneseJapanKey}"/>
-                            
-                            <controls:Key Grid.Row="3" Grid.Column="1"
+                            <controls:Key Grid.Row="3" Grid.Column="2"
                                           Text="{x:Static resx:Resources.KOREAN_KOREA_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.KoreanKoreaKey}"/>
-                            <controls:Key Grid.Row="3" Grid.Column="2"
+                            <controls:Key Grid.Row="3" Grid.Column="3"
                                           Text="{x:Static resx:Resources.PERSIAN_IRAN_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.PersianIranKey}"/>
-                            <controls:Key Grid.Row="3" Grid.Column="3"
+                            <controls:Key Grid.Row="3" Grid.Column="4"
                                           Text="{x:Static resx:Resources.POLISH_POLAND_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.PolishPolandKey}"/>
-                            <controls:Key Grid.Row="3" Grid.Column="4"
+                            <controls:Key Grid.Row="3" Grid.Column="5"
                                           Text="{x:Static resx:Resources.PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.PortuguesePortugalKey}"/>
-                            <controls:Key Grid.Row="3" Grid.Column="5"
+                            <controls:Key Grid.Row="4" Grid.Column="0"
                                           Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
-                            <controls:Key Grid.Row="4" Grid.Column="0"
+                            <controls:Key Grid.Row="4" Grid.Column="1"
                                           Text="{x:Static resx:Resources.SERBIAN_SERBIA_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.SerbianSerbiaKey}"/>
-                            
-                            <controls:Key Grid.Row="4" Grid.Column="1"
+                            <controls:Key Grid.Row="4" Grid.Column="2"
                                           Text="{x:Static resx:Resources.SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.SlovakSlovakiaKey}"/>
-                            <controls:Key Grid.Row="4" Grid.Column="2"
+                            <controls:Key Grid.Row="4" Grid.Column="3"
                                           Text="{x:Static resx:Resources.SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.SlovenianSloveniaKey}"/>
-                            <controls:Key Grid.Row="4" Grid.Column="3"
+                            <controls:Key Grid.Row="4" Grid.Column="4"
                                           Text="{x:Static resx:Resources.SPANISH_SPAIN_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.SpanishSpainKey}"/>
-                            <controls:Key Grid.Row="4" Grid.Column="4"
+                            <controls:Key Grid.Row="4" Grid.Column="5"
                                           Text="{x:Static resx:Resources.TURKISH_TURKEY_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.TurkishTurkeyKey}"/>
-                            <controls:Key Grid.Row="4" Grid.Column="5"
+                            <controls:Key Grid.Row="5" Grid.Column="0"
                                           Text="{x:Static resx:Resources.UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.UkrainianUkraineKey}"/>
-                            <controls:Key Grid.Row="5" Grid.Column="0"
+                            <controls:Key Grid.Row="5" Grid.Column="1"
                                           Text="{x:Static resx:Resources.URDU_PAKISTAN_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.UrduPakistanKey}"/>
-                            
-                            <controls:Key Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6"
+                            <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="4"
                                           Text="{x:Static resx:Resources.BACK}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
@@ -285,69 +286,73 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.HebrewIsraelKey}"/>
                                     <controls:Key Grid.Row="3" Grid.Column="1"
+                                                  Text="{x:Static resx:Resources.HINDI_INDIA_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static models:KeyValues.HindiIndiaKey}"/>
+                                    <controls:Key Grid.Row="3" Grid.Column="2"
                                                 Text="{x:Static resx:Resources.HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE}"
                                                 SharedSizeGroup="KeyWithText"
                                                 Value="{x:Static models:KeyValues.HungarianHungaryKey}"/>
-                                    <controls:Key Grid.Row="3" Grid.Column="2"
+                                    <controls:Key Grid.Row="3" Grid.Column="3"
                                                   Text="{x:Static resx:Resources.ITALIAN_ITALY_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.ItalianItalyKey}"/>
-                                    <controls:Key Grid.Row="3" Grid.Column="3"
+                                    <controls:Key Grid.Row="3" Grid.Column="4"
                                                   Text="{x:Static resx:Resources.JAPANESE_JAPAN_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.JapaneseJapanKey}"/>
-                                    <controls:Key Grid.Row="3" Grid.Column="4"
+                                    
+                                    <controls:Key Grid.Row="4" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.KOREAN_KOREA_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.KoreanKoreaKey}"/>
-
-                                    <controls:Key Grid.Row="4" Grid.Column="0"
+                                    <controls:Key Grid.Row="4" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.PERSIAN_IRAN_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.PersianIranKey}"/>
-                                    <controls:Key Grid.Row="4" Grid.Column="1"
+                                    <controls:Key Grid.Row="4" Grid.Column="2"
                                                   Text="{x:Static resx:Resources.POLISH_POLAND_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.PolishPolandKey}"/>
-                                    <controls:Key Grid.Row="4" Grid.Column="2"
+                                    <controls:Key Grid.Row="4" Grid.Column="3"
                                                   Text="{x:Static resx:Resources.PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.PortuguesePortugalKey}"/>                                    
-                                    <controls:Key Grid.Row="4" Grid.Column="3"
+                                    <controls:Key Grid.Row="4" Grid.Column="4"
                                                   Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
-                                    <controls:Key Grid.Row="4" Grid.Column="4"
+
+                                    <controls:Key Grid.Row="5" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.SERBIAN_SERBIA_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.SerbianSerbiaKey}"/>
-
-                                    <controls:Key Grid.Row="5" Grid.Column="0"
+                                    <controls:Key Grid.Row="5" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.SlovakSlovakiaKey}"/>
-                                    <controls:Key Grid.Row="5" Grid.Column="1"
+                                    <controls:Key Grid.Row="5" Grid.Column="2"
                                                   Text="{x:Static resx:Resources.SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.SlovenianSloveniaKey}"/>
-                                    <controls:Key Grid.Row="5" Grid.Column="2"
+                                    <controls:Key Grid.Row="5" Grid.Column="3"
                                                   Text="{x:Static resx:Resources.SPANISH_SPAIN_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.SpanishSpainKey}"/>
-                                    <controls:Key Grid.Row="5" Grid.Column="3"
+                                    <controls:Key Grid.Row="5" Grid.Column="4"
                                                   Text="{x:Static resx:Resources.TURKISH_TURKEY_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.TurkishTurkeyKey}"/>
-                                    <controls:Key Grid.Row="5" Grid.Column="4"
+                                    
+                                    <controls:Key Grid.Row="6" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.UkrainianUkraineKey}"/>
-
-                                    <controls:Key Grid.Row="6" Grid.Column="0"
+                                    <controls:Key Grid.Row="6" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.URDU_PAKISTAN_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.UrduPakistanKey}"/>
-                                    <controls:Key Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"
+                                    <controls:Key Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>

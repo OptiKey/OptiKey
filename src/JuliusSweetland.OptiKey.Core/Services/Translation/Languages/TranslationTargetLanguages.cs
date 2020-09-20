@@ -29,6 +29,7 @@ namespace JuliusSweetland.OptiKey.Services.Translation.Languages
         public static String GERMAN { get { return "de"; } }
         public static String GREEK { get { return "el"; } }
         public static String HEBREW { get { return "he"; } }
+        public static String HINDI { get { return "hi"; } }
         public static String HUNGARIAN { get { return "hu"; } }
         public static String ITALIAN { get { return "it"; } }
         public static String KAZAKH { get { return "kk"; } }

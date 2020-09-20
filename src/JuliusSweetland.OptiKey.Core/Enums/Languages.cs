@@ -22,6 +22,8 @@ namespace JuliusSweetland.OptiKey.Enums
         GermanGermany,
         GreekGreece,
         HebrewIsrael,
+        HindiIndia,
+        HungarianHungary,
         ItalianItaly,
         JapaneseJapan,
         KoreanKorea,
@@ -35,8 +37,7 @@ namespace JuliusSweetland.OptiKey.Enums
         SpanishSpain,
         TurkishTurkey,
         UkrainianUkraine,
-        UrduPakistan,
-        HungarianHungary
+        UrduPakistan
     }
 
     public static partial class EnumExtensions
@@ -61,6 +62,8 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.GermanGermany: return Resources.GERMAN_GERMANY;
                 case Languages.GreekGreece: return Resources.GREEK_GREECE;
                 case Languages.HebrewIsrael: return Resources.HEBREW_ISRAEL;
+                case Languages.HindiIndia: return Resources.HINDI_INDIA;
+                case Languages.HungarianHungary: return Resources.HUNGARIAN_HUNGARY;
                 case Languages.ItalianItaly: return Resources.ITALIAN_ITALY;
                 case Languages.JapaneseJapan: return Resources.JAPANESE_JAPAN;
                 case Languages.KoreanKorea: return Resources.KOREAN_KOREA;
@@ -75,7 +78,6 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return Resources.TURKISH_TURKEY;
                 case Languages.UkrainianUkraine: return Resources.UKRAINIAN_UKRAINE;
                 case Languages.UrduPakistan: return Resources.URDU_PAKISTAN;
-                case Languages.HungarianHungary: return Resources.HUNGARIAN_HUNGARY;
             }
 
             return language.ToString();
@@ -101,6 +103,8 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.GermanGermany: return CultureInfo.GetCultureInfo("de-DE");
                 case Languages.GreekGreece: return CultureInfo.GetCultureInfo("el-GR");
                 case Languages.HebrewIsrael: return CultureInfo.GetCultureInfo("he-IL");
+                case Languages.HindiIndia: return CultureInfo.GetCultureInfo("hi-IN");
+                case Languages.HungarianHungary: return CultureInfo.GetCultureInfo("hu-HU");
                 case Languages.ItalianItaly: return CultureInfo.GetCultureInfo("it-IT");
                 case Languages.JapaneseJapan: return CultureInfo.GetCultureInfo("ja-JP");
                 case Languages.KoreanKorea: return CultureInfo.GetCultureInfo("ko-KR");
@@ -115,7 +119,6 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return CultureInfo.GetCultureInfo("tr-TR");
                 case Languages.UkrainianUkraine: return CultureInfo.GetCultureInfo("uk-UA");
                 case Languages.UrduPakistan: return CultureInfo.GetCultureInfo("ur-PK");
-                case Languages.HungarianHungary: return CultureInfo.GetCultureInfo("hu-HU");
             }
             return CultureInfo.GetCultureInfo("en-GB");
         }
