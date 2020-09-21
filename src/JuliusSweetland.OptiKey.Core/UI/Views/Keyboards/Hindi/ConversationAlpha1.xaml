@@ -61,65 +61,65 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="&#x0901;"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0901;" />
-        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="&#x0902;"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0902;" />
-        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="&#x0903;"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0903;" />
-        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="&#x093C;"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x093C;" />
-        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="&#x093E;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x093E;" />
-        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
                       Text="&#x093F;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x093F;" />
-        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="&#x0940;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x0940;" />
-        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
                       Text="&#x0941;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x0941;" />
-        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="&#x0942;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x0942;" />
-        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                      Text="&#x0943;"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0943;" />
-        <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
                       Text="&#x0947;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x0947;" />
-        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
                       Text="&#x0948;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x0948;" />
+        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
+                      Text="&#x094B;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x094B;" />
+        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
+                      Text="&#x094C;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x094C;" />
+        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
+                      Text="&#x0902;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0902;" />
+        <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
+                      Text="&#x0903;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0903;" />
+        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
+                      Text="&#x0901;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0901;" />
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="&#x094D;"
@@ -242,10 +242,10 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value=","/>
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="&#x094B;"
+                      Text="&#x093C;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x094B;" />
+                      Value="&#x093C;" />
         <controls:Key Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
@@ -253,10 +253,10 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="&#x094C;"
+                      Text="&#x0943;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x094C;" />
+                      Value="&#x0943;" />
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
                       Text="."
                       SharedSizeGroup="KeyWithSingleLetter"
