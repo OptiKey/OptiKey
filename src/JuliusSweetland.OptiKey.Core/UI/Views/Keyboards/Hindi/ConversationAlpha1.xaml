@@ -265,11 +265,15 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Text="'"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="'"/>
-        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2" Case="None"
+                      Text="॰"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="॰"/>
+        <!--<controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>
+                      Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>-->
         <ContentControl Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
