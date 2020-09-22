@@ -2,12 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
-using System.Runtime.Serialization;
-using System.Security.Permissions;
 using System.Text;
-using System.Xml;
-using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 
@@ -44,14 +39,10 @@ namespace JuliusSweetland.OptiKey.Models
             this.str = str;
         }
 
-        public KeyValue(FunctionKeys functionKey, string str)
-        {
-            this.functionKey = functionKey;
-            this.str = str;
-        }
-
         public FunctionKeys? FunctionKey { get { return functionKey; } }
         public string String { get { return str; } }
+
+        public List<KeyCommand> Commands { get; set; }
 
         public bool StringIsLetter
         {
@@ -152,7 +143,5 @@ namespace JuliusSweetland.OptiKey.Models
             return (FunctionKey != null) ||
                    (!string.IsNullOrEmpty(String)); 
         }
-
-        public List<KeyCommand> Commands { get; set; }
     }
 }
