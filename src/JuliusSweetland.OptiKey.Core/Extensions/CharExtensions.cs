@@ -93,7 +93,8 @@ namespace JuliusSweetland.OptiKey.Extensions
                 return CharCategories.Tab;
             }
 
-            if (char.IsLetterOrDigit(c) || char.IsSymbol(c) || char.IsPunctuation(c))
+            if (char.IsLetterOrDigit(c) || char.IsSymbol(c) || char.IsPunctuation(c) 
+                || CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.NonSpacingMark)
             {
                 return CharCategories.LetterOrDigitOrSymbolOrPunctuation;
             }
