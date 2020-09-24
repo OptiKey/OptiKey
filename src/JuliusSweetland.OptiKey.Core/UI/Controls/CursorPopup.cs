@@ -77,12 +77,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             };
             mainViewModel.OnPropertyChanges(vm => vm.ShowCursor).Subscribe(calculateIsOpen);
             calculateIsOpen(mainViewModel.ShowCursor);
-            
+
             //Calculate position based on CurrentPositionPoint
             mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionPoint)
-                .Where(cpp => IsOpen && SelectionProgress == 0) //Only set Point if popup is open and there isn't a current fixation in progress
+                /* Removed this because it creates an rough jumpy experience
+                 * .Where(cpp => IsOpen && SelectionProgress == 0) //Only set Point if popup is open and there isn't a current fixation in progress
+                */
+                // In it's place this provides a smooth experience
+                .Where(cpp => IsOpen)
                 .Subscribe(cpp => Point = cpp);
-            
+
             //Calculate selection progress and position based on PointSelectionProgress
             mainViewModel.OnPropertyChanges(vm => vm.PointSelectionProgress)
                 .Subscribe(psp =>
