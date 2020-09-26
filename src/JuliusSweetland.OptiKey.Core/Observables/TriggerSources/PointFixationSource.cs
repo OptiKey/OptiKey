@@ -133,6 +133,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         //Publish a high signal if progress is 1 (100%), otherwise just publish progress (filter out 0 as this is a progress reset signal)
                                         if (progress > 0)
                                         {
+                                            fixationCentrePointAndKeyValue = point.Value;
                                             observer.OnNext(new TriggerSignal(
                                                 progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
                                         }
