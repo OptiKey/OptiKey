@@ -51,6 +51,7 @@ I would like to extend my thanks/credit to the following people, websites & orga
 * Sam Snowball
 * Crazyb
 * William
+* Dan Ngo
 
 ## Resources
 
