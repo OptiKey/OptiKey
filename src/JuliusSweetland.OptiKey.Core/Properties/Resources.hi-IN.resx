@@ -1984,7 +1984,6 @@
 यदि एसे फ़ॉन्ट का उपयोग किया जाता है जो फ़ारसी विशिष्ट नहीं है, तो पाठ और विशेष रूप से संख्या गलत तरीके से प्रदर्शित हो सकती है।
 क्या आप Optikey को स्वतः ही Nazli पर फ़ॉन्ट सेट करना चाहेंगे?</value>
   </data>
-  </data>
 	<data name="ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT" xml:space="preserve">
     <value>कुंजी चयन की हैंडलिंग के दौरान एक त्रुटि हुई है</value>
   </data>
