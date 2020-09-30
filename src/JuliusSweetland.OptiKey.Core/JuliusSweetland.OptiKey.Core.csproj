@@ -927,6 +927,7 @@
     <EmbeddedResource Include="Properties\Resources.es-ES.resx" />
     <EmbeddedResource Include="Properties\Resources.fa.resx" />
     <EmbeddedResource Include="Properties\Resources.fi-FI.resx" />
+    <EmbeddedResource Include="Properties\Resources.hi-IN.resx" />
     <EmbeddedResource Include="Properties\Resources.it-IT.resx" />
     <EmbeddedResource Include="Properties\Resources.ja-JP.resx">
       <SubType>Designer</SubType>
