@@ -905,7 +905,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             else if (newKey.OpacityOverride < 1d)
                 newKey.DisabledBackgroundOpacity = newKey.OpacityOverride;
 
-            if (xmlKeyValue != null)
+            if (xmlKeyValue != null && overrideTimesByKey != null)
             {
                 TimeSpanOverrides timeSpanOverrides;
                 if (xmlKey.LockOnTime > 0)
