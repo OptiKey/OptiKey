@@ -177,9 +177,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Value="{x:Static models:KeyValues.LeftShiftKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
-                      Text="٬"
+                      Text="।"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="٬"/>
+                      Value="।"/>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
                       UseUrduCompatibilityFont="True"
                       Text="٫"
