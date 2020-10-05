@@ -370,6 +370,12 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                             StringFormat="{}{0:N1} %"
                                             Value="{Binding MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, Mode=TwoWay}" 
                                             Style="{StaticResource VisibilityOfDockProperties}"/>
+                    
+                    <TextBlock Grid.Row="19" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_RESIZE_WITH_MOUSE}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="19" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding EnableResizeWithMouse, Mode=TwoWay}" />
 
                 </Grid>
             </GroupBox>

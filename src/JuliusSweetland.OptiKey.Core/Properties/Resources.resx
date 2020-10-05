@@ -2503,4 +2503,7 @@ Magyar
 हिन्दी
 (भारत)</value>
   </data>
+  <data name="ENABLE_RESIZE_WITH_MOUSE" xml:space="preserve">
+    <value>Enable Resizing with Mouse:</value>
+  </data>
 </root>
