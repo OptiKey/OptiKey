@@ -378,6 +378,33 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(BackgroundColourOverrideProperty, value); }
         }
 
+        public static readonly DependencyProperty BorderColourOverrideProperty =
+            DependencyProperty.Register("BorderColourOverrideProperty", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
+
+        public Brush BorderColourOverride
+        {
+            get { return (Brush)GetValue(BorderColourOverrideProperty); }
+            set { SetValue(BorderColourOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty BorderThicknessOverrideProperty =
+            DependencyProperty.Register("BorderThicknessOverrideProperty", typeof(int), typeof(Key), new PropertyMetadata(defaultValue:1));
+
+        public int BorderThicknessOverride
+        {
+            get { return (int)GetValue(BorderThicknessOverrideProperty); }
+            set { SetValue(BorderThicknessOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty CornerRadiusOverrideProperty =
+            DependencyProperty.Register("CornerRadiusOverrideProperty", typeof(int), typeof(Key), new PropertyMetadata(defaultValue: 0));
+
+        public int CornerRadiusOverride
+        {
+            get { return (int)GetValue(CornerRadiusOverrideProperty); }
+            set { SetValue(CornerRadiusOverrideProperty, value); }
+        }
+
         public static readonly DependencyProperty DisabledBackgroundColourOverrideProperty =
             DependencyProperty.Register("DisabledBackgroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 

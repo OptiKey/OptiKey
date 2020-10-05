@@ -885,6 +885,23 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             else if (newKey.BackgroundColourOverride != null)
                 newKey.KeyDownBackgroundOverride = new SolidColorBrush(HlsColor.Fade(((SolidColorBrush)newKey.BackgroundColourOverride).Color, .15));
 
+            if (ValidColor(xmlKey.BorderColor, out colorBrush))
+                newKey.BorderColourOverride = colorBrush;
+            else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.BorderColor, out colorBrush)))
+                newKey.BorderColourOverride = colorBrush;
+
+            int borderThickness = 1;
+            if (!string.IsNullOrEmpty(xmlKey.BorderThickness) && int.TryParse(xmlKey.BorderThickness, out borderThickness))
+                newKey.BorderThicknessOverride = borderThickness;
+            else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.BorderThickness) && int.TryParse(x.BorderThickness, out borderThickness)))
+                newKey.BorderThicknessOverride = borderThickness;
+
+            int cornerRadius = 0;
+            if (!string.IsNullOrEmpty(xmlKey.CornerRadius) && int.TryParse(xmlKey.CornerRadius, out cornerRadius))
+                newKey.CornerRadiusOverride = cornerRadius;
+            else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.CornerRadius) && int.TryParse(x.CornerRadius, out cornerRadius)))
+                newKey.CornerRadiusOverride = cornerRadius;
+
             double opacity = 1;
             if (!string.IsNullOrEmpty(xmlKey.Opacity) && double.TryParse(xmlKey.Opacity, out opacity))
                 newKey.OpacityOverride = opacity;
