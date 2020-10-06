@@ -129,6 +129,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        public List<KeyValuePair<string, int>> GazeSmoothingLevels
+        {
+            get
+            {
+                return new List<KeyValuePair<string, int>>
+                {
+                    new KeyValuePair<string, int>
+                        ("0 - " + Resources.NONE, 0),
+                    new KeyValuePair<string, int>
+                        ("1 - " + Resources.LOW,  1),
+                    new KeyValuePair<string, int>
+                        ("2 - " + Resources.MEDIUM, 2),
+                    new KeyValuePair<string, int>
+                        ("3 - " + Resources.HIGH, 3),
+                    new KeyValuePair<string, int>
+                        ("4 - Ultra", 4),
+                    new KeyValuePair<string, int>
+                        ("5 - Extreme", 5),
+                    new KeyValuePair<string, int>
+                        ("6 - XXtreme", 6),
+                };
+            }
+        }
+
         public List<Keys> Keys
         {
             get { return Enum.GetValues(typeof(Enums.Keys)).Cast<Enums.Keys>().OrderBy(k => k.ToString()).ToList(); }
@@ -185,11 +209,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref irisBondProcessingLevel, value); }
         }
 
-        private bool kalmanFilterEnabled;
-        public bool KalmanFilterEnabled
+        private int gazeSmoothingLevel;
+        public int GazeSmoothingLevel
         {
-            get { return kalmanFilterEnabled; }
-            set { SetProperty(ref kalmanFilterEnabled, value); }
+            get { return gazeSmoothingLevel; }
+            set { SetProperty(ref gazeSmoothingLevel, value); }
+        }
+
+        private bool smoothWhenChangingGazeTarget;
+        public bool SmoothWhenChangingGazeTarget
+        {
+            get { return smoothWhenChangingGazeTarget; }
+            set { SetProperty(ref smoothWhenChangingGazeTarget, value); }
         }
 
         private double pointsMousePositionSampleIntervalInMs;
@@ -415,7 +446,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             PointsSource = Settings.Default.PointsSource;
             TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
             IrisbondProcessingLevel = Settings.Default.IrisbondProcessingLevel;
-            KalmanFilterEnabled = Settings.Default.KalmanFilterEnabled;
+            GazeSmoothingLevel = Settings.Default.GazeSmoothingLevel;
+            SmoothWhenChangingGazeTarget = Settings.Default.SmoothWhenChangingGazeTarget;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
             PointsMousePositionHideCursor = Settings.Default.PointsMousePositionHideCursor;
             PointTtlInMs = Settings.Default.PointTtl.TotalMilliseconds;
@@ -448,7 +480,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.PointsSource = PointsSource;
             Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
             Settings.Default.IrisbondProcessingLevel = IrisbondProcessingLevel;
-            Settings.Default.KalmanFilterEnabled = KalmanFilterEnabled;
+            Settings.Default.GazeSmoothingLevel = GazeSmoothingLevel;
+            Settings.Default.SmoothWhenChangingGazeTarget = SmoothWhenChangingGazeTarget;
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointsMousePositionHideCursor = PointsMousePositionHideCursor;
             Settings.Default.PointTtl = TimeSpan.FromMilliseconds(PointTtlInMs);

@@ -603,13 +603,13 @@ CURSOR</value>
     <value>MAGNIFIER</value>
   </data>
   <data name="MAGNIFIER_CENTER_ON_SCREEN" xml:space="preserve">
-    <value>Show magnifier window at center of screen</value>
+    <value>Show magnifier window at center of screen:</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Magnify destination (as % of screen):</value>
+    <value>Magnified View (Maximum % of screen to fill):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Magnify source (as % of screen):</value>
+    <value>Magnifier Selection (% of screen to capture):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Management console: ALT + M</value>
@@ -1271,7 +1271,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>None</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Data stream processing amount:</value>
+    <value>Input device processing amount:</value>
   </data>
   <data name="GERMAN_GERMANY" xml:space="preserve">
     <value>German (Germany) / Deutsch (Deutschland)</value>
@@ -1864,8 +1864,8 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Use alphabetical keyboard layout</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Kalman Filter:</value>
+  <data name="SMOOTH_WHEN_CHANGING_GAZE_TARGET" xml:space="preserve">
+    <value>Smooth when changing gaze target:</value>
   </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>Toggle Mouse Control Mode</value>
@@ -1889,13 +1889,13 @@ Slovenčina
     <value>Mouse (manual) mode enabled!</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
-    <value>Enable Conversation Confirm keyboard?</value>
+    <value>Enable Conversation Confirm keyboard:</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
     <value>Conversation Confirm only mode:</value>
   </data>
   <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
-    <value>Enable quit keys?</value>
+    <value>Enable quit keys:</value>
   </data>
   <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Use simplified keyboard layout</value>
@@ -1924,7 +1924,7 @@ Search</value>
 Browsing</value>
   </data>
   <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
-    <value>Use MaryTTS speech synthesizer?</value>
+    <value>Use MaryTTS speech synthesizer:</value>
   </data>
   <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
     <value>MaryTTS voice:</value>
@@ -1974,7 +1974,7 @@ from the Management Console (ALT + M).</value>
     <value>Use CommuniKate keyboard layout</value>
   </data>
   <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Enable CommuniKate key?</value>
+    <value>Enable CommuniKate key:</value>
   </data>
   <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
     <value>CommuniKate top page obf file:</value>
@@ -2037,10 +2037,10 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>Attention:</value>
   </data>
   <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
-    <value>Enable attention key?</value>
+    <value>Enable attention key:</value>
   </data>
   <data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
-    <value>Enable copy scratchpad key?</value>
+    <value>Enable copy scratchpad key:</value>
   </data>
   <data name="ATTENTION" xml:space="preserve">
     <value>ATTENTION</value>
@@ -2300,7 +2300,7 @@ Française
 (Україна)</value>
   </data>
   <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Data stream processing amount:</value>
+    <value>Input device processing amount:</value>
   </data>
   <data name="IRISBOND_DUO" xml:space="preserve">
     <value>Irisbond Duo</value>
@@ -2462,16 +2462,16 @@ Magyar
     <value>Opacity:</value>
   </data>
   <data name="ALLOW_MULTIPLE_INSTANCES" xml:space="preserve">
-    <value>Allow multiple instances of this Optikey app to run simultaneously</value>
+    <value>Allow multiple instances of this Optikey app to run simultaneously:</value>
   </data>
   <data name="TOP" xml:space="preserve">
     <value>Top</value>
   </data>
   <data name="DOCK_POSITION_LABEL" xml:space="preserve">
-    <value>Dock position</value>
+    <value>Dock position:</value>
   </data>
   <data name="FLOATING_POSITION_LABEL" xml:space="preserve">
-    <value>Floating position (left, top, width, height)</value>
+    <value>Floating position (left, top, width, height):</value>
   </data>
   <data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
     <value>Translation Target Language:</value>
@@ -2489,10 +2489,13 @@ Magyar
     <value>API Key:</value>
   </data>
   <data name="ENABLE_TRANSLATION_KEY_LABEL" xml:space="preserve">
-    <value>Enable translation key? (translation auto copied)</value>
+    <value>Enable translation key: (translation auto copied)</value>
   </data>
   <data name="TOBII_EYE_TRACKER_5" xml:space="preserve">
     <value>Tobii Eye Tracker 5</value>
+  </data>
+  <data name="GAZE_SMOOTHING_LEVEL" xml:space="preserve">
+    <value>Application smoothing level:</value>
   </data>
   <data name="HINDI_INDIA" xml:space="preserve">
     <value>Hindi (India) / हिन्दी (भारत)</value>

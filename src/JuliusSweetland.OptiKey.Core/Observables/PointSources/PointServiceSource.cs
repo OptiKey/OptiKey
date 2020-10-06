@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         
         private readonly TimeSpan pointTtl;
         private readonly IPointService pointGeneratingService;
-        private readonly GazeFilter gazeFilter;
+        private readonly KalmanFilter kalmanFilter;
 
         private IObservable<Timestamped<PointAndKeyValue>> sequence;
 
@@ -33,7 +33,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         {
             this.pointTtl = pointTtl;
             this.pointGeneratingService = pointGeneratingService;
-            this.gazeFilter = new GazeFilter();
+            this.kalmanFilter = new KalmanFilter();
         }
 
         #endregion
@@ -54,8 +54,8 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                             eh => pointGeneratingService.Point += eh,
                             eh => pointGeneratingService.Point -= eh)
                         .Where(_ => State == RunningStates.Running)
-                        .Select(ep => Settings.Default.KalmanFilterEnabled && pointGeneratingService.KalmanFilterSupported
-                            ? new Timestamped<Point>(gazeFilter.Update(ep.EventArgs.Value, ep.EventArgs.Value.ToKeyValue(PointToKeyValueMap)), ep.EventArgs.Timestamp)
+                        .Select(ep => Settings.Default.GazeSmoothingLevel > 0
+                            ? new Timestamped<Point>(kalmanFilter.Update(ep.EventArgs.Value), ep.EventArgs.Timestamp)
                             : ep.EventArgs
                         )
                         .PublishLivePointsOnly(pointTtl)
