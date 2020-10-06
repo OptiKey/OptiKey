@@ -163,7 +163,7 @@ namespace JuliusSweetland.OptiKey.Services
                     mouseResizeUnderway = false;
                     CoerceDockSizeAndPosition();
                     // restore resize grips 
-                    window.ResizeMode = System.Windows.ResizeMode.CanResizeWithGrip;
+                    window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     break;
                 case WM_NCLBUTTONDBLCLK:
                     handled = true;  //prevent double click from maximizing the window.
@@ -207,16 +207,23 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void DisableResize()
         {
+            if (window.ResizeMode == ResizeMode.NoResize)
+                return;
             window.ResizeMode = ResizeMode.NoResize;
             window.UpdateLayout();
         }
 
         public void SetResizeState()
         {
+            if (!Settings.Default.EnableResizeWithMouse)
+            {
+                DisableResize();
+                return;
+            }
+
             var windowState = getWindowState();
             switch (windowState)
             {
-                
                 case WindowStates.Floating:
                     window.ResizeMode = ResizeMode.CanResizeWithGrip;
                     break;
@@ -617,7 +624,7 @@ namespace JuliusSweetland.OptiKey.Services
             if (getWindowState() != WindowStates.Docked) return;
 
             // Turn off grab handles, to avoid ambiguous requests
-            window.ResizeMode = ResizeMode.NoResize;
+            DisableResize();
 
             saveDockSize(DockSizes.Collapsed);
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Collapsed);
@@ -630,8 +637,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (getWindowState() != WindowStates.Docked) return;
 
-            // Turn grab handles back on
-            window.ResizeMode = ResizeMode.CanResizeWithGrip;
+            SetResizeState();
 
             saveDockSize(DockSizes.Full);
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);

@@ -46,8 +46,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             InitializeComponent();
 
-            if (Settings.Default.MainWindowState == WindowStates.Floating ||
-                Settings.Default.MainWindowState == WindowStates.Docked)
+            if (Settings.Default.EnableResizeWithMouse
+                && (Settings.Default.MainWindowState == WindowStates.Floating
+                    || Settings.Default.MainWindowState == WindowStates.Docked))
             {
                 this.ResizeMode = ResizeMode.CanResizeWithGrip;
             }
@@ -119,15 +120,13 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             // Don't take focus away from any existing toast notifications
             if (MainView.ToastNotificationPopup.IsOpen)
-            {
                 return;
-            }
 
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed && Settings.Default.EnableResizeWithMouse)
             {
                 // This prevents win7 aerosnap, which otherwise might snap to edges and expand unexpectedly
                 ResizeMode origResizeMode = this.ResizeMode;
-                this.ResizeMode = System.Windows.ResizeMode.NoResize;
+                this.ResizeMode = ResizeMode.NoResize;
                 this.UpdateLayout();
                 
                 DragMove();

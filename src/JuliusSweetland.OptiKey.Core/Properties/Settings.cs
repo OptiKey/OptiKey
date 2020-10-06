@@ -2772,6 +2772,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
         }
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual bool EnableResizeWithMouse
+        {
+            get
+            {
+                return ((bool)(this["EnableResizeWithMouse"]));
+            }
+            set
+            {
+                this["EnableResizeWithMouse"] = value;
+            }
+        }
+
         public bool IsOverridden(string propName)
         {
             var propActual = this.GetType().GetProperty(propName);

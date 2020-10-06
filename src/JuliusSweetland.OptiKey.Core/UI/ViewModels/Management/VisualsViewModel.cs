@@ -533,6 +533,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref mainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, value); }
         }
 
+        private bool enableResizeWithMouse;
+        public bool EnableResizeWithMouse
+        {
+            get { return enableResizeWithMouse; }
+            set { SetProperty(ref enableResizeWithMouse, value); }
+        }
+
         private Thickness conversationBorderThickness;
         public Thickness ConversationBorderThickness
         {
@@ -546,7 +553,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return Settings.Default.ConversationOnlyMode != ConversationOnlyMode
                     || Settings.Default.ConversationConfirmEnable != ConversationConfirmEnable
-                    || Settings.Default.ConversationConfirmOnlyMode != ConversationConfirmOnlyMode;
+                    || Settings.Default.ConversationConfirmOnlyMode != ConversationConfirmOnlyMode
+                    || (!Settings.Default.EnableResizeWithMouse && EnableResizeWithMouse);
             }
         }
 
@@ -616,6 +624,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
             DockPosition = Settings.Default.MainWindowDockPosition;
             MainWindowState = Settings.Default.MainWindowState;
+            EnableResizeWithMouse = Settings.Default.EnableResizeWithMouse;
         }
 
         public void ApplyChanges()
@@ -645,7 +654,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
 
-
             // We don't apply changes to window/size position if Optikey's state has changed to one in which re-positioning isn't supported
             bool allowReposition = windowManipulationService.GetPersistedState() &&
                                    Settings.Default.MainWindowState != WindowStates.Maximised &&
@@ -671,7 +679,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
 
             windowManipulationService.SetOpacity(Settings.Default.MainWindowOpacity);
-
+            Settings.Default.EnableResizeWithMouse = EnableResizeWithMouse;
+            windowManipulationService.SetResizeState();
         }
 
         #endregion

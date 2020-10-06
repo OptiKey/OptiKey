@@ -1463,7 +1463,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable translation key: (translation auto copied).
+        ///   Looks up a localized string similar to Enable Resizing with Mouse:.
+        /// </summary>
+        public static string ENABLE_RESIZE_WITH_MOUSE {
+            get {
+                return ResourceManager.GetString("ENABLE_RESIZE_WITH_MOUSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable translation key? (translation auto copied).
         /// </summary>
         public static string ENABLE_TRANSLATION_KEY_LABEL {
             get {
