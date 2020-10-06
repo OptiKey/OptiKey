@@ -61,158 +61,156 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                      Text="&#x093E;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x093E;" />
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                      Text="&#x093F;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x093F;" />
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
+                      Text="&#x0940;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0940;" />
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
+                      Text="&#x0941;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0941;" />
+        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
+                      Text="&#x0942;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0942;" />
+        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
+                      Text="&#x0947;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0947;" />
+        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
+                      Text="&#x0948;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0948;" />
+        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
+                      Text="&#x094B;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x094B;" />
+        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
+                      Text="&#x094C;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x094C;" />
+        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
+                      Text="&#x0902;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0902;" />
+        <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
+                      Text="&#x0903;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0903;" />
+        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
+                      Text="&#x094D;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x094D;" />
+
+        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="अ"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=अKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="आ"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=आKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="इ"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=इKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="ई"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ईKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="उ"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=उKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                      Text="ऊ"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ऊKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
-                      Text="ए"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=एKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="ऐ"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ऐKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
-                      Text="ओ"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ओKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                      Text="औ"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=औKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      Text="अँ"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=अँKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
-                      Text="अः"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=अःKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-
-        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="म"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=मKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="अ" />
             <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="य"
+                      Text="आ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=यKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="आ" />
             <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="र"
+                      Text="इ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=रKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="इ" />
             <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="ल"
+                      Text="ई"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=लKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="ई" />
             <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="व"
+                      Text="उ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=वKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="उ" />
             <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
-                      Text="स"
+                      Text="ऊ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=सKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="ऊ" />
             <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
-                      Text="श"
+                      Text="ए"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=शKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="ए" />
             <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="ष"
+                      Text="ऐ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=षKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="ऐ" />
             <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
-                      Text="ह"
+                      Text="ओ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=हKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="ओ" />
             <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
-                      Text="ऋ"
+                      Text="औ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ऋKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="औ" />
             <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
-                      Text="&#x0949;"
-                      UseUnicodeCompatibilityFont="True"
+                      Text="अँ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=DevanagariVowelSignCandraOKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="अँ" />
         <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
-                      Text="&#x0945;"
-                      UseUnicodeCompatibilityFont="True"
+                      Text="अः"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=DevanagariVowelSignCandraEKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="अः" />
 
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="ङ"
+                      Text="य"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ङKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="य" />
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="ञ"
+                      Text="र"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ञKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="र" />
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="ण"
+                      Text="ल"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=णKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
+                      Value="ल" />
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
+                      Text="व"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="व" />
+        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
+                      Text="स"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="स" />
+        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
+                      Text="श"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="श" />
+        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
+                      Text="ष"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ष" />
+        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
+                      Text="ह"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ह" />
+        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
+                      Text="ऋ"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ऋ" />
+        <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
                       Text="श्र"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=श्रKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="क्ष"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=क्षKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
-                      Text="त्र"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=त्रKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
-                      Text="ज्ञ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ज्ञKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="ऍ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ऍKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
-                      Text="ऑ"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{Binding Path=ऑKey, RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardView}}}" />
-        <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
-                      Text="&quot;"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&quot;"/>
+                      Value="श्र"/>
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
@@ -240,32 +238,38 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.ConversationNumericAndSymbolsKeyboardKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
-                      Text=","
+                      Text="&#x0945;"
+                      UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value=","/>
-        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="8"
+                      Value="&#x0945;" />
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2"
+                      Text="&#x093C;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x093C;" />
+        <controls:Key Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
-                      WidthSpan="4" 
+                      WidthSpan="2" 
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
+                      Text="&#x0943;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="&#x0943;" />
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
-                      Text="."
+                      Text="क्ष"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="."/>
+                      Value="क्ष"/>
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
-                      Text="'"
+                      Text="त्र"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="'"/>
+                      Value="त्र"/>
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2" Case="None"
-                      Text="॰"
+                      Text="ज्ञ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="॰"/>
-        <!--<controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
-                      Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>-->
+                      Value="ज्ञ"/>
         <ContentControl Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">

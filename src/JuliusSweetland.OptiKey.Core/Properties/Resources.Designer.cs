@@ -161,7 +161,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allow multiple instances of this Optikey app to run simultaneously.
+        ///   Looks up a localized string similar to Allow multiple instances of this Optikey app to run simultaneously:.
         /// </summary>
         public static string ALLOW_MULTIPLE_INSTANCES {
             get {
@@ -812,7 +812,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable Conversation Confirm keyboard?.
+        ///   Looks up a localized string similar to Enable Conversation Confirm keyboard:.
         /// </summary>
         public static string CONVERSATION_CONFIRM_ENABLE_LABEL {
             get {
@@ -1285,7 +1285,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dock position.
+        ///   Looks up a localized string similar to Dock position:.
         /// </summary>
         public static string DOCK_POSITION_LABEL {
             get {
@@ -1409,7 +1409,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable attention key?.
+        ///   Looks up a localized string similar to Enable attention key:.
         /// </summary>
         public static string ENABLE_ATTENTION_KEY_LABEL {
             get {
@@ -1418,7 +1418,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable CommuniKate key?.
+        ///   Looks up a localized string similar to Enable CommuniKate key:.
         /// </summary>
         public static string ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT {
             get {
@@ -1427,7 +1427,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable copy scratchpad key?.
+        ///   Looks up a localized string similar to Enable copy scratchpad key:.
         /// </summary>
         public static string ENABLE_COPY_SCRATCHPAD_KEY_LABEL {
             get {
@@ -1454,7 +1454,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable quit keys?.
+        ///   Looks up a localized string similar to Enable quit keys:.
         /// </summary>
         public static string ENABLE_QUIT_KEYS_LABEL {
             get {
@@ -2064,7 +2064,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Floating position (left, top, width, height).
+        ///   Looks up a localized string similar to Floating position (left, top, width, height):.
         /// </summary>
         public static string FLOATING_POSITION_LABEL {
             get {
@@ -2187,6 +2187,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string FULL_DOCK_THICKNESS_LABEL {
             get {
                 return ResourceManager.GetString("FULL_DOCK_THICKNESS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adaptive smoothing level:.
+        /// </summary>
+        public static string GAZE_SMOOTHING_LEVEL {
+            get {
+                return ResourceManager.GetString("GAZE_SMOOTHING_LEVEL", resourceCulture);
             }
         }
         
@@ -2462,7 +2471,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data stream processing amount:.
+        ///   Looks up a localized string similar to Input device processing amount:.
         /// </summary>
         public static string IRISBOND_DATA_STREAM_PROCESSING_LEVEL {
             get {
@@ -2710,15 +2719,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string JUMP_UP_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("JUMP_UP_SPLIT_WITH_NEWLINE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Kalman Filter:.
-        /// </summary>
-        public static string KALMAN_FILTER_ENABLED {
-            get {
-                return ResourceManager.GetString("KALMAN_FILTER_ENABLED", resourceCulture);
             }
         }
         
@@ -3495,7 +3495,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show magnifier window at center of screen.
+        ///   Looks up a localized string similar to Show magnifier window at center of screen:.
         /// </summary>
         public static string MAGNIFIER_CENTER_ON_SCREEN {
             get {
@@ -3504,7 +3504,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Magnify destination (as % of screen):.
+        ///   Looks up a localized string similar to Magnified View (Maximum % of screen to fill):.
         /// </summary>
         public static string MAGNIFY_DESTINATION_LABEL {
             get {
@@ -3513,7 +3513,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Magnify source (as % of screen):.
+        ///   Looks up a localized string similar to Magnifier Selection (% of screen to capture):.
         /// </summary>
         public static string MAGNIFY_SOURCE_LABEL {
             get {
@@ -3603,7 +3603,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use MaryTTS speech synthesizer?.
+        ///   Looks up a localized string similar to Use MaryTTS speech synthesizer:.
         /// </summary>
         public static string MARYTTS_ENABLED_LABEL {
             get {
@@ -5795,6 +5795,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Smooth when changing gaze target:.
+        /// </summary>
+        public static string SMOOTH_WHEN_CHANGING_GAZE_TARGET {
+            get {
+                return ResourceManager.GetString("SMOOTH_WHEN_CHANGING_GAZE_TARGET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sound effects.
         /// </summary>
         public static string SOUND_EFFECTS {
@@ -6158,7 +6167,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data stream processing amount:.
+        ///   Looks up a localized string similar to Input device processing amount:.
         /// </summary>
         public static string TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL {
             get {

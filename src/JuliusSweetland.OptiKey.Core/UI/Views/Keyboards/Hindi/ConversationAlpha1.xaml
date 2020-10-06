@@ -116,101 +116,100 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x0903;" />
         <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
-                      Text="&#x0901;"
-                      UseUnicodeCompatibilityFont="True"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x0901;" />
-
-        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="&#x094D;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x094D;" />
-        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+
+        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="क"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="क"/>
-        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
                       Text="ख"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ख"/>
-        <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="ग"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ग"/>
-        <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
                       Text="घ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="घ"/>
-        <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="च"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="च"/>
-        <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
                       Text="छ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="छ"/>
-        <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
                       Text="ज"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ज"/>
-        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
                       Text="झ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="झ"/>
-        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
                       Text="ट"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ट"/>
-        <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
                       Text="ठ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ठ"/>
-        <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                       Text="ड"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ड"/>
-
-        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
                       Text="ढ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ढ"/>
-        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="त"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="त"/>
-        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                       Text="थ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="थ"/>
-        <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="द"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="द"/>
-        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
                       Text="ध"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ध"/>
-        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="न"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="न"/>
-        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
                       Text="प"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="प"/>
-        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
                       Text="फ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="फ"/>
-        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
                       Text="ब"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ब"/>
-        <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
                       Text="भ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="भ"/>
+        <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
+                      Text="म"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="म"/>
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
@@ -238,9 +237,10 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.ConversationNumericAndSymbolsKeyboardKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
-                      Text=","
+                      Text="&#x0901;"
+                      UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value=","/>
+                      Value="&#x0901;" />
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="&#x093C;"
                       UseUnicodeCompatibilityFont="True"
@@ -258,22 +258,17 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x0943;" />
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
-                      Text="."
+                      Text="ङ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="."/>
+                      Value="ङ"/>
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
-                      Text="'"
+                      Text="ञ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="'"/>
+                      Value="ञ"/>
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2" Case="None"
-                      Text="॰"
+                      Text="ण"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="॰"/>
-        <!--<controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
-                      Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>-->
+                      Value="ण"/>
         <ContentControl Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">

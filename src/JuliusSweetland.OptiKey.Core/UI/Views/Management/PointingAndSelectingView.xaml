@@ -172,7 +172,38 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KALMAN_FILTER_ENABLED}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_SMOOTHING_LEVEL}" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}" >
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <ComboBox Grid.Row="3" Grid.Column="1" 
+                              ItemsSource="{Binding GazeSmoothingLevels}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding GazeSmoothingLevel, Mode=TwoWay}">
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}" >
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.SMOOTH_WHEN_CHANGING_GAZE_TARGET}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -185,9 +216,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="3" Grid.Column="1" 
+                    <CheckBox Grid.Row="4" Grid.Column="1" 
                               VerticalAlignment="Center"
-                              IsChecked="{Binding KalmanFilterEnabled, Mode=TwoWay}">
+                              IsChecked="{Binding SmoothWhenChangingGazeTarget, Mode=TwoWay}">
                         <CheckBox.Style>
                             <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
                                 <Setter Property="Visibility" Value="Visible" />

@@ -1,0 +1,2077 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string"/>
+							<xsd:attribute name="name" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>जोड़ें</value>
+  </data>
+	<data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
+    <value>नई एंट्री जोड़ें</value>
+  </data>
+	<data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>क्या आप शॉर्टकट {1} के साथ शब्दकोश में वाक्यांश {0}जोड़ना चाहते हैं?</value>
+  </data>
+	<data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>शब्दकोश में जोड़ें</value>
+  </data>
+	<data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>क्या आप शब्द {0}को शब्दकोश में जोड़ना चाहेंगे?</value>
+  </data>
+	<data name="ADDED" xml:space="preserve">
+    <value>जोड़ा गया</value>
+  </data>
+	<data name="ADJUST_BY" xml:space="preserve">
+    <value>पिक्सेल {0} द्वारा एडजस्ट करें पिक्सेल {0} द्वारा एडजस्ट करें</value>
+  </data>
+	<data name="ALPHA_1" xml:space="preserve">
+    <value>लेटर्स 1</value>
+  </data>
+	<data name="ALT" xml:space="preserve">
+    <value>ऑल्ट</value>
+  </data>
+	<data name="ANDROID_DARK" xml:space="preserve">
+    <value>एन्ड्रोइड डार्क</value>
+  </data>
+	<data name="ANDROID_LIGHT" xml:space="preserve">
+    <value>एन्ड्रोइड लाइट</value>
+  </data>
+	<data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>एन्ड्रोइड टू टोन</value>
+  </data>
+	<data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
+    <value>शब्द ऑटो केपिटलाइज करे</value>
+  </data>
+	<data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
+    <value>शब्द पूरा करे</value>
+  </data>
+	<data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
+    <value>ऑटोमैटिक वाक्य सुधार</value>
+  </data>
+	<data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
+    <value>शब्दों के बीच ऑटो स्पेस</value>
+  </data>
+	<data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>वापस</value>
+  </data>
+	<data name="BACK" xml:space="preserve">
+    <value>वापस</value>
+  </data>
+	<data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>एक वापस </value>
+  </data>
+	<data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>शब्द वापस </value>
+  </data>
+	<data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
+    <value>बास फ़ाइल '{0}'से एक स्ट्रीम बनाने में असमर्थ था</value>
+  </data>
+	<data name="BOTTOM" xml:space="preserve">
+    <value>नीचे</value>
+  </data>
+	<data name="BREAK" xml:space="preserve">
+    <value>ब्रेक</value>
+  </data>
+	<data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
+    <value>इस संदेश के साथ केलिब्रेशन समाप्त हो गया: '{0}'</value>
+  </data>
+	<data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>क्या आप वाकई दोबारा केलिब्रेशन करना चाहते हैं?</value>
+  </data>
+	<data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
+    <value>केलिब्रेशन के दौरान एक त्रुटि हुई। संदेश: '{0}'</value>
+  </data>
+	<data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
+    <value>केलिब्रेशन इस संदेश के साथ विफल रहा: '{0}'</value>
+  </data>
+	<data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
+    <value>केलिब्रेशन मैनुअल हस्तक्षेप के बिना पूरा नहीं किया जा सकता है, उदाहरण के लिए माउस का उपयोग करना। यदि आप अपने कंप्यूटर के साथ मैन्युअल रूप से बातचीत नहीं कर सकते हैं तो आप केलिब्रेशन प्रक्रिया में फंस सकते हैं।
+क्या आप सुनिश्चित हैं कि आप फिर से केलिब्रेशन करना चाहते हैं?</value>
+  </data>
+	<data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
+    <value>एक अज्ञात कारण से केलिब्रेशन बंद हो गया। संदेश: '{0}'</value>
+  </data>
+	<data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
+    <value>केलिब्रेशन सफलता सटीकता (औसत त्रुटि की डिग्री = {0})</value>
+  </data>
+	<data name="CANCEL" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
+	<data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
+    <value>केप्चर टाइमआउट (ms):</value>
+  </data>
+	<data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
+    <value>स्टार्टअप पर अपडेट की जांच करें:</value>
+  </data>
+	<data name="CLEAR" xml:space="preserve">
+    <value>साफ़ करें</value>
+  </data>
+	<data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>क्लिक करें और खींचें</value>
+  </data>
+	<data name="CLICK_SOUND_1" xml:space="preserve">
+    <value>क्लिक 1</value>
+  </data>
+	<data name="CLICK_SOUND_2" xml:space="preserve">
+    <value>क्लिक 2</value>
+  </data>
+	<data name="CLICK_SOUND_3" xml:space="preserve">
+    <value>क्लिक 3</value>
+  </data>
+	<data name="CLICK_SOUND_4" xml:space="preserve">
+    <value>क्लिक 4</value>
+  </data>
+	<data name="CLICK_SOUND_5" xml:space="preserve">
+    <value>क्लिक 5</value>
+  </data>
+	<data name="CLICK_SOUND_6" xml:space="preserve">
+    <value>क्लिक 6</value>
+  </data>
+	<data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>संक्षिप्त 
+डॉक</value>
+  </data>
+	<data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
+    <value>संक्षिप्त डॉक की मोटाई (पूर्ण डॉक की मोटाई का %):</value>
+  </data>
+	<data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
+    <value>मेन्यू</value>
+  </data>
+	<data name="CONVERSATION" xml:space="preserve">
+    <value>बातचीत</value>
+  </data>
+	<data name="CONVERSATION_LAYOUT" xml:space="preserve">
+    <value>बातचीत के अक्षर</value>
+  </data>
+	<data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
+    <value>बातचीत के नंबर और चिन्ह</value>
+  </data>
+	<data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>सिर्फ बातचीत मोड</value>
+  </data>
+	<data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
+    <value>ऑप्टिकी ने पाया है कि आपकी यूजर सेटिंग फ़ाइल दूषित हो गई है और उसे सुधारना चाहिए। यदि यह संभव नहीं है, तो एक पुराने संस्करण या एक डिफ़ॉल्ट संस्करण को पुनर्स्थापित करके किया जाएगा।
+
+अपनी यूजर सेटिंग रीसेट करने और पुनः आरंभ करने के लिए हां पर क्लिक करें।
+
+बंद करने के लिए ना पर क्लिक करें ताकि आप अपनी यूजर सेटिंग फ़ाइल को मैन्युअल रूप से सुधार या कॉपी कर सकें।</value>
+  </data>
+	<data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
+    <value>उह ओह! यूजर सेटिंग फ़ाइल दूषित लगती है।</value>
+  </data>
+	<data name="CRASH_MESSAGE" xml:space="preserve">
+    <value>बुरी खबर - ऑप्टिकी अपने पैरों पर फंस गया है और उसे बंद करना पड़ा है।
+
+क्या हुआ, इसके विवरण के साथ एक ईमेल बहुत मददगार होगा: crash@optikey.org
+
+असुविधा के लिए खेद है।</value>
+  </data>
+	<data name="CRASH_TITLE" xml:space="preserve">
+    <value>उह ओह!</value>
+  </data>
+	<data name="CTRL" xml:space="preserve">
+    <value>Ctrl</value>
+  </data>
+	<data name="CURRENCIES" xml:space="preserve">
+    <value>मुद्राऐंं</value>
+  </data>
+	<data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
+    <value>मुद्राऐंं 1</value>
+  </data>
+	<data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
+    <value>मुद्राऐं 2</value>
+  </data>
+	<data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
+    <value>कर्सर ऊंचाई (पिक्सेल):</value>
+  </data>
+	<data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
+    <value>कर्सर चौड़ाई (पिक्सेल):</value>
+  </data>
+	<data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>डायनामिक कीबोर्ड फ़ाइल</value>
+  </data>
+	<data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
+    <value>डिबगिंग मोड:</value>
+  </data>
+	<data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>कमी
+अस्पष्टता</value>
+  </data>
+	<data name="DEL" xml:space="preserve">
+    <value>डेल</value>
+  </data>
+	<data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>मिटाना</value>
+  </data>
+	<data name="DIACRITICS" xml:space="preserve">
+    <value>स्वरचिह्न</value>
+  </data>
+	<data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
+    <value>स्वरचिह्न 1</value>
+  </data>
+	<data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
+    <value>स्वरचिह्न 2</value>
+  </data>
+	<data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
+    <value>स्वरचिह्न 3</value>
+  </data>
+	<data name="DICTIONARY" xml:space="preserve">
+    <value>शब्दकोश</value>
+  </data>
+	<data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
+    <value>कोई यूजर शब्दकोश मौजूद नहीं है और मूल शब्दकोश इस पथ पर नहीं पाया जा सकता है: '{0}'</value>
+  </data>
+	<data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
+    <value>प्रति संदेश वर्ण X सेकंड के लिए प्रदर्शित करें:</value>
+  </data>
+	<data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
+    <value>वर्तमान स्थान पर करें</value>
+  </data>
+	<data name="DO_AT_POINT" xml:space="preserve">
+    <value>बिंदु पर करें</value>
+  </data>
+	<data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>नीचे
+तीर</value>
+  </data>
+	<data name="END" xml:space="preserve">
+    <value>समाप्त</value>
+  </data>
+	<data name="ENTER" xml:space="preserve">
+    <value>एंटर</value>
+  </data>
+	<data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
+    <value>महान काम। शब्दकोश में '{0}' जोड़ा गया है।</value>
+  </data>
+	<data name="ERROR_SOUND_LABEL" xml:space="preserve">
+    <value>एरर</value>
+  </data>
+	<data name="ESC" xml:space="preserve">
+    <value>Esc</value>
+  </data>
+	<data name="EXPAND" xml:space="preserve">
+    <value>विस्तार</value>
+  </data>
+	<data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>विस्तार
+डॉक</value>
+  </data>
+	<data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>विस्तार
+नीचे
+&amp; बाएं</value>
+  </data>
+	<data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>विस्तार
+नीचे
+&amp; दाएं</value>
+  </data>
+	<data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>विस्तार
+नीचे</value>
+  </data>
+	<data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>विस्तार
+बाएं</value>
+  </data>
+	<data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>विस्तार
+दाएं</value>
+  </data>
+	<data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>विस्तार
+ऊपर &amp;
+बाएं</value>
+  </data>
+	<data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>विस्तार
+ऊपर &amp;
+दाएं</value>
+  </data>
+	<data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>विस्तार
+ऊपर</value>
+  </data>
+	<data name="FALLING_SOUND_1" xml:space="preserve">
+    <value>गिर रहा है 1</value>
+  </data>
+	<data name="FALLING_SOUND_2" xml:space="preserve">
+    <value>गिर रहा है 2</value>
+  </data>
+	<data name="FILL_PIE" xml:space="preserve">
+    <value>पाई भरें</value>
+  </data>
+	<data name="FIXATIONS_DWELL" xml:space="preserve">
+    <value>फिक्सेशन (निवास)</value>
+  </data>
+	<data name="FONT" xml:space="preserve">
+    <value>फ़ॉन्ट</value>
+  </data>
+	<data name="FONT_FAMILY_LABEL" xml:space="preserve">
+    <value>फ़ॉन्ट परिवार:</value>
+  </data>
+	<data name="FONT_STRETCH_LABEL" xml:space="preserve">
+    <value>फ़ॉन्ट खिंचाव:</value>
+  </data>
+	<data name="FONT_WEIGHT_LABEL" xml:space="preserve">
+    <value>फ़ॉन्ट वजन:</value>
+  </data>
+	<data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
+    <value>पूर्ण डॉक मोटाई (स्क्रीन के% के रूप में):</value>
+  </data>
+	<data name="GAZE_TRACKER" xml:space="preserve">
+    <value>गेज़ ट्रैकर</value>
+  </data>
+	<data name="GROW" xml:space="preserve">
+    <value>बढ़ना</value>
+  </data>
+	<data name="HOME" xml:space="preserve">
+    <value>होम</value>
+  </data>
+	<data name="HORIZONTAL_FILL" xml:space="preserve">
+    <value>क्षैतिज भरण (स्क्रीन का %):</value>
+  </data>
+	<data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
+    <value>रहने के लिए अपूर्ण कुंजी निर्धारण समय (ms):</value>
+  </data>
+	<data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>अस्पष्टता 
+बढ़ाएं</value>
+  </data>
+	<data name="INFO_SOUND_LABEL" xml:space="preserve">
+    <value>जानकारी</value>
+  </data>
+	<data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
+    <value>... लेकिन होशियारी से ऑटो-कैप्स को दबा दें जहां यह शायद असहायक है:</value>
+  </data>
+	<data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
+    <value>वर्तमान कीबोर्ड और भाषा संयोजन वैध नहीं है</value>
+  </data>
+	<data name="JUMP" xml:space="preserve">
+    <value>जंप</value>
+  </data>
+	<data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>जंप
+डाउन
+लेफ्ट</value>
+  </data>
+	<data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>जंप
+डाउन
+राइट</value>
+  </data>
+	<data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>जंप
+डाउन</value>
+  </data>
+	<data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>जंप
+लेफ्ट</value>
+  </data>
+	<data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>जंप
+राइट</value>
+  </data>
+	<data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>जंप
+अप
+लेफ्ट</value>
+  </data>
+	<data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>जंप
+अप
+राइट</value>
+  </data>
+	<data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>जंप
+अप</value>
+  </data>
+	<data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>कुंजी टेक्स्ट परिवर्तन:</value>
+  </data>
+	<data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>पूरा करने के लिए कुंजी निर्धारण समय (ms):</value>
+  </data>
+	<data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>लॉक-ऑन के लिए कुंजी निर्धारण समय (ms):</value>
+  </data>
+	<data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>कुंजी चयन कीबोर्ड कुंजी:</value>
+  </data>
+	<data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>कुंजी चयन माउस बटन:</value>
+  </data>
+	<data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
+    <value>कुंजी चयन</value>
+  </data>
+	<data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>कुंजी चयन स्रोत:</value>
+  </data>
+	<data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>कुंजी चयन: {0}</value>
+  </data>
+	<data name="KEYBOARD_KEY" xml:space="preserve">
+    <value>कीबोर्ड कुंजी</value>
+  </data>
+	<data name="LANGUAGE" xml:space="preserve">
+    <value>भाषा</value>
+  </data>
+	<data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>कीबोर्ड भाषा: {0}</value>
+  </data>
+	<data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>कीबोर्ड भाषा:</value>
+  </data>
+	<data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>कीबोर्ड फ़ोल्डर को प्रबंधन कंसोल (विज़ुअल टैब) में सेट किया जा सकता है</value>
+  </data>
+	<data name="LEFT" xml:space="preserve">
+    <value>लेफ्ट</value>
+  </data>
+	<data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>लेफ्ट
+एरौ</value>
+  </data>
+	<data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>लेफ्ट
+क्लिक</value>
+  </data>
+	<data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>लेफ्ट
+डबल क्लिक</value>
+  </data>
+	<data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>लेफ्ट
+डाउन/अप</value>
+  </data>
+	<data name="LOOK" xml:space="preserve">
+    <value>देखो</value>
+  </data>
+	<data name="LOWER_CASE" xml:space="preserve">
+    <value>सभी लोअर केस में</value>
+  </data>
+	<data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>चुंबकीय
+कर्सर</value>
+  </data>
+	<data name="MAGNIFIER" xml:space="preserve">
+    <value>मैग्नीफायर</value>
+  </data>
+	<data name="MAGNIFIER_CENTER_ON_SCREEN" xml:space="preserve">
+    <value>स्क्रीन के केंद्र में मैग्नीफायर विंडो दिखाएं</value>
+  </data>
+	<data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
+    <value>मैग्नीफाय गंतव्य (स्क्रीन के% के रूप में):</value>
+  </data>
+	<data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
+    <value>मैग्नीफाय स्रोत (स्क्रीन के% के रूप में):</value>
+  </data>
+	<data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
+    <value>मेनेजमेंट कंसोल: ALT + M</value>
+  </data>
+	<data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
+    <value>आॉप्टीकी मेनेजमेंट कंसोल:</value>
+  </data>
+	<data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
+    <value>शब्दकोश मैचों की अधिकतम संख्या:</value>
+  </data>
+	<data name="MENU" xml:space="preserve">
+    <value>मेन्यू</value>
+  </data>
+	<data name="MENU_LAYOUT" xml:space="preserve">
+    <value>मेन्यू</value>
+  </data>
+	<data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मिडिल क्लिक</value>
+  </data>
+	<data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मिडिल 
+डाउन/अप</value>
+  </data>
+	<data name="MINIMISE" xml:space="preserve">
+    <value>छोटा करें</value>
+  </data>
+	<data name="MINIMISED_LAYOUT" xml:space="preserve">
+    <value>न्यूनतम</value>
+  </data>
+	<data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
+    <value>न्यूनतम स्थिति:</value>
+  </data>
+	<data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
+    <value>कैप्चर में शामिल करने के लिए एक कुंजी पर न्यूनतम निवासी समय (ms):</value>
+  </data>
+	<data name="MISC" xml:space="preserve">
+    <value>विविध</value>
+  </data>
+	<data name="MOUSE" xml:space="preserve">
+    <value>माउस</value>
+  </data>
+	<data name="MOUSE_BUTTON" xml:space="preserve">
+    <value>माउस बटन</value>
+  </data>
+	<data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
+    <value>माउस क्लिक 1</value>
+  </data>
+	<data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
+    <value>माउस क्लिक 2</value>
+  </data>
+	<data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
+    <value>माउस क्लिक 3</value>
+  </data>
+	<data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
+    <value>माउस क्लिक 4</value>
+  </data>
+	<data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>माउस क्लिक:</value>
+  </data>
+	<data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
+    <value>माउस डबल क्लिक 1</value>
+  </data>
+	<data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
+    <value>माउस डबल क्लिक 2</value>
+  </data>
+	<data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
+    <value>माउस डबल क्लिक 3</value>
+  </data>
+	<data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>माउस डबल क्लिक:</value>
+  </data>
+	<data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
+    <value>माउस डाउन 1</value>
+  </data>
+	<data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
+    <value>माउस डाउन 2</value>
+  </data>
+	<data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
+    <value>माउस डाउन 3</value>
+  </data>
+	<data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
+    <value>माउस डाउन 4</value>
+  </data>
+	<data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
+    <value>माउस डाउन:</value>
+  </data>
+	<data name="MOUSE_LAYOUT" xml:space="preserve">
+    <value>माउस</value>
+  </data>
+	<data name="MOUSE_POSITION" xml:space="preserve">
+    <value>माउस की स्थिति</value>
+  </data>
+	<data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
+    <value>माउस स्थिति नमूना अंतराल (ms):</value>
+  </data>
+	<data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
+    <value>माउस स्क्रॉल 1</value>
+  </data>
+	<data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
+    <value>माउस स्क्रॉल 2</value>
+  </data>
+	<data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
+    <value>माउस स्क्रॉल 3</value>
+  </data>
+	<data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
+    <value>माउस स्क्रॉल 4</value>
+  </data>
+	<data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
+    <value>माउस स्क्रॉल 5</value>
+  </data>
+	<data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
+    <value>माउस स्क्रॉल 6</value>
+  </data>
+	<data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
+    <value>माउस स्क्रॉल:</value>
+  </data>
+	<data name="MOUSE_UP_SOUND_1" xml:space="preserve">
+    <value>माउस अप 1</value>
+  </data>
+	<data name="MOUSE_UP_SOUND_2" xml:space="preserve">
+    <value>माउस अप 2</value>
+  </data>
+	<data name="MOUSE_UP_SOUND_3" xml:space="preserve">
+    <value>माउस अप 3</value>
+  </data>
+	<data name="MOUSE_UP_SOUND_4" xml:space="preserve">
+    <value>माउस अप 4</value>
+  </data>
+	<data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
+    <value>माउस अप:</value>
+  </data>
+	<data name="MOVE" xml:space="preserve">
+    <value>मूव</value>
+  </data>
+	<data name="MOVE_BY" xml:space="preserve">
+    <value>पिक्सेल {0}
+से मूव करे: पिक्सेल {0}
+से मूव करे</value>
+  </data>
+	<data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मूव
+डाउन
+&amp; लेफ्ट</value>
+  </data>
+	<data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मूव
+डाउन
+&amp; राइट</value>
+  </data>
+	<data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मूव
+डाउन</value>
+  </data>
+	<data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मूव
+लेफ्ट</value>
+  </data>
+	<data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मूव
+राइट</value>
+  </data>
+	<data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मूव
+टु</value>
+  </data>
+	<data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मूव
+अप &amp;
+लेफ्ट</value>
+  </data>
+	<data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मूव
+अप &amp;
+राइट</value>
+  </data>
+	<data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मूव
+अप</value>
+  </data>
+	<data name="MULTI_KEY_CAPTURES" xml:space="preserve">
+    <value>मल्टी-की कैप्चर</value>
+  </data>
+	<data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
+    <value>मल्टी-की कैप्चर सक्षम:</value>
+  </data>
+	<data name="MULTI_KEY_SELECTION" xml:space="preserve">
+    <value>मल्टी-की चयन</value>
+  </data>
+	<data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
+    <value>मल्टी-की चयन समाप्त:</value>
+  </data>
+	<data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>मल्टी-की
+चयन</value>
+  </data>
+	<data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
+    <value>मल्टी-की चयन शुरू:</value>
+  </data>
+	<data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
+    <value>
+(नई शब्दकोश प्रविष्टि में बड़े अक्षर होंगे)</value>
+  </data>
+	<data name="NEXT" xml:space="preserve">
+    <value>अगला</value>
+  </data>
+	<data name="NO" xml:space="preserve">
+    <value>नहीं</value>
+  </data>
+	<data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>कोई कीबोर्ड नहीं मिला</value>
+  </data>
+	<data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
+    <value>ऐसा नहीं लगता है कि स्क्रैचपैड में कोई शब्द या वाक्यांश हैं जो शब्दकोश में पहले से मौजूद नहीं हैं</value>
+  </data>
+	<data name="NO_SOUND" xml:space="preserve">
+    <value>कोई नहीं</value>
+  </data>
+	<data name="NOTHING_NEW" xml:space="preserve">
+    <value>हम्म, यहाँ कुछ भी नया नहीं है!</value>
+  </data>
+	<data name="NOTIFICATIONS" xml:space="preserve">
+    <value>सूचनाएँ</value>
+  </data>
+	<data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>नम
+लाॅक</value>
+  </data>
+	<data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>नम
+सिम</value>
+  </data>
+	<data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
+    <value>संख्याएँ
+और प्रतीक</value>
+  </data>
+	<data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
+    <value>संख्याएँ और प्रतीक 1</value>
+  </data>
+	<data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
+    <value>संख्याएँ और प्रतीक 2</value>
+  </data>
+	<data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
+    <value>संख्याएँ और प्रतीक 3</value>
+  </data>
+	<data name="OK" xml:space="preserve">
+    <value>ठीक है</value>
+  </data>
+	<data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>ऑप्टिकी प्रो: कंप्यूटर नियंत्रण और संचार</value>
+  </data>
+	<data name="OTHER" xml:space="preserve">
+    <value>अन्य</value>
+  </data>
+	<data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
+    <value>पैरेंट विंडो की पहचान नहीं हो सकी । जारी रखने में असमर्थ</value>
+  </data>
+	<data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>पेज 
+डाउन</value>
+  </data>
+	<data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>पेज 
+अप</value>
+  </data>
+	<data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
+    <value>फिजिकल कीज</value>
+  </data>
+	<data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>फिजिकल
+कीज</value>
+  </data>
+	<data name="PLAY_SOUND" xml:space="preserve">
+    <value>खेल</value>
+  </data>
+	<data name="POINT_AND_SELECTING" xml:space="preserve">
+    <value>इंगित करना और चयन करना</value>
+  </data>
+	<data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
+    <value>प्वाइंट फिक्सेशन रेडियस (पिक्सल):</value>
+  </data>
+	<data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>पॉइंट फिक्सेशन समय पूरा करने के लिए (ms):</value>
+  </data>
+	<data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>लॉक-ऑन करने के लिए पॉइंट फिक्सेशन का समय (ms):</value>
+  </data>
+	<data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
+    <value>प्वाइंट लॉक-ऑन रेडियस (पिक्सल):</value>
+  </data>
+	<data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
+    <value>प्वाइंट चयन: {0}</value>
+  </data>
+	<data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>प्वाइंट चयन कीबोर्ड कुंजी:</value>
+  </data>
+	<data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>प्वाइंट चयन माउस बटन:</value>
+  </data>
+	<data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>प्वाइंट चयन स्रोत:</value>
+  </data>
+	<data name="POINTING" xml:space="preserve">
+    <value>इशारा</value>
+  </data>
+	<data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
+    <value>इशारा: {0}</value>
+  </data>
+	<data name="PREV" xml:space="preserve">
+    <value>पिछला</value>
+  </data>
+	<data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
+    <value>कीबोर्ड लोडिंग में समस्या</value>
+  </data>
+	<data name="QUIT" xml:space="preserve">
+    <value>छोड़ना</value>
+  </data>
+	<data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>क्या आप पूरी तरह से सुनिश्चित हैं कि आप छोड़ना चाहते हैं?</value>
+  </data>
+	<data name="QUIT_MESSAGE" xml:space="preserve">
+    <value>क्या आप वाकई छोड़ना चाहते हैं?</value>
+  </data>
+	<data name="RATE_LABEL" xml:space="preserve">
+    <value>दर</value>
+  </data>
+	<data name="RE_CALIBRATE" xml:space="preserve">
+    <value>पुनः कैलिब्रेट</value>
+  </data>
+	<data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>दोहराएं
+पिछले</value>
+  </data>
+	<data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
+    <value>ऑडियो और / या शब्दकोश सेवा (ओं) को प्रबंधन विंडो कार्रवाई के लिए आपूर्ति नहीं की गई थी</value>
+  </data>
+	<data name="RESTART_MESSAGE" xml:space="preserve">
+    <value>ऑप्टिके को अपने परिवर्तनों को लागू करने के लिए पुनः आरंभ करने की आवश्यकता है। 
+कृपया पुनः आरंभ जारी रखने के लिए ठीक क्लिक करें, या अपने परिवर्तनों को त्यागने के लिए रद्द क्लिक करें</value>
+  </data>
+	<data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>पुनर्स्थापित</value>
+  </data>
+	<data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
+    <value>अपूर्ण कुंजी निर्धारण को फिर से शुरू करने पर एक नए लॉक की आवश्यकता है:</value>
+  </data>
+	<data name="RIGHT" xml:space="preserve">
+    <value>राइट</value>
+  </data>
+	<data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>राइट
+एरौ</value>
+  </data>
+	<data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>राइट
+क्लिक</value>
+  </data>
+	<data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>राइट
+डाउन/अप</value>
+  </data>
+	<data name="RISING_SOUND_1" xml:space="preserve">
+    <value>चढ़ाव 1</value>
+  </data>
+	<data name="RISING_SOUND_2" xml:space="preserve">
+    <value>चढ़ाव 2</value>
+  </data>
+	<data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
+    <value>डॉक स्थिति के रूप में</value>
+  </data>
+	<data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
+    <value>स्क्रेचपैड # लाइनों का:</value>
+  </data>
+	<data name="SCROLL_BY" xml:space="preserve">
+    <value>{0}क्लिक करके
+ स्क्रॉल करें:| {0}क्लिक करके
+स्क्रॉल करें:</value>
+  </data>
+	<data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>स्क्रॉल करें
+नीचे</value>
+  </data>
+	<data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>स्क्रॉल करें
+लेफ्ट</value>
+  </data>
+	<data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>स्क्रॉल करें
+राइट</value>
+  </data>
+	<data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>स्क्रॉल करें
+ऊपर</value>
+  </data>
+	<data name="SELECTION" xml:space="preserve">
+    <value>चयन</value>
+  </data>
+	<data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
+    <value>चयन प्रगति संकेतक व्यवहार</value>
+  </data>
+	<data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
+    <value>चयन प्रगति संकेतक अंत आकार (%)</value>
+  </data>
+	<data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
+    <value>चयन प्रगति संकेतक प्रारंभ आकार (%):</value>
+  </data>
+	<data name="SHIFT" xml:space="preserve">
+    <value>शिफ्ट</value>
+  </data>
+	<data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
+    <value>स्टार्टअप पर स्पलेश स्क्रीन दिखाएं:</value>
+  </data>
+	<data name="SHRINK" xml:space="preserve">
+    <value>श्रिंक</value>
+  </data>
+	<data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>श्रिंक
+डाउन
+लेफ्ट</value>
+  </data>
+	<data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>श्रिंक
+डाउन
+राइट</value>
+  </data>
+	<data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>श्रिंक
+डाउन</value>
+  </data>
+	<data name="SHRINK_INDICATOR" xml:space="preserve">
+    <value>श्रिंक</value>
+  </data>
+	<data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>श्रिंक
+लेफ्ट</value>
+  </data>
+	<data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>लश्रिंक
+राइट</value>
+  </data>
+	<data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>श्रिंक
+अप
+लेफ्ट</value>
+  </data>
+	<data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>श्रिंक
+अप
+राइट</value>
+  </data>
+	<data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>श्रिंक
+अप</value>
+  </data>
+	<data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
+    <value>(FYI कुछ इसी तरह की प्रविष्टियां पहले से ही शब्दकोश में हैं: {0})</value>
+  </data>
+	<data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>आकार और
+स्थान</value>
+  </data>
+	<data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
+    <value>आकार और स्थान</value>
+  </data>
+	<data name="SLEEP" xml:space="preserve">
+    <value>नींद</value>
+  </data>
+	<data name="SOUND_EFFECTS" xml:space="preserve">
+    <value>ध्वनि प्रभाव</value>
+  </data>
+	<data name="SOUNDS" xml:space="preserve">
+    <value>ध्वनि</value>
+  </data>
+	<data name="SOURCE_LABEL" xml:space="preserve">
+    <value>स्रोत:</value>
+  </data>
+	<data name="SPACE" xml:space="preserve">
+    <value>जगह</value>
+  </data>
+	<data name="SPEAK" xml:space="preserve">
+    <value>बोलना</value>
+  </data>
+	<data name="SPEECH" xml:space="preserve">
+    <value>बोली</value>
+  </data>
+	<data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
+    <value>स्टार्टअप कीबोर्ड:</value>
+  </data>
+	<data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>डायनामिक कीबोर्ड फ़ाइल:</value>
+  </data>
+	<data name="STOP_SIGNAL_LABEL" xml:space="preserve">
+    <value>विराम संकेत:</value>
+  </data>
+	<data name="SUCCESS" xml:space="preserve">
+    <value>सफलता</value>
+  </data>
+	<data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
+    <value>माउस कीबोर्ड में संशोधक कुंजी दबाएं:</value>
+  </data>
+	<data name="TAB" xml:space="preserve">
+    <value>टैब</value>
+  </data>
+	<data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
+    <value>TheEyeTribe GazeManager को सक्रिय करने में असमर्थ! कृपया जांचें कि सर्वर चल रहा है और डिवाइस जुड़ा हुआ है और फिर से प्रयास करें।</value>
+  </data>
+	<data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
+    <value>TheEyeTribe को कैलिब्रेट नहीं किया गया है। अंशांकन पूरा होने तक कोई डेटा प्राप्त नहीं होगा।</value>
+  </data>
+	<data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
+    <value>अंशांकन का प्रयास करने में असमर्थ क्योंकि कोई EyeX इंजन उपलब्ध नहीं है।</value>
+  </data>
+	<data name="THEME_LABEL" xml:space="preserve">
+    <value>थीम</value>
+  </data>
+	<data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
+    <value>समय जब तक बिंदु अप्रासंगिक हो जाता है (ms):</value>
+  </data>
+	<data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>कर्सर छिपाएं</value>
+  </data>
+	<data name="TITLE_CASE" xml:space="preserve">
+    <value>शब्दों को बड़ा किया जाता है</value>
+  </data>
+	<data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>अंशांकन पूरा हो गया, या संभवतः रद्द कर दिया गया, लेकिन सब कुछ फिर से काम कर रहा है!</value>
+  </data>
+	<data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii EyeX इंजन नहीं मिल सकता है। कृपया EyeX Engine इंस्टॉल करें और पुनः प्रयास करें।</value>
+  </data>
+	<data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii EyeX इंजन नहीं चल रहा है। कृपया EyeX इंजन शुरू करें और फिर से प्रयास करें</value>
+  </data>
+	<data name="TONE_SOUND_1" xml:space="preserve">
+    <value>टोन 1</value>
+  </data>
+	<data name="TONE_SOUND_2" xml:space="preserve">
+    <value>टोन 2</value>
+  </data>
+	<data name="TONE_SOUND_3" xml:space="preserve">
+    <value>टोन 3</value>
+  </data>
+	<data name="TONE_SOUND_4" xml:space="preserve">
+    <value>टोन 4</value>
+  </data>
+	<data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
+    <value>ट्रिगर बटन / कुंजी फिर से दबाया गया</value>
+  </data>
+	<data name="TRIGGER_RELEASED" xml:space="preserve">
+    <value>ट्रिगर बटन/कुंजी जारी</value>
+  </data>
+	<data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
+    <value>मैं यह नहीं पता लगा सकता कि आप अपना ध्यान कहाँ रख रहे हैं। क्या इनपुट डिवाइस में कोई समस्या है? क्या यह जुड़ा हुआ है, चालू है, कैलिब्रेटेड है, आदि?</value>
+  </data>
+	<data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
+    <value>वर्तमान ऊंचाई निर्धारित करने में असमर्थ।</value>
+  </data>
+	<data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
+    <value>आवाज '{0}' {1}सेट करने में समस्या थी </value>
+  </data>
+	<data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
+    <value>कुछ गलत हो गया, लेकिन मुझे नहीं पता कि क्या - कृपया लॉग की जांच करें</value>
+  </data>
+	<data name="UP" xml:space="preserve">
+    <value>ऊपर</value>
+  </data>
+	<data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>अप
+एरौ</value>
+  </data>
+	<data name="UPDATE_AVAILABLE" xml:space="preserve">
+    <value>अपडेट उपलब्ध!</value>
+  </data>
+	<data name="UPPER_CASE" xml:space="preserve">
+    <value>सभी अपरकेस में</value>
+  </data>
+	<data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
+    <value>नवीनतम संस्करण ({0}) डाउनलोड करने के लिए www.optikey.org पर जाएं। आप मैनेजमेंट कंसोल (ALT + M) से अपडेट चेक बंद कर सकते हैं।</value>
+  </data>
+	<data name="VERIFY_RESTART" xml:space="preserve">
+    <value>क्या मैं आॉप्टीकी को पुनः आरंभ कर सकता हूं?</value>
+  </data>
+	<data name="VERSION_DESCRIPTION" xml:space="preserve">
+    <value>संस्करण: {0}</value>
+  </data>
+	<data name="VERTICAL_FILL_LABEL" xml:space="preserve">
+    <value>वर्टिकल फिल (स्क्रीन के% के रूप में):</value>
+  </data>
+	<data name="VISUALS" xml:space="preserve">
+    <value>विजुअल्स</value>
+  </data>
+	<data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
+    <value>(सेटिंग्स से)</value>
+  </data>
+	<data name="VOICE_LABEL" xml:space="preserve">
+    <value>आवाज़</value>
+  </data>
+	<data name="VOLUME_LABEL" xml:space="preserve">
+    <value>वॉल्यूम</value>
+  </data>
+	<data name="WEBSITE_DESCRIPTION" xml:space="preserve">
+    <value>वेबसाइट: www.optikey.org</value>
+  </data>
+	<data name="WINDOW_TITLE" xml:space="preserve">
+    <value>आॉप्टीकी v {0}</value>
+  </data>
+	<data name="WORDS" xml:space="preserve">
+    <value>शब्द</value>
+  </data>
+	<data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>अक्षर</value>
+  </data>
+	<data name="HIGH" xml:space="preserve">
+    <value>ऊंचा</value>
+  </data>
+	<data name="LOW" xml:space="preserve">
+    <value>नीचा</value>
+  </data>
+	<data name="MEDIUM" xml:space="preserve">
+    <value>मध्यम</value>
+  </data>
+	<data name="NONE" xml:space="preserve">
+    <value>कोई नहीं</value>
+  </data>
+	<data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>डेटा स्ट्रीम प्रोसेसिंग राशि:</value>
+  </data>
+	<data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>यूजर इंटरफेस भाषा: {0}</value>
+  </data>
+	<data name="UI_LANGUAGE_LABEL" xml:space="preserve">
+    <value>यूजर इंटरफेस भाषा:</value>
+  </data>
+	<data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>वर्ण टाइप करते समय भौतिक कीस्ट्रोक का अनुकरण करें:</value>
+  </data>
+	<data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>स्क्रॉलिंग क्रियाओं के लिए माउस आवर्धन को दबाएं:</value>
+  </data>
+	<data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>डायनेमिक कीबोर्ड मेनू</value>
+  </data>
+	<data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>वार्तालाप कीबोर्ड सीमा मोटाई (बाएं, ऊपर, दाएं, नीचे px में):</value>
+  </data>
+	<data name="BACK_ONE" xml:space="preserve">
+    <value>एक पीछे </value>
+  </data>
+	<data name="BACK_WORD" xml:space="preserve">
+    <value>पीछे का शब्द</value>
+  </data>
+	<data name="SUGGESTION_1" xml:space="preserve">
+    <value>सुझाव 1</value>
+  </data>
+	<data name="SUGGESTION_2" xml:space="preserve">
+    <value>सुझाव 2</value>
+  </data>
+	<data name="SUGGESTION_3" xml:space="preserve">
+    <value>सुझाव 3</value>
+  </data>
+	<data name="SUGGESTION_4" xml:space="preserve">
+    <value>सुझाव 4</value>
+  </data>
+	<data name="SUGGESTION_5" xml:space="preserve">
+    <value>सुझाव 5</value>
+  </data>
+	<data name="SUGGESTION_6" xml:space="preserve">
+    <value>सुझाव 6</value>
+  </data>
+	<data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>सुझाव कुंजी</value>
+  </data>
+	<data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>शब्दकोश में जोड़ें</value>
+  </data>
+	<data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>डॉक संक्षिप्त करें</value>
+  </data>
+	<data name="DOWN_ARROW" xml:space="preserve">
+    <value>डाउन एरौ</value>
+  </data>
+	<data name="LEFT_ARROW" xml:space="preserve">
+    <value>लेफ्ट एरौ</value>
+  </data>
+	<data name="RIGHT_ARROW" xml:space="preserve">
+    <value>राइट एरौ</value>
+  </data>
+	<data name="UP_ARROW" xml:space="preserve">
+    <value>अप एरौ</value>
+  </data>
+	<data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>क्लिक करें और खींचें</value>
+  </data>
+	<data name="CURRENCIES_1" xml:space="preserve">
+    <value>मुद्राऍ 1</value>
+  </data>
+	<data name="CURRENCIES_2" xml:space="preserve">
+    <value>मुद्राऍ 2</value>
+  </data>
+	<data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>अस्पष्टता कम </value>
+  </data>
+	<data name="DIACRITICS_1" xml:space="preserve">
+    <value>स्वरचिह्न 1</value>
+  </data>
+	<data name="DIACRITICS_2" xml:space="preserve">
+    <value>स्वरचिह्न 2</value>
+  </data>
+	<data name="DIACRITICS_3" xml:space="preserve">
+    <value>स्वरचिह्न 3</value>
+  </data>
+	<data name="EXPAND_DOCK" xml:space="preserve">
+    <value>डॉक का विस्तार करें</value>
+  </data>
+	<data name="EXPAND_DOWN" xml:space="preserve">
+    <value>एक्सपैंड डाउन</value>
+  </data>
+	<data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>एक्सपैंड डाउन &amp; लेफ्ट</value>
+  </data>
+	<data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>एक्सपैंड डाउन &amp; राइट</value>
+  </data>
+	<data name="EXPAND_LEFT" xml:space="preserve">
+    <value>एक्सपैंड लेफ्ट</value>
+  </data>
+	<data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>एक्सपैंड राइट</value>
+  </data>
+	<data name="EXPAND_UP" xml:space="preserve">
+    <value>एक्सपैंड अप</value>
+  </data>
+	<data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>एक्सपैंड अप &amp; लेफ्ट</value>
+  </data>
+	<data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>एक्सपैंड अप &amp; राइट</value>
+  </data>
+	<data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>अस्पष्टता बढ़ाएं</value>
+  </data>
+	<data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>संख्यात्मक और प्रतीक 1</value>
+  </data>
+	<data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>संख्यात्मक और प्रतीक 2</value>
+  </data>
+	<data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>संख्यात्मक और प्रतीक 3</value>
+  </data>
+	<data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>भौतिक कुंजी</value>
+  </data>
+	<data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>आकार और स्थिति</value>
+  </data>
+	<data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>चुंबकीय कर्सर</value>
+  </data>
+	<data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>मिडिल क्लिक</value>
+  </data>
+	<data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>मिडिल डाउन/अप</value>
+  </data>
+	<data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>पिक्सल्स में अमाउंट मूव करें</value>
+  </data>
+	<data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>पिक्सल्स में अमाउंट एडजस्ट करें</value>
+  </data>
+	<data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>बातचीत अल्फा 1</value>
+  </data>
+	<data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>बातचीत संख्यात्मक और प्रतीक</value>
+  </data>
+	<data name="JUMP_DOWN" xml:space="preserve">
+    <value>जंप डाउन</value>
+  </data>
+	<data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>जंप डाउन &amp; लेफ्ट</value>
+  </data>
+	<data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>जंप डाउन &amp; राइट</value>
+  </data>
+	<data name="JUMP_LEFT" xml:space="preserve">
+    <value>जंप लेफ्ट</value>
+  </data>
+	<data name="JUMP_RIGHT" xml:space="preserve">
+    <value>जंप राइट</value>
+  </data>
+	<data name="JUMP_UP" xml:space="preserve">
+    <value>जंप अप</value>
+  </data>
+	<data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>जंप अप &amp; लेफ्ट</value>
+  </data>
+	<data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>जंप अप &amp; राइट</value>
+  </data>
+	<data name="LEFT_CLICK" xml:space="preserve">
+    <value>लेफ्ट क्लिक</value>
+  </data>
+	<data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>लेफ्ट डबल क्लिक</value>
+  </data>
+	<data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>लेफ्ट डाउन/अप</value>
+  </data>
+	<data name="MOVE_DOWN" xml:space="preserve">
+    <value>मूव डाउन</value>
+  </data>
+	<data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>मूव डाउन &amp; लेफ्ट</value>
+  </data>
+	<data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>मूव डाउन &amp; राइट</value>
+  </data>
+	<data name="MOVE_LEFT" xml:space="preserve">
+    <value>मूव लेफ्ट</value>
+  </data>
+	<data name="MOVE_RIGHT" xml:space="preserve">
+    <value>मूव राइट</value>
+  </data>
+	<data name="MOVE_TO" xml:space="preserve">
+    <value>मूव टु</value>
+  </data>
+	<data name="MOVE_UP" xml:space="preserve">
+    <value>मूव अप</value>
+  </data>
+	<data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>मूव अप &amp; लेफ्ट</value>
+  </data>
+	<data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>मूव अप &amp; राइट</value>
+  </data>
+	<data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>मल्टी-की चयन</value>
+  </data>
+	<data name="NUM_LK" xml:space="preserve">
+    <value>नम लाॅक</value>
+  </data>
+	<data name="PG_DN" xml:space="preserve">
+    <value>पेज  डाउन</value>
+  </data>
+	<data name="PG_UP" xml:space="preserve">
+    <value>पेज अप</value>
+  </data>
+	<data name="REPEAT_LAST" xml:space="preserve">
+    <value>दोहराएं पिछला</value>
+  </data>
+	<data name="RIGHT_CLICK" xml:space="preserve">
+    <value>राइट क्लिक</value>
+  </data>
+	<data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>राइट डाउन/अप</value>
+  </data>
+	<data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>क्लिक में स्क्रॉल अमाउंट </value>
+  </data>
+	<data name="SCROLL_DOWN" xml:space="preserve">
+    <value>नीचे स्क्रॉल करें </value>
+  </data>
+	<data name="SCROLL_LEFT" xml:space="preserve">
+    <value>लेफ्ट स्क्रॉल करें </value>
+  </data>
+	<data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>राइट स्क्रॉल करें</value>
+  </data>
+	<data name="SCROLL_UP" xml:space="preserve">
+    <value>ऊपर स्क्रॉल करें</value>
+  </data>
+	<data name="SHRINK_DOWN" xml:space="preserve">
+    <value>श्रिंक डाउन</value>
+  </data>
+	<data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>श्रिंक डाउन लेफ्ट</value>
+  </data>
+	<data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>श्रिंक डाउन राइट</value>
+  </data>
+	<data name="SHRINK_LEFT" xml:space="preserve">
+    <value>श्रिंक लेफ्ट</value>
+  </data>
+	<data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>श्रिंक राइट</value>
+  </data>
+	<data name="SHRINK_UP" xml:space="preserve">
+    <value>श्रिंक अप</value>
+  </data>
+	<data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>श्रिंक अप लेफ्ट</value>
+  </data>
+	<data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>श्रिंक अप राइट</value>
+  </data>
+	<data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>कीबोर्ड कीज बदलें:</value>
+  </data>
+	<data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>डॉक एक्शन कीज:</value>
+  </data>
+	<data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>व्यक्तिगत कुंजी निर्धारण समय के लिए ओवरराइड (ms):</value>
+  </data>
+	<data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>भाषा कीज बदलें:</value>
+  </data>
+	<data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>भाषा</value>
+  </data>
+	<data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>विविध कीज:</value>
+  </data>
+	<data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>संशोधक कीज:</value>
+  </data>
+	<data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>माउस (वर्तमान स्थान पर करें) कीज:</value>
+  </data>
+	<data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>माउस (स्थान पर करें) कीज:</value>
+  </data>
+	<data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>माउस (विविध) कीज:</value>
+  </data>
+	<data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>मूव और आकार का कीज:</value>
+  </data>
+	<data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>भौतिक कुंजी:</value>
+  </data>
+	<data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>सुझाव कीज:</value>
+  </data>
+	<data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>व्यक्तिगत कुंजियों को पूरा करने के लिए समय निर्दिष्ट करें:</value>
+  </data>
+	<data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>मेनेजमेंट कंसोल (सेटिंग्स)</value>
+  </data>
+	<data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>छोड़ना</value>
+  </data>
+	<data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>सभी माउस क्रियाओं के लिए संशोधक कुंजी दबाएं:</value>
+  </data>
+	<data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>MyGaze से कनेक्ट करने में असमर्थ! कृपया जांचें कि सर्वर चल रहा है और डिवाइस जुड़ा हुआ है और फिर से प्रयास करें।</value>
+  </data>
+	<data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>केलिब्रेशन विफल रहा!</value>
+  </data>
+	<data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>केलिब्रेशन सफल रहा!</value>
+  </data>
+	<data name="FORCE_CAPS_LOCK" xml:space="preserve">
+    <value>फोर्स कैप्स लॉक (शिफ्ट लॉक डाउन):</value>
+  </data>
+	<data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>अल्फाबेटिकल कीबोर्ड लेआउट का उपयोग करें</value>
+  </data>
+	<data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>कलमन फ़िल्टर</value>
+  </data>
+	<data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
+    <value>माउस नियंत्रण मोड टॉगल करें</value>
+  </data>
+	<data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+    <value>इनपुट मोड बदला गया</value>
+  </data>
+	<data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+    <value>माउस (मैनुअल) मोड अक्षम!</value>
+  </data>
+	<data name="MANUAL_MODE_ENABLED" xml:space="preserve">
+    <value>माउस (मैनुअल) मोड सक्षम!</value>
+  </data>
+	<data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
+    <value>बातचीत की पुष्टि कीबोर्ड सक्षम करें?</value>
+  </data>
+	<data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>केवल बातचीत की पुष्टि मोड:</value>
+  </data>
+	<data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
+    <value>क्विट कीज सक्षम करें?</value>
+  </data>
+	<data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>सरलीकृत कीबोर्ड लेआउट का उपयोग करें</value>
+  </data>
+	<data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ब्राउज़र
+वापस</value>
+  </data>
+	<data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ब्राउज़र
+आगे</value>
+  </data>
+	<data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ब्राउज़र 
+होम</value>
+  </data>
+	<data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ब्राउज़र 
+खोज</value>
+  </data>
+	<data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>वेब ब्राउज़िंग</value>
+  </data>
+	<data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>वेब 
+ब्राउज़िंग</value>
+  </data>
+	<data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>MaryTTS भाषण सिंथेसाइज़र का उपयोग करें?</value>
+  </data>
+	<data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS आवाज</value>
+  </data>
+	<data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>MaryTTS स्थान (marytts-server.bat):</value>
+  </data>
+	<data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>खोज</value>
+  </data>
+	<data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>ERROR: एक वैध 'marytts-server.bat' फ़ाइल का चयन नहीं किया गया था। कृपया फिर से प्रयास करें।</value>
+  </data>
+	<data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>बुनियादी</value>
+  </data>
+	<data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>पूर्व-सूचना</value>
+  </data>
+	<data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>सुझाव विधि:</value>
+  </data>
+	<data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>मैरीटीटीएस उपलब्ध नहीं है</value>
+  </data>
+	<data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>पूर्व-सूचना शब्द भविष्यवाणी उपलब्ध नहीं है</value>
+  </data>
+	<data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>सुझाव विधि: {0} निर्धारित।
+आप इसे वापस बदल सकते हैं
+प्रबंधन कंसोल (ALT + M) से।</value>
+  </data>
+	<data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>सिस्टम वॉइस: {0} के लिए भाषण वॉइस सेट । 
+आप MaryTTS का पथ देख सकते हैं 
+और प्रबंधन कंसोल (ALT + M) से 
+वापस आवाज बदल सकते हैं।</value>
+  </data>
+	<data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>भाषण से पहले देरी (ms):</value>
+  </data>
+	<data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>कम्यूनकेट कीबोर्ड लेआउट का उपयोग करें</value>
+  </data>
+	<data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>कम्यूनिकेट कुंजी को सक्षम करें?</value>
+  </data>
+	<data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>कॉम्यूनिकेट टॉप पेज obf फाइल:</value>
+  </data>
+	<data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>अवैध फाइल</value>
+  </data>
+	<data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>कॉम्यूनिकेट टॉप पेज obf फाइल का स्थान:</value>
+  </data>
+	<data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>ऑप्टिके प्रीसेज के साथ हाथ मिलाने में असमर्थ था । कुछ संभावित कारण हैं: 
+1. Presage.xml फ़ाइल में निर्दिष्ट DBFILENAME (located in C:\Users\USER_NAME\.presage) मौजूद नहीं है-कृपया इस की जांच करें और सही (या uninstall/reinstall Presage) ।
+2. या तो प्रेसेज का 64 बिट संस्करण स्थापित किया गया है (ऑप्टीकी केवल 32 बिट संस्करण का समर्थन करता है), या प्रेसेज फ़ाइलों को स्थानांतरित कर दिया गया है, हटा दिया गया है, या भ्रष्ट किया गया है।
+
+कृपया प्रेसेज को अनइंस्टॉल करें और 0.9.2. ऑप्टीके के 32 बिट संस्करण को स्थापित करें, लेकिन एक अच्छा मौका है कि यह शीघ्र ही क्रैश हो जाएगा।
+भविष्यवाणी विधि को अगले रन पर दुर्घटना को रोकने के लिए NGram में बदल दिया जाएगा ।</value>
+  </data>
+	<data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>प्रेसेज के साथ एक समस्या है</value>
+  </data>
+	<data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>डायनेमिक कीबोर्ड युक्त फोल्डर:</value>
+  </data>
+	<data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>प्लगइन्स युक्त फ़ोल्डर:</value>
+  </data>
+	<data name="ALPHA_2" xml:space="preserve">
+    <value>लेटर्स 2</value>
+  </data>
+	<data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>बातचीत अल्फा 2</value>
+  </data>
+	<data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>सेटिंग्स में किए गए सभी बदलावों को छोड़ दिया जाएगा, क्या आप जारी रखना चाहते हैं?</value>
+  </data>
+	<data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>सेटिंग्स रद्द करें</value>
+  </data>
+	<data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>प्रस्तुत शब्दकोश यहाँ से संपादित नहीं किया जा सकता है।
+यह डिफ़ॉल्ट स्थान "C: \ Program Files (x86)  \ share \ presage \ database_en.db" है।
+यह एक प्रोग्राम के साथ संपादित किया जा सकता है जो SQLite प्रारूप 3 फ़ाइलों को पढ़ सकता है
+जैसे कि "DB Browser for SQLite" (जो कि एक फ्री प्रोग्राम है)।</value>
+  </data>
+	<data name="ALPHA" xml:space="preserve">
+    <value>लेटर्स</value>
+  </data>
+	<data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>आवर्धन प्रक्रिया के दौरान एक त्रुटि हुई है। कृपया आवर्धन को अक्षम करें और आगे समर्थन के लिए Optikey से संपर्क करें।</value>
+  </data>
+	<data name="ERROR_TITLE" xml:space="preserve">
+    <value>एरर</value>
+  </data>
+	<data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>ध्यान दें:</value>
+  </data>
+	<data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>ध्यान कुंजी सक्षम करें?</value>
+  </data>
+	<data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
+    <value>कॉपी स्क्रैचपैड कुंजी सक्षम करें?</value>
+  </data>
+	<data name="ATTENTION" xml:space="preserve">
+    <value>ध्यान</value>
+  </data>
+	<data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>ध्यान दें</value>
+  </data>
+	<data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>कम्युनिटेक वर्तमान में अक्षम है (QWERTY का उपयोग करें)</value>
+  </data>
+	<data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>टाइपिंग के लिए कीबोर्ड शैली:</value>
+  </data>
+	<data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>डिफ़ॉल्ट कीबोर्ड लेआउट का उपयोग करें</value>
+  </data>
+	<data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>उह-ओह! हमने स्टार्टअप के दौरान निम्नलिखित त्रुटियों का सामना किया है:</value>
+  </data>
+	<data name="SELECT_VOICE" xml:space="preserve">
+    <value>आवाज का चयन करें</value>
+  </data>
+	<data name="MORE" xml:space="preserve">
+    <value>और...</value>
+  </data>
+	<data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>भाषा और आवाज</value>
+  </data>
+	<data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>भाषा 
+और आवाज</value>
+  </data>
+	<data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>भाषा और आवाज</value>
+  </data>
+	<data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>और...</value>
+  </data>
+	<data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>कीबोर्ड भाषा बदलते समय आवाजें प्रदर्शित करें:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL" xml:space="preserve">
+    <value>स्क्रॉल करने के लिए देखो</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>स्क्रॉल करने के लिए वैकल्पिक "लुक टू स्क्रॉल" विधि का उपयोग करें:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>स्क्रॉलिंग दिशा को उल्टा करें:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>चुने हुए बिंदु, विंडौ या क्षेत्र को संरक्षित करने के लिए सीमा कुंजी को लॉक करें:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>स्क्रॉल करने से पहले, माउस को डेडज़ोन के केंद्र में ले जाएं:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>विंडो के भीतर स्क्रॉल करने से पहले, इसे सामने लाएँ:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>स्क्रीन पॉइंट चुनने के बाद, वहाँ कोई भी विंडो सामने लाएँ:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>माउस को क्लिक करते समय स्क्रॉल करना बंद करें कि माउस को कहां ले जाएं, क्लिक करें या खींचें:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>बाद में स्वचालित रूप से स्क्रॉल फिर से शुरू करें:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>कीबोर्ड स्विच करने पर स्क्रॉल करना बंद करें:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>ओवरले विंडो दिखाएं (पुनः आरंभ करने की आवश्यकता है):</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>ओवरले पर खींची गई स्क्रॉल सीमा का रंग:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>ओवरले पर खींचा डेडजोन गाइड का रंग:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
+    <value>ओवरले पर खींची गई स्क्रॉल सीमा की मोटाई:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
+    <value>ओवरले पर तैयार किए गए डेडज़ोन गाइड की मोटाई:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>क्षैतिज डेडज़ोन (पिक्सेल में):</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>वर्टिकल डेडज़ोन (पिक्सेल में):</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>इन स्क्रॉल वृद्धि के माध्यम से चक्र:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>'धीमी' आधार गति (cps या "क्लिक" प्रति सेकंड):</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>'मध्यम' आधार गति (cps या "क्लिक" प्रति सेकंड):</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>'तेज' आधार गति (cps या "क्लिक" प्रति सेकंड):</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>'धीमी'  गतिवृद्धि (डेडज़ोन से पिक्सेल प्रति cps):</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>'मध्यम' गतिवृद्धि (डेडज़ोन से पिक्सेल प्रति cps):</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>'तेज'  गतिवृद्धि (डेडज़ोन से पिक्सेल प्रति cps):</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>स्क्रोल कुंजी को देखें:</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>टॉगल स्क्रॉलिंग</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>अगली सीमा</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>अगली वृद्धि</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>अगला मोड</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>अगली गति</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>स्क्रॉल करने 
+के लिए देखो</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>{0}व्हील यूनिट द्वारा स्क्रॉल:
+(120 व्हील यूनिट = 1 क्लिक) {0}व्हील यूनिट द्वारा स्क्रॉल:
+(120 व्हील यूनिट = 1 क्लिक)</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>प्वाइंट पर 
+स्क्रीन</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>स्क्रीन 
+केंद्रित</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>विंडो</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>विंडो
+क्षेत्र</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>कस्टम 
+क्षेत्र</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>सीधा</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>क्षैतिज</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>तिरछा</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>मुफ्त</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>धीमा</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>मध्यम</value>
+  </data>
+	<data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>तेज</value>
+  </data>
+	<data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>कम्युनिकेट साउंड वॉल्यूम:</value>
+  </data>
+	<data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>चयनित होने पर कम्यूनिकेट बटन टेक्स्ट बोलें:</value>
+  </data>
+	<data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>कम्यूनिकेट बटन टेक्स्ट बोलते समय भाषण की दर:</value>
+  </data>
+	<data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>कम्यूनिकेट बटन टेक्स्ट बोलते समय भाषण की मात्रा:</value>
+  </data>
+	<data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>क्या आप वाकई मैन्युअल मोड से / पर स्विच करना चाहते हैं?</value>
+  </data>
+	<data name="MANUAL_MODE" xml:space="preserve">
+    <value>माउस नियंत्रण मोड</value>
+  </data>
+	<data name="COMMUNIKATE" xml:space="preserve">
+    <value>कम्यूनिकेट</value>
+  </data>
+	<data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>प्रीसेज डाटाबेस  .db फ़ाइल का स्थान:</value>
+  </data>
+	<data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>दिखाने के लिए प्रेसेज सुझावों की संख्या:</value>
+  </data>
+	<data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>उपलब्ध प्लगइन्स</value>
+  </data>
+	<data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>प्लगइन्स</value>
+  </data>
+	<data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>रिफ्रेश प्लगइन्स</value>
+  </data>
+	<data name="RESTART" xml:space="preserve">
+    <value>पुनर्प्रारंभ करें</value>
+  </data>
+	<data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>क्या आप पूरी तरह से सुनिश्चित हैं कि आप ऑप्टिके को पुनः आरंभ करना चाहते हैं?</value>
+  </data>
+	<data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>क्या आप सुनिश्चित हैं कि आप ऑप्टिके को पुनः आरंभ करना चाहते हैं?</value>
+  </data>
+	<data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>डायनामिक कीबोर्ड</value>
+  </data>
+	<data name="WEB_BROWSING" xml:space="preserve">
+    <value>वेब ब्राउज़िंग</value>
+  </data>
+	<data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>डेटा स्ट्रीम प्रोसेसिंग राशि:</value>
+  </data>
+	<data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>Irisbond Duo ट्रैकर शुरू नहीं किया जा सका।</value>
+  </data>
+	<data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>Irisbond Duo ट्रैकर नहीं मिल सकता है। कृपया ट्रैकर के कनेक्शन की जांच करें और पुनः प्रयास करें।</value>
+  </data>
+	<data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
+    <value>अंशांकन पूरा (सफलता या विफलता), लेकिन सब कुछ फिर से काम कर रहा है!</value>
+  </data>
+	<data name="COPY_ALL_FROM_SCRATCHPAD" xml:space="preserve">
+    <value>सभी को कॉपी करें</value>
+  </data>
+	<data name="DYNAMIC_KEYBOARD_DEFINITION_INVALID" xml:space="preserve">
+    <value>डायनामिक कीबोर्ड परिभाषा अमान्य है</value>
+  </data>
+	<data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
+    <value>इस डायनामिक कीबोर्ड की परिभाषित ऊंचाई बहुत बड़ी है (&gt; स्क्रीन का 95%)</value>
+  </data>
+	<data name="RESTART_UPPERCASE" xml:space="preserve">
+    <value>पुनर्प्रारंभ करें</value>
+  </data>
+	<data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
+    <value>हम यूआई भाषा को उर्दू में बदलने की सलाह देते हैं ताकि स्क्रैचपैड में दाएं से बाएं उर्दू पाठ प्रवाह को सुनिश्चित किया जा सके ।
+क्या आप ऑप्टीकी को स्वचालित रूप से यूआई भाषा को उर्दू में सेट करना चाहेंगे?</value>
+  </data>
+	<data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
+    <value>हम ऑप्टीकी में उपयोग किए गए फ़ॉन्ट को एक में बदलने की सलाह देते हैं जो उर्दू के साथ पूरी तरह से संगत है।
+यदि एसे फ़ॉन्ट का उपयोग किया जाता है जो उर्दू विशिष्ट नहीं है, तो पाठ और विशेष रूप से संख्या गलत तरीके से प्रदर्शित हो सकती है।
+क्या आप Optikey को स्वतः ही Nafees Web Naskh पर फ़ॉन्ट सेट करना चाहेंगे?</value>
+  </data>
+	<data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
+    <value>एक भाषा विशिष्ट फ़ॉन्ट की सिफारिश की जाती है</value>
+  </data>
+	<data name="UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE" xml:space="preserve">
+    <value>यूआई और कीबोर्ड / शब्दकोश भाषाएँ अलग हैं</value>
+  </data>
+	<data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
+    <value>अक्षरों के बाद टाइप करें विशेष चिह्न (उच्चारण आदि):</value>
+  </data>
+	<data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
+    <value>हम यूआई भाषा को फ़ारसी में बदलने की सलाह देते हैं ताकि स्क्रैचपैड में दाएं से बाएं फ़ारसी पाठ प्रवाह को सुनिश्चित किया जा सके ।
+क्या आप ऑप्टीकी को स्वचालित रूप से यूआई भाषा को फ़ारसी में सेट करना चाहेंगे?</value>
+  </data>
+	<data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
+    <value>हम ऑप्टीकी में उपयोग किए गए फ़ॉन्ट को एक में बदलने की सलाह देते हैं जो फ़ारसी के साथ पूरी तरह से संगत है।
+यदि एसे फ़ॉन्ट का उपयोग किया जाता है जो फ़ारसी विशिष्ट नहीं है, तो पाठ और विशेष रूप से संख्या गलत तरीके से प्रदर्शित हो सकती है।
+क्या आप Optikey को स्वतः ही Nazli पर फ़ॉन्ट सेट करना चाहेंगे?</value>
+  </data>
+	<data name="ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT" xml:space="preserve">
+    <value>कुंजी चयन की हैंडलिंग के दौरान एक त्रुटि हुई है</value>
+  </data>
+	<data name="LOAD_DICTIONARY" xml:space="preserve">
+    <value>शब्दकोश लोड करें</value>
+  </data>
+	<data name="LOAD_DICTIONARY_DESCRIPTION" xml:space="preserve">
+    <value>शब्दों की समीक्षा करने, जोड़ने या हटाने के लिए शब्दकोश लोड करें।</value>
+  </data>
+	<data name="ENABLE_PLUGINS" xml:space="preserve">
+    <value>प्लगइन्स सक्षम करें</value>
+  </data>
+	<data name="FEATURES_LABEL" xml:space="preserve">
+    <value>अतिरिक्त विशेषताएँ</value>
+  </data>
+	<data name="CONVERSATION_OPTIONS" xml:space="preserve">
+    <value>बातचीत के विकल्प</value>
+  </data>
+	<data name="EXTRA_KEYS" xml:space="preserve">
+    <value>अतिरिक्त कीज</value>
+  </data>
+	<data name="TYPING_OPTIONS" xml:space="preserve">
+    <value>टाइपिंग विकल्प</value>
+  </data>
+	<data name="FEATURES" xml:space="preserve">
+    <value>अतिरिक्त विशेषताएँ</value>
+  </data>
+	<data name="VARIOUS" xml:space="preserve">
+    <value>विभिन्न</value>
+  </data>
+	<data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey चैट: आसान संचार</value>
+  </data>
+	<data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey माउस: पूर्ण कर्सर नियंत्रण</value>
+  </data>
+	<data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Symbol: ओपन सिंबल कम्युनिकेशन</value>
+  </data>
+	<data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>इसके लिए एक एलियनवेयर 17 गेमिंग लैपटॉप की आवश्यकता होती है, जो बिल्ट-इन टोबी आई ट्रैकर का उपयोग करता है</value>
+  </data>
+	<data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>इसके लिए ITU Gaze ट्रैकिंग लाइब्रेरी की आवश्यकता होती है, जो वेबकैम और वीडियोकैमरा जैसे ऑफ-द-शेल्फ घटकों का उपयोग करके ओपन सोर्स आई ट्रैकिंग के लिए एक ढांचा है।</value>
+  </data>
+	<data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>यदि आप Irisbond Duo आई ट्रैकर के साथ Optikey का उपयोग करने की योजना बनाते हैं, तो कृपया सुनिश्चित करें कि आपके पास Irisbond Duo ड्राइवर स्थापित हैं। इन्हें https://www.irisbond.com/products/downloads से डाउनलोड किया जा सकता है।</value>
+  </data>
+	<data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>इस मोड में, Optikey माउस कर्सर को आई ट्रैकर से सीधे बात करने के बजाय इनपुट के रूप में उपयोग करेगा। यदि आप Optikey का परीक्षण कर रहे हैं, या यदि आप इसे वैकल्पिक इनपुट डिवाइस जैसे हेड माउस या किसी आई ट्रैकर के साथ प्रयोग करना चाहते हैं, तो आप यह नहीं चाह सकते हैं।</value>
+  </data>
+	<data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>एक सहायक आई ट्रैकर के साथ Optikey का उपयोग करने के लिए, आपको या तो विंडोज कंट्रोल के नए संस्करण की आवश्यकता है, या टोबि आई ट्रैकिंग इंजन। अगर आपको Tobii विंडोज कंट्रोल एप्लिकेशन (Tobii Gaze इंटरैक्शन सेटिंग्स सहित) के पुराने संस्करण का उपयोग करने की आवश्यकता है, तो आपको माउस की स्थिति का उपयोग करके Optikey को नियंत्रित करने की आवश्यकता होगी।</value>
+  </data>
+	<data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>यह विकल्प किसी भी Tobii गेमिंग आई ट्रैकर (5, 4C, EyeX, Alienware, Steelseries, आदि) के साथ काम करेगा।</value>
+  </data>
+	<data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>यदि आपने पहले ही myGaze क्लाइंट ड्राइवर स्थापित कर लिया है, तो विजुअल इंटरेक्शन myGaze समर्थित है, जो अब डाउनलोड के लिए उपलब्ध नहीं हैं। यदि आपके पास ये ड्राइवर स्थापित नहीं हैं, तो आपको इसके बजाय 'माउस पोजिशन' का उपयोग करना चाहिए, और कर्सर ले जाने के लिए MyGaze EyeMousePlay एप्लिकेशन के साथ संयोजन में Optikey का उपयोग करना चाहिए।</value>
+  </data>
+	<data name="OPACITY_LABEL" xml:space="preserve">
+    <value>अपारदर्शिता:</value>
+  </data>
+	<data name="ALLOW_MULTIPLE_INSTANCES" xml:space="preserve">
+    <value>इस Optikey ऐप के कई उदाहरणों को एक साथ चलने दें</value>
+  </data>
+	<data name="TOP" xml:space="preserve">
+    <value>ऊपर</value>
+  </data>
+	<data name="DOCK_POSITION_LABEL" xml:space="preserve">
+    <value>डॉक की स्थिति</value>
+  </data>
+	<data name="FLOATING_POSITION_LABEL" xml:space="preserve">
+    <value>फ्लोटिंग स्थिति (बाएं, ऊपर, चौड़ाई, ऊंचाई)</value>
+  </data>
+	<data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
+    <value>अनुवाद लक्ष्य भाषा:</value>
+  </data>
+	<data name="ERROR_DURING_TRANSLATION" xml:space="preserve">
+    <value>पाठ के अनुवाद के दौरान एक त्रुटि हुई है</value>
+  </data>
+	<data name="TRANSLATE" xml:space="preserve">
+    <value>अनुवाद</value>
+  </data>
+	<data name="ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
+    <value>एक अलग Yandex अनुवाद एपीआई कुंजी का उपयोग करें?</value>
+  </data>
+	<data name="ENABLE_TRANSLATION_KEY_LABEL" xml:space="preserve">
+    <value>अनुवाद कुंजी सक्षम करें? (अनुवाद ऑटो कॉपी किया गया)</value>
+  </data>
+</root>
