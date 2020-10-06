@@ -554,7 +554,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return Settings.Default.ConversationOnlyMode != ConversationOnlyMode
                     || Settings.Default.ConversationConfirmEnable != ConversationConfirmEnable
                     || Settings.Default.ConversationConfirmOnlyMode != ConversationConfirmOnlyMode
-                    || (!Settings.Default.EnableResizeWithMouse && EnableResizeWithMouse);
+                    || Settings.Default.EnableResizeWithMouse != EnableResizeWithMouse;
             }
         }
 
