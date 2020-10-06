@@ -258,7 +258,6 @@
     <Compile Include="Extensions\SvgViewboxAttachedProperties.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
-    <Compile Include="GazeFilter.cs" />
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
@@ -1396,7 +1395,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Dictionaries\EnglishUS.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

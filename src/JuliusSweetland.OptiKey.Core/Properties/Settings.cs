@@ -1553,69 +1553,30 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["ForceCapsLock"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GazeSmoothingLevel{
+            get{
+                return ((int)(this["GazeSmoothingLevel"]));
+            }
+            set{
+                this["GazeSmoothingLevel"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool KalmanFilterEnabled {
+        public bool SmoothWhenChangingGazeTarget {
             get {
-                return ((bool)(this["KalmanFilterEnabled"]));
+                return ((bool)(this["SmoothWhenChangingGazeTarget"]));
             }
             set {
-                this["KalmanFilterEnabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double KalmanFilterInitialValue {
-            get {
-                return ((double)(this["KalmanFilterInitialValue"]));
-            }
-            set {
-                this["KalmanFilterInitialValue"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double KalmanFilterConfidenceOfInitialValue {
-            get {
-                return ((double)(this["KalmanFilterConfidenceOfInitialValue"]));
-            }
-            set {
-                this["KalmanFilterConfidenceOfInitialValue"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double KalmanFilterProcessNoise {
-            get {
-                return ((double)(this["KalmanFilterProcessNoise"]));
-            }
-            set {
-                this["KalmanFilterProcessNoise"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double KalmanFilterMeasurementNoise {
-            get {
-                return ((double)(this["KalmanFilterMeasurementNoise"]));
-            }
-            set {
-                this["KalmanFilterMeasurementNoise"] = value;
+                this["SmoothWhenChangingGazeTarget"] = value;
             }
         }
         

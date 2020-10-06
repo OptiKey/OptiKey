@@ -27,8 +27,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         private readonly TimeSpan pointTtl;
         private readonly int gazeTrackerUdpPort;
         private readonly Regex gazeTrackerRegex;
-        private readonly KalmanFilter kalmanFilterX;
-        private readonly KalmanFilter kalmanFilterY;
+        private readonly KalmanFilter kalmanFilter;
 
         private IObservable<Timestamped<PointAndKeyValue>> sequence;
 
@@ -45,10 +44,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
             this.gazeTrackerUdpPort = gazeTrackerUdpPort;
             this.gazeTrackerRegex = gazeTrackerRegex;
 
-            this.kalmanFilterX = new KalmanFilter(Settings.Default.KalmanFilterInitialValue, Settings.Default.KalmanFilterConfidenceOfInitialValue,
-                Settings.Default.KalmanFilterProcessNoise, Settings.Default.KalmanFilterMeasurementNoise);
-            this.kalmanFilterY = new KalmanFilter(Settings.Default.KalmanFilterInitialValue, Settings.Default.KalmanFilterConfidenceOfInitialValue,
-                Settings.Default.KalmanFilterProcessNoise, Settings.Default.KalmanFilterMeasurementNoise);
+            this.kalmanFilter = new KalmanFilter();
         }
 
         #endregion
@@ -103,8 +99,8 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                                 return new Timestamped<Point>(new Point(0,0), new DateTimeOffset()); //Return useless point which will be filtered out
                             })
                             .Where(tp => tp.Value.X != 0 || tp.Value.Y != 0) //(0,0) coordinates indicate that GT hasn't been calibrated, or regex failed to parse datagram - suppress
-                            .Select(tp => Settings.Default.KalmanFilterEnabled
-                                ? new Timestamped<Point>(new Point((int)kalmanFilterX.Update(tp.Value.X), (int)kalmanFilterY.Update(tp.Value.Y)), tp.Timestamp)
+                            .Select(tp => Settings.Default.GazeSmoothingLevel > 0
+                                ? new Timestamped<Point>(kalmanFilter.Update(tp.Value), tp.Timestamp)
                                 : tp
                         )
                             .DistinctUntilChanged(tp => tp.Value) //When GT loses the user's eyes it repeats the last value - suppress
