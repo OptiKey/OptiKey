@@ -1,4 +1,4 @@
-Tobii EyeX SDK for .NET - v1.4.451
+Tobii EyeX SDK for .NET - v1.4.451 (from 2015)
 Compiled: http://developer.tobii.com/downloads/ or http://developer.tobii.com/?wpdmdl=122
 
 Currently using x86 assemblies
