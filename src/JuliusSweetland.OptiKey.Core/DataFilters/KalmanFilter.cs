@@ -55,6 +55,8 @@ namespace JuliusSweetland.OptiKey.DataFilters
 
             // == KALMAN FILTER:  Standard update equations from the KF framework - these shouldn't be changed == //
             EstimationNoise += currentProcessNoise;
+            EstimationNoise = Math.Min(currentProcessNoise, 1e100); // Prevent saturation to Inf
+
             Gain = (EstimationNoise) / (EstimationNoise + MeasurementNoise);
             EstimationNoise = (1.0 - Gain) * EstimationNoise;
             EstimatedPoint += (measurement - EstimatedPoint) * Gain;
