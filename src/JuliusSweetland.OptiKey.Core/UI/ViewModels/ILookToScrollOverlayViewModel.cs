@@ -10,5 +10,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         Rect ActiveLookToScrollBounds { get; }
         Rect ActiveLookToScrollDeadzone { get; }
         Thickness ActiveLookToScrollMargins { get; } // between deadzone and border
+        double Opacity { get; }
     }
 }
