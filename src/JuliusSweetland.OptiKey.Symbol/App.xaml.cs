@@ -172,7 +172,7 @@ namespace JuliusSweetland.OptiKey.Symbol
                 //Show the main window
                 mainWindow.Show();
 
-                if (Settings.Default.LookToScrollEnabled && Settings.Default.LookToScrollShowOverlayWindow)
+                if (Settings.Default.LookToScrollShowOverlayWindow)
                 {
                     // Create the overlay window, but don't show it yet. It'll make itself visible when the conditions are right.
                     new LookToScrollOverlayWindow(mainViewModel);

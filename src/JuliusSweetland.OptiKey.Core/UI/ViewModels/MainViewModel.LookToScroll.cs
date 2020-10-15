@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -59,6 +59,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             private set { SetProperty(ref activeLookToScrollMargins, value); }
         }
 
+        private double opacity = 1;
+        public double Opacity
+        {
+            get { return opacity; }
+            private set { SetProperty(ref opacity, value); }
+        }
+
         #endregion
 
         private void ToggleLookToScroll()
@@ -69,18 +76,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 Log.Info("Look to scroll is now active.");
 
-                lookToScrollBoundsWhenActivated = Settings.Default.LookToScrollBounds;
                 lookToScrollLeftoverScrollAmount = new Vector();
-
-                if (keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value.IsDownOrLockedDown())
-                {
-                    Log.Info("Re-using previous bounds target.");
-                    TakeActionsUponLookToScrollStarted();
-                }
-                else
-                {
-                    ChooseLookToScrollBoundsTarget();
-                }
+                ChooseLookToScrollBoundsTarget();
             }
             else
             {
@@ -99,21 +96,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             Action<bool> callback = success => 
             {
-                if (success && Settings.Default.LookToScrollLockDownBoundsKey)
-                {
-                    // Lock the bounds key down. This signals that the chosen target should be re-used during
-                    // subsequent scrolling sessions.
-                    keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.LockedDown;
-                }
-                else if (!success)
-                {
-                    // If a target wasn't successfully chosen, de-activate scrolling and release the bounds key.
+                if (!success)
                     keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value = KeyDownStates.Up;
-                    keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
-                }
 
                 TakeActionsUponLookToScrollStarted();
-
                 choosingLookToScrollBoundsTarget = false;
             };
             
@@ -158,22 +144,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.InfoFormat("User chose point: {0}.", point.Value);
                     pointLookToScrollBoundsTarget = point.Value;
 
-                    if (Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint)
-                    {
-                        IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
+                    IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
 
-                        if (hWnd == IntPtr.Zero)
-                        {
-                            Log.Info("No valid window at the point to bring to the front.");
-                        }
-                        else if (!PInvoke.SetForegroundWindow(hWnd))
-                        {
-                            Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
-                        }
-                        else
-                        {
-                            Log.InfoFormat("Brought window at the point, {0}, to the front.", hWnd);
-                        }
+                    if (hWnd == IntPtr.Zero)
+                    {
+                        Log.Info("No valid window at the point to bring to the front.");
+                    }
+                    else if (!PInvoke.SetForegroundWindow(hWnd))
+                    {
+                        Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
+                    }
+                    else
+                    {
+                        Log.InfoFormat("Brought window at the point, {0}, to the front.", hWnd);
                     }
                 }
 
@@ -468,108 +451,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void HandleLookToScrollBoundsKeySelected()
-        {
-            Log.Info("Look to scroll bounds key was selected.");
-
-            if (!Settings.Default.LookToScrollLockDownBoundsKey)
-            {
-                // The key acts as a simple cycle like the mode, speed, and increment keys. Don't let it be locked down.
-                keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
-                SelectNextLookToScrollBounds();
-            }
-            else if (keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown())
-            {
-                // If scrolling is active, force the bounds target to be rechosen. This will also cause the
-                // bounds key to become locked down again.
-                ChooseLookToScrollBoundsTarget();
-            }
-            else if (keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value.IsDownOrLockedDown())
-            {
-                // We're not scrolling, and the bounds key wasn't locked down previously. In this case, just
-                // release the key and cycle to the next bounds value. It'll eventually get locked down for
-                // real when scrolling is toggled on and the bounds target is chosen.
-                keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
-                SelectNextLookToScrollBounds();
-            }
-            else
-            {
-                // We're not scrolling, but the bounds key was locked down previously. By releasing the
-                // key, we'll force the bounds target to be rechosen. Since we might want to do so for
-                // the current bounds value without having to cycle back around, we'll just leave it
-                // alone. The next key press will start cycling.
-                Log.Info("Unlocked look to scroll bounds key. The bounds target will need to be rechosen.");
-            }
-        }
-
-        private void SelectNextLookToScrollBounds()
-        {
-            LookToScrollBounds before = Settings.Default.LookToScrollBounds;
-            LookToScrollBounds after = GetNextEnumValue(before);
-
-            Settings.Default.LookToScrollBounds = after;
-
-            Log.InfoFormat("Changed look to scroll bounds from {0} to {1}.", before, after);
-        }
-
-        private void SelectNextLookToScrollIncrement()
-        {
-            Log.Info("Look to scroll increment key was selected.");
-
-            IEnumerable<int> incrementChoices = Regex
-                // Replace sequences of non-digit characters with a single space.
-                .Replace(Settings.Default.LookToScrollIncrementChoices, @"\D+", " ")
-                .Split(' ')
-                .Where(str => !string.IsNullOrEmpty(str))
-                .Select(str => int.Parse(str))
-                .Where(increment => increment > 0)
-                .DefaultIfEmpty(1);
-
-            int before = Settings.Default.LookToScrollIncrement;
-            int after = GetNextValueInSequence(before, incrementChoices);
-
-            Settings.Default.LookToScrollIncrement = after;
-
-            Log.InfoFormat("Changed look to scroll increment from {0} to {1}.", before, after);
-        }
-
-        private void SelectNextLookToScrollMode()
-        {
-            Log.Info("Look to scroll mode key was selected.");
-
-            LookToScrollModes before = Settings.Default.LookToScrollMode;
-            LookToScrollModes after = GetNextEnumValue(before);
-
-            Settings.Default.LookToScrollMode = after;
-
-            Log.InfoFormat("Changed look to scroll mode from {0} to {1}.", before, after);
-        }
-
-        private void SelectNextLookToScrollSpeed()
-        {
-            Log.Info("Look to scroll speed key was selected.");
-
-            LookToScrollSpeeds before = Settings.Default.LookToScrollSpeed;
-            LookToScrollSpeeds after = GetNextEnumValue(before);
-
-            Settings.Default.LookToScrollSpeed = after;
-
-            Log.InfoFormat("Changed look to scroll speed from {0} to {1}.", before, after);
-        }
-
-        private T GetNextValueInSequence<T>(T current, IEnumerable<T> values)
-        {
-            return values.SkipWhile(value => !Equals(value, current)) // Skip ahead to the current item.
-                .Skip(1) // Move on to the item immediately following it.
-                .Concat(values.Take(1)) // Make sure we wrap around if we've reached the end.
-                .FirstOrDefault();
-        }
-
-        private T GetNextEnumValue<T>(T current)
-        {
-            return GetNextValueInSequence(current, Enum.GetValues(typeof(T)).Cast<T>());
-        }
-
         private void UpdateLookToScroll(Point position)
         {
             var thisUpdate = DateTime.Now;
@@ -584,6 +465,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Log.DebugFormat("Current look to scroll bounds rect is: {0}.", bounds);
                 Log.DebugFormat("Current look to scroll centre point is: {0}.", centre);
 
+                Opacity = (4 * ((position - centre).Length - activeLookToScrollDeadzone.Height / 2)
+                    / activeLookToScrollBounds.Height).Clamp(0.1, 1);
+
                 Vector velocity = CalculateLookToScrollVelocity(position, centre);
 
                 // Convert the velocity from clicks per second to mouse wheel units per second.
@@ -594,6 +478,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 // Carry over any unused scrolling from last update.
                 scrollAmount += lookToScrollLeftoverScrollAmount;
+
 
                 PerformLookToScroll(scrollAmount);
             }
@@ -756,10 +641,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private Vector CalculateLookToScrollVelocity(Point current, Point centre)
         {
-            Tuple<decimal, decimal> baseSpeedAndAcceleration = GetCurrentBaseSpeedAndAcceleration();
-
-            double baseSpeed = (double)baseSpeedAndAcceleration.Item1;
-            double acceleration = (double)baseSpeedAndAcceleration.Item2;
+            var baseSpeed = Settings.Default.LookToScrollSpeed == LookToScrollSpeeds.Fast
+                ? 0.3 : Settings.Default.LookToScrollSpeed == LookToScrollSpeeds.Medium
+                ? 0.1 : 0.03;
+            var acceleration = Settings.Default.LookToScrollSpeed == LookToScrollSpeeds.Fast
+                ? 0.3 : Settings.Default.LookToScrollSpeed == LookToScrollSpeeds.Medium
+                ? 0.1 : 0.03;
 
             var velocity = new Vector { X = 0, Y = 0 };
 
@@ -833,47 +720,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return sign * speed;
         }
 
-        private Tuple<decimal, decimal> GetCurrentBaseSpeedAndAcceleration()
-        {
-            decimal baseSpeed = 0;
-            decimal acceleration = 0;
-
-            switch (Settings.Default.LookToScrollSpeed)
-            {
-                case LookToScrollSpeeds.Slow:
-                    baseSpeed = Settings.Default.LookToScrollBaseSpeedSlow;
-                    acceleration = Settings.Default.LookToScrollAccelerationSlow;
-                    break;
-
-                case LookToScrollSpeeds.Medium:
-                    baseSpeed = Settings.Default.LookToScrollBaseSpeedMedium;
-                    acceleration = Settings.Default.LookToScrollAccelerationMedium;
-                    break;
-
-                case LookToScrollSpeeds.Fast:
-                    baseSpeed = Settings.Default.LookToScrollBaseSpeedFast;
-                    acceleration = Settings.Default.LookToScrollAccelerationFast;
-                    break;
-            }
-
-            Log.DebugFormat("Current base speed is {0} and acceleration is {1}.", baseSpeed, acceleration);
-
-            return new Tuple<decimal, decimal>(baseSpeed, acceleration);
-        }
-
         private void PerformLookToScroll(Vector scrollAmount)
         {
             int dx = (int)scrollAmount.X;
             int dy = (int)scrollAmount.Y;
-
-            // Ensure scroll amount is a multiple of the scroll increment.
-            int increment = Settings.Default.LookToScrollIncrement;
-            if (increment > 1)
-            {
-                // Looks like a no-op, but note the integer division!
-                dx = (dx / increment) * increment;
-                dy = (dy / increment) * increment;
-            }
 
             // Carry over any unused scroll amount into the next update to make sure we don't lose any due to
             // the truncation to int or the scroll increment requirement.
@@ -888,16 +738,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 reinstateModifiers = keyStateService.ReleaseModifiers(Log);
             }
 
-            // We've been working in virtual screen coordinates where +Y points down, but with the scroll wheel
-            // +Y represents rotation away from the user, and that's usually considered "up", so we flip dy here.
-            if (Settings.Default.LookToScrollDirectionInverted)
-            {
-                mouseOutputService.ScrollWheelAbsolute(-dx, dy);
-            }
-            else
-            {
-                mouseOutputService.ScrollWheelAbsolute(dx, -dy);
-            }
+            mouseOutputService.ScrollWheelAbsolute(dx, -dy);
 
             reinstateModifiers();
         }
@@ -925,34 +766,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Action resumeAction = () => { };
 
-            if (Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse)
+            NotifyingProxy<KeyDownStates> activeKey = keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey];
+            KeyDownStates originalState = activeKey.Value;
+
+            // Make sure look to scroll is currently active. Otherwise, there's nothing to suspend or resume.
+            if (originalState.IsDownOrLockedDown())
             {
-                NotifyingProxy<KeyDownStates> activeKey = keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey];
-                KeyDownStates originalState = activeKey.Value;
+                // Force scrolling to stop by releasing the LookToScrollActiveKey.
+                activeKey.Value = KeyDownStates.Up;
 
-                // Make sure look to scroll is currently active. Otherwise, there's nothing to suspend or resume.
-                if (originalState.IsDownOrLockedDown())
+                // If configured to resume afterwards, just reapply the original state of the key so the user doesn't have 
+                // to rechoose the bounds. Otherwise, the user will have to press the key themselves and potentially rechoose 
+                // the bounds (depending on the state of the bounds key). 
+                if (Settings.Default.LookToScrollResumeAfterChoosingPointForMouse)
                 {
-                    // Force scrolling to stop by releasing the LookToScrollActiveKey.
-                    activeKey.Value = KeyDownStates.Up;
+                    Log.Info("Look to scroll has suspended.");
 
-                    // If configured to resume afterwards, just reapply the original state of the key so the user doesn't have 
-                    // to rechoose the bounds. Otherwise, the user will have to press the key themselves and potentially rechoose 
-                    // the bounds (depending on the state of the bounds key). 
-                    if (Settings.Default.LookToScrollResumeAfterChoosingPointForMouse)
+                    resumeAction = () =>
                     {
-                        Log.Info("Look to scroll has suspended.");
+                        activeKey.Value = originalState;
 
-                        resumeAction = () =>
+                        if (Settings.Default.LookToScrollCentreMouseWhenActivated)
                         {
-                            activeKey.Value = originalState;
-                            Log.Info("Look to scroll has resumed.");
-                        };
-                    }
-                    else
-                    {
-                        Log.Info("Look to scroll has been suspended and will not automatically resume.");
-                    }
+                            CentreMouseInsideLookToScrollDeadzone();
+                        }
+
+                        Log.Info("Look to scroll has resumed.");
+                    };
+                }
+                else
+                {
+                    Log.Info("Look to scroll has been suspended and will not automatically resume.");
                 }
             }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
@@ -89,25 +90,47 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref debug, value); }
         }
 
-        private bool lookToScrollEnabled;
-        public bool LookToScrollEnabled
+        public List<KeyValuePair<string, LookToScrollBounds>> LookToScrollBoundsList
         {
-            get { return lookToScrollEnabled; }
-            set { SetProperty(ref lookToScrollEnabled, value); }
+            get
+            {
+                return new List<KeyValuePair<string, LookToScrollBounds>>
+                {
+                    new KeyValuePair<string, LookToScrollBounds>(LookToScrollBounds.ScreenCentred.ToString(), LookToScrollBounds.ScreenCentred),
+                    new KeyValuePair<string, LookToScrollBounds>(LookToScrollBounds.ScreenPoint.ToString(), LookToScrollBounds.ScreenPoint),
+                    new KeyValuePair<string, LookToScrollBounds>(LookToScrollBounds.Window.ToString(), LookToScrollBounds.Window),
+                    new KeyValuePair<string, LookToScrollBounds>(LookToScrollBounds.Subwindow.ToString(), LookToScrollBounds.Subwindow),
+                    new KeyValuePair<string, LookToScrollBounds>(LookToScrollBounds.Custom.ToString(), LookToScrollBounds.Custom)
+                };
+            }
         }
 
-        private bool lookToScrollDirectionInverted;
-        public bool LookToScrollDirectionInverted
+        private LookToScrollBounds lookToScrollBounds;
+        public LookToScrollBounds LookToScrollBounds
         {
-            get { return lookToScrollDirectionInverted; }
-            set { SetProperty(ref lookToScrollDirectionInverted, value); }
+            get { return lookToScrollBounds; }
+            set { SetProperty(ref lookToScrollBounds, value); }
         }
 
-        private bool lookToScrollLockDownBoundsKey;
-        public bool LookToScrollLockDownBoundsKey
+        public List<KeyValuePair<string, LookToScrollModes>> LookToScrollModesList
         {
-            get { return lookToScrollLockDownBoundsKey; }
-            set { SetProperty(ref lookToScrollLockDownBoundsKey, value); }
+            get
+            {
+                return new List<KeyValuePair<string, LookToScrollModes>>
+                {
+                    new KeyValuePair<string, LookToScrollModes>(LookToScrollModes.Free.ToString(), LookToScrollModes.Free),
+                    new KeyValuePair<string, LookToScrollModes>(LookToScrollModes.Cross.ToString(), LookToScrollModes.Cross),
+                    new KeyValuePair<string, LookToScrollModes>(LookToScrollModes.Horizontal.ToString(), LookToScrollModes.Horizontal),
+                    new KeyValuePair<string, LookToScrollModes>(LookToScrollModes.Vertical.ToString(), LookToScrollModes.Vertical),
+                };
+            }
+        }
+
+        private LookToScrollModes lookToScrollMode;
+        public LookToScrollModes LookToScrollMode
+        {
+            get { return lookToScrollMode; }
+            set { SetProperty(ref lookToScrollMode, value); }
         }
 
         private bool lookToScrollCentreMouseWhenActivated;
@@ -124,20 +147,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref lookToScrollBringWindowToFrontWhenActivated, value); }
         }
 
-        private bool lookToScrollBringWindowToFrontAfterChoosingScreenPoint;
-        public bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint
-        {
-            get { return lookToScrollBringWindowToFrontAfterChoosingScreenPoint; }
-            set { SetProperty(ref lookToScrollBringWindowToFrontAfterChoosingScreenPoint, value); }
-        }
-
-        private bool lookToScrollSuspendBeforeChoosingPointForMouse;
-        public bool LookToScrollSuspendBeforeChoosingPointForMouse
-        {
-            get { return lookToScrollSuspendBeforeChoosingPointForMouse; }
-            set { SetProperty(ref lookToScrollSuspendBeforeChoosingPointForMouse, value); }
-        }
-
         private bool lookToScrollResumeAfterChoosingPointForMouse;
         public bool LookToScrollResumeAfterChoosingPointForMouse
         {
@@ -150,13 +159,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return lookToScrollDeactivateUponSwitchingKeyboards; }
             set { SetProperty(ref lookToScrollDeactivateUponSwitchingKeyboards, value); }
-        }
-
-        private bool lookToScrollShowOverlayWindow;
-        public bool LookToScrollShowOverlayWindow
-        {
-            get { return lookToScrollShowOverlayWindow; }
-            set { SetProperty(ref lookToScrollShowOverlayWindow, value); }
         }
 
         private string lookToScrollOverlayBoundsColour;
@@ -201,69 +203,36 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref lookToScrollVerticalDeadzone, value); }
         }
 
-        private string lookToScrollIncrementChoices;
-        public string LookToScrollIncrementChoices
+        public List<KeyValuePair<string, Enums.LookToScrollSpeeds>> LookToScrollSpeeds
         {
-            get { return lookToScrollIncrementChoices; }
-            set { SetProperty(ref lookToScrollIncrementChoices, value); }
+            get
+            {
+                return new List<KeyValuePair<string, Enums.LookToScrollSpeeds>>
+                {
+                    new KeyValuePair<string, LookToScrollSpeeds>(Enums.LookToScrollSpeeds.Slow.ToString(), Enums.LookToScrollSpeeds.Slow),
+                    new KeyValuePair<string, LookToScrollSpeeds>(Enums.LookToScrollSpeeds.Medium.ToString(), Enums.LookToScrollSpeeds.Medium),
+                    new KeyValuePair<string, LookToScrollSpeeds>(Enums.LookToScrollSpeeds.Fast.ToString(), Enums.LookToScrollSpeeds.Fast),
+                };
+            }
         }
 
-        private decimal lookToScrollBaseSpeedSlow;
-        public decimal LookToScrollBaseSpeedSlow
+        private LookToScrollSpeeds lookToScrollSpeed;
+        public LookToScrollSpeeds LookToScrollSpeed
         {
-            get { return lookToScrollBaseSpeedSlow; }
-            set { SetProperty(ref lookToScrollBaseSpeedSlow, value); }
-        }
-
-        private decimal lookToScrollBaseSpeedMedium;
-        public decimal LookToScrollBaseSpeedMedium
-        {
-            get { return lookToScrollBaseSpeedMedium; }
-            set { SetProperty(ref lookToScrollBaseSpeedMedium, value); }
-        }
-
-        private decimal lookToScrollBaseSpeedFast;
-        public decimal LookToScrollBaseSpeedFast
-        {
-            get { return lookToScrollBaseSpeedFast; }
-            set { SetProperty(ref lookToScrollBaseSpeedFast, value); }
-        }
-
-        private decimal lookToScrollAccelerationSlow;
-        public decimal LookToScrollAccelerationSlow
-        {
-            get { return lookToScrollAccelerationSlow; }
-            set { SetProperty(ref lookToScrollAccelerationSlow, value); }
-        }
-
-        private decimal lookToScrollAccelerationMedium;
-        public decimal LookToScrollAccelerationMedium
-        {
-            get { return lookToScrollAccelerationMedium; }
-            set { SetProperty(ref lookToScrollAccelerationMedium, value); }
-        }
-
-        private decimal lookToScrollAccelerationFast;
-        public decimal LookToScrollAccelerationFast
-        {
-            get { return lookToScrollAccelerationFast; }
-            set { SetProperty(ref lookToScrollAccelerationFast, value); }
+            get { return lookToScrollSpeed; }
+            set { SetProperty(ref lookToScrollSpeed, value); }
         }
 
         public bool ChangesRequireRestart
         {
             get
             {
-                return (
-                    Settings.Default.Debug != Debug || 
-                    Settings.Default.LookToScrollEnabled != LookToScrollEnabled ||
-                    (LookToScrollEnabled && Settings.Default.LookToScrollShowOverlayWindow != LookToScrollShowOverlayWindow)
-                );
+                return (Settings.Default.Debug != Debug);
             }
         }
-        
+
         #endregion
-        
+
         #region Methods
 
         private void Load()
@@ -275,29 +244,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             SuppressModifierKeysWhenInMouseKeyboard = Settings.Default.SuppressModifierKeysWhenInMouseKeyboard;
             MagnifySuppressedForScrollingActions = Settings.Default.MagnifySuppressedForScrollingActions;
             Debug = Settings.Default.Debug;
-            LookToScrollEnabled = Settings.Default.LookToScrollEnabled;
-            LookToScrollDirectionInverted = Settings.Default.LookToScrollDirectionInverted;
-            LookToScrollLockDownBoundsKey = Settings.Default.LookToScrollLockDownBoundsKey;
+            LookToScrollBounds = Settings.Default.LookToScrollBounds;
+            LookToScrollMode = Settings.Default.LookToScrollMode;
             LookToScrollCentreMouseWhenActivated = Settings.Default.LookToScrollCentreMouseWhenActivated;
             LookToScrollBringWindowToFrontWhenActivated = Settings.Default.LookToScrollBringWindowToFrontWhenActivated;
-            LookToScrollBringWindowToFrontAfterChoosingScreenPoint = Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
-            LookToScrollSuspendBeforeChoosingPointForMouse = Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse;
             LookToScrollResumeAfterChoosingPointForMouse = Settings.Default.LookToScrollResumeAfterChoosingPointForMouse;
             LookToScrollDeactivateUponSwitchingKeyboards = Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards;
-            LookToScrollShowOverlayWindow = Settings.Default.LookToScrollShowOverlayWindow;
             LookToScrollOverlayBoundsColour = Settings.Default.LookToScrollOverlayBoundsColour;
             LookToScrollOverlayDeadzoneColour = Settings.Default.LookToScrollOverlayDeadzoneColour;
             LookToScrollOverlayBoundsThickness = Settings.Default.LookToScrollOverlayBoundsThickness;
             LookToScrollOverlayDeadzoneThickness = Settings.Default.LookToScrollOverlayDeadzoneThickness;
             LookToScrollHorizontalDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
             LookToScrollVerticalDeadzone = Settings.Default.LookToScrollVerticalDeadzone;
-            LookToScrollIncrementChoices = Settings.Default.LookToScrollIncrementChoices;
-            LookToScrollBaseSpeedSlow = Settings.Default.LookToScrollBaseSpeedSlow;
-            LookToScrollBaseSpeedMedium = Settings.Default.LookToScrollBaseSpeedMedium;
-            LookToScrollBaseSpeedFast = Settings.Default.LookToScrollBaseSpeedFast;
-            LookToScrollAccelerationSlow = Settings.Default.LookToScrollAccelerationSlow;
-            LookToScrollAccelerationMedium = Settings.Default.LookToScrollAccelerationMedium;
-            LookToScrollAccelerationFast = Settings.Default.LookToScrollAccelerationFast;
+            LookToScrollSpeed = Settings.Default.LookToScrollSpeed;
         }
 
         public void ApplyChanges()
@@ -309,29 +268,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SuppressModifierKeysWhenInMouseKeyboard = SuppressModifierKeysWhenInMouseKeyboard;
             Settings.Default.MagnifySuppressedForScrollingActions = MagnifySuppressedForScrollingActions;
             Settings.Default.Debug = Debug;
-            Settings.Default.LookToScrollEnabled = LookToScrollEnabled;
-            Settings.Default.LookToScrollDirectionInverted = LookToScrollDirectionInverted;
-            Settings.Default.LookToScrollLockDownBoundsKey = LookToScrollLockDownBoundsKey;
+            Settings.Default.LookToScrollBounds = LookToScrollBounds;
+            Settings.Default.LookToScrollMode = LookToScrollMode;
             Settings.Default.LookToScrollCentreMouseWhenActivated = LookToScrollCentreMouseWhenActivated;
             Settings.Default.LookToScrollBringWindowToFrontWhenActivated = LookToScrollBringWindowToFrontWhenActivated;
-            Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint = LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
-            Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse = LookToScrollSuspendBeforeChoosingPointForMouse;
             Settings.Default.LookToScrollResumeAfterChoosingPointForMouse = LookToScrollResumeAfterChoosingPointForMouse;
             Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards = LookToScrollDeactivateUponSwitchingKeyboards;
-            Settings.Default.LookToScrollShowOverlayWindow = LookToScrollShowOverlayWindow;
             Settings.Default.LookToScrollOverlayBoundsColour = LookToScrollOverlayBoundsColour;
             Settings.Default.LookToScrollOverlayDeadzoneColour = LookToScrollOverlayDeadzoneColour;
             Settings.Default.LookToScrollOverlayBoundsThickness = LookToScrollOverlayBoundsThickness;
             Settings.Default.LookToScrollOverlayDeadzoneThickness = LookToScrollOverlayDeadzoneThickness;
             Settings.Default.LookToScrollHorizontalDeadzone = LookToScrollHorizontalDeadzone;
             Settings.Default.LookToScrollVerticalDeadzone = LookToScrollVerticalDeadzone;
-            Settings.Default.LookToScrollIncrementChoices = LookToScrollIncrementChoices;
-            Settings.Default.LookToScrollBaseSpeedSlow = LookToScrollBaseSpeedSlow;
-            Settings.Default.LookToScrollBaseSpeedMedium = LookToScrollBaseSpeedMedium;
-            Settings.Default.LookToScrollBaseSpeedFast = LookToScrollBaseSpeedFast;
-            Settings.Default.LookToScrollAccelerationSlow = LookToScrollAccelerationSlow;
-            Settings.Default.LookToScrollAccelerationMedium = LookToScrollAccelerationMedium;
-            Settings.Default.LookToScrollAccelerationFast = LookToScrollAccelerationFast;
+            Settings.Default.LookToScrollSpeed = LookToScrollSpeed;
         }
 
         #endregion

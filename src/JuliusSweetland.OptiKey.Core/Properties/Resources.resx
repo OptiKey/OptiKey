@@ -2085,141 +2085,48 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL" xml:space="preserve">
     <value>Look to Scroll</value>
   </data>
-  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
-    <value>Use alternative "look to scroll" method for scrolling:</value>
+  <data name="LOOK_TO_SCROLL_BOUNDS_LABEL" xml:space="preserve">
+    <value>Scrolling point and boundary:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>Invert scrolling direction:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>Lock down bounds key to preserve chosen point, window, or region:</value>
+  <data name="LOOK_TO_SCROLL_MODE_LABEL" xml:space="preserve">
+    <value>Directional scrolling mode:</value>
   </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling, move mouse to centre of deadzone:</value>
+    <value>Move mouse to scroll origin when activated:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling within window, bring it to the front:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>After choosing screen point, bring any window there to the front:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Stop scrolling when choosing where to move, click or drag the mouse:</value>
+    <value>Bring window to front before scrolling:</value>
   </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Automatically resume scrolling afterwards:</value>
+    <value>Automatically resume scrolling after performing mouse actions:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>Stop scrolling upon switching keyboards:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>Show overlay window (requires restart):</value>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL" xml:space="preserve">
+    <value>Scroll boundary border color:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of scroll bounds drawn on the overlay:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of deadzone guides drawn on the overlay:</value>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL" xml:space="preserve">
+    <value>Deadzone border color:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
-    <value>Thickness of scroll bounds drawn on the overlay:</value>
+    <value>Scroll boundary border thickness (0-None):</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
-    <value>Thickness of deadzone guides drawn on the overlay:</value>
+    <value>Deadzone border thickness (0-None):</value>
   </data>
   <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
-    <value>Horizontal deadzone (in pixels):</value>
+    <value>Deadzone Width (in pixels):</value>
   </data>
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
-    <value>Vertical deadzone (in pixels):</value>
+    <value>Deadzone Height (in pixels):</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>Cycle through these scroll increments:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>'Slow' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Medium' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>'Fast' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>'Slow' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Medium' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>'Fast' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>LOOK TO SCROLL KEYS:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>TOGGLE SCROLLING</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT BOUNDS</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT INCREMENT</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT MODE</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT SPEED</value>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_LABEL" xml:space="preserve">
+    <value>Look to scroll speed:</value>
   </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value>Look to
 Scroll</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Scroll by {0} wheel unit:
-(120 wheel units = 1 click)|Scroll by {0} wheel units:
-(120 wheel units = 1 click)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>Screen at
-Point</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>Screen
-Centred</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>Window</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>Window
-Region</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>Custom
-Region</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>Vertical</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value>Cross</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value>Free</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>Slow</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>Medium</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>Fast</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
     <value>French (Canada) / Française (Canada)</value>

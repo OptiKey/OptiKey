@@ -48,11 +48,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     mouseOutputService.MoveTo(CurrentPositionPoint);
                 }
-
-                if (Settings.Default.LookToScrollEnabled)
-                {
-                    UpdateLookToScroll(CurrentPositionPoint);
-                }
+                
+                UpdateLookToScroll(CurrentPositionPoint);
             };
 
             inputServiceSelectionProgressHandler = (o, progress) =>
@@ -1215,22 +1212,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.LookToScrollActive:
                     ToggleLookToScroll();
-                    break;
-
-                case FunctionKeys.LookToScrollBounds:
-                    HandleLookToScrollBoundsKeySelected();
-                    break;
-
-                case FunctionKeys.LookToScrollIncrement:
-                    SelectNextLookToScrollIncrement();
-                    break;
-
-                case FunctionKeys.LookToScrollMode:
-                    SelectNextLookToScrollMode();
-                    break;
-
-                case FunctionKeys.LookToScrollSpeed:
-                    SelectNextLookToScrollSpeed();
                     break;
 
                 case FunctionKeys.MenuKeyboard:
