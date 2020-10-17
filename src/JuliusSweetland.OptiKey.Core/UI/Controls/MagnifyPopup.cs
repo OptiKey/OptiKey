@@ -220,8 +220,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Point? translatedPoint = null;
 
             var image = VisualAndLogicalTreeHelper.FindLogicalChildren<Image>(this).First();
-
-            var imagePoint = image.PointFromScreen(point); //Convert screen to point on image co-ord system
+            
+            //Convert screen to point on image co-ord system
+            var imagePoint = image.PointFromScreen(new Point(point.X.Clamp(screen.Bounds.Left, screen.Bounds.Right), point.Y.Clamp(screen.Bounds.Top, screen.Bounds.Bottom)));
             var imageWidth = image.ActualWidth;
             var imageHeight = image.ActualHeight;
 
