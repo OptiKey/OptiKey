@@ -177,14 +177,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private void CalculatePosition()
         {
             //Copy point locally as point is not threadsafe
-            var pointCopy = Point;
+            var pointCopy = new Point(Point.X.Clamp(screenTopLeft.X, screenBottomRight.X), Point.Y.Clamp(screenTopLeft.Y, screenBottomRight.Y));
             
             //Popup is open and point is within screen bounds
-            if (IsOpen
-                && pointCopy.X >= screenTopLeft.X
-                && pointCopy.X <= screenBottomRight.X
-                && pointCopy.Y >= screenTopLeft.Y
-                && pointCopy.Y <= screenBottomRight.Y)
+            if (IsOpen)
             {
                 var dpiPoint = this.GetTransformFromDevice().Transform(pointCopy); //Offsets are in device independent pixels (DIP), but the incoming Point is in pixels
 
