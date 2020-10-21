@@ -175,25 +175,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     Log.InfoFormat("User chose point: {0}.", point.Value);
 
-                    if (IsPointInsideMainWindow(point.Value))
+                    IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
+
+                    if (hWnd == IntPtr.Zero)
                     {
-                        Log.Warn("Can't choose OptiKey main window as the target!");
+                        Log.Warn("Could not find a window at the chosen point!");
                         audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                     }
                     else
                     {
-                        IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
-
-                        if (hWnd == IntPtr.Zero)
-                        {
-                            Log.Warn("Could not find a window at the chosen point!");
-                            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                        }
-                        else
-                        {
-                            Log.InfoFormat("Selected window with HWND = {0} as the target.", hWnd);
-                            windowLookToScrollBoundsTarget = hWnd;
-                        }
+                        Log.InfoFormat("Selected window with HWND = {0} as the target.", hWnd);
+                        windowLookToScrollBoundsTarget = hWnd;
                     }
                 }
 
@@ -495,7 +487,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             if (!keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown() ||
                 keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown() ||
-                IsPointInsideMainWindow(position) ||
                 choosingLookToScrollBoundsTarget ||
                 !lookToScrollLastUpdate.HasValue)
             {
@@ -826,11 +817,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Rect GetMainWindowBoundsInPixels()
         {
             return Graphics.DipsToPixels(mainWindowManipulationService.WindowBounds);
-        }
-
-        private bool IsPointInsideMainWindow(Point point)
-        {
-            return GetMainWindowBoundsInPixels().Contains(point);
         }
 
         private bool IsMainWindowDocked()
