@@ -902,6 +902,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.CornerRadius) && int.TryParse(x.CornerRadius, out cornerRadius)))
                 newKey.CornerRadiusOverride = cornerRadius;
 
+            int margin = 0;
+            if (!string.IsNullOrEmpty(xmlKey.Margin) && int.TryParse(xmlKey.Margin, out margin))
+                newKey.MarginOverride = margin;
+            else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.Margin) && int.TryParse(x.Margin, out margin)))
+                newKey.MarginOverride = margin;
+
             double opacity = 1;
             if (!string.IsNullOrEmpty(xmlKey.Opacity) && double.TryParse(xmlKey.Opacity, out opacity))
                 newKey.OpacityOverride = opacity;

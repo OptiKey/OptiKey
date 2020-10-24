@@ -423,6 +423,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <Setter Property="Padding" Value="2" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="Margin" Value="0" />
                 <Setter Property="BorderBrush" Value="{StaticResource KeyDefaultBorderBrush}" />
                 <Setter Property="Background" Value="{StaticResource KeyDefaultBackgroundBrush}" />
                 <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
@@ -461,6 +462,11 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <!--This key has a Corner Radius Override-->
                     <DataTrigger Binding="{Binding Path=CornerRadiusOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
                         <Setter Property="CornerRadius" Value="{Binding Path=CornerRadiusOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
+                    </DataTrigger>
+
+                    <!--This key has a Margin Override-->
+                    <DataTrigger Binding="{Binding Path=MarginOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
+                        <Setter Property="Margin" Value="{Binding Path=MarginOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
                     
                     <!--This key is in a key down state of On and is not only visible when in use-->
