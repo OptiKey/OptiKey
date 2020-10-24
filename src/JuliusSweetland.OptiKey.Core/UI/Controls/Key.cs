@@ -405,6 +405,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(CornerRadiusOverrideProperty, value); }
         }
 
+        public static readonly DependencyProperty MarginOverrideProperty =
+            DependencyProperty.Register("MarginOverrideProperty", typeof(int), typeof(Key), new PropertyMetadata(defaultValue: 0));
+
+        public int MarginOverride
+        {
+            get { return (int)GetValue(MarginOverrideProperty); }
+            set { SetValue(MarginOverrideProperty, value); }
+        }
+
         public static readonly DependencyProperty DisabledBackgroundColourOverrideProperty =
             DependencyProperty.Register("DisabledBackgroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));
 

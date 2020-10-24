@@ -31,6 +31,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public string BorderColor { get; set; }
         [XmlAttribute] public string BorderThickness { get; set; }
         [XmlAttribute] public string CornerRadius { get; set; }
+        [XmlAttribute] public string Margin { get; set; }
         [XmlAttribute] public string Opacity { get; set; }
         [XmlAttribute] public string KeyDisabledOpacity { get; set; }
         [XmlAttribute] public string KeyDownOpacity { get; set; }
