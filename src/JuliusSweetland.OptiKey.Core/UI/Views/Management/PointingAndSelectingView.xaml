@@ -19,7 +19,6 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               Source="{Binding KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups}" />
         <valueConverters:BoolToCustomValues TrueValue="Visible" FalseValue="Hidden" x:Key="BooleanToVisible" />
     </UserControl.Resources>
-
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.RowDefinitions>
@@ -415,33 +414,46 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.KEY_FIXATION_TIME_TO_COMPLETE_LABEL}" 
-                               VerticalAlignment="Center" Margin="5">
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                    <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.Style>
+                            <Style TargetType="{x:Type Grid}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="1" Interval="10" StringFormat="###,##0"
-                                            Value="{Binding KeySelectionTriggerFixationDefaultCompleteTimeInMs, Mode=TwoWay}">
-                        <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
-                                <Setter Property="Visibility" Value="Collapsed" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
-                                        <Setter Property="Visibility" Value="Visible" />
+                                    <DataTrigger Binding="{Binding CompletionTimesShowHint}" Value="True">
+                                        <Setter Property="Background" Value="Yellow" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </controls:NumericUpDown.Style>
-                    </controls:NumericUpDown>
+                        </Grid.Style>
+                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="5"
+                                   Text="{x:Static resx:Resources.KEY_FIXATION_TIME_TO_COMPLETE_LABEL}">
+                        </TextBlock>
+                        <StackPanel Grid.Row="0" Grid.Column="1">
+                            <TextBlock VerticalAlignment="Center" Margin="0,5,0,2" FontStyle="Italic"
+                                       Text="{x:Static resx:Resources.COMPLETION_TIMES_HINT}" />
+                            <TextBox TextAlignment="Left" Background="Transparent" Margin="0,0,0,5">
+                                <TextBox.Text>
+                                    <Binding Path="KeySelectionTriggerFixationDefaultCompleteTimeInMs"
+                                             NotifyOnValidationError="True"
+                                             UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <valueConverters:CompletionTimesValidation />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </StackPanel>
+                    </Grid>
 
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS}" 
                                VerticalAlignment="Center" Margin="5">
@@ -535,7 +547,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                 </TextBlock>
 
                                                 <!-- unused control to set backdrop -->
-                                                <controls:NumericUpDown Grid.Column="1" TextAlignment="Left"/>
+                                                <TextBox Grid.Column="1" TextAlignment="Left"/>
 
                                                 <!-- text visible in front, but doesn't take click focus -->
                                                 <TextBlock Grid.Column="1" Text="{x:Static resx:Resources.VARIOUS}" Foreground="Gray" VerticalAlignment="Center" Margin="5"
@@ -544,10 +556,17 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                 </TextBlock>
                                                 
                                                 <!-- real control, is see-through -->
-                                                <controls:NumericUpDown Grid.Column="1" TextAlignment="Left"
-                                                                        Background="Transparent"
-                                                                        Minimum="1" Interval="10" StringFormat="###,##0"
-                                                                        Value="{Binding CommonTimeSpanTotalMilliseconds, Mode=TwoWay}" />
+                                                <TextBox Grid.Column="1" TextAlignment="Left" Background="Transparent">
+                                                    <TextBox.Text>
+                                                        <Binding Path="CommonTimeSpanTotalMilliseconds"
+                                                                     NotifyOnValidationError="True"
+                                                                     UpdateSourceTrigger="PropertyChanged">
+                                                            <Binding.ValidationRules>
+                                                                <valueConverters:CompletionTimesValidation />
+                                                            </Binding.ValidationRules>
+                                                        </Binding>
+                                                    </TextBox.Text>
+                                                </TextBox>
                                             </Grid>
                                         </DataTemplate>
                                     </Expander.HeaderTemplate>
@@ -562,9 +581,17 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                     </Grid.ColumnDefinitions>
                                                     <TextBlock Grid.Column="0" Text="{Binding Name}" 
                                                                VerticalAlignment="Center" Margin="5" />
-                                                    <controls:NumericUpDown Grid.Column="1" TextAlignment="Left"
-                                                                            Minimum="1" Interval="10" StringFormat="###,##0"
-                                                                            Value="{Binding TimeSpanTotalMilliseconds, Mode=TwoWay}" />
+                                                    <TextBox Grid.Column="1" TextAlignment="Left">
+                                                        <TextBox.Text>
+                                                            <Binding Path="TimeSpanTotalMilliseconds"
+                                                                     NotifyOnValidationError="True"
+                                                                     UpdateSourceTrigger="PropertyChanged">
+                                                                <Binding.ValidationRules>
+                                                                    <valueConverters:CompletionTimesValidation />
+                                                                </Binding.ValidationRules>
+                                                            </Binding>
+                                                        </TextBox.Text>
+                                                    </TextBox>
                                                 </Grid>
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>

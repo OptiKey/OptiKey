@@ -474,7 +474,7 @@ UP</value>
     <value>Horizontal fill (as % of screen):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Incomplete key fixation time to live (ms):</value>
+    <value>Time before incomplete key fixations expire (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>INCREASE
@@ -534,8 +534,11 @@ UP</value>
   <data name="KEY_CASE_LABEL" xml:space="preserve">
     <value>Key text transformation:</value>
   </data>
+  <data name="COMPLETION_TIMES_HINT" xml:space="preserve">
+    <value>Enter multiple values separated by commas. For example: 1250,750,450,250</value>
+  </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Key fixation time to complete (ms):</value>
+    <value>Time to complete and repeat a key (ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
     <value>Key fixation time to lock-on (ms):</value>

@@ -263,17 +263,33 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["UiLanguage"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:01.2500000")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.TimeSpan KeySelectionTriggerFixationDefaultCompleteTime {
-            get {
+        public global::System.TimeSpan KeySelectionTriggerFixationDefaultCompleteTime
+        {
+            get
+            {
                 return ((global::System.TimeSpan)(this["KeySelectionTriggerFixationDefaultCompleteTime"]));
             }
-            set {
+            set
+            {
                 this["KeySelectionTriggerFixationDefaultCompleteTime"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(null)]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string KeySelectionTriggerFixationDefaultCompleteTimes {
+            get {
+                return ((string)(this["KeySelectionTriggerFixationDefaultCompleteTimes"]));
+            }
+            set {
+                this["KeySelectionTriggerFixationDefaultCompleteTimes"] = value;
             }
         }
         

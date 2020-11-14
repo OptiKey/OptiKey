@@ -10,7 +10,7 @@ namespace JuliusSweetland.OptiKey.Models
 {
     [XmlRoot("dictionary")]
     [SettingsSerializeAs(SettingsSerializeAs.Xml)] //This is not really necessary as this class will be serialised into the settings as XML, but I've included it to be explicit
-    public class SerializableDictionaryOfTimeSpanByKeyValues : Dictionary<KeyValue, TimeSpan>, IXmlSerializable
+    public class SerializableDictionaryOfTimeSpanByKeyValues : Dictionary<KeyValue, string>, IXmlSerializable
     {
         #region IXmlSerializable
 
@@ -70,7 +70,11 @@ namespace JuliusSweetland.OptiKey.Models
                 reader.ReadStartElement("value");
                 reader.ReadStartElement("ticks");
                 var valueAsString = reader.ReadString();
-                var value = string.IsNullOrEmpty(valueAsString) ? TimeSpan.Zero : XmlConvert.ToTimeSpan(valueAsString);
+                var value = string.IsNullOrEmpty(valueAsString) ? "0" : valueAsString;
+                if (valueAsString.StartsWith("P"))
+                {
+                    value = XmlConvert.ToTimeSpan(valueAsString).TotalMilliseconds.ToString();
+                }
                 reader.ReadEndElement();
                 reader.ReadEndElement();
 
@@ -105,12 +109,9 @@ namespace JuliusSweetland.OptiKey.Models
                 }
                 writer.WriteEndElement();
                 writer.WriteEndElement();
-                
-                //Write value (as ticks because TimeSpan is not XML serialisable)
-                TimeSpan value = this[key];
                 writer.WriteStartElement("value");
                 writer.WriteStartElement("ticks");
-                writer.WriteString(XmlConvert.ToString(value));
+                writer.WriteString(this[key]);
                 writer.WriteEndElement();
                 writer.WriteEndElement();
 
