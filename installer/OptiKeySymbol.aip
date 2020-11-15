@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.4" Modules="enterprise" RootPath="." Language="en" Id="{16641705-202C-47CE-B551-2E86C3C1D8D3}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.5" Modules="enterprise" RootPath="." Language="en" Id="{16641705-202C-47CE-B551-2E86C3C1D8D3}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
@@ -10,10 +10,10 @@
     <ROW Property="ARPPRODUCTICON" Value="Symbol.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Optikey"/>
-    <ROW Property="ProductCode" Value="1025:{5F2F9703-02EA-47EC-BEA2-C913B26B176A} 1026:{4920D889-4379-4154-BF7D-050FF2DB63D1} 1027:{5BDB3D91-B5D3-4E34-A9C8-E66E73B16E18} 1028:{EC14CD1F-09CF-47E8-9D10-87DF1858F9E2} 1029:{89D21297-B1DE-4A3B-A6EF-9F79B6D253ED} 1030:{D7D77D50-CB92-4C58-94AF-F77AAE24D39D} 1031:{8A577779-A0E9-4D0B-87C1-C19ACF068D5B} 1032:{2537462A-6510-4AA4-B5E1-F508CE35F90B} 1033:{8519AC75-9A68-489E-A14F-7CA3CB94FA50} 1035:{8DC51B1A-EC70-495C-B793-9CA6818A540A} 1036:{3CB82BFF-9142-43DE-8267-66B382E91695} 1037:{B44F1EA3-7E57-4885-A104-C55DCB98522E} 1038:{6F23F4C0-F61F-4D66-9E1E-D7043B561EDA} 1039:{96E06904-B9B4-418B-B5C2-FFC111AC6747} 1040:{A2DE01D6-4EED-4900-950A-D1551ED6FF41} 1041:{E65AE4AB-FE20-43E0-8601-F133024A35C4} 1042:{50815CEE-02E8-4E7A-8A83-BA0597F86584} 1043:{64F109D2-2AAE-4D0C-8E41-0246745EE2E7} 1044:{9DDCEA78-660B-4602-875E-751F22A1C732} 1045:{B512753A-8E03-4F9B-9145-97D48D108711} 1046:{44C244CB-6313-44D9-91D2-E936B9EBB01B} 1049:{312F3C29-E947-498F-BCAA-25212BC430CF} 1050:{199E0813-EB87-489E-8EA8-E03CA4E84D4B} 1051:{E819F12A-4338-478C-9CE4-3573365F10C2} 1052:{5B38ECD9-2C3B-4EC0-B952-7794C719AA3D} 1053:{C02EC328-E7D8-4D88-B6F3-981A3D5B4DBE} 1055:{177EA8DF-E324-47F1-A156-7DA769930D5E} 1057:{21FB0AC6-EAF7-4674-AE1F-40FD7800A111} 1058:{4E904F93-D40C-437F-97BC-DA3781FDDA40} 1060:{14AF5185-D50A-4FDB-A497-2C0004437526} 1065:{A6008818-3813-413F-BF74-DC9735A81E04} 1087:{0D783A18-6EF2-464B-B83A-5875CDFD6AAF} 2052:{41FEE9EB-0BBC-476D-ACB2-1F00F77022B1} 2057:{D94DDFFE-BEFA-4362-8980-CD41F85C5BB8} 2068:{CC026625-9A06-4C5D-922D-B8BDACB8ED8D} 2070:{C50BE423-AB00-4F87-9364-8BB89EB54A83} 2074:{DA927FD3-290A-4F53-855B-7200EF79A7E2} 3082:{D8C25405-66C6-41D3-ADA8-A826AA3A34F0} 3098:{55F4D339-D310-47C9-BFA8-6EB1BF64E0B0} " Type="16"/>
+    <ROW Property="ProductCode" Value="1025:{0CD1DD0E-EE37-4C6B-AC7C-F733D46DAC36} 1026:{6E93DE9D-94EF-4526-BCAC-B7E1623F35EB} 1027:{AC7FDAE3-8918-45EE-9104-58B19384E42F} 1028:{FEEBD380-A7AC-4110-97EA-96FC9F9E7A52} 1029:{1C59B44B-9637-4177-AA8B-1D876A2BDE17} 1030:{F4E133D6-99CD-4F4A-ABBD-05271003EF2E} 1031:{C8806BE7-878C-4590-A2F5-9B85191234E8} 1032:{01307A0A-856C-417F-9A80-4DE6128BF37C} 1033:{42A1F687-6392-427F-BCDA-48A2B9D647AA} 1035:{A88EE9A0-5550-4453-8CF3-32F17C517658} 1036:{916F3615-225F-47F0-AE8A-0ED742068AEE} 1037:{7FEEDB23-E8EE-47AC-97DF-7E4A6F5280F4} 1038:{E869187E-7ADE-4062-BB14-B324FAE8B840} 1039:{12AA1C46-6565-4A32-A07E-BC94FEE45D5F} 1040:{83CA7868-213A-4617-B4C1-1793C6AC4234} 1041:{180C9AAD-F698-4A0B-A7B9-8F1D5E9B3513} 1042:{D4AE2B95-9271-48EC-A73A-A248BEBE8E94} 1043:{10AF2FF4-2866-401B-B0E0-ED7B6E2FCF07} 1044:{9519CCC7-C2D3-4B12-BC96-C363F92C9E36} 1045:{C4560309-A319-481E-A7E2-BC47332B37B3} 1046:{890D7E34-6DCA-4177-881D-768038D42AC4} 1049:{FBB7C91E-E7C9-4BCC-BB5B-0BD33597A398} 1050:{88297306-9B54-4AB3-ADAC-30FC78CD4042} 1051:{A466E78B-8099-4AB0-B4C3-44B568711ECE} 1052:{B267645F-AD62-471B-85B9-4E879BBA9EAE} 1053:{AB044467-DA61-43D2-869A-309EC21A37A1} 1055:{B09135DB-A0C5-42B7-AE34-DAECA70FEDA2} 1057:{29F61778-E95F-4A37-8F24-2C2E432134CF} 1058:{E427BCC0-C117-4B77-BC0A-79B28A9ACD90} 1060:{D140988A-341D-42B4-B32F-8BF372F39229} 1065:{80F863A0-0A8A-4ACD-B2F5-68184612E728} 1087:{6EF24864-7901-4B1E-89AC-BAB7B27F77A0} 2052:{1F9F1119-63C3-4D8D-8463-975E94768C3B} 2057:{E33BE764-1427-4B7F-85B9-95CAD7B8B807} 2068:{227F85BA-987B-42AA-A9F4-4F270B1548A4} 2070:{F425504C-4104-4B53-AFA1-604885025BD6} 2074:{97DF8DC3-375F-4007-A42B-5964B4E02378} 3082:{A578F9C1-0800-4C65-92D6-535C534F3433} 3098:{440AB2E8-33ED-47C3-A8D3-CBD47A25422C} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Optikey Symbol"/>
-    <ROW Property="ProductVersion" Value="3.1.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="3.1.1" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{951C90E2-0E35-4732-AAF8-285C1A134F6F}"/>
@@ -359,6 +359,7 @@
     <ROW File="Demo_Minecraft.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_M~1.XML|Demo_Minecraft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml" SelfReg="false"/>
     <ROW File="HindiIndia.dic" Component_="CatalanSpain.dic" FileName="HINDII~1.DIC|HindiIndia.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Dictionaries\HindiIndia.dic" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_27" Component_="OptiKey.resources.dll_27" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\hi-IN\OptiKey.resources.dll" SelfReg="false"/>
+    <ROW File="AR16Qwerty.xml" Component_="Demo_Gamepad.xml" FileName="AR16-Q~1.XML|AR16-Qwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -564,7 +565,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_DATA_SETTER" Type="51" Source="AI_ExtractFiles" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DATA_SETTER" Type="51" Source="CustomActionData" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DATA_SETTER_1" Type="51" Source="CustomActionData" Target="[~]"/>
     <ROW Action="AI_DATA_SETTER_2" Type="51" Source="CustomActionData" Target="[~]"/>
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
@@ -574,9 +575,8 @@
     <ROW Action="AI_DeleteRLzma" Type="1281" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
     <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
     <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
-    <ROW Action="AI_EstimateExtractFiles" Type="1" Source="Prereq.dll" Target="EstimateExtractFiles"/>
     <ROW Action="AI_ExtractCadLzma" Type="51" Source="AI_ExtractLzma" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_ExtractFiles" Type="1025" Source="Prereq.dll" Target="ExtractSourceFiles" AdditionalSeq="AI_DATA_SETTER"/>
+    <ROW Action="AI_ExtractFiles" Type="1" Source="Prereq.dll" Target="ExtractSourceFiles" AdditionalSeq="AI_DATA_SETTER"/>
     <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
     <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
     <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
@@ -709,7 +709,7 @@
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
     <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
-    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1397"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
     <ROW Action="AI_EnableDebugLog" Sequence="51"/>
     <ROW Action="AI_AppSearchEx" Sequence="102"/>
@@ -726,9 +726,8 @@
     <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
     <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
     <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
-    <ROW Action="AI_ExtractFiles" Sequence="3998" Builds="DefaultBuild"/>
-    <ROW Action="AI_DATA_SETTER" Sequence="3997"/>
-    <ROW Action="AI_EstimateExtractFiles" Sequence="3999" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractFiles" Sequence="1399" Builds="DefaultBuild"/>
+    <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>

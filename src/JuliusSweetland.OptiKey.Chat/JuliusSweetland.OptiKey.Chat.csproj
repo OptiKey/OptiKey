@@ -241,12 +241,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml">
-      <Link>Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml">
       <Link>Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml</Link>
       <SubType>Designer</SubType>
