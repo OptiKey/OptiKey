@@ -661,6 +661,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
+                case PointsSources.TobiiPcEye5:
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
@@ -723,6 +724,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
+                case PointsSources.TobiiPcEye5:
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
