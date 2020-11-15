@@ -535,7 +535,7 @@ UP</value>
     <value>Key text transformation:</value>
   </data>
   <data name="COMPLETION_TIMES_HINT" xml:space="preserve">
-    <value>Enter multiple values separated by commas. For example: 1250,750,450,250</value>
+    <value>Enter multiple values separated by commas to speed up/slow down subsequent selections, for example: 1250,750,450,250</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Time to complete and repeat a key (ms):</value>
