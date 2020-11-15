@@ -45,6 +45,11 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <Setter Property="Foreground" Value="Gray" />
                     </Trigger>
                 </Style.Triggers>
+                <Style.Resources>
+                    <Style TargetType="{x:Type Path}">
+                        <Setter Property="FlowDirection" Value="LeftToRight"/>
+                    </Style>
+                </Style.Resources>
             </Style>
         </Grid.Resources>
         <TabControl Grid.IsSharedSizeScope="True">

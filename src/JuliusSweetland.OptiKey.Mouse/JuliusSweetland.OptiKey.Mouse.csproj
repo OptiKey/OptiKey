@@ -242,18 +242,23 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml">
+      <Link>Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
       <Link>Resources\DynamicKeyboards\Samples\Demo_Bottom.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Left.xml">
+      <Link>Resources\DynamicKeyboards\Samples\Demo_Left.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Left.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Left.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml">
+      <Link>Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -272,6 +277,9 @@
     </Content>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Nafees Web Naskh License Agreement.txt">
       <Link>Resources\Fonts\Nafees Web Naskh License Agreement.txt</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font Info And License Agreement.txt">
+      <Link>Resources\Fonts\FarsiWeb Font Info And License Agreement.txt</Link>
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Roboto Font - Apache License.txt">
       <Link>Resources\Fonts\Roboto Font - Apache License.txt</Link>
@@ -871,6 +879,36 @@
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\CharisSIL-R.ttf">
       <Link>Resources\Fonts\CharisSIL-R.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - elham.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - elham.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - homa.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - homa.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - koodak.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - koodak.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - roya.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - roya.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - royab.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - royab.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - terafik.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - terafik.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - terafikb.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - terafikb.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - titr.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - titr.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - nazli.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - nazli.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - nazlib.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - nazlib.ttf</Link>
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf">
       <Link>Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf</Link>
