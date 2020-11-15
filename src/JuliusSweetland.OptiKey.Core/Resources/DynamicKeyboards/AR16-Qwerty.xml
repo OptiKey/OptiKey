@@ -1,0 +1,85 @@
+<!--
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<Keyboard>
+    <Name>AR16-Qwerty</Name>
+    <SymbolMargin>10</SymbolMargin>
+    <BorderThickness>0,0,0,0</BorderThickness>
+	<BackgroundColor>Black</BackgroundColor>
+	<BorderColor>Black</BorderColor>
+    <Grid>
+        <Rows>41</Rows>
+        <Cols>161</Cols>
+    </Grid>
+	<KeyGroup Name="All" LockOnTime="200" CompletionTimes="0,600,600,500,400,300,200,100" BorderColor="white" BorderThickness="2" CornerRadius="12"/>
+    <Content>		
+		
+        <DynamicKey Row="1" Col="1" Width="8" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>Escape</Action><Label>Esc</Label></DynamicKey>
+        <DynamicKey Row="1" Col="10" Width="9" Height="9"><Text>1</Text><Label>1</Label><ShiftDownLabel>!</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="20" Width="9" Height="9"><Text>2</Text><Label>2</Label><ShiftDownLabel>@</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="30" Width="9" Height="9"><Text>3</Text><Label>3</Label><ShiftDownLabel>#</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="40" Width="9" Height="9"><Text>4</Text><Label>4</Label><ShiftDownLabel>$</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="50" Width="9" Height="9"><Text>5</Text><Label>5</Label><ShiftDownLabel>%</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="60" Width="9" Height="9"><Text>6</Text><Label>6</Label><ShiftDownLabel>^</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="70" Width="9" Height="9"><Text>7</Text><Label>7</Label><ShiftDownLabel>&amp;</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="80" Width="9" Height="9"><Text>8</Text><Label>8</Label><ShiftDownLabel>*</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="90" Width="9" Height="9"><Text>9</Text><Label>9</Label><ShiftDownLabel>(</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="100" Width="9" Height="9"><Text>0</Text><Label>0</Label><ShiftDownLabel>)</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="1" Col="110" Width="10" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Label>Back</Label><Symbol>BackIcon</Symbol><Action>BackFromKeyboard</Action></DynamicKey>
+        <DynamicKey Row="1" Col="121" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>Delete</Action><Label>Del</Label></DynamicKey>
+        <DynamicKey Row="1" Col="131" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>PgUp</Action><Label>Pg Up</Label></DynamicKey>
+        <DynamicKey Row="1" Col="141" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>BackOne</Action><Label>Backspace</Label><Symbol>BackOneIcon</Symbol><KeyGroup>FastKeys</KeyGroup></DynamicKey>
+        <DynamicKey Row="1" Col="151" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>Home</Action><Label>Home</Label></DynamicKey>
+        
+        <DynamicKey Row="11" Col="1" Width="10" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Text>&#9;</Text><Label>Tab</Label><Symbol>TabIcon</Symbol></DynamicKey>
+        <DynamicKey Row="11" Col="12" Width="9" Height="9"><Text>q</Text><Label>q</Label><ShiftDownLabel>Q</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="22" Width="9" Height="9"><Text>w</Text><Label>w</Label><ShiftDownLabel>W</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="32" Width="9" Height="9"><Text>e</Text><Label>e</Label><ShiftDownLabel>E</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="42" Width="9" Height="9"><Text>r</Text><Label>r</Label><ShiftDownLabel>R</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="52" Width="9" Height="9"><Text>t</Text><Label>t</Label><ShiftDownLabel>T</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="62" Width="9" Height="9"><Text>y</Text><Label>y</Label><ShiftDownLabel>Y</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="72" Width="9" Height="9"><Text>u</Text><Label>u</Label><ShiftDownLabel>U</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="82" Width="9" Height="9"><Text>i</Text><Label>i</Label><ShiftDownLabel>I</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="92" Width="9" Height="9"><Text>o</Text><Label>o</Label><ShiftDownLabel>O</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="102" Width="9" Height="9"><Text>p</Text><Label>p</Label><ShiftDownLabel>P</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="112" Width="9" Height="9"><Text>-</Text><Label>-</Label><ShiftDownLabel>_</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="122" Width="8" Height="9"><Text>=</Text><Label>=</Label><ShiftDownLabel>+</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="131" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>PgDn</Action><Label>Pg Dn</Label></DynamicKey>
+        <DynamicKey Row="11" Col="141" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>ArrowUp</Action><Symbol>UpArrowKeyIcon</Symbol><KeyGroup>FastKeys</KeyGroup></DynamicKey>
+        <DynamicKey Row="11" Col="151" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>End</Action><Label>End</Label></DynamicKey>
+                
+        <DynamicKey Row="21" Col="1" Width="12" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
+		<DynamicKey Row="21" Col="14"  Width="9" Height="9"><Text>a</Text><Label>a</Label><ShiftDownLabel>A</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="24"  Width="9" Height="9"><Text>s</Text><Label>s</Label><ShiftDownLabel>S</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="34"  Width="9" Height="9"><Text>d</Text><Label>d</Label><ShiftDownLabel>D</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="44"  Width="9" Height="9"><Text>f</Text><Label>f</Label><ShiftDownLabel>F</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="54"  Width="9" Height="9"><Text>g</Text><Label>g</Label><ShiftDownLabel>G</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="64"  Width="9" Height="9"><Text>h</Text><Label>h</Label><ShiftDownLabel>H</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="74"  Width="9" Height="9"><Text>j</Text><Label>j</Label><ShiftDownLabel>J</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="84"  Width="9" Height="9"><Text>k</Text><Label>k</Label><ShiftDownLabel>K</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="94"  Width="9" Height="9"><Text>l</Text><Label>l</Label><ShiftDownLabel>L</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="104" Width="8" Height="9"><Text>;</Text><Label>;</Label><ShiftDownLabel>:</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="113" Width="8" Height="9"><Text>'</Text><Label>'</Label><ShiftDownLabel>"</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="21" Col="122" Width="8" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
+        <DynamicKey Row="21" Col="131" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>ArrowLeft</Action><Symbol>LeftArrowKeyIcon</Symbol><KeyGroup>FastKeys</KeyGroup></DynamicKey>
+        <DynamicKey Row="21" Col="141" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>ArrowDown</Action><Symbol>DownArrowKeyIcon</Symbol><KeyGroup>FastKeys</KeyGroup></DynamicKey>
+        <DynamicKey Row="21" Col="151" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>ArrowRight</Action><Symbol>RightArrowKeyIcon</Symbol><KeyGroup>FastKeys</KeyGroup></DynamicKey>
+        
+        <DynamicKey Row="31" Col="1" Width="8" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>
+        <DynamicKey Row="31" Col="10"  Width="8" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>LeftAlt</Action><Label>Alt</Label></DynamicKey>
+        <DynamicKey Row="31" Col="19"  Width="8" Height="9"><Text>z</Text><Label>z</Label><ShiftDownLabel>Z</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="28"  Width="8" Height="9"><Text>x</Text><Label>x</Label><ShiftDownLabel>X</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="37"  Width="9" Height="9"><Text>c</Text><Label>c</Label><ShiftDownLabel>C</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="47"  Width="9" Height="9"><Text>v</Text><Label>v</Label><ShiftDownLabel>V</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="57"  Width="13" Height="9"><Text>&#32;</Text><Label>Space</Label><Symbol>SpaceIcon</Symbol></DynamicKey>
+        <DynamicKey Row="31" Col="71"  Width="9" Height="9"><Text>b</Text><Label>b</Label><ShiftDownLabel>B</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="81"  Width="9" Height="9"><Text>n</Text><Label>n</Label><ShiftDownLabel>N</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="91"  Width="9" Height="9"><Text>m</Text><Label>m</Label><ShiftDownLabel>M</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="101" Width="9" Height="9"><Text>,</Text><Label>,</Label><ShiftDownLabel>&lt;</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="111" Width="9" Height="9"><Text>.</Text><Label>.</Label><ShiftDownLabel>&gt;</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="121" Width="9" Height="9"><Text>/</Text><Label>/</Label><ShiftDownLabel>?</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="31" Col="131" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Action>LeftAlt</Action><Label>Alt</Label></DynamicKey>
+        <DynamicKey Row="31" Col="141" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Width>1</Width><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>
+        <DynamicKey Row="31" Col="151" Width="9" Height="9" BackgroundColor="Black" KeyDownBackground="Black"><Text>&#13;</Text><Label>Enter</Label><Symbol>EnterIcon</Symbol></DynamicKey>
+    </Content>
+</Keyboard>
