@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.Models
     {
         private readonly string name;
         private readonly List<KeyValueAndTimeSpan> keyValueAndTimeSpans;
-        private TimeSpan? commonTimeSpan;
+        private string commonTimeSpan;
         private bool monitorHierarchy = true;
         private bool containsVarious = false;
 
@@ -68,10 +68,10 @@ namespace JuliusSweetland.OptiKey.Models
             get { return containsVarious;  }        
             set { SetProperty(ref containsVarious, value); }
         }
-        public double? CommonTimeSpanTotalMilliseconds
+        public string CommonTimeSpanTotalMilliseconds
         {
-            get { return commonTimeSpan != null ? commonTimeSpan.Value.TotalMilliseconds : (double?)null; }
-            set { SetProperty(ref commonTimeSpan, value != null ? TimeSpan.FromMilliseconds(value.Value) : (TimeSpan?)null); }
+            get { return commonTimeSpan; }
+            set { SetProperty(ref commonTimeSpan, value); }
         }
     }
 }

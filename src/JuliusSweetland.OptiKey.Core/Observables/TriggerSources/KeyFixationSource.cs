@@ -30,8 +30,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         private readonly TimeSpan defaultLockOnTime;
         private readonly bool resumeRequiresLockOn;
-        private readonly TimeSpan defaultTimeToCompleteTrigger;
-        private readonly IDictionary<KeyValue, TimeSpan> timeToCompleteTriggerByKey;
+        private readonly string defaultTimeToCompleteTrigger;
+        private readonly IDictionary<KeyValue, string> timeToCompleteTriggerByKey;
         private readonly IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
         private readonly TimeSpan incompleteFixationTtl;
         private readonly ConcurrentDictionary<KeyValue, long> incompleteFixationProgress;
@@ -47,15 +47,15 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         public KeyFixationSource(
             TimeSpan defaultLockOnTime,
             bool resumeRequiresLockOn,
-            TimeSpan defaultTimeToCompleteTrigger,
-            IDictionary<KeyValue, TimeSpan> timeToCompleteTriggerByKey,
+            string defaultTimeToCompleteTrigger,
+            IDictionary<KeyValue, string> timeToCompleteTriggerByKey,
             TimeSpan incompleteFixationTtl,
             IPointSource pointSource)
         {
             this.defaultLockOnTime = defaultLockOnTime;
             this.resumeRequiresLockOn = resumeRequiresLockOn;
             this.defaultTimeToCompleteTrigger = defaultTimeToCompleteTrigger;
-            this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey ?? new Dictionary<KeyValue, TimeSpan>();
+            this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey ?? new Dictionary<KeyValue, string>();
             this.incompleteFixationTtl = incompleteFixationTtl;
             this.overrideTimesByKey = new Dictionary<KeyValue, TimeSpanOverrides>();
             this.pointSource = pointSource;
@@ -111,13 +111,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             .Subscribe(tps =>
                             {
                                 Timestamped<PointAndKeyValue> latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
-
-                                //if the latest key is not the same as the last key press then reset values
-                                if (lastKeyValue != null && !lastKeyValue.Equals(latestPointAndKeyValue.Value.KeyValue))
-                                {
-                                    keystroke = 1;
-                                    lastKeyValue = null;
-                                }
 
                                 if (fixationCentrePointAndKeyValue == null
                                     && !resumeRequiresLockOn)
@@ -193,18 +186,15 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             //Setup new incomplete fixation timeout
                                             PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue; //Access to modified closure
 
-                                            //check for an override timeout value for this key
-                                            TimeSpan lockDownAttemptTimeout = (overrideTimesByKey != null
-                                                && overrideTimesByKey.TryGetValue(fixationCentrePointAndKeyValueCopy.KeyValue, out TimeSpanOverrides timeSpanOverrides))
-                                                ? timeSpanOverrides.LockDownAttemptTimeout : TimeSpan.Zero;
-
                                             //set the timeout to either the override or default value
-                                            var fixationTimeout = lockDownAttemptTimeout > TimeSpan.Zero ? lockDownAttemptTimeout : incompleteFixationTtl;
+                                            var fixationTimeout = (overrideTimesByKey != null
+                                                && overrideTimesByKey.TryGetValue(fixationCentrePointAndKeyValueCopy.KeyValue, out TimeSpanOverrides timeSpanOverrides))
+                                                ? timeSpanOverrides.LockDownAttemptTimeout : incompleteFixationTtl;
 
                                             incompleteFixationTimeouts[fixationCentrePointAndKeyValue.KeyValue] =
                                                 Observable.Timer(fixationTimeout).Subscribe(_ =>
                                                 {
-                                                    if (lockDownAttemptTimeout > TimeSpan.Zero)
+                                                    if (fixationTimeout != incompleteFixationTtl)
                                                         overrideTimesByKey[fixationCentrePointAndKeyValueCopy.KeyValue].LockDownCancelTime = DateTimeOffset.MinValue;
                                                     incompleteFixationProgress.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out var _);
                                                     incompleteFixationTimeouts.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out var _);
@@ -228,6 +218,13 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             timeout?.Dispose();
                                         }
 
+                                        //if the latest key is not the same as the last key press then reset values
+                                        if (lastKeyValue != null && !lastKeyValue.Equals(latestPointAndKeyValue.Value.KeyValue))
+                                        {
+                                            keystroke = 1;
+                                            lastKeyValue = null;
+                                        }
+
                                         var timeToCompleteTrigger = GetTimeToCompleteTrigger(fixationCentrePointAndKeyValue.KeyValue, lastKeyValue, keystroke);
                                         var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
 
@@ -245,20 +242,15 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             {
                                                 t.Dispose();
                                             }
+                                                keystroke = (fixationCentrePointAndKeyValue.KeyValue.Equals(lastKeyValue)) ? keystroke + 1 : 1;
+                                                lastKeyValue = fixationCentrePointAndKeyValue.KeyValue;
+                                                fixationStart = latestPointAndKeyValue.Timestamp;
                                             //Temporary logic: if override times exist then we can presume that a dynamic keyboard with overrides is being user
                                             //The logic here would be to NOT require lock on again, hence why fixationCentrePointAndKeyValue is not cleared out.
                                             if (overrideTimesByKey != null && overrideTimesByKey.ContainsKey(fixationCentrePointAndKeyValue.KeyValue))
                                             {
-                                                keystroke = (fixationCentrePointAndKeyValue.KeyValue.Equals(lastKeyValue)) ? keystroke + 1 : 1;
-                                                lastKeyValue = fixationCentrePointAndKeyValue.KeyValue;
-                                                   overrideTimesByKey[lastKeyValue].LockDownCancelTime = DateTimeOffset.Now 
+                                                overrideTimesByKey[lastKeyValue].LockDownCancelTime = DateTimeOffset.Now 
                                                     + overrideTimesByKey[lastKeyValue].TimeRequiredToLockDown;
-                                                fixationStart = latestPointAndKeyValue.Timestamp;
-                                            }
-                                            else
-                                            {
-                                                //Otherwise assume default keyboard so lock on is required each time (as this is the old logic)
-                                                fixationCentrePointAndKeyValue = null;
                                             }
                                             incompleteFixationProgress.Clear();
                                             incompleteFixationTimeouts.Clear();
@@ -316,29 +308,27 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             }
 
             //check if this key has any override times
-            if (overrideTimesByKey.TryGetValue(keyValue, out var timeSpanOverrides) 
-                && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero && keystroke == 2)
+            var hasOverride = overrideTimesByKey.TryGetValue(keyValue, out TimeSpanOverrides timeSpanOverrides);
+            if (hasOverride && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero && keystroke == 2)
             {
                 return timeSpanOverrides.TimeRequiredToLockDown;
             }
 
-            if (overrideTimesByKey.TryGetValue(keyValue, out timeSpanOverrides) && timeSpanOverrides.CompletionTimes != null)
+            var completionTimes = hasOverride && timeSpanOverrides.CompletionTimes != null && timeSpanOverrides.CompletionTimes.Any()
+                ? timeSpanOverrides.CompletionTimes
+                : timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger).Split(',').ToList();
+
+            if (lastKeyValue == null || keyValue != lastKeyValue)
             {
-                if (lastKeyValue == null || keyValue != lastKeyValue)
-                {
-                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes.First()));
-                }
-
-                if (timeSpanOverrides.CompletionTimes.Count > keystroke)
-                {
-                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes[keystroke]));
-                }
-
-                return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes.Last()));
+                return TimeSpan.FromMilliseconds(double.Parse(completionTimes.First()));
             }
 
-            //if this key does not have overrides then get the time from setting or use the default
-            return timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger);
+            if (completionTimes.Count > keystroke)
+            {
+                return TimeSpan.FromMilliseconds(double.Parse(completionTimes[keystroke]));
+            }
+
+            return TimeSpan.FromMilliseconds(double.Parse(completionTimes.Last()));
         }
 
         TimeSpan GetTimeToLockOn(KeyValue keyValue)

@@ -767,6 +767,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter multiple values separated by commas. For example: 1250,750,450,250.
+        /// </summary>
+        public static string COMPLETION_TIMES_HINT {
+            get {
+                return ResourceManager.GetString("COMPLETION_TIMES_HINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MENU.
         /// </summary>
         public static string CONTEXTUAL_MENU_KEY {
@@ -2389,7 +2398,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Incomplete key fixation time to live (ms):.
+        ///   Looks up a localized string similar to Time before incomplete key fixations expire (ms):.
         /// </summary>
         public static string INCOMPLETE_KEY_FIXATION_TTL_LABEL {
             get {
@@ -2732,7 +2741,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Key fixation time to complete (ms):.
+        ///   Looks up a localized string similar to Time to complete and repeat a key (ms):.
         /// </summary>
         public static string KEY_FIXATION_TIME_TO_COMPLETE_LABEL {
             get {

@@ -115,6 +115,13 @@ namespace JuliusSweetland.OptiKey
                 Settings.Default.Reload();
             }
 
+            //Migrate the completion time setting to the new field
+            if (Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes == null)
+            {
+                Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes
+                    = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime.TotalMilliseconds.ToString();
+            }
+
             //Adjust log4net logging level if in debug mode
             ((Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
             ((Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
@@ -751,7 +758,7 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new KeyFixationSource(
                        Settings.Default.KeySelectionTriggerFixationLockOnTime,
                        Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
-                       Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime,
+                       Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes,
                        Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
                         : null,

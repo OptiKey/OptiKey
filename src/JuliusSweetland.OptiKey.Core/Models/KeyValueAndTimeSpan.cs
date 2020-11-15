@@ -8,9 +8,9 @@ namespace JuliusSweetland.OptiKey.Models
     {
         private readonly string name;
         private readonly KeyValue keyValue;
-        private TimeSpan? timeSpan;
+        private string timeSpan;
 
-        public KeyValueAndTimeSpan(string name, KeyValue keyValue, TimeSpan? timeSpan)
+        public KeyValueAndTimeSpan(string name, KeyValue keyValue, string timeSpan)
         {
             this.name = name;
             this.keyValue = keyValue;
@@ -19,10 +19,10 @@ namespace JuliusSweetland.OptiKey.Models
 
         public string Name { get { return name; } }
         public KeyValue KeyValue { get { return keyValue; } }
-        public double? TimeSpanTotalMilliseconds
+        public string TimeSpanTotalMilliseconds
         {
-            get { return timeSpan != null ? timeSpan.Value.TotalMilliseconds : (double?)null; }
-            set { SetProperty(ref timeSpan, value != null ? TimeSpan.FromMilliseconds(value.Value) : (TimeSpan?)null); }
+            get { return timeSpan; }
+            set { SetProperty(ref timeSpan, value); }
         }
 
         #region IEquatable
