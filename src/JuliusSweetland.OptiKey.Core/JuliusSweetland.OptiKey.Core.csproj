@@ -990,7 +990,7 @@
     <Content Include="Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\DynamicKeyboards\AR16-Qwerty.xml" />
+    <Resource Include="Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml" />
     <Content Include="Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
