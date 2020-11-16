@@ -465,7 +465,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 // Convert the velocity from clicks per second to mouse wheel units per second.
                 velocity *= WheelUnitsPerClick;
 
-                double interval = (thisUpdate - lookToScrollLastUpdate.Value).TotalSeconds;
+                double interval = (thisUpdate - lookToScrollLastUpdate.Value).TotalSeconds.CoerceToUpperLimit(0.1);
                 Vector scrollAmount = velocity * interval;
 
                 // Carry over any unused scrolling from last update.
@@ -519,6 +519,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         return false;
                     }
                     break;
+            }
+
+            if (position.ToKeyValue(pointToKeyValueMap) != null)
+            {
+                return false;
             }
 
             return bounds.Contains(position);
