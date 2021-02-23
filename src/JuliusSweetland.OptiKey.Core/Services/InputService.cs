@@ -23,6 +23,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly IDictionaryService dictionaryService;
         private readonly IAudioService audioService;
         private readonly ICapturingStateManager capturingStateManager;
+        private readonly ITriggerSource eyeGestureTriggerSource;
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
         private readonly object suspendRequestLock = new object();
@@ -45,6 +46,7 @@ namespace JuliusSweetland.OptiKey.Services
             IAudioService audioService,
             ICapturingStateManager capturingStateManager,
             IPointSource pointSource,
+            ITriggerSource eyeGestureTriggerSource,
             ITriggerSource keySelectionTriggerSource,
             ITriggerSource pointSelectionTriggerSource)
         {
@@ -53,6 +55,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.audioService = audioService;
             this.capturingStateManager = capturingStateManager;
             this.pointSource = pointSource;
+            this.eyeGestureTriggerSource = eyeGestureTriggerSource;
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
 
@@ -78,6 +81,7 @@ namespace JuliusSweetland.OptiKey.Services
                 pointSource = value;
 
                 //Replace point source on key and point trigger sources as they publish the selection location from the point source
+                eyeGestureTriggerSource.PointSource = pointSource;
                 keySelectionTriggerSource.PointSource = pointSource;
                 pointSelectionTriggerSource.PointSource = pointSource;
             }
@@ -449,6 +453,10 @@ namespace JuliusSweetland.OptiKey.Services
             lock (suspendRequestLock)
             {
                 suspendRequestCount++;
+                if (eyeGestureTriggerSource.State == RunningStates.Running)
+                {
+                    eyeGestureTriggerSource.State = RunningStates.Paused;
+                }
                 if (keySelectionTriggerSource.State == RunningStates.Running)
                 {
                     keySelectionTriggerSource.State = RunningStates.Paused;
@@ -472,6 +480,10 @@ namespace JuliusSweetland.OptiKey.Services
                 suspendRequestCount--;
                 if (suspendRequestCount == 0)
                 {
+                    if (eyeGestureTriggerSource != null)
+                    {
+                        eyeGestureTriggerSource.State = RunningStates.Running;
+                    }
                     if (keySelectionTriggerSource != null)
                     {
                         keySelectionTriggerSource.State = RunningStates.Running;

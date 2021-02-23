@@ -2528,7 +2528,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 if (keyCommand.Name == KeyCommands.Loop)
                 {
-                    var loopCount = Int32.Parse(keyCommand.Value);
+                    var loopCount = int.TryParse(keyCommand.Value, out var i) ? i : 0;
                     var logMessage = loopCount > 0 ? loopCount + " times" : "indefinitely until stopped";
                     Log.InfoFormat("CommandList: Looping {0}", logMessage);
 
@@ -2561,45 +2561,49 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     if (keyCommand.Name == KeyCommands.Action)
                     {
-                        Log.InfoFormat("CommandList: Press function key: {0}", keyCommand.KeyValue.FunctionKey.ToString());
-                        KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
+                        Log.InfoFormat("CommandList: Press function key: {0}", keyCommand.Value);
+                         if (Enum.TryParse(keyCommand.Value, out FunctionKeys fk))
+                            KeySelectionResult(new KeyValue(fk), multiKeySelection);
                     }
                     else if (keyCommand.Name == KeyCommands.ChangeKeyboard)
                     {
                         Log.InfoFormat("CommandList: Change keyboard");
-                        KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
+                        var keyValue = Enum.TryParse(keyCommand.Value, out Enums.Keyboards keyboardEnum)
+                            ? new ChangeKeyboardKeyValue(keyboardEnum, keyCommand.BackAction)
+                            : new ChangeKeyboardKeyValue(keyCommand.Value, keyCommand.BackAction);
+                        KeySelectionResult(keyValue, multiKeySelection);
                     }
                     else if (keyCommand.Name == KeyCommands.KeyDown)
                     {
-                        Log.InfoFormat("CommandList: Key down on [{0}] key", keyCommand.KeyValue.String);
-                        await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                        keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+                        Log.InfoFormat("CommandList: Key down on [{0}] key", keyCommand.Value);
+                        await keyboardOutputService.ProcessSingleKeyPress(keyCommand.Value, KeyPressKeyValue.KeyPressType.Press);
+                        keyStateService.KeyDownStates[new KeyValue(keyCommand.Value)].Value = KeyDownStates.LockedDown;
                     }
                     else if (keyCommand.Name == KeyCommands.KeyToggle)
                     {
-                        if (keyStateService.KeyDownStates[keyCommand.KeyValue].Value != KeyDownStates.Up)
+                        if (keyStateService.KeyDownStates[new KeyValue(keyCommand.Value)].Value != KeyDownStates.Up)
                         {
-                            Log.InfoFormat("CommandList: Toggle key up on [{0}] key", keyCommand.KeyValue.String);
-                            await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
+                            Log.InfoFormat("CommandList: Toggle key up on [{0}] key", keyCommand.Value);
+                            await KeyUpProcessing(singleKeyValue, new KeyValue(keyCommand.Value));
                         }
                         else
                         {
-                            Log.InfoFormat("CommandList: Toggle key down on [{0}] key", keyCommand.KeyValue.String);
-                            await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                            keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+                            Log.InfoFormat("CommandList: Toggle key down on [{0}] key", keyCommand.Value);
+                            await keyboardOutputService.ProcessSingleKeyPress(keyCommand.Value, KeyPressKeyValue.KeyPressType.Press);
+                            keyStateService.KeyDownStates[new KeyValue(keyCommand.Value)].Value = KeyDownStates.LockedDown;
                         }
                     }
                     else if (keyCommand.Name == KeyCommands.KeyUp)
                     {
-                        Log.InfoFormat("CommandList: Key up on [{0}]", keyCommand.KeyValue.String);
-                        await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
+                        Log.InfoFormat("CommandList: Key up on [{0}]", keyCommand.Value);
+                        await KeyUpProcessing(singleKeyValue, new KeyValue(keyCommand.Value));
 
                         //the KeyUp value could be a KeyGroup so add any matches from KeyValueByGroup
-                        if (keyStateService.KeyValueByGroup.ContainsKey(keyCommand.KeyValue.String.ToUpper()))
+                        if (keyStateService.KeyValueByGroup.ContainsKey(keyCommand.Value.ToUpper()))
                         {
                             var keyValueList = new List<KeyValue>();
-                            keyValueList.Add(keyCommand.KeyValue);
-                            keyValueList.AddRange(KeyStateService.KeyValueByGroup[keyCommand.KeyValue.String.ToUpper()]);
+                            keyValueList.Add(new KeyValue(keyCommand.Value));
+                            keyValueList.AddRange(KeyStateService.KeyValueByGroup[keyCommand.Value.ToUpper()]);
                             foreach (var keyValue in keyValueList.Where(x => x != null && keyStateService.KeyDownStates[x].Value != KeyDownStates.Up))
                             {
                                 await KeyUpProcessing(singleKeyValue, keyValue);
@@ -2608,19 +2612,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else if (keyCommand.Name == KeyCommands.Text)
                     {
-                        Log.InfoFormat("CommandList: Text of [{0}]", keyCommand.KeyValue.String);
-                        KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
+                        Log.InfoFormat("CommandList: Text of [{0}]", keyCommand.Value);
+                        KeySelectionResult(new KeyValue(keyCommand.Value), multiKeySelection);
                     }
                     else if (keyCommand.Name == KeyCommands.Wait)
                     {
-                        var waitMs = int.Parse(keyCommand.Value);
+                        var waitMs = int.TryParse(keyCommand.Value, out var i) ? i : 500;
                         Log.InfoFormat("CommandList: Wait of {0}ms", waitMs);
                         await Task.Delay(waitMs);
                     }
                     else if (keyCommand.Name == KeyCommands.Plugin)
                     {
                         Log.InfoFormat("CommandList: Plugin [{0}]", keyCommand.Value);
-                        RunDynamicPlugin(keyCommand.Plugin);
+                        RunDynamicPlugin(keyCommand);
                     }
                 }
             }
@@ -2661,15 +2665,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 keyStateService.KeyRunningStates[commandKey].Value = false;
         }
 
-        private void RunDynamicPlugin(DynamicPlugin pluginKey)
+        private void RunDynamicPlugin(KeyCommand keyCommand)
         {
-            Log.InfoFormat("Running plugin [{0}]", pluginKey.Name);
+            Log.InfoFormat("Running plugin [{0}]", keyCommand.Value);
 
             // Build plugin context
             Dictionary<string, string> context = BuildPluginContext();
             try
             {
-                PluginEngine.RunDynamicPlugin(context, pluginKey);
+                PluginEngine.RunDynamicPlugin(context, keyCommand);
             }
             catch (Exception exception)
             {

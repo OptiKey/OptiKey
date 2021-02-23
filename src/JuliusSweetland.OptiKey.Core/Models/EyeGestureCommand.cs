@@ -1,23 +1,26 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-using JuliusSweetland.OptiKey.Enums;
+
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public class KeyCommand
+    public class EyeGestureCommand
     {
-        public KeyCommand() { }
-        public KeyCommand(KeyCommands name, string value)
+        [XmlIgnore] public Enums.KeyCommands CommandName;
+        public string Name
         {
-            this.Name = name;
-            this.Value = value;
+            get { return CommandName.ToString(); }
+            set
+            {
+                if (Enums.KeyCommands.TryParse(value, out Enums.KeyCommands key))
+                    CommandName = key;
+            }
         }
 
-        public KeyCommands Name { get; set; }
         public string Value { get; set; }
         public bool BackAction { get; set; }
         public string Method { get; set; }
         public List<DynamicArgument> Argument { get; set; }
-        public List<KeyCommand> LoopCommands { get; set; }
     }
 }
