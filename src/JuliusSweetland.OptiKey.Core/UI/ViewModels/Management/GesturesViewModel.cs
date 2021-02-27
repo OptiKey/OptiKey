@@ -16,7 +16,7 @@ using Prism.Commands;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
-    public class GesturesViewModel : ContentControl, INotifyPropertyChanged
+    public class GesturesViewModel : INotifyPropertyChanged
     {
         #region Private Member Vars
 
