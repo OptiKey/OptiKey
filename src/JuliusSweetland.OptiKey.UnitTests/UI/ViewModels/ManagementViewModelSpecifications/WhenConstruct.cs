@@ -25,6 +25,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         {
             Assert.IsNotNull(ManagementViewModel.DictionaryViewModel);
             Assert.IsNotNull(ManagementViewModel.OtherViewModel);
+            Assert.IsNotNull(ManagementViewModel.GesturesViewModel);
             Assert.IsNotNull(ManagementViewModel.PointingAndSelectingViewModel);
             Assert.IsNotNull(ManagementViewModel.SoundsViewModel);
             Assert.IsNotNull(ManagementViewModel.VisualsViewModel);
