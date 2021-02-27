@@ -18,7 +18,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeySelectionEventHandlerShouldBeTriggered()
         {
-            Assert.IsTrue(IsKeySelectionEventHandlerCalled);
+            Assert.That(IsKeySelectionEventHandlerCalled, Is.True);
         }
     }
 }

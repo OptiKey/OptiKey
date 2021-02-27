@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifications;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.Protected;
+using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Services.Translation
 {
-    [TestClass]
+    [TestFixture]
     public class TranslationServiceTests : MainViewModelTestBase
     {
         /*
          * Tests the correct request is sent and mocked response is converted properly
          */
-        [TestMethod]
+        [Test]
         public async Task TestTranslateAsync()
         {
             base.BaseSetUp();
@@ -54,11 +54,15 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.Translation
             TranslationService.Response result = await subjectUnderTest.Translate("hello");
 
             // ASSERT
-            Assert.IsNotNull(result);
-            // Mocked Http response should be converted into the response struct within TranslationService
-            Assert.AreEqual("", result.ExceptionMessage);
-            Assert.AreEqual("Success", result.Status);
-            Assert.AreEqual("Hallo", result.TranslatedText);
+            Assert.That(result, Is.Not.Null);
+            // Mocked Http response should be converted into the response struct within TranslationService     
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.ExceptionMessage, Is.EqualTo(""));
+                Assert.That(result.Status, Is.EqualTo("Success"));
+                Assert.That(result.TranslatedText, Is.EqualTo("Hallo"));
+            });            
 
             // also check the 'http' call was like we expected it
             var expectedUri = new Uri("https://translate.yandex.net/api/v1.5/tr.json/translate?" +

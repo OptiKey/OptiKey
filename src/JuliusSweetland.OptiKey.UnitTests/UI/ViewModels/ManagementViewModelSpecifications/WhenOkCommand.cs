@@ -57,11 +57,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         [Test]
         public void ThenWindowShouldNotBeClosedOrSaved()
         {
-            Assert.IsFalse(IsWindowClosed);
+            Assert.Multiple(() =>
+            {
+                Assert.That(IsWindowClosed, Is.False);
 
-            // settings still use default values -- not closed
-            Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, defaultCommuniKatePagesetLocation);
-            Assert.AreEqual(Settings.Default.MaryTTSLocation, defaultMaryTTSLocation);
+                // settings still use default values -- not closed
+                Assert.That(defaultCommuniKatePagesetLocation, Is.EqualTo(Settings.Default.CommuniKatePagesetLocation));
+                Assert.That(defaultMaryTTSLocation, Is.EqualTo(Settings.Default.MaryTTSLocation));
+            });            
         }
     }
 
@@ -79,11 +82,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         [Test]
         public void ThenWindowShouldBeClosedWithNoChanges()
         {
-            Assert.IsTrue(IsWindowClosed);
+            Assert.Multiple(() =>
+            {
+                Assert.That(IsWindowClosed, Is.True);
 
-            // settings still use default values -- no changes made
-            Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, defaultCommuniKatePagesetLocation);
-            Assert.AreEqual(Settings.Default.MaryTTSLocation, defaultMaryTTSLocation);
+                // settings still use default values -- no changes made
+                Assert.That(defaultCommuniKatePagesetLocation, Is.EqualTo(Settings.Default.CommuniKatePagesetLocation));
+                Assert.That(defaultMaryTTSLocation, Is.EqualTo(Settings.Default.MaryTTSLocation));
+            });            
         }
     }
 
@@ -103,11 +109,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         [Test]
         public void ThenWindowShouldBeClosedWithNoCoreChanges()
         {
-            Assert.IsTrue(IsWindowClosed);
+            Assert.Multiple(() =>
+            {
+                Assert.That(IsWindowClosed, Is.True);
 
-            // core settings not being changed updated -- still use default values
-            Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, defaultCommuniKatePagesetLocation);
-            Assert.AreEqual(Settings.Default.MaryTTSLocation, defaultMaryTTSLocation);
+                // core settings not being changed updated -- still use default values
+                Assert.That(defaultCommuniKatePagesetLocation, Is.EqualTo(Settings.Default.CommuniKatePagesetLocation));
+                Assert.That(defaultMaryTTSLocation, Is.EqualTo(Settings.Default.MaryTTSLocation));
+            });            
         }
     }
 
@@ -127,11 +136,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         [Test]
         public void ThenWindowShouldRestartAndSaved()
         {
-            Assert.IsFalse(IsWindowClosed);
+            Assert.Multiple(() =>
+            {
+                Assert.That(IsWindowClosed, Is.False);
 
-            // settings being updated -- using new values
-            Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, "new location");
-            Assert.AreEqual(Settings.Default.MaryTTSLocation, "new location");
+                // settings being updated -- using new values
+                Assert.That("new location", Is.EqualTo(Settings.Default.CommuniKatePagesetLocation));
+                Assert.That("new location", Is.EqualTo(Settings.Default.MaryTTSLocation));
+            });            
         }
     }
 }

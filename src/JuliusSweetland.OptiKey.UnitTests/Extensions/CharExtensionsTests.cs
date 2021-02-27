@@ -19,37 +19,46 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
         [Test]
         public void TestToCharCategory()
         {
-            Assert.AreEqual(CharCategories.NewLine, '\n'.ToCharCategory());
-            Assert.AreEqual(CharCategories.Space, ' '.ToCharCategory());
-            Assert.AreEqual(CharCategories.Tab, '\t'.ToCharCategory());
-            Assert.AreEqual(CharCategories.LetterOrDigitOrSymbolOrPunctuation, 's'.ToCharCategory());
-            Assert.AreEqual(CharCategories.LetterOrDigitOrSymbolOrPunctuation, '5'.ToCharCategory());
-            Assert.AreEqual(CharCategories.LetterOrDigitOrSymbolOrPunctuation, '!'.ToCharCategory());
-            Assert.AreEqual(CharCategories.SomethingElse, '\a'.ToCharCategory());
-            Assert.AreEqual(CharCategories.SomethingElse, '\r'.ToCharCategory());
+            Assert.Multiple(() =>
+            {
+                Assert.That('\n'.ToCharCategory(), Is.EqualTo(CharCategories.NewLine));
+                Assert.That(' '.ToCharCategory(), Is.EqualTo(CharCategories.Space));
+                Assert.That('\t'.ToCharCategory(), Is.EqualTo(CharCategories.Tab));
+                Assert.That('s'.ToCharCategory(), Is.EqualTo(CharCategories.LetterOrDigitOrSymbolOrPunctuation));
+                Assert.That('5'.ToCharCategory(), Is.EqualTo(CharCategories.LetterOrDigitOrSymbolOrPunctuation));
+                Assert.That('!'.ToCharCategory(), Is.EqualTo(CharCategories.LetterOrDigitOrSymbolOrPunctuation));
+                Assert.That('\a'.ToCharCategory(), Is.EqualTo(CharCategories.SomethingElse));
+                Assert.That('\r'.ToCharCategory(), Is.EqualTo(CharCategories.SomethingElse));
+            });            
         }
 
         [Test]
         public void TestConvertEscapedCharToLiteral()
         {
-            Assert.AreEqual(@"[Char:\0|Unicode:U+0000]", '\0'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\a|Unicode:U+0007]", '\a'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\b|Unicode:U+0008]", '\b'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\t|Unicode:U+0009]", '\t'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\f|Unicode:U+000c]", '\f'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\n|Unicode:U+000a]", '\n'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\r|Unicode:U+000d]", '\r'.ToPrintableString());
-            Assert.AreEqual(@"[Char:s|Unicode:U+0073]", 's'.ToPrintableString());
-            Assert.AreEqual(@"[Char: |Unicode:U+0020]", ' '.ToPrintableString());
+            Assert.Multiple(() =>
+            {
+                Assert.That('\0'.ToPrintableString(), Is.EqualTo(@"[Char:\0|Unicode:U+0000]"));
+                Assert.That('\a'.ToPrintableString(), Is.EqualTo(@"[Char:\a|Unicode:U+0007]"));
+                Assert.That('\b'.ToPrintableString(), Is.EqualTo(@"[Char:\b|Unicode:U+0008]"));
+                Assert.That('\t'.ToPrintableString(), Is.EqualTo(@"[Char:\t|Unicode:U+0009]"));
+                Assert.That('\f'.ToPrintableString(), Is.EqualTo(@"[Char:\f|Unicode:U+000c]"));
+                Assert.That('\n'.ToPrintableString(), Is.EqualTo(@"[Char:\n|Unicode:U+000a]"));
+                Assert.That('\r'.ToPrintableString(), Is.EqualTo(@"[Char:\r|Unicode:U+000d]"));
+                Assert.That('s'.ToPrintableString(), Is.EqualTo(@"[Char:s|Unicode:U+0073]"));
+                Assert.That(' '.ToPrintableString(), Is.EqualTo(@"[Char: |Unicode:U+0020]"));
+            });            
         }
 
         [Test]
         public void TestToVirtualKeyCode()
         {
-            Assert.AreEqual(VirtualKeyCode.SPACE, ' '.ToVirtualKeyCode());
-            Assert.AreEqual(VirtualKeyCode.TAB, '\t'.ToVirtualKeyCode());
-            Assert.AreEqual(VirtualKeyCode.RETURN, '\n'.ToVirtualKeyCode());
-            Assert.IsNull('Z'.ToVirtualKeyCode());
+            Assert.Multiple(() =>
+            {
+                Assert.That(' '.ToVirtualKeyCode(), Is.EqualTo(VirtualKeyCode.SPACE));
+                Assert.That('\t'.ToVirtualKeyCode(), Is.EqualTo(VirtualKeyCode.TAB));
+                Assert.That('\n'.ToVirtualKeyCode(), Is.EqualTo(VirtualKeyCode.RETURN));
+                Assert.That('Z'.ToVirtualKeyCode(), Is.Null);
+            });           
 
         }
 

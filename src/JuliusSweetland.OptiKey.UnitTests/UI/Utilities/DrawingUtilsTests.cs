@@ -10,9 +10,13 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.Utilities
         private static void AssertHsl2RbgColor(double h, double s, double l, int expectedR, int expectedG, int expectedB)
         {
             var color = DrawingUtils.HSL2RGB(h, s, l);
-            Assert.AreEqual(expectedR, color.R, "Expected R + " + expectedR + " but was " + color.R);
-            Assert.AreEqual(expectedG, color.G, "Expected G: " + expectedG + " but was " + color.G);
-            Assert.AreEqual(expectedB, color.B, "Expected B: " + expectedB + " but was " + color.B);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(color.R, Is.EqualTo(expectedR), "Expected R + " + expectedR + " but was " + color.R);
+                Assert.That(color.G, Is.EqualTo(expectedG), "Expected G: " + expectedG + " but was " + color.G);
+                Assert.That(color.B, Is.EqualTo(expectedB), "Expected B: " + expectedB + " but was " + color.B);
+            });
         }
 
         [Test]

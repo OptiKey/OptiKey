@@ -27,8 +27,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
             };
 
             var centrePoint = points.CalculateCentrePoint();
-            Assert.AreEqual(6, centrePoint.X);
-            Assert.AreEqual(6, centrePoint.Y);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(centrePoint.X, Is.EqualTo(6));
+                Assert.That(centrePoint.Y, Is.EqualTo(6));
+            });            
         }
 
     }

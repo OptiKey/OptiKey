@@ -53,9 +53,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         [Test]
         public void ThenWindowShouldBeClosedWithoutSaving()
         {
-            Assert.IsTrue(IsWindowClosed);
-            Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, defaultCommuniKatePagesetLocation);
-            Assert.AreEqual(Settings.Default.MaryTTSLocation, defaultMaryTTSLocation);
+            Assert.Multiple(() =>
+            {
+                Assert.That(IsWindowClosed, Is.True);
+                Assert.That(defaultCommuniKatePagesetLocation, Is.EqualTo(Settings.Default.CommuniKatePagesetLocation));
+                Assert.That(defaultMaryTTSLocation, Is.EqualTo(Settings.Default.MaryTTSLocation));
+            });            
         }
     }    
 }

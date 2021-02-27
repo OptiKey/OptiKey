@@ -23,20 +23,26 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         [Test]
         public void ThenChildViewModelShouldBeConstructed()
         {
-            Assert.IsNotNull(ManagementViewModel.DictionaryViewModel);
-            Assert.IsNotNull(ManagementViewModel.OtherViewModel);
-            Assert.IsNotNull(ManagementViewModel.PointingAndSelectingViewModel);
-            Assert.IsNotNull(ManagementViewModel.SoundsViewModel);
-            Assert.IsNotNull(ManagementViewModel.VisualsViewModel);
-            Assert.IsNotNull(ManagementViewModel.WordsViewModel);
+            Assert.Multiple(() => 
+            { 
+                Assert.That(ManagementViewModel.DictionaryViewModel, Is.Not.Null); 
+                Assert.That(ManagementViewModel.OtherViewModel, Is.Not.Null); 
+                Assert.That(ManagementViewModel.PointingAndSelectingViewModel, Is.Not.Null); 
+                Assert.That(ManagementViewModel.SoundsViewModel, Is.Not.Null); 
+                Assert.That(ManagementViewModel.VisualsViewModel, Is.Not.Null); 
+                Assert.That(ManagementViewModel.WordsViewModel, Is.Not.Null); 
+            });
         }
 
         [Test]
         public void ThenInteractionRequestsAndCommandsShouldBeConstructed()
         {
-            Assert.IsNotNull(ManagementViewModel.ConfirmationRequest);
-            Assert.IsNotNull(ManagementViewModel.OkCommand);
-            Assert.IsNotNull(ManagementViewModel.CancelCommand);
+            Assert.Multiple(() => 
+            {
+                Assert.That(ManagementViewModel.ConfirmationRequest, Is.Not.Null); 
+                Assert.That(ManagementViewModel.OkCommand, Is.Not.Null);
+                Assert.That(ManagementViewModel.CancelCommand, Is.Not.Null);
+            });
         }
     }
 }
