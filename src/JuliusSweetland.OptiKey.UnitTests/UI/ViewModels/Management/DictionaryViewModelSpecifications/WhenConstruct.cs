@@ -37,17 +37,20 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.Management.DictionaryV
         [Test]
         public void ThenCommandsShouldBeConstructed()
         {
-            Assert.IsNotNull(DictionaryViewModel.AddCommand);
-            Assert.IsNotNull(DictionaryViewModel.ToggleDeleteCommand);
-            Assert.IsNotNull(DictionaryViewModel.LoadCommand);
+            Assert.Multiple(() =>
+            {
+                Assert.That(DictionaryViewModel.AddCommand, Is.Not.Null);
+                Assert.That(DictionaryViewModel.ToggleDeleteCommand, Is.Not.Null);
+                Assert.That(DictionaryViewModel.LoadCommand, Is.Not.Null);
+            });            
         }
 
         [Test]
         public void ThenEntriesShouldBeLoaded()
         {
             DictionaryViewModel.Load();
-            Assert.IsNotNull(DictionaryViewModel.Entries);
-            Assert.AreEqual(DictionaryEntries.Count, DictionaryViewModel.Entries.Count);
+            Assert.That(DictionaryViewModel.Entries, Is.Not.Null);
+            Assert.That(DictionaryViewModel.Entries.Count, Is.EqualTo(DictionaryEntries.Count));
         }
     }
 }

@@ -55,7 +55,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenSelectionProgressShouldBeReset()
         {
-            Assert.IsNull(MainViewModel.PointSelectionProgress);
+            Assert.That(MainViewModel.PointSelectionProgress, Is.Null);
             KeyStateService.VerifyGet(s => s.KeySelectionProgress, Times.Once());
         }
 

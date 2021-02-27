@@ -23,8 +23,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.Models
             KeyValue valBreak2 = new KeyValue(FunctionKeys.Break);
             KeyValue valDelete = new KeyValue(FunctionKeys.Delete);
 
-            Assert.AreEqual(valBreak1, valBreak2);        
-            Assert.AreNotEqual(valBreak1, valDelete);
+            Assert.Multiple(() =>
+            {
+                Assert.That(valBreak1, Is.EqualTo(valBreak2));
+                Assert.That(valBreak1, Is.Not.EqualTo(valDelete));
+            });            
         }
 
         [Test]
@@ -35,8 +38,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.Models
 
             KeyValue valGoodbye = new KeyValue("Goodbye");
 
-            Assert.AreEqual(valHello1, valHello2);
-            Assert.AreNotEqual(valHello1, valGoodbye);
+            Assert.Multiple(() =>
+            {
+                Assert.That(valHello1, Is.EqualTo(valHello2));
+                Assert.That(valHello1, Is.Not.EqualTo(valGoodbye));
+            });            
         }
 
         [Test]
@@ -48,10 +54,13 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.Models
             KeyValue valBreakGoodbye = new KeyValue(FunctionKeys.Break, "Goodbye");
             KeyValue valDeleteGoodbye = new KeyValue(FunctionKeys.Delete, "Goodbye");
 
-            Assert.AreEqual(valBreakHello1, valBreakHello2);
-            Assert.AreNotEqual(valBreakHello1, valBreakGoodbye);
-            Assert.AreNotEqual(valBreakGoodbye, valDeleteGoodbye);
-            Assert.AreNotEqual(valBreakHello1, valDeleteGoodbye);
+            Assert.Multiple(() =>
+            {
+                Assert.That(valBreakHello1, Is.EqualTo(valBreakHello2));
+                Assert.That(valBreakHello1, Is.Not.EqualTo(valBreakGoodbye));
+                Assert.That(valBreakGoodbye, Is.Not.EqualTo(valDeleteGoodbye));
+                Assert.That(valBreakHello1, Is.Not.EqualTo(valDeleteGoodbye));
+            });            
         }
     }
 }

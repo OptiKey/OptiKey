@@ -29,7 +29,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
 
             var suggestions = autoComplete.GetSuggestions("t");
 
-            Assert.AreNotEqual("these", suggestions.First());
+            Assert.That(suggestions.First(), Is.Not.EqualTo("these"));
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
 
             var suggestions = autoComplete.GetSuggestions("z");
 
-            CollectionAssert.Contains(suggestions, "zoo");
+            Assert.That(suggestions, Contains.Item("zoo"));
         }
 
         [Test]
@@ -145,14 +145,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         {
             var suggestions = autoComplete.GetSuggestions(root);
 
-            CollectionAssert.IsEmpty(suggestions);
+            Assert.That(suggestions, Is.Empty);
         }
 
         private void TestGetSuggestions(string root, IEnumerable<string> expectedSuggestions)
         {
             var suggestions = autoComplete.GetSuggestions(root);
-
-            CollectionAssert.AreEqual(expectedSuggestions, suggestions);
+                        
+            Assert.That(suggestions, Is.EqualTo(expectedSuggestions));
         }
 
         #region Setup/Teardown
