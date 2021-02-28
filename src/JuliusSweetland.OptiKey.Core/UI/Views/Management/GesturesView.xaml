@@ -12,7 +12,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              mc:Ignorable="d" >
 
   <UserControl.Resources>
-      <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />    
+    <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />
   </UserControl.Resources>
   
   <ScrollViewer HorizontalScrollBarVisibility="Auto">
@@ -41,26 +41,25 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
               <Path Data="M0,0 16,0 16,16 0,16Z" Fill="Black" Margin="7"/>
             </Border>
           </Button>
-          
-          <Button Command="{Binding OpenFileCommand}" MinWidth="100" Margin="5" 
-                        VerticalAlignment="Center" Content="Open File"/>
-          <Button Command="{Binding SaveFileCommand}" Width="100" Margin="5" 
-                      VerticalAlignment="Center" Content="Save File"/>
-          <Button Command="{Binding ResetChangesCommand}" Width="100" Margin="5" 
-                        VerticalAlignment="Center" Content="Reset Changes"/>
+          <Button Command="{Binding OpenFileCommand}" MinWidth="110" Margin="15,5,5,5" 
+                  VerticalAlignment="Center" Content="Open File"/>
+          <Button Command="{Binding SaveFileCommand}" Width="110" Margin="5" 
+                  VerticalAlignment="Center" Content="Save File"/>
+          <Button Command="{Binding ResetChangesCommand}" Width="110" Margin="5" 
+                  VerticalAlignment="Center" Content="Reset Changes"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
           <Label Content="Eye Gesture Selection:" Margin="5"/>
-          <ComboBox Name="Selector" HorizontalAlignment="Left" Margin="5" MinWidth="200"
-                        ItemsSource="{Binding GestureList}"
-                        SelectedItem="{Binding EyeGesture}"
-                        DisplayMemberPath="Name"/>
-          <Button Content="New" Margin="5" Command="{Binding AddGestureCommand}"/>
-          <Button Content="Delete" Margin="5" Command="{Binding DeleteGestureCommand}"/>
+          <ComboBox Name="Selector" HorizontalAlignment="Left" Margin="5" MinWidth="230"
+                    ItemsSource="{Binding GestureList}"
+                    SelectedItem="{Binding EyeGesture}"
+                    DisplayMemberPath="Name"/>
+          <Button Width="50" Content="New" Margin="5" Command="{Binding AddGestureCommand}"/>
+          <Button Width="50" Content="Delete" Margin="5" Command="{Binding DeleteGestureCommand}"/>
         </StackPanel>
         <controls:GestureEditor Grid.Row="3" EyeGesture="{Binding EyeGesture, Mode=TwoWay}"
-                                    Preview="{Binding Preview, Mode=TwoWay}"/>
+                                Preview="{Binding Preview, Mode=TwoWay}"/>
       </Grid>
     </GroupBox>
   </ScrollViewer>

@@ -224,7 +224,7 @@
                   </StackPanel>
 
                   <Border Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Black" Margin="0,5,0,0"
-                              BorderThickness="2" CornerRadius="4">
+                          BorderThickness="2" CornerRadius="4">
                     <ListBox Name="CommandList" Background="Transparent" 
                                     ItemsSource="{Binding Commands}">
                       <ListBox.ItemContainerStyle>
