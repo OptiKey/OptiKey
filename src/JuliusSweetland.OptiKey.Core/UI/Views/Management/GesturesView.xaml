@@ -6,79 +6,61 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:c="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d" >
 
+  <UserControl.Resources>
+      <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />    
+  </UserControl.Resources>
+  
   <ScrollViewer HorizontalScrollBarVisibility="Auto">
     <GroupBox Grid.Row="0" Header="Eye Gestures" Height="Auto">
       <Grid>
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <GroupBox Grid.Row="0" Header="Global Settings">
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Content="Gestures Enabled:"/>
-            <CheckBox Grid.Column="1" VerticalAlignment="Center" Margin="5" IsChecked="{Binding EyeGesturesEnabled, Mode=TwoWay}"/>
 
-            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="File Explorer:"/>
-            <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-              <TextBox Name="EyeGesturesFile" Text="{Binding EyeGestureFile}"
-                    VerticalAlignment="Center" Margin="5" />
-              <Button Command="{Binding ExploreCommand}" MinWidth="100" Margin="5,5,5,5" VerticalAlignment="Center"
-                HorizontalAlignment="Right" Content="Browse"/>
-            </StackPanel>
-            <Label Grid.Row="2" VerticalAlignment="Center" Content="Actions:"/>
-            <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-              <Button Command="{Binding EditFileCommand}" Width="Auto" Margin="5,5,5,5" 
-                    VerticalAlignment="Center" Content="Edit from File"/>
-              <Button Command="{Binding SaveFileCommand}" Width="Auto" Margin="5,5,5,5" 
-                    VerticalAlignment="Center" Content="Save to File"/>
-              <Button Command="{Binding EditSettingsCommand}" Width="Auto" Margin="5,5,5,5" 
-                      VerticalAlignment="Center" Content="Edit from Settings"/>
-              <Grid>
-                <Button Command="{Binding ActivateChangesCommand}" Width="Auto" Margin="5,5,5,5" 
-                      VerticalAlignment="Center" Content="Activate Changes" 
-                      Visibility="{Binding ShowActivate}"/>
-                <Button Command="{Binding DeactivateChangesCommand}" Width="Auto" Margin="5,5,5,5" 
-                      VerticalAlignment="Center" Content="Deactivate Changes" 
-                      Visibility="{Binding ShowDeactivate}"/>
-              </Grid>
-            </StackPanel>
-          </Grid>
-        </GroupBox>
+        <StackPanel Orientation="Horizontal">
+          <c:ToggleSwitch IsChecked="{Binding HideActivate, Mode=TwoWay}" IsHitTestVisible="False"
+                          OnSwitchBrush="ForestGreen"/>
+          <Button Command="{Binding ActivateCommand}" Background="Transparent" BorderThickness="0" Padding="0"
+                  Visibility="{Binding HideActivate, Converter={StaticResource InvertedBoolToVisibilityConverter}}">
+            <Border Background="ForestGreen" CornerRadius="3">
+              <Path Data="M0,0 20,10 0,20Z" Fill="Black" Margin="5"/>
+            </Border>
+          </Button>
+          <Button Command="{Binding DisableCommand}" Background="Transparent" BorderThickness="0" Padding="0"
+                  Visibility="{Binding HideDisable, Converter={StaticResource InvertedBoolToVisibilityConverter}}">
+            <Border Background="Firebrick" CornerRadius="3">
+              <Path Data="M0,0 16,0 16,16 0,16Z" Fill="Black" Margin="7"/>
+            </Border>
+          </Button>
+          
+          <Button Command="{Binding OpenFileCommand}" MinWidth="100" Margin="5" 
+                        VerticalAlignment="Center" Content="Open File"/>
+          <Button Command="{Binding SaveFileCommand}" Width="100" Margin="5" 
+                      VerticalAlignment="Center" Content="Save File"/>
+          <Button Command="{Binding ResetChangesCommand}" Width="100" Margin="5" 
+                        VerticalAlignment="Center" Content="Reset Changes"/>
+        </StackPanel>
 
-        <GroupBox Grid.Row="1" Header="Editor">
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            
-            <StackPanel Grid.Row="0" Orientation="Horizontal">
-              <Label Content="Eye Gesture Selection:" Margin="5"/>
-              <ComboBox Name="Selector" HorizontalAlignment="Left" Margin="5" MinWidth="200"
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+          <Label Content="Eye Gesture Selection:" Margin="5"/>
+          <ComboBox Name="Selector" HorizontalAlignment="Left" Margin="5" MinWidth="200"
                         ItemsSource="{Binding GestureList}"
                         SelectedItem="{Binding EyeGesture}"
                         DisplayMemberPath="Name"/>
-              <Button Content="New" Margin="5" Command="{Binding AddGestureCommand}"/>
-              <Button Content="Delete" Margin="5" Command="{Binding DeleteGestureCommand}"/>
-            </StackPanel>
-            <controls:GestureEditor Grid.Row="1" EyeGesture="{Binding EyeGesture, Mode=TwoWay}"
+          <Button Content="New" Margin="5" Command="{Binding AddGestureCommand}"/>
+          <Button Content="Delete" Margin="5" Command="{Binding DeleteGestureCommand}"/>
+        </StackPanel>
+        <controls:GestureEditor Grid.Row="3" EyeGesture="{Binding EyeGesture, Mode=TwoWay}"
                                     Preview="{Binding Preview, Mode=TwoWay}"/>
-          </Grid>
-        </GroupBox>
       </Grid>
     </GroupBox>
   </ScrollViewer>

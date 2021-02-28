@@ -71,7 +71,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         {
                             var checkPoint = tps.Last().Value.Point;
                             moveDelta = (2 * moveDelta + (checkPoint - tps.First().Value.Point).Length) / 3;
-                            
 
                             if (gestureList == null || Settings.Default.EyeGestureUpdated)
                             {
@@ -117,7 +116,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                                     {
                                                         keyCommands.Add(new KeyCommand()
                                                         {
-                                                            Name = command.CommandName,
+                                                            Name = command.Name,
                                                             Value = command.Value,
                                                             BackAction = command.BackAction,
                                                             Method = command.Method,

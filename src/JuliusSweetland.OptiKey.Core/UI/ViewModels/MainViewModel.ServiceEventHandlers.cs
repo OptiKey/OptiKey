@@ -2559,7 +2559,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else
                 {
-                    if (keyCommand.Name == KeyCommands.Action)
+                    if (keyCommand.Name == KeyCommands.Function)
                     {
                         Log.InfoFormat("CommandList: Press function key: {0}", keyCommand.Value);
                          if (Enum.TryParse(keyCommand.Value, out FunctionKeys fk))
@@ -2569,8 +2569,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         Log.InfoFormat("CommandList: Change keyboard");
                         var keyValue = Enum.TryParse(keyCommand.Value, out Enums.Keyboards keyboardEnum)
-                            ? new ChangeKeyboardKeyValue(keyboardEnum, keyCommand.BackAction)
-                            : new ChangeKeyboardKeyValue(keyCommand.Value, keyCommand.BackAction);
+                            ? new ChangeKeyboardKeyValue(keyboardEnum, (bool)keyCommand.BackAction)
+                            : new ChangeKeyboardKeyValue(keyCommand.Value, (bool)keyCommand.BackAction);
                         KeySelectionResult(keyValue, multiKeySelection);
                     }
                     else if (keyCommand.Name == KeyCommands.KeyDown)
