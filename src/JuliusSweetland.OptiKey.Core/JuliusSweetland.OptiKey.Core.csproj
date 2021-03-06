@@ -261,7 +261,7 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
-    <Compile Include="Models\EyeGestureCommand.cs" />
+    <Compile Include="Models\XmlKeyCommand.cs" />
     <Compile Include="Models\EyeGestureShape.cs" />
     <Compile Include="Models\XmlEyeGestures.cs" />
     <Compile Include="Models\EyeGesture.cs" />

@@ -67,11 +67,42 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             stepIndex = index;
         }
 
-        private void AddStep_Click(object sender, RoutedEventArgs e)
+        private void InsertStep_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 EyeGesture.Steps.Insert(0, new EyeGestureStep());
+                Preview = null;
+            }
+            catch { }
+        }
+
+        private void CopyStep_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var eyeGesture = EyeGesture.Steps[stepIndex];
+                EyeGesture.Steps.Insert(stepIndex + 1, eyeGesture);
+                Preview = null;
+            }
+            catch { }
+        }
+
+        private void MoveUp_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                EyeGesture.Steps.Move(stepIndex - 1, stepIndex);
+                Preview = null;
+            }
+            catch { }
+        }
+
+        private void MoveDown_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                EyeGesture.Steps.Move(stepIndex + 1, stepIndex);
                 Preview = null;
             }
             catch { }
@@ -103,9 +134,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             try
             {
                 if (EyeGesture.Steps[stepIndex].Commands == null)
-                    EyeGesture.Steps[stepIndex].Commands = new ObservableCollection<EyeGestureCommand>();
+                    EyeGesture.Steps[stepIndex].Commands = new ObservableCollection<XmlKeyCommand>();
 
-                EyeGesture.Steps[stepIndex].Commands.Add(new EyeGestureCommand());
+                EyeGesture.Steps[stepIndex].Commands.Add(new XmlKeyCommand());
             }
             catch { }
         }

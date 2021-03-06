@@ -29,12 +29,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public GesturesViewModel()
         {
-            ExploreCommand = new DelegateCommand(Explore);
-            EditFileCommand = new DelegateCommand(EditFile);
+            OpenFileCommand = new DelegateCommand(OpenFile);
             SaveFileCommand = new DelegateCommand(SaveFile);
-            EditSettingsCommand = new DelegateCommand(EditSettings);
-            ActivateChangesCommand = new DelegateCommand(ActivateChanges);
-            DeactivateChangesCommand = new DelegateCommand(DeactivateChanges);
+            ResetChangesCommand = new DelegateCommand(ResetChanges);
+            ActivateCommand = new DelegateCommand(ActivateChanges);
+            DisableCommand = new DelegateCommand(Disable);
             AddGestureCommand = new DelegateCommand(AddGesture);
             DeleteGestureCommand = new DelegateCommand(DeleteGesture);
             Load();
@@ -50,17 +49,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public DelegateCommand ExploreCommand { get; private set; }
-        public DelegateCommand EditFileCommand { get; private set; }
+        public DelegateCommand OpenFileCommand { get; private set; }
         public DelegateCommand SaveFileCommand { get; private set; }
-        public DelegateCommand EditSettingsCommand { get; private set; }
-        public DelegateCommand ActivateChangesCommand { get; private set; }
-        public DelegateCommand DeactivateChangesCommand { get; private set; }
+        public DelegateCommand ResetChangesCommand { get; private set; }
+        public DelegateCommand ActivateCommand { get; private set; }
+        public DelegateCommand DisableCommand { get; private set; }
         public DelegateCommand AddGestureCommand { get; private set; }
         public DelegateCommand DeleteGestureCommand { get; private set; }
 
-        public Visibility ShowActivate { get; set; } = Visibility.Hidden;
-        public Visibility ShowDeactivate { get; set; } = Visibility.Hidden;
+        public bool HideActivate { get; set; } = true;
+        public bool HideDisable { get; set; } = true;
         public bool EyeGesturesEnabled { get; set; }
         public bool EyeGestureUpdated { get; set; }
         public string EyeGestureFile { get; set; }
@@ -122,11 +120,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EyeGesturesEnabled = Settings.Default.EyeGesturesEnabled;
             EyeGestureFile = Settings.Default.EyeGestureFile;
             EyeGestureString = Settings.Default.EyeGestureString;
+            XmlEyeGestures = XmlEyeGestures.ReadFromString(EyeGestureString);
+            LoadGestureList();
         }
 
         private void LoadGestureList()
         {
-            ShowActivate = Visibility.Visible;
             if (xmlEyeGestures.GestureList == null || !xmlEyeGestures.GestureList.Any())
             {
                 xmlEyeGestures.GestureList = new ObservableCollection<EyeGesture>()
@@ -137,12 +136,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             xmlEyeGestures.GestureList = new ObservableCollection<EyeGesture>(xmlEyeGestures.GestureList.OrderBy(g => g.Name));
             gestureList = xmlEyeGestures.GestureList;
             EyeGesture = GestureList[0];
-            ShowActivate = Visibility.Visible;
-            ShowDeactivate = Visibility.Hidden;
+            HideActivate = false;
+            HideDisable = true;
             OnPropertyChanged(null);
         }
 
-        private void Explore()
+        private void OpenFile()
         {
             var fileDialog = new System.Windows.Forms.OpenFileDialog();
             var result = fileDialog.ShowDialog();
@@ -155,16 +154,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 default:
                     break;
             }
-        }
-
-        private void EditFile()
-        {
-            try
-            {
-                XmlEyeGestures = XmlEyeGestures.ReadFromFile(EyeGestureFile);
-                LoadGestureList();
-            }
-            catch { }
+            XmlEyeGestures = XmlEyeGestures.ReadFromFile(EyeGestureFile);
+            LoadGestureList();
+            OnPropertyChanged("EyeGestureFile");
         }
 
         private void SaveFile()
@@ -192,9 +184,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 default:
                     break;
             }
+            OnPropertyChanged("EyeGestureFile");
         }
 
-        private void EditSettings()
+        private void ResetChanges()
         {
             try
             {
@@ -211,12 +204,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.EyeGestureUpdated = true;
             Settings.Default.EyeGesturesEnabled = true;
             EyeGesturesEnabled = true;
-            ShowActivate = Visibility.Hidden;
-            ShowDeactivate = Visibility.Visible;
+            HideActivate = true;
+            HideDisable = false;
             OnPropertyChanged(null);
         }
 
-        private void DeactivateChanges()
+        private void Disable()
         {
             try
             {
@@ -224,8 +217,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 Settings.Default.EyeGesturesEnabled = eyeGesturesEnabledCopy;
                 Settings.Default.EyeGestureString = EyeGestureString;
                 Settings.Default.EyeGestureUpdated = true;
-                ShowActivate = Visibility.Visible;
-                ShowDeactivate = Visibility.Hidden;
+                HideActivate = false;
+                HideDisable = true;
                 OnPropertyChanged(null);
             }
             catch { }

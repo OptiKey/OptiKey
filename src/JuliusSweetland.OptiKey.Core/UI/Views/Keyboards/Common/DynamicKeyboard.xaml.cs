@@ -638,7 +638,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                                 return null;
                             }
                             else
-                                commandList.Add(new KeyCommand(KeyCommands.Action, dynamicAction.Value));
+                                commandList.Add(new KeyCommand(KeyCommands.Function, dynamicAction.Value));
 
                             if (KeyValues.KeysWhichCanBeLockedDown.Contains(commandKeyValue) 
                                 && !keyFamily.Contains(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue)))
