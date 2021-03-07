@@ -160,6 +160,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Preview = null;
         }
 
+        private void Start_Stop(object sender, RoutedEventArgs e)
+        {
+            EyeGesture.enabled = !EyeGesture.enabled;
+            Preview = null;
+        }
+
         #endregion
     }
 }
