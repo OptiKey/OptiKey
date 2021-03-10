@@ -1,0 +1,216 @@
+<EyeGestures>
+  <Gesture>
+    <Name>BrowserBack</Name>
+    <Cooldown>2000</Cooldown>
+    <Enabled>True</Enabled>
+    <Step>
+      <Type>LookAtArea</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>35</X>
+      <Y>-20</Y>
+      <Left>35</Left>
+      <Top>-20</Top>
+      <Width>30</Width>
+      <Height>20</Height>
+      <Round>false</Round>
+    </Step>
+    <Step>
+      <Type>LookAtArea</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>-20</X>
+      <Y>-20</Y>
+      <Left>-20</Left>
+      <Top>-20</Top>
+      <Width>20</Width>
+      <Height>20</Height>
+      <Round>false</Round>
+      <Command Name="Function" Value="BrowserBack">
+        <Argument />
+        <LoopCommands />
+      </Command>
+    </Step>
+  </Gesture>
+  <Gesture>
+    <Name>BrowserForward</Name>
+    <Cooldown>2000</Cooldown>
+    <Enabled>True</Enabled>
+    <Step>
+      <Type>LookAtArea</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>35</X>
+      <Y>35</Y>
+      <Left>35</Left>
+      <Top>-20</Top>
+      <Width>30</Width>
+      <Height>20</Height>
+      <Round>false</Round>
+    </Step>
+    <Step>
+      <Type>LookAtArea</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>100</X>
+      <Y>-20</Y>
+      <Left>100</Left>
+      <Top>-20</Top>
+      <Width>20</Width>
+      <Height>20</Height>
+      <Round>false</Round>
+      <Command Name="Function" Value="BrowserForward">
+        <Argument />
+        <LoopCommands />
+      </Command>
+    </Step>
+  </Gesture>
+  <Gesture>
+    <Name>BrowserSearch</Name>
+    <Cooldown>2000</Cooldown>
+    <Enabled>True</Enabled>
+    <Step>
+      <Type>LookAtArea</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>35</X>
+      <Y>-20</Y>
+      <Left>35</Left>
+      <Top>-20</Top>
+      <Width>30</Width>
+      <Height>20</Height>
+      <Round>false</Round>
+      <Command Name="Function" Value="BrowserSearch">
+        <Argument />
+        <LoopCommands />
+      </Command>
+    </Step>
+  </Gesture>
+  <Gesture>
+    <Name>MagneticCursor</Name>
+    <Cooldown>2000</Cooldown>
+    <Enabled>True</Enabled>
+    <Step>
+      <Type>LookAtArea</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>100</X>
+      <Y>100</Y>
+      <Left>100</Left>
+      <Top>100</Top>
+      <Width>20</Width>
+      <Height>20</Height>
+      <Round>false</Round>
+      <Command Name="Function" Value="MouseMagneticCursor">
+        <Argument />
+        <LoopCommands />
+      </Command>
+    </Step>
+  </Gesture>
+  <Gesture>
+    <Name>Minimize</Name>
+    <Cooldown>2000</Cooldown>
+    <Enabled>True</Enabled>
+    <Step>
+      <Type>LookAtArea</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>35</X>
+      <Y>100</Y>
+      <Left>35</Left>
+      <Top>100</Top>
+      <Width>30</Width>
+      <Height>20</Height>
+      <Round>false</Round>
+      <Command Name="ChangeKeyboard" Value="Minimise" BackAction="False">
+        <Argument />
+        <LoopCommands />
+      </Command>
+    </Step>
+  </Gesture>
+  <Gesture>
+    <Name>MouseMoveTo</Name>
+    <Cooldown>2000</Cooldown>
+    <Enabled>True</Enabled>
+    <Step>
+      <Type>Fixation</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>35</X>
+      <Y>35</Y>
+      <Left>35</Left>
+      <Top>35</Top>
+      <Width>30</Width>
+      <Height>30</Height>
+      <Round>false</Round>
+    </Step>
+    <Step>
+      <Type>LookInDirection</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>-30</X>
+      <Y>0</Y>
+      <Left>35</Left>
+      <Top>35</Top>
+      <Width>20</Width>
+      <Height>30</Height>
+      <Round>false</Round>
+    </Step>
+    <Step>
+      <Type>ReturnToFixation</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>10</Radius>
+      <X>35</X>
+      <Y>35</Y>
+      <Left>35</Left>
+      <Top>35</Top>
+      <Width>30</Width>
+      <Height>30</Height>
+      <Round>false</Round>
+      <Command Name="Function" Value="MouseMoveTo">
+        <Argument />
+        <LoopCommands />
+      </Command>
+    </Step>
+  </Gesture>
+  <Gesture>
+    <Name>Windows</Name>
+    <Cooldown>2000</Cooldown>
+    <Enabled>True</Enabled>
+    <Step>
+      <Type>LookAtArea</Type>
+      <TimeLimit>500</TimeLimit>
+      <DwellTime>0</DwellTime>
+      <Radius>1</Radius>
+      <X>-20</X>
+      <Y>100</Y>
+      <Left>-20</Left>
+      <Top>100</Top>
+      <Width>20</Width>
+      <Height>20</Height>
+      <Round>false</Round>
+      <Command Name="Function" Value="LeftWin">
+        <Argument />
+        <LoopCommands />
+      </Command>
+      <Command Name="Function" Value="LeftWin">
+        <Argument />
+        <LoopCommands />
+      </Command>
+      <Command Name="Function" Value="LeftWin">
+        <Argument />
+        <LoopCommands />
+      </Command>
+    </Step>
+  </Gesture>
+</EyeGestures>
