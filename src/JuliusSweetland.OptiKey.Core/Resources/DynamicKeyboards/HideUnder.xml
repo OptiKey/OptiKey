@@ -1,0 +1,18 @@
+<Keyboard>
+    <Name>HideUnder</Name>
+	<WindowState>Floating</WindowState>
+	<Position>Bottom</Position>
+	<Left>42.5%</Left>
+	<Top>42.5%</Top>
+	<Width>15%</Width>
+	<Height>15%</Height>
+	<VerticalOffset>14.5%</VerticalOffset>
+    <Grid>
+        <Rows>1</Rows>
+        <Cols>1</Cols>
+    </Grid>
+	<KeyGroup Name="All" LockOnTime="700" CompletionTimes="0" BackgroundColor="Transparent" Opacity=".5"/>
+    <Content>
+        <DynamicKey><Symbol>ApplicationIcon</Symbol><ChangeKeyboard BackReturnsHere="false">FullQwerty</ChangeKeyboard></DynamicKey> 
+    </Content>
+</Keyboard>

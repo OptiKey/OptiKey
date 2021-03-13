@@ -691,6 +691,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         else
                             commandList.Add(new KeyCommand(KeyCommands.KeyUp, new KeyValue(dynamicKeyUp.Value)));
                     }
+                    else if (dynamicKey is DynamicMove dynamicBounds)
+                    {
+                        commandList.Add(new KeyCommand() { Name = KeyCommands.MoveWindow, Value = dynamicBounds.Value } );
+                    }
                     else if (dynamicKey is DynamicText dynamicText)
                     {
                         if (string.IsNullOrEmpty(dynamicText.Value))

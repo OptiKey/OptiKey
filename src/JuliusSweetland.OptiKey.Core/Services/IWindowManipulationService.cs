@@ -33,5 +33,6 @@ namespace JuliusSweetland.OptiKey.Services
         void RestorePersistedState();
         void DisableResize();
         void SetResizeState();
+        void InvokeMoveWindow(string parameterString);
     }
 }
