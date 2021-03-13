@@ -241,34 +241,25 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml">
-      <Link>Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Bottom.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Left.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Left.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml">
       <Link>Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullQwerty.xml">
-      <Link>Resources\DynamicKeyboards\Samples\FullQwerty.xml</Link>
-      <SubType>Designer</SubType>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Edge.xml">
+      <Link>Resources\DynamicKeyboards\Edge.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullSymbol.xml">
-      <Link>Resources\DynamicKeyboards\Samples\FullSymbol.xml</Link>
-      <SubType>Designer</SubType>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\FullQwerty.xml">
+      <Link>Resources\DynamicKeyboards\FullQwerty.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\FullSymbol.xml">
+      <Link>Resources\DynamicKeyboards\FullSymbol.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\HideUnder.xml">
+      <Link>Resources\DynamicKeyboards\HideUnder.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\B612-licence-epl-v10.html">

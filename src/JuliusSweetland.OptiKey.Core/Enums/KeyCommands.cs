@@ -9,6 +9,7 @@ namespace JuliusSweetland.OptiKey.Enums
         KeyToggle,
         KeyUp,
         Loop,
+        MoveWindow,
         Plugin,
         Text,
         Wait

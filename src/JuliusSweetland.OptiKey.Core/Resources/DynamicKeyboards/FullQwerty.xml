@@ -1,0 +1,108 @@
+<Keyboard>
+    <Name>FullQwerty</Name>	
+	<WindowState>Floating</WindowState>
+	<Position>Top</Position>
+	<Width>100.5%</Width>
+	<Height>97%</Height>
+	<VerticalOffset>-.25%</VerticalOffset>
+    <SymbolMargin>10</SymbolMargin>
+    <BorderThickness>2,2,2,2</BorderThickness>
+	<BackgroundColor>Transparent</BackgroundColor>
+	<BorderColor>Black</BorderColor>
+    <Grid>
+        <Rows>14</Rows>
+        <Cols>160</Cols> 
+    </Grid>
+	<!-- The KeyGroup automatically applied to every key in this keyboard -->
+	<KeyGroup Name="All" LockOnTime="200" CompletionTimes="0,600,600,500,400,300,200,100,50" BorderColor="white" BorderThickness="3" CornerRadius="12" Margin="2" />
+	<!-- The KeyGroup I used as an override for keys that I want to be slow -->
+	<KeyGroup Name="SlowKeys" CompletionTimes="600" />
+    <Content>
+		<DynamicKey Col="150" Row="0" Width="10" Height="2"><Symbol>CommuniKateIcon</Symbol><ChangeKeyboard BackReturnsHere="true">FullSymbol</ChangeKeyboard></DynamicKey>
+		<DynamicKey Col="150" Width="10" Height="2"><Action>MouseMagnifier</Action><Action>MouseMoveAndLeftClick</Action><Label>Left Click</Label><Symbol>MouseLeftClickIcon</Symbol></DynamicKey>
+        <DynamicKey Col="150" Width="10" Height="2"><Action>MouseMagnifier</Action><Action>MouseMoveAndRightClick</Action>
+			<Label>Right Click</Label><Symbol>MouseRightClickIcon</Symbol></DynamicKey>
+        <DynamicKey Col="150" Width="10" Height="2"><Action>Sleep</Action><ChangeKeyboard BackReturnsHere="true">Edge</ChangeKeyboard><Wait>300</Wait><Action>Sleep</Action><Symbol>ArrowPointingToRightBoundaryIcon</Symbol></DynamicKey>  
+		<DynamicKey Col="150" Width="10" Height="2"><Action>Sleep</Action><Symbol>SleepIcon</Symbol></DynamicKey>
+		
+        <DynamicKey Row="10" Col="0" Width="9" Height="1" BackgroundColor="#202020"><Action>Escape</Action><Label>Esc</Label></DynamicKey>
+        <DynamicKey Row="10" Col="9" Width="10" Height="1"><Text>1</Text><Label>1</Label><ShiftDownLabel>!</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="19" Width="10" Height="1"><Text>2</Text><Label>2</Label><ShiftDownLabel>@</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="29" Width="10" Height="1"><Text>3</Text><Label>3</Label><ShiftDownLabel>#</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="39" Width="10" Height="1"><Text>4</Text><Label>4</Label><ShiftDownLabel>$</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="49" Width="10" Height="1"><Text>5</Text><Label>5</Label><ShiftDownLabel>%</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="59" Width="10" Height="1"><Text>6</Text><Label>6</Label><ShiftDownLabel>^</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="69" Width="10" Height="1"><Text>7</Text><Label>7</Label><ShiftDownLabel>&amp;</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="79" Width="10" Height="1"><Text>8</Text><Label>8</Label><ShiftDownLabel>*</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="89" Width="10" Height="1"><Text>9</Text><Label>9</Label><ShiftDownLabel>(</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="99" Width="10" Height="1"><Text>0</Text><Label>0</Label><ShiftDownLabel>)</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="109" Width="10" Height="1"><Text>-</Text><Label>-</Label><ShiftDownLabel>_</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="10" Col="119" Width="11" Height="1"><Text>=</Text><Label>=</Label><ShiftDownLabel>+</ShiftDownLabel></DynamicKey>
+		
+        
+        <DynamicKey Row="11" Col="0" Width="11" Height="1" BackgroundColor="#202020"><Text>&#9;</Text><Label>Tab</Label><Symbol>TabIcon</Symbol></DynamicKey>
+        <DynamicKey Row="11" Col="11" Width="10" Height="1"><Text>q</Text><Label>q</Label><ShiftDownLabel>Q</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="21" Width="10" Height="1"><Text>w</Text><Label>w</Label><ShiftDownLabel>W</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="31" Width="10" Height="1"><Text>e</Text><Label>e</Label><ShiftDownLabel>E</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="41" Width="10" Height="1"><Text>r</Text><Label>r</Label><ShiftDownLabel>R</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="51" Width="10" Height="1"><Text>t</Text><Label>t</Label><ShiftDownLabel>T</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="61" Width="10" Height="1"><Text>y</Text><Label>y</Label><ShiftDownLabel>Y</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="71" Width="10" Height="1"><Text>u</Text><Label>u</Label><ShiftDownLabel>U</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="81" Width="10" Height="1"><Text>i</Text><Label>i</Label><ShiftDownLabel>I</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="91" Width="10" Height="1"><Text>o</Text><Label>o</Label><ShiftDownLabel>O</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="101" Width="10" Height="1"><Text>p</Text><Label>p</Label><ShiftDownLabel>P</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="111" Width="10" Height="1"><Text>[</Text><Label>[</Label><ShiftDownLabel>{</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="11" Col="121" Width="9" Height="1"><Text>]</Text><Label>]</Label><ShiftDownLabel>}</ShiftDownLabel></DynamicKey>
+		
+		
+        <DynamicKey Row="12" Width="13" Height="1" BackgroundColor="#202020"><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
+		<DynamicKey Row="12" Width="10" Height="1"><Text>a</Text><Label>a</Label><ShiftDownLabel>A</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="10" Height="1"><Text>s</Text><Label>s</Label><ShiftDownLabel>S</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="10" Height="1"><Text>d</Text><Label>d</Label><ShiftDownLabel>D</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="10" Height="1"><Text>f</Text><Label>f</Label><ShiftDownLabel>F</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="10" Height="1"><Text>g</Text><Label>g</Label><ShiftDownLabel>G</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="10" Height="1"><Text>h</Text><Label>h</Label><ShiftDownLabel>H</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="10" Height="1"><Text>j</Text><Label>j</Label><ShiftDownLabel>J</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="10" Height="1"><Text>k</Text><Label>k</Label><ShiftDownLabel>K</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="10" Height="1"><Text>l</Text><Label>l</Label><ShiftDownLabel>L</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="8" Height="1"><Text>;</Text><Label>;</Label><ShiftDownLabel>:</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="12" Width="8" Height="1"><Text>'</Text><Label>'</Label><ShiftDownLabel>"</ShiftDownLabel></DynamicKey>
+		
+        <DynamicKey Row="13" Col="0" Width="9" Height="1" BackgroundColor="#202020"><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>
+        <DynamicKey Row="13" Width="9" Height="1" BackgroundColor="#202020"><Action>LeftWin</Action><Symbol>WinIcon</Symbol></DynamicKey>
+        <DynamicKey Row="13" Width="9" Height="1"><Text>z</Text><Label>z</Label><ShiftDownLabel>Z</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="13" Width="9" Height="1"><Text>x</Text><Label>x</Label><ShiftDownLabel>X</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="13" Width="10" Height="1"><Text>c</Text><Label>c</Label><ShiftDownLabel>C</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="13" Width="10" Height="1"><Text>v</Text><Label>v</Label><ShiftDownLabel>V</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="13" Width="14" Height="1"><Text>&#32;</Text><Label>Space</Label><Symbol>SpaceIcon</Symbol></DynamicKey>
+        <DynamicKey Row="13" Width="10" Height="1"><Text>b</Text><Label>b</Label><ShiftDownLabel>B</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="13" Width="9" Height="1"><Text>n</Text><Label>n</Label><ShiftDownLabel>N</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="13" Width="9" Height="1"><Text>m</Text><Label>m</Label><ShiftDownLabel>M</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="13" Width="8" Height="1"><Text>,</Text><Label>,</Label><ShiftDownLabel>&lt;</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="13" Width="8" Height="1"><Text>.</Text><Label>.</Label><ShiftDownLabel>&gt;</ShiftDownLabel></DynamicKey>
+        <DynamicKey Row="13" Width="8" Height="1"><Text>/</Text><Label>/</Label><ShiftDownLabel>?</ShiftDownLabel></DynamicKey>
+		
+		
+        <DynamicKey Row="10" Col="130" Width="10" Height="1" BackgroundColor="#202020"><Action>Delete</Action><Label>Del</Label></DynamicKey>
+        <DynamicKey Row="10" Col="140" Width="10" Height="1" BackgroundColor="#202020"><Action>PgUp</Action><Label>Pg Up</Label></DynamicKey>
+        <DynamicKey Row="10" Col="150" Width="10" Height="1" BackgroundColor="#202020"><Action>BackOne</Action><Label>Backspace</Label><Symbol>BackOneIcon</Symbol></DynamicKey>
+		
+		<!-- <DynamicKey Row="11" Col="130" Width="10" Height="1" BackgroundColor="#202020"><Symbol>MoreIcon</Symbol> -->
+			<!-- <ChangeKeyboard BackReturnsHere="true">Full</ChangeKeyboard><KeyUp>All</KeyUp></DynamicKey> -->
+
+		<DynamicKey Row="11" Col="130" Width="10" Height="1" BackgroundColor="#202020"><Action>Home</Action><Label>Home</Label></DynamicKey>	
+        <DynamicKey Row="11" Col="140" Width="10" Height="1" BackgroundColor="#202020"><Action>ArrowUp</Action><Symbol>UpArrowKeyIcon</Symbol></DynamicKey>
+        <DynamicKey Row="11" Col="150" Width="10" Height="1" BackgroundColor="#202020"><Action>End</Action><Label>End</Label></DynamicKey>		
+		
+        <DynamicKey Row="12" Col="119" Width="11" Height="1" BackgroundColor="#202020"><Action>LeftShift</Action><Label>Shift</Label><Symbol>ShiftIcon</Symbol></DynamicKey>
+        <DynamicKey Row="12" Col="130" Width="10" Height="1" BackgroundColor="#202020"><Action>ArrowLeft</Action><Symbol>LeftArrowKeyIcon</Symbol></DynamicKey>
+        <DynamicKey Row="12" Col="140" Width="10" Height="1" BackgroundColor="#202020"><Action>ArrowDown</Action><Symbol>DownArrowKeyIcon</Symbol></DynamicKey>
+        <DynamicKey Row="12" Col="150" Width="10" Height="1" BackgroundColor="#202020"><Action>ArrowRight</Action><Symbol>RightArrowKeyIcon</Symbol></DynamicKey>
+		
+        <DynamicKey Row="13" Col="122" Width="9" Height="1" BackgroundColor="#202020"><Action>LeftCtrl</Action><Label>Ctrl</Label></DynamicKey>
+        <DynamicKey Row="13" Col="131" Width="9" Height="1" BackgroundColor="#202020"><Action>LeftAlt</Action><Label>Alt</Label></DynamicKey>
+        <DynamicKey Row="13" Col="140" Width="10" Height="1" BackgroundColor="#202020"><Action>PgDn</Action><Label>Pg Dn</Label></DynamicKey>
+        <DynamicKey Row="13" Col="150" Width="10" Height="1" BackgroundColor="#202020"><Text>&#13;</Text><Label>Enter</Label><Symbol>EnterIcon</Symbol></DynamicKey>
+		
+    </Content>
+</Keyboard>

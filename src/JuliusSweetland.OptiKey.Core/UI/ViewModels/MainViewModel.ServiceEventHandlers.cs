@@ -2606,6 +2606,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                         }
                     }
+                    else if (keyCommand.Name == KeyCommands.MoveWindow)
+                    {
+                        mainWindowManipulationService.InvokeMoveWindow(keyCommand.Value);
+                    }
                     else if (keyCommand.Name == KeyCommands.Text)
                     {
                         Log.InfoFormat("CommandList: Text of [{0}]", keyCommand.KeyValue.String);
