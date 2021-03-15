@@ -42,17 +42,21 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             InputService.Verify(s => s.RequestSuspend(), Times.Once());
             AudioService.Verify(s => s.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume), Times.Once());
 
-            Assert.IsNotNull(NotificationEvent);
-            Assert.AreEqual(Resources.CRASH_TITLE, NotificationEvent.Title);
-            Assert.AreEqual(ex.Message, NotificationEvent.Content);
-            Assert.AreEqual(NotificationTypes.Error, NotificationEvent.NotificationType);
+            Assert.That(NotificationEvent, Is.Not.Null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(NotificationEvent.Title, Is.EqualTo(Resources.CRASH_TITLE));
+                Assert.That(NotificationEvent.Content, Is.EqualTo(ex.Message));
+                Assert.That(NotificationEvent.NotificationType, Is.EqualTo(NotificationTypes.Error));
+            });            
         }
 
         [Test]
         public void ThenPointsPerSecondEventHandlerShouldBeAttachedToInputService()
         {
             InputService.Raise(s => s.PointsPerSecond += null, this, 123);
-            Assert.AreEqual(123, MainViewModel.PointsPerSecond);
+            Assert.That(MainViewModel.PointsPerSecond, Is.EqualTo(123));
         }
 
         [Test]
@@ -88,8 +92,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             var keyValue = new KeyValue();
             InputService.Raise(s => s.CurrentPosition += null, this, new Tuple<Point, KeyValue>(point, keyValue));
 
-            Assert.AreEqual(point, MainViewModel.CurrentPositionPoint);
-            Assert.AreEqual(keyValue, MainViewModel.CurrentPositionKey);
+            Assert.Multiple(() =>
+            {
+                Assert.That(MainViewModel.CurrentPositionPoint, Is.EqualTo(point));
+                Assert.That(MainViewModel.CurrentPositionKey, Is.EqualTo(keyValue));
+            });            
 
             MouseOutputService.Verify(s => s.MoveTo(point), Times.Once());
         }
@@ -114,8 +121,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             var keyValue = new KeyValue();
             InputService.Raise(s => s.CurrentPosition += null, this, new Tuple<Point, KeyValue>(point, keyValue));
 
-            Assert.AreEqual(point, MainViewModel.CurrentPositionPoint);
-            Assert.AreEqual(keyValue, MainViewModel.CurrentPositionKey);
+            Assert.Multiple(() =>
+            {
+                Assert.That(MainViewModel.CurrentPositionPoint, Is.EqualTo(point));
+                Assert.That(MainViewModel.CurrentPositionKey, Is.EqualTo(keyValue));
+            });            
 
             MouseOutputService.Verify(s => s.MoveTo(point), Times.Never());
         }
@@ -142,11 +152,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
             InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(null, 0));
 
-            Assert.IsNull(MainViewModel.PointSelectionProgress);
+            Assert.That(MainViewModel.PointSelectionProgress, Is.Null);
 
             KeySelectionProgress.Keys
                 .ToList()
-                .ForEach(k => Assert.AreEqual(default(double), KeySelectionProgress[k].Value));
+                .ForEach(k => Assert.That(KeySelectionProgress[k].Value, Is.EqualTo(default(double))));
         }
     }
 
@@ -175,7 +185,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(
                 new PointAndKeyValue(new Point(), KeyValueToAssert), 14));
 
-            Assert.AreEqual(14, KeySelectionProgress[KeyValueToAssert].Value);
+            Assert.That(KeySelectionProgress[KeyValueToAssert].Value, Is.EqualTo(14));
         }
     }
 
@@ -197,9 +207,13 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(
                 pointAndKeyValue, 83));
 
-            Assert.IsNotNull(MainViewModel.PointSelectionProgress);
-            Assert.AreEqual(pointAndKeyValue.Point, MainViewModel.PointSelectionProgress.Item1);
-            Assert.AreEqual(83, MainViewModel.PointSelectionProgress.Item2);
+            Assert.That(MainViewModel.PointSelectionProgress, Is.Not.Null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(MainViewModel.PointSelectionProgress.Item1, Is.EqualTo(pointAndKeyValue.Point));
+                Assert.That(MainViewModel.PointSelectionProgress.Item2, Is.EqualTo(83));
+            });            
         }
     }
 
@@ -223,11 +237,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
             InputService.Raise(s => s.Selection += null, this, pointAndKeyValue);
 
-            Assert.IsNull(MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.Null);
 
             AudioService.Verify(s => s.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume));
 
-            Assert.IsTrue(IsKeySelectionEventHandlerCalled);
+            Assert.That(IsKeySelectionEventHandlerCalled, Is.True);
         }
     }
 
@@ -248,9 +262,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
             InputService.Raise(s => s.Selection += null, this, pointAndKeyValue);
 
-            Assert.IsNull(MainViewModel.SelectionResultPoints);
-
-            Assert.IsTrue(IsPointSelectionEventHandlerCalled);
+            Assert.Multiple(() =>
+            {
+                Assert.That(MainViewModel.SelectionResultPoints, Is.Null);
+                Assert.That(IsPointSelectionEventHandlerCalled, Is.True);
+            });            
         }
     }
 
@@ -266,7 +282,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
-            Assert.AreEqual(points, MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.EqualTo(points));
 
             KeyboardOutputService.Verify(s => s.ProcessSingleKeyText("SingleKeyValueIsString"), Times.Once());
         }
@@ -280,7 +296,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
-            Assert.AreEqual(points, MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.EqualTo(points));
 
             KeyStateService.Verify(s => s.ProgressKeyDownState(It.IsAny<KeyValue>()), Times.Once());
 
@@ -299,7 +315,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
-            Assert.AreEqual(points, MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.EqualTo(points));
 
             KeyboardOutputService.Verify(s => s.ProcessMultiKeyTextAndSuggestions(multiKeySelection), Times.Once());
         }

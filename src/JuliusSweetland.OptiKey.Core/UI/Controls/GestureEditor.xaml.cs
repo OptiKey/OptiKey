@@ -46,6 +46,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public static List<string> CommandKeyList = Enum.GetNames(typeof(Enums.KeyCommands)).Cast<string>().OrderBy(mb => mb.ToString()).ToList();
 
+        public static List<string> KeyboardList = Enum.GetNames(typeof(Enums.Keyboards)).Cast<string>().OrderBy(mb => mb.ToString()).ToList();
+
         public static List<string> FunctionKeyList = Enum.GetNames(typeof(Enums.FunctionKeys)).Cast<string>().OrderBy(mb => mb.ToString()).ToList();
         
         public static List<string> StepTypeList = Enum.GetNames(typeof(Enums.EyeGestureStepTypes)).Cast<string>().OrderBy(mb => mb.ToString()).ToList();
@@ -54,9 +56,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #region Methods
 
+        private void Disable()
+        {
+            EyeGesture.enabled = false;
+            Preview = null;
+        }
+
         private void TypeChanged(object sender, SelectionChangedEventArgs e)
         {
-             Preview = null;
+            Disable();
         }
 
         private void SelectStep(object sender, System.Windows.Input.MouseEventArgs e)
@@ -67,25 +75,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             stepIndex = index;
         }
 
-        private void InsertStep_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                EyeGesture.Steps.Insert(0, new EyeGestureStep());
-                Preview = null;
-            }
-            catch { }
-        }
-
         private void CopyStep_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var eyeGesture = EyeGesture.Steps[stepIndex];
-                EyeGesture.Steps.Insert(stepIndex + 1, eyeGesture);
-                Preview = null;
+                var step = XmlEyeGestures.ReadFromString(new XmlEyeGestures() { GestureList = new ObservableCollection<EyeGesture>() { EyeGesture } }.WriteToString())
+                    .GestureList[0].Steps[stepIndex];
+                EyeGesture.Steps.Insert(stepIndex + 1, step);
+                
             }
-            catch { }
+            catch { try { EyeGesture.Steps.Insert(0, new EyeGestureStep()); } catch { } }
+            Disable();
         }
 
         private void MoveUp_Click(object sender, RoutedEventArgs e)
@@ -93,7 +93,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             try
             {
                 EyeGesture.Steps.Move(stepIndex - 1, stepIndex);
-                Preview = null;
+                Disable();
             }
             catch { }
         }
@@ -103,22 +103,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             try
             {
                 EyeGesture.Steps.Move(stepIndex + 1, stepIndex);
-                Preview = null;
+                Disable();
             }
             catch { }
         }
 
         private void DeleteStep_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                EyeGesture.Steps.RemoveAt(stepIndex);
-                if (!EyeGesture.Steps.Any())
-                    EyeGesture.Steps.Add(new EyeGestureStep());
+            EyeGesture.Steps.RemoveAt(stepIndex);
+            if (!EyeGesture.Steps.Any())
+                EyeGesture.Steps.Add(new EyeGestureStep());
 
-                 Preview = null;
-            }
-            catch { }
+            Disable();
         }
 
         private void SelectEvent(object sender, System.Windows.Input.MouseEventArgs e)
@@ -131,42 +127,49 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void AddEvent_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if (EyeGesture.Steps[stepIndex].Commands == null)
-                    EyeGesture.Steps[stepIndex].Commands = new ObservableCollection<XmlKeyCommand>();
+            if (EyeGesture.Steps[stepIndex].Commands == null)
+                EyeGesture.Steps[stepIndex].Commands = new ObservableCollection<XmlKeyCommand>();
 
-                EyeGesture.Steps[stepIndex].Commands.Add(new XmlKeyCommand());
-            }
-            catch { }
+            EyeGesture.Steps[stepIndex].Commands.Add(new XmlKeyCommand());
+            Disable();
         }
 
         private void DeleteEvent_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                EyeGesture.Steps[stepIndex].Commands.RemoveAt(eventIndex);
-            }
-            catch { }
+            EyeGesture.Steps[stepIndex].Commands.RemoveAt(eventIndex);
+            Disable();
         }
 
         private void CheckBox_Changed(object sender, RoutedEventArgs e)
         {
-             Preview = null;
+             Disable();
         }
 
         private void NumericUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            Preview = null;
+            Disable();
         }
 
-        private void Start_Stop(object sender, RoutedEventArgs e)
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            EyeGesture.enabled = !EyeGesture.enabled;
-            Preview = null;
+            ComboBox comboBox = sender as ComboBox;
+            var keyCommand = EyeGesture.Steps[stepIndex].Commands[eventIndex].Name;
+            if (keyCommand == Enums.KeyCommands.ChangeKeyboard)
+            {
+                comboBox.ItemsSource = KeyboardList;
+            }
+            else if (keyCommand == Enums.KeyCommands.Function)
+            {
+                comboBox.ItemsSource = FunctionKeyList;
+            }
+            else if (comboBox.ItemsSource != null)
+            {
+                comboBox.ItemsSource = null;
+            }
         }
 
         #endregion
+
     }
 }
 

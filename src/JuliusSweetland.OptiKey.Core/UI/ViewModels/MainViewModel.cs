@@ -291,65 +291,55 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void InitialiseKeyboard(IWindowManipulationService windowManipulationService)
         {
+            Action backaction = null;
             if (Settings.Default.ConversationOnlyMode)
             {
-                Keyboard = new ConversationAlpha1(null);
-                windowManipulationService.Maximise();
+                Settings.Default.StartupKeyboard = Enums.Keyboards.ConversationAlpha;
             }
             else if (Settings.Default.ConversationConfirmOnlyMode)
             {
-                Keyboard = new ConversationConfirm(null);
-                windowManipulationService.Maximise();
+                Settings.Default.StartupKeyboard = Enums.Keyboards.ConversationConfirm;
             }
-            else
+            else 
             {
                 switch (Settings.Default.StartupKeyboard)
                 {
                     case Enums.Keyboards.ConversationAlpha:
                     case Enums.Keyboards.ConversationConfirm:
                     case Enums.Keyboards.ConversationNumericAndSymbols:
-                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () =>
-                            {
-                                Keyboard = new Menu(() => Keyboard = new Alpha1());
-                                windowManipulationService.Restore();
-                                windowManipulationService.ResizeDockToFull();
-                            });
-                        break;
-
                     case Enums.Keyboards.Minimised:
-                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () =>
+                        backaction = () =>
                             {
-                                Keyboard = new Menu(() => Keyboard = new Alpha1());
                                 windowManipulationService.Restore();
                                 windowManipulationService.ResizeDockToFull();
-                            });
+                                Keyboard = new Menu(() => Keyboard = new Alpha1());
+                            };
                         break;
 
                     case Enums.Keyboards.CustomKeyboardFile:
-                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () =>
+                        backaction = () =>
                             {
                                 Keyboard = new Menu(() => Keyboard = new Alpha1());
-                            });
+                            };
                         break;
 
                     default:
-                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () =>
+                        backaction = () =>
                             {
                                 Keyboard = new Alpha1();
-                            });
+                            };
                         break;
                 }
             }
+            SetKeyboardFromEnum(Settings.Default.StartupKeyboard, windowManipulationService, backaction);
         }
 
         private void SetKeyboardFromEnum(Enums.Keyboards keyboardEnum,
                                          IWindowManipulationService windowManipulationService,
                                          Action backAction)
         {
+            if (Keyboard is Minimised && keyboardEnum == Enums.Keyboards.Minimised)
+                return;
             // Set up the keyboard
             switch (keyboardEnum)
             {
@@ -402,7 +392,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.Minimised:
-                    Keyboard = new Minimised(backAction);
+                    mainWindowManipulationService.Minimise();
+                    var currentKeyboard = Keyboard; 
+                    Keyboard = new Minimised(() =>
+                    {
+                        mainWindowManipulationService.Restore();
+                        Keyboard = currentKeyboard != null ? currentKeyboard : new Menu(() => Keyboard = new Alpha1());
+                    });
                     break;
 
                 case Enums.Keyboards.Mouse:
@@ -440,7 +436,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             // Set the window appropriately according to keyboard
-            switch (Settings.Default.StartupKeyboard)
+            switch (keyboardEnum)
             {
                 case Enums.Keyboards.ConversationAlpha:
                 case Enums.Keyboards.ConversationConfirm:
@@ -449,7 +445,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.Minimised:
-                    windowManipulationService.Minimise();
                     break;
 
                 case Enums.Keyboards.Mouse:

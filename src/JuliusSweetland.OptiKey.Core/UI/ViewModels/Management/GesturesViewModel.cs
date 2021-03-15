@@ -4,73 +4,68 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using log4net;
 using Prism.Commands;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
     public class GesturesViewModel : INotifyPropertyChanged
     {
-        #region Private Member Vars
-
-        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        #endregion
-
-        #region Ctor
-
         public GesturesViewModel()
         {
             OpenFileCommand = new DelegateCommand(OpenFile);
             SaveFileCommand = new DelegateCommand(SaveFile);
             ResetChangesCommand = new DelegateCommand(ResetChanges);
-            StartCommand = new DelegateCommand(StartAll);
-            StopCommand = new DelegateCommand(StopAll);
+            EnableAllCommand = new DelegateCommand(EnableAll);
+            DisableAllCommand = new DelegateCommand(DisableAll);
+            EnableCommand = new DelegateCommand(Enable);
             AddGestureCommand = new DelegateCommand(AddGesture);
             DeleteGestureCommand = new DelegateCommand(DeleteGesture);
             Load();
         }
 
-        #endregion
-
         #region Properties
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        protected void OnPropertyChanged()
         {
-            if (gestureList != null)
-                gestureList = new ObservableCollection<EyeGesture>(gestureList.OrderBy(e => e.Name));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
+            if (xmlEyeGestures != null && GestureList != null && GestureList.Count > 1)
+                GestureList = new ObservableCollection<EyeGesture>(GestureList.OrderBy(g => g.Name));
         }
 
         public DelegateCommand OpenFileCommand { get; private set; }
         public DelegateCommand SaveFileCommand { get; private set; }
         public DelegateCommand ResetChangesCommand { get; private set; }
-        public DelegateCommand StartCommand { get; private set; }
-        public DelegateCommand StopCommand { get; private set; }
+        public DelegateCommand EnableAllCommand { get; private set; }
+        public DelegateCommand DisableAllCommand { get; private set; }
+        public DelegateCommand EnableCommand { get; private set; }
         public DelegateCommand AddGestureCommand { get; private set; }
         public DelegateCommand DeleteGestureCommand { get; private set; }
 
-        public bool HideEditor { get { return !eyeGesturesEnabled; } }
-        public bool AllStart { get; private set; } = false;
-        public bool AllStop { get; private set; } = true;
+        public bool NotAllEnabled
+        { get { return xmlEyeGestures != null && GestureList != null && GestureList.Where(g => !g.enabled).Any(); } }
+        public bool AnyEnabled
+        { get { return xmlEyeGestures != null && GestureList != null && GestureList.Where(g => g.enabled).Any(); } }
+        private string enabledCountLabel;
+        public string EnabledCountLabel
+        {
+            get { return enabledCountLabel + " Enabled"; }
+            set { enabledCountLabel = xmlEyeGestures != null && GestureList != null && GestureList.Any()
+                    ? GestureList.Where(g => g.enabled).ToList().Count.ToString() + " of " + GestureList.Count.ToString() : "0"; }
+        }
+
         private bool eyeGesturesEnabled = false;
         public bool EyeGesturesEnabled
         {
             get { return eyeGesturesEnabled; }
-            set {
-                eyeGesturesEnabled = value;
-                OnPropertyChanged("HideEditor");
-            }
+            set { eyeGesturesEnabled = value; OnPropertyChanged(); }
         }
-        public bool EyeGestureUpdated { get; set; }
         public string EyeGestureFile { get; set; }
         public string EyeGestureString;
 
@@ -81,41 +76,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { xmlEyeGestures = value; }
         }
 
-        private ObservableCollection<EyeGesture> gestureList;
         public ObservableCollection<EyeGesture> GestureList
         {
-            get { return gestureList; }
-            set { gestureList = value; }
+            get { return xmlEyeGestures.GestureList; }
+            set { xmlEyeGestures.GestureList = value; }
         }
 
         private EyeGesture eyeGesture;
         public EyeGesture EyeGesture
         {
             get { return eyeGesture; }
-            set
-            {
-                eyeGesture = value;
-                OnPropertyChanged();
-                Preview = null;
-            }
-        }
-
-        private EyeGesture testGesture;
-        public EyeGesture TestGesture
-        {
-            get { return testGesture; }
-            set { testGesture = value; }
+            set { eyeGesture = value; Preview = null; }
         }
 
         private Canvas preview;
         public Canvas Preview
         {
             get { return preview; }
-            set
-            {
-                RenderPreview();
-                OnPropertyChanged();
-            }
+            set { RenderPreview(); }
         }
 
         #endregion
@@ -140,22 +118,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EyeGestureFile = Settings.Default.EyeGestureFile;
             EyeGestureString = Settings.Default.EyeGestureString;
             xmlEyeGestures = XmlEyeGestures.ReadFromString(EyeGestureString);
-            LoadGestureList();
-        }
-
-        private void LoadGestureList()
-        {
-            if (xmlEyeGestures.GestureList != null && xmlEyeGestures.GestureList.Any())
-            {
-                gestureList = xmlEyeGestures.GestureList;
-                EyeGesture = gestureList[0];
-            }
-            OnPropertyChanged(null);
+            EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
         }
 
         private void OpenFile()
         {
-            var fileDialog = new System.Windows.Forms.OpenFileDialog();
+            var fileDialog = new System.Windows.Forms.OpenFileDialog() { FileName = Path.GetFileName(EyeGestureFile) };
             var result = fileDialog.ShowDialog();
             switch (result)
             {
@@ -167,7 +135,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     break;
             }
             xmlEyeGestures = XmlEyeGestures.ReadFromFile(EyeGestureFile);
-            LoadGestureList();
+            EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
+            if (GestureList.Any())
+                DisableAll();
         }
 
         private void SaveFile()
@@ -200,48 +170,57 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private void ResetChanges()
         {
             xmlEyeGestures = XmlEyeGestures.ReadFromString(EyeGestureString);
-            LoadGestureList();
+            EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
             Settings.Default.EyeGestureUpdated = true;
         }
 
-        private void StartAll()
+        private void EnableAll()
         {
-            foreach (var e in gestureList)
+            Settings.Default.EyeGesturesEnabled = true;
+            foreach (var e in GestureList)
                 e.enabled = true;
-            Settings.Default.EyeGestureString = xmlEyeGestures.WriteToString();
-            Settings.Default.EyeGestureUpdated = true;
-            OnPropertyChanged(null);
+            UpdateState();
         }
 
-        private void StopAll()
+        private void DisableAll()
         {
-            foreach (var e in gestureList)
+            Settings.Default.EyeGesturesEnabled = false;
+            foreach (var e in GestureList)
                 e.enabled = false;
+            UpdateState();
+        }
+
+        private void Enable()
+        {
+            EyeGesture.enabled = !EyeGesture.enabled;
+            UpdateState();
+        }
+
+        private void UpdateState()
+        {
             Settings.Default.EyeGestureString = xmlEyeGestures.WriteToString();
             Settings.Default.EyeGestureUpdated = true;
-            OnPropertyChanged(null);
+            EnabledCountLabel = null;
+            OnPropertyChanged();
         }
 
         private void AddGesture()
         {
-            EyeGesture = new EyeGesture() { Steps = new ObservableCollection<EyeGestureStep>() { new EyeGestureStep() } };
+            var eyeGesture = new EyeGesture() { Steps = new ObservableCollection<EyeGestureStep>() { new EyeGestureStep() } };
 
-            if (gestureList != null)
-                GestureList.Add(EyeGesture);
+            if (GestureList != null)
+                GestureList.Add(eyeGesture);
             else
-                gestureList = new ObservableCollection<EyeGesture>() { EyeGesture };
-            OnPropertyChanged(null);
+                GestureList = new ObservableCollection<EyeGesture>() { eyeGesture };
+
+            EyeGesture = eyeGesture;
         }
 
         private void DeleteGesture()
         {
-            if (gestureList != null && gestureList.Contains(EyeGesture))
+            if (GestureList != null && GestureList.Contains(EyeGesture))
                 GestureList.Remove(EyeGesture);
-            if (gestureList.Any())
-                EyeGesture = GestureList[0];
-            else
-                EyeGesture = null;
-            OnPropertyChanged(null);
+            EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
         }
 
         private void RenderPreview()
@@ -251,8 +230,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
             if (eyeGesture != null && eyeGesture.Steps != null && eyeGesture.Steps.Any())
             {
-                var scrWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 6;
-                var scrHeight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height / 6;
+                if (eyeGesture.enabled)
+                    Enable();
+                var scrWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 8;
+                var scrHeight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height / 8;
                 var gestureShapes = new List<EyeGestureShape>();
 
                 double xPos = 0.5 * scrWidth;
@@ -328,7 +309,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
                 var canvas = new Canvas()
                 {
-                    Background = Brushes.Black,
                     Width = canvasWidth,
                     Height = canvasHeight
                 };
@@ -398,6 +378,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 canvas.ClipToBounds = true;
                 preview = canvas;
             }
+            EnabledCountLabel = null;
+            OnPropertyChanged();
         }
 
         #endregion

@@ -39,7 +39,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion2);
 
             //Assert
-            Assert.AreEqual(multiCodePointString, keyboardOutputService.Text);
+            Assert.That(keyboardOutputService.Text, Is.EqualTo(multiCodePointString));
         }
 
         [Test]
@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion1);
 
             //Assert
-            Assert.AreEqual(singleCodePointString, keyboardOutputService.Text);
+            Assert.That(keyboardOutputService.Text, Is.EqualTo(singleCodePointString));
         }
     }
 }

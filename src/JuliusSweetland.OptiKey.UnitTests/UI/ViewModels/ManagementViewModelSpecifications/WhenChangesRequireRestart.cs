@@ -22,14 +22,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         public void GivenOtherViewModelRequiresRestart()
         {
             Settings.Default.Debug = true;
-            Assert.IsTrue(ManagementViewModel.ChangesRequireRestart);
+            Assert.That(ManagementViewModel.ChangesRequireRestart, Is.True);
         }
 
         [Test]
         public void GivenPointingAndSelectingViewModelRequiresRestart()
         {
             Settings.Default.MultiKeySelectionMaxDuration = TimeSpan.FromSeconds(42);
-            Assert.IsTrue(ManagementViewModel.ChangesRequireRestart);
+            Assert.That(ManagementViewModel.ChangesRequireRestart, Is.True);
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         {
             ManagementViewModel.VisualsViewModel.ConversationOnlyMode = false;
             Settings.Default.ConversationOnlyMode = true;
-            Assert.IsTrue(ManagementViewModel.ChangesRequireRestart);
+            Assert.That(ManagementViewModel.ChangesRequireRestart, Is.True);
         }
     }
 }

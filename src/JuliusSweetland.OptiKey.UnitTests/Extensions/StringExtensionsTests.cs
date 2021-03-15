@@ -14,41 +14,50 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
         [Test]
         public void TestFirstCharToUpper()
         {
-            Assert.AreEqual("Optikey", "optikey".FirstCharToUpper());
-            Assert.AreEqual("Optikey", "Optikey".FirstCharToUpper());
-            Assert.AreEqual("OptiKey", "OptiKey".FirstCharToUpper());
-            Assert.AreEqual("Sam Was Here", "sam Was Here".FirstCharToUpper());
-            Assert.AreEqual("%$%@$#%#@#$&^%$&#$", "%$%@$#%#@#$&^%$&#$".FirstCharToUpper());
-            Assert.AreEqual("  ", "  ".FirstCharToUpper());
-            Assert.AreEqual(null, NullString.FirstCharToUpper());
+            Assert.Multiple(() =>
+            {
+                Assert.That("optikey".FirstCharToUpper(), Is.EqualTo("Optikey"));
+                Assert.That("Optikey".FirstCharToUpper(), Is.EqualTo("Optikey"));
+                Assert.That("OptiKey".FirstCharToUpper(), Is.EqualTo("OptiKey"));
+                Assert.That("sam Was Here".FirstCharToUpper(), Is.EqualTo("Sam Was Here"));
+                Assert.That("%$%@$#%#@#$&^%$&#$".FirstCharToUpper(), Is.EqualTo("%$%@$#%#@#$&^%$&#$"));
+                Assert.That("  ".FirstCharToUpper(), Is.EqualTo("  "));
+                Assert.That(NullString.FirstCharToUpper(), Is.Null);
+            });            
         }
 
         [Test]
         public void TestConvertEscapedCharToLiteral()
         {
-            Assert.AreEqual(@"[Char:\0|Unicode:U+0000]", '\0'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\a|Unicode:U+0007]", '\a'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\b|Unicode:U+0008]", '\b'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\t|Unicode:U+0009]", '\t'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\f|Unicode:U+000c]", '\f'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\n|Unicode:U+000a]", '\n'.ToPrintableString());
-            Assert.AreEqual(@"[Char:\r|Unicode:U+000d]", '\r'.ToPrintableString());
-            Assert.AreEqual(@"[Char:s|Unicode:U+0073]", 's'.ToPrintableString());
-            Assert.AreEqual(@"[Char: |Unicode:U+0020]", ' '.ToPrintableString());
-            Assert.AreEqual(null, NullString.ToPrintableString());
+            Assert.Multiple(() =>
+            {
+                Assert.That('\0'.ToPrintableString(), Is.EqualTo(@"[Char:\0|Unicode:U+0000]"));
+                Assert.That('\a'.ToPrintableString(), Is.EqualTo(@"[Char:\a|Unicode:U+0007]"));
+                Assert.That('\b'.ToPrintableString(), Is.EqualTo(@"[Char:\b|Unicode:U+0008]"));
+                Assert.That('\t'.ToPrintableString(), Is.EqualTo(@"[Char:\t|Unicode:U+0009]"));
+                Assert.That('\f'.ToPrintableString(), Is.EqualTo(@"[Char:\f|Unicode:U+000c]"));
+                Assert.That('\n'.ToPrintableString(), Is.EqualTo(@"[Char:\n|Unicode:U+000a]"));
+                Assert.That('\r'.ToPrintableString(), Is.EqualTo(@"[Char:\r|Unicode:U+000d]"));
+                Assert.That('s'.ToPrintableString(), Is.EqualTo(@"[Char:s|Unicode:U+0073]"));
+                Assert.That(' '.ToPrintableString(), Is.EqualTo(@"[Char: |Unicode:U+0020]"));
+                Assert.That(NullString.ToPrintableString(), Is.Null);
+            });            
         }
         
         [Test]
         public void TestNextCharacterWouldBeStartOfNewSentence()
         {
-            Assert.AreEqual(true, NullString.NextCharacterWouldBeStartOfNewSentence());
-            Assert.AreEqual(true, "".NextCharacterWouldBeStartOfNewSentence());
-            Assert.AreEqual(true, "This is a sentence. ".NextCharacterWouldBeStartOfNewSentence());
-            Assert.AreEqual(true, "This is a sentence! ".NextCharacterWouldBeStartOfNewSentence());
-            Assert.AreEqual(true, "This is a sentence? ".NextCharacterWouldBeStartOfNewSentence());
-            Assert.AreEqual(true, "This is a sentence\n".NextCharacterWouldBeStartOfNewSentence());
-            Assert.AreEqual(false, "This is a sentence where i forgot my punctuation ".NextCharacterWouldBeStartOfNewSentence());
-            Assert.AreEqual(false, "This is a sentence.".NextCharacterWouldBeStartOfNewSentence()); //Does not have trailing space
+            Assert.Multiple(() =>
+            {
+                Assert.That(NullString.NextCharacterWouldBeStartOfNewSentence(), Is.True);
+                Assert.That("".NextCharacterWouldBeStartOfNewSentence(), Is.True);
+                Assert.That("This is a sentence. ".NextCharacterWouldBeStartOfNewSentence(), Is.True);
+                Assert.That("This is a sentence! ".NextCharacterWouldBeStartOfNewSentence(), Is.True);
+                Assert.That("This is a sentence? ".NextCharacterWouldBeStartOfNewSentence(), Is.True);
+                Assert.That("This is a sentence\n".NextCharacterWouldBeStartOfNewSentence(), Is.True);
+                Assert.That("This is a sentence where i forgot my punctuation ".NextCharacterWouldBeStartOfNewSentence(), Is.False);
+                Assert.That("This is a sentence.".NextCharacterWouldBeStartOfNewSentence(), Is.False); //Does not have trailing space
+            });           
 
         }
         
@@ -56,36 +65,46 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
         public void TestInProgressWord()
         {
             var sentence = "This is a sentence.";
-            Assert.AreEqual(null, sentence.InProgressWord(0));
-            Assert.AreEqual("This", sentence.InProgressWord(1));
-            Assert.AreEqual("This", sentence.InProgressWord(2));
-            Assert.AreEqual("This", sentence.InProgressWord(3));
-            Assert.AreEqual("This", sentence.InProgressWord(4));
-            Assert.AreEqual(null, sentence.InProgressWord(5));
-            Assert.AreEqual("is", sentence.InProgressWord(6));
-            Assert.AreEqual("is", sentence.InProgressWord(7));
-            Assert.AreEqual(null, sentence.InProgressWord(8));
-            Assert.AreEqual("a", sentence.InProgressWord(9));
-            Assert.AreEqual(null, sentence.InProgressWord(10));
-            Assert.AreEqual("sentence.", sentence.InProgressWord(11));
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(sentence.InProgressWord(0), Is.Null);
+                Assert.That(sentence.InProgressWord(1), Is.EqualTo("This"));
+                Assert.That(sentence.InProgressWord(2), Is.EqualTo("This"));
+                Assert.That(sentence.InProgressWord(3), Is.EqualTo("This"));
+                Assert.That(sentence.InProgressWord(4), Is.EqualTo("This"));
+                Assert.That(sentence.InProgressWord(5), Is.Null);
+                Assert.That(sentence.InProgressWord(6), Is.EqualTo("is"));
+                Assert.That(sentence.InProgressWord(7), Is.EqualTo("is"));
+                Assert.That(sentence.InProgressWord(8), Is.Null);
+                Assert.That(sentence.InProgressWord(9), Is.EqualTo("a"));
+                Assert.That(sentence.InProgressWord(10), Is.Null);
+                Assert.That(sentence.InProgressWord(11), Is.EqualTo("sentence."));
+            });            
         }
 
         [Test]
         public void TestRemoveDiacritics()
         {
-            Assert.AreEqual("aAa", "aÀå".RemoveDiacritics());
-            Assert.AreEqual("CEISe", "ČĔĨŞē".RemoveDiacritics());
-            Assert.AreEqual("CEISe", "ČĔĨŞē".RemoveDiacritics(false));
+            Assert.Multiple(() =>
+            {
+                Assert.That("aÀå".RemoveDiacritics(), Is.EqualTo("aAa"));
+                Assert.That("ČĔĨŞē".RemoveDiacritics(), Is.EqualTo("CEISe"));
+                Assert.That("ČĔĨŞē".RemoveDiacritics(false), Is.EqualTo("CEISe"));
+            });            
            
         }
 
         [Test]
         public void TestLongestCommonSubsequence()
         {
-            Assert.AreEqual(19, "This is a sentence.".LongestCommonSubsequence("This is another sentence."));
-            Assert.AreEqual(7, "cat hat".LongestCommonSubsequence("cat in the hat"));
-            Assert.AreEqual(3, "cat".LongestCommonSubsequence("cat in the hat"));
-            Assert.AreEqual(0, "CAT".LongestCommonSubsequence("cat in the hat"));
+            Assert.Multiple(() =>
+            {
+                Assert.That("This is a sentence.".LongestCommonSubsequence("This is another sentence."), Is.EqualTo(19));
+                Assert.That("cat hat".LongestCommonSubsequence("cat in the hat"), Is.EqualTo(7));
+                Assert.That("cat".LongestCommonSubsequence("cat in the hat"), Is.EqualTo(3));
+                Assert.That("CAT".LongestCommonSubsequence("cat in the hat"), Is.EqualTo(0));
+            });
         }
 
         [Test]
@@ -104,11 +123,15 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
 
             var emptyStringCollection = new List<string>();
             List<string> nullStringCollection = null;
-            Assert.AreEqual("This,is,a,comma,seperated,list", stringCollection.ToString(""));
-            Assert.AreEqual("This,is,a,comma,seperated,list", stringCollection.ToString("Base string: "));
-            Assert.AreEqual("", emptyStringCollection.ToString("EMPTY"));
-            // ReSharper disable once ExpressionIsAlwaysNull
-            Assert.AreEqual("EMPTY", nullStringCollection.ToString("EMPTY"));
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(stringCollection.ToString(""), Is.EqualTo("This,is,a,comma,seperated,list"));
+                Assert.That(stringCollection.ToString("Base string: "), Is.EqualTo("This,is,a,comma,seperated,list"));
+                Assert.That(emptyStringCollection.ToString("EMPTY"), Is.EqualTo(""));
+                // ReSharper disable once ExpressionIsAlwaysNull
+                Assert.That(nullStringCollection.ToString("EMPTY"), Is.EqualTo("EMPTY"));
+            });            
         }
 
         [Test]
@@ -122,53 +145,65 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
                 "This is a sentence"
             };
 
-            Assert.AreEqual(null, "  ".ExtractWordsAndLines());
-            Assert.AreEqual(null, NullString.ExtractWordsAndLines());
+            Assert.Multiple(() =>
+            {
+                Assert.That("  ".ExtractWordsAndLines(), Is.Null);
+                Assert.That(NullString.ExtractWordsAndLines(), Is.Null);
+            });            
 
             var list = "This is a sentence".ExtractWordsAndLines();
-            Assert.AreEqual(4, list.Count);
-            CollectionAssert.AreEqual(finalList, list);
+            Assert.That(list.Count, Is.EqualTo(4));
+            Assert.That(list, Is.EqualTo(finalList));
 
             var list2 = "This is a sentence\nThis is a sentence".ExtractWordsAndLines();
-            Assert.AreEqual(4, list2.Count);
-            CollectionAssert.AreEqual(finalList, list2);
+            Assert.That(list2.Count, Is.EqualTo(4));
+            Assert.That(list2, Is.EqualTo(finalList));
         }
 
         [Test]
         public void TestCreateDictionaryEntryHash()
         {
-            Assert.AreEqual(null, "  ".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
-            Assert.AreEqual(null, NullString.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
-            Assert.AreEqual("ENTRYWITHSPACEATEND", "EntryWithSpaceAtEnd   ".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
-            Assert.AreEqual("CEISE", "ČĔĨŞē".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
-            Assert.AreEqual("THS", "This has spaces".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
-            Assert.AreEqual("THS", "This has spaces".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false));
-            Assert.AreEqual(null, "5Cats 6dogs 7Goats".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
-            Assert.AreEqual("OIAIWC", "Optikey is awesome. I want 2 copies".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
+            Assert.Multiple(() =>
+            {
+                Assert.That("  ".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(), Is.Null);
+                Assert.That(NullString.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(), Is.Null);
+                Assert.That("EntryWithSpaceAtEnd   ".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(), Is.EqualTo("ENTRYWITHSPACEATEND"));
+                Assert.That("ČĔĨŞē".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(), Is.EqualTo("CEISE"));
+                Assert.That("This has spaces".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(), Is.EqualTo("THS"));
+                Assert.That("This has spaces".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false), Is.EqualTo("THS"));
+                Assert.That("5Cats 6dogs 7Goats".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(), Is.Null);
+                Assert.That("Optikey is awesome. I want 2 copies".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(), Is.EqualTo("OIAIWC"));
+            });          
         }
         
         [Test]
         public void TestCreateAutoCompleteDictionaryEntryHash()
         {
-            Assert.AreEqual(null, "  ".Normalise());
-            Assert.AreEqual(null, NullString.Normalise());
-            Assert.AreEqual("ENTRYWITHSPACEATEND", "EntryWithSpaceAtEnd   ".Normalise());
-            Assert.AreEqual("CEISE", "ČĔĨŞē".Normalise());
-            Assert.AreEqual("THIS HAS SPACES", "This has spaces".Normalise());
-            Assert.AreEqual("THIS HAS SPACES", "This has spaces".Normalise(false));
-            Assert.AreEqual("5CATS 6DOGS 7GOATS", "5Cats 6dogs 7Goats".Normalise());
-            Assert.AreEqual("OPTIKEY IS AWESOME. I WANT 2 COPIES", "Optikey is awesome. I want 2 copies".Normalise());
+            Assert.Multiple(() =>
+            {
+                Assert.That("  ".Normalise(), Is.Null);
+                Assert.That(NullString.Normalise(), Is.Null);
+                Assert.That("EntryWithSpaceAtEnd   ".Normalise(), Is.EqualTo("ENTRYWITHSPACEATEND"));
+                Assert.That("ČĔĨŞē".Normalise(), Is.EqualTo("CEISE"));
+                Assert.That("This has spaces".Normalise(), Is.EqualTo("THIS HAS SPACES"));
+                Assert.That("This has spaces".Normalise(false), Is.EqualTo("THIS HAS SPACES"));
+                Assert.That("5Cats 6dogs 7Goats".Normalise(), Is.EqualTo("5CATS 6DOGS 7GOATS"));
+                Assert.That("Optikey is awesome. I want 2 copies".Normalise(), Is.EqualTo("OPTIKEY IS AWESOME. I WANT 2 COPIES"));
+            });            
         }
 
         [Test]
         public void TestCleanupPossibleDictionaryEntry()
         {
-            Assert.AreEqual(null, "  ".CleanupPossibleDictionaryEntry());
-            Assert.AreEqual(null, NullString.CleanupPossibleDictionaryEntry());
-            Assert.AreEqual("Word", "Word!".CleanupPossibleDictionaryEntry());
-            Assert.AreEqual("Cat", "Cat".CleanupPossibleDictionaryEntry());
-            Assert.AreEqual("This is a sentence", "This is a sentence".CleanupPossibleDictionaryEntry());
-            Assert.AreEqual("Čats", "Čats!".CleanupPossibleDictionaryEntry());
+            Assert.Multiple(() =>
+            {
+                Assert.That("  ".CleanupPossibleDictionaryEntry(), Is.Null);
+                Assert.That(NullString.CleanupPossibleDictionaryEntry(), Is.Null);
+                Assert.That("Word!".CleanupPossibleDictionaryEntry(), Is.EqualTo("Word"));
+                Assert.That("Cat".CleanupPossibleDictionaryEntry(), Is.EqualTo("Cat"));
+                Assert.That("This is a sentence".CleanupPossibleDictionaryEntry(), Is.EqualTo("This is a sentence"));
+                Assert.That("Čats!".CleanupPossibleDictionaryEntry(), Is.EqualTo("Čats"));
+            });            
         }
 
         [Test]
@@ -183,7 +218,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
             };
 
           var charListWithCounts = strings.ToCharListWithCounts();
-          Assert.AreEqual(charListWithCounts.Count,4);
+          Assert.That(4, Is.EqualTo(charListWithCounts.Count));
           AssertCharTuple(charListWithCounts[0], 'C', 'Č', 1);
           AssertCharTuple(charListWithCounts[1], 'W', 'W', 1);
           AssertCharTuple(charListWithCounts[2], 'T', 'T', 1);
@@ -193,9 +228,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
 
         private void AssertCharTuple(Tuple<char,char,int> tuple, char expectedItem1, char expectedItem2, int expectedItem3)
         {
-            Assert.AreEqual(expectedItem1, tuple.Item1);
-            Assert.AreEqual(expectedItem2, tuple.Item2);
-            Assert.AreEqual(expectedItem3, tuple.Item3);
+            Assert.Multiple(() =>
+            {
+                Assert.That(tuple.Item1, Is.EqualTo(expectedItem1));
+                Assert.That(tuple.Item2, Is.EqualTo(expectedItem2));
+                Assert.That(tuple.Item3, Is.EqualTo(expectedItem3));
+            });            
         }
     }
 }

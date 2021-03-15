@@ -193,12 +193,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void ProcessChangeKeyboardKeyValue(ChangeKeyboardKeyValue keyValue)
         {
-            var currentKeyboard = Keyboard;
+            if (Keyboard is Minimised)
+            {
+                if (keyValue.BuiltInKeyboard.Value == Enums.Keyboards.Minimised
+                    || keyValue.FunctionKey.Value == Enums.FunctionKeys.Minimise)
+                    return;
+            }
 
             Action backAction = () => { };
-            Action exitAction = () => { };
-            Action enterAction = () => { };
-
+            var currentKeyboard = Keyboard;
             // Set up back action
             if (keyValue.Replace)
             {
@@ -217,7 +220,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 };
             }
 
-            if (keyValue.BuiltInKeyboard.HasValue)
+            if (keyValue.BuiltInKeyboard.HasValue) 
             {
                 SetKeyboardFromEnum(keyValue.BuiltInKeyboard.Value, mainWindowManipulationService, backAction);
             }
@@ -650,6 +653,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private async void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
         {
+            if (Keyboard is Minimised && singleKeyValue.FunctionKey.Value == FunctionKeys.Minimise)
+                return;
+
             var currentKeyboard = Keyboard;
             Action resumeLookToScroll;
 
@@ -2283,7 +2289,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         string textFromScratchpad = KeyboardOutputService.Text;
 
                         if (!string.IsNullOrEmpty(textFromScratchpad))
-                        { 
+                        {
                             TranslationService.Response response = await translationService.Translate(textFromScratchpad);
                             if (response.Status == "Error")
                             {
@@ -2291,7 +2297,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                                 RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, response.ExceptionMessage, NotificationTypes.Error, () =>
                                 {
-                                     inputService.RequestResume();
+                                    inputService.RequestResume();
                                 });
                             }
                             else

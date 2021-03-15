@@ -20,9 +20,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
         protected override void Act()
         {
-            MainViewModel = new MainViewModel(AudioService.Object, CalibrationService.Object, DictionaryService.Object, 
-                KeyStateService.Object, SuggestionService.Object, CapturingStateManager.Object, LastMouseActionStateManager.Object, 
-                InputService.Object, KeyboardOutputService.Object, MouseOutputService.Object, MainWindowManipulationService.Object, 
+            MainViewModel = new MainViewModel(AudioService.Object, CalibrationService.Object, DictionaryService.Object,
+                KeyStateService.Object, SuggestionService.Object, CapturingStateManager.Object, LastMouseActionStateManager.Object,
+                InputService.Object, KeyboardOutputService.Object, MouseOutputService.Object, MainWindowManipulationService.Object,
                 ErrorNotifyingServices);
         }
 
@@ -68,8 +68,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeAlpha()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Alpha1), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Alpha1)));
         }
 
         [Test]
@@ -98,11 +98,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeConversationAlphaWithA_BackAction()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.ConversationAlpha1), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.ConversationAlpha1)));
 
             var conversationAlpha = MainViewModel.Keyboard as OptiKey.UI.ViewModels.Keyboards.ConversationAlpha1;
-            Assert.AreEqual(typeof(Action), conversationAlpha.BackAction.GetType());
+            Assert.That(conversationAlpha.BackAction.GetType(), Is.EqualTo(typeof(Action)));
         }
 
         [Test]
@@ -125,11 +125,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeConversationNumericAndSymbolsWithA_BackAction()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.ConversationNumericAndSymbols), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.ConversationNumericAndSymbols)));
 
             var conversationAlpha = MainViewModel.Keyboard as OptiKey.UI.ViewModels.Keyboards.ConversationNumericAndSymbols;
-            Assert.AreEqual(typeof(Action), conversationAlpha.BackAction.GetType());
+            Assert.That(conversationAlpha.BackAction.GetType(), Is.EqualTo(typeof(Action)));
         }
 
         [Test]
@@ -152,8 +152,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeCurrencies1()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Currencies1), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Currencies1)));
         }
 
         [Test]
@@ -182,8 +182,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeCurrencies2()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Currencies2), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Currencies2)));
         }
 
         [Test]
@@ -212,8 +212,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeDiacritics1()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Diacritics1), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Diacritics1)));
         }
 
         [Test]
@@ -242,8 +242,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeDiacritics1()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Diacritics2), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Diacritics2)));
         }
 
         [Test]
@@ -272,8 +272,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeDiacritics1()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Diacritics3), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Diacritics3)));
         }
 
         [Test]
@@ -302,8 +302,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeMenu()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Menu), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Menu)));
         }
 
         [Test]
@@ -332,11 +332,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeMinimisedWithA_BackAction()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Minimised), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Minimised)));
 
             var alpha = MainViewModel.Keyboard as OptiKey.UI.ViewModels.Keyboards.Minimised;
-            Assert.AreEqual(typeof(Action), alpha.BackAction.GetType());
+            Assert.That(alpha.BackAction.GetType(), Is.EqualTo(typeof(Action)));
         }
 
         [Test]
@@ -360,11 +360,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeMouseWithA_BackAction()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Mouse), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Mouse)));
 
             var alpha = MainViewModel.Keyboard as OptiKey.UI.ViewModels.Keyboards.Mouse;
-            Assert.AreEqual(typeof(Action), alpha.BackAction.GetType());
+            Assert.That(alpha.BackAction.GetType(), Is.EqualTo(typeof(Action)));
         }
 
         [Test]
@@ -394,11 +394,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeMouseWithA_BackAction()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Mouse), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.Mouse)));
 
             var alpha = MainViewModel.Keyboard as OptiKey.UI.ViewModels.Keyboards.Mouse;
-            Assert.AreEqual(typeof(Action), alpha.BackAction.GetType());
+            Assert.That(alpha.BackAction.GetType(), Is.EqualTo(typeof(Action)));
         }
 
         [Test]
@@ -427,8 +427,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeNumericAndSymbols1()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols1), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols1)));
         }
 
         [Test]
@@ -457,8 +457,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeNumericAndSymbols2()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols2), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols2)));
         }
 
         [Test]
@@ -487,8 +487,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeNumericAndSymbols3()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols3), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.NumericAndSymbols3)));
         }
 
         [Test]
@@ -517,8 +517,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBePhysicalKeys()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.PhysicalKeys), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.PhysicalKeys)));
         }
 
         [Test]
@@ -547,8 +547,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeyboardShouldBeSizeAndPosition()
         {
-            Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.SizeAndPosition), MainViewModel.Keyboard.GetType());
+            Assert.That(MainViewModel.Keyboard, Is.Not.Null);
+            Assert.That(MainViewModel.Keyboard.GetType(), Is.EqualTo(typeof(OptiKey.UI.ViewModels.Keyboards.SizeAndPosition)));
         }
 
         [Test]

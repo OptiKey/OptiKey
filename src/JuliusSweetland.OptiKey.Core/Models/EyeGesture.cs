@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         public double Cooldown { get; set; } = 2000;
 
-        [XmlIgnore] public bool enabled { get; set; } = true;
+        [XmlIgnore] public bool enabled { get; set; } = false;
 
         public string Enabled
         {

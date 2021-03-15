@@ -8,18 +8,21 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
              xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
+             xmlns:c="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" >
   <UserControl.Resources>
     <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />
+    <valueConverters:BoolToCustomValues x:Key="BoolToCustomValues" TrueValue="Enabled" FalseValue="Disabled"/>
   </UserControl.Resources>
   <ScrollViewer HorizontalScrollBarVisibility="Auto">
-    <GroupBox Grid.Row="0" Header="Eye Gestures" Height="Auto">
+    <GroupBox Header="Eye Gestures" Height="Auto">
       <StackPanel>
-        <StackPanel Orientation="Horizontal">
-          <Label Content="Enable Eye Gestures:" VerticalAlignment="Center" Margin="5"/>
-          <CheckBox VerticalAlignment="Center" Margin="5" IsChecked="{Binding EyeGesturesEnabled}"/>
-        </StackPanel>
-        <Grid Visibility="{Binding HideEditor, Converter={StaticResource InvertedBoolToVisibilityConverter}}">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="c1"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -27,46 +30,94 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
           </Grid.RowDefinitions>
-          <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Command="{Binding OpenFileCommand}" MinWidth="110" Margin="15,5,5,5" 
-                  VerticalAlignment="Center" Content="Import"/>
-            <Button Command="{Binding SaveFileCommand}" Width="110" Margin="5" 
-                  VerticalAlignment="Center" Content="Export"/>
-            <Button Command="{Binding ResetChangesCommand}" Width="110" Margin="5" 
-                  VerticalAlignment="Center" Content="Reset Changes"/>
-
-            <Border Background="Firebrick" CornerRadius="5" Width="70" Height="32">
-              <Grid>
-                <Button Command="{Binding StopCommand}" Background="Transparent" Content="All" HorizontalContentAlignment="Right" Padding="12,0"/>
-                <Path Data="M0,0 17,0 17,17 0,17Z" Fill="Black" Margin="10,0" VerticalAlignment="Center"/>
-              </Grid>
+          <Label Grid.Row="0" Margin="5" Content="Eye Gesture Count:"/>
+          <Label Grid.Row="0" Grid.Column="1" Margin="5" HorizontalAlignment="Left" Content="{Binding EnabledCountLabel}"/>
+          <Label Grid.Row="1" Content="Enable/Disable All:" Margin="5"/>
+          <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Border CornerRadius="5" Width="70" Height="32" Margin="5">
+              <Button Command="{Binding DisableAllCommand}" IsEnabled="{Binding AnyEnabled}"
+                      Background="IndianRed" Padding="0" BorderBrush="Black" BorderThickness="2">
+                <Path Data="M0,0 17,17 M17,0 0,17" Stroke="Black" StrokeThickness="3" VerticalAlignment="Center"/>
+              </Button>
             </Border>
-            <Border Background="ForestGreen" CornerRadius="5" Width="70" Height="32">
-              <Grid>
-                <Button Command="{Binding StartCommand}" Background="Transparent" Content="All" HorizontalContentAlignment="Right" Padding="12,0"/>
-                <Path Data="M0,0 20,10 0,20Z" Fill="Black" Margin="10, 0" VerticalAlignment="Center"/>
-              </Grid>
+            <Border CornerRadius="5" Width="70" Height="32" Margin="5">
+              <Button Command="{Binding EnableAllCommand}" IsEnabled="{Binding NotAllEnabled}" Padding="0"
+                      Background="ForestGreen" BorderBrush="Black" BorderThickness="2">
+                <Path Data="M 0 9 L 8 18 M 7 18 L 9 18 M 8 18 L 14 0" Stroke="Black" StrokeThickness="3" VerticalAlignment="Center" />
+              </Button>
             </Border>
           </StackPanel>
-          <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Border BorderBrush="Black" BorderThickness="3" CornerRadius="5" Background="LightBlue">
-              <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                  <ComboBox Name="Selector" HorizontalAlignment="Left" Margin="5" MinWidth="230"
-                    ItemsSource="{Binding GestureList}"
-                    SelectedItem="{Binding EyeGesture}"
-                    DisplayMemberPath="Name"/>
-                  <Button Width="50" Content="New" Margin="5" Command="{Binding AddGestureCommand}"/>
-                  <Button Width="50" Content="Delete" Margin="5" Command="{Binding DeleteGestureCommand}"/>
-                </StackPanel>
-                <controls:GestureEditor EyeGesture="{Binding EyeGesture, Mode=TwoWay}" Preview="{Binding Preview, Mode=TwoWay}"/>
-              </StackPanel>
-            </Border>
-            <Border BorderBrush="Black" BorderThickness="3" CornerRadius="5">
-              <UserControl Name="StepView" VerticalAlignment="Top" Content="{Binding Preview}"/>
-            </Border>
+          <Label Grid.Row="2" Content="Editor Actions:" Margin="5"/>
+          <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+            <Button Command="{Binding OpenFileCommand}" MinWidth="70" Margin="5"
+                  VerticalAlignment="Center" Content="Import"/>
+            <Button Command="{Binding SaveFileCommand}" Width="70" Margin="5" 
+                  VerticalAlignment="Center" Content="Export"/>
+            <Button Command="{Binding ResetChangesCommand}" Margin="5" 
+                  VerticalAlignment="Center" Content="Reset Changes"/>
           </StackPanel>
         </Grid>
+        <StackPanel Orientation="Horizontal">
+          <Border BorderBrush="Black" BorderThickness="3" CornerRadius="5" Background="LightBlue">
+            <StackPanel>
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"  Content="Gesture" Margin="5,0"/>
+                <Label Grid.Column="1" Content="Delete"/>
+                <Label Grid.Column="2" Content="Selection" Margin="5,0"/>
+                <Label Grid.Column="3" Content="Cooldown" Margin="5,0"/>
+                <Label Grid.Column="4" Margin="5,0" Content="{Binding EyeGesture.enabled, Converter={StaticResource BoolToCustomValues}}"/>
+                <Border Grid.Row="1" Grid.Column="0" Margin="5,0" CornerRadius="4" HorizontalAlignment="Center">
+                  <Button Width="48" Height="32" Command="{Binding AddGestureCommand}">
+                    <Path Stroke="Black" Data="M0,6 H12 M6,0 V12Z" Width="12" Height="12" StrokeThickness="4"/>
+                  </Button>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1" CornerRadius="4" HorizontalAlignment="Center">
+                  <Button Width="48" Height="32" Background="IndianRed" Command="{Binding DeleteGestureCommand}">
+                    <Path Stroke="White" Data="M0,6 H12" Width="12" Height="12" StrokeThickness="3"/>
+                  </Button>
+                </Border>
+                <ComboBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="5" MinWidth="230" BorderThickness="0"
+                            ItemsSource="{Binding GestureList, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                            SelectedItem="{Binding EyeGesture}"
+                            DisplayMemberPath="Name"
+                            Text="{Binding EyeGesture.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            IsEditable="True" IsTextSearchEnabled="False"/>
+                <c:NumericUpDown Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="5"
+                         Minimum="100" Maximum="10000" HideUpDownButtons="True"
+                         Value="{Binding EyeGesture.Cooldown}"
+                         ToolTip="Amount of time that must pass between each activation of this gesture"/>
+                <Border Grid.Row="1" Grid.Column="4" CornerRadius="5" Width="48" Height="32" Margin="5">
+                  <Grid>
+                    <Button Command="{Binding EnableCommand}" Background="ForestGreen" Padding="0"
+                            BorderBrush="Black" BorderThickness="2">
+                      <Path Data="M 0 9 L 8 18 M 7 18 L 9 18 M 8 18 L 14 0" Stroke="Black" StrokeThickness="3" VerticalAlignment="Center"/>
+                    </Button>
+                    <Button Command="{Binding EnableCommand}" Background="IndianRed"
+                            BorderBrush="Black" BorderThickness="2" Padding="0"
+                      Visibility="{Binding EyeGesture.enabled, Converter={StaticResource InvertedBoolToVisibilityConverter}}">
+                      <Path Data="M0,0 17,17 M17,0 0,17" Stroke="Black" StrokeThickness="3" VerticalAlignment="Center"/>
+                    </Button>
+                  </Grid>
+                </Border>
+              </Grid>
+              <controls:GestureEditor EyeGesture="{Binding EyeGesture, Mode=TwoWay}" Preview="{Binding Preview, Mode=TwoWay}"/>
+            </StackPanel>
+          </Border>
+          <Border Background="Black" BorderBrush="Black" BorderThickness="3" CornerRadius="5">
+            <UserControl Name="StepView" VerticalAlignment="Top" Content="{Binding Preview}"/>
+          </Border>
+        </StackPanel>
       </StackPanel>
     </GroupBox>
   </ScrollViewer>

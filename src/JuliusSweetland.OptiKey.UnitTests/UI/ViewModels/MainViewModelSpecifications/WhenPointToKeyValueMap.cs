@@ -48,7 +48,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenSelectionResultPointsShouldNotBeReset()
         {
-            Assert.IsNotNull(MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.Not.Null);
         }
     }
 
@@ -70,7 +70,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenSelectionResultPointsShouldBeReset()
         {
-            Assert.IsNull(MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.Null);
         }
     }
 }

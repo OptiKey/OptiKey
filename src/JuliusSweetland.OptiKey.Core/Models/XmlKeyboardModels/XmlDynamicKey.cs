@@ -42,13 +42,14 @@ namespace JuliusSweetland.OptiKey.Models
         public string Value { get; set; }
 
         [XmlIgnore]
-        public bool BackAction { get; set; } = true;
+        public bool BackAction
+        { get; set; } = true;
 
-        [XmlAttribute]
-        public string BackReturnsHere
+        [XmlAttribute("BackReturnsHere")]
+        public string BackActionString
         {
-            get { return BackAction.ToString(); }
-            set { BackAction = !bool.TryParse(value, out var result) || result; }
+            get { return this.BackAction ? "True" : "False"; }
+            set { this.BackAction = XmlUtils.ConvertToBoolean(value); }
         }
     }
 

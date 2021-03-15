@@ -35,9 +35,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         [Test]
         public void ThenInteractionRequestsAndCommandsShouldBeConstructed()
         {
-            Assert.IsNotNull(ManagementViewModel.ConfirmationRequest);
-            Assert.IsNotNull(ManagementViewModel.OkCommand);
-            Assert.IsNotNull(ManagementViewModel.CancelCommand);
+            Assert.Multiple(() => 
+            {
+                Assert.That(ManagementViewModel.ConfirmationRequest, Is.Not.Null); 
+                Assert.That(ManagementViewModel.OkCommand, Is.Not.Null);
+                Assert.That(ManagementViewModel.CancelCommand, Is.Not.Null);
+            });
         }
     }
 }
