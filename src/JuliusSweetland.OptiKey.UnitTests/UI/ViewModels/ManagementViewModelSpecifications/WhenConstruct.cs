@@ -24,7 +24,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         public void ThenChildViewModelShouldBeConstructed()
         {
             Assert.IsNotNull(ManagementViewModel.DictionaryViewModel);
-            Assert.IsNotNull(ManagementViewModel.OtherViewModel);
+            Assert.IsNotNull(ManagementViewModel.FeaturesViewModel);
             Assert.IsNotNull(ManagementViewModel.GesturesViewModel);
             Assert.IsNotNull(ManagementViewModel.PointingAndSelectingViewModel);
             Assert.IsNotNull(ManagementViewModel.SoundsViewModel);
