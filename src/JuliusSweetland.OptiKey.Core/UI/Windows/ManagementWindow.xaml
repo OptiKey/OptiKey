@@ -11,6 +11,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                      WindowStartupLocation="CenterOwner"
                      WindowState="Maximized"
                      ResizeMode="CanResizeWithGrip"
+                     SaveWindowPosition="True"
                      MinWidth="300" MinHeight="200"
                      Icon="..\..\Resources\Icons\Management.ico"
                      FlowDirection="{Binding Source={x:Static resx:Settings.Default}, Path=UiLanguageFlowDirection}">

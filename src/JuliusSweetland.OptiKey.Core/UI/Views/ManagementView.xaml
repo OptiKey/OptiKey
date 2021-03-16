@@ -25,57 +25,57 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              <RowDefinition Height="*"/>
              <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.Resources>
-            <Style TargetType="{x:Type TextBlock}">
-                <Style.Triggers>
-                    <Trigger Property="IsEnabled" Value="True">
-                        <Setter Property="Foreground" Value="Black" />
-                    </Trigger>
-                    <Trigger Property="IsEnabled" Value="False">
-                        <Setter Property="Foreground" Value="Gray" />
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-            <Style TargetType="{x:Type CheckBox}">
-                <Style.Triggers>
-                    <Trigger Property="IsEnabled" Value="True">
-                        <Setter Property="Foreground" Value="White" />
-                    </Trigger>
-                    <Trigger Property="IsEnabled" Value="False">
-                        <Setter Property="Foreground" Value="Gray" />
-                    </Trigger>
-                </Style.Triggers>
-                <Style.Resources>
-                    <Style TargetType="{x:Type Path}">
-                        <Setter Property="FlowDirection" Value="LeftToRight"/>
-                    </Style>
-                </Style.Resources>
-            </Style>
-        </Grid.Resources>
-        <TabControl Grid.IsSharedSizeScope="True">
-            <TabItem Header="{x:Static resx:Resources.VISUALS}">
-                <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.SOUNDS}">
-                <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.WORDS}">
-                <management:WordsView DataContext="{Binding WordsViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.POINT_AND_SELECTING}">
-                <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.DICTIONARY}">
-                <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.FEATURES_LABEL}">
-                <management:FeaturesView DataContext="{Binding FeaturesViewModel, Mode=OneWay}" />
-            </TabItem>
-            <TabItem Header="{x:Static resx:Resources.OTHER}">
-                <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />
-            </TabItem>
-        </TabControl>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+    <Grid.Resources>
+      <Style TargetType="{x:Type TextBlock}">
+        <Style.Triggers>
+          <Trigger Property="IsEnabled" Value="True">
+            <Setter Property="Foreground" Value="Black" />
+          </Trigger>
+          <Trigger Property="IsEnabled" Value="False">
+            <Setter Property="Foreground" Value="Gray" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+      <Style TargetType="{x:Type CheckBox}">
+        <Style.Triggers>
+          <Trigger Property="IsEnabled" Value="True">
+            <Setter Property="Foreground" Value="White" />
+          </Trigger>
+          <Trigger Property="IsEnabled" Value="False">
+            <Setter Property="Foreground" Value="Gray" />
+          </Trigger>
+        </Style.Triggers>
+        <Style.Resources>
+          <Style TargetType="{x:Type Path}">
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+          </Style>
+        </Style.Resources>
+      </Style>
+    </Grid.Resources>
+    <TabControl Grid.IsSharedSizeScope="True">
+      <TabItem Header="{x:Static resx:Resources.VISUALS}">
+          <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
+        </TabItem>
+        <TabItem Header="{x:Static resx:Resources.SOUNDS}">
+          <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
+        </TabItem>
+        <TabItem Header="{x:Static resx:Resources.WORDS}">
+          <management:WordsView DataContext="{Binding WordsViewModel, Mode=OneWay}" />
+        </TabItem>
+        <TabItem Header="{x:Static resx:Resources.POINT_AND_SELECTING}">
+          <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
+        </TabItem>
+        <TabItem Header="{x:Static resx:Resources.DICTIONARY}">
+          <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
+        </TabItem>
+        <TabItem Header="Gestures">
+          <management:GesturesView DataContext="{Binding GesturesViewModel, Mode=OneWay}" />
+        </TabItem>
+        <TabItem Header="{x:Static resx:Resources.FEATURES_LABEL}">
+          <management:FeaturesView DataContext="{Binding FeaturesViewModel, Mode=OneWay}" />
+        </TabItem>
+    </TabControl>
+    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Command="{Binding OkCommand}" 
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
                     MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">

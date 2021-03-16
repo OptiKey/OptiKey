@@ -22,6 +22,7 @@ namespace JuliusSweetland.OptiKey.Services
         private IDisposable pointsPerSecondSubscription;
         private IDisposable currentPositionSubscription;
         private IDisposable selectionProgressSubscription;
+        private IDisposable eyeGestureTriggerSubscription;
         private IDisposable selectionTriggerSubscription;
         private IDisposable multiKeySelectionSubscription;
         private CancellationTokenSource mapToDictionaryMatchesCancellationTokenSource;
@@ -117,6 +118,13 @@ namespace JuliusSweetland.OptiKey.Services
                 case SelectionModes.Point:
                     selectionTriggerSource = pointSelectionTriggerSource;
                     break;
+            }
+
+            if (eyeGestureTriggerSource != null)
+            {
+                eyeGestureTriggerSubscription = eyeGestureTriggerSource.Sequence
+                    .ObserveOnDispatcher()
+                    .Subscribe(ProcessSelectionTrigger);
             }
 
             if (selectionTriggerSource != null)
@@ -386,6 +394,11 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("Disposing of subscriptions to SelectionTriggerSource for selections & results.");
 
+            if (eyeGestureTriggerSubscription != null)
+            {
+                eyeGestureTriggerSubscription.Dispose();
+                eyeGestureTriggerSubscription = null;
+            }
             if (selectionTriggerSubscription != null)
             {
                 selectionTriggerSubscription.Dispose();
