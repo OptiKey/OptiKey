@@ -1,0 +1,253 @@
+<!--Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved-->
+<UserControl x:Class="JuliusSweetland.OptiKey.UI.Controls.GestureEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:c="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
+             mc:Ignorable="d">
+  <UserControl.Resources>
+    <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />
+    <valueConverters:ListNotEmpty x:Key="ListNotEmpty"/>
+  </UserControl.Resources>
+  <Grid>
+    <ListBox Name="StepList" Background="Transparent" ItemsSource="{Binding EyeGesture.Steps}">
+      <ListBox.ItemContainerStyle>
+        <Style TargetType="ListBoxItem">
+          <EventSetter Event="MouseEnter" Handler="SelectStep" />
+        </Style>
+      </ListBox.ItemContainerStyle>
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <Border CornerRadius="4" Background="#7F01476f" Margin="2">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" SharedSizeGroup="new"/>
+                  <ColumnDefinition Width="*" SharedSizeGroup="del"/>
+                  <ColumnDefinition Width="*" SharedSizeGroup="type"/>
+                  <ColumnDefinition Width="65" SharedSizeGroup="timeout"/>
+                  <ColumnDefinition Width="*" SharedSizeGroup="grids"/>
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Top" Content="Step" HorizontalAlignment="Center"/>
+                <Button Grid.Row="1" Margin="5,2" Click="CopyStep_Click" BorderThickness="0" Width="35" Height="25">
+                  <Path Stroke="Black" Data="M0,6 H12 M6,0 V12Z" Width="12" Height="12" StrokeThickness="4"/>
+                </Button>
+                <Label Grid.Column="1" VerticalAlignment="Top" Content="Delete"/>
+                <Button Grid.Column="1" Grid.Row="1" Margin="2" Background="IndianRed" Click="DeleteStep_Click" BorderThickness="0" Width="35" Height="25">
+                  <Path Stroke="White" Data="M0,6 H12" Width="12" Height="12" StrokeThickness="3"/>
+                </Button>
+                <Label Grid.Column="2" VerticalAlignment="Top" Content="Type"/>
+                <ComboBox Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Margin="5"
+                                ItemsSource="{Binding Source={x:Static 
+                                    controls:GestureEditor.StepTypeList}}"
+                                SelectedItem="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
+                                SelectionChanged="TypeChanged"/>
+                <Label Grid.Column="3" VerticalAlignment="Top" Content="Limit (ms)"/>
+                <c:NumericUpDown Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Margin="5" 
+                                 HorizontalContentAlignment="Left" Minimum="100" Maximum="10000" HideUpDownButtons="True"
+                                 Value="{Binding TimeLimit}"/>
+                <Grid x:Name="FixationGrid" Grid.Column="4" Grid.RowSpan="2">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65" SharedSizeGroup="f1"/>
+                    <ColumnDefinition Width="65" SharedSizeGroup="f2"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                      <Setter Property="Visibility" Value="Collapsed" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding Type}" Value="Fixation">
+                          <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Type}" Value="ReturnToFixation">
+                          <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </Grid.Style>
+                  <Label Grid.Column="0" VerticalAlignment="Top" Content="Dwell (ms)"/>
+                  <Label Grid.Column="1" VerticalAlignment="Top" Content="Radius"/>
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5"
+                                   HorizontalContentAlignment="Left"
+                                         HideUpDownButtons="True" ValueChanged="NumericUpDown_ValueChanged"
+                                         Value="{Binding DwellTime, UpdateSourceTrigger=PropertyChanged}"/>
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5"
+                                   HorizontalContentAlignment="Left"
+                                         HideUpDownButtons="True" ValueChanged="NumericUpDown_ValueChanged"
+                                         Value="{Binding Radius, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+                <Grid x:Name="LookAtArea" Grid.Column="4" Grid.RowSpan="2">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65" SharedSizeGroup="sc1"/>
+                    <ColumnDefinition Width="60" SharedSizeGroup="sc2"/>
+                    <ColumnDefinition Width="60" SharedSizeGroup="sc3"/>
+                    <ColumnDefinition Width="60" SharedSizeGroup="sc4"/>
+                    <ColumnDefinition Width="60" SharedSizeGroup="sc5"/>
+                    <ColumnDefinition Width="60" SharedSizeGroup="sc6"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                      <Setter Property="Visibility" Value="Collapsed" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding Type}" Value="LookAtArea">
+                          <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </Grid.Style>
+                  <Label Grid.Column="0" VerticalAlignment="Top" Content="Dwell (ms)"/>
+                  <Label Grid.Column="1" VerticalAlignment="Top" Content="Left"/>
+                  <Label Grid.Column="2" VerticalAlignment="Top" Content="Top"/>
+                  <Label Grid.Column="3" VerticalAlignment="Top" Content="Width"/>
+                  <Label Grid.Column="4" VerticalAlignment="Top" Content="Height"/>
+                  <Label Grid.Column="5" VerticalAlignment="Top" Content="Round"/>
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5"
+                                   HideUpDownButtons="True" ValueChanged="NumericUpDown_ValueChanged"
+                                   HorizontalContentAlignment="Left"
+                                   Value="{Binding DwellTime, UpdateSourceTrigger=PropertyChanged}"/>
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5"
+                                   HorizontalContentAlignment="Left"
+                                         HideUpDownButtons="True" ValueChanged="NumericUpDown_ValueChanged"
+                                         Value="{Binding Left, UpdateSourceTrigger=PropertyChanged}"/>
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="5"
+                                   HorizontalContentAlignment="Left"
+                                         HideUpDownButtons="True" ValueChanged="NumericUpDown_ValueChanged"
+                                         Value="{Binding Top, UpdateSourceTrigger=PropertyChanged}" />
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="5"
+                                   HorizontalContentAlignment="Left"
+                                         HideUpDownButtons="True" ValueChanged="NumericUpDown_ValueChanged"
+                                         Value="{Binding Width, UpdateSourceTrigger=PropertyChanged}" />
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" Margin="5"
+                                   HorizontalContentAlignment="Left"
+                                         HideUpDownButtons="True" ValueChanged="NumericUpDown_ValueChanged"
+                                         Value="{Binding Height, UpdateSourceTrigger=PropertyChanged}" />
+                  <CheckBox Grid.Row="1" Grid.Column="5" VerticalAlignment="Center" Margin="5"
+                                  IsChecked="{Binding Round, UpdateSourceTrigger=PropertyChanged}"
+                                  Checked="CheckBox_Changed" Unchecked="CheckBox_Changed"
+                                  HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid x:Name="LookInDirection" Grid.Column="4" Grid.RowSpan="2">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65" SharedSizeGroup="scx"/>
+                    <ColumnDefinition Width="65" SharedSizeGroup="scy"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                      <Setter Property="Visibility" Value="Collapsed" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding Type}" Value="LookInDirection">
+                          <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </Grid.Style>
+                  <Label Grid.Column="0" VerticalAlignment="Top" Content="X-Amount"/>
+                  <Label Grid.Column="1" VerticalAlignment="Top" Content="Y-Amount"/>
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5"
+                                   HorizontalContentAlignment="Left"
+                                         HideUpDownButtons="True" ValueChanged="NumericUpDown_ValueChanged"
+                                         Value="{Binding X, UpdateSourceTrigger=PropertyChanged}" />
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5"
+                                   HorizontalContentAlignment="Left"
+                                         HideUpDownButtons="True" ValueChanged="NumericUpDown_ValueChanged"
+                                         Value="{Binding Y, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+              </Grid>
+              <Grid Grid.Row="1">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+                  <Button Grid.Row="0" Margin="5,2" Click="MoveUp_Click" Width="35" Height="25" >
+                    <Path Fill="Black" Data="M0 6 6 0 12 6Z " Width="12" Height="6" />
+                  </Button>
+                  <Button Grid.Row="1" Margin="5,2" Click="MoveDown_Click" Width="35" Height="25" >
+                    <Path Fill="Black" Data="M0 0 6 6 12 0Z " Width="12" Height="6" VerticalAlignment="Top"/>
+                  </Button>
+                  <Border Grid.Column="1" Grid.RowSpan="3" BorderBrush="Black"
+                      BorderThickness="3" CornerRadius="4">
+                    <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                      <Label FontSize="12" Content="Action"/>
+                        <Button HorizontalAlignment="Center" Click="AddEvent_Click" BorderThickness="0" Padding="0" Width="40">
+                          <Path Stroke="Black" Data="M0,6 H12 M6,0 V12Z" 
+                              Width="12" Height="12" StrokeThickness="4"/>
+                        </Button>
+                      </StackPanel>
+                      <ListBox Name="CommandList" Background="Transparent" ItemsSource="{Binding Commands}">
+                        <ListBox.ItemContainerStyle>
+                          <Style TargetType="{x:Type ListBoxItem}">
+                            <EventSetter Event="MouseEnter" Handler="SelectEvent" />
+                          </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                          <DataTemplate>
+                            <Grid>
+                              <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc1" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc2" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc3" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc4" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc5" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc6" />
+                              </Grid.ColumnDefinitions>
+                              <Button Grid.Column="1" Margin="3" Background="IndianRed" Click="DeleteEvent_Click"
+                                  BorderThickness="0" Width="30" Height="20">
+                                <Path Stroke="White" Data="M0,6 H12" Width="12" Height="12" StrokeThickness="3"/>
+                              </Button>
+                              <ComboBox Name="Command" Grid.Column="2" VerticalAlignment="Center" Margin="3"
+                                    SelectedItem="{Binding NameAsString}"
+                                    ItemsSource="{Binding Source={x:Static controls:GestureEditor.CommandKeyList}}"/>
+                              <ComboBox Grid.Column="3" VerticalAlignment="Center" Margin="3" MinWidth="90" IsEditable="True" IsTextSearchEnabled="True" GotFocus="TextBox_GotFocus" 
+                                    Text="{Binding Value}"/>
+                              <Label Grid.Column="4" VerticalAlignment="Center" Content="Link Back:"
+                                   Visibility="{Binding HideBack, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                              <CheckBox Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                      IsChecked="{Binding BackAction}" Visibility="{Binding HideBack, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                              <Label Grid.Column="4" VerticalAlignment="Center" Content="Method:"
+                                   Visibility="{Binding HideMethod, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                              <TextBox Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                     MinWidth="60" Text="{Binding Method}" Visibility="{Binding HideMethod, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                            </Grid>
+                          </DataTemplate>
+                        </ListBox.ItemTemplate>
+                      </ListBox>
+                    </StackPanel>
+                  </Border>
+              </Grid>
+            </Grid>
+          </Border>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </Grid>
+</UserControl>
+
+  

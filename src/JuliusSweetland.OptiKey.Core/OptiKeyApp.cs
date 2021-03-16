@@ -68,7 +68,7 @@ namespace JuliusSweetland.OptiKey
 
         public OptiKeyApp()
         {
-            
+
         }
 
         // This will be assigned from within derived apps
@@ -291,7 +291,7 @@ namespace JuliusSweetland.OptiKey
                 presageTestInstance.save_config();
                 Log.Info("Presage settings set successfully.");
             }
-            
+
             return false;
         }
 
@@ -683,7 +683,7 @@ namespace JuliusSweetland.OptiKey
             List<INotifyErrors> errorNotifyingServices)
         {
             Log.Info("Creating InputService.");
-            
+
             //Instantiate point source
             IPointSource pointSource;
             switch (Settings.Default.PointsSource)
@@ -752,6 +752,8 @@ namespace JuliusSweetland.OptiKey
                     throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
             }
 
+            ITriggerSource eyeGestureTriggerSource = new EyeGestureSource(pointSource);
+
             //Instantiate key trigger source
             ITriggerSource keySelectionTriggerSource;
             switch (Settings.Default.KeySelectionTriggerSource)
@@ -817,7 +819,7 @@ namespace JuliusSweetland.OptiKey
             }
 
             var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
-                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
+            pointSource, eyeGestureTriggerSource, keySelectionTriggerSource, pointSelectionTriggerSource);
             inputService.RequestSuspend(); //Pause it initially
             return inputService;
         }
@@ -834,10 +836,11 @@ namespace JuliusSweetland.OptiKey
             {
                 Log.InfoFormat("Assembly file version: {0}", assemblyFileVersion);
             }
-            if(DiagnosticInfo.IsApplicationNetworkDeployed)
-            {
-                Log.InfoFormat("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion);
-            }
+            if (DiagnosticInfo.IsApplicationNetworkDeployed)
+                if (DiagnosticInfo.IsApplicationNetworkDeployed)
+                {
+                    Log.InfoFormat("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion);
+                }
             Log.InfoFormat("Running as admin: {0}", DiagnosticInfo.RunningAsAdministrator);
             Log.InfoFormat("Process elevated: {0}", DiagnosticInfo.IsProcessElevated);
             Log.InfoFormat("Process bitness: {0}", DiagnosticInfo.ProcessBitness);
@@ -913,10 +916,10 @@ namespace JuliusSweetland.OptiKey
                     message.ToString(),
                     NotificationTypes.Normal,
                     () =>
-                        {
-                            inputService.RequestResume();
-                            taskCompletionSource.SetResult(true);
-                        });
+                    {
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(true);
+                    });
             }
             else
             {
@@ -1022,6 +1025,32 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
+        #region Validate EyeGestures File
+
+        protected static void ValidateEyeGesturesFile()
+        {
+            var eyeGesturesFilePath = Settings.Default.EyeGestureFile;
+
+            try
+            {
+                XmlEyeGestures.ReadFromFile(eyeGesturesFilePath);
+            }
+            catch
+            {
+                var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"OptiKey\OptiKey\EyeGestures\");
+
+                var eyeGesturesFile = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\EyeGestures").First();
+
+                eyeGesturesFilePath = Path.Combine(applicationDataPath, Path.GetFileName(eyeGesturesFile));
+
+                File.Copy(eyeGesturesFile, eyeGesturesFilePath, true);
+            }
+
+            Settings.Default.EyeGestureFile = eyeGesturesFilePath;
+        }
+
+        #endregion
+
         #region Validate Dynamic Keyboard Location
 
         protected static string GetDefaultUserKeyboardFolder()
@@ -1104,7 +1133,7 @@ namespace JuliusSweetland.OptiKey
                     Log.Info("Previously unpacked CommuniKate pageset deleted successfully.");
                 }
                 Settings.Default.CommuniKateStagedForDeletion = false;
-                
+
                 Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                 Settings.Default.CommuniKateKeyboardCurrentContext = null;
                 Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
@@ -1161,7 +1190,7 @@ namespace JuliusSweetland.OptiKey
                     catch (Exception ex)
                     {
                         var errorMsg = string.Format(
-                            "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.", 
+                            "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.",
                             Settings.Default.SpeechVoice);
                         Log.Error(errorMsg, ex);
                         Settings.Default.MaryTTSEnabled = false;
@@ -1230,7 +1259,7 @@ namespace JuliusSweetland.OptiKey
             {
                 taskCompletionSource.SetResult(true);
             }
-            
+
             return await taskCompletionSource.Task;
         }
 
@@ -1239,7 +1268,7 @@ namespace JuliusSweetland.OptiKey
         #region Alert If Presage Bitness Or Bootstrap Or Version Failure
 
         protected static async Task<bool> AlertIfPresageBitnessOrBootstrapOrVersionFailure(
-            bool presageInstallationProblem, IInputService inputService, IAudioService audioService,  MainViewModel mainViewModel)
+            bool presageInstallationProblem, IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
@@ -1258,16 +1287,16 @@ namespace JuliusSweetland.OptiKey
                         taskCompletionSource.SetResult(false);
                     });
             }
-            else 
-            {
-                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
-                {
-                    Log.Info("Presage installation validated.");
-                }
-                taskCompletionSource.SetResult(true);
-            }
+            else
+{
+    if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+    {
+        Log.Info("Presage installation validated.");
+    }
+    taskCompletionSource.SetResult(true);
+}
 
-            return await taskCompletionSource.Task;
+return await taskCompletionSource.Task;
         }
 
         #endregion
