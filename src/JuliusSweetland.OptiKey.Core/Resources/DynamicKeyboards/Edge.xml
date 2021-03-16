@@ -1,0 +1,29 @@
+<Keyboard>
+	<Name>Edge</Name>
+    <HideFromKeyboardMenu>true</HideFromKeyboardMenu>
+	<WindowState>Floating</WindowState>
+	<Position>Top</Position>
+	<Width>100.5%</Width>
+	<Height>97%</Height>
+	<VerticalOffset>-.25%</VerticalOffset>
+    <SymbolMargin>10</SymbolMargin>
+    <BorderThickness>2,2,2,2</BorderThickness>
+	<BackgroundColor>Transparent</BackgroundColor>
+	<BorderColor>Black</BorderColor>
+    <Grid>
+        <Rows>14</Rows>
+        <Cols>16</Cols> 
+    </Grid>
+	<KeyGroup Name="All" LockOnTime="200" CompletionTimes="0,400"/>
+    <Content>
+		<DynamicKey Col="15" Height="2"><Symbol>CommuniKateIcon</Symbol><ChangeKeyboard BackReturnsHere="true">FullSymbol</ChangeKeyboard></DynamicKey>
+		<DynamicKey Col="15" Height="2"><KeyUp>MouseMagnifier</KeyUp><Action>MouseMagnifier</Action><Action>MouseMoveAndLeftClick</Action>
+			<Label>Left Click</Label><Symbol>MouseLeftClickIcon</Symbol></DynamicKey>
+        <DynamicKey Col="15" Height="2"><KeyUp>MouseMagnifier</KeyUp><Action>MouseMagnifier</Action><Action>MouseMoveAndRightClick</Action>
+			<Label>Right Click</Label><Symbol>MouseRightClickIcon</Symbol></DynamicKey>
+        <DynamicKey Col="15" Height="2"><ChangeKeyboard BackReturnsHere="true">FullQwerty</ChangeKeyboard><Symbol>KeyboardIcon</Symbol></DynamicKey>  
+		<DynamicKey Col="15" Height="2"><Action>Sleep</Action><Symbol>SleepIcon</Symbol></DynamicKey> 
+        <DynamicKey Col="15" Height="2"><Action>LookToScrollActive</Action><Symbol>LookToScrollActiveIcon</Symbol></DynamicKey>       
+		<DynamicKey Col="15" Height="2"><Label>Resize Window</Label><Symbol>LookToScrollBoundsWindowIcon</Symbol><MoveWindow>0,0,94%,97%</MoveWindow></DynamicKey>
+    </Content>
+</Keyboard>
