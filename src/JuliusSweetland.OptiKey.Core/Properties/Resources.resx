@@ -2422,4 +2422,10 @@ Magyar
   <data name="TOBII_PCEYE_5" xml:space="preserve">
     <value>Tobii PCEye 5</value>
   </data>
+  <data name="GAZE_INDICATOR_SIZE" xml:space="preserve">
+    <value>Gaze Indicator Size</value>
+  </data>
+  <data name="GAZE_INDICATOR_STYLE" xml:space="preserve">
+    <value>Gaze Indicator Style</value>
+  </data>
 </root>

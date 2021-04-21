@@ -2343,7 +2343,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (!suppressMagnification
                     && keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                 {
-                    ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
+                    ShowCursor = false;
+                    //Ensure cursor is not showing when MagnifyAtPoint is set because...
                     //1.This triggers a screen capture, which shouldn't have the cursor in it.
                     //2.Last popup open stays on top (I know the VM in MVVM shouldn't care about this, so pretend it's all reason 1).
                     MagnifiedPointSelectionAction = finalClickAction;

@@ -54,6 +54,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
         private bool showCursor;
+        private bool showCrosshair;
+        private bool showMonical;
+        private bool showSuggestions;
         private bool manualModeEnabled;
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
@@ -101,6 +104,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
             AttachKeyboardSupportsMultiKeySelectionListener();
+            ShowCrosshair = Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Crosshair
+                || Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Scope;
+            ShowMonical = Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Monical
+                || Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Scope;
         }
 
         #endregion
@@ -208,6 +215,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             get { return showCursor; }
             set { SetProperty(ref showCursor, value); }
+        }
+
+        public bool ShowCrosshair
+        {
+            get { return showCrosshair; }
+            set { SetProperty(ref showCrosshair, value); }
+        }
+
+        public bool ShowMonical
+        {
+            get { return showMonical; }
+            set { SetProperty(ref showMonical, value); }
+        }
+
+        public bool ShowSuggestions
+        {
+            get { return showSuggestions; }
+            set { SetProperty(ref showSuggestions, value); }
         }
 
         public Point? MagnifyAtPoint
