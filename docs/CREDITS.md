@@ -52,6 +52,12 @@ I would like to extend my thanks/credit to the following people, websites & orga
 * Crazyb
 * William
 * Dan Ngo
+* TheIdleZany
+* Warren Macchi
+* Jack O'Shea
+* Lin
+* Sebastian Condrea
+* Jay Noyes
 
 ## Resources
 
