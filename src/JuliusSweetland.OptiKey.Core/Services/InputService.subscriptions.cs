@@ -120,7 +120,7 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
             }
 
-            if (eyeGestureTriggerSource != null)
+            if (eyeGestureTriggerSource != null && eyeGestureTriggerSubscription == null)
             {
                 eyeGestureTriggerSubscription = eyeGestureTriggerSource.Sequence
                     .ObserveOnDispatcher()

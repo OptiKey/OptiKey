@@ -56,15 +56,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #region Methods
 
-        private void Disable()
+        private void Redraw()
         {
-            EyeGesture.enabled = false;
             Preview = null;
         }
 
         private void TypeChanged(object sender, SelectionChangedEventArgs e)
         {
-            Disable();
+            Redraw();
         }
 
         private void SelectStep(object sender, System.Windows.Input.MouseEventArgs e)
@@ -85,7 +84,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 
             }
             catch { try { EyeGesture.Steps.Insert(0, new EyeGestureStep()); } catch { } }
-            Disable();
+            Redraw();
         }
 
         private void MoveUp_Click(object sender, RoutedEventArgs e)
@@ -93,7 +92,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             try
             {
                 EyeGesture.Steps.Move(stepIndex - 1, stepIndex);
-                Disable();
+                Redraw();
             }
             catch { }
         }
@@ -103,7 +102,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             try
             {
                 EyeGesture.Steps.Move(stepIndex + 1, stepIndex);
-                Disable();
+                Redraw();
             }
             catch { }
         }
@@ -114,7 +113,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (!EyeGesture.Steps.Any())
                 EyeGesture.Steps.Add(new EyeGestureStep());
 
-            Disable();
+            Redraw();
         }
 
         private void SelectEvent(object sender, System.Windows.Input.MouseEventArgs e)
@@ -131,23 +130,23 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 EyeGesture.Steps[stepIndex].Commands = new ObservableCollection<XmlKeyCommand>();
 
             EyeGesture.Steps[stepIndex].Commands.Add(new XmlKeyCommand());
-            Disable();
+            Redraw();
         }
 
         private void DeleteEvent_Click(object sender, RoutedEventArgs e)
         {
             EyeGesture.Steps[stepIndex].Commands.RemoveAt(eventIndex);
-            Disable();
+            Redraw();
         }
 
         private void CheckBox_Changed(object sender, RoutedEventArgs e)
         {
-             Disable();
+             Redraw();
         }
 
         private void NumericUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            Disable();
+            Redraw();
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)

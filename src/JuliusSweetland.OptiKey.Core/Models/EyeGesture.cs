@@ -28,6 +28,6 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlIgnore] public Point FixationPoint { get; set; }
         [XmlIgnore] public int StepIndex { get; set; } = 0;
         [XmlIgnore] public Point PointStamp { get; set; }
-        [XmlIgnore] public DateTime TimeStamp { get; set; } = DateTime.Now;
+        [XmlIgnore] public DateTimeOffset TimeStamp { get; set; } = DateTimeOffset.Now;
     }
 }
