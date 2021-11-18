@@ -205,6 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\AppType.cs" />
+    <Compile Include="Enums\GazeIndicatorStyles.cs" />
     <Compile Include="Enums\EyeGestureStepTypes.cs" />
     <Compile Include="Enums\KeyboardLayouts.cs" />
     <Compile Include="Enums\KeyCommands.cs" />
@@ -916,6 +917,9 @@
     </Compile>
     <Compile Include="UI\Windows\ConfirmationWindow.xaml.cs">
       <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\OverlayWindow.xaml.cs">
+      <DependentUpon>OverlayWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\LookToScrollOverlayWindow.xaml.cs">
       <DependentUpon>LookToScrollOverlayWindow.xaml</DependentUpon>
@@ -2038,6 +2042,9 @@
     </Page>
     <Page Include="UI\Windows\ConfirmationWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\OverlayWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Windows\LookToScrollOverlayWindow.xaml">

@@ -116,7 +116,7 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         [XmlIgnore] public EyeGestureShape EyeGestureShape { get; set; }
-        [XmlIgnore] public DateTime DwellStart { get; set; } = DateTime.Now;
+        [XmlIgnore] public DateTimeOffset DwellStart { get; set; } = DateTimeOffset.Now;
 
         private ObservableCollection<XmlKeyCommand> commands;
         [XmlElement("Command")] public ObservableCollection<XmlKeyCommand> Commands 

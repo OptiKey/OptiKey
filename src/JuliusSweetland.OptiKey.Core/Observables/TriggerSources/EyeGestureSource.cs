@@ -90,19 +90,19 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                     if (gesture.enabled)
                                     {
                                         if (gesture.StepIndex >= gesture.Steps.Count
-                                            && DateTime.Now > gesture.TimeStamp + TimeSpan.FromMilliseconds(gesture.Cooldown))
+                                            && DateTimeOffset.Now > gesture.TimeStamp + TimeSpan.FromMilliseconds(gesture.Cooldown))
                                         {
                                             gesture.StepIndex = 0;
-                                            gesture.TimeStamp = DateTime.Now;
+                                            gesture.TimeStamp = DateTimeOffset.Now;
                                         }
                                         else if (gesture.StepIndex < gesture.Steps.Count)
                                         {
                                             var step = gesture.Steps[gesture.StepIndex];
 
-                                            if (gesture.StepIndex > 0 && DateTime.Now > gesture.TimeStamp + TimeSpan.FromMilliseconds(step.TimeLimit))
+                                            if (gesture.StepIndex > 0 && DateTimeOffset.Now > gesture.TimeStamp + TimeSpan.FromMilliseconds(step.TimeLimit))
                                             {
                                                 gesture.StepIndex = 0;
-                                                gesture.TimeStamp = DateTime.Now;
+                                                gesture.TimeStamp = DateTimeOffset.Now;
                                                 step = gesture.Steps[0];
                                             }
 
@@ -133,9 +133,11 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                                 step = gesture.Steps[0];
                                                 //advance the expiration if we still meet the parameters of the starting step
                                                 _ = PointAdvancesGesture(checkPoint, moveDelta, ref gesture, ref step);
+                                                gesture.Steps[0] = step;
                                             }
                                         }
                                     }
+                                    gestureList[i] = gesture;
                                 }
                             }
                         },
@@ -179,8 +181,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             if (step.type == EyeGestureStepTypes.Fixation)
             {
                 if (moveDelta > step.Radius)
-                    step.DwellStart = DateTime.Now;
-                else if (DateTime.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
+                    step.DwellStart = DateTimeOffset.Now;
+                else if (DateTimeOffset.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
                 {
                     result = true;
                     gesture.FixationPoint = checkpoint;
@@ -205,8 +207,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                     var yLength = checkpoint.Y - (top + yRadius);
 
                     if (Math.Pow(xLength, 2) / Math.Pow(xRadius, 2) + Math.Pow(yLength, 2) / Math.Pow(yRadius, 2) > 1)
-                        step.DwellStart = DateTime.Now;
-                    else if (DateTime.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
+                        step.DwellStart = DateTimeOffset.Now;
+                    else if (DateTimeOffset.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
                         result = true;
                 }
                 else
@@ -215,23 +217,23 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                     var height = step.Height * Graphics.VirtualScreenHeightInPixels / 100d;
 
                     if (checkpoint.X < left || checkpoint.X > left + width || checkpoint.Y < top || checkpoint.Y > top + height)
-                        step.DwellStart = DateTime.Now;
-                    else if (DateTime.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
+                        step.DwellStart = DateTimeOffset.Now;
+                    else if (DateTimeOffset.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
                         result = true;
                 }
             }
             else
             {
                 if ((checkpoint - gesture.FixationPoint).Length > Graphics.VirtualScreenHeightInPixels * step.Width / 50d)
-                    step.DwellStart = DateTime.Now;
-                else if (DateTime.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
+                    step.DwellStart = DateTimeOffset.Now;
+                else if (DateTimeOffset.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
                     result = true;
             }
 
             if (result)
             {
                 gesture.PointStamp = checkpoint;
-                gesture.TimeStamp = DateTime.Now;
+                gesture.TimeStamp = DateTimeOffset.Now;
             }
             return result;
         }
