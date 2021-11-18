@@ -36,14 +36,14 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
           <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
             <Border CornerRadius="5" Width="70" Height="32" Margin="5">
               <Button Command="{Binding DisableAllCommand}" IsEnabled="{Binding AnyEnabled}"
-                      Background="IndianRed" Padding="0" BorderBrush="Black" BorderThickness="2">
-                <Path Data="M0,0 17,17 M17,0 0,17" Stroke="Black" StrokeThickness="3" VerticalAlignment="Center"/>
+                      Background="LightGray" Padding="0" BorderBrush="Black" BorderThickness="2">
+                <Path Data="M0,0 0,17 M11,0 11,17" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
               </Button>
             </Border>
             <Border CornerRadius="5" Width="70" Height="32" Margin="5">
               <Button Command="{Binding EnableAllCommand}" IsEnabled="{Binding NotAllEnabled}" Padding="0"
                       Background="ForestGreen" BorderBrush="Black" BorderThickness="2">
-                <Path Data="M 0 9 L 8 18 M 7 18 L 9 18 M 8 18 L 14 0" Stroke="Black" StrokeThickness="3" VerticalAlignment="Center" />
+                <Path Data="M 0 9 L 8 18 M 7 18 L 9 18 M 8 18 L 14 0" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center" />
               </Button>
             </Border>
           </StackPanel>
@@ -53,8 +53,6 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                   VerticalAlignment="Center" Content="Import"/>
             <Button Command="{Binding SaveFileCommand}" Width="70" Margin="5" 
                   VerticalAlignment="Center" Content="Export"/>
-            <Button Command="{Binding ResetChangesCommand}" Margin="5" 
-                  VerticalAlignment="Center" Content="Reset Changes"/>
           </StackPanel>
         </Grid>
         <StackPanel Orientation="Horizontal">
@@ -79,12 +77,12 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <Label Grid.Column="4" Margin="5,0" Content="{Binding EyeGesture.enabled, Converter={StaticResource BoolToCustomValues}}"/>
                 <Border Grid.Row="1" Grid.Column="0" Margin="5,0" CornerRadius="4" HorizontalAlignment="Center">
                   <Button Width="48" Height="32" Command="{Binding AddGestureCommand}">
-                    <Path Stroke="Black" Data="M0,6 H12 M6,0 V12Z" Width="12" Height="12" StrokeThickness="4"/>
+                    <Path Stroke="Black" Data="M0,8 16,8 M8,0 8,16" StrokeThickness="4"/>
                   </Button>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="1" CornerRadius="4" HorizontalAlignment="Center">
                   <Button Width="48" Height="32" Background="IndianRed" Command="{Binding DeleteGestureCommand}">
-                    <Path Stroke="White" Data="M0,6 H12" Width="12" Height="12" StrokeThickness="3"/>
+                    <Path Data="M0,0 16,16 M16,0 0,16" Stroke="Black" StrokeThickness="4"/>
                   </Button>
                 </Border>
                 <ComboBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="5" MinWidth="230" BorderThickness="0"
@@ -101,12 +99,12 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                   <Grid>
                     <Button Command="{Binding EnableCommand}" Background="ForestGreen" Padding="0"
                             BorderBrush="Black" BorderThickness="2">
-                      <Path Data="M 0 9 L 8 18 M 7 18 L 9 18 M 8 18 L 14 0" Stroke="Black" StrokeThickness="3" VerticalAlignment="Center"/>
+                      <Path Data="M 0 9 L 8 18 M 7 18 L 9 18 M 8 18 L 14 0" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
                     </Button>
-                    <Button Command="{Binding EnableCommand}" Background="IndianRed"
+                    <Button Command="{Binding EnableCommand}"
                             BorderBrush="Black" BorderThickness="2" Padding="0"
                       Visibility="{Binding EyeGesture.enabled, Converter={StaticResource InvertedBoolToVisibilityConverter}}">
-                      <Path Data="M0,0 17,17 M17,0 0,17" Stroke="Black" StrokeThickness="3" VerticalAlignment="Center"/>
+                      <Path Data="M0,0 0,17 M11,0 11,17" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
                     </Button>
                   </Grid>
                 </Border>

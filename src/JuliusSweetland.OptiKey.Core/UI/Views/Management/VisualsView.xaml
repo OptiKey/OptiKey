@@ -11,451 +11,420 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-
-    <UserControl.Resources>
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
-                <ResourceDictionary>
-                    <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
-                    <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-            <!-- hide position-related props if size&position can't be changed, disable if this is temporary -->
-            <Style x:Key="VisibilityOfPositionProperties"
-                   TargetType="{x:Type FrameworkElement}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Setter Property="IsEnabled" Value="False" />
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding MaximisedApp}" Value="True">
-                        <Setter Property="Visibility" Value="Collapsed" />
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding PersistedWindowState}" Value="True">
-                        <Setter Property="IsEnabled" Value="True" />
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding MainWindowState}" Value="Maximised">
-                        <Setter Property="IsEnabled" Value="False" />
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding MainWindowState}" Value="Minimised">
-                        <Setter Property="IsEnabled" Value="False" />
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-            <!-- as above, but collapse if not docked -->
-            <Style x:Key="VisibilityOfDockProperties"
-                   TargetType="{x:Type FrameworkElement}"
-                   BasedOn="{StaticResource VisibilityOfPositionProperties}">
-                <Setter Property="Visibility" Value="Collapsed" />
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding MainWindowState}" Value="Docked">
-                        <Setter Property="Visibility" Value="Visible" />
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-            <!-- as above, but collapse if not floating -->
-            <Style x:Key="VisibilityOfFloatingProperties"
-                   TargetType="{x:Type FrameworkElement}"
-                   BasedOn="{StaticResource VisibilityOfPositionProperties}">
-                <Setter Property="Visibility" Value="Collapsed" />
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding MainWindowState}" Value="Floating">
-                        <Setter Property="Visibility" Value="Visible" />
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
+          <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
+          <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />
         </ResourceDictionary>
-    </UserControl.Resources>
-
-
-    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+      </ResourceDictionary.MergedDictionaries>
+      <!-- hide position-related props if size&position can't be changed, disable if this is temporary -->
+      <Style x:Key="VisibilityOfPositionProperties"
+                   TargetType="{x:Type FrameworkElement}">
+        <Setter Property="Visibility" Value="Visible" />
+        <Setter Property="IsEnabled" Value="False" />
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding MaximisedApp}" Value="True">
+            <Setter Property="Visibility" Value="Collapsed" />
+          </DataTrigger>
+          <DataTrigger Binding="{Binding PersistedWindowState}" Value="True">
+            <Setter Property="IsEnabled" Value="True" />
+          </DataTrigger>
+          <DataTrigger Binding="{Binding MainWindowState}" Value="Maximised">
+            <Setter Property="IsEnabled" Value="False" />
+          </DataTrigger>
+          <DataTrigger Binding="{Binding MainWindowState}" Value="Minimised">
+            <Setter Property="IsEnabled" Value="False" />
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+      <!-- as above, but collapse if not docked -->
+      <Style x:Key="VisibilityOfDockProperties"
+                   TargetType="{x:Type FrameworkElement}"
+                   BasedOn="{StaticResource VisibilityOfPositionProperties}">
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding MainWindowState}" Value="Docked">
+            <Setter Property="Visibility" Value="Visible" />
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+      <!-- as above, but collapse if not floating -->
+      <Style x:Key="VisibilityOfFloatingProperties"
+                   TargetType="{x:Type FrameworkElement}"
+                   BasedOn="{StaticResource VisibilityOfPositionProperties}">
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding MainWindowState}" Value="Floating">
+            <Setter Property="Visibility" Value="Visible" />
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+    </ResourceDictionary>
+  </UserControl.Resources>
+  <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.LOOK}">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.LOOK}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.THEME_LABEL}" 
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.THEME_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="0" Grid.Column="1" 
+          <ComboBox Grid.Row="0" Grid.Column="1" 
                               ItemsSource="{Binding Themes}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding Theme, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.OPACITY_LABEL}" 
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.OPACITY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             StringFormat="{}{0:N1} %"
                                             Minimum="10" Maximum="100" Interval="10"
                                             Value="{Binding Opacity, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.SCRATCHPAD_NUMBER_OF_LINES_LABEL}" 
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.SCRATCHPAD_NUMBER_OF_LINES_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1"
                                             Value="{Binding ScratchpadNumberOfLines, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_WIDTH_LABEL}" 
+          <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_WIDTH_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding CursorWidthInPixels, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_HEIGHT_LABEL}" 
+          <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_HEIGHT_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding CursorHeightInPixels, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SOURCE_LABEL}" 
+          <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_STYLE}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
+          <ComboBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"
+                    ItemsSource="{Binding GazeIndicatorStyleList}"
+                    SelectedItem="{Binding GazeIndicatorStyle, Mode=TwoWay}" />
+          <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_SIZE}" 
+                               VerticalAlignment="Center" Margin="5" />
+          <controls:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="10" Interval="10"
+                                            Value="{Binding GazeIndicatorSize, Mode=TwoWay}" />
+          <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SOURCE_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+          <controls:NumericUpDown Grid.Row="7" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="100"  Interval="10"
                                             Value="{Binding MagnifySourcePercentageOfScreen, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_DESTINATION_LABEL}" 
+          <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_DESTINATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="8" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="100" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFIER_CENTER_ON_SCREEN}" 
+          <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFIER_CENTER_ON_SCREEN}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="7" Grid.Column="1" 
+          <CheckBox Grid.Row="9" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding MagnifierCenterOnScreen, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
+          <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
                                IsEnabled="{Binding Source='ConversationOnlyMode', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5">
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="Visible" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ConversationConfirmOnlyMode}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <CheckBox Grid.Row="8" Grid.Column="1" 
+            <TextBlock.Style>
+              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="Visibility" Value="Visible" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding ConversationConfirmOnlyMode}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </TextBlock.Style></TextBlock>
+          <CheckBox Grid.Row="10" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}"
                               IsEnabled="{Binding Source='ConversationOnlyMode', Converter={StaticResource EnabledIfNotOverridden}}"
                               Visibility="{Binding ConversationConfirmOnlyMode, Converter={StaticResource InvertedBoolToVisibilityConverter}}" />
-
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ENABLE_LABEL}" 
+          <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ENABLE_LABEL}" 
                                IsEnabled="{Binding Source='ConversationConfirmEnable', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="9" Grid.Column="1" 
+          <CheckBox Grid.Row="11" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsEnabled="{Binding Source='ConversationConfirmEnable', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding ConversationConfirmEnable, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ONLY_MODE_LABEL}" 
+          <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ONLY_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="Visible" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ConversationConfirmEnable}" Value="False">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <CheckBox Grid.Row="10" Grid.Column="1" 
+            <TextBlock.Style>
+              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="Visibility" Value="Visible" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding ConversationConfirmEnable}" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </TextBlock.Style></TextBlock>
+          <CheckBox Grid.Row="12" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ConversationConfirmOnlyMode, Mode=TwoWay}">
-                        <CheckBox.Style>
-                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                                <Setter Property="Visibility" Value="Visible" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ConversationConfirmEnable}" Value="False">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </CheckBox.Style>
-                    </CheckBox>
-
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_LABEL}" 
+            <CheckBox.Style>
+              <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                <Setter Property="Visibility" Value="Visible" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding ConversationConfirmEnable}" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </CheckBox.Style>
+          </CheckBox>
+          <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_LABEL}" 
                                IsEnabled="{Binding Source='StartupKeyboard', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5">
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="Visible" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ConversationConfirmOnlyMode}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>    
-                    </TextBlock>
-                    <ComboBox Grid.Row="11" Grid.Column="1" 
+            <TextBlock.Style>
+              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="Visibility" Value="Visible" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding ConversationConfirmOnlyMode}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </TextBlock.Style></TextBlock>
+          <ComboBox Grid.Row="13" Grid.Column="1" 
                               ItemsSource="{Binding StartupKeyboards}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding StartupKeyboard, Mode=TwoWay}"
                               IsEnabled="{Binding Source='StartupKeyboard', Converter={StaticResource EnabledIfNotOverridden}}">
-                        <ComboBox.Style>
-                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
-                                <Setter Property="Visibility" Value="Visible" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ConversationConfirmOnlyMode}" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ComboBox.Style>
-                    </ComboBox>
-
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_FILE_LOCATION_LABEL}" 
+            <ComboBox.Style>
+              <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                <Setter Property="Visibility" Value="Visible" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding ConversationConfirmOnlyMode}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </ComboBox.Style>
+          </ComboBox>
+          <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_FILE_LOCATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" >
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="Collapsed" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding StartupKeyboard}" Value="CustomKeyboardFile">
-                                        <Setter Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-
-                    <StackPanel Grid.Row="12" Grid.Column="1" Orientation="Horizontal">
-                        <TextBlock Name="txtStartupKeyboardLocation"
+            <TextBlock.Style>
+              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding StartupKeyboard}" Value="CustomKeyboardFile">
+                    <Setter Property="Visibility" Value="Visible" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </TextBlock.Style></TextBlock>
+          <StackPanel Grid.Row="14" Grid.Column="1" Orientation="Horizontal">
+            <TextBlock Name="txtStartupKeyboardLocation"
                                    Text="{Binding StartupKeyboardFile, Mode=TwoWay}" 
                                    HorizontalAlignment="Left" 
                                    VerticalAlignment="Center"
                                    Margin="5" >
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                    <Setter Property="Visibility" Value="Collapsed" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding StartupKeyboard}" Value="CustomKeyboardFile">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                        <Button Click="FindStartupKeyboardFile" MinWidth="100" Margin="5,5,5,5" 
+              <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                  <Setter Property="Visibility" Value="Collapsed" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding StartupKeyboard}" Value="CustomKeyboardFile">
+                      <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Style></TextBlock>
+            <Button Click="FindStartupKeyboardFile" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
-                            <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                                    <Setter Property="Visibility" Value="Collapsed" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding StartupKeyboard}" Value="CustomKeyboardFile">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                    </StackPanel>
-
-                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.MINIMISED_POSITION_LABEL}" 
+              <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
+              <Button.Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                  <Setter Property="Visibility" Value="Collapsed" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding StartupKeyboard}" Value="CustomKeyboardFile">
+                      <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Button.Style>
+            </Button>
+          </StackPanel>
+          <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.MINIMISED_POSITION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="13" Grid.Column="1" 
+          <ComboBox Grid.Row="15" Grid.Column="1" 
                               ItemsSource="{Binding MinimisedPositions}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MinimisedPosition, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL}" 
+          <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <StackPanel Grid.Row="14" Grid.Column="1" Orientation="Horizontal">
-                        <TextBlock Name="txtKeyboardsLocation"
+          <StackPanel Grid.Row="16" Grid.Column="1" Orientation="Horizontal">
+            <TextBlock Name="txtKeyboardsLocation"
                                    Text="{Binding DynamicKeyboardsLocation, Mode=TwoWay}" 
                                    HorizontalAlignment="Left" 
                                    VerticalAlignment="Center"
-                                   Margin="5" >
-                        </TextBlock>
-                        <Button Click="FindKeyboardsFolder" MinWidth="100" Margin="5,5,5,5" 
+                                   Margin="5" ></TextBlock>
+            <Button Click="FindKeyboardsFolder" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
-                                <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
-                            </Button>
-                     </StackPanel>
-
-
-                    <TextBlock Grid.Row="15" Grid.Column="0" Text="Window state" 
+              <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
+            </Button>
+          </StackPanel>
+          <TextBlock Grid.Row="17" Grid.Column="0" Text="Window state" 
                                VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfPositionProperties}"/>
-                    <ComboBox Grid.Row="15" Grid.Column="1" 
+          <ComboBox Grid.Row="17" Grid.Column="1" 
                               ItemsSource="{Binding MainWindowStates}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               Visibility="{Binding MaximisedApp, Converter={StaticResource InvertedBoolToVisibilityConverter}}"
                               SelectedValue="{Binding MainWindowState, Mode=TwoWay}" 
                               Style="{StaticResource VisibilityOfPositionProperties}"/>
-                    
-                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.FLOATING_POSITION_LABEL}" 
+          <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.FLOATING_POSITION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfFloatingProperties}"/>
-                    <TextBox Grid.Row="16" Grid.Column="1" Text="{Binding FloatingSizeAndPosition, Mode=TwoWay, StringFormat=F0}"
+          <TextBox Grid.Row="18" Grid.Column="1" Text="{Binding FloatingSizeAndPosition, Mode=TwoWay, StringFormat=F0}"
                              VerticalAlignment="Center" Style="{StaticResource VisibilityOfFloatingProperties}"/>
-
-                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.DOCK_POSITION_LABEL}" 
+          <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.DOCK_POSITION_LABEL}" 
                            VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfDockProperties}"/>
-                    <ComboBox Grid.Row="16" Grid.Column="1" 
+          <ComboBox Grid.Row="18" Grid.Column="1" 
                               ItemsSource="{Binding DockPositions}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding DockPosition, Mode=TwoWay}" 
                               Style="{StaticResource VisibilityOfDockProperties}"/>
-
-                    <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
+          <TextBlock Grid.Row="19" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfDockProperties}"/>
-                    <controls:NumericUpDown Grid.Row="17" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="19" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="90" Interval="10"
                                             StringFormat="{}{0:N1} %"
                                             Value="{Binding MainWindowFullDockThicknessAsPercentageOfScreen, Mode=TwoWay}" 
                                             Style="{StaticResource VisibilityOfDockProperties}"/>
-
-                    <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
+          <TextBlock Grid.Row="20" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
                                VerticalAlignment="Center" Margin="5" Style="{StaticResource VisibilityOfDockProperties}"/>
-                    <controls:NumericUpDown Grid.Row="18" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="20" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="90" Interval="10"
                                             StringFormat="{}{0:N1} %"
                                             Value="{Binding MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, Mode=TwoWay}" 
                                             Style="{StaticResource VisibilityOfDockProperties}"/>
-                    
-                    <TextBlock Grid.Row="19" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_RESIZE_WITH_MOUSE}" 
+          <TextBlock Grid.Row="21" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_RESIZE_WITH_MOUSE}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="19" Grid.Column="1" 
+          <CheckBox Grid.Row="21" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding EnableResizeWithMouse, Mode=TwoWay}" />
-
-                </Grid>
-            </GroupBox>
-
-            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.FONT}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.FONT_FAMILY_LABEL}" 
+        </Grid>
+      </GroupBox>
+      <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.FONT}">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.FONT_FAMILY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="0" Grid.Column="1" 
+          <ComboBox Grid.Row="0" Grid.Column="1" 
                               ItemsSource="{Binding FontFamilies}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding FontFamily, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.FONT_STRETCH_LABEL}" 
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.FONT_STRETCH_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="1" Grid.Column="1" 
+          <ComboBox Grid.Row="1" Grid.Column="1" 
                               ItemsSource="{Binding FontStretches}"
                               SelectedValue="{Binding FontStretch, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.FONT_WEIGHT_LABEL}" 
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.FONT_WEIGHT_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="2" Grid.Column="1" 
+          <ComboBox Grid.Row="2" Grid.Column="1" 
                               ItemsSource="{Binding FontWeights}"
                               SelectedValue="{Binding FontWeight, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KEY_CASE_LABEL}" 
+          <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KEY_CASE_LABEL}" 
                                VerticalAlignment="Center" Margin="5"/>
-                    <ComboBox Grid.Row="3" Grid.Column="1" 
+          <ComboBox Grid.Row="3" Grid.Column="1" 
                               ItemsSource="{Binding KeyCases}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding KeyCase, Mode=TwoWay}" />
-                </Grid>
-            </GroupBox>
-
-            <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.NOTIFICATIONS}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.HORIZONTAL_FILL}" 
+        </Grid>
+      </GroupBox>
+      <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.NOTIFICATIONS}">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.HORIZONTAL_FILL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
                                             StringFormat="{}{0:N1} %"
                                             Minimum="1" Maximum="100" Interval="5"
                                             Value="{Binding ToastNotificationHorizontalFillPercentage, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.VERTICAL_FILL_LABEL}" 
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.VERTICAL_FILL_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             StringFormat="{}{0:N1} %"
                                             Minimum="1" Maximum="100" Interval="5"
                                             Value="{Binding ToastNotificationVerticalFillPercentage, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL}" 
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
+          <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="0.001" Interval="0.001"
                                             Value="{Binding ToastNotificationSecondsPerCharacter, Mode=TwoWay}" />
-                </Grid>
-            </GroupBox>
         </Grid>
-    </ScrollViewer>
+      </GroupBox>
+    </Grid>
+  </ScrollViewer>
 </UserControl>

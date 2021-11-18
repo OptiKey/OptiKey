@@ -779,6 +779,32 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("90")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GazeIndicatorSize {
+            get {
+                return ((int)(this["GazeIndicatorSize"]));
+            }
+            set {
+                this["GazeIndicatorSize"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public GazeIndicatorStyles GazeIndicatorStyle {
+            get {
+                return ((GazeIndicatorStyles)(this["GazeIndicatorStyle"]));
+            }
+            set {
+                this["GazeIndicatorStyle"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double MagnifySourcePercentageOfScreen {
