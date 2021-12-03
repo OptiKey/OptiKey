@@ -323,10 +323,14 @@
     <Compile Include="Native\Common\Enums\TOKEN_ELEVATION_TYPE.cs" />
     <Compile Include="Native\Common\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Common\Enums\WindowShowStyle.cs" />
-    <Compile Include="Native\Irisbond\Enums\CALIBRATION_STATUS.cs" />
-    <Compile Include="Native\Irisbond\Enums\CONTROLLING_EYE.cs" />
-    <Compile Include="Native\Irisbond\Enums\START_STATUS.cs" />
-    <Compile Include="Native\Irisbond\PInvoke.cs" />
+    <Compile Include="Native\Irisbond\Hiru\Enums\CALIBRATION_STATUS.cs" />
+    <Compile Include="Native\Irisbond\Hiru\Enums\CONTROLLING_EYE.cs" />
+    <Compile Include="Native\Irisbond\Hiru\Enums\START_STATUS.cs" />
+    <Compile Include="Native\Irisbond\Hiru\PInvoke.cs" />
+    <Compile Include="Native\Irisbond\Duo\Enums\CALIBRATION_STATUS.cs" />
+    <Compile Include="Native\Irisbond\Duo\Enums\CONTROLLING_EYE.cs" />
+    <Compile Include="Native\Irisbond\Duo\Enums\START_STATUS.cs" />
+    <Compile Include="Native\Irisbond\Duo\PInvoke.cs" />
     <Compile Include="Native\PInvoke.cs" />
     <Compile Include="Native\Common\Static\WindowStyles.cs" />
     <Compile Include="Native\Common\Structs\APPBARDATA.cs" />
@@ -352,6 +356,8 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\IrisbondHiruCalibrationService.cs" />
+    <Compile Include="Services\IrisbondHiruPointService.cs" />
     <Compile Include="Services\PluginEngine\PluginEngine.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
@@ -971,6 +977,10 @@
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
     <EmbeddedResource Include="Properties\Resources.uk-UA.resx" />
+    <Content Include="..\..\ext\IrisBond\IrisbondHiruAPI.dll">
+      <Link>IrisbondHiruAPI.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\ext\Irisbond\PGRFlyCapture.dll">
       <Link>PGRFlyCapture.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1421,6 +1431,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Dictionaries\EnglishUS.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -2110,6 +2121,7 @@
       <Name>SingleInstance</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

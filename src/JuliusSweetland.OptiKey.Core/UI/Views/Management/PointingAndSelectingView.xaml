@@ -156,6 +156,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisbondDuo}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisbondHiru}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBlock.Style>
@@ -170,6 +173,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisbondDuo}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.IrisbondHiru}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
                                 </Style.Triggers>

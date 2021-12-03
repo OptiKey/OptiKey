@@ -5,7 +5,8 @@ using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using log4net;
 using JuliusSweetland.OptiKey.Native.Irisbond;
-using JuliusSweetland.OptiKey.Native.Irisbond.Enums;
+using JuliusSweetland.OptiKey.Native.Irisbond.Duo;
+using JuliusSweetland.OptiKey.Native.Irisbond.Duo.Enums;
 using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services

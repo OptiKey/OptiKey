@@ -3060,6 +3060,28 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Irisbond Hiru.
+        /// </summary>
+        public static string IRISBOND_HIRU
+        {
+            get
+            {
+                return ResourceManager.GetString("IRISBOND_HIRU", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Hiru eye tracker then please make sure you have the Irisbond Hiru drivers installed. These can be downloaded from https://www.irisbond.com/products/downloads..
+        /// </summary>
+        public static string IRISBOND_HIRU_INFO
+        {
+            get
+            {
+                return ResourceManager.GetString("IRISBOND_HIRU_INFO", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Irisbond Duo tracker could not be started..
         /// </summary>
         public static string IRISBOND_TRACKER_COULD_NOT_BE_STARTED

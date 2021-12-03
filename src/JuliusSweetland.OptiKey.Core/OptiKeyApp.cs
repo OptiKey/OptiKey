@@ -653,6 +653,9 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.IrisbondDuo:
                     return new IrisbondDuoCalibrationService();
 
+                case PointsSources.IrisbondHiru:
+                    return new IrisbondHiruCalibrationService();
+
                 case PointsSources.Alienware17:
                 case PointsSources.SteelseriesSentry:
                 case PointsSources.TobiiEyeX:
@@ -696,11 +699,19 @@ namespace JuliusSweetland.OptiKey
                     break;
 
                 case PointsSources.IrisbondDuo:
-                    var irisBondPointService = new IrisbondDuoPointService();
-                    errorNotifyingServices.Add(irisBondPointService);
+                    var irisBondDuoPointService = new IrisbondDuoPointService();
+                    errorNotifyingServices.Add(irisBondDuoPointService);
                     pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
-                        irisBondPointService);
+                        irisBondDuoPointService);
+                    break;
+
+                case PointsSources.IrisbondHiru:
+                    var irisBondHiruPointService = new IrisbondHiruPointService();
+                    errorNotifyingServices.Add(irisBondHiruPointService);
+                    pointSource = new PointServiceSource(
+                        Settings.Default.PointTtl,
+                        irisBondHiruPointService);
                     break;
 
                 case PointsSources.MousePosition:
