@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 namespace JuliusSweetland.OptiKey.Native.Irisbond.Duo.Enums
 {
     // Result of the library initialization returned by Start
