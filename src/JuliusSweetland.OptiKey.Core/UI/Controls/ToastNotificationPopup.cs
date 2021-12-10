@@ -75,19 +75,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             Action closePopup = () =>
             {
-                    args.Callback?.Invoke();
-                    messageQueue.Dequeue();    // message is done, remove from the queue
+                args.Callback?.Invoke();
+                messageQueue.Dequeue();    // message is done, remove from the queue
 
-                    if (messageQueue.Count > 0)
-                    {
-                        // raise next message
-                        RaiseNotificationChain();
-                    }
-                    else
-                    {
-                        // all messages are displayed, we're done and lower the popup
-                        this.IsOpen = false;
-                    }
+                if (messageQueue.Count > 0)
+                {
+                    // raise next message
+                    RaiseNotificationChain();
+                }
+                else
+                {
+                    // all messages are displayed, we're done and lower the popup
+                    this.IsOpen = false;
+                }
             };
 
             AnimateTarget(args.Content, toastNotification, closePopup);
