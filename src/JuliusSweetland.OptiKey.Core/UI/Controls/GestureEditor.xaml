@@ -38,13 +38,14 @@
                   <ColumnDefinition Width="*" SharedSizeGroup="type"/>
                   <ColumnDefinition Width="65" SharedSizeGroup="timeout"/>
                   <ColumnDefinition Width="*" SharedSizeGroup="grids"/>
+                  <ColumnDefinition Width="*" SharedSizeGroup="del2"/>
                 </Grid.ColumnDefinitions>
                 <Label VerticalAlignment="Top" Content="Step" HorizontalAlignment="Center"/>
                 <Button Grid.Row="1" Margin="5,2" Click="CopyStep_Click" BorderThickness="0" Width="35" Height="25">
                   <Path Stroke="Black" Data="M0,6 H12 M6,0 V12Z" Width="12" Height="12" StrokeThickness="4"/>
                 </Button>
-                <Label Grid.Column="1" VerticalAlignment="Top" Content="Delete"/>
-                <Button Grid.Column="1" Grid.Row="1" Margin="2" Background="IndianRed" Click="DeleteStep_Click" BorderThickness="0" Width="35" Height="25">
+                <Label Grid.Column="5" VerticalAlignment="Top" Content="Delete"/>
+                <Button Grid.Column="5" Grid.Row="1" Margin="2" Background="IndianRed" Click="DeleteStep_Click" BorderThickness="0" Width="35" Height="25">
                   <Path Data="M0,0 12,12 M12,0 0,12" Width="12" Height="12" Stroke="Black" StrokeThickness="4"/>
                 </Button>
                 <Label Grid.Column="2" VerticalAlignment="Top" Content="Type"/>
@@ -211,14 +212,16 @@
                           <DataTemplate>
                             <Grid>
                               <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc1" />
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc2" />
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc3" />
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc4" />
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc5" />
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="cc6" />
+                                <ColumnDefinition Width="*" SharedSizeGroup="cc1" />
+                                <ColumnDefinition Width="*" SharedSizeGroup="cc2" />
+                                <ColumnDefinition Width="*" SharedSizeGroup="cc3" />
+                                <ColumnDefinition Width="*" SharedSizeGroup="cc4" />
+                                <ColumnDefinition Width="*" SharedSizeGroup="cc5" />
+                                <ColumnDefinition Width="*" SharedSizeGroup="cc6" />
+                                <ColumnDefinition Width="*" SharedSizeGroup="cc7" />
+                                <ColumnDefinition Width="*" SharedSizeGroup="cc8" />
                               </Grid.ColumnDefinitions>
-                            <Button Grid.Column="1" Margin="3" Background="IndianRed" Click="DeleteEvent_Click"
+                            <Button Grid.Column="7" Margin="5,3" Background="IndianRed" Click="DeleteEvent_Click"
                                     BorderThickness="0" Width="30" Height="20">
                               <Path Data="M0,0 12,12 M12,0 0,12" Width="12" Height="12" Stroke="Black" StrokeThickness="4"/>
                             </Button>
