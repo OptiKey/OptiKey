@@ -37,13 +37,13 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <Border CornerRadius="5" Width="70" Height="32" Margin="5">
               <Button Command="{Binding DisableAllCommand}" IsEnabled="{Binding AnyEnabled}"
                       Background="LightGray" Padding="0" BorderBrush="Black" BorderThickness="2">
-                <Path Data="M0,0 0,17 M11,0 11,17" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
+                <Path Data="M0,0 16,16 M0,16 16,0" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
               </Button>
             </Border>
             <Border CornerRadius="5" Width="70" Height="32" Margin="5">
               <Button Command="{Binding EnableAllCommand}" IsEnabled="{Binding NotAllEnabled}" Padding="0"
                       Background="ForestGreen" BorderBrush="Black" BorderThickness="2">
-                <Path Data="M 0 9 L 8 18 M 7 18 L 9 18 M 8 18 L 14 0" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center" />
+                <Path Data="M0,8 8,16 24,0" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center" />
               </Button>
             </Border>
           </StackPanel>
@@ -57,59 +57,59 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         </Grid>
         <StackPanel Orientation="Horizontal">
           <Border BorderBrush="Black" BorderThickness="3" CornerRadius="5" Background="LightBlue">
-            <StackPanel>
-              <Grid>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="Auto"/>
-                  <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="Auto"/>
-                  <ColumnDefinition Width="Auto"/>
-                  <ColumnDefinition Width="Auto"/>
-                  <ColumnDefinition Width="Auto"/>
-                  <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0"  Content="Gesture" Margin="5,0"/>
-                <Label Grid.Column="1" Content="Delete"/>
-                <Label Grid.Column="2" Content="Selection" Margin="5,0"/>
-                <Label Grid.Column="3" Content="Cooldown" Margin="5,0"/>
-                <Label Grid.Column="4" Margin="5,0" Content="{Binding EyeGesture.enabled, Converter={StaticResource BoolToCustomValues}}"/>
-                <Border Grid.Row="1" Grid.Column="0" Margin="5,0" CornerRadius="4" HorizontalAlignment="Center">
-                  <Button Width="48" Height="32" Command="{Binding AddGestureCommand}">
-                    <Path Stroke="Black" Data="M0,8 16,8 M8,0 8,16" StrokeThickness="4"/>
-                  </Button>
-                </Border>
-                <Border Grid.Row="1" Grid.Column="1" CornerRadius="4" HorizontalAlignment="Center">
-                  <Button Width="48" Height="32" Background="IndianRed" Command="{Binding DeleteGestureCommand}">
-                    <Path Data="M0,0 16,16 M16,0 0,16" Stroke="Black" StrokeThickness="4"/>
-                  </Button>
-                </Border>
-                <ComboBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="5" MinWidth="230" BorderThickness="0"
+            <StackPanel Orientation="Horizontal">
+              <StackPanel>
+                <Label Content="Gestures" Margin="5,0"/>
+                <ListBox HorizontalAlignment="Left" Margin="5" MinWidth="120" MinHeight="200" BorderThickness="0"
                             ItemsSource="{Binding GestureList, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                             SelectedItem="{Binding EyeGesture}"
-                            DisplayMemberPath="Name"
-                            Text="{Binding EyeGesture.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                            IsEditable="True" IsTextSearchEnabled="False"/>
-                <c:NumericUpDown Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="5"
+                            DisplayMemberPath="Name"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                  <Border Margin="5,0" CornerRadius="4" HorizontalAlignment="Center">
+                    <Button Width="48" Height="32" Command="{Binding AddGestureCommand}" Content="Add"/>
+                  </Border>
+                  <Border Margin="5,0"  CornerRadius="4" HorizontalAlignment="Center">
+                    <Button Width="48" Height="32" Command="{Binding DeleteGestureCommand}" Content="Delete"/>
+                  </Border>
+                </StackPanel>
+              </StackPanel>
+              <StackPanel>
+                <Label Content="Properties"/>
+                <Grid>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Content="Name" Margin="5,0"/>
+                  <Label Grid.Column="1" Content="Cooldown" Margin="5,0"/>
+                  <Label Grid.Column="2" Margin="5,0" Content="{Binding EyeGesture.enabled, Converter={StaticResource BoolToCustomValues}}"/>
+                  <TextBox Grid.Row="1" Grid.Column="0" MinWidth="120" VerticalAlignment="Center" Margin="5,0"
+                             Text="{Binding EyeGesture.Name}"/>
+                  <c:NumericUpDown Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5,0"
                          Minimum="100" Maximum="10000" HideUpDownButtons="True"
                          Value="{Binding EyeGesture.Cooldown}"
                          ToolTip="Amount of time that must pass between each activation of this gesture"/>
-                <Border Grid.Row="1" Grid.Column="4" CornerRadius="5" Width="48" Height="32" Margin="5">
-                  <Grid>
-                    <Button Command="{Binding EnableCommand}" Background="ForestGreen" Padding="0"
+                  <Border Grid.Row="1" Grid.Column="2" CornerRadius="5" Width="48" Height="28" Margin="5,0">
+                    <Grid>
+                      <Button Command="{Binding EnableCommand}" Background="ForestGreen" Padding="0"
                             BorderBrush="Black" BorderThickness="2">
-                      <Path Data="M 0 9 L 8 18 M 7 18 L 9 18 M 8 18 L 14 0" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
-                    </Button>
-                    <Button Command="{Binding EnableCommand}"
+                        <Path Data="M0,8 8,16 24,0" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
+                      </Button>
+                      <Button Command="{Binding EnableCommand}"
                             BorderBrush="Black" BorderThickness="2" Padding="0"
                       Visibility="{Binding EyeGesture.enabled, Converter={StaticResource InvertedBoolToVisibilityConverter}}">
-                      <Path Data="M0,0 0,17 M11,0 11,17" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
-                    </Button>
-                  </Grid>
-                </Border>
-              </Grid>
-              <controls:GestureEditor EyeGesture="{Binding EyeGesture, Mode=TwoWay}" Preview="{Binding Preview, Mode=TwoWay}"/>
+                        <Path Data="M0,0 16,16 M0,16 16,0" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
+                      </Button>
+                    </Grid>
+                  </Border>
+                </Grid>
+                <controls:GestureEditor EyeGesture="{Binding EyeGesture, Mode=TwoWay}" Preview="{Binding Preview, Mode=TwoWay}"/>
+              </StackPanel>
             </StackPanel>
           </Border>
           <Border Background="Black" BorderBrush="Black" BorderThickness="3" CornerRadius="5">
@@ -120,3 +120,4 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     </GroupBox>
   </ScrollViewer>
 </UserControl>
+
