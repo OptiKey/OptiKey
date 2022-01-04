@@ -656,7 +656,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             var kb_link = Enum.TryParse(dynamicLink.Value, out Enums.Keyboards keyboardEnum)
                                 ? dynamicLink.Value : Path.Combine(rootDir, dynamicLink.Value);
 
-                            commandList.Add(new KeyCommand() { Name = KeyCommands.ChangeKeyboard, Value = kb_link, BackAction = dynamicLink.BackAction });
+                            commandList.Add(new KeyCommand() { Name = KeyCommands.ChangeKeyboard, Value = kb_link, BackAction = !dynamicLink.BackReturnsHere });
                         }
                     }
                     else if (dynamicKey is DynamicKeyDown dynamicKeyDown)
