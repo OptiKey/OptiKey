@@ -191,9 +191,14 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               VerticalAlignment="Center"
                               IsEnabled="{Binding Source='MagnifySuppressedForScrollingActions', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding MagnifySuppressedForScrollingActions, Mode=TwoWay}" />
-          <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
+          <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_TRIGGER_WARNING}" 
+                              VerticalAlignment="Center" Margin="5" />
           <CheckBox Grid.Row="16" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding SuppressTriggerWarning, Mode=TwoWay}" />
+          <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+          <CheckBox Grid.Row="17" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding Debug, Mode=TwoWay}" />
         </Grid>

@@ -190,6 +190,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref publishVirtualKeyCodesForCharacters, value); }
         }
 
+        private bool suppressTriggerWarning;
+        public bool SuppressTriggerWarning
+        {
+            get { return suppressTriggerWarning; }
+            set { SetProperty(ref suppressTriggerWarning, value); }
+        }
+
         private bool suppressModifierKeysForAllMouseActions;
         public bool SuppressModifierKeysForAllMouseActions
         {
@@ -448,6 +455,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             PublishVirtualKeyCodesForCharacters = Settings.Default.PublishVirtualKeyCodesForCharacters;
             SuppressModifierKeysForAllMouseActions = Settings.Default.SuppressModifierKeysForAllMouseActions;
             SuppressModifierKeysWhenInMouseKeyboard = Settings.Default.SuppressModifierKeysWhenInMouseKeyboard;
+            SuppressTriggerWarning = Settings.Default.SuppressTriggerWithoutPositionError;
             MagnifySuppressedForScrollingActions = Settings.Default.MagnifySuppressedForScrollingActions;
             Debug = Settings.Default.Debug;
             LookToScrollBounds = Settings.Default.LookToScrollBounds;
@@ -495,6 +503,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.PublishVirtualKeyCodesForCharacters = PublishVirtualKeyCodesForCharacters;
             Settings.Default.SuppressModifierKeysForAllMouseActions = SuppressModifierKeysForAllMouseActions;
             Settings.Default.SuppressModifierKeysWhenInMouseKeyboard = SuppressModifierKeysWhenInMouseKeyboard;
+            Settings.Default.SuppressTriggerWithoutPositionError = SuppressTriggerWarning;
             Settings.Default.MagnifySuppressedForScrollingActions = MagnifySuppressedForScrollingActions;
             Settings.Default.Debug = Debug;
             Settings.Default.LookToScrollBounds = LookToScrollBounds;
