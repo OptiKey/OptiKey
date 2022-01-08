@@ -7073,6 +7073,17 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Suppress warning...
+        /// </summary>
+        public static string SUPPRESS_TRIGGER_WARNING
+        {
+            get
+            {
+                return ResourceManager.GetString("SUPPRESS_TRIGGER_WARNING", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to TAB.
         /// </summary>
         public static string TAB

@@ -2433,5 +2433,8 @@ Magyar
   </data>
   <data name="GAZE_INDICATOR_STYLE" xml:space="preserve">
     <value>Gaze Indicator Style</value>
+  </data>  
+  <data name="SUPPRESS_TRIGGER_WARNING" xml:space="preserve">
+    <value>Suppress warning when gaze is missing during trigger event</value>
   </data>
 </root>
