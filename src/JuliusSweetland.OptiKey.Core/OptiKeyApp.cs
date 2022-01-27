@@ -793,6 +793,20 @@ namespace JuliusSweetland.OptiKey
                         pointSource);
                     break;
 
+                case TriggerSources.XInputButtonDownUps:
+                    keySelectionTriggerSource = new XInputButtonDownUpSource(
+                        Settings.Default.KeySelectionTriggerGamepadXInputController,
+                        Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.DirectInputButtonDownUps:
+                    keySelectionTriggerSource = new DirectInputButtonDownUpSource(
+                        Settings.Default.KeySelectionTriggerGamepadDirectInputController,
+                        Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton,
+                        pointSource);
+                    break;
+
                 default:
                     throw new ArgumentException(
                         "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart OptiKey.");
@@ -820,6 +834,20 @@ namespace JuliusSweetland.OptiKey
                 case TriggerSources.MouseButtonDownUps:
                     pointSelectionTriggerSource = new MouseButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerMouseDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.XInputButtonDownUps:
+                    pointSelectionTriggerSource = new XInputButtonDownUpSource(
+                        Settings.Default.PointSelectionTriggerGamepadXInputController,
+                        Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.DirectInputButtonDownUps:
+                    pointSelectionTriggerSource = new DirectInputButtonDownUpSource(
+                        Settings.Default.PointSelectionTriggerGamepadDirectInputController,
+                        Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton,
                         pointSource);
                     break;
 
@@ -894,6 +922,14 @@ namespace JuliusSweetland.OptiKey
                     case TriggerSources.MouseButtonDownUps:
                         keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerMouseDownUpButton));
                         break;
+
+                    case TriggerSources.XInputButtonDownUps:
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton));
+                        break;
+
+                    case TriggerSources.DirectInputButtonDownUps:
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton));
+                        break;
                 }
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.KEY_SELECTION_TRIGGER_DESCRIPTION, keySelectionSb));
@@ -912,6 +948,14 @@ namespace JuliusSweetland.OptiKey
 
                     case TriggerSources.MouseButtonDownUps:
                         pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
+                        break;
+
+                    case TriggerSources.XInputButtonDownUps:
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton));
+                        break;
+
+                    case TriggerSources.DirectInputButtonDownUps:
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton));
                         break;
                 }
 

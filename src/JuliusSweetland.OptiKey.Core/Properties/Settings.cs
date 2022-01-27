@@ -2,6 +2,8 @@
 
 using JuliusSweetland.OptiKey.Enums;
 using log4net;
+using SharpDX.XInput;
+using System;
 
 namespace JuliusSweetland.OptiKey.Properties {
 
@@ -40,6 +42,103 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["KeySelectionTriggerKeyboardKeyDownUpKey"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public GamepadButtonFlags KeySelectionTriggerGamepadXInputButtonDownUpButton
+        {
+            get
+            {
+                return ((GamepadButtonFlags)(this["KeySelectionTriggerGamepadXInputButtonDownUpButton"]));
+            }
+            set
+            {
+                this["KeySelectionTriggerGamepadXInputButtonDownUpButton"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Any")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public UserIndex KeySelectionTriggerGamepadXInputController
+        {
+            get
+            {
+                return ((UserIndex)(this["KeySelectionTriggerGamepadXInputController"]));
+            }
+            set
+            {
+                this["KeySelectionTriggerGamepadXInputController"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Any")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public UserIndex PointSelectionTriggerGamepadXInputController
+        {
+            get
+            {
+                return ((UserIndex)(this["PointSelectionTriggerGamepadXInputController"]));
+            }
+            set
+            {
+                this["PointSelectionTriggerGamepadXInputController"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00000000-0000-0000-0000-000000000000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public System.Guid KeySelectionTriggerGamepadDirectInputController
+        {
+            get
+            {
+                return ((System.Guid)(this["KeySelectionTriggerGamepadDirectInputController"]));
+            }
+            set
+            {
+                this["KeySelectionTriggerGamepadDirectInputController"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00000000-0000-0000-0000-000000000000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public System.Guid PointSelectionTriggerGamepadDirectInputController
+        {
+            get
+            {
+                return ((System.Guid)(this["PointSelectionTriggerGamepadDirectInputController"]));
+            }
+            set
+            {
+                this["PointSelectionTriggerGamepadDirectInputController"] = value;
+            }
+        }
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int KeySelectionTriggerGamepadDirectInputButtonDownUpButton
+        {
+            get
+            {
+                return ((int)(this["KeySelectionTriggerGamepadDirectInputButtonDownUpButton"]));
+            }
+            set
+            {
+                this["KeySelectionTriggerGamepadDirectInputButtonDownUpButton"] = value;
             }
         }
 
@@ -920,6 +1019,41 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["PointSelectionTriggerMouseDownUpButton"] = value;
             }
         }
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public GamepadButtonFlags PointSelectionTriggerGamepadXInputButtonDownUpButton
+        {
+            get
+            {
+                return ((GamepadButtonFlags)(this["PointSelectionTriggerGamepadXInputButtonDownUpButton"]));
+            }
+            set
+            {
+                this["PointSelectionTriggerGamepadXInputButtonDownUpButton"] = value;
+            }
+        }
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int PointSelectionTriggerGamepadDirectInputButtonDownUpButton
+        {
+            get
+            {
+                return ((int)(this["PointSelectionTriggerGamepadDirectInputButtonDownUpButton"]));
+            }
+            set
+            {
+                this["PointSelectionTriggerGamepadDirectInputButtonDownUpButton"] = value;
+            }
+        }
+
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

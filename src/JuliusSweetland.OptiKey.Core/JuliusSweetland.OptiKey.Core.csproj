@@ -119,6 +119,15 @@
     <Reference Include="Prism.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Wpf.6.3.0\lib\net45\Prism.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DirectInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpDX.DirectInput.4.2.0\lib\net45\SharpDX.DirectInput.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpDX.XInput.4.2.0\lib\net45\SharpDX.XInput.dll</HintPath>
+    </Reference>
     <Reference Include="SharpVectors.Converters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b532964b8548be77, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Converters.dll</HintPath>
     </Reference>
@@ -204,6 +213,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Gamepads\DirectInputControllerState.cs" />
+    <Compile Include="Models\Gamepads\DirectInputListener.cs" />
     <Compile Include="Enums\AppType.cs" />
     <Compile Include="Enums\GazeIndicatorStyles.cs" />
     <Compile Include="Enums\EyeGestureStepTypes.cs" />
@@ -262,6 +273,8 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
+    <Compile Include="Models\Gamepads\XInputControllerState.cs" />
+    <Compile Include="Models\Gamepads\XInputListener.cs" />
     <Compile Include="Models\XmlKeyCommand.cs" />
     <Compile Include="Models\EyeGestureShape.cs" />
     <Compile Include="Models\XmlEyeGestures.cs" />
@@ -346,6 +359,8 @@
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
     <Compile Include="Observables\TriggerSources\EyeGestureSource.cs" />
+    <Compile Include="Observables\TriggerSources\DirectInputButtonDownUpSource.cs" />
+    <Compile Include="Observables\TriggerSources\XInputButtonDownUpSource.cs" />
     <Compile Include="OptiKeyApp.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
