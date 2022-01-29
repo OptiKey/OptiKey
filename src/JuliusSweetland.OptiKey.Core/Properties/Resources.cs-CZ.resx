@@ -1599,7 +1599,7 @@ Kontrolu aktualizacií můžete vypnout v nastavení (ALT + M).</value>
       <value>To vyžaduje, aby Gaze Tracking knihovnu ITU, což je framework pro sledování pomocí off-the-shelf komponenty, jako jsou kamery a videokameru s otevřeným zdrojovým kódem oka.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Pokud máte v plánu používat Optikey s oční tracker Irisbond Duo, pak si prosím zkontrolujte, zda máte k dispozici ovladače Irisbond Duo nainstalovány. Ty lze stáhnout z https://www.irisbond.com/products/downloads.</value>
+      <value>Pokud máte v plánu používat Optikey s oční tracker Irisbond Duo, pak si prosím zkontrolujte, zda máte k dispozici ovladače Irisbond Duo nainstalovány. Ty lze stáhnout z https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>V tomto režimu bude Optikey použijte kurzor myši jako vstup namísto mluvení přímo do očí tracker. Možná budete chtít to, pokud testujete Optikey ven, nebo chcete-li použít alternativní vstupní zařízení, jako je například hlava myši nebo jakékoliv oční tracker není v tomto seznamu. Pro více informací viz www.optikey.org/help</value>

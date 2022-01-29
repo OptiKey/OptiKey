@@ -1688,7 +1688,7 @@ Türkçe
       <value>Dette kræver ITU Gaze Tracking Bibliotek, som er en ramme for open source eyetracking hjælp off-the-shelf komponenter, såsom webcams og videokameraer.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Hvis du planlægger at bruge Optikey med Irisbond Duo øje tracker så skal du sørge for at du har de Irisbond Duo drivere installeret. Disse kan downloades fra https://www.irisbond.com/products/downloads.</value>
+      <value>Hvis du planlægger at bruge Optikey med Irisbond Duo øje tracker så skal du sørge for at du har de Irisbond Duo drivere installeret. Disse kan downloades fra https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>I denne tilstand vil Optikey bruge musemarkøren som input i stedet for at tale direkte til et øje tracker. Du vil måske dette, hvis du tester Optikey ud, eller hvis du ønsker at bruge den med en alternativ indgang enhed, såsom et hoved mus eller en hvilken som helst øje tracker ikke på denne liste. </value>

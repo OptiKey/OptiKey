@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -146,13 +146,16 @@ DIZIONARIO</value>
     <value>ALT</value>
   </data>
   <data name="ANDROID_DARK" xml:space="preserve">
-    <value>Android Dark</value>
+    <value>Android Scuro</value>
   </data>
   <data name="ANDROID_LIGHT" xml:space="preserve">
-    <value>Android Light</value>
+    <value>Android Chiaro</value>
+  </data>
+  <data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>Android Due Toni</value>
   </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
-    <value>MAIUSCOLA AUTO PAROLE:</value>
+    <value>Auto-maiuscola delle parole:</value>
   </data>
   <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Completamento auto delle parole:</value>
@@ -170,18 +173,18 @@ DIZIONARIO</value>
     <value>INDIETRO</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>INDIETRO
+    <value>CANCELLA
 UNO</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>INDIETRO
+    <value>CANCELLA
 PAROLA</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
     <value>Bass non è stato in grado di creare uno stream dal file '{0}'</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
-    <value>Giù</value>
+    <value>In basso</value>
   </data>
   <data name="BREAK" xml:space="preserve">
     <value>BREAK</value>
@@ -221,8 +224,7 @@ Sei sicuro di voler ri-calibrare?</value>
     <value>CANCELLA</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>CLICCA E
-TRASCINA</value>
+    <value>CLICCA E TRASCINA</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
     <value>Click 1</value>
@@ -265,16 +267,20 @@ DOCK</value>
     <value>Solo modo conversazione:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>Optikey ha rilevato che il tuo file di impostazioni è corrotto e deve esser riparato. Per farlo si recupera una vecchia versione, o se non possibile verrà usata una versione di default.
-Clicca SI per reimpostare i settaggi utente e riavviare.
-Clicca NO per chiudere in modo da riparare manualmente o copiare i il tuo file delle impostazioni.</value>
+    <value>Optikey ha rilevato che il tuo file di impostazioni è corrotto e deve esser riparato. Per farlo verrà recupera una vecchia versione, o, se questo non è possibile, verrà usata una versione di default.
+
+Clicca Si per resettare le impostazionii e riavviare.
+
+Clicca No per chiudere in modo che tu possa riparare manualmente o copiare i il tuo file delle impostazioni.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
     <value>Oh-oh! Il file delle impostazioni sembra corrotto.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Cattive notizie - Optikey si è arrestato il mondo anomalo.
-Per capire il problema puoi aiutare inviando una email con i dettagli a crash@optikey.org
+
+Un'email con i dettagli di cosa è accaduto sarebbe molto utile: crash@optikey.org
+
 Spiacente per il disagio.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
@@ -299,10 +305,19 @@ Spiacente per il disagio.</value>
     <value>Larghezza cursore (px):</value>
   </data>
   <data name="CUSTOM_LAYOUT" xml:space="preserve">
-    <value>File della tastiera personalizzata</value>
+    <value>File della tastiera dinamica</value>
+  </data>
+  <data name="DANISH_DENMARK" xml:space="preserve">
+    <value>Danese (Danimarca) / Dansk (Danmark)</value>
+  </data>
+  <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Danese
+(Danimarca) /
+Dansk
+(Danmark)</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
-    <value>Debugging mode:</value>
+    <value>Modalità di debug:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>RIDUCI
@@ -351,6 +366,15 @@ GIU'</value>
   <data name="END" xml:space="preserve">
     <value>FINE</value>
   </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>Inglese (Canada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>Inglese (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>Inglese (US)</value>
+  </data>
   <data name="ENTER" xml:space="preserve">
     <value>INVIO</value>
   </data>
@@ -372,11 +396,13 @@ IL DOCK</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ESPANDI
-IN GIU' &amp; SINISTRA</value>
+IN GIU'
+&amp; SINISTRA</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ESPANDI
-IN GIU' &amp; DESTRA</value>
+IN GIU'
+&amp; DESTRA</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ESPANDI
@@ -392,11 +418,13 @@ A DESTRA</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ESPANDI
-IN SU &amp; SINISTRA</value>
+IN SU &amp;
+SINISTRA</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ESPANDI
-IN SU &amp; DESTRA</value>
+IN SU &amp;
+DESTRA</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ESPANDI
@@ -426,8 +454,14 @@ SU</value>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Spessore caratteri:</value>
   </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>Francese (Francia) / Française (France)</value>
+  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Spessore dock (come % dello schermo):</value>
+  </data>
+  <data name="GAZE_TRACKER" xml:space="preserve">
+    <value>Gaze Tracker</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Accrescere</value>
@@ -462,11 +496,13 @@ OPACITA'</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTA
-IN GIU' &amp; SINISTRA</value>
+IN GIU'
+&amp; SINISTRA</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTA 
-IN GIU' &amp; DESTRA</value>
+IN GIU'
+&amp; DESTRA</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTA
@@ -482,11 +518,13 @@ A DESTRA</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTA
-IN SU &amp; SINISTRA</value>
+IN SU &amp;
+SINISTRA</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTA
-IN SU &amp; DESTRA</value>
+IN SU &amp;
+DESTRA</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTA
@@ -532,7 +570,7 @@ IN SU</value>
     <value>La cartella delle tastiere può essere impostata nelle \n impostazioni (tab Visualizzazione)</value>
   </data>
   <data name="LEFT" xml:space="preserve">
-    <value>Sinistra</value>
+    <value>A sinistra</value>
   </data>
   <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>FRECCIA
@@ -562,6 +600,9 @@ MAGNETICO</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
     <value>ZOOM</value>
+  </data>
+  <data name="MAGNIFIER_CENTER_ON_SCREEN" xml:space="preserve">
+    <value>Mostra finestra di zoom al centro dello schermo</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
     <value>Visualizzazione dell'ingrandimento (in % dello schermo)</value>
@@ -704,15 +745,19 @@ GIU'/SU</value>
     <value>MUOVI</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>Muovi di {0} pixel:|Muovi di {0} pixels:</value>
+    <value>Muovi di
+{0} pixel:|Muovi di
+{0} pixel:</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MUOVI
-IN GIU' &amp; SINISTRA</value>
+IN GIU'
+&amp; SINISTRA</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MUOVI
-IN GIU' &amp; DESTRA</value>
+IN GIU'
+&amp; DESTRA</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MUOVI
@@ -732,11 +777,13 @@ A</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MUOVI
-IN SU &amp; SINISTRA</value>
+IN SU &amp;
+SINISTRA</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MUOVI 
-IN SU &amp; DESTRA</value>
+IN SU &amp;
+DESTRA</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MUOVI
@@ -752,14 +799,14 @@ IN SU</value>
     <value>Selezione tasti multipli</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Fine selezione tast multipli:</value>
+    <value>Fine selezione tasti multipli:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SELEZIONE
 TASTI MULTIPLI</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Avvio selezione taste multipli:</value>
+    <value>Avvio selezione tasti multipli:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
@@ -809,6 +856,9 @@ SYM</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Pro: Controllo del computer e comunicazione</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Altro</value>
@@ -901,7 +951,7 @@ ULTIMO</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
     <value>Optikey necessita di essere riavviato per applicare i cambiamenti.
-Si prega di cliccare OK per continuare con il riavvio, ANNULLA per annullare i cambiamenti</value>
+Si prega di cliccare OK per continuare con il riavvio oppure ANNULLA per annullare i cambiamenti</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>Ripristina</value>
@@ -910,7 +960,7 @@ Si prega di cliccare OK per continuare con il riavvio, ANNULLA per annullare i c
     <value>La ripresa della selezione incompleta di un tasto richiede dinuovo il tempo che precede l'inizio della selezione:</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
-    <value>Destra</value>
+    <value>A destra</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>FRECCIA
@@ -930,6 +980,12 @@ GIU'/SU</value>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Aumento 2</value>
   </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>Russo (Russia) / Русский (Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN" xml:space="preserve">
+    <value>Spagnolo (Spagna) / Español (España)</value>
+  </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Lo stesso della posizione del dock</value>
   </data>
@@ -941,7 +997,9 @@ GIU'/SU</value>
 LK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>Scroll di {0} click:|Scroll di {0} click:</value>
+    <value>Scroll di
+{0} click:|Scroll di
+{0} click:</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SCROLL
@@ -982,11 +1040,13 @@ IN SU</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>RITRAI
-IN GIU' &amp; SINISTRA</value>
+IN GIU'
+&amp; SINISTRA</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>RITRAI
-IN GIU' &amp; DESTRA</value>
+IN GIU'
+&amp; DESTRA</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>RITRAI
@@ -1005,11 +1065,13 @@ A DESTRA</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>RITRAI
-IN SU &amp; SINISTRA</value>
+IN SU &amp;
+SINISTRA</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>RITRAI
-IN SU &amp; DESTRA</value>
+IN SU &amp;
+DESTRA</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>RITRAI
@@ -1050,7 +1112,7 @@ IN SU</value>
     <value>Tasto di avvio:</value>
   </data>
   <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
-    <value>File della tastiera personalizzata:</value>
+    <value>File della tastiera dinamica:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>Segnale di stop:</value>
@@ -1063,6 +1125,9 @@ IN SU</value>
   </data>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
+  </data>
+  <data name="THE_EYE_TRIBE" xml:space="preserve">
+    <value>The Eye Tribe</value>
   </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>Non è possibile attivare TheEyeTribe GazeManager! Controlla che il server sia in esecuzione e che il dispositivo sia collegato e riprova.</value>
@@ -1085,6 +1150,9 @@ IN SU</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Le parole sono in maiuscolo</value>
   </data>
+  <data name="TOBII_EYEX" xml:space="preserve">
+    <value>Tobii EyeX</value>
+  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibrazione completata o eventualmente annullata, ma sta andando ancora tutto bene!</value>
   </data>
@@ -1093,6 +1161,12 @@ IN SU</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Tobii EyeX Engine non è in esecuzione. Si prega di avviare EyeX Engine e riprovare.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go</value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tono 1</value>
@@ -1125,7 +1199,7 @@ IN SU</value>
     <value>Qualcosa è andato storto, ma non posso sapere cosa - si prega di controllare i log</value>
   </data>
   <data name="UP" xml:space="preserve">
-    <value>Top</value>
+    <value>In alto</value>
   </data>
   <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>FRECCIA
@@ -1198,6 +1272,9 @@ Puoi disabilitare il controllo degli aggiornamenti dalle impostazioni (ALT + M)<
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Stream di dati elaborato:</value>
   </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>Tedesco (Germania) / Deutsch (Deutschland)</value>
+  </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Lingua interfaccia utente: {0}</value>
   </data>
@@ -1207,17 +1284,50 @@ Puoi disabilitare il controllo degli aggiornamenti dalle impostazioni (ALT + M)<
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Simula i tasti fisici quando scrivi i caratteri:</value>
   </data>
+  <data name="DUTCH_BELGIUM" xml:space="preserve">
+    <value>Dutch (Belgium) / Nederlands (België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
+    <value>Dutch (Netherlands) / Nederlands (Nederland)</value>
+  </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>French
+(Francia) /
+Française
+(France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Tedesco
+(Germania) /
+Deutsch
+(Deutschland)</value>
+  </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Interrompi l'ingrandimento mouse durante lo scroll </value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Russo
+(Russia) /
+Русский
+(Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Spagnolo
+(Spagna) /
+Español
+(España)</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Menu tastiera dinamica</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Spessore del bordo della tastiera di conversazione (sinistra, alto, destra, basso in px):</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
-    <value>INDIETRO DI UNO</value>
+    <value>CANCELLA UN CARATTERE</value>
   </data>
   <data name="BACK_WORD" xml:space="preserve">
-    <value>INDIETRO DI UNA PAROLA</value>
+    <value>CANCELLA UNA PAROLA</value>
   </data>
   <data name="SUGGESTION_1" xml:space="preserve">
     <value>SUGGERIMENTO 1</value>
@@ -1625,17 +1735,129 @@ IN SU &amp; DESTRA</value>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Specifica il tempo di completamento sui singoli tasti:</value>
   </data>
+  <data name="GREEK_GREECE" xml:space="preserve">
+    <value>Greco (Grecia) / Ελληνικά (Ελλάδα)</value>
+  </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
     <value>Console di gestione (Impostazioni)</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Esci</value>
   </data>
+  <data name="GEORGIAN_GEORGIA" xml:space="preserve">
+    <value>Georgiano (Georgia) / ქართული (საქართველო)</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Georgiano
+(Georgia) /
+ქართული
+(საქართველო)</value>
+  </data>
+  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Greco
+(Grecia) /
+Ελληνικά
+(Ελλάδα)</value>
+  </data>
+  <data name="CROATIAN_CROATIA" xml:space="preserve">
+    <value>Croato (Croazia) / Hrvatski (Hrvatska)</value>
+  </data>
+  <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Croato
+(Croazia) /
+Hrvatski
+(Hrvatska)</value>
+  </data>
+  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Olandese
+(Belgio) /
+Nederlands
+(België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Olandese
+(Paesi Bassi) /
+Nederlands
+(Nederland)</value>
+  </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Sopprimi modificatori tasti per tutte le azioni mouse:</value>
   </data>
+  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Inglese
+(Canada)
+</value>
+  </data>
+  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Inglese
+(UK)
+</value>
+  </data>
+  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Inglese
+(US)
+</value>
+  </data>
+  <data name="CATALAN_SPAIN" xml:space="preserve">
+    <value>Catalano (Spagna) / Català (Espanya)</value>
+  </data>
+  <data name="CATALAN_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Catalano
+(Spagna) /
+Català
+(Espanya)</value>
+  </data>
+  <data name="TURKISH_TURKEY" xml:space="preserve">
+    <value>Turco (Turchia) / Türkçe (Türkiye)</value>
+  </data>
+  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Turco
+(Turchia) /
+Türkçe
+(Türkiye)</value>
+  </data>
+  <data name="ITALIAN_ITALY" xml:space="preserve">
+    <value>Italiano (Italiano)</value>
+  </data>
+  <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Italiano
+(Italia) </value>
+  </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>Coreano (Corea) / 한국어 (한국)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Coreano
+(Corea) /
+한국어
+(한국)</value>
+  </data>
+  <data name="SERBIAN_SERBIA" xml:space="preserve">
+    <value>Serbo (Serbia) / Српски (Србија)</value>
+  </data>
+  <data name="SERBIAN_SERBIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Serbo
+(Serbia) /
+Српски
+(Србија)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
+    <value>Sloveno (Slovenia) / Slovensko (Slovenija)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Sloveno
+(Slovenia) /
+Slovensko
+(Slovenija)</value>
+  </data>
   <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
     <value>Connessione a myGaze non riuscita! Perfavore controllare che il server stia funzionando e che il dispositivo sia connesso e riprovare.</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>Interazione visiva myGaze</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Calibrazione fallita!</value>
@@ -1643,8 +1865,53 @@ IN SU &amp; DESTRA</value>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibrazione riuscita!</value>
   </data>
+  <data name="POLISH_POLAND" xml:space="preserve">
+    <value>Polacco (Polonia) / Polski (Polska)</value>
+  </data>
+  <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Polacco
+(Polonia) /
+Polski
+(Polska)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
+    <value>Portoghese (Portogallo) / Português (Portugal)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Portoghese
+(Portogallo) /
+Português
+(Portugal)</value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
+    <value>Slovacco (Slovacchia) / Slovenčina (Slovensko) </value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Slovacco
+(Slovacchia) /
+Slovenčina
+(Slovensko)</value>
+  </data>
+  <data name="ALIENWARE_17" xml:space="preserve">
+    <value>Alienware 17 (EyeX)</value>
+  </data>
+  <data name="STEELSERIES_SENTRY" xml:space="preserve">
+    <value>Steelseries Sentry (EyeX)</value>
+  </data>
+  <data name="TOBII_EYE_TRACKER_4C" xml:space="preserve">
+    <value>Tobii Eye Tracker 4C</value>
+  </data>
+  <data name="TOBII_PCEYE_MINI" xml:space="preserve">
+    <value>Tobii PCEye Mini</value>
+  </data>
+  <data name="TOBII_X2_30" xml:space="preserve">
+    <value>Tobii X2-30</value>
+  </data>
+  <data name="TOBII_X2_60" xml:space="preserve">
+    <value>Tobii X2-60</value>
+  </data>
   <data name="FORCE_CAPS_LOCK" xml:space="preserve">
-    <value>Blocca maiuscolo:</value>
+    <value>Blocca maiuscolo (tasto shift premuto)</value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Utilizza layout alfabetico della tastiera:</value>
@@ -1653,16 +1920,25 @@ IN SU &amp; DESTRA</value>
     <value>Filtro Kalman:</value>
   </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
-    <value>Passa a modalità manuale</value>
+    <value>Commuta modalità di controllo del mouse</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
+    <value>Ceco (Rep. Ceca) / Čeština (Česko)</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ceco
+(Rep. Ceco) /
+Čeština
+(Česko)</value>
   </data>
   <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
     <value>Modificato modalità di input</value>
   </data>
   <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
-    <value>Modalitá manuale (mouse) disabilitata!</value>
+    <value>Modalitá mouse (manuale) disabilitata!</value>
   </data>
   <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
-    <value>Modalità manuale (mouse) abilitata!</value>
+    <value>Modalità mouse (manuale) abilitata!</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
     <value>Abilita tastiera con conferma della conversazione</value>
@@ -1714,6 +1990,15 @@ in rete</value>
   <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
     <value>ERRORE: non è stato selezionato un file 'marytts-server.bat' valido. Perfavore riprova.</value>
   </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Presage</value>
+  </data>
   <data name="SUGGESTION_METHOD" xml:space="preserve">
     <value>Metodo di suggerimento:</value>
   </data>
@@ -1721,7 +2006,7 @@ in rete</value>
     <value>MaryTTS non è disponibile</value>
   </data>
   <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
-    <value>Predizione delle parole Presage non disponibile </value>
+    <value>Predizione delle parole con Presage non disponibile </value>
   </data>
   <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
     <value>Imposto il metodo di suggerimento a: {0}.
@@ -1741,7 +2026,7 @@ Console di Gestione (ALT + M).</value>
     <value>Utilizza il layout della tastiera CommuniKate </value>
   </data>
   <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Abilita il layout della tastiera CommuniKate:</value>
+    <value>Abilita tasto CommuniKate?</value>
   </data>
   <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
     <value>Prima pagina del file obf di CommuniKate:</value>
@@ -1750,11 +2035,14 @@ Console di Gestione (ALT + M).</value>
     <value>File non valido</value>
   </data>
   <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
-    <value>Percorso della prima pagina del file .obx di CommuniKate</value>
+    <value>Percorso della prima pagina del file .obx:</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>O è installata una versione a 64 bit di Presage (Optikey supporta solo la versione a 32 bit), oppure i file di Presage sono stati spostati, cancellati o sono rovinati.
-Perfavore disinstallare Presage e installare la versione a 32 bit 0.9.2.
+    <value>Optikey non è riuscita a comunicare con Presage. Ci sono alcune cause possibili:
+1. Il percorso del DBFILENAME specificato nel file presage.xml (che si trova in C:\User\USER_NAME\.presage) non esiste - perfavore controlla che sia corretto (o disinstalla e reinstalla Presage)
+2. Potrebbe essere installata una versione a 64 bit di Presage (OptiKey supporta solo la versione a 32 bit), oppure i file di Presage sono stati spostati, cancellati o sono rovinati.
+
+Perfavore disinstalla Presage e installa la versione 0.9.2 a 32 bit.
 Optikey proverà a continuare l'esecuzione, ma ci sono buone probabilità che si bloccherà presto.
 Il metodo di suggerimento sarà cambiato a NGram per evitare il blocco al prossimo avvio.</value>
   </data>
@@ -1765,7 +2053,10 @@ Il metodo di suggerimento sarà cambiato a NGram per evitare il blocco al prossi
     <value>Cartella che contiene le tastiere dinamiche:</value>
   </data>
   <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
-    <value>Cartella che contiene le plugin:</value>
+    <value>Cartella dei plugin:</value>
+  </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>LETTERE 2</value>
@@ -1782,8 +2073,8 @@ Il metodo di suggerimento sarà cambiato a NGram per evitare il blocco al prossi
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>Il dizionario di Presage non può essere editato da qui.
 Il suo percorso di default é "C:\Program Files (x86)\presage\share\presage\database_en.db".
-Il dizionario può essere modificato con un programma in grado di leggere il formato 3 di file SQLite
-tipo "DB Browser for SQLite" (che è programma free).</value>
+Può essere editato con un programma in grado di leggere file in formato SQLite 3
+tipo "DB Browser for SQLite" (che è un programma libero).</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
     <value>LETTERE</value>
@@ -1800,6 +2091,9 @@ tipo "DB Browser for SQLite" (che è programma free).</value>
   <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
     <value>Abilitare tasto di attenzione?</value>
   </data>
+  <data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
+    <value>Abilita il tasto che copia del campo di testo?</value>
+  </data>
   <data name="ATTENTION" xml:space="preserve">
     <value>ATTENZIONE</value>
   </data>
@@ -1810,42 +2104,455 @@ tipo "DB Browser for SQLite" (che è programma free).</value>
     <value>CommuniKate é attualmente disabilitato (utilizza QWERTY)</value>
   </data>
   <data name="KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Layout della tastiera per la scrittura</value>
+    <value>Layout della tastiera per la scrittura:</value>
   </data>
   <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Utilizza layout della tastiera default</value>
+    <value>Utilizza layout di default della tastiera</value>
+  </data>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>Oh-oh! Abbiamo riscontrato i seguenti errori durante l'avvio:</value>
+  </data>
+  <data name="SELECT_VOICE" xml:space="preserve">
+    <value>SELEZIONA VOCE</value>
+  </data>
+  <data name="MORE" xml:space="preserve">
+    <value>Altro...</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Lingua &amp; Voce</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Lingua
+&amp; Voce</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>LINGUA &amp; VOCE</value>
+  </data>
+  <data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>ALTRO...</value>
+  </data>
+  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>Mostra lingue quando viene cambiata la lingua della tastiera:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL" xml:space="preserve">
+    <value>Scroll con lo sguardo</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>Usa "scroll con lo sguardo" come metodo alternativo allo scroll:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Inverti direzione di scroll:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Blocca anche il tasto di scelta dell'area per preservare il punto, la finestra o la regione scelti:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Prima dello scroll, muovi il mouse al centro della zona morta:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>Prima dello scroll all'interno di una finestra, mettila in primo piano:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>Dopo aver scelto il punto sullo schermo, porta in primo piano l'eventuale finestra che c'è li:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Ferma lo scroll quando stai scegliendo dove spostare, cliccare o trascinare il mouse:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Dopo riattiva scroll automaticamente:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>Ferma lo scroll quando stai cambiando tastiera:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Mostra rettangoli in sovraimpressione per funzione di "Scroll con lo sguardo" (richiede riavvio):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Colore del rettangolo che delimita della zona di funzionamento del "Scroll con lo sguardo":</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Colore del rettangolo della zona morta disegnato in sovraimpressione:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
+    <value>Spessore del bordo del rettangolo:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
+    <value>Spessore del bordo del rettangolo della zona morta:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Dimensione orizzontale della zona morta (in pixel):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>Dimensione verticale della zona morta (in pixel):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Cicla tra i seguenti incrementi di scroll:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>Velocità di base 'lenta' (in cps ovvero click per secondo):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>Velocità di base 'media' (in cps ovvero click per secondo):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>Velocità di base 'veloce' (in cps ovvero click per secondo):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>Accelerazione 'lenta' (cps per pixel dalla zona morta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>Accelerazione 'media' (cps per pixel dalla zona morta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>Accelerazione 'veloce' (cps per pixel dalla zona morta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>TASTI PER SCROLL CON LO SGUARDO:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>COMMUTA SCROLL</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>VINCOLO SUCCESSIVO</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>INCREMENTO SUCCESSIVO</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>MODALITÀ SUCCESSIVA</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>VELOCITÀ SUCCESSIVA</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>Scroll con
+lo sguardo</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Scroll di 1{0} unità di rotella:
+(120 unità di rotella = 1 click)|Scroll di 1{0} unità di rotella:
+(120 unità di rotella = 1 click)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Schermo al
+punto</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Schermo
+centrato</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Finestra</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Regione di
+finestra</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Regione
+personalizzata</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Verticale</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Orizzontale</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>A croce</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Libero</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Piano</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Medio</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Veloce</value>
+  </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>Francese (Canada) / Française (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Francese
+(Canada) /
+Française
+(Canada)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>Giapponese (Giappone) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Giapponese
+(Giappone) /
+日本語
+(日本)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>Volume:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>Quando selezionato pronuncia il testo del tasto di CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>Velocità della pronuncia del testo del stato di CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>Volume della voce quando parla il tasto del testo di CommuniKate:</value>
+  </data>
+  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>Sei sicuro di voler passare da/alla modalità manuale?</value>
+  </data>
+  <data name="MANUAL_MODE" xml:space="preserve">
+    <value>MODALITÀ DI CONTROLLO DEL MOUSE</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>Il database (file .db) di Pressage si trova in:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>Numero di proposte di Presage da mostrare:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>Plugin disponibili</value>
+  </data>
+  <data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>Plugin</value>
+  </data>
+  <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>Aggiorna i plugin</value>
+  </data>
+  <data name="RESTART" xml:space="preserve">
+    <value>Riavvia</value>
+  </data>
+  <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Sei assolutamente certo di voler riavviare Optikey?</value>
+  </data>
+  <data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>Sei sicuro di voler riavviare Optikey?</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>TASTIERA DINAMICA</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>NAVIGAZIONE WEB</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>Ucraino (Ucraina) / Українська (Україна)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ucraino
+(Ucraina) /
+Українська
+(Україна)</value>
+  </data>
+  <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Stream di dati elaborato:</value>
+  </data>
+  <data name="IRISBOND_DUO" xml:space="preserve">
+    <value>Irisbond Duo</value>
+  </data>
+  <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>Non è stato possibile avviare il dispositivo di tracciamento Irisbond Duo.</value>
+  </data>
+  <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>Non è stato possibile trovare il dispositivo di tracciamento Irisbond Duo. Perfavore controlla la connessione del dispositivo e riprova.</value>
+  </data>
+  <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
+    <value>Calibrazione completata (con successo o senza), ma tutto ha ricominciato a funzionare!</value>
+  </data>
+  <data name="COPY_ALL_FROM_SCRATCHPAD" xml:space="preserve">
+    <value>Copia tutto</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_DEFINITION_INVALID" xml:space="preserve">
+    <value>Definizione tastiera dinamica non valida</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
+    <value>L'altezza definita per questa tastiera dinamica è troppo grande (&gt; 95% dello schermo)</value>
+  </data>
+  <data name="RESTART_UPPERCASE" xml:space="preserve">
+    <value>Riavvia</value>
+  </data>
+  <data name="URDU_PAKISTAN" xml:space="preserve">
+    <value>Urdu (Packstan) / اردو (پاکستان)</value>
+  </data>
+  <data name="URDU_PAKISTAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Urdu
+(Pakistan) /
+اردو
+(پاکستان)</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
+    <value>Consigliamo di modificare la lingua dell'interfaccia grafica a Urdu per garantire che il testo scrorra da destra a sinistra nel campo di testo.
+Vuoi che Optikey imposti automaticamente la lingua dell'interfaccia grafica a Urdu?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
+    <value>Consigliamo di cambiare il font usato in Optikey a uno che sia completamente compatibile con l'Urdu.
+Se il font usato non è specifico per l'Urdu allora il testo, ma specialmente i numeri, potrebbero non essere corretti.
+Desideri che Optikey cambi automaticamente il font a Nafees Web Naskh?</value>
+  </data>
+  <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
+    <value>Si raccomanda un font specifico per la lingua</value>
+  </data>
+  <data name="UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE" xml:space="preserve">
+    <value>La lingua dell'interfaccia utente è differente dalla lingua della tastiera/dizionario</value>
+  </data>
+  <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
+    <value>Digita i segni diacritici (accenti, etc.) dopo la lettera:</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
+    <value>Consigliamo di modificare la lingua dell'interfaccia grafica a Persiano per garantire che il testo scrorra da destra a sinistra nel campo di testo.
+Vuoi che Optikey imposti automaticamente la lingua dell'interfaccia grafica a Persiano?</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
+    <value>Consigliamo di cambiare il font usato in Optikey a uno che sia completamente compatibile con il Persiano.
+Se il font usato non è specifico per il Persiano allora il testo, ma specialmente i numeri, potrebbero non essere corretti.
+Desideri che Optikey cambi automaticamente il font a Nazli?</value>
+  </data>
+  <data name="PERSIAN_IRAN" xml:space="preserve">
+    <value>Persiano (Iran) / فارسی (ایرانی)</value>
+  </data>
+  <data name="PERSIAN_IRAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Persiano
+(Iran) /
+فارسی
+(ایرانی)</value>
+  </data>
+  <data name="FINNISH_FINLAND" xml:space="preserve">
+    <value>Fillandese (Fillandia) / suomi (Suomi)</value>
+  </data>
+  <data name="FINNISH_FINLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Fillandese
+ (Fillandia) /
+ suomi
+ (Suomi)</value>
+  </data>
+  <data name="HEBREW_ISRAEL" xml:space="preserve">
+    <value>Ebraico (Israele) / עברית (ישראל)</value>
+  </data>
+  <data name="HEBREW_ISRAEL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ebraico
+(Israele) /
+עברית
+(ישראל)</value>
+  </data>
+  <data name="HUNGARIAN_HUNGARY" xml:space="preserve">
+    <value>Ungherese (Ungheria) / Magyar (Magyarország)</value>
+  </data>
+  <data name="HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ungherese
+(Ungheria) /
+Magyar
+(Magyarország)</value>
+  </data>
+  <data name="ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT" xml:space="preserve">
+    <value>Errore durante la gestione della selezione del tasto</value>
+  </data>
+  <data name="LOAD_DICTIONARY" xml:space="preserve">
+    <value>Carica dizionario</value>
+  </data>
+  <data name="LOAD_DICTIONARY_DESCRIPTION" xml:space="preserve">
+    <value>Carica il dizionario per aggiungere, cancellare o revisionare delle parole.</value>
+  </data>
+  <data name="ENABLE_PLUGINS" xml:space="preserve">
+    <value>Abilita i plugins</value>
+  </data>
+  <data name="FEATURES_LABEL" xml:space="preserve">
+    <value>Caratteristiche extra</value>
+  </data>
+  <data name="CONVERSATION_OPTIONS" xml:space="preserve">
+    <value>Opzioni di conversazione:</value>
+  </data>
+  <data name="EXTRA_KEYS" xml:space="preserve">
+    <value>Caratteri extra</value>
+  </data>
+  <data name="TYPING_OPTIONS" xml:space="preserve">
+    <value>Opzioni di digitazione</value>
+  </data>
+  <data name="FEATURES" xml:space="preserve">
+    <value>Caratteristiche extra</value>
+  </data>
+  <data name="VARIOUS" xml:space="preserve">
+    <value>Varie</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Chat : Comunicazione semplice</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Mouse : Controllo totale del puntatore</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Symbol : Comunicazione con simboli</value>
   </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
-    <value>Ciò richiede un computer portatile di gioco Alienware 17, utilizzando l'eye tracker Tobii built-in.</value>
+    <value>Questo richiede un portatile Alienware 17, che integra il dispositivo di tracciamento oculare Tobii</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Ciò richiede il monitoraggio Gaze Biblioteca ITU, che è un quadro di riferimento per aprire gli occhi fonte di monitoraggio utilizzando off-the-shelf componenti, come webcam e videocamere.</value>
+    <value>Questo richiede la ITU Gaze Tracking Library, che è un framework open source di tracciamento oculare per prodotti commerciali, tipo videocamere e webcam.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Se si prevede di utilizzare Optikey con l'eye tracker Irisbond Duo quindi si prega di assicurarsi di avere i driver installati Irisbond Duo. Questi possono essere scaricati dal https://www.irisbond.com/products/downloads.</value>
+    <value>Se prevedi di utilizzare Optikey con il dispositivo di tracciamento oculare Irisbond Duo allora perfavore accertati di aver installato il relativo driver. I driver possono essere trovati al seguente indirizzo https://www.irisbond.com/products/downloads .</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>In questa modalità, Optikey userà il cursore del mouse come input invece di parlare direttamente ad un inseguitore occhio. Si potrebbe desiderare questo se si sta testando Optikey fuori, o se si desidera utilizzare con un dispositivo di input alternativo come un mouse testa o qualsiasi occhio non inseguitore in questa lista. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Questa opzione funziona con qualsiasi occhio inseguitore Tobii Gaming (4C, EyeX, Alienware, Steelseries, ecc)</value>
+    <value>In questa modalità Optikey userà il puntatore del mouse come input invece di usare il segnale di un dispositivo di tracciamento oculare. Puoi usare questa modalità per testare Optikey oppure se vuoi usare Optikey con un dispositivo alternativo tipo un mouse controllabile dalla testa o un dispositivo di tracciamento oculare non presente in questa lista.</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Per utilizzare Optikey con un eye tracker assistive, vi sia bisogno della nuova versione Tobii Windows Control, o il motore Tobii Eye Tracking. Se è necessario utilizzare la vecchia versione dell'applicazione di Tobii Windows Control (Tobii Gaze Interaction Software), allora si avrà bisogno di controllare Optikey usando posizione del mouse, invece. Per ulteriori informazioni, vedere www.optikey.org/help</value>
+    <value>Per usare Optikey con un dispositivo di tracciamento oculare, hai bisogno o della nuova versione di Windows Control, oppure del software Tobii Eye Tracking. Se hai la vecchia versione del software di controllo Tobii per Windows (incluse le impostazioni Tobii Gaze Interaction), allora per usare Optikey devi impostarne il controllo via posizione del mouse.</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Questa opzione funziona con tutti i dispositivi di tracciamento oculare della Tobii Gaming (5, 4C, EyeX, Alienware, Steelseries, ecc.)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>L'interazione myGaze visiva è supportato solo se hai già installato i driver client myGaze, che non sono più disponibili per il download. Se non si dispone di questi driver installati, è necessario selezionare 'posizione del mouse' uso, invece, e utilizzare Optikey in combinazione con l'applicazione myGaze EyeMousePlay per spostare il cursore.</value>
+    <value>La Visual Interaction myGaze è disponibile soltanto se hai già installato i driver per il client myGaze, che non sono più disonibili per il download. Se non hai già installato questi driver, dovrai selezionare la modalità di utilizzo con la posizione del mouse e usare Optikey in combinazione con l'applicazione myGaze EyeMousePlay per muovere il cursore.</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Controllo del computer e comunicazione</value>
-</data>
-<data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-    <value>Comunicazione facile</value>
-</data>
-<data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-    <value>Controllo completo del cursore</value>
-</data>
-<data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-    <value>Comunicazione con i simboli</value>
-</data>
+  <data name="OPACITY_LABEL" xml:space="preserve">
+    <value>Opacità:</value>
+  </data>
+  <data name="ALLOW_MULTIPLE_INSTANCES" xml:space="preserve">
+    <value>Permetti di avviare contemporaneamente istanze multiple di questa app Optikey</value>
+  </data>
+  <data name="TOP" xml:space="preserve">
+    <value>In alto</value>
+  </data>
+  <data name="DOCK_POSITION_LABEL" xml:space="preserve">
+    <value>Posizione di ancoraggio</value>
+  </data>
+  <data name="FLOATING_POSITION_LABEL" xml:space="preserve">
+    <value>Posizione flottante (da sinistra, dall'alto, spessore, altezza)</value>
+  </data>
+  <data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Lingua di destinazione della traduzione:</value>
+  </data>
+  <data name="ERROR_DURING_TRANSLATION" xml:space="preserve">
+    <value>Un errore è occorso durante la traduzione del testo</value>
+  </data>
+  <data name="TRANSLATE" xml:space="preserve">
+    <value>Traduci</value>
+  </data>
+  <data name="ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
+    <value>Utilizza un tasto Yandex Translation API differente?</value>
+  </data>
+  <data name="OVERRIDDEN_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
+    <value>Tasto API:</value>
+  </data>
+  <data name="ENABLE_TRANSLATION_KEY_LABEL" xml:space="preserve">
+    <value>Abilita tasto per la traduzione? (traduzione copiata automaticamente)</value>
+  </data>
+  <data name="TOBII_EYE_TRACKER_5" xml:space="preserve">
+    <value>Tobii Eye Tracker 5</value>
+  </data>
+  <data name="HINDI_INDIA" xml:space="preserve">
+    <value>Hindi (India) / हिन्दी (भारत)</value>
+  </data>
+  <data name="HINDI_INDIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Hindi
+(India) /
+हिन्दी
+(भारत)</value>
+  </data>
 </root>

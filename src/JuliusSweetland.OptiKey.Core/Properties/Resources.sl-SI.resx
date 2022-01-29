@@ -1572,7 +1572,7 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
       <value>To zahteva ITU pogled sledenje knjižnice, ki je okvir za odprtokodne oko sledenje uporabo off-the-polici komponent, kot so spletne kamere in videokamere.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Če nameravate uporabljati Optikey z oči tracker Irisbond Duo potem se prepričajte, da imate gonilnike Irisbond Duo namestili. Te lahko prenesete s https://www.irisbond.com/products/downloads.</value>
+      <value>Če nameravate uporabljati Optikey z oči tracker Irisbond Duo potem se prepričajte, da imate gonilnike Irisbond Duo namestili. Te lahko prenesete s https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>V tem načinu bo Optikey uporabite miško kot vhod, namesto da bi govoril neposredno v sledilnik oči. Morda boste to želeli, če ste testiranje Optikey ven, ali če želite, da ga uporabljate z alternativnim vhodne naprave, kot so glave miško ali katere koli oči tracker ni na tem seznamu. </value>

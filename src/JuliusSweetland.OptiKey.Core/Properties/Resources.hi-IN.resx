@@ -2030,7 +2030,7 @@
     <value>इसके लिए ITU Gaze ट्रैकिंग लाइब्रेरी की आवश्यकता होती है, जो वेबकैम और वीडियोकैमरा जैसे ऑफ-द-शेल्फ घटकों का उपयोग करके ओपन सोर्स आई ट्रैकिंग के लिए एक ढांचा है।</value>
   </data>
 	<data name="IRISBOND_DUO_INFO" xml:space="preserve">
-    <value>यदि आप Irisbond Duo आई ट्रैकर के साथ Optikey का उपयोग करने की योजना बनाते हैं, तो कृपया सुनिश्चित करें कि आपके पास Irisbond Duo ड्राइवर स्थापित हैं। इन्हें https://www.irisbond.com/products/downloads से डाउनलोड किया जा सकता है।</value>
+    <value>यदि आप Irisbond Duo आई ट्रैकर के साथ Optikey का उपयोग करने की योजना बनाते हैं, तो कृपया सुनिश्चित करें कि आपके पास Irisbond Duo ड्राइवर स्थापित हैं। इन्हें https://www.irisbond.com/en/producto/irisbond-duo-2 से डाउनलोड किया जा सकता है।</value>
   </data>
 	<data name="MOUSE_POSITION_INFO" xml:space="preserve">
     <value>इस मोड में, Optikey माउस कर्सर को आई ट्रैकर से सीधे बात करने के बजाय इनपुट के रूप में उपयोग करेगा। यदि आप Optikey का परीक्षण कर रहे हैं, या यदि आप इसे वैकल्पिक इनपुट डिवाइस जैसे हेड माउस या किसी आई ट्रैकर के साथ प्रयोग करना चाहते हैं, तो आप यह नहीं चाह सकते हैं।</value>

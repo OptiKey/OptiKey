@@ -2351,7 +2351,7 @@ Haluatko, että Optikey asettaa automaattisesti fontiksi Nazil?</value>
       <value>Tämä edellyttää ITU Gaze -seurantakirjastoa, joka on kehyksen avoimen lähdekoodin katseenseuranta käyttäen suoraan hyllyltä komponentteja, kuten web-kameroita ja videokameroita.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Jos aiot käyttää Optikey kanssa Irisbond Duo silmänseurain niin varmista, että sinulla on Irisbond Duo ajurit asennettu. Nämä voi ladata https://www.irisbond.com/products/downloads.</value>
+      <value>Jos aiot käyttää Optikey kanssa Irisbond Duo silmänseurain niin varmista, että sinulla on Irisbond Duo ajurit asennettu. Nämä voi ladata https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>Tässä tilassa Optikey käyttää hiiren kursori syötteenä puhumisen sijasta suoraan silmänseurain. Haluat ehkä tämä Jos testaat Optikey pois, tai jos haluat käyttää sitä vaihtoehtoista raaka laite, kuten pään hiiren tai silmänseurain ole luettelossa. </value>

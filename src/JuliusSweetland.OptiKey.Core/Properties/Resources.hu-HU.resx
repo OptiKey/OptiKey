@@ -2346,7 +2346,7 @@ Persian
       <value>Ez megköveteli az ITU Gaze Tracking Library, amely keretet nyílt szemmel követés segítségével off-the-shelf alkatrészek, mint például webkamerák és videokamerák.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Ha azt tervezi, hogy használja optikey a Irisbond Duo szemkövetővel akkor kérjük, győződjön meg róla, a Irisbond Duo illesztőprogramok telepítése. Ezeket lehet letölteni https://www.irisbond.com/products/downloads.</value>
+      <value>Ha azt tervezi, hogy használja optikey a Irisbond Duo szemkövetővel akkor kérjük, győződjön meg róla, a Irisbond Duo illesztőprogramok telepítése. Ezeket lehet letölteni https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>Ebben az üzemmódban Optikey fogja használni a kurzort a beviteli helyett beszél közvetlenül az szemkövetővel. Érdemes ezt, ha tesztelés Optikey ki, vagy ha szeretné használni egy alternatív beviteli eszköz, például egy fej egér vagy szemkövetővel nem szerepel a listában.</value>

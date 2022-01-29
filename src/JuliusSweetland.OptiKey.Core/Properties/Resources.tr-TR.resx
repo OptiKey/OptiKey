@@ -1586,7 +1586,7 @@ KÜÇÜLT</value>
       <value>Bu tür web kamerası ve Videokameralara olarak kullanıma hazır bileşenleri kullanarak izleme açık kaynak göz için bir çerçevedir İTÜ Gaze Takip Kütüphane gerektirir.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Eğer Irisbond Duo göz izleme ile Optikey kullanmayı planlıyorsanız o zaman yüklü Irisbond Duo sürücüleri olduğundan emin olun. Bu https://www.irisbond.com/products/downloads indirilebilir.</value>
+      <value>Eğer Irisbond Duo göz izleme ile Optikey kullanmayı planlıyorsanız o zaman yüklü Irisbond Duo sürücüleri olduğundan emin olun. Bu https://www.irisbond.com/en/producto/irisbond-duo-2 indirilebilir.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>Bu modda, Optikey bir göz izleme doğrudan konuşmak yerine girdi olarak fare imlecini kullanacaktır. Sen Optikey test ediyoruz eğer bunu istiyorum olabilecek veya böyle bir kafa fare veya bu listede herhangi bir göz izleme gibi alternatif bir giriş cihazı ile kullanmak istiyorum. Daha fazla bilgi için, bkz www.optikey.org/help</value>

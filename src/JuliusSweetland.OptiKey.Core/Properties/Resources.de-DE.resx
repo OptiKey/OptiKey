@@ -1637,7 +1637,7 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
       <value>Dies erfordert die ITU-Tracking-Anstarren-Bibliothek, die ein Rahmen für die Open-Source-Auge ist off-the-shelf-Komponenten-Tracking verwenden, wie Webcams und Videokameras.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Wenn Sie verwenden Optikey mit dem Irisbond Duo Eye-Tracker planen dann stellen Sie Sie bitte die Irisbond Duo Treiber installiert. Diese können von https://www.irisbond.com/products/downloads heruntergeladen werden.</value>
+      <value>Wenn Sie verwenden Optikey mit dem Irisbond Duo Eye-Tracker planen dann stellen Sie Sie bitte die Irisbond Duo Treiber installiert. Diese können von https://www.irisbond.com/en/producto/irisbond-duo-2 heruntergeladen werden.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>In diesem Modus wird Optikey den Mauszeiger als Eingabe verwenden, anstatt direkt mit einem Eye-Tracker zu reden. Sie könnten dies wünschen, wenn Sie Optikey aus sind testen, oder wenn Sie wollen, dass es mit einer alternativen Eingabegerät verwenden, wie beispielsweise eine Kopfmaus oder einem Eye-Tracker nicht in dieser Liste. Weitere Informationen finden Sie www.optikey.org/help</value>

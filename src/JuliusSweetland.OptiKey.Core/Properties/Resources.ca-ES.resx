@@ -1589,7 +1589,7 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
       <value>Això requereix que el Gaze biblioteca de seguiment UIT, que és un marc per ull de codi obert de seguiment utilitzant components off-the-shelf, com ara càmeres web i càmeres de vídeo.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Si intenteu fer ús Optikey amb el rastrejador ocular Irisbond Duo, si us plau segur de tindre els controladors instal·lats Irisbond Duo. Aquests es poden descarregar des https://www.irisbond.com/products/downloads.</value>
+      <value>Si intenteu fer ús Optikey amb el rastrejador ocular Irisbond Duo, si us plau segur de tindre els controladors instal·lats Irisbond Duo. Aquests es poden descarregar des https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>En aquesta manera, Optikey farà servir el cursor del ratolí com a entrada en lloc de parlar directament a un seguidor d'ulls. És possible que vulgueu això si s'està provant Optikey a terme, o desitja utilitzar-lo amb un dispositiu d'entrada alternatiu, com un ratolí de cap o qualsevol rastrejador ocular no en aquesta llista. </value>

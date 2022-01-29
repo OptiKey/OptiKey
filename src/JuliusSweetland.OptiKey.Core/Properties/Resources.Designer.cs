@@ -3049,7 +3049,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/products/downloads..
+        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2..
         /// </summary>
         public static string IRISBOND_DUO_INFO
         {
@@ -3071,7 +3071,7 @@ namespace JuliusSweetland.OptiKey.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Hiru eye tracker then please make sure you have the Irisbond Hiru drivers installed. These can be downloaded from https://www.irisbond.com/products/downloads..
+        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Hiru eye tracker then please make sure you have the Irisbond Hiru drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2..
         /// </summary>
         public static string IRISBOND_HIRU_INFO
         {
