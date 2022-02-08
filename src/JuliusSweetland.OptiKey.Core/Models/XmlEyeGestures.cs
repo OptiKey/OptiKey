@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml;
@@ -32,15 +33,17 @@ namespace JuliusSweetland.OptiKey.Models
 
         public static XmlEyeGestures ReadFromString(string xmlString)
         {
+            if (String.IsNullOrEmpty(xmlString)) { return null; }
+
             var gestures = new XmlEyeGestures();
             var serializer = new XmlSerializer(typeof(XmlEyeGestures));
             try
             {
-                gestures = (XmlEyeGestures)serializer.Deserialize(new StringReader(xmlString));
+                return (XmlEyeGestures)serializer.Deserialize(new StringReader(xmlString));                
             }
-            catch { }
-
-            return gestures;
+            catch {
+                return null;
+            }
         }
 
         public void WriteToFile(string filename)
