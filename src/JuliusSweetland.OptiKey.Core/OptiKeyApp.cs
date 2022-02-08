@@ -1049,7 +1049,10 @@ namespace JuliusSweetland.OptiKey
             catch
             {
                 var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"OptiKey\OptiKey\EyeGestures\");
-
+                if (!Directory.Exists(applicationDataPath))
+                {
+                    Directory.CreateDirectory(applicationDataPath);
+                }
                 var eyeGesturesFile = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\EyeGestures").First();
 
                 eyeGesturesFilePath = Path.Combine(applicationDataPath, Path.GetFileName(eyeGesturesFile));
