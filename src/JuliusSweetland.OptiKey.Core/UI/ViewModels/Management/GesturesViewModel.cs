@@ -11,11 +11,15 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using Prism.Commands;
+using log4net;
+using System.Reflection;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
     public class GesturesViewModel : INotifyPropertyChanged
     {
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public GesturesViewModel()
         {
             OpenFileCommand = new DelegateCommand(OpenFile);
@@ -132,7 +136,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 default:
                     break;
             }
-            xmlEyeGestures = XmlEyeGestures.ReadFromFile(EyeGestureFile);
+            try
+            {
+                xmlEyeGestures = XmlEyeGestures.ReadFromFile(EyeGestureFile);
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Error reading from gesture file: {EyeGestureFile} :");
+                Log.Info(e.ToString());
+            }
             EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
         }
 

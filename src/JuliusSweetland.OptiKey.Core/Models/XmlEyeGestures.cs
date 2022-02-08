@@ -21,16 +21,12 @@ namespace JuliusSweetland.OptiKey.Models
 
             var gestures = new XmlEyeGestures();
             var serializer = new XmlSerializer(typeof(XmlEyeGestures));
-            try
+            
+            using (var reader = new FileStream(@inputFilename, FileMode.Open))
             {
-                using (var reader = new FileStream(@inputFilename, FileMode.Open))
-                {
-                    gestures = (XmlEyeGestures)serializer.Deserialize(reader);
-                    reader.Close();
-                }
+                gestures = (XmlEyeGestures)serializer.Deserialize(reader);                
             }
-            catch { }
-
+            
             return gestures;
         }
 
