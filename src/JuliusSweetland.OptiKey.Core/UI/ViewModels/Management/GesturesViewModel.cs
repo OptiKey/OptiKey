@@ -119,7 +119,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EyeGesturesEnabled = Settings.Default.EyeGesturesEnabled;
             EyeGestureFile = Settings.Default.EyeGestureFile;
             EyeGestureString = Settings.Default.EyeGestureString;
-            xmlEyeGestures = XmlEyeGestures.ReadFromString(EyeGestureString);
+            xmlEyeGestures = XmlEyeGestures.ReadFromString(EyeGestureString) ?? new XmlEyeGestures();
             EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
         }
 
