@@ -177,7 +177,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void EnableAll()
         {
-            Settings.Default.EyeGesturesEnabled = true;
+            EyeGesturesEnabled = true;
             foreach (var e in GestureList)
                 e.enabled = true;
             UpdateState();
@@ -185,7 +185,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void DisableAll()
         {
-            Settings.Default.EyeGesturesEnabled = false;
+            EyeGesturesEnabled = false;
             foreach (var e in GestureList)
                 e.enabled = false;
             UpdateState();
