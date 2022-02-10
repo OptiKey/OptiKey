@@ -145,6 +145,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 Log.Error($"Error reading from gesture file: {EyeGestureFile} :");
                 Log.Info(e.ToString());
             }
+            // TODO: roll back file name if error
             EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
         }
 
@@ -156,7 +157,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             saveFileDialog.InitialDirectory = string.IsNullOrEmpty(fp) ? @"C:\" : fp;
             saveFileDialog.FileName = string.IsNullOrEmpty(fn) ? "EyeGestures.xml" : fn;
             saveFileDialog.Title = "Save File";
-            saveFileDialog.CheckFileExists = true;
+            saveFileDialog.CheckFileExists = false;
             saveFileDialog.CheckPathExists = true;
             saveFileDialog.DefaultExt = "xml";
             saveFileDialog.Filter = "Xml files (*.xml)|*.xml|All files (*.*)|*.*";
