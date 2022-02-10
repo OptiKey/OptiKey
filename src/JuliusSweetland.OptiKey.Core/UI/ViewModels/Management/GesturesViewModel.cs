@@ -127,25 +127,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             var fileDialog = new System.Windows.Forms.OpenFileDialog() { FileName = Path.GetFileName(EyeGestureFile) };
             var result = fileDialog.ShowDialog();
+            string tempFilename;
             switch (result)
             {
                 case System.Windows.Forms.DialogResult.OK:
-                    EyeGestureFile = fileDialog.FileName;
+                    tempFilename = fileDialog.FileName; // we will commit it if loading is okay                    
                     break;
                 case System.Windows.Forms.DialogResult.Cancel:
                 default:
-                    break;
+                    return;
             }
             try
             {
-                xmlEyeGestures = XmlEyeGestures.ReadFromFile(EyeGestureFile);
+                xmlEyeGestures = XmlEyeGestures.ReadFromFile(tempFilename);                
             }
             catch (Exception e)
             {
                 Log.Error($"Error reading from gesture file: {EyeGestureFile} :");
                 Log.Info(e.ToString());
+                return;
             }
-            // TODO: roll back file name if error
+            EyeGestureFile = tempFilename;
             EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
         }
 
