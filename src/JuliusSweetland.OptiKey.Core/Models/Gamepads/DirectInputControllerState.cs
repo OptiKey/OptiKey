@@ -31,15 +31,14 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
                     controller = new Joystick(directInput, instanceGuid);
                     controller.Properties.BufferSize = 128;
                     controller.Acquire();
-                    Console.WriteLine("Connected to DirectInput Joystick/Gamepad with GUID: {0}", instanceGuid);
                     IsConnected = true;
                 }
                 catch (SharpDX.SharpDXException exception)
                 {
                     if (logFailure)
                     {
-                        Console.WriteLine($"Exception connecting to DirectInput Joystick/Gamepad with GUID: { instanceGuid }");
-                        Console.WriteLine($"Exception: {exception.Descriptor.ApiCode}");
+                        Log.Info($"Exception connecting to DirectInput Joystick/Gamepad with GUID: { instanceGuid }");
+                        Log.Info($"Exception: {exception.Descriptor.ApiCode}");
                     }
                     IsConnected = false;
                     return;
@@ -83,12 +82,12 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
             {
                 // Log any changes
                 if (!isConnected && value == true)
-                {
-                    Console.WriteLine($"Connected to DirectInput controller with Guid {instanceGuid}");
+                {                    
+                    Log.Info($"Connected to DirectInput controller with Guid {instanceGuid}");
                 }
                 else if (isConnected && value == false)
                 {
-                    Console.WriteLine($"DirectInput controller with Guid {instanceGuid} is disconnected");
+                    Log.Info($"DirectInput controller with Guid {instanceGuid} is disconnected");
                     disconnectedTime = DateTime.Now;
                 }
 
