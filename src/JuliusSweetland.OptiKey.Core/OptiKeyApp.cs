@@ -1036,10 +1036,11 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
-        #region Validate EyeGestures File
+        #region Validate EyeGestures File and settings
 
-        protected static void ValidateEyeGesturesFile()
+        protected static void ValidateEyeGestures()
         {
+            // Check that eye gestures file is readable, reset to default otherwise
             var eyeGesturesFilePath = Settings.Default.EyeGestureFile;
 
             try
@@ -1048,6 +1049,8 @@ namespace JuliusSweetland.OptiKey
             }
             catch
             {
+                Settings.Default.EyeGesturesEnabled = false; // to be enabled from Management Console by user
+
                 var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"OptiKey\OptiKey\EyeGestures\");
                 if (!Directory.Exists(applicationDataPath))
                 {

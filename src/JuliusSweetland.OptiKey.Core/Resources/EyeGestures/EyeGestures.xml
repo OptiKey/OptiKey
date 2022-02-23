@@ -2,7 +2,7 @@
   <Gesture>
     <Name>BrowserBack</Name>
     <Cooldown>2000</Cooldown>
-    <Enabled>True</Enabled>
+    <Enabled>False</Enabled>
     <Step>
       <Type>LookAtArea</Type>
       <TimeLimit>500</TimeLimit>
@@ -37,7 +37,7 @@
   <Gesture>
     <Name>BrowserForward</Name>
     <Cooldown>2000</Cooldown>
-    <Enabled>True</Enabled>
+    <Enabled>False</Enabled>
     <Step>
       <Type>LookAtArea</Type>
       <TimeLimit>500</TimeLimit>
@@ -72,7 +72,7 @@
   <Gesture>
     <Name>BrowserSearch</Name>
     <Cooldown>2000</Cooldown>
-    <Enabled>True</Enabled>
+    <Enabled>False</Enabled>
     <Step>
       <Type>LookAtArea</Type>
       <TimeLimit>500</TimeLimit>
@@ -94,7 +94,7 @@
   <Gesture>
     <Name>MagneticCursor</Name>
     <Cooldown>2000</Cooldown>
-    <Enabled>True</Enabled>
+    <Enabled>False</Enabled>
     <Step>
       <Type>LookAtArea</Type>
       <TimeLimit>500</TimeLimit>
@@ -116,7 +116,7 @@
   <Gesture>
     <Name>Minimize</Name>
     <Cooldown>2000</Cooldown>
-    <Enabled>True</Enabled>
+    <Enabled>False</Enabled>
     <Step>
       <Type>LookAtArea</Type>
       <TimeLimit>500</TimeLimit>
@@ -138,7 +138,7 @@
   <Gesture>
     <Name>MouseMoveTo</Name>
     <Cooldown>2000</Cooldown>
-    <Enabled>True</Enabled>
+    <Enabled>False</Enabled>
     <Step>
       <Type>Fixation</Type>
       <TimeLimit>500</TimeLimit>
@@ -186,7 +186,7 @@
   <Gesture>
     <Name>Windows</Name>
     <Cooldown>2000</Cooldown>
-    <Enabled>True</Enabled>
+    <Enabled>False</Enabled>
     <Step>
       <Type>LookAtArea</Type>
       <TimeLimit>500</TimeLimit>
