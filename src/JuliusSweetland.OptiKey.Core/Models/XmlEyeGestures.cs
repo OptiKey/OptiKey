@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using log4net;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -10,6 +11,8 @@ namespace JuliusSweetland.OptiKey.Models
     [XmlRoot(ElementName = "EyeGestures")]
     public class XmlEyeGestures
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         [XmlNamespaceDeclarations] public XmlSerializerNamespaces xmlns;
 
         [XmlElement("Gesture")]
@@ -42,6 +45,7 @@ namespace JuliusSweetland.OptiKey.Models
                 return (XmlEyeGestures)serializer.Deserialize(new StringReader(xmlString));                
             }
             catch {
+                Log.ErrorFormat("Error reading gesture from string: '{0}'", xmlString);
                 return null;
             }
         }
