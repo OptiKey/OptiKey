@@ -117,7 +117,7 @@ namespace JuliusSweetland.OptiKey.Pro
 
                 CleanupAndPrepareCommuniKateInitialState();
 
-                ValidateEyeGesturesFile();
+                ValidateEyeGestures();
 
                 ValidateDynamicKeyboardLocation();
 
