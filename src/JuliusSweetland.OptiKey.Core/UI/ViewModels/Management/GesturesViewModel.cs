@@ -143,7 +143,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
             catch (Exception e)
             {
-                Log.Error($"Error reading from gesture file: {EyeGestureFile} :");
+                Log.Error($"Error reading from gesture file: {tempFilename} :");
                 Log.Info(e.ToString());
                 return;
             }
