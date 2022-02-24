@@ -9,25 +9,36 @@ using System.Reflection;
 
 namespace JuliusSweetland.OptiKey.Models.Gamepads
 {
-    class XInputListener : IDisposable
+    public class XInputListener : IDisposable
     {
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
+        // Singleton instance allows multiple callers to subscribe to one or more controllers
+        private static readonly Lazy<XInputListener> instance =
+            new Lazy<XInputListener>(() => new XInputListener(UserIndex.Any));
+
+        public static XInputListener Instance { get { return instance.Value; } }
+
         #region event-handling
 
-        public class GamepadButtonEventArgs : EventArgs
+        public class XInputButtonEventArgs : EventArgs
         {
-            public GamepadButtonEventArgs(GamepadButtonFlags button)
+            public XInputButtonEventArgs(UserIndex userIndex, EventType type, GamepadButtonFlags button)
             {
+                this.userIndex = userIndex;
+                this.eventType = type;
                 this.button = button;
             }
+
+            public UserIndex userIndex;
             public GamepadButtonFlags button;
+            public EventType eventType;        
         }
         
         public event XInputButtonDownEventHandler ButtonDown;
         public event XInputButtonUpEventHandler ButtonUp;
-        public delegate void XInputButtonDownEventHandler(object sender, GamepadButtonEventArgs e);
-        public delegate void XInputButtonUpEventHandler(object sender, GamepadButtonEventArgs e);
+        public delegate void XInputButtonDownEventHandler(object sender, XInputButtonEventArgs e);
+        public delegate void XInputButtonUpEventHandler(object sender, XInputButtonEventArgs e);
 
         #endregion
 
@@ -35,16 +46,15 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
         private UserIndex requestedUserIndex;
 
         private BackgroundWorker pollWorker;
-        private int pollDelayMs;
+        private int pollDelayMs = 20;
 
         public static bool IsDeviceAvailable(UserIndex userIndex)
         {           
             return new Controller(userIndex).IsConnected;
         }    
 
-        public XInputListener(UserIndex userIndex, int pollDelayMs = 20)
-        {
-            this.pollDelayMs = pollDelayMs;
+        public XInputListener(UserIndex userIndex)
+        {            
             this.requestedUserIndex = userIndex;
 
             pollWorker = new BackgroundWorker();
@@ -102,9 +112,9 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
                             foreach (GamepadButtonFlags b in splitButtonsChanged)
                             {
                                 if ((conn.CurrentButtons & b) > 0)
-                                    this.ButtonDown?.Invoke(this, new GamepadButtonEventArgs(b));
+                                    this.ButtonDown?.Invoke(this, new XInputButtonEventArgs(conn.UserIndex, EventType.DOWN, b));
                                 else
-                                    this.ButtonUp?.Invoke(this, new GamepadButtonEventArgs(b));
+                                    this.ButtonUp?.Invoke(this, new XInputButtonEventArgs(conn.UserIndex, EventType.UP, b));
                             }
                         }
                     }

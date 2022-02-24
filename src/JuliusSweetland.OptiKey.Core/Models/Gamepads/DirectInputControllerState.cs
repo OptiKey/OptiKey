@@ -11,9 +11,9 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
 
         public DirectInputControllerState(Guid instanceGuid, long reconnectMs = 1000)
         {
-            this.instanceGuid = instanceGuid;
             this.reconnectMs = reconnectMs;
 
+            this.InstanceGuid = instanceGuid;
             this.PreviousButtons = new bool[128];
             this.CurrentButtons = new bool[128];
             this.ChangedButtons = new bool[128];
@@ -24,33 +24,34 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
 
         private void TryConnect(bool logFailure)
         {
-            using (var directInput = new DirectInput())
+            try
             {
-                try
+                using (var directInput = new DirectInput())
                 {
-                    controller = new Joystick(directInput, instanceGuid);
+                    controller = new Joystick(directInput, InstanceGuid);
                     controller.Properties.BufferSize = 128;
                     controller.Acquire();
                     IsConnected = true;
                 }
-                catch (SharpDX.SharpDXException exception)
-                {
-                    if (logFailure)
-                    {
-                        Log.Info($"Exception connecting to DirectInput Joystick/Gamepad with GUID: { instanceGuid }");
-                        Log.Info($"Exception: {exception.Descriptor.ApiCode}");
-                    }
-                    IsConnected = false;
-                    return;
-                }
             }
+            catch (SharpDX.SharpDXException exception)
+            {
+                if (logFailure)
+                {
+                    Log.Info($"Exception connecting to DirectInput Joystick/Gamepad with GUID: { InstanceGuid }");
+                    Log.Info($"Exception: {exception.Descriptor.ApiCode}");
+                }
+                IsConnected = false;
+                return;
+            }            
         }
-
-        private Guid instanceGuid;
+        
         private Joystick controller;
         private JoystickState state = new JoystickState();
         private long reconnectMs;
         private DateTime disconnectedTime;
+
+        public Guid InstanceGuid { get; private set; }
 
         public bool[] CurrentButtons { get; private set; }
         public bool[] PreviousButtons { get; private set; }
@@ -83,11 +84,11 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
                 // Log any changes
                 if (!isConnected && value == true)
                 {                    
-                    Log.Info($"Connected to DirectInput controller with Guid {instanceGuid}");
+                    Log.Info($"Connected to DirectInput controller with Guid {InstanceGuid}");
                 }
                 else if (isConnected && value == false)
                 {
-                    Log.Info($"DirectInput controller with Guid {instanceGuid} is disconnected");
+                    Log.Info($"DirectInput controller with Guid {InstanceGuid} is disconnected");
                     disconnectedTime = DateTime.Now;
                 }
 

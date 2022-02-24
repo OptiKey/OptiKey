@@ -9,19 +9,29 @@ using log4net;
 
 namespace JuliusSweetland.OptiKey.Models.Gamepads
 {
-    class DirectInputListener : IDisposable
+    public class DirectInputListener : IDisposable
     {
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        // Singleton instance allows multiple callers to subscribe to one or more controllers
+        private static readonly Lazy<DirectInputListener> instance =
+            new Lazy<DirectInputListener>(() => new DirectInputListener(Guid.Empty));
+        public static DirectInputListener Instance { get { return instance.Value; } }
 
         #region event-handling
 
         public class DirectInputButtonEventArgs : EventArgs
         {
-            public DirectInputButtonEventArgs(int button)
+            public DirectInputButtonEventArgs(Guid controller, EventType type, int button)
             {
+                this.controller = controller;
+                this.eventType = type;
                 this.button = button;
             }
+
+            public Guid controller;
             public int button;
+            public EventType eventType;
         }
 
         public event DirectInputButtonDownEventHandler ButtonDown;
@@ -149,11 +159,11 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
                             {
                                 if (controller.CurrentButtons[i])
                                 {
-                                    this.ButtonDown?.Invoke(this, new DirectInputButtonEventArgs(i + 1));
+                                    this.ButtonDown?.Invoke(this, new DirectInputButtonEventArgs(controller.InstanceGuid, EventType.DOWN, i + 1));
                                 }
                                 else
                                 {
-                                    this.ButtonUp?.Invoke(this, new DirectInputButtonEventArgs(i + 1));
+                                    this.ButtonUp?.Invoke(this, new DirectInputButtonEventArgs(controller.InstanceGuid, EventType.UP, i + 1));
                                 }
                             }
                         }

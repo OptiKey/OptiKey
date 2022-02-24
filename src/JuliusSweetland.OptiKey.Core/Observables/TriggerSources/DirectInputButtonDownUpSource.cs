@@ -18,6 +18,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         private readonly int triggerButtonIdx;
         private readonly DirectInputListener directInputListener;
+        private readonly Guid controllerGuid;
 
         private IPointSource pointSource;
         private IObservable<TriggerSignal> sequence;
@@ -33,8 +34,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         {
             this.triggerButtonIdx = triggerButtonIdx;
             this.pointSource = pointSource;
+            this.controllerGuid = controllerGuid;
 
-            directInputListener = new DirectInputListener(controllerGuid);
+            directInputListener = DirectInputListener.Instance;
         }
 
         #endregion
@@ -67,9 +69,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             Log.InfoFormat("gamepad button {0} UP", ep.EventArgs.button);
                         })
                         .Where(ep => {
-                            return (ep.EventArgs.button == triggerButtonIdx);
+                            return ( (controllerGuid == Guid.Empty || ep.EventArgs.controller == controllerGuid) 
+                                     && ep.EventArgs.button == triggerButtonIdx);
                          })
-                        .Select(_ => true)
+                        .Select(ep => ep.EventArgs)
                         .Do(_ => Log.DebugFormat("Trigger key down detected ({0})", triggerButtonIdx));
 
                     var keyUps = Observable.FromEventPattern<DirectInputButtonUpEventHandler, DirectInputButtonEventArgs>(
@@ -82,13 +85,13 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         .Where(ep => {
                             return (ep.EventArgs.button == triggerButtonIdx);
                         })
-                        .Select(_ => false)
+                        .Select(ep => ep.EventArgs)
                         .Do(_ => Log.DebugFormat("Trigger key up detected ({0})", triggerButtonIdx));
 
                     sequence = keyDowns.Merge(keyUps)
                         .DistinctUntilChanged()
-                        .SkipWhile(b => b == false) //Ensure the first value we hit is a true, i.e. a key down
-                        .CombineLatest(pointSource.Sequence, (b, point) => new TriggerSignal(b ? 1 : -1, null, point.Value))
+                        .SkipWhile(b => b.eventType == EventType.DOWN) //Ensure the first value we hit is a true, i.e. a key down
+                        .CombineLatest(pointSource.Sequence, (b, point) => new TriggerSignal(b.eventType == EventType.DOWN ? 1 : -1, null, point.Value))
                         .DistinctUntilChanged(signal => signal.Signal) //Combining latest will output a trigger signal for every change in BOTH sequences - only output when the trigger signal changes
                         .Where(_ => State == RunningStates.Running)
                         .Publish()

@@ -6,6 +6,7 @@
 *.user
 *.sln.docstates
 .vs
+**.orig
 
 # Release deployment, including certificates, etc
 deployment/
@@ -168,3 +169,4 @@ packages/log4net.2.0.3/lib/net10-full/log4net.xml
 packages/log4net.2.0.3/lib/net11-full/log4net.xml
 src/JuliusSweetland.OptiKey.InstallerTranslations/InstallerStrings.cs
 .vscode
+src/JuliusSweetland.OptiKey.Crayta/Resources/CraytaKeyboards

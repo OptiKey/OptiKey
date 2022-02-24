@@ -9,8 +9,8 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
 
         public XInputControllerState(UserIndex userIndex)
         {
-            this.userIndex = userIndex;
             this.controller = new Controller(userIndex);
+            this.UserIndex = userIndex;            
             this.CurrentButtons = GamepadButtonFlags.None;
             this.PreviousButtons = GamepadButtonFlags.None;
             this.state = new State();
@@ -19,9 +19,9 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
         }
 
         private Controller controller;
-        private UserIndex userIndex;
         private State state;
 
+        public UserIndex UserIndex { get; private set; }
         public GamepadButtonFlags CurrentButtons { get; private set; }
         public GamepadButtonFlags PreviousButtons { get; private set; }
         public GamepadButtonFlags ChangedButtons { get { return CurrentButtons ^ PreviousButtons; } }
@@ -37,9 +37,9 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
             {
                 // Log any changes to Connected state
                 if (!isConnected && value == true)
-                    Log.Info($"Connected to XInput controller with UserIndex {userIndex}");
+                    Log.Info($"Connected to XInput controller with UserIndex {UserIndex}");
                 else if (isConnected && value == false)
-                    Log.Info($"XInput controller with UserIndex {userIndex} is disconnected");
+                    Log.Info($"XInput controller with UserIndex {UserIndex} is disconnected");
                 isConnected = value;
             }
         }
