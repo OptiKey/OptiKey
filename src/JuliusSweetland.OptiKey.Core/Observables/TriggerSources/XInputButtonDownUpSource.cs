@@ -20,6 +20,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         private readonly GamepadButtonFlags triggerButton;
         private readonly XInputListener xinputListener;
+        private readonly UserIndex userIndex;
 
         private IPointSource pointSource;
         private IObservable<TriggerSignal> sequence;
@@ -36,8 +37,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             Log.Info("Creating XInputButtonDownUpSource");
             this.triggerButton = triggerButton;
             this.pointSource = pointSource;
+            this.userIndex = userIndex;
 
-            xinputListener = new XInputListener(userIndex);
+            xinputListener = XInputListener.Instance;
         }
 
         #endregion
@@ -62,7 +64,12 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             {
                 if (sequence == null)
                 {
-                    var keyDowns = Observable.FromEventPattern<XInputButtonDownEventHandler, GamepadButtonEventArgs>(
+                    //need to add controller userindex to event
+                    //and sign up for only the appropriate one here
+
+                    //or consider adding a "watch" for a particular controller via the static Instance
+
+                    var keyDowns = Observable.FromEventPattern<XInputButtonDownEventHandler, XInputButtonEventArgs>(
                             handler => new XInputButtonDownEventHandler(handler),
                             h => xinputListener.ButtonDown += h,
                             h => xinputListener.ButtonDown -= h)
@@ -70,12 +77,13 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             Log.InfoFormat("gamepad button {0} DOWN [{1}]", ep.EventArgs.button, this.GetHashCode());
                         })
                         .Where(ep => {
-                            return (ep.EventArgs.button == triggerButton);
+                            return ((userIndex == UserIndex.Any || ep.EventArgs.userIndex == userIndex)
+                                     && ep.EventArgs.button == triggerButton);                            
                          })
-                        .Select(_ => true)
+                        .Select(ep => ep.EventArgs)
                         .Do(_ => Log.DebugFormat("Trigger key down detected ({0}) [{1}]", triggerButton, this.GetHashCode()));
 
-                    var keyUps = Observable.FromEventPattern<XInputButtonUpEventHandler, GamepadButtonEventArgs>(
+                    var keyUps = Observable.FromEventPattern<XInputButtonUpEventHandler, XInputButtonEventArgs>(
                             handler => new XInputButtonUpEventHandler(handler),
                             h => xinputListener.ButtonUp += h,
                             h => xinputListener.ButtonUp -= h)
@@ -85,13 +93,13 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         .Where(ep => {
                             return (ep.EventArgs.button == triggerButton);
                         })
-                        .Select(_ => false)
+                        .Select(ep => ep.EventArgs)
                         .Do(_ => Log.DebugFormat("Trigger key up detected ({0}) [{1}]", triggerButton, this.GetHashCode()));
 
                     sequence = keyDowns.Merge(keyUps)
                         .DistinctUntilChanged()
-                        .SkipWhile(b => b == false) //Ensure the first value we hit is a true, i.e. a key down
-                        .CombineLatest(pointSource.Sequence, (b, point) => new TriggerSignal(b ? 1 : -1, null, point.Value))
+                        .SkipWhile(b => b.eventType == EventType.DOWN) //Ensure the first value we hit is a true, i.e. a key down
+                        .CombineLatest(pointSource.Sequence, (b, point) => new TriggerSignal(b.eventType == EventType.DOWN ? 1 : -1, null, point.Value))
                         .DistinctUntilChanged(signal => signal.Signal) //Combining latest will output a trigger signal for every change in BOTH sequences - only output when the trigger signal changes
                         .Where(_ => State == RunningStates.Running)
                         .Publish()

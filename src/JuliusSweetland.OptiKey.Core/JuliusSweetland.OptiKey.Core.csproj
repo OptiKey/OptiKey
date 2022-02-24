@@ -213,6 +213,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Gamepads\GamepadButtonEvents.cs" />
     <Compile Include="Models\Gamepads\DirectInputControllerState.cs" />
     <Compile Include="Models\Gamepads\DirectInputListener.cs" />
     <Compile Include="Enums\AppType.cs" />
