@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1259
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Core", "src\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -55,6 +55,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance", "src\SingleInstance\SingleInstance.csproj", "{36B2699D-69D9-486E-8253-E63230CB50E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance.Wpf", "src\SingleInstance.Wpf\SingleInstance.Wpf.csproj", "{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectedControllers", "TestControllers\TestConnectedControllers.csproj", "{C19F5A3D-271A-44B4-9F98-628F4534F959}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -228,6 +230,22 @@ Global
 		{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}.Release|x86.ActiveCfg = Release|Any CPU
 		{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}.Release|x86.Build.0 = Release|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.All|Any CPU.Build.0 = Release|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.All|x86.ActiveCfg = Release|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.All|x86.Build.0 = Release|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Debug|x86.Build.0 = Debug|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.DefaultBuild|x86.Build.0 = Debug|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Release|x86.ActiveCfg = Release|Any CPU
+		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
