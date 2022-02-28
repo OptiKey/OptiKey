@@ -60,7 +60,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj">
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj">
       <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
       <Name>JuliusSweetland.OptiKey.Core</Name>
     </ProjectReference>

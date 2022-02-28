@@ -56,7 +56,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance", "src\Singl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance.Wpf", "src\SingleInstance.Wpf\SingleInstance.Wpf.csproj", "{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectedControllers", "TestControllers\TestConnectedControllers.csproj", "{C19F5A3D-271A-44B4-9F98-628F4534F959}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectedControllers", "src\TestControllers\TestConnectedControllers.csproj", "{C19F5A3D-271A-44B4-9F98-628F4534F959}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

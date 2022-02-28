@@ -74,7 +74,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuliusSweetland.OptiKey.Ins
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.InstallerUnitTests", "src\JuliusSweetland.OptiKey.InstallerUnitTests\JuliusSweetland.OptiKey.InstallerUnitTests.csproj", "{7A8332C8-5F9C-4636-9646-AB2A11CFDF70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectedControllers", "TestControllers\TestConnectedControllers.csproj", "{C19F5A3D-271A-44B4-9F98-628F4534F959}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectedControllers", "src\TestControllers\TestConnectedControllers.csproj", "{C19F5A3D-271A-44B4-9F98-628F4534F959}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
