@@ -155,6 +155,8 @@
     <ROW Component="System.Windows.Interactivity.dll" ComponentId="{C052900D-D532-4890-B7A2-1B703ECFD2EB}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.dll"/>
     <ROW Component="TETCSharpClient.dll" ComponentId="{4BF0AB8E-9D0D-4AA7-B247-266EB86A2217}" Directory_="Release_Dir" Attributes="0" KeyPath="TETCSharpClient.dll"/>
     <ROW Component="TETControls.dll" ComponentId="{75C3A7C4-6206-4394-9742-A4D71A902503}" Directory_="Release_Dir" Attributes="0" KeyPath="TETControls.dll"/>
+    <ROW Component="TestControllers.exe" ComponentId="{F6217D6F-DE30-488A-9902-B810C37DAD8A}" Directory_="APPDIR" Attributes="0" KeyPath="TestControllers.exe"/>
+    <ROW Component="TestControllers.exe.config" ComponentId="{7127E9CC-C0BA-4570-BA4B-17AF9A143E9B}" Directory_="APPDIR" Attributes="0" KeyPath="TestControllers.exe.config" Type="0"/>
     <ROW Component="Tobii.EyeX.Client.Net20.dll" ComponentId="{3CDA7E73-00FC-41BB-A927-93E3FB640D19}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.Net20.dll"/>
     <ROW Component="Tobii.EyeX.Client.dll" ComponentId="{59F7AFA2-BF83-4F73-89A5-DD94D1B55455}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll"/>
     <ROW Component="WindowsInput.dll" ComponentId="{85E21553-B643-43A7-B3B5-58D08D84D2C3}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
@@ -377,6 +379,8 @@
     <ROW File="SharpDX.XInput.dll" Component_="SharpDX.XInput.dll" FileName="SHARPD~2.DLL|SharpDX.XInput.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\SharpDX.XInput.dll" SelfReg="false"/>
     <ROW File="SharpDX.XInput.pdb" Component_="SharpDX.XInput.dll" FileName="SHARPD~2.PDB|SharpDX.XInput.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\SharpDX.XInput.pdb" SelfReg="false"/>
     <ROW File="SharpDX.XInput.xml" Component_="Bass.Net.xml" FileName="SHARPD~2.XML|SharpDX.XInput.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\Release\SharpDX.XInput.xml" SelfReg="false"/>
+    <ROW File="TestControllers.exe" Component_="TestControllers.exe" FileName="TESTCO~1.EXE|TestControllers.exe" Attributes="0" SourcePath="..\src\TestControllers\bin\Release\TestControllers.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="TestControllers.exe.config" Component_="TestControllers.exe.config" FileName="TESTCO~1.CON|TestControllers.exe.config" Attributes="0" SourcePath="..\src\TestControllers\bin\Release\TestControllers.exe.config" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -765,6 +769,8 @@
     <ROW Feature_="MainFeature" Component_="SharpDX.DirectInput.dll"/>
     <ROW Feature_="MainFeature" Component_="SharpDX.dll"/>
     <ROW Feature_="MainFeature" Component_="SharpDX.XInput.dll"/>
+    <ROW Feature_="MainFeature" Component_="TestControllers.exe"/>
+    <ROW Feature_="MainFeature" Component_="TestControllers.exe.config"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Pro.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\Pro.ico" Index="0"/>
