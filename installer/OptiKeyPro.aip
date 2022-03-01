@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.6" Modules="enterprise" RootPath="." Language="en" Id="{C55701DB-71B1-4D1B-A086-01F7DA10962C}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="19.2" Modules="enterprise" RootPath="." Language="en" Id="{C55701DB-71B1-4D1B-A086-01F7DA10962C}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_CURRENT_YEAR" Value="2022" ValueLocId="-"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
     <ROW Property="AI_RUN_AS_ADMIN" Value="0"/>
     <ROW Property="ALLUSERS" Value="1"/>
@@ -11,10 +12,10 @@
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="ExtractFilesFirst" Value="1"/>
     <ROW Property="Manufacturer" Value="Optikey"/>
-    <ROW Property="ProductCode" Value="1025:{718F484A-8B6A-4E24-B35A-06ADE8F16D4E} 1026:{7839718D-2A40-4A1B-8D38-3468F5B27E7D} 1027:{87C6D234-8E12-40F5-83C8-1F525AB929C7} 1028:{B25C1FBF-7552-4217-9F50-F670A439EB7C} 1029:{052FBA03-B43D-4F29-A73F-C37299D03B70} 1030:{C1474AD4-CB20-4531-9397-856DF4262690} 1031:{F05B0161-2F20-4B16-9C1D-33AFB48547A2} 1032:{06781E90-069B-4986-9ABD-B352EC5C09EC} 1033:{26F50F46-E83E-4F8C-BA38-47082FCDA6FB} 1035:{78AA9F55-FB6E-46FE-B285-7BAD61BC2EA2} 1036:{2458F3A6-3CCF-469E-964D-890F7347B001} 1037:{62D4A168-617D-4624-ADD1-1A90C0E10DD0} 1038:{15744A5F-ED7D-4702-82D9-1A3A0962D9D8} 1039:{8CBA3A0D-53AD-4A4B-8B39-309768811B32} 1040:{38E188E5-64FB-4B41-9C11-1F9593521D21} 1041:{A5D7B672-8DEF-42B6-B570-06A0E6CF78F5} 1042:{624A1B2B-EB3F-4575-BB8D-7C5709E59342} 1043:{B10B938A-91F4-4873-8003-6837027E9C55} 1044:{6CE836EA-170B-4BD0-AB78-BC64723A902D} 1045:{AFB5E9CB-EADB-4F3E-BF50-3134459BA420} 1046:{8ABB3B4E-62F8-41B1-99A1-73E278A52375} 1049:{32046B3E-2B23-4C39-BB77-0B783FEC231D} 1050:{42FA9B67-71AB-48E0-86AF-0925EDA4E7F3} 1051:{195B8077-F4E5-469D-94AD-B813BD3CFCE0} 1052:{28268CC2-20A0-4D16-99C7-8972A34AF580} 1053:{CA41026D-D779-4C8A-8CC6-BB537343494E} 1055:{A9F3635F-D00F-41BB-8D74-11DECB0898DC} 1057:{26503D61-6CD3-4226-A92A-541A6284712A} 1058:{241CC905-B1ED-4D34-A1D9-7806112792B7} 1060:{575C0CF9-E9AD-4370-8BBC-88E54E8BCBA5} 1065:{96CF6B85-F7D8-4E93-8C90-FCF4F77D77D7} 1087:{0B505F3E-DF5C-4264-BC5E-17C0B2C5CFBD} 2052:{02BF5DF4-3BA6-48C0-8F32-7BBE669EC4E7} 2057:{C903CA8C-7451-4514-AC2F-FEB99B6DD8CD} 2068:{769BD2D8-FB2A-4FA7-B9FA-5885C9BD51D3} 2070:{4DD8DE29-FE4C-4AF3-9A62-4B5F594B91B0} 2074:{A5E35525-16F9-45FE-AA6A-3FA28C3ECE50} 3082:{3997D48A-2120-46DE-B8CA-BC3962E23488} 3098:{1888CA2F-DF1A-4C15-9D55-A8A4223F86AB} " Type="16"/>
+    <ROW Property="ProductCode" Value="1025:{D06C0C9E-DADD-4E0E-BE1D-75CB568A7708} 1026:{4B064E5C-D73A-4012-B700-ECE6F816BEEB} 1027:{9774F0F7-B26D-4391-9992-A9826DC57DB3} 1028:{A9D6CAF2-1CB3-4BE4-A85B-BB0B76109D82} 1029:{886F51CB-3DC6-4016-A93F-C08586251C1D} 1030:{C0ABD54A-4832-4E6B-A39F-28F4051FAF4D} 1031:{94E84874-70FC-410E-BCDD-077E8C61676E} 1032:{E253BA5E-A039-4732-AE6E-A197C4D6B189} 1033:{3E35F3F4-E531-40BE-BCF2-F69222F6E125} 1035:{ADC40B11-3BC3-4CA9-8F1D-A65070DDFEC2} 1036:{D7B61965-3CB8-4213-AD52-FA310BC6FE5C} 1037:{4F6EAB8E-0E5A-4B89-A951-62C436C4AAB1} 1038:{2E49F47E-7E2E-497A-80AF-6ACA0C1615C9} 1039:{1C386A37-109E-4B1E-A7CA-687682B1949D} 1040:{0DE95692-8046-44BF-9C67-80BAAA585BB8} 1041:{CB6F7614-A155-4BC6-B567-AE9D80A8904E} 1042:{BFD3A8BF-7A2D-4059-A610-11DE45849697} 1043:{2156888D-84FD-499B-8C4C-E511F0A6BC8C} 1044:{CCCF88CB-8915-43EF-97FD-4CDED360B46F} 1045:{A697EF37-205C-491F-BAAA-BEBBB445AAB8} 1046:{D48576CD-CCEA-4BC7-BF97-805F605B0E93} 1049:{03F81117-80A6-4D17-94D2-1DC1E42E0970} 1050:{7CBC02F9-2862-4EA2-A378-64241B9E1D34} 1051:{9BB74839-3DF1-438F-B1B7-B30F96048082} 1052:{CF360098-C98B-4FBF-B8B4-9A9C5111E1FF} 1053:{C663D9EF-5A0A-4788-BB4E-AD59CA2019CB} 1055:{AC142C87-3E7A-4053-A7F4-D9003F1CA2B7} 1057:{0F762404-6661-41E0-92B0-5AE57E1D5AB2} 1058:{02AAD3C7-3F69-4C79-8143-AF8023C2871A} 1060:{412FEEAB-C65C-44B3-8487-19020C6BCAD7} 1065:{3F7E59FE-6650-4C39-892C-B6DD6F44A411} 1087:{64CF6ABD-6998-4E3D-8A77-E3367BB94C79} 2052:{C067115F-B9C4-41EB-95F9-6F82407E7361} 2057:{9A934481-E3DA-4916-B04A-CF6FCC921B8F} 2068:{7499DBFA-2DD7-4566-9ED3-DD441EB66975} 2070:{61EF0462-1A97-4238-B1F8-699FB516FE53} 2074:{03E6E745-DBAD-4145-91F1-A8FF799FC812} 3082:{C3AEEF4F-4D2F-4947-9051-457F1227D790} 3098:{20B1359F-8EE3-4792-91DA-B263293D867B} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1025"/>
     <ROW Property="ProductName" Value="Optikey Pro"/>
-    <ROW Property="ProductVersion" Value="3.1.1" Type="32"/>
+    <ROW Property="ProductVersion" Value="3.2.0"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{61918F22-3C2D-48C5-A3F5-50F22B1401FC}"/>
@@ -386,7 +387,7 @@
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="SetupFiles" Languages="en;en_GB;sq;bg;ar;ca;zh;zh_TW;hr;cs;nl;da;fa;fi;fr;de;he;el;hu;id;is;ja;it;kk;ko;nb;nn;pl;pt;pt_BR;ru;sr_SP_Cyrillic;sr_SP_Latin;sk;sl;es;sv;tr;uk" LangOpt="1" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\Temp install files\[|ProductName]" ExtUI="true" Options="2" UseLargeSchema="true" Unicode="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="SetupFiles" Languages="en;en_GB;sq;bg;ar;ca;zh;zh_TW;hr;cs;nl;da;fa;fi;fr;de;he;el;hu;id;is;ja;it;kk;ko;nb;nn;pl;pt;pt_BR;ru;sr_SP_Cyrillic;sr_SP_Latin;sk;sl;es;sv;tr;uk" LangOpt="1" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\Temp install files\[|ProductName]" ExtUI="true" Options="2" UseLargeSchema="true" Unicode="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
@@ -510,7 +511,7 @@
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_uk.ail"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
-    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="3c0496c07462e804d3bd4b13d8f40004a4cda39d Subject: Open Source Developer, Julius Sweetland&#10;Issuer: Certum Code Signing CA SHA2&#10;Valid from 02/20/2020 to 02/19/2021&#10;User\MY"/>
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="b42309a84afc0a106b07c842cd757ef337092d07 Subject: Open Source Developer, Julius Sweetland&#10;Issuer: Certum Code Signing 2021 CA&#10;Valid from 01/11/2022 to 01/11/2023&#10;User\MY" Subject="E=julius@optikey.org, CN=&quot;Open Source Developer, Julius Sweetland&quot;, O=Open Source Developer, L=London, C=GB"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
@@ -526,6 +527,7 @@
     <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
     <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
     <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="Themes.aip" Path="&lt;AI_FRAGS&gt;Themes.aip"/>
     <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
     <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
     <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
@@ -827,7 +829,15 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
     <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
+    <ROW Registry="AdvancedInstaller" Root="-1" Key="Software\Caphyon\Advanced Installer" Name="\"/>
+    <ROW Registry="Caphyon" Root="-1" Key="Software\Caphyon" Name="\"/>
+    <ROW Registry="LZMA" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA" Name="\"/>
+    <ROW Registry="Manufacturer" Root="-1" Key="Software\[Manufacturer]" Name="\"/>
     <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="ProductCode" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]" Name="\"/>
+    <ROW Registry="ProductName" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="\"/>
+    <ROW Registry="ProductVersion" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="\"/>
+    <ROW Registry="Software" Root="-1" Key="Software" Name="\"/>
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">

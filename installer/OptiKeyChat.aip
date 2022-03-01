@@ -10,10 +10,10 @@
     <ROW Property="ARPPRODUCTICON" Value="Chat.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Optikey"/>
-    <ROW Property="ProductCode" Value="1025:{A551D0FE-8FF6-4B9C-ABDF-0CA0B02C5FD2} 1026:{6BA53544-1A92-4D90-84E9-5D633663E757} 1027:{2B0588CB-11B7-49E4-B21C-40F46E7717D8} 1028:{D509EB78-7E6F-45C6-9F0E-331B11AE894B} 1029:{3DD31ABE-F419-4277-A369-26C657AA246F} 1030:{BB4418D3-05BC-496A-B931-F99A9C27B876} 1031:{3DF21F3F-32BD-4360-AA78-41F52863DB95} 1032:{4A044ED7-B88B-46A5-9C42-DE4C4CB9A7FF} 1033:{0B384392-2918-48BF-BA59-BA6D62ED62A3} 1035:{30C963CF-D4AD-41E8-AAAC-BF187112B324} 1036:{2CE2A582-5CEC-4C23-A8AF-CE747A34346E} 1037:{2253F875-E3BD-4837-B7A2-472FE3EC10DD} 1038:{5570D133-6516-4117-B645-DCACB44DC2A8} 1039:{C56ED36F-DDE3-428E-84F9-8A3CF4EEA2E7} 1040:{0E88B71E-E9DB-47C6-AFD6-2E1D3C83DDC6} 1041:{DF9DAA3D-8ACD-4AF9-A26A-190210ADF806} 1042:{0EC6B972-D27A-4703-BDF9-6852601F994F} 1043:{75355EA3-39B3-4A4A-AA55-3DFF1F1FCB67} 1044:{9586C10F-6281-4EDC-9314-4677EE888F91} 1045:{DED46CB2-806D-433D-8034-25A40FBF0BC1} 1046:{55EBC1CA-626B-472F-875E-C112392AD988} 1049:{005B1DB3-D1B0-4431-B8BA-D598DB58738C} 1050:{76DEF419-2E16-40CA-9F26-CFB9D1E28B0B} 1051:{6E7F8AD1-520F-4B07-8044-F71ABA990C2F} 1052:{A85CB2C0-07C6-4455-8E8F-7F1D01057D7E} 1053:{AEAA4AB0-3019-4D61-ACD6-C990987DB604} 1055:{9CD0C61C-76A6-4C6A-AC2A-5039145761FF} 1057:{4E32A937-27D7-4700-989A-12457C58C84F} 1058:{C8976622-3CE7-4BAE-A796-00D5DBA31479} 1060:{E1CBE4A7-601C-4C27-B447-E9CDA31F240E} 1065:{3604A1CC-6DB1-483A-9716-6638A32D2195} 1087:{065C5BEA-9A58-423C-AE98-57FE32F8F144} 2052:{7CE492D3-4CDF-420C-9106-E853D0204132} 2057:{635969DE-0C6B-4E02-A140-8720058D27B7} 2068:{4D3CA784-D971-4BD3-ABC6-4D7E78CD30FF} 2070:{998EB3D5-9D1B-49E9-BE6A-7C03D3508BFE} 2074:{61871FB0-4939-445B-9CC8-E4E2B36725AC} 3082:{122A8B34-DB93-49FF-AE88-D1C6B31D1873} 3098:{A5132A94-2BBD-464E-8D22-2EE2ECBE676D} " Type="16"/>
+    <ROW Property="ProductCode" Value="1025:{10352D4F-BCBF-4FDA-820D-BE396BA03141} 1026:{59169F0A-34AA-4B2B-8354-A62AFF3BDE26} 1027:{4E67A784-D596-49D8-B279-E449086EA313} 1028:{95EB8466-EC9E-4B9E-A62B-7ABF3CB4CF4F} 1029:{5F8538B4-4BC8-4685-A3BD-57F891FF25C3} 1030:{C1CE39D8-6527-40B1-8525-F83297E91526} 1031:{9C1BB11E-F41F-4020-ACEB-C4AC097E6510} 1032:{4CB65F80-CAB4-446B-BD41-68C374707A16} 1033:{B3E489EC-B131-4395-B1B8-3778429F0C9D} 1035:{991FC282-DEFB-4C36-B3A8-8394DA9F3EA2} 1036:{25477253-0D63-43DA-ABD3-B487E8FB5CEE} 1037:{EE7080F8-2349-4137-B910-0F87E4E8F35C} 1038:{4A4DA194-A58B-4E09-BCB2-ABA6EFF8BBE2} 1039:{1E79554B-EA94-4C61-9717-85DA2B1C4316} 1040:{566469D7-6825-4839-B197-0C8D73BEE87B} 1041:{1FC03ED3-F591-40F8-90AC-B91A5BCC7482} 1042:{F8A0B23B-2AAB-4AA2-B112-3791D2358635} 1043:{23937AC4-45A2-499B-AE6A-8C6BE559FD02} 1044:{9196CA4D-52B2-4057-824A-498D422AA5F5} 1045:{31F6D026-DCDE-4318-8776-64BB8641C45C} 1046:{2AD7FA32-5BBB-4ADB-8F69-95EF935DB840} 1049:{38567DD6-4C6A-4E7D-8E87-C8D95767DBDC} 1050:{2C12BF19-BF93-4CAA-AAAE-21E57B203249} 1051:{5E72BAEE-620F-4E1C-A3C5-6CBD3E50F8B0} 1052:{AF8BD523-5B11-42A3-9FA1-30F9A0ACA6E2} 1053:{12764DB3-D386-4EA8-B689-56A30EE76736} 1055:{02CA9696-0625-4B39-98E5-3B384F927A4E} 1057:{9F62DACA-F12A-4FE0-8902-5A428D3B2EC5} 1058:{2653375D-2801-4A20-891B-F8DFCF98EEE1} 1060:{E5B6B0A3-59C1-4BB1-A5C0-179742CB33E3} 1065:{BDE6C244-3534-4E67-A420-65D665E75971} 1087:{B66441E6-A3BF-4DA6-86F9-2E7B0C9F178E} 2052:{55B78EB8-8B1C-416A-8092-A6A542A4D184} 2057:{015F0335-63C3-4CE3-A56A-DA9E5AD83D79} 2068:{3C69BDDC-27ED-44A9-998D-E4343679C0CB} 2070:{3EF56F41-3E64-4479-9D6E-DD1AAF312C78} 2074:{0145506F-CEF5-4322-BC6F-2457058D1630} 3082:{EEC5ACE2-CCA9-4FBA-8EF2-15759BA92A29} 3098:{DE6EAF46-C1F7-45CE-9845-81BC1FCC961C} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1058"/>
     <ROW Property="ProductName" Value="Optikey Chat"/>
-    <ROW Property="ProductVersion" Value="3.1.1" Type="32"/>
+    <ROW Property="ProductVersion" Value="3.2.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{3D9AFB0B-50CA-4A62-BA21-67D536E56B64}"/>
@@ -32,6 +32,7 @@
     <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
     <ROW Directory="Dictionaries_Dir" Directory_Parent="Release_Dir" DefaultDir="DICTIO~1|Dictionaries"/>
     <ROW Directory="DynamicKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
+    <ROW Directory="EyeGestures_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYEGES~1|EyeGestures"/>
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
     <ROW Directory="Optikey_Dir" Directory_Parent="ProgramMenuFolder" DefaultDir="Optikey"/>
     <ROW Directory="Plugins_Dir" Directory_Parent="Resources_Dir" DefaultDir="Plugins"/>
@@ -83,9 +84,11 @@
     <ROW Component="CatalanSpain.dic" ComponentId="{3B0C22CA-20E9-449F-8F70-89976E890A54}" Directory_="Dictionaries_Dir" Attributes="0" KeyPath="CatalanSpain.dic" Type="0"/>
     <ROW Component="ControlzEx.dll" ComponentId="{76D04432-CE26-44E2-8FCD-41D781EC52D9}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
     <ROW Component="Demo_Bottom.xml" ComponentId="{45617CAA-B8A8-41EF-ACE1-57A569FC535A}" Directory_="Samples_Dir" Attributes="0" KeyPath="Demo_Bottom.xml" Type="0"/>
+    <ROW Component="EyeGestures.xml" ComponentId="{DEE14A35-4084-47FB-BBA4-1D060B6FEAE4}" Directory_="EyeGestures_Dir" Attributes="0" KeyPath="EyeGestures.xml" Type="0"/>
     <ROW Component="EyeXFramework.dll" ComponentId="{D8AD91F2-3AF4-4FFF-A404-538601FD930E}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
     <ROW Component="Interop.SpeechLib.dll" ComponentId="{73E05C6F-BEB5-44F2-9B79-F088879F0845}" Directory_="Release_Dir" Attributes="0" KeyPath="Interop.SpeechLib.dll"/>
     <ROW Component="IrisbondAPI.dll" ComponentId="{6F13AC64-C808-402D-90E6-2E681D499836}" Directory_="Release_Dir" Attributes="0" KeyPath="IrisbondAPI.dll"/>
+    <ROW Component="IrisbondHiruAPI.dll" ComponentId="{2F8D051F-2ED6-406A-AADE-2BB954623349}" Directory_="Release_Dir" Attributes="0" KeyPath="IrisbondHiruAPI.dll"/>
     <ROW Component="MahApps.Metro.dll" ComponentId="{D7725D22-9132-4C89-BF37-A86285A8724C}" Directory_="Release_Dir" Attributes="0" KeyPath="MahApps.Metro.dll"/>
     <ROW Component="Microsoft.Expression.Interactions.dll" ComponentId="{AAA9B4AF-8230-40B6-9DF1-E7DEB46DB65A}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Expression.Interactions.dll"/>
     <ROW Component="Microsoft.Practices.ServiceLocation.dll" ComponentId="{8B143B07-3EAF-4F03-9BBE-2852316DE223}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Practices.ServiceLocation.dll"/>
@@ -131,6 +134,9 @@
     <ROW Component="Prism.dll" ComponentId="{602636EC-E00D-4349-9359-B7E692B7FBCA}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.dll"/>
     <ROW Component="ProductInformation" ComponentId="{F53E2601-30CE-4E46-8FA8-EBD660326EDC}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{000A46F3-A88D-4AC6-A41E-1EC0AFEC573D}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="SharpDX.DirectInput.dll" ComponentId="{A2A2125B-474F-4F04-9020-819FCED48042}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.DirectInput.dll"/>
+    <ROW Component="SharpDX.XInput.dll" ComponentId="{63EB9798-3F6D-4200-B51A-D9561894B596}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.XInput.dll"/>
+    <ROW Component="SharpDX.dll" ComponentId="{4F8A2AA6-A288-4372-AA46-19981D34B6D1}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.dll"/>
     <ROW Component="SharpVectors.Converters.dll" ComponentId="{34BED4C2-1A55-4929-AAB1-E09964D7D30E}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Converters.dll"/>
     <ROW Component="SharpVectors.Core.dll" ComponentId="{2754958B-4DB8-420D-A5B9-3F56ECCC49F2}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Core.dll"/>
     <ROW Component="SharpVectors.Css.dll" ComponentId="{44BCD899-A55D-4F45-A6DF-E0CB236E32A2}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Css.dll"/>
@@ -269,11 +275,8 @@
     <ROW File="pageset.obz" Component_="back.png" FileName="pageset.obz" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\CommuniKate\pageset.obz" SelfReg="false"/>
     <ROW File="AltAlphaHorizontalKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="ALTALP~1.XML|AltAlphaHorizontalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml" SelfReg="false"/>
     <ROW File="AltAlphaVerticalKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="ALTALP~2.XML|AltAlphaVerticalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml" SelfReg="false"/>
-    <ROW File="BigHackerKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="BIGHAC~1.XML|BigHackerKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\BigHackerKeyboard.xml" SelfReg="false"/>
     <ROW File="Demo_Bottom.xml" Component_="Demo_Bottom.xml" FileName="DEMO_B~1.XML|Demo_Bottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml" SelfReg="false"/>
     <ROW File="Demo_Left.xml" Component_="Demo_Bottom.xml" FileName="DEMO_L~1.XML|Demo_Left.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Left.xml" SelfReg="false"/>
-    <ROW File="FullQwerty.xml" Component_="Demo_Bottom.xml" FileName="FULLQW~1.XML|FullQwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\Samples\FullQwerty.xml" SelfReg="false"/>
-    <ROW File="FullSymbol.xml" Component_="Demo_Bottom.xml" FileName="FULLSY~1.XML|FullSymbol.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\Samples\FullSymbol.xml" SelfReg="false"/>
     <ROW File="B612licenceeplv10.html" Component_="B612licenceeplv10.html" FileName="B612-L~1.HTM|B612-licence-epl-v10.html" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\Fonts\B612-licence-epl-v10.html" SelfReg="false"/>
     <ROW File="FarsiWebFontInfoAndLicenseAgreement.txt" Component_="B612licenceeplv10.html" FileName="FARSIW~1.TXT|FarsiWeb Font Info And License Agreement.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\Fonts\FarsiWeb Font Info And License Agreement.txt" SelfReg="false"/>
     <ROW File="NafeesWebNaskhLicenseAgreement.txt" Component_="B612licenceeplv10.html" FileName="NAFEES~1.TXT|Nafees Web Naskh License Agreement.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\Fonts\Nafees Web Naskh License Agreement.txt" SelfReg="false"/>
@@ -359,7 +362,20 @@
     <ROW File="Demo_Minecraft.xml" Component_="Demo_Bottom.xml" FileName="DEMO_M~1.XML|Demo_Minecraft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml" SelfReg="false"/>
     <ROW File="HindiIndia.dic" Component_="CatalanSpain.dic" FileName="HINDII~1.DIC|HindiIndia.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Dictionaries\HindiIndia.dic" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_27" Component_="OptiKey.resources.dll_27" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\hi-IN\OptiKey.resources.dll" SelfReg="false"/>
-    <ROW File="AR16Qwerty.xml" Component_="Demo_Bottom.xml" FileName="AR16-Q~1.XML|AR16-Qwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml" SelfReg="false"/>
+    <ROW File="IrisbondHiruAPI.dll" Component_="IrisbondHiruAPI.dll" FileName="IRISBO~2.DLL|IrisbondHiruAPI.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\IrisbondHiruAPI.dll" SelfReg="false"/>
+    <ROW File="Edge.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="Edge.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\Edge.xml" SelfReg="false"/>
+    <ROW File="FullQwerty.xml_1" Component_="AltAlphaHorizontalKeyboard.xml" FileName="FULLQW~1.XML|FullQwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\FullQwerty.xml" SelfReg="false"/>
+    <ROW File="FullSymbol.xml_1" Component_="AltAlphaHorizontalKeyboard.xml" FileName="FULLSY~1.XML|FullSymbol.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\FullSymbol.xml" SelfReg="false"/>
+    <ROW File="HideUnder.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="HIDEUN~1.XML|HideUnder.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\DynamicKeyboards\HideUnder.xml" SelfReg="false"/>
+    <ROW File="EyeGestures.xml" Component_="EyeGestures.xml" FileName="EYEGES~1.XML|EyeGestures.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\Resources\EyeGestures\EyeGestures.xml" SelfReg="false"/>
+    <ROW File="SharpDX.DirectInput.dll" Component_="SharpDX.DirectInput.dll" FileName="SHARPD~1.DLL|SharpDX.DirectInput.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\SharpDX.DirectInput.dll" SelfReg="false"/>
+    <ROW File="SharpDX.DirectInput.pdb" Component_="SharpDX.DirectInput.dll" FileName="SHARPD~1.PDB|SharpDX.DirectInput.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\SharpDX.DirectInput.pdb" SelfReg="false"/>
+    <ROW File="SharpDX.DirectInput.xml" Component_="Bass.Net.xml" FileName="SHARPD~1.XML|SharpDX.DirectInput.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\SharpDX.DirectInput.xml" SelfReg="false"/>
+    <ROW File="SharpDX.dll" Component_="SharpDX.dll" FileName="SharpDX.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\SharpDX.dll" SelfReg="false"/>
+    <ROW File="SharpDX.pdb" Component_="SharpDX.dll" FileName="SharpDX.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\SharpDX.pdb" SelfReg="false"/>
+    <ROW File="SharpDX.XInput.dll" Component_="SharpDX.XInput.dll" FileName="SHARPD~2.DLL|SharpDX.XInput.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\SharpDX.XInput.dll" SelfReg="false"/>
+    <ROW File="SharpDX.XInput.pdb" Component_="SharpDX.XInput.dll" FileName="SHARPD~2.PDB|SharpDX.XInput.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\SharpDX.XInput.pdb" SelfReg="false"/>
+    <ROW File="SharpDX.XInput.xml" Component_="Bass.Net.xml" FileName="SHARPD~2.XML|SharpDX.XInput.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\bin\Release\SharpDX.XInput.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -489,7 +505,7 @@
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_uk.ail"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
-    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="3c0496c07462e804d3bd4b13d8f40004a4cda39d Subject: Open Source Developer, Julius Sweetland&#10;Issuer: Certum Code Signing CA SHA2&#10;Valid from 02/20/2020 to 02/19/2021&#10;User\MY"/>
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="b42309a84afc0a106b07c842cd757ef337092d07 Subject: Open Source Developer, Julius Sweetland&#10;Issuer: Certum Code Signing 2021 CA&#10;Valid from 01/11/2022 to 01/11/2023&#10;User\MY" Subject="E=julius@optikey.org, CN=&quot;Open Source Developer, Julius Sweetland&quot;, O=Open Source Developer, L=London, C=GB"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
@@ -743,6 +759,11 @@
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_27"/>
+    <ROW Feature_="MainFeature" Component_="IrisbondHiruAPI.dll"/>
+    <ROW Feature_="MainFeature" Component_="EyeGestures.xml"/>
+    <ROW Feature_="MainFeature" Component_="SharpDX.DirectInput.dll"/>
+    <ROW Feature_="MainFeature" Component_="SharpDX.dll"/>
+    <ROW Feature_="MainFeature" Component_="SharpDX.XInput.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Chat.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Chat\Chat.ico" Index="0"/>
