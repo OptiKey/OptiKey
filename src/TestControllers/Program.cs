@@ -16,9 +16,12 @@ namespace TestControllers
 
         static void Main(string[] args)
         {
-
+            Console.WriteLine("");
             ListDirectInputControllers();
             ListXInputControllers();
+
+            Console.WriteLine("Press the switch you want to use to see what appears.");
+            Console.WriteLine("If it shows up as both DirectInput and XInput, prefer XInput.");            
 
             XInputListener xinputListener = XInputListener.Instance;
             DirectInputListener directInputListener = DirectInputListener.Instance;
