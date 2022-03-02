@@ -1,0 +1,1 @@
+You must use AdvancedInstaller 17.6 if using the shared license (Julius & Kirsty).
