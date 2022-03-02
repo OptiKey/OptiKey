@@ -72,6 +72,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.Info("Look to scroll active key was selected.");
 
+            lookToScrollBoundsWhenActivated = Settings.Default.LookToScrollBounds;
+
             if (keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown())
             {
                 Log.Info("Look to scroll is now active.");
