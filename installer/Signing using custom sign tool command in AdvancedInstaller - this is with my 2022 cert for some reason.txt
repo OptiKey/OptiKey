@@ -1,0 +1,6 @@
+Advanced Installer default sign tool command:
+sign /a /d "<signature description>" /du "Description URL" /fd SHA256 /tr "http://timestamp.digicert.com" /td sha256 
+
+Changed to:
+C:\dev\GitHub\OptiKey\installer\tools\signtool.exe
+sign /n "Open Source Developer, Julius Sweetland" /t http://time.certum.pl /fd sha256
