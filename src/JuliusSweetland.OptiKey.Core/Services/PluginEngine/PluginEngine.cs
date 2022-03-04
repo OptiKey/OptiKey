@@ -161,7 +161,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
         private static bool FindMetadataResource(string resource)
         {
-            return resource.StartsWith("JuliusSweetland.OptiKey.") && resource.EndsWith("metadata.xml");
+            return resource.ToLower().StartsWith("juliussweetland.optikey.") && resource.EndsWith("metadata.xml");
         }
 
         private static string GetArgumentValue(Dictionary<String, String> context, string value)
