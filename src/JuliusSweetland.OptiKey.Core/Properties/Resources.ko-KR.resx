@@ -1954,7 +1954,7 @@ Optikey는 계속 실행 하려고 하지만 곧 중단 될 수 있습니다.
       <value>여기에는 웹캠과 비디오 카메라와 같은 기성 구성 요소를 사용하여 추적 오픈 소스 눈을위한 프레임 워크 인 ITU 시선 추적 라이브러리가 필요합니다.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>당신이 Irisbond 듀오 눈 추적기와 Optikey 사용하려면 다음이 설치 Irisbond 듀오 드라이버가 있는지 확인하십시오. 이들은 https://www.irisbond.com/products/downloads에서 다운로드 할 수 있습니다.</value>
+      <value>당신이 Irisbond 듀오 눈 추적기와 Optikey 사용하려면 다음이 설치 Irisbond 듀오 드라이버가 있는지 확인하십시오. 이들은 https://www.irisbond.com/en/producto/irisbond-duo-2에서 다운로드 할 수 있습니다.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>이 모드에서, Optikey는 눈 추적기에 직접 말하는 대신 입력으로 마우스 커서를 사용합니다. 당신은 당신이 Optikey을 테스트하는 경우이 원하는, 또는 수 당신은 머리 마우스 또는이 목록에없는 어떤 눈 추적 장치 같은 대체 입력 장치와 함께 사용하려는 경우. </value>

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Extensions;
@@ -656,7 +656,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             var kb_link = Enum.TryParse(dynamicLink.Value, out Enums.Keyboards keyboardEnum)
                                 ? dynamicLink.Value : Path.Combine(rootDir, dynamicLink.Value);
 
-                            commandList.Add(new KeyCommand() { Name = KeyCommands.ChangeKeyboard, Value = kb_link, BackAction = dynamicLink.BackAction });
+                            commandList.Add(new KeyCommand() { Name = KeyCommands.ChangeKeyboard, Value = kb_link, BackAction = !dynamicLink.BackReturnsHere });
                         }
                     }
                     else if (dynamicKey is DynamicKeyDown dynamicKeyDown)

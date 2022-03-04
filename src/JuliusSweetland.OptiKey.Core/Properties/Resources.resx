@@ -2215,11 +2215,14 @@ Française
   <data name="IRISBOND_DUO" xml:space="preserve">
     <value>Irisbond Duo</value>
   </data>
+  <data name="IRISBOND_HIRU" xml:space="preserve">
+    <value>Irisbond Hiru</value>
+  </data>
   <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
-    <value>Irisbond Duo tracker could not be started.</value>
+    <value>Irisbond tracker could not be started.</value>
   </data>
   <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
-    <value>Irisbond Duo tracker cannot be found. Please check the tracker's connection and try again.</value>
+    <value>Irisbond tracker cannot be found. Please check the tracker's connection and try again.</value>
   </data>
   <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
     <value>Calibration completed (success or failure), but everything is working again!</value>
@@ -2354,7 +2357,10 @@ Magyar
     <value>This requires the ITU Gaze Tracking Library, which is a framework for open source eye tracking using off-the-shelf components, such as webcams and videocameras.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-    <value>If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/products/downloads.</value>
+    <value>If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+  </data>
+  <data name="IRISBOND_HIRU_INFO" xml:space="preserve">
+    <value>If you plan to use Optikey with the Irisbond Hiru eye tracker then please make sure you have the Irisbond Hiru drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
     <value>In this mode, Optikey will use the mouse cursor as input instead of talking directly to an eye tracker. You might want this if you're testing Optikey out, or if you want to use it with an alternative input device such as a head mouse or any eye tracker not in this list.</value>
@@ -2427,5 +2433,38 @@ Magyar
   </data>
   <data name="GAZE_INDICATOR_STYLE" xml:space="preserve">
     <value>Gaze Indicator Style</value>
+  </data>
+  <data name="SUPPRESS_TRIGGER_WARNING" xml:space="preserve">
+    <value>Suppress warning when gaze is missing during trigger event</value>
+  </data>
+  <data name="GAMEPAD_XINPUT_BUTTON" xml:space="preserve">
+    <value>Gamepad button (XInput)</value>
+  </data>
+  <data name="GAMEPAD_DIRECTINPUT_BUTTON" xml:space="preserve">
+    <value>Gamepad button (DirectInput)</value>
+  </data>
+  <data name="KEY_SELECTION_GAMEPAD_BUTTON_LABEL" xml:space="preserve">
+    <value>Key selection gamepad button:</value>
+  </data>
+  <data name="POINT_SELECTION_GAMEPAD_BUTTON_LABEL" xml:space="preserve">
+    <value>Point selection gamepad button:</value>
+  </data>
+  <data name="KEY_SELECTION_GAMEPAD_SLOT_LABEL" xml:space="preserve">
+    <value>Key selection gamepad controller:</value>
+  </data>
+  <data name="GAMEPAD_CONNECTED_IN_PARENTHESES" xml:space="preserve">
+    <value>(connected)</value>
+  </data>
+  <data name="KEY_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
+    <value>Key selection gamepad controller:</value>
+  </data>
+  <data name="ALL_DIRECTINPUT_CONTROLLERS" xml:space="preserve">
+    <value>All DirectInput controllers</value>
+  </data>
+  <data name="POINT_SELECTION_GAMEPAD_SLOT_LABEL" xml:space="preserve">
+    <value>Point selection gamepad controller:</value>
+  </data>
+  <data name="POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
+    <value>Point selection gamepad controller</value>
   </data>
 </root>

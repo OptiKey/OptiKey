@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -980,20 +980,29 @@ namespace JuliusSweetland.OptiKey.Services
 
             // If app has been manually resized in a way that doesn't respect the docking, recompute appropriate dock position 
             DockEdges dockEdge = getDockPosition();
+            double dockThickness;
             if (dockEdge == DockEdges.Bottom || dockEdge == DockEdges.Top) {
                 double thicknessAsPercentage = screenBoundsInPx.Height / window.Height;
 
                 var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
                 var yAdjustmentToBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : 0;
-                saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentToBottom) / screenBoundsInDp.Height) * 100);
+                dockThickness = ((window.ActualHeight + yAdjustmentToBottom) / screenBoundsInDp.Height) * 100;
             }
             else
             {
                 var distanceToLeftBoundary = window.Left - screenBoundsInDp.Left;
                 var xAdjustmentToLeft = distanceToLeftBoundary < 0 ? distanceToLeftBoundary : 0;
-
-                saveFullDockThicknessAsPercentageOfScreen(((window.ActualWidth + xAdjustmentToLeft) / screenBoundsInDp.Width) * 100);
+                dockThickness = ((window.ActualWidth + xAdjustmentToLeft) / screenBoundsInDp.Width) * 100;
             }
+
+            if (getDockSize() == DockSizes.Collapsed)
+            {
+                //Interpret the full size dock from the collapsed size
+                dockThickness = dockThickness * (100 / getCollapsedDockThicknessAsPercentageOfFullDockThickness());
+            }
+
+            saveFullDockThicknessAsPercentageOfScreen(dockThickness);
+
             UpdateAppBarPosition();
         }
 

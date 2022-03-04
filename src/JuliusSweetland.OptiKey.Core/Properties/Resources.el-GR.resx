@@ -1632,7 +1632,7 @@ Deutsch (Deutschland)</value>
       <value>Αυτό απαιτεί την ITU βλέμμα Tracking Βιβλιοθήκη, η οποία είναι ένα πλαίσιο για ανοικτό μάτι πηγή παρακολούθησης χρησιμοποιώντας off-the-shelf συστατικά, όπως κάμερες και βιντεοκάμερες.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Αν σκοπεύετε να χρησιμοποιήσετε Optikey με το tracker μάτι Irisbond Duo, στη συνέχεια, βεβαιωθείτε ότι έχετε τα προγράμματα οδήγησης Irisbond Duo εγκατασταθεί. Αυτά μπορείτε να το κατεβάσετε από https://www.irisbond.com/products/downloads.</value>
+      <value>Αν σκοπεύετε να χρησιμοποιήσετε Optikey με το tracker μάτι Irisbond Duo, στη συνέχεια, βεβαιωθείτε ότι έχετε τα προγράμματα οδήγησης Irisbond Duo εγκατασταθεί. Αυτά μπορείτε να το κατεβάσετε από https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>Σε αυτή τη λειτουργία, Optikey θα χρησιμοποιήσει το δείκτη του ποντικιού ως είσοδο αντί να μιλάμε απευθείας σε ένα ιχνηλάτη οφθαλμού. Μπορεί να θέλετε αυτό, αν είστε δοκιμές Optikey έξω, ή αν θέλετε να το χρησιμοποιήσετε με μια εναλλακτική συσκευή εισόδου, όπως ένα ποντίκι κεφαλής ή όχι κάθε ιχνηλάτη ματιών σε αυτή τη λίστα. </value>

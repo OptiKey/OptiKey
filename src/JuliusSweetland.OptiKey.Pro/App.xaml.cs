@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
 using System;
 using System.Collections.Generic;
@@ -117,7 +117,7 @@ namespace JuliusSweetland.OptiKey.Pro
 
                 CleanupAndPrepareCommuniKateInitialState();
 
-                ValidateEyeGesturesFile();
+                ValidateEyeGestures();
 
                 ValidateDynamicKeyboardLocation();
 

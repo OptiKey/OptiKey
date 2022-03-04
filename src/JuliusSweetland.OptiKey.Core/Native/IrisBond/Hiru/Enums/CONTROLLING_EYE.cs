@@ -1,5 +1,5 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-namespace JuliusSweetland.OptiKey.Native.Irisbond.Enums
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+namespace JuliusSweetland.OptiKey.Native.Irisbond.Hiru.Enums
 {
     // Structure used to select the controlling eye
     public enum CONTROLLING_EYE

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +61,16 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         List<EyeGesture> gestureList = null;
                         double moveDelta = 0;
 
+                        // Load gestures
+                        try
+                        {
+                            gestureList = XmlEyeGestures.ReadFromString(Settings.Default.EyeGestureString).GestureList.ToList();
+                        }
+                        catch {
+                            gestureList = null;
+                        }
+
+                        // Create subscription
                         var eyeGestureSubscription = pointSource.Sequence
                         .Where(_ => disposed == false)
                         .Where(_ => State == RunningStates.Running)
@@ -69,10 +79,21 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         .Buffer(2, 1) //Sliding buffer of 2 (last & current) that moves by 1 value at a time
                         .Subscribe(tps =>
                         {
+
+                            // Exit early if nothing to do
+                            // (note that the source is still up and running in this case as
+                            //  it may be modified on the fly from the Management Console)
+                            if (!Settings.Default.EyeGesturesEnabled ||
+                                 String.IsNullOrEmpty(Settings.Default.EyeGestureString))
+                            { 
+                                return;
+                            }
+                            
                             var checkPoint = tps.Last().Value.Point;
                             moveDelta = (2 * moveDelta + (checkPoint - tps.First().Value.Point).Length) / 3;
 
-                            if (gestureList == null || Settings.Default.EyeGestureUpdated)
+                            // If gesture list was updated via Management Console, load the new gestures now
+                            if (Settings.Default.EyeGestureUpdated)
                             {
                                 Settings.Default.EyeGestureUpdated = false;
                                 try
@@ -82,6 +103,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                 catch { gestureList = null; }
                             }
 
+                            // Process gestures
                             if (gestureList != null && Settings.Default.EyeGesturesEnabled)
                             {
                                 for(int i = 0; i < gestureList.Count; i++)

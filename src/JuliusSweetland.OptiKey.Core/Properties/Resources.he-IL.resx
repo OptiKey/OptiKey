@@ -2359,7 +2359,7 @@ Would you like Optikey to automatically set the font to Nazli?</value>
       <value>זה דורש לספריית מעקב מבט ITU, המהווה מסגרת עין קוד פתוחה מעקב באמצעות ה- off- מדף רכיבים, כגון מצלמות ו למצלמות.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>אם אתם מתכננים להשתמש Optikey עם גשש עין Irisbond Duo אז אנא ודא שיש לך את הנהגים Irisbond Duo מותקן. אלו ניתן להוריד מאתר https://www.irisbond.com/products/downloads.</value>
+      <value>אם אתם מתכננים להשתמש Optikey עם גשש עין Irisbond Duo אז אנא ודא שיש לך את הנהגים Irisbond Duo מותקן. אלו ניתן להוריד מאתר https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>במצב זה, Optikey ישתמש סמן העכבר כקלט במקום לדבר ישירות גשש העין. אולי אתה רוצה את זה אם אתה בודק את Optikey, או אם אתה רוצה להשתמש בו עם מכשיר קלט חלופי כגון עכבר ראש או גשש כל עין לא ברשימה זו.</value>

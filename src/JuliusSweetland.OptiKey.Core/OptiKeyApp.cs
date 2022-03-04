@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -653,6 +653,9 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.IrisbondDuo:
                     return new IrisbondDuoCalibrationService();
 
+                case PointsSources.IrisbondHiru:
+                    return new IrisbondHiruCalibrationService();
+
                 case PointsSources.Alienware17:
                 case PointsSources.SteelseriesSentry:
                 case PointsSources.TobiiEyeX:
@@ -696,11 +699,19 @@ namespace JuliusSweetland.OptiKey
                     break;
 
                 case PointsSources.IrisbondDuo:
-                    var irisBondPointService = new IrisbondDuoPointService();
-                    errorNotifyingServices.Add(irisBondPointService);
+                    var irisBondDuoPointService = new IrisbondDuoPointService();
+                    errorNotifyingServices.Add(irisBondDuoPointService);
                     pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
-                        irisBondPointService);
+                        irisBondDuoPointService);
+                    break;
+
+                case PointsSources.IrisbondHiru:
+                    var irisBondHiruPointService = new IrisbondHiruPointService();
+                    errorNotifyingServices.Add(irisBondHiruPointService);
+                    pointSource = new PointServiceSource(
+                        Settings.Default.PointTtl,
+                        irisBondHiruPointService);
                     break;
 
                 case PointsSources.MousePosition:
@@ -782,6 +793,20 @@ namespace JuliusSweetland.OptiKey
                         pointSource);
                     break;
 
+                case TriggerSources.XInputButtonDownUps:
+                    keySelectionTriggerSource = new XInputButtonDownUpSource(
+                        Settings.Default.KeySelectionTriggerGamepadXInputController,
+                        Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.DirectInputButtonDownUps:
+                    keySelectionTriggerSource = new DirectInputButtonDownUpSource(
+                        Settings.Default.KeySelectionTriggerGamepadDirectInputController,
+                        Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton,
+                        pointSource);
+                    break;
+
                 default:
                     throw new ArgumentException(
                         "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart OptiKey.");
@@ -809,6 +834,20 @@ namespace JuliusSweetland.OptiKey
                 case TriggerSources.MouseButtonDownUps:
                     pointSelectionTriggerSource = new MouseButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerMouseDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.XInputButtonDownUps:
+                    pointSelectionTriggerSource = new XInputButtonDownUpSource(
+                        Settings.Default.PointSelectionTriggerGamepadXInputController,
+                        Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.DirectInputButtonDownUps:
+                    pointSelectionTriggerSource = new DirectInputButtonDownUpSource(
+                        Settings.Default.PointSelectionTriggerGamepadDirectInputController,
+                        Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton,
                         pointSource);
                     break;
 
@@ -883,6 +922,14 @@ namespace JuliusSweetland.OptiKey
                     case TriggerSources.MouseButtonDownUps:
                         keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerMouseDownUpButton));
                         break;
+
+                    case TriggerSources.XInputButtonDownUps:
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton));
+                        break;
+
+                    case TriggerSources.DirectInputButtonDownUps:
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton));
+                        break;
                 }
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.KEY_SELECTION_TRIGGER_DESCRIPTION, keySelectionSb));
@@ -901,6 +948,14 @@ namespace JuliusSweetland.OptiKey
 
                     case TriggerSources.MouseButtonDownUps:
                         pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
+                        break;
+
+                    case TriggerSources.XInputButtonDownUps:
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton));
+                        break;
+
+                    case TriggerSources.DirectInputButtonDownUps:
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton));
                         break;
                 }
 
@@ -1025,10 +1080,11 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
-        #region Validate EyeGestures File
+        #region Validate EyeGestures File and settings
 
-        protected static void ValidateEyeGesturesFile()
+        protected static void ValidateEyeGestures()
         {
+            // Check that eye gestures file is readable, reset to default otherwise
             var eyeGesturesFilePath = Settings.Default.EyeGestureFile;
 
             try
@@ -1037,13 +1093,31 @@ namespace JuliusSweetland.OptiKey
             }
             catch
             {
-                var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"OptiKey\OptiKey\EyeGestures\");
+                Settings.Default.EyeGesturesEnabled = false; // to be enabled from Management Console by user
 
+                var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"OptiKey\OptiKey\EyeGestures\");
+                if (!Directory.Exists(applicationDataPath))
+                {
+                    Directory.CreateDirectory(applicationDataPath);
+                }
                 var eyeGesturesFile = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\EyeGestures").First();
 
                 eyeGesturesFilePath = Path.Combine(applicationDataPath, Path.GetFileName(eyeGesturesFile));
 
                 File.Copy(eyeGesturesFile, eyeGesturesFilePath, true);
+
+                // Read into string also 
+                try
+                {
+                    Settings.Default.EyeGestureString = XmlEyeGestures.ReadFromFile(eyeGesturesFilePath).WriteToString();
+                }
+                catch
+                {
+                    Log.ErrorFormat("Could not read from gestures file {0}", eyeGesturesFilePath);
+#if DEBUG 
+                    throw;  // This file gets installed by Optikey so if there's an exception here we want to know about it
+#endif                    
+                }
             }
 
             Settings.Default.EyeGestureFile = eyeGesturesFilePath;

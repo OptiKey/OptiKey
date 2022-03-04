@@ -2353,7 +2353,7 @@ Gostaria que o Optikey alterasse automaticamente para o tipo de letra Nafees Web
       <value>Isto requer a ITU Gaze Rastreamento Biblioteca, que é um quadro de olho open source de monitoramento usando componentes off-the-shelf, como webcams e câmeras de vídeo.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Se você planeja usar Optikey com o tracker olho Irisbond Duo, por favor, certifique-se de ter os drivers Irisbond Duo instalados. Estes podem ser descarregados a partir https://www.irisbond.com/products/downloads.</value>
+      <value>Se você planeja usar Optikey com o tracker olho Irisbond Duo, por favor, certifique-se de ter os drivers Irisbond Duo instalados. Estes podem ser descarregados a partir https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>Neste modo, Optikey vai usar o cursor do mouse como entrada em vez de falar diretamente a um rastreador ocular. Você pode querer isso, se você está testando Optikey para fora, ou se você quiser usá-lo com um dispositivo de entrada alternativo, como um mouse de cabeça ou não qualquer rastreador olho nesta lista. Para mais informações, consulte www.optikey.org/help</value>

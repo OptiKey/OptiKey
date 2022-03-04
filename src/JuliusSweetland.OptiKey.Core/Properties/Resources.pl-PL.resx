@@ -1985,7 +1985,7 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
       <value>Wymaga ITU Gaze Tracking biblioteka, która jest szkieletem dla open source śledzenia za pomocą off-the-shelf składników, takich jak kamery internetowe i kamer wideo oka.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Jeśli masz zamiar użyć Optikey okiem trackera Irisbond Duo następnie upewnij się, że masz zainstalowane sterowniki Irisbond Duo. Można je pobrać z https://www.irisbond.com/products/downloads.</value>
+      <value>Jeśli masz zamiar użyć Optikey okiem trackera Irisbond Duo następnie upewnij się, że masz zainstalowane sterowniki Irisbond Duo. Można je pobrać z https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>W tym trybie będzie Optikey użyć kursora myszy jako wejście zamiast mówić bezpośrednio do śledzenia oczu. Może chcesz to jeśli testujesz Optikey się, lub jeśli chcesz używać go z alternatywnego urządzenia wejściowego, takich jak mysz głowy ani nie tracker oko w tej liście. </value>

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -385,8 +385,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set
             {
                 SetProperty(ref fontFamily, value);
-                OnPropertyChanged(() => FontStretches);
-                OnPropertyChanged(() => FontWeights);
+                
+                RaisePropertyChanged(nameof(FontStretches));
+                if (FontStretches != null)
+                {
+                    //Retain current stretch if available; otherwise pick the first one
+                    FontStretch = FontStretches.Contains(FontStretch) ? FontStretch : FontStretches[0];
+                }
+                
+                RaisePropertyChanged(nameof(FontWeights));
             }
         }
 
@@ -397,7 +404,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set
             {
                 SetProperty(ref fontStretch, value);
-                OnPropertyChanged(() => FontWeights);
+
+                RaisePropertyChanged(nameof(FontWeights));
+                if (FontWeights != null)
+                {
+                    //Retain current weight if available; otherwise pick the first one
+                    FontWeight = FontWeights.Contains(FontWeight) ? FontWeight : FontWeights[0];
+                }
             }
         }
 

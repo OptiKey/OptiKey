@@ -11,11 +11,15 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using Prism.Commands;
+using log4net;
+using System.Reflection;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
     public class GesturesViewModel : INotifyPropertyChanged
     {
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public GesturesViewModel()
         {
             OpenFileCommand = new DelegateCommand(OpenFile);
@@ -115,7 +119,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             EyeGesturesEnabled = Settings.Default.EyeGesturesEnabled;
             EyeGestureFile = Settings.Default.EyeGestureFile;
             EyeGestureString = Settings.Default.EyeGestureString;
-            xmlEyeGestures = XmlEyeGestures.ReadFromString(EyeGestureString);
+            xmlEyeGestures = XmlEyeGestures.ReadFromString(EyeGestureString) ?? new XmlEyeGestures();
             EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
         }
 
@@ -123,16 +127,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             var fileDialog = new System.Windows.Forms.OpenFileDialog() { FileName = Path.GetFileName(EyeGestureFile) };
             var result = fileDialog.ShowDialog();
+            string tempFilename;
             switch (result)
             {
                 case System.Windows.Forms.DialogResult.OK:
-                    EyeGestureFile = fileDialog.FileName;
+                    tempFilename = fileDialog.FileName; // we will commit it if loading is okay                    
                     break;
                 case System.Windows.Forms.DialogResult.Cancel:
                 default:
-                    break;
+                    return;
             }
-            xmlEyeGestures = XmlEyeGestures.ReadFromFile(EyeGestureFile);
+            try
+            {
+                xmlEyeGestures = XmlEyeGestures.ReadFromFile(tempFilename);                
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Error reading from gesture file: {tempFilename} :");
+                Log.Info(e.ToString());
+                return;
+            }
+            EyeGestureFile = tempFilename;
             EyeGesture = GestureList != null && GestureList.Any() ? GestureList[0] : null;
         }
 
@@ -144,7 +159,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             saveFileDialog.InitialDirectory = string.IsNullOrEmpty(fp) ? @"C:\" : fp;
             saveFileDialog.FileName = string.IsNullOrEmpty(fn) ? "EyeGestures.xml" : fn;
             saveFileDialog.Title = "Save File";
-            saveFileDialog.CheckFileExists = true;
+            saveFileDialog.CheckFileExists = false;
             saveFileDialog.CheckPathExists = true;
             saveFileDialog.DefaultExt = "xml";
             saveFileDialog.Filter = "Xml files (*.xml)|*.xml|All files (*.*)|*.*";
@@ -165,7 +180,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void EnableAll()
         {
-            Settings.Default.EyeGesturesEnabled = true;
+            EyeGesturesEnabled = true;
             foreach (var e in GestureList)
                 e.enabled = true;
             UpdateState();
@@ -173,7 +188,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void DisableAll()
         {
-            Settings.Default.EyeGesturesEnabled = false;
+            EyeGesturesEnabled = false;
             foreach (var e in GestureList)
                 e.enabled = false;
             UpdateState();

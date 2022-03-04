@@ -1,4 +1,6 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using log4net;
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml;
@@ -9,6 +11,8 @@ namespace JuliusSweetland.OptiKey.Models
     [XmlRoot(ElementName = "EyeGestures")]
     public class XmlEyeGestures
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         [XmlNamespaceDeclarations] public XmlSerializerNamespaces xmlns;
 
         [XmlElement("Gesture")]
@@ -21,30 +25,29 @@ namespace JuliusSweetland.OptiKey.Models
 
             var gestures = new XmlEyeGestures();
             var serializer = new XmlSerializer(typeof(XmlEyeGestures));
-            try
+            
+            using (var reader = new FileStream(@inputFilename, FileMode.Open))
             {
-                using (var reader = new FileStream(@inputFilename, FileMode.Open))
-                {
-                    gestures = (XmlEyeGestures)serializer.Deserialize(reader);
-                    reader.Close();
-                }
+                gestures = (XmlEyeGestures)serializer.Deserialize(reader);                
             }
-            catch { }
-
+            
             return gestures;
         }
 
         public static XmlEyeGestures ReadFromString(string xmlString)
         {
+            if (String.IsNullOrEmpty(xmlString)) { return null; }
+
             var gestures = new XmlEyeGestures();
             var serializer = new XmlSerializer(typeof(XmlEyeGestures));
             try
             {
-                gestures = (XmlEyeGestures)serializer.Deserialize(new StringReader(xmlString));
+                return (XmlEyeGestures)serializer.Deserialize(new StringReader(xmlString));                
             }
-            catch { }
-
-            return gestures;
+            catch {
+                Log.ErrorFormat("Error reading gesture from string: '{0}'", xmlString);
+                return null;
+            }
         }
 
         public void WriteToFile(string filename)

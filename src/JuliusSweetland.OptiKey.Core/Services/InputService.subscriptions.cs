@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -226,7 +226,10 @@ namespace JuliusSweetland.OptiKey.Services
                             + "Discarding trigger as point source is down, or producing stale points. "
                             + "Publishing error instead.");
 
-                    PublishError(this, new ApplicationException(Resources.TRIGGER_WITHOUT_POSITION_ERROR));
+                    if (!Settings.Default.SuppressTriggerWithoutPositionError)
+                    {
+                        PublishError(this, new ApplicationException(Resources.TRIGGER_WITHOUT_POSITION_ERROR));
+                    }
                 }
             }
             else if (CapturingMultiKeySelection)

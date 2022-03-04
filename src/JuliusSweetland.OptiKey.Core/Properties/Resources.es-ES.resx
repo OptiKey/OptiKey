@@ -1611,7 +1611,7 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
       <value>Esto requiere que el Gaze biblioteca de seguimiento UIT, que es un marco para ojo de código abierto de seguimiento utilizando componentes off-the-shelf, tales como webcams y videocámaras.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Si va a utilizar Optikey con el rastreador ocular Irisbond Duo, por favor asegúrese de que tiene los controladores instalados Irisbond Duo. Estos se pueden descargar desde https://www.irisbond.com/products/downloads.</value>
+      <value>Si va a utilizar Optikey con el rastreador ocular Irisbond Duo, por favor asegúrese de que tiene los controladores instalados Irisbond Duo. Estos se pueden descargar desde https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>En este modo, Optikey utilizará el cursor del ratón como entrada en lugar de hablar directamente a un seguidor de ojos. Es posible que desee esto si se está probando Optikey a cabo, o si desea utilizarlo con un dispositivo de entrada alternativo, como un ratón de cabeza o cualquier rastreador ocular no en esta lista. </value>

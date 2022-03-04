@@ -1,9 +1,9 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Runtime.InteropServices;
-using JuliusSweetland.OptiKey.Native.Irisbond.Enums;
+using JuliusSweetland.OptiKey.Native.Irisbond.Hiru.Enums;
 
-namespace JuliusSweetland.OptiKey.Native.Irisbond
+namespace JuliusSweetland.OptiKey.Native.Irisbond.Hiru
 {
     public static class PInvoke
     {
@@ -73,12 +73,12 @@ namespace JuliusSweetland.OptiKey.Native.Irisbond
         #region Functions 
 
         // Check if tracker is present
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool trackerIsPresent();
 
         // Get hardware number
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr getHardwareNumber();
         public static string getHWNumber()
         {
@@ -87,138 +87,138 @@ namespace JuliusSweetland.OptiKey.Native.Irisbond
         }
 
         // Set the license
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setLicense(string license);
 
         // Start the library: Launch the processing frame and initialize the camera
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern START_STATUS start();
 
         // Stop the library
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void stop();
 
         // Check if application is ended
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool isApplicationEnded();
 
         // Switch on the led lights, when the API is started
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool switchOnLedLights();
 
         // Switch off the led lights, when the API is started
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool switchOffLedLights();
 
         // Check if led lights are on, when the API is started
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool areLedLightsOn();
         
         // Shows positioning windows.
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void showPositioningWindow();
 
         // Hides positioning windows.
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void hidePositioningWindow();
 
         // Get if user is calibrated.
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool isUserCalibrated(int userID);
 
         // Start the calibration process
         // param numCalibPoints [in] Number of calibration points (5,9,16)
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void startCalibration(int numCalibPoints);
 
         // Cancels the calibration
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void cancelCalibration();
 
         // Starts the calibration improve
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void startImproveCalibration();
 
         // Starts the calibration rectification (1 point)
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void startCalibrationRectification();
 
         // Wait for the calibration to end
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern CALIBRATION_STATUS waitForCalibrationToEnd(int timeoutInMinutes);
 
         // Sets the calibration target parameters: travel time and fixation time
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setCalibrationParameters(double travelTime, double fixationTime);
 
         // Enables or disables the default calibration GUI
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void showCalibrationGUI(bool show);
 
         // Enables or disables the default point error GUI
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void showCalibrationPointErrorGUI(bool show);
 
         // Enables or disables the default calibration results GUI
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void showCalibrationResultsGUI(bool show);
         
         // Sets the controlling eye
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.U1)]
         public static extern bool setUserEyeControlMode(CONTROLLING_EYE controlMode);
 
         // Sets the smoothing value of the POG filter
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setSmoothValue(int smooth);
 
         // Sets the blink configuration
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setBlinkConfiguration(double singleTime, double cancelTime, bool bothEyesRequired);
 
         // Sets the dwell configuration
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setDwellConfiguration(int areaPixels, double time, bool bothEyesRequired);
 
         // Sets the data callback
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setDataCallback(DATA_CALLBACK theCallback);
 
         // Sets the calibration results callback
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setCalibrationResultsCallback(CALIBRATION_RESULTS_CALLBACK theCallback);
 
         // Sets the detailed calibration results callback
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setCalibrationResultsPointsCallback(CALIBRATION_RESULTS_POINTS_CALLBACK theCallback);
 
         // Sets the calibration cancelled callback
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setCalibrationCancelledCallback(CALIBRATION_CANCELLED_CALLBACK theCallback);
 
         // Sets the calibration target callback
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setCalibrationTargetCallback(CALIBRATION_TARGET_CALLBACK theCallback);
 
         // Sets the calibration point error callback
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setCalibrationPointErrorCallback(CALIBRATION_POINT_ERROR_CALLBACK theCallback);
 
         // Sets the camera image callback
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setImageCallback(IMAGE_CALLBACK theCallback);
 
         // Sets the blink callback
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setBlinkCallback(BLINK_CALLBACK theCallback);
 
         // Sets the dwell callback
-        [DllImport("IrisbondAPI.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IrisbondHiruAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setDwellCallback(DWELL_CALLBACK theCallback);
 
         #endregion

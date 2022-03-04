@@ -1,4 +1,4 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Properties;
 namespace JuliusSweetland.OptiKey.Enums
 {
@@ -6,7 +6,9 @@ namespace JuliusSweetland.OptiKey.Enums
     {
         Fixations,
         KeyboardKeyDownsUps,
-        MouseButtonDownUps
+        MouseButtonDownUps,
+        XInputButtonDownUps,
+        DirectInputButtonDownUps,
     }
 
     public static partial class EnumExtensions
@@ -18,6 +20,8 @@ namespace JuliusSweetland.OptiKey.Enums
                 case TriggerSources.Fixations: return Resources.FIXATIONS_DWELL;
                 case TriggerSources.KeyboardKeyDownsUps: return Resources.KEYBOARD_KEY;
                 case TriggerSources.MouseButtonDownUps: return Resources.MOUSE_BUTTON;
+                case TriggerSources.XInputButtonDownUps: return Resources.GAMEPAD_XINPUT_BUTTON;
+                case TriggerSources.DirectInputButtonDownUps: return Resources.GAMEPAD_DIRECTINPUT_BUTTON;
             }
 
             return triggerSources.ToString();

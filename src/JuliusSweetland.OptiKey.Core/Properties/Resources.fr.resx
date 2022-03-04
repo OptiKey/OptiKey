@@ -1613,7 +1613,7 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
       <value>Cela nécessite la bibliothèque de suivi UIT Gaze, qui est un cadre pour les yeux open source de suivi en utilisant des composants impromptu, tels que les webcams et les caméras vidéo.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Si vous prévoyez d'utiliser Optikey avec le oculomètre Irisbond Duo alors s'il vous plaît assurez-vous que les pilotes Duo Irisbond installés. Ceux-ci peuvent être téléchargés à partir https://www.irisbond.com/products/downloads.</value>
+      <value>Si vous prévoyez d'utiliser Optikey avec le oculomètre Irisbond Duo alors s'il vous plaît assurez-vous que les pilotes Duo Irisbond installés. Ceux-ci peuvent être téléchargés à partir https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>Dans ce mode, Optikey utilisera le curseur de la souris comme entrée au lieu de parler directement à un oculomètre. Vous voudrez peut-être si vous testez Optikey, ou si vous voulez l'utiliser avec un dispositif d'entrée alternative comme une souris de tête ou tout oculomètre pas dans cette liste. </value>

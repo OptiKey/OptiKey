@@ -1,4 +1,4 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -653,11 +653,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public bool RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
         {
             bool notificationRaised = false;
-
-            // Disabling resize handles temporarily prevents mouse capture by the non-client area around the main keyboard
-            this.mainWindowManipulationService.DisableResize();
-            callback += () => this.mainWindowManipulationService.SetResizeState();
-
+            
             if (ToastNotification != null)
             {
                 ToastNotification(this, new NotificationEventArgs(title, content, notificationType, callback));

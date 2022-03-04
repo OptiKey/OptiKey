@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,6 +129,9 @@ namespace JuliusSweetland.OptiKey.Services
             
             KeyDownStates[KeyValues.MouseMagnifierKey].Value =
                 Settings.Default.MouseMagnifierLockedDown ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
+            
+            KeyDownStates[KeyValues.MouseMagneticCursorKey].Value =
+                Settings.Default.MouseMagneticCursorLockedDown ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
 
             KeyDownStates[KeyValues.LeftShiftKey].Value =
                 Settings.Default.ForceCapsLock ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
@@ -233,7 +236,10 @@ namespace JuliusSweetland.OptiKey.Services
 
             KeyDownStates[KeyValues.MouseMagnifierKey].OnPropertyChanges(s => s.Value).Subscribe(value => 
                 Settings.Default.MouseMagnifierLockedDown = KeyDownStates[KeyValues.MouseMagnifierKey].Value == Enums.KeyDownStates.LockedDown);
-
+            
+            KeyDownStates[KeyValues.MouseMagneticCursorKey].OnPropertyChanges(s => s.Value).Subscribe(value => 
+                Settings.Default.MouseMagneticCursorLockedDown = KeyDownStates[KeyValues.MouseMagneticCursorKey].Value == Enums.KeyDownStates.LockedDown);
+            
             KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
             {
                 if (SimulateKeyStrokes)

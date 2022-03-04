@@ -2001,7 +2001,7 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
       <value>これは、ウェブカメラやビデオカメラなどの既製コンポーネントを用いて、オープンソースのアイトラッキングのためのフレームワークであるITU視線トラッキングライブラリを必要とします。</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>あなたはIrisbondデュオアイトラッカーでOptikey使用する予定の場合、あなたはIrisbondデュオドライバがインストールされていることを確認してください。これらは、https://www.irisbond.com/products/downloadsからダウンロードすることができます。</value>
+      <value>あなたはIrisbondデュオアイトラッカーでOptikey使用する予定の場合、あなたはIrisbondデュオドライバがインストールされていることを確認してください。これらは、https://www.irisbond.com/en/producto/irisbond-duo-2からダウンロードすることができます。</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>このモードでは、Optikeyはアイトラッカーに直接話すのではなく、入力として、マウスカーソルを使用します。あなたがOptikeyをテストしている場合は、これをお勧めします、またはあなたは、このようなヘッドマウスなどの代替入力デバイス、または任意のアイトラッカーではない、このリストには、それを使用したい場合。</value>
