@@ -149,6 +149,10 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
                         }
                     }
                 }
+                else
+                {
+                    Log.ErrorFormat("Error handling library: [{0}]. No manifest found.", file);                    
+                }
             }
             catch (Exception e)
             {
