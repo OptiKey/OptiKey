@@ -2680,6 +2680,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.InfoFormat("Running plugin [{0}]", keyCommand.Value);
 
+            // User-friendly messages for common failure modes
+            if (!Settings.Default.EnablePlugins)
+            {
+                DisplayPluginError("Plugins are currently disabled");
+                return;
+            }
+            if (!PluginEngine.IsPluginAvailable(keyCommand.Value))
+            {
+                DisplayPluginError($"Could not find plugin {keyCommand.Value}");
+                return;
+            }
+
             // Build plugin context
             Dictionary<string, string> context = BuildPluginContext();
             try
@@ -2688,12 +2700,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             catch (Exception exception)
             {
-                Log.Error("Error running plugin.", exception);
+                Log.Error("Caught exception running plugin.", exception);
                 while (exception.InnerException != null) exception = exception.InnerException;
-                if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
-                {
-                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                }
+                DisplayPluginError(exception.Message);
+            }
+        }
+
+        private void DisplayPluginError(string message)
+        {
+            Log.ErrorFormat("Error running plugin:{0} ", message);
+            inputService.RequestSuspend();
+            if (RaiseToastNotification(Resources.CRASH_TITLE, message, NotificationTypes.Error, () => inputService.RequestResume()))
+            {
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
             }
         }
 
