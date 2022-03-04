@@ -37,7 +37,13 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
                 List<Plugin> plugins = ValidateAndCreatePlugins(file);
                 foreach (Plugin plugin in plugins)
                 {
-                    availablePlugins.Add(plugin.Id, plugin);
+                    if (availablePlugins.ContainsKey(plugin.Id))
+                    {
+                        Log.ErrorFormat("Cannot load plugin ID: '{0}' from {1} due to duplicate name.", plugin.Id, pathName);
+                    }
+                    else { 
+                        availablePlugins.Add(plugin.Id, plugin);
+                    }
                 }
             }
         }
