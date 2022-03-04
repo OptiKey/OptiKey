@@ -80,6 +80,11 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
             plugin.Type.InvokeMember(key.Method, BindingFlags.InvokeMethod, null, plugin.Instance, methodArgs?.ToArray());
         }
 
+        public static bool IsPluginAvailable(string key)
+        {
+            return availablePlugins.ContainsKey(key);
+        }
+
         public static void RunDynamicPlugin(Dictionary<string, string> context, KeyCommand key)
         {
             Plugin plugin = availablePlugins[key.Value];
