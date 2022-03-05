@@ -10,6 +10,7 @@ namespace JuliusSweetland.OptiKey.Services
         event EventHandler SizeAndPositionInitialised;
 
         bool SizeAndPositionIsInitialised { get; }
+        IntPtr WindowHandle { get; }
         Rect WindowBounds { get; }
         WindowStates WindowState { get; }
 

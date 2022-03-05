@@ -287,8 +287,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             Func<IntPtr, bool> criteria = hWnd => 
             {
-                // Exclude the shell window.
-                if (hWnd == shellWindow)
+                // Exclude the shell and Optikey windows
+                if (hWnd == shellWindow || hWnd == mainWindowManipulationService.WindowHandle)
                 {
                     return false;
                 }
