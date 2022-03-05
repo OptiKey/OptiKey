@@ -186,6 +186,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public bool SizeAndPositionIsInitialised { get; private set; }
 
+        public IntPtr WindowHandle { get { return windowHandle; } }
+
         public Rect WindowBounds
         {
             get

@@ -5,23 +5,23 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using System;
 using System.Windows;
-using System.Windows.Interop;
+using System.Windows.Controls.Primitives;
 
 namespace JuliusSweetland.OptiKey.UI.Windows
 {
     /// <summary>
     /// Interaction logic for OverlayWindow.xaml
     /// </summary>
-    public partial class OverlayWindow : Window
+    public partial class OverlayWindow : Popup
     {
         private Point point = new Point(0, 0);
         private double indicatorSize;
-        private string suggestion="hello0";
      
         public OverlayWindow(MainViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;
+            this.IsOpen = true;
 
             Action applySize = () =>
             {
@@ -43,7 +43,6 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             //Calculate position based on CurrentPositionPoint
             viewModel.OnPropertyChanges(vm => vm.CurrentPositionPoint).Subscribe(cpp => Point = cpp);
 
-            viewModel.OnPropertyChanges(vm => vm.SuggestionService.Suggestions).Subscribe(css => Suggestion = css[0]);
         }
 
         private Point Point
@@ -57,26 +56,10 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                     var dpiPoint = this.GetTransformFromDevice().Transform(point);
                     //Offsets are in device independent pixels (DIP), but the incoming Point is in pixels
                     Width = Height = indicatorSize;
-                    Left = dpiPoint.X - indicatorSize / 2;
-                    Top = dpiPoint.Y - indicatorSize / 2;
+                    HorizontalOffset = dpiPoint.X + indicatorSize / 2;
+                    VerticalOffset = dpiPoint.Y - indicatorSize / 2;
                 }
             }
-        }
-
-        public string Suggestion
-        {
-            get { return suggestion; }
-            set { suggestion = "hello"; }
-        }
-
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            base.OnSourceInitialized(e);
-
-            // Apply the WS_EX_TRANSPARENT flag to the overlay window so that mouse events will
-            // pass through to any window underneath.
-            var hWnd = new WindowInteropHelper(this).Handle;
-            Static.Windows.SetWindowExTransparent(hWnd);
         }
     }
 }
