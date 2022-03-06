@@ -20,7 +20,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
     {
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public GesturesViewModel()
+        public GesturesViewModel() 
         {
             OpenFileCommand = new DelegateCommand(OpenFile);
             SaveFileCommand = new DelegateCommand(SaveFile);
@@ -197,12 +197,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private void Enable()
         {
             EyeGesture.enabled = !EyeGesture.enabled;
+            EyeGesturesEnabled = AnyEnabled;
             UpdateState();
         }
 
         private void UpdateState()
         {
             EnabledCountLabel = null;
+            Settings.Default.EyeGesturesEnabled = EyeGesturesEnabled;
             OnPropertyChanged();
         }
 
