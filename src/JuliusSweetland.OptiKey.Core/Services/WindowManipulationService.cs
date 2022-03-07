@@ -840,7 +840,10 @@ namespace JuliusSweetland.OptiKey.Services
         public void InvokeMoveWindow(string parameterString)
         {
             var parameterArray = parameterString.Split(',');
-            var handle = GetTopWindows();
+            var handle = PInvoke.GetForegroundWindow();
+            if (handle == windowHandle)
+                return;
+
             //SW_MAXIMIZE = 3, SW_MINIMIZE = 6, SW_RESTORE = 9
             var nCmdShow = parameterString.Substring(0, 2).ToLower() == "ma"
                 ? 3 : parameterString.Substring(0, 2).ToLower() == "mi" ? 6 : 9;
@@ -892,36 +895,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Private Methods
 
-        private IntPtr GetTopWindows()
-        {
-            IntPtr shellWindow = PInvoke.GetShellWindow();
-
-            Func<IntPtr, bool> criteria = hWnd =>
-            {
-                if (hWnd == shellWindow || hWnd == this.windowHandle)
-                    return false;
-
-                if (!PInvoke.IsWindowVisible(hWnd) || PInvoke.IsIconic(hWnd))
-                    return false;
-
-                var style = Static.Windows.GetWindowStyle(hWnd);
-                if ((style & WindowStyles.WS_POPUP) != 0 && (style & WindowStyles.WS_THICKFRAME) == 0 && (style & WindowStyles.WS_DLGFRAME) == 0)
-                    return false;
-
-                var exStyle = Static.Windows.GetExtendedWindowStyle(hWnd);
-                if (exStyle.HasFlag(ExtendedWindowStyles.WS_EX_TRANSPARENT))
-                    return false;
-
-                Rect? bounds = GetWindowBounds(hWnd);
-                return bounds.HasValue && bounds.Value.IntersectsWith(new Rect(0, 0, screen.Bounds.Width, screen.Bounds.Height));
-            };
-
-            // Find the front-most top-level window that matches our criteria (expanding UWP apps into their CoreWindows).
-            List<IntPtr> windows = Static.Windows.GetHandlesOfTopLevelWindows();
-            windows = Static.Windows.ReplaceUWPTopLevelWindowsWithCoreWindowChildren(windows);
-            windows = windows.Where(criteria).ToList();
-            return Static.Windows.GetFrontmostWindow(windows);
-        }
 
         private Rect? GetWindowBounds(IntPtr hWnd)
         {
