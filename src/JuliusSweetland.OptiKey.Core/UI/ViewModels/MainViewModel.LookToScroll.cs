@@ -20,6 +20,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     partial class MainViewModel : ILookToScrollOverlayViewModel
     {
         private const int WheelUnitsPerClick = 120;
+        private bool lookToScrolActive;
 
         private bool choosingLookToScrollBoundsTarget = false;
         private LookToScrollBounds lookToScrollBoundsWhenActivated = LookToScrollBounds.ScreenPoint;
@@ -477,8 +478,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 PerformLookToScroll(scrollAmount);
             }
 
-            UpdateLookToScrollOverlayProperties(active, bounds, centre);
+            if (lookToScrolActive || active)
+                UpdateLookToScrollOverlayProperties(active, bounds, centre);
 
+            lookToScrolActive = active;
             lookToScrollLastUpdate = thisUpdate;
         }
 
