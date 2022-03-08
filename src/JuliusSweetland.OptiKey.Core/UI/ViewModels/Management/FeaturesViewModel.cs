@@ -379,7 +379,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
 
                 return (Settings.Default.Debug != Debug)
-                    || Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation;
+                    || Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation
+                    || (Settings.Default.LookToScrollOverlayBoundsThickness
+                        + Settings.Default.LookToScrollOverlayDeadzoneThickness == 0
+                        && LookToScrollOverlayBoundsThickness + LookToScrollOverlayDeadzoneThickness > 0);
             }
         }
 

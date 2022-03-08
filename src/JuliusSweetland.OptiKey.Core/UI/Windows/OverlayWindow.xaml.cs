@@ -67,7 +67,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
             var windowHandle = new WindowInteropHelper(this).Handle;
             Static.Windows.SetExtendedWindowStyle(windowHandle, 
-                Static.Windows.GetExtendedWindowStyle(windowHandle) | ExtendedWindowStyles.WS_EX_TRANSPARENT);
+                Static.Windows.GetExtendedWindowStyle(windowHandle) | ExtendedWindowStyles.WS_EX_TRANSPARENT | ExtendedWindowStyles.WS_EX_TOOLWINDOW);
         }
     }
 }

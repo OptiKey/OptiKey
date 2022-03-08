@@ -191,7 +191,8 @@ namespace JuliusSweetland.OptiKey.Pro
                     new LookToScrollOverlayWindow(mainViewModel);
                 }
 
-                new OverlayWindow(mainViewModel);
+                if (Settings.Default.GazeIndicatorStyle != GazeIndicatorStyles.None)
+                    new OverlayWindow(mainViewModel);
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
                 EventHandler sizeAndPositionInitialised = null;
