@@ -32,12 +32,6 @@ namespace JuliusSweetland.OptiKey.Static
             PInvoke.SetWindowLong(hWnd, (int)GWL.GWL_EXSTYLE, (int)exStyle);
         }
 
-        // Based on: https://stackoverflow.com/a/3367137/9091159
-        public static void SetWindowExTransparent(IntPtr hWnd)
-        {
-            SetExtendedWindowStyle(hWnd, GetExtendedWindowStyle(hWnd) | ExtendedWindowStyles.WS_EX_TRANSPARENT);
-        }
-
         public static List<IntPtr> GetHandlesOfTopLevelWindows()
         {
             var hWnds = new List<IntPtr>();
