@@ -112,6 +112,13 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             {
                                 Timestamped<PointAndKeyValue> latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
 
+                                //if the latest key is not the same as the last key press then reset values
+                                if (lastKeyValue != null && !lastKeyValue.Equals(latestPointAndKeyValue.Value.KeyValue))
+                                {
+                                    keystroke = 1;
+                                    lastKeyValue = null;
+                                }
+
                                 if (fixationCentrePointAndKeyValue == null
                                     && !resumeRequiresLockOn)
                                 {
@@ -216,13 +223,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out var timeout))
                                         {
                                             timeout?.Dispose();
-                                        }
-
-                                        //if the latest key is not the same as the last key press then reset values
-                                        if (lastKeyValue != null && !lastKeyValue.Equals(latestPointAndKeyValue.Value.KeyValue))
-                                        {
-                                            keystroke = 1;
-                                            lastKeyValue = null;
                                         }
 
                                         var timeToCompleteTrigger = GetTimeToCompleteTrigger(fixationCentrePointAndKeyValue.KeyValue, lastKeyValue, keystroke);
