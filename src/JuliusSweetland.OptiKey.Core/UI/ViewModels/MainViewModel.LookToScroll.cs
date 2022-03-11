@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -783,8 +784,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     Log.Info("Look to scroll has suspended.");
 
-                    resumeAction = () =>
+                    resumeAction = async () =>
                     {
+                        //Give time for click to process before resuming
+                        await Task.Delay(200);
                         activeKey.Value = originalState;
 
                         if (Settings.Default.LookToScrollCentreMouseWhenActivated)
