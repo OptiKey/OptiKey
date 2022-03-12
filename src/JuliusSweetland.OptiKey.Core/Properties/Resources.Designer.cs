@@ -3216,6 +3216,15 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Look To Scroll is the default scrolling method:.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_ENABLED_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_ENABLED_LABEL", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Deadzone Width (in pixels):.

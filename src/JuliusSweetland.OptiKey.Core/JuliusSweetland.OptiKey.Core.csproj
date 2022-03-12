@@ -546,7 +546,6 @@
     <Compile Include="UI\ViewModels\Management\SoundsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\FeaturesViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
-    <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Views\Keyboards\Catalan\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
@@ -912,9 +911,6 @@
     </Compile>
     <Compile Include="UI\Views\Management\GesturesView.xaml.cs">
       <DependentUpon>GesturesView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Management\OtherView.xaml.cs">
-      <DependentUpon>OtherView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Management\DictionaryView.xaml.cs">
       <DependentUpon>DictionaryView.xaml</DependentUpon>
@@ -2032,10 +2028,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Management\GesturesView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Management\OtherView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

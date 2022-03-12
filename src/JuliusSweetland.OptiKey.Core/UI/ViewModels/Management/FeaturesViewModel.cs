@@ -225,6 +225,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref debug, value); }
         }
 
+        private bool lookToScrollIsDefault;
+        public bool LookToScrollIsDefault
+        {
+            get { return lookToScrollIsDefault; }
+            set { SetProperty(ref lookToScrollIsDefault, value); }
+        }
+
         public List<KeyValuePair<string, LookToScrollBounds>> LookToScrollBoundsList
         {
             get
@@ -380,6 +387,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
                 return (Settings.Default.Debug != Debug)
                     || Settings.Default.CommuniKatePagesetLocation != CommuniKatePagesetLocation
+                    || Settings.Default.LookToScrollIsDefault != LookToScrollIsDefault
                     || (Settings.Default.LookToScrollOverlayBoundsThickness
                         + Settings.Default.LookToScrollOverlayDeadzoneThickness == 0
                         && LookToScrollOverlayBoundsThickness + LookToScrollOverlayDeadzoneThickness > 0);
@@ -461,6 +469,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             SuppressTriggerWarning = Settings.Default.SuppressTriggerWithoutPositionError;
             MagnifySuppressedForScrollingActions = Settings.Default.MagnifySuppressedForScrollingActions;
             Debug = Settings.Default.Debug;
+
+            LookToScrollIsDefault = Settings.Default.LookToScrollIsDefault;
             LookToScrollBounds = Settings.Default.LookToScrollBounds;
             LookToScrollMode = Settings.Default.LookToScrollMode;
             LookToScrollCentreMouseWhenActivated = Settings.Default.LookToScrollCentreMouseWhenActivated;
@@ -509,6 +519,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SuppressTriggerWithoutPositionError = SuppressTriggerWarning;
             Settings.Default.MagnifySuppressedForScrollingActions = MagnifySuppressedForScrollingActions;
             Settings.Default.Debug = Debug;
+
+            Settings.Default.LookToScrollIsDefault = LookToScrollIsDefault;
             Settings.Default.LookToScrollBounds = LookToScrollBounds;
             Settings.Default.LookToScrollMode = LookToScrollMode;
             Settings.Default.LookToScrollCentreMouseWhenActivated = LookToScrollCentreMouseWhenActivated;

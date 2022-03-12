@@ -2088,6 +2088,9 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL" xml:space="preserve">
     <value>Look to Scroll</value>
   </data>
+  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>Look To Scroll is the default scrolling method:</value>
+  </data>
   <data name="LOOK_TO_SCROLL_BOUNDS_LABEL" xml:space="preserve">
     <value>Scrolling point and boundary:</value>
   </data>
