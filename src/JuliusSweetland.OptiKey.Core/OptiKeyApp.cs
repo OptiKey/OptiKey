@@ -1025,20 +1025,29 @@ namespace JuliusSweetland.OptiKey
                             var latestAvailableVersion = new Version(tagNameWithoutLetters);
                             if (latestAvailableVersion > currentVersion)
                             {
-                                Log.InfoFormat(
-                                    "An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
-                                    currentVersion, latestAvailableVersion);
+                                if (currentVersion.Major < 4 && latestAvailableVersion.Major >= 4)
+                                {
+                                    //There should be no update prompt to upgrade from v3 (or earlier) to v4 (or later) due to a breaking change that means that v4 is not
+                                    //a suitable choice for many users on earlier version of Optikey (v4 removes supports for Tobii gaming devices).
+                                    Log.InfoFormat("An update is available, BUT this update could remove support for the user's current input device. The user will not be notified. " +
+                                                   "Current version is {0}. Latest version on GitHub repo is {1}", currentVersion, latestAvailableVersion);
+                                }
+                                else
+                                {
+                                    Log.InfoFormat("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
+                                        currentVersion, latestAvailableVersion);
 
-                                inputService.RequestSuspend();
-                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
-                                    string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, latestRelease.TagName),
-                                    NotificationTypes.Normal,
-                                     () =>
-                                     {
-                                         inputService.RequestResume();
-                                         taskCompletionSource.SetResult(true);
-                                     });
+                                    inputService.RequestSuspend();
+                                    audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                                    mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
+                                        string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, latestRelease.TagName),
+                                        NotificationTypes.Normal,
+                                        () =>
+                                        {
+                                            inputService.RequestResume();
+                                            taskCompletionSource.SetResult(true);
+                                        });
+                                }
                             }
                             else
                             {
