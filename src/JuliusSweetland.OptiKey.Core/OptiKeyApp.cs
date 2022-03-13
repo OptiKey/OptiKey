@@ -587,15 +587,25 @@ namespace JuliusSweetland.OptiKey
 
             NBug.Settings.CustomUIEvent += (sender, args) =>
             {
-                var crashWindow = new CrashWindow
+                //Shortcut exceptions caused by a failure to send a previous crash report to prevent a crash loop
+                if(args.Exception.Message.Contains("An exception occurred while submitting bug report with Mail"))
                 {
-                    Topmost = true,
-                    ShowActivated = true
-                };
-                crashWindow.ShowDialog();
+                    args.Result = new UIDialogResult(ExecutionFlow.ContinueExecution, SendReport.DoNotSend);
+                    return;
+                }
 
-                //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
-                args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
+                Application.Current.Dispatcher.Invoke((Action)delegate 
+                {
+                    var crashWindow = new CrashWindow
+                    {
+                        Topmost = true,
+                        ShowActivated = true
+                    };
+                    crashWindow.ShowDialog();
+
+                    //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
+                    args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
+                });
             };
 
             NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
