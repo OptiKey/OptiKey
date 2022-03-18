@@ -29,6 +29,7 @@ namespace InstallerTranslation
                 Dictionary<Languages, string> all_ALIENWARE_17_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_GAZE_TRACKER_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_IRISBOND_DUO_INFO = new Dictionary<Languages, string>();
+                Dictionary<Languages, string> all_IRISBOND_HIRU_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_MOUSE_POSITION_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_TOBII_EYEX_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_TOBII_ASSISTIVE_INFO = new Dictionary<Languages, string>();
@@ -43,6 +44,7 @@ namespace InstallerTranslation
                     all_ALIENWARE_17_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.ALIENWARE_17_INFO);
                     all_GAZE_TRACKER_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.GAZE_TRACKER_INFO);
                     all_IRISBOND_DUO_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.IRISBOND_DUO_INFO);
+                    all_IRISBOND_HIRU_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.IRISBOND_HIRU_INFO);
                     all_MOUSE_POSITION_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.MOUSE_POSITION_INFO);
                     all_TOBII_EYEX_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.TOBII_EYEX_INFO);
                     all_TOBII_ASSISTIVE_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.TOBII_ASSISTIVE_INFO);
@@ -65,6 +67,7 @@ namespace InstallerTranslation
                 WriteDictInitialiser(file, all_ALIENWARE_17_INFO, "ALIENWARE_17_INFO");
                 WriteDictInitialiser(file, all_GAZE_TRACKER_INFO, "GAZE_TRACKER_INFO");
                 WriteDictInitialiser(file, all_IRISBOND_DUO_INFO, "IRISBOND_DUO_INFO");
+                WriteDictInitialiser(file, all_IRISBOND_HIRU_INFO, "IRISBOND_HIRU_INFO");
                 WriteDictInitialiser(file, all_MOUSE_POSITION_INFO, "MOUSE_POSITION_INFO");
                 WriteDictInitialiser(file, all_TOBII_EYEX_INFO, "TOBII_EYEX_INFO");
                 WriteDictInitialiser(file, all_TOBII_ASSISTIVE_INFO, "TOBII_ASSISTIVE_INFO");
