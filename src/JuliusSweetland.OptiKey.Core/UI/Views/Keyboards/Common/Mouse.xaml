@@ -518,7 +518,8 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                         <controls:Key Grid.Row="12" Grid.Column="0" Grid.RowSpan="2"
                                                                       SymbolGeometry="{StaticResource MouseScrollToTopIcon}"
                                                                       Text="{x:Static resx:Resources.SCROLL_UP_SPLIT_WITH_NEWLINE}"
-                                                                      SharedSizeGroup="KeyWithSymbolAndText" />
+                                                                      SharedSizeGroup="KeyWithSymbolAndText"
+                                                                      Value="{x:Static models:KeyValues.MouseMoveAndScrollToTopKey}" />
                                                         <controls:Key Grid.Row="12" Grid.Column="1" Grid.RowSpan="2"
                                                                       SymbolGeometry="{StaticResource MouseScrollToBottomIcon}"
                                                                       Text="{x:Static resx:Resources.SCROLL_DOWN_SPLIT_WITH_NEWLINE}"
