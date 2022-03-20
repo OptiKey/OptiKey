@@ -246,7 +246,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             }
             else
             {
-                if ((checkpoint - gesture.FixationPoint).Length > Graphics.VirtualScreenHeightInPixels * step.Width / 50d)
+                if ((checkpoint - gesture.FixationPoint).Length > Graphics.VirtualScreenHeightInPixels * step.Radius / 100d)
                     step.DwellStart = DateTimeOffset.Now;
                 else if (DateTimeOffset.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
                     result = true;

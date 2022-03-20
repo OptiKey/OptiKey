@@ -40,7 +40,7 @@ namespace JuliusSweetland.OptiKey.Models
             set
             {
                 dwellTime = type == Enums.EyeGestureStepTypes.Fixation
-                    ? value.Clamp(400, 9000) : value.Clamp(0, 9000);
+                    ? value.Clamp(200, 9000) : value.Clamp(0, 9000);
                 TimeLimit = TimeLimit.Clamp(dwellTime + 50, TimeLimit);
                 OnPropertyChanged();
             }
