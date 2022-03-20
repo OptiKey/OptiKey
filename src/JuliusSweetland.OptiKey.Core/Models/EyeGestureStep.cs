@@ -11,6 +11,9 @@ namespace JuliusSweetland.OptiKey.Models
 {
     public class EyeGestureStep : INotifyPropertyChanged
     {
+        //Maximum offscreen distance as percentage of screen
+        [XmlIgnore] private int maxExtent = 20;
+
         [XmlIgnore] public Enums.EyeGestureStepTypes type { get; set; }
         public string Type
         {
@@ -40,7 +43,7 @@ namespace JuliusSweetland.OptiKey.Models
             set
             {
                 dwellTime = type == Enums.EyeGestureStepTypes.Fixation
-                    ? value.Clamp(400, 9000) : value.Clamp(0, 9000);
+                    ? value.Clamp(100, 9000) : value.Clamp(0, 9000);
                 TimeLimit = TimeLimit.Clamp(dwellTime + 50, TimeLimit);
                 OnPropertyChanged();
             }
@@ -51,7 +54,7 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get { return radius; }
             set {
-                radius = value.Clamp(0, 10);
+                radius = value.Clamp(1, 10);
                 OnPropertyChanged();
             }
         }
@@ -59,32 +62,32 @@ namespace JuliusSweetland.OptiKey.Models
         public double X
         {
             get { return x; }
-            set { x = value.Clamp(-120, 120);
+            set { x = value.Clamp(-(100 + maxExtent), (100 + maxExtent));
                 OnPropertyChanged();
             }
         }
-        private double y = 20;
+        private double y;
         public double Y
         {
             get { return y; }
-            set { y = value.Clamp(-120, 120);
+            set { y = value.Clamp(-(100 + maxExtent), (100 + maxExtent));
                 OnPropertyChanged();
             }
         }
-        private double left = 35;
+        private double left = 30;
         public double Left
         {
             get { return left; }
-            set { left = value.Clamp(-20, 115);
+            set { left = value.Clamp(-maxExtent, 99+ maxExtent);
                 OnPropertyChanged();
             }
         }
-        private double top = 35;
+        private double top = 30;
         public double Top
         {
             get { return top; }
             set {
-                top = value.Clamp(-20, 115);
+                top = value.Clamp(-maxExtent, 99 + maxExtent);
                 OnPropertyChanged();
             }
         }
@@ -94,7 +97,7 @@ namespace JuliusSweetland.OptiKey.Models
             get { return width; }
             set
             {
-                width = value.Clamp(5, 140);
+                width = value.Clamp(1, 2 * maxExtent + 100);
                 OnPropertyChanged();
             }
         }
@@ -102,7 +105,7 @@ namespace JuliusSweetland.OptiKey.Models
         public double Height
         {
             get { return height; }
-            set { height = value.Clamp(5, 140);
+            set { height = value.Clamp(1, 2 * maxExtent + 100);
                 OnPropertyChanged();
             }
         }

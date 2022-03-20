@@ -51,15 +51,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public DelegateCommand DeleteGestureCommand { get; private set; }
 
         public bool NotAllEnabled
-        { get { return xmlEyeGestures != null && GestureList != null && GestureList.Where(g => !g.enabled).Any(); } }
+        { get { return xmlEyeGestures != null && GestureList != null && GestureList.Where(g => !g.Enabled).Any(); } }
         public bool AnyEnabled
-        { get { return xmlEyeGestures != null && GestureList != null && GestureList.Where(g => g.enabled).Any(); } }
+        { get { return xmlEyeGestures != null && GestureList != null && GestureList.Where(g => g.Enabled).Any(); } }
         private string enabledCountLabel;
         public string EnabledCountLabel
         {
             get { return enabledCountLabel + " Enabled"; }
             set { enabledCountLabel = xmlEyeGestures != null && GestureList != null && GestureList.Any()
-                    ? GestureList.Where(g => g.enabled).ToList().Count.ToString() + " of " + GestureList.Count.ToString() : "0"; }
+                    ? GestureList.Where(g => g.Enabled).ToList().Count.ToString() + " of " + GestureList.Count.ToString() : "0"; }
         }
 
         private bool eyeGesturesEnabled = false;
@@ -104,13 +104,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            var newString = xmlEyeGestures.WriteToString();
-            if (newString != EyeGestureString)
+            EyeGestureString = xmlEyeGestures.WriteToString();
+            if (EyeGestureString != Settings.Default.EyeGestureString)
             {
-                Settings.Default.EyeGestureString = newString;
+                Settings.Default.EyeGestureString = EyeGestureString;
+                Settings.Default.EyeGesturesEnabled = EyeGesturesEnabled;
                 Settings.Default.EyeGestureUpdated = true;
             }
-            Settings.Default.EyeGesturesEnabled = EyeGesturesEnabled;
             Settings.Default.EyeGestureFile = EyeGestureFile;
         }
 
@@ -182,7 +182,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             EyeGesturesEnabled = true;
             foreach (var e in GestureList)
-                e.enabled = true;
+                e.Enabled = true;
             UpdateState();
         }
 
@@ -190,13 +190,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             EyeGesturesEnabled = false;
             foreach (var e in GestureList)
-                e.enabled = false;
+                e.Enabled = false;
             UpdateState();
         }
 
         private void Enable()
         {
-            EyeGesture.enabled = !EyeGesture.enabled;
+            EyeGesture.Enabled = !EyeGesture.Enabled;
             EyeGesturesEnabled = AnyEnabled;
             UpdateState();
         }
@@ -204,7 +204,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private void UpdateState()
         {
             EnabledCountLabel = null;
-            Settings.Default.EyeGesturesEnabled = EyeGesturesEnabled;
+            ApplyChanges();
             OnPropertyChanged();
         }
 
