@@ -109,7 +109,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                 for(int i = 0; i < gestureList.Count; i++)
                                 {
                                     var gesture = gestureList[i];
-                                    if (gesture.enabled)
+                                    if (gesture.Enabled)
                                     {
                                         if (gesture.StepIndex >= gesture.Steps.Count
                                             && DateTimeOffset.Now > gesture.TimeStamp + TimeSpan.FromMilliseconds(gesture.Cooldown))
@@ -213,8 +213,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
             else if (step.type == EyeGestureStepTypes.LookInDirection)
             {
-                result = (checkpoint.X - gesture.PointStamp.X) / (Graphics.VirtualScreenWidthInPixels * step.X / 100d) > 1
-                      && (checkpoint.Y - gesture.PointStamp.Y) / (Graphics.VirtualScreenHeightInPixels * step.Y / 100d) > 1;
+                result = (step.X == 0 || (checkpoint.X - gesture.PointStamp.X) / (Graphics.VirtualScreenWidthInPixels * step.X / 100d) > 1)
+                      && (step.Y == 0 || (checkpoint.Y - gesture.PointStamp.Y) / (Graphics.VirtualScreenHeightInPixels * step.Y /100d) > 1);
             }
             else if (step.type == EyeGestureStepTypes.LookAtArea)
             {
@@ -246,7 +246,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             }
             else
             {
-                if ((checkpoint - gesture.FixationPoint).Length > Graphics.VirtualScreenHeightInPixels * step.Width / 50d)
+                if ((checkpoint - gesture.FixationPoint).Length > Graphics.VirtualScreenHeightInPixels * step.Radius / 100d)
                     step.DwellStart = DateTimeOffset.Now;
                 else if (DateTimeOffset.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
                     result = true;

@@ -15,9 +15,15 @@ namespace JuliusSweetland.OptiKey.Models
 
         public double Cooldown { get; set; } = 2000;
 
-        [XmlIgnore] public bool enabled { get; set; } = false;
+        private bool enabled;
 
-        public string Enabled
+        [XmlIgnore] public bool Enabled
+        {
+            get { return enabled; }
+            set { enabled = value; }
+        }
+
+        [XmlElement("Enabled")] public string EnabledAsString
         {
             get { return enabled.ToString(); }
             set { enabled = !bool.TryParse(value, out var result) || result; }
