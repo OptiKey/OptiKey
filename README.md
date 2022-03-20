@@ -32,6 +32,4 @@ Contributions to this project are always welcome. If you'd like to help translat
 
 # Contact
 
-To ask a question, or to discuss information that is not on the [**OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/), please use <optikeyfeedback@gmail.com> to contact Julius.
-
-[![Build status](https://dev.azure.com/optikey/optikey/_apis/build/status/OptiKey.OptiKey)](https://dev.azure.com/optikey/optikey/_build/latest?definitionId=-1)
+To ask a question, or to discuss information that is not on the [**OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/), please use <julius@optikey.org> or <optikeyfeedback@gmail.com> to contact Julius.
