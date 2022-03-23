@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         public static readonly DependencyProperty BackgroundColourOverrideProperty =
-            DependencyProperty.Register("BackgroundColourOverride", typeof(Brush), typeof(XmlSuggestionRow), new PropertyMetadata(default(Brush)));
+            DependencyProperty.Register("BackgroundColourOverride", typeof(Brush), typeof(XmlSuggestionCol), new PropertyMetadata(default(Brush)));
 
         public Brush BackgroundColourOverride
         {
@@ -36,7 +36,7 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         public static readonly DependencyProperty DisabledBackgroundColourOverrideProperty =
-            DependencyProperty.Register("DisabledBackgroundColourOverride", typeof(Brush), typeof(XmlSuggestionRow), new PropertyMetadata(default(Brush)));
+            DependencyProperty.Register("DisabledBackgroundColourOverride", typeof(Brush), typeof(XmlSuggestionCol), new PropertyMetadata(default(Brush)));
 
         public Brush DisabledBackgroundColourOverride
         {
@@ -45,7 +45,7 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         public static readonly DependencyProperty OpacityOverrideProperty =
-            DependencyProperty.Register("OpacityOverride", typeof(double), typeof(XmlSuggestionRow), new PropertyMetadata(defaultValue: 1.0));
+            DependencyProperty.Register("OpacityOverride", typeof(double), typeof(XmlSuggestionCol), new PropertyMetadata(defaultValue: 1.0));
 
         public double OpacityOverride
         {
