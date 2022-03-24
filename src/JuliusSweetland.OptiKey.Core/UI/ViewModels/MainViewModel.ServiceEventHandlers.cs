@@ -13,6 +13,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Services.Translation;
+using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
@@ -1868,8 +1869,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             && Settings.Default.SuppressModifierKeysForAllMouseActions)
                         {
                             reinstateModifiers = keyStateService.ReleaseModifiers(Log);
-                        }
+                        };
                         mouseOutputService.MoveTo(moveToPoint);
+                        //N.B. InputSimulator does not deal in pixels so the point gets scaled between 0 and 65535.
+                        //If no movement when pixel amount is 1 then submit the next larger point
+                        if (mouseOutputService.GetCursorPosition().Y == cursorPosition.Y)
+                        {
+                            moveToPoint.Y += 1;
+                            mouseOutputService.MoveTo(moveToPoint);
+                        }
                         reinstateModifiers();
                     };
                     lastMouseActionStateManager.LastMouseAction = simulateMoveToBottom;
@@ -1910,6 +1918,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                         }
                         mouseOutputService.MoveTo(moveToPoint);
+
+                        //N.B. InputSimulator does not deal in pixels so the point gets scaled between 0 and 65535.
+                        //If no movement when pixel amount is 1 then submit the next larger point
+                        if (mouseOutputService.GetCursorPosition().X == cursorPosition.X)
+                        {
+                            moveToPoint.X += 1;
+                            mouseOutputService.MoveTo(moveToPoint);
+                        }
                         reinstateModifiers();
                     };
                     lastMouseActionStateManager.LastMouseAction = simulateMoveToRight;

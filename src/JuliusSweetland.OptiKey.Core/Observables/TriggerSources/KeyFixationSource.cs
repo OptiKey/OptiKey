@@ -201,7 +201,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             incompleteFixationTimeouts[fixationCentrePointAndKeyValue.KeyValue] =
                                                 Observable.Timer(fixationTimeout).Subscribe(_ =>
                                                 {
-                                                    if (fixationTimeout != incompleteFixationTtl)
+                                                    if (overrideTimesByKey != null && overrideTimesByKey.ContainsKey(fixationCentrePointAndKeyValueCopy.KeyValue))
                                                         overrideTimesByKey[fixationCentrePointAndKeyValueCopy.KeyValue].LockDownCancelTime = DateTimeOffset.MinValue;
                                                     incompleteFixationProgress.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out var _);
                                                     incompleteFixationTimeouts.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out var _);
