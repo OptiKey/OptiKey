@@ -14,6 +14,7 @@ using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
+using JuliusSweetland.OptiKey.Rime;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -477,7 +478,8 @@ namespace JuliusSweetland.OptiKey.Services
             Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ToPrintableString());
 
             var capturedTextAfterComposition = CombineStringWithActiveDeadKeys(capturedText);
-            ProcessText(capturedTextAfterComposition, true);
+            //ProcessText(capturedTextAfterComposition, true);
+            ProcessTextRime(capturedTextAfterComposition);
 
             lastProcessedTextWasSuggestion = false;
 
@@ -568,7 +570,33 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Methods - private
+        private void ProcessTextRime(string newText) {
+            var rime = MyRimeApi.rime_get_api();
+            var session_id = MyRimeApi.GetSession();
+            var commit = new RimeCommit();
+            var status = new RimeStatus();
+            var context = new RimeContext();
+            MyRimeApi.RIME_STRUCT(ref commit);
+            MyRimeApi.RIME_STRUCT(ref status);
+            MyRimeApi.RIME_STRUCT(ref context);
+            rime.simulate_key_sequence(session_id, newText);
 
+            if (rime.get_commit(session_id, ref commit)) {
+                Text += commit.text;
+                //rime.free_commit(ref commit);
+            }
+
+            //if (rime.get_status(session_id, ref status)) {
+            //    print_status(ref status);
+            //    //rime.free_status(ref status);
+            //}
+
+            if (rime.get_context(session_id, ref context)) {
+                var candidates = MyRimeApi.GetCandidates(context.menu);
+                suggestionService.Suggestions = candidates.Select(e => e.text).ToList();
+                //rime.free_context(ref context);
+            }
+        }
         private void ProcessText(string newText, bool generateSuggestions)
         {
             Log.DebugFormat("Processing captured text '{0}'", newText.ToPrintableString());
