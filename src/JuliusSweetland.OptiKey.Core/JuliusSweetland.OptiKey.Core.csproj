@@ -2,6 +2,21 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -20,21 +35,6 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <TargetFrameworkProfile />
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -384,7 +384,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.cs" />
-    <Compile Include="Rime\RimeApi.cs" />
+    <Compile Include="RimeApi.cs" />
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -970,10 +970,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
-    <Resource Include="Rime\essay.txt">
+    <None Include="essay.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Content Include="Rime\rime.dll">
+    </None>
+    <Content Include="rime.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\ext\IrisBond\avcodec-58.dll">
@@ -1118,112 +1118,112 @@
     </Content>
     <EmbeddedResource Include="Properties\Resources.ka-GE.resx" />
     <None Include="packages.config" />
-    <None Include="Rime\cangjie5.dict.yaml">
+    <None Include="cangjie5.dict.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\cangjie5.schema.yaml">
+    <None Include="cangjie5.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\default.yaml">
+    <None Include="default.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\luna_pinyin.dict.yaml">
+    <None Include="luna_pinyin.dict.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\luna_pinyin.schema.yaml">
+    <None Include="luna_pinyin.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\hk2s.json">
+    <None Include="opencc\hk2s.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\hk2t.json">
+    <None Include="opencc\hk2t.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\HKVariants.ocd2">
+    <None Include="opencc\HKVariants.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\HKVariantsRev.ocd2">
+    <None Include="opencc\HKVariantsRev.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\HKVariantsRevPhrases.ocd2">
+    <None Include="opencc\HKVariantsRevPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\jp2t.json">
+    <None Include="opencc\jp2t.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\JPShinjitaiCharacters.ocd2">
+    <None Include="opencc\JPShinjitaiCharacters.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\JPShinjitaiPhrases.ocd2">
+    <None Include="opencc\JPShinjitaiPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\JPVariants.ocd2">
+    <None Include="opencc\JPVariants.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\JPVariantsRev.ocd2">
+    <None Include="opencc\JPVariantsRev.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\s2hk.json">
+    <None Include="opencc\s2hk.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\s2t.json">
+    <None Include="opencc\s2t.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\s2tw.json">
+    <None Include="opencc\s2tw.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\s2twp.json">
+    <None Include="opencc\s2twp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\STCharacters.ocd2">
+    <None Include="opencc\STCharacters.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\STPhrases.ocd2">
+    <None Include="opencc\STPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\t2hk.json">
+    <None Include="opencc\t2hk.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\t2jp.json">
+    <None Include="opencc\t2jp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\t2s.json">
+    <None Include="opencc\t2s.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\t2tw.json">
+    <None Include="opencc\t2tw.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TSCharacters.ocd2">
+    <None Include="opencc\TSCharacters.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TSPhrases.ocd2">
+    <None Include="opencc\TSPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\tw2s.json">
+    <None Include="opencc\tw2s.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\tw2sp.json">
+    <None Include="opencc\tw2sp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\tw2t.json">
+    <None Include="opencc\tw2t.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWPhrases.ocd2">
+    <None Include="opencc\TWPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWPhrasesRev.ocd2">
+    <None Include="opencc\TWPhrasesRev.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWVariants.ocd2">
+    <None Include="opencc\TWVariants.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWVariantsRev.ocd2">
+    <None Include="opencc\TWVariantsRev.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWVariantsRevPhrases.ocd2">
+    <None Include="opencc\TWVariantsRevPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\symbols.yaml">
+    <None Include="symbols.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Services\Translation\TranslationAPI.settings">
@@ -2238,12 +2238,12 @@
   <ItemGroup>
     <PublishFile Include="External Libraries\Newtonsoft.Json.xml">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
@@ -2268,7 +2268,9 @@
       <Name>SingleInstance</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Rime\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
