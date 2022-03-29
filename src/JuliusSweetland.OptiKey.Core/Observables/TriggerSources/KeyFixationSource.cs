@@ -352,7 +352,11 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
             if (overrideTimesByKey.TryGetValue(keyValue, out var timeSpanOverrides))
             {
-                return timeSpanOverrides.LockOnTime;
+                TimeSpan? lockonTime = timeSpanOverrides.LockOnTime;
+                if (lockonTime.HasValue)
+                {
+                    return lockonTime.Value;
+                }
             }
             
             return defaultLockOnTime;
