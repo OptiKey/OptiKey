@@ -103,7 +103,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         .DistinctUntilChanged(signal => signal.Signal) //Combining latest will output a trigger signal for every change in BOTH sequences - only output when the trigger signal changes
                         .Where(_ => State == RunningStates.Running)
                         .Publish()
-                        .RefCount();
+                        .RefCount()
+                        .Finally(() => {
+                            sequence = null;
+                        });
 
                 }
 
