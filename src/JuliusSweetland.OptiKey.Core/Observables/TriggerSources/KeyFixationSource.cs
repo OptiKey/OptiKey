@@ -32,7 +32,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         private readonly bool resumeRequiresLockOn;
         private readonly string defaultTimeToCompleteTrigger;
         private readonly IDictionary<KeyValue, string> timeToCompleteTriggerByKey;
-        private readonly IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
+        private readonly ConcurrentDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
         private readonly TimeSpan incompleteFixationTtl;
         private readonly ConcurrentDictionary<KeyValue, long> incompleteFixationProgress;
         private readonly ConcurrentDictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
@@ -57,7 +57,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             this.defaultTimeToCompleteTrigger = defaultTimeToCompleteTrigger;
             this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey ?? new Dictionary<KeyValue, string>();
             this.incompleteFixationTtl = incompleteFixationTtl;
-            this.overrideTimesByKey = new Dictionary<KeyValue, TimeSpanOverrides>();
+            this.overrideTimesByKey = new ConcurrentDictionary<KeyValue, TimeSpanOverrides>();
             this.pointSource = pointSource;
 
             incompleteFixationProgress = new ConcurrentDictionary<KeyValue, long>();
