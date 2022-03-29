@@ -28,11 +28,9 @@ using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
 using Microsoft.Win32;
-using NBug.Core.UI;
 using Octokit;
 using presage;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
-using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using WindowsRecipes.TaskbarSingleInstance;
 using Application = System.Windows.Application;
 
