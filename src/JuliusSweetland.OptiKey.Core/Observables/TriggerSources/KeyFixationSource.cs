@@ -252,10 +252,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                                             //Temporary logic: if override times exist then we can presume that a dynamic keyboard with overrides is being user
                                             //The logic here would be to NOT require lock on again, hence why fixationCentrePointAndKeyValue is not cleared out.
-                                            if (overrideTimesByKey != null && overrideTimesByKey.ContainsKey(lastKeyValue))
+                                            if (overrideTimesByKey != null &&
+                                                overrideTimesByKey.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out TimeSpanOverrides tmpOverride))
                                             {
-                                                overrideTimesByKey[lastKeyValue].LockDownCancelTime = DateTimeOffset.Now 
-                                                    + overrideTimesByKey[lastKeyValue].TimeRequiredToLockDown;
+                                                tmpOverride.LockDownCancelTime = DateTimeOffset.Now + tmpOverride.TimeRequiredToLockDown; 
                                             }
                                             incompleteFixationProgress.Clear();
                                             incompleteFixationTimeouts.Clear();
