@@ -26,7 +26,6 @@ using log4net;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
-using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Octokit;
 using presage;
 using Application = System.Windows.Application;
@@ -87,7 +86,7 @@ namespace JuliusSweetland.OptiKey
         // Previously in core OptiKey ctr, now called by derived classes after setting up Settings class
         protected void Initialise()
         {
-            //Setup unhandled exception handling and NBug
+            //Setup unhandled exception handling 
             AttachUnhandledExceptionHandlers();
 
             //Log startup diagnostic info
@@ -558,49 +557,12 @@ namespace JuliusSweetland.OptiKey
 
         #region Attach Unhandled Exception Handlers
 
+        // Make sure exceptions get logged, and a crash message appears
         protected static void AttachUnhandledExceptionHandlers()
         {
-            // Make sure unhandled exceptions get logged
-            Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
-            AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
-            TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
-
-            // Create crash dump via NBug
-#if !DEBUG
-            Application.Current.DispatcherUnhandledException += NBug.Handler.DispatcherUnhandledException;
-            AppDomain.CurrentDomain.UnhandledException += NBug.Handler.UnhandledException;
-            TaskScheduler.UnobservedTaskException += NBug.Handler.UnobservedTaskException;
-
-            NBug.Settings.ProcessingException += (exception, report) =>
+            Action ShowCrashWindow = () =>
             {
-                //Add latest log file contents as custom info in the error report
-                var rootAppender = ((Hierarchy)LogManager.GetRepository())
-                    .Root.Appenders.OfType<FileAppender>()
-                    .FirstOrDefault();
-
-                if (rootAppender != null)
-                {
-                    using (var fs = new FileStream(rootAppender.File, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                    {
-                        using (var sr = new StreamReader(fs, Encoding.Default))
-                        {
-                            var logFileText = sr.ReadToEnd();
-                            report.CustomInfo = logFileText;
-                        }
-                    }
-                }
-            };
-
-            NBug.Settings.CustomUIEvent += (sender, args) =>
-            {
-                //Shortcut exceptions caused by a failure to send a previous crash report to prevent a crash loop
-                if(args.Exception.Message.Contains("An exception occurred while submitting bug report with Mail"))
-                {
-                    args.Result = new UIDialogResult(ExecutionFlow.ContinueExecution, SendReport.DoNotSend);
-                    return;
-                }
-
-                Application.Current.Dispatcher.Invoke((Action)delegate 
+                Application.Current.Dispatcher.Invoke((Action)delegate
                 {
                     var crashWindow = new CrashWindow
                     {
@@ -608,15 +570,24 @@ namespace JuliusSweetland.OptiKey
                         ShowActivated = true
                     };
                     crashWindow.ShowDialog();
-
-                    //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
-                    args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
                 });
             };
 
-            NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
-#endif
-
+            Current.DispatcherUnhandledException += (sender, args) =>
+            {
+                Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
+                ShowCrashWindow();
+            };
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
+                ShowCrashWindow();
+            };
+            TaskScheduler.UnobservedTaskException += (sender, args) =>
+            {
+                Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
+                ShowCrashWindow();
+            };        
         }
 
         #endregion
