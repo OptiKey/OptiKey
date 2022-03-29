@@ -11,7 +11,16 @@ namespace JuliusSweetland.OptiKey.UI.Windows
     /// </summary>
     public partial class CrashWindow : Window
     {
-        public CrashWindow()
+        
+        private static readonly Lazy<CrashWindow> instance =
+            new Lazy<CrashWindow>(() => new CrashWindow
+            {
+                Topmost = true,
+                ShowActivated = true
+            });
+        public static CrashWindow Instance { get { return instance.Value; } }
+
+        private CrashWindow()
         {
             InitializeComponent();
 
@@ -20,15 +29,16 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 var dt = new DispatcherTimer { Interval = new TimeSpan(0, 0, Settings.Default.AutoCloseCrashMessageSeconds) };
                 dt.Tick += (o, eventArgs) =>
                 {
-                    this.Close();
+                    // Shutdown or restart after crash window timeout                    
+                    bool attemptRestart = Settings.Default.AttemptRestartUponCrash && Settings.Default.CleanShutdown;
+                    Settings.Default.CleanShutdown = false;
+                    Settings.Default.Save();
 
-                    // The first crash might attempt a restart, but subsequent crashes shouldn't
-                    if (Settings.Default.AttemptRestartUponCrash && Settings.Default.CleanShutdown)
-                    {
-                        Settings.Default.CleanShutdown = false;
-                        Settings.Default.Save();
+                    // If this is a new crash, attempt a restart, but don't allow repeat crashes to get into restart loop
+                    if (attemptRestart)
                         OptiKeyApp.RestartApp();
-                    }
+                    else
+                        Environment.Exit(0);                        
                 };
                 dt.Start();
             };
