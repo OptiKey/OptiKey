@@ -6,7 +6,7 @@ namespace JuliusSweetland.OptiKey.Models
 {
     public class TimeSpanOverrides
     {
-        public TimeSpan LockOnTime { get; set; }
+        public TimeSpan? LockOnTime { get; set; }
         //This is a list of times required to trigger keystrokes
         //When used the time to trigger the first keystroke is overridden and the time to trigger repetitive keystrokes can be shortened
         public List<string> CompletionTimes { get; set; }
