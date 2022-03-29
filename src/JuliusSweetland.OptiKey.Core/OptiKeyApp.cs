@@ -560,33 +560,35 @@ namespace JuliusSweetland.OptiKey
         // Make sure exceptions get logged, and a crash message appears
         protected static void AttachUnhandledExceptionHandlers()
         {
-            Action ShowCrashWindow = () =>
+            Action CloseLogsAndShowCrashWindow = () =>
             {
+#if !DEBUG
+                LogManager.Flush(1000);
+                LogManager.Shutdown();
+
                 Application.Current.Dispatcher.Invoke((Action)delegate
                 {
-                    var crashWindow = new CrashWindow
-                    {
-                        Topmost = true,
-                        ShowActivated = true
-                    };
-                    crashWindow.ShowDialog();
+                    CrashWindow crashWindow = CrashWindow.Instance;
+                    if (!crashWindow.IsVisible)
+                        crashWindow.ShowDialog();                    
                 });
+#endif
             };
 
             Current.DispatcherUnhandledException += (sender, args) =>
             {
                 Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
-                ShowCrashWindow();
+                CloseLogsAndShowCrashWindow();
             };
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
             {
                 Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
-                ShowCrashWindow();
+                CloseLogsAndShowCrashWindow();                
             };
             TaskScheduler.UnobservedTaskException += (sender, args) =>
             {
                 Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
-                ShowCrashWindow();
+                CloseLogsAndShowCrashWindow();
             };        
         }
 

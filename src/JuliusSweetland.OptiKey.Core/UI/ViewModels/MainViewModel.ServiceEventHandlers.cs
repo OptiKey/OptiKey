@@ -2206,6 +2206,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         () =>
                         {
                             Settings.Default.CleanShutdown = true;
+                            Settings.Default.Save();
                             OptiKeyApp.RestartApp();
                             Application.Current.Shutdown();
                         },
