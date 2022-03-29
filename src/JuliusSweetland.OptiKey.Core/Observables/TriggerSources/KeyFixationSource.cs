@@ -245,9 +245,11 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             {
                                                 t.Dispose();
                                             }
-                                                keystroke = (fixationCentrePointAndKeyValue.KeyValue.Equals(lastKeyValue)) ? keystroke + 1 : 1;
-                                                lastKeyValue = fixationCentrePointAndKeyValue.KeyValue;
-                                                fixationStart = latestPointAndKeyValue.Timestamp;
+
+                                            keystroke = (fixationCentrePointAndKeyValue.KeyValue.Equals(lastKeyValue)) ? keystroke + 1 : 1;
+                                            lastKeyValue = fixationCentrePointAndKeyValue.KeyValue;
+                                            fixationStart = latestPointAndKeyValue.Timestamp;
+
                                             //Temporary logic: if override times exist then we can presume that a dynamic keyboard with overrides is being user
                                             //The logic here would be to NOT require lock on again, hence why fixationCentrePointAndKeyValue is not cleared out.
                                             if (overrideTimesByKey != null && overrideTimesByKey.ContainsKey(lastKeyValue))
