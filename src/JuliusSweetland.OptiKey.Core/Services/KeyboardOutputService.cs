@@ -147,7 +147,7 @@ namespace JuliusSweetland.OptiKey.Services
                         if (backOneCount == 1)
                         {
                             var inProgressWord = Text.InProgressWord(Text.Length);
-                            if (inProgressWord != null)
+                            if (inProgressWord != null && !Settings.Default.LimitBackOne)
                             {
                                 //Attempt to break-apart/decompose in-progress word using normalisation
                                 var decomposedInProgressWord = inProgressWord.Decompose();
