@@ -1,8 +1,6 @@
 NOTES:
 
-1. In the unlikely event that OptiKey crashes, information about the cause of the problem (including the OptiKey log file) will be automatically gathered and sent to the developer(s) the next time OptiKey runs. This will only be used to help diagnose and fix issues. No personal or identifying information is captured in addition to the standard logs and state of the OptiKey process when it crashed. Information from these error reports will never be shared, sold, or used for anything other than fixing bugs. If you would like more information please contact OptiKeyFeedback@gmail.com
-
-2. If you plan to use OptiKey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. If you don't already have them they can be downloaded by going to https://www.irisbond.com/products/downloads and downloading the 'Drivers' installer (direct link to this download: http://downloads.irisbond.com/drivers_irisbond_api).
+If you plan to use OptiKey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. If you don't already have them they can be downloaded by going to https://www.irisbond.com/products/downloads and downloading the 'Drivers' installer (direct link to this download: http://downloads.irisbond.com/drivers_irisbond_api).
 
 
 DISCLAIMER:
