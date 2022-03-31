@@ -87,7 +87,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                   </Grid.ColumnDefinitions>
                   <Label Grid.Column="0" Content="Name" Margin="5,0"/>
                   <Label Grid.Column="1" Content="Cooldown" Margin="5,0"/>
-                  <Label Grid.Column="2" Margin="5,0" Content="{Binding EyeGesture.enabled, Converter={StaticResource BoolToCustomValues}}"/>
+                  <Label Grid.Column="2" Margin="5,0" Content="{Binding EyeGesture.Enabled, Converter={StaticResource BoolToCustomValues}}"/>
                   <TextBox Grid.Row="1" Grid.Column="0" MinWidth="120" VerticalAlignment="Center" Margin="5,0"
                              Text="{Binding EyeGesture.Name}"/>
                   <c:NumericUpDown Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5,0"
@@ -102,7 +102,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       </Button>
                       <Button Command="{Binding EnableCommand}"
                             BorderBrush="Black" BorderThickness="2" Padding="0"
-                      Visibility="{Binding EyeGesture.enabled, Converter={StaticResource InvertedBoolToVisibilityConverter}}">
+                      Visibility="{Binding EyeGesture.Enabled, Converter={StaticResource InvertedBoolToVisibilityConverter}}">
                         <Path Data="M0,0 16,16 M0,16 16,0" Stroke="Black" StrokeThickness="4" VerticalAlignment="Center"/>
                       </Button>
                     </Grid>

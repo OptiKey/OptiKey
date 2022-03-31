@@ -40,14 +40,5 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
       <Path Stroke="Black" Fill="Transparent" Stretch="Fill" StrokeThickness="2" Opacity=".5"
             Data="M0,4 C0,8 8,8 8,4 C8,0 0,0 0,4"/>
     </Grid>
-    <Grid Visibility="{Binding ShowSuggestions, Converter={StaticResource BooleanToVisibility}}">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition/>
-        <ColumnDefinition/>
-      </Grid.ColumnDefinitions>
-      <Border Grid.Column="1" Background="Black" Opacity=".5">
-        <ListView Foreground="White" FontSize="15" ItemsSource="{Binding SuggestionService.Suggestions}"/>
-      </Border>
-    </Grid>
   </Grid>
 </Window>
