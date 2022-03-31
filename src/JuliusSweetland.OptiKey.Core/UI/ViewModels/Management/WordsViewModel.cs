@@ -247,6 +247,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref autoCapitalise, value); }
         }
 
+        private bool limitBackOne;
+        public bool LimitBackOne
+        {
+            get { return limitBackOne; }
+            set { SetProperty(ref limitBackOne, value); }
+        }
+
         private bool suppressAutoCapitaliseIntelligently;
         public bool SuppressAutoCapitaliseIntelligently
         {
@@ -318,6 +325,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             SuggestWords = Settings.Default.SuggestWords;
             MultiKeySelectionEnabled = Settings.Default.MultiKeySelectionEnabled;
             MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
+            LimitBackOne = Settings.Default.LimitBackOne;
         }
 
         public void ApplyChanges()
@@ -345,6 +353,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SuggestWords = SuggestWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
+            Settings.Default.LimitBackOne = LimitBackOne;
 
             if (reloadDictionary)
             {

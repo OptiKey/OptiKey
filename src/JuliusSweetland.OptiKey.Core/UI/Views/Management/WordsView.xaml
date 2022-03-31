@@ -131,6 +131,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.AUTO_SPACE_BETWEEN_WORDS_LABEL}"
@@ -173,21 +174,27 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.SUGGEST_WORDS_LABEL}"
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.LIMIT_BACKONE}"
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="3" Grid.Column="1"
                               VerticalAlignment="Center"
+                              IsChecked="{Binding LimitBackOne, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.SUGGEST_WORDS_LABEL}"
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="4" Grid.Column="1"
+                              VerticalAlignment="Center"
                               IsChecked="{Binding SuggestWords, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.SUGGESTION_METHOD}"
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.SUGGESTION_METHOD}"
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                    <ComboBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                               ItemsSource="{Binding SuggestionMethods}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding SuggestionMethod, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.PRESAGE_DATABASE_LOCATION_LABEL}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.PRESAGE_DATABASE_LOCATION_LABEL}" 
                             VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -200,7 +207,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
                         <Button Click="btnFindPresageDatabaseLocation_Click" MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
                             <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
                         </Button>
@@ -215,7 +222,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </StackPanel.Style>
                     </StackPanel>
-                    <TextBlock Grid.Row="5" Grid.Column="2" Name="txtPresageDatabaseLocation"
+                    <TextBlock Grid.Row="6" Grid.Column="2" Name="txtPresageDatabaseLocation"
                                 Text="{Binding PresageDatabaseLocation, Mode=TwoWay}" 
                                 VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
@@ -230,7 +237,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL}"
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL}"
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -243,7 +250,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="1" Interval="1" Maximum="100"
                                             Value="{Binding PresageNumberOfSuggestions, Mode=TwoWay}" >
                         <controls:NumericUpDown.Style>

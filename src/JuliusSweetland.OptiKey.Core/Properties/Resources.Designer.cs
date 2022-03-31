@@ -3125,7 +3125,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("LEFT_DOWN_UP_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Limit "BackOne" deletion to a single character
+        /// </summary>
+        public static string LIMIT_BACKONE
+        {
+            get
+            {
+                return ResourceManager.GetString("LIMIT_BACKONE", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Load dictionary.
         /// </summary>

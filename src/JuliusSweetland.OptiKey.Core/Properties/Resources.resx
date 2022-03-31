@@ -2470,4 +2470,7 @@ Magyar
   <data name="POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
     <value>Point selection gamepad controller</value>
   </data>
+  <data name="LIMIT_BACKONE" xml:space="preserve">
+    <value>Limit "BackOne" deletion to a single character</value>
+  </data>
 </root>
