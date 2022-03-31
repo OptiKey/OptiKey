@@ -935,7 +935,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             if (xmlKeyValue != null && overrideTimesByKey != null)
             {
                 TimeSpanOverrides timeSpanOverrides;
-                if (xmlKey.LockOnTime > 0)
+                if (xmlKey.LockOnTime >= 0)
                 {
                     if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
                     {
@@ -948,16 +948,16 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
-                else if (keyGroupList != null && keyGroupList.Exists(x => x.LockOnTime > 0))
+                else if (keyGroupList != null && keyGroupList.Exists(x => x.LockOnTime >= 0))
                 {
                     if (overrideTimesByKey.TryGetValue(xmlKeyValue, out timeSpanOverrides))
                     {
-                        timeSpanOverrides.LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockOnTime > 0).LockOnTime));
+                        timeSpanOverrides.LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockOnTime >= 0).LockOnTime));
                         overrideTimesByKey[xmlKeyValue] = timeSpanOverrides;
                     }
                     else
                     {
-                        timeSpanOverrides = new TimeSpanOverrides() { LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockOnTime > 0).LockOnTime)) };
+                        timeSpanOverrides = new TimeSpanOverrides() { LockOnTime = TimeSpan.FromMilliseconds(Convert.ToDouble(keyGroupList.Find(x => x.LockOnTime >= 0).LockOnTime)) };
                         overrideTimesByKey.Add(xmlKeyValue, timeSpanOverrides);
                     }
                 }
