@@ -585,7 +585,49 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chinese Traditional (Cangjie5) / 正體中文 (倉頡五代).
+        ///   Looks up a localized string similar to Chinese Simplified (Cangjie v5) / 中文 (仓颉五代-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_CANGJIE5 {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_CANGJIE5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Cangjie v5) /
+        ///中文
+        ///(仓颉五代-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Luna Pinyin) / 中文 (朙月拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Luna Pinyin) /
+        ///中文
+        ///(朙月拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Cangjie v5) / 中文 (倉頡五代).
         /// </summary>
         public static string CHINESE_TRADITIONAL_CANGJIE5 {
             get {
@@ -595,8 +637,8 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional
-        ///(Cangjie5) /
-        ///正體中文
+        ///(Cangjie v5) /
+        ///中文
         ///(倉頡五代).
         /// </summary>
         public static string CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE {
@@ -606,7 +648,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Chinese Traditional (Luna Pinyin) / 正體中文 (朙月拼音).
+        ///   Looks up a localized string similar to Chinese Traditional (Luna Pinyin) / 中文 (朙月拼音).
         /// </summary>
         public static string CHINESE_TRADITIONAL_LUNAPINYIN {
             get {
@@ -617,7 +659,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional
         ///(Luna Pinyin) /
-        ///正體中文
+        ///中文
         ///(朙月拼音).
         /// </summary>
         public static string CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {

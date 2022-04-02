@@ -149,6 +149,8 @@ namespace JuliusSweetland.OptiKey.Enums
         public static bool ManagedByRime(this Languages language)
         {
             switch (language) {
+                case Languages.ChineseSimplifiedCangjie5:
+                case Languages.ChineseSimplifiedLunaPinyin:
                 case Languages.ChineseTraditionalCangjie5:
                 case Languages.ChineseTraditionalLunaPinyin:
                     return true;
