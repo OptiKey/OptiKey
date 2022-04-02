@@ -7,6 +7,14 @@ namespace JuliusSweetland.OptiKey.Enums
     public enum Languages
     {
         CatalanSpain,
+        //ChineseSimplified,
+        //ChineseSimplifiedBopomofo,
+        ChineseSimplifiedCangjie5,
+        ChineseSimplifiedLunaPinyin,
+        //ChineseTraditional,
+        //ChineseTraditionalBopomofo,
+        ChineseTraditionalCangjie5,
+        ChineseTraditionalLunaPinyin,
         CroatianCroatia,
         CzechCzechRepublic,
         DanishDenmark,
@@ -39,7 +47,6 @@ namespace JuliusSweetland.OptiKey.Enums
         UkrainianUkraine,
         UrduPakistan
     }
-
     public static partial class EnumExtensions
     {
         public static string ToDescription(this Languages language)
@@ -47,6 +54,8 @@ namespace JuliusSweetland.OptiKey.Enums
             switch (language)
             {
                 case Languages.CatalanSpain: return Resources.CATALAN_SPAIN;
+                case Languages.ChineseTraditionalCangjie5: return Resources.CHINESE_TRADITIONAL_CANGJIE5;
+                case Languages.ChineseTraditionalLunaPinyin: return Resources.CHINESE_TRADITIONAL_LUNAPINYIN;
                 case Languages.CroatianCroatia: return Resources.CROATIAN_CROATIA;
                 case Languages.CzechCzechRepublic: return Resources.CZECH_CZECH_REPUBLIC;
                 case Languages.DanishDenmark: return Resources.DANISH_DENMARK;
@@ -88,6 +97,8 @@ namespace JuliusSweetland.OptiKey.Enums
             switch (language)
             {
                 case Languages.CatalanSpain: return CultureInfo.GetCultureInfo("ca-ES");
+                case Languages.ChineseTraditionalCangjie5: return CultureInfo.GetCultureInfo("zh-TW");
+                case Languages.ChineseTraditionalLunaPinyin: return CultureInfo.GetCultureInfo("zh-TW");
                 case Languages.CroatianCroatia: return CultureInfo.GetCultureInfo("hr-HR");
                 case Languages.CzechCzechRepublic: return CultureInfo.GetCultureInfo("cs-CZ");
                 case Languages.DanishDenmark: return CultureInfo.GetCultureInfo("da-DK");
@@ -133,6 +144,38 @@ namespace JuliusSweetland.OptiKey.Enums
 
                 default:
                     return true;
+            }
+        }
+        public static bool ManagedByRime(this Languages language)
+        {
+            switch (language) {
+                case Languages.ChineseTraditionalCangjie5:
+                case Languages.ChineseTraditionalLunaPinyin:
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
+        public static string GetRimeSchemaId(this Languages language) {
+            switch (language) {
+                case Languages.ChineseSimplifiedCangjie5:
+                case Languages.ChineseTraditionalCangjie5:
+                    return "cangjie5";
+                case Languages.ChineseSimplifiedLunaPinyin:
+                case Languages.ChineseTraditionalLunaPinyin:
+                    return "luna_pinyin";
+                default:
+                    return "";
+            }
+        }
+        public static string GetRimeOption(this Languages language) {
+            switch (language) {
+                case Languages.ChineseSimplifiedCangjie5:
+                case Languages.ChineseSimplifiedLunaPinyin:
+                    return "zh_simp";
+                default:
+                    return "";
             }
         }
     }

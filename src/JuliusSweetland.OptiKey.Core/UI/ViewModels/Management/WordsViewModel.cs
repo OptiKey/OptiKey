@@ -1,6 +1,7 @@
 // Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Rime;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
 using Prism.Mvvm;
@@ -39,6 +40,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return new List<KeyValuePair<string, Languages>>
                 {
                     new KeyValuePair<string, Languages>(Resources.CATALAN_SPAIN, Enums.Languages.CatalanSpain),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_TRADITIONAL_CANGJIE5, Enums.Languages.ChineseTraditionalCangjie5),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_TRADITIONAL_LUNAPINYIN, Enums.Languages.ChineseTraditionalLunaPinyin),
                     new KeyValuePair<string, Languages>(Resources.CROATIAN_CROATIA, Enums.Languages.CroatianCroatia),
                     new KeyValuePair<string, Languages>(Resources.CZECH_CZECH_REPUBLIC, Enums.Languages.CzechCzechRepublic),
                     new KeyValuePair<string, Languages>(Resources.DANISH_DENMARK, Enums.Languages.DanishDenmark),
@@ -358,6 +361,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             if (reloadDictionary)
             {
                 dictionaryService.LoadDictionary();
+                MyRimeApi.SelectSchema();
             }
         }
 

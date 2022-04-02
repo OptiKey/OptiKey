@@ -585,6 +585,47 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Cangjie5) / 正體中文 (倉頡五代).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_CANGJIE5 {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Cangjie5) /
+        ///正體中文
+        ///(倉頡五代).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Luna Pinyin) / 正體中文 (朙月拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_LUNAPINYIN", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Luna Pinyin) /
+        ///正體中文
+        ///(朙月拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        /// <summary>
         ///   Looks up a localized string similar to CLEAR.
         /// </summary>
         public static string CLEAR {
