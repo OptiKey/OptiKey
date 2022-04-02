@@ -3,6 +3,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Rime;
 using JuliusSweetland.OptiKey.Services.Suggestions;
 using log4net;
 using System;
@@ -58,6 +59,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             MigrateLegacyDictionaries();
             LoadDictionary();
+            MyRimeApi.SelectSchema();
 
             //Subscribe to changes in the keyboard language to reload the dictionary
             Settings.Default.OnPropertyChanges(settings => settings.KeyboardAndDictionaryLanguage).Subscribe(_ => LoadDictionary());
