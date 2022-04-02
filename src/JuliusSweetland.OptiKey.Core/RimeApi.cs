@@ -1,13 +1,16 @@
-﻿using System;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Properties;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace JuliusSweetland.OptiKey.Rime {
     public class MyRimeApi {
-        public static nuint session_id = 0;
+        private static nuint SessionId = 0;
+        public static bool IsComposing = false;
         public static nuint GetSession() {
-            if (session_id != 0) {
-                return session_id;
+            if (SessionId != 0) {
+                return SessionId;
             }
 
             var rime = rime_get_api();
@@ -24,13 +27,25 @@ namespace JuliusSweetland.OptiKey.Rime {
                 rime.join_maintenance_thread();
             }
             Console.WriteLine("ready.");
-            session_id = rime.create_session();
-            if (session_id == 0) {
+            SessionId = rime.create_session();
+            if (SessionId == 0) {
                 Console.WriteLine("Error creating rime session.");
                 Console.ReadLine();
                 //return;
             }
-            return session_id;
+            return SessionId;
+        }
+        public static void SelectSchema() {
+            var language = Settings.Default.KeyboardAndDictionaryLanguage;
+            if (!language.ManagedByRime()) {
+                return;
+            }
+            var rime = rime_get_api();
+            rime.select_schema(GetSession(), language.GetRimeSchemaId());
+            var option = language.GetRimeOption();
+            if (!string.IsNullOrWhiteSpace(option)) {
+                rime.set_option(GetSession(), option, true);
+            }
         }
         public static List<RimeCandidate> GetCandidates(RimeMenu menu) {
             var result = new List<RimeCandidate>();

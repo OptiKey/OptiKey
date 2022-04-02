@@ -132,6 +132,10 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.BackOne:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && MyRimeApi.IsComposing) {
+                        ProcessTextWithRime("{BackSpace}");
+                        break;
+                    }
                     var backOneCount = string.IsNullOrEmpty(lastProcessedText)
                         ? 1 //Default to removing one character if no lastProcessedText
                         : lastProcessedText.Length;
@@ -368,34 +372,72 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.Suggestion1:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                        ProcessTextWithRime("{Control+1}");
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(0);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion2:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                        ProcessTextWithRime("{Control+2}");
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(1);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion3:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                        ProcessTextWithRime("{Control+3}");
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(2);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion4:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                        ProcessTextWithRime("{Control+4}");
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(3);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion5:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                        ProcessTextWithRime("{Control+5}");
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(4);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion6:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                        ProcessTextWithRime("{Control+6}");
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(5);
                     lastProcessedTextWasSuggestion = true;
                     break;
+
+                case FunctionKeys.PreviousSuggestions:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                        ProcessTextWithRime("{Page_Up}");
+                        break;
+                    }
+                    goto default;
+
+                case FunctionKeys.NextSuggestions:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                        ProcessTextWithRime("{Page_Down}");
+                        break;
+                    }
+                    goto default;
 
                 case FunctionKeys.ToggleCaseOfPreviousCharacter:
                     {
@@ -478,8 +520,11 @@ namespace JuliusSweetland.OptiKey.Services
             Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ToPrintableString());
 
             var capturedTextAfterComposition = CombineStringWithActiveDeadKeys(capturedText);
-            //ProcessText(capturedTextAfterComposition, true);
-            ProcessTextRime(capturedTextAfterComposition);
+            if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                ProcessTextWithRime(capturedTextAfterComposition);
+            } else {
+                ProcessText(capturedTextAfterComposition, true);
+            }
 
             lastProcessedTextWasSuggestion = false;
 
@@ -570,7 +615,11 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Methods - private
-        private void ProcessTextRime(string newText) {
+        private void ProcessTextWithRime(string newText) {
+            if (!MyRimeApi.IsComposing && newText.Equals(" ")) {
+                Text += newText;
+                return;
+            }
             var rime = MyRimeApi.rime_get_api();
             var session_id = MyRimeApi.GetSession();
             var commit = new RimeCommit();
@@ -586,10 +635,11 @@ namespace JuliusSweetland.OptiKey.Services
                 //rime.free_commit(ref commit);
             }
 
-            //if (rime.get_status(session_id, ref status)) {
-            //    print_status(ref status);
-            //    //rime.free_status(ref status);
-            //}
+            if (rime.get_status(session_id, ref status)) {
+                MyRimeApi.IsComposing = status.is_composing;
+                //print_status(ref status);
+                //rime.free_status(ref status);
+            }
 
             if (rime.get_context(session_id, ref context)) {
                 var candidates = MyRimeApi.GetCandidates(context.menu);

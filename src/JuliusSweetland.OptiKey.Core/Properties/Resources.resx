@@ -2503,4 +2503,26 @@ www.optikey.org/supported-eyetrackers</value>
   <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
     <value>Repeat last key:</value>
   </data>
+<data name="CHINESE_TRADITIONAL_CANGJIE5" xml:space="preserve">
+    <value>Chinese Traditional (Cangjie5) / 正體中文 (倉頡五代)</value>
+    <comment>CHINESE_TRADITIONAL_CANGJIE5</comment>
+  </data>
+  <data name="CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Cangjie5) /
+正體中文
+(倉頡五代)</value>
+    <comment>CHINESE_TRADITIONAL_CANGJIE5</comment>
+  </data>
+  <data name="CHINESE_TRADITIONAL_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Luna Pinyin) / 正體中文 (朙月拼音)</value>
+    <comment>CHINESE_TRADITIONAL_LUNAPINYIN</comment>
+  </data>
+  <data name="CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Luna Pinyin) /
+正體中文
+(朙月拼音)</value>
+    <comment>CHINESE_TRADITIONAL_LUNAPINYIN</comment>
+  </data>
 </root>

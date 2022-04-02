@@ -1,7 +1,7 @@
 <!--
 Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
-<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.English.Alpha1"
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.ChinesePinyin.Alpha1"
                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -61,43 +61,43 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
         <controls:Key Grid.Row="2" Grid.Column="0"/>
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                      ShiftUpText="手" ShiftDownText="Q"
+                      ShiftUpText="q" ShiftDownText="Q"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="q"/>
         <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
-                      ShiftUpText="田" ShiftDownText="W"
+                      ShiftUpText="w" ShiftDownText="W"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="w"/>
         <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
-                      ShiftUpText="水" ShiftDownText="E" 
+                      ShiftUpText="e" ShiftDownText="E" 
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="e"/>
         <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
-                      ShiftUpText="口" ShiftDownText="R"
+                      ShiftUpText="r" ShiftDownText="R"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="r"/>
         <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"
-                      ShiftUpText="廿" ShiftDownText="T"
+                      ShiftUpText="t" ShiftDownText="T"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="t"/>
         <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2"
-                      ShiftUpText="卜" ShiftDownText="Y"
+                      ShiftUpText="y" ShiftDownText="Y"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="y"/>
         <controls:Key Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="2"
-                      ShiftUpText="山" ShiftDownText="U"
+                      ShiftUpText="u" ShiftDownText="U"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="u"/>
         <controls:Key Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="2"
-                      ShiftUpText="戈" ShiftDownText="I"
+                      ShiftUpText="i" ShiftDownText="I"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="i"/>
         <controls:Key Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="2"
-                      ShiftUpText="人" ShiftDownText="O"
+                      ShiftUpText="o" ShiftDownText="O"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="o"/>
         <controls:Key Grid.Row="2" Grid.Column="19" Grid.ColumnSpan="2"
-                      ShiftUpText="心" ShiftDownText="P"
+                      ShiftUpText="p" ShiftDownText="P"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="p"/>
         <controls:Key Grid.Row="2" Grid.Column="21" Grid.ColumnSpan="2"
@@ -113,39 +113,39 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="&#x09;"/>
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="日" ShiftDownText="A"
+                      ShiftUpText="a" ShiftDownText="A"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="a"/>
         <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
-                      ShiftUpText="尸" ShiftDownText="S"
+                      ShiftUpText="s" ShiftDownText="S"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="s"/>
         <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="木" ShiftDownText="D"
+                      ShiftUpText="d" ShiftDownText="D"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="d"/>
         <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="火" ShiftDownText="F"
+                      ShiftUpText="f" ShiftDownText="F"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="f"/>
         <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
-                      ShiftUpText="土" ShiftDownText="G"
+                      ShiftUpText="g" ShiftDownText="G"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="g"/>
         <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
-                      ShiftUpText="竹" ShiftDownText="H"
+                      ShiftUpText="h" ShiftDownText="H"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="h"/>
         <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="十" ShiftDownText="J"
+                      ShiftUpText="j" ShiftDownText="J"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="j"/>
         <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="大" ShiftDownText="K"
+                      ShiftUpText="k" ShiftDownText="K"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="k"/>
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="中" ShiftDownText="L"
+                      ShiftUpText="l" ShiftDownText="L"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="l"/>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
@@ -165,31 +165,31 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.LeftShiftKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="重" ShiftDownText="Z"
+                      ShiftUpText="z" ShiftDownText="Z"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="z"/>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
-                      ShiftUpText="難" ShiftDownText="X"
+                      ShiftUpText="x" ShiftDownText="X"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="x"/>
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="金" ShiftDownText="C"
+                      ShiftUpText="c" ShiftDownText="C"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="c"/>
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="女" ShiftDownText="V"
+                      ShiftUpText="v" ShiftDownText="V"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="v"/>
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
-                      ShiftUpText="月" ShiftDownText="B"
+                      ShiftUpText="b" ShiftDownText="B"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="b"/>
         <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
-                      ShiftUpText="弓" ShiftDownText="N"
+                      ShiftUpText="n" ShiftDownText="N"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="n"/>
         <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="一" ShiftDownText="M"
+                      ShiftUpText="m" ShiftDownText="M"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="m"/>
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
