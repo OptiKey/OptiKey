@@ -7,6 +7,11 @@ config_version: "0.15.minimal"
 schema_list:
   - schema: luna_pinyin
   - schema: cangjie5
+  - schema: bopomofo
+  - schema: bopomofo_tw
+  - schema: bopomofo_express
+  - schema: bopomofo
+  - schema: terra_pinyin
 
 switcher:
   caption: 〔方案選單〕

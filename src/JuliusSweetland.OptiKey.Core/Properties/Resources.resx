@@ -2503,6 +2503,15 @@ www.optikey.org/supported-eyetrackers</value>
   <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
     <value>Repeat last key:</value>
   </data>
+  <data name="CHINESE_SIMPLIFIED_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Simplified (Bopomofo) / 中文 (注音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Bopomofo) /
+中文
+(注音-简化字)</value>
+  </data>
   <data name="CHINESE_SIMPLIFIED_CANGJIE5" xml:space="preserve">
     <value>Chinese Simplified (Cangjie v5) / 中文 (仓颉五代-简化字)</value>
   </data>
@@ -2521,6 +2530,33 @@ www.optikey.org/supported-eyetrackers</value>
 中文
 (朙月拼音-简化字)</value>
   </data>
+  <data name="CHINESE_SIMPLIFIED_TERRAPINYIN" xml:space="preserve">
+    <value>Chinese Simplified (Terra Pinyin) / 中文 (地球拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Terra Pinyin) /
+中文
+(地球拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Bopomofo) / 中文 (注音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Bopomofo) /
+中文
+(注音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) (Bopomofo) /
+中文
+(注音-臺灣正體)</value>
+  </data>
   <data name="CHINESE_TRADITIONAL_CANGJIE5" xml:space="preserve">
     <value>Chinese Traditional (Cangjie v5) / 中文 (倉頡五代)</value>
   </data>
@@ -2538,5 +2574,14 @@ www.optikey.org/supported-eyetrackers</value>
 (Luna Pinyin) /
 中文
 (朙月拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TERRAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Terra Pinyin) / 中文 (地球拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Terra Pinyin) /
+中文
+(地球拼音)</value>
   </data>
 </root>
