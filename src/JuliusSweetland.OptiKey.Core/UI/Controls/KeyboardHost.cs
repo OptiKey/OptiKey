@@ -19,6 +19,7 @@ using System.Windows;
 using System.Windows.Controls;
 using JuliusSweetland.OptiKey.UI.Windows;
 using CatalanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Catalan;
+using ChineseBopomofoViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.ChineseBopomofo;
 using ChinesePinyinViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.ChinesePinyin;
 using ChineseCangjieViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.ChineseCangjie;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
@@ -226,12 +227,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.CatalanSpain:
                         newContent = new CatalanViews.Alpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTraditionalTaiwanBopomofo:
+                        newContent = new ChineseBopomofoViews.Alpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.ChineseSimplifiedCangjie5:
                     case Languages.ChineseTraditionalCangjie5:
-                            newContent = new ChineseCangjieViews.Alpha1 { DataContext = Keyboard };
+                        newContent = new ChineseCangjieViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
                     case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
                         newContent = new ChinesePinyinViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:

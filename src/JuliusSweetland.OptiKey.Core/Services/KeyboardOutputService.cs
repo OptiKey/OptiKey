@@ -620,6 +620,14 @@ namespace JuliusSweetland.OptiKey.Services
                 Text += newText;
                 return;
             }
+            if (newText.Equals("\n")) {
+                if (!MyRimeApi.IsComposing) {
+                    ProcessText(newText, true);
+                    return;
+                } else {
+                    newText = "{Return}";
+                }
+            }
             var rime = MyRimeApi.rime_get_api();
             var session_id = MyRimeApi.GetSession();
             var commit = new RimeCommit();

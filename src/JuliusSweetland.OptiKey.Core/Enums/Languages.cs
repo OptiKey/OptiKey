@@ -8,13 +8,16 @@ namespace JuliusSweetland.OptiKey.Enums
     {
         CatalanSpain,
         //ChineseSimplified,
-        //ChineseSimplifiedBopomofo,
+        ChineseSimplifiedBopomofo,
         ChineseSimplifiedCangjie5,
         ChineseSimplifiedLunaPinyin,
+        ChineseSimplifiedTerraPinyin,
         //ChineseTraditional,
-        //ChineseTraditionalBopomofo,
+        ChineseTraditionalBopomofo,
         ChineseTraditionalCangjie5,
         ChineseTraditionalLunaPinyin,
+        ChineseTraditionalTerraPinyin,
+        ChineseTraditionalTaiwanBopomofo,
         CroatianCroatia,
         CzechCzechRepublic,
         DanishDenmark,
@@ -54,8 +57,15 @@ namespace JuliusSweetland.OptiKey.Enums
             switch (language)
             {
                 case Languages.CatalanSpain: return Resources.CATALAN_SPAIN;
+                case Languages.ChineseSimplifiedBopomofo: return Resources.CHINESE_SIMPLIFIED_BOPOMOFO;
+                case Languages.ChineseSimplifiedCangjie5: return Resources.CHINESE_SIMPLIFIED_CANGJIE5;
+                case Languages.ChineseSimplifiedLunaPinyin: return Resources.CHINESE_SIMPLIFIED_LUNAPINYIN;
+                case Languages.ChineseSimplifiedTerraPinyin: return Resources.CHINESE_SIMPLIFIED_TERRAPINYIN;
+                case Languages.ChineseTraditionalBopomofo: return Resources.CHINESE_TRADITIONAL_BOPOMOFO;
                 case Languages.ChineseTraditionalCangjie5: return Resources.CHINESE_TRADITIONAL_CANGJIE5;
                 case Languages.ChineseTraditionalLunaPinyin: return Resources.CHINESE_TRADITIONAL_LUNAPINYIN;
+                case Languages.ChineseTraditionalTerraPinyin: return Resources.CHINESE_TRADITIONAL_TERRAPINYIN;
+                case Languages.ChineseTraditionalTaiwanBopomofo: return Resources.CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO;
                 case Languages.CroatianCroatia: return Resources.CROATIAN_CROATIA;
                 case Languages.CzechCzechRepublic: return Resources.CZECH_CZECH_REPUBLIC;
                 case Languages.DanishDenmark: return Resources.DANISH_DENMARK;
@@ -149,10 +159,15 @@ namespace JuliusSweetland.OptiKey.Enums
         public static bool ManagedByRime(this Languages language)
         {
             switch (language) {
+                case Languages.ChineseSimplifiedBopomofo:
                 case Languages.ChineseSimplifiedCangjie5:
                 case Languages.ChineseSimplifiedLunaPinyin:
+                case Languages.ChineseSimplifiedTerraPinyin:
+                case Languages.ChineseTraditionalBopomofo:
                 case Languages.ChineseTraditionalCangjie5:
                 case Languages.ChineseTraditionalLunaPinyin:
+                case Languages.ChineseTraditionalTerraPinyin:
+                case Languages.ChineseTraditionalTaiwanBopomofo:
                     return true;
 
                 default:
@@ -161,12 +176,20 @@ namespace JuliusSweetland.OptiKey.Enums
         }
         public static string GetRimeSchemaId(this Languages language) {
             switch (language) {
+                case Languages.ChineseSimplifiedBopomofo:
+                case Languages.ChineseTraditionalBopomofo:
+                    return "bopomofo";
+                case Languages.ChineseTraditionalTaiwanBopomofo:
+                    return "bopomofo_tw";
                 case Languages.ChineseSimplifiedCangjie5:
                 case Languages.ChineseTraditionalCangjie5:
                     return "cangjie5";
                 case Languages.ChineseSimplifiedLunaPinyin:
                 case Languages.ChineseTraditionalLunaPinyin:
                     return "luna_pinyin";
+                case Languages.ChineseSimplifiedTerraPinyin:
+                case Languages.ChineseTraditionalTerraPinyin:
+                    return "terra_pinyin";
                 default:
                     return "";
             }
@@ -175,6 +198,8 @@ namespace JuliusSweetland.OptiKey.Enums
             switch (language) {
                 case Languages.ChineseSimplifiedCangjie5:
                 case Languages.ChineseSimplifiedLunaPinyin:
+                case Languages.ChineseSimplifiedTerraPinyin:
+                case Languages.ChineseSimplifiedBopomofo:
                     return "zh_simp";
                 default:
                     return "";
