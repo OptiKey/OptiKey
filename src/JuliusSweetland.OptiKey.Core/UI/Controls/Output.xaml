@@ -13,7 +13,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -52,7 +52,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCopyAllScratchpadKey, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableTranslationKey, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" /> 
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0"
@@ -60,7 +60,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Text="{x:Static resx:Resources.PREV}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.PreviousSuggestionsKey}">
-            </controls:Key>
+        </controls:Key>
         <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -134,6 +134,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
                           Value="{x:Static models:KeyValues.NextSuggestionsKey}"/>
+
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource AddToDictionaryIcon}" 
                       Text="{x:Static resx:Resources.ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE}"
