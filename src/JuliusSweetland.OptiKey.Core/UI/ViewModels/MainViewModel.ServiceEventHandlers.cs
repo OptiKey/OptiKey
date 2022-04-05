@@ -806,6 +806,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     RunPlugin_Legacy(singleKeyValue.String);
                     break;
 
+                case FunctionKeys.SuggestionN:
+                    keyboardOutputService.ProcessKeyValueWithString(FunctionKeys.SuggestionN, singleKeyValue.String);
+                    break;
+
                 default:
                     //Process single key text, THEN function key. The use case might be to output text and then change keyboard, for example.
                     //N.B. Combining text and a function key changes the KeyValue, which will impact whether the KeyValue can be used to detect

@@ -11,6 +11,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("DynamicKey", typeof(XmlDynamicKey))]
         [XmlElement("Scratchpad", typeof(XmlDynamicScratchpad))]
         [XmlElement("SuggestionRow", typeof(XmlDynamicSuggestionRow))]
+        [XmlElement("SuggestionGrid", typeof(XmlDynamicSuggestionGrid))]
         [XmlElement("SuggestionCol", typeof(XmlDynamicSuggestionCol))]
         public List<XmlDynamicItem> Items { get; } = new List<XmlDynamicItem>();
         
@@ -55,5 +56,9 @@ namespace JuliusSweetland.OptiKey.Models
     {
         [XmlText]
         public string Value { get; set; }
+    }
+    public class XmlDynamicSuggestionGrid : XmlDynamicItem {
+        [XmlAttribute] public int NumRows { get; set; } = 1;
+        [XmlAttribute] public int NumCols { get; set; } = 1;
     }
 }

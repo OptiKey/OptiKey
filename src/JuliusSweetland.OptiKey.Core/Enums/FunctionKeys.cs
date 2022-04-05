@@ -257,6 +257,7 @@ namespace JuliusSweetland.OptiKey.Enums
         Suggestion4,
         Suggestion5,
         Suggestion6,
+        SuggestionN,
         ToggleCaseOfPreviousCharacter,
         Translation,
         TurkishTurkey,

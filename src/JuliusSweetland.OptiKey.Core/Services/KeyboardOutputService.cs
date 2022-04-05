@@ -98,6 +98,21 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Methods - IKeyboardOutputService
 
+        public void ProcessKeyValueWithString(FunctionKeys functionKey, string payload)
+        {
+            switch (functionKey)
+            {
+                case FunctionKeys.SuggestionN:
+                    int n;                    
+                    if (int.TryParse(payload, out n))
+                    {
+                        SwapLastTextChangeForSuggestion(n);
+                        lastProcessedTextWasSuggestion = true;
+                    }
+                    break;                    
+            }
+        }
+
         public void ProcessFunctionKey(FunctionKeys functionKey)
         {
             Log.DebugFormat("Processing captured function key '{0}'", functionKey);
