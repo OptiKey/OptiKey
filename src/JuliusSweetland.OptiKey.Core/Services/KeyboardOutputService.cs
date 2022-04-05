@@ -652,6 +652,16 @@ namespace JuliusSweetland.OptiKey.Services
             if (rime.get_context(session_id, ref context)) {
                 var candidates = MyRimeApi.GetCandidates(context.menu);
                 suggestionService.Suggestions = candidates.Select(e => e.text).ToList();
+                if (context.menu.page_no == 0) {
+                    MyRimeApi.IsFirstPage = true;
+                } else {
+                    MyRimeApi.IsFirstPage = false;
+                }
+                if (context.menu.is_last_page) {
+                    MyRimeApi.IsLastPage = true;
+                } else {
+                    MyRimeApi.IsLastPage = false;
+                }
                 //rime.free_context(ref context);
             }
         }

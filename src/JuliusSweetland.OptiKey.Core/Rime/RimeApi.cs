@@ -8,6 +8,8 @@ namespace JuliusSweetland.OptiKey.Rime {
     public class MyRimeApi {
         private static nuint SessionId = 0;
         public static bool IsComposing = false;
+        public static bool IsFirstPage = false;
+        public static bool IsLastPage = false;
         public static nuint GetSession() {
             if (SessionId != 0) {
                 return SessionId;
