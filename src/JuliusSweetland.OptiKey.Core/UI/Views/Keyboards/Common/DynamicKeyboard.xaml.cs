@@ -584,6 +584,17 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
             else
             {
+                if (dynamicItem is XmlDynamicSuggestionGrid grid)
+                {
+                    var suggestionGrid = new XmlSuggestionGrid(grid.NumRows, grid.NumCols);
+                    suggestionGrid.DataContext = this.DataContext;
+                    MainGrid.Children.Add(suggestionGrid);
+                    Grid.SetColumn(suggestionGrid, dynamicItem.Col);
+                    Grid.SetRow(suggestionGrid, dynamicItem.Row);
+                    Grid.SetColumnSpan(suggestionGrid, dynamicItem.Width);
+                    Grid.SetRowSpan(suggestionGrid, dynamicItem.Height);
+                }
+
                 if (dynamicItem is XmlDynamicSuggestionRow)
                 {
                     var suggestionRow = new XmlSuggestionRow();

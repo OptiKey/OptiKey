@@ -129,6 +129,9 @@
     <Reference Include="Octokit, Version=0.24.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Octokit.0.25.0\lib\net45\Octokit.dll</HintPath>
     </Reference>
+    <Reference Include="Pather.CSharp, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Pather.CSharp.2.1.0\lib\netstandard1.0\Pather.CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="presage.net, Version=0.9.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ext\Presage\presage.net.dll</HintPath>
@@ -173,6 +176,7 @@
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -298,6 +302,9 @@
     <Compile Include="Models\Gamepads\RepeatableTriggerSignal.cs" />
     <Compile Include="Models\Gamepads\XInputControllerState.cs" />
     <Compile Include="Models\Gamepads\XInputListener.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlSuggestionGrid.xaml.cs">
+      <DependentUpon>XmlSuggestionGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\XmlKeyCommand.cs" />
     <Compile Include="Models\EyeGestureShape.cs" />
     <Compile Include="Models\XmlEyeGestures.cs" />
@@ -493,6 +500,8 @@
     <Compile Include="UI\ValueConverters\ProgressUnderwayVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\StringNullOrEmptyToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\WidthWithoutScrollbarConverter.cs" />
+<Compile Include="UI\ValueConverters\SuggestionsToKeyValue.cs" />
+    <Compile Include="UI\ValueConverters\SuggestionsToString.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboard.cs" />
@@ -1721,6 +1730,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Models\XmlKeyboardModels\XmlSuggestionCol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\XmlKeyboardModels\XmlSuggestionGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
