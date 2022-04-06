@@ -32,6 +32,8 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Dictionary<bool, KeyboardOutputServiceState> state = new Dictionary<bool, KeyboardOutputServiceState>();
 
         private string text;
+        private string textWithRimePreedit;
+        private string rimePreedit;
         private string lastProcessedText;
         private bool lastProcessedTextWasSuggestion;
         private bool lastProcessedTextWasMultiKey;
@@ -72,7 +74,17 @@ namespace JuliusSweetland.OptiKey.Services
         public string Text
         {
             get { return text; }
-            set { SetProperty(ref text, value); }
+            set {
+                SetProperty(ref text, value);
+                TextWithRimePreedit = text + rimePreedit;
+            }
+        }
+        public string TextWithRimePreedit
+        {
+            get { return textWithRimePreedit; }
+            set {
+                SetProperty(ref textWithRimePreedit, value);
+            }
         }
 
         public bool KeyboardIsShiftAware //Not on interface as only accessed via databinding
@@ -662,6 +674,8 @@ namespace JuliusSweetland.OptiKey.Services
                 } else {
                     MyRimeApi.IsLastPage = false;
                 }
+                rimePreedit = context.composition.preedit;
+                TextWithRimePreedit = Text + context.composition.preedit;
                 //rime.free_context(ref context);
             }
         }
