@@ -202,11 +202,12 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       Text="{x:Static resx:Resources.RE_CALIBRATE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.CalibrateKey}"/>
-        <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" />
+        <!--<controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="{x:Static resx:Resources.SHIFT}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>
+                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>-->
         <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
                       Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
