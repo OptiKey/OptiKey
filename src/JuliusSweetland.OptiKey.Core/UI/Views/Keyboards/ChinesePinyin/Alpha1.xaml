@@ -159,11 +159,12 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MouseKeyboardKey}" />
 
-        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
+        <!--<controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="{x:Static resx:Resources.SHIFT}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>
+                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>-->
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                       ShiftUpText="z" ShiftDownText="Z"
                       SharedSizeGroup="KeyWithSingleLetter"
