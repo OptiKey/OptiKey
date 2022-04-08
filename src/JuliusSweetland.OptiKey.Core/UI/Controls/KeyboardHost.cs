@@ -395,12 +395,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.CatalanSpain:
                         newContent = new CatalanViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTraditionalTaiwanBopomofo:
+                        newContent = new ChineseBopomofoViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.ChineseSimplifiedCangjie5:
                     case Languages.ChineseTraditionalCangjie5:
                         newContent = new ChineseCangjieViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
                     case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
                         newContent = new ChinesePinyinViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:

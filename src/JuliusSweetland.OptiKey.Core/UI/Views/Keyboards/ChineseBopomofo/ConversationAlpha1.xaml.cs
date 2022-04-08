@@ -7,7 +7,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.ChineseBopomofo {
     /// </summary>
     public partial class ConversationAlpha1 : KeyboardView
     {
-        public ConversationAlpha1() : base(shiftAware: true)
+        public ConversationAlpha1() : base(shiftAware: false)
         {
             InitializeComponent();
         }
