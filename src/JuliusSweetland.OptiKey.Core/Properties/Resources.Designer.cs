@@ -678,6 +678,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) / 正體中文 (臺灣).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TAIWAN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) /
+        ///正體中文
+        ///(臺灣).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional (Bopomofo) / 中文 (注音).
         /// </summary>
         public static string CHINESE_TRADITIONAL_BOPOMOFO {

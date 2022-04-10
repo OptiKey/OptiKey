@@ -2539,6 +2539,15 @@ www.optikey.org/supported-eyetrackers</value>
 中文
 (地球拼音-简化字)</value>
   </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) / 正體中文 (臺灣)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) /
+正體中文
+(臺灣)</value>
+  </data>
   <data name="CHINESE_TRADITIONAL_BOPOMOFO" xml:space="preserve">
     <value>Chinese Traditional (Bopomofo) / 中文 (注音)</value>
   </data>
