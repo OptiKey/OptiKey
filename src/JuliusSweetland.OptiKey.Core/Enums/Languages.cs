@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.Enums
         ChineseSimplifiedCangjie5,
         ChineseSimplifiedLunaPinyin,
         ChineseSimplifiedTerraPinyin,
-        //ChineseTraditional,
+        ChineseTraditionalTaiwan,
         ChineseTraditionalBopomofo,
         ChineseTraditionalCangjie5,
         ChineseTraditionalLunaPinyin,
@@ -65,6 +65,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.ChineseTraditionalCangjie5: return Resources.CHINESE_TRADITIONAL_CANGJIE5;
                 case Languages.ChineseTraditionalLunaPinyin: return Resources.CHINESE_TRADITIONAL_LUNAPINYIN;
                 case Languages.ChineseTraditionalTerraPinyin: return Resources.CHINESE_TRADITIONAL_TERRAPINYIN;
+                case Languages.ChineseTraditionalTaiwan: return Resources.CHINESE_TRADITIONAL_TAIWAN;
                 case Languages.ChineseTraditionalTaiwanBopomofo: return Resources.CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO;
                 case Languages.CroatianCroatia: return Resources.CROATIAN_CROATIA;
                 case Languages.CzechCzechRepublic: return Resources.CZECH_CZECH_REPUBLIC;
@@ -107,8 +108,7 @@ namespace JuliusSweetland.OptiKey.Enums
             switch (language)
             {
                 case Languages.CatalanSpain: return CultureInfo.GetCultureInfo("ca-ES");
-                case Languages.ChineseTraditionalCangjie5: return CultureInfo.GetCultureInfo("zh-TW");
-                case Languages.ChineseTraditionalLunaPinyin: return CultureInfo.GetCultureInfo("zh-TW");
+                case Languages.ChineseTraditionalTaiwan: return CultureInfo.GetCultureInfo("zh-TW");
                 case Languages.CroatianCroatia: return CultureInfo.GetCultureInfo("hr-HR");
                 case Languages.CzechCzechRepublic: return CultureInfo.GetCultureInfo("cs-CZ");
                 case Languages.DanishDenmark: return CultureInfo.GetCultureInfo("da-DK");

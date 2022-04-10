@@ -51,7 +51,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}"
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                              ItemsSource="{Binding Languages}"
+                              ItemsSource="{Binding KeyboardLanguages}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding KeyboardAndDictionaryLanguage, Mode=TwoWay}" />
@@ -65,7 +65,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.UI_LANGUAGE_LABEL}"
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                              ItemsSource="{Binding Languages}"
+                              ItemsSource="{Binding UiLanguages}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding UiLanguage, Mode=TwoWay}" />
