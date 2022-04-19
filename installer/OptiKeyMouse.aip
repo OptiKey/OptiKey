@@ -4,6 +4,7 @@
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_CURRENT_YEAR" Value="2022" ValueLocId="-"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
+    <ROW Property="AI_PREREQ_REPAIR_ENABLED" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="AI_RUN_AS_ADMIN" Value="0"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
@@ -380,6 +381,7 @@
     <ROW File="SharpDX.XInput.xml" Component_="Bass.Net.xml" FileName="SHARPD~2.XML|SharpDX.XInput.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\SharpDX.XInput.xml" SelfReg="false"/>
     <ROW File="TestControllers.exe" Component_="TestControllers.exe" FileName="TESTCO~1.EXE|TestControllers.exe" Attributes="0" SourcePath="..\src\TestControllers\bin\Release\TestControllers.exe" SelfReg="false"/>
     <ROW File="TestControllers.exe.config" Component_="TestControllers.exe.config" FileName="TESTCO~1.CON|TestControllers.exe.config" Attributes="0" SourcePath="..\src\TestControllers\bin\Release\TestControllers.exe.config" SelfReg="false"/>
+    <ROW File="log4net.xml" Component_="Bass.Net.xml" FileName="log4net.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\Release\log4net.xml" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -795,7 +797,7 @@
     <ROW Action="AI_FindExeLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="196" Builds="DefaultBuild"/>
     <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
     <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
-    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6597" Builds="DefaultBuild"/>
     <ROW Action="AI_ExtractFiles" Sequence="1399" Builds="DefaultBuild"/>
     <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
   </COMPONENT>
@@ -851,10 +853,12 @@
     <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
+    <ROW PrereqKey="C67108D39D05435F9BE6B977F2CCED25" DisplayName="Visual C++ Redistributable for Visual Studio 2012 Update 4 x86" VersionMin="11.0" SetupFileUrl="Prerequisites\Visual C++ Redistributable for Visual Studio 2012\vcredist_x86.exe" Location="0" ExactSize="0" Operator="1" NoUiComLine="/q /norestart" Options="y" TargetName="Visual C++ Redistributable for Visual Studio 2012\vcredist_x86.exe"/>
     <ROW PrereqKey="EEDF697C58FF44AEA12537BBFB266D19" DisplayName=".NET Framework 4.6 (web installer)" SetupFileUrl="Prerequisites\.NET Framework 4.6\NDP46-KB3045560-Web.exe" Location="0" ExactSize="0" WinNTVersions="Windows Vista RTM x86, Windows Vista SP1 x86, Windows 7 RTM x86, Windows 10 x86" WinNT64Versions="Windows Vista RTM x64, Windows Vista SP1 x64, Windows 7 RTM x64, Windows Server 2008 R2 RTM x64, Windows 10 x64, Windows Server x64" Operator="1" NoUiComLine="/q /norestart" Options="xy" TargetName=".NET Framework 4.6\NDP46-KB3045560-Web.exe"/>
-    <ATTRIBUTE name="PrereqsOrder" value="EEDF697C58FF44AEA12537BBFB266D19"/>
+    <ATTRIBUTE name="PrereqsOrder" value="EEDF697C58FF44AEA12537BBFB266D19 C67108D39D05435F9BE6B977F2CCED25"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
+    <ROW SearchKey="C67108D39D05435F9BE6B977F2CCED25Ver" Prereq="C67108D39D05435F9BE6B977F2CCED25" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\11.0\RuntimeMinimum\Version" VerMin="11.0.61030" Order="1" Property="PreReqSearch_C67108D39D05435F9BE6B9"/>
     <ROW SearchKey="EEDF697C58FF44AEA12537BBFB266D19Rel" Prereq="EEDF697C58FF44AEA12537BBFB266D19" SearchType="9" SearchString="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release" RefContent="G393296" Order="1" Property="PreReqSearch_EEDF697C58FF44AEA12537"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.SynchronizedFolderComponent">
