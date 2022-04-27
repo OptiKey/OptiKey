@@ -6075,7 +6075,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again..
+        /// </summary>
+        public static string TOBII_TRACKER_NOT_FOUND
+        {
+            get
+            {
+                return ResourceManager.GetString("TOBII_TRACKER_NOT_FOUND", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again..
         /// </summary>

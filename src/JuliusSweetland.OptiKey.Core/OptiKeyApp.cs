@@ -715,7 +715,7 @@ namespace JuliusSweetland.OptiKey
                         theEyeTribePointService);
                     break;
 
-                /*
+                
                 case PointsSources.Alienware17:
                 case PointsSources.SteelseriesSentry:
                 case PointsSources.TobiiEyeX:
@@ -728,18 +728,15 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
-                    var tobiiEyeXPointService = new TobiiEyeXPointService();
-                    var tobiiEyeXCalibrationService = calibrationService as TobiiEyeXCalibrationService;
-                    if (tobiiEyeXCalibrationService != null)
-                    {
-                        tobiiEyeXCalibrationService.EyeXHost = tobiiEyeXPointService.EyeXHost;
-                    }
-                    errorNotifyingServices.Add(tobiiEyeXPointService);
+                    var tobiiPointService = new TobiiPointService();
+                 
+                    errorNotifyingServices.Add(tobiiPointService);
                     pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
-                        tobiiEyeXPointService);
+                        tobiiPointService);
                     break;
 
+                /*
                 case PointsSources.VisualInteractionMyGaze:
                     var myGazePointService = new MyGazePointService();
                     errorNotifyingServices.Add(myGazePointService);
