@@ -233,6 +233,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\ext\TobiiStreamEngine\stream_engine_windows_x64_4.15.1.5\Tobii.StreamEngine.Interop.cs">
+      <Link>Native\Tobii\Tobii.StreamEngine.Interop.cs</Link>
+    </Compile>
     <Compile Include="Models\Gamepads\GamepadButtonEvents.cs" />
     <Compile Include="Models\Gamepads\DirectInputControllerState.cs" />
     <Compile Include="Models\Gamepads\DirectInputListener.cs" />
@@ -442,6 +445,7 @@
     <Compile Include="Services\PointSources\IrisbondDuoCalibrationService.cs" />
     <Compile Include="Services\PointSources\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\PointSources\IrisbondDuoPointService.cs" />
+    <Compile Include="Services\PointSources\TobiiPointService.cs" />
     <Compile Include="Services\PointSources\TobiiEyeXPointService.cs" />
     <Compile Include="Services\Translation\Languages\TranslationTargetLanguages.cs" />
     <Compile Include="Services\Translation\TranslationResources.Designer.cs">
@@ -463,6 +467,7 @@
     <Compile Include="Services\PointSources\TheEyeTribePointService.cs" />
     <Compile Include="Static\Graphics.cs" />
     <Compile Include="Static\Sound.cs" />
+    <Compile Include="Static\Time.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
@@ -1018,6 +1023,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.ur-PK.resx" />
+    <Content Include="..\..\ext\TobiiStreamEngine\stream_engine_windows_x64_4.15.1.5\tobii_stream_engine.dll">
+      <Link>tobii_stream_engine.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dictionaries\UrduPakistan.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

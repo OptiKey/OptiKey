@@ -1160,12 +1160,6 @@ POSITION</value>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibration completed, or possibly cancelled, but everything is working again!</value>
   </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine is not running. Please start the EyeX Engine and try again.</value>
-  </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
   </data>
@@ -2472,5 +2466,8 @@ Magyar
   </data>
   <data name="LIMIT_BACKONE" xml:space="preserve">
     <value>Limit "BackOne" deletion to a single character</value>
+  </data>
+  <data name="TOBII_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>Could not find a supported Tobii tracker. Check your eye tracker is plugged in and the Tobii service is running</value>
   </data>
 </root>
