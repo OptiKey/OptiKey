@@ -32,6 +32,24 @@
   <PropertyGroup>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,17 +72,17 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-if not exist "$(SolutionDir)src\JuliusSweetland.OptiKey.Pro\bin\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKey.Pro\bin\$(ConfigurationName)\Resources\Plugins"
-xcopy "$(ProjectDir)bin\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKey.Pro\bin\$(ConfigurationName)\Resources\Plugins" /y
+if not exist "$(SolutionDir)src\JuliusSweetland.OptiKey.Pro\bin\x64\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKey.Pro\bin\x64\$(ConfigurationName)\Resources\Plugins"
+xcopy "$(ProjectDir)bin\x64\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKey.Pro\bin\x64\$(ConfigurationName)\Resources\Plugins" /y
 
-if not exist "$(SolutionDir)src\JuliusSweetland.OptiKey.Symbol\bin\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKey.Symbol\bin\$(ConfigurationName)\Resources\Plugins"
-xcopy "$(ProjectDir)bin\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKey.Symbol\bin\$(ConfigurationName)\Resources\Plugins" /y
+if not exist "$(SolutionDir)src\JuliusSweetland.OptiKey.Symbol\bin\x64\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKey.Symbol\bin\x64\$(ConfigurationName)\Resources\Plugins"
+xcopy "$(ProjectDir)bin\x64\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKey.Symbol\bin\x64\$(ConfigurationName)\Resources\Plugins" /y
 
-if not exist "$(SolutionDir)src\JuliusSweetland.OptiKey.Chat\bin\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKey.Chat\bin\$(ConfigurationName)\Resources\Plugins"
-xcopy "$(ProjectDir)bin\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKey.Chat\bin\$(ConfigurationName)\Resources\Plugins" /y
+if not exist "$(SolutionDir)src\JuliusSweetland.OptiKey.Chat\bin\x64\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKey.Chat\bin\x64\$(ConfigurationName)\Resources\Plugins"
+xcopy "$(ProjectDir)bin\x64\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKey.Chat\bin\x64\$(ConfigurationName)\Resources\Plugins" /y
 
-if not exist "$(SolutionDir)src\JuliusSweetland.OptiKey.Mouse\bin\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKey.Mouse\bin\$(ConfigurationName)\Resources\Plugins"
-xcopy "$(ProjectDir)bin\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKey.Mouse\bin\$(ConfigurationName)\Resources\Plugins" /y
+if not exist "$(SolutionDir)src\JuliusSweetland.OptiKey.Mouse\bin\x64\$(ConfigurationName)\Resources\Plugins" md "$(SolutionDir)src\JuliusSweetland.OptiKey.Mouse\bin\x64\$(ConfigurationName)\Resources\Plugins"
+xcopy "$(ProjectDir)bin\x64\$(ConfigurationName)\*.dll" "$(SolutionDir)src\JuliusSweetland.OptiKey.Mouse\bin\x64\$(ConfigurationName)\Resources\Plugins" /y
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
