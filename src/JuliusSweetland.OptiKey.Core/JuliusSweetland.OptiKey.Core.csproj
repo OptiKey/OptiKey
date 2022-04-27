@@ -372,8 +372,8 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Services\IrisbondHiruCalibrationService.cs" />
-    <Compile Include="Services\IrisbondHiruPointService.cs" />
+    <Compile Include="Services\PointSources\IrisbondHiruCalibrationService.cs" />
+    <Compile Include="Services\PointSources\IrisbondHiruPointService.cs" />
     <Compile Include="Services\PluginEngine\PluginEngine.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
@@ -416,13 +416,13 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
     <Compile Include="Services\MouseOutputService.cs" />
-    <Compile Include="Services\MyGazePointService.cs" />
-    <Compile Include="Services\MyGazeCalibrationService.cs" />
+    <Compile Include="Services\PointSources\MyGazePointService.cs" />
+    <Compile Include="Services\PointSources\MyGazeCalibrationService.cs" />
     <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
-    <Compile Include="Services\IrisbondDuoCalibrationService.cs" />
-    <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
-    <Compile Include="Services\IrisbondDuoPointService.cs" />
-    <Compile Include="Services\TobiiEyeXPointService.cs" />
+    <Compile Include="Services\PointSources\IrisbondDuoCalibrationService.cs" />
+    <Compile Include="Services\PointSources\TobiiEyeXCalibrationService.cs" />
+    <Compile Include="Services\PointSources\IrisbondDuoPointService.cs" />
+    <Compile Include="Services\PointSources\TobiiEyeXPointService.cs" />
     <Compile Include="Services\Translation\Languages\TranslationTargetLanguages.cs" />
     <Compile Include="Services\Translation\TranslationResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -439,8 +439,8 @@
     <Compile Include="Services\KeyboardOutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\SuggestionStateService.cs" />
-    <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
-    <Compile Include="Services\TheEyeTribePointService.cs" />
+    <Compile Include="Services\PointSources\TheEyeTribeCalibrationService.cs" />
+    <Compile Include="Services\PointSources\TheEyeTribePointService.cs" />
     <Compile Include="Static\Graphics.cs" />
     <Compile Include="Static\Sound.cs" />
     <Compile Include="Static\Windows.cs" />
