@@ -1009,6 +1009,14 @@
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
     <EmbeddedResource Include="Properties\Resources.uk-UA.resx" />
+    <Content Include="..\..\ext\IrisBond\IrisbondHiruAPI.dll">
+      <Link>IrisbondHiruAPI.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\Irisbond\PGRFlyCapture.dll">
+      <Link>PGRFlyCapture.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.ur-PK.resx" />
     <Content Include="Dictionaries\UrduPakistan.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1092,6 +1100,14 @@
       <Link>LICENSE.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="..\..\ext\Irisbond\IrisbondAPI.dll">
+      <Link>IrisbondAPI.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\myGaze\myGazeAPI.dll">
+      <Link>myGazeAPI.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dictionaries\FrenchFrance.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1241,6 +1257,10 @@
     <None Include="Resources\Icons\SVG Source Files\MouseMiddleClick.svg" />
     <Content Include="..\..\ext\Bass\bass.dll">
       <Link>bass.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.dll">
+      <Link>Tobii.EyeX.Client.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Icons\SVG Source Files\Alpha.svg" />
