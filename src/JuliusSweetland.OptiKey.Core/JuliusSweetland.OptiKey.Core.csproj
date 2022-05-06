@@ -981,6 +981,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
+    <Content Include="Resources\EyeTrackerSupport\tobii-trackers.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
