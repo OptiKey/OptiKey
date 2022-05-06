@@ -6088,6 +6088,18 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Connected Tobii eye tracker is not supported. .
+        /// </summary>
+        public static string TOBII_NOT_SUPPORTED
+        {
+            get
+            {
+                return ResourceManager.GetString("TOBII_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
         ///   Looks up a localized string similar to Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again..
         /// </summary>
         public static string TOBII_EYEX_ENGINE_NOT_FOUND {

@@ -2470,4 +2470,7 @@ Magyar
   <data name="TOBII_TRACKER_NOT_FOUND" xml:space="preserve">
     <value>Could not find a supported Tobii tracker. Check your eye tracker is plugged in and the Tobii service is running</value>
   </data>
+  <data name="TOBII_NOT_SUPPORTED" xml:space="preserve">
+    <value>Connected Tobii eye tracker is not supported. </value>
+  </data>
 </root>

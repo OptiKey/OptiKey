@@ -2,17 +2,18 @@
 using System;
 using System.Reactive;
 using System.Windows;
-
-using JuliusSweetland.OptiKey.Enums;
-using log4net;
-using Tobii.StreamEngine;
-using JuliusSweetland.OptiKey.Static;
-
-using JuliusSweetland.OptiKey.Properties;
+using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+
+using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.Properties;
+
+using log4net;
+using Tobii.StreamEngine;
+
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -227,24 +228,36 @@ namespace JuliusSweetland.OptiKey.Services
             result = Interop.tobii_device_create(apiContext, urls[0], Interop.tobii_field_of_use_t.TOBII_FIELD_OF_USE_STORE_OR_TRANSFER_FALSE, out deviceContext);
             Debug.Assert(result == tobii_error_t.TOBII_ERROR_NO_ERROR);
 
-            /*IntPtr tempDeviceContext;
-            foreach(string url in urls)
+            // Check if a supported tracker
+            tobii_device_info_t info;
+            Interop.tobii_get_device_info(deviceContext, out info);
+            Console.WriteLine(info.model);
+
+            bool supported = DeviceIsValid(info);
+            if (supported)
             {
-                result = Interop.tobii_device_create(apiContext, url, Interop.tobii_field_of_use_t.TOBII_FIELD_OF_USE_STORE_OR_TRANSFER_FALSE, out tempDeviceContext);
-                Debug.Assert(result == tobii_error_t.TOBII_ERROR_NO_ERROR);
+                Log.Info($"Connected to Tobii eye tracker model: {info.model}");
+            }
+            else
+            {
+                // add toast
+                Log.Error($"Tobii eyetracker model {info.model} (device code {info.generation}) is not supported by Optikey 4.0+");
+                PublishError(this, new ApplicationException(Resources.TOBII_NOT_SUPPORTED));
+            }
+        }
 
-                tobii_device_info_t info;
-                Interop.tobii_get_device_info(tempDeviceContext, out info);
-                Console.WriteLine(info.model);
-
-                bool supported = true;
-                if (supported)
-                {
-                    // Connect to first supported tracker
-                    deviceContext = tempDeviceContext;
-                    break;
-                }
-            }*/
+        // Check if eye tracker is valid device
+        // SDK license only permits Dynavox trackers
+        private bool DeviceIsValid(tobii_device_info_t info)
+        {
+            // Serial number is e.g. IS50F-123456789123
+            // The first part describes the model, e.g. PCEye / Tobii Eye Tracker 4C etc
+            string serial = info.serial_number;
+            string[] serial_parts = serial.Split('-');
+            string model = serial_parts[0];
+            
+            string[] supportedModels = System.IO.File.ReadAllLines(@"Resources\EyeTrackerSupport\tobii-trackers.txt");                        
+            return (supportedModels.Any(s => s.Equals(model)));
         }
 
         private bool CheckResultForError(tobii_error_t error_t)
