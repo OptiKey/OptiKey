@@ -443,10 +443,8 @@
     <Compile Include="Services\PointSources\MyGazeCalibrationService.cs" />
     <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
     <Compile Include="Services\PointSources\IrisbondDuoCalibrationService.cs" />
-    <Compile Include="Services\PointSources\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\PointSources\IrisbondDuoPointService.cs" />
     <Compile Include="Services\PointSources\TobiiPointService.cs" />
-    <Compile Include="Services\PointSources\TobiiEyeXPointService.cs" />
     <Compile Include="Services\Translation\Languages\TranslationTargetLanguages.cs" />
     <Compile Include="Services\Translation\TranslationResources.Designer.cs">
       <AutoGen>True</AutoGen>
