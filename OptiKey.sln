@@ -60,6 +60,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectedControllers", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TobiiConsole", "TobiiConsole\TobiiConsole.csproj", "{E44BE975-A78C-450A-9433-53AB6C9C5B8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TobiiDeviceInfo", "TobiiDeviceInfo\TobiiDeviceInfo.csproj", "{E599F56F-9830-46D0-9740-5B353304E3A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -264,6 +266,22 @@ Global
 		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.Release|x64.ActiveCfg = Release|x64
 		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.Release|x64.Build.0 = Release|x64
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.All|Any CPU.Build.0 = Release|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.All|x64.ActiveCfg = Release|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.All|x64.Build.0 = Release|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.Debug|x64.ActiveCfg = Debug|x64
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.Debug|x64.Build.0 = Debug|x64
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.DefaultBuild|x64.ActiveCfg = Debug|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.DefaultBuild|x64.Build.0 = Debug|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.Release|x64.ActiveCfg = Release|Any CPU
+		{E599F56F-9830-46D0-9740-5B353304E3A9}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
