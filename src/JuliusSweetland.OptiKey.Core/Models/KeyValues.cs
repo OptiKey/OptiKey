@@ -237,6 +237,8 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue QuitKey = new KeyValue(FunctionKeys.Quit);
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue(FunctionKeys.RepeatLastMouseAction);
         public static readonly KeyValue RestartKey = new KeyValue(FunctionKeys.Restart);
+        public static readonly KeyValue RimeDisableAsciiMode = new KeyValue(FunctionKeys.RimeDisableAsciiMode);
+        public static readonly KeyValue RimeEnableAsciiMode = new KeyValue(FunctionKeys.RimeEnableAsciiMode);
         public static readonly KeyValue RussianRussiaKey = new KeyValue(FunctionKeys.RussianRussia);
         public static readonly KeyValue SerbianSerbiaKey = new KeyValue(FunctionKeys.SerbianSerbia);
         public static readonly KeyValue ScrollLockKey = new KeyValue(FunctionKeys.ScrollLock);

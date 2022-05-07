@@ -1,7 +1,7 @@
 ﻿<!--
 Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
-<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.ChinesePinyin.Alpha1"
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.ChinesePinyin.Alpha2"
                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -100,8 +100,8 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="p"/>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-					  Text="En"
-					  Value="{x:Static models:KeyValues.RimeEnableAsciiMode}"/>
+					  Text="中"
+					  Value="{x:Static models:KeyValues.RimeDisableAsciiMode}"/>
         <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MenuIcon}"
                       Text="{x:Static resx:Resources.MENU}"
@@ -160,12 +160,11 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MouseKeyboardKey}" />
 
-        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
-        <!--<controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="{x:Static resx:Resources.SHIFT}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>-->
+                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                       ShiftUpText="z" ShiftDownText="Z"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -229,7 +228,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithDescription"
                       Value="{x:Static models:KeyValues.LeftAltKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
-                      Text="，"
+                      Text=","
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value=","/>
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
@@ -239,7 +238,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
         <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
-                      Text="。"
+                      Text="."
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="."/>
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"

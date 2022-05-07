@@ -204,6 +204,14 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
+                //Disable when using Rime and not in ascii mode
+                if (keyValue == KeyValues.AddToDictionaryKey 
+                    && Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                    && !MyRimeApi.IsAsciiMode)
+                {
+                    return false;
+                }
+
                 //Move & Resize keys when docked
                 if (Settings.Default.MainWindowState == WindowStates.Docked
                     && ((Settings.Default.MainWindowDockPosition == DockEdges.Top &&

@@ -191,6 +191,8 @@ namespace JuliusSweetland.OptiKey.Enums
         Quit,
         RepeatLastMouseAction,
         Restart,
+        RimeDisableAsciiMode,
+        RimeEnableAsciiMode,
         RussianRussia,
         ScrollLock,
         SelectVoice,
