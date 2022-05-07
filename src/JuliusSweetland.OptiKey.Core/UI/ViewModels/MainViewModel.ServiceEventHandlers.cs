@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Rime;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.Static;
@@ -2311,6 +2312,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Application.Current.Shutdown();
                         },
                         () => { Keyboard = keyboardBeforeQuit; });
+                    break;
+
+                case FunctionKeys.RimeDisableAsciiMode:
+                    Log.Info("Disable Rime ascii_mode.");
+                    var rime = MyRimeApi.rime_get_api();
+                    if (rime.set_option(MyRimeApi.GetSession(), "ascii_mode", false)) {
+                        MyRimeApi.IsAsciiMode = false;
+                        Keyboard = new Alpha1();
+                    }
+                    break;
+
+                case FunctionKeys.RimeEnableAsciiMode:
+                    Log.Info("Enable Rime ascii_mode.");
+                    var rime2 = MyRimeApi.rime_get_api();
+                    if (rime2.set_option(MyRimeApi.GetSession(), "ascii_mode", true)) {
+                        MyRimeApi.IsAsciiMode = true;
+                        Keyboard = new Alpha2();
+                    }
                     break;
 
                 case FunctionKeys.RussianRussia:

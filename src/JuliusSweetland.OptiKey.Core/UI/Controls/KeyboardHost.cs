@@ -353,6 +353,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                        newContent = new ChinesePinyinViews.Alpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.HebrewIsrael:
                         newContent = new HebrewViews.Alpha2 { DataContext = Keyboard };
                         break;

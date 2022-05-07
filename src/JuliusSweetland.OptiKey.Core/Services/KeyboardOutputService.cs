@@ -384,7 +384,7 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.Suggestion1:
-                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
                         ProcessTextWithRime("{Control+1}");
                         break;
                     }
@@ -393,7 +393,7 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.Suggestion2:
-                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
                         ProcessTextWithRime("{Control+2}");
                         break;
                     }
@@ -402,7 +402,7 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.Suggestion3:
-                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
                         ProcessTextWithRime("{Control+3}");
                         break;
                     }
@@ -411,7 +411,7 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.Suggestion4:
-                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
                         ProcessTextWithRime("{Control+4}");
                         break;
                     }
@@ -420,7 +420,7 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.Suggestion5:
-                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
                         ProcessTextWithRime("{Control+5}");
                         break;
                     }
@@ -429,7 +429,7 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.Suggestion6:
-                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
                         ProcessTextWithRime("{Control+6}");
                         break;
                     }
@@ -438,14 +438,14 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.PreviousSuggestions:
-                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
                         ProcessTextWithRime("{Page_Up}");
                         break;
                     }
                     goto default;
 
                 case FunctionKeys.NextSuggestions:
-                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
                         ProcessTextWithRime("{Page_Down}");
                         break;
                     }
@@ -532,7 +532,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ToPrintableString());
 
             var capturedTextAfterComposition = CombineStringWithActiveDeadKeys(capturedText);
-            if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
+            if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
                 ProcessTextWithRime(capturedTextAfterComposition);
             } else {
                 ProcessText(capturedTextAfterComposition, true);
@@ -657,6 +657,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (rime.get_status(session_id, ref status)) {
                 MyRimeApi.IsComposing = status.is_composing;
+                MyRimeApi.IsAsciiMode = status.is_ascii_mode;
                 //print_status(ref status);
                 //rime.free_status(ref status);
             }
