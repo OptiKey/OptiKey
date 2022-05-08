@@ -125,6 +125,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        public static List<KeyValuePair<string, Languages>> EnglishDictionaries {
+            get {
+                return new List<KeyValuePair<string, Languages>>
+                {
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_CANADA, Enums.Languages.EnglishCanada),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_UK, Enums.Languages.EnglishUK),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_US, Enums.Languages.EnglishUS),
+                };
+            }
+        }
+
         public List<KeyValuePair<string, KeyboardLayouts>> KeyboardLayouts
         {
             get
@@ -179,6 +190,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     KeyboardLayout = KeyboardLayouts.First().Value;
                 }
             }
+        }
+
+        private Languages dictionaryLanguageForRime;
+        public Languages DictionaryLanguageForRime {
+            get { return dictionaryLanguageForRime; }
+            set { SetProperty(ref this.dictionaryLanguageForRime, value); }
         }
 
         private bool displayVoicesWhenChangingKeyboardLanguage;
@@ -362,6 +379,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeyboardAndDictionaryLanguage = Settings.Default.KeyboardAndDictionaryLanguage;
             DisplayVoicesWhenChangingKeyboardLanguage = Settings.Default.DisplayVoicesWhenChangingKeyboardLanguage;
             UiLanguage = Settings.Default.UiLanguage;
+            DictionaryLanguageForRime = Settings.Default.DictionaryLanguageForRime;
             KeyboardLayout = Settings.Default.KeyboardLayout;
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
@@ -382,11 +400,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public void ApplyChanges()
         {
             var reloadDictionary = (Settings.Default.KeyboardAndDictionaryLanguage != KeyboardAndDictionaryLanguage)
-                                   || (Settings.Default.SuggestionMethod != SuggestionMethod);
+                                   || (Settings.Default.SuggestionMethod != SuggestionMethod)
+                                   || (Settings.Default.DictionaryLanguageForRime != DictionaryLanguageForRime);
 
             Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
             Settings.Default.DisplayVoicesWhenChangingKeyboardLanguage = DisplayVoicesWhenChangingKeyboardLanguage;
             Settings.Default.UiLanguage = UiLanguage;
+            Settings.Default.DictionaryLanguageForRime = DictionaryLanguageForRime;
             Settings.Default.KeyboardLayout = KeyboardLayout;
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;          
             // TODO: Remove these bools, the state is tangled.
