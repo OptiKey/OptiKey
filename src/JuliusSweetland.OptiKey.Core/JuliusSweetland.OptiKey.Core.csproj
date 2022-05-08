@@ -991,16 +991,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
-    <Content Include="Dictionaries\ChineseTraditionalLunaPinyin.dic" />
-    <Content Include="Dictionaries\ChineseTraditionalCangjie5.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\ChineseSimplifiedLunaPinyin.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\ChineseSimplifiedCangjie5.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Rime\bopomofo.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -1010,21 +1000,6 @@
     <None Include="Rime\bopomofo_tw.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Dictionaries\ChineseTraditionalBopomofo.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\ChineseTraditionalTaiwanBopomofo.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\ChineseSimplifiedBopomofo.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\ChineseSimplifiedTerraPinyin.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\ChineseTraditionalTerraPinyin.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Rime\essay.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

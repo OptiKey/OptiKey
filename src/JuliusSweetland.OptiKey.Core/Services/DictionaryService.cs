@@ -136,8 +136,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void LoadDictionaryFromLanguageFile()
         {
+            var language = Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                ? Settings.Default.DictionaryLanguageForRime
+                : Settings.Default.KeyboardAndDictionaryLanguage;
              //Load the original dictionary
-             var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
+             var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, language, DictionaryFileType));
 
             if (File.Exists(originalDictionaryPath))
             {
