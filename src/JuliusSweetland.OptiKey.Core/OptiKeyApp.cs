@@ -1149,6 +1149,11 @@ namespace JuliusSweetland.OptiKey
             }
         } 
 
+        protected static void ValidateEyeTrackerResources()
+        {
+            CopyResourcesFirstTime("EyeTrackerSupport");
+        }
+
         protected static void ValidatePluginsLocation()
         {
             if (string.IsNullOrEmpty(Settings.Default.PluginsLocation))

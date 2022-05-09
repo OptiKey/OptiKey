@@ -13,7 +13,7 @@ using JuliusSweetland.OptiKey.Properties;
 
 using log4net;
 using Tobii.StreamEngine;
-
+using System.IO;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -256,7 +256,8 @@ namespace JuliusSweetland.OptiKey.Services
             string[] serial_parts = serial.Split('-');
             string model = serial_parts[0];
             
-            string[] supportedModels = System.IO.File.ReadAllLines(@"Resources\EyeTrackerSupport\tobii-trackers.txt");                        
+            var allowList = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"EyeTrackerSupport\tobii-trackers.txt");
+            string[] supportedModels = System.IO.File.ReadAllLines(allowList);
             return (supportedModels.Any(s => s.Equals(model)));
         }
 
