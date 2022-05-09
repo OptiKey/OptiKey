@@ -747,10 +747,7 @@ namespace JuliusSweetland.OptiKey
                 */
 
                 default:
-                    Log.Info("'PointsSource' choice is not currently supported. Defaulting to mouse input");
-                    pointSource = new MousePositionSource(
-                       Settings.Default.PointTtl);
-                    break;
+                    throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
             }
 
             ITriggerSource eyeGestureTriggerSource = new EyeGestureSource(pointSource);
