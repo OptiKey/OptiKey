@@ -373,11 +373,6 @@
     <Compile Include="Native\Common\Structs\APPBARDATA.cs" />
     <Compile Include="Native\Common\Structs\OSVERSIONINFO.cs" />
     <Compile Include="Native\Common\Structs\RECT.cs" />
-    <Compile Include="Native\MyGaze\PInvoke.cs" />
-    <Compile Include="Native\MyGaze\Structs\EventStruct.cs" />
-    <Compile Include="Native\MyGaze\Structs\EyeDataStruct.cs" />
-    <Compile Include="Native\MyGaze\Structs\SampleStruct.cs" />
-    <Compile Include="Native\MyGaze\Structs\SystemStructInfo.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
@@ -439,8 +434,6 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
     <Compile Include="Services\MouseOutputService.cs" />
-    <Compile Include="Services\PointSources\MyGazePointService.cs" />
-    <Compile Include="Services\PointSources\MyGazeCalibrationService.cs" />
     <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
     <Compile Include="Services\PointSources\IrisbondDuoCalibrationService.cs" />
     <Compile Include="Services\PointSources\IrisbondDuoPointService.cs" />
@@ -1113,10 +1106,6 @@
     <Content Include="..\..\ext\Irisbond\IrisbondAPI.dll">
       <Link>IrisbondAPI.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\ext\myGaze\myGazeAPI.dll">
-      <Link>myGazeAPI.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Dictionaries\FrenchFrance.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -655,9 +655,6 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
                     //return new TobiiEyeXCalibrationService();
-
-                case PointsSources.VisualInteractionMyGaze:
-                    //return new MyGazeCalibrationService();
                     break;
             }
 
@@ -734,17 +731,7 @@ namespace JuliusSweetland.OptiKey
                         Settings.Default.PointTtl,
                         tobiiPointService);
                     break;
-
-                /*
-                case PointsSources.VisualInteractionMyGaze:
-                    var myGazePointService = new MyGazePointService();
-                    errorNotifyingServices.Add(myGazePointService);
-                    pointSource = new PointServiceSource(
-                        Settings.Default.PointTtl,
-                        myGazePointService);
-                    break;
-                */
-
+                
                 default:
                     throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
             }
