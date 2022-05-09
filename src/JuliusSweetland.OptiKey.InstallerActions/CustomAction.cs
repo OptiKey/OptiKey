@@ -214,7 +214,6 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 case PointsSources.TobiiPcEyeMini: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
                 case PointsSources.TobiiX2_30: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
                 case PointsSources.TobiiX2_60: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.VisualInteractionMyGaze: return InstallerStrings.VI_MYGAZE_INFO[culture];
                 default: return "";
             }
 

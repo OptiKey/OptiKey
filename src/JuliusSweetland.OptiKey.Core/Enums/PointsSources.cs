@@ -21,6 +21,7 @@ namespace JuliusSweetland.OptiKey.Enums
         TobiiPcEyeMini,
         TobiiX2_30,
         TobiiX2_60,
+        [System.Obsolete("Not supported in v4+", true)]
         VisualInteractionMyGaze
     }
 
@@ -47,7 +48,6 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.TobiiPcEyeMini: return Resources.TOBII_PCEYE_MINI;
                 case PointsSources.TobiiX2_30: return Resources.TOBII_X2_30;
                 case PointsSources.TobiiX2_60: return Resources.TOBII_X2_60;
-                case PointsSources.VisualInteractionMyGaze: return Resources.VI_MYGAZE;
             }
 
             return pointSource.ToString();
@@ -74,7 +74,6 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.TobiiPcEyeMini: return Resources.TOBII_ASSISTIVE_INFO;
                 case PointsSources.TobiiX2_30: return Resources.TOBII_ASSISTIVE_INFO;
                 case PointsSources.TobiiX2_60: return Resources.TOBII_ASSISTIVE_INFO;
-                case PointsSources.VisualInteractionMyGaze: return Resources.VI_MYGAZE_INFO;
             }
 
             return pointSource.ToString();

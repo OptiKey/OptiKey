@@ -90,7 +90,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiRex.ToDescription(), Enums.PointsSources.TobiiRex),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiX2_30.ToDescription(), Enums.PointsSources.TobiiX2_30),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiX2_60.ToDescription(), Enums.PointsSources.TobiiX2_60),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.VisualInteractionMyGaze.ToDescription(), Enums.PointsSources.VisualInteractionMyGaze)
                 };
             }
         }
