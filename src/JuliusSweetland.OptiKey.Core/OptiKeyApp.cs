@@ -1079,7 +1079,32 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
-        #region Validate EyeGestures File and settings
+        #region Copying of installed resources 
+
+        protected static string CopyResourcesFirstTime(string subDirectoryName)
+        {
+            // Ensure resources have been copied from Program Files to user's AppData folder
+
+            var sourcePath = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\" + subDirectoryName;
+
+            var destPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 
+                                           @"OptiKey\OptiKey\" + subDirectoryName);
+
+            // If directory doesn't exist, assume that this is the first run. 
+            // So, move resource from installation package to target path
+            if (!Directory.Exists(destPath))
+            {
+                Directory.CreateDirectory(destPath);
+                foreach (string file in Directory.GetFiles(sourcePath))
+                {
+                    File.Copy(file, 
+                              Path.Combine(destPath, Path.GetFileName(file)), 
+                              true);
+                }
+            }
+            
+            return destPath;
+        }        
 
         protected static void ValidateEyeGestures()
         {
@@ -1094,18 +1119,11 @@ namespace JuliusSweetland.OptiKey
             {
                 Settings.Default.EyeGesturesEnabled = false; // to be enabled from Management Console by user
 
-                var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"OptiKey\OptiKey\EyeGestures\");
-                if (!Directory.Exists(applicationDataPath))
-                {
-                    Directory.CreateDirectory(applicationDataPath);
-                }
-                var eyeGesturesFile = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\EyeGestures").First();
-
-                eyeGesturesFilePath = Path.Combine(applicationDataPath, Path.GetFileName(eyeGesturesFile));
-
-                File.Copy(eyeGesturesFile, eyeGesturesFilePath, true);
+                // Copy bundled gesture file/s
+                var applicationDataPath = CopyResourcesFirstTime("EyeGestures");
 
                 // Read into string also 
+                eyeGesturesFilePath = Directory.GetFiles(applicationDataPath).First();
                 try
                 {
                     Settings.Default.EyeGestureString = XmlEyeGestures.ReadFromFile(eyeGesturesFilePath).WriteToString();
@@ -1122,67 +1140,21 @@ namespace JuliusSweetland.OptiKey
             Settings.Default.EyeGestureFile = eyeGesturesFilePath;
         }
 
-        #endregion
-
-        #region Validate Dynamic Keyboard Location
-
-        protected static string GetDefaultUserKeyboardFolder()
-        {
-            const string applicationDataSubPath = @"OptiKey\OptiKey\Keyboards\";
-
-            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationDataSubPath);
-
-            // If directory doesn't exist, assume that this is the first run. So, move dynamic keyboards from installation package to target path
-            if (!Directory.Exists(applicationDataPath))
-            {
-                Directory.CreateDirectory(applicationDataPath);
-                foreach (string dynamicKeyboard in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\DynamicKeyboards"))
-                {
-                    File.Copy(dynamicKeyboard, Path.Combine(applicationDataPath, Path.GetFileName(dynamicKeyboard)), true);
-                }
-            }
-
-            return applicationDataPath;
-        }
-
         protected static void ValidateDynamicKeyboardLocation()
         {
             if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation))
             {
                 // First time we set to APPDATA location, user may move through settings later
-                Settings.Default.DynamicKeyboardsLocation = GetDefaultUserKeyboardFolder();
+                Settings.Default.DynamicKeyboardsLocation = CopyResourcesFirstTime("Keyboards");
             }
-        }
-
-        #endregion
-
-        #region Validate Plugins Location
-
-        protected static string GetDefaultPluginsFolder()
-        {
-            const string applicationDataSubPath = @"OptiKey\OptiKey\Plugins\";
-
-            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationDataSubPath);
-
-            // If directory doesn't exist, assume that this is the first run. So, move plugins from installation package to target path
-            if (!Directory.Exists(applicationDataPath))
-            {
-                Directory.CreateDirectory(applicationDataPath);
-                foreach (string pluginFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\Plugins"))
-                {
-                    File.Copy(pluginFile, Path.Combine(applicationDataPath, Path.GetFileName(pluginFile)), true);
-                }
-            }
-
-            return applicationDataPath;
-        }
+        } 
 
         protected static void ValidatePluginsLocation()
         {
             if (string.IsNullOrEmpty(Settings.Default.PluginsLocation))
             {
                 // First time we set to APPDATA location, user may move through settings later
-                Settings.Default.PluginsLocation = GetDefaultPluginsFolder(); ;
+                Settings.Default.PluginsLocation = CopyResourcesFirstTime("Plugins");
             }
         }
 
