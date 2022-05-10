@@ -129,7 +129,7 @@
       <Width>30</Width>
       <Height>20</Height>
       <Round>false</Round>
-      <Command Name="ChangeKeyboard" Value="Minimise" BackAction="False">
+      <Command Name="ChangeKeyboard" Value="Minimised" BackAction="False">
         <Argument />
         <LoopCommands />
       </Command>
