@@ -213,18 +213,18 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
             else if (step.type == EyeGestureStepTypes.LookInDirection)
             {
-                result = (step.X == 0 || (checkpoint.X - gesture.PointStamp.X) / (Graphics.VirtualScreenWidthInPixels * step.X / 100d) > 1)
-                      && (step.Y == 0 || (checkpoint.Y - gesture.PointStamp.Y) / (Graphics.VirtualScreenHeightInPixels * step.Y /100d) > 1);
+                result = (step.X == 0 || (checkpoint.X - gesture.PointStamp.X) / (Graphics.PrimaryScreenWidthInPixels * step.X / 100d) > 1)
+                      && (step.Y == 0 || (checkpoint.Y - gesture.PointStamp.Y) / (Graphics.PrimaryScreenHeightInPixels * step.Y /100d) > 1);
             }
             else if (step.type == EyeGestureStepTypes.LookAtArea)
             {
-                var left = step.Left * Graphics.VirtualScreenWidthInPixels / 100d;
-                var top = step.Top * Graphics.VirtualScreenHeightInPixels / 100d;
+                var left = step.Left * Graphics.PrimaryScreenWidthInPixels / 100d;
+                var top = step.Top * Graphics.PrimaryScreenHeightInPixels / 100d;
 
                 if (step.Round)
                 {
-                    var xRadius = step.Width * Graphics.VirtualScreenWidthInPixels / 50d;
-                    var yRadius = step.Height * Graphics.VirtualScreenHeightInPixels / 50d;
+                    var xRadius = step.Width * Graphics.PrimaryScreenWidthInPixels / 50d;
+                    var yRadius = step.Height * Graphics.PrimaryScreenHeightInPixels / 50d;
                     var xLength = checkpoint.X - (left + xRadius);
                     var yLength = checkpoint.Y - (top + yRadius);
 
@@ -235,18 +235,21 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                 }
                 else
                 {
-                    var width = step.Width * Graphics.VirtualScreenWidthInPixels / 100d;
-                    var height = step.Height * Graphics.VirtualScreenHeightInPixels / 100d;
+                    var width = step.Width * Graphics.PrimaryScreenWidthInPixels / 100d;
+                    var height = step.Height * Graphics.PrimaryScreenHeightInPixels / 100d;
 
                     if (checkpoint.X < left || checkpoint.X > left + width || checkpoint.Y < top || checkpoint.Y > top + height)
                         step.DwellStart = DateTimeOffset.Now;
-                    else if (DateTimeOffset.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
-                        result = true;
+                    else
+                    {
+                        if (DateTimeOffset.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
+                            result = true;
+                    }
                 }
             }
             else
             {
-                if ((checkpoint - gesture.FixationPoint).Length > Graphics.VirtualScreenHeightInPixels * step.Radius / 100d)
+                if ((checkpoint - gesture.FixationPoint).Length > Graphics.PrimaryScreenHeightInPixels * step.Radius / 100d)
                     step.DwellStart = DateTimeOffset.Now;
                 else if (DateTimeOffset.Now > step.DwellStart + TimeSpan.FromMilliseconds(step.DwellTime))
                     result = true;
