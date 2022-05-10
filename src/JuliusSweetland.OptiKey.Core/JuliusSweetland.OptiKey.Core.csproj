@@ -1029,32 +1029,32 @@
     <Content Include="Resources\EyeGestures\EyeGestures.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml">
+    <Content Include="Resources\Keyboards\AltAlphaHorizontalKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
+    <Content Include="Resources\Keyboards\AltAlphaVerticalKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\DynamicKeyboards\BigHackerKeyboard.xml" />
-    <Content Include="Resources\DynamicKeyboards\Edge.xml">
+    <Resource Include="Resources\Keyboards\BigHackerKeyboard.xml" />
+    <Content Include="Resources\Keyboards\Edge.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\FullQwerty.xml">
+    <Content Include="Resources\Keyboards\FullQwerty.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\FullSymbol.xml">
+    <Content Include="Resources\Keyboards\FullSymbol.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\HideUnder.xml">
+    <Content Include="Resources\Keyboards\HideUnder.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
+    <Content Include="Resources\Keyboards\Samples\Demo_Bottom.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Left.xml">
+    <Content Include="Resources\Keyboards\Samples\Demo_Left.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml">
+    <Content Include="Resources\Keyboards\Samples\Demo_Minecraft.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Fonts\B612-licence-epl-v10.html">
