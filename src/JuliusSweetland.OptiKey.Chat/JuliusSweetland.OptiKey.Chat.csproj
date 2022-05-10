@@ -246,48 +246,48 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\BigHackerKeyboard.xml">
-      <Link>Resources\DynamicKeyboards\BigHackerKeyboard.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\BigHackerKeyboard.xml">
+      <Link>Resources\Keyboards\BigHackerKeyboard.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml">
-      <Link>Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\AltAlphaHorizontalKeyboard.xml">
+      <Link>Resources\Keyboards\AltAlphaHorizontalKeyboard.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
-      <Link>Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\AltAlphaVerticalKeyboard.xml">
+      <Link>Resources\Keyboards\AltAlphaVerticalKeyboard.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml">
-      <Link>Resources\DynamicKeyboards\Samples\AR16-Qwerty.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\AR16-Qwerty.xml">
+      <Link>Resources\Keyboards\Samples\AR16-Qwerty.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Bottom.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\Demo_Bottom.xml">
+      <Link>Resources\Keyboards\Samples\Demo_Bottom.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Left.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Left.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\Demo_Left.xml">
+      <Link>Resources\Keyboards\Samples\Demo_Left.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\Demo_Minecraft.xml">
+      <Link>Resources\Keyboards\Samples\Demo_Minecraft.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullQwerty.xml">
-      <Link>Resources\DynamicKeyboards\Samples\FullQwerty.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\FullQwerty.xml">
+      <Link>Resources\Keyboards\Samples\FullQwerty.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullSymbol.xml">
-      <Link>Resources\DynamicKeyboards\Samples\FullSymbol.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\FullSymbol.xml">
+      <Link>Resources\Keyboards\Samples\FullSymbol.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
