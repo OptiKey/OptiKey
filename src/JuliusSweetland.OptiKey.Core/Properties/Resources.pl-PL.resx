@@ -1128,10 +1128,10 @@ ROZMIAR</value>
     <value>Kalibracja powiodła się lub została anulowana, ale wszystko działa ponownie.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine nie może być znaleziony. Zainstaluj EyeX Engine i spróbuj ponownie.</value>
+    <value>Tobii Service nie może być znaleziony. Zainstaluj Tobii software i spróbuj ponownie.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine nie jest uruchomiony. Uruchom EyeX Engine i spróbuj ponownie.</value>
+    <value>Tobii Service nie jest uruchomiony. Uruchom Tobii service i spróbuj ponownie.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

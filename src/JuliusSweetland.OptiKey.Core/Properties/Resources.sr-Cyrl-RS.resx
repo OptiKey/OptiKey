@@ -1103,10 +1103,10 @@ LK</value>
     <value>Калибрација завршена, или могуће отказана, али све ипак опет ради!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii ЕyеX Engine није пронађен. Молимо инсталирајте ЕyеX Engine и покушајте поновно.</value>
+    <value>Tobii service није пронађен. Молимо инсталирајте Tobii software и покушајте поновно.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii ЕyеX Engine није покренут. Молимо покрените ЕyеX Engine и покушајте поновно.</value>
+    <value>Tobii service није покренут. Молимо покрените Tobii service и покушајте поновно.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

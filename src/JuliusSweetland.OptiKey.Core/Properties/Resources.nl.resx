@@ -1080,10 +1080,10 @@ POSITIE</value>
     <value>Kalibratie voltooid of mogelijk geannuleerd, maar alles werkt in ieder geval weer!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine kan niet gevonden worden. Installeer de EyeX Engine en probeer het opnieuw.</value>
+    <value>Tobii Service kan niet gevonden worden. Installeer de Tobii software en probeer het opnieuw.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine draait niet. Start de EyeX Engine en probeer het opnieuw.</value>
+    <value>Tobii Service draait niet. Start de Tobii service en probeer het opnieuw.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Toon 1</value>

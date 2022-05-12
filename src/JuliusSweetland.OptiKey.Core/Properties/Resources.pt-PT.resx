@@ -1130,10 +1130,10 @@ POSIÇÃO</value>
     <value>Calibragem finalizada ou cancelada, mas está tudo a funcionar novamente!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine não encontrado. Por favor, instale o EyeX Engine e tente novamente.</value>
+    <value>Tobii Service não encontrado. Por favor, instale o Tobii software e tente novamente.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine não se encontra em execução. Por favor, inicie o EyeX Engine e tente novamente.</value>
+    <value>Tobii Service não se encontra em execução. Por favor, inicie o Tobii service e tente novamente.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

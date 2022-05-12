@@ -1135,10 +1135,10 @@ LK</value>
     <value>כיול נגמר או בוטל, אבל הכל עובד שוב!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>המנוע Tobii EyeX לא נמצא. אנא התקינו אותו ונסו שוב.</value>
+    <value>המנוע Tobii Software לא נמצא. אנא התקינו אותו ונסו שוב.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>המנוע Tobii EyeX לא פועל. אנא הפעילו אותו ונסו שוב.</value>
+    <value>המנוע Tobii Service לא פועל. אנא הפעילו אותו ונסו שוב.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go </value>
