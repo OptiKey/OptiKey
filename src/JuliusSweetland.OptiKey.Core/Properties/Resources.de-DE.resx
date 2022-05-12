@@ -1175,10 +1175,10 @@ POSITION</value>
     <value>Kalibrierung abgeschlossen, oder möglicherweise abgebrochen, aber Alles funktioniert jetzt wieder!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine kann nicht gefunden werden. Bitte die Tobii EyeX Engine installieren und erneut versuchen.</value>
+    <value>Tobii Service kann nicht gefunden werden. Bitte die Tobii software installieren und erneut versuchen.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine läuft nicht. Bitte die Tobii EyeX Engine starten und erneut versuchen.</value>
+    <value>Tobii Service läuft nicht. Bitte die Tobii Service starten und erneut versuchen.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

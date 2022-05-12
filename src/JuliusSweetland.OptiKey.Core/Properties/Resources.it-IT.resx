@@ -1157,10 +1157,10 @@ IN SU</value>
     <value>Calibrazione completata o eventualmente annullata, ma sta andando ancora tutto bene!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX non è stato trovato. Si prega di installare EyeX Engine e riprovare.</value>
+    <value>Tobii Service non è stato trovato. Si prega di installare Tobii software e riprovare.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine non è in esecuzione. Si prega di avviare EyeX Engine e riprovare.</value>
+    <value>Tobii Service non è in esecuzione. Si prega di avviare Tobii service e riprovare.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

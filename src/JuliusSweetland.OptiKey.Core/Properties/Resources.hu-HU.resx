@@ -1132,10 +1132,10 @@ POZÍCIÓ</value>
     <value>A kalibráció elkészült, vagy lehetséges meg lett tagadva, de minden működik újra!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine nem található. Kérem telepítse az EyeX Engine-t és próbálja meg újra.</value>
+    <value>Tobii Service nem található. Kérem telepítse az Tobii software -t és próbálja meg újra.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine nem fut. Kérem indítsa el és próbálja meg újra.</value>
+    <value>Tobii Service nem fut. Kérem indítsa el és próbálja meg újra.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

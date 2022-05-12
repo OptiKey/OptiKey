@@ -1079,12 +1079,12 @@ Aucune donnée ne sera reçue tant que la calibration ne sera pas terminée.</va
     <value>Le calibrage est terminé, ou peut-être annulé, mais tout fonctionne normallement!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Aucun moteur Tobii EyeX trouvé. 
-Veuillez installer un moteur EyeX et essayez à nouveau.</value>
+    <value>Aucun moteur Tobii trouvé. 
+Veuillez installer un moteur Tobii software et essayez à nouveau.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Le moteur Tobii EyeX ne fonctionne pas. 
-Veuillez démarrer le moteur EyeX et essayez à nouveau.</value>
+    <value>Le moteur Tobii ne fonctionne pas. 
+Veuillez démarrer le moteur Tobii et essayez à nouveau.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Son 1</value>

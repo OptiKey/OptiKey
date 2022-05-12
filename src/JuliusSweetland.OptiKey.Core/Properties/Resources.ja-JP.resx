@@ -1130,10 +1130,10 @@ SCR</value>
 OPtiKey再起動完了</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engineが見つかりません。もう一度インストールしなおしてください。</value>
+    <value>Tobii Softwareが見つかりません。もう一度インストールしなおしてください。</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engineは動いていません。もう一度始めてください。</value>
+    <value>Tobii Serviceは動いていません。もう一度始めてください。</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

@@ -1130,10 +1130,10 @@ LK</value>
     <value>کالیبراسیون کامل شده یا احتمالا لغو شده است، اما همه چیز دوباره کار می کند!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine را نمی توان پیدا کرد. لطفا EyeX Engine را نصب کنید و دوباره امتحان کنید.</value>
+    <value>Tobii Service را نمی توان پیدا کرد. لطفا Tobii software  را نصب کنید و دوباره امتحان کنید.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine در حال اجرا نیست لطفا موتور EyeX را راه اندازی کنید و دوباره امتحان کنید.</value>
+    <value>Tobii Service در حال اجرا نیست لطفا موتور Tobii service را راه اندازی کنید و دوباره امتحان کنید.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

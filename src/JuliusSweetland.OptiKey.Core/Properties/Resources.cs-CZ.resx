@@ -1477,10 +1477,10 @@ a pozice</value>
     <value>Množství zpracovaných dat z datového toku:</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Nepodařilo se najít Tobii EyeX Engine. Prosím nainstalujte Tobii EyeX Engine a zkuste to znovu.</value>
+    <value>Nepodařilo se najít Tobii Service. Prosím nainstalujte Tobii software a zkuste to znovu.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine není spuštěný. Prosím spusťte Tobii EyeX Engine a zkuste to znovu.</value>
+    <value>Tobii Service není spuštěný. Prosím spusťte Tobii Service a zkuste to znovu.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tón 1</value>
