@@ -642,18 +642,13 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.IrisbondHiru:
                     return new IrisbondHiruCalibrationService();
 
-                case PointsSources.Alienware17:
-                case PointsSources.SteelseriesSentry:
-                case PointsSources.TobiiEyeX:
-                case PointsSources.TobiiEyeTracker4C:
-                case PointsSources.TobiiEyeTracker5:
-                case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
                 case PointsSources.TobiiPcEye5:
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
+                    // TODO: consider calling out to external calibration EXE
                     //return new TobiiEyeXCalibrationService();
                     break;
             }
@@ -712,12 +707,6 @@ namespace JuliusSweetland.OptiKey
                     break;
 
                 
-                case PointsSources.Alienware17:
-                case PointsSources.SteelseriesSentry:
-                case PointsSources.TobiiEyeX:
-                case PointsSources.TobiiEyeTracker4C:
-                case PointsSources.TobiiEyeTracker5:
-                case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
                 case PointsSources.TobiiPcEye5:

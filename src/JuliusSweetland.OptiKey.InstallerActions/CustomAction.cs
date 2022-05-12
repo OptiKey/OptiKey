@@ -200,15 +200,10 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             switch (pointSource)
             {
                 // TODO check for culture not in dict, default empty?
-                case PointsSources.Alienware17: return InstallerStrings.ALIENWARE_17_INFO[culture];
                 case PointsSources.GazeTracker: return InstallerStrings.GAZE_TRACKER_INFO[culture];
                 case PointsSources.IrisbondDuo: return InstallerStrings.IRISBOND_DUO_INFO[culture];
                 case PointsSources.IrisbondHiru: return InstallerStrings.IRISBOND_HIRU_INFO[culture];
                 case PointsSources.MousePosition: return InstallerStrings.MOUSE_POSITION_INFO[culture];
-                case PointsSources.TobiiEyeX: return InstallerStrings.TOBII_EYEX_INFO[culture];
-                case PointsSources.TobiiEyeTracker4C: return InstallerStrings.TOBII_EYEX_INFO[culture];
-                case PointsSources.TobiiEyeTracker5: return InstallerStrings.TOBII_EYEX_INFO[culture];
-                case PointsSources.TobiiRex: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
                 case PointsSources.TobiiPcEyeGo: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
                 case PointsSources.TobiiPcEyeGoPlus: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
                 case PointsSources.TobiiPcEyeMini: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
