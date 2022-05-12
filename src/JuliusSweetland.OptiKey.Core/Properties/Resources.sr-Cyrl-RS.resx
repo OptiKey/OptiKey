@@ -1082,7 +1082,7 @@ LK</value>
     <value>TheEyeTribe није калибрисан. Подаци неће бити обрађивани док се калибрација не доврши.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Није могуће почети калибрацију јер EyeX енгине није доступан.</value>
+    <value>Није могуће почети калибрацију јер EyeTribe енгине није доступан.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Тема:</value>

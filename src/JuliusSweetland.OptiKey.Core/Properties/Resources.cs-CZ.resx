@@ -1462,7 +1462,7 @@ a pozice</value>
     <value>The Eye Tribe nebyl nakalibrovaný. Přenos dat není možný dokud nebude kalibrace dokončená.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Není možné začít kalibraci, protože EyeX engine není k dispozici.</value>
+    <value>Není možné začít kalibraci, protože Eye Tribe software není k dispozici.</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Čas dokud se bod stane nepodstatným (ms):</value>

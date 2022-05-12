@@ -1107,7 +1107,7 @@ ROZMIAR</value>
     <value>TheEyeTribe nie został skalibrowany. Dane nie będą odbierane, dopóki kalibracja nie zakończy się.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Niemożliwe podejście do kalibracji, jeśli EyeX engine jest niedostępny.</value>
+    <value>Niemożliwe podejście do kalibracji, jeśli EyeTribe software  jest niedostępny.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Motyw:</value>

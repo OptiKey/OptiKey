@@ -1064,7 +1064,7 @@ Merci de vous assurer que le serveur fonctionne et que le périphérique est con
 Aucune donnée ne sera reçue tant que la calibration ne sera pas terminée.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Impossible de tenter un calibrage car aucun moteur EyeX n'est disponible.</value>
+    <value>Impossible de tenter un calibrage car aucun moteur EyeTribe n'est disponible.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Theme :</value>

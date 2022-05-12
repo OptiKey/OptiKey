@@ -1073,7 +1073,7 @@ POZİSYON</value>
     <value>TheEyeTribe kalibre edilmedi. Kalibrasyon tamamlanmadan veri alınmayacak.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>EyeX engine kullanılabilir olmadığı için kalibrasyon denemesi başarısız.</value>
+    <value>EyeTribe software kullanılabilir olmadığı için kalibrasyon denemesi başarısız.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Tema:</value>

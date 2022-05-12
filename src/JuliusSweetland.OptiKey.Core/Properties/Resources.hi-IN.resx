@@ -1088,7 +1088,7 @@
     <value>TheEyeTribe को कैलिब्रेट नहीं किया गया है। अंशांकन पूरा होने तक कोई डेटा प्राप्त नहीं होगा।</value>
   </data>
 	<data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>अंशांकन का प्रयास करने में असमर्थ क्योंकि कोई EyeX इंजन उपलब्ध नहीं है।</value>
+    <value>अंशांकन का प्रयास करने में असमर्थ क्योंकि कोई EyeTribe इंजन उपलब्ध नहीं है।</value>
   </data>
 	<data name="THEME_LABEL" xml:space="preserve">
     <value>थीम</value>
