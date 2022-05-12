@@ -1500,6 +1500,7 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
         }
 
+        [System.Obsolete("No longer used with Tobii StreamEngine")]
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Medium")]
