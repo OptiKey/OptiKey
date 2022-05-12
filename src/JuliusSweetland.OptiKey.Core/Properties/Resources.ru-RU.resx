@@ -1135,10 +1135,10 @@ LK</value>
     <value>Калибровка завершена или возможно была прервана, но теперь все работает! </value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>'Tobii EyeX  Engine' не найден. Пожалуйста заинсталлируйте  'EyeX  Engine' и попробуйте снова.</value>
+    <value>Tobii service не найден. Пожалуйста заинсталлируйте  Tobii software и попробуйте снова.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>'Tobii EyeX Engine' не работает. Пожалуйста запустите 'EyeX Engine' и попробуйте снова.</value>
+    <value>Tobii Service не работает. Пожалуйста запустите Tobii service и попробуйте снова.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

@@ -1129,10 +1129,10 @@ LK</value>
     <value>კალიბრაცია დასრულდა, ან შესაძლოა გაუქმდა, მაგრამ ყველაფერი ოპერაციულია!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine არ მოიძებნება. გთხოვთ დააინსტალიროთ EyeX Engine და სცადოთ თავიდან.</value>
+    <value>Tobii Service არ მოიძებნება. გთხოვთ დააინსტალიროთ Tobii software  და სცადოთ თავიდან.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine არ ფუნქციონირებს. გთხოვთ ჩართოთ EyeX Engine და სცადოთ თავიდან.</value>
+    <value>Tobii Service არ ფუნქციონირებს. გთხოვთ ჩართოთ Tobii service  და სცადოთ თავიდან.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
