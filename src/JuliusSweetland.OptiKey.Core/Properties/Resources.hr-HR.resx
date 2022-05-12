@@ -1072,10 +1072,10 @@ POLOŽAJ</value>
     <value>Kalibracija dovršena, ili moguće otkazana, ali sve ipak opet radi!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine nije pronađen. Molimo instalirajte EyeX Engine i pokušajte ponovno.</value>
+    <value>Tobii Service nije pronađen. Molimo instalirajte Tobii software  i pokušajte ponovno.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine nije pokrenut. Molimo pokrenite EyeX Engine i pokušajte ponovno.</value>
+    <value>Tobii Service nije pokrenut. Molimo pokrenite Tobii service  i pokušajte ponovno.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Ton 1</value>

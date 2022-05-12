@@ -1093,10 +1093,10 @@ POSICIÓN</value>
     <value>Calibración terminada, o quizás cancelada, ¡pero todo está funcionando de nuevo!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>No fue posible encontrar Tobii EyeX Engine. Por favor instale EyeX Engine e inténtelo de nuevo.</value>
+    <value>No fue posible encontrar Tobii Service. Por favor instale Tobii software e inténtelo de nuevo.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine no está activo. Por favor inicie EyeX Engine e inténtelo de nuevo.</value>
+    <value>Tobii Service no está activo. Por favor inicie Tobii service e inténtelo de nuevo.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tono 1</value>

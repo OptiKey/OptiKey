@@ -1130,10 +1130,10 @@ SIJAINTI</value>
     <value>Kalibrointi tehty, tai mahdollisesti peruttu, mutta kaikki toimii taas!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engineä ei löydy. Asenna Tobii EyeX Engine ja yritä uudelleen.</value>
+    <value>Tobii Serviceä ei löydy. Asenna Tobii software ja yritä uudelleen.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine ei ole käynnissä. Käynnistä Tobii EyeX Engine ja yritä uudelleen.</value>
+    <value>Tobii Service ei ole käynnissä. Käynnistä Tobii Service ja yritä uudelleen.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

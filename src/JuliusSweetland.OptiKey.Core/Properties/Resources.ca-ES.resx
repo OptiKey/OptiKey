@@ -1077,10 +1077,10 @@ POSICIÓ</value>
     <value>Calibració completada, o possiblement cancel·lada, però tot torna a funcionar un altre cop!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>No es pot trobar el motor Tobii EyeX. Sisplau, instal·la el motor EyeX i torna a provar.</value>
+    <value>No es pot trobar el motor Tobii. Sisplau, instal·la el Tobii software i torna a provar.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>El motor EyeX no està en funcionament. Sisplau, inicia el motor EyeX i torna a provar.</value>
+    <value>El motor Tobii no està en funcionament. Sisplau, inicia el motor Tobii i torna a provar.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>To 1</value>

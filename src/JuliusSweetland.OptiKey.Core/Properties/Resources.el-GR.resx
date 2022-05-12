@@ -1102,10 +1102,10 @@ LK</value>
     <value>Η βαθμονόμηση ολοκληρώθηκε, ή πιθανώς ακυρώθηκε, αλλά όλα δουλεύουν πάλι!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Η Μηχανή Tobii EyeX δεν κατέστη δυνατό να βρεθεί. Παρακαλώ εγκαταστήστε την Μηχανή EyeX και ξαναπροσπαθήστε. </value>
+    <value>Η Μηχανή Tobii software δεν κατέστη δυνατό να βρεθεί. Παρακαλώ εγκαταστήστε την Μηχανή Tobii software και ξαναπροσπαθήστε. </value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Η Μηχανή Tobii EyeX δεν εκτελείται. Παρακαλώ εκκινήστε την Μηχανή Tobii EyeX και ξαναπροσπαθήστε.</value>
+    <value>Η Μηχανή Tobii Service δεν εκτελείται. Παρακαλώ εκκινήστε την Μηχανή Tobii service και ξαναπροσπαθήστε.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Τόνος 1</value>

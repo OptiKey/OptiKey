@@ -1120,10 +1120,10 @@ LK</value>
     <value>측정이 완료되었거나 취소되었을 수도 있지만, 모든 것이 다시 동작합니다!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine을 찾을 수 없습니다. EyeX Engine을 설치하시고 다시 시도해 주세요.</value>
+    <value>Tobii Service을 찾을 수 없습니다. Tobii software 을 설치하시고 다시 시도해 주세요.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine 이 실행하고 있지 않습니다. EyeX Engine을 실행하시고 다시 시도해 주세요.</value>
+    <value>Tobii Service 이 실행하고 있지 않습니다. Tobii service 을 실행하시고 다시 시도해 주세요.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

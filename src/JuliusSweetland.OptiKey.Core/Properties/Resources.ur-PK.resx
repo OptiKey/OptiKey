@@ -1131,10 +1131,10 @@ LK (سکرول کو تالا لگانے کی کلید)</value>
     <value>پیمانہ بندی کا عمَل  مکمل، یا ممکنہ طور پر منسوخ کر دیا، لیکن سب کچھ دوبارہ کام کر رہا ہے!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>بینائی کا انجن Tobii EyeX نہیں مل سکا. براہ مہربانی بینائی کا انجن EyeX نصب کریں اور دوبارہ کوشش کریں.</value>
+    <value>بینائی کا انجن Tobii service نہیں مل سکا. براہ مہربانی بینائی کا انجن Tobii software نصب کریں اور دوبارہ کوشش کریں.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>بینائی کا انجن Tobii EyeX نہیں چل رہا ہے. براہ مہربانی بینائی کا انجن EyeX شروع کریں اور دوبارہ کوشش کریں.</value>
+    <value>بینائی کا انجن Tobii service نہیں چل رہا ہے. براہ مہربانی بینائی کا انجن service شروع کریں اور دوبارہ کوشش کریں.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>ٹوبی Tobii کمپیوٹری آنکھ چلو</value>

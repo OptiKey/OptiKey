@@ -1132,10 +1132,10 @@ SCR</value>
     <value>Calibration completed, or possibly cancelled, but everything is working again!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again.</value>
+    <value>Tobii Service cannot be found. Please ensure the Tobii software is installed and try again.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine is not running. Please start the EyeX Engine and try again.</value>
+    <value>Tobii Service is not running. Please start the Tobii service  and try again.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>

@@ -1095,10 +1095,10 @@ POSITION</value>
     <value>Kalibrering færdig, eller muligvis afbrudt, men alt virker igen!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine blev ikke fundet. Installer venligst EyeX Engine og forsøg igen.</value>
+    <value>Tobii Service blev ikke fundet. Installer venligst Tobii software  og forsøg igen.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine kører ikke. Start venligst EyeX Enginen og forsøg igen.</value>
+    <value>Tobii Service kører ikke. Start venligst Tobii service n og forsøg igen.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tone 1</value>
