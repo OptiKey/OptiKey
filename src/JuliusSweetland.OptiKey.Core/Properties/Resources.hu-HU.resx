@@ -1111,7 +1111,7 @@ POZÍCIÓ</value>
     <value>TheEyeTribe nem lett kalibrálva. Nem fog érkezni adat, amíg a kalibráció el nem készült.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Sikertelen kalibrálás, mert az EyeX nem elérhető.</value>
+    <value>Sikertelen kalibrálás, mert az EyeTribe nem elérhető.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Téma:</value>

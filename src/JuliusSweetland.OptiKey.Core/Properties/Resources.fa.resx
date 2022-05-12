@@ -1109,7 +1109,7 @@ LK</value>
     <value>TheEyeTribe کالیبره نشده است. تا زمانی که کالیبراسیون کامل نشده باشد، داده ای دریافت نخواهد شد.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>تا زمانی که هیچ موتور EyeX در دسترس نیست قادر به انجام کالیبراسیون نیست.</value>
+    <value>تا زمانی که هیچ موتور EyeTribe در دسترس نیست قادر به انجام کالیبراسیون نیست.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>قالب:</value>

@@ -1140,7 +1140,7 @@ POSITION</value>
     <value>TheEyeTribe has not been calibrated. No data will be received until calibration is completed.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Unable to attempt a calibration as no EyeX engine is available.</value>
+    <value>Unable to attempt a calibration as no EyeTribe software is available.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Theme:</value>

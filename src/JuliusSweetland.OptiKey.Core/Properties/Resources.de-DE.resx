@@ -1154,7 +1154,7 @@ POSITION</value>
     <value>TheEyeTribe wurde nicht kalibriert. Keine Daten werden empfangen bis die Kalibrierung abgeschlossen ist.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Kalibrierung kann nicht versucht werden, da kein EyeX zur Verfügung steht.</value>
+    <value>Kalibrierung kann nicht versucht werden, da kein EyeTribe software zur Verfügung steht.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Thema:</value>

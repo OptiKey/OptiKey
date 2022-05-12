@@ -1057,7 +1057,7 @@ POLOŽAJ</value>
     <value>TheEyeTribe nije kalibriran. Podaci neće biti obrađivani dok se kalibracija ne dovrši.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Nije moguće započeti kalibraciju jer EyeX engine nije dostupan.</value>
+    <value>Nije moguće započeti kalibraciju jer EyeTribe software  nije dostupan.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Tema:</value>
