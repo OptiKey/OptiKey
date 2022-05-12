@@ -1065,7 +1065,7 @@ POSITIE</value>
     <value>TheEyeTribe is niet gekalibreerd. Geen gegevens zullen worden ontvangen totdat de kalibratie is voltooid.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Niet in staat om een kalibratie te proberen als het programma EyeX Engine niet beschikbaar is.</value>
+    <value>Niet in staat om een kalibratie te proberen als het programma EyeTribe software  niet beschikbaar is.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Thema:</value>

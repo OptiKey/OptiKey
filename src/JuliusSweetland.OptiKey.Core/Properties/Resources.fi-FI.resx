@@ -1109,7 +1109,7 @@ SIJAINTI</value>
     <value>TheEyeTribea ei ole kalibroitu. Dataa voidaan vastaanottaa vasta onnistuneen kalibroinnin jälkeen.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Kalibrointi ei onnistu, koska EyeX moottoria ei löydy.</value>
+    <value>Kalibrointi ei onnistu, koska EyeTribe moottoria ei löydy.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Teema:</value>

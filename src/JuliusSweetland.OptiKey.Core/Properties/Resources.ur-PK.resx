@@ -1110,7 +1110,7 @@ LK (سکرول کو تالا لگانے کی کلید)</value>
     <value>نظر منتظم TheEyeTribe کی پیمانہ بندی نہیں کی گئی ہے۔ پیمانہ بندی مکمل ہونے تک کوئی ڈیٹا موصول نہیں کیا جا سکے گا</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>پیمانہ بندی کرنا ممکن نہیں کیونکہ پروگرامی سہارا EyeX engine دستیاب نہیں ہے</value>
+    <value>پیمانہ بندی کرنا ممکن نہیں کیونکہ پروگرامی سہارا EyeTribe software  دستیاب نہیں ہے</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>تمثیل/خیال بندی (Theme) :</value>

@@ -1099,7 +1099,7 @@ LK</value>
     <value>TheEyeTribe가 측정되지 않았습니다. 측정이 완료될 때 까지 어떤 데이터도 받을 수 없습니다.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>EyeX engine이 실행되고 있지 않기 때문에 측정을 시도할 수 없습니다.</value>
+    <value>Tobii software 이 실행되고 있지 않기 때문에 측정을 시도할 수 없습니다.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>테마:</value>
