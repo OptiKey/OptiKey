@@ -1114,7 +1114,7 @@ LK</value>
     <value>TheEyeTribe לא כויל. שום מידע לא יתקבל עד אשר הכיול יסתיים.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>אי אפשר לבצע כיול. מנוע EyeX לא פנוי.</value>
+    <value>אי אפשר לבצע כיול. מנוע EyeTribe לא פנוי.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>ערכת נושא:</value>

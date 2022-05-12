@@ -1087,7 +1087,7 @@ LK</value>
     <value>Το TheEyeTribe δεν έχει βαθμονομηθεί. Δεν θα ληφθούν δεδομένα ωσότου η βαθμονόμηση ολοκληρωθεί.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Αδυναμία βαθμονόμησης καθώς η μηχανή EyeX δεν είναι διαθέσιμη.</value>
+    <value>Αδυναμία βαθμονόμησης καθώς η μηχανή EyeTribe software δεν είναι διαθέσιμη.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Θέμα:</value>

@@ -1078,7 +1078,7 @@ POSICIÓN</value>
     <value>TheEyeTribe no ha sido calibrado. No se recibirán datos hasta que se haya realizado la calibración.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>No es posible calibrar puesto que no hay un motor EyeX disponible.</value>
+    <value>No es posible calibrar puesto que no hay un motor EyeTribe disponible.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Tema:</value>

@@ -1061,7 +1061,7 @@ a pozícia</value>
     <value>TheEyeTribe nebol nakalibrovaný. Prenos dát nie je možný kým nebude kalibrácia dokončená.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Nie je možné začať kalibráciu, pretože EyeX engine nie je k dispozícii.</value>
+    <value>Nie je možné začať kalibráciu, pretože EyeTribe software  nie je k dispozícii.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Téma:</value>

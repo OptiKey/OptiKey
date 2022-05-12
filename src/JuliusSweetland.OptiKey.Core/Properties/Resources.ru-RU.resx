@@ -1114,7 +1114,7 @@ LK</value>
     <value>TheEyeTribe  не откалиброван. Данные не будут получены, пока калибровка незакончена.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Невозможно откалибровать, так как 'EyeX engine' не найден.</value>
+    <value>Невозможно откалибровать, так как 'EyeTribe software ' не найден.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Тема:</value>

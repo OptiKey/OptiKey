@@ -1108,7 +1108,7 @@ SCR</value>
     <value>TheEyeTribeは校正されていません。 校正が完了するまで、データは受信されません。</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>EyeXエンジンが利用できないため、キャリブレーションを試みることができません。</value>
+    <value>EyeTribe エンジンが利用できないため、キャリブレーションを試みることができません。</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>テーマ:</value>

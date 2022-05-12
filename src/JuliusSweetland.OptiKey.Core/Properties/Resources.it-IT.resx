@@ -1136,7 +1136,7 @@ IN SU</value>
     <value>TheEyeTribe non è stato calibrato. Nessun dato verrà ricevuto fino a che la calibrazione non sarà completata.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Impossibile avviare la calibrazione dato che nessun EyeX Engine è disponibile.</value>
+    <value>Impossibile avviare la calibrazione dato che nessun EyeTribe software  è disponibile.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Tema:</value>
