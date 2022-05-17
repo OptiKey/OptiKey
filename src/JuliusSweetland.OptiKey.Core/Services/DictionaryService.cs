@@ -136,6 +136,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void LoadDictionaryFromLanguageFile()
         {
+            //Keyboards managed by Rime have an English keyboard using selected dictionary
             var language = Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
                 ? Settings.Default.DictionaryLanguageForRime
                 : Settings.Default.KeyboardAndDictionaryLanguage;
@@ -193,8 +194,12 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private static string GetUserDictionaryPath(Languages? language)
+        private static string GetUserDictionaryPath(Languages language)
         {
+            //Keyboards managed by Rime have an English keyboard using selected dictionary
+            language = language.ManagedByRime()
+                ? Settings.Default.DictionaryLanguageForRime
+                : language;
             return GetUserDictionaryPath(string.Format("{0}{1}", language, DictionaryFileType));
         }
 
