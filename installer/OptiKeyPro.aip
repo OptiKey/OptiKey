@@ -555,7 +555,7 @@
     <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_CU" Builds="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
-    <ROW Name="JuliusSweetland.OptiKey.InstallerActions.CA.dll" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActions\bin\Release\JuliusSweetland.OptiKey.InstallerActions.CA.dll"/>
+    <ROW Name="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActions\bin\x64\Release\JuliusSweetland.OptiKey.InstallerActions.CA.dll"/>
     <ROW Name="PopulateComboboxes.vbs" SourcePath="scripts\PopulateComboboxes.vbs"/>
     <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
@@ -663,7 +663,7 @@
     <ROW Action="AI_XmlUninstall" Type="1" Source="xmlCfg.dll" Target="OnXmlUninstall" AdditionalSeq="AI_DATA_SETTER_2"/>
     <ROW Action="EyeTrackerComboSelected" Type="6" Source="PopulateComboboxes.vbs" Target="EyeTrackerSelected" WithoutSeq="true"/>
     <ROW Action="LanguageSelected" Type="6" Source="PopulateComboboxes.vbs" Target="LanguageSelected" WithoutSeq="true"/>
-    <ROW Action="OptiKeyProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LoadOptikeyProperties"/>
+    <ROW Action="OptiKeyProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1" Target="LoadOptikeyProperties"/>
     <ROW Action="PopulateComboBox" Type="1" Source="aicustact.dll" Target="PopulateComboBox" WithoutSeq="true" Options="1"/>
     <ROW Action="PopulateEyeTrackerCombo.vbs" Type="6" Source="PopulateComboboxes.vbs" Target="PopulateEyeTrackerCombo" WithoutSeq="true"/>
     <ROW Action="PopulateLanguagesCombo" Type="6" Source="PopulateComboboxes.vbs" Target="PopulateLanguagesCombo" WithoutSeq="true"/>
