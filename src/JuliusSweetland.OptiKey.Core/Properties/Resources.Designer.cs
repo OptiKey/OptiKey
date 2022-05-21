@@ -764,9 +764,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體).
         /// </summary>
-        public static string CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO {
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO {
             get {
-                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO", resourceCulture);
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO", resourceCulture);
             }
         }
         
@@ -776,9 +776,30 @@ namespace JuliusSweetland.OptiKey.Properties {
         ///中文
         ///(注音-臺灣正體).
         /// </summary>
-        public static string CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO_SPLIT_WITH_NEWLINE {
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE {
             get {
-                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Lyna Pinyin) / 中文 (朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) (Luna Pinyin) /
+        ///中文
+        ///(朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         

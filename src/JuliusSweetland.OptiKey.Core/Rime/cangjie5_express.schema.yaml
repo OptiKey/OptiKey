@@ -2,15 +2,20 @@
 # encoding: utf-8
 
 schema:
-  schema_id: cangjie5
-  name: 倉頡五代
-  version: "0.30"
+  schema_id: cangjie5_express
+  name: 倉頡五代·快打模式
+  version: "2018.04.14"
   author:
     - 發明人 朱邦復先生
   description: |
     第五代倉頡輸入法
     碼表源自倉頡之友發佈的《五倉世紀版》
     www.chinesecj.com
+    快打模式：
+      - 取消連打
+      - 無重碼自動上屏，有重碼頂字上屏
+      - 取消 , . 翻頁
+      - 取消拼音混打
   dependencies:
     - luna_quanpin
 
@@ -54,28 +59,22 @@ engine:
 
 speller:
   alphabet: zyxwvutsrqponmlkjihgfedcba
-  delimiter: " ;"
-  #max_code_length: 5  # 五碼頂字上屏
+  delimiter: " "
+  auto_select: true
+  #max_code_length: 5  # 僅五碼自動上屏
 
 translator:
   dictionary: cangjie5
+  prism: cangjie5_express
   enable_charset_filter: true
-  enable_sentence: true
-  enable_encoder: true
-  encode_commit_history: true
-  max_phrase_length: 5
+  enable_sentence: false
   preedit_format:
-    - 'xform/^([a-z]*)$/$1\t（\U$1\E）/'
-    - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXYZ|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+    - "xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
   comment_format:
     - "xlit|abcdefghijklmnopqrstuvwxyz~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符～|"
   disable_user_dict_for_patterns:
     - "^z.*$"
     - "^yyy.*$"
-
-abc_segmentor:
-  extra_tags:
-    - reverse_lookup  # 與拼音（反查碼）混打
 
 reverse_lookup:
   dictionary: luna_pinyin
@@ -94,13 +93,15 @@ simplifier:
   tips: all  # 簡化字模式下提示對應的傳統漢字
 
 punctuator:
-  import_preset: symbols
+  import_preset: default
 
 key_binder:
   import_preset: default
+  bindings:
+    - { when: paging, accept: comma, send: comma }
+    - { when: has_menu, accept: period, send: period }
 
 recognizer:
   import_preset: default
   patterns:
-    punct: '^/([0-9]0?|[A-Za-z]+)$'
     reverse_lookup: "`[a-z]*'?$|[a-z]+'$"

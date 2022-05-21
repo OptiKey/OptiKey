@@ -18,7 +18,7 @@
 
 ---
 name: "cangjie5"
-version: "0.17"
+version: "0.18"
 sort: by_weight
 use_preset_vocabulary: true
 max_phrase_length: 7
@@ -53246,6 +53246,7 @@ encoder:
 𠪪	mhog
 𤛆	mhokq
 𧰾	mhomi
+𬌗	mhomr
 𠪍	mhou
 𢗬	mhp
 𢜍	mhp

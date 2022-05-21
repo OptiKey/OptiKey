@@ -227,7 +227,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.ChineseSimplifiedBopomofo:
                     case Languages.ChineseTraditionalBopomofo:
-                    case Languages.ChineseTraditionalTaiwanBopomofo:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
                         newContent = new ChineseViews.Bopomofo { DataContext = Keyboard };
                         break;
                     case Languages.ChineseSimplifiedCangjie5:
@@ -238,6 +238,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.ChineseSimplifiedTerraPinyin:
                     case Languages.ChineseTraditionalLunaPinyin:
                     case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
                         newContent = new ChineseViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:
@@ -358,8 +359,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.ChineseTraditionalBopomofo:
                     case Languages.ChineseTraditionalCangjie5:
                     case Languages.ChineseTraditionalLunaPinyin:
-                    case Languages.ChineseTraditionalTaiwanBopomofo:
                     case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
                         newContent = new ChineseViews.Alpha2 { DataContext = Keyboard };
                         break;
                     case Languages.HebrewIsrael:
@@ -406,7 +408,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.ChineseSimplifiedBopomofo:
                     case Languages.ChineseTraditionalBopomofo:
-                    case Languages.ChineseTraditionalTaiwanBopomofo:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
                         newContent = new ChineseViews.ConversationBopomofo { DataContext = Keyboard };
                         break;
                     case Languages.ChineseSimplifiedCangjie5:

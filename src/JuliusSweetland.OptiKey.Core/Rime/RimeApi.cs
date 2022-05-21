@@ -50,7 +50,11 @@ namespace JuliusSweetland.OptiKey.Rime {
             rime.select_schema(GetSession(), language.GetRimeSchemaId());
             var option = language.GetRimeOption();
             if (!string.IsNullOrWhiteSpace(option)) {
-                rime.set_option(GetSession(), option, true);
+                if (option.StartsWith("!")) {
+                    rime.set_option(GetSession(), option.Substring(1), false);
+                } else {
+                    rime.set_option(GetSession(), option, true);
+                }
             }
         }
         public static List<RimeCandidate> GetCandidates(RimeMenu menu) {
