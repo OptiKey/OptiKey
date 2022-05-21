@@ -4,7 +4,7 @@
 schema:
   schema_id: terra_pinyin
   name: 地球拼音
-  version: "0.19"
+  version: '0.20'
   author:
     - 佛振 <chen.sst@gmail.com>
   description: |
@@ -54,7 +54,6 @@ speller:
   initials: zyxwvutsrqponmlkjihgfedcba
   delimiter: " '"
   algebra:
-    - erase/^xx$/
     - xform/^r5$/er5/
     - abbrev/^([a-z]).+$/$1/
     - abbrev/^([zcs]h).+$/$1/
@@ -200,3 +199,9 @@ recognizer:
   import_preset: default
   patterns:
     reverse_lookup: "`[a-z]*'?$"
+
+__patch:
+  # 使用八股文語言模型
+  - grammar:/hant?
+  # 用家自選配置
+  - terra_pinyin.custom:/patch?

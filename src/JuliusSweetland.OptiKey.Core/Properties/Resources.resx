@@ -2509,6 +2509,24 @@ Magyar
 中文
 (地球拼音-简化字)</value>
   </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) (Bopomofo) /
+中文
+(注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) (Luna Pinyin) / 中文 (朙月拼音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) (Luna Pinyin) /
+中文
+(朙月拼音-臺灣正體)</value>
+  </data>
   <data name="CHINESE_TRADITIONAL_TAIWAN" xml:space="preserve">
     <value>Chinese Traditional (Taiwan) / 正體中文 (臺灣)</value>
   </data>
@@ -2526,15 +2544,6 @@ Magyar
 (Bopomofo) /
 中文
 (注音)</value>
-  </data>
-  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO" xml:space="preserve">
-    <value>Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體)</value>
-  </data>
-  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Chinese Traditional
-(Taiwan) (Bopomofo) /
-中文
-(注音-臺灣正體)</value>
   </data>
   <data name="CHINESE_TRADITIONAL_CANGJIE5" xml:space="preserve">
     <value>Chinese Traditional (Cangjie v5) / 中文 (倉頡五代)</value>

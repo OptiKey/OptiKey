@@ -1,16 +1,19 @@
 # Rime default settings
-# vim: set sw=2 sts=2 et:
 # encoding: utf-8
 
-config_version: "0.15.minimal"
+config_version: "0.40"
 
 schema_list:
-  - schema: luna_pinyin
-  - schema: cangjie5
   - schema: bopomofo
-  - schema: bopomofo_tw
   - schema: bopomofo_express
-  - schema: bopomofo
+  - schema: bopomofo_tw
+  - schema: cangjie5
+  - schema: cangjie5_express
+  - schema: luna_pinyin
+  - schema: luna_pinyin_fluency
+  - schema: luna_pinyin_simp
+  - schema: luna_pinyin_tw
+  - schema: luna_quanpin
   - schema: terra_pinyin
 
 switcher:
@@ -24,6 +27,9 @@ switcher:
     - ascii_punct
     - simplification
     - extended_charset
+    - zh_hant
+    - zh_hans
+    - zh_hant_tw
   fold_options: true
   abbreviate_options: true
   option_list_separator: '／'

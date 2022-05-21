@@ -4,7 +4,7 @@
 schema:
   schema_id: bopomofo
   name: 注音
-  version: '2.2'
+  version: '2.4'
   author:
     - 佛振 <chen.sst@gmail.com>
   description: |
@@ -13,10 +13,10 @@ schema:
     本方案採用「無模式」設計，以大寫字母鍵或上下方向鍵、回車鍵選詞；
     空格鍵輸入第一聲，標記爲「ˉ」。
 
-    請配合 librime>=0.9.8 使用。
+    請配合 librime>=1.3 使用。
 
   dependencies:
-    - cangjie5
+    - stroke
 
 switches:
   - name: ascii_mode
@@ -24,8 +24,14 @@ switches:
     states: [ 中文, 西文 ]
   - name: full_shape
     states: [ 半角, 全角 ]
-  - name: simplification
-    states: [ 漢字, 汉字 ]
+  - options:
+      - zh_hant
+      - zh_hans
+      - zh_hant_tw
+    states:
+      - 傳統漢字
+      - 简化字
+      - 臺灣字形
 
 engine:
   processors:
@@ -49,7 +55,8 @@ engine:
     - reverse_lookup_translator
     - script_translator
   filters:
-    - simplifier
+    - simplifier@zh_hans
+    - simplifier@zh_hant_tw
     - uniquifier
 
 menu:
@@ -62,40 +69,11 @@ speller:
   delimiter: "'"
   use_space: true
   algebra:
-    - erase/^xx$/
-    - xform/^m(\d)$/mu$1/  # 呣
-    - xform/^r5$/er5/  # 〜兒
-    - xform/iu/iou/
-    - xform/ui/uei/
-    - xform/ong/ung/
-    - xform/^yi?/i/
-    - xform/^wu?/u/
-    - xform/iu/v/
-    - xform/^([jqx])u/$1v/
-    - xform/([iuv])n/$1en/
-    - xform/^zhi?/Z/
-    - xform/^chi?/C/
-    - xform/^shi?/S/
-    - xform/^([zcsr])i/$1/
-    - xform/ai/A/
-    - xform/ei/I/
-    - xform/ao/O/
-    - xform/ou/U/
-    - xform/ang/K/
-    - xform/eng/G/
-    - xform/an/M/
-    - xform/en/N/
-    - xform/er/R/
-    - xform/eh/E/
-    - xform/([iv])e/$1E/
-    - derive/([bpmfdtnlgkhjqxZCSrzcs])([iuv])/$2$1/
-    - derive/([iuv])([aoeEAIOUMNKGR])/$2$1/
-    - derive/([bpmfdtnlgkhjqxZCSrzcs])([aoeEAIOUMNKGR])/$2$1/
-    - derive/([bpmfdtnlgkhjqxZCSrzcs])([iuv])/$2$1/
-    - abbrev/^([bpmfdtnlgkhjqxZCSrzcs]).+$/$1/
-    - abbrev/^([A-Za-z]+)\d$/$1/
-    - abbrev/^([bpmfdtnlgkhjqxZCSrzcs]).+(\d)$/$1$2/
-    - 'xlit|bpmfdtnlgkhjqxZCSrzcsiuvaoeEAIOUMNKGR12345|1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347|'
+    __patch:
+      - zhuyin:/pinyin_to_zhuyin
+      - zhuyin:/free_order
+      - zhuyin:/abbreviation
+      - zhuyin:/keymap_bopomofo
 
 translator:
   dictionary: terra_pinyin
@@ -112,13 +90,13 @@ custom_phrase:
   initial_quality: 1
 
 reverse_lookup:
-  dictionary: cangjie5
+  dictionary: stroke
   enable_completion: true
   prefix: "`"
   suffix: "'"
-  tips: 〔倉頡〕
+  tips: 〔筆畫〕
   preedit_format:
-    - "xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+    - xlit/hspnz/一丨丿丶乙/
   comment_format:
     - xform/e?r5$/er5/
     - xform/iu/iou/
@@ -224,3 +202,21 @@ recognizer:
     uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp:|mailto:).*$"
     reverse_lookup: "`[a-z]*'?$"
+
+zh_hans:
+  option_name: zh_hans
+  opencc_config: t2s.json
+  tips: all
+  excluded_types: [ reverse_lookup ]
+
+zh_hant_tw:
+  option_name: zh_hant_tw
+  opencc_config: t2tw.json
+  tips: none
+  excluded_types: [ reverse_lookup ]
+
+__patch:
+  # 使用八股文語言模型
+  - grammar:/hant?
+  # 用家自選配置
+  - bopomofo.custom:/patch?

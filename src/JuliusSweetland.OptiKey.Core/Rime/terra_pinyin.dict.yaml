@@ -23,7 +23,7 @@
 
 ---
 name: terra_pinyin
-version: "2018.10.22"
+version: "2021.08.05"
 sort: by_weight
 use_preset_vocabulary: true
 max_phrase_length: 7
@@ -8328,7 +8328,7 @@ min_phrase_weight: 100
 削	xiao1	50%
 削	xue1	50%
 剋	ke4
-剋	kei1	1%
+剋	kei1
 剌	la2	50%
 剌	la4	50%
 前	qian2
@@ -8858,8 +8858,8 @@ min_phrase_weight: 100
 吁	yu4	1%
 吂	mang2
 吂	mang4
-吃	chi1	100%
-吃	ji2	0%
+吃	chi1
+吃	ji2
 各	ge4
 吅	song4	50%
 吅	xuan1	50%
@@ -9127,7 +9127,6 @@ min_phrase_weight: 100
 哉	zai1
 哊	you4
 哋	di4
-哌	gu1
 哌	pai4
 响	xiang3
 哎	ai1
@@ -14657,6 +14656,7 @@ min_phrase_weight: 100
 曮	yan3
 曯	zhu2
 曰	yue1
+曱	ya1
 曱	yue1
 曲	qu1	50%
 曲	qu3	50%
@@ -15105,6 +15105,7 @@ min_phrase_weight: 100
 桥	qiao2
 桦	hua4
 桧	gui4
+桧	hui4
 桨	jiang3
 桩	zhuang1
 桪	xun2
@@ -15772,6 +15773,7 @@ min_phrase_weight: 100
 檚	chu3
 檛	zhua1
 檜	gui4
+檜	hui4
 檝	ji2
 檞	jie3
 檞	xie4
@@ -19500,7 +19502,8 @@ min_phrase_weight: 100
 睟	sui4
 睠	juan4
 睡	shui4
-睢	sui1
+睢	hui1	30%
+睢	sui1	70%
 督	du1
 睤	bi4
 睥	bi4
@@ -31222,6 +31225,8 @@ min_phrase_weight: 100
 龤	xie2
 龥	yu4
 鿃	shan3
+鿫	ao4
+鿬	tian2
 𠀀	he1
 𠀁	qi1
 𠀃	ji1
@@ -47140,6 +47145,7 @@ min_phrase_weight: 100
 𫛞	jue2
 𫛢	ning2
 𫛶	chi4
+𬌗	he2
 𫛸	ti2
 
 #以下爲詞組
@@ -47190,7 +47196,7 @@ min_phrase_weight: 100
 一個樣	yi2 ge5 yang4
 一個獵古調	yi2 ge5 lie4 gu3 diao4
 一個碗內兩張匙	yi2 ge5 wan3 nei4 liang3 zhang1 chi2
-一個鍋裏吃飯的	yi2 ge5 guo1 li3 chi1 fan4 de5
+一個鍋裏喫飯的	yi2 ge5 guo1 li3 chi1 fan4 de5
 一個頭兩個大	yi2 ge5 tou2 liang3 ge5 da4
 一個饅頭	yi2 ge5 man2 tou5
 一個鼻孔出氣	yi2 ge5 bi2 kong3 chu1 qi4
@@ -47221,7 +47227,7 @@ min_phrase_weight: 100
 一力承當	yi2 li4 cheng2 dang1
 一匹錦	yi4 pi3 jin3
 一卡通	yi4 ka3 tong1
-一口吃個胖子	yi4 kou3 chi1 ge5 pang4 zi5
+一口喫個胖子	yi4 kou3 chi1 ge5 pang4 zi5
 一口氣兒	yi4 kou3 qi4 r5
 一句	yi2 ju4
 一句話	yi2 ju4 hua4
@@ -47973,7 +47979,7 @@ min_phrase_weight: 100
 不中	bu4 zhong1
 不中使	bu2 zhong4 shi3
 不中意	bu2 zhong4 yi4
-不中擡舉	bu2 zhong4 tai2 ju3
+不中抬舉	bu2 zhong4 tai2 ju3
 不中用	bu2 zhong4 yong4
 不中相與	bu2 zhong4 xiang1 yu3
 不中聽	bu2 zhong4 ting1
@@ -48086,7 +48092,7 @@ min_phrase_weight: 100
 不區分大小寫	bu4 qu1 fen1 da4 xiao3 xie3
 不十分	bu4 shi2 fen1
 不協調	bu4 xie2 tiao2
-不受擡舉	bu2 shou4 tai2 ju5
+不受抬舉	bu2 shou4 tai2 ju5
 不受用	bu2 shou4 yong5
 不受約束	bu2 shou4 yue1 shu4
 不可企及	bu4 ke3 qi4 ji2
@@ -48590,7 +48596,7 @@ min_phrase_weight: 100
 不識好歹	bu2 shi4 hao3 dai3
 不識局面	bu2 shi4 ju2 mian4
 不識廬山真面目	bu2 shi4 lu2 shan1 zhen1 mian4 mu4
-不識擡舉	bu2 shi4 tai2 ju5
+不識抬舉	bu2 shi4 tai2 ju5
 不識數	bu2 shi4 shu4
 不識斤兩	bu2 shi4 jin1 liang3
 不識時務	bu2 shi4 shi2 wu4
@@ -48767,7 +48773,6 @@ min_phrase_weight: 100
 中共中央紀委監察部	zhong1 gong4 zhong1 yang1 ji4 wei3 jian1 cha2 bu4
 中分	zhong1 fen1
 中原標準時間	zhong1 yuan2 biao1 zhun3 shi2 jian1
-中吃	zhong4 chi1
 中和	zhong1 he2
 中和劑	zhong1 he2 ji4
 中和力	zhong1 he2 li4
@@ -48775,6 +48780,7 @@ min_phrase_weight: 100
 中和市	zhong1 he2 shi4
 中和殿	zhong1 he2 dian4
 中和節	zhong1 he2 jie2
+中喫	zhong4 chi1
 中圈套	zhong4 quan1 tao4
 中國人民解放軍空軍	zhong1 guo2 ren2 min2 jie3 fang4 jun1 kong1 jun1
 中國人民銀行	zhong1 guo2 ren2 min2 yin2 hang2
@@ -48886,7 +48892,7 @@ min_phrase_weight: 100
 中痰	zhong4 tan2
 中的	zhong4 di4
 中看	zhong4 kan4
-中看不中吃	zhong4 kan4 bu2 zhong4 chi1
+中看不中喫	zhong4 kan4 bu2 zhong4 chi1
 中石油川東鑽探公司	zhong1 shi2 you2 chuan1 dong1 zuan4 tan4 gong1 si1
 中秋帖	zhong1 qiu1 tie4
 中空	zhong1 kong1
@@ -49130,7 +49136,7 @@ min_phrase_weight: 100
 乞養	qi3 yang3
 乞養	qi3 yang4
 也不見得	ye3 bu2 jian4 de2
-也得蒸熟吃	ye3 dei3 zheng1 shou2 chi1
+也得蒸熟喫	ye3 dei3 zheng1 shou2 chi1
 也曾	ye3 ceng2
 也行	ye3 xing2
 也要遺臭萬年	ye3 yao4 yi2 chou4 wan4 nian2
@@ -49493,7 +49499,7 @@ min_phrase_weight: 100
 二重母音	er4 chong2 mu3 yin1
 二阿姨	er4 a1 yi2
 二難	er4 nan2
-二韃子吃螺螄	er4 da2 zi5 chi1 luo2 si1
+二韃子喫螺螄	er4 da2 zi5 chi1 luo2 si1
 二項式係數	er4 xiang4 shi4 xi4 shu4
 二鬼子	er4 gui3 zi5
 于嗟	xu1 jie1
@@ -50301,7 +50307,7 @@ min_phrase_weight: 100
 佃獵	tian2 lie4
 佃租制度	dian4 zu1 zhi4 du4
 但得	dan4 de2
-但得一片橘皮吃	dan4 de2 yi2 pian4 ju2 pi2 chi1
+但得一片橘皮喫	dan4 de2 yi2 pian4 ju2 pi2 chi1
 但是	dan4 shi5
 但曲	dan4 qu3
 但求塞責	dan4 qiu2 se4 ze2
@@ -50950,10 +50956,10 @@ min_phrase_weight: 100
 倒反帳	dao4 fan3 zhang4
 倒口	dao4 kou3
 倒句	dao4 ju4
-倒吃甘蔗	dao4 chi1 gan1 zhe4
 倒吊	dao4 diao4
 倒吊蠟燭	dao4 diao4 la4 zhu2
 倒啖蔗	dao4 dan4 zhe4
+倒喫甘蔗	dao4 chi1 gan1 zhe4
 倒嗆	dao3 qiang4
 倒嗓	dao3 sang3
 倒噍	dao3 jiao4
@@ -52037,7 +52043,7 @@ min_phrase_weight: 100
 光木頭上鑽眼	guang1 mu4 tou5 shang5 zuan1 yan3
 光棍	guang1 gun4
 光棍	guang1 gun5
-光棍不吃眼前虧	guang1 gun5 bu4 chi1 yan3 qian2 kui1
+光棍不喫眼前虧	guang1 gun5 bu4 chi1 yan3 qian2 kui1
 光棍兒	guang1 gun4 r5
 光武中興	guang1 wu3 zhong1 xing1
 光波長	guang1 bo1 chang2
@@ -52126,14 +52132,14 @@ min_phrase_weight: 100
 兒童樂園	er2 tong2 le4 yuan2
 兔兒不喫窠邊草	tu4 er1 bu4 chi1 ke1 bian1 cao3
 兔子	tu4 zi5
-兔子不吃窩邊草	tu4 zi5 bu4 chi1 wo1 bian1 cao3
+兔子不喫窩邊草	tu4 zi5 bu4 chi1 wo1 bian1 cao3
 兔寶寶	tu4 bao3 bao5
 兔崽子	tu4 zai3 zi5
 兔絲燕麥	tu4 si1 yan4 mai4
 兔羔子	tu4 gao1 zi5
 兔起鶻落	tu4 qi3 hu2 luo4
 兔跡狐蹤	tu4 ji1 hu2 zong1
-党太尉吃匾食	dang3 tai4 wei4 chi1 bian3 shi5
+党太尉喫匾食	dang3 tai4 wei4 chi1 bian3 shi5
 兜兒	dou1 r5
 兜兜	dou1 dou5
 兜兜答答	dou1 dou1 da1 da1
@@ -55914,63 +55920,8 @@ min_phrase_weight: 100
 吁嗟	xu1 jie1
 吁噓	xu1 xu1
 吁氣	xu1 qi4
-吃一塹	chi1 yi2 qian4
-吃一看二	chi1 yi1 kan4 er4
-吃不上	chi1 bu5 shang4
-吃不下	chi1 bu5 xia4
-吃不了	chi1 bu5 liao3
-吃不住	chi1 bu5 zhu4
-吃不來	chi1 bu5 lai2
-吃不完兜着走	chi1 bu5 wan2 dou1 zhe5 zou3
-吃不得	chi1 bu5 de5
-吃不得慢酒	chi1 bu5 de5 man4 jiu3
-吃不得緊酒	chi1 bu5 de5 jin3 jiu3
-吃不服	chi1 bu5 fu2
-吃不消	chi1 bu5 xiao1
-吃不開	chi1 bu5 kai1
-吃乾醋	chi1 gan1 cu4
-吃人一個蛋	chi1 ren2 yi2 ge5 dan4
-吃人不吐骨	chi1 ren2 bu4 tu3 gu3
-吃人不吐骨頭	chi1 ren2 bu4 tu3 gu2 tou5
-吃勁	chi1 jin4
 吃口令	ji2 kou3 ling4
-吃啞吧虧	chi1 ya3 ba5 kui1
-吃喝不分	chi1 he1 bu4 fen1
-吃喝拉撒睡	chi1 he1 la1 sa1 shui4
-吃喝玩樂	chi1 he1 wan2 le4
-吃地面	chi1 di4 mian4
-吃奶的力氣	chi1 nai3 de5 li4 qi4
-吃奶的力氣	chi1 nai3 de5 li4 qi5
 吃子	ji2 zi5
-吃官司	chi1 guan1 si5
-吃幾碗乾飯	chi1 ji3 wan3 gan1 fan4
-吃得	chi1 de5
-吃得住	chi1 de5 zhu4
-吃得來	chi1 de5 lai2
-吃得光	chi1 de5 guang1
-吃得消	chi1 de5 xiao1
-吃得苦中苦	chi1 de2 ku3 zhong1 ku3
-吃得開	chi1 de5 kai1
-吃排落	chi1 pai2 luo4
-吃排頭	chi1 pai2 tou5
-吃教	chi1 jiao4
-吃犒勞	chi1 kao4 lao5
-吃盡當光	chi1 jin4 dang4 guang1
-吃空茶	chi1 kong1 cha2
-吃苦頭	chi1 ku3 tou5
-吃葷飯	chi1 hun1 fan4
-吃虧上當	chi1 kui1 shang4 dang4
-吃虧就是占便宜	chi1 kui1 jiu4 shi4 zhan4 pian2 yi5
-吃裏扒外	chi1 li3 pa2 wai4
-吃角子老虎	chi1 jiao3 zi5 lao3 hu3
-吃角子老虎	chi1 jiao3 zi5 lao3 hu5
-吃豆腐	chi1 dou4 fu5
-吃醋拈酸	chi1 cu4 nian2 suan1
-吃重	chi1 zhong4
-吃釘子	chi1 ding1 zi5
-吃食	chi1 shi2
-吃食	chi1 shi5
-吃館子	chi1 guan3 zi5
 各不相同	ge4 bu4 xiang1 tong2
 各不相犯	ge4 bu4 xiang1 fan4
 各不相謀	ge4 bu4 xiang1 mou2
@@ -56654,7 +56605,7 @@ min_phrase_weight: 100
 和容悅色	he2 rong2 yue4 se4
 和尚	he2 shang4
 和尚	he2 shang5
-和尚吃八方	he2 shang4 chi1 ba1 fang1
+和尚喫八方	he2 shang4 chi1 ba1 fang1
 和尚在	he2 shang4 zai4
 和尚打傘	he2 shang4 da3 san3
 和尚打傘	he2 shang5 da3 san3
@@ -57008,9 +56959,9 @@ min_phrase_weight: 100
 哄堂	hong1 tang2
 哄堂大笑	hong1 tang2 da4 xiao4
 哄弄	hong3 nong4
+哄抬	hong1 tai2
+哄抬物價	hong1 tai2 wu4 jia4
 哄搶	hong1 qiang3
-哄擡	hong1 tai2
-哄擡物價	hong1 tai2 wu4 jia4
 哄然	hong1 ran2
 哄瞞	hong3 man2
 哄笑	hong1 xiao4
@@ -57048,8 +56999,6 @@ min_phrase_weight: 100
 哈迪	ha3 di2
 哈達	ha1 da2
 哈達	ha3 da2
-哌嗪	pai4 qin2
-哌替啶	pai4 ti4 ding4
 哎呀	ai1 ya1
 哎喲	ai1 yao1
 哎喲	ai1 yo1
@@ -57277,12 +57226,12 @@ min_phrase_weight: 100
 啞婦傾杯反受殃	ya3 fu4 qing1 bei1 fan3 shou4 yang1
 啞子	ya3 zi5
 啞子做夢	ya3 zi5 zuo4 meng4
-啞子吃黃蓮	ya3 zi5 chi1 huang2 lian2
+啞子喫黃蓮	ya3 zi5 chi1 huang2 lian2
 啞子得夢	ya3 zi5 de2 meng4
 啞子托夢	ya3 zi5 tuo1 meng4
 啞巴	ya3 ba5
-啞巴吃黃蓮	ya3 ba5 chi1 huang2 lian2
-啞巴吃黃連	ya3 ba5 chi1 huang2 lian2
+啞巴喫黃蓮	ya3 ba5 chi1 huang2 lian2
+啞巴喫黃連	ya3 ba5 chi1 huang2 lian2
 啞巴虧	ya3 ba5 kui1
 啞戲	ya3 xi4
 啞板	ya3 ban3
@@ -57532,10 +57481,65 @@ min_phrase_weight: 100
 喪門神	sang4 men2 shen2
 喪魂失魄	sang4 hun2 shi1 po4
 喪魂落魄	sang4 hun2 luo4 po4
+喫一塹	chi1 yi2 qian4
+喫一看二	chi1 yi1 kan4 er4
+喫不上	chi1 bu5 shang4
+喫不下	chi1 bu5 xia4
+喫不了	chi1 bu5 liao3
+喫不住	chi1 bu5 zhu4
+喫不來	chi1 bu5 lai2
 喫不到葡萄說葡萄酸	chi1 bu2 dao4 pu2 tao5 shuo1 pu2 tao5 suan1
+喫不完兜着走	chi1 bu5 wan2 dou1 zhe5 zou3
+喫不得	chi1 bu5 de5
+喫不得慢酒	chi1 bu5 de5 man4 jiu3
+喫不得緊酒	chi1 bu5 de5 jin3 jiu3
+喫不服	chi1 bu5 fu2
+喫不消	chi1 bu5 xiao1
+喫不開	chi1 bu5 kai1
+喫乾醋	chi1 gan1 cu4
+喫人一個蛋	chi1 ren2 yi2 ge5 dan4
+喫人不吐骨	chi1 ren2 bu4 tu3 gu3
+喫人不吐骨頭	chi1 ren2 bu4 tu3 gu2 tou5
+喫勁	chi1 jin4
+喫啞吧虧	chi1 ya3 ba5 kui1
+喫喝不分	chi1 he1 bu4 fen1
+喫喝拉撒睡	chi1 he1 la1 sa1 shui4
+喫喝玩樂	chi1 he1 wan2 le4
+喫地面	chi1 di4 mian4
+喫奶的力氣	chi1 nai3 de5 li4 qi4
+喫奶的力氣	chi1 nai3 de5 li4 qi5
+喫官司	chi1 guan1 si5
+喫幾碗乾飯	chi1 ji3 wan3 gan1 fan4
+喫得	chi1 de5
+喫得住	chi1 de5 zhu4
+喫得來	chi1 de5 lai2
+喫得光	chi1 de5 guang1
+喫得消	chi1 de5 xiao1
+喫得苦中苦	chi1 de2 ku3 zhong1 ku3
+喫得開	chi1 de5 kai1
+喫排落	chi1 pai2 luo4
+喫排頭	chi1 pai2 tou5
+喫教	chi1 jiao4
+喫犒勞	chi1 kao4 lao5
 喫甜頭	chi1 tian2 tou5
+喫盡當光	chi1 jin4 dang4 guang1
 喫着不盡	chi1 zhuo2 bu2 jin4
+喫空茶	chi1 kong1 cha2
+喫苦頭	chi1 ku3 tou5
+喫葷飯	chi1 hun1 fan4
+喫虧上當	chi1 kui1 shang4 dang4
+喫虧就是占便宜	chi1 kui1 jiu4 shi4 zhan4 pian2 yi5
 喫蝨子留後腿	chi1 shi1 zi5 liu2 hou4 tui3
+喫裏扒外	chi1 li3 pa2 wai4
+喫角子老虎	chi1 jiao3 zi5 lao3 hu3
+喫角子老虎	chi1 jiao3 zi5 lao3 hu5
+喫豆腐	chi1 dou4 fu5
+喫醋拈酸	chi1 cu4 nian2 suan1
+喫重	chi1 zhong4
+喫釘子	chi1 ding1 zi5
+喫食	chi1 shi2
+喫食	chi1 shi5
+喫館子	chi1 guan3 zi5
 喬做胡爲	qiao2 zuo4 hu2 wei2
 喬冠華	qiao2 guan1 hua4
 喬志	jiao1 zhi4
@@ -58746,7 +58750,7 @@ min_phrase_weight: 100
 坐以待旦	zuo4 yi3 dai4 dan4
 坐便器	zuo4 bian4 qi4
 坐冷子	zuo4 leng3 zi5
-坐吃山空	zuo4 chi1 shan1 kong1
+坐喫山空	zuo4 chi1 shan1 kong1
 坐地	zuo4 di4
 坐地分贓	zuo4 di4 fen1 zang1
 坐實	zuo4 shi5
@@ -59276,7 +59280,7 @@ min_phrase_weight: 100
 壽數已盡	shou4 shu4 yi3 jin3
 壽星	shou4 xing1
 壽星	shou4 xing5
-壽星吃砒霜	shou4 xing5 chi1 pi1 shuang1
+壽星喫砒霜	shou4 xing5 chi1 pi1 shuang1
 壽穴	shou4 xue4
 壽者相	shou4 zhe3 xiang4
 壽藏	shou4 zang4
@@ -59577,9 +59581,6 @@ min_phrase_weight: 100
 大古裏彩	dai4 gu3 li3 cai3
 大可不必	da4 ke3 bu2 bi4
 大司空	da4 si1 kong1
-大吃一驚	da4 chi1 yi4 jing1
-大吃大嚼	da4 chi1 da4 jiao2
-大吃苦頭	da4 chi1 ku3 tou5
 大吆小喝	da4 yao1 xiao3 he4
 大同教	da4 tong2 jiao4
 大吹大擂	da4 chui1 da4 lei2
@@ -59593,6 +59594,9 @@ min_phrase_weight: 100
 大喜的日子	da4 xi3 de5 ri4 zi5
 大喝	da4 he4
 大喪	da4 sang1
+大喫一驚	da4 chi1 yi4 jing1
+大喫大嚼	da4 chi1 da4 jiao2
+大喫苦頭	da4 chi1 ku3 tou5
 大單于	da4 chan2 yu2
 大嘴巴	da4 zui3 ba5
 大回朝	da4 hui2 chao2
@@ -59675,7 +59679,7 @@ min_phrase_weight: 100
 大巴山脈	da4 ba1 shan1 mai4
 大帽子	da4 mao4 zi5
 大幅度	da4 fu2 du4
-大年夜吃餃子	da4 nian2 ye4 chi1 jiao3 zi5
+大年夜喫餃子	da4 nian2 ye4 chi1 jiao3 zi5
 大度	da4 du4
 大度包容	da4 du4 bao1 rong2
 大度汪洋	da4 du4 wang1 yang2
@@ -59688,6 +59692,7 @@ min_phrase_weight: 100
 大惡	da4 e4
 大意	da4 yi4
 大意	da4 yi5
+大抬其槓	da4 tai2 qi2 gang4
 大拇指	da4 mu3 zhi3
 大拇指	da4 mu5 zhi3
 大拇指頭	da4 mu3 zhi3 tou5
@@ -59700,7 +59705,6 @@ min_phrase_weight: 100
 大排長龍	da4 pai2 chang2 long2
 大換血	da4 huan4 xie3
 大擋手的	da4 dang3 shou3 de5
-大擡其槓	da4 tai2 qi2 gang4
 大擺褶子	da4 bai3 xue2 zi5
 大故	da4 gu4
 大故	dai4 gu4
@@ -60557,15 +60561,15 @@ min_phrase_weight: 100
 好勝	hao4 sheng4
 好口	hao4 kou3
 好古	hao4 gu3
-好吃	hao3 chi1
-好吃	hao4 chi1
-好吃懶做	hao4 chi1 lan3 zuo4
 好名	hao3 ming2
 好名	hao4 ming2
 好問	hao4 wen4
 好善嫉惡	hao4 shan4 ji2 e4
 好善惡惡	hao4 shan4 wu4 e4
 好善樂施	hao4 shan4 le4 shi1
+好喫	hao3 chi1
+好喫	hao4 chi1
+好喫懶做	hao4 chi1 lan3 zuo4
 好夢難圓	hao3 meng4 nan2 yuan2
 好夢難成	hao3 meng4 nan2 cheng2
 好大喜功	hao4 da4 xi3 gong1
@@ -60573,7 +60577,7 @@ min_phrase_weight: 100
 好奇	hao4 qi2
 好奇尚異	hao4 qi2 shang4 yi4
 好奇心	hao4 qi2 xin1
-好奇會吃苦頭的	hao4 qi2 hui4 chi1 ku3 tou5 de5
+好奇會喫苦頭的	hao4 qi2 hui4 chi1 ku3 tou5 de5
 好好先生	hao3 hao3 xian1 sheng1
 好好先生	hao3 hao3 xian1 sheng5
 好好兒	hao3 hao1 r5
@@ -60627,7 +60631,7 @@ min_phrase_weight: 100
 好生之德	hao4 sheng1 zhi1 de2
 好生惡殺	hao4 sheng1 wu4 sha1
 好生意	hao3 sheng1 yi5
-好男不吃分家飯	hao3 nan2 bu4 chi1 fen1 jia1 fan4
+好男不喫分家飯	hao3 nan2 bu4 chi1 fen1 jia1 fan4
 好相識	hao3 xiang1 shi4
 好看	hao3 kan4
 好看錢	hao3 kan4 qian2
@@ -61865,9 +61869,9 @@ min_phrase_weight: 100
 寧可折本	ning2 ke3 zhe2 ben3
 寧可無了有	ning2 ke3 wu2 le5 you3
 寧可玉碎	ning2 ke3 yu4 sui4
-寧吃過頭飯	ning2 chi1 guo4 tou2 fan4
-寧吃開眉粥	ning2 chi1 kai1 mei2 zhou1
 寧和	ning2 he2
+寧喫過頭飯	ning2 chi1 guo4 tou2 fan4
+寧喫開眉粥	ning2 chi1 kai1 mei2 zhou1
 寧國	ning2 guo2
 寧國市	ning2 guo2 shi4
 寧在人前全不會	ning2 zai4 ren2 qian2 quan2 bu2 hui4
@@ -62433,8 +62437,8 @@ min_phrase_weight: 100
 少先隊員	shao4 xian1 dui4 yuan2
 少兒	shao4 er2
 少刻	shao3 ke4
-少吃無着	shao3 chi1 wu2 zhuo2
 少商	shao4 shang1
+少喫無着	shao3 chi1 wu2 zhuo2
 少囉唆	shao3 luo1 suo1
 少坐	shao3 zuo4
 少壯	shao4 zhuang4
@@ -62641,7 +62645,7 @@ min_phrase_weight: 100
 屁股大弔了心	pi4 gu5 da4 diao4 le5 xin1
 屁股沉	pi4 gu5 chen2
 屁股眼	pi4 gu5 yan3
-屁股裏吃人參	pi4 gu5 li3 chi1 ren2 shen1
+屁股裏喫人參	pi4 gu5 li3 chi1 ren2 shen1
 屁股震葫蘆	pi4 gu5 zhen4 hu2 lu2
 屁鳥人	pi4 diao3 ren2
 居不重席	ju1 bu4 chong2 xi2
@@ -66090,7 +66094,7 @@ min_phrase_weight: 100
 應劭	ying4 shao4
 應募	ying4 mu4
 應卯	ying4 mao3
-應卯吃糧	ying4 mao3 chi1 liang2
+應卯喫糧	ying4 mao3 chi1 liang2
 應口	ying4 kou3
 應召	ying4 zhao4
 應召女郎	ying4 zhao4 nv3 lang2
@@ -66568,7 +66572,7 @@ min_phrase_weight: 100
 手鑽	shou3 zuan1
 手長的	shou3 chang2 de5
 手長衣袖短	shou3 chang2 yi1 xiu4 duan3
-手面賺吃	shou3 mian4 zhuan4 chi1
+手面賺喫	shou3 mian4 zhuan4 chi1
 手頭不便	shou3 tou2 bu2 bian4
 才儲八斗	cai2 chu2 ba1 dou3
 才分	cai2 fen4
@@ -67309,6 +67313,13 @@ min_phrase_weight: 100
 披髮左衽	pi1 fa3 zuo3 ren4
 披髮纓冠	pi1 fa3 ying1 guan1
 披髮藻目	pi1 fa3 zao3 mu4
+抬帖	tai2 tie3
+抬槓	tai2 gang4
+抬舉	tai2 ju5
+抬行市	tai2 hang2 shi4
+抬轎子	tai2 jiao4 zi5
+抬頦	tai2 hai2
+抬鼓弄	tai2 gu3 nong4
 抱子弄孫	bao4 zi3 nong4 sun1
 抱孩子	bao4 hai2 zi5
 抱廈廳	bao4 xia4 ting1
@@ -67338,7 +67349,7 @@ min_phrase_weight: 100
 抹刀	mo3 dao1
 抹去	mo3 qu4
 抹嘴	mo3 zui3
-抹嘴吃	mo3 zui3 chi1
+抹嘴喫	mo3 zui3 chi1
 抹土搽灰	mo3 tu3 cha2 hui1
 抹媚	mo3 mei4
 抹子	mo3 zi5
@@ -67447,7 +67458,7 @@ min_phrase_weight: 100
 拈花摘草	nian2 hua1 zhai1 cao3
 拈花摘葉	nian2 hua1 zhai1 ye4
 拈輕怕重	nian2 qing1 pa4 zhong4
-拈酸吃醋	nian2 suan1 chi1 cu4
+拈酸喫醋	nian2 suan1 chi1 cu4
 拈針指	nian2 zhen1 zhi3
 拈頭	nian2 tou2
 拈題分韻	nian2 ti2 fen1 yun4
@@ -67675,7 +67686,7 @@ min_phrase_weight: 100
 拚捨	pan4 she3
 拚棄	pan4 qi4
 拚死	pan4 si3
-拚死吃河豚	pan4 si3 chi1 he2 tun2
+拚死喫河豚	pan4 si3 chi1 he2 tun2
 拚生盡死	pan4 sheng1 jin4 si3
 拚絕	pan4 jue2
 拚老命	pan4 lao3 ming4
@@ -67888,7 +67899,7 @@ min_phrase_weight: 100
 按時間先後	an4 shi2 jian1 xian1 hou4
 按期	an4 qi2
 按照計劃	an4 zhao4 ji4 hua4
-按牛頭吃不得草	an4 niu2 tou2 chi1 bu4 de2 cao3
+按牛頭喫不得草	an4 niu2 tou2 chi1 bu4 de2 cao3
 按着葫蘆摳子	an4 zhe5 hu2 lu5 kou1 zi5
 按脈	an4 mai4
 按調	an4 diao4
@@ -67988,6 +67999,7 @@ min_phrase_weight: 100
 挨不上	ai1 bu2 shang4
 挨個兒	ai1 ge4 r5
 挨剋	ai2 ke4
+挨剋	ai2 kei1
 挨呲	ai1 ci1
 挨呲兒	ai2 ci1 r5
 挨山塞海	ai1 shan1 se4 hai3
@@ -69093,7 +69105,7 @@ min_phrase_weight: 100
 撩水飯	liao2 shui3 fan4
 撩淺	liao2 qian3
 撩虎鬚	liao2 hu3 xu1
-撩蜂吃螫	liao2 feng1 chi1 zhe1
+撩蜂喫螫	liao2 feng1 chi1 zhe1
 撩蜂撥刺	liao2 feng1 bo1 ci4
 撩衣	liao1 yi1
 撩衣破步	liao1 yi1 po4 bu4
@@ -69400,7 +69412,7 @@ min_phrase_weight: 100
 擔杖	dan4 zhang4
 擔架	dan1 jia4
 擔架兵	dan1 jia4 bing1
-擔架擡	dan1 jia4 tai2
+擔架抬	dan1 jia4 tai2
 擔架牀	dan1 jia4 chuang2
 擔水	dan1 shui3
 擔水向河頭賣	dan1 shui3 xiang4 he2 tou2 mai4
@@ -69452,13 +69464,6 @@ min_phrase_weight: 100
 擠落	ji3 luo4
 擠訛頭	ji3 e2 tou5
 擠軋	ji3 ya4
-擡帖	tai2 tie3
-擡槓	tai2 gang4
-擡舉	tai2 ju5
-擡行市	tai2 hang2 shi4
-擡轎子	tai2 jiao4 zi5
-擡頦	tai2 hai2
-擡鼓弄	tai2 gu3 nong4
 擢髮抽腸	zhuo2 fa3 chou1 chang2
 擢髮難數	zhuo2 fa3 nan2 shu3
 擣虛撇抗	dao3 xu1 pie1 kang4
@@ -69811,7 +69816,7 @@ min_phrase_weight: 100
 效率	xiao4 lv4
 敏感度	min3 gan3 du4
 敏給	min3 ji3
-救之就要吃人肉	jiu4 zhi1 jiu4 yao4 chi1 ren2 rou4
+救之就要喫人肉	jiu4 zhi1 jiu4 yao4 chi1 ren2 rou4
 救困扶危	jiu4 kun4 fu2 wei2
 救度	jiu4 du4
 救恩計劃	jiu4 en1 ji4 hua4
@@ -73723,7 +73728,9 @@ min_phrase_weight: 100
 檔案夾	dang4 an4 jia2
 檔案轉送	dang3 an4 zhuan3 song4
 檔案轉送	dang4 an4 zhuan3 song4
+檜木	gui4 mu4
 檜木	kuai4 mu4
+檜柏	gui4 bai3
 檜柏	kuai4 bo2
 檢場	jian3 chang2
 檢括	jian3 gua1
@@ -74006,7 +74013,7 @@ min_phrase_weight: 100
 步騎	bu4 ji4
 武場	wu3 chang2
 武大郎	wu3 da5 lang2
-武大郎吃毒藥	wu3 da5 lang2 chi1 du2 yao4
+武大郎喫毒藥	wu3 da5 lang2 chi1 du2 yao4
 武威地區	wu3 wei1 di4 qu1
 武寧	wu3 ning2
 武寧縣	wu3 ning2 xian4
@@ -74086,8 +74093,8 @@ min_phrase_weight: 100
 死亡給付	si3 wang2 ji3 fu4
 死傷相枕	si3 shang1 xiang1 zhen4
 死傷相藉	si3 shang1 xiang1 jie4
-死吃死嚼	si3 chi1 si3 jiao2
 死同穴	si3 tong2 xue4
+死喫死嚼	si3 chi1 si3 jiao2
 死地	si3 di4
 死地求生	si3 di4 qiu2 sheng1
 死套子	si3 tao4 zi5
@@ -75988,7 +75995,6 @@ min_phrase_weight: 100
 混凝劑	hun4 ning2 ji4
 混凝土	hun4 ning2 tu3
 混凝土攪拌機	hun4 ning2 tu3 jiao3 ban4 ji1
-混吃混玩	hun4 chi1 hun4 wan2
 混合	hun4 he2
 混合使用	hun4 he2 shi3 yong4
 混合動力車	hun4 he2 dong4 li4 che1
@@ -76015,6 +76021,7 @@ min_phrase_weight: 100
 混和	hun4 he2
 混和	hun4 huo4
 混唚	hun4 qin4
+混喫混玩	hun4 chi1 hun4 wan2
 混嚼舌根	hun4 jiao2 she2 gen1
 混堂	hun4 tang2
 混夷	kun1 yi2
@@ -76078,7 +76085,7 @@ min_phrase_weight: 100
 混頭混腦	hun2 tou2 hun2 nao3
 混頭混腦	hun4 tou2 hun4 nao3
 混飯	hun4 fan4
-混飯吃	hun4 fan4 chi1
+混飯喫	hun4 fan4 chi1
 混鬧	hun4 nao4
 淹宿	yan1 su4
 淹沒	yan1 mo4
@@ -77745,7 +77752,7 @@ min_phrase_weight: 100
 爲準	wei2 zhun3
 爲甚麼	wei4 shen2 me5
 爲生	wei2 sheng1
-爲的吃穿	wei4 de5 chi1 chuan1
+爲的喫穿	wei4 de5 chi1 chuan1
 爲的是	wei4 de5 shi4
 爲着	wei4 zhe5
 爲臣死忠	wei2 chen2 si3 zhong1
@@ -78089,7 +78096,7 @@ min_phrase_weight: 100
 狗心狗行	gou3 xin1 gou3 xing4
 狗拿耗子	gou3 na2 hao4 zi5
 狗探湯	gou3 tan1 tang1
-狗改不了吃屎	gou3 gai3 bu4 liao3 chi1 shi3
+狗改不了喫屎	gou3 gai3 bu4 liao3 chi1 shi3
 狗日的糧食	gou3 ri4 de5 liang2 shi5
 狗氣	gou3 qi5
 狗氣殺	gou3 qi4 sha4
@@ -78122,8 +78129,8 @@ min_phrase_weight: 100
 狹路相逢	xia2 lu4 xiang1 feng2
 狹長	xia2 chang2
 狼分	lang2 fen1
-狼吃幞頭	lang2 chi1 pu2 tou2
 狼吞虎咽	lang2 tun1 hu3 yan4
+狼喫幞頭	lang2 chi1 pu2 tou2
 狼多肉少	lang2 duo1 rou4 shao3
 狼奔豕突	lang2 ben1 shi3 tu1
 狼奔豕突	lang2 ben1 shi3 tu2
@@ -78233,7 +78240,7 @@ min_phrase_weight: 100
 獨占資本	du2 zhan4 zi1 ben3
 獨占鰲頭	du2 zhan4 ao2 tou2
 獨占鼇頭	du2 zhan4 ao2 tou2
-獨吃自痾	du2 chi1 zi4 e1
+獨喫自痾	du2 chi1 zi4 e1
 獨在異鄉爲異客	du2 zai4 yi4 xiang1 wei2 yi4 ke4
 獨守空房	du2 shou3 kong1 fang2
 獨家生意	du2 jia1 sheng1 yi5
@@ -80602,7 +80609,7 @@ min_phrase_weight: 100
 看臺	kan4 tai2
 看花眼	kan1 hua1 yan3
 看茶	kan4 cha2
-看菜吃飯	kan1 cai4 chi1 fan4
+看菜喫飯	kan1 cai4 chi1 fan4
 看見	kan4 jian4
 看見	kan4 jian5
 看覷	kan4 qu4
@@ -80823,6 +80830,7 @@ min_phrase_weight: 100
 睡長覺	shui4 chang2 jiao4
 睢寧	sui1 ning2
 睢寧縣	sui1 ning2 xian4
+睢盱	hui1 xu1
 督率	du1 shuai4
 督緝	du1 qi4
 睦親	mu4 qin1
@@ -80838,7 +80846,7 @@ min_phrase_weight: 100
 瞈矇	weng3 meng2
 瞋目切齒	chen1 mu4 qie4 chi3
 瞎子	xia1 zi5
-瞎子吃湯圓	xia1 zi5 chi1 tang1 yuan2
+瞎子喫湯圓	xia1 zi5 chi1 tang1 yuan2
 瞎子摸象	xia1 zi5 mo1 xiang4
 瞎子摸魚	xia1 zi5 mo1 yu2
 瞎子看電影	xia1 zi5 kan4 dian4 ying3
@@ -81653,7 +81661,7 @@ min_phrase_weight: 100
 禮度	li3 du4
 禮廢樂崩	li3 fei4 yue4 beng1
 禮教	li3 jiao4
-禮教吃人	li3 jiao4 chi1 ren2
+禮教喫人	li3 jiao4 chi1 ren2
 禮數	li3 shu4
 禮數周到	li3 shu4 zhou1 dao4
 禮數款段	li3 shu4 kuan3 duan4
@@ -81771,7 +81779,7 @@ min_phrase_weight: 100
 秦少游	qin2 shao4 you2
 秦嶺山脈	qin2 ling3 shan1 mai4
 秦朝	qin2 chao2
-秦檜	qin1 hui4
+秦檜	qin2 hui4
 秦檜	qin2 kuai4
 秦王破陣樂	qin2 wang2 po4 zhen4 yue4
 秦艽	qin2 jiao1
@@ -82530,7 +82538,7 @@ min_phrase_weight: 100
 竊弄	qie4 nong4
 竊弄威權	qie4 nong4 wei1 quan2
 立便	li4 bian4
-立吃地陷	li4 chi1 di4 xian4
+立喫地陷	li4 chi1 di4 xian4
 立地	li4 di4
 立地成佛	li4 di4 cheng2 fo2
 立地書廚	li4 di4 shu1 chu2
@@ -83178,6 +83186,7 @@ min_phrase_weight: 100
 紅曲	hong2 qu1
 紅椅子	hong2 yi3 zi5
 紅模子	hong2 mo2 zi5
+紅檜	hong2 gui4
 紅檜	hong2 kuai4
 紅泥月亮	hong2 ni2 yue4 liang5
 紅種人	hong2 zhong3 ren2
@@ -90728,7 +90737,7 @@ min_phrase_weight: 100
 豬仔	zhu1 zai3
 豬仔包	zhu1 zai3 bao1
 豬仔館	zhu1 zai3 guan3
-豬八戒吃人參果	zhu1 ba1 jie4 chi1 ren2 shen1 guo3
+豬八戒喫人參果	zhu1 ba1 jie4 chi1 ren2 shen1 guo3
 豬八戒照鏡子	zhu1 ba1 jie4 zhao4 jing4 zi5
 豬圈	zhu1 juan4
 豬尾巴	zhu1 wei3 ba5
@@ -90752,8 +90761,8 @@ min_phrase_weight: 100
 貉絨	hao2 rong2
 貉絨	he2 rong2
 貌合行離	mao4 he2 xing2 li2
-貓吃生柿子	mao1 chi1 sheng1 shi4 zi5
 貓哭耗子	mao1 ku1 hao4 zi5
+貓喫生柿子	mao1 chi1 sheng1 shi4 zi5
 貓溺	mao1 niao4
 貓眼兒	mao1 yan3 r5
 貓耳朵	mao1 er3 duo5
@@ -95873,8 +95882,6 @@ min_phrase_weight: 100
 阿芙樂爾號	a1 fu2 le4 er3 hao2
 阿芙羅狄忒	a1 fu2 luo2 di2 te4
 阿芙蓉	a1 fu2 rong2
-阿芝特剋人	a1 zhi1 te4 ke4 ren2
-阿芝特剋語	a1 zhi1 te4 ke4 yu3
 阿茨海默症	a1 ci1 hai3 mo4 zheng4
 阿茲海默症病患	a4 zi1 hai3 mo4 zheng4 bing4 huan4
 阿莎力	a1 sha1 li4
@@ -97808,7 +97815,7 @@ min_phrase_weight: 100
 饃饃一樣	mo2 mo5 yi2 yang4
 饅頭	man2 tou2
 饅頭	man2 tou5
-饅頭不吃惹身羶	man2 tou5 bu4 chi1 re3 shen1 shan1
+饅頭不喫惹身羶	man2 tou5 bu4 chi1 re3 shen1 shan1
 饅頭果	man2 tou5 guo3
 饊子	san3 zi5
 饋遺	kui4 wei4

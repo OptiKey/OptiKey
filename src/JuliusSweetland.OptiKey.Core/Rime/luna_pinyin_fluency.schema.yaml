@@ -1,0 +1,29 @@
+# Rime schema
+# encoding: utf-8
+
+__include: luna_pinyin.schema:/
+
+schema:
+  schema_id: luna_pinyin_fluency
+  name: 朙月拼音·語句流
+  version: '0.29'
+  author:
+    - 佛振 <chen.sst@gmail.com>
+  description: |
+    朙月拼音·語句流錄入！
+    以空格分詞、標點或回車上屏。
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - fluency_editor
+
+recognizer:
+  patterns:
+    number: '^[-+]?[0-9][.:0-9]*[%]?$'
