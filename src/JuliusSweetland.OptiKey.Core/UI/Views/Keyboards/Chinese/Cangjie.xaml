@@ -1,7 +1,7 @@
 ﻿<!--
 Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
-<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.ChineseCangjie.Alpha1"
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Chinese.Cangjie"
                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -59,53 +59,54 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
-        <controls:Key Grid.Row="2" Grid.Column="0"/>
-        <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                       ShiftUpText="手" ShiftDownText="Q"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="q"/>
-        <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
                       ShiftUpText="田" ShiftDownText="W"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="w"/>
-        <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
                       ShiftUpText="水" ShiftDownText="E" 
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="e"/>
-        <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
                       ShiftUpText="口" ShiftDownText="R"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="r"/>
-        <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
                       ShiftUpText="廿" ShiftDownText="T"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="t"/>
-        <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
                       ShiftUpText="卜" ShiftDownText="Y"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="y"/>
-        <controls:Key Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
                       ShiftUpText="山" ShiftDownText="U"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="u"/>
-        <controls:Key Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
                       ShiftUpText="戈" ShiftDownText="I"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="i"/>
-        <controls:Key Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
                       ShiftUpText="人" ShiftDownText="O"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="o"/>
-        <controls:Key Grid.Row="2" Grid.Column="19" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
                       ShiftUpText="心" ShiftDownText="P"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="p"/>
-        <controls:Key Grid.Row="2" Grid.Column="21" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
+					  Text="En"
+					  Value="{x:Static models:KeyValues.RimeEnableAsciiMode}"/>
+        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MenuIcon}"
                       Text="{x:Static resx:Resources.MENU}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
-        <controls:Key Grid.Row="2" Grid.Column="23"/>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource TabIcon}" 
