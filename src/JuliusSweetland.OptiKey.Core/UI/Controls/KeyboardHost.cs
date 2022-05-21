@@ -19,9 +19,7 @@ using System.Windows;
 using System.Windows.Controls;
 using JuliusSweetland.OptiKey.UI.Windows;
 using CatalanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Catalan;
-using ChineseBopomofoViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.ChineseBopomofo;
-using ChinesePinyinViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.ChinesePinyin;
-using ChineseCangjieViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.ChineseCangjie;
+using ChineseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Chinese;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using CroatianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Croatian;
 using CzechViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Czech;
@@ -230,17 +228,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.ChineseSimplifiedBopomofo:
                     case Languages.ChineseTraditionalBopomofo:
                     case Languages.ChineseTraditionalTaiwanBopomofo:
-                        newContent = new ChineseBopomofoViews.Alpha1 { DataContext = Keyboard };
+                        newContent = new ChineseViews.Bopomofo { DataContext = Keyboard };
                         break;
                     case Languages.ChineseSimplifiedCangjie5:
                     case Languages.ChineseTraditionalCangjie5:
-                        newContent = new ChineseCangjieViews.Alpha1 { DataContext = Keyboard };
+                        newContent = new ChineseViews.Cangjie { DataContext = Keyboard };
                         break;
                     case Languages.ChineseSimplifiedLunaPinyin:
                     case Languages.ChineseSimplifiedTerraPinyin:
                     case Languages.ChineseTraditionalLunaPinyin:
                     case Languages.ChineseTraditionalTerraPinyin:
-                        newContent = new ChinesePinyinViews.Alpha1 { DataContext = Keyboard };
+                        newContent = new ChineseViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:
                         newContent = new CroatianViews.Alpha1 { DataContext = Keyboard };
@@ -353,11 +351,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseSimplifiedCangjie5:
                     case Languages.ChineseSimplifiedLunaPinyin:
                     case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTraditionalCangjie5:
                     case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTaiwanBopomofo:
                     case Languages.ChineseTraditionalTerraPinyin:
-                        newContent = new ChinesePinyinViews.Alpha2 { DataContext = Keyboard };
+                        newContent = new ChineseViews.Alpha2 { DataContext = Keyboard };
                         break;
                     case Languages.HebrewIsrael:
                         newContent = new HebrewViews.Alpha2 { DataContext = Keyboard };
@@ -404,17 +407,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.ChineseSimplifiedBopomofo:
                     case Languages.ChineseTraditionalBopomofo:
                     case Languages.ChineseTraditionalTaiwanBopomofo:
-                        newContent = new ChineseBopomofoViews.ConversationAlpha1 { DataContext = Keyboard };
+                        newContent = new ChineseViews.ConversationBopomofo { DataContext = Keyboard };
                         break;
                     case Languages.ChineseSimplifiedCangjie5:
                     case Languages.ChineseTraditionalCangjie5:
-                        newContent = new ChineseCangjieViews.ConversationAlpha1 { DataContext = Keyboard };
+                        newContent = new ChineseViews.ConversationCangjie { DataContext = Keyboard };
                         break;
                     case Languages.ChineseSimplifiedLunaPinyin:
                     case Languages.ChineseSimplifiedTerraPinyin:
                     case Languages.ChineseTraditionalLunaPinyin:
                     case Languages.ChineseTraditionalTerraPinyin:
-                        newContent = new ChinesePinyinViews.ConversationAlpha1 { DataContext = Keyboard };
+                        newContent = new ChineseViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:
                         newContent = new CroatianViews.ConversationAlpha1 { DataContext = Keyboard };
