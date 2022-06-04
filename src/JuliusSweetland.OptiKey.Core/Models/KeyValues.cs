@@ -27,6 +27,16 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue BrowserSearchKey = new KeyValue(FunctionKeys.BrowserSearch);
         public static readonly KeyValue CalibrateKey = new KeyValue(FunctionKeys.Calibrate);
         public static readonly KeyValue CatalanSpainKey = new KeyValue(FunctionKeys.CatalanSpain);
+        public static readonly KeyValue ChineseSimplifiedBopomofo = new KeyValue(FunctionKeys.ChineseSimplifiedBopomofo);
+        public static readonly KeyValue ChineseSimplifiedCangjie5 = new KeyValue(FunctionKeys.ChineseSimplifiedCangjie5);
+        public static readonly KeyValue ChineseSimplifiedLunaPinyin = new KeyValue(FunctionKeys.ChineseSimplifiedLunaPinyin);
+        public static readonly KeyValue ChineseSimplifiedTerraPinyin = new KeyValue(FunctionKeys.ChineseSimplifiedTerraPinyin);
+        public static readonly KeyValue ChineseTaiwanTraditionalBopomofo = new KeyValue(FunctionKeys.ChineseTaiwanTraditionalBopomofo);
+        public static readonly KeyValue ChineseTaiwanTraditionalLunaPinyin = new KeyValue(FunctionKeys.ChineseTaiwanTraditionalLunaPinyin);
+        public static readonly KeyValue ChineseTraditionalBopomofo = new KeyValue(FunctionKeys.ChineseTraditionalBopomofo);
+        public static readonly KeyValue ChineseTraditionalCangjie5 = new KeyValue(FunctionKeys.ChineseTraditionalCangjie5);
+        public static readonly KeyValue ChineseTraditionalLunaPinyin = new KeyValue(FunctionKeys.ChineseTraditionalLunaPinyin);
+        public static readonly KeyValue ChineseTraditionalTerraPinyin = new KeyValue(FunctionKeys.ChineseTraditionalTerraPinyin);
         public static readonly KeyValue ClearScratchpadKey = new KeyValue(FunctionKeys.ClearScratchpad);
         public static readonly KeyValue CollapseDockKey = new KeyValue(FunctionKeys.CollapseDock);
         public static readonly KeyValue CombiningAcuteAccentKey = new KeyValue("\x0301");
@@ -161,6 +171,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue JapaneseJapanKey = new KeyValue(FunctionKeys.JapaneseJapan);
         public static readonly KeyValue KoreanKoreaKey = new KeyValue(FunctionKeys.KoreanKorea);
         public static readonly KeyValue LanguageKeyboardKey = new KeyValue(FunctionKeys.LanguageKeyboard);
+        public static readonly KeyValue Language2KeyboardKey = new KeyValue(FunctionKeys.Language2Keyboard);
         public static readonly KeyValue LeftAltKey = new KeyValue(FunctionKeys.LeftAlt);
         public static readonly KeyValue LeftCtrlKey = new KeyValue(FunctionKeys.LeftCtrl);
         public static readonly KeyValue LeftShiftKey = new KeyValue(FunctionKeys.LeftShift);
@@ -237,8 +248,6 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue QuitKey = new KeyValue(FunctionKeys.Quit);
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue(FunctionKeys.RepeatLastMouseAction);
         public static readonly KeyValue RestartKey = new KeyValue(FunctionKeys.Restart);
-        public static readonly KeyValue RimeDisableAsciiMode = new KeyValue(FunctionKeys.RimeDisableAsciiMode);
-        public static readonly KeyValue RimeEnableAsciiMode = new KeyValue(FunctionKeys.RimeEnableAsciiMode);
         public static readonly KeyValue RussianRussiaKey = new KeyValue(FunctionKeys.RussianRussia);
         public static readonly KeyValue SerbianSerbiaKey = new KeyValue(FunctionKeys.SerbianSerbia);
         public static readonly KeyValue ScrollLockKey = new KeyValue(FunctionKeys.ScrollLock);

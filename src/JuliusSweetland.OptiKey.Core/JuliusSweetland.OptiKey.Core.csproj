@@ -512,6 +512,7 @@
     <Compile Include="UI\ViewModels\ILookToScrollOverlayViewModel.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\CommuniKate.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Language2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Voice.cs" />
     <Compile Include="UI\ViewModels\Keyboards\WebBrowsing.cs" />
     <Compile Include="UI\ViewModels\Keyboards\SimplifiedConversationAlpha.cs" />
@@ -561,6 +562,9 @@
     <Compile Include="UI\Views\Keyboards\Chinese\Bopomofo.xaml.cs">
       <DependentUpon>Bopomofo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Chinese\ConversationAlpha2.xaml.cs">
+      <DependentUpon>ConversationAlpha2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Chinese\ConversationBopomofo.xaml.cs">
       <DependentUpon>ConversationBopomofo.xaml</DependentUpon>
     </Compile>
@@ -575,6 +579,9 @@
     </Compile>
     <Compile Include="UI\Views\Keyboards\Common\ConversationConfirm.xaml.cs">
       <DependentUpon>ConversationConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\Language2.xaml.cs">
+      <DependentUpon>Language2.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Common\Voice.xaml.cs">
       <DependentUpon>Voice.xaml</DependentUpon>
@@ -1699,6 +1706,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Keyboards\Chinese\ConversationAlpha2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\Chinese\ConversationBopomofo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1720,6 +1731,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Chinese\ConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Language2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

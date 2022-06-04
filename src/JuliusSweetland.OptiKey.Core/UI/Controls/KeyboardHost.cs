@@ -419,7 +419,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.ChineseSimplifiedTerraPinyin:
                     case Languages.ChineseTraditionalLunaPinyin:
                     case Languages.ChineseTraditionalTerraPinyin:
-                        newContent = new ChineseViews.ConversationAlpha1 { DataContext = Keyboard };
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                            newContent = new ChineseViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:
                         newContent = new CroatianViews.ConversationAlpha1 { DataContext = Keyboard };
@@ -530,6 +531,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                        newContent = new ChineseViews.ConversationAlpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.HindiIndia:
                         newContent = new HindiViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
@@ -601,6 +609,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.Language)
             {
                 newContent = new CommonViews.Language { DataContext = Keyboard };
+            }
+            else if (Keyboard is ViewModelKeyboards.Language2)
+            {
+                newContent = new CommonViews.Language2 { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.Voice)
             {
