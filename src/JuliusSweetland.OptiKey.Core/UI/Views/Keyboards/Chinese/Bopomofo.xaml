@@ -108,7 +108,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 						Value="0" />
         <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
 					  Text="En"
-					  Value="{x:Static models:KeyValues.RimeEnableAsciiMode}"/>
+					  Value="{x:Static models:KeyValues.Alpha1KeyboardKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="24" Grid.ColumnSpan="2"
 						SymbolGeometry="{StaticResource MenuIcon}"
 						Text="{x:Static resx:Resources.MENU}"

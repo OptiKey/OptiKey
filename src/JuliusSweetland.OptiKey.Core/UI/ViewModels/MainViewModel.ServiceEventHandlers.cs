@@ -1006,6 +1006,46 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     SelectLanguage(Languages.CatalanSpain);
                     break;
 
+                case FunctionKeys.ChineseSimplifiedBopomofo:
+                    SelectLanguage(Languages.ChineseSimplifiedBopomofo);
+                    break;
+
+                case FunctionKeys.ChineseSimplifiedCangjie5:
+                    SelectLanguage(Languages.ChineseSimplifiedCangjie5);
+                    break;
+
+                case FunctionKeys.ChineseSimplifiedLunaPinyin:
+                    SelectLanguage(Languages.ChineseSimplifiedLunaPinyin);
+                    break;
+
+                case FunctionKeys.ChineseSimplifiedTerraPinyin:
+                    SelectLanguage(Languages.ChineseSimplifiedTerraPinyin);
+                    break;
+
+                case FunctionKeys.ChineseTaiwanTraditionalBopomofo:
+                    SelectLanguage(Languages.ChineseTaiwanTraditionalBopomofo);
+                    break;
+
+                case FunctionKeys.ChineseTaiwanTraditionalLunaPinyin:
+                    SelectLanguage(Languages.ChineseTaiwanTraditionalLunaPinyin);
+                    break;
+
+                case FunctionKeys.ChineseTraditionalBopomofo:
+                    SelectLanguage(Languages.ChineseTraditionalBopomofo);
+                    break;
+
+                case FunctionKeys.ChineseTraditionalCangjie5:
+                    SelectLanguage(Languages.ChineseTraditionalCangjie5);
+                    break;
+
+                case FunctionKeys.ChineseTraditionalLunaPinyin:
+                    SelectLanguage(Languages.ChineseTraditionalLunaPinyin);
+                    break;
+
+                case FunctionKeys.ChineseTraditionalTerraPinyin:
+                    SelectLanguage(Languages.ChineseTraditionalTerraPinyin);
+                    break;
+
                 case FunctionKeys.CollapseDock:
                     Log.Info("Collapsing dock.");
                     mainWindowManipulationService.ResizeDockToCollapsed();
@@ -1474,6 +1514,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.Restore();
                     Log.Info("Changing keyboard to Language.");
                     Keyboard = new Language(() => Keyboard = currentKeyboard);
+                    break;
+
+                case FunctionKeys.Language2Keyboard:
+                    Log.Info("Restoring window size.");
+                    mainWindowManipulationService.Restore();
+                    Log.Info("Changing keyboard to Language2.");
+                    Keyboard = new Language2(() => Keyboard = currentKeyboard);
                     break;
 
                 case FunctionKeys.LookToScrollActive:
@@ -2314,24 +2361,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         () => { Keyboard = keyboardBeforeQuit; });
                     break;
 
-                case FunctionKeys.RimeDisableAsciiMode:
-                    Log.Info("Disable Rime ascii_mode.");
-                    var rime = MyRimeApi.rime_get_api();
-                    if (rime.set_option(MyRimeApi.GetSession(), "ascii_mode", false)) {
-                        MyRimeApi.IsAsciiMode = false;
-                        Keyboard = new Alpha1();
-                    }
-                    break;
-
-                case FunctionKeys.RimeEnableAsciiMode:
-                    Log.Info("Enable Rime ascii_mode.");
-                    var rime2 = MyRimeApi.rime_get_api();
-                    if (rime2.set_option(MyRimeApi.GetSession(), "ascii_mode", true)) {
-                        MyRimeApi.IsAsciiMode = true;
-                        Keyboard = new Alpha2();
-                    }
-                    break;
-
                 case FunctionKeys.RussianRussia:
                     SelectLanguage(Languages.RussianRussia);
                     break;
@@ -2578,6 +2607,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
             Settings.Default.KeyboardAndDictionaryLanguage = language;
             InputService.RequestResume();
+
+            if (language.ManagedByRime()) {
+                MyRimeApi.SelectSchema();
+            }
 
             if (Settings.Default.DisplayVoicesWhenChangingKeyboardLanguage)
             {
