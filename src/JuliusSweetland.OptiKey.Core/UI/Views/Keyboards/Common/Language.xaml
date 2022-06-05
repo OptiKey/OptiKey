@@ -184,10 +184,15 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                           Text="{x:Static resx:Resources.NEXT}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.Language2KeyboardKey}" />
-                            <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"
+                            <!--<controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"
                                           Text="{x:Static resx:Resources.BACK}"
                                           SharedSizeGroup="KeyWithText"
-                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>-->
+                            <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"
+                                                  SymbolGeometry="{StaticResource MenuIcon}"
+                                                  Text="{x:Static resx:Resources.MENU}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
                         </Grid>
                     </Setter.Value>
                 </Setter>
@@ -362,10 +367,15 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                   Text="{x:Static resx:Resources.NEXT}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.Language2KeyboardKey}" />
-                                    <controls:Key Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2"
+                                    <!--<controls:Key Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithText"
-                                                  Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                                  Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>-->
+                                    <controls:Key Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2"
+                                                  SymbolGeometry="{StaticResource MenuIcon}"
+                                                  Text="{x:Static resx:Resources.MENU}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
                                 </Grid>
                             </Setter.Value>
                         </Setter>
