@@ -531,10 +531,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseSimplifiedCangjie5:
                     case Languages.ChineseSimplifiedLunaPinyin:
                     case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTraditionalCangjie5:
                     case Languages.ChineseTraditionalLunaPinyin:
                     case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
                     case Languages.ChineseTaiwanTraditionalLunaPinyin:
                         newContent = new ChineseViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
