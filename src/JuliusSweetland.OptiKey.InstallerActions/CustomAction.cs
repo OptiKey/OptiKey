@@ -148,6 +148,35 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 }
             }
 
+            // Add manual entry for "not listed"
+            {
+                string trackerLabel = "Other eye tracker (not listed)"; // FIXME: translated??
+                string trackerEnum = PointsSources.MousePosition.ToString();
+
+                // add to combobox prop
+                comboData = AppendItemToComboData(comboData, trackerLabel);
+
+                // save the mapping from label to enum in an installer property
+                session["TRACKER_" + SanitisePropName(trackerLabel)] = trackerEnum;
+
+                // also the extended info, translated and original text 
+                string details = InstallerStrings.OTHER_TRACKER[closestCulture];
+                string details_english = InstallerStrings.OTHER_TRACKER[new CultureInfo("en-GB")];
+                if (details == details_english)
+                {
+                    details_english = "";
+                }
+                else
+                {
+                    details_english = "Automatically translated from original text:\n" + details_english;
+                }
+
+                session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = details;
+                session["TRACKERINFO_EN_" + SanitisePropName(trackerLabel)] = details_english;
+
+            }
+
+
             // Set combobox data
             session["EYETRACKER_COMBO_DATA"] = comboData;
             session["EYETRACKER_COMBO_DEFAULT"] = defaultTracker;
