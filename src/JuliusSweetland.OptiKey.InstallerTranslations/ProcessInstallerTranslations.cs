@@ -34,6 +34,7 @@ namespace InstallerTranslation
                 Dictionary<Languages, string> all_TOBII_EYEX_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_TOBII_ASSISTIVE_INFO = new Dictionary<Languages, string>();                
                 Dictionary<Languages, string> all_MOUSE_POSITION = new Dictionary<Languages, string>();
+                Dictionary<Languages, string> all_OTHER_TRACKER = new Dictionary<Languages, string>();
 
                 foreach (KeyValuePair<string, Languages> entry in languages)
                 {
@@ -48,6 +49,7 @@ namespace InstallerTranslation
                     all_TOBII_EYEX_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.TOBII_EYEX_INFO);
                     all_TOBII_ASSISTIVE_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.TOBII_ASSISTIVE_INFO);                    
                     all_MOUSE_POSITION.Add(language, JuliusSweetland.OptiKey.Properties.Resources.MOUSE_POSITION);
+                    all_OTHER_TRACKER.Add(language, JuliusSweetland.OptiKey.Properties.Resources.OTHER_TRACKER);
                 }
 
                 // pre-amble
@@ -69,6 +71,7 @@ namespace InstallerTranslation
                 WriteDictInitialiser(file, all_MOUSE_POSITION_INFO, "MOUSE_POSITION_INFO");
                 WriteDictInitialiser(file, all_TOBII_EYEX_INFO, "TOBII_EYEX_INFO");
                 WriteDictInitialiser(file, all_TOBII_ASSISTIVE_INFO, "TOBII_ASSISTIVE_INFO");
+                WriteDictInitialiser(file, all_OTHER_TRACKER, "OTHER_TRACKER");
 
                 // post-amble
                 file.WriteLine("\t}");
