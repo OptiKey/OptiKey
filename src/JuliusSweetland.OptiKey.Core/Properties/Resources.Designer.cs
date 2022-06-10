@@ -4521,6 +4521,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other eye tracker (not listed here).
+        /// </summary>
+        public static string OTHER_TRACKER {
+            get {
+                return ResourceManager.GetString("OTHER_TRACKER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to API Key:.
         /// </summary>
         public static string OVERRIDDEN_TRANSLATION_API_KEY_LABEL {

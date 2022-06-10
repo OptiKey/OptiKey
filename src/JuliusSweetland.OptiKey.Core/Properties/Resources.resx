@@ -2473,4 +2473,7 @@ Magyar
   <data name="TOBII_NOT_SUPPORTED" xml:space="preserve">
     <value>Connected Tobii eye tracker is not supported. </value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value>Other eye tracker (not listed here)</value>
+  </data>
 </root>
