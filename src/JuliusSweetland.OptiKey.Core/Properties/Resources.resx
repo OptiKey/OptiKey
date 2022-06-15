@@ -2476,4 +2476,12 @@ Magyar
   <data name="OTHER_TRACKER" xml:space="preserve">
     <value>Other eye tracker (not listed here)</value>
   </data>
+  <data name="EYETRACKER_DEPRECATED" xml:space="preserve">
+    <value>Your eye tracker is no longer supported</value>
+  </data>
+  <data name="EYETRACKER_DEPRECATED_DETAILS" xml:space="preserve">
+    <value>Optikey v4 does not support this eye tracker. Optikey will use mouse position instead.
+
+www.optikey.org/supported-eyetrackers</value>
+  </data>
 </root>

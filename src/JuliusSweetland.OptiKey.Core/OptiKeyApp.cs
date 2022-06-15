@@ -691,12 +691,7 @@ namespace JuliusSweetland.OptiKey
                     pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
                         irisBondHiruPointService);
-                    break;
-
-                case PointsSources.MousePosition:
-                    pointSource = new MousePositionSource(
-                        Settings.Default.PointTtl);
-                    break;
+                    break;                
 
                 case PointsSources.TheEyeTribe:
                     var theEyeTribePointService = new TheEyeTribePointService();
@@ -720,9 +715,18 @@ namespace JuliusSweetland.OptiKey
                         Settings.Default.PointTtl,
                         tobiiPointService);
                     break;
-                
-                default:
-                    throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
+
+                case PointsSources.MousePosition:
+                    pointSource = new MousePositionSource(
+                        Settings.Default.PointTtl);
+                    break;
+
+                default:                    
+                    // We may get here if we've got a deprecated tracker enum - we will check that separately                                        
+                    pointSource = new MousePositionSource(
+                        Settings.Default.PointTtl);                    
+
+                    break;
             }
 
             ITriggerSource eyeGestureTriggerSource = new EyeGestureSource(pointSource);
@@ -1285,6 +1289,33 @@ namespace JuliusSweetland.OptiKey
             return await taskCompletionSource.Task;
         }
 
+        #endregion
+        
+        #region Alert If Eye Tracker Deprecated
+
+        protected static async Task<bool> AlertIfEyeTrackerDeprecated(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
+            if (Settings.Default.PointsSource.IsObsolete())
+            {
+                inputService.RequestSuspend();
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.EYETRACKER_DEPRECATED,
+                    string.Format(OptiKey.Properties.Resources.EYETRACKER_DEPRECATED_DETAILS,
+                        Settings.Default.SuggestionMethod),
+                    NotificationTypes.Error, () =>
+                    {
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(false);
+                    });
+            }
+            else
+            {
+                taskCompletionSource.SetResult(true);
+            }
+            return await taskCompletionSource.Task;
+        }
         #endregion
 
         #region Alert If Presage Bitness Or Bootstrap Or Version Failure

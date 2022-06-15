@@ -1834,7 +1834,29 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("EXTRA_KEYS", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your eye tracker is no longer supported.
+        /// </summary>
+        public static string EYETRACKER_DEPRECATED
+        {
+            get
+            {
+                return ResourceManager.GetString("EYETRACKER_DEPRECATED", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Optikey v4 does not support this eye tracker. Optikey will use mouse position instead. .
+        /// </summary>
+        public static string EYETRACKER_DEPRECATED_DETAILS
+        {
+            get
+            {
+                return ResourceManager.GetString("EYETRACKER_DEPRECATED_DETAILS", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to F1.
         /// </summary>
