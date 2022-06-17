@@ -973,6 +973,30 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
+    <Content Include="..\..\ext\IrisBond\avcodec-58.dll">
+      <Link>avcodec-58.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avdevice-58.dll">
+      <Link>avdevice-58.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avfilter-7.dll">
+      <Link>avfilter-7.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avformat-58.dll">
+      <Link>avformat-58.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avutil-56.dll">
+      <Link>avutil-56.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\swresample-3.dll">
+      <Link>swresample-3.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\EyeTrackerSupport\tobii-trackers.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
