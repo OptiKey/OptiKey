@@ -1080,7 +1080,7 @@ POSITION</value>
     <value>TheEyeTribe er ikke blevet kalibreret. Ingen data vil blive modtager indtil kalibreringen er fuldført.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Ude af stand til at forsøge en kalibrering da ingen EyeX engine er tilgængelig.</value>
+    <value>Ude af stand til at forsøge en kalibrering da ingen EyeTribe software er tilgængelig.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Tema:</value>
@@ -1095,10 +1095,10 @@ POSITION</value>
     <value>Kalibrering færdig, eller muligvis afbrudt, men alt virker igen!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine blev ikke fundet. Installer venligst EyeX Engine og forsøg igen.</value>
+    <value>Tobii Service blev ikke fundet. Installer venligst Tobii software  og forsøg igen.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine kører ikke. Start venligst EyeX Enginen og forsøg igen.</value>
+    <value>Tobii Service kører ikke. Start venligst Tobii service n og forsøg igen.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tone 1</value>
