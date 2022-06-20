@@ -1617,4 +1617,6 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Komunikacija sa simbolima</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Ako vam tracker za oči nije naveden ovdje ili vam je potrebna 32 -bitna verzija Optikey, kliknite donju vezu za više informacija.
+Ako želite nastaviti s instalacijom, Optikey će kontrolirati položaj vašeg miša. To mu omogućava da radi s alternativnim ulazima kao što je miš za glavu ili bilo kojim praćenjem očiju koji vam omogućuje kontrolu položaja miša očima.</value></data>
 </root>

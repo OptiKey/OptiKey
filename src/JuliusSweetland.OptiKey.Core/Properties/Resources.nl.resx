@@ -1624,4 +1624,6 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>De Visual Interaction myGaze wordt alleen ondersteund als u reeds de myGaze client drivers, die niet meer beschikbaar zijn voor download hebt geïnstalleerd. Als u niet over deze stuurprogramma's zijn geïnstalleerd, moet u gebruik maken 'mouse positie' te selecteren in plaats daarvan, en gebruik Optikey in combinatie met de myGaze EyeMousePlay applicatie om de cursor te verplaatsen.</value>
   </data>  
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Als uw eye tracker hier niet wordt vermeld of u een 32 -bits versie van Optikey nodig heeft, klikt u op de onderstaande link voor meer informatie.
+     Als u wilt doorgaan met installatie, wordt Optikey bestuurd door uw muispositie. Hierdoor kan het werken met alternatieve ingangen zoals een hoofdmuis of een eye -tracker waarmee u de muispositie met uw ogen kunt regelen.</value></data>
 </root>

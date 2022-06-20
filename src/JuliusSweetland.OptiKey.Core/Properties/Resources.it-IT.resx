@@ -2555,4 +2555,6 @@ Magyar
 हिन्दी
 (भारत)</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Se il tuo eye tracker non è elencato qui o hai bisogno di una versione di Optikey a 32 bit, fai clic sul link in basso per ulteriori informazioni.
+Se vuoi continuare con l'installazione, Optikey sarà controllato dalla posizione del mouse. Ciò gli consente di funzionare con input alternativi come un topo per la testa o qualsiasi tracker oculare che ti consente di controllare la posizione del mouse con gli occhi.</value></data>
 </root>

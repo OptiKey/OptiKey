@@ -1980,4 +1980,6 @@ Optikey는 계속 실행 하려고 하지만 곧 중단 될 수 있습니다.
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>기호와의 통신</value>
   </data>  
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> 눈 추적기가 여기에 나열되지 않았거나 32 비트 버전의 Optikey가 필요한 경우 아래 링크를 클릭하여 자세한 내용을보십시오.
+설치를 계속하려면 Optikey는 마우스 위치에 따라 제어됩니다. 이를 통해 헤드 마우스와 같은 대체 입력 또는 눈으로 마우스 위치를 제어 할 수있는 아이 트래커와 함께 작동 할 수 있습니다.</value></data>
 </root>

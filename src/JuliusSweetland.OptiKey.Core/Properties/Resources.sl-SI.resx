@@ -1598,4 +1598,6 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Komunikacija s simboli</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Če vaš sledilnik oči ni naveden tukaj ali potrebujete 32 -bitno različico Optikeyja, za več informacij kliknite spodnjo povezavo.
+Če želite nadaljevati z namestitvijo, bo Optikey nadzoroval položaj miške. To mu omogoča, da deluje z alternativnimi vhodi, kot je miška glave ali kateri koli sledilnik oči, ki vam omogoča nadzor nad položajem miške z očmi.</value></data>
 </root>

@@ -2011,4 +2011,6 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Komunikacja z symboli</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Jeśli śledzenie wzroku nie jest tutaj wymienione lub potrzebujesz 32 -bitowej wersji Optikey, kliknij poniższy link, aby uzyskać więcej informacji.
+Jeśli chcesz kontynuować instalację, Optikey będzie kontrolowany przez twoją pozycję myszy. Pozwala to na działanie z alternatywnymi wejściami, takimi jak mysz głowica lub dowolny śledzenie wzroku, który pozwala kontrolować pozycję myszy oczami.</value></data>
 </root>

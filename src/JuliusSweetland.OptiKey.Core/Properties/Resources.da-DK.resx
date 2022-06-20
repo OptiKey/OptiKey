@@ -1714,4 +1714,6 @@ Türkçe
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Kommunikation med symboler</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Hvis din Eye Tracker ikke er anført her, eller du har brug for en 32 bit version af Optikey, skal du klikke på linket herunder for mere information.
+Hvis du vil fortsætte med installationen, kontrolleres Optikey af din museposition. Dette giver det mulighed for at arbejde med alternative input såsom en hovedmus eller enhver øjenspor, der giver dig mulighed for at kontrollere musepositionen med dine øjne.</value></data>
 </root>
