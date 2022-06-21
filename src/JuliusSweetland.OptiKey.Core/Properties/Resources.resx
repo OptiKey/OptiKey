@@ -2488,4 +2488,10 @@ For more information about Optikey Classic, which supports more eye trackers, vi
 
 www.optikey.org/supported-eyetrackers</value>
   </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Engine cannot be found. Please install the Tobii software and try again.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Engine is not running. Please start the Tobii software and try again.</value>
+  </data>
 </root>

@@ -1834,29 +1834,29 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("EXTRA_KEYS", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Your eye tracker is no longer supported.
         /// </summary>
-        public static string EYETRACKER_DEPRECATED
-        {
-            get
-            {
+        public static string EYETRACKER_DEPRECATED {
+            get {
                 return ResourceManager.GetString("EYETRACKER_DEPRECATED", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Optikey v4 does not support this eye tracker. Optikey will use mouse position instead. .
+        ///   Looks up a localized string similar to Optikey v4 does not support this eye tracker. Optikey will use mouse position instead. 
+        ///
+        ///For more information about Optikey Classic, which supports more eye trackers, visit:
+        ///
+        ///www.optikey.org/supported-eyetrackers.
         /// </summary>
-        public static string EYETRACKER_DEPRECATED_DETAILS
-        {
-            get
-            {
+        public static string EYETRACKER_DEPRECATED_DETAILS {
+            get {
                 return ResourceManager.GetString("EYETRACKER_DEPRECATED_DETAILS", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to F1.
         /// </summary>
@@ -2871,7 +2871,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Key selection gamepad controller.
+        ///   Looks up a localized string similar to Key selection gamepad controller:.
         /// </summary>
         public static string KEY_SELECTION_GAMEPAD_CONTROLLER_LABEL {
             get {
@@ -3147,18 +3147,16 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("LEFT_DOWN_UP_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Limit "BackOne" deletion to a single character
+        ///   Looks up a localized string similar to Limit &quot;BackOne&quot; deletion to a single character.
         /// </summary>
-        public static string LIMIT_BACKONE
-        {
-            get
-            {
+        public static string LIMIT_BACKONE {
+            get {
                 return ResourceManager.GetString("LIMIT_BACKONE", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Load dictionary.
         /// </summary>
@@ -3249,7 +3247,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Look To Scroll is the default scrolling method:.
         /// </summary>
@@ -4543,7 +4541,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Other eye tracker (not listed here).
+        ///   Looks up a localized string similar to If your eye tracker is not listed here, or you require a 32 bit version of Optikey, please click the link below for more information. 
+        ///
+        ///If you want to continue with installation, Optikey will be controlled by your mouse position. This allows it to work with alternative inputs such as a head mouse, or any eye tracker that allows you to control the mouse position with your eyes..
         /// </summary>
         public static string OTHER_TRACKER {
             get {
@@ -5969,23 +5969,19 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suppress warning...
+        ///   Looks up a localized string similar to Suppress warning when gaze is missing during trigger event.
         /// </summary>
-        public static string SUPPRESS_TRIGGER_WARNING
-        {
-            get
-            {
+        public static string SUPPRESS_TRIGGER_WARNING {
+            get {
                 return ResourceManager.GetString("SUPPRESS_TRIGGER_WARNING", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to TAB.
         /// </summary>
-        public static string TAB
-        {
-            get
-            {
+        public static string TAB {
+            get {
                 return ResourceManager.GetString("TAB", resourceCulture);
             }
         }
@@ -6106,32 +6102,9 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again..
-        /// </summary>
-        public static string TOBII_TRACKER_NOT_FOUND
-        {
-            get
-            {
-                return ResourceManager.GetString("TOBII_TRACKER_NOT_FOUND", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Connected Tobii eye tracker is not supported. .
-        /// </summary>
-        public static string TOBII_NOT_SUPPORTED
-        {
-            get
-            {
-                return ResourceManager.GetString("TOBII_NOT_SUPPORTED", resourceCulture);
-            }
-        }
-
-
-        /// <summary>
-        ///   Looks up a localized string similar to Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again..
+        ///   Looks up a localized string similar to Tobii Engine cannot be found. Please install the Tobii software and try again..
         /// </summary>
         public static string TOBII_EYEX_ENGINE_NOT_FOUND {
             get {
@@ -6140,7 +6113,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tobii EyeX Engine is not running. Please start the EyeX Engine and try again..
+        ///   Looks up a localized string similar to Tobii Engine is not running. Please start the Tobii software and try again..
         /// </summary>
         public static string TOBII_EYEX_ENGINE_NOT_RUNNING {
             get {
@@ -6154,6 +6127,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOBII_EYEX_INFO {
             get {
                 return ResourceManager.GetString("TOBII_EYEX_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connected Tobii eye tracker is not supported. .
+        /// </summary>
+        public static string TOBII_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("TOBII_NOT_SUPPORTED", resourceCulture);
             }
         }
         
@@ -6199,6 +6181,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOBII_REX {
             get {
                 return ResourceManager.GetString("TOBII_REX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find a supported Tobii tracker. Check your eye tracker is plugged in and the Tobii service is running.
+        /// </summary>
+        public static string TOBII_TRACKER_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("TOBII_TRACKER_NOT_FOUND", resourceCulture);
             }
         }
         
