@@ -2474,13 +2474,17 @@ Magyar
     <value>Connected Tobii eye tracker is not supported. </value>
   </data>
   <data name="OTHER_TRACKER" xml:space="preserve">
-    <value>Other eye tracker (not listed here)</value>
+    <value>If your eye tracker is not listed here, or you require a 32 bit version of Optikey, please click the link below for more information. 
+
+If you want to continue with installation, Optikey will be controlled by your mouse position. This allows it to work with alternative inputs such as a head mouse, or any eye tracker that allows you to control the mouse position with your eyes.</value>
   </data>
   <data name="EYETRACKER_DEPRECATED" xml:space="preserve">
     <value>Your eye tracker is no longer supported</value>
   </data>
   <data name="EYETRACKER_DEPRECATED_DETAILS" xml:space="preserve">
-    <value>Optikey v4 does not support this eye tracker. Optikey will use mouse position instead.
+    <value>Optikey v4 does not support this eye tracker. Optikey will use mouse position instead. 
+
+For more information about Optikey Classic, which supports more eye trackers, visit:
 
 www.optikey.org/supported-eyetrackers</value>
   </data>
