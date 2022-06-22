@@ -95,6 +95,7 @@ namespace InstallerTranslation
             {
                 string value = entry.Value;
                 value = value.Replace("\"", "\\\""); // escape any double quotes
+                value = value.Replace("\r\n", "\\r\\n"); // escape newline 
                 file.WriteLine(entryString, entry.Key, value);
             }
             file.WriteLine("\t\t};");

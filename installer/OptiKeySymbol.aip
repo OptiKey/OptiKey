@@ -33,7 +33,6 @@
     <ROW Directory="CommuniKate_Dir" Directory_Parent="Resources_Dir" DefaultDir="COMMUN~1|CommuniKate"/>
     <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
     <ROW Directory="Dictionaries_Dir" Directory_Parent="Release_Dir" DefaultDir="DICTIO~1|Dictionaries"/>
-    <ROW Directory="DynamicKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
     <ROW Directory="EyeGestures_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYEGES~1|EyeGestures"/>
     <ROW Directory="EyeTrackerSupport_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYETRA~1|EyeTrackerSupport"/>
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
@@ -46,7 +45,6 @@
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
     <ROW Directory="Samples_1_Dir" Directory_Parent="Keyboards_Dir" DefaultDir="Samples"/>
-    <ROW Directory="Samples_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="Samples"/>
     <ROW Directory="Sounds_Dir" Directory_Parent="Resources_Dir" DefaultDir="Sounds"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="caES_Dir" Directory_Parent="Release_Dir" DefaultDir="ca-ES"/>
@@ -139,7 +137,6 @@
     <ROW Component="Prism.dll" ComponentId="{119CF388-D3FF-410D-882C-F9BF7821302A}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.dll"/>
     <ROW Component="ProductInformation" ComponentId="{0BC71145-07ED-4664-9F46-A2B861EB9697}" Directory_="APPDIR" Attributes="260" KeyPath="Version" Options="1"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{E6BC8210-BA53-4785-A615-FE283C7B1A1C}" Directory_="SHORTCUTDIR" Attributes="0"/>
-    <ROW Component="Samples" ComponentId="{15C715FA-88EB-4CBB-909D-B8D1979BBFA1}" Directory_="Samples_Dir" Attributes="0"/>
     <ROW Component="SharpDX.DirectInput.dll" ComponentId="{038D96F3-3451-4424-A4F9-397B909DCE55}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.DirectInput.dll"/>
     <ROW Component="SharpDX.XInput.dll" ComponentId="{D845CC92-7F66-4BCE-A769-B5A62E721AF4}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.XInput.dll"/>
     <ROW Component="SharpDX.dll" ComponentId="{8382AB2B-F0BD-423D-B4E7-CBA1D34EE578}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.dll"/>
@@ -167,12 +164,18 @@
     <ROW Component="WindowsInput.dll" ComponentId="{50D18243-61F8-4ADE-845B-4F6E7E5D17D0}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" ComponentId="{0EF3384E-A195-4D5E-A01F-AA4475B167FC}" Directory_="Release_Dir" Attributes="256" KeyPath="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.dll" ComponentId="{000D7C6C-32B7-435B-BE7F-44375C572673}" Directory_="Release_Dir" Attributes="256" KeyPath="WindowsRecipes.TaskbarSingleInstance.dll"/>
+    <ROW Component="avcodec58.dll" ComponentId="{7F7D4D70-F296-4D32-A3AC-D6607C394F90}" Directory_="Release_Dir" Attributes="256" KeyPath="avcodec58.dll"/>
+    <ROW Component="avdevice58.dll" ComponentId="{952E509A-CE71-4525-BFE9-BE63C4288E8C}" Directory_="Release_Dir" Attributes="256" KeyPath="avdevice58.dll"/>
+    <ROW Component="avfilter7.dll" ComponentId="{D8A24CD0-B6B6-42FE-B5E5-D64CDC21C79C}" Directory_="Release_Dir" Attributes="0" KeyPath="avfilter7.dll"/>
+    <ROW Component="avformat58.dll" ComponentId="{F230E27D-BBAA-4034-ACA6-47484A42A25A}" Directory_="Release_Dir" Attributes="256" KeyPath="avformat58.dll"/>
+    <ROW Component="avutil56.dll" ComponentId="{9BCDE3B3-05E3-4B95-8588-0A0B82D0DF0E}" Directory_="Release_Dir" Attributes="256" KeyPath="avutil56.dll"/>
     <ROW Component="back.png" ComponentId="{2A7A8DB0-CEDB-45F6-9F44-44E31AC9AB52}" Directory_="CommuniKate_Dir" Attributes="0" KeyPath="back.png" Type="0"/>
     <ROW Component="bass.dll" ComponentId="{607CFD54-1B61-4EDE-97A9-E26DE8146FD2}" Directory_="Release_Dir" Attributes="256" KeyPath="bass.dll"/>
     <ROW Component="database.zip" ComponentId="{2F677CE5-A10A-4D4C-993C-80779318847D}" Directory_="Presage_Dir" Attributes="0" KeyPath="database.zip" Type="0"/>
     <ROW Component="log4net.dll" ComponentId="{13B378ED-9A0C-4849-A956-2C4AC4928F13}" Directory_="Release_Dir" Attributes="0" KeyPath="log4net.dll"/>
     <ROW Component="nunit.framework.dll" ComponentId="{F9F21673-F98C-48BB-8767-34AA29B24F36}" Directory_="Release_Dir" Attributes="0" KeyPath="nunit.framework.dll"/>
     <ROW Component="presage.net.dll" ComponentId="{689CF031-61D6-4130-B8F8-FF069B6FF1A8}" Directory_="Release_Dir" Attributes="256" KeyPath="presage.net.dll"/>
+    <ROW Component="swresample3.dll" ComponentId="{02CAF511-4973-4192-A089-9347BDF61272}" Directory_="Release_Dir" Attributes="256" KeyPath="swresample3.dll"/>
     <ROW Component="tobii_stream_engine.dll" ComponentId="{FAC51F73-2E13-45F6-A0A3-CDE49F2EF672}" Directory_="Release_Dir" Attributes="256" KeyPath="tobii_stream_engine.dll"/>
     <ROW Component="tobiitrackers.txt" ComponentId="{4ED75F67-0C1E-466A-8401-8C1456BEE1E1}" Directory_="EyeTrackerSupport_Dir" Attributes="0" KeyPath="tobiitrackers.txt" Type="0"/>
   </COMPONENT>
@@ -386,6 +389,13 @@
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" FileName="WINDOW~3.PDB|WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Component_="Bass.Net.xml" FileName="WINDOW~2.XML|WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.xml" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.xml" Component_="Bass.Net.xml" FileName="WINDOW~3.XML|WindowsRecipes.TaskbarSingleInstance.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\WindowsRecipes.TaskbarSingleInstance.xml" SelfReg="false"/>
+    <ROW File="avcodec58.dll" Component_="avcodec58.dll" FileName="AVCODE~1.DLL|avcodec-58.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\avcodec-58.dll" SelfReg="false"/>
+    <ROW File="avdevice58.dll" Component_="avdevice58.dll" FileName="AVDEVI~1.DLL|avdevice-58.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\avdevice-58.dll" SelfReg="false"/>
+    <ROW File="avfilter7.dll" Component_="avfilter7.dll" FileName="AVFILT~1.DLL|avfilter-7.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\avfilter-7.dll" SelfReg="false"/>
+    <ROW File="avformat58.dll" Component_="avformat58.dll" FileName="AVFORM~1.DLL|avformat-58.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\avformat-58.dll" SelfReg="false"/>
+    <ROW File="avutil56.dll" Component_="avutil56.dll" FileName="AVUTIL~1.DLL|avutil-56.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\avutil-56.dll" SelfReg="false"/>
+    <ROW File="log4net.xml" Component_="Bass.Net.xml" FileName="log4net.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\log4net.xml" SelfReg="false"/>
+    <ROW File="swresample3.dll" Component_="swresample3.dll" FileName="SWRESA~1.DLL|swresample-3.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\swresample-3.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -474,6 +484,45 @@
     <ROW Path="&lt;AI_DICTS&gt;ui_tr.ail"/>
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTracker\EyeTracker_uk.ail"/>
     <ROW Path="&lt;AI_DICTS&gt;ui_uk.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_en.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_en_GB.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_fr.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_es.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_fa.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sq.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ar.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_bg.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ca.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_zh.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_zh_TW.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_hr.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_cs.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_da.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_nl.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_fi.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_de.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_el.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_he.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_hu.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_is.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_id.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_it.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ja.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_kk.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ko.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_nn.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_nb.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_pl.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_pt.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_pt_BR.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ru.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sr_SP_Cyrillic.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sr_SP_Latin.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sk.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sl.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sv.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_tr.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_uk.ail"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
     <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="3c0496c07462e804d3bd4b13d8f40004a4cda39d Subject: Open Source Developer, Julius Sweetland&#10;Issuer: Certum Code Signing CA SHA2&#10;Valid from 02/20/2020 to 02/19/2021&#10;User\MY" CustomToolPath="tools\signtool.exe" CustomToolCmdLine="sign /n &quot;Open Source Developer, Julius Sweetland&quot; /t http://time.certum.pl /fd sha256"/>
@@ -481,6 +530,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
     <ROW Fragment="EyeTracker.aip" Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTracker\EyeTracker.aip"/>
+    <ROW Fragment="EyeTrackerSupportV4.aip" Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4.aip"/>
     <ROW Fragment="LicenseAgreementDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\LicenseAgreementDlg.aip"/>
     <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
     <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
@@ -525,7 +575,8 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="EyeTracker" Control="Text_1" Type="Text" X="31" Y="89" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT" Text="[EYETRACKER_TEXT]" Order="1100" TextLocId="-" MsiKey="EyeTracker#Text_1"/>
-    <ROW Dialog_="EyeTracker" Control="Text_2" Type="Text" X="31" Y="150" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT_EN" Text="[EYETRACKER_TEXT_EN]" Order="1300" TextLocId="-" MsiKey="EyeTracker#Text_2"/>
+    <ROW Dialog_="EyeTracker" Control="Text_2" Type="Text" X="31" Y="150" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT_EN" Text="[EYETRACKER_TEXT_EN]" Order="1200" TextLocId="-" MsiKey="EyeTracker#Text_2"/>
+    <ROW Dialog_="EyeTracker" Control="Hyperlink_1" Type="Hyperlink" X="31" Y="215" Width="225" Height="12" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;http://www.example.com&quot;&gt;Optikey - supported eye trackers&lt;/a&gt;" Order="1400"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
     <ROW Dialog_="NewDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="NewDialog" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
@@ -548,9 +599,10 @@
     <ROW Dialog_="ReadmeDlg" Control="ReadmeText" Type="ScrollableText" X="20" Y="60" Width="330" Height="150" Attributes="7" Text="resources\MESSAGE FOR USER DURING INSTALL.rtf" Order="400" TextLocId="-" MsiKey="ReadmeDlg#ReadmeText"/>
     <ROW Dialog_="VerifyRemoveDlg" Control="Description" Type="Text" X="25" Y="23" Width="294" Height="21" Attributes="196611" Text="You have chosen to remove the program from your computer." Order="900" TextLocId="Control.Text.VerifyRemoveDlg#Description" MsiKey="VerifyRemoveDlg#Description"/>
     <ROW Dialog_="VerifyRepairDlg" Control="Description" Type="Text" X="25" Y="23" Width="294" Height="21" Attributes="196611" Text="The [Wizard] is ready to begin the repair of [ProductName]." Order="900" TextLocId="Control.Text.VerifyRepairDlg#Description" MsiKey="VerifyRepairDlg#Description"/>
+    <ATTRIBUTE name="DeletedRows" value="EyeTracker#Hyperlink_2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
-    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerSupportV4" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
@@ -573,22 +625,25 @@
     <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
     <ROW Dialog_="ReadmeDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="ReadmeDlg" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ReadmeDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerSupportV4" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="WelcomePrereqDlg" Control_="Next" Event="NewDialog" Argument="PrerequisitesDlg" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="PrerequisitesDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="PrerequisitesDlg" Control_="Back" Event="NewDialog" Argument="WelcomePrereqDlg" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="NewSeqDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="EyeTracker" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="EyeTracker" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="PrepareDlg" Control_="Next" Event="DoAction" Argument="PopulateComboBox" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="NewDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="DoAction" Argument="PopulateEyeTrackerCombo.vbs" Condition="1 AND ( AI_COMBOBOX_DATA &lt;&gt; &quot;SUCCESS&quot; )" Ordering="2"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control_="Next" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="2"/>
+    <ROW Dialog_="ReadmeDlg" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="2"/>
+    <ROW Dialog_="EyeTracker" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="1"/>
+    <ROW Dialog_="EyeTracker" Control_="Back" Event="NewDialog" Argument="EyeTrackerSupportV4" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
     <ROW Directory_="Optikey_Dir" Component_="Optikey" ManualDelete="false"/>
-    <ROW Directory_="Samples_Dir" Component_="Samples" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -630,6 +685,7 @@
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFiles64Folder][ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+    <ROW Action="SetNewLine" Type="38" Target="Script Text" TargetUnformatted="Session.Property(&quot;NEWLINE&quot;) = vbLf"/>
     <ROW Action="SetPropertyEyeTrackerSelected" Type="51" Source="EYETRACKER_SELECTED" Target="MousePosition"/>
     <ROW Action="SetPropertyFontFamily" Type="51" Source="SELECTED_FONTFAMILY" Target="&quot;/Resources/Fonts/#Roboto&quot;"/>
     <ROW Action="SetPropertyFontStretch" Type="51" Source="SELECTED_FONTSTRETCH" Target="&quot;Condensed&quot;"/>
@@ -652,7 +708,6 @@
     <ROW Feature_="MainFeature" Component_="Optikey"/>
     <ROW Feature_="MainFeature" Component_="TestControllers.exe"/>
     <ROW Feature_="MainFeature" Component_="TestControllers.exe.config"/>
-    <ROW Feature_="MainFeature" Component_="Samples"/>
     <ROW Feature_="MainFeature" Component_="bass.dll"/>
     <ROW Feature_="MainFeature" Component_="Bass.Net.dll"/>
     <ROW Feature_="MainFeature" Component_="Bass.Net.xml"/>
@@ -738,6 +793,12 @@
     <ROW Feature_="MainFeature" Component_="WindowsInput.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
+    <ROW Feature_="MainFeature" Component_="avcodec58.dll"/>
+    <ROW Feature_="MainFeature" Component_="avdevice58.dll"/>
+    <ROW Feature_="MainFeature" Component_="avfilter7.dll"/>
+    <ROW Feature_="MainFeature" Component_="avformat58.dll"/>
+    <ROW Feature_="MainFeature" Component_="avutil56.dll"/>
+    <ROW Feature_="MainFeature" Component_="swresample3.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Symbol.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\Symbol.ico" Index="0"/>
@@ -771,7 +832,7 @@
     <ROW Action="AI_ResolveKnownFolders" Sequence="58"/>
     <ROW Action="AI_DpiContentScale" Sequence="57"/>
     <ROW Action="AI_EnableDebugLog" Sequence="56"/>
-    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="98"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="SetPropertyLanguageSelected" Sequence="201"/>
@@ -780,6 +841,7 @@
     <ROW Action="SetPropertyFontWeight" Sequence="53"/>
     <ROW Action="SetPropertyFontStretch" Sequence="54"/>
     <ROW Action="OptiKeyProperties" Sequence="51"/>
+    <ROW Action="SetNewLine" Sequence="99"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>

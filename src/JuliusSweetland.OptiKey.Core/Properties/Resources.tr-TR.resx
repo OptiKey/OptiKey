@@ -1612,4 +1612,6 @@ KÜÇÜLT</value>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Sembollerle Haberleşme</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Göz izleyiciniz burada listelenmiyorsa veya 32 bit Optikey sürümüne ihtiyacınız varsa, daha fazla bilgi için lütfen aşağıdaki bağlantıyı tıklayın.
+Kurulumla devam etmek istiyorsanız, Optikey fare konumunuz tarafından kontrol edilecektir. Bu, kafa faresi gibi alternatif girişlerle veya fare konumunu gözlerinizle kontrol etmenizi sağlayan herhangi bir göz izleyicisi ile çalışmasını sağlar.</value></data>
 </root>

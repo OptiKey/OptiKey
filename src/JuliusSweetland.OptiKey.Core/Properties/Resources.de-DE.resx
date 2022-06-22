@@ -2520,4 +2520,6 @@ Magyar
 हिन्दी
 (भारत)</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Wenn Ihr Eye Tracker hier nicht aufgeführt ist oder Sie eine 32 -Bit -Version von Optikey benötigen, klicken Sie bitte auf den Link unten, um weitere Informationen zu erhalten.
+Wenn Sie die Installation fortsetzen möchten, wird Optikey von Ihrer Mausposition gesteuert. Auf diese Weise können Sie mit alternativen Eingaben wie einer Kopfmaus oder einem Augenverfolger arbeiten, mit dem Sie die Mausposition mit Ihren Augen steuern können.</value></data>
 </root>

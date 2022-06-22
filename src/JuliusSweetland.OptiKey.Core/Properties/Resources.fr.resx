@@ -1627,4 +1627,6 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
       <value>Le myGaze Visual Interaction est pris en charge uniquement si vous avez déjà installé les pilotes clients myGaze, qui ne sont plus disponibles pour téléchargement. Si vous ne disposez pas de ces pilotes installés, vous devez sélectionner l'utilisation « position de la souris » au lieu, et utiliser Optikey en combinaison avec l'application myGaze EyeMousePlay pour déplacer le curseur.</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Si votre tracker pour les yeux n'est pas répertorié ici, ou si vous avez besoin d'une version 32 bits d'Optikey, veuillez cliquer sur le lien ci-dessous pour plus d'informations.
+     Si vous souhaitez continuer avec l'installation, Optikey sera contrôlé par la position de votre souris. Cela lui permet de fonctionner avec des entrées alternatives telles qu'une souris de tête ou tout tracker pour les yeux qui vous permet de contrôler la position de la souris avec vos yeux.</value></data>
 </root>

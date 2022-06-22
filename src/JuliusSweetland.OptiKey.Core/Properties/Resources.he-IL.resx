@@ -2385,4 +2385,6 @@ Would you like Optikey to automatically set the font to Nazli?</value>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>תקשורת עם סמלים</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> אם גשש העיניים שלך אינו מופיע כאן, או שאתה זקוק לגרסת 32 סיביות של Optikey, אנא לחץ על הקישור למטה למידע נוסף.
+     אם אתה רוצה להמשיך בהתקנה, Optikey ישלט על ידי מיקום העכבר שלך. זה מאפשר לו לעבוד עם תשומות אלטרנטיביות כמו עכבר ראש, או כל גשש עיניים המאפשר לך לשלוט על מיקום העכבר בעיניים.</value></data>
 </root>

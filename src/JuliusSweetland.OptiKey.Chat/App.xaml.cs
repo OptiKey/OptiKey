@@ -187,6 +187,7 @@ namespace JuliusSweetland.OptiKey.Chat
                     await mainViewModel.RaiseAnyPendingErrorToastNotifications();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService, audioService, mainViewModel);
+                    await AlertIfEyeTrackerDeprecated(inputService, audioService, mainViewModel);
 
                     inputService.RequestResume(); //Start the input service
 

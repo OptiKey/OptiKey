@@ -186,6 +186,7 @@ namespace JuliusSweetland.OptiKey.Symbol
                     await ShowSplashScreen(inputService, audioService, mainViewModel, OptiKey.Properties.Resources.OPTIKEY_SYMBOL_DESCRIPTION);
                     await mainViewModel.RaiseAnyPendingErrorToastNotifications();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
+                    await AlertIfEyeTrackerDeprecated(inputService, audioService, mainViewModel);
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService, audioService, mainViewModel);
 
                     inputService.RequestResume(); //Start the input service

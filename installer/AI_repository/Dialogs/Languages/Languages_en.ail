@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <DICTIONARY type="singlelanguage" lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="dictionary.xsd">
-  <STRING id="Control.Text.Languages#Back" value="[ButtonText_Back]"/>
   <STRING id="Control.Text.Languages#BannerBitmap" value="[BannerBitmap]"/>
-  <STRING id="Control.Text.Languages#Cancel" value="[ButtonText_Cancel]"/>
   <STRING id="Control.Text.Languages#ComboBox_Language" value="{260}"/>
   <STRING id="Control.Text.Languages#Description" value="Please select the main language you&apos;ll be using in Optikey"/>
-  <STRING id="Control.Text.Languages#Logo" value="Advanced Installer"/>
-  <STRING id="Control.Text.Languages#Next" value="[ButtonText_Next]"/>
   <STRING id="Control.Text.Languages#Title" value="Language"/>
-  <STRING id="Dialog.Languages" value="[ProductName] [Setup]"/>
+  <STRING id="Dialog.WelcomeDlg" value="[ProductName] [Setup]"/>
 </DICTIONARY>

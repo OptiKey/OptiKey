@@ -2377,4 +2377,6 @@ Haluatko, että Optikey asettaa automaattisesti fontiksi Nazil?</value>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Viestintä symbolien</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Jos silmäseurantasi ei ole tässä lueteltu tai tarvitset 32 ​​-bittin version Optikeyistä, napsauta alla olevaa linkkiä saadaksesi lisätietoja.
+Jos haluat jatkaa asennuksen kanssa, Optikey ohjataan hiiren sijainnissasi. Tämän avulla se voi toimia vaihtoehtoisilla tuloilla, kuten päähiirellä, tai millä tahansa silmäseurantalaitteella, jonka avulla voit hallita hiiren sijaintia silmilläsi.</value></data>
 </root>
