@@ -168,7 +168,8 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 }
                 else
                 {
-                    details_english = "Automatically translated from original text:\n" + details_english;
+                    details_english = details_english.Replace("\r\n", " "); // remove newlines - there isn't enough space                    
+                    details_english = "Automatically translated from original text: \t" + details_english;
                 }
 
                 session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = details;

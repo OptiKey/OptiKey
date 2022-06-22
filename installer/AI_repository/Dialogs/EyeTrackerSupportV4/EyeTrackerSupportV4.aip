@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FRAGMENT Type="ReadOnly" CreateVersion="19.2" RootPath="." Language="en">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" TextLocId="-" Options="1"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" Options="1"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" TextLocId="-" Options="1"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Order="400" TextLocId="Control.Text.EyeTrackerSupportV4#BannerBitmap"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="Changes to Optikey in V4 upgrade" Order="700" TextLocId="-"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800" TextLocId="-"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Optikey Version 4 - 64 bit application" TextStyle="DlgFontBold8_2325CAB9_3C64_4CDC_A97" Order="900" TextLocId="-"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Text_1" Type="Text" X="31" Y="59" Width="322" Height="117" Attributes="65539" Property="TEXT_1_PROP" Text="Moving to Optikey v4 we have removed support for the following eye trackers. [NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Please click the link below for more information. You may want to download &apos;Optikey Classic&apos; which has support for more eye trackers." Order="1000" TextLocId="-"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Hyperlink_1" Type="Hyperlink" X="31" Y="185" Width="225" Height="26" Attributes="65539" Property="HYPERLINK_1_PROP_1" Text="&lt;a href=&quot;http://www.optikey.org/supported-eyetrackers&quot;&gt;Optikey - supported eye trackers&lt;/a&gt;" Order="1100" TextLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="EyeTrackerSupportV4" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
+    <ROW Dialog="EyeTrackerSupportV4" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiTextStyleComponent">
+    <ROW TextStyle="DlgFontBold8_2325CAB9_3C64_4CDC_A97" FaceName="Tahoma" Size="8" Color="0" StyleBits="1"/>
+  </COMPONENT>
+</FRAGMENT>

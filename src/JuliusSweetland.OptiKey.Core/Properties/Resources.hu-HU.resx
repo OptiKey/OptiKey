@@ -2372,4 +2372,6 @@ Persian
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Symbol közleménye</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Ha a szemkövető nem szerepel itt, vagy szüksége van egy 32 bites verzióra az Optikey -ről, kérjük, kattintson az alábbi linkre.
+Ha folytatni szeretné a telepítést, az Optikey -t az egér pozíciója irányítja. Ez lehetővé teszi, hogy alternatív bemenetekkel, például fej egérrel vagy bármilyen szemkövetővel működjön, amely lehetővé teszi az egér helyzetének a szemével történő irányítását.</value></data>
 </root>

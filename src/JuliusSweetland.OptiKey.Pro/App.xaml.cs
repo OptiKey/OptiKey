@@ -203,6 +203,7 @@ namespace JuliusSweetland.OptiKey.Pro
                     await ShowSplashScreen(inputService, audioService, mainViewModel, OptiKey.Properties.Resources.OPTIKEY_PRO_DESCRIPTION);
                     await mainViewModel.RaiseAnyPendingErrorToastNotifications();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
+                    await AlertIfEyeTrackerDeprecated(inputService, audioService, mainViewModel);
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService,
                         audioService, mainViewModel);
 

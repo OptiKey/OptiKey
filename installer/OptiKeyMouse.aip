@@ -33,7 +33,6 @@
     <ROW Directory="CommuniKate_Dir" Directory_Parent="Resources_Dir" DefaultDir="COMMUN~1|CommuniKate"/>
     <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
     <ROW Directory="Dictionaries_Dir" Directory_Parent="Release_Dir" DefaultDir="DICTIO~1|Dictionaries"/>
-    <ROW Directory="DynamicKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
     <ROW Directory="EyeGestures_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYEGES~1|EyeGestures"/>
     <ROW Directory="EyeTrackerSupport_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYETRA~1|EyeTrackerSupport"/>
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
@@ -46,7 +45,6 @@
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
     <ROW Directory="Samples_1_Dir" Directory_Parent="Keyboards_Dir" DefaultDir="Samples"/>
-    <ROW Directory="Samples_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="Samples"/>
     <ROW Directory="Sounds_Dir" Directory_Parent="Resources_Dir" DefaultDir="Sounds"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="caES_Dir" Directory_Parent="Release_Dir" DefaultDir="ca-ES"/>
@@ -81,100 +79,105 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="AI_ExePath" ComponentId="{9D82EA2B-C171-42D8-AC8F-44F4F9C2D6A0}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
     <ROW Component="APPDIR" ComponentId="{E663649D-123D-4E43-BC8A-8AF062C99223}" Directory_="APPDIR" Attributes="0"/>
-    <ROW Component="AltAlphaHorizontalKeyboard.xml" ComponentId="{87176A25-5509-401A-963F-18BA85F22065}" Directory_="Keyboards_Dir" Attributes="0" KeyPath="AltAlphaHorizontalKeyboard.xml" Type="0"/>
-    <ROW Component="Attention.wav" ComponentId="{4A19C1DA-141E-4AFA-ACF7-79A9C9D6A34A}" Directory_="Sounds_Dir" Attributes="0" KeyPath="Attention.wav" Type="0"/>
-    <ROW Component="B612licenceeplv10.html" ComponentId="{1C628E61-C1AE-4ED2-9F0A-4F1A069991D1}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
-    <ROW Component="Bass.Net.dll" ComponentId="{6F6E240E-5FC7-48CE-AB7E-1C21EF449B80}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.dll"/>
-    <ROW Component="Bass.Net.xml" ComponentId="{D068BA9F-5795-4B0A-9DD1-CF54F0BEF358}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.xml" Type="0"/>
-    <ROW Component="CatalanSpain.dic" ComponentId="{61E7BB67-609A-447A-B5F3-1FC2975780EF}" Directory_="Dictionaries_Dir" Attributes="0" KeyPath="CatalanSpain.dic" Type="0"/>
-    <ROW Component="ControlzEx.dll" ComponentId="{631AA722-41D9-46A9-92BC-B9FB60CE890E}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
-    <ROW Component="Demo_Bottom.xml" ComponentId="{69187152-9BB5-4F3B-BA14-A3712D1BDDA1}" Directory_="Samples_1_Dir" Attributes="0" KeyPath="Demo_Bottom.xml" Type="0"/>
-    <ROW Component="EyeGestures.xml" ComponentId="{59BBA9BD-4255-4024-A8AC-691B4439F748}" Directory_="EyeGestures_Dir" Attributes="0" KeyPath="EyeGestures.xml" Type="0"/>
-    <ROW Component="EyeXFramework.dll" ComponentId="{4D331606-3F12-4421-AA39-34939EBC920E}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
-    <ROW Component="Interop.SpeechLib.dll" ComponentId="{379C9D02-F107-4538-8C52-1F5D33F1AB22}" Directory_="Release_Dir" Attributes="256" KeyPath="Interop.SpeechLib.dll"/>
-    <ROW Component="IrisbondAPI.dll" ComponentId="{BA1360AC-AFC6-4225-839F-27D0FAA072E4}" Directory_="Release_Dir" Attributes="256" KeyPath="IrisbondAPI.dll"/>
-    <ROW Component="IrisbondHiruAPI.dll" ComponentId="{70F2E4D6-FF4C-428D-B0C1-7F8F60F8988E}" Directory_="Release_Dir" Attributes="256" KeyPath="IrisbondHiruAPI.dll"/>
-    <ROW Component="MahApps.Metro.dll" ComponentId="{6FFFB998-8689-4D49-8A0B-EC554513542C}" Directory_="Release_Dir" Attributes="0" KeyPath="MahApps.Metro.dll"/>
-    <ROW Component="Microsoft.Expression.Interactions.dll" ComponentId="{FAC4D5AD-D660-498C-8F92-7FAF1E9D4008}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Expression.Interactions.dll"/>
-    <ROW Component="Microsoft.Practices.ServiceLocation.dll" ComponentId="{6E249B00-91EF-4FC5-8AEA-B2557B8DB94E}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Practices.ServiceLocation.dll"/>
-    <ROW Component="MouseKeyboardActivityMonitor.dll" ComponentId="{D269ECCC-DED5-4C92-9F35-6F826BDF705C}" Directory_="Release_Dir" Attributes="0" KeyPath="MouseKeyboardActivityMonitor.dll"/>
-    <ROW Component="NBug.dll" ComponentId="{0BA4946C-EA02-4C80-93FE-AE9951B7514F}" Directory_="Release_Dir" Attributes="0" KeyPath="NBug.dll"/>
-    <ROW Component="Newtonsoft.Json.dll" ComponentId="{6C98F2EE-F1D8-4435-9AA3-18F4F493F108}" Directory_="Release_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
-    <ROW Component="Octokit.dll" ComponentId="{2C48B76C-C91E-4FE0-8C09-CFDE8A382057}" Directory_="Release_Dir" Attributes="0" KeyPath="Octokit.dll"/>
-    <ROW Component="OptiKey.dll" ComponentId="{819BA450-251B-4961-8A5B-113AAE7C22DC}" Directory_="Release_Dir" Attributes="256" KeyPath="OptiKey.dll"/>
-    <ROW Component="OptiKey.resources.dll" ComponentId="{A0F816F4-563C-419C-8889-123EEC035C6D}" Directory_="caES_Dir" Attributes="256" KeyPath="OptiKey.resources.dll"/>
-    <ROW Component="OptiKey.resources.dll_1" ComponentId="{B70E9467-C340-4229-9BAE-02E90F07072D}" Directory_="csCZ_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_1"/>
-    <ROW Component="OptiKey.resources.dll_10" ComponentId="{7840BD5C-05B0-446F-BA48-C8643E9319E0}" Directory_="heIL_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_10"/>
-    <ROW Component="OptiKey.resources.dll_11" ComponentId="{8DED165D-6952-46CA-B616-48D89DF7FA44}" Directory_="hiIN_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_11"/>
-    <ROW Component="OptiKey.resources.dll_12" ComponentId="{308D5CBD-D889-4111-B3B0-637C1E11329F}" Directory_="hrHR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_12"/>
-    <ROW Component="OptiKey.resources.dll_13" ComponentId="{99018E37-8701-40B0-A008-842B8F42FD1B}" Directory_="huHU_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_13"/>
-    <ROW Component="OptiKey.resources.dll_14" ComponentId="{EB3D742F-819C-4A94-A8CE-C684F884898F}" Directory_="itIT_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_14"/>
-    <ROW Component="OptiKey.resources.dll_15" ComponentId="{8671C171-F336-4268-9096-62638C22C811}" Directory_="jaJP_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_15"/>
-    <ROW Component="OptiKey.resources.dll_16" ComponentId="{6C71E87E-9914-453B-BC5F-C87CFB80B188}" Directory_="kaGE_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_16"/>
-    <ROW Component="OptiKey.resources.dll_17" ComponentId="{A0C19088-6A90-4924-86F4-9BB5135A6CFF}" Directory_="koKR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_17"/>
-    <ROW Component="OptiKey.resources.dll_18" ComponentId="{295F5F8E-45EB-44ED-BBB5-BCFFE6D03F7C}" Directory_="nl_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_18"/>
-    <ROW Component="OptiKey.resources.dll_19" ComponentId="{21F74569-9A4A-4F83-BF9E-27577AC8750B}" Directory_="plPL_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_19"/>
-    <ROW Component="OptiKey.resources.dll_2" ComponentId="{3DDC1312-CC2B-4611-9FCB-CB1A40D281D6}" Directory_="daDK_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_2"/>
-    <ROW Component="OptiKey.resources.dll_20" ComponentId="{F826CC07-A786-4192-B5C5-0A859DF0D91C}" Directory_="ptPT_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_20"/>
-    <ROW Component="OptiKey.resources.dll_21" ComponentId="{E2130D4A-4D88-4F53-92CA-3E59A5883DC8}" Directory_="ruRU_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_21"/>
-    <ROW Component="OptiKey.resources.dll_22" ComponentId="{4CE69C65-3A54-4D97-AB6C-6535EB0B01BD}" Directory_="skSK_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_22"/>
-    <ROW Component="OptiKey.resources.dll_23" ComponentId="{8F4C745E-5FEC-42B4-B25B-6598CE21B47F}" Directory_="slSI_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_23"/>
-    <ROW Component="OptiKey.resources.dll_24" ComponentId="{A7E87994-373B-402C-9FA0-B6EDCA386DF4}" Directory_="srCyrlRS_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_24"/>
-    <ROW Component="OptiKey.resources.dll_25" ComponentId="{55E2B9DC-7A6D-4EDA-9644-CAEBDE650EA0}" Directory_="trTR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_25"/>
-    <ROW Component="OptiKey.resources.dll_26" ComponentId="{9DB67422-B866-46D9-BC33-731DE84A468A}" Directory_="ukUA_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_26"/>
-    <ROW Component="OptiKey.resources.dll_27" ComponentId="{5857EF68-07AA-45E3-ABDC-155AC2260C91}" Directory_="urPK_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_27"/>
-    <ROW Component="OptiKey.resources.dll_3" ComponentId="{361E755B-25DB-477C-868B-E1002D42A960}" Directory_="deDE_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_3"/>
-    <ROW Component="OptiKey.resources.dll_4" ComponentId="{980B96E9-D13F-4706-9CA4-65D8CF208093}" Directory_="elGR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_4"/>
-    <ROW Component="OptiKey.resources.dll_5" ComponentId="{ECA7D307-C5B2-4842-8120-CB2A2853445E}" Directory_="enUS_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_5"/>
-    <ROW Component="OptiKey.resources.dll_6" ComponentId="{1B1EA4C1-25F9-46C2-90B5-E05723F02012}" Directory_="esES_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_6"/>
-    <ROW Component="OptiKey.resources.dll_7" ComponentId="{4E77AD32-D66C-451B-A6A8-426A09830372}" Directory_="fa_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_7"/>
-    <ROW Component="OptiKey.resources.dll_8" ComponentId="{4CF3BE63-71DB-43C7-A1C3-AEFD65637C6A}" Directory_="fiFI_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_8"/>
-    <ROW Component="OptiKey.resources.dll_9" ComponentId="{7CF4F6FC-2B40-4E5A-8721-68D2A4305BEA}" Directory_="fr_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_9"/>
-    <ROW Component="OptiKeyStandardPlugins.dll" ComponentId="{3180898C-EFF4-4D0E-9C43-F97B83787586}" Directory_="Release_Dir" Attributes="256" KeyPath="OptiKeyStandardPlugins.dll"/>
+    <ROW Component="AltAlphaHorizontalKeyboard.xml" ComponentId="{49FD49A5-4201-4FDF-A532-6BAEB57660B0}" Directory_="Keyboards_Dir" Attributes="0" KeyPath="AltAlphaHorizontalKeyboard.xml" Type="0"/>
+    <ROW Component="Attention.wav" ComponentId="{F94E616A-8A76-45A5-BF11-1E1645EC2A71}" Directory_="Sounds_Dir" Attributes="0" KeyPath="Attention.wav" Type="0"/>
+    <ROW Component="B612licenceeplv10.html" ComponentId="{D744C181-F9B0-423C-92F4-4EAC6DAC0264}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
+    <ROW Component="Bass.Net.dll" ComponentId="{0142AB12-F2AF-45F0-B55B-B98A9D595786}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.dll"/>
+    <ROW Component="Bass.Net.xml" ComponentId="{5375900F-85F6-48E2-BB6B-5F0DB448A04C}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.xml" Type="0"/>
+    <ROW Component="CatalanSpain.dic" ComponentId="{0861D9FF-B2E4-4543-85E0-025B3E94EDAB}" Directory_="Dictionaries_Dir" Attributes="0" KeyPath="CatalanSpain.dic" Type="0"/>
+    <ROW Component="ControlzEx.dll" ComponentId="{66DFB9BB-DD3B-4AF8-9CCB-D3A1375C905E}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
+    <ROW Component="Demo_Bottom.xml" ComponentId="{F3FA0534-C5DB-4146-9BC7-DFE7DB41870C}" Directory_="Samples_1_Dir" Attributes="0" KeyPath="Demo_Bottom.xml" Type="0"/>
+    <ROW Component="EyeGestures.xml" ComponentId="{909F07E2-F682-4F2A-A87C-687E3C234615}" Directory_="EyeGestures_Dir" Attributes="0" KeyPath="EyeGestures.xml" Type="0"/>
+    <ROW Component="EyeXFramework.dll" ComponentId="{E6493134-1704-439F-8423-B2FC28F76857}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
+    <ROW Component="Interop.SpeechLib.dll" ComponentId="{4F7784CB-2129-436A-A3BC-BFA5AC2C46D8}" Directory_="Release_Dir" Attributes="256" KeyPath="Interop.SpeechLib.dll"/>
+    <ROW Component="IrisbondAPI.dll" ComponentId="{5064B573-CE70-47C1-86A4-DD954D84216B}" Directory_="Release_Dir" Attributes="256" KeyPath="IrisbondAPI.dll"/>
+    <ROW Component="IrisbondHiruAPI.dll" ComponentId="{ED4E145E-8606-47CE-992C-081AC1019CEF}" Directory_="Release_Dir" Attributes="256" KeyPath="IrisbondHiruAPI.dll"/>
+    <ROW Component="MahApps.Metro.dll" ComponentId="{0FE7CC7C-56B8-4BE0-A81B-30D2083842CD}" Directory_="Release_Dir" Attributes="0" KeyPath="MahApps.Metro.dll"/>
+    <ROW Component="Microsoft.Expression.Interactions.dll" ComponentId="{CE3C0126-9A64-4235-9817-C96CC02928AB}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Expression.Interactions.dll"/>
+    <ROW Component="Microsoft.Practices.ServiceLocation.dll" ComponentId="{04326A33-EB82-4F2B-955D-EAF8DE329249}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Practices.ServiceLocation.dll"/>
+    <ROW Component="MouseKeyboardActivityMonitor.dll" ComponentId="{C5F1F511-BA4D-4EEF-9317-C7C602580A0A}" Directory_="Release_Dir" Attributes="0" KeyPath="MouseKeyboardActivityMonitor.dll"/>
+    <ROW Component="NBug.dll" ComponentId="{6E1EB0D6-6408-49BE-8C26-C211855E19B7}" Directory_="Release_Dir" Attributes="0" KeyPath="NBug.dll"/>
+    <ROW Component="Newtonsoft.Json.dll" ComponentId="{8BE0FA1E-E05D-4B6F-81A5-EC90B93C7E3E}" Directory_="Release_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
+    <ROW Component="Octokit.dll" ComponentId="{E700ADBF-C99B-48CD-A3DB-222761F615C5}" Directory_="Release_Dir" Attributes="0" KeyPath="Octokit.dll"/>
+    <ROW Component="OptiKey.dll" ComponentId="{D8018A4C-FBB9-4005-9C6B-EC83FC14D6D3}" Directory_="Release_Dir" Attributes="256" KeyPath="OptiKey.dll"/>
+    <ROW Component="OptiKey.resources.dll" ComponentId="{D3526D62-FE3F-4CEC-9F72-92DE72057E50}" Directory_="caES_Dir" Attributes="256" KeyPath="OptiKey.resources.dll"/>
+    <ROW Component="OptiKey.resources.dll_1" ComponentId="{005264DE-458C-4692-BF41-F8FC1FA44CA7}" Directory_="csCZ_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_1"/>
+    <ROW Component="OptiKey.resources.dll_10" ComponentId="{3F29787B-1E92-432A-90B9-A86ECAA947E1}" Directory_="heIL_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_10"/>
+    <ROW Component="OptiKey.resources.dll_11" ComponentId="{0CF108F0-100C-44A6-8CA0-74F7DA4B7C9D}" Directory_="hiIN_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_11"/>
+    <ROW Component="OptiKey.resources.dll_12" ComponentId="{847FAB21-1D89-4498-987F-B0604186B6B6}" Directory_="hrHR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_12"/>
+    <ROW Component="OptiKey.resources.dll_13" ComponentId="{B6F9801D-ED87-4BE0-8647-72BB9825D199}" Directory_="huHU_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_13"/>
+    <ROW Component="OptiKey.resources.dll_14" ComponentId="{2DD3BA28-651D-4E2F-B9AB-9F0EB1829DBB}" Directory_="itIT_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_14"/>
+    <ROW Component="OptiKey.resources.dll_15" ComponentId="{EF85856C-4D00-4154-88CC-A9CE2204DC65}" Directory_="jaJP_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_15"/>
+    <ROW Component="OptiKey.resources.dll_16" ComponentId="{63D43105-E411-483B-8AA4-AFF496C63005}" Directory_="kaGE_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_16"/>
+    <ROW Component="OptiKey.resources.dll_17" ComponentId="{36DFB0A5-0E31-49C3-B4B2-E5C117AFB738}" Directory_="koKR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_17"/>
+    <ROW Component="OptiKey.resources.dll_18" ComponentId="{63D94158-C615-47A9-8326-600BA172BF3A}" Directory_="nl_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_18"/>
+    <ROW Component="OptiKey.resources.dll_19" ComponentId="{4CDD2D9F-076C-4614-A3D3-DBAB8103706B}" Directory_="plPL_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_19"/>
+    <ROW Component="OptiKey.resources.dll_2" ComponentId="{68B311D7-9FDA-4782-939D-31362E9CBDF1}" Directory_="daDK_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_2"/>
+    <ROW Component="OptiKey.resources.dll_20" ComponentId="{42E3CC4D-33D6-44AE-BC81-51B8588E6848}" Directory_="ptPT_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_20"/>
+    <ROW Component="OptiKey.resources.dll_21" ComponentId="{51CE53C1-B0B0-4D77-8B73-D135BFB4CFC0}" Directory_="ruRU_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_21"/>
+    <ROW Component="OptiKey.resources.dll_22" ComponentId="{9B1D0DED-3E9D-4710-849F-E24DC37E2E9A}" Directory_="skSK_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_22"/>
+    <ROW Component="OptiKey.resources.dll_23" ComponentId="{5738D2A0-964C-42DC-A1D7-3D58C15D5AA5}" Directory_="slSI_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_23"/>
+    <ROW Component="OptiKey.resources.dll_24" ComponentId="{3B0DC4D2-ED73-41EF-98CE-0C20D7948A34}" Directory_="srCyrlRS_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_24"/>
+    <ROW Component="OptiKey.resources.dll_25" ComponentId="{3E041A1D-E4B4-47F3-8D2C-21E7AE080758}" Directory_="trTR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_25"/>
+    <ROW Component="OptiKey.resources.dll_26" ComponentId="{3BB09EBE-3570-4AEE-9E7A-C62EA1E01BC1}" Directory_="ukUA_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_26"/>
+    <ROW Component="OptiKey.resources.dll_27" ComponentId="{557F604B-23F5-43EB-A003-3B87332D0216}" Directory_="urPK_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_27"/>
+    <ROW Component="OptiKey.resources.dll_3" ComponentId="{47B2DB5D-84EA-4EE7-B922-DDF9A97017E7}" Directory_="deDE_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_3"/>
+    <ROW Component="OptiKey.resources.dll_4" ComponentId="{0325E4AE-2D5C-4097-9A3F-3446FBD2CB94}" Directory_="elGR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_4"/>
+    <ROW Component="OptiKey.resources.dll_5" ComponentId="{A83221CA-BB4D-4D98-B510-C54D71198AF7}" Directory_="enUS_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_5"/>
+    <ROW Component="OptiKey.resources.dll_6" ComponentId="{E054E0DA-7507-4779-8EE3-77AB50DE5893}" Directory_="esES_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_6"/>
+    <ROW Component="OptiKey.resources.dll_7" ComponentId="{61265A29-ECAE-4D18-8C01-52C6E06EBAA5}" Directory_="fa_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_7"/>
+    <ROW Component="OptiKey.resources.dll_8" ComponentId="{F010790D-5F62-4338-A814-B34FEBA67BCC}" Directory_="fiFI_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_8"/>
+    <ROW Component="OptiKey.resources.dll_9" ComponentId="{EA3828A7-C6A4-431E-8B6B-A2F7E8E5C7EB}" Directory_="fr_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_9"/>
+    <ROW Component="OptiKeyStandardPlugins.dll" ComponentId="{4B71D00C-FD7A-453A-944E-022BFDA9DCE3}" Directory_="Release_Dir" Attributes="256" KeyPath="OptiKeyStandardPlugins.dll"/>
     <ROW Component="OptiKeyStandardPlugins.dll_1" ComponentId="{9585B2F7-E9AB-4AB5-8A9B-8082FD2628C7}" Directory_="Plugins_Dir" Attributes="256" KeyPath="OptiKeyStandardPlugins.dll_1"/>
     <ROW Component="Optikey" ComponentId="{1AB60262-9278-439A-BEE6-43E745F14C75}" Directory_="Optikey_Dir" Attributes="0"/>
     <ROW Component="OptikeyMouse.exe" ComponentId="{D8B0EA00-BE69-46E7-B2FF-999B857BCF81}" Directory_="Release_Dir" Attributes="0" KeyPath="OptikeyMouse.exe"/>
-    <ROW Component="PGRFlyCapture.dll" ComponentId="{9E42E9D0-621C-4554-AEF2-F62EE49C5BDC}" Directory_="Release_Dir" Attributes="256" KeyPath="PGRFlyCapture.dll"/>
-    <ROW Component="Prism.Wpf.dll" ComponentId="{2FA15F86-D6BD-4D6F-9193-412A3BBF406C}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.Wpf.dll"/>
-    <ROW Component="Prism.dll" ComponentId="{F3F9EC2E-D5DD-4F71-8DF4-183FB8CD21BD}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.dll"/>
+    <ROW Component="PGRFlyCapture.dll" ComponentId="{7FF496F9-8B49-47D4-8DE6-818560236FFE}" Directory_="Release_Dir" Attributes="256" KeyPath="PGRFlyCapture.dll"/>
+    <ROW Component="Prism.Wpf.dll" ComponentId="{F4A0C071-A4E8-40F6-9CB2-EF1056A71ACC}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.Wpf.dll"/>
+    <ROW Component="Prism.dll" ComponentId="{89202B5D-EC9F-44B8-8BE7-A5B9E65C46B1}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.dll"/>
     <ROW Component="ProductInformation" ComponentId="{C2761899-8276-44EF-97D2-7BBA1706707B}" Directory_="APPDIR" Attributes="260" KeyPath="Version"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{6C206CA4-1A62-45A2-BD2F-6D564844F600}" Directory_="SHORTCUTDIR" Attributes="0"/>
-    <ROW Component="Samples" ComponentId="{3FC1FD17-2743-436A-A6E1-387BB541A480}" Directory_="Samples_Dir" Attributes="0"/>
-    <ROW Component="SharpDX.DirectInput.dll" ComponentId="{A6BD64AF-E8F0-4EEE-804A-1E8EAF058F0F}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.DirectInput.dll"/>
-    <ROW Component="SharpDX.XInput.dll" ComponentId="{5888F438-6EE5-4188-9715-BC9935977A11}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.XInput.dll"/>
-    <ROW Component="SharpDX.dll" ComponentId="{BBC5AD84-882D-4B34-A6C6-BD6C209B5317}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.dll"/>
-    <ROW Component="SharpVectors.Converters.dll" ComponentId="{D3BD1766-0EA8-44B9-B370-EE6FDFC2CA39}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Converters.dll"/>
-    <ROW Component="SharpVectors.Core.dll" ComponentId="{DDCC808F-AED2-43E9-94AE-EBA81F305F42}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Core.dll"/>
-    <ROW Component="SharpVectors.Css.dll" ComponentId="{53F40A58-BA05-46BA-B0C5-CFBA526F2AD1}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Css.dll"/>
-    <ROW Component="SharpVectors.Dom.dll" ComponentId="{AC430032-4C01-4810-A51A-F186837A0416}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Dom.dll"/>
-    <ROW Component="SharpVectors.Model.dll" ComponentId="{CF275A7F-68E6-4C6B-A882-3D665C49E52D}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Model.dll"/>
-    <ROW Component="SharpVectors.Rendering.Gdi.dll" ComponentId="{3AB92188-875C-4C2E-93CA-ADF4C95D5F0A}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Gdi.dll"/>
-    <ROW Component="SharpVectors.Rendering.Wpf.dll" ComponentId="{32DC3F85-ED89-4A99-9755-7A890EEED9B6}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Wpf.dll"/>
-    <ROW Component="SharpVectors.Runtime.dll" ComponentId="{EEC79016-28EC-4AFB-9D68-BDAD048DC27B}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Runtime.dll"/>
-    <ROW Component="System.IO.Compression.dll" ComponentId="{78BAF3EC-664A-4969-B20D-7003C221DB4D}" Directory_="Release_Dir" Attributes="0" KeyPath="System.IO.Compression.dll"/>
-    <ROW Component="System.Reactive.Core.dll" ComponentId="{21B5BBF8-E4BE-4A39-AECA-E1A4C525D270}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Core.dll"/>
-    <ROW Component="System.Reactive.Interfaces.dll" ComponentId="{A4AB9E9E-AC92-4D0D-AAAC-DC75578AD7D2}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Interfaces.dll"/>
-    <ROW Component="System.Reactive.Linq.dll" ComponentId="{7B00DE96-CC8F-4620-9ADB-BB66392734AF}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Linq.dll"/>
-    <ROW Component="System.Reactive.PlatformServices.dll" ComponentId="{B4B7D52B-6D89-4A6B-9776-6B1F70F1C9D8}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.PlatformServices.dll"/>
-    <ROW Component="System.Reactive.Windows.Threading.dll" ComponentId="{868973F9-796D-4374-A161-6E969F16659A}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Windows.Threading.dll"/>
-    <ROW Component="System.Windows.Interactivity.dll" ComponentId="{13409385-DE7F-4787-BB1F-E105AF94F309}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.dll"/>
-    <ROW Component="TETCSharpClient.dll" ComponentId="{4EF9490C-8926-4224-9762-DD5E31FA8101}" Directory_="Release_Dir" Attributes="0" KeyPath="TETCSharpClient.dll"/>
-    <ROW Component="TETControls.dll" ComponentId="{A500BB52-E5FD-4469-AA38-0AFF2924B0F7}" Directory_="Release_Dir" Attributes="0" KeyPath="TETControls.dll"/>
+    <ROW Component="SharpDX.DirectInput.dll" ComponentId="{FF8B8775-DD20-4F10-AB2C-A096584D2C92}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.DirectInput.dll"/>
+    <ROW Component="SharpDX.XInput.dll" ComponentId="{761F240F-420D-474F-9370-B79DD80691AB}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.XInput.dll"/>
+    <ROW Component="SharpDX.dll" ComponentId="{06EA94C1-7B38-45A7-A238-97BC16E0D180}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.dll"/>
+    <ROW Component="SharpVectors.Converters.dll" ComponentId="{BB306D8D-EFE4-43F0-81B6-89D0F2D18F24}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Converters.dll"/>
+    <ROW Component="SharpVectors.Core.dll" ComponentId="{D5E7A833-A0B0-47F8-A90D-C505F898E93E}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Core.dll"/>
+    <ROW Component="SharpVectors.Css.dll" ComponentId="{4EADD4BF-FE96-4FE9-AC6B-E08ADAA6158A}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Css.dll"/>
+    <ROW Component="SharpVectors.Dom.dll" ComponentId="{A6351CB2-FD0E-4D7E-BC9F-2F4F7F5F58A0}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Dom.dll"/>
+    <ROW Component="SharpVectors.Model.dll" ComponentId="{12923543-AB0E-4304-996C-EFF59608431A}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Model.dll"/>
+    <ROW Component="SharpVectors.Rendering.Gdi.dll" ComponentId="{177B768B-85B1-4022-B0F6-9457A75ECC5D}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Gdi.dll"/>
+    <ROW Component="SharpVectors.Rendering.Wpf.dll" ComponentId="{7E915798-1B4E-4EAE-809C-741DF5E18708}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Rendering.Wpf.dll"/>
+    <ROW Component="SharpVectors.Runtime.dll" ComponentId="{A6F2319F-EF0C-431E-90D0-BB1E6C5FAED9}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpVectors.Runtime.dll"/>
+    <ROW Component="System.IO.Compression.dll" ComponentId="{91654213-FCF9-4E64-AB17-F16A3A4DD314}" Directory_="Release_Dir" Attributes="0" KeyPath="System.IO.Compression.dll"/>
+    <ROW Component="System.Reactive.Core.dll" ComponentId="{86E97458-784C-4C78-9AF6-78D4AED88F4C}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Core.dll"/>
+    <ROW Component="System.Reactive.Interfaces.dll" ComponentId="{E12AF089-95A7-4C37-9EF2-9005F5D3524D}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Interfaces.dll"/>
+    <ROW Component="System.Reactive.Linq.dll" ComponentId="{538CBBC3-4ED1-4CFE-BB3C-9EDF1A488206}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Linq.dll"/>
+    <ROW Component="System.Reactive.PlatformServices.dll" ComponentId="{969D20C6-2E93-4E09-8440-B33D632D7FA7}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.PlatformServices.dll"/>
+    <ROW Component="System.Reactive.Windows.Threading.dll" ComponentId="{B8C9DF0C-4399-4169-B199-59479C7E9C54}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Windows.Threading.dll"/>
+    <ROW Component="System.Windows.Interactivity.dll" ComponentId="{D32A8E09-DC59-4664-A2C4-E77CC6C64BCF}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.dll"/>
+    <ROW Component="TETCSharpClient.dll" ComponentId="{4869ACC1-03FD-4788-BE8F-3F6E92C1A592}" Directory_="Release_Dir" Attributes="0" KeyPath="TETCSharpClient.dll"/>
+    <ROW Component="TETControls.dll" ComponentId="{5BBD677C-67AB-4DFB-9FB0-E284D983281E}" Directory_="Release_Dir" Attributes="0" KeyPath="TETControls.dll"/>
     <ROW Component="TestControllers.exe" ComponentId="{7D389CE1-C07E-45C1-BED1-C2E47E768B38}" Directory_="APPDIR" Attributes="0" KeyPath="TestControllers.exe"/>
     <ROW Component="TestControllers.exe.config" ComponentId="{E046EAC5-898E-48C6-A368-56F985174661}" Directory_="APPDIR" Attributes="0" KeyPath="TestControllers.exe.config" Type="0"/>
-    <ROW Component="Tobii.EyeX.Client.Net20.dll" ComponentId="{02A23F08-86E9-456A-957D-A69CED513710}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.Net20.dll"/>
-    <ROW Component="Tobii.EyeX.Client.dll" ComponentId="{3D7CBF9A-DC4A-4E4D-860F-8A9581820078}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll"/>
-    <ROW Component="WindowsInput.dll" ComponentId="{49F542B4-24F1-4041-AE99-CAE5BDDA20E9}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
-    <ROW Component="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" ComponentId="{AFFF0B71-A1F0-4061-9FB1-373EAF7D0F8E}" Directory_="Release_Dir" Attributes="256" KeyPath="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
-    <ROW Component="WindowsRecipes.TaskbarSingleInstance.dll" ComponentId="{1052BB1C-A79A-4D1D-96ED-A6C820646FAF}" Directory_="Release_Dir" Attributes="256" KeyPath="WindowsRecipes.TaskbarSingleInstance.dll"/>
-    <ROW Component="back.png" ComponentId="{639304A9-2B5E-40E1-8178-4CB7D64F7D64}" Directory_="CommuniKate_Dir" Attributes="0" KeyPath="back.png" Type="0"/>
-    <ROW Component="bass.dll" ComponentId="{997696DC-BB0B-420A-931E-DD27AD631220}" Directory_="Release_Dir" Attributes="256" KeyPath="bass.dll"/>
-    <ROW Component="database.zip" ComponentId="{6E2D0AA3-0B42-4EFC-9839-B37EF0CF67DD}" Directory_="Presage_Dir" Attributes="0" KeyPath="database.zip" Type="0"/>
+    <ROW Component="Tobii.EyeX.Client.Net20.dll" ComponentId="{1CF0AF05-7E50-40CE-B5C8-65C3522964BF}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.Net20.dll"/>
+    <ROW Component="Tobii.EyeX.Client.dll" ComponentId="{99332B36-3016-42EB-9142-B5447812A5C7}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll"/>
+    <ROW Component="WindowsInput.dll" ComponentId="{D94DBDB3-7D29-4CFD-9AF0-3908B9EB3B2A}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
+    <ROW Component="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" ComponentId="{0DD2748F-D3DB-4A94-AE3E-4575B02B413A}" Directory_="Release_Dir" Attributes="256" KeyPath="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
+    <ROW Component="WindowsRecipes.TaskbarSingleInstance.dll" ComponentId="{D8F5E9EF-1DC3-4EA1-B6FF-3B19685203CD}" Directory_="Release_Dir" Attributes="256" KeyPath="WindowsRecipes.TaskbarSingleInstance.dll"/>
+    <ROW Component="avcodec58.dll" ComponentId="{13C51FD1-F145-46E1-AAF2-A800831D5191}" Directory_="Release_Dir" Attributes="256" KeyPath="avcodec58.dll"/>
+    <ROW Component="avdevice58.dll" ComponentId="{4776D9AE-70B2-4B31-865A-441DA92232E8}" Directory_="Release_Dir" Attributes="256" KeyPath="avdevice58.dll"/>
+    <ROW Component="avfilter7.dll" ComponentId="{49399E2A-1B88-4890-AD87-C70601D6C6B5}" Directory_="Release_Dir" Attributes="0" KeyPath="avfilter7.dll"/>
+    <ROW Component="avformat58.dll" ComponentId="{28B0AF7E-BF80-4F2B-AD6F-6223B4C23128}" Directory_="Release_Dir" Attributes="256" KeyPath="avformat58.dll"/>
+    <ROW Component="avutil56.dll" ComponentId="{D2B19A1C-4D7B-4A51-B1BE-2B58F3AAB713}" Directory_="Release_Dir" Attributes="256" KeyPath="avutil56.dll"/>
+    <ROW Component="back.png" ComponentId="{34A9C636-466D-49D3-9AEC-FE8C7AB0798E}" Directory_="CommuniKate_Dir" Attributes="0" KeyPath="back.png" Type="0"/>
+    <ROW Component="bass.dll" ComponentId="{A12ED6CB-B253-4B87-87EC-27AE618B2561}" Directory_="Release_Dir" Attributes="256" KeyPath="bass.dll"/>
+    <ROW Component="database.zip" ComponentId="{766284EB-B74B-4655-B3D5-00EA4FEEF054}" Directory_="Presage_Dir" Attributes="0" KeyPath="database.zip" Type="0"/>
     <ROW Component="log4net.dll" ComponentId="{B34491ED-76D9-40B2-8076-1A843DBFD1D4}" Directory_="Release_Dir" Attributes="0" KeyPath="log4net.dll"/>
-    <ROW Component="nunit.framework.dll" ComponentId="{B3DB22F4-4696-4D26-9FCC-09A0E0A37694}" Directory_="Release_Dir" Attributes="0" KeyPath="nunit.framework.dll"/>
-    <ROW Component="presage.net.dll" ComponentId="{8932C651-1F6A-429B-8935-08219B1D6138}" Directory_="Release_Dir" Attributes="256" KeyPath="presage.net.dll"/>
-    <ROW Component="tobii_stream_engine.dll" ComponentId="{2AEDD9BA-9599-4D91-93E8-B6D122744F11}" Directory_="Release_Dir" Attributes="256" KeyPath="tobii_stream_engine.dll"/>
-    <ROW Component="tobiitrackers.txt" ComponentId="{054B8097-E414-4A67-A17E-B61FDC7F8A96}" Directory_="EyeTrackerSupport_Dir" Attributes="0" KeyPath="tobiitrackers.txt" Type="0"/>
+    <ROW Component="nunit.framework.dll" ComponentId="{6F489C24-1011-46FF-94B4-E85DF8F7BE0F}" Directory_="Release_Dir" Attributes="0" KeyPath="nunit.framework.dll"/>
+    <ROW Component="presage.net.dll" ComponentId="{29B71153-6EB3-40EA-A174-5AE546290DB6}" Directory_="Release_Dir" Attributes="256" KeyPath="presage.net.dll"/>
+    <ROW Component="swresample3.dll" ComponentId="{787CCBE6-46A1-4CDF-8446-425D7550A48A}" Directory_="Release_Dir" Attributes="256" KeyPath="swresample3.dll"/>
+    <ROW Component="tobii_stream_engine.dll" ComponentId="{6788118B-AFFC-42FC-8BD5-1D5C84451080}" Directory_="Release_Dir" Attributes="256" KeyPath="tobii_stream_engine.dll"/>
+    <ROW Component="tobiitrackers.txt" ComponentId="{EF89F5BF-DEE7-4BE7-913F-8E9ECF892AEB}" Directory_="EyeTrackerSupport_Dir" Attributes="0" KeyPath="tobiitrackers.txt" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
@@ -186,6 +189,11 @@
     <ROW File="TestControllers.exe.config" Component_="TestControllers.exe.config" FileName="TESTCO~1.CON|TestControllers.exe.config" Attributes="0" SourcePath="..\src\TestControllers\bin\x64\Release\TestControllers.exe.config" SelfReg="false"/>
     <ROW File="log4net.dll" Component_="log4net.dll" FileName="log4net.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\log4net.dll" SelfReg="false"/>
     <ROW File="OptiKeyStandardPlugins.dll_1" Component_="OptiKeyStandardPlugins.dll_1" FileName="OPTIKE~1.DLL|OptiKeyStandardPlugins.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\Resources\Plugins\OptiKeyStandardPlugins.dll" SelfReg="false"/>
+    <ROW File="avcodec58.dll" Component_="avcodec58.dll" FileName="AVCODE~1.DLL|avcodec-58.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\avcodec-58.dll" SelfReg="false"/>
+    <ROW File="avdevice58.dll" Component_="avdevice58.dll" FileName="AVDEVI~1.DLL|avdevice-58.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\avdevice-58.dll" SelfReg="false"/>
+    <ROW File="avfilter7.dll" Component_="avfilter7.dll" FileName="AVFILT~1.DLL|avfilter-7.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\avfilter-7.dll" SelfReg="false"/>
+    <ROW File="avformat58.dll" Component_="avformat58.dll" FileName="AVFORM~1.DLL|avformat-58.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\avformat-58.dll" SelfReg="false"/>
+    <ROW File="avutil56.dll" Component_="avutil56.dll" FileName="AVUTIL~1.DLL|avutil-56.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\avutil-56.dll" SelfReg="false"/>
     <ROW File="bass.dll" Component_="bass.dll" FileName="bass.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\bass.dll" SelfReg="false"/>
     <ROW File="Bass.Net.dll" Component_="Bass.Net.dll" FileName="BASSNE~1.DLL|Bass.Net.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\Bass.Net.dll" SelfReg="false"/>
     <ROW File="Bass.Net.xml" Component_="Bass.Net.xml" FileName="BASSNE~1.XML|Bass.Net.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\Bass.Net.xml" SelfReg="false"/>
@@ -249,6 +257,7 @@
     <ROW File="OptiKey.resources.dll_17" Component_="OptiKey.resources.dll_17" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\ko-KR\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="LICENSE.txt" Component_="Bass.Net.xml" FileName="LICENSE.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\LICENSE.txt" SelfReg="false"/>
     <ROW File="log4net.config" Component_="Bass.Net.xml" FileName="LOG4NE~1.CON|log4net.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\log4net.config" SelfReg="false"/>
+    <ROW File="log4net.xml" Component_="Bass.Net.xml" FileName="log4net.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\log4net.xml" SelfReg="false"/>
     <ROW File="MahApps.Metro.dll" Component_="MahApps.Metro.dll" FileName="MAHAPP~1.DLL|MahApps.Metro.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\MahApps.Metro.dll" SelfReg="false"/>
     <ROW File="MahApps.Metro.pdb" Component_="MahApps.Metro.dll" FileName="MAHAPP~1.PDB|MahApps.Metro.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\MahApps.Metro.pdb" SelfReg="false"/>
     <ROW File="MahApps.Metro.xml" Component_="Bass.Net.xml" FileName="MAHAPP~1.XML|MahApps.Metro.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\MahApps.Metro.xml" SelfReg="false"/>
@@ -356,6 +365,7 @@
     <ROW File="OptiKey.resources.dll_22" Component_="OptiKey.resources.dll_22" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\sk-SK\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_23" Component_="OptiKey.resources.dll_23" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\sl-SI\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_24" Component_="OptiKey.resources.dll_24" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\sr-Cyrl-RS\OptiKey.resources.dll" SelfReg="false"/>
+    <ROW File="swresample3.dll" Component_="swresample3.dll" FileName="SWRESA~1.DLL|swresample-3.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\swresample-3.dll" SelfReg="false"/>
     <ROW File="System.IO.Compression.dll" Component_="System.IO.Compression.dll" FileName="SYSTEM~1.DLL|System.IO.Compression.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\System.IO.Compression.dll" SelfReg="false"/>
     <ROW File="System.Reactive.Core.dll" Component_="System.Reactive.Core.dll" FileName="SYSTEM~2.DLL|System.Reactive.Core.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\System.Reactive.Core.dll" SelfReg="false"/>
     <ROW File="System.Reactive.Core.xml" Component_="Bass.Net.xml" FileName="SYSTEM~1.XML|System.Reactive.Core.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\System.Reactive.Core.xml" SelfReg="false"/>
@@ -513,6 +523,45 @@
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_sv.ail"/>
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_tr.ail"/>
     <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages_uk.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_en.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_en_GB.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sq.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_bg.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ar.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ca.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_zh.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_zh_TW.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_hr.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_cs.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_nl.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_da.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_fa.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_fi.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_fr.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_de.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_he.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_el.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_hu.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_id.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_is.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ja.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_it.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_kk.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ko.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_nb.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_nn.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_pl.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_pt.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_pt_BR.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_ru.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sr_SP_Cyrillic.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sr_SP_Latin.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sk.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sl.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_es.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_sv.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_tr.ail"/>
+    <ROW Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4_uk.ail"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
     <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="3c0496c07462e804d3bd4b13d8f40004a4cda39d Subject: Open Source Developer, Julius Sweetland&#10;Issuer: Certum Code Signing CA SHA2&#10;Valid from 02/20/2020 to 02/19/2021&#10;User\MY" CustomToolPath="tools\signtool.exe" CustomToolCmdLine="sign /n &quot;Open Source Developer, Julius Sweetland&quot; /t http://time.certum.pl /fd sha256"/>
@@ -520,6 +569,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
     <ROW Fragment="EyeTracker.aip" Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTracker\EyeTracker.aip"/>
+    <ROW Fragment="EyeTrackerSupportV4.aip" Path="&lt;AI_REPOSITORY&gt;Dialogs\EyeTrackerSupportV4\EyeTrackerSupportV4.aip"/>
     <ROW Fragment="Languages.aip" Path="&lt;AI_REPOSITORY&gt;Dialogs\Languages\Languages.aip"/>
     <ROW Fragment="LicenseAgreementDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\LicenseAgreementDlg.aip"/>
     <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
@@ -565,7 +615,8 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="EyeTracker" Control="Text_1" Type="Text" X="31" Y="89" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT" Text="[EYETRACKER_TEXT]" Order="1100" TextLocId="-" MsiKey="EyeTracker#Text_1"/>
-    <ROW Dialog_="EyeTracker" Control="Text_2" Type="Text" X="31" Y="150" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT_EN" Text="[EYETRACKER_TEXT_EN]" Order="1300" TextLocId="-" MsiKey="EyeTracker#Text_2"/>
+    <ROW Dialog_="EyeTracker" Control="Text_2" Type="Text" X="31" Y="150" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT_EN" Text="[EYETRACKER_TEXT_EN]" Order="1200" TextLocId="-" MsiKey="EyeTracker#Text_2"/>
+    <ROW Dialog_="EyeTracker" Control="Hyperlink_1" Type="Hyperlink" X="31" Y="215" Width="225" Height="12" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;http://www.optikey.org/supported-eyetrackers&quot;&gt;Optikey - supported eye trackers&lt;/a&gt;" Order="1400"/>
     <ROW Dialog_="Languages" Control="LanguagesDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
     <ROW Dialog_="NewDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
@@ -586,9 +637,10 @@
     <ROW Dialog_="NewSeqDialog" Control="BottomLine" Type="Line" X="0" Y="234" Width="372" Height="0" Attributes="1" Order="700"/>
     <ROW Dialog_="NewSeqDialog" Control="ComboBox_eyetracker" Type="ComboBox" X="135" Y="105" Width="56" Height="12" Attributes="3" Property="COMBOBOX_1_PROP" Text="wibble" Order="800"/>
     <ROW Dialog_="ReadmeDlg" Control="ReadmeText" Type="ScrollableText" X="20" Y="60" Width="330" Height="150" Attributes="7" Text="resources\MESSAGE FOR USER DURING INSTALL.rtf" Order="400" TextLocId="-" MsiKey="ReadmeDlg#ReadmeText"/>
+    <ATTRIBUTE name="DeletedRows" value="EyeTracker#Hyperlink_2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
-    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerSupportV4" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
@@ -611,25 +663,28 @@
     <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
     <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
     <ROW Dialog_="ReadmeDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="ReadmeDlg" Control_="Back" Event="NewDialog" Argument="Languages" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ReadmeDlg" Control_="Back" Event="NewDialog" Argument="EyeTrackerSupportV4" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="WelcomePrereqDlg" Control_="Next" Event="NewDialog" Argument="PrerequisitesDlg" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="PrerequisitesDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="PrerequisitesDlg" Control_="Back" Event="NewDialog" Argument="WelcomePrereqDlg" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="NewSeqDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="EyeTracker" Control_="Next" Event="NewDialog" Argument="Languages" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="EyeTracker" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="PrepareDlg" Control_="Next" Event="DoAction" Argument="PopulateComboBox" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="NewDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="DoAction" Argument="PopulateEyeTrackerCombo.vbs" Condition="1 AND ( AI_COMBOBOX_DATA &lt;&gt; &quot;SUCCESS&quot; )" Ordering="2"/>
-    <ROW Dialog_="Languages" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="Languages" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="PopulateLanguagesCombo" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control_="Next" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="2"/>
+    <ROW Dialog_="Languages" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="1"/>
+    <ROW Dialog_="EyeTracker" Control_="Next" Event="NewDialog" Argument="Languages" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="1"/>
+    <ROW Dialog_="EyeTracker" Control_="Back" Event="NewDialog" Argument="EyeTrackerSupportV4" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="1"/>
+    <ROW Dialog_="Languages" Control_="Back" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="1"/>
+    <ROW Dialog_="ReadmeDlg" Control_="Back" Event="NewDialog" Argument="Languages" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
     <ROW Directory_="Optikey_Dir" Component_="Optikey" ManualDelete="false"/>
-    <ROW Directory_="Samples_Dir" Component_="Samples" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -671,6 +726,7 @@
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFiles64Folder][ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+    <ROW Action="SetNewline" Type="38" Target="Script Text" TargetUnformatted="Session.Property(&quot;NEWLINE&quot;) = vbLf"/>
     <ROW Action="SetPropertyEyeTrackerSelected" Type="51" Source="EYETRACKER_SELECTED" Target="MousePosition"/>
     <ROW Action="SetPropertyFontFamily" Type="51" Source="SELECTED_FONTFAMILY" Target="&quot;/Resources/Fonts/#Roboto&quot;"/>
     <ROW Action="SetPropertyFontStretch" Type="51" Source="SELECTED_FONTSTRETCH" Target="&quot;Condensed&quot;"/>
@@ -694,7 +750,11 @@
     <ROW Feature_="MainFeature" Component_="OptiKeyStandardPlugins.dll_1"/>
     <ROW Feature_="MainFeature" Component_="TestControllers.exe"/>
     <ROW Feature_="MainFeature" Component_="TestControllers.exe.config"/>
-    <ROW Feature_="MainFeature" Component_="Samples"/>
+    <ROW Feature_="MainFeature" Component_="avcodec58.dll"/>
+    <ROW Feature_="MainFeature" Component_="avdevice58.dll"/>
+    <ROW Feature_="MainFeature" Component_="avfilter7.dll"/>
+    <ROW Feature_="MainFeature" Component_="avformat58.dll"/>
+    <ROW Feature_="MainFeature" Component_="avutil56.dll"/>
     <ROW Feature_="MainFeature" Component_="bass.dll"/>
     <ROW Feature_="MainFeature" Component_="Bass.Net.dll"/>
     <ROW Feature_="MainFeature" Component_="Bass.Net.xml"/>
@@ -762,6 +822,7 @@
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_22"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_23"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_24"/>
+    <ROW Feature_="MainFeature" Component_="swresample3.dll"/>
     <ROW Feature_="MainFeature" Component_="System.IO.Compression.dll"/>
     <ROW Feature_="MainFeature" Component_="System.Reactive.Core.dll"/>
     <ROW Feature_="MainFeature" Component_="System.Reactive.Interfaces.dll"/>
@@ -810,9 +871,9 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="58"/>
-    <ROW Action="AI_DpiContentScale" Sequence="57"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="56"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="59"/>
+    <ROW Action="AI_DpiContentScale" Sequence="58"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="57"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
@@ -822,6 +883,7 @@
     <ROW Action="SetPropertyFontWeight" Sequence="53"/>
     <ROW Action="SetPropertyFontStretch" Sequence="54"/>
     <ROW Action="OptiKeyProperties" Sequence="51"/>
+    <ROW Action="SetNewline" Sequence="56"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
