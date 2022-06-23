@@ -2357,7 +2357,7 @@ Magyar
     <value>If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="IRISBOND_HIRU_INFO" xml:space="preserve">
-    <value>If you plan to use Optikey with the Irisbond Hiru eye tracker then please make sure you have the Irisbond Hiru drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+    <value />
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
     <value>In this mode, Optikey will use the mouse cursor as input instead of talking directly to an eye tracker. You might want this if you're testing Optikey out, or if you want to use it with an alternative input device such as a head mouse or any eye tracker not in this list.</value>
