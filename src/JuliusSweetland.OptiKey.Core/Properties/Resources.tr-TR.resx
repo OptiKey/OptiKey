@@ -1132,7 +1132,7 @@ POZİSYON</value>
     <value>TheEyeTribe kalibre edilmedi. Kalibrasyon tamamlanmadan veri alınmayacak.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>EyeTribe software kullanılabilir olmadığı için kalibrasyon denemesi başarısız.</value>
+    <value>EyeX engine kullanılabilir olmadığı için kalibrasyon denemesi başarısız.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Tema:</value>
@@ -1153,10 +1153,16 @@ POZİSYON</value>
     <value>Kalibrasyon tamamlandı ya da büyük ihtimalle iptal edildi ama her şey tekrar çalışıyor.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Service bulunamadı. Lütfen Tobii software sürücüsünü yükledikten sonra tekrar deneyin.</value>
+    <value>Tobii EyeX Engine bulunamadı. Lütfen EyeX sürücüsünü yükledikten sonra tekrar deneyin.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service çalışmıyor. Lütfen Tobii service 'i çalıştırın ve daha sonra tekrar deneyin.</value>
+    <value>Tobii EyeX Engine çalışmıyor. Lütfen EyeX Engine'i çalıştırın ve daha sonra tekrar deneyin.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go</value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
