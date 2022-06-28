@@ -826,15 +826,19 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
 
             //Auto set width span and height span
-            if (xmlKey.AutoScaleToOneKeyWidth)
+            if (xmlKey.AutoScaleToOneKeyWidth.HasValue && xmlKey.AutoScaleToOneKeyWidth.Value)
                 newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
-            else if (keyGroupList != null && keyGroupList.Exists(x => x.AutoScaleToOneKeyWidth))
+            else if (!xmlKey.AutoScaleToOneKeyWidth.HasValue
+                && (keyGroupList == null || keyGroupList.Exists(x => x.AutoScaleToOneKeyWidth.HasValue
+                    && !x.AutoScaleToOneKeyWidth.Value)))
+                newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
+            if (xmlKey.AutoScaleToOneKeyHeight.HasValue && xmlKey.AutoScaleToOneKeyHeight.Value)
+                newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
+            else if (!xmlKey.AutoScaleToOneKeyHeight.HasValue
+                && (keyGroupList == null || keyGroupList.Exists(x => x.AutoScaleToOneKeyHeight.HasValue
+                    && !x.AutoScaleToOneKeyHeight.Value)))
                 newKey.WidthSpan = (double)xmlKey.Width / (double)minKeyWidth;
 
-            if (xmlKey.AutoScaleToOneKeyHeight)
-                newKey.HeightSpan = (double)xmlKey.Height / (double)minKeyHeight;
-            else if (keyGroupList != null && keyGroupList.Exists(x => x.AutoScaleToOneKeyHeight))
-                newKey.HeightSpan = (double)xmlKey.Height / (double)minKeyHeight;
 
             if (xmlKey.UsePersianCompatibilityFont)
                 newKey.UsePersianCompatibilityFont = true;
