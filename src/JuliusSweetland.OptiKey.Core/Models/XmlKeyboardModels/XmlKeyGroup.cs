@@ -20,8 +20,28 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public string Opacity { get; set; }
         [XmlAttribute] public string KeyDisabledOpacity { get; set; }
         [XmlAttribute] public string KeyDownOpacity { get; set; }
-        [XmlAttribute] public bool AutoScaleToOneKeyWidth { get; set; } = true;
-        [XmlAttribute] public bool AutoScaleToOneKeyHeight { get; set; } = true;
+        [XmlIgnore] public bool? AutoScaleToOneKeyWidth;
+        [XmlIgnore] public bool? AutoScaleToOneKeyHeight;
+        [XmlAttribute("AutoScaleToOneKeyWidth")]
+        public string AutoScaleToOneKeyWidthString
+        {
+            get { return AutoScaleToOneKeyWidth.HasValue ? AutoScaleToOneKeyWidth.Value.ToString() : null; }
+            set
+            {
+                if (bool.TryParse(value, out bool v))
+                    AutoScaleToOneKeyWidth = v;
+            }
+        }
+        [XmlAttribute("AutoScaleToOneKeyHeight")]
+        public string AutoScaleToOneKeyHeightString
+        {
+            get { return AutoScaleToOneKeyHeight.HasValue ? AutoScaleToOneKeyHeight.Value.ToString() : null; }
+            set
+            {
+                if (bool.TryParse(value, out bool v))
+                    AutoScaleToOneKeyHeight = v;
+            }
+        }
         [XmlAttribute] public string SharedSizeGroup { get; set; } //Optional - only required to break out a key, or set of keys, to size separately, otherwise size grouping is determined automatically
         [XmlAttribute] public bool UsePersianCompatibilityFont { get; set; }
         [XmlAttribute] public bool UseUnicodeCompatibilityFont { get; set; }
