@@ -9,6 +9,7 @@ namespace JuliusSweetland.OptiKey.Enums
         IrisbondDuo,
         IrisbondHiru,
         MousePosition,
+        TouchScreenPosition,
         SteelseriesSentry,
         TheEyeTribe,
         TobiiEyeTracker4C,
@@ -35,6 +36,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.IrisbondDuo: return Resources.IRISBOND_DUO;
                 case PointsSources.IrisbondHiru: return Resources.IRISBOND_HIRU;
                 case PointsSources.MousePosition: return Resources.MOUSE_POSITION;
+                case PointsSources.TouchScreenPosition: return Resources.TOUCHSCREEN_POSITION;
                 case PointsSources.SteelseriesSentry: return Resources.STEELSERIES_SENTRY;
                 case PointsSources.TheEyeTribe: return Resources.THE_EYE_TRIBE;
                 case PointsSources.TobiiEyeTracker4C: return Resources.TOBII_EYE_TRACKER_4C;

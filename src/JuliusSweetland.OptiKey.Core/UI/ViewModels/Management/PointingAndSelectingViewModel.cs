@@ -78,6 +78,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisbondDuo.ToDescription(), Enums.PointsSources.IrisbondDuo),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisbondHiru.ToDescription(), Enums.PointsSources.IrisbondHiru),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.MousePosition.ToDescription(), Enums.PointsSources.MousePosition),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TouchScreenPosition.ToDescription(), Enums.PointsSources.TouchScreenPosition),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.SteelseriesSentry.ToDescription(), Enums.PointsSources.SteelseriesSentry),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeTracker4C.ToDescription(), Enums.PointsSources.TobiiEyeTracker4C),
@@ -402,6 +403,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return keySelectionTriggerFixationResumeRequiresLockOn; }
             set { SetProperty(ref keySelectionTriggerFixationResumeRequiresLockOn, value); }
         }
+
+	private bool keySelectionTriggerFixationResetMousePositionAfterKeyPressed;
+        public bool KeySelectionTriggerFixationResetMousePositionAfterKeyPressed
+        {
+            get { return keySelectionTriggerFixationResetMousePositionAfterKeyPressed; }
+            set { SetProperty(ref keySelectionTriggerFixationResetMousePositionAfterKeyPressed, value); }
+        }
+
         public bool CompletionTimesShowHint
         {
             get { return !(Regex.IsMatch(keySelectionTriggerFixationDefaultCompleteTimeInMs
@@ -632,6 +641,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionTriggerMouseDownUpButton = Settings.Default.KeySelectionTriggerMouseDownUpButton;
             KeySelectionTriggerFixationLockOnTimeInMs = Settings.Default.KeySelectionTriggerFixationLockOnTime.TotalMilliseconds;
             KeySelectionTriggerFixationResumeRequiresLockOn = Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn;
+            KeySelectionTriggerFixationResetMousePositionAfterKeyPressed = Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed;
             KeySelectionTriggerFixationDefaultCompleteTimeInMs = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes;
             KeySelectionTriggerFixationCompleteTimesByIndividualKey = Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey;
             KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups = FromSetting(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
@@ -684,6 +694,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeySelectionTriggerMouseDownUpButton = KeySelectionTriggerMouseDownUpButton;
             Settings.Default.KeySelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs);
             Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn = KeySelectionTriggerFixationResumeRequiresLockOn;
+            Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed = KeySelectionTriggerFixationResetMousePositionAfterKeyPressed;
             Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes = KeySelectionTriggerFixationDefaultCompleteTimeInMs;
             Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey = KeySelectionTriggerFixationCompleteTimesByIndividualKey;
             Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues = ToSetting(KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups);

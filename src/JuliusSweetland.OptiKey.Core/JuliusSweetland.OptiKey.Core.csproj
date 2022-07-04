@@ -359,6 +359,7 @@
     <Compile Include="Native\MyGaze\Structs\SystemStructInfo.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
+    <Compile Include="Observables\PointSources\TouchScreenPositionSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
     <Compile Include="Observables\TriggerSources\EyeGestureSource.cs" />

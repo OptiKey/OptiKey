@@ -729,6 +729,11 @@ namespace JuliusSweetland.OptiKey
                         Settings.Default.PointTtl);
                     break;
 
+                case PointsSources.TouchScreenPosition:
+                    pointSource = new TouchScreenPositionSource(
+                        Settings.Default.PointTtl);
+                    break;
+
                 case PointsSources.TheEyeTribe:
                     var theEyeTribePointService = new TheEyeTribePointService();
                     errorNotifyingServices.Add(theEyeTribePointService);
@@ -788,6 +793,7 @@ namespace JuliusSweetland.OptiKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
                         : null,
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
+                       Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed,
                        pointSource);
                     break;
 
