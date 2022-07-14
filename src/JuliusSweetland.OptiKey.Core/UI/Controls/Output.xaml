@@ -67,6 +67,8 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="{Binding Path=ShowSuggestionsKey5, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource BoolToCustomValues}}" />
+                <ColumnDefinition Width="{Binding Path=ShowSuggestionsKey6, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource BoolToCustomValues}}"  />
             </Grid.ColumnDefinitions>
             <controls:Key Grid.Row="0" Grid.Column="0" SharedSizeGroup="KeyWithSuggestion" Case="None"
                           Value="{x:Static models:KeyValues.Suggestion1Key}">
@@ -123,6 +125,36 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <Binding>
                             <Binding.Source>
                                 <system:Int32>3</system:Int32>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </controls:Key.Text>
+            </controls:Key>
+            <controls:Key Grid.Row="0" Grid.Column="4" SharedSizeGroup="KeyWithSuggestion" Case="None"
+                          Value="{x:Static models:KeyValues.Suggestion5Key}">
+                <controls:Key.Text>
+                    <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
+                        <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding>
+                            <Binding.Source>
+                                <system:Int32>4</system:Int32>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </controls:Key.Text>
+            </controls:Key>
+            <controls:Key Grid.Row="0" Grid.Column="5" SharedSizeGroup="KeyWithSuggestion" Case="None"
+                          Value="{x:Static models:KeyValues.Suggestion6Key}">
+                <controls:Key.Text>
+                    <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
+                        <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding>
+                            <Binding.Source>
+                                <system:Int32>5</system:Int32>
                             </Binding.Source>
                         </Binding>
                     </MultiBinding>
