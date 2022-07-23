@@ -21,6 +21,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ResourceDictionary>
                     <valueConverters:SuggestionsPaged x:Key="SuggestionsPaged" />
                     <valueConverters:BoolToCustomValues TrueValue="1*" FalseValue="0*" x:Key="BoolToCustomValues" />
+                    <valueConverters:IsGreaterThanToVisibility TrueValue="Visible" FalseValue="Collapsed" x:Key="IsGreaterThanToVisibility" />
                     <valueConverters:CalculateScratchpadWidth DefaultGridLength="8" x:Key="CalculateScratchpadWidth" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
@@ -67,8 +68,8 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="{Binding Path=ShowSuggestionsKey5, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource BoolToCustomValues}}" />
-                <ColumnDefinition Width="{Binding Path=ShowSuggestionsKey6, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource BoolToCustomValues}}"  />
+                <ColumnDefinition Width="{Binding Path=NumberOfSuggestionsDisplayed, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource IsGreaterThanToVisibility}, ConverterParameter=4}" />
+                <ColumnDefinition Width="{Binding Path=NumberOfSuggestionsDisplayed, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource IsGreaterThanToVisibility}, ConverterParameter=5}"  />
             </Grid.ColumnDefinitions>
             <controls:Key Grid.Row="0" Grid.Column="0" SharedSizeGroup="KeyWithSuggestion" Case="None"
                           Value="{x:Static models:KeyValues.Suggestion1Key}">
