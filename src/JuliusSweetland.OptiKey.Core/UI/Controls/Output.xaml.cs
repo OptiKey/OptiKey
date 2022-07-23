@@ -18,16 +18,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public Output()
         {
             InitializeComponent();
-            Loaded += (sender, args) => {
-                BindableNumberOfSuggestionsDisplayed = NumberOfSuggestionsDisplayed;
-                ShowSuggestionsKey5 = BindableNumberOfSuggestionsDisplayed >= 5 ? true : false;
-                ShowSuggestionsKey6 = BindableNumberOfSuggestionsDisplayed >= 6 ? true : false;
-            };
+            Loaded += (sender, args) => { BindableNumberOfSuggestionsDisplayed = NumberOfSuggestionsDisplayed; };
         }
 
         public int NumberOfSuggestionsDisplayed { get; set; } = 4;
-        public Boolean ShowSuggestionsKey5 { get; set; } = false;
-        public Boolean ShowSuggestionsKey6 { get; set; } = false;
 
         public static readonly DependencyProperty BindableNumberOfSuggestionsDisplayedProperty =
             DependencyProperty.Register("BindableNumberOfSuggestionsDisplayed", typeof (int), typeof (Output), new PropertyMetadata(default(int)));
