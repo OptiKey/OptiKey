@@ -629,7 +629,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Methods - private
         private void ProcessTextWithRime(string newText) {
             if (!MyRimeApi.IsComposing && newText.Equals(" ")) {
-                Text += newText;
+                ProcessText(newText, true);
                 return;
             }
             if (newText.Equals("\n")) {
@@ -652,6 +652,11 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (rime.get_commit(session_id, ref commit)) {
                 Text += commit.text;
+                foreach (var c in commit.text)
+                {
+                    PublishKeyPress(c);
+                    ReleaseUnlockedKeys();
+                }
                 //rime.free_commit(ref commit);
             }
 
