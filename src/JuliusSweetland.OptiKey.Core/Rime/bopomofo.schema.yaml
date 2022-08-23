@@ -42,7 +42,7 @@ engine:
     - punctuator
     - selector
     - navigator
-    - fluency_editor
+    - express_editor
   segmentors:
     - ascii_segmentor
     - matcher
