@@ -460,7 +460,7 @@
     <Compile Include="UI\ValueConverters\CompletionTimesValidation.cs" />
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
-    <Compile Include="UI\ValueConverters\IsGreaterThanToVisibility.cs" />
+    <Compile Include="UI\ValueConverters\IsGreaterThanToCustomValues.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha3.cs" />

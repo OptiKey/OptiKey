@@ -6,10 +6,10 @@ using System.Windows.Data;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
-    public class IsGreaterThanToVisibility : IValueConverter
+    public class IsGreaterThanToCustomValues : IValueConverter
     {
-        public Visibility TrueValue { get; set; }
-        public Visibility FalseValue { get; set; }
+        public string TrueValue { get; set; }
+        public string FalseValue { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
