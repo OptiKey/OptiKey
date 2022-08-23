@@ -21,7 +21,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ResourceDictionary>
                     <valueConverters:SuggestionsPaged x:Key="SuggestionsPaged" />
                     <valueConverters:BoolToCustomValues TrueValue="1*" FalseValue="0*" x:Key="BoolToCustomValues" />
-                    <valueConverters:IsGreaterThanToVisibility TrueValue="Visible" FalseValue="Collapsed" x:Key="IsGreaterThanToVisibility" />
+                    <valueConverters:IsGreaterThanToCustomValues TrueValue="1*" FalseValue="0*" x:Key="IsGreaterThanToCustomValues" />
                     <valueConverters:CalculateScratchpadWidth DefaultGridLength="8" x:Key="CalculateScratchpadWidth" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
@@ -68,8 +68,8 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="{Binding Path=NumberOfSuggestionsDisplayed, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource IsGreaterThanToVisibility}, ConverterParameter=4}" />
-                <ColumnDefinition Width="{Binding Path=NumberOfSuggestionsDisplayed, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource IsGreaterThanToVisibility}, ConverterParameter=5}"  />
+                <ColumnDefinition Width="{Binding Path=BindableNumberOfSuggestionsDisplayed, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource IsGreaterThanToCustomValues}, ConverterParameter=4, Mode=OneWay}" />
+                <ColumnDefinition Width="{Binding Path=BindableNumberOfSuggestionsDisplayed, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource IsGreaterThanToCustomValues}, ConverterParameter=5, Mode=OneWay}"  />
             </Grid.ColumnDefinitions>
             <controls:Key Grid.Row="0" Grid.Column="0" SharedSizeGroup="KeyWithSuggestion" Case="None"
                           Value="{x:Static models:KeyValues.Suggestion1Key}">
