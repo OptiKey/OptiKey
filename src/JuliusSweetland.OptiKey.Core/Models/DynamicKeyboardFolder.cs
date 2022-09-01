@@ -37,11 +37,14 @@ namespace JuliusSweetland.OptiKey.Models
         #endregion
 
         public List<KeyboardInfo> keyboards;
-        
-        public DynamicKeyboardFolder()
+
+        public DynamicKeyboardFolder(String filePath)
         {
-            // Find all possible xml files
-            string filePath = Settings.Default.DynamicKeyboardsLocation;
+            if (String.IsNullOrEmpty(filePath))
+            {
+                filePath = Settings.Default.DynamicKeyboardsLocation;
+            }
+
             keyboards = new List<KeyboardInfo>();
 
             if (Directory.Exists(filePath))
