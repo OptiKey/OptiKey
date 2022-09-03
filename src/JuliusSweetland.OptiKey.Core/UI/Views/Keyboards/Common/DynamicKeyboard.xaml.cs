@@ -894,7 +894,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             else if (keyGroupList != null && keyGroupList.Exists(x => !string.IsNullOrEmpty(x.KeyDownOpacity) && double.TryParse(x.KeyDownOpacity, out opacity)))
                 newKey.KeyDownOpacityOverride = opacity;
             else if (newKey.OpacityOverride < 1d)
-                newKey.DisabledBackgroundOpacity = newKey.OpacityOverride;
+                newKey.KeyDownOpacityOverride = newKey.OpacityOverride;
 
             if (xmlKeyValue != null && overrideTimesByKey != null)
             {
