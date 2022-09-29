@@ -658,7 +658,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)
             {
                 var kb = Keyboard as ViewModelKeyboards.DynamicKeyboardSelector;
-                newContent = new CommonViews.DynamicKeyboardSelector(kb.PageIndex) { DataContext = Keyboard };
+                newContent = new CommonViews.DynamicKeyboardSelector(kb.PageIndex, kb.Directory) { DataContext = Keyboard };
             }
             Content = newContent;
         }
