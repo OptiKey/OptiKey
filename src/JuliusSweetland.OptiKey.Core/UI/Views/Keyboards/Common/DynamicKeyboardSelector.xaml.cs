@@ -53,7 +53,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            // Add back/quit key, bottom right
+            // Add back/menu key, bottom right
             if (keyboardsPath == Settings.Default.DynamicKeyboardsLocation)
             {
                 Key newKey = new Key();
@@ -67,11 +67,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "SingleKey";
-                newKey.SymbolGeometry = (Geometry)this.Resources["QuitIcon"];
-                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.QUIT;
-                newKey.Value = KeyValues.QuitKey;
+                newKey.SymbolGeometry = (Geometry)this.Resources["MenuIcon"];
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.MENU;
+                newKey.Value = KeyValues.MenuKeyboardKey;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
-            }
+            }            
 
             // Sleep key for bottom left
             {
