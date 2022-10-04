@@ -331,8 +331,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 else if (File.Exists(keyboardOverride))
                 {
                     Log.Info($"Loading keyboard from requested file: {keyboardOverride}");
-                    Keyboard = new DynamicKeyboard(() => { }, keyStateService, keyboardOverride);
-                    //TODO: consider whether back action should take you to 'normal' keyboards?
+                    Keyboard = new DynamicKeyboard(() =>
+                    {
+                        mainWindowManipulationService.Restore();
+                        Keyboard = new Menu(() => Keyboard = new Alpha1());
+                    }, keyStateService, keyboardOverride);
                     return;
                 }
             }
