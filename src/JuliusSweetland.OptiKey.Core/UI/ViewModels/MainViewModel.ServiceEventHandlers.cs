@@ -1855,7 +1855,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         ResetAndCleanupAfterMouseAction();
                         resumeLookToScroll();
                     });
-
                     break;
 
                 case FunctionKeys.MouseMoveToBottom:
@@ -2394,7 +2393,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ShowCursor = false;
             MagnifyAtPoint = null;
             MagnifiedPointSelectionAction = null;
-            suspendCommands = false;
 
             if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
             {
@@ -2588,26 +2586,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (keyCommand.Name == KeyCommands.Function)
                     {
                         Log.InfoFormat("CommandList: Press function key: {0}", keyCommand.Value);
-                        if (Enum.TryParse(keyCommand.Value, out FunctionKeys fk))
-                        {
-                            if (fk == FunctionKeys.MouseDrag
-                                || fk == FunctionKeys.MouseMoveTo
-                                || fk == FunctionKeys.MouseMoveAndLeftClick
-                                || fk == FunctionKeys.MouseMoveAndLeftDoubleClick
-                                || fk == FunctionKeys.MouseMoveAndMiddleClick
-                                || fk == FunctionKeys.MouseMoveAndRightClick
-                                || fk == FunctionKeys.MouseMoveAndScrollToBottom
-                                || fk == FunctionKeys.MouseMoveAndScrollToLeft
-                                || fk == FunctionKeys.MouseMoveAndScrollToRight
-                                || fk == FunctionKeys.MouseMoveAndScrollToTop
-                                || fk == FunctionKeys.MouseMoveAndMiddleClick)
-                            {
-                                suspendCommands = true;
-                            }
+                         if (Enum.TryParse(keyCommand.Value, out FunctionKeys fk))
                             KeySelectionResult(new KeyValue(fk), multiKeySelection);
-                            while (suspendCommands)
-                                await Task.Delay(10);
-                        }
                     }
                     else if (keyCommand.Name == KeyCommands.ChangeKeyboard)
                     {

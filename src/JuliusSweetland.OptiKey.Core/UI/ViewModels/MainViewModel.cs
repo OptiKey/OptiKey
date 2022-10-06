@@ -57,7 +57,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private bool showCrosshair;
         private bool showMonical;
         private bool showSuggestions;
-        private bool suspendCommands;
         private bool manualModeEnabled;
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
