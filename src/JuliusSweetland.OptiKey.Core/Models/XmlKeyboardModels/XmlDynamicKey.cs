@@ -23,28 +23,8 @@ namespace JuliusSweetland.OptiKey.Models
         public string Label { get; set; } //Either set this, the Symbol, or both. This value become the Text value on the created Key.
         public string ShiftDownLabel { get; set; } //Optional - only required to display an alternate Text value when the shift key is down.
         public string Symbol { get; set; }
-        [XmlIgnore] public bool? AutoScaleToOneKeyWidth;
-        [XmlIgnore] public bool? AutoScaleToOneKeyHeight;
-        [XmlAttribute("AutoScaleToOneKeyWidth")]
-        public string AutoScaleToOneKeyWidthString
-        {
-            get { return AutoScaleToOneKeyWidth.HasValue ? AutoScaleToOneKeyWidth.Value.ToString() : null; }
-            set
-            {
-                if (bool.TryParse(value, out bool v))
-                    AutoScaleToOneKeyWidth = v;
-            }
-        }
-        [XmlAttribute("AutoScaleToOneKeyHeight")]
-        public string AutoScaleToOneKeyHeightString
-        {
-            get { return AutoScaleToOneKeyHeight.HasValue ? AutoScaleToOneKeyHeight.Value.ToString() : null; }
-            set
-            {
-                if (bool.TryParse(value, out bool v))
-                    AutoScaleToOneKeyHeight = v;
-            }
-        }
+        [XmlAttribute] public bool AutoScaleToOneKeyWidth { get; set; } = true;
+        [XmlAttribute] public bool AutoScaleToOneKeyHeight { get; set; } = true;
         [XmlAttribute] public string SharedSizeGroup { get; set; } //Optional - only required to break out a key, or set of keys, to size separately, otherwise size grouping is determined automatically
         [XmlAttribute] public bool UsePersianCompatibilityFont { get; set; }
         [XmlAttribute] public bool UseUnicodeCompatibilityFont { get; set; }
