@@ -316,35 +316,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
                 canvas.Children.Add(new Border()
                 {
-                    Background = Brushes.Black,
-                    BorderBrush = Brushes.White,
-                    BorderThickness = new Thickness(2),
+                    Background = Brushes.LightBlue,
                     Width = scrWidth,
                     Height = scrHeight,
                     Margin = new Thickness(screenLeft, screenTop, 0, 0),
                 });
-                canvas.Children.Add(new System.Windows.Shapes.Line()
-                {
-                    X1 = screenLeft + .25 * scrWidth,
-                    Y1 = screenTop + 1.15 * scrHeight,
-                    X2 = screenLeft + .75 * scrWidth,
-                    Y2 = screenTop + 1.15 * scrHeight,
-                    SnapsToDevicePixels = true,
-                    Stroke = Brushes.White,
-                    StrokeThickness = 4
-                });
-                canvas.Children.Add(new System.Windows.Shapes.Line()
-                {
-                    X1 = screenLeft + .5 * scrWidth,
-                    Y1 = screenTop + scrHeight,
-                    X2 = screenLeft + .5 * scrWidth,
-                    Y2 = screenTop + 1.15 * scrHeight,
-                    SnapsToDevicePixels = true,
-                    Stroke = Brushes.White,
-                    StrokeThickness = 12
-                });
 
-                foreach (var shape in gestureShapes)
+                foreach(var shape in gestureShapes)
                 {
                     canvas.Children.Add(new Border()
                     {
