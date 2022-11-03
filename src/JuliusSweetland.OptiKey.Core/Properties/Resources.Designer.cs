@@ -6023,7 +6023,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to attempt a calibration as no EyeX engine is available..
+        ///   Looks up a localized string similar to Unable to attempt a calibration as no EyeTribe software is available..
         /// </summary>
         public static string THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE {
             get {
