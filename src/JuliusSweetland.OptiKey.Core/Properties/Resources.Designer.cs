@@ -2858,7 +2858,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Key selection gamepad controller.
+        ///   Looks up a localized string similar to Key selection gamepad controller:.
         /// </summary>
         public static string KEY_SELECTION_GAMEPAD_CONTROLLER_LABEL {
             get {
@@ -3134,18 +3134,16 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("LEFT_DOWN_UP_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Limit "BackOne" deletion to a single character
+        ///   Looks up a localized string similar to Limit &quot;BackOne&quot; deletion to a single character.
         /// </summary>
-        public static string LIMIT_BACKONE
-        {
-            get
-            {
+        public static string LIMIT_BACKONE {
+            get {
                 return ResourceManager.GetString("LIMIT_BACKONE", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Load dictionary.
         /// </summary>
@@ -3236,7 +3234,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Look To Scroll is the default scrolling method:.
         /// </summary>
@@ -5947,23 +5945,19 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suppress warning...
+        ///   Looks up a localized string similar to Suppress warning when gaze is missing during trigger event.
         /// </summary>
-        public static string SUPPRESS_TRIGGER_WARNING
-        {
-            get
-            {
+        public static string SUPPRESS_TRIGGER_WARNING {
+            get {
                 return ResourceManager.GetString("SUPPRESS_TRIGGER_WARNING", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to TAB.
         /// </summary>
-        public static string TAB
-        {
-            get
-            {
+        public static string TAB {
+            get {
                 return ResourceManager.GetString("TAB", resourceCulture);
             }
         }
@@ -5996,7 +5990,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to attempt a calibration as no EyeX engine is available..
+        ///   Looks up a localized string similar to Unable to attempt a calibration as no EyeTribe software is available..
         /// </summary>
         public static string THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE {
             get {
