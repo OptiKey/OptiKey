@@ -2494,4 +2494,7 @@ www.optikey.org/supported-eyetrackers</value>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Tobii Engine is not running. Please start the Tobii software and try again.</value>
   </data>
+  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
+    <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
+  </data>
 </root>
