@@ -1589,6 +1589,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process..
+        /// </summary>
+        public static string ERROR_ACCESSING_CLIPBOARD {
+            get {
+                return ResourceManager.GetString("ERROR_ACCESSING_CLIPBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error has occured during the translation of text.
         /// </summary>
         public static string ERROR_DURING_TRANSLATION {
