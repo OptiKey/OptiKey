@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -2324,6 +2325,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Log.Error($"Error/exception during translation: {response.ExceptionMessage}");
                                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                                inputService.RequestSuspend();                                
                                 RaiseToastNotification(Resources.ERROR_DURING_TRANSLATION, response.ExceptionMessage, NotificationTypes.Error, () =>
                                 {
                                     inputService.RequestResume();
