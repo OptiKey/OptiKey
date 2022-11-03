@@ -958,7 +958,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                         if (!string.IsNullOrEmpty(textFromScratchpad))
                         {
-                            Clipboard.SetText(textFromScratchpad);
+                            try
+                            {
+                                Clipboard.SetText(textFromScratchpad);
+                            }
+                            catch (ExternalException e) {
+                                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                                inputService.RequestSuspend();
+                                RaiseToastNotification(Resources.ERROR_ACCESSING_CLIPBOARD, e.Message, NotificationTypes.Error, () =>
+                                {
+                                    inputService.RequestResume();
+                                });
+                            }
                         }
                     }
                     break;
@@ -2322,8 +2333,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
                                 keyboardOutputService.Text = response.TranslatedText;
-                                Clipboard.SetText(response.TranslatedText);
-                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                                try
+                                {
+                                    Clipboard.SetText(response.TranslatedText);
+                                    audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                                }
+                                catch (ExternalException e)
+                                {
+                                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                                    inputService.RequestSuspend();
+                                    RaiseToastNotification(Resources.ERROR_ACCESSING_CLIPBOARD, e.Message, NotificationTypes.Error, () =>
+                                    {
+                                        inputService.RequestResume();
+                                    });
+                                }
+                                
                             }
                         }
                     }

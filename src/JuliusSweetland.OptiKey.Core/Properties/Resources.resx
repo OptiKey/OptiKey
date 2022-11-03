@@ -2473,4 +2473,7 @@ Magyar
   <data name="LIMIT_BACKONE" xml:space="preserve">
     <value>Limit "BackOne" deletion to a single character</value>
   </data>
+  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
+    <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
+  </data>
 </root>
