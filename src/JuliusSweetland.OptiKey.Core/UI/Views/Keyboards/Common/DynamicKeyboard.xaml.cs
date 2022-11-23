@@ -318,15 +318,24 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             AddRowsToGrid(4);
             AddColsToGrid(4);
 
-            // Top middle two cells are main error message
+             // Top middle two cells are main error message
             {
-                var newKey = new Key {Text = heading};
-                PlaceKeyInPosition(newKey, 0, 1, 1, 2);
-            }
+                var newKey = new Key {
+                    Text = heading,
+                };
+                // Swap for default "not disabled" foreground colour for better visibility
+                newKey.DisabledForegroundColourOverride = newKey.Foreground;
 
+                PlaceKeyInPosition(newKey, 0, 1, 1, 2);                
+            }
             // Middle row is detailed error message
             {
-                var newKey = new Key {Text = content};
+                var newKey = new Key {
+                    Text = content,
+                };
+                // Swap for default "not disabled" foreground colour for better visibility
+                newKey.DisabledForegroundColourOverride = newKey.Foreground;
+
                 PlaceKeyInPosition(newKey, 1, 0, 2, 4);
             }
 
@@ -358,6 +367,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 var newKey = new Key();
                 PlaceKeyInPosition(newKey, 3, 1, 1, 2);
             }
+
+            // Set as default floating window size, i.e. pretty large
+            // This ensures the error message and keys are a reasonable size!            
+            windowManipulationService.OverridePersistedState(false, "Floating",
+                    "Top", "", "60%", "60%", "0", "0"); // Empty strings will allow defaults to be used instead
+            
         }
 
         private bool SetupDynamicItems()
