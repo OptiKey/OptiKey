@@ -437,6 +437,25 @@ namespace JuliusSweetland.OptiKey.Models
             };
         }
 
+        public static List<KeyValue> MutuallyExclusiveMouseActionKeys
+        {
+            get
+            {
+                var keys = new List<KeyValue>
+                {
+                    MouseMoveAndLeftClickKey,
+                    MouseMoveAndRightClickKey, 
+                    MouseMoveAndLeftDoubleClickKey, 
+                    MouseMoveAndMiddleClickKey,  
+                    MouseMoveAndScrollToTopKey,
+                    MouseMoveAndScrollToBottomKey,
+                    MouseMoveAndScrollToLeftKey,
+                    MouseMoveAndScrollToRightKey,
+                };
+                return keys;
+            }
+        }
+
         public static List<KeyValue> KeysWhichCanBePressedDown
         {
             get
@@ -451,7 +470,9 @@ namespace JuliusSweetland.OptiKey.Models
                     MultiKeySelectionIsOnKey
                 };
 
-                if(!Settings.Default.TypeDiacriticsAfterLetters)
+                keys = keys.Concat(MutuallyExclusiveMouseActionKeys).ToList();
+
+                if (!Settings.Default.TypeDiacriticsAfterLetters)
                 {
                     //By default TypeDiacriticsAfterLetters is false and the default behaviour
                     //is for the user to press down the diacritic key and then the letter.
@@ -490,9 +511,11 @@ namespace JuliusSweetland.OptiKey.Models
                     MouseMagnifierKey,
                     MouseMiddleDownUpKey,
                     MouseRightDownUpKey,
-                    MultiKeySelectionIsOnKey,
+                    MultiKeySelectionIsOnKey,                            
                     SleepKey
                 };
+
+                keys = keys.Concat(MutuallyExclusiveMouseActionKeys).ToList();
 
                 if (Settings.Default.KeySelectionTriggerSource == TriggerSources.KeyboardKeyDownsUps)
                 {

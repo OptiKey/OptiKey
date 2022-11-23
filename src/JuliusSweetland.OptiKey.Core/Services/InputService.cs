@@ -32,9 +32,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point, KeyValue>> currentPositionEvent;
-        private event EventHandler<Tuple<PointAndKeyValue, double>> selectionProgressEvent;
-        private event EventHandler<PointAndKeyValue> selectionEvent;
-        private event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> selectionResultEvent;
+        private event EventHandler<Tuple<TriggerTypes, PointAndKeyValue, double>> selectionProgressEvent;
+        private event EventHandler<Tuple<TriggerTypes, PointAndKeyValue>> selectionEvent;
+        private event EventHandler<Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>> selectionResultEvent;
 
         #endregion
 
@@ -58,6 +58,9 @@ namespace JuliusSweetland.OptiKey.Services
             this.eyeGestureTriggerSource = eyeGestureTriggerSource;
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
+
+            this.activeSelectionTriggerSubscriptions = new List<IDisposable>();
+            this.activeSelectionProgressSubscriptions = new List<IDisposable>();
 
             //Fixation key triggers also need the enabled state info and override times
             if (keySelectionTriggerSource is IFixationTriggerSource fixationTrigger)
@@ -112,26 +115,15 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Log.DebugFormat("SelectionMode changed to {0}", value);
 
-                    if (selectionProgressSubscription != null)
-                    {
-                        Log.Debug("Disposing of selection progress subscription");
-                        selectionProgressSubscription.Dispose();
-                        selectionProgressSubscription = null;
-                    }
+                    Log.Debug("Disposing of selection progress subscriptions");
+                    foreach (IDisposable sub in activeSelectionProgressSubscriptions)
+                        sub.Dispose(); 
+                    activeSelectionProgressSubscriptions.RemoveAll(s => true);
 
-                    if (selectionTriggerSubscription != null)
-                    {
-                        Log.Debug("Disposing of selection trigger subscription");
-                        selectionTriggerSubscription.Dispose();
-                        selectionTriggerSubscription = null;
-                    }
-
-                    if (multiKeySelectionSubscription != null)
-                    {
-                        Log.Debug("Disposing of multi-key selection points subscription");
-                        multiKeySelectionSubscription.Dispose();
-                        multiKeySelectionSubscription = null;
-                    }
+                    Log.Debug("Disposing of selection trigger subscriptions");
+                    foreach (IDisposable sub in activeSelectionTriggerSubscriptions)
+                        sub.Dispose();
+                    activeSelectionTriggerSubscriptions.RemoveAll(s => true);                    
 
                     if (selectionProgressEvent != null)
                     {
@@ -242,7 +234,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Selection Progress
 
-        public event EventHandler<Tuple<PointAndKeyValue, double>> SelectionProgress
+        public event EventHandler<Tuple<TriggerTypes, PointAndKeyValue, double>> SelectionProgress
         {
             add
             {
@@ -253,7 +245,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 selectionProgressEvent += value;
                 
-                if (selectionProgressSubscription == null)
+                if (activeSelectionProgressSubscriptions.Count == 0)
                 {
                     CreateSelectionProgressSubscription(SelectionMode);
                 }
@@ -266,10 +258,13 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Log.Info("Last subscriber of SelectionProgress event has unsubscribed. Disposing of selectionProgressSubscription.");
                     
-                    if (selectionProgressSubscription != null)
+                    if (activeSelectionProgressSubscriptions.Count > 0)
                     {
-                        selectionProgressSubscription.Dispose();
-                        selectionProgressSubscription = null;
+                        foreach (var sub in activeSelectionProgressSubscriptions)
+                        {
+                            sub.Dispose();                            
+                        }
+                        activeSelectionProgressSubscriptions.RemoveAll(s => true);
                     }
                 }
             }
@@ -279,7 +274,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Selection
 
-        public event EventHandler<PointAndKeyValue> Selection
+        public event EventHandler<Tuple<TriggerTypes, PointAndKeyValue>> Selection
         {
             add
             {
@@ -290,7 +285,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 selectionEvent += value;
 
-                if (selectionTriggerSubscription == null)
+                if (activeSelectionTriggerSubscriptions.Count == 0)
                 {
                     CreateSelectionSubscriptions(SelectionMode);
                 }
@@ -315,7 +310,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Selection Result
 
-        public event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> SelectionResult
+        public event EventHandler<Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>> SelectionResult
         {
             add
             {
@@ -326,7 +321,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 selectionResultEvent += value;
 
-                if (selectionTriggerSubscription == null)
+                if (activeSelectionTriggerSubscriptions.Count == 0)
                 {
                     CreateSelectionSubscriptions(SelectionMode);
                 }
@@ -385,13 +380,14 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Selection Progress
 
-        private void PublishSelectionProgress(Tuple<PointAndKeyValue, double> selectionProgress)
+        private void PublishSelectionProgress(Tuple<TriggerTypes, PointAndKeyValue, double> selectionProgress)
         {
             if (selectionProgressEvent != null)
             {
-                if ((selectionProgress.Item2 < 0.1) || (selectionProgress.Item2 - 0.5) < 0.1 || (selectionProgress.Item2 - 1) < 0.1)
+                if ((selectionProgress.Item3 < 0.1) || (selectionProgress.Item3 - 0.5) < 0.1 || (selectionProgress.Item3 - 1) < 0.1)
                 {
-                    Log.DebugFormat("Publishing SelectionProgress event: {0} : {1}", selectionProgress.Item1, selectionProgress.Item2);
+                    Log.DebugFormat("Publishing SelectionProgress event: {0} : {1} : {2}",
+                        selectionProgress.Item1, selectionProgress.Item2, selectionProgress.Item3);
                 }
 
                 selectionProgressEvent(this, selectionProgress);
@@ -402,13 +398,12 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Selection
 
-        private void PublishSelection(PointAndKeyValue selection)
+        private void PublishSelection(TriggerTypes mode, PointAndKeyValue selection)
         {
             if (selectionEvent != null)
             {
-                Log.DebugFormat("Publishing Selection event with PointAndKeyValue:{0}", selection);
-
-                selectionEvent(this, selection);
+                Log.DebugFormat("Publishing Selection event with PointAndKeyValue:{0}", selection);                
+                selectionEvent(this, new Tuple<TriggerTypes, PointAndKeyValue>(mode, selection));
             }
         }
 
@@ -416,16 +411,16 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Selection Result
 
-        private void PublishSelectionResult(Tuple<List<Point>, KeyValue, List<string>> selectionResult)
+        private void PublishSelectionResult(Tuple<TriggerTypes, List<Point>, KeyValue, List<string>> selectionResult)
         {
             if (selectionResultEvent != null)
             {
-                Log.DebugFormat("Publishing Selection Result event with {0} point(s), FunctionKey:'{1}', String:'{2}', Best match '{3}', Suggestion count:{4}",
-                        selectionResult.Item1?.Count,
-                        selectionResult.Item2 != null ? selectionResult.Item2.FunctionKey : null,  
-                        selectionResult.Item2 != null ? selectionResult.Item2.String.ToPrintableString() : "",
-                        selectionResult.Item3 != null && selectionResult.Item3.Any() ? selectionResult.Item3.First() : null,
-                        selectionResult.Item3?.Count);
+                Log.DebugFormat("Publishing Selection Result event with {1} point(s), Mode: '{0}', FunctionKey:'{2}', String:'{3}', Best match '{4}', Suggestion count:{5}",
+                        selectionResult.Item2?.Count,
+                        selectionResult.Item3 != null ? selectionResult.Item3.FunctionKey : null,  
+                        selectionResult.Item3 != null ? selectionResult.Item3.String.ToPrintableString() : "",
+                        selectionResult.Item4 != null && selectionResult.Item4.Any() ? selectionResult.Item4.First() : null,
+                        selectionResult.Item4?.Count);
 
                 selectionResultEvent(this, selectionResult);
             }

@@ -13,13 +13,13 @@ namespace JuliusSweetland.OptiKey.Services
     {
         event EventHandler<int> PointsPerSecond;
         event EventHandler<Tuple<Point, KeyValue>> CurrentPosition;
-        event EventHandler<Tuple<PointAndKeyValue, double>> SelectionProgress;
-        event EventHandler<PointAndKeyValue> Selection; //This event occurs every time a key or point is selected, e.g. when a dwell is completed
-        event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> SelectionResult; //This event occurs every time a selection triggers a meaningful result, e.g. if not using multi-key selection then this will fire straight after the selection to carry the key/point value. If multi key selection is enabled then the first selection will not have a result, but the next selection may complete a multi-key selection and so be followed by a result event containing the match.
+        event EventHandler<Tuple<TriggerTypes, PointAndKeyValue, double>> SelectionProgress;
+        event EventHandler<Tuple<TriggerTypes, PointAndKeyValue>> Selection; //This event occurs every time a key or point is selected, e.g. when a dwell is completed
+        event EventHandler<Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>> SelectionResult; //This event occurs every time a selection triggers a meaningful result, e.g. if not using multi-key selection then this will fire straight after the selection to carry the key/point value. If multi key selection is enabled then the first selection will not have a result, but the next selection may complete a multi-key selection and so be followed by a result event containing the match.
         IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get; }
         IPointSource PointSource { get; set; }
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
-        SelectionModes SelectionMode { set; }
+        SelectionModes SelectionMode { get;  set; }
         bool MultiKeySelectionSupported { set; }
 
         void RequestSuspend();
