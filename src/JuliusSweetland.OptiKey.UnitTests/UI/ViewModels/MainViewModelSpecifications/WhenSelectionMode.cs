@@ -14,8 +14,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            OriginalValue = SelectionModes.Key;
-            NewValue = SelectionModes.Point;
+            OriginalValue = SelectionModes.Keys;
+            NewValue = SelectionModes.SinglePoint;
 
             MainViewModel.SelectionMode = OriginalValue;
             InputService.ResetCalls();

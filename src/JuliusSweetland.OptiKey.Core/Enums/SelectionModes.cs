@@ -3,7 +3,8 @@ namespace JuliusSweetland.OptiKey.Enums
 {
     public enum SelectionModes
     {
-        Key,
-        Point
+        Keys,
+        SinglePoint,
+        ContinuousPoints
     }
 }

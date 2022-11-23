@@ -39,6 +39,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             this.lockOnRadiusSquared = lockOnRadius * lockOnRadius;
             this.fixationRadiusSquared = fixationRadius * fixationRadius;
             this.pointSource = pointSource;
+            this.AllowPointsOverKeys = true;
         }
 
         #endregion
@@ -47,6 +48,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         public RunningStates State { get; set; }
 
+        public bool AllowPointsOverKeys { get; set; } 
         public KeyEnabledStates KeyEnabledStates { get; set; } //Irrelevant on point trigger
         public IDictionary<KeyValue, TimeSpanOverrides> OverrideTimesByKey { get; set; } //Irrelevant on point trigger
 
@@ -80,6 +82,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             .Where(_ => disposed == false)
                             .Where(_ => State == RunningStates.Running)
                             .Where(tp => tp.Value != null) //Filter out stale indicators - the fixation progress is not reset by the points sequence being stale
+                            .Where(tp => AllowPointsOverKeys || tp.Value.KeyValue == null)
                             .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value, tp.Timestamp))
                             .Subscribe(point =>
                             {

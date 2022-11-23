@@ -170,7 +170,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            MainViewModel.SelectionMode = SelectionModes.Key;
+            MainViewModel.SelectionMode = SelectionModes.Keys;
 
             KeyValueToAssert = new KeyValue();
             KeySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
@@ -196,7 +196,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            MainViewModel.SelectionMode = SelectionModes.Point;
+            MainViewModel.SelectionMode = SelectionModes.SinglePoint;
         }
 
         [Test]
@@ -224,7 +224,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            MainViewModel.SelectionMode = SelectionModes.Key;
+            MainViewModel.SelectionMode = SelectionModes.Keys;
 
             CapturingStateManager.Setup(s => s.CapturingMultiKeySelection)
                 .Returns(false);
@@ -252,7 +252,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            MainViewModel.SelectionMode = SelectionModes.Point;
+            MainViewModel.SelectionMode = SelectionModes.SinglePoint;
         }
 
         [Test]

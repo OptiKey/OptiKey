@@ -68,6 +68,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         #region Properties
 
+        public bool AllowPointsOverKeys { get; set; } // irrelevant for Key fixation
+
         public RunningStates State { get; set; }
 
         public KeyEnabledStates KeyEnabledStates { get; set; }

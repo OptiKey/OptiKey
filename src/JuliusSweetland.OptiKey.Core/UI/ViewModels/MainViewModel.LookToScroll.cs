@@ -78,6 +78,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             if (keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown())
             {
+                // Turn off any locked (continuous) mouse actions
+                ResetAndCleanupAfterMouseAction();
+                SetCurrentMouseActionKey(null);
+
                 Log.Info("Look to scroll is now active.");
 
                 lookToScrollLeftoverScrollAmount = new Vector();
@@ -411,6 +415,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 CentreMouseInsideLookToScrollDeadzone();
             }
+
+            SelectionMode = SelectionModes.Keys;
         }
 
         private void CentreMouseInsideLookToScrollDeadzone()
