@@ -291,7 +291,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <controls:Key Grid.Row="6" Grid.Column="6" Grid.ColumnSpan="2"
 						Text="，"
 						SharedSizeGroup="KeyWithSingleLetter"
-						Value="&#xFF0C;" />
+						Value="&lt;" />
         <controls:Key Grid.Row="6" Grid.Column="8" Grid.ColumnSpan="4"
 						SymbolGeometry="{StaticResource SpaceIcon}"
 						Text="{x:Static resx:Resources.SPACE}"
@@ -301,7 +301,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <controls:Key Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="2"
 						Text="。"
 						SharedSizeGroup="KeyWithSingleLetter"
-						Value="&#x3002;" />
+						Value="&gt;" />
         <!--<controls:Key Grid.Row="6" Grid.Column="14" Grid.ColumnSpan="2"
 						Text="、"
 						SharedSizeGroup="KeyWithSingleLetter"
