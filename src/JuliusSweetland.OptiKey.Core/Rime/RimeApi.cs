@@ -5,6 +5,16 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace JuliusSweetland.OptiKey.Rime {
+    public class RimeCommand {
+        public const string Suggestion1 = "{Control+1}";
+        public const string Suggestion2 = "{Control+2}";
+        public const string Suggestion3 = "{Control+3}";
+        public const string Suggestion4 = "{Control+4}";
+        public const string Suggestion5 = "{Control+5}";
+        public const string Suggestion6 = "{Control+6}"; 
+        public const string PreviousSuggestions = "{Page_Up}"; 
+        public const string NextSuggestions = "{Page_Down}"; 
+    }
     public class MyRimeApi {
         private static nuint SessionId = 0;
         public static bool IsAsciiMode = false;

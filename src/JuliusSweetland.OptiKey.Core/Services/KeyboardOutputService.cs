@@ -385,7 +385,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.Suggestion1:
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
-                        ProcessTextWithRime("{Control+1}");
+                        ProcessTextWithRime(RimeCommand.Suggestion1);
                         break;
                     }
                     SwapLastTextChangeForSuggestion(0);
@@ -394,7 +394,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.Suggestion2:
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
-                        ProcessTextWithRime("{Control+2}");
+                        ProcessTextWithRime(RimeCommand.Suggestion2);
                         break;
                     }
                     SwapLastTextChangeForSuggestion(1);
@@ -403,7 +403,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.Suggestion3:
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
-                        ProcessTextWithRime("{Control+3}");
+                        ProcessTextWithRime(RimeCommand.Suggestion3);
                         break;
                     }
                     SwapLastTextChangeForSuggestion(2);
@@ -412,7 +412,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.Suggestion4:
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
-                        ProcessTextWithRime("{Control+4}");
+                        ProcessTextWithRime(RimeCommand.Suggestion4);
                         break;
                     }
                     SwapLastTextChangeForSuggestion(3);
@@ -421,7 +421,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.Suggestion5:
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
-                        ProcessTextWithRime("{Control+5}");
+                        ProcessTextWithRime(RimeCommand.Suggestion5);
                         break;
                     }
                     SwapLastTextChangeForSuggestion(4);
@@ -430,7 +430,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.Suggestion6:
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
-                        ProcessTextWithRime("{Control+6}");
+                        ProcessTextWithRime(RimeCommand.Suggestion6);
                         break;
                     }
                     SwapLastTextChangeForSuggestion(5);
@@ -439,14 +439,14 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.PreviousSuggestions:
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
-                        ProcessTextWithRime("{Page_Up}");
+                        ProcessTextWithRime(RimeCommand.PreviousSuggestions);
                         break;
                     }
                     goto default;
 
                 case FunctionKeys.NextSuggestions:
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
-                        ProcessTextWithRime("{Page_Down}");
+                        ProcessTextWithRime(RimeCommand.NextSuggestions);
                         break;
                     }
                     goto default;
