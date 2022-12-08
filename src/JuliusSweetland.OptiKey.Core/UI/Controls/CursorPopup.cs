@@ -25,7 +25,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private Point screenTopLeft;
         private Point screenBottomRight;
         private Point screenBottomRightInWpfCoords;
-        
+
+        // In order to reach all edges / corners, we need to flip the cursor towards the side of the screen
+        private bool cursorPointsToLeft = true;
+        private bool cursorPointsToTop = true;
+
         #endregion
 
         #region Ctor
@@ -72,6 +76,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 IsOpen = showCursor;
                 if (IsOpen)
                 {
+                    cursorPointsToTop = true;
+                    cursorPointsToLeft = true;
                     Point = mainViewModel.CurrentPositionPoint;
                 }
             };
@@ -184,36 +190,23 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 var dpiPoint = this.GetTransformFromDevice().Transform(pointCopy); //Offsets are in device independent pixels (DIP), but the incoming Point is in pixels
 
-                bool cursorPointsToLeft;
-                bool cursorPointsToTop;
-
-                //Calculate horizontal offset
+                // Flip cursor near edges
                 if(dpiPoint.X + Width > screenBottomRightInWpfCoords.X) //Width is set explicitly on the Popup from the Setting value. Cannot use ActualWidth as it will be 0 (Popup itself is not part of the visual tree)
-                {
-                    //Move popup to the point, but manually adjust popup to the left of the point
-                    HorizontalOffset = dpiPoint.X - Width;
                     cursorPointsToLeft = false;
-                }
-                else
-                {
-                    //Move popup to the point - it will align to the right of the point
-                    HorizontalOffset = dpiPoint.X;
+                else if (dpiPoint.X < Width) // Flip back for LHS
                     cursorPointsToLeft = true;
-                }
-                
-                //Calculate vertical offset
+                // else keep orientation as it was last set
+
+                // Flip cursor near edges
                 if (dpiPoint.Y + Height > screenBottomRightInWpfCoords.Y) //Width is set explicitly on the Popup from the Setting value. Cannot use ActualWidth as it will be 0 (Popup itself is not part of the visual tree)
-                {
-                    //Move popup to the point, but manually adjust popup to be above the point
-                    VerticalOffset = dpiPoint.Y - Height;
-                    cursorPointsToTop = false;
-                }
-                else
-                {
-                    //Move popup to the point - it will align to be below the point
-                    VerticalOffset = dpiPoint.Y;
+                cursorPointsToTop = false;
+                else if (dpiPoint.Y < Height)
                     cursorPointsToTop = true;
-                }
+                // else keep orientation as it was last set
+
+                // Set offset to make sure cursor 'point' is at X,Y
+                HorizontalOffset = cursorPointsToLeft ? dpiPoint.X : dpiPoint.X - Width;
+                VerticalOffset = cursorPointsToTop ? dpiPoint.Y : dpiPoint.Y - Height;
 
                 CursorPointPosition = cursorPointsToTop && cursorPointsToLeft ? CursorPointPositions.ToTopLeft
                     : cursorPointsToTop && !cursorPointsToLeft ? CursorPointPositions.ToTopRight
