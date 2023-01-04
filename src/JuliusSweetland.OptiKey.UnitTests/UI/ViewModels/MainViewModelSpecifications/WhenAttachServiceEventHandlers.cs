@@ -132,7 +132,25 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
     }
 
     [TestFixture]
-    public class WhenAttachServiceEventHandlersGivenEmptyProgress : WhenAttachServiceEventHandlers
+    public class WhenAttachServiceEventHandlersGivenEmptyPointProgress : WhenAttachServiceEventHandlers
+    {
+        protected NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get; set; }
+
+        protected override void Arrange()
+        {
+            base.Arrange();
+        }
+
+        [Test]
+        public void ThenSelectionProgressShouldBeReset()
+        {
+            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<TriggerTypes, PointAndKeyValue, double>(TriggerTypes.Point, null, 0));
+            Assert.That(MainViewModel.PointSelectionProgress, Is.Null);
+        }
+    }
+
+    [TestFixture]
+    public class WhenAttachServiceEventHandlersGivenEmptyKeyProgress : WhenAttachServiceEventHandlers
     {
         protected NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get; set; }
 
@@ -149,10 +167,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenSelectionProgressShouldBeReset()
         {
-
-            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(null, 0));
-
-            Assert.That(MainViewModel.PointSelectionProgress, Is.Null);
+            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<TriggerTypes, PointAndKeyValue, double>(TriggerTypes.Key, null, 0));
 
             KeySelectionProgress.Keys
                 .ToList()
@@ -182,8 +197,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeySelectionProgressOnKeyStateServiceShouldBeSet()
         {
-            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(
-                new PointAndKeyValue(new Point(), KeyValueToAssert), 14));
+            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<TriggerTypes, PointAndKeyValue, double>(
+                TriggerTypes.Key, new PointAndKeyValue(new Point(), KeyValueToAssert), 14));
 
             Assert.That(KeySelectionProgress[KeyValueToAssert].Value, Is.EqualTo(14));
         }
@@ -204,8 +219,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var pointAndKeyValue = new PointAndKeyValue(new Point(), new KeyValue());
 
-            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(
-                pointAndKeyValue, 83));
+            InputService.Raise(s => s.SelectionProgress += null, this, 
+                new Tuple<TriggerTypes, PointAndKeyValue, double>(
+                    TriggerTypes.Point, pointAndKeyValue, 83));
 
             Assert.That(MainViewModel.PointSelectionProgress, Is.Not.Null);
 
@@ -235,7 +251,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var pointAndKeyValue = new PointAndKeyValue(new Point(), new KeyValue());
 
-            InputService.Raise(s => s.Selection += null, this, pointAndKeyValue);
+            InputService.Raise(s => s.Selection += null, this, new Tuple<TriggerTypes, PointAndKeyValue>(TriggerTypes.Key, pointAndKeyValue));
 
             Assert.That(MainViewModel.SelectionResultPoints, Is.Null);
 
@@ -260,7 +276,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var pointAndKeyValue = new PointAndKeyValue(new Point(), new KeyValue());
 
-            InputService.Raise(s => s.Selection += null, this, pointAndKeyValue);
+            InputService.Raise(s => s.Selection += null, this, new Tuple<TriggerTypes, PointAndKeyValue>(
+                TriggerTypes.Point, pointAndKeyValue));
 
             Assert.Multiple(() =>
             {
@@ -277,8 +294,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void GivenSingleKeyIsStringThenSelectionResultEventHandlerShouldBeAttachedToInputService()
         {
             var points = new List<Point>();
-            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
-                points, new KeyValue("SingleKeyValueIsString"), new List<string>());
+            var selection = new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                TriggerTypes.Key, points, new KeyValue("SingleKeyValueIsString"), new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
@@ -291,8 +308,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void GivenSingleKeyIsFunctionKeySelectionResultEventHandlerShouldBeAttachedToInputService()
         {
             var points = new List<Point>();
-            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
-                points, new KeyValue(FunctionKeys.Suggestion1), new List<string>());
+            var selection = new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                TriggerTypes.Key, points, new KeyValue(FunctionKeys.Suggestion1), new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
@@ -310,8 +327,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var points = new List<Point>();
             var multiKeySelection = new List<string> { "test-multi" };
-            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
-                points, null, multiKeySelection);
+            var selection = new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                TriggerTypes.Key, points, null, multiKeySelection);
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
