@@ -233,6 +233,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\ext\TobiiStreamEngine\stream_engine_windows_x64_4.15.1.5\Tobii.StreamEngine.Interop.cs">
+      <Link>Native\Tobii\Tobii.StreamEngine.Interop.cs</Link>
+    </Compile>
     <Compile Include="Enums\TriggerTypes.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Models\Gamepads\GamepadButtonEvents.cs" />
