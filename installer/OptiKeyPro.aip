@@ -4,6 +4,7 @@
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_CURRENT_YEAR" Value="2023" ValueLocId="-"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
+    <ROW Property="AI_PREREQ_REPAIR_ENABLED" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="AI_RUN_AS_ADMIN" Value="0"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
@@ -862,7 +863,7 @@
     <ROW Action="AI_FindExeLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="196" Builds="DefaultBuild"/>
     <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
     <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
-    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6597" Builds="DefaultBuild"/>
     <ROW Action="AI_ExtractFiles" Sequence="1399" Builds="DefaultBuild"/>
     <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
   </COMPONENT>
@@ -919,10 +920,12 @@
     <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
+    <ROW PrereqKey="C4FE6FD5B7C4D07B3A313E754A9A6A8" DisplayName="Visual C++ Redistributable for Visual Studio 2015-2022 x64" VersionMin="14.30" SetupFileUrl="Prerequisites\Visual C++ Redistributable for Visual Studio 2015-2022\VC_redist.x64.exe" Location="0" ExactSize="0" WinNTVersions="Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" WinNT64Versions="Windows Vista RTM x64, Windows Vista SP1 x64, Windows Server 2008 RTM x64, Windows 7 RTM x64, Windows Server 2008 R2 RTM x64" Operator="1" NoUiComLine="/q /norestart" Options="xy" TargetName="Visual C++ Redistributable for Visual Studio 2015-2022\VC_redist.x64.exe"/>
     <ROW PrereqKey="EEDF697C58FF44AEA12537BBFB266D19" DisplayName=".NET Framework 4.6 (web installer)" SetupFileUrl="Prerequisites\.NET Framework 4.6\NDP46-KB3045560-Web.exe" Location="0" ExactSize="0" WinNTVersions="Windows Vista RTM x86, Windows Vista SP1 x86, Windows 7 RTM x86, Windows 10 x86" WinNT64Versions="Windows Vista RTM x64, Windows Vista SP1 x64, Windows 7 RTM x64, Windows Server 2008 R2 RTM x64, Windows 10 x64, Windows Server x64" Operator="1" NoUiComLine="/q /norestart" Options="xy" TargetName=".NET Framework 4.6\NDP46-KB3045560-Web.exe"/>
-    <ATTRIBUTE name="PrereqsOrder" value="EEDF697C58FF44AEA12537BBFB266D19"/>
+    <ATTRIBUTE name="PrereqsOrder" value="EEDF697C58FF44AEA12537BBFB266D19 C4FE6FD5B7C4D07B3A313E754A9A6A8"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
+    <ROW SearchKey="C4FE6FD5B7C4D07B3A313E754A9A6A8Vers" Prereq="C4FE6FD5B7C4D07B3A313E754A9A6A8" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum\Version" VerMin="14.30.30704" Order="1" Property="PreReqSearch_C4FE6FD5B7C4D07B3A313E"/>
     <ROW SearchKey="EEDF697C58FF44AEA12537BBFB266D19Rel" Prereq="EEDF697C58FF44AEA12537BBFB266D19" SearchType="9" SearchString="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release" RefContent="G393296" Order="1" Property="PreReqSearch_EEDF697C58FF44AEA12537"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.SynchronizedFolderComponent">
