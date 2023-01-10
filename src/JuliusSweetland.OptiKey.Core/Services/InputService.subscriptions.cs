@@ -300,6 +300,12 @@ namespace JuliusSweetland.OptiKey.Services
             if (CapturingMultiKeySelection)
                 return;
 
+            if (SelectionMode != SelectionModes.Keys)
+            {
+                Log.InfoFormat("Ignoring gesture during point selection");
+                return;
+            }
+
             if (triggerSignal.Signal >= 1)            
             {
                 if (triggerSignal.PointAndKeyValue != null)
