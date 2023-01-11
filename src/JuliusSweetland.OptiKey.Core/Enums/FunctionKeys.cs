@@ -190,6 +190,7 @@ namespace JuliusSweetland.OptiKey.Enums
         PrintScreen,
         Quit,
         RepeatLastMouseAction,
+        RepeatLastKeyAction,
         Restart,
         RussianRussia,
         ScrollLock,
