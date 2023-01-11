@@ -225,6 +225,20 @@ namespace JuliusSweetland.OptiKey.Services
                                 null));
                         }
                     }
+                    else if (triggerSignal.PointAndKeyValue.KeyValue == null &&
+                             Settings.Default.AllowRepeatKeyActionsAwayFromKey)
+                    {
+                        // Trigger without key - may be used to repeat last action. 
+                        PublishSelection(TriggerTypes.Key, triggerSignal.PointAndKeyValue);
+
+                        await Task.Delay(20); //Add a short delay to give time for the selection animation 
+
+                        PublishSelectionResult(new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                            TriggerTypes.Key,
+                            new List<Point> { triggerSignal.PointAndKeyValue.Point },
+                            new KeyValue(FunctionKeys.RepeatLastKeyAction),
+                            null));
+                    }                        
                     else
                     {
                         Log.Debug("Selection mode is KEY, but the trigger occurred away from a key or over a disabled key.");
