@@ -353,6 +353,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'",
                 singleKeyValue.String.ToPrintableString(), singleKeyValue.FunctionKey);
 
+            // Inject previous keyvalue if asked to repeat
+            if (singleKeyValue.FunctionKey != null &&
+                singleKeyValue.FunctionKey == FunctionKeys.RepeatLastKeyAction)
+            {
+                singleKeyValue = lastKeyValueExecuted;
+            }
+
             keyStateService.ProgressKeyDownState(singleKeyValue);
 
             if (!string.IsNullOrEmpty(singleKeyValue.String)
@@ -373,6 +380,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     //Single key function key
                     HandleFunctionKeySelectionResult(singleKeyValue);
                 }
+            }
+
+            // Remember keyvalue to allow repeats (unless keyvalue is "repeat last key action")
+            if (singleKeyValue.FunctionKey == null ||
+                singleKeyValue.FunctionKey != FunctionKeys.RepeatLastKeyAction)
+            {
+                lastKeyValueExecuted = singleKeyValue;
             }
         }
 
