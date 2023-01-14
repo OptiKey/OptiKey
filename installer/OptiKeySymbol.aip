@@ -2,7 +2,7 @@
 <DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="19.2" Modules="enterprise" RootPath="." Language="en" Id="{16641705-202C-47CE-B551-2E86C3C1D8D3}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
-    <ROW Property="AI_CURRENT_YEAR" Value="2022" ValueLocId="-"/>
+    <ROW Property="AI_CURRENT_YEAR" Value="2023" ValueLocId="-"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
     <ROW Property="AI_PREREQ_REPAIR_ENABLED" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="AI_RUN_AS_ADMIN" Value="0"/>
@@ -12,10 +12,10 @@
     <ROW Property="ARPPRODUCTICON" Value="Symbol.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Optikey"/>
-    <ROW Property="ProductCode" Value="1025:{65026242-A286-491C-9997-2D2409DF9A76} 1026:{7CA3AF53-133F-4C72-B9A6-1E4B46545D7B} 1027:{24A3E15D-FAF3-4E9C-8514-346AED88BD94} 1028:{B9AD2ACF-0B60-43B7-AC36-77466CA407B9} 1029:{55B02641-B810-41F6-B9DA-FA6B77E1E1B4} 1030:{8F62EDB7-F430-4D36-8853-7EF0C6CFE633} 1031:{78A62906-A28E-4C61-8CCA-C3469F80A590} 1032:{83DB9C7F-429E-45CC-AF7E-F4F0D8B8F309} 1033:{3F5C1C57-5969-4D4B-AD9B-CFF08D761794} 1035:{2FEB88DD-8D4C-4222-9118-2A2858C4FD89} 1036:{2D0C05B5-386B-4AE0-A186-6187DAE5FF69} 1037:{5194FEDA-D0EF-46E5-8FCA-7D5A4F4B263E} 1038:{4BC05607-B148-427D-9D65-525BE25E050C} 1039:{FAF66206-6970-4F99-81FE-FFE133C06427} 1040:{0A3BD93C-1028-4B08-A0BF-A93DC517BA6E} 1041:{45CFF1C2-0D50-446B-8099-D4974DE5B3A8} 1042:{65EE4E27-9A39-426D-9159-ACEBFF527D37} 1043:{FA1CB0AC-BF99-471D-8307-6F2B63496256} 1044:{3374D107-86A0-43F1-B654-70C175D5FD8C} 1045:{508988F5-09A2-415E-B241-078C1088611C} 1046:{F94BB442-C952-423D-AA58-97E74039DC6C} 1049:{A27587C4-BF81-40AF-A2B4-B9861E73F2D2} 1050:{21D1CA9E-0EFC-419A-A27D-38F4BD2A5F28} 1051:{B3FBC7E3-F437-421B-9A8B-A4FA3D47CB46} 1052:{F8D918D3-13D3-494C-838E-F5D2068B2410} 1053:{F5BC0680-5557-41C0-9D8E-739449C41662} 1055:{0CA12F64-8C86-44EE-A92E-8A1794FB4CC8} 1057:{A45BC56A-8334-4CE0-B975-ABDCE71396EB} 1058:{ACEF66A2-4EFA-4D4B-9300-17170A823445} 1060:{57B49B4C-07CA-49F7-8AE1-32EE87EE2C32} 1065:{A2875392-ABE3-419B-9A44-9B7DD39052EF} 1087:{D6A4349F-660F-4010-B30A-1741DA500AC2} 2052:{0098DFA6-F0C6-4A96-B391-BA9598CF72FB} 2057:{D9200C6D-2116-41E2-8B82-D6EBA98C0014} 2068:{8A035953-4801-4257-93AE-C5B09CB10226} 2070:{47BF91FA-7478-40A6-929C-9947729D2025} 2074:{E3FBD9EF-E967-4808-8D09-758103BB441B} 3082:{79EB854A-DE83-4F2D-A708-623EB96CF904} 3098:{6E1D31CA-A9BF-4951-99E2-833FDF4BBCEA} " Type="16"/>
+    <ROW Property="ProductCode" Value="1025:{ECA94ACA-FB95-4AA3-9713-84E1F5248B83} 1026:{717E9485-57D5-4C67-8D72-97A040B97DDD} 1027:{50B9FC1B-AA8F-4AE9-9E01-CD17EEEE18F4} 1028:{B45537C6-07D6-4B4F-B925-F948CEA19537} 1029:{E72AE87E-CDAB-4E2D-A40B-E42B2794C1A2} 1030:{A87414FD-F762-4FF4-8D0D-AB03F551688A} 1031:{C859C0C8-F190-4A04-A153-5E77BE9DA30F} 1032:{B24F6554-A28E-4C63-9E57-AD146BF20E42} 1033:{E3F30ECF-6024-433C-950E-883C042044FE} 1035:{49A2874B-7F84-473F-B2FB-AA9B49876DDA} 1036:{A37E0869-AB49-448C-80A6-CF07A658A7A2} 1037:{1823F65D-D014-4D68-B910-671A218D9102} 1038:{CD1575E4-937E-4D76-99A6-1702F1494C3D} 1039:{81BF47DD-CD0B-420D-9305-11118A73B6C6} 1040:{CB1A50DA-8A9F-43B9-8CE7-81D86857D4DE} 1041:{B9DFEA93-A5B4-4C16-ABCC-E81426088F96} 1042:{CB9B38D0-6EF6-4BFB-9F3B-B4922DDBC079} 1043:{4D5F269A-CA38-49D3-8D37-919FD32AD639} 1044:{BCBD0BA1-1188-4D20-AED1-54CCEF3C7FEE} 1045:{B6EAD2AE-D1E0-425A-9FDC-F3E4F009E23F} 1046:{DBA950C9-3A0B-46CF-9E3E-64E2695514E6} 1049:{1180689A-6899-441A-9718-625A55A0DE44} 1050:{EE47DB3C-576C-42BE-BA6C-B7A0F51AFB39} 1051:{62A0F449-0DD4-4DDE-8E6A-F7CB3D026FED} 1052:{B7A0E91B-8ABD-41B2-B565-81F0B1F6E595} 1053:{B16CD87E-0B10-4F9C-9E1F-14EE29795F80} 1055:{CEF36CA5-5CD4-437E-99A8-C51A49A12099} 1057:{59534587-8FF3-45EB-89CA-F36EE7B97250} 1058:{778FCBA6-2D88-409E-A70F-0C9C474F2B3D} 1060:{9C538AD2-0AD3-48C6-80F0-0CD549F36780} 1065:{A5079D70-A1CA-4675-A61C-970EF75AD5E8} 1087:{764FC817-DB98-4B43-9CA4-45C965568FC9} 2052:{D735CFAF-19DE-45ED-A4E8-9728B7414901} 2057:{2ED68FAC-E37C-48D3-A7C5-D6CB9737F3CD} 2068:{9C1EA404-24C2-41C8-9F5F-4A8D37536A07} 2070:{C5926143-986E-45F8-AC3F-54985B73FD97} 2074:{79594221-52C3-480C-BA43-4B9BF037E38A} 3082:{80C98B23-A947-4D35-8771-5AB486993970} 3098:{1CE40096-6AB4-4954-9BC8-294D27163C2D} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Optikey Symbol"/>
-    <ROW Property="ProductVersion" Value="3.2.3"/>
+    <ROW Property="ProductVersion" Value="3.2.4"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{951C90E2-0E35-4732-AAF8-285C1A134F6F}"/>
@@ -35,7 +35,9 @@
     <ROW Directory="Dictionaries_Dir" Directory_Parent="Release_Dir" DefaultDir="DICTIO~1|Dictionaries"/>
     <ROW Directory="DynamicKeyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="DYNAMI~1|DynamicKeyboards"/>
     <ROW Directory="EyeGestures_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYEGES~1|EyeGestures"/>
+    <ROW Directory="EyeTrackerSupport_Dir" Directory_Parent="Resources_Dir" DefaultDir="EYETRA~1|EyeTrackerSupport"/>
     <ROW Directory="Fonts_Dir" Directory_Parent="Resources_Dir" DefaultDir="Fonts"/>
+    <ROW Directory="Keyboards_Dir" Directory_Parent="Resources_Dir" DefaultDir="KEYBOA~1|Keyboards"/>
     <ROW Directory="Optikey_Dir" Directory_Parent="ProgramMenuFolder" DefaultDir="Optikey"/>
     <ROW Directory="Plugins_Dir" Directory_Parent="Resources_Dir" DefaultDir="Plugins"/>
     <ROW Directory="Presage_Dir" Directory_Parent="Resources_Dir" DefaultDir="Presage"/>
@@ -43,6 +45,7 @@
     <ROW Directory="Release_Dir" Directory_Parent="APPDIR" DefaultDir=".:Release"/>
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="Samples_1_Dir" Directory_Parent="Keyboards_Dir" DefaultDir="Samples"/>
     <ROW Directory="Samples_Dir" Directory_Parent="DynamicKeyboards_Dir" DefaultDir="Samples"/>
     <ROW Directory="Sounds_Dir" Directory_Parent="Resources_Dir" DefaultDir="Sounds"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
@@ -78,15 +81,16 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="AI_ExePath" ComponentId="{30A43025-F944-4C8F-8F53-40BF3314B163}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
     <ROW Component="APPDIR" ComponentId="{7E3C6693-3940-4FFA-87AB-D3BEC59ABB0C}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="AltAlphaHorizontalKeyboard.xml" ComponentId="{A24CB8D9-914F-44C5-9609-BE82B81D9003}" Directory_="Keyboards_Dir" Attributes="0" KeyPath="AltAlphaHorizontalKeyboard.xml" Type="0"/>
     <ROW Component="Attention.wav" ComponentId="{5E9F6D8C-F03F-4BB9-9548-D1F177FB7318}" Directory_="Sounds_Dir" Attributes="0" KeyPath="Attention.wav" Type="0"/>
     <ROW Component="B612licenceeplv10.html" ComponentId="{7E4EDD49-B745-4D92-AEA1-FE6A5B2243CA}" Directory_="Fonts_Dir" Attributes="0" KeyPath="B612licenceeplv10.html" Type="0"/>
     <ROW Component="Bass.Net.dll" ComponentId="{27FB088E-0009-466C-BE8E-A34A007D23FD}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.dll"/>
     <ROW Component="Bass.Net.xml" ComponentId="{5663EE9E-7EEA-445E-AE58-C433652390E0}" Directory_="Release_Dir" Attributes="0" KeyPath="Bass.Net.xml" Type="0"/>
-    <ROW Component="BigHackerKeyboard.xml" ComponentId="{F1C16098-0D1F-4D35-941F-116A4233E832}" Directory_="DynamicKeyboards_Dir" Attributes="0" KeyPath="AltAlphaHorizontalKeyboard.xml" Type="0"/>
     <ROW Component="CatalanSpain.dic" ComponentId="{62A3C1D9-0A3A-43B1-AA37-8430ACE17256}" Directory_="Dictionaries_Dir" Attributes="0" KeyPath="CatalanSpain.dic" Type="0"/>
     <ROW Component="ControlzEx.dll" ComponentId="{6A1A4E91-A976-4CB6-8047-096F3CEE19E3}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
-    <ROW Component="Demo_Gamepad.xml" ComponentId="{493729E3-0FE0-47F4-B74E-4EEAB031E184}" Directory_="Samples_Dir" Attributes="0" KeyPath="Demo_Bottom.xml" Type="0"/>
+    <ROW Component="Demo_Bottom.xml" ComponentId="{8BC21F1A-1F0E-4EC1-B34C-79C50897702B}" Directory_="Samples_1_Dir" Attributes="0" KeyPath="Demo_Bottom.xml" Type="0"/>
     <ROW Component="EyeGestures.xml" ComponentId="{EC315AE8-60FA-4F3B-8BE3-B1C2E8308FA9}" Directory_="EyeGestures_Dir" Attributes="0" KeyPath="EyeGestures.xml" Type="0"/>
+    <ROW Component="EyeTrackerSupport" ComponentId="{39D60B0B-B486-47C4-A6F3-A5529833DF9A}" Directory_="EyeTrackerSupport_Dir" Attributes="0"/>
     <ROW Component="EyeXFramework.dll" ComponentId="{EABB8F26-962D-4E7A-89C1-84FFBC4D413E}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
     <ROW Component="Interop.SpeechLib.dll" ComponentId="{C617EA44-DF5C-40FA-9136-2D44E54A0FFC}" Directory_="Release_Dir" Attributes="0" KeyPath="Interop.SpeechLib.dll"/>
     <ROW Component="IrisbondAPI.dll" ComponentId="{3F41CE04-68B7-4629-9AF9-1FB8C1AAB4FE}" Directory_="Release_Dir" Attributes="0" KeyPath="IrisbondAPI.dll"/>
@@ -136,6 +140,7 @@
     <ROW Component="Prism.dll" ComponentId="{846E16B4-ABF5-4BF8-9C3D-53E7E55B9518}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.dll"/>
     <ROW Component="ProductInformation" ComponentId="{0BC71145-07ED-4664-9F46-A2B861EB9697}" Directory_="APPDIR" Attributes="4" KeyPath="Version" Options="1"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{E6BC8210-BA53-4785-A615-FE283C7B1A1C}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="Samples" ComponentId="{D4D064BD-99B8-4F26-AC2D-F02DD2E44696}" Directory_="Samples_Dir" Attributes="0"/>
     <ROW Component="SharpDX.DirectInput.dll" ComponentId="{A184D7E1-C3E9-402A-BF21-D4BE0B1D04C1}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.DirectInput.dll"/>
     <ROW Component="SharpDX.XInput.dll" ComponentId="{73471C71-DC98-4379-AB78-5C1CC01BB204}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.XInput.dll"/>
     <ROW Component="SharpDX.dll" ComponentId="{E5A84006-A48C-4880-82EA-DD713ED05721}" Directory_="Release_Dir" Attributes="0" KeyPath="SharpDX.dll"/>
@@ -163,6 +168,11 @@
     <ROW Component="WindowsInput.dll" ComponentId="{DC9CBABB-FBD8-41D9-8E3C-A100F9E5A46D}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" ComponentId="{2CE74D7F-4298-495D-8017-509FD65339A5}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.dll" ComponentId="{F36566E6-B3AC-41E4-88DA-25838D4FC862}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsRecipes.TaskbarSingleInstance.dll"/>
+    <ROW Component="avcodec58.dll" ComponentId="{12BF0E65-C049-472E-9E3F-7D0E6C42BA23}" Directory_="Release_Dir" Attributes="0" KeyPath="avcodec58.dll"/>
+    <ROW Component="avdevice58.dll" ComponentId="{3D688AFF-F79D-4E32-855B-F92C4DC36897}" Directory_="Release_Dir" Attributes="0" KeyPath="avdevice58.dll"/>
+    <ROW Component="avfilter7.dll" ComponentId="{F77A82D7-BF32-4739-8A5C-3C1D9C999DCE}" Directory_="Release_Dir" Attributes="0" KeyPath="avfilter7.dll"/>
+    <ROW Component="avformat58.dll" ComponentId="{53176A46-1538-4A58-9EE0-CFDF97AE053F}" Directory_="Release_Dir" Attributes="0" KeyPath="avformat58.dll"/>
+    <ROW Component="avutil56.dll" ComponentId="{8372E6ED-5C3E-476E-9B6B-4F8C9C730D59}" Directory_="Release_Dir" Attributes="0" KeyPath="avutil56.dll"/>
     <ROW Component="back.png" ComponentId="{3B47BD52-08E6-42F8-8EB8-0C9C721DFC4E}" Directory_="CommuniKate_Dir" Attributes="0" KeyPath="back.png" Type="0"/>
     <ROW Component="bass.dll" ComponentId="{C0B5CFEC-6640-489D-98EC-4A31F635858B}" Directory_="Release_Dir" Attributes="0" KeyPath="bass.dll"/>
     <ROW Component="database.zip" ComponentId="{E969E3DC-1089-488B-9194-A8FD7450037F}" Directory_="Presage_Dir" Attributes="0" KeyPath="database.zip" Type="0"/>
@@ -170,6 +180,7 @@
     <ROW Component="myGazeAPI.dll" ComponentId="{7A594235-71E6-4555-A603-C4C0E719372F}" Directory_="Release_Dir" Attributes="0" KeyPath="myGazeAPI.dll"/>
     <ROW Component="nunit.framework.dll" ComponentId="{53525C82-D76B-4CA7-BC5C-F333E65346F5}" Directory_="Release_Dir" Attributes="0" KeyPath="nunit.framework.dll"/>
     <ROW Component="presage.net.dll" ComponentId="{721FAC34-8297-4F61-9C7E-CA56AB778A97}" Directory_="Release_Dir" Attributes="0" KeyPath="presage.net.dll"/>
+    <ROW Component="swresample3.dll" ComponentId="{F55392A6-C1F6-4A06-A56A-BEE489AAAE20}" Directory_="Release_Dir" Attributes="0" KeyPath="swresample3.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
@@ -347,8 +358,6 @@
     <ROW File="FinnishFinland.dic" Component_="CatalanSpain.dic" FileName="FINNIS~1.DIC|FinnishFinland.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Dictionaries\FinnishFinland.dic" SelfReg="false"/>
     <ROW File="HebrewIsrael.dic" Component_="CatalanSpain.dic" FileName="HEBREW~1.DIC|HebrewIsrael.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Dictionaries\HebrewIsrael.dic" SelfReg="false"/>
     <ROW File="OptikeySymbol.exe.config" Component_="Bass.Net.xml" FileName="OPTIKE~1.CON|OptikeySymbol.exe.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptikeySymbol.exe.config" SelfReg="false"/>
-    <ROW File="AltAlphaHorizontalKeyboard.xml" Component_="BigHackerKeyboard.xml" FileName="ALTALP~1.XML|AltAlphaHorizontalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml" SelfReg="false"/>
-    <ROW File="AltAlphaVerticalKeyboard.xml" Component_="BigHackerKeyboard.xml" FileName="ALTALP~2.XML|AltAlphaVerticalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml" SelfReg="false"/>
     <ROW File="WindowsInput.pdb" Component_="WindowsInput.dll" FileName="WINDOW~1.PDB|WindowsInput.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsInput.pdb" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.dll" Component_="WindowsRecipes.TaskbarSingleInstance.dll" FileName="WINDOW~2.DLL|WindowsRecipes.TaskbarSingleInstance.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsRecipes.TaskbarSingleInstance.dll" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.dll" FileName="WINDOW~2.PDB|WindowsRecipes.TaskbarSingleInstance.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\WindowsRecipes.TaskbarSingleInstance.pdb" SelfReg="false"/>
@@ -359,16 +368,9 @@
     <ROW File="HungarianHungary.dic" Component_="CatalanSpain.dic" FileName="HUNGAR~1.DIC|HungarianHungary.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Dictionaries\HungarianHungary.dic" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_26" Component_="OptiKey.resources.dll_26" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\hu-HU\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.dll.config" Component_="Bass.Net.xml" FileName="OPTIKE~2.CON|OptiKey.dll.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\OptiKey.dll.config" SelfReg="false"/>
-    <ROW File="Demo_Bottom.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_B~1.XML|Demo_Bottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml" SelfReg="false"/>
-    <ROW File="Demo_Left.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_L~1.XML|Demo_Left.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Left.xml" SelfReg="false"/>
-    <ROW File="Demo_Minecraft.xml" Component_="Demo_Gamepad.xml" FileName="DEMO_M~1.XML|Demo_Minecraft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml" SelfReg="false"/>
     <ROW File="HindiIndia.dic" Component_="CatalanSpain.dic" FileName="HINDII~1.DIC|HindiIndia.dic" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Dictionaries\HindiIndia.dic" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_27" Component_="OptiKey.resources.dll_27" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\hi-IN\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="IrisbondHiruAPI.dll" Component_="IrisbondHiruAPI.dll" FileName="IRISBO~2.DLL|IrisbondHiruAPI.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\IrisbondHiruAPI.dll" SelfReg="false"/>
-    <ROW File="Edge.xml" Component_="BigHackerKeyboard.xml" FileName="Edge.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\Edge.xml" SelfReg="false"/>
-    <ROW File="FullQwerty.xml_1" Component_="BigHackerKeyboard.xml" FileName="FULLQW~1.XML|FullQwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\FullQwerty.xml" SelfReg="false"/>
-    <ROW File="FullSymbol.xml_1" Component_="BigHackerKeyboard.xml" FileName="FULLSY~1.XML|FullSymbol.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\FullSymbol.xml" SelfReg="false"/>
-    <ROW File="HideUnder.xml" Component_="BigHackerKeyboard.xml" FileName="HIDEUN~1.XML|HideUnder.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\DynamicKeyboards\HideUnder.xml" SelfReg="false"/>
     <ROW File="EyeGestures.xml" Component_="EyeGestures.xml" FileName="EYEGES~1.XML|EyeGestures.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\EyeGestures\EyeGestures.xml" SelfReg="false"/>
     <ROW File="SharpDX.DirectInput.dll" Component_="SharpDX.DirectInput.dll" FileName="SHARPD~1.DLL|SharpDX.DirectInput.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\SharpDX.DirectInput.dll" SelfReg="false"/>
     <ROW File="SharpDX.DirectInput.pdb" Component_="SharpDX.DirectInput.dll" FileName="SHARPD~1.PDB|SharpDX.DirectInput.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\SharpDX.DirectInput.pdb" SelfReg="false"/>
@@ -380,7 +382,21 @@
     <ROW File="SharpDX.XInput.xml" Component_="Bass.Net.xml" FileName="SHARPD~2.XML|SharpDX.XInput.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\SharpDX.XInput.xml" SelfReg="false"/>
     <ROW File="TestControllers.exe" Component_="TestControllers.exe" FileName="TESTCO~1.EXE|TestControllers.exe" Attributes="0" SourcePath="..\src\TestControllers\bin\Release\TestControllers.exe" SelfReg="false"/>
     <ROW File="TestControllers.exe.config" Component_="TestControllers.exe.config" FileName="TESTCO~1.CON|TestControllers.exe.config" Attributes="0" SourcePath="..\src\TestControllers\bin\Release\TestControllers.exe.config" SelfReg="false"/>
-    <ROW File="log4net.xml" Component_="Bass.Net.xml" FileName="log4net.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\log4net.xml" SelfReg="false"/>
+    <ROW File="avcodec58.dll" Component_="avcodec58.dll" FileName="AVCODE~1.DLL|avcodec-58.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\avcodec-58.dll" SelfReg="false"/>
+    <ROW File="avdevice58.dll" Component_="avdevice58.dll" FileName="AVDEVI~1.DLL|avdevice-58.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\avdevice-58.dll" SelfReg="false"/>
+    <ROW File="avfilter7.dll" Component_="avfilter7.dll" FileName="AVFILT~1.DLL|avfilter-7.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\avfilter-7.dll" SelfReg="false"/>
+    <ROW File="avformat58.dll" Component_="avformat58.dll" FileName="AVFORM~1.DLL|avformat-58.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\avformat-58.dll" SelfReg="false"/>
+    <ROW File="avutil56.dll" Component_="avutil56.dll" FileName="AVUTIL~1.DLL|avutil-56.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\avutil-56.dll" SelfReg="false"/>
+    <ROW File="AltAlphaHorizontalKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="ALTALP~1.XML|AltAlphaHorizontalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\Keyboards\AltAlphaHorizontalKeyboard.xml" SelfReg="false"/>
+    <ROW File="AltAlphaVerticalKeyboard.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="ALTALP~2.XML|AltAlphaVerticalKeyboard.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\Keyboards\AltAlphaVerticalKeyboard.xml" SelfReg="false"/>
+    <ROW File="Edge.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="Edge.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\Keyboards\Edge.xml" SelfReg="false"/>
+    <ROW File="FullQwerty.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="FULLQW~1.XML|FullQwerty.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\Keyboards\FullQwerty.xml" SelfReg="false"/>
+    <ROW File="FullSymbol.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="FULLSY~1.XML|FullSymbol.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\Keyboards\FullSymbol.xml" SelfReg="false"/>
+    <ROW File="HideUnder.xml" Component_="AltAlphaHorizontalKeyboard.xml" FileName="HIDEUN~1.XML|HideUnder.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\Keyboards\HideUnder.xml" SelfReg="false"/>
+    <ROW File="Demo_Bottom.xml" Component_="Demo_Bottom.xml" FileName="DEMO_B~1.XML|Demo_Bottom.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\Keyboards\Samples\Demo_Bottom.xml" SelfReg="false"/>
+    <ROW File="Demo_Left.xml" Component_="Demo_Bottom.xml" FileName="DEMO_L~1.XML|Demo_Left.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\Keyboards\Samples\Demo_Left.xml" SelfReg="false"/>
+    <ROW File="Demo_Minecraft.xml" Component_="Demo_Bottom.xml" FileName="DEMO_M~1.XML|Demo_Minecraft.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\Resources\Keyboards\Samples\Demo_Minecraft.xml" SelfReg="false"/>
+    <ROW File="swresample3.dll" Component_="swresample3.dll" FileName="SWRESA~1.DLL|swresample-3.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\Release\swresample-3.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -583,6 +599,8 @@
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
     <ROW Directory_="Optikey_Dir" Component_="Optikey" ManualDelete="false"/>
+    <ROW Directory_="Samples_Dir" Component_="Samples" ManualDelete="false"/>
+    <ROW Directory_="EyeTrackerSupport_Dir" Component_="EyeTrackerSupport" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
@@ -678,7 +696,6 @@
     <ROW Feature_="MainFeature" Component_="Prism.Wpf.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_16"/>
     <ROW Feature_="MainFeature" Component_="back.png"/>
-    <ROW Feature_="MainFeature" Component_="BigHackerKeyboard.xml"/>
     <ROW Feature_="MainFeature" Component_="B612licenceeplv10.html"/>
     <ROW Feature_="MainFeature" Component_="OptiKeyStandardPlugins.dll"/>
     <ROW Feature_="MainFeature" Component_="database.zip"/>
@@ -720,7 +737,6 @@
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_26"/>
-    <ROW Feature_="MainFeature" Component_="Demo_Gamepad.xml"/>
     <ROW Feature_="MainFeature" Component_="Optikey"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_27"/>
     <ROW Feature_="MainFeature" Component_="IrisbondHiruAPI.dll"/>
@@ -730,6 +746,16 @@
     <ROW Feature_="MainFeature" Component_="SharpDX.XInput.dll"/>
     <ROW Feature_="MainFeature" Component_="TestControllers.exe"/>
     <ROW Feature_="MainFeature" Component_="TestControllers.exe.config"/>
+    <ROW Feature_="MainFeature" Component_="avcodec58.dll"/>
+    <ROW Feature_="MainFeature" Component_="avdevice58.dll"/>
+    <ROW Feature_="MainFeature" Component_="avfilter7.dll"/>
+    <ROW Feature_="MainFeature" Component_="avformat58.dll"/>
+    <ROW Feature_="MainFeature" Component_="avutil56.dll"/>
+    <ROW Feature_="MainFeature" Component_="Samples"/>
+    <ROW Feature_="MainFeature" Component_="EyeTrackerSupport"/>
+    <ROW Feature_="MainFeature" Component_="AltAlphaHorizontalKeyboard.xml"/>
+    <ROW Feature_="MainFeature" Component_="Demo_Bottom.xml"/>
+    <ROW Feature_="MainFeature" Component_="swresample3.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Symbol.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\Symbol.ico" Index="0"/>
