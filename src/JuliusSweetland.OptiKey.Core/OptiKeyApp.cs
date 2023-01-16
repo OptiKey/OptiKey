@@ -167,7 +167,7 @@ namespace JuliusSweetland.OptiKey
                 //1.Check the install path to detect if the wrong bitness of Presage is installed
                 string presagePath = null;
                 string presageStartMenuFolder = null;
-                string osBitness = DiagnosticInfo.OperatingSystemBitness;
+                string processBitness = DiagnosticInfo.ProcessBitness;
 
                 try
                 {
@@ -176,16 +176,31 @@ namespace JuliusSweetland.OptiKey
                 }
                 catch (Exception ex)
                 {
+                    Log.Error("Cannot find Presage entries in the registry, is it installed?");
                     Log.ErrorFormat("Caught exception: {0}", ex);
                 }
 
-                Log.InfoFormat("Presage path: {0} | Presage start menu folder: {1} | OS bitness: {2}", presagePath, presageStartMenuFolder, osBitness);
+                Log.InfoFormat("Presage path: {0} | Presage start menu folder: {1} | process bitness: {2}", presagePath, presageStartMenuFolder, processBitness);
+
+                List<string> presageOptions = new List<string>();
+                if (processBitness.Contains("64"))
+                {
+                    presageOptions.Add("presage - 0.9.1 - 64bit");
+                    presageOptions.Add("presage-0.9.2~beta20150909-64bit");
+                }
+                else
+                {
+                    presageOptions.Add("presage - 0.9.1 - 32bit");
+                    presageOptions.Add("presage-0.9.2~beta20150909-32bit");
+                }
 
                 if (string.IsNullOrEmpty(presagePath)
                     || string.IsNullOrEmpty(presageStartMenuFolder))
                 {
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (path(s) missing). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    string msg = "Invalid Presage installation detected (path(s) missing).\n";
+                    msg += $"Must install '{ String.Join("' or '", presageOptions.ToArray()) }'. Changed SuggestionMethod to NGram.";
+                    Log.Error(msg);
                     return true;
                 }
 
@@ -193,16 +208,26 @@ namespace JuliusSweetland.OptiKey
                     && presageStartMenuFolder != "presage-0.9.1")
                 {
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (valid version not detected). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    string msg = "Invalid Presage installation detected (valid version not detected).\n";
+                    msg += $"Must install '{ String.Join("' or '", presageOptions.ToArray()) }'. Changed SuggestionMethod to NGram.";
+                    Log.Error(msg);
                     return true;
                 }
 
-                if ((osBitness == "64-Bit" && presagePath != @"C:\Program Files (x86)\presage")
-                    || (osBitness == "32-Bit" && presagePath != @"C:\Program Files\presage"))
+                // On Windows 32 bit, we will only be able to install 32 bit Presage and 32 bit Optikey so don't need to check bitness.
+                // Presage's install location will be \Program Files\ since there is only one Program Files folder available. 
+
+                // On Windows 64 bit, 32 bit apps get installed into Program Files (x86) and 64 bit apps into Program Files.
+                // We need to check that Optikey and Presage have the same bitness
+                if (DiagnosticInfo.OperatingSystemBitness.Contains("64"))
                 {
-                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
-                    return true;
+                    if ((processBitness == "64-Bit" && presagePath != @"C:\Program Files\presage")
+                        || (processBitness == "32-Bit" && presagePath != @"C:\Program Files (x86)\presage"))
+                    {
+                        Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                        Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                        return true;
+                    }
                 }
 
                 if (!Directory.Exists(presagePath))
