@@ -205,6 +205,39 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if ((singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                     {
+                        // Inject previous keyvalue if asked to repeat
+                        if (singleKeyValue.FunctionKey != null &&
+                            singleKeyValue.FunctionKey == FunctionKeys.RepeatLastKeyAction &&
+                            SelectionMode == SelectionModes.Keys)
+                        {
+                            bool preventRepeat = false;
+
+                            // Certain keys built in keys are removed from repeats. 
+                            if (lastKeyValueExecuted.FunctionKey.HasValue &&
+                                KeyValues.FunctionKeysWhichShouldntBeRepeated.Contains(lastKeyValueExecuted.FunctionKey.Value))
+                            {
+                                preventRepeat = true;
+                            }
+
+                            // Prevent dynamic key that contains any of these forbidden functions, or a "Change Keyboard" command
+                            if (lastKeyValueExecuted != null && lastKeyValueExecuted.Commands != null && lastKeyValueExecuted.Commands.Any())
+                            {
+                                foreach (var command in lastKeyValueExecuted.Commands)
+                                {
+                                    if (command.Name == KeyCommands.ChangeKeyboard)
+                                        preventRepeat = true;
+                                    else if (command.Name == KeyCommands.Function)
+                                    {                                     
+                                        if (Enum.TryParse(command.Value, out FunctionKeys fk) && KeyValues.FunctionKeysWhichShouldntBeRepeated.Contains(fk))
+                                            preventRepeat = true;                                        
+                                    }
+                                }
+                            }
+
+                            if (!preventRepeat)
+                                singleKeyValue = lastKeyValueExecuted;
+                        }
+                        
                         //DynamicKeys can have a list of Commands and perform multiple actions
                         if (singleKeyValue != null && singleKeyValue.Commands != null && singleKeyValue.Commands.Any())
                         {                            
@@ -223,6 +256,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         else
                         {
                             KeySelectionResult(singleKeyValue, multiKeySelection);
+                        }
+
+                        // Remember keyvalue to allow repeats (unless keyvalue is "repeat last key action")
+                        if (singleKeyValue.FunctionKey == null ||
+                            singleKeyValue.FunctionKey != FunctionKeys.RepeatLastKeyAction)
+                        {
+                            lastKeyValueExecuted = singleKeyValue;
                         }
                     }
                     if (SelectionMode == SelectionModes.SinglePoint)
@@ -353,18 +393,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'",
                 singleKeyValue.String.ToPrintableString(), singleKeyValue.FunctionKey);
 
-            // Inject previous keyvalue if asked to repeat
-            if (singleKeyValue.FunctionKey != null &&
-                singleKeyValue.FunctionKey == FunctionKeys.RepeatLastKeyAction &&
-                SelectionMode == SelectionModes.Keys)
-            {        
-                // We could consider allowing this to repeat the last mouse action, or
-                // to repeat the original mouse-related key, but we're not sure how useful
-                // it would be
-                if (!lastMouseActionStateManager.LastMouseActionExists)
-                    singleKeyValue = lastKeyValueExecuted;
-            }
-
             keyStateService.ProgressKeyDownState(singleKeyValue);
 
             if (!string.IsNullOrEmpty(singleKeyValue.String)
@@ -385,13 +413,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     //Single key function key
                     HandleFunctionKeySelectionResult(singleKeyValue);
                 }
-            }
-
-            // Remember keyvalue to allow repeats (unless keyvalue is "repeat last key action")
-            if (singleKeyValue.FunctionKey == null ||
-                singleKeyValue.FunctionKey != FunctionKeys.RepeatLastKeyAction)
-            {
-                lastKeyValueExecuted = singleKeyValue;
             }
         }
 

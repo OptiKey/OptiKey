@@ -12,6 +12,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue AddToDictionaryKey = new KeyValue(FunctionKeys.AddToDictionary);
         public static readonly KeyValue Alpha1KeyboardKey = new KeyValue(FunctionKeys.Alpha1Keyboard);
         public static readonly KeyValue Alpha2KeyboardKey = new KeyValue(FunctionKeys.Alpha2Keyboard);
+        public static readonly KeyValue Alpha3KeyboardKey = new KeyValue(FunctionKeys.Alpha3Keyboard);
         public static readonly KeyValue ArrowDownKey = new KeyValue(FunctionKeys.ArrowDown);
         public static readonly KeyValue ArrowLeftKey = new KeyValue(FunctionKeys.ArrowLeft);
         public static readonly KeyValue ArrowRightKey = new KeyValue(FunctionKeys.ArrowRight);
@@ -92,6 +93,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CroatianCroatiaKey = new KeyValue(FunctionKeys.CroatianCroatia);
         public static readonly KeyValue ConversationAlpha1KeyboardKey = new KeyValue(FunctionKeys.ConversationAlpha1Keyboard);
         public static readonly KeyValue ConversationAlpha2KeyboardKey = new KeyValue(FunctionKeys.ConversationAlpha2Keyboard);
+        public static readonly KeyValue ConversationAlpha3KeyboardKey = new KeyValue(FunctionKeys.ConversationAlpha3Keyboard);
         public static readonly KeyValue ConversationCommuniKateKeyboardKey = new KeyValue(FunctionKeys.ConversationCommuniKateKeyboard);
         public static readonly KeyValue ConversationConfirmKeyboardKey = new KeyValue(FunctionKeys.ConversationConfirmKeyboard);
         public static readonly KeyValue ConversationConfirmYesKey = new KeyValue(FunctionKeys.ConversationConfirmYes);
@@ -227,6 +229,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue NumericAndSymbols2KeyboardKey = new KeyValue(FunctionKeys.NumericAndSymbols2Keyboard);
         public static readonly KeyValue NumericAndSymbols3KeyboardKey = new KeyValue(FunctionKeys.NumericAndSymbols3Keyboard);
         public static readonly KeyValue PersianIranKey = new KeyValue(FunctionKeys.PersianIran);
+        public static readonly KeyValue PluginKey = new KeyValue(FunctionKeys.Plugin);
         public static readonly KeyValue PgDnKey = new KeyValue(FunctionKeys.PgDn);
         public static readonly KeyValue PgUpKey = new KeyValue(FunctionKeys.PgUp);
         public static readonly KeyValue PhysicalKeysKeyboardKey = new KeyValue(FunctionKeys.PhysicalKeysKeyboard);
@@ -456,6 +459,7 @@ namespace JuliusSweetland.OptiKey.Models
             }
         }
 
+        
         public static List<KeyValue> KeysWhichCanBePressedDown
         {
             get
@@ -668,6 +672,206 @@ namespace JuliusSweetland.OptiKey.Models
                 return multiKeySelectionKeys.ContainsKey(Settings.Default.KeyboardAndDictionaryLanguage)
                     ? multiKeySelectionKeys[Settings.Default.KeyboardAndDictionaryLanguage]
                     : new List<KeyValue>();
+            }
+        }
+
+        public static List<FunctionKeys> FunctionKeysWhichShouldntBeRepeated
+        {
+            get
+            {
+                var keys = new List<FunctionKeys>
+                {
+                    FunctionKeys.AddToDictionary,
+                    FunctionKeys.Alpha1Keyboard,
+                    FunctionKeys.Alpha2Keyboard,
+                    FunctionKeys.Alpha3Keyboard,
+                    FunctionKeys.BackFromKeyboard,
+                    FunctionKeys.Calibrate,
+                    FunctionKeys.CatalanSpain,
+                    FunctionKeys.ClearScratchpad,
+                    FunctionKeys.CollapseDock,
+                    FunctionKeys.CommuniKate,
+                    FunctionKeys.CommuniKateKeyboard,
+                    FunctionKeys.ConversationAlpha1Keyboard,
+                    FunctionKeys.ConversationAlpha2Keyboard,
+                    FunctionKeys.ConversationAlpha3Keyboard,
+                    FunctionKeys.ConversationCommuniKateKeyboard,
+                    FunctionKeys.ConversationConfirmKeyboard,
+                    FunctionKeys.ConversationConfirmYes,
+                    FunctionKeys.ConversationConfirmNo,
+                    FunctionKeys.ConversationNumericAndSymbolsKeyboard,
+                    FunctionKeys.CopyAllFromScratchpad,
+                    FunctionKeys.CroatianCroatia,
+                    FunctionKeys.Currencies1Keyboard,
+                    FunctionKeys.Currencies2Keyboard,
+                    FunctionKeys.CzechCzechRepublic,
+                    FunctionKeys.DanishDenmark,
+                    FunctionKeys.DecreaseOpacity,
+                    FunctionKeys.Diacritic1Keyboard,
+                    FunctionKeys.Diacritic2Keyboard,
+                    FunctionKeys.Diacritic3Keyboard,
+                    FunctionKeys.DutchBelgium,
+                    FunctionKeys.DutchNetherlands,
+                    FunctionKeys.DynamicKeyboard,
+                    FunctionKeys.DynamicKeyboardNext,
+                    FunctionKeys.DynamicKeyboardPrev,
+                    FunctionKeys.EnglishCanada,
+                    FunctionKeys.EnglishUK,
+                    FunctionKeys.EnglishUS,
+                    FunctionKeys.ExpandToBottom,
+                    FunctionKeys.ExpandToBottomAndLeft,
+                    FunctionKeys.ExpandToBottomAndRight,
+                    FunctionKeys.ExpandToLeft,
+                    FunctionKeys.ExpandToRight,
+                    FunctionKeys.ExpandToTop,
+                    FunctionKeys.ExpandToTopAndLeft,
+                    FunctionKeys.ExpandToTopAndRight,
+                    FunctionKeys.ExpandDock,
+                    FunctionKeys.FinnishFinland,
+                    FunctionKeys.FrenchFrance,
+                    FunctionKeys.FrenchCanada,
+                    FunctionKeys.GeorgianGeorgia,
+                    FunctionKeys.GermanGermany,
+                    FunctionKeys.GreekGreece,
+                    FunctionKeys.HebrewIsrael,
+                    FunctionKeys.HindiIndia,
+                    FunctionKeys.HungarianHungary,
+                    FunctionKeys.IncreaseOpacity,
+                    FunctionKeys.ItalianItaly,
+                    FunctionKeys.JapaneseJapan,
+                    FunctionKeys.KoreanKorea,
+                    FunctionKeys.LanguageKeyboard,
+                    FunctionKeys.LeftAlt,
+                    FunctionKeys.LeftCtrl,
+                    FunctionKeys.LeftShift,
+                    FunctionKeys.LeftWin,
+                    FunctionKeys.LookToScrollBounds,
+                    FunctionKeys.LookToScrollIncrement,
+                    FunctionKeys.LookToScrollMode,
+                    FunctionKeys.LookToScrollSpeed,
+                    FunctionKeys.Menu,
+                    FunctionKeys.MenuKeyboard,
+                    FunctionKeys.Minimise,
+                    FunctionKeys.More,
+                    FunctionKeys.MouseDrag,
+                    FunctionKeys.MouseKeyboard,
+                    FunctionKeys.MouseLeftClick,
+                    FunctionKeys.MouseLeftDoubleClick,
+                    FunctionKeys.MouseLeftDownUp,
+                    FunctionKeys.MouseMiddleClick,
+                    FunctionKeys.MouseMiddleDownUp,
+                    FunctionKeys.MouseMoveAmountInPixels,
+                    FunctionKeys.MouseMoveAndLeftClick,
+                    FunctionKeys.MouseMoveAndLeftDoubleClick,
+                    FunctionKeys.MouseMoveAndMiddleClick,
+                    FunctionKeys.MouseMoveAndRightClick,
+                    FunctionKeys.MouseMoveTo,
+                    FunctionKeys.MouseMoveToBottom,
+                    FunctionKeys.MouseMoveToLeft,
+                    FunctionKeys.MouseMoveToRight,
+                    FunctionKeys.MouseMoveToTop,
+                    FunctionKeys.MouseRightClick,
+                    FunctionKeys.MouseRightDownUp,
+                    FunctionKeys.MouseScrollAmountInClicks,
+                    FunctionKeys.MouseMoveAndScrollToBottom,
+                    FunctionKeys.MouseMoveAndScrollToLeft,
+                    FunctionKeys.MouseMoveAndScrollToRight,
+                    FunctionKeys.MouseMoveAndScrollToTop,
+                    FunctionKeys.MouseMagnifier,
+                    FunctionKeys.MoveAndResizeAdjustmentAmount,
+                    FunctionKeys.MoveToBottom,
+                    FunctionKeys.MoveToBottomAndLeft,
+                    FunctionKeys.MoveToBottomAndLeftBoundaries,
+                    FunctionKeys.MoveToBottomAndRight,
+                    FunctionKeys.MoveToBottomAndRightBoundaries,
+                    FunctionKeys.MoveToBottomBoundary,
+                    FunctionKeys.MoveToLeft,
+                    FunctionKeys.MoveToLeftBoundary,
+                    FunctionKeys.MoveToRight,
+                    FunctionKeys.MoveToRightBoundary,
+                    FunctionKeys.MoveToTop,
+                    FunctionKeys.MoveToTopAndLeft,
+                    FunctionKeys.MoveToTopAndLeftBoundaries,
+                    FunctionKeys.MoveToTopAndRight,
+                    FunctionKeys.MoveToTopAndRightBoundaries,
+                    FunctionKeys.MoveToTopBoundary,
+                    FunctionKeys.MultiKeySelectionIsOn,
+                    FunctionKeys.NextSuggestions,
+                    FunctionKeys.NoQuestionResult,
+                    FunctionKeys.NumberLock,
+                    FunctionKeys.NumericAndSymbols1Keyboard,
+                    FunctionKeys.NumericAndSymbols2Keyboard,
+                    FunctionKeys.NumericAndSymbols3Keyboard,
+                    FunctionKeys.PhysicalKeysKeyboard,
+                    FunctionKeys.Plugin,
+                    FunctionKeys.PersianIran,
+                    FunctionKeys.PolishPoland,
+                    FunctionKeys.PortuguesePortugal,
+                    FunctionKeys.PreviousSuggestions,
+                    FunctionKeys.Quit,
+                    FunctionKeys.Restart,
+                    FunctionKeys.RussianRussia,
+                    FunctionKeys.ScrollLock,
+                    FunctionKeys.SelectVoice,
+                    FunctionKeys.SerbianSerbia,
+                    FunctionKeys.ShrinkFromBottom,
+                    FunctionKeys.ShrinkFromBottomAndLeft,
+                    FunctionKeys.ShrinkFromBottomAndRight,
+                    FunctionKeys.ShrinkFromLeft,
+                    FunctionKeys.ShrinkFromRight,
+                    FunctionKeys.ShrinkFromTop,
+                    FunctionKeys.ShrinkFromTopAndLeft,
+                    FunctionKeys.ShrinkFromTopAndRight,
+                    FunctionKeys.SimplifiedAlphaClear,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup1All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup2All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup3All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup4All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup5All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup6All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup7All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup8All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup9All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup10All,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup1,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup2,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup1SubGroup3,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup1,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup2,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup2SubGroup3,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup1,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup2,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup3SubGroup3,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup1,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup2,
+                    FunctionKeys.SimplifiedKeyboardAlphaGroup4SubGroup3,
+                    FunctionKeys.SimplifiedKeyboardNumericAll,
+                    FunctionKeys.SimplifiedKeyboardNumericGroup1,
+                    FunctionKeys.SimplifiedKeyboardNumericGroup2,
+                    FunctionKeys.SimplifiedKeyboardNumericGroup3,
+                    FunctionKeys.SimplifiedKeyboardGermanUmlaut,
+                    FunctionKeys.SimplifiedKeyboardHome,
+                    FunctionKeys.SizeAndPositionKeyboard,
+                    FunctionKeys.Sleep,
+                    FunctionKeys.SlovakSlovakia,
+                    FunctionKeys.SlovenianSlovenia,
+                    FunctionKeys.SpanishSpain,
+                    FunctionKeys.Speak,
+                    FunctionKeys.Suggestion1,
+                    FunctionKeys.Suggestion2,
+                    FunctionKeys.Suggestion3,
+                    FunctionKeys.Suggestion4,
+                    FunctionKeys.Suggestion5,
+                    FunctionKeys.Suggestion6,
+                    FunctionKeys.ToggleCaseOfPreviousCharacter,
+                    FunctionKeys.Translation,
+                    FunctionKeys.TurkishTurkey,
+                    FunctionKeys.UkrainianUkraine,
+                    FunctionKeys.UrduPakistan,
+                    FunctionKeys.WebBrowsingKeyboard,
+                    FunctionKeys.YesQuestionResult
+                };
+                return keys;
             }
         }
     }
