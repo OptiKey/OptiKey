@@ -212,6 +212,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             bool preventRepeat = false;
 
+                            // Repeats aren't allowed if point was off-screen 
+                            if (points.Any())
+                            {
+                                var singlePoint = points[0]; 
+                                if (singlePoint.X < 0 || singlePoint.Y < 0 || 
+                                    singlePoint.X > Graphics.VirtualScreenWidthInPixels || 
+                                    singlePoint.Y > Graphics.VirtualScreenHeightInPixels)
+                                {
+                                    preventRepeat = true;
+                                }
+                            }
+                            
                             // Certain keys built in keys are removed from repeats. 
                             if (lastKeyValueExecuted.FunctionKey.HasValue &&
                                 KeyValues.FunctionKeysWhichShouldntBeRepeated.Contains(lastKeyValueExecuted.FunctionKey.Value))
