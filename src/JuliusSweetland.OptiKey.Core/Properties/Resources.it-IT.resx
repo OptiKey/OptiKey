@@ -2040,9 +2040,9 @@ Console di Gestione (ALT + M).</value>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
     <value>Optikey non è riuscita a comunicare con Presage. Ci sono alcune cause possibili:
 1. Il percorso del DBFILENAME specificato nel file presage.xml (che si trova in C:\User\USER_NAME\.presage) non esiste - perfavore controlla che sia corretto (o disinstalla e reinstalla Presage)
-2. Potrebbe essere installata una versione a 64 bit di Presage (OptiKey supporta solo la versione a 32 bit), oppure i file di Presage sono stati spostati, cancellati o sono rovinati.
+2. Potrebbe essere installata una versione a 32 bit di Presage (OptiKey supporta solo la versione a 64 bit), oppure i file di Presage sono stati spostati, cancellati o sono rovinati.
 
-Perfavore disinstalla Presage e installa la versione 0.9.2 a 32 bit.
+Perfavore disinstalla Presage e installa la versione 0.9.2 a 64 bit.
 Optikey proverà a continuare l'esecuzione, ma ci sono buone probabilità che si bloccherà presto.
 Il metodo di suggerimento sarà cambiato a NGram per evitare il blocco al prossimo avvio.</value>
   </data>
@@ -2555,6 +2555,6 @@ Magyar
 हिन्दी
 (भारत)</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Se il tuo eye tracker non è elencato qui o hai bisogno di una versione di Optikey a 32 bit, fai clic sul link in basso per ulteriori informazioni.
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Se il tuo eye tracker non è elencato qui o hai bisogno di una versione di Optikey a 64 bit, fai clic sul link in basso per ulteriori informazioni.
 Se vuoi continuare con l'installazione, Optikey sarà controllato dalla posizione del mouse. Ciò gli consente di funzionare con input alternativi come un topo per la testa o qualsiasi tracker oculare che ti consente di controllare la posizione del mouse con gli occhi.</value></data>
 </root>

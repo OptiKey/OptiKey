@@ -1990,9 +1990,9 @@ ve Yönetim Konsolundan  (ALT + M)
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
     <value>Optikey, Presage ile tokalaşamadı. Birkaç olası neden vardır:
 1. presage.xml dosyasında belirtilen DBFILENAME konumu mevcut değil (C:\Users\USER_NAME\.presage konumunda bulunur) - lütfen bunu kontrol edin ve düzeltin (veya Presage'ı kaldırın/yeniden yükleyin).
-2. Presage'in 64 bit sürümü yüklü (Optikey yalnızca 32 bit sürümünü destekler) ya da Presage dosyaları taşınmış, silinmiş veya bozulmuş olabilir.
+2. Presage'in 32 bit sürümü yüklü (Optikey yalnızca 64 bit sürümünü destekler) ya da Presage dosyaları taşınmış, silinmiş veya bozulmuş olabilir.
 
-Lütfen Presage'i kaldırın ve 0.9.2'nin 32 bit sürümünü yükleyin.
+Lütfen Presage'i kaldırın ve 0.9.2'nin 64 bit sürümünü yükleyin.
 Optikey çalışmaya devam edecek, ancak kısa süre içinde çökme ihtimali yüksek.
 Bir sonraki çalıştırmada bir çökmeyi önlemek için tahmin yöntemi NGram olarak değiştirilecektir.</value>
   </data>

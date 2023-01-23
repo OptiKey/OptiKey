@@ -185,7 +185,7 @@ namespace JuliusSweetland.OptiKey
                     || string.IsNullOrEmpty(presageStartMenuFolder))
                 {
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (path(s) missing). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    Log.Error("Invalid Presage installation detected (path(s) missing). Must install 'presage-0.9.1-64bit' or 'presage-0.9.2~beta20150909-64bit'. Changed SuggesionMethod to NGram.");
                     return true;
                 }
 
@@ -193,26 +193,25 @@ namespace JuliusSweetland.OptiKey
                     && presageStartMenuFolder != "presage-0.9.1")
                 {
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (valid version not detected). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    Log.Error("Invalid Presage installation detected (valid version not detected). Must install 'presage-0.9.1-64bit' or 'presage-0.9.2~beta20150909-64bit'. Changed SuggesionMethod to NGram.");
                     return true;
                 }
 
-                if ((osBitness == "64-Bit" && presagePath != @"C:\Program Files (x86)\presage")
-                    || (osBitness == "32-Bit" && presagePath != @"C:\Program Files\presage"))
+                if (presagePath != @"C:\Program Files\presage")
                 {
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-64bit' or 'presage-0.9.2~beta20150909-64bit'. Changed SuggesionMethod to NGram.");
                     return true;
                 }
 
                 if (!Directory.Exists(presagePath))
                 {
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (install directory does not exist). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    Log.Error("Invalid Presage installation detected (install directory does not exist). Must install 'presage-0.9.1-64bit' or 'presage-0.9.2~beta20150909-64bit'. Changed SuggesionMethod to NGram.");
                     return true;
                 }
 
-                //2.Attempt to construct a Presage object, which can fail for a few reasons, including BadImageFormatExceptions (64-bit version installed)
+                //2.Attempt to construct a Presage object, which can fail for a few reasons, including BadImageFormatExceptions (32-bit version installed)
                 Presage presageTestInstance = null;
                 try
                 {
@@ -221,7 +220,7 @@ namespace JuliusSweetland.OptiKey
                 }
                 catch (Exception ex)
                 {
-                    //If the installed version of Presage is the wrong format (i.e. 64 bit) then a BadImageFormatException can occur.
+                    //If the installed version of Presage is the wrong format (i.e. 32 bit) then a BadImageFormatException can occur.
                     //If Presage has been deleted, corrupted, or another problem, then a DllLoadException can occur.
                     //These causes an additional problem as the Presage object will probably be non-deterministically
                     //finalised, which will cause this exception again and crash OptiKey. The workaround is to suppress finalisation 
@@ -251,7 +250,7 @@ namespace JuliusSweetland.OptiKey
                 // set the config
                 if (File.Exists(Settings.Default.PresageDatabaseLocation))
                 {
-                    presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
+                    presageTestInstance.config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
                 }
                 else
                 {
@@ -276,7 +275,7 @@ namespace JuliusSweetland.OptiKey
                         }
 
                         Settings.Default.PresageDatabaseLocation = database;
-                        presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
+                        presageTestInstance.config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
                     }
                     catch (Exception ex)
                     {
@@ -285,8 +284,8 @@ namespace JuliusSweetland.OptiKey
                     }
                 }
 
-                presageTestInstance.set_config("Presage.Selector.REPEAT_SUGGESTIONS", "yes");
-                presageTestInstance.set_config("Presage.Selector.SUGGESTIONS", Settings.Default.PresageNumberOfSuggestions.ToString());
+                presageTestInstance.config("Presage.Selector.REPEAT_SUGGESTIONS", "yes");
+                presageTestInstance.config("Presage.Selector.SUGGESTIONS", Settings.Default.PresageNumberOfSuggestions.ToString());
                 presageTestInstance.save_config();
                 Log.Info("Presage settings set successfully.");
             }
@@ -1328,7 +1327,7 @@ namespace JuliusSweetland.OptiKey
             if (presageInstallationProblem)
             {
                 Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                Log.Error("Invalid Presage installation, or problem starting Presage. Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                Log.Error("Invalid Presage installation, or problem starting Presage. Must install 'presage-0.9.1-64bit' or 'presage-0.9.2~beta20150909-64bit'. Changed SuggesionMethod to NGram.");
                 inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                 mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.PRESAGE_UNAVAILABLE,
@@ -1341,15 +1340,15 @@ namespace JuliusSweetland.OptiKey
                     });
             }
             else
-{
-    if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
-    {
-        Log.Info("Presage installation validated.");
-    }
-    taskCompletionSource.SetResult(true);
-}
+            {
+                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+                {
+                    Log.Info("Presage installation validated.");
+                }
+                taskCompletionSource.SetResult(true);
+            }
 
-return await taskCompletionSource.Task;
+            return await taskCompletionSource.Task;
         }
 
         #endregion

@@ -1909,8 +1909,8 @@ MaryTTS의 경로와 음성을
     <value>CommuniKate 최상위 페이지 .obf 파일 위치 :</value>
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
-    <value>64 bit 버전의 Presage가 설치 되어 있거나 (Optikey는 32 bit  버전만 지원합니다), Presage 파일이 이동되거나, 지워지거나, 손상되었습니다
-Presage를 지우고 32 bit 0.9.2 버전을 설치해 주세요.
+    <value>32 bit 버전의 Presage가 설치 되어 있거나 (Optikey는 64 bit  버전만 지원합니다), Presage 파일이 이동되거나, 지워지거나, 손상되었습니다
+Presage를 지우고 64 bit 0.9.2 버전을 설치해 주세요.
 Optikey는 계속 실행 하려고 하지만 곧 중단 될 수 있습니다.
 다음 실행시 중단되는 것을 막기 위해 예측 방법이 NGram으로 바뀜니다.</value>
   </data>
