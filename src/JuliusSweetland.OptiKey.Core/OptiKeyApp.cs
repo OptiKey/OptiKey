@@ -250,7 +250,7 @@ namespace JuliusSweetland.OptiKey
                 // set the config
                 if (File.Exists(Settings.Default.PresageDatabaseLocation))
                 {
-                    presageTestInstance.config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
+                    presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
                 }
                 else
                 {
@@ -275,7 +275,7 @@ namespace JuliusSweetland.OptiKey
                         }
 
                         Settings.Default.PresageDatabaseLocation = database;
-                        presageTestInstance.config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
+                        presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
                     }
                     catch (Exception ex)
                     {
@@ -284,8 +284,8 @@ namespace JuliusSweetland.OptiKey
                     }
                 }
 
-                presageTestInstance.config("Presage.Selector.REPEAT_SUGGESTIONS", "yes");
-                presageTestInstance.config("Presage.Selector.SUGGESTIONS", Settings.Default.PresageNumberOfSuggestions.ToString());
+                presageTestInstance.set_config("Presage.Selector.REPEAT_SUGGESTIONS", "yes");
+                presageTestInstance.set_config("Presage.Selector.SUGGESTIONS", Settings.Default.PresageNumberOfSuggestions.ToString());
                 presageTestInstance.save_config();
                 Log.Info("Presage settings set successfully.");
             }
