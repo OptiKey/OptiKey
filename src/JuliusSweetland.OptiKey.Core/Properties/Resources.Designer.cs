@@ -4550,7 +4550,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If your eye tracker is not listed here, or you require a 64 bit version of Optikey, please click the link below for more information. 
+        ///   Looks up a localized string similar to If your eye tracker is not listed here, or you require a 32 bit version of Optikey, please click the link below for more information. 
         ///
         ///If you want to continue with installation, Optikey will be controlled by your mouse position. This allows it to work with alternative inputs such as a head mouse, or any eye tracker that allows you to control the mouse position with your eyes..
         /// </summary>
@@ -4872,9 +4872,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Optikey was unable to handshake with Presage. There are a few possible causes:
         ///    1.The DBFILENAME location specified in the presage.xml file (located in C:\Users\USER_NAME\.presage) does not exist - please check and correct this (or uninstall/reinstall Presage).
-        ///    2.Either a 32 bit version of Presage is installed (Optikey only supports the 64 bit version), or the Presage files have been moved, deleted, or corrupted.
+        ///    2.Either a 64 bit version of Presage is installed (Optikey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
         ///
-        ///Please uninstall Presage and install the 64 bit version of 0.9.2.
+        ///Please uninstall Presage and install the 32 bit version of 0.9.2.
         ///Optikey will att [rest of string was truncated]&quot;;.
         /// </summary>
         public static string PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE {
