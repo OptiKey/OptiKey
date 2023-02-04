@@ -237,7 +237,39 @@ namespace JuliusSweetland.OptiKey
                     return true;
                 }
 
-                //2.Attempt to construct a Presage object, which can fail for a few reasons, including BadImageFormatExceptions (64-bit version installed)
+                //2.Ensure the presage db exists at the setting location
+                if (!File.Exists(Settings.Default.PresageDatabaseLocation))
+                {
+                    try
+                    {
+                        string ApplicationDataSubPath = @"OptiKey\OptiKey";
+                        var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
+                        var database = Path.Combine(path, @"Presage\database.db");
+                        if (!File.Exists(database))
+                        {
+                            try
+                            {
+                                using (ZipArchive archive = ZipFile.Open(@".\Resources\Presage\database.zip", ZipArchiveMode.Read, Encoding.UTF8))
+                                {
+                                    archive.ExtractToDirectory(path);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Log.ErrorFormat("Unpacking the Presage database failed with the following exception: \n{0}", e);
+                            }
+                        }
+
+                        Settings.Default.PresageDatabaseLocation = database;
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("Presage failed to bootstrap. The database (database.db file) was not found, and the database.zip file could not be extracted!", ex);
+                        return true;
+                    }
+                }
+
+                //3.Attempt to construct a Presage object, which can fail for a few reasons, including BadImageFormatExceptions (64-bit version installed)
                 Presage presageTestInstance = null;
                 try
                 {
@@ -273,43 +305,9 @@ namespace JuliusSweetland.OptiKey
 
                     return true;
                 }
-                // set the config
-                if (File.Exists(Settings.Default.PresageDatabaseLocation))
-                {
-                    presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
-                }
-                else
-                {
-                    try
-                    {
-                        string ApplicationDataSubPath = @"OptiKey\OptiKey";
-                        var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
-                        var database = Path.Combine(path, @"Presage\database.db");
-                        if (!File.Exists(database))
-                        {
-                            try
-                            {
-                                using (ZipArchive archive = ZipFile.Open(@".\Resources\Presage\database.zip", ZipArchiveMode.Read, Encoding.UTF8))
-                                {
-                                    archive.ExtractToDirectory(path);
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                Log.ErrorFormat("Unpacking the Presage database failed with the following exception: \n{0}", e);
-                            }
-                        }
 
-                        Settings.Default.PresageDatabaseLocation = database;
-                        presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error("Presage failed to bootstrap. The database (database.db file) was not found, and the database.zip file could not be extracted!", ex);
-                        return true;
-                    }
-                }
-
+                //Setup the presage config
+                presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
                 presageTestInstance.set_config("Presage.Selector.REPEAT_SUGGESTIONS", "yes");
                 presageTestInstance.set_config("Presage.Selector.SUGGESTIONS", Settings.Default.PresageNumberOfSuggestions.ToString());
                 presageTestInstance.save_config();
