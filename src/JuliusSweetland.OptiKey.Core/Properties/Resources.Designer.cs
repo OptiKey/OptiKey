@@ -1238,7 +1238,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to The Presage dictionary cannot be edited from here.
-        ///It&apos;s default location is &quot;C:\Program Files (x86)\presage\share\presage\database_en.db&quot;.
+        ///It&apos;s default location is &quot;C:\Program Files\presage\share\presage\database_en.db&quot;.
         ///It can be edited with a program which can read SQLite format 3 files
         ///such as &quot;DB Browser for SQLite&quot; (which is a free program)..
         /// </summary>

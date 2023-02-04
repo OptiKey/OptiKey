@@ -1960,7 +1960,7 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>辞書はここでは編集できません。
-デフォルトパスは "C:\Program Files (x86)\presage\share\presage\database_en.db" です。
+デフォルトパスは "C:\Program Files\presage\share\presage\database_en.db" です。
 SQLite形式の3ファイルを読み込めるソフトウェアにより編集が可能です。
 (フリーソフトの "DB Browser for SQLite" 等でご利用いただけます。)</value>
   </data>

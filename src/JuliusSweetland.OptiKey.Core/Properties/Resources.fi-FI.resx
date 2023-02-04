@@ -1994,7 +1994,7 @@ Ennustamismenetelmä muutetaan NGramiksi kaatumisen estämiseksi.</value>
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>Presage-sanakirjaa ei voi muokata tästä.
-Sen oletussijainti on "C:\Program Files (x86)\presage\share\presage\database_en.db".
+Sen oletussijainti on "C:\Program Files\presage\share\presage\database_en.db".
 Sitä voi muokata ohjelmilla, jotka tukevat SQLLite format 3 -tiedostoja,
 kuten "DB Browser for SQLite" (joka on ilmainen ohjelma).</value>
   </data>

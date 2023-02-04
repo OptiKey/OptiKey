@@ -2022,7 +2022,7 @@ Bir sonraki çalıştırmada bir çökmeyi önlemek için tahmin yöntemi NGram 
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>Presage sözlüğü buradan düzenlenemez.
-Varsayılan konumu "C:\Program Files (x86)\presage\share\presage\database_en.db" şeklindedir.
+Varsayılan konumu "C:\Program Files\presage\share\presage\database_en.db" şeklindedir.
 SQLite format 3 dosyalarını okuyabilen bir program ile düzenlenebilir.
 Örneğin "SQLite için DB Tarayıcı" (ücretsiz bir programdır).</value>
   </data>

@@ -1992,7 +1992,7 @@ O método de previsão será alterado para o NGram para que o programa não bloq
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>O dicionário Presage não pode ser editado aqui.
-A sua localização padrão é em "C:\Program Files (x86)\presage\share\presage\database_en.db".
+A sua localização padrão é em "C:\Program Files\presage\share\presage\database_en.db".
 Pode ser editado num programa que possa ler ficheiros SQLite formato 3
 como o "DB Browser for SQLite" (que é um programa livre).</value>
   </data>

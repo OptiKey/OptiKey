@@ -2037,7 +2037,7 @@ Die Vorhesage Methode wird auf NGram umgestell, um beim nächstem Programmstart 
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>Das Presage Wörterbuch kann hier nicht bearbeitet werden.
-Es ist standardmäßig unter "C:\Program Files (x86)\presage\share\presage\database_en.db" zu finden.
+Es ist standardmäßig unter "C:\Program Files\presage\share\presage\database_en.db" zu finden.
 Es kann mit einem Programm für SQLite Version 3 bearbeitet werden,
 wie zum Beispiel "DB Browser for SQLite" (das ist eine Freie-Software).</value>
   </data>
