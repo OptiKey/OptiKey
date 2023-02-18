@@ -246,10 +246,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 }
                             }
 
-                            if (!preventRepeat)
+                            if (!preventRepeat) {
                                 singleKeyValue = lastKeyValueExecuted;
+
+                                // re-instate last key states so output is equivalent
+                                foreach (KeyValue key in lastKeyDownStates.Keys)
+                                    keyStateService.KeyDownStates[key].Value = lastKeyDownStates[key];
+                            }
                         }
-                        
+
+
+                        // Remember keyvalue to allow repeats (unless keyvalue is "repeat last key action")
+                        if (singleKeyValue.FunctionKey == null ||
+                            singleKeyValue.FunctionKey != FunctionKeys.RepeatLastKeyAction)
+                        {
+                            lastKeyValueExecuted = singleKeyValue;
+                            
+                            // Make a copy of keydownstates so we can re-instate later
+                            foreach (KeyValue key in keyStateService.KeyDownStates.Keys)
+                                lastKeyDownStates[key] = keyStateService.KeyDownStates[key].Value;
+                        }
+
                         //DynamicKeys can have a list of Commands and perform multiple actions
                         if (singleKeyValue != null && singleKeyValue.Commands != null && singleKeyValue.Commands.Any())
                         {                            
@@ -270,12 +287,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             KeySelectionResult(singleKeyValue, multiKeySelection);
                         }
 
-                        // Remember keyvalue to allow repeats (unless keyvalue is "repeat last key action")
-                        if (singleKeyValue.FunctionKey == null ||
-                            singleKeyValue.FunctionKey != FunctionKeys.RepeatLastKeyAction)
-                        {
-                            lastKeyValueExecuted = singleKeyValue;
-                        }
+                        
                     }
                     if (SelectionMode == SelectionModes.SinglePoint)
                     {
