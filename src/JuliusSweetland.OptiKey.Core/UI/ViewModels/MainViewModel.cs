@@ -65,6 +65,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point?> magnifiedPointSelectionAction;
         private KeyValue keyValueForCurrentPointAction;
         private KeyValue lastKeyValueExecuted;
+        Dictionary<KeyValue, KeyDownStates> lastKeyDownStates = new Dictionary<KeyValue, KeyDownStates>();
 
         #endregion
 
