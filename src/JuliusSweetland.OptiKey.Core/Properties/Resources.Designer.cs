@@ -179,6 +179,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow key actions to be repeated when pressing trigger away from keyboard.
+        /// </summary>
+        public static string ALLOW_REPEATS_LABEL {
+            get {
+                return ResourceManager.GetString("ALLOW_REPEATS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LETTERS.
         /// </summary>
         public static string ALPHA {
