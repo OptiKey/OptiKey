@@ -146,19 +146,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     return;
                 }
 
-                if (keyValue != null)
+                if (keyValue != null && KeySelection != null)
                 {
-                    if (!capturingStateManager.CapturingMultiKeySelection)
-                    {
-                        audioService.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume);
-                    }
-
-                    if (KeySelection != null)
-                    {
-                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", keyValue);
-                        KeySelection(this, keyValue);
-                    }
+                    Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", keyValue);
+                    KeySelection(this, keyValue);
                 }
+                
                 if (type == TriggerTypes.Point)
                 {
                     if (PointSelection != null)
@@ -225,7 +218,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                             
                             // Certain keys built in keys are removed from repeats. 
-                            if (lastKeyValueExecuted.FunctionKey.HasValue &&
+                            if (lastKeyValueExecuted != null &&
+                                lastKeyValueExecuted.FunctionKey.HasValue &&
                                 KeyValues.FunctionKeysWhichShouldntBeRepeated.Contains(lastKeyValueExecuted.FunctionKey.Value))
                             {
                                 preventRepeat = true;
@@ -246,7 +240,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 }
                             }
 
-                            if (!preventRepeat) {
+                            if (preventRepeat)
+                            {
+                                singleKeyValue = null;
+                            }
+                            else {
                                 singleKeyValue = lastKeyValueExecuted;
 
                                 // re-instate last key states so output is equivalent
@@ -255,16 +253,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                         }
 
-
                         // Remember keyvalue to allow repeats (unless keyvalue is "repeat last key action")
-                        if (singleKeyValue.FunctionKey == null ||
-                            singleKeyValue.FunctionKey != FunctionKeys.RepeatLastKeyAction)
+                        if (singleKeyValue != null)
                         {
                             lastKeyValueExecuted = singleKeyValue;
                             
                             // Make a copy of keydownstates so we can re-instate later
                             foreach (KeyValue key in keyStateService.KeyDownStates.Keys)
                                 lastKeyDownStates[key] = keyStateService.KeyDownStates[key].Value;
+                        }
+
+                        // Play 'key' sound
+                        if (type == TriggerTypes.Key && singleKeyValue != null && !capturingStateManager.CapturingMultiKeySelection)
+                        {
+                            audioService.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume);
                         }
 
                         //DynamicKeys can have a list of Commands and perform multiple actions
@@ -286,8 +288,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             KeySelectionResult(singleKeyValue, multiKeySelection);
                         }
-
-                        
                     }
                     if (SelectionMode == SelectionModes.SinglePoint)
                     {
