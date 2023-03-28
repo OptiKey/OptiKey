@@ -196,6 +196,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
 
+                    bool isRepeat = false;
+
                     if ((singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                     {
                         // Inject previous keyvalue if asked to repeat
@@ -245,6 +247,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 singleKeyValue = null;
                             }
                             else {
+                                isRepeat = true;
                                 singleKeyValue = lastKeyValueExecuted;
 
                                 // re-instate last key states so output is equivalent
@@ -266,7 +269,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         // Play 'key' sound
                         if (type == TriggerTypes.Key && singleKeyValue != null && !capturingStateManager.CapturingMultiKeySelection)
                         {
-                            audioService.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume);
+                            if (isRepeat)
+                                audioService.PlaySound(Settings.Default.RepeatSoundFile, Settings.Default.RepeatSoundVolume);
+                            else 
+                                audioService.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume);
                         }
 
                         //DynamicKeys can have a list of Commands and perform multiple actions
