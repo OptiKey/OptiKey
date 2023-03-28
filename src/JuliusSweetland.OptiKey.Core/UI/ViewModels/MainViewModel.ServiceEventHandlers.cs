@@ -1486,6 +1486,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         }
 
                                         ResetAndCleanupAfterMouseAction();
+                                        SelectionMode = SelectionModes.Keys;
                                         resumeLookToScroll();
                                     };
 
@@ -1823,6 +1824,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     };
                     performScroll(currentPoint);
                     ResetAndCleanupAfterMouseAction();
+                    SelectionMode = SelectionModes.Keys;
 
                     break;
 
@@ -1846,6 +1848,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     };
                     performScrollDown(currentPointScroll);
                     ResetAndCleanupAfterMouseAction();
+                    SelectionMode = SelectionModes.Keys;
 
                     break;
 
