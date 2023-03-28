@@ -248,7 +248,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                             else {
                                 isRepeat = true;
-                                singleKeyValue = lastKeyValueExecuted;
+                                singleKeyValue = lastMouseActionStateManager.LastMouseActionExists ? 
+                                                    KeyValues.RepeatLastMouseActionKey : 
+                                                    lastKeyValueExecuted;
 
                                 // re-instate last key states so output is equivalent
                                 foreach (KeyValue key in lastKeyDownStates.Keys)
