@@ -5051,6 +5051,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Repeat last key:.
+        /// </summary>
+        public static string REPEAT_SOUND_LABEL {
+            get {
+                return ResourceManager.GetString("REPEAT_SOUND_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Audio and/or Dictionary service(s) were/was not supplied to the management window action..
         /// </summary>
         public static string REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW {
