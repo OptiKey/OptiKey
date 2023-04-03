@@ -203,6 +203,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         // Inject previous keyvalue if asked to repeat
                         if (singleKeyValue.FunctionKey != null &&
                             singleKeyValue.FunctionKey == FunctionKeys.RepeatLastKeyAction &&
+                            lastKeyValueExecuted != null &&
                             SelectionMode == SelectionModes.Keys)
                         {
                             bool preventRepeat = false;
@@ -220,15 +221,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                             
                             // Certain keys built in keys are removed from repeats. 
-                            if (lastKeyValueExecuted != null &&
-                                lastKeyValueExecuted.FunctionKey.HasValue &&
+                            if (lastKeyValueExecuted.FunctionKey.HasValue &&
                                 KeyValues.FunctionKeysWhichShouldntBeRepeated.Contains(lastKeyValueExecuted.FunctionKey.Value))
                             {
                                 preventRepeat = true;
                             }
 
                             // Prevent dynamic key that contains any of these forbidden functions, or a "Change Keyboard" command
-                            if (lastKeyValueExecuted != null && lastKeyValueExecuted.Commands != null && lastKeyValueExecuted.Commands.Any())
+                            if (lastKeyValueExecuted.Commands != null && lastKeyValueExecuted.Commands.Any())
                             {
                                 foreach (var command in lastKeyValueExecuted.Commands)
                                 {
@@ -248,9 +248,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                             else {
                                 isRepeat = true;
-                                singleKeyValue = lastMouseActionStateManager.LastMouseActionExists ? 
-                                                    KeyValues.RepeatLastMouseActionKey : 
-                                                    lastKeyValueExecuted;
+                                if (lastMouseActionStateManager.LastMouseActionExists &&
+                                    lastKeyValueExecuted.FunctionKey.HasValue &&
+                                    KeyValues.FunctionKeysForRepeatableActions.Contains(lastKeyValueExecuted.FunctionKey.Value))
+                                {
+                                    singleKeyValue = KeyValues.RepeatLastMouseActionKey;
+                                }
+                                else
+                                {
+                                    singleKeyValue = lastKeyValueExecuted;
+                                }
 
                                 // re-instate last key states so output is equivalent
                                 foreach (KeyValue key in lastKeyDownStates.Keys)
