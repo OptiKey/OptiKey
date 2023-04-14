@@ -1048,6 +1048,7 @@
     <Content Include="Dictionaries\HindiIndia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Dictionaries\Portuguese %28Brazilian%29.dic" />
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

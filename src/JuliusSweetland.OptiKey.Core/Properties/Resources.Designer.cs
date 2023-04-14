@@ -4823,7 +4823,17 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("PORTUGUESE_PORTUGAL", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Portuguese (Brasil) / Português (Brasil).
+        /// </summary>
+        public static string PORTUGUESE_BRAZILIAN
+        {
+            get
+            {
+                return ResourceManager.GetString("PORTUGUESE_BRAZILIAN", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to Portuguese
         ///(Portugal) /

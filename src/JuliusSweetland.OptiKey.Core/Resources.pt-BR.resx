@@ -1,0 +1,1773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADDED" xml:space="preserve">
+    <value>Adicionado(a)</value>
+  </data>
+  <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
+    <value>Adicionar nova palavra:</value>
+  </data>
+  <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Você deseja adicionar a frase '{0}' ao dicionário com o atalho '{1}'?</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ADICIONAR 
+AO 
+DICIONÁRIO</value>
+  </data>
+  <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Você deseja adicionar a palavra '{0}' ao dicionário?</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>QUANTIDADE DO AJUSTAR EM PIXEIS</value>
+  </data>
+  <data name="ADJUST_BY" xml:space="preserve">
+    <value>Ajustar em passos de {0} pixel|Ajustar em passos de {0} pixeis</value>
+  </data>
+  <data name="ALIENWARE_17" xml:space="preserve">
+    <value>Alienware 17 (EyeX)</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Isso requer um notebook para jogos Alienware 17 com o recurso 'EyeTobii' disponível.</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>LETRAS</value>
+  </data>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>LETRAS 1</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>LETRAS 2</value>
+  </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Letras</value>
+  </data>
+  <data name="ALT" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="ALT1" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="ALT2" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="ANDROID_DARK" xml:space="preserve">
+    <value>Escuro (Dark)</value>
+  </data>
+  <data name="ANDROID_LIGHT" xml:space="preserve">
+    <value>Claro (Light)</value>
+  </data>
+  <data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>Dois Tons</value>
+  </data>
+  <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
+    <value>Colocar letras maiúsculas no início de cada palavra automaticamente:</value>
+  </data>
+  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+    <value>Palavras completadas automaticamente:</value>
+  </data>
+  <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
+    <value>Ajustar automaticamente frases e palavras</value>
+  </data>
+  <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
+    <value>Espaçar palavras automaticamente:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>Extensões disponíveis</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
+    <value>VOLTAR</value>
+  </data>
+  <data name="BACK1" xml:space="preserve">
+    <value>VOLTAR</value>
+  </data>
+  <data name="BACK2" xml:space="preserve">
+    <value>VOLTAR</value>
+  </data>
+  <data name="BACK3" xml:space="preserve">
+    <value>VOLTAR</value>
+  </data>
+  <data name="BACK4" xml:space="preserve">
+    <value>VOLTAR</value>
+  </data>
+  <data name="BACK5" xml:space="preserve">
+    <value>VOLTAR</value>
+  </data>
+  <data name="BACK6" xml:space="preserve">
+    <value>VOLTAR</value>
+  </data>
+  <data name="BACK7" xml:space="preserve">
+    <value>VOLTAR</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VOLTAR
+UM</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>VOLTAR
+UM</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>VOLTAR
+UM</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE3" xml:space="preserve">
+    <value>VOLTAR
+UM</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE4" xml:space="preserve">
+    <value>VOLTAR
+UM</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>REMOVER
+PALAVRA</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>REMOVER
+PALAVRA</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>REMOVER
+PALAVRA</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE3" xml:space="preserve">
+    <value>REMOVER
+PALAVRA</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE4" xml:space="preserve">
+    <value>REMOVER
+PALAVRA</value>
+  </data>
+  <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
+    <value>O recurso 'Bass' não conseguiu através do arquivo: '{0}'</value>
+  </data>
+  <data name="BREAK" xml:space="preserve">
+    <value>PARAR</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Navegador
+Anterior</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Navegador
+Seguinte</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Navegador
+Início</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Navegador
+Procurar</value>
+  </data>
+  <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
+    <value>A Calibração foi abortada: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Tem certeza de que deseja recalibrar?</value>
+  </data>
+  <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
+    <value>Ops, ocorreu um erro durante a calibração. Mensagem: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
+    <value>A calibração falhou com a mensagem: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
+    <value>A calibração não pode ser concluída sem intervenção manual, por ex: ter que usar um mouse. Você pode ficar preso no processo de calibração se não puder interagir manualmente com seu computador.</value>
+  </data>
+  <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
+    <value>A calibração foi encerrada por  motivo desconhecido. Mensagem: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Sucesso na calibração! Precisão (% de taxa de erros = {0})</value>
+  </data>
+  <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
+    <value>Timeout de captura (em ms):</value>
+  </data>
+  <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
+    <value>Verificar se há atualizações na inicialização:</value>
+  </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>LIMPAR</value>
+  </data>
+  <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CLICAR
+E ARRASTAR</value>
+  </data>
+  <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>CLICAR E
+ARRASTAR</value>
+  </data>
+  <data name="CLICK_OK_TO_RESTART" xml:space="preserve">
+    <value>Clique em 'OK' para continuar com a reinicialização ou 'CANCELAR' para descartar suas alterações.</value>
+  </data>
+  <data name="CLICK_SOUND_1" xml:space="preserve">
+    <value>Clique 1</value>
+  </data>
+  <data name="CLICK_SOUND_2" xml:space="preserve">
+    <value>Clique 2</value>
+  </data>
+  <data name="CLICK_SOUND_3" xml:space="preserve">
+    <value>Clique 3</value>
+  </data>
+  <data name="CLICK_SOUND_4" xml:space="preserve">
+    <value>Clique 4</value>
+  </data>
+  <data name="CLICK_SOUND_5" xml:space="preserve">
+    <value>Clique 5</value>
+  </data>
+  <data name="CLICK_SOUND_6" xml:space="preserve">
+    <value>Clique 6</value>
+  </data>
+  <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
+    <value>Espessura da doca (%):</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>OCULTAR DOCA</value>
+  </data>
+  <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ESCONDER A
+DOCA</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>O CommuniKate está desativado neste momento  (usar QWERTY)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>Volume do som CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>Falar o texto com o CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>Velocidade (da fala) do CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>Volume (da fala) do CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>Arquivo OBF - CommuniKate:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>Arquivo inválido</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>Local do arquivo '.obz' para o CommuniKate:</value>
+  </data>
+  <data name="CONVERSATION" xml:space="preserve">
+    <value>CONVERSAÇÃO</value>
+  </data>
+  <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Modo somente conversa:</value>
+  </data>
+  <data name="CRASH_MESSAGE" xml:space="preserve">
+    <value>Más notícias - OptiKey encontrou problemas e precisa ser fechado.
+Um e-mail com detalhes sobre o que aconteceu seria muito útil: optikeyfeedback@gmail.com</value>
+  </data>
+  <data name="CRASH_TITLE" xml:space="preserve">
+    <value>OOPS!</value>
+  </data>
+  <data name="CROATIAN_CROATIA" xml:space="preserve">
+    <value>Croata (Croácia) / Hrvatski (Hrvatska)</value>
+  </data>
+  <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Croata
+(Croácia) / 
+Hrvatski
+(Hrvatska)</value>
+  </data>
+  <data name="CTRL" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="CTRL1" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="CTRL2" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="CURRENCIES" xml:space="preserve">
+    <value>MOEDAS</value>
+  </data>
+  <data name="CURRENCIES1" xml:space="preserve">
+    <value>MOEDAS</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>MOEDAS 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>MOEDAS 2</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
+    <value>Moedas 1</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
+    <value>Moedas 2</value>
+  </data>
+  <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
+    <value>Altura do cursor (pixels):</value>
+  </data>
+  <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
+    <value>Largura do cursor (pixels):</value>
+  </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>Layout Personalizado</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
+    <value>Checo (Rep. Checa) / Čeština (Česko)</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Checo
+(Rep. Checa) /
+Čeština
+(Česko)</value>
+  </data>
+  <data name="DANISH_DENMARK" xml:space="preserve">
+    <value>Dinamarquês (Dinamarca) / Dansk (Danmark)</value>
+  </data>
+  <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Dinamarquês
+(Dinamarca) / 
+Dansk
+(Danmark)</value>
+  </data>
+  <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
+    <value>Modo debug:</value>
+  </data>
+  <data name="DEBUGGING_MODE_LABEL1" xml:space="preserve">
+    <value>Modo de DEBUG:</value>
+  </data>
+  <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>REDUZIR A
+OPACIDADE</value>
+  </data>
+  <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>DIMINUIR
+OPACIDADE</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
+    <value>Recomendamos alterar o idioma da interface para urdu para se certificar que o texto digitado flui da direita para a esquerda.
+Gostaria que o Optikey alterasse automaticamente o idioma para Urdu?</value>
+  </data>
+  <data name="DEL" xml:space="preserve">
+    <value>DEL</value>
+  </data>
+  <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="DIACRITICS" xml:space="preserve">
+    <value>ACENTOS</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>ACENTOS 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>ACENTOS 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>ACENTOS 3</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
+    <value>Acento 1</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
+    <value>Acento 2</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
+    <value>Acento 3</value>
+  </data>
+  <data name="DICTIONARY" xml:space="preserve">
+    <value>Dicionário</value>
+  </data>
+  <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
+    <value>Não existe um dicionário ou dicionário "original" informado não foi encontrado: '{0}'</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>O dicionário Presage não pode ser editado aqui.
+A sua localização padrão é em "C:\Program Files (x86)\presage\share\presage\database_en.db".
+Pode ser editado num programa que possa ler ficheiros SQLite formato 3
+como o "DB Browser for SQLite" (que é um programa livre).</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>Todas as alterações feitas nas configurações serão descartadas. Quer continuar?</value>
+  </data>
+  <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
+    <value>Exibir por X segundos por caractere de mensagem:</value>
+  </data>
+  <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SETA P/
+BAIXO</value>
+  </data>
+  <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
+    <value>Fazer na posição atual...</value>
+  </data>
+  <data name="DO_AT_CURRENT_LOCATION1" xml:space="preserve">
+    <value>Fazer na posição atual...</value>
+  </data>
+  <data name="DO_AT_POINT" xml:space="preserve">
+    <value>Faça no ponto...</value>
+  </data>
+  <data name="DO_AT_POINT1" xml:space="preserve">
+    <value>Faça no ponto...</value>
+  </data>
+  <data name="END" xml:space="preserve">
+    <value>END</value>
+  </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>Inglês (Canadá)</value>
+  </data>
+  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Inglês
+(Canada)
+</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>Inglês (Reino Unido)</value>
+  </data>
+  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Inglês
+(Reino Unido)
+</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>Inglês (EUA)</value>
+  </data>
+  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Inglês
+(Estados Unidos)
+</value>
+  </data>
+  <data name="ENTER" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="ENTER1" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="ENTER2" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
+    <value>Incrível! A palavra '{0}' foi adicionado(a) ao dicionário.</value>
+  </data>
+  <data name="ENTRY_DOES_NOT_EXIST_IN_DICTIONARY" xml:space="preserve">
+    <value>A palavra '{0}' não existe no dicionário.</value>
+  </data>
+  <data name="ENTRY_EXISTS_IN_DICTIONARY" xml:space="preserve">
+    <value>A palavra {0}' existe no dicionário.</value>
+  </data>
+  <data name="ERROR_SOUND_LABEL" xml:space="preserve">
+    <value>Erro:</value>
+  </data>
+  <data name="ESC" xml:space="preserve">
+    <value>ESC</value>
+  </data>
+  <data name="EXPAND" xml:space="preserve">
+    <value>EXPANDIR</value>
+  </data>
+  <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>EXPANDIR 
+O DOCK</value>
+  </data>
+  <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>EXPANDIR 
+O DOCK</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>EXPANDIR PARA
+BAIXO E ESQUERDA</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>EXPANDIR PARA
+BAIXO E DIREITA</value>
+  </data>
+  <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>EXPANDIR
+PARA BAIXO</value>
+  </data>
+  <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>EXPANDIR PARA 
+A ESQUERDA</value>
+  </data>
+  <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>EXPANDIR PARA
+A DIREITA</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>EXPANDIR PARA
+CIMA E ESQUERDA</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>EXPANDIR PARA
+CIMA E DIREITA</value>
+  </data>
+  <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>EXPANDIR PARA CIMA</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F13" xml:space="preserve">
+    <value>F13</value>
+  </data>
+  <data name="F14" xml:space="preserve">
+    <value>F14</value>
+  </data>
+  <data name="F15" xml:space="preserve">
+    <value>F15</value>
+  </data>
+  <data name="F16" xml:space="preserve">
+    <value>F16</value>
+  </data>
+  <data name="F17" xml:space="preserve">
+    <value>F17</value>
+  </data>
+  <data name="F18" xml:space="preserve">
+    <value>F18</value>
+  </data>
+  <data name="F19" xml:space="preserve">
+    <value>F19</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="FALLING_SOUND_1" xml:space="preserve">
+    <value>Queda 1</value>
+  </data>
+  <data name="FALLING_SOUND_2" xml:space="preserve">
+    <value>Queda 2</value>
+  </data>
+  <data name="FILL_PIE" xml:space="preserve">
+    <value>Preencher</value>
+  </data>
+  <data name="FIXATIONS" xml:space="preserve">
+    <value>Fixações</value>
+  </data>
+  <data name="FIXATIONS_DWELL" xml:space="preserve">
+    <value>Fixações (permanência)</value>
+  </data>
+  <data name="FONT" xml:space="preserve">
+    <value>Fonte</value>
+  </data>
+  <data name="FONT_FAMILY_LABEL" xml:space="preserve">
+    <value>Fonte (família):</value>
+  </data>
+  <data name="FONT_STRETCH_LABEL" xml:space="preserve">
+    <value>Fonte (largura):</value>
+  </data>
+  <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
+    <value>Fonte (espessura):</value>
+  </data>
+  <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
+    <value>Espessura total da doca (com % da tela):</value>
+  </data>
+  <data name="GAZETRACKER_UNABLE_TO_PARSE_RECEIVED_STRING" xml:space="preserve">
+    <value>Não é possível analisar a string recebida '{0}' usando o regex '{1}'. Obs.: Ignore se o GazeTracker estiver relatando uma calibração.</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA" xml:space="preserve">
+    <value>Georgiano (Geórgia) / ქართული (საქართველო)</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Georgiano
+(Geórgia) /
+ქართული
+(საქართველო)</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>Alemão (Alemanha) / Deutsch (Deutschland)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Alemão
+(Alemanha) / 
+Deutsch
+(Deutschland)</value>
+  </data>
+  <data name="GREEK_GREECE" xml:space="preserve">
+    <value>Grego (Grécia) / Ελληνικά (Ελλάδα)</value>
+  </data>
+  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Grego
+(Grécia) / 
+Ελληνικά
+(Ελλάδα)</value>
+  </data>
+  <data name="GROW" xml:space="preserve">
+    <value>Aumentar</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>INÍCIO</value>
+  </data>
+  <data name="HORIZONTAL_FILL" xml:space="preserve">
+    <value>Percentual de preenchimento (horizontal) (porcentagem de OptiKey):</value>
+  </data>
+  <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
+    <value>Timeout chave de fixação (em ms):</value>
+  </data>
+  <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>AUMENTAR
+OPACIDADE</value>
+  </data>
+  <data name="INFO_SOUND_LABEL" xml:space="preserve">
+    <value>Info:</value>
+  </data>
+  <data name="INS" xml:space="preserve">
+    <value>INS</value>
+  </data>
+  <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
+    <value>...suprimir de forma inteligente e automática:</value>
+  </data>
+  <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
+    <value>O teclado atual e o idioma atual não são válidos.</value>
+  </data>
+  <data name="ITALIAN_ITALY" xml:space="preserve">
+    <value>Italiano (Itália) /  Italiano (Italia)</value>
+  </data>
+  <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Italiano
+(Itália) / 
+Italiano
+(Italia)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>Japonês (Japão) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Japonês
+(Japão) /
+日本語
+(日本)</value>
+  </data>
+  <data name="JUMP" xml:space="preserve">
+    <value>SALTAR</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SALTAR PARA
+BAIXO E ESQUERDA</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SALTAR PARA
+BAIXO E DIREITA</value>
+  </data>
+  <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PULAR
+P/BAIXO</value>
+  </data>
+  <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SALTAR PARA
+ESQUERDA</value>
+  </data>
+  <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SALTAR PARA
+DIREITA</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SALTAR
+CIMA E ESQUERDA</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SALTAR PARA
+CIMA E DIREITA</value>
+  </data>
+  <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SALTAR
+PARA CIMA</value>
+  </data>
+  <data name="KEYBOARD_KEY" xml:space="preserve">
+    <value>Teclado/Tecla do Teclado</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Timeout das fixações (ms):</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Timeout de lock-on das fixações (ms):</value>
+  </data>
+  <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Tecla p/ selecionar teclado:</value>
+  </data>
+  <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Tecla p/ selecionar o botão do mouse:</value>
+  </data>
+  <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
+    <value>Tecla de seleção do som:</value>
+  </data>
+  <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Tecla p/ selecionar origem</value>
+  </data>
+  <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>Tecla selecionada: {0}</value>
+  </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>Coreano (Coreia) / 한국어 (한국)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Coreano
+(Coreia) /
+한국어
+(한국)</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>MUDAR O IDIOMA DO TECLADO:</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>Idioma e voz</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Idioma
+e voz</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>IDIOMA E VOZ</value>
+  </data>
+  <data name="LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Idioma: {0}</value>
+  </data>
+  <data name="LANGUAGE_LABEL" xml:space="preserve">
+    <value>Idioma:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>IDIOMA</value>
+  </data>
+  <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SETA
+ESQUERDA</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CLIQUE
+ESQUERDO</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>CLIQUE
+ESQUERDO</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>CLIQUE
+ESQUERDO</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE3" xml:space="preserve">
+    <value>CLIQUE
+ESQUERDO</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE4" xml:space="preserve">
+    <value>CLIQUE
+ESQUERDO</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE5" xml:space="preserve">
+    <value>CLIQUE
+ESQUERDO</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>DUPLO CLIQUE
+(BOTÃO ESQUERDO)</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>DUPLO CLIQUE
+(BOTÃO ESQUERDO)</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>DUPLO CLIQUE
+(BOTÃO ESQUERDO)</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE3" xml:space="preserve">
+    <value>DUPLO CLIQUE
+(BOTÃO ESQUERDO)</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE4" xml:space="preserve">
+    <value>DUPLO CLIQUE
+(BOTÃO ESQUERDO)</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE5" xml:space="preserve">
+    <value>DUPLO CLIQUE
+(BOTÃO ESQUERDO)</value>
+  </data>
+  <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ESQUERDA 
+BAIXO/CIMA</value>
+  </data>
+  <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>ESQUERDA 
+BAIXO/CIMA</value>
+  </data>
+  <data name="LETTERS" xml:space="preserve">
+    <value>LETRAS</value>
+  </data>
+  <data name="LETTERS1" xml:space="preserve">
+    <value>LETRAS</value>
+  </data>
+  <data name="LETTERS2" xml:space="preserve">
+    <value>LETRAS</value>
+  </data>
+  <data name="LETTERS3" xml:space="preserve">
+    <value>LETRAS</value>
+  </data>
+  <data name="LOOK" xml:space="preserve">
+    <value>Olhar</value>
+  </data>
+  <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CURSOR
+MAGNÉTICO</value>
+  </data>
+  <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>CURSOR
+MAGNÉTICO</value>
+  </data>
+  <data name="MAGNIFIER" xml:space="preserve">
+    <value>LUPA</value>
+  </data>
+  <data name="MAGNIFIER1" xml:space="preserve">
+    <value>LUPA</value>
+  </data>
+  <data name="MAGNIFIER2" xml:space="preserve">
+    <value>LUPA</value>
+  </data>
+  <data name="MAGNIFIER3" xml:space="preserve">
+    <value>LUPA</value>
+  </data>
+  <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
+    <value>Zoom da região (%):</value>
+  </data>
+  <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
+    <value>Zoom (%):</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
+    <value>Console (ALT+M)</value>
+  </data>
+  <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
+    <value>Núm. de correspondência máx. do dicionário:</value>
+  </data>
+  <data name="MENU" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="MENU1" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="MENU2" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="MENU3" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CLIQUE
+DO MEIO</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>CLIQUE
+DO MEIO</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>CLIQUE
+DO MEIO</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE3" xml:space="preserve">
+    <value>CLIQUE
+DO MEIO</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MEIO
+BAIXO/CIMA</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>MEIO
+BAIXO/CIMA</value>
+  </data>
+  <data name="MINIMISE" xml:space="preserve">
+    <value>MINIMIZAR</value>
+  </data>
+  <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
+    <value>Posição minimizada:</value>
+  </data>
+  <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
+    <value>Timeout de captura:</value>
+  </data>
+  <data name="MISC" xml:space="preserve">
+    <value>Misc</value>
+  </data>
+  <data name="MOUSE" xml:space="preserve">
+    <value>MOUSE</value>
+  </data>
+  <data name="MOUSE1" xml:space="preserve">
+    <value>MOUSE</value>
+  </data>
+  <data name="MOUSE_BUTTON" xml:space="preserve">
+    <value>Botão do Mouse</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Som do clique (click):</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Som do duplo clique:</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
+    <value>Som do clique (pressionado):</value>
+  </data>
+  <data name="MOUSE_POSITION" xml:space="preserve">
+    <value>Posição (Mouse):</value>
+  </data>
+  <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
+    <value>Intervalo/Timeout de posição do mouse (ms):</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
+    <value>Som do scroll (mouse):</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
+    <value>Som do soltar do clique (mouse up):</value>
+  </data>
+  <data name="MOVE" xml:space="preserve">
+    <value>MOVER</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOVER PARA
+BAIXO E ESQUERDA</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOVER PARA
+BAIXO E DIREITA</value>
+  </data>
+  <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOVER
+PARA BAIXO</value>
+  </data>
+  <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>MOVER
+PARA BAIXO</value>
+  </data>
+  <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>MOVER
+PARA BAIXO</value>
+  </data>
+  <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOVER PARA
+ESQUERDA</value>
+  </data>
+  <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>MOVER PARA
+ESQUERDA</value>
+  </data>
+  <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>MOVER PARA
+ESQUERDA</value>
+  </data>
+  <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOVER PARA
+DIREITA</value>
+  </data>
+  <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>MOVER PARA
+DIREITA</value>
+  </data>
+  <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>MOVER PARA
+DIREITA</value>
+  </data>
+  <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOVER PARA</value>
+  </data>
+  <data name="MOVE_TO_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>MOVER PARA</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOVER PARA
+CIMA E ESQUERDA</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOVER PARA
+CIMA E DIREITA</value>
+  </data>
+  <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MOVER PARA
+CIMA</value>
+  </data>
+  <data name="MOVE_UP_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>MOVER PARA
+CIMA</value>
+  </data>
+  <data name="MOVE_UP_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>MOVER PARA
+CIMA</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
+    <value>Múltiplas teclas</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
+    <value>Ativar multi-teclas:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION" xml:space="preserve">
+    <value>Selecionar multi-telcas:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
+    <value>Fim da seleção de multi-teclas:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SELEC.
+MULTI-TECLAS</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>SELEC.
+MULTI-TECLAS</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
+    <value>Início de seleção de multi-teclas:</value>
+  </data>
+  <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
+    <value>(A nova palavra do dicionário irá ter letras maiúsculas)</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>PRÓX.</value>
+  </data>
+  <data name="NEXT1" xml:space="preserve">
+    <value>PRÓX.</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>NÃO</value>
+  </data>
+  <data name="NOTHING_NEW" xml:space="preserve">
+    <value>Hmm, nada de novo por aqui! :(</value>
+  </data>
+  <data name="NOTIFICATIONS" xml:space="preserve">
+    <value>Notificações</value>
+  </data>
+  <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
+    <value>Ops, não há novas palavras e/ou frases nas anotações que já estejam no seu dicionário.</value>
+  </data>
+  <data name="NO_VALID_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
+    <value>Ops, não há novas palavras nas anotações que já estejam no seu dicionário.</value>
+  </data>
+  <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
+    <value>NÚMEROS E
+SÍMBOLOSO</value>
+  </data>
+  <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+LOCK</value>
+  </data>
+  <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM LOCK
+SÍMBOLOS</value>
+  </data>
+  <data name="NUM_SYM_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>NUM LOCK
+SÍMBOLOS</value>
+  </data>
+  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>OptiKey : Digite · Clique · Fale</value>
+  </data>
+  <data name="OTHER" xml:space="preserve">
+    <value>Outros</value>
+  </data>
+  <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
+    <value>Parent Window could not be identified. Unable to continue</value>
+  </data>
+  <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PAGE
+DOWN</value>
+  </data>
+  <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PAGE
+UP</value>
+  </data>
+  <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>TECLADO
+(FÍSICO)</value>
+  </data>
+  <data name="PLAY_SOUND" xml:space="preserve">
+    <value>Reproduzir/tocar?</value>
+  </data>
+  <data name="POINTING" xml:space="preserve">
+    <value>Apontar</value>
+  </data>
+  <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
+    <value>Apontar: {0}</value>
+  </data>
+  <data name="POINT_AND_SELECTING" xml:space="preserve">
+    <value>Apontar e selecionar</value>
+  </data>
+  <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
+    <value>Ponto de fixação (pixeis):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Tempo para completar o ponto de fixação (ms):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Tempo para bloquear o ponto de fixação (ms):</value>
+  </data>
+  <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
+    <value>Raio de bloqueio do ponto (pixels):</value>
+  </data>
+  <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
+    <value>Seleção de ponto: {0}</value>
+  </data>
+  <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Seleção de ponto de tecla do teclado:</value>
+  </data>
+  <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Seleção do ponto do botão do mouse:</value>
+  </data>
+  <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Origem do ponto de seleção:</value>
+  </data>
+  <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Polaco
+(Polónia) /
+Polski
+(Polska)</value>
+  </data>
+  <data name="PORTUGUESE_BRAZILIAN" xml:space="preserve">
+    <value>Português (Brasil)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
+    <value>Português (Portugal)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Português
+(Portugal)
+</value>
+  </data>
+  <data name="PREVIOUS" xml:space="preserve">
+    <value>ANTERIOR</value>
+  </data>
+  <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRINT
+SCREEN</value>
+  </data>
+  <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
+    <value>PROBLEMA AO CARREGAR O TECLADO</value>
+  </data>
+  <data name="QUIT" xml:space="preserve">
+    <value>SAIR/ENCERRAR</value>
+  </data>
+  <data name="QUIT1" xml:space="preserve">
+    <value>SAIR/ENCERRAR</value>
+  </data>
+  <data name="QUIT2" xml:space="preserve">
+    <value>SAIR/ENCERRAR</value>
+  </data>
+  <data name="RATE_LABEL" xml:space="preserve">
+    <value>Avaliar:</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>REPETIR
+ÚLTIMA</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>REPETIR
+ÚLTIMA</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>REPETIR
+ÚLTIMA</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE3" xml:space="preserve">
+    <value>REPETIR
+ÚLTIMA</value>
+  </data>
+  <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
+    <value>Os serviços de áudio e/ou dicionário foram/não foram carregados corretamente.</value>
+  </data>
+  <data name="RESTART_MESSAGE" xml:space="preserve">
+    <value>O OptiKey precisa ser reiniciado para aplicar suas alterações.</value>
+  </data>
+  <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Restaurar</value>
+  </data>
+  <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Retomar fix. incompleta anteriormente:</value>
+  </data>
+  <data name="RE_CALIBRATE" xml:space="preserve">
+    <value>RECALIBRAR</value>
+  </data>
+  <data name="RE_CALIBRATE1" xml:space="preserve">
+    <value>RECALIBRAR</value>
+  </data>
+  <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SETA
+DIREITA</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>CLIQUE
+DIREITO</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>CLICAR COM
+BOTÃO DIREITO</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>CLICAR COM
+BOTÃO DIREITO</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE3" xml:space="preserve">
+    <value>CLICAR COM
+BOTÃO DIREITO</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE4" xml:space="preserve">
+    <value>CLICAR COM
+BOTÃO DIREITO</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE5" xml:space="preserve">
+    <value>CLICAR COM
+BOTÃO DIREITO</value>
+  </data>
+  <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>DIREITA
+BAIXO/CIMA</value>
+  </data>
+  <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>DIREITA
+BAIXO/CIMA</value>
+  </data>
+  <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
+    <value>Anotações # núm. de linhas:</value>
+  </data>
+  <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCROLL
+LOCK</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCROLL PARA
+BAIXO</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>SCROLL PARA
+BAIXO</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>SCROLL PARA
+BAIXO</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE3" xml:space="preserve">
+    <value>SCROLL PARA
+BAIXO</value>
+  </data>
+  <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCROLL PARA A
+ESQUERDA</value>
+  </data>
+  <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>SCROLL PARA A
+ESQUERDA</value>
+  </data>
+  <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCROLL PARA A
+DIREITA</value>
+  </data>
+  <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>SCROLL PARA A
+DIREITA</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCROLL PARA
+CIMA</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE1" xml:space="preserve">
+    <value>SCROLL PARA
+CIMA</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE2" xml:space="preserve">
+    <value>SCROLL PARA
+CIMA</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE3" xml:space="preserve">
+    <value>SCROLL PARA
+CIMA</value>
+  </data>
+  <data name="SELECTION" xml:space="preserve">
+    <value>Seleção</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
+    <value>Comportamento do indicador de progresso da seleção:</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
+    <value>Definir tamanho do indicador final de seleção (%):</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
+    <value>Definir tamanho do indicador inicial de seleção (%):</value>
+  </data>
+  <data name="SHIFT" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHIFT1" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHIFT2" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHIFT3" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHIFT4" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
+    <value>Exibir splash screen ao inicializar:</value>
+  </data>
+  <data name="SHRINK" xml:space="preserve">
+    <value>ENCOLHER/REDUZIR</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ENCOLHER PARA
+BAIXO E ESQUERDA</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ENCOLHER PARA
+BAIXO E DIREITA</value>
+  </data>
+  <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ENCOLHER PARA
+BAIXO</value>
+  </data>
+  <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ENCOLHER PARA A
+ESQUERDA</value>
+  </data>
+  <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ENCOLHER PARA A
+DIREITA</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ENCOLHER PARA
+CIMA E ESQUERDA</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ENCOLHER PARA
+CIMA E DIREITA</value>
+  </data>
+  <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ENCOLHER PARA
+CIMA</value>
+  </data>
+  <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
+    <value>(Palavras similiares já estão no dicionário: {0})</value>
+  </data>
+  <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>TAMANHO E 
+POSIÇÃO</value>
+  </data>
+  <data name="SLEEP" xml:space="preserve">
+    <value>HIBERNAR/INATIVO</value>
+  </data>
+  <data name="SLEEP1" xml:space="preserve">
+    <value>HIBERNAR/INATIVO</value>
+  </data>
+  <data name="SLEEP2" xml:space="preserve">
+    <value>HIBERNAR/INATIVO</value>
+  </data>
+  <data name="SLEEP3" xml:space="preserve">
+    <value>HIBERNAR/INATIVO</value>
+  </data>
+  <data name="SLEEP4" xml:space="preserve">
+    <value>HIBERNAR/INATIVO</value>
+  </data>
+  <data name="SLEEP5" xml:space="preserve">
+    <value>HIBERNAR/INATIVO</value>
+  </data>
+  <data name="SOUNDS" xml:space="preserve">
+    <value>Sons</value>
+  </data>
+  <data name="SOUND_EFFECTS" xml:space="preserve">
+    <value>Efeitos sonoros</value>
+  </data>
+  <data name="SOURCE_LABEL" xml:space="preserve">
+    <value>Fonte:</value>
+  </data>
+  <data name="SPACE" xml:space="preserve">
+    <value>ESPAÇO</value>
+  </data>
+  <data name="SPACE1" xml:space="preserve">
+    <value>ESPAÇO</value>
+  </data>
+  <data name="SPACE2" xml:space="preserve">
+    <value>ESPAÇO</value>
+  </data>
+  <data name="SPACE3" xml:space="preserve">
+    <value>ESPAÇO</value>
+  </data>
+  <data name="SPACE4" xml:space="preserve">
+    <value>ESPAÇO</value>
+  </data>
+  <data name="SPANISH_SPAIN" xml:space="preserve">
+    <value>Espanhol (Espanha) / Español (España)</value>
+  </data>
+  <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Espanhol 
+(Espanha) / 
+Español
+(España)</value>
+  </data>
+  <data name="SPEAK" xml:space="preserve">
+    <value>FALAR</value>
+  </data>
+  <data name="SPEAK1" xml:space="preserve">
+    <value>FALAR</value>
+  </data>
+  <data name="SPEECH" xml:space="preserve">
+    <value>Fala/Idioma/Linguagem:</value>
+  </data>
+  <data name="SPEECH1" xml:space="preserve">
+    <value>Pronúncia</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>Atraso antes do discurso (ms):</value>
+  </data>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>Oh não! Encontramos os seguintes erros aos iniciar:</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Teclado inicializado:</value>
+  </data>
+  <data name="STEELSERIES_SENTRY" xml:space="preserve">
+    <value>Steelseries Sentry (EyeX)</value>
+  </data>
+  <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
+    <value>Sinal de parada:</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value>Sucesso</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>SUGESTÃO 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>SUGESTÃO 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>SUGESTÃO 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>SUGESTÃO 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>SUGESTÃO 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>SUGESTÃO 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Teclas de sugestão</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>TECLAS DE SUGESTÃO:</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>Método de sugestão:</value>
+  </data>
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
+    <value>Completar palavras automaticamente:</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Suprimir teclas modificadoras para todas as ações do rato:</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Bloquear teclas mod. no mouse/teclado:</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL1" xml:space="preserve">
+    <value>Eliminar teclas modificadoras quando no teclado do rato:</value>
+  </data>
+  <data name="TAB" xml:space="preserve">
+    <value>TAB</value>
+  </data>
+  <data name="THEME_LABEL" xml:space="preserve">
+    <value>Tema:</value>
+  </data>
+  <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
+    <value>Não foi possível ativar o TheEyeTribe GazeManager! Verifique se o servidor está em execução, se o dispositivo está conectado e tente novamente.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
+    <value>Ops, TheEyeTribe não foi calibrado. Nenhum dado será recebido até que a calibração seja concluída.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
+    <value>Não é possível tentar uma calibração porque nenhum mecanismo do EyeX está disponível.</value>
+  </data>
+  <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
+    <value>Tempo até que o ponto se torne irrelevante (ms):</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>O 'Tobii EyeX Engine' não encontrado. Instale o EyeX Engine e tente novamente.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>O 'Tobii EyeX Engine' não está funcionando. Inicie o EyeX Engine e tente novamente.</value>
+  </data>
+  <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
+    <value>Trigger button/key pressed again</value>
+  </data>
+  <data name="TRIGGER_RELEASED" xml:space="preserve">
+    <value>Trigger button/key released</value>
+  </data>
+  <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
+    <value>Não consigo detectar para onde você está direcionando sua atenção. Há algum problema com o dispositivo de entrada? Está conectado, ligado, calibrado, etc?</value>
+  </data>
+  <data name="TURKISH_TURKEY" xml:space="preserve">
+    <value>Turco (Turquia) / Türkçe (Türkiye)</value>
+  </data>
+  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Turco
+(Turquia) /
+Türkçe
+(Türkiye)</value>
+  </data>
+  <data name="TURN_OFF_UPDATE_CHECKS_MESSAGE" xml:space="preserve">
+    <value>Você pode desativar as verificações de atualização no Console (ALT + M).</value>
+  </data>
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Idioma da interface do utilizador: {0}</value>
+  </data>
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Idioma da interface do utilizador:</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>Ucraniano (Ucrânia) / Українська (Україна)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ucraniano
+(Ucrânia) /
+Українська
+(Україна)</value>
+  </data>
+  <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
+    <value>Não é possível determinar a 'elevação' atual.</value>
+  </data>
+  <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
+    <value>Ocorreu um problema ao definir a voz como '{0}'{1}</value>
+  </data>
+  <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
+    <value>Ops! Algo deu errado, mas não sei o quê - verifique os logs.</value>
+  </data>
+  <data name="UPDATE_AVAILABLE" xml:space="preserve">
+    <value>ATUALIZAÇÃO DISPONÍVEL</value>
+  </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>Tudo em maiúsculas</value>
+  </data>
+  <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SETA P/
+CIMA</value>
+  </data>
+  <data name="URDU_PAKISTAN" xml:space="preserve">
+    <value>Urdu (Paquistão) / اردو (پاکستان)</value>
+  </data>
+  <data name="URDU_PAKISTAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Urdu
+(Paquistão) /
+اردو 
+(پاکستان)</value>
+  </data>
+  <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
+    <value>Por favor, visite:'www.optikey.org' para baixar a versão mais recente: ({0})</value>
+  </data>
+  <data name="VERIFY_RESTART" xml:space="preserve">
+    <value>May I restart OptiKey?</value>
+  </data>
+  <data name="VERIFY_RESTART1" xml:space="preserve">
+    <value>Posso reiniciar o Optikey?</value>
+  </data>
+  <data name="VERSION_DESCRIPTION" xml:space="preserve">
+    <value>Versão: {0}</value>
+  </data>
+  <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
+    <value>Prenchimento vertical (%):</value>
+  </data>
+  <data name="VISUALS" xml:space="preserve">
+    <value>Visual/visuais</value>
+  </data>
+  <data name="VISUALS1" xml:space="preserve">
+    <value>Visuais</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>Interação visual com myGaze</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>O Interaction myGaze Visual é suportado apenas se você já tiver instalado os drivers cliente myGaze, que já não estão disponíveis para download. Se você não tem esses drivers instalados, você deve selecionar o uso 'posição do mouse' em vez, e usar Optikey em combinação com a aplicação myGaze EyeMousePlay para mover o cursor.</value>
+  </data>
+  <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
+    <value> (das configurações)</value>
+  </data>
+  <data name="VOICE_LABEL" xml:space="preserve">
+    <value>Voz:</value>
+  </data>
+  <data name="VOLUME_LABEL" xml:space="preserve">
+    <value>Volume:</value>
+  </data>
+  <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
+    <value>Website: www.optikey.org</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>NAVEGAÇÃO WEB</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>Navegação na Internet</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Navegação
+na Internet</value>
+  </data>
+  <data name="WIN" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WIN1" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WIN2" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WORDS" xml:space="preserve">
+    <value>Palavras</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>YES</value>
+  </data>
+</root>
