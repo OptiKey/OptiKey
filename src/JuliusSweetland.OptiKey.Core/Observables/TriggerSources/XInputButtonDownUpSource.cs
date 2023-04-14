@@ -64,11 +64,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             {
                 if (sequence == null)
                 {
-                    //need to add controller userindex to event
-                    //and sign up for only the appropriate one here
-
-                    //or consider adding a "watch" for a particular controller via the static Instance
-
                     var keyDowns = Observable.FromEventPattern<XInputButtonDownEventHandler, XInputButtonEventArgs>(
                             handler => new XInputButtonDownEventHandler(handler),
                             h => xinputListener.ButtonDown += h,
