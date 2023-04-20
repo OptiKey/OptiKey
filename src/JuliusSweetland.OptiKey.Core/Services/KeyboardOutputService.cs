@@ -1129,7 +1129,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 if (alt && keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value == KeyDownStates.Up)
                 {
-                    publishService.KeyDown(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
+                    publishService.KeyDown(VirtualKeyCode.MENU); //If we are pressing Alt only to simulate a character use VirtualKeyCode 18 (AltGr)
                     releaseAlt = true;
                 }
 
