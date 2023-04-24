@@ -807,6 +807,9 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new XInputButtonDownUpSource(
                         Settings.Default.KeySelectionTriggerGamepadXInputController,
                         Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
                     break;
 
@@ -814,6 +817,9 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new DirectInputButtonDownUpSource(
                         Settings.Default.KeySelectionTriggerGamepadDirectInputController,
                         Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
                     break;
 
@@ -851,6 +857,9 @@ namespace JuliusSweetland.OptiKey
                     pointSelectionTriggerSource = new XInputButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerGamepadXInputController,
                         Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
                     break;
 
@@ -858,6 +867,9 @@ namespace JuliusSweetland.OptiKey
                     pointSelectionTriggerSource = new DirectInputButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerGamepadDirectInputController,
                         Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
                     break;
 

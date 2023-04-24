@@ -803,6 +803,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trigger repeat presses when held down.
+        /// </summary>
+        public static string CONTROLLER_ENABLE_REPEATS {
+            get {
+                return ResourceManager.GetString("CONTROLLER_ENABLE_REPEATS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time delay for first repeat (ms).
+        /// </summary>
+        public static string CONTROLLER_FIRST_REPEAT_TIME {
+            get {
+                return ResourceManager.GetString("CONTROLLER_FIRST_REPEAT_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time delay for subsequent repeats (ms).
+        /// </summary>
+        public static string CONTROLLER_NEXT_REPEAT_TIME {
+            get {
+                return ResourceManager.GetString("CONTROLLER_NEXT_REPEAT_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CONVERSATION.
         /// </summary>
         public static string CONVERSATION {

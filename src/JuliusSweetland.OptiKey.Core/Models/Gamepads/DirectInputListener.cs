@@ -22,16 +22,18 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
 
         public class DirectInputButtonEventArgs : EventArgs
         {
-            public DirectInputButtonEventArgs(Guid controller, EventType type, int button)
+            public DirectInputButtonEventArgs(Guid controller, EventType type, int button, bool isRepeat = false)
             {
                 this.controller = controller;
                 this.eventType = type;
                 this.button = button;
+                this.isRepeat = isRepeat;
             }
 
             public Guid controller;
             public int button;
             public EventType eventType;
+            public bool isRepeat;
         }
 
         public event DirectInputButtonDownEventHandler ButtonDown;
@@ -48,18 +50,31 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
         private BackgroundWorker pollWorker;
         private DateTime lastTimeScanned;
         private int pollDelayMs;
-        private int scanDelayMs;        
+        private int scanDelayMs;
+
+        private bool allowRepeats = false;
+        private int repeatDelayFirstMs;
+        private int repeatDelayNextMs;
+        private long[] repeatTimes;
 
         public DirectInputListener(Guid controllerGuid, int pollDelayMs = 20, int scanDelayMs = 2000)
         {
             this.pollDelayMs = pollDelayMs;
             this.scanDelayMs = scanDelayMs;
             this.requestedGuid = controllerGuid;
+            this.repeatTimes = new long[128];
 
             pollWorker = new BackgroundWorker();
             pollWorker.DoWork += pollGamepadButtons;
             pollWorker.WorkerSupportsCancellation = true;
             pollWorker.RunWorkerAsync();
+        }
+
+        public void AllowRepeats(bool allow, int firstDelayMs = 400, int nextDelayMs = 200)
+        {
+            allowRepeats = allow;
+            repeatDelayFirstMs = firstDelayMs;
+            repeatDelayNextMs = nextDelayMs;
         }
 
         public static List<KeyValuePair<Guid, string>> GetConnectedControllers()
@@ -167,7 +182,38 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
                                 }
                             }
                         }
+
+                        if (allowRepeats)
+                        {
+                            var currentButtons = controller.CurrentButtons;
+                            long currentTime = new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds();
+
+                            for (int i = 0; i < currentButtons.Length; i++)
+                            {
+                                if (currentButtons[i]) // if button is down
+                                {
+                                    if (changedButtons[i]) // then button is newly down
+                                    {
+                                        //this.ButtonDown?.Invoke(this, new DirectInputButtonEventArgs(i + 1)); (already done above - could be combined)
+                                        repeatTimes[i] = currentTime + repeatDelayFirstMs;
+                                    }
+                                    else if (currentTime > repeatTimes[i])
+                                    {
+                                        this.ButtonUp?.Invoke(this, new DirectInputButtonEventArgs(controller.InstanceGuid,
+                                                                                                    EventType.UP,
+                                                                                                    i + 1,
+                                                                                                    isRepeat: true));
+                                        this.ButtonDown?.Invoke(this, new DirectInputButtonEventArgs(controller.InstanceGuid,
+                                                                                                    EventType.DOWN,
+                                                                                                    i + 1,
+                                                                                                    isRepeat: true));
+                                        repeatTimes[i] = currentTime + repeatDelayNextMs;
+                                    }
+                                }
+                            }
+                        }
                     }
+
                 }
                 Thread.Sleep(pollDelayMs);
             }

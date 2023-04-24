@@ -144,6 +144,54 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("false")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool GamepadTriggerHoldToRepeat
+        {
+            get
+            {
+                return ((bool)(this["GamepadTriggerHoldToRepeat"]));
+            }
+            set
+            {
+                this["GamepadTriggerHoldToRepeat"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GamepadTriggerFirstRepeatMilliseconds
+        {
+            get
+            {
+                return ((int)(this["GamepadTriggerFirstRepeatMilliseconds"]));
+            }
+            set
+            {
+                this["GamepadTriggerFirstRepeatMilliseconds"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GamepadTriggerNextRepeatMilliseconds
+        {
+            get
+            {
+                return ((int)(this["GamepadTriggerNextRepeatMilliseconds"]));
+            }
+            set
+            {
+                this["GamepadTriggerNextRepeatMilliseconds"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NextHigh")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Enums.TriggerStopSignals MultiKeySelectionTriggerStopSignal {

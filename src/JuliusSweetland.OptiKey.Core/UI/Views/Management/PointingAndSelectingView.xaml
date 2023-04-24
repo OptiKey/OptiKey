@@ -332,6 +332,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEY_SELECTION_SOURCE_LABEL}" 
@@ -764,6 +768,141 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
+                    
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.CONTROLLER_ENABLE_REPEATS}" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <CheckBox Grid.Row="9" Grid.Column="1"  
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding GamepadTriggerHoldToRepeat, Mode=TwoWay}">
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.CONTROLLER_FIRST_REPEAT_TIME}" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}" />
+                                            <Condition Binding="{Binding GamepadTriggerHoldToRepeat}" Value="true" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}" />
+                                            <Condition Binding="{Binding GamepadTriggerHoldToRepeat}" Value="true" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="10" Grid.Column="1"  TextAlignment="Left"
+                                            Minimum="50" Maximum="5000" Interval="1" StringFormat="###,##0"
+                                            Value="{Binding GamepadTriggerFirstRepeatMilliseconds, Mode=TwoWay}">
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}" />
+                                            <Condition Binding="{Binding GamepadTriggerHoldToRepeat}" Value="true" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}" />
+                                            <Condition Binding="{Binding GamepadTriggerHoldToRepeat}" Value="true" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.CONTROLLER_NEXT_REPEAT_TIME}" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}" />
+                                            <Condition Binding="{Binding GamepadTriggerHoldToRepeat}" Value="true" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}" />
+                                            <Condition Binding="{Binding GamepadTriggerHoldToRepeat}" Value="true" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="11" Grid.Column="1"  TextAlignment="Left"
+                                            Minimum="50" Maximum="5000" Interval="1" StringFormat="###,##0"
+                                            Value="{Binding GamepadTriggerNextRepeatMilliseconds, Mode=TwoWay}">
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}" />
+                                            <Condition Binding="{Binding GamepadTriggerHoldToRepeat}" Value="true" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}" />
+                                            <Condition Binding="{Binding GamepadTriggerHoldToRepeat}" Value="true" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
 
                     <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.ALLOW_REPEATS_LABEL}" 
                       VerticalAlignment="Center" Margin="5" >
@@ -780,7 +919,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </TextBlock>
                     <CheckBox Grid.Row="8" Grid.Column="1" 
                       VerticalAlignment="Center"
-                      IsChecked="{Binding AllowRepeats, Mode=TwoWay}" >
+                      IsChecked="{Binding AllowRepeatKeyActionsAwayFromKey, Mode=TwoWay}" >
                         <CheckBox.Style>
                             <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
                                 <Setter Property="Visibility" Value="Visible" />
@@ -821,15 +960,15 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_SOURCE_LABEL}" 
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_SOURCE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="9" Grid.Column="1" 
+                    <ComboBox Grid.Row="12" Grid.Column="1" 
                               ItemsSource="{Binding TriggerSources}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding PointSelectionTriggerSource, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_TIME_TO_LOCK_ON_LABEL}" 
+                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_TIME_TO_LOCK_ON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -842,7 +981,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="10" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="13" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerFixationLockOnTimeInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
@@ -857,7 +996,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_TIME_TO_COMPLETE_LABEL}" 
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_TIME_TO_COMPLETE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -870,7 +1009,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="11" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="14" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerFixationCompleteTimeInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
@@ -885,7 +1024,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.POINT_LOCK_ON_RADIUS_LABEL}" 
+                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.POINT_LOCK_ON_RADIUS_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -898,7 +1037,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="12" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="15" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerLockOnRadiusInPixels, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
@@ -913,7 +1052,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
                     
-                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_RADIUS_LABEL}" 
+                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_RADIUS_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -926,7 +1065,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="13" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="16" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerFixationRadiusInPixels, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
@@ -941,7 +1080,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
             
-                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_KEYBOARD_KEY_LABEL}" 
+                    <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_KEYBOARD_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -954,7 +1093,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="14" Grid.Column="1" 
+                    <ComboBox Grid.Row="17" Grid.Column="1" 
                               ItemsSource="{Binding Keys}"
                               SelectedValue="{Binding PointSelectionTriggerKeyboardKeyDownUpKey, Mode=TwoWay}">
                         <ComboBox.Style>
@@ -969,7 +1108,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_GAMEPAD_SLOT_LABEL}" 
+                    <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_GAMEPAD_SLOT_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -982,7 +1121,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="14" Grid.Column="1" 
+                    <ComboBox Grid.Row="18" Grid.Column="1" 
                               ItemsSource="{Binding XInputSlots}"                              
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
@@ -1000,7 +1139,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </ComboBox>
                     
                     
-                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL}" 
+                    <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -1013,7 +1152,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="15" Grid.Column="1" 
+                    <ComboBox Grid.Row="18" Grid.Column="1" 
                               ItemsSource="{Binding DirectInputControllers}"                              
                               DisplayMemberPath="Value"
                               SelectedValuePath="Key"
@@ -1030,7 +1169,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_GAMEPAD_BUTTON_LABEL}" 
+                    <TextBlock Grid.Row="19" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_GAMEPAD_BUTTON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -1043,7 +1182,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="16" Grid.Column="1" 
+                    <ComboBox Grid.Row="19" Grid.Column="1" 
                               ItemsSource="{Binding GamepadButtonFlags}"
                               SelectedValue="{Binding PointSelectionTriggerGamepadXInputButtonDownUpButton, Mode=TwoWay}">
                         <ComboBox.Style>
@@ -1059,7 +1198,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </ComboBox>
 
 
-                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_GAMEPAD_BUTTON_LABEL}" 
+                    <TextBlock Grid.Row="19" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_GAMEPAD_BUTTON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -1072,7 +1211,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="16" Grid.Column="1"  TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="19" Grid.Column="1"  TextAlignment="Left"
                                             Minimum="1" Maximum="128" Interval="1" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerGamepadDirectInputButtonDownUpButton, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
@@ -1087,7 +1226,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_MOUSE_BUTTON_LABEL}" 
+                    <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_MOUSE_BUTTON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -1100,7 +1239,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="15" Grid.Column="1" 
+                    <ComboBox Grid.Row="18" Grid.Column="1" 
                               ItemsSource="{Binding MouseButtons}"
                               SelectedValue="{Binding PointSelectionTriggerMouseDownUpButton, Mode=TwoWay}">
                         <ComboBox.Style>
@@ -1115,7 +1254,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL}" 
+                    <TextBlock Grid.Row="19" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -1131,7 +1270,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="16" Grid.Column="1" 
+                    <ComboBox Grid.Row="19" Grid.Column="1" 
                               ItemsSource="{Binding ProgressIndicatorBehaviours}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
@@ -1151,7 +1290,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL}" 
+                    <TextBlock Grid.Row="20" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -1175,7 +1314,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="17" Grid.Column="1" 
+                    <controls:NumericUpDown Grid.Row="20" Grid.Column="1" 
                                             TextAlignment="Left"
                                             Minimum="0" Maximum="100" Interval="1"
                                             Value="{Binding ProgressIndicatorResizeStartProportion, Mode=TwoWay}">
@@ -1202,7 +1341,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="18" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL}" 
+                    <TextBlock Grid.Row="21" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -1226,7 +1365,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="18" Grid.Column="1" 
+                    <controls:NumericUpDown Grid.Row="21" Grid.Column="1" 
                                             TextAlignment="Left"
                                             Minimum="0" Maximum="100" Interval="1"
                                             Value="{Binding ProgressIndicatorResizeEndProportion, Mode=TwoWay}">

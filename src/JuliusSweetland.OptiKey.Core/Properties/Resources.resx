@@ -2470,8 +2470,14 @@ Magyar
   <data name="POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
     <value>Point selection gamepad controller</value>
   </data>
-  <data name="LIMIT_BACKONE" xml:space="preserve">
-    <value>Limit "BackOne" deletion to a single character</value>
+  <data name="CONTROLLER_ENABLE_REPEATS" xml:space="preserve">
+    <value>Trigger repeat presses when held down</value>
+  </data>
+  <data name="CONTROLLER_FIRST_REPEAT_TIME" xml:space="preserve">
+    <value>Time delay for first repeat (ms)</value>
+  </data>
+  <data name="CONTROLLER_NEXT_REPEAT_TIME" xml:space="preserve">
+    <value>Time delay for subsequent repeats (ms)</value>
   </data>
   <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
     <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
@@ -2481,5 +2487,8 @@ Magyar
   </data>
   <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
     <value>Repeat last key:</value>
+  </data>
+  <data name="LIMIT_BACKONE" xml:space="preserve">
+    <value>Limit "BackOne" deletion to a single character</value>
   </data>
 </root>

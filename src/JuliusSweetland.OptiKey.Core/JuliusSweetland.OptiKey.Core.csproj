@@ -275,6 +275,7 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
+    <Compile Include="Models\Gamepads\RepeatableTriggerSignal.cs" />
     <Compile Include="Models\Gamepads\XInputControllerState.cs" />
     <Compile Include="Models\Gamepads\XInputListener.cs" />
     <Compile Include="Models\XmlKeyCommand.cs" />
