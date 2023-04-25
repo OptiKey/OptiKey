@@ -201,7 +201,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if ((singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                     {
                         // Inject previous keyvalue if asked to repeat
-                        if (singleKeyValue.FunctionKey != null &&
+                        if (singleKeyValue != null &&
+                            singleKeyValue.FunctionKey != null &&
                             singleKeyValue.FunctionKey == FunctionKeys.RepeatLastKeyAction &&
                             lastKeyValueExecuted != null &&
                             SelectionMode == SelectionModes.Keys)
