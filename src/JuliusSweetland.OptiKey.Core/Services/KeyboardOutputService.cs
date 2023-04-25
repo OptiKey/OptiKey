@@ -1156,7 +1156,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 if (releaseAlt)
                 {
-                    publishService.KeyUp(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
+                    publishService.KeyUp(VirtualKeyCode.MENU); //Release AltGr
                 }
 
                 Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
