@@ -731,7 +731,7 @@ namespace JuliusSweetland.OptiKey
 
                 case PointsSources.TouchScreenPosition:
                     pointSource = new TouchScreenPositionSource(
-                        Settings.Default.PointTtl);
+                        Settings.Default.PointTtl);                    
                     break;
 
                 case PointsSources.TheEyeTribe:
@@ -782,109 +782,121 @@ namespace JuliusSweetland.OptiKey
 
             //Instantiate key trigger source
             ITriggerSource keySelectionTriggerSource;
-            switch (Settings.Default.KeySelectionTriggerSource)
-            {
-                case TriggerSources.Fixations:
-                    keySelectionTriggerSource = new KeyFixationSource(
-                       Settings.Default.KeySelectionTriggerFixationLockOnTime,
-                       Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
-                       Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes,
-                       Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
-                        ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
-                        : null,
-                       Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
-                       Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed,
-                       pointSource);
-                    break;
-
-                case TriggerSources.KeyboardKeyDownsUps:
-                    keySelectionTriggerSource = new KeyboardKeyDownUpSource(
-                        Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey,
-                        pointSource);
-                    break;
-
-                case TriggerSources.MouseButtonDownUps:
-                    keySelectionTriggerSource = new MouseButtonDownUpSource(
-                        Settings.Default.KeySelectionTriggerMouseDownUpButton,
-                        pointSource);
-                    break;
-
-                case TriggerSources.XInputButtonDownUps:
-                    keySelectionTriggerSource = new XInputButtonDownUpSource(
-                        Settings.Default.KeySelectionTriggerGamepadXInputController,
-                        Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton,
-                        Settings.Default.GamepadTriggerHoldToRepeat,
-                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
-                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
-                        pointSource);
-                    break;
-
-                case TriggerSources.DirectInputButtonDownUps:
-                    keySelectionTriggerSource = new DirectInputButtonDownUpSource(
-                        Settings.Default.KeySelectionTriggerGamepadDirectInputController,
-                        Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton,
-                        Settings.Default.GamepadTriggerHoldToRepeat,
-                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
-                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
-                        pointSource);
-                    break;
-
-                default:
-                    throw new ArgumentException(
-                        "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart OptiKey.");
-            }
 
             //Instantiate point trigger source
             ITriggerSource pointSelectionTriggerSource;
-            switch (Settings.Default.PointSelectionTriggerSource)
+
+            // FIXME: this logic is a hack
+            if (Settings.Default.PointsSource == PointsSources.TouchScreenPosition)
             {
-                case TriggerSources.Fixations:
-                    pointSelectionTriggerSource = new PointFixationSource(
-                        Settings.Default.PointSelectionTriggerFixationLockOnTime,
-                        Settings.Default.PointSelectionTriggerFixationCompleteTime,
-                        Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
-                        Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
-                        pointSource);
-                    break;
-
-                case TriggerSources.KeyboardKeyDownsUps:
-                    pointSelectionTriggerSource = new KeyboardKeyDownUpSource(
-                        Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey,
-                        pointSource);
-                    break;
-
-                case TriggerSources.MouseButtonDownUps:
-                    pointSelectionTriggerSource = new MouseButtonDownUpSource(
-                        Settings.Default.PointSelectionTriggerMouseDownUpButton,
-                        pointSource);
-                    break;
-
-                case TriggerSources.XInputButtonDownUps:
-                    pointSelectionTriggerSource = new XInputButtonDownUpSource(
-                        Settings.Default.PointSelectionTriggerGamepadXInputController,
-                        Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton,
-                        Settings.Default.GamepadTriggerHoldToRepeat,
-                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
-                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
-                        pointSource);
-                    break;
-
-                case TriggerSources.DirectInputButtonDownUps:
-                    pointSelectionTriggerSource = new DirectInputButtonDownUpSource(
-                        Settings.Default.PointSelectionTriggerGamepadDirectInputController,
-                        Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton,
-                        Settings.Default.GamepadTriggerHoldToRepeat,
-                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
-                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
-                        pointSource);
-                    break;
-
-                default:
-                    throw new ArgumentException(
-                        "'PointSelectionTriggerSource' setting is missing or not recognised! "
-                        + "Please correct and restart OptiKey.");
+                keySelectionTriggerSource = (TouchScreenPositionSource)pointSource;
+                pointSelectionTriggerSource = (TouchScreenPositionSource)pointSource;
             }
+            else
+            {
 
+                switch (Settings.Default.KeySelectionTriggerSource)
+                {
+                    case TriggerSources.Fixations:
+                        keySelectionTriggerSource = new KeyFixationSource(
+                           Settings.Default.KeySelectionTriggerFixationLockOnTime,
+                           Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
+                           Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes,
+                           Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
+                            ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
+                            : null,
+                           Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
+                           Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed,
+                           pointSource);
+                        break;
+
+                    case TriggerSources.KeyboardKeyDownsUps:
+                        keySelectionTriggerSource = new KeyboardKeyDownUpSource(
+                            Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey,
+                            pointSource);
+                        break;
+
+                    case TriggerSources.MouseButtonDownUps:
+                        keySelectionTriggerSource = new MouseButtonDownUpSource(
+                            Settings.Default.KeySelectionTriggerMouseDownUpButton,
+                            pointSource);
+                        break;
+
+                    case TriggerSources.XInputButtonDownUps:
+                        keySelectionTriggerSource = new XInputButtonDownUpSource(
+                            Settings.Default.KeySelectionTriggerGamepadXInputController,
+                            Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton,
+                            Settings.Default.GamepadTriggerHoldToRepeat,
+                            Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                            Settings.Default.GamepadTriggerNextRepeatMilliseconds,
+                            pointSource);
+                        break;
+
+                    case TriggerSources.DirectInputButtonDownUps:
+                        keySelectionTriggerSource = new DirectInputButtonDownUpSource(
+                            Settings.Default.KeySelectionTriggerGamepadDirectInputController,
+                            Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton,
+                            Settings.Default.GamepadTriggerHoldToRepeat,
+                            Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                            Settings.Default.GamepadTriggerNextRepeatMilliseconds,
+                            pointSource);
+                        break;
+
+                    default:
+                        throw new ArgumentException(
+                            "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart OptiKey.");
+                }
+
+
+                switch (Settings.Default.PointSelectionTriggerSource)
+                {
+                    case TriggerSources.Fixations:
+                        pointSelectionTriggerSource = new PointFixationSource(
+                            Settings.Default.PointSelectionTriggerFixationLockOnTime,
+                            Settings.Default.PointSelectionTriggerFixationCompleteTime,
+                            Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
+                            Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
+                            pointSource);
+                        break;
+
+                    case TriggerSources.KeyboardKeyDownsUps:
+                        pointSelectionTriggerSource = new KeyboardKeyDownUpSource(
+                            Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey,
+                            pointSource);
+                        break;
+
+                    case TriggerSources.MouseButtonDownUps:
+                        pointSelectionTriggerSource = new MouseButtonDownUpSource(
+                            Settings.Default.PointSelectionTriggerMouseDownUpButton,
+                            pointSource);
+                        break;
+
+                    case TriggerSources.XInputButtonDownUps:
+                        pointSelectionTriggerSource = new XInputButtonDownUpSource(
+                            Settings.Default.PointSelectionTriggerGamepadXInputController,
+                            Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton,
+                            Settings.Default.GamepadTriggerHoldToRepeat,
+                            Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                            Settings.Default.GamepadTriggerNextRepeatMilliseconds,
+                            pointSource);
+                        break;
+
+                    case TriggerSources.DirectInputButtonDownUps:
+                        pointSelectionTriggerSource = new DirectInputButtonDownUpSource(
+                            Settings.Default.PointSelectionTriggerGamepadDirectInputController,
+                            Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton,
+                            Settings.Default.GamepadTriggerHoldToRepeat,
+                            Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                            Settings.Default.GamepadTriggerNextRepeatMilliseconds,
+                            pointSource);
+                        break;
+
+                    default:
+                        throw new ArgumentException(
+                            "'PointSelectionTriggerSource' setting is missing or not recognised! "
+                            + "Please correct and restart OptiKey.");
+                }
+            }
             var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
             pointSource, eyeGestureTriggerSource, keySelectionTriggerSource, pointSelectionTriggerSource);
             inputService.RequestSuspend(); //Pause it initially
