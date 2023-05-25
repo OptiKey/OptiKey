@@ -824,17 +824,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private Rect GetVirtualScreenBoundsInPixels()
-        {
-            return new Rect
-            {
-                X = 0,
-                Y = 0,
-                Width = Graphics.VirtualScreenWidthInPixels,
-                Height = Graphics.VirtualScreenHeightInPixels,
-            };
-        }
-
         private Rect GetPrimaryScreenBoundsInPixels()
         {
             return new Rect

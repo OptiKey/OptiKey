@@ -41,18 +41,7 @@ namespace JuliusSweetland.OptiKey.Static
         public static double DipScalingFactorY
         {
             get { return (double)DpiY / (double)96; }
-        }
-
-
-        public static double VirtualScreenWidthInPixels
-        {
-            get { return SystemParameters.VirtualScreenWidth * DipScalingFactorX; }
-        }
-
-        public static double VirtualScreenHeightInPixels
-        {
-            get { return SystemParameters.VirtualScreenHeight * DipScalingFactorY; }
-        }
+        }        
 
         public static double PrimaryScreenWidthInPixels
         {
