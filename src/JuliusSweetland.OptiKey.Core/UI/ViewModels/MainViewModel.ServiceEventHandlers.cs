@@ -214,8 +214,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 var singlePoint = points[0]; 
                                 if (singlePoint.X < 0 || singlePoint.Y < 0 || 
-                                    singlePoint.X > Graphics.VirtualScreenWidthInPixels || 
-                                    singlePoint.Y > Graphics.VirtualScreenHeightInPixels)
+                                    singlePoint.X > Graphics.PrimaryScreenWidthInPixels || 
+                                    singlePoint.Y > Graphics.PrimaryScreenHeightInPixels)
                                 {
                                     preventRepeat = true;
                                 }
