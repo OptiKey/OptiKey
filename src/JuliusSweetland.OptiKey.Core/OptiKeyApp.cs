@@ -75,6 +75,10 @@ namespace JuliusSweetland.OptiKey
 
         public static void RestartApp()
         {
+            // Shut down logging so that new app instance can roll over log files okay
+            LogManager.Flush(1000);
+            LogManager.Shutdown();
+
             // Release single-instance mutex if we've got one
             if (_manager != null)
             {
