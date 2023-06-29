@@ -77,6 +77,14 @@ namespace JuliusSweetland.OptiKey.Rime {
             }
             return result;
         }
+        public static void Clear()
+        {
+            if (SessionId != 0)
+            {
+                var rime = rime_get_api();
+                rime.clear_composition(SessionId);
+            }
+        }
         [DllImport("Rime/rime.dll", CharSet = CharSet.Unicode, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
         public static extern RimeApi rime_get_api();
         public static void RIME_STRUCT<T>(ref T value) {
@@ -214,6 +222,12 @@ namespace JuliusSweetland.OptiKey.Rime {
         public static extern bool RimeDestroySession(uint session_id);
         public bool destroy_session(uint session_id) {
             return RimeDestroySession(session_id);
+        }
+        [DllImport("Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void RimeClearComposition(uint session_id);
+        public void clear_composition(uint session_id)
+        {
+            RimeClearComposition(session_id);
         }
         [DllImport("Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
         public static extern bool RimeSetOption(uint session_id, string option, bool value);

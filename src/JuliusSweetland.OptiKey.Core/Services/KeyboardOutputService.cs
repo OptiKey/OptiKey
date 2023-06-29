@@ -84,6 +84,7 @@ namespace JuliusSweetland.OptiKey.Services
             get { return textWithRimePreedit; }
             set {
                 SetProperty(ref textWithRimePreedit, value);
+                RaisePropertyChanged("Text");
             }
         }
 
@@ -234,6 +235,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.ClearScratchpad:
                     Text = null;
+                    TextWithRimePreedit = null;
                     StoreLastProcessedText(null);
                     ClearSuggestions();
                     AutoPressShiftIfAppropriate();
@@ -1155,6 +1157,8 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Info("Clearing suggestions.");
             suggestionService.Suggestions = null;
+            MyRimeApi.Clear();
+            rimePreedit = "";
         }
 
         private List<string> ModifySuggestions(List<string> suggestions)
