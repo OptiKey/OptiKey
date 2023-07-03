@@ -47,6 +47,7 @@ namespace JuliusSweetland.OptiKey.Rime {
             if (SessionId == 0) {
                 Console.WriteLine("Error creating rime session.");
                 Console.ReadLine();
+                // FIXME: throw error here??
                 //return;
             }
             return SessionId;
