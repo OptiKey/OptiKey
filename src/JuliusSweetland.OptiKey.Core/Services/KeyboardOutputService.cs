@@ -1160,7 +1160,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void ClearSuggestions()
+        public void ClearSuggestions()
         {
             Log.Info("Clearing suggestions.");
             suggestionService.Suggestions = null;

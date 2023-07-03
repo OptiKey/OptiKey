@@ -10,12 +10,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
     {
         public Alpha2() : base(multiKeySelectionSupported:true)
         {
-            if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) {
-                var rime = MyRimeApi.rime_get_api();
-                if (rime.set_option(MyRimeApi.GetSession(), "ascii_mode", true)) {
-                    MyRimeApi.IsAsciiMode = true;
-                }
-            }
         }
     }
 }
