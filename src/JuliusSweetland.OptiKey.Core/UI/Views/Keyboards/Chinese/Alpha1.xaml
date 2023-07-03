@@ -247,6 +247,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
+                      IsEnabled="False"
                       Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}" />
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
                       Text="'"
