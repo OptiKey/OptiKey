@@ -105,6 +105,13 @@ namespace JuliusSweetland.OptiKey.Services
             switch (functionKey)
             {
                 case FunctionKeys.BackMany:
+                    // In case of extant RIME prediction, BackMany should clear the whole preedit
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && MyRimeApi.IsComposing)
+                    {
+                        ClearSuggestions();                        
+                        break;
+                    }
+                    
                     if (!string.IsNullOrEmpty(Text))
                     {
                         var backManyCount = Text.CountBackToLastCharCategoryBoundary();
@@ -1159,6 +1166,7 @@ namespace JuliusSweetland.OptiKey.Services
             suggestionService.Suggestions = null;
             MyRimeApi.Clear();
             rimePreedit = "";
+            TextWithRimePreedit = Text;
         }
 
         private List<string> ModifySuggestions(List<string> suggestions)
