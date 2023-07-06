@@ -62,7 +62,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.PreviousSuggestionsKey}">
         </controls:Key>
-        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7">
+        <Grid Name="SuggestionsGrid"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

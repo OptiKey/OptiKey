@@ -64,6 +64,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
         private IWindowManipulationService windowManipulationService;
         private CompositeDisposable currentKeyboardKeyValueSubscriptions = new CompositeDisposable();
+        private int NumberOfSuggestionsDisplayed;
 
         #endregion
 
@@ -164,6 +165,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             SubscribeToParentWindowMoves(parentWindow);
             SubscribeToParentWindowStateChanges(parentWindow);
+
+            SubscribeToNumberSuggestionsChanges();
 
             Loaded -= OnLoaded; //Ensure this logic only runs once
         }
@@ -734,6 +737,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (keyboardHost != null)
             {
                 keyboardHost.BuildPointToKeyMap();
+                keyboardHost.SubscribeToNumberSuggestionsChanges();
             }
         }
 
@@ -889,6 +893,65 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     Log.Info($"Window's StateChange event detected. New state: {parentWindow.WindowState}.");
                     BuildPointToKeyMap();
                 });
+        }
+
+        #endregion
+
+
+        #region Subscribe To Number of Suggestions Changes
+
+        private void SubscribeToNumberSuggestionsChanges()
+        {
+            Action subscribeToChanges = () =>
+            {
+                var output = VisualAndLogicalTreeHelper.FindVisualChildren<Output>(this).FirstOrDefault();
+                if (output != null)
+                {
+                    // Subscribe to size changes in any key within the Output's suggestion Grid
+                    var grid = output.FindName("SuggestionsGrid") as Grid;
+                    if (grid != null)
+                    {
+                        foreach (var key in VisualAndLogicalTreeHelper.FindVisualChildren<Key>(grid))
+                        {
+                            SizeChangedEventHandler OnSuggestionKeySizeChanged = (s, e) =>
+                            {
+                                if (output.BindableNumberOfSuggestionsDisplayed != NumberOfSuggestionsDisplayed)
+                                {
+                                    Log.Info($"Suggestion grid contents have resized, re-computing PointToKeyValueMap.");
+                                    NumberOfSuggestionsDisplayed = output.BindableNumberOfSuggestionsDisplayed;
+                                    BuildPointToKeyMap();
+                                }
+                                // else it's a resize handled elsewhere, we've already got the memo about the #suggestions
+                            };
+
+                            key.SizeChanged += OnSuggestionKeySizeChanged;
+                            key.Unloaded += (s, e) =>
+                            {
+                                key.SizeChanged -= OnSuggestionKeySizeChanged;
+                            };
+                        }
+                    }
+                }
+            };
+
+            var contentAsFrameworkElement = Content as FrameworkElement;
+            if (contentAsFrameworkElement != null)
+            {
+                if (contentAsFrameworkElement.IsLoaded)
+                {
+                    subscribeToChanges();
+                }
+                else
+                {
+                    RoutedEventHandler loaded = null;
+                    loaded = (sender, args) =>
+                    {                        
+                        subscribeToChanges();
+                        contentAsFrameworkElement.Loaded -= loaded;
+                    };
+                    contentAsFrameworkElement.Loaded += loaded;
+                }
+            }            
         }
 
         #endregion
