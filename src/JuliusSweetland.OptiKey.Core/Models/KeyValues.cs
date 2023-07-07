@@ -314,35 +314,31 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
 
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
+ 
+        private static List<KeyValue> ToKeyValueCharList(this string allChars)
+        {
+            return allChars.ToCharArray()
+                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                .ToList();
+        }
 
         static KeyValues()
         {
-            var defaultList = "abcdefghijklmnopqrstuvwxyz"
-                .ToCharArray()
-                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
-                .ToList();
+            var defaultList = "abcdefghijklmnopqrstuvwxyz".ToKeyValueCharList();               
 
             multiKeySelectionKeys = new Dictionary<Languages, List<KeyValue>>
             {
                 { Languages.CatalanSpain, "abcdefghijklmnopqrstuvwxyzñç"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.CroatianCroatia, "abcčćdđefghijklmnopqrsštuvwxyzž"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
-                 { Languages.CzechCzechRepublic, "aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                { Languages.CzechCzechRepublic, "aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž"
+                                                .ToKeyValueCharList()
                 },
                 { Languages.DanishDenmark, "abcdefghijklmnopqrstuvwxyzæøå"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.DutchBelgium, defaultList },
                 { Languages.DutchNetherlands, defaultList },
@@ -350,103 +346,64 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
                 { Languages.FinnishFinland, "abcdefghijklmnopqrstuvwxyzåäö"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.FrenchFrance, "abcdefghijklmnopqrstuvwxyzçé"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.FrenchCanada, "abcdefghijklmnopqrstuvwxyzçé"
-                    .ToCharArray()
-                    .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
-                    .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.GeorgianGeorgia, "აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.GreekGreece, "ασδφγηξκλ;ςερτυθιοπζχψωβνμ"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.HebrewIsrael, "אבגדהוזחטיכלמנסעפצקרשת"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.HungarianHungary,"aábccsddzdzseéfggyhiíjkllymnnyoóöőpqrssztyuúüűvwxyzzs"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.ItalianItaly, "abcdefghijklmnopqrstuvwxyzî"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.PersianIran, "ضصثقفغعهخحجچشسیبلاتنمکگظطژزرذدوپآ"
-                    .ToCharArray()
-                    .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                    .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.PolishPoland, "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.PortuguesePortugal, "abcdefghijklmnopqrstuvwxyzçà"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList() },
+                                                .ToKeyValueCharList()
+                },
                 { Languages.SerbianSerbia, "абвгдђежзијклљмнњопрстћуфхцчџш"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.SlovakSlovakia, "aáäbcčdďeéfghchiíjklĺľmnoóôpqrŕsštťuúvwxyýzž"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.SlovenianSlovenia, "abcčćdđefghijklmnopqrsštuvwxyzž"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.TurkishTurkey, "abcçdefgğhiıjklmnoöprsştuüvyz"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.UkrainianUkraine, "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
+                                                .ToKeyValueCharList()
                 },
                 { Languages.UrduPakistan, "طصھدٹپتبجحمورنلہاکیقفےسشغعظضذڈثۃھچخژزڑںءآگاً"
-                    .ToCharArray()
-                    .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                    .ToList()
+                                                .ToKeyValueCharList()
                 }
             };
         }
