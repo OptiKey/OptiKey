@@ -93,6 +93,13 @@ namespace JuliusSweetland.OptiKey.Extensions
                 return CharCategories.Tab;
             }
 
+            // for "other" character sets like chinese, persian, urdu, hebrew, etc
+            if (CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.OtherLetter ||
+                CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.OtherPunctuation)
+            {
+                return CharCategories.OtherLetterOrPunctuation;
+            }
+
             if (char.IsLetterOrDigit(c) || char.IsSymbol(c) || char.IsPunctuation(c) 
                 || CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.NonSpacingMark)
             {
@@ -100,6 +107,12 @@ namespace JuliusSweetland.OptiKey.Extensions
             }
 
             return CharCategories.SomethingElse;
+        }
+
+        public static bool IsCJKUnifiedIdeograph(this char c)
+        {
+            int unicodeValue = c;
+            return unicodeValue >= 0x4E00 && unicodeValue <= 0x9FFF;
         }
 
         public static UnicodeCodePointRanges UnicodeCodePointRange(this char c)

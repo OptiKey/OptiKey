@@ -296,7 +296,7 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             if (string.IsNullOrEmpty(input)) return count;
 
-            //Special case - LetterOrDigitOrSymbolOrPunctuation followed by single space - remove the final space before we start
+            // Special case - LetterOrDigitOrSymbolOrPunctuation followed by single space - remove the final space before we start
             if (ignoreSingleTrailingSpace
                 && input.Length >= 2
                 && input[input.Length - 1].ToCharCategory() == CharCategories.Space

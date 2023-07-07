@@ -106,15 +106,25 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 case FunctionKeys.BackMany:
                     // In case of extant RIME prediction, BackMany should clear the whole preedit
-                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && MyRimeApi.IsComposing)
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && MyRimeApi.IsComposing && !String.IsNullOrEmpty(rimePreedit))
                     {
-                        ClearSuggestions();                        
+                        ClearSuggestions();                                   
                         break;
                     }
                     
                     if (!string.IsNullOrEmpty(Text))
                     {
-                        var backManyCount = Text.CountBackToLastCharCategoryBoundary();
+                        // In case of RIME, only allow one *chinese* character to be removed at a time
+                        // (but english words are still supported)
+                        var backManyCount = 0;
+                        if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() &&
+                            Text[Text.Length - 1].IsCJKUnifiedIdeograph())
+                        {
+                            backManyCount = 1;
+                        }
+                        else {
+                            backManyCount = Text.CountBackToLastCharCategoryBoundary();
+                        }
 
                         dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backManyCount, backManyCount).Trim());
 
@@ -1165,7 +1175,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Info("Clearing suggestions.");
             suggestionService.Suggestions = null;
             MyRimeApi.Clear();
-            rimePreedit = "";
+            rimePreedit = null;
             TextWithRimePreedit = Text;
         }
 
