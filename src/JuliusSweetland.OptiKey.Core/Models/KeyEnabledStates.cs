@@ -340,9 +340,17 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Multi-key capture is disabled because the current language does not support the concept
+                // Multi-key capture is disabled because there are no valid keys for the current language
                 if (keyValue == KeyValues.MultiKeySelectionIsOnKey
-                    && new[] { Languages.KoreanKorea }.Contains(Settings.Default.KeyboardAndDictionaryLanguage))
+                    && !KeyValues.MultiKeySelectionKeys.Any())
+                {
+                    return false;
+                }
+                
+                // Multi-key capture is disabled because we are using Chinese but not in ascii mode (where multikey is supported)
+                if (keyValue == KeyValues.MultiKeySelectionIsOnKey
+                    && Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                    && !MyRimeApi.IsAsciiMode)
                 {
                     return false;
                 }

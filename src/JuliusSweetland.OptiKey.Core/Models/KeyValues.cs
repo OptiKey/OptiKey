@@ -331,6 +331,17 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.CatalanSpain, "abcdefghijklmnopqrstuvwxyzñç"
                                                 .ToKeyValueCharList()
                 },
+                // Chinese doesn't natively support multikey select, but does have "ascii mode" for typing english                
+                { Languages.ChineseSimplifiedBopomofo, defaultList },
+                { Languages.ChineseSimplifiedCangjie5, defaultList },
+                { Languages.ChineseSimplifiedLunaPinyin, defaultList },
+                { Languages.ChineseSimplifiedTerraPinyin, defaultList },
+                { Languages.ChineseTaiwanTraditionalBopomofo, defaultList },
+                { Languages.ChineseTaiwanTraditionalLunaPinyin, defaultList },
+                { Languages.ChineseTraditionalBopomofo, defaultList },
+                { Languages.ChineseTraditionalCangjie5, defaultList },
+                { Languages.ChineseTraditionalLunaPinyin, defaultList },
+                { Languages.ChineseTraditionalTerraPinyin, defaultList },
                 { Languages.CroatianCroatia, "abcčćdđefghijklmnopqrsštuvwxyzž"
                                                 .ToKeyValueCharList()
                 },
