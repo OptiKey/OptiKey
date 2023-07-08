@@ -321,16 +321,19 @@ namespace JuliusSweetland.OptiKey.Extensions
 
         public static string InProgressWord(this string input, int cursorIndex)
         {
-            //There are no assumptions about what a "word" is in this method, it just isn't whitespace
-            if (!string.IsNullOrWhiteSpace(input)
+            // There are no assumptions about what a "word" is in this method, it just isn't whitespace, and doesn't
+            // combine characters from different encoding sets 
+            if (!string.IsNullOrWhiteSpace(input)                
                 && cursorIndex > 0
                 && cursorIndex <= input.Length
                 && !char.IsWhiteSpace(input[cursorIndex-1])) //Character before cursor position is not whitespace, i.e. at least 1 letter of the word is before the cursor position
             {
                 //Count back
                 int startIndex = cursorIndex;
+                CharCategories category = input[startIndex-1].ToCharCategory();
                 while (startIndex > 0
-                    && !char.IsWhiteSpace(input[startIndex - 1]))
+                    && !char.IsWhiteSpace(input[startIndex - 1])
+                    && (input[startIndex - 1].ToCharCategory() == category))
                 {
                     startIndex--;
                 }
@@ -338,7 +341,8 @@ namespace JuliusSweetland.OptiKey.Extensions
                 //Count forward
                 int endIndex = startIndex;
                 while (endIndex < input.Length
-                    && !char.IsWhiteSpace(input[endIndex]))
+                    && !char.IsWhiteSpace(input[endIndex])
+                    && (input[endIndex].ToCharCategory() == category))
                 {
                     endIndex++;
                 }

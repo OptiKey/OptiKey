@@ -6,7 +6,7 @@ namespace JuliusSweetland.OptiKey.Enums
         NewLine,
         Space,
         Tab,
-        OtherLetterOrPunctuation,
+        OtherLetter,
         LetterOrDigitOrSymbolOrPunctuation,
         SomethingElse
     }

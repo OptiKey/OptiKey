@@ -94,10 +94,9 @@ namespace JuliusSweetland.OptiKey.Extensions
             }
 
             // for "other" character sets like chinese, persian, urdu, hebrew, etc
-            if (CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.OtherLetter ||
-                CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.OtherPunctuation)
+            if (CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.OtherLetter)
             {
-                return CharCategories.OtherLetterOrPunctuation;
+                return CharCategories.OtherLetter;
             }
 
             if (char.IsLetterOrDigit(c) || char.IsSymbol(c) || char.IsPunctuation(c) 

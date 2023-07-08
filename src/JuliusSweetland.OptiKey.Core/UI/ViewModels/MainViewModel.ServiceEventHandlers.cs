@@ -924,7 +924,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Info("Changing keyboard to Alpha1.");
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime())
                     {   // Switching between chinese and english keyboards - clear suggestions and insert a space to start new prediction
-                        keyboardOutputService.ProcessSingleKeyText(" ");
                         keyboardOutputService.ClearSuggestions();
                         var rime = MyRimeApi.rime_get_api();
                         if (rime.set_option(MyRimeApi.GetSession(), "ascii_mode", false))
@@ -945,7 +944,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             MyRimeApi.IsAsciiMode = true;
                         }
-                        keyboardOutputService.ProcessSingleKeyText(" ");                        
                     }
                     Keyboard = new Alpha2();
                     break;
