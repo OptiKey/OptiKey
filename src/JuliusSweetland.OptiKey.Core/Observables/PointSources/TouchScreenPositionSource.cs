@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Properties;
 using System.Windows.Input;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using log4net;
+using JuliusSweetland.OptiKey.Static;
 
 namespace JuliusSweetland.OptiKey.Observables.PointSources
 {
@@ -57,8 +58,10 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                         .Select(ep =>
                         {
                             TouchPoint tp = ep.EventArgs.GetPrimaryTouchPoint(null);
-                            Log.Info($"KMCN: point event = {tp.Position} {tp.Action} ({this.GetHashCode()})");
-                            return tp.Position;
+                            var x = tp.Position.X * Graphics.DipScalingFactorX;
+                            var y = tp.Position.Y * Graphics.DipScalingFactorY;
+                            Log.Info($"KMCN: point event = ({x}, {y}) {tp.Action} ({this.GetHashCode()})");
+                            return new Point(x, y);
                         })
                         .Timestamp()
                         .PublishLivePointsOnly(pointTtl)
