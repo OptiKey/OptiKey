@@ -29,22 +29,11 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         public TouchScreenPositionSource(TimeSpan pointTtl)
         {
             this.pointTtl = pointTtl;
-            Touch.FrameReported += new TouchFrameEventHandler(Touch_FrameReported);            
-        }
-
-        void Touch_FrameReported(object sender, TouchFrameEventArgs e)
-        {
-            // This method is just used for logging / testing - elsewhere we sign up to events in our sequence
-            TouchPoint tp = e.GetPrimaryTouchPoint(null);
-            TouchPointCollection tpc = e.GetTouchPoints(null);
-            //Log.InfoFormat("KMCN touch point vs cursor, {0}, {1}, {2}, {3}, {4}", System.Windows.Forms.Cursor.Position, tp.Position, tp.Size, tp.Action, tp.Bounds);
         }
 
         public RunningStates State { get; set; }
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap { private get; set; }
-
-       
 
         public IObservable<Timestamped<PointAndKeyValue>> Sequence
         {
@@ -62,7 +51,6 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                             TouchPoint tp = ep.EventArgs.GetPrimaryTouchPoint(null);
                             var x = tp.Position.X * Graphics.DipScalingFactorX;
                             var y = tp.Position.Y * Graphics.DipScalingFactorY;
-                            Log.Info($"KMCN: point event = ({x}, {y}) {tp.Action} ({this.GetHashCode()})");
                             return new Point(x, y);
                         });
 

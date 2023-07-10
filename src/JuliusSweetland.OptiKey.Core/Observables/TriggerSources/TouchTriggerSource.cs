@@ -54,9 +54,6 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                             return new TriggerSignal(tp.Action == TouchAction.Down ? 1 : -1, null, point.Value);
                         })
                         .DistinctUntilChanged(signal => signal.Signal) //Combining latest will output a trigger signal for every change in BOTH sequences - only output when the trigger signal changes
-                        .Do(ts => {
-                            Log.Info($"KMCN Trigger: {ts.Signal} {ts.PointAndKeyValue} ({this.GetHashCode()})");
-                        })
                         .Where(_ => State == RunningStates.Running)
                         .Publish()
                         .RefCount()
