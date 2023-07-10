@@ -924,12 +924,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Info("Changing keyboard to Alpha1.");
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime())
                     {   // Switching between chinese and english keyboards - clear suggestions and insert a space to start new prediction
-                        keyboardOutputService.ClearSuggestions();
-                        var rime = MyRimeApi.rime_get_api();
-                        if (rime.set_option(MyRimeApi.GetSession(), "ascii_mode", false))
+                        if (MyRimeApi.IsAsciiMode)
                         {
-                            MyRimeApi.IsAsciiMode = false;
-                        }                        
+                            keyboardOutputService.ClearSuggestions();
+                            var rime = MyRimeApi.rime_get_api();
+                            if (rime.set_option(MyRimeApi.GetSession(), "ascii_mode", false))
+                            {
+                                MyRimeApi.IsAsciiMode = false;
+                            }
+                        }
                     }
                     Keyboard = new Alpha1();
                     break;
@@ -938,11 +941,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Info("Changing keyboard to Alpha2.");
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime())
                     {   // Switching from chinese to english keyboard - clear suggestions, switch RIME to ascii and insert a space to start new prediction
-                        keyboardOutputService.ClearSuggestions();
-                        var rime = MyRimeApi.rime_get_api();
-                        if (rime.set_option(MyRimeApi.GetSession(), "ascii_mode", true))
+                        if (!MyRimeApi.IsAsciiMode)
                         {
-                            MyRimeApi.IsAsciiMode = true;
+                            keyboardOutputService.ClearSuggestions();
+                            var rime = MyRimeApi.rime_get_api();
+                            if (rime.set_option(MyRimeApi.GetSession(), "ascii_mode", true))
+                            {
+                                MyRimeApi.IsAsciiMode = true;
+                            }
                         }
                     }
                     Keyboard = new Alpha2();
