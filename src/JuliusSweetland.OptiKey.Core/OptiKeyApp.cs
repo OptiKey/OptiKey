@@ -771,8 +771,8 @@ namespace JuliusSweetland.OptiKey
             // FIXME: this logic is a hack
             if (Settings.Default.PointsSource == PointsSources.TouchScreenPosition)
             {
-                keySelectionTriggerSource = (TouchScreenPositionSource)pointSource;
-                pointSelectionTriggerSource = (TouchScreenPositionSource)pointSource;
+                keySelectionTriggerSource = new TouchTriggerSource(pointSource);
+                pointSelectionTriggerSource = new TouchTriggerSource(pointSource);
             }
             else
             {

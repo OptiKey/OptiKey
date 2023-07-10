@@ -16,7 +16,7 @@ using JuliusSweetland.OptiKey.Static;
 
 namespace JuliusSweetland.OptiKey.Observables.PointSources
 {
-    public class TouchScreenPositionSource : IPointSource, ITriggerSource
+    public class TouchScreenPositionSource : IPointSource
     {
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -72,51 +72,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
 
                 return pointSequence;
             }
-        }
+        }        
 
-        IObservable<TriggerSignal> ITriggerSource.Sequence
-        {
-            get
-            {
-                if (triggerSequence == null)
-                {
-                    triggerSequence = Observable.FromEventPattern<TouchFrameEventHandler, TouchFrameEventArgs>(
-                            handler => new TouchFrameEventHandler(handler),
-                            h => Touch.FrameReported += h,
-                            h => Touch.FrameReported -= h)
-                        .Where(_ => State == RunningStates.Running)                        
-                        .Select(ep => ep.EventArgs.GetPrimaryTouchPoint(null))
-                        .Where(tp => tp.Action != TouchAction.Move) // only use up/down events for trigger
-                        .DistinctUntilChanged() 
-                        .SkipWhile(tp => tp.Action == TouchAction.Up) // Ensure the first value we hit is a touch down
-                        .CombineLatest(pointSequence, (tp, point) =>
-                        {                            
-                            return new TriggerSignal(tp.Action == TouchAction.Down ? 1 : -1, null, point.Value);
-                        })
-                        .DistinctUntilChanged(signal => signal.Signal) //Combining latest will output a trigger signal for every change in BOTH sequences - only output when the trigger signal changes
-                        .Do(ts => {
-                            Log.Info($"KMCN Trigger: {ts.Signal} {ts.PointAndKeyValue} ({this.GetHashCode()})");
-                        })
-                        .Where(_ => State == RunningStates.Running)
-                        .Publish()
-                        .RefCount()
-                        .Finally(() => {
-                            triggerSequence = null;
-                        });
-                }
-
-                return triggerSequence;
-            }
-        }
-
-        public IPointSource PointSource
-        {
-            get { return this; }        
-            set {
-                // no-op - we use this class as a pointsource too
-                 }
-        }
-
-        IPointSource ITriggerSource.PointSource { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

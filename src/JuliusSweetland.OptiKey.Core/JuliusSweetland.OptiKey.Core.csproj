@@ -377,6 +377,7 @@
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
     <Compile Include="Observables\TriggerSources\EyeGestureSource.cs" />
     <Compile Include="Observables\TriggerSources\DirectInputButtonDownUpSource.cs" />
+    <Compile Include="Observables\TriggerSources\TouchTriggerSource.cs" />
     <Compile Include="Observables\TriggerSources\XInputButtonDownUpSource.cs" />
     <Compile Include="OptiKeyApp.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
