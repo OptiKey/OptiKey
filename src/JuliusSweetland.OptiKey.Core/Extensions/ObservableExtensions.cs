@@ -134,5 +134,17 @@ namespace JuliusSweetland.OptiKey.Extensions
                 h => source.PropertyChanged -= h)
                 .Select(_ => source);
         }
+
+        public static IObservable<TResult> WithLatestFrom<TLeft, TRight, TResult>(
+                this IObservable<TLeft> source,
+                IObservable<TRight> other,
+                Func<TLeft, TRight, TResult> resultSelector)
+        {
+            return source.Publish(os =>
+                other.Select(a =>
+                    os.Select(b => resultSelector(b, a)))
+                .Switch());
+        }
+
     }
 }

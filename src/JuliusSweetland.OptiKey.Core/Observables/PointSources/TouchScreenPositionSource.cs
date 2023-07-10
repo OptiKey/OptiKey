@@ -44,16 +44,18 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap { private get; set; }
 
+       
+
         public IObservable<Timestamped<PointAndKeyValue>> Sequence
         {
             get
             {
                 if (pointSequence == null)
                 {
-                    pointSequence = Observable.FromEventPattern<TouchFrameEventHandler, TouchFrameEventArgs>(
-                            handler => new TouchFrameEventHandler(handler),
-                            h => Touch.FrameReported += h,
-                            h => Touch.FrameReported -= h)
+                    var touchEvents = Observable.FromEventPattern<TouchFrameEventHandler, TouchFrameEventArgs>(
+                        handler => new TouchFrameEventHandler(handler),
+                        h => Touch.FrameReported += h,
+                        h => Touch.FrameReported -= h)
                         .Where(_ => State == RunningStates.Running)
                         .Select(ep =>
                         {
@@ -62,12 +64,22 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                             var y = tp.Position.Y * Graphics.DipScalingFactorY;
                             Log.Info($"KMCN: point event = ({x}, {y}) {tp.Action} ({this.GetHashCode()})");
                             return new Point(x, y);
-                        })
+                        });
+
+                    // set up a separate repeating sequence to ensure we get regular events during periods when no touch is occurring
+                    var replayLastEvent = touchEvents
+                        .StartWith(default(Point))
+                        .SkipWhile(p => p == default(Point))
+                        .CombineLatest(Observable.Interval(TimeSpan.FromMilliseconds(50)),
+                            (point, _) => point);
+
+                    pointSequence = Observable.Merge(touchEvents, replayLastEvent)
                         .Timestamp()
                         .PublishLivePointsOnly(pointTtl)
                         .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp))
-                        .Replay(1) //Buffer one value for every subscriber so there is always a 'most recent' point available
+                        .Replay(1)
                         .RefCount();
+
                 }
 
                 return pointSequence;
