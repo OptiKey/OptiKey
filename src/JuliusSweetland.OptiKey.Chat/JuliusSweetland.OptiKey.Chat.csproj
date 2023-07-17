@@ -70,10 +70,7 @@
     </Reference>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
-    </Reference>
-    <Reference Include="EyeXFramework">
-      <HintPath>..\..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
-    </Reference>
+    </Reference>    
     <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -202,10 +199,7 @@
     </Reference>
     <Reference Include="TETCSharpClient">
       <HintPath>..\..\ext\TheEyeTribe\TETCSharpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="Tobii.EyeX.Client.Net20">
-      <HintPath>..\..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.Net20.dll</HintPath>
-    </Reference>
+    </Reference>    
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
