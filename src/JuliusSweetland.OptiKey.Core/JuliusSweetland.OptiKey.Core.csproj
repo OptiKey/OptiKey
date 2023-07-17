@@ -227,9 +227,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\ext\TobiiStreamEngine\stream_engine_windows_x64_4.15.1.5\Tobii.StreamEngine.Interop.cs">
-      <Link>Native\Tobii\Tobii.StreamEngine.Interop.cs</Link>
-    </Compile>
     <Compile Include="Enums\TriggerTypes.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Models\Gamepads\GamepadButtonEvents.cs" />
@@ -1037,10 +1034,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.ur-PK.resx" />
-    <Content Include="..\..\ext\TobiiStreamEngine\stream_engine_windows_x64_4.15.1.5\tobii_stream_engine.dll">
-      <Link>tobii_stream_engine.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Dictionaries\UrduPakistan.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
