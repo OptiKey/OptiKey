@@ -89,7 +89,6 @@
     <ROW Component="ControlzEx.dll" ComponentId="{C62BF062-445A-4979-9F28-205821FBA945}" Directory_="Release_Dir" Attributes="0" KeyPath="ControlzEx.dll"/>
     <ROW Component="Demo_Bottom.xml" ComponentId="{269E2CFF-53D4-4164-8461-447922ECF423}" Directory_="Samples_1_Dir" Attributes="0" KeyPath="Demo_Bottom.xml" Type="0"/>
     <ROW Component="EyeGestures.xml" ComponentId="{58965AF2-4A5D-4912-8CEF-9DFD6A0EE368}" Directory_="EyeGestures_Dir" Attributes="0" KeyPath="EyeGestures.xml" Type="0"/>
-    <ROW Component="EyeXFramework.dll" ComponentId="{8FC1D667-485B-4009-831C-A9459FAA3FF1}" Directory_="Release_Dir" Attributes="0" KeyPath="EyeXFramework.dll"/>
     <ROW Component="Interop.SpeechLib.dll" ComponentId="{B8877147-65E3-4C3D-8A2A-4468BFF27C25}" Directory_="Release_Dir" Attributes="256" KeyPath="Interop.SpeechLib.dll"/>
     <ROW Component="IrisbondAPI.dll" ComponentId="{4106652C-CA98-4E86-87BA-8DE1CAAA2B56}" Directory_="Release_Dir" Attributes="256" KeyPath="IrisbondAPI.dll"/>
     <ROW Component="IrisbondHiruAPI.dll" ComponentId="{E2CFD29E-2770-4688-A7F9-44EA0E93FAA0}" Directory_="Release_Dir" Attributes="256" KeyPath="IrisbondHiruAPI.dll"/>
@@ -160,8 +159,6 @@
     <ROW Component="TETControls.dll" ComponentId="{B34D0BAC-6B8F-462E-BE46-A9EEE21CF912}" Directory_="Release_Dir" Attributes="0" KeyPath="TETControls.dll"/>
     <ROW Component="TestControllers.exe" ComponentId="{CAD6BA21-4D5E-4316-96A7-745F51F94CB3}" Directory_="APPDIR" Attributes="0" KeyPath="TestControllers.exe"/>
     <ROW Component="TestControllers.exe.config" ComponentId="{D7ED0A4D-3A2B-4715-990D-804B91B818EA}" Directory_="APPDIR" Attributes="0" KeyPath="TestControllers.exe.config" Type="0"/>
-    <ROW Component="Tobii.EyeX.Client.Net20.dll" ComponentId="{B30554E2-9718-4252-AB14-71B7A5BC5027}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.Net20.dll"/>
-    <ROW Component="Tobii.EyeX.Client.dll" ComponentId="{A43D74A1-1801-474A-8280-6AAEC02AF012}" Directory_="Release_Dir" Attributes="0" KeyPath="Tobii.EyeX.Client.dll"/>
     <ROW Component="WindowsInput.dll" ComponentId="{50D18243-61F8-4ADE-845B-4F6E7E5D17D0}" Directory_="Release_Dir" Attributes="0" KeyPath="WindowsInput.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" ComponentId="{0EF3384E-A195-4D5E-A01F-AA4475B167FC}" Directory_="Release_Dir" Attributes="256" KeyPath="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
     <ROW Component="WindowsRecipes.TaskbarSingleInstance.dll" ComponentId="{000D7C6C-32B7-435B-BE7F-44375C572673}" Directory_="Release_Dir" Attributes="256" KeyPath="WindowsRecipes.TaskbarSingleInstance.dll"/>
@@ -235,8 +232,6 @@
     <ROW File="OptiKey.resources.dll_4" Component_="OptiKey.resources.dll_4" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\el-GR\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_5" Component_="OptiKey.resources.dll_5" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\en-US\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_6" Component_="OptiKey.resources.dll_6" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\es-ES\OptiKey.resources.dll" SelfReg="false"/>
-    <ROW File="EyeXFramework.dll" Component_="EyeXFramework.dll" FileName="EYEXFR~1.DLL|EyeXFramework.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\EyeXFramework.dll" SelfReg="false"/>
-    <ROW File="EyeXFramework.xml" Component_="Bass.Net.xml" FileName="EYEXFR~1.XML|EyeXFramework.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\EyeXFramework.xml" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_7" Component_="OptiKey.resources.dll_7" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\fa\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_8" Component_="OptiKey.resources.dll_8" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\fi-FI\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_9" Component_="OptiKey.resources.dll_9" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\fr\OptiKey.resources.dll" SelfReg="false"/>
@@ -374,9 +369,6 @@
     <ROW File="System.Windows.Interactivity.dll" Component_="System.Windows.Interactivity.dll" FileName="SYSTEM~7.DLL|System.Windows.Interactivity.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\System.Windows.Interactivity.dll" SelfReg="false"/>
     <ROW File="TETControls.dll" Component_="TETControls.dll" FileName="TETCON~1.DLL|TETControls.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\TETControls.dll" SelfReg="false"/>
     <ROW File="TETCSharpClient.dll" Component_="TETCSharpClient.dll" FileName="TETCSH~1.DLL|TETCSharpClient.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\TETCSharpClient.dll" SelfReg="false"/>
-    <ROW File="Tobii.EyeX.Client.dll" Component_="Tobii.EyeX.Client.dll" FileName="TOBIIE~1.DLL|Tobii.EyeX.Client.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\Tobii.EyeX.Client.dll" SelfReg="false"/>
-    <ROW File="Tobii.EyeX.Client.Net20.dll" Component_="Tobii.EyeX.Client.Net20.dll" FileName="TOBIIE~2.DLL|Tobii.EyeX.Client.Net20.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\Tobii.EyeX.Client.Net20.dll" SelfReg="false"/>
-    <ROW File="Tobii.EyeX.Client.Net20.xml" Component_="Bass.Net.xml" FileName="TOBIIE~1.XML|Tobii.EyeX.Client.Net20.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\Tobii.EyeX.Client.Net20.xml" SelfReg="false"/>
     <ROW File="tobii_stream_engine.dll" Component_="tobii_stream_engine.dll" FileName="TOBII_~1.DLL|tobii_stream_engine.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\tobii_stream_engine.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_25" Component_="OptiKey.resources.dll_25" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\tr-TR\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_26" Component_="OptiKey.resources.dll_26" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Symbol\bin\x64\Release\uk-UA\OptiKey.resources.dll" SelfReg="false"/>
@@ -721,7 +713,6 @@
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_4"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_5"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_6"/>
-    <ROW Feature_="MainFeature" Component_="EyeXFramework.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_7"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_8"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_9"/>
@@ -785,8 +776,6 @@
     <ROW Feature_="MainFeature" Component_="System.Windows.Interactivity.dll"/>
     <ROW Feature_="MainFeature" Component_="TETControls.dll"/>
     <ROW Feature_="MainFeature" Component_="TETCSharpClient.dll"/>
-    <ROW Feature_="MainFeature" Component_="Tobii.EyeX.Client.dll"/>
-    <ROW Feature_="MainFeature" Component_="Tobii.EyeX.Client.Net20.dll"/>
     <ROW Feature_="MainFeature" Component_="tobii_stream_engine.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_25"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_26"/>
