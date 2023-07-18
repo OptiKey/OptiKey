@@ -174,7 +174,6 @@
     <ROW Component="nunit.framework.dll" ComponentId="{6F489C24-1011-46FF-94B4-E85DF8F7BE0F}" Directory_="Release_Dir" Attributes="0" KeyPath="nunit.framework.dll"/>
     <ROW Component="presage.net.dll" ComponentId="{29B71153-6EB3-40EA-A174-5AE546290DB6}" Directory_="Release_Dir" Attributes="256" KeyPath="presage.net.dll"/>
     <ROW Component="swresample3.dll" ComponentId="{787CCBE6-46A1-4CDF-8446-425D7550A48A}" Directory_="Release_Dir" Attributes="256" KeyPath="swresample3.dll"/>
-    <ROW Component="tobii_stream_engine.dll" ComponentId="{6788118B-AFFC-42FC-8BD5-1D5C84451080}" Directory_="Release_Dir" Attributes="256" KeyPath="tobii_stream_engine.dll"/>
     <ROW Component="tobiitrackers.txt" ComponentId="{EF89F5BF-DEE7-4BE7-913F-8E9ECF892AEB}" Directory_="EyeTrackerSupport_Dir" Attributes="0" KeyPath="tobiitrackers.txt" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
@@ -376,7 +375,6 @@
     <ROW File="System.Windows.Interactivity.dll" Component_="System.Windows.Interactivity.dll" FileName="SYSTEM~7.DLL|System.Windows.Interactivity.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\System.Windows.Interactivity.dll" SelfReg="false"/>
     <ROW File="TETControls.dll" Component_="TETControls.dll" FileName="TETCON~1.DLL|TETControls.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\TETControls.dll" SelfReg="false"/>
     <ROW File="TETCSharpClient.dll" Component_="TETCSharpClient.dll" FileName="TETCSH~1.DLL|TETCSharpClient.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\TETCSharpClient.dll" SelfReg="false"/>
-    <ROW File="tobii_stream_engine.dll" Component_="tobii_stream_engine.dll" FileName="TOBII_~1.DLL|tobii_stream_engine.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\tobii_stream_engine.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_25" Component_="OptiKey.resources.dll_25" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\tr-TR\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_26" Component_="OptiKey.resources.dll_26" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\uk-UA\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_27" Component_="OptiKey.resources.dll_27" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\bin\x64\Release\ur-PK\OptiKey.resources.dll" SelfReg="false"/>
@@ -823,7 +821,6 @@
     <ROW Feature_="MainFeature" Component_="System.Windows.Interactivity.dll"/>
     <ROW Feature_="MainFeature" Component_="TETControls.dll"/>
     <ROW Feature_="MainFeature" Component_="TETCSharpClient.dll"/>
-    <ROW Feature_="MainFeature" Component_="tobii_stream_engine.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_25"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_26"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_27"/>
