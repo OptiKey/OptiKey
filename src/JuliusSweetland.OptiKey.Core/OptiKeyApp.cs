@@ -97,9 +97,6 @@ namespace JuliusSweetland.OptiKey
             Log.Info("STARTING UP.");
             LogDiagnosticInfo();
 
-            // Output the user settings for debugging
-            logUserSettings();
-
             //Attach shutdown handler
             Current.Exit += (o, args) =>
             {
@@ -124,6 +121,9 @@ namespace JuliusSweetland.OptiKey
                 Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes
                     = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime.TotalMilliseconds.ToString();
             }
+
+            // Output the user settings for debugging
+            logUserSettings();
 
             //Adjust log4net logging level if in debug mode
             ((Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
