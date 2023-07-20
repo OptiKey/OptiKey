@@ -163,4 +163,106 @@
     <STRING lang="sr_SP_Latin" value="Jezik"/>        
     <STRING lang="sv" value="Språk"/>        
   </ENTRY>
+  <ENTRY id="Control.Text.EyeTrackerSupportV4#Text_1">
+    <STRING lang="sq" value="Nga versioni 4 i Optikey e në vazhdim, ne kemi hequr mbështetjen për gjurmuesit e mëposhtëm të syve.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Ju lutemi klikoni mbi lidhjen më poshtë për më shumë informacion."/>
+    <STRING lang="bg" value="От версия 4 на Optikey нататък, премахваме поддържката на следните устройства за проследяване на движението на очите.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Моля, натиснете върху връзката по-долу за повече информация."/>
+    <STRING lang="ar" value="ابتداءً من الإصدار 4 لـ Optikey ، أزلنا الدعم لأجهزة تتبع العين التالية.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]يرجى النقر على الرابط أدناه للحصول على مزيد من المعلومات."/>
+    <STRING lang="ca" value="A partir de la versió 4 d'Optikey, hem eliminat el suport per als seguidors d’ulls següents.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Si us plau, feu clic a l’enllaç següent per obtenir més informació."/>
+    <STRING lang="zh" value="从Optikey版本4开始，我们已经取消对以下眼球跟踪器的支持。[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]请点击下面的链接获取更多信息。"/>
+    <STRING lang="hr" value="Od verzije 4 programa Optikey uklonili smo podršku za sljedeće tragače za očima.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Za više informacija kliknite na link ispod."/>
+    <STRING lang="cs" value="Od verze 4 programu Optikey jsme odstranili podporu pro následující sledovače očí.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Pro více informací klikněte na odkaz níže."/>
+    <STRING lang="nl" value="Vanaf versie 4 van Optikey hebben we de ondersteuning voor de volgende oogvolgapparaten verwijderd.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Klik voor meer informatie op de link hieronder."/>
+    <STRING lang="da" value="Fra version 4 af Optikey har vi fjernet understøttelsen af de følgende øjensporere.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Klik på linket nedenfor for mere information."/>
+    <STRING lang="fa" value="از نسخه 4 Optikey به بعد ، پشتیبانی از ردیاب های زیر را حذف کرده ایم.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]لطفاً برای اطلاعات بیشتر روی لینک زیر کلیک کنید."/>
+    <STRING lang="fi" value="Optikeyn versiosta 4 lähtien olemme poistaneet tuen seuraaville silmänseurantalaitteille.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Klikkaa alla olevaa linkkiä saadaksesi lisätietoja."/>
+    <STRING lang="fr" value="À partir de la version 4 d'Optikey, nous avons supprimé le support pour les trackers oculaires suivants.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Veuillez cliquer sur le lien ci-dessous pour plus d'informations."/>
+    <STRING lang="de" value="Ab der Optikey Version 4 haben wir die Unterstützung für die folgenden Augenverfolgungsgeräte entfernt.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Bitte klicken Sie auf den Link unten, um weitere Informationen zu erhalten."/>
+    <STRING lang="he" value="מגרסת 4 של Optikey ואילך, הסרנו את התמיכה במעקבי העין הבאים.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]אנא לחץ על הקישור למטה למידע נוסף."/>
+    <STRING lang="el" value="Από την έκδοση 4 του Optikey και μετά, έχουμε αφαιρέσει την υποστήριξη για τους παρακάτω ιχνηλάτες ματιών.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Κάντε κλικ στον παρακάτω σύνδεσμο για περισσότερες πληροφορίες."/>
+    <STRING lang="hu" value="Az Optikey 4. verziójától kezdve eltávolítottuk a következő szemkövetők támogatását.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]További információkért kattintson az alábbi linkre."/>
+    <STRING lang="id" value="Dari Optikey Versi 4 dan seterusnya, kami telah menghapus dukungan untuk pelacak mata berikut.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Silakan klik tautan di bawah ini untuk informasi lebih lanjut."/>
+    <STRING lang="is" value="Frá Opikey útgáfu 4 og áfram höfum við fjarlægt stuðning við eftirfarandi augnprauta.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Vinsamlegast smelltu á hlekkinn hér að neðan til að fá frekari upplýsingar."/>
+    <STRING lang="ja" value="Optikeyバージョン4以降、次のアイトラッキングデバイスのサポートを削除しました。[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]詳細については、以下のリンクをクリックしてください。"/>
+    <STRING lang="it" value="Dalla versione 4 Optikey in poi, abbiamo rimosso il supporto per i seguenti tracker per gli occhi.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Fare clic sul link in basso per ulteriori informazioni."/>
+    <STRING lang="kk" value="Optiky 4 нұсқасынан біз келесі көз трекерлеріне қолдау алдық.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Қосымша ақпарат алу үшін төмендегі сілтемені нұқыңыз."/>
+    <STRING lang="ko" value="Optikey 버전 4 이후부터 다음 아이 트래커에 대한 지원을 제거했습니다.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]자세한 내용은 아래 링크를 클릭하십시오."/>
+    <STRING lang="nb" value="Fra Optikey versjon 4 og utover har vi fjernet støtte for følgende øyesporere.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Klikk på lenken nedenfor for mer informasjon."/>
+    <STRING lang="pl" value="Od wersji 4 Optikey, usunęliśmy wsparcie dla następujących urządzeń do śledzenia wzroku.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Kliknij poniższy link, aby uzyskać więcej informacji."/>
+    <STRING lang="pt" value="A partir da versão 4 do Optikey, removemos o suporte para os seguintes rastreadores oculares.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Clique no link abaixo para obter mais informações."/>
+    <STRING lang="ru" value="Начиная с версии 4 Optikey, мы удалили поддержку следующих трекеров для глаз.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Пожалуйста, нажмите на ссылку ниже для получения дополнительной информации."/>
+    <STRING lang="sk" value="Od verzie 4 Optikey sme odstránili podporu pre nasledujúce sledovače očí.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Pre viac informácií kliknite na odkaz nižšie."/>
+    <STRING lang="sl" value="Od različice 4 Optikey naprej smo odstranili podporo za naslednje sledilce oči.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Za več informacij kliknite na spodnjo povezavo."/>
+    <STRING lang="es" value="Desde la versión 4 de Optikey en adelante, hemos eliminado el soporte para los siguientes rastreadores oculares.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Haga clic en el enlace a continuación para obtener más información."/>
+    <STRING lang="sv" value="Från version 4 av Optikey och framåt har vi tagit bort stöd för följande ögonspårare.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Klicka på länken nedan för mer information."/>
+    <STRING lang="tr" value="Optikey sürüm 4'ten itibaren, aşağıdaki göz izleyicileri için desteği kaldırdık.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Daha fazla bilgi için lütfen aşağıdaki bağlantıyı tıklayın."/>
+    <STRING lang="uk" value="Починаючи з версії 4 Optikey, ми видалили підтримку наступних трекерів очей.[NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Будь ласка, натисніть на посилання нижче для отримання додаткової інформації."/>
+  </ENTRY>
+  <ENTRY id="Control.Text.EyeTrackerSupportV4#Title">
+    <STRING lang="sq" value="Optikey versioni 4 (aplikacion 64 bitësh)"/>
+    <STRING lang="bg" value="Optikey версия 4 (64-битово приложение)"/>
+    <STRING lang="ar" value="Optikey الإصدار 4 (تطبيق 64 بت)"/>
+    <STRING lang="ca" value="Optikey versió 4 (aplicació de 64 bits)"/>
+    <STRING lang="zh" value="Optikey 版本 4（64 位应用程序）"/>
+    <STRING lang="hr" value="Optikey verzija 4 (64-bitna aplikacija)"/>
+    <STRING lang="cs" value="Optikey verze 4 (64-bitová aplikace)"/>
+    <STRING lang="nl" value="Optikey versie 4 (64-bit applicatie)"/>
+    <STRING lang="da" value="Optikey version 4 (64-bit applikation)"/>
+    <STRING lang="fa" value="Optikey نسخه 4 (برنامه 64-بیتی)"/>
+    <STRING lang="fi" value="Optikey versio 4 (64-bittinen sovellus)"/>
+    <STRING lang="fr" value="Optikey version 4 (application 64 bits)"/>
+    <STRING lang="de" value="Optikey Version 4 (64-Bit-Anwendung)"/>
+    <STRING lang="he" value="Optikey גרסה 4 (יישום 64-ביט)"/>
+    <STRING lang="el" value="Optikey Έκδοση 4 (εφαρμογή 64-bit)"/>
+    <STRING lang="hu" value="Optikey 4. verzió (64-bites alkalmazás)"/>
+    <STRING lang="id" value="Optikey versi 4 (aplikasi 64 bit)"/>
+    <STRING lang="is" value="Optikey útgáfa 4 (64-bita forrit)"/>
+    <STRING lang="ja" value="「Optikey」バージョン4（64ビットアプリケーション）"/>
+    <STRING lang="it" value="Optikey versione 4 (applicazione 64 bit)"/>
+    <STRING lang="kk" value="«Optikey» 4-ші нұсқа (64-биттік қолданба)"/>
+    <STRING lang="ko" value="Optikey 버전 4 (64비트 응용 프로그램)"/>
+    <STRING lang="nb" value="Optikey versjon 4 (64-biters applikasjon)"/>
+    <STRING lang="pl" value="Optikey wersja 4 (aplikacja 64-bitowa)"/>
+    <STRING lang="pt" value="Optikey versão 4 (aplicativo de 64 bits)"/>
+    <STRING lang="ru" value="«Optikey» версия 4 (64-битное приложение)"/>
+    <STRING lang="sk" value="Optikey verzia 4 (64-bitová aplikácia)"/>
+    <STRING lang="sl" value="Optikey različica 4 (64-bitna aplikacija)"/>
+    <STRING lang="es" value="Optikey versión 4 (aplicación de 64 bits)"/>
+    <STRING lang="sv" value="Optikey version 4 (64-bitars applikation)"/>
+    <STRING lang="tr" value="Optikey sürüm 4 (64-bit uygulaması)"/>
+    <STRING lang="uk" value="Optikey версія 4 (64-бітна програма)"/>
+  </ENTRY>
+  <ENTRY id="Control.Text.EyeTrackerSupportV4#Description">
+    <STRING lang="sq" value="Ndryshimet në Optikey në përmirësimin e versionit 4"/>
+    <STRING lang="bg" value="Промени в Optikey при ъпгрейда на версия 4"/>
+    <STRING lang="ar" value="التغييرات في Optikey في ترقية الإصدار 4"/>
+    <STRING lang="ca" value="Canvis en Optikey a l'actualització de la versió 4"/>
+    <STRING lang="zh" value="在版本4升级中对Optikey的更改"/>
+    <STRING lang="hr" value="Promjene u Optikeyu u nadogradnji verzije 4"/>
+    <STRING lang="cs" value="Změny v Optikey v aktualizaci verze 4"/>
+    <STRING lang="nl" value="Wijzigingen in Optikey bij versie 4 upgrade"/>
+    <STRING lang="da" value="Ændringer i Optikey i version 4-opgradering"/>
+    <STRING lang="fa" value="تغییرات در Optikey در نسخه 4 به روزرسانی"/>
+    <STRING lang="fi" value="Muutokset Optikeyssa version 4 päivityksessä"/>
+    <STRING lang="fr" value="Modifications apportées à Optikey lors de la mise à niveau vers la version 4"/>
+    <STRING lang="de" value="Änderungen in Optikey im Upgrade auf Version 4"/>
+    <STRING lang="he" value="שינויים ב-Optikey בשדרוג לגרסה 4"/>
+    <STRING lang="el" value="Αλλαγές στο Optikey στην αναβάθμιση στην έκδοση 4"/>
+    <STRING lang="hu" value="Változások az Optikey-ben a 4-es verzió frissítésében"/>
+    <STRING lang="id" value="Perubahan pada Optikey dalam pembaruan versi 4"/>
+    <STRING lang="is" value="Breytingar á Optikey í uppfærslu fyrir útgáfu 4"/>
+    <STRING lang="ja" value="バージョン4へのアップグレードでのOptikeyの変更"/>
+    <STRING lang="it" value="Modifiche a Optikey nell'aggiornamento alla versione 4"/>
+    <STRING lang="kk" value="4-ші нұсқа жаңартуында «Optikey» өзгерістері"/>
+    <STRING lang="ko" value="버전 4 업그레이드에서의 Optikey 변경사항"/>
+    <STRING lang="nb" value="Endringer i Optikey i versjon 4-oppgradering"/>
+    <STRING lang="pl" value="Zmiany w Optikey w aktualizacji do wersji 4"/>
+    <STRING lang="pt" value="Alterações no Optikey na atualização para a versão 4"/>
+    <STRING lang="ru" value="Изменения в Optikey при обновлении до версии 4"/>
+    <STRING lang="sk" value="Zmeny v Optikey v aktualizácii na verziu 4"/>
+    <STRING lang="sl" value="Spremembe v Optikey pri nadgradnji na različico 4"/>
+    <STRING lang="es" value="Cambios en Optikey en la actualización a la versión 4"/>
+    <STRING lang="sv" value="Ändringar i Optikey vid uppgradering till version 4"/>
+    <STRING lang="tr" value="Sürüm 4 yükseltmesinde Optikey'deki değişiklikler"/>
+    <STRING lang="uk" value="Зміни в Optikey при оновленні до версії 4"/>
+  </ENTRY>
 </DICTIONARY>

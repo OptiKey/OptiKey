@@ -98,9 +98,6 @@
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
     </Reference>
-    <Reference Include="EyeXFramework">
-      <HintPath>..\..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
     </Reference>
@@ -221,10 +218,7 @@
     </Reference>
     <Reference Include="TETCSharpClient">
       <HintPath>..\..\ext\TheEyeTribe\TETCSharpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="Tobii.EyeX.Client.Net20">
-      <HintPath>..\..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.Net20.dll</HintPath>
-    </Reference>
+    </Reference>    
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -233,9 +227,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\ext\TobiiStreamEngine\stream_engine_windows_x64_4.15.1.5\Tobii.StreamEngine.Interop.cs">
-      <Link>Native\Tobii\Tobii.StreamEngine.Interop.cs</Link>
-    </Compile>
     <Compile Include="Enums\TriggerTypes.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Models\Gamepads\GamepadButtonEvents.cs" />
@@ -1043,10 +1034,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.ur-PK.resx" />
-    <Content Include="..\..\ext\TobiiStreamEngine\stream_engine_windows_x64_4.15.1.5\tobii_stream_engine.dll">
-      <Link>tobii_stream_engine.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Dictionaries\UrduPakistan.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1282,10 +1269,6 @@
     <None Include="Resources\Icons\SVG Source Files\MouseMiddleClick.svg" />
     <Content Include="..\..\ext\Bass\bass.dll">
       <Link>bass.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.dll">
-      <Link>Tobii.EyeX.Client.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Icons\SVG Source Files\Alpha.svg" />

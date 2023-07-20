@@ -75,6 +75,10 @@ namespace JuliusSweetland.OptiKey
 
         public static void RestartApp()
         {
+            // Shut down logging so that new app instance can roll over log files okay
+            LogManager.Flush(1000);
+            LogManager.Shutdown();
+
             // Release single-instance mutex if we've got one
             if (_manager != null)
             {
@@ -92,9 +96,6 @@ namespace JuliusSweetland.OptiKey
             //Log startup diagnostic info
             Log.Info("STARTING UP.");
             LogDiagnosticInfo();
-
-            // Output the user settings for debugging
-            logUserSettings();
 
             //Attach shutdown handler
             Current.Exit += (o, args) =>
@@ -120,6 +121,9 @@ namespace JuliusSweetland.OptiKey
                 Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes
                     = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime.TotalMilliseconds.ToString();
             }
+
+            // Output the user settings for debugging
+            logUserSettings();
 
             //Adjust log4net logging level if in debug mode
             ((Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
@@ -1006,9 +1010,8 @@ namespace JuliusSweetland.OptiKey
                             {
                                 if (currentVersion.Major < 4 && latestAvailableVersion.Major >= 4)
                                 {
-                                    //There should be no update prompt to upgrade from v3 (or earlier) to v4 (or later) due to a breaking change that means that v4 is not
-                                    //a suitable choice for many users on earlier version of Optikey (v4 removes supports for Tobii gaming devices).
-                                    Log.InfoFormat("An update is available, BUT this update could remove support for the user's current input device. The user will not be notified. " +
+                                    //There should be no update prompt to upgrade from v3 (or earlier) to v4 (or later) due to breaking changes
+                                    Log.InfoFormat("An update is available, but with major breaking changes. The user will not be notified. " +
                                                    "Current version is {0}. Latest version on GitHub repo is {1}", currentVersion, latestAvailableVersion);
                                 }
                                 else

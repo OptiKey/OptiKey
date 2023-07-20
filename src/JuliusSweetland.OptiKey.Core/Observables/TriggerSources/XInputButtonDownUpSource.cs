@@ -64,11 +64,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             {
                 if (sequence == null)
                 {
-                    //need to add controller userindex to event
-                    //and sign up for only the appropriate one here
-
-                    //or consider adding a "watch" for a particular controller via the static Instance
-
                     var keyDowns = Observable.FromEventPattern<XInputButtonDownEventHandler, XInputButtonEventArgs>(
                             handler => new XInputButtonDownEventHandler(handler),
                             h => xinputListener.ButtonDown += h,
@@ -98,7 +93,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                     sequence = keyDowns.Merge(keyUps)
                         .DistinctUntilChanged()
-                        .SkipWhile(b => b.eventType == EventType.DOWN) //Ensure the first value we hit is a true, i.e. a key down
+                        .SkipWhile(b => b.eventType == EventType.UP) //Ensure the first value we hit is a key down
                         .CombineLatest(pointSource.Sequence, (b, point) => new TriggerSignal(b.eventType == EventType.DOWN ? 1 : -1, null, point.Value))
                         .DistinctUntilChanged(signal => signal.Signal) //Combining latest will output a trigger signal for every change in BOTH sequences - only output when the trigger signal changes
                         .Where(_ => State == RunningStates.Running)

@@ -146,19 +146,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     return;
                 }
 
-                if (keyValue != null)
+                if (keyValue != null && KeySelection != null)
                 {
-                    if (!capturingStateManager.CapturingMultiKeySelection)
-                    {
-                        audioService.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume);
-                    }
-
-                    if (KeySelection != null)
-                    {
-                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", keyValue);
-                        KeySelection(this, keyValue);
-                    }
+                    Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", keyValue);
+                    KeySelection(this, keyValue);
                 }
+                
                 if (type == TriggerTypes.Point)
                 {
                     if (PointSelection != null)
@@ -203,8 +196,95 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
 
+                    bool isRepeat = false;
+
                     if ((singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                     {
+                        // Inject previous keyvalue if asked to repeat
+                        if (singleKeyValue != null &&
+                            singleKeyValue.FunctionKey != null &&
+                            singleKeyValue.FunctionKey == FunctionKeys.RepeatLastKeyAction &&
+                            lastKeyValueExecuted != null &&
+                            SelectionMode == SelectionModes.Keys)
+                        {
+                            bool preventRepeat = false;
+
+                            // Repeats aren't allowed if point was off-screen 
+                            if (points.Any())
+                            {
+                                var singlePoint = points[0]; 
+                                if (singlePoint.X < 0 || singlePoint.Y < 0 || 
+                                    singlePoint.X > Graphics.PrimaryScreenWidthInPixels || 
+                                    singlePoint.Y > Graphics.PrimaryScreenHeightInPixels)
+                                {
+                                    preventRepeat = true;
+                                }
+                            }
+                            
+                            // Certain keys built in keys are removed from repeats. 
+                            if (lastKeyValueExecuted.FunctionKey.HasValue &&
+                                KeyValues.FunctionKeysWhichShouldntBeRepeated.Contains(lastKeyValueExecuted.FunctionKey.Value))
+                            {
+                                preventRepeat = true;
+                            }
+
+                            // Prevent dynamic key that contains any of these forbidden functions, or a "Change Keyboard" command
+                            if (lastKeyValueExecuted.Commands != null && lastKeyValueExecuted.Commands.Any())
+                            {
+                                foreach (var command in lastKeyValueExecuted.Commands)
+                                {
+                                    if (command.Name == KeyCommands.ChangeKeyboard)
+                                        preventRepeat = true;
+                                    else if (command.Name == KeyCommands.Function)
+                                    {                                     
+                                        if (Enum.TryParse(command.Value, out FunctionKeys fk) && KeyValues.FunctionKeysWhichShouldntBeRepeated.Contains(fk))
+                                            preventRepeat = true;                                        
+                                    }
+                                }
+                            }
+
+                            if (preventRepeat)
+                            {
+                                singleKeyValue = null;
+                            }
+                            else {
+                                isRepeat = true;
+                                if (lastMouseActionStateManager.LastMouseActionExists &&
+                                    lastKeyValueExecuted.FunctionKey.HasValue &&
+                                    KeyValues.FunctionKeysForRepeatableActions.Contains(lastKeyValueExecuted.FunctionKey.Value))
+                                {
+                                    singleKeyValue = KeyValues.RepeatLastMouseActionKey;
+                                }
+                                else
+                                {
+                                    singleKeyValue = lastKeyValueExecuted;
+                                }
+
+                                // re-instate last key states so output is equivalent
+                                foreach (KeyValue key in lastKeyDownStates.Keys)
+                                    keyStateService.KeyDownStates[key].Value = lastKeyDownStates[key];
+                            }
+                        }
+
+                        // Remember keyvalue to allow repeats (unless keyvalue is "repeat last key action")
+                        if (singleKeyValue != null)
+                        {
+                            lastKeyValueExecuted = singleKeyValue;
+                            
+                            // Make a copy of keydownstates so we can re-instate later
+                            foreach (KeyValue key in keyStateService.KeyDownStates.Keys)
+                                lastKeyDownStates[key] = keyStateService.KeyDownStates[key].Value;
+                        }
+
+                        // Play 'key' sound
+                        if (type == TriggerTypes.Key && singleKeyValue != null && !capturingStateManager.CapturingMultiKeySelection)
+                        {
+                            if (isRepeat)
+                                audioService.PlaySound(Settings.Default.RepeatSoundFile, Settings.Default.RepeatSoundVolume);
+                            else 
+                                audioService.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume);
+                        }
+
                         //DynamicKeys can have a list of Commands and perform multiple actions
                         if (singleKeyValue != null && singleKeyValue.Commands != null && singleKeyValue.Commands.Any())
                         {                            

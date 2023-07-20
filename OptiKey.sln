@@ -58,10 +58,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance.Wpf", "src\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectedControllers", "src\TestControllers\TestConnectedControllers.csproj", "{C19F5A3D-271A-44B4-9F98-628F4534F959}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TobiiConsole", "TobiiConsole\TobiiConsole.csproj", "{E44BE975-A78C-450A-9433-53AB6C9C5B8E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TobiiDeviceInfo", "TobiiDeviceInfo\TobiiDeviceInfo.csproj", "{E599F56F-9830-46D0-9740-5B353304E3A9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|x64 = All|x64
@@ -158,22 +154,6 @@ Global
 		{C19F5A3D-271A-44B4-9F98-628F4534F959}.DefaultBuild|x64.Build.0 = Debug|x64
 		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Release|x64.ActiveCfg = Release|x64
 		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Release|x64.Build.0 = Release|x64
-		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.All|x64.ActiveCfg = Release|Any CPU
-		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.All|x64.Build.0 = Release|Any CPU
-		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.Debug|x64.ActiveCfg = Debug|x64
-		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.Debug|x64.Build.0 = Debug|x64
-		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.DefaultBuild|x64.ActiveCfg = Debug|Any CPU
-		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.DefaultBuild|x64.Build.0 = Debug|Any CPU
-		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.Release|x64.ActiveCfg = Release|x64
-		{E44BE975-A78C-450A-9433-53AB6C9C5B8E}.Release|x64.Build.0 = Release|x64
-		{E599F56F-9830-46D0-9740-5B353304E3A9}.All|x64.ActiveCfg = Release|Any CPU
-		{E599F56F-9830-46D0-9740-5B353304E3A9}.All|x64.Build.0 = Release|Any CPU
-		{E599F56F-9830-46D0-9740-5B353304E3A9}.Debug|x64.ActiveCfg = Debug|x64
-		{E599F56F-9830-46D0-9740-5B353304E3A9}.Debug|x64.Build.0 = Debug|x64
-		{E599F56F-9830-46D0-9740-5B353304E3A9}.DefaultBuild|x64.ActiveCfg = Debug|Any CPU
-		{E599F56F-9830-46D0-9740-5B353304E3A9}.DefaultBuild|x64.Build.0 = Debug|Any CPU
-		{E599F56F-9830-46D0-9740-5B353304E3A9}.Release|x64.ActiveCfg = Release|x64
-		{E599F56F-9830-46D0-9740-5B353304E3A9}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
