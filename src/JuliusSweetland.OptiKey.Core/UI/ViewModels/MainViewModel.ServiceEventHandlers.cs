@@ -2191,6 +2191,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     SelectLanguage(Languages.PortuguesePortugal);
                     break;
 
+                case FunctionKeys.PortugueseBrazil:
+                    SelectLanguage(Languages.PortugueseBrazil);
+                    break;
+                    
                 case FunctionKeys.PreviousSuggestions:
                     Log.Info("Decrementing suggestions page.");
 

@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Enums
         PersianIran,
         PolishPoland,
         PortuguesePortugal,
-        PortugeseBrazilian,
+        PortugueseBrazil,
         RussianRussia,
         SerbianSerbia,
         SlovenianSlovenia,
@@ -71,6 +71,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.PersianIran: return Resources.PERSIAN_IRAN;
                 case Languages.PolishPoland: return Resources.POLISH_POLAND;
                 case Languages.PortuguesePortugal: return Resources.PORTUGUESE_PORTUGAL;
+                case Languages.PortugueseBrazil: return Resources.PORTUGUESE_BRAZILIAN;
                 case Languages.RussianRussia: return Resources.RUSSIAN_RUSSIA;
                 case Languages.SerbianSerbia: return Resources.SERBIAN_SERBIA;
                 case Languages.SlovakSlovakia: return Resources.SLOVAK_SLOVAKIA;
@@ -79,7 +80,6 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return Resources.TURKISH_TURKEY;
                 case Languages.UkrainianUkraine: return Resources.UKRAINIAN_UKRAINE;
                 case Languages.UrduPakistan: return Resources.URDU_PAKISTAN;
-                case Languages.PortugeseBrazilian: return Resources.PORTUGUESE_BRAZILIAN;
             }
 
             return language.ToString();
@@ -113,6 +113,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.PersianIran: return CultureInfo.GetCultureInfo("fa-IR");
                 case Languages.PolishPoland: return CultureInfo.GetCultureInfo("pl-PL");
                 case Languages.PortuguesePortugal: return CultureInfo.GetCultureInfo("pt-PT");
+                case Languages.PortugueseBrazil: return CultureInfo.GetCultureInfo("pt-BR");
                 case Languages.RussianRussia: return CultureInfo.GetCultureInfo("ru-RU");
                 case Languages.SerbianSerbia: return CultureInfo.GetCultureInfo("sr-Cyrl-RS");
                 case Languages.SlovakSlovakia: return CultureInfo.GetCultureInfo("sk-SK");
@@ -121,7 +122,6 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return CultureInfo.GetCultureInfo("tr-TR");
                 case Languages.UkrainianUkraine: return CultureInfo.GetCultureInfo("uk-UA");
                 case Languages.UrduPakistan: return CultureInfo.GetCultureInfo("ur-PK");
-                case Languages.PortugeseBrazilian: return CultureInfo.GetCultureInfo("pt-BR");
             }
             return CultureInfo.GetCultureInfo("en-GB");
         }

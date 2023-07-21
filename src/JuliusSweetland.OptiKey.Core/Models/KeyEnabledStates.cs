@@ -829,7 +829,8 @@ namespace JuliusSweetland.OptiKey.Models
                 }
 
                 //Portuguese specific rules
-                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.PortuguesePortugal)
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.PortuguesePortugal ||
+                    Settings.Default.KeyboardAndDictionaryLanguage == Languages.PortugueseBrazil)
                 {
                     //Acute accent: áÁ éÉ íÍ óÓ úÚ
                     if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())

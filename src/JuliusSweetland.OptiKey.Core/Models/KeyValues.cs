@@ -232,6 +232,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue PhysicalKeysKeyboardKey = new KeyValue(FunctionKeys.PhysicalKeysKeyboard);
         public static readonly KeyValue PolishPolandKey = new KeyValue(FunctionKeys.PolishPoland);
         public static readonly KeyValue PortuguesePortugalKey = new KeyValue(FunctionKeys.PortuguesePortugal);
+        public static readonly KeyValue PortugueseBrazilKey = new KeyValue(FunctionKeys.PortugueseBrazil);
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue(FunctionKeys.PreviousSuggestions);
         public static readonly KeyValue PrintScreenKey = new KeyValue(FunctionKeys.PrintScreen);
         public static readonly KeyValue QuitKey = new KeyValue(FunctionKeys.Quit);
@@ -391,6 +392,11 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToList()
                 },
                 { Languages.PortuguesePortugal, "abcdefghijklmnopqrstuvwxyzçà"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
+                                                .ToList()
+                },
+                { Languages.PortugueseBrazil, "abcdefghijklmnopqrstuvwxyzçà"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue(c.ToString(CultureInfo.InvariantCulture)))
                                                 .ToList()

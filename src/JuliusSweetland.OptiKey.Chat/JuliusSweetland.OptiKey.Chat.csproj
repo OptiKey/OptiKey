@@ -213,7 +213,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Portuguese %28Brazilian%29.dic" />
     <SplashScreen Include="Resources\Icons\OptikeyChatSplash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>

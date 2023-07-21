@@ -697,6 +697,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.PERSIAN_IRAN, KeyValues.PersianIranKey, dictionary.ContainsKey(KeyValues.PersianIranKey) ? dictionary[KeyValues.PersianIranKey] :  null),
                     new KeyValueAndTimeSpan(Resources.POLISH_POLAND, KeyValues.PolishPolandKey, dictionary.ContainsKey(KeyValues.PolishPolandKey) ? dictionary[KeyValues.PolishPolandKey] :  null),
                     new KeyValueAndTimeSpan(Resources.PORTUGUESE_PORTUGAL, KeyValues.PortuguesePortugalKey, dictionary.ContainsKey(KeyValues.PortuguesePortugalKey) ? dictionary[KeyValues.PortuguesePortugalKey] :  null),
+                    new KeyValueAndTimeSpan(Resources.PORTUGUESE_BRAZILIAN, KeyValues.PortugueseBrazilKey, dictionary.ContainsKey(KeyValues.PortugueseBrazilKey) ? dictionary[KeyValues.PortugueseBrazilKey] :  null),
                     new KeyValueAndTimeSpan(Resources.RUSSIAN_RUSSIA, KeyValues.RussianRussiaKey, dictionary.ContainsKey(KeyValues.RussianRussiaKey) ? dictionary[KeyValues.RussianRussiaKey] : null),
                     new KeyValueAndTimeSpan(Resources.SERBIAN_SERBIA, KeyValues.SerbianSerbiaKey, dictionary.ContainsKey(KeyValues.SerbianSerbiaKey) ? dictionary[KeyValues.SerbianSerbiaKey] : null),
                     new KeyValueAndTimeSpan(Resources.SLOVAK_SLOVAKIA, KeyValues.SlovakSlovakiaKey, dictionary.ContainsKey(KeyValues.SlovakSlovakiaKey) ? dictionary[KeyValues.SlovakSlovakiaKey] : null),

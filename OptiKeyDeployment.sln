@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33516.290
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1259
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Core", "src\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -23,7 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docs\Localize.md = docs\Localize.md
 		docs\Look to scroll overlay flickering.md = docs\Look to scroll overlay flickering.md
 		docs\Physical setup of eye trackers.md = docs\Physical setup of eye trackers.md
-		..\..\..\..\..\..\Portuguese (Brazilian).dic = ..\..\..\..\..\..\Portuguese (Brazilian).dic
 		src\JuliusSweetland.OptiKey\Properties\Resources.fi-FI.resx = src\JuliusSweetland.OptiKey\Properties\Resources.fi-FI.resx
 		docs\UiAccess.md = docs\UiAccess.md
 		docs\Unicode standard for diacritic marks.pdf = docs\Unicode standard for diacritic marks.pdf
