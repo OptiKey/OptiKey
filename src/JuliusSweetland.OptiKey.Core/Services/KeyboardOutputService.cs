@@ -749,6 +749,14 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.Debug("Suppressing auto space before this capture as it follows a single character which is not a letter, or a closing or mid-sentence punctuation mark.");
                 suppressNextAutoSpace = true;
             }
+            else if (lastProcessedText.Length == 1 
+                && newText.Length == 1                 
+                && keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown())
+            {
+                Log.Debug("Suppressing auto space before this capture as it follows a single character from a multikey selection.");
+                suppressNextAutoSpace = true;
+            }
+
 
             var textBeforeCaptureText = Text;
 
