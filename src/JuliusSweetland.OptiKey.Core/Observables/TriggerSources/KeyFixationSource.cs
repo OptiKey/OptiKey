@@ -50,8 +50,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             bool resumeRequiresLockOn,
             string defaultTimeToCompleteTrigger,
             IDictionary<KeyValue, string> timeToCompleteTriggerByKey,
-            TimeSpan incompleteFixationTtl,
-            bool resetMousePositionAfterKeyPressed,
+            TimeSpan incompleteFixationTtl,            
             IPointSource pointSource)
         {
             this.defaultLockOnTime = defaultLockOnTime;

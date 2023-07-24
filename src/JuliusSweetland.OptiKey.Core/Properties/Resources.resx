@@ -2302,9 +2302,6 @@ Would you like Optikey to automatically set the font to Nazli?</value>
   <data name="TOUCHSCREEN_POSITION" xml:space="preserve">
     <value>Touch Screen position</value>
   </data>
-  <data name="RESET_MOUSE_POSITION_AFTER_KEY_PRESSED" xml:space="preserve">
-    <value>Reset mouse position after key is pressed (useful for touchscreens)</value>
-  </data>
   <data name="HUNGARIAN_HUNGARY" xml:space="preserve">
     <value>Hungarian (Hungary) / Magyar (Magyarország)</value>
   </data>

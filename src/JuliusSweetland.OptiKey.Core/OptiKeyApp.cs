@@ -788,7 +788,6 @@ namespace JuliusSweetland.OptiKey
                             ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
                             : null,
                            Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
-                           Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed,
                            pointSource);
                         break;
 

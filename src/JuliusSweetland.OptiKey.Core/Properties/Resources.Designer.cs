@@ -5360,15 +5360,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset mouse position after key is pressed (useful for touchscreens).
-        /// </summary>
-        public static string RESET_MOUSE_POSITION_AFTER_KEY_PRESSED {
-            get {
-                return ResourceManager.GetString("RESET_MOUSE_POSITION_AFTER_KEY_PRESSED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Restart.
         /// </summary>
         public static string RESTART {

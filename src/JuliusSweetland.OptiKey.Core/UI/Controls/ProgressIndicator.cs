@@ -54,18 +54,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (progressPie != null)
             {
                 progressPie.Render();
-                progressPie.CheckIfDone();
             }
         }
 
-        private void CheckIfDone()
-        {
-            if ((Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed == true) & (Value == MaxValue))  // a hack to get it when a key was pressed and reset mouse position to avoid repeating clicks without active movement
-            {
-                System.Windows.Forms.Cursor.Position = new System.Drawing.Point(0, 0);
-            }
-        }
-            private void Render()
+        private void Render()
         {
             var angle = Settings.Default.ProgressIndicatorBehaviour == ProgressIndicatorBehaviours.FillPie ? (Value / MaxValue) * 360 : 360;
 

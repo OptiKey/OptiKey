@@ -627,7 +627,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionTriggerMouseDownUpButton = Settings.Default.KeySelectionTriggerMouseDownUpButton;
             KeySelectionTriggerFixationLockOnTimeInMs = Settings.Default.KeySelectionTriggerFixationLockOnTime.TotalMilliseconds;
             KeySelectionTriggerFixationResumeRequiresLockOn = Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn;
-            KeySelectionTriggerFixationResetMousePositionAfterKeyPressed = Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed;
             KeySelectionTriggerFixationDefaultCompleteTimeInMs = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes;
             KeySelectionTriggerFixationCompleteTimesByIndividualKey = Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey;
             KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups = FromSetting(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
@@ -681,7 +680,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeySelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs);
             Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn = KeySelectionTriggerFixationResumeRequiresLockOn;
             Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed = KeySelectionTriggerFixationResetMousePositionAfterKeyPressed;
-            Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes = KeySelectionTriggerFixationDefaultCompleteTimeInMs;
             Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey = KeySelectionTriggerFixationCompleteTimesByIndividualKey;
             Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues = ToSetting(KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups);
             Settings.Default.KeySelectionTriggerIncompleteFixationTtl = TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs);
