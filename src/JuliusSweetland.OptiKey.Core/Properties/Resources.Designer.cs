@@ -6540,9 +6540,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("TONE_SOUND_4", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Touch Screen position.
+        ///   Looks up a localized string similar to Top.
+        /// </summary>
+        public static string TOP {
+            get {
+                return ResourceManager.GetString("TOP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch screen position.
         /// </summary>
         public static string TOUCHSCREEN_POSITION {
             get {
@@ -6551,11 +6560,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Top.
+        ///   Looks up a localized string similar to In this mode, Optikey will use touch control instead of talking directly to an eye tracker. You might want this if you&apos;re testing Optikey out, or if you want to use it for typing on a touch screen..
         /// </summary>
-        public static string TOP {
+        public static string TOUCHSCREEN_POSITION_INFO {
             get {
-                return ResourceManager.GetString("TOP", resourceCulture);
+                return ResourceManager.GetString("TOUCHSCREEN_POSITION_INFO", resourceCulture);
             }
         }
         

@@ -70,6 +70,8 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.IrisbondDuo: return Resources.IRISBOND_DUO_INFO;
                 case PointsSources.IrisbondHiru: return Resources.IRISBOND_HIRU_INFO;
                 case PointsSources.MousePosition: return Resources.MOUSE_POSITION_INFO;
+                case PointsSources.TouchScreenPosition: return Resources.TOUCHSCREEN_POSITION_INFO;
+
                 case PointsSources.TheEyeTribe: return "";
                 case PointsSources.TobiiPcEyeGo: return Resources.TOBII_ASSISTIVE_INFO;
                 case PointsSources.TobiiPcEyeGoPlus: return Resources.TOBII_ASSISTIVE_INFO;

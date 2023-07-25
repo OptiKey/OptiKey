@@ -2300,7 +2300,10 @@ Would you like Optikey to automatically set the font to Nazli?</value>
 (ישראל)</value>
   </data>
   <data name="TOUCHSCREEN_POSITION" xml:space="preserve">
-    <value>Touch Screen position</value>
+    <value>Touch screen position</value>
+  </data>
+  <data name="TOUCHSCREEN_POSITION_INFO" xml:space="preserve">
+    <value>In this mode, Optikey will use touch control instead of talking directly to an eye tracker. You might want this if you're testing Optikey out, or if you want to use it for typing on a touch screen.</value>
   </data>
   <data name="HUNGARIAN_HUNGARY" xml:space="preserve">
     <value>Hungarian (Hungary) / Magyar (Magyarország)</value>
