@@ -678,26 +678,47 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) / 正體中文 (臺灣).
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體).
         /// </summary>
-        public static string CHINESE_TRADITIONAL_TAIWAN {
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO {
             get {
-                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN", resourceCulture);
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional
-        ///(Taiwan) /
-        ///正體中文
-        ///(臺灣).
+        ///(Taiwan) (Bopomofo) /
+        ///中文
+        ///(注音-臺灣正體).
         /// </summary>
-        public static string CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE {
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE {
             get {
-                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE", resourceCulture);
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Luna Pinyin) / 中文 (朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) (Luna Pinyin) /
+        ///中文
+        ///(朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional (Bopomofo) / 中文 (注音).
         /// </summary>
@@ -727,7 +748,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional
         ///(Cangjie v5) /
@@ -739,7 +760,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional (Luna Pinyin) / 中文 (朙月拼音).
         /// </summary>
@@ -748,7 +769,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CHINESE_TRADITIONAL_LUNAPINYIN", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional
         ///(Luna Pinyin) /
@@ -762,44 +783,23 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體).
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) / 正體中文 (臺灣).
         /// </summary>
-        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO {
+        public static string CHINESE_TRADITIONAL_TAIWAN {
             get {
-                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO", resourceCulture);
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Chinese Traditional
-        ///(Taiwan) (Bopomofo) /
-        ///中文
-        ///(注音-臺灣正體).
+        ///(Taiwan) /
+        ///正體中文
+        ///(臺灣).
         /// </summary>
-        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE {
+        public static string CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE {
             get {
-                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Lyna Pinyin) / 中文 (朙月拼音-臺灣正體).
-        /// </summary>
-        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN {
-            get {
-                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chinese Traditional
-        ///(Taiwan) (Luna Pinyin) /
-        ///中文
-        ///(朙月拼音-臺灣正體).
-        /// </summary>
-        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
-            get {
-                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
