@@ -9,6 +9,7 @@ namespace JuliusSweetland.OptiKey.Enums
         MouseButtonDownUps,
         XInputButtonDownUps,
         DirectInputButtonDownUps,
+        TouchDownUps,
     }
 
     public static partial class EnumExtensions
