@@ -428,9 +428,15 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var timeSpan = pointsAndKeyValues.Last().Timestamp.Subtract(pointsAndKeyValues.First().Timestamp);
 
-                    var sequenceThreshold = (int)Math.Round(
+                    // If touch input is used, it doesn't make sense to have a minimum "dwell" time since we'll be "swiping"
+                    // smoothly rather than looking at each key, and won't have much noise in the input. Override the setting here.
+                    int sequenceThreshold = 10;
+                    if (Settings.Default.PointsSource != PointsSources.TouchScreenPosition)
+                    {
+                        sequenceThreshold = (int)Math.Round(
                         ((double)pointsAndKeyValues.Count / (double)timeSpan.TotalMilliseconds)
                         * Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds);
+                    }
 
                     Log.DebugFormat(
                         "Multi-key selection capture lasted {0}ms. Minimum dwell time is {1}ms, or {2} points.",
