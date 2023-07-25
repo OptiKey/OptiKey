@@ -122,8 +122,17 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             if (MainView.ToastNotificationPopup.IsOpen)
                 return;
 
-            if (e.LeftButton == MouseButtonState.Pressed && Settings.Default.EnableResizeWithMouse)
+            if (e.LeftButton == MouseButtonState.Pressed 
+                && Settings.Default.EnableResizeWithMouse)                
             {
+                // Don't allow drag-to-move if using touch input or left mouse trigger
+                if (Settings.Default.PointsSource == PointsSources.TouchScreenPosition ||
+                    ( Settings.Default.KeySelectionTriggerSource == TriggerSources.MouseButtonDownUps 
+                      && Settings.Default.KeySelectionTriggerMouseDownUpButton == MouseButtons.Left) )
+                {
+                    return;
+                }
+
                 // This prevents win7 aerosnap, which otherwise might snap to edges and expand unexpectedly
                 ResizeMode origResizeMode = this.ResizeMode;
                 this.ResizeMode = ResizeMode.NoResize;
