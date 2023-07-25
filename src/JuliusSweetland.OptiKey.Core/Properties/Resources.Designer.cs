@@ -4643,6 +4643,42 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We recommend increasing the multikey &quot;minimum dwell time&quot; for use with eye gaze. Would you like Optikey to automatically change the settings for you?.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multikey settings for eye gaze.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_MULTIKEY_TITLE {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_MULTIKEY_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have changed from touch to another input but still have at least one trigger setting using touch. Would you like Optikey to automatically set the trigger settings?.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_TRIGGER_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_TRIGGER_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch screen still selected as trigger.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hmm, nothing new here!.
         /// </summary>
         public static string NOTHING_NEW {
@@ -6547,6 +6583,42 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOP {
             get {
                 return ResourceManager.GetString("TOP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We recommend reducing the multikey &quot;minimum dwell time&quot; for use with touch input. Would you like Optikey to automatically change the settings for you?.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch input multikey settings.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_MULTIKEY_TITLE {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_MULTIKEY_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We recommend changing the Trigger to TouchUpDowns if you want to use touch input for Optikey. Would you like Optikey to automatically set the trigger settings?.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_TRIGGER_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_TRIGGER_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch input isn&apos;t using touch as trigger.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE", resourceCulture);
             }
         }
         
