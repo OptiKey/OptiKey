@@ -192,8 +192,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (PointingAndSelectingViewModel.PointSelectionTriggerSource != TriggerSources.TouchDownUps ||
                      PointingAndSelectingViewModel.PointSelectionTriggerSource != TriggerSources.TouchDownUps ||
                      PointingAndSelectingViewModel.KeySelectionTriggerSource != TriggerSources.TouchDownUps ||
-                     PointingAndSelectingViewModel.KeySelectionTriggerSource != TriggerSources.TouchDownUps ||
-                      )
+                     PointingAndSelectingViewModel.KeySelectionTriggerSource != TriggerSources.TouchDownUps)
                 {
                     ConfirmationRequest.Raise(
                         new Confirmation
