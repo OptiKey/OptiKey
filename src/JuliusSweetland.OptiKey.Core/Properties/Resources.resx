@@ -2650,4 +2650,7 @@ www.optikey.org/supported-eyetrackers</value>
   <data name="TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE" xml:space="preserve">
     <value>Touch input isn't using touch as trigger</value>
   </data>
+  <data name="TOUCH_DOWNUP_DESCRIPTION" xml:space="preserve">
+    <value>Touch</value>
+  </data>
 </root>

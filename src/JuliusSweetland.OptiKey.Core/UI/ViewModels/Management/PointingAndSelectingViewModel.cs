@@ -90,6 +90,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return new List<KeyValuePair<string, TriggerSources>>
                 {
                     new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.Fixations.ToDescription(), Enums.TriggerSources.Fixations),
+                    new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.TouchDownUps.ToDescription(), Enums.TriggerSources.TouchDownUps),
                     new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.KeyboardKeyDownsUps.ToDescription(), Enums.TriggerSources.KeyboardKeyDownsUps),
                     new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.MouseButtonDownUps.ToDescription(), Enums.TriggerSources.MouseButtonDownUps),
                     new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.XInputButtonDownUps.ToDescription(), Enums.TriggerSources.XInputButtonDownUps),

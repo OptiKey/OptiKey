@@ -6587,6 +6587,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Touch.
+        /// </summary>
+        public static string TOUCH_DOWNUP_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("TOUCH_DOWNUP_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We recommend reducing the multikey &quot;minimum dwell time&quot; for use with touch input. Would you like Optikey to automatically change the settings for you?.
         /// </summary>
         public static string TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION {
