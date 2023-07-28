@@ -35,6 +35,9 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap { private get; set; }
 
+        // Used for transforming points
+        private Window window = null;
+
         public IObservable<Timestamped<PointAndKeyValue>> Sequence
         {
             get
@@ -46,12 +49,16 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                         h => Touch.FrameReported += h,
                         h => Touch.FrameReported -= h)
                         .Where(_ => State == RunningStates.Running)
+                        .Where(_ => System.Windows.Application.Current.MainWindow != null)
                         .Select(ep =>
                         {
+                            // get handle to mainWindow once
+                            if (window == null)
+                                window = System.Windows.Application.Current.MainWindow;
+
                             TouchPoint tp = ep.EventArgs.GetPrimaryTouchPoint(null);
-                            var x = tp.Position.X * Graphics.DipScalingFactorX;
-                            var y = tp.Position.Y * Graphics.DipScalingFactorY;
-                            return new Point(x, y);
+                            return window.PointToScreen(tp.Position);
+                            
                         });
 
                     // set up a separate repeating sequence to ensure we get regular events during periods when no touch is occurring
