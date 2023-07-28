@@ -668,7 +668,6 @@ namespace JuliusSweetland.OptiKey.Models
                     FunctionKeys.MouseLeftDownUp,
                     FunctionKeys.MouseMiddleClick,
                     FunctionKeys.MouseMiddleDownUp,
-                    FunctionKeys.MouseMoveAmountInPixels,
                     FunctionKeys.MouseMoveAndLeftClick,
                     FunctionKeys.MouseMoveAndLeftDoubleClick,
                     FunctionKeys.MouseMoveAndMiddleClick,
