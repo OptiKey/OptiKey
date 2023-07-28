@@ -212,6 +212,29 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
+                // Mouse-related keys are not available in Touch mode
+                if (Settings.Default.PointsSource == PointsSources.TouchScreenPosition)
+                {
+                    if (keyValue.FunctionKey.HasValue &&
+                        KeyValues.FunctionKeysUsingPointSource.Contains(keyValue.FunctionKey.Value))
+                    {
+                        return false;
+                    }
+
+                    // Prevent dynamic key that contains any of these forbidden functions
+                    if (keyValue.Commands != null && keyValue.Commands.Any())
+                    {
+                        foreach (var command in keyValue.Commands)
+                        {
+                            if (command.Name == KeyCommands.Function)
+                            {
+                                if (Enum.TryParse(command.Value, out FunctionKeys fk) && KeyValues.FunctionKeysUsingPointSource.Contains(fk))
+                                    return false;
+                            }
+                        }
+                    }
+                }
+
                 //Move & Resize keys when docked
                 if (Settings.Default.MainWindowState == WindowStates.Docked
                     && ((Settings.Default.MainWindowDockPosition == DockEdges.Top &&

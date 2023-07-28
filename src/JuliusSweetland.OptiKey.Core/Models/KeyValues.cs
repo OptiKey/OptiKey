@@ -689,6 +689,51 @@ namespace JuliusSweetland.OptiKey.Models
             }
         }
 
+        public static List<FunctionKeys> FunctionKeysUsingPointSource
+        {
+            get
+            {
+                var keys = new List<FunctionKeys>
+                {
+                    FunctionKeys.LookToScrollActive,
+                    FunctionKeys.LookToScrollBounds,
+                    FunctionKeys.LookToScrollIncrement,
+                    FunctionKeys.LookToScrollMode,
+                    FunctionKeys.LookToScrollSpeed,
+                    FunctionKeys.MouseDrag,
+                    FunctionKeys.MouseKeyboard,
+                    FunctionKeys.MouseLeftClick,
+                    FunctionKeys.MouseLeftDoubleClick,
+                    FunctionKeys.MouseLeftDownUp,
+                    FunctionKeys.MouseMagneticCursor,
+                    FunctionKeys.MouseMiddleClick,
+                    FunctionKeys.MouseMiddleDownUp,
+                    FunctionKeys.MouseMoveAmountInPixels,
+                    FunctionKeys.MouseMoveAndLeftClick,
+                    FunctionKeys.MouseMoveAndLeftDoubleClick,
+                    FunctionKeys.MouseMoveAndMiddleClick,
+                    FunctionKeys.MouseMoveAndRightClick,
+                    FunctionKeys.MouseMoveTo,
+                    FunctionKeys.MouseMoveToBottom,
+                    FunctionKeys.MouseMoveToLeft,
+                    FunctionKeys.MouseMoveToRight,
+                    FunctionKeys.MouseMoveToTop,
+                    FunctionKeys.MouseRightClick,
+                    FunctionKeys.MouseRightDownUp,
+                    FunctionKeys.MouseScrollAmountInClicks,
+                    FunctionKeys.MouseMoveAndScrollToBottom,
+                    FunctionKeys.MouseMoveAndScrollToLeft,
+                    FunctionKeys.MouseMoveAndScrollToRight,
+                    FunctionKeys.MouseMoveAndScrollToTop,
+                    FunctionKeys.MouseScrollToTop,
+                    FunctionKeys.MouseScrollToBottom,
+                    FunctionKeys.MouseMagnifier,
+                    FunctionKeys.RepeatLastMouseAction,
+                };
+                return keys;
+            }
+        }
+
         public static List<FunctionKeys> FunctionKeysWhichShouldntBeRepeated
         {
             get
