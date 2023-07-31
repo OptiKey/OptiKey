@@ -96,9 +96,6 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}" >
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}" >
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBlock.Style>
@@ -116,10 +113,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}" >
                                     <Setter Property="Visibility" Value="Collapsed" />
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}" >
-                                    <Setter Property="Visibility" Value="Collapsed" />
-                                </DataTrigger>
-                                </Style.Triggers>
+                            </Style.Triggers>
                             </Style>
                         </ComboBox.Style>
                     </ComboBox>
@@ -131,9 +125,6 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}" >
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -148,9 +139,6 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}" >
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -829,9 +817,6 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.TouchDownUps}">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBlock.Style>
@@ -844,9 +829,6 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.TouchDownUps}">
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -1313,7 +1295,6 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
-                    
                 </Grid>
             </GroupBox>
 
