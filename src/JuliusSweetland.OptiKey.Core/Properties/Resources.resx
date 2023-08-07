@@ -1834,6 +1834,15 @@ Polski
 Português
 (Portugal)</value>
   </data>
+  <data name="PORTUGUESE_BRAZILIAN" xml:space="preserve">
+    <value>Portuguese (Brazil) / Português (Brasil)</value>
+  </data>
+  <data name="PORTUGUESE_BRAZILIAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Portuguese
+(Brazil) /
+Português
+(Brasil)</value>
+  </data>
   <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
     <value>Slovak (Slovakia) / Slovenčina (Slovensko) </value>
   </data>

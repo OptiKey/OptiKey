@@ -290,10 +290,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.PersianIran:
                         newContent = new PersianViews.Alpha1 { DataContext = Keyboard };
                         break;
-                        case Languages.PolishPoland:
+                    case Languages.PolishPoland:
                         newContent = new PolishViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.PortuguesePortugal:
+                        newContent = new PortugueseViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.PortugueseBrazil:
                         newContent = new PortugueseViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.RussianRussia:
