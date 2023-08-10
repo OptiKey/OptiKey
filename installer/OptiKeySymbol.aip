@@ -564,10 +564,7 @@
     <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
     <ROW Name="xmlCfg.dll" SourcePath="&lt;AI_CUSTACTS&gt;xmlCfg.dll"/>
   </COMPONENT>
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
-    <ROW Dialog_="EyeTracker" Control="Text_1" Type="Text" X="31" Y="89" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT" Text="[EYETRACKER_TEXT]" Order="1100" TextLocId="-" MsiKey="EyeTracker#Text_1"/>
-    <ROW Dialog_="EyeTracker" Control="Text_2" Type="Text" X="31" Y="150" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT_EN" Text="[EYETRACKER_TEXT_EN]" Order="1200" TextLocId="-" MsiKey="EyeTracker#Text_2"/>
-    <ROW Dialog_="EyeTracker" Control="Hyperlink_1" Type="Hyperlink" X="31" Y="215" Width="225" Height="12" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;http://www.example.com&quot;&gt;Optikey - supported eye trackers&lt;/a&gt;" Order="1400"/>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">    
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
     <ROW Dialog_="NewDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
     <ROW Dialog_="NewDialog" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" Options="1"/>
@@ -590,7 +587,6 @@
     <ROW Dialog_="ReadmeDlg" Control="ReadmeText" Type="ScrollableText" X="20" Y="60" Width="330" Height="150" Attributes="7" Text="resources\MESSAGE FOR USER DURING INSTALL.rtf" Order="400" TextLocId="-" MsiKey="ReadmeDlg#ReadmeText"/>
     <ROW Dialog_="VerifyRemoveDlg" Control="Description" Type="Text" X="25" Y="23" Width="294" Height="21" Attributes="196611" Text="You have chosen to remove the program from your computer." Order="900" TextLocId="Control.Text.VerifyRemoveDlg#Description" MsiKey="VerifyRemoveDlg#Description"/>
     <ROW Dialog_="VerifyRepairDlg" Control="Description" Type="Text" X="25" Y="23" Width="294" Height="21" Attributes="196611" Text="The [Wizard] is ready to begin the repair of [ProductName]." Order="900" TextLocId="Control.Text.VerifyRepairDlg#Description" MsiKey="VerifyRepairDlg#Description"/>
-    <ATTRIBUTE name="DeletedRows" value="EyeTracker#Hyperlink_2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerSupportV4" Condition="AI_INSTALL" Ordering="1"/>

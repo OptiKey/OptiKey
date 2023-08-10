@@ -604,7 +604,6 @@
     <ROW Name="xmlCfg.dll" SourcePath="&lt;AI_CUSTACTS&gt;xmlCfg.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
-    <ROW Dialog_="EyeTracker" Control="Hyperlink_1" Type="Hyperlink" X="31" Y="215" Width="225" Height="12" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;http://www.optikey.org/supported-eyetrackers&quot;&gt;Optikey - supported eye trackers&lt;/a&gt;" Order="1400"/>
     <ROW Dialog_="Languages" Control="LanguagesDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
     <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="resources\LICENSE.rtf" Order="400" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
     <ROW Dialog_="NewDialog" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" Options="1"/>
@@ -625,7 +624,6 @@
     <ROW Dialog_="NewSeqDialog" Control="BottomLine" Type="Line" X="0" Y="234" Width="372" Height="0" Attributes="1" Order="700"/>
     <ROW Dialog_="NewSeqDialog" Control="ComboBox_eyetracker" Type="ComboBox" X="135" Y="105" Width="56" Height="12" Attributes="3" Property="COMBOBOX_1_PROP" Text="wibble" Order="800"/>
     <ROW Dialog_="ReadmeDlg" Control="ReadmeText" Type="ScrollableText" X="20" Y="60" Width="330" Height="150" Attributes="7" Text="resources\MESSAGE FOR USER DURING INSTALL.rtf" Order="400" TextLocId="-" MsiKey="ReadmeDlg#ReadmeText"/>
-    <ATTRIBUTE name="DeletedRows" value="EyeTracker#Hyperlink_1@EyeTracker#Hyperlink_2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="EyeTrackerSupportV4" Condition="AI_INSTALL" Ordering="1"/>
@@ -721,7 +719,6 @@
     <ROW Action="SetPropertyLanguageSelected" Type="51" Source="LANGUAGE_SELECTED" Target="EnglishUK"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
-    <ROW Dialog="EyeTracker" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg" MsiKey="EyeTracker"/>
     <ROW Dialog="Languages" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg" MsiKey="Languages"/>
     <ROW Dialog="NewDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
     <ROW Dialog="NewSeqDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>

@@ -2,7 +2,7 @@
 <DICTIONARY type="singlelanguage" lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="dictionary.xsd">
   <STRING id="Control.Text.EyeTracker#BannerBitmap" value="[BannerBitmap]"/>
   <STRING id="Control.Text.EyeTracker#Description" value="Please select the eye tracker you will be using with Optikey"/>
-  <STRING id="Control.Text.EyeTracker#Hyperlink_2" value="&lt;a href=&quot;http://www.optikey.org/supported-eyetrackers&quot;&gt;Optikey - supported eye trackers&lt;/a&gt;"/>
+  <STRING id="Control.Text.EyeTracker#Hyperlink_1" value="&lt;a href=&quot;http://optikey.org/help/versions&quot;&gt;Optikey versions&lt;/a&gt;"/>
   <STRING id="Control.Text.EyeTracker#MyComboBox" value="{1024}"/>
   <STRING id="Control.Text.EyeTracker#Title" value="Eye tracker"/>
   <STRING id="Dialog.WelcomeDlg" value="[ProductName] [Setup]"/>
