@@ -16,6 +16,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <valueConverters:ListNotEmpty x:Key="ListNotEmpty" />
         <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
+        <valueConverters:CollapsedIfNotManagedByRime x:Key="CollapsedIfNotManagedByRime" />
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
@@ -58,12 +59,14 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               SelectedValue="{Binding KeyboardAndDictionaryLanguage, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="English dictionary for Rime"
-                               VerticalAlignment="Center" Margin="5" />
+                               VerticalAlignment="Center" Margin="5"
+                               Visibility="{Binding KeyboardAndDictionaryLanguage, Converter={StaticResource CollapsedIfNotManagedByRime}}"/>
                     <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                               ItemsSource="{Binding EnglishDictionaries}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding DictionaryLanguageForRime, Mode=TwoWay}" />
+                              SelectedValue="{Binding DictionaryLanguageForRime, Mode=TwoWay}" 
+                              Visibility="{Binding KeyboardAndDictionaryLanguage, Converter={StaticResource CollapsedIfNotManagedByRime}}"/>
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE}"
                                VerticalAlignment="Center" Margin="5" />
