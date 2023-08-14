@@ -55,11 +55,12 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             {
                 { "en", "en-GB" },
                 { "fr", "fr-FR" },
-                { "nl", "nl-NL" }
+                { "nl", "nl-NL" },
+                { "zh", "zh-CN" },
             };
 
             // Get list of available languages to choose from, as language tag in parts (e.g. en-GB gives ['en', 'GB'])
-            List<KeyValuePair<string, Languages>> languagePairs = WordsViewModel.Languages;
+            List<KeyValuePair<string, Languages>> languagePairs = WordsViewModel.KeyboardLanguages;
             List<string[]> languages = (from kvp in languagePairs select kvp.Value.ToCultureInfo().Name.Split('-')).ToList();
 
             string sysLanguageCode = cultureInfo.Name; //  (e.g. en-GB)
@@ -190,8 +191,9 @@ namespace JuliusSweetland.OptiKey.InstallerActions
         {
             session.Log("Begin PopulateLanguagesCombo");
 
-            // Get list of available languages from WordsViewModel
-            List<KeyValuePair<string, Languages>> languages = WordsViewModel.Languages;
+            // Get list of available languages from WordsViewModel - here we have the longer list
+            // of Keyboard languages which includes all chinese input methods
+            List<KeyValuePair<string, Languages>> languages = WordsViewModel.KeyboardLanguages;
 
             // Try to match default language to system language
             string defaultLanguageCode = GetDefaultLanguageCode(CultureInfo.CurrentCulture);

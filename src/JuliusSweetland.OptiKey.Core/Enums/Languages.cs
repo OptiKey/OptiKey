@@ -111,6 +111,21 @@ namespace JuliusSweetland.OptiKey.Enums
             {
                 case Languages.CatalanSpain: return CultureInfo.GetCultureInfo("ca-ES");
                 case Languages.ChineseTraditionalTaiwan: return CultureInfo.GetCultureInfo("zh-TW");
+
+                // Note that there isn't a direct mapping for the languages below, since we are encoding additional 
+                // information about user input preferences into the language enum. We only make use of these language 
+                // codes in the installer, where we'll use the coarse mapping of China = simplified, Taiwan = traditional
+                case Languages.ChineseSimplifiedBopomofo: return CultureInfo.GetCultureInfo("zh-CN");
+                case Languages.ChineseSimplifiedCangjie5: return CultureInfo.GetCultureInfo("zh-CN");
+                case Languages.ChineseSimplifiedLunaPinyin: return CultureInfo.GetCultureInfo("zh-CN");
+                case Languages.ChineseSimplifiedTerraPinyin: return CultureInfo.GetCultureInfo("zh-CN");
+                case Languages.ChineseTaiwanTraditionalBopomofo: return CultureInfo.GetCultureInfo("zh-TW");
+                case Languages.ChineseTaiwanTraditionalLunaPinyin: return CultureInfo.GetCultureInfo("zh-TW");
+                case Languages.ChineseTraditionalBopomofo: return CultureInfo.GetCultureInfo("zh-TW");
+                case Languages.ChineseTraditionalCangjie5: return CultureInfo.GetCultureInfo("zh-TW");
+                case Languages.ChineseTraditionalLunaPinyin: return CultureInfo.GetCultureInfo("zh-TW");
+                case Languages.ChineseTraditionalTerraPinyin: return CultureInfo.GetCultureInfo("zh-TW");
+
                 case Languages.CroatianCroatia: return CultureInfo.GetCultureInfo("hr-HR");
                 case Languages.CzechCzechRepublic: return CultureInfo.GetCultureInfo("cs-CZ");
                 case Languages.DanishDenmark: return CultureInfo.GetCultureInfo("da-DK");
