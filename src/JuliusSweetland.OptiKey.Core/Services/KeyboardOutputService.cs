@@ -14,6 +14,7 @@ using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
+using JuliusSweetland.OptiKey.Rime;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -31,6 +32,8 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Dictionary<bool, KeyboardOutputServiceState> state = new Dictionary<bool, KeyboardOutputServiceState>();
 
         private string text;
+        private string textWithRimePreedit;
+        private string rimePreedit;
         private string lastProcessedText;
         private bool lastProcessedTextWasSuggestion;
         private bool lastProcessedTextWasMultiKey;
@@ -71,7 +74,17 @@ namespace JuliusSweetland.OptiKey.Services
         public string Text
         {
             get { return text; }
-            set { SetProperty(ref text, value); }
+            set {
+                SetProperty(ref text, value);
+                TextWithRimePreedit = text + rimePreedit;
+            }
+        }
+        public string TextWithRimePreedit
+        {
+            get { return textWithRimePreedit; }
+            set {
+                SetProperty(ref textWithRimePreedit, value);
+            }
         }
 
         public bool KeyboardIsShiftAware //Not on interface as only accessed via databinding
@@ -131,6 +144,10 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.BackOne:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && MyRimeApi.IsComposing) {
+                        ProcessTextWithRime("{BackSpace}");
+                        break;
+                    }
                     var backOneCount = string.IsNullOrEmpty(lastProcessedText)
                         ? 1 //Default to removing one character if no lastProcessedText
                         : lastProcessedText.Length;
@@ -367,34 +384,72 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.Suggestion1:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
+                        ProcessTextWithRime(RimeCommand.Suggestion1);
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(0);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion2:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
+                        ProcessTextWithRime(RimeCommand.Suggestion2);
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(1);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion3:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
+                        ProcessTextWithRime(RimeCommand.Suggestion3);
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(2);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion4:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
+                        ProcessTextWithRime(RimeCommand.Suggestion4);
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(3);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion5:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
+                        ProcessTextWithRime(RimeCommand.Suggestion5);
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(4);
                     lastProcessedTextWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion6:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
+                        ProcessTextWithRime(RimeCommand.Suggestion6);
+                        break;
+                    }
                     SwapLastTextChangeForSuggestion(5);
                     lastProcessedTextWasSuggestion = true;
                     break;
+
+                case FunctionKeys.PreviousSuggestions:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
+                        ProcessTextWithRime(RimeCommand.PreviousSuggestions);
+                        break;
+                    }
+                    goto default;
+
+                case FunctionKeys.NextSuggestions:
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
+                        ProcessTextWithRime(RimeCommand.NextSuggestions);
+                        break;
+                    }
+                    goto default;
 
                 case FunctionKeys.ToggleCaseOfPreviousCharacter:
                     {
@@ -477,7 +532,11 @@ namespace JuliusSweetland.OptiKey.Services
             Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ToPrintableString());
 
             var capturedTextAfterComposition = CombineStringWithActiveDeadKeys(capturedText);
-            ProcessText(capturedTextAfterComposition, true);
+            if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode) {
+                ProcessTextWithRime(capturedTextAfterComposition);
+            } else {
+                ProcessText(capturedTextAfterComposition, true);
+            }
 
             lastProcessedTextWasSuggestion = false;
 
@@ -568,7 +627,64 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Methods - private
+        private void ProcessTextWithRime(string newText) {
+            if (!MyRimeApi.IsComposing && newText.Equals(" ")) {
+                ProcessText(newText, true);
+                return;
+            }
+            if (newText.Equals("\n")) {
+                if (!MyRimeApi.IsComposing) {
+                    ProcessText(newText, true);
+                    return;
+                } else {
+                    newText = "{Return}";
+                }
+            }
+            var rime = MyRimeApi.rime_get_api();
+            var session_id = MyRimeApi.GetSession();
+            var commit = new RimeCommit();
+            var status = new RimeStatus();
+            var context = new RimeContext();
+            MyRimeApi.RIME_STRUCT(ref commit);
+            MyRimeApi.RIME_STRUCT(ref status);
+            MyRimeApi.RIME_STRUCT(ref context);
+            rime.simulate_key_sequence(session_id, newText);
 
+            if (rime.get_commit(session_id, ref commit)) {
+                Text += commit.text;
+                foreach (var c in commit.text)
+                {
+                    PublishKeyPress(c);
+                    ReleaseUnlockedKeys();
+                }
+                //rime.free_commit(ref commit);
+            }
+
+            if (rime.get_status(session_id, ref status)) {
+                MyRimeApi.IsComposing = status.is_composing;
+                MyRimeApi.IsAsciiMode = status.is_ascii_mode;
+                //print_status(ref status);
+                //rime.free_status(ref status);
+            }
+
+            if (rime.get_context(session_id, ref context)) {
+                var candidates = MyRimeApi.GetCandidates(context.menu);
+                suggestionService.Suggestions = candidates.Select(e => e.text).ToList();
+                if (context.menu.page_no == 0) {
+                    MyRimeApi.IsFirstPage = true;
+                } else {
+                    MyRimeApi.IsFirstPage = false;
+                }
+                if (context.menu.is_last_page) {
+                    MyRimeApi.IsLastPage = true;
+                } else {
+                    MyRimeApi.IsLastPage = false;
+                }
+                rimePreedit = context.composition.preedit;
+                TextWithRimePreedit = Text + context.composition.preedit;
+                //rime.free_context(ref context);
+            }
+        }
         private void ProcessText(string newText, bool generateSuggestions)
         {
             Log.DebugFormat("Processing captured text '{0}'", newText.ToPrintableString());

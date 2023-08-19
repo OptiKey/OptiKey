@@ -1,0 +1,2527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>加入</value>
+  </data>
+  <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
+    <value>新增條目:</value>
+  </data>
+  <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>您要以縮寫「{1}」將短句「{0}」加到字典嗎？</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>加到
+字典</value>
+  </data>
+  <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>您要將單字「{0}」加到字典嗎？</value>
+  </data>
+  <data name="ADDED" xml:space="preserve">
+    <value>已加入</value>
+  </data>
+  <data name="ADJUST_BY" xml:space="preserve">
+    <value>調整量 {0} pixel|調整量 {0} pixels</value>
+  </data>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>文字 1</value>
+  </data>
+  <data name="ALT" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="ANDROID_DARK" xml:space="preserve">
+    <value>Android 深色</value>
+  </data>
+  <data name="ANDROID_LIGHT" xml:space="preserve">
+    <value>Android 淺色</value>
+  </data>
+  <data name="ANDROID_TWO_TONE" xml:space="preserve">
+    <value>Android 雙色調</value>
+  </data>
+  <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
+    <value>自動字首大寫:</value>
+  </data>
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
+    <value>自動完成單字:</value>
+  </data>
+  <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
+    <value>自動調整字詞</value>
+  </data>
+  <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
+    <value>自動在單字間插入空白:</value>
+  </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>刪除單字</value>
+  </data>
+  <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
+    <value>Bass 無法從檔案「{0}」建立 Stream</value>
+  </data>
+  <data name="BOTTOM" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="BREAK" xml:space="preserve">
+    <value>BREAK</value>
+  </data>
+  <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
+    <value>已停止校正，訊息: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>您確定要重新校正嗎？</value>
+  </data>
+  <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
+    <value>校正時發生了錯誤。錯誤訊息: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
+    <value>校正失敗，訊息: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
+    <value>校正只能在手動操作下完成，例如: 可能需要使用滑鼠。若您無法手動操作您的電腦，您可能會卡在校正程序。
+您確定要重新校正嗎？</value>
+  </data>
+  <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
+    <value>校正因未知的原因停止。訊息: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
+    <value>校正成功！精確度 (平均錯誤率 = {0})</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
+    <value>捕捉逾時 (ms):</value>
+  </data>
+  <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
+    <value>啟動時檢查更新:</value>
+  </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>點擊
+&amp; 拖曳</value>
+  </data>
+  <data name="CLICK_SOUND_1" xml:space="preserve">
+    <value>點擊 1</value>
+  </data>
+  <data name="CLICK_SOUND_2" xml:space="preserve">
+    <value>點擊 2</value>
+  </data>
+  <data name="CLICK_SOUND_3" xml:space="preserve">
+    <value>點擊 3</value>
+  </data>
+  <data name="CLICK_SOUND_4" xml:space="preserve">
+    <value>點擊 4</value>
+  </data>
+  <data name="CLICK_SOUND_5" xml:space="preserve">
+    <value>點擊 5</value>
+  </data>
+  <data name="CLICK_SOUND_6" xml:space="preserve">
+    <value>點擊 6</value>
+  </data>
+  <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>摺疊
+基座</value>
+  </data>
+  <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
+    <value>摺疊後的基座厚度 (相對於完整基座的百分比):</value>
+  </data>
+  <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
+    <value>選單</value>
+  </data>
+  <data name="CONVERSATION" xml:space="preserve">
+    <value>對話</value>
+  </data>
+  <data name="CONVERSATION_LAYOUT" xml:space="preserve">
+    <value>對話文字</value>
+  </data>
+  <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
+    <value>對話數字符號</value>
+  </data>
+  <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>只啟用對話模式:</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
+    <value>Optikey 偵測到您的設定檔已損毀且需要修復。可以藉由還原到舊版來完成，不行的話則需還原為預設版本。
+
+點擊 [是] 以重設您的使用者設定並重新啟動。
+
+點擊 [否] 以關閉程式，讓您手動修復或複製您的使用者設定檔。</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
+    <value>噢不！使用者設定檔已經損毀了。</value>
+  </data>
+  <data name="CRASH_MESSAGE" xml:space="preserve">
+    <value>壞消息: Optikey 的腳去扭到並已關閉。
+
+您可以寫一封電子郵件詳述發生的經過，這會對我們非常有幫助: crash@optikey.org
+
+造成不便敬請見諒。</value>
+  </data>
+  <data name="CRASH_TITLE" xml:space="preserve">
+    <value>噢不！</value>
+  </data>
+  <data name="CTRL" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="CURRENCIES" xml:space="preserve">
+    <value>貨幣</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
+    <value>貨幣 1</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
+    <value>貨幣 2</value>
+  </data>
+  <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
+    <value>遊標高度 (pixels):</value>
+  </data>
+  <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
+    <value>遊標寬度 (pixels):</value>
+  </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>動態鍵盤檔案</value>
+  </data>
+  <data name="DANISH_DENMARK" xml:space="preserve">
+    <value>Danish (Denmark) / Dansk (Danmark)</value>
+  </data>
+  <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Danish
+(Denmark) /
+Dansk
+(Danmark)</value>
+  </data>
+  <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
+    <value>偵錯模式:</value>
+  </data>
+  <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>減少
+透明度</value>
+  </data>
+  <data name="DEL" xml:space="preserve">
+    <value>DEL</value>
+  </data>
+  <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="DIACRITICS" xml:space="preserve">
+    <value>特殊符號</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
+    <value>特殊符號 1</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
+    <value>特殊符號 2</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
+    <value>特殊符號 3</value>
+  </data>
+  <data name="DICTIONARY" xml:space="preserve">
+    <value>字典</value>
+  </data>
+  <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
+    <value>找不到使用者字典檔，且未在「{0}」找到原始字典檔。</value>
+  </data>
+  <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
+    <value>訊息中的每個字元顯示 X 秒鐘:</value>
+  </data>
+  <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
+    <value>在目前的位置執行...</value>
+  </data>
+  <data name="DO_AT_POINT" xml:space="preserve">
+    <value>選擇位置後執行...</value>
+  </data>
+  <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>下
+方向鍵</value>
+  </data>
+  <data name="DURATION_FORMAT" xml:space="preserve">
+    <value> ({0:#,###}ms)</value>
+  </data>
+  <data name="END" xml:space="preserve">
+    <value>END</value>
+  </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>English (Canada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>English (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>English (US)</value>
+  </data>
+  <data name="ENTER" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
+    <value>做得好。已將「{0}」加入字典。</value>
+  </data>
+  <data name="ERROR_SOUND_LABEL" xml:space="preserve">
+    <value>錯誤:</value>
+  </data>
+  <data name="ESC" xml:space="preserve">
+    <value>ESC</value>
+  </data>
+  <data name="EXPAND" xml:space="preserve">
+    <value>放大</value>
+  </data>
+  <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>放大
+基座</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左下
+放大</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右下
+放大</value>
+  </data>
+  <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向下
+放大</value>
+  </data>
+  <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左
+放大</value>
+  </data>
+  <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右
+放大</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左上
+放大</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右上
+放大</value>
+  </data>
+  <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向上
+放大</value>
+  </data>
+  <data name="FALLING_SOUND_1" xml:space="preserve">
+    <value>下降 1</value>
+  </data>
+  <data name="FALLING_SOUND_2" xml:space="preserve">
+    <value>下降 2</value>
+  </data>
+  <data name="FILL_PIE" xml:space="preserve">
+    <value>填滿圓餅</value>
+  </data>
+  <data name="FIXATIONS_DWELL" xml:space="preserve">
+    <value>固定 (停留)</value>
+  </data>
+  <data name="FONT" xml:space="preserve">
+    <value>字型</value>
+  </data>
+  <data name="FONT_FAMILY_LABEL" xml:space="preserve">
+    <value>字體:</value>
+  </data>
+  <data name="FONT_STRETCH_LABEL" xml:space="preserve">
+    <value>字型伸展:</value>
+  </data>
+  <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
+    <value>字重:</value>
+  </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>French (France) / Française (France)</value>
+  </data>
+  <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
+    <value>完整的基座厚度 (畫面百分比):</value>
+  </data>
+  <data name="GAZE_TRACKER" xml:space="preserve">
+    <value>Gaze Tracker</value>
+  </data>
+  <data name="GROW" xml:space="preserve">
+    <value>放大</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>HOME</value>
+  </data>
+  <data name="HORIZONTAL_FILL" xml:space="preserve">
+    <value>水平填充 (畫面百分比):</value>
+  </data>
+  <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
+    <value>未完成的按鍵失效前的固定時間 (ms):</value>
+  </data>
+  <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>增加
+透明度</value>
+  </data>
+  <data name="INFO_SOUND_LABEL" xml:space="preserve">
+    <value>資訊:</value>
+  </data>
+  <data name="INS" xml:space="preserve">
+    <value>INS</value>
+  </data>
+  <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
+    <value>...但對於智慧停用自動 caps 可能沒有幫助:</value>
+  </data>
+  <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
+    <value>目前的鍵盤和語言組合是無效的</value>
+  </data>
+  <data name="JUMP" xml:space="preserve">
+    <value>跳躍</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左下
+跳躍</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右下
+跳躍</value>
+  </data>
+  <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向下
+跳躍</value>
+  </data>
+  <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左
+跳躍</value>
+  </data>
+  <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右
+跳躍</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左上
+跳躍</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右上
+跳躍</value>
+  </data>
+  <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向上
+跳躍</value>
+  </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>按鍵字母轉換:</value>
+  </data>
+  <data name="COMPLETION_TIMES_HINT" xml:space="preserve">
+    <value>以半型逗號「,」分隔多個數值以提升、降低接下來的選擇速度，範例: 1250,750,450,250</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>完成並重複按鍵的時間 (ms):</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>鎖定按鍵的固定時間 (ms):</value>
+  </data>
+  <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>按鍵選擇鍵盤按鍵:</value>
+  </data>
+  <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>按鍵選擇滑鼠按鍵:</value>
+  </data>
+  <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
+    <value>按鍵選擇:</value>
+  </data>
+  <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>按鍵選擇來源:</value>
+  </data>
+  <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>按鍵選擇: {0}</value>
+  </data>
+  <data name="KEYBOARD_KEY" xml:space="preserve">
+    <value>鍵盤按鍵</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>鍵盤語言: {0}</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>鍵盤語言:</value>
+  </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>鍵盤資料夾可從\n管理控制台 (顯示分頁) 中設定</value>
+  </data>
+  <data name="LEFT" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>左
+方向鍵</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>左鍵
+點擊</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>左鍵
+雙擊</value>
+  </data>
+  <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>左鍵
+點/放</value>
+  </data>
+  <data name="LOOK" xml:space="preserve">
+    <value>外觀</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>全部小寫</value>
+  </data>
+  <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>磁性
+遊標</value>
+  </data>
+  <data name="MAGNIFIER" xml:space="preserve">
+    <value>放大鏡</value>
+  </data>
+  <data name="MAGNIFIER_CENTER_ON_SCREEN" xml:space="preserve">
+    <value>在螢幕中間顯示放大鏡視窗:</value>
+  </data>
+  <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
+    <value>放大鏡視窗 (最多填滿螢幕的比例):</value>
+  </data>
+  <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
+    <value>放大鏡選擇 (截取螢幕的比例):</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
+    <value>管理控制台: ALT + M</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
+    <value>Optikey 管理控制台</value>
+  </data>
+  <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
+    <value>從字典中查詢的最大數量:</value>
+  </data>
+  <data name="MENU" xml:space="preserve">
+    <value>選單</value>
+  </data>
+  <data name="MENU_LAYOUT" xml:space="preserve">
+    <value>選單</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>中鍵
+點擊</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>中鍵
+點/放</value>
+  </data>
+  <data name="MINIMISE" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="MINIMISED_LAYOUT" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
+    <value>最小化時的位置:</value>
+  </data>
+  <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
+    <value>捕捉按鍵時至少要停留的時間 (ms):</value>
+  </data>
+  <data name="MISC" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="MOUSE" xml:space="preserve">
+    <value>滑鼠</value>
+  </data>
+  <data name="MOUSE_BUTTON" xml:space="preserve">
+    <value>滑鼠按鍵</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
+    <value>滑鼠點擊 1</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
+    <value>滑鼠點擊 2</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
+    <value>滑鼠點擊 3</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
+    <value>滑鼠點擊 4</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>滑鼠點擊:</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
+    <value>滑鼠雙擊 1</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
+    <value>滑鼠雙擊 2</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
+    <value>滑鼠雙擊 3</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>滑鼠雙擊:</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
+    <value>滑鼠點下 1</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
+    <value>滑鼠點下 2</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
+    <value>滑鼠點下 3</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
+    <value>滑鼠點下 4</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
+    <value>滑鼠點下:</value>
+  </data>
+  <data name="MOUSE_LAYOUT" xml:space="preserve">
+    <value>滑鼠</value>
+  </data>
+  <data name="MOUSE_POSITION" xml:space="preserve">
+    <value>滑鼠位置</value>
+  </data>
+  <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
+    <value>滑鼠位置取樣間隔 (ms):</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
+    <value>滑鼠滾輪 1</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
+    <value>滑鼠滾輪 2</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
+    <value>滑鼠滾輪 3</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
+    <value>滑鼠滾輪 4</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
+    <value>滑鼠滾輪 5</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
+    <value>滑鼠滾輪 6</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
+    <value>滑鼠滾輪:</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
+    <value>滑鼠放開 1</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
+    <value>滑鼠放開 2</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
+    <value>滑鼠放開 3</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
+    <value>滑鼠放開 4</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
+    <value>滑鼠放開:</value>
+  </data>
+  <data name="MOVE" xml:space="preserve">
+    <value>移動</value>
+  </data>
+  <data name="MOVE_BY" xml:space="preserve">
+    <value>移動量
+{0} pixel:|移動量 
+{0} pixels:</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左下
+移動</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右下
+移動</value>
+  </data>
+  <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向下
+移動</value>
+  </data>
+  <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左
+移動</value>
+  </data>
+  <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右
+移動</value>
+  </data>
+  <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>移動到</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左上
+移動</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右上
+移動</value>
+  </data>
+  <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向上
+移動</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
+    <value>多鍵捕捉</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
+    <value>啟用多鍵捕捉:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION" xml:space="preserve">
+    <value>多鍵選擇</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
+    <value>多鍵選擇結束:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>多鍵選擇</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
+    <value>多鍵選擇開始:</value>
+  </data>
+  <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
+    <value>
+(字典裡的新條目會包含大寫字母)</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>下一頁</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>找不到鍵盤</value>
+  </data>
+  <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
+    <value>文字框中看來沒有字典中缺少的單字或短句。</value>
+  </data>
+  <data name="NO_SOUND" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="NOTHING_NEW" xml:space="preserve">
+    <value>嗯，這裡沒有新東西！</value>
+  </data>
+  <data name="NOTIFICATIONS" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+LK</value>
+  </data>
+  <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>數字
+符號</value>
+  </data>
+  <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
+    <value>數字
+符號</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
+    <value>數字符號 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
+    <value>數字符號 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
+    <value>數字符號 3</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Pro : 電腦控制 &amp; 對話</value>
+  </data>
+  <data name="OTHER" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
+    <value>無法識別母視窗，無法繼續</value>
+  </data>
+  <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+DN</value>
+  </data>
+  <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+UP</value>
+  </data>
+  <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
+    <value>物理鍵</value>
+  </data>
+  <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>物理鍵</value>
+  </data>
+  <data name="PLAY_SOUND" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="POINT_AND_SELECTING" xml:space="preserve">
+    <value>指向和選擇</value>
+  </data>
+  <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
+    <value>定點固定半徑 (pixels):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>完成定點的固定時間 (ms):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>鎖定定點的固定時間 (ms):</value>
+  </data>
+  <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
+    <value>鎖定定點半徑 (pixels):</value>
+  </data>
+  <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
+    <value>指向選擇: {0}</value>
+  </data>
+  <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>指向選擇鍵盤按鍵:</value>
+  </data>
+  <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>指向選擇滑鼠按鍵:</value>
+  </data>
+  <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>指向選擇來源:</value>
+  </data>
+  <data name="POINTING" xml:space="preserve">
+    <value>指向</value>
+  </data>
+  <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
+    <value>指向: {0}</value>
+  </data>
+  <data name="PREV" xml:space="preserve">
+    <value>上一頁</value>
+  </data>
+  <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRNT
+SCR</value>
+  </data>
+  <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
+    <value>載入鍵盤錯誤</value>
+  </data>
+  <data name="QUIT" xml:space="preserve">
+    <value>結束</value>
+  </data>
+  <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>您真的確定要結束本程式嗎？</value>
+  </data>
+  <data name="QUIT_MESSAGE" xml:space="preserve">
+    <value>您確定要結束本程式嗎？</value>
+  </data>
+  <data name="RATE_LABEL" xml:space="preserve">
+    <value>速度:</value>
+  </data>
+  <data name="RE_CALIBRATE" xml:space="preserve">
+    <value>重新校正</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>重複
+上一個</value>
+  </data>
+  <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
+    <value>聲音和(或)字典服務未提供視窗管理動作。</value>
+  </data>
+  <data name="RESTART_MESSAGE" xml:space="preserve">
+    <value>Optikey 需要重新啟動以套用您的變更。
+請點擊 [確定] 以重新啟動，或點擊 [取消] 捨棄您的變更。</value>
+  </data>
+  <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>復原</value>
+  </data>
+  <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
+    <value>恢復固定未完成的按鍵時需要重新鎖定:</value>
+  </data>
+  <data name="RIGHT" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>右
+方向鍵</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>右鍵
+點擊</value>
+  </data>
+  <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>右鍵
+點/放</value>
+  </data>
+  <data name="RISING_SOUND_1" xml:space="preserve">
+    <value>上升 1</value>
+  </data>
+  <data name="RISING_SOUND_2" xml:space="preserve">
+    <value>上升 2</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>Russian (Russia) / Русский (Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN" xml:space="preserve">
+    <value>Spanish (Spain) / Español (España)</value>
+  </data>
+  <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
+    <value>和停駐位置相同</value>
+  </data>
+  <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
+    <value>文字框的行數:</value>
+  </data>
+  <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCR
+LK</value>
+  </data>
+  <data name="SCROLL_BY" xml:space="preserve">
+    <value>捲動量 
+{0} click:|捲動量 
+{0} clicks:</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向下捲動</value>
+  </data>
+  <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左捲動</value>
+  </data>
+  <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右捲動</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向上捲動</value>
+  </data>
+  <data name="SELECTION" xml:space="preserve">
+    <value>選擇</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
+    <value>選擇進度指示器樣式:</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
+    <value>選擇進度指示器結束大小 (%):</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
+    <value>選擇進度指示器開始大小 (%):</value>
+  </data>
+  <data name="SHIFT" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
+    <value>啟動時顯示開始畫面:</value>
+  </data>
+  <data name="SHRINK" xml:space="preserve">
+    <value>縮小</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左下
+縮小</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右下
+縮小</value>
+  </data>
+  <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向下
+縮小</value>
+  </data>
+  <data name="SHRINK_INDICATOR" xml:space="preserve">
+    <value>縮小</value>
+  </data>
+  <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左
+縮小</value>
+  </data>
+  <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右
+縮小</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向左上
+縮小</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向右上
+縮小</value>
+  </data>
+  <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>向上
+縮小</value>
+  </data>
+  <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
+    <value>(提醒您字典裡已有類似的條目: {0})</value>
+  </data>
+  <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>大小
+位置</value>
+  </data>
+  <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
+    <value>大小和位置</value>
+  </data>
+  <data name="SLEEP" xml:space="preserve">
+    <value>睡眠</value>
+  </data>
+  <data name="SOUND_EFFECTS" xml:space="preserve">
+    <value>音效</value>
+  </data>
+  <data name="SOUNDS" xml:space="preserve">
+    <value>聲音</value>
+  </data>
+  <data name="SOURCE_LABEL" xml:space="preserve">
+    <value>來源:</value>
+  </data>
+  <data name="SPACE" xml:space="preserve">
+    <value>空白鍵</value>
+  </data>
+  <data name="SPEAK" xml:space="preserve">
+    <value>朗讀</value>
+  </data>
+  <data name="SPEECH" xml:space="preserve">
+    <value>朗讀</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
+    <value>啟動時的鍵盤:</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>動態鍵盤檔案:</value>
+  </data>
+  <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
+    <value>停止信號:</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
+    <value>在滑鼠鍵盤中時停用修飾鍵:</value>
+  </data>
+  <data name="TAB" xml:space="preserve">
+    <value>TAB</value>
+  </data>
+  <data name="THE_EYE_TRIBE" xml:space="preserve">
+    <value>The Eye Tribe</value>
+  </data>
+  <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
+    <value>無法啟動 TheEyeTribe GazeManager！請檢查是否已啟動伺服器、該裝置是否已連接並再試一次。</value>
+  </data>
+  <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
+    <value>TheEyeTribe 尚未校正。校正完成前無法收到任何資料。</value>
+  </data>
+  <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
+    <value>找不到 EyeX engine，無法嘗試校正。</value>
+  </data>
+  <data name="THEME_LABEL" xml:space="preserve">
+    <value>主題:</value>
+  </data>
+  <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
+    <value>定點失效前的時間 (ms):</value>
+  </data>
+  <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>隱藏遊標</value>
+  </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>單字字首大寫</value>
+  </data>
+  <data name="TOBII_EYEX" xml:space="preserve">
+    <value>Tobii EyeX</value>
+  </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>校正完成或取消了，總之一切都恢復運作了！</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>找不到 Tobii EyeX Engine。請安裝 EyeX Engine 後再試一次。</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii EyeX Engine 未在執行中。請啟動 EyeX Engine 後再試一次。</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go</value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
+  </data>
+  <data name="TONE_SOUND_1" xml:space="preserve">
+    <value>音調 1</value>
+  </data>
+  <data name="TONE_SOUND_2" xml:space="preserve">
+    <value>音調 2</value>
+  </data>
+  <data name="TONE_SOUND_3" xml:space="preserve">
+    <value>音調 3</value>
+  </data>
+  <data name="TONE_SOUND_4" xml:space="preserve">
+    <value>音調 4</value>
+  </data>
+  <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
+    <value>觸發滑鼠/鍵盤按鍵再次點擊</value>
+  </data>
+  <data name="TRIGGER_RELEASED" xml:space="preserve">
+    <value>觸發滑鼠/鍵盤按鍵釋放</value>
+  </data>
+  <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
+    <value>我無法偵錯到您的目光。輸入裝置有問題嗎？它有連接、開機跟校正了嗎？</value>
+  </data>
+  <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
+    <value>無法判斷目前的高度。</value>
+  </data>
+  <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
+    <value>將語音設定為「{0}」時發生了問題{1}</value>
+  </data>
+  <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
+    <value>發生了不明的錯誤，請檢查記錄檔</value>
+  </data>
+  <data name="UP" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>上
+方向鍵</value>
+  </data>
+  <data name="UPDATE_AVAILABLE" xml:space="preserve">
+    <value>有可用的更新！</value>
+  </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>全部大寫</value>
+  </data>
+  <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
+    <value>請造訪 www.optikey.org 以下載最新版 ({0})
+您可以在管理控制台關閉檢查更新 (ALT + M)。</value>
+  </data>
+  <data name="VERIFY_RESTART" xml:space="preserve">
+    <value>我可以重新啟動 Optikey 嗎？</value>
+  </data>
+  <data name="VERSION_DESCRIPTION" xml:space="preserve">
+    <value>版本: {0}</value>
+  </data>
+  <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
+    <value>垂直填充 (畫面百分比):</value>
+  </data>
+  <data name="VISUALS" xml:space="preserve">
+    <value>顯示</value>
+  </data>
+  <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
+    <value> (來自設定)</value>
+  </data>
+  <data name="VOICE_LABEL" xml:space="preserve">
+    <value>語音:</value>
+  </data>
+  <data name="VOLUME_LABEL" xml:space="preserve">
+    <value>音量:</value>
+  </data>
+  <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
+    <value>網站: www.optikey.org</value>
+  </data>
+  <data name="WIN" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>Optikey v{0}</value>
+  </data>
+  <data name="WORDS" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="YESNO" xml:space="preserve">
+    <value>是/否</value>
+  </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>中</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>輸入裝置處理量:</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>German (Germany) / Deutsch (Deutschland)</value>
+  </data>
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>介面語言: {0}</value>
+  </data>
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
+    <value>介面語言:</value>
+  </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>打字時模擬物理鍵盤輸入:</value>
+  </data>
+  <data name="DUTCH_BELGIUM" xml:space="preserve">
+    <value>Dutch (Belgium) / Nederlands (België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
+    <value>Dutch (Netherlands) / Nederlands (Nederland)</value>
+  </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>French
+(France) /
+Française
+(France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>German
+(Germany) /
+Deutsch
+(Deutschland)</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>捲動時停用滑鼠放大:</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Russian
+(Russia) /
+Русский
+(Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Spanish
+(Spain) /
+Español
+(España)</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>動態鍵盤選單</value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>對話鍵盤邊緣厚度 (左, 上, 右, 下，以 px 為單位):</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>刪除單字</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>建議 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>建議 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>建議 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>建議 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>建議 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>建議 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>建議鍵</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>加到字典</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>摺疊基座</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>下方向鍵</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F13" xml:space="preserve">
+    <value>F13</value>
+  </data>
+  <data name="F14" xml:space="preserve">
+    <value>F14</value>
+  </data>
+  <data name="F15" xml:space="preserve">
+    <value>F15</value>
+  </data>
+  <data name="F16" xml:space="preserve">
+    <value>F16</value>
+  </data>
+  <data name="F17" xml:space="preserve">
+    <value>F17</value>
+  </data>
+  <data name="F18" xml:space="preserve">
+    <value>F18</value>
+  </data>
+  <data name="F19" xml:space="preserve">
+    <value>F19</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>左方向鍵</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>右方向鍵</value>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>上方向鍵</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>點擊 &amp; 拖曳</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>貨幣 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>貨幣 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>減少透明度</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>特殊符號 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>特殊符號 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>特殊符號 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>放大基座</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>向下放大</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>向左下放大</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>向右下放大</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>向左放大</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>向右放大</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>向上放大</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>向左上放大</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>向右上放大</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>增加透明度</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>數字符號 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>數字符號 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>數字符號 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>物理鍵</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>大小和位置</value>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>磁性遊標</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>中鍵點擊</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>中鍵 點/放</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>以 px 為單位的移動量</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>以 px 為單位的調整量</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>對話文字 1</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>對話數字符號</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>向下跳躍</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>向左下跳躍</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>向右下跳躍</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>向左跳躍</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>向右跳躍</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>向上跳躍</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>向左上跳躍</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>向右上跳躍</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>左鍵點擊</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>左鍵雙擊</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>左鍵 點/放</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>向下移動</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>向左下移動</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>向右下移動</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>向左移動</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>向右移動</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>移動到</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>向上移動</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>向左上移動</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>向右上移動</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>多鍵選擇</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>重複上一個</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>右鍵點擊</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>右鍵 點/放</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>以點擊為單位的捲動量</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>向下捲動</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>向左捲動</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>向右捲動</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>向上捲動</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>向下縮小</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>向左下縮小</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>向右下縮小</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>向左縮小</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>向右縮小</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>向上縮小</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>向左上縮小</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>向右上縮小</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>切換鍵盤鍵:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>基座動作鍵:</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>覆寫個別按鍵的固定時間 (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>切換語言鍵:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>其他鍵:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>修飾鍵:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>滑鼠 (在目前的位置執行) 按鍵:</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>滑鼠 (選擇位置後執行) 按鍵:</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>滑鼠 (其他) 按鍵:</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>移動和調整大小鍵:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>物理鍵:</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>建議鍵:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>指定完成個別按鍵的時間:</value>
+  </data>
+  <data name="GREEK_GREECE" xml:space="preserve">
+    <value>Greek (Greece) / Ελληνικά (Ελλάδα)</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>管理控制台 (設定)</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>結束</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA" xml:space="preserve">
+    <value>Georgian (Georgia) / ქართული (საქართველო)</value>
+  </data>
+  <data name="GEORGIAN_GEORGIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Georgian
+(Georgia) /
+ქართული
+(საქართველო)</value>
+  </data>
+  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Greek
+(Greece) /
+Ελληνικά
+(Ελλάδα)</value>
+  </data>
+  <data name="CROATIAN_CROATIA" xml:space="preserve">
+    <value>Croatian (Croatia) / Hrvatski (Hrvatska)</value>
+  </data>
+  <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Croatian
+(Croatia) /
+Hrvatski
+(Hrvatska)</value>
+  </data>
+  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Dutch
+(Belgium) /
+Nederlands
+(België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Dutch
+(Netherlands) /
+Nederlands
+(Nederland)</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>對所有滑鼠動作停用修飾鍵:</value>
+  </data>
+  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+English
+(Canada)
+</value>
+  </data>
+  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+English
+(UK)
+</value>
+  </data>
+  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+English
+(US)
+</value>
+  </data>
+  <data name="CATALAN_SPAIN" xml:space="preserve">
+    <value>Catalan (Spain) / Català (Espanya)</value>
+  </data>
+  <data name="CATALAN_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Catalan
+(Spain) /
+Català
+(Espanya)</value>
+  </data>
+  <data name="TURKISH_TURKEY" xml:space="preserve">
+    <value>Turkish (Turkey) / Türkçe (Türkiye)</value>
+  </data>
+  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Turkish
+(Turkey) /
+Türkçe
+(Türkiye)</value>
+  </data>
+  <data name="ITALIAN_ITALY" xml:space="preserve">
+    <value>Italian (Italy) / Italiano (Italia)</value>
+  </data>
+  <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Italian
+(Italy) /
+Italiano
+(Italia)</value>
+  </data>
+  <data name="KOREAN_KOREA" xml:space="preserve">
+    <value>Korean (Korea) / 한국어 (한국)</value>
+  </data>
+  <data name="KOREAN_KOREA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Korean
+(Korea) /
+한국어
+(한국)</value>
+  </data>
+  <data name="SERBIAN_SERBIA" xml:space="preserve">
+    <value>Serbian (Serbia) / Српски (Србија)</value>
+  </data>
+  <data name="SERBIAN_SERBIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Serbian
+(Serbia) /
+Српски
+(Србија)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
+    <value>Slovenian (Slovenia) / Slovensko (Slovenija)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Slovenian
+(Slovenia) /
+Slovensko
+(Slovenija)</value>
+  </data>
+  <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>無法連線到 myGaze！請檢查是否已啟動伺服器、該裝置是否已連接並再試一次。</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>Visual Interaction myGaze</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>校正失敗！</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>校正成功！</value>
+  </data>
+  <data name="POLISH_POLAND" xml:space="preserve">
+    <value>Polish (Poland) / Polski (Polska)</value>
+  </data>
+  <data name="POLISH_POLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Polish
+(Poland) /
+Polski
+(Polska)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
+    <value>Portuguese (Portugal) / Português (Portugal)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Portuguese
+(Portugal) /
+Português
+(Portugal)</value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
+    <value>Slovak (Slovakia) / Slovenčina (Slovensko) </value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Slovak
+(Slovakia) /
+Slovenčina
+(Slovensko)</value>
+  </data>
+  <data name="ALIENWARE_17" xml:space="preserve">
+    <value>Alienware 17 (EyeX)</value>
+  </data>
+  <data name="STEELSERIES_SENTRY" xml:space="preserve">
+    <value>Steelseries Sentry (EyeX)</value>
+  </data>
+  <data name="TOBII_EYE_TRACKER_4C" xml:space="preserve">
+    <value>Tobii Eye Tracker 4C</value>
+  </data>
+  <data name="TOBII_PCEYE_MINI" xml:space="preserve">
+    <value>Tobii PCEye Mini</value>
+  </data>
+  <data name="TOBII_X2_30" xml:space="preserve">
+    <value>Tobii X2-30</value>
+  </data>
+  <data name="TOBII_X2_60" xml:space="preserve">
+    <value>Tobii X2-60</value>
+  </data>
+  <data name="FORCE_CAPS_LOCK" xml:space="preserve">
+    <value>強制 Caps Lock (鎖定 Shift):</value>
+  </data>
+  <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>使用按字母排序的鍵盤配置</value>
+  </data>
+  <data name="SMOOTH_WHEN_CHANGING_GAZE_TARGET" xml:space="preserve">
+    <value>平滑改變注視目標:</value>
+  </data>
+  <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
+    <value>切換滑鼠控制模式</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
+    <value>Czech (Czech Rep.) / Čeština (Česko)</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Czech
+(Czech Rep.) /
+Čeština
+(Česko)</value>
+  </data>
+  <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+    <value>已變更輸入模式</value>
+  </data>
+  <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+    <value>已停用滑鼠 (手動) 模式！</value>
+  </data>
+  <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
+    <value>已啟用滑鼠 (手動) 模式！</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
+    <value>啟用對話確認 (是/否) 鍵盤:</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>只啟用對話確認 (是/否) 模式:</value>
+  </data>
+  <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
+    <value>啟用「離開」按鍵:</value>
+  </data>
+  <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>使用簡單鍵盤配置</value>
+  </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>瀏覽器
+上一頁</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>瀏覽器
+下一頁</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>瀏覽器
+首頁</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>瀏覽器
+搜尋</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>上網</value>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>上網</value>
+  </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>使用 MaryTTS 語音合成器:</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS 語音:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>MaryTTS 位置 (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>尋找</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>錯誤: 未選擇有效的「marytts-server.bat」檔案，請再試一次。</value>
+  </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>基本</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Presage</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>建議方式:</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>找不到 MaryTTS</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>無法使用 Presage 單字預測</value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>已將建議方式設定為: {0}。
+您可以從管理控制台 (ALT+M)
+改回原本的設定。</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>設定朗讀語音為系統語音: {0}。
+您可以從管理控制台 (ALT + M)
+檢查 MaryTTS 的路徑
+並將語音變更回來。</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>朗讀前的延遲 (ms):</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>使用 CommuniKate 鍵盤配置</value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>啟用「CommuniKate」按鍵:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>CommuniKate 首頁 obf 檔:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>無效的檔案</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>CommuniKate 首頁 .obz 檔位置:</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>Optikey 無法和 Presage 互動。可能的原因如下:
+    1. 找不到 presage.xml (位於C:\Users\USER_NAME\.presage) 中指定的 DBFILENAME，請檢查並修正它 (或解除安裝、重新安裝 Presage)。
+    2. 您可能安裝了 64 位元的 Presage (Optikey 只支援 32 位元版)，或 Presage 檔被移動、刪除、損毀。
+
+請移除 Presage 並安裝 32 位元的 0.9.2 版。
+Optikey 會嘗試繼續執行，但可能很快就會當掉。
+預測方式將切換為 NGram 以防下次執行時當掉。</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>使用 Presage 時遇到了問題</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>動態鍵盤資料夾:</value>
+  </data>
+  <data name="PLUGINS_LOCATION_LABEL" xml:space="preserve">
+    <value>外掛資料夾:</value>
+  </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>文字 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>對話文字 2</value>
+  </data>
+  <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
+    <value>即將捨棄所有變更的設定，是否繼續？</value>
+  </data>
+  <data name="SETTINGS_CHANGED" xml:space="preserve">
+    <value>取消設定</value>
+  </data>
+  <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
+    <value>無法在此編輯 Presage 的字典。
+它的預設位置在「C:\Program Files (x86)\presage\share\presage\database_en.db」。
+可用能讀取 SQLite3 檔案的程式編輯它，例如免費軟體《DB Browser for SQLite》</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="ERROR_MAGNIFYING" xml:space="preserve">
+    <value>進行放大程序時發生了錯誤。請關閉放大功能並聯絡 Optikey 請求進一步的協助。</value>
+  </data>
+  <data name="ERROR_TITLE" xml:space="preserve">
+    <value>錯誤:</value>
+  </data>
+  <data name="ATTENTION_SOUND_LABEL" xml:space="preserve">
+    <value>注意:</value>
+  </data>
+  <data name="ENABLE_ATTENTION_KEY_LABEL" xml:space="preserve">
+    <value>啟用「注意」按鍵:</value>
+  </data>
+  <data name="ENABLE_COPY_SCRATCHPAD_KEY_LABEL" xml:space="preserve">
+    <value>啟用「複製到剪貼簿」按鍵:</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>注意</value>
+  </data>
+  <data name="ATTENTION_SOUND" xml:space="preserve">
+    <value>注意</value>
+  </data>
+  <data name="COMMUNIKATE_DISABLED" xml:space="preserve">
+    <value>目前已停用 CommuniKate (使用 QWERTY 鍵盤)</value>
+  </data>
+  <data name="KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>輸入時的鍵盤種類:</value>
+  </data>
+  <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>使用預設鍵盤配置</value>
+  </data>
+  <data name="STARTUP_CRASH_TITLE" xml:space="preserve">
+    <value>噢不！我們啟動時遇到了問題:</value>
+  </data>
+  <data name="SELECT_VOICE" xml:space="preserve">
+    <value>選擇語音</value>
+  </data>
+  <data name="MORE" xml:space="preserve">
+    <value>更多…</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
+    <value>語言和語音</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>語言
+語音</value>
+  </data>
+  <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
+    <value>語言和語音</value>
+  </data>
+  <data name="MORE_UPPER_CASE" xml:space="preserve">
+    <value>更多…</value>
+  </data>
+  <data name="DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE" xml:space="preserve">
+    <value>切換鍵盤語言時顯示語音選項:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL" xml:space="preserve">
+    <value>眼神捲動</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
+    <value>將眼神捲動設定為預設的捲動方式:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_LABEL" xml:space="preserve">
+    <value>捲動點和範圍:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_LABEL" xml:space="preserve">
+    <value>捲動方向模式:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>啟動時將滑鼠移動到捲動原點:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
+    <value>捲動前將視窗提到最上層:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>執行完滑鼠動作後自動恢復捲動:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
+    <value>聚焦鍵盤時停止捲動:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL" xml:space="preserve">
+    <value>捲動範圍邊界顏色:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL" xml:space="preserve">
+    <value>無感帶顏色:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
+    <value>捲動範圍邊緣厚度 (0: 無):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
+    <value>無感帶邊緣厚度 (0: 無):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>無感帶寬度 (pixels):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
+    <value>無感帶高度 (pixels):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_LABEL" xml:space="preserve">
+    <value>眼神捲動速度:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>眼神
+捲動</value>
+  </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>French (Canada) / Française (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>French
+(Canada) /
+Française
+(Canada)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>Japanese (Japan) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Japanese
+(Japan) /
+日本語
+(日本)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>CommuniKate 音量:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>點選 CommuniKate 按鈕時念出上面的文字:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>念出 CommuniKate 按鈕文字時的速度:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>念出 CommuniKate 按鈕文字時的音量:</value>
+  </data>
+  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>您確定要切換滑鼠控制模式嗎？</value>
+  </data>
+  <data name="MANUAL_MODE" xml:space="preserve">
+    <value>滑鼠控制模式</value>
+  </data>
+  <data name="COMMUNIKATE" xml:space="preserve">
+    <value>CommuniKate</value>
+  </data>
+  <data name="PRESAGE_DATABASE_LOCATION_LABEL" xml:space="preserve">
+    <value>Presage 資料庫 .db 檔的位置:</value>
+  </data>
+  <data name="PRESAGE_NUMBER_OF_SUGGESTIONS_LABEL" xml:space="preserve">
+    <value>顯示 Presage 建議詞的數量:</value>
+  </data>
+  <data name="AVAILABLE_PLUGINS_LABEL" xml:space="preserve">
+    <value>可用的外掛</value>
+  </data>
+  <data name="PLUGINS_LABEL" xml:space="preserve">
+    <value>外掛</value>
+  </data>
+  <data name="REFRESH_PLUGINS_BUTTON" xml:space="preserve">
+    <value>重新整理外掛</value>
+  </data>
+  <data name="RESTART" xml:space="preserve">
+    <value>重新啟動</value>
+  </data>
+  <data name="REFRESH_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>您真的確定要重新啟動 Optikey 嗎？</value>
+  </data>
+  <data name="REFRESH_MESSAGE" xml:space="preserve">
+    <value>您確定要重新啟動 Optikey 嗎？</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD" xml:space="preserve">
+    <value>動態鍵盤</value>
+  </data>
+  <data name="WEB_BROWSING" xml:space="preserve">
+    <value>上網</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE" xml:space="preserve">
+    <value>Ukrainian (Ukraine) / Українська (Україна)</value>
+  </data>
+  <data name="UKRAINIAN_UKRAINE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ukrainian
+(Ukraine) /
+Українська
+(Україна)</value>
+  </data>
+  <data name="IRISBOND_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>輸入裝置處理量:</value>
+  </data>
+  <data name="IRISBOND_DUO" xml:space="preserve">
+    <value>Irisbond Duo</value>
+  </data>
+  <data name="IRISBOND_HIRU" xml:space="preserve">
+    <value>Irisbond Hiru</value>
+  </data>
+  <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
+    <value>無法啟動 Irisbond 眼動儀。</value>
+  </data>
+  <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>找不到 Irisbond 眼動儀。請檢查眼動儀是否連接好並再試一次。</value>
+  </data>
+  <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
+    <value>校正完成 (成功或失敗)，總之一切都恢復運作了！</value>
+  </data>
+  <data name="COPY_ALL_FROM_SCRATCHPAD" xml:space="preserve">
+    <value>複製全部</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_DEFINITION_INVALID" xml:space="preserve">
+    <value>無效的動態鍵盤定義檔</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARD_HEIGHT_ABOVE_THRESHOLD" xml:space="preserve">
+    <value>定義的動態鍵盤太高 (大於畫面的 95%)</value>
+  </data>
+  <data name="RESTART_UPPERCASE" xml:space="preserve">
+    <value>重新啟動</value>
+  </data>
+  <data name="URDU_PAKISTAN" xml:space="preserve">
+    <value>Urdu (Pakistan) / اردو (پاکستان)</value>
+  </data>
+  <data name="URDU_PAKISTAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Urdu
+(Pakistan) /
+اردو
+(پاکستان)</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_URDU" xml:space="preserve">
+    <value>我們建議變更介面語言為 Urdu 以確保輸入 Urdu 文字時文字框中的字是從右到左。
+您要讓 Optikey 自動將介面語言設定為 Urdu 嗎？</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_URDU_LANGUAGE" xml:space="preserve">
+    <value>我們建議變更 Optikey 使用的字體為完整相容於 Urdu 的字體。
+如果使用非 Urdu 專用字體，文字尤其是數字可能會不正確的顯示。
+您要讓 Optikey 自動將字體設定為 Nafees Web Naskh 嗎？</value>
+  </data>
+  <data name="LANGUAGE_SPECIFIC_FONT_RECOMMENDED" xml:space="preserve">
+    <value>建議使用語言特定的字體</value>
+  </data>
+  <data name="UILANGUAGE_AND_KEYBOARDANDDICTIONARYLANGUAGE_DIFFER_TITLE" xml:space="preserve">
+    <value>使用者介面和鍵盤(字典)的語言不同</value>
+  </data>
+  <data name="TYPE_DIACRITICS_AFTER_LETTERS" xml:space="preserve">
+    <value>在文字後方輸入特殊符號 (變音等…):</value>
+  </data>
+  <data name="DEFAULT_UILANGUAGE_TO_PERSIAN" xml:space="preserve">
+    <value>我們建議變更介面語言為 Persian 以確保輸入 Persian 文字時文字框中的字是從右到左。
+您要讓 Optikey 自動將介面語言設定為 Persian 嗎？</value>
+  </data>
+  <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
+    <value>我們建議變更 Optikey 使用的字體為完整相容於 Persian 的字體。
+如果使用非 Persian 專用字體，文字尤其是數字可能會不正確的顯示。
+您要讓 Optikey 自動將字體設定為 Nazli 嗎？</value>
+  </data>
+  <data name="PERSIAN_IRAN" xml:space="preserve">
+    <value>Persian (Iran) / فارسی (ایرانی)</value>
+  </data>
+  <data name="PERSIAN_IRAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Persian
+(Iran) /
+فارسی
+(ایرانی)</value>
+  </data>
+  <data name="FINNISH_FINLAND" xml:space="preserve">
+    <value>Finnish (Finland) / suomi (Suomi)</value>
+  </data>
+  <data name="FINNISH_FINLAND_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Finnish
+ (Finland) /
+ suomi
+ (Suomi)</value>
+  </data>
+  <data name="HEBREW_ISRAEL" xml:space="preserve">
+    <value>Hebrew (Israel) / עברית (ישראל)</value>
+  </data>
+  <data name="HEBREW_ISRAEL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Hebrew
+(Israel) /
+עברית
+(ישראל)</value>
+  </data>
+  <data name="HUNGARIAN_HUNGARY" xml:space="preserve">
+    <value>Hungarian (Hungary) / Magyar (Magyarország)</value>
+  </data>
+  <data name="HUNGARIAN_HUNGARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Hungarian
+(Hungary) /
+Magyar
+(Magyarország)</value>
+  </data>
+  <data name="ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT" xml:space="preserve">
+    <value>處理按鍵選擇時發生了錯誤。</value>
+  </data>
+  <data name="LOAD_DICTIONARY" xml:space="preserve">
+    <value>載入字典</value>
+  </data>
+  <data name="LOAD_DICTIONARY_DESCRIPTION" xml:space="preserve">
+    <value>載入字典以檢視、新增或刪除單字。</value>
+  </data>
+  <data name="ENABLE_PLUGINS" xml:space="preserve">
+    <value>啟用外掛</value>
+  </data>
+  <data name="FEATURES_LABEL" xml:space="preserve">
+    <value>額外功能</value>
+  </data>
+  <data name="CONVERSATION_OPTIONS" xml:space="preserve">
+    <value>對話選項</value>
+  </data>
+  <data name="EXTRA_KEYS" xml:space="preserve">
+    <value>額外按鍵</value>
+  </data>
+  <data name="TYPING_OPTIONS" xml:space="preserve">
+    <value>打字選項</value>
+  </data>
+  <data name="FEATURES" xml:space="preserve">
+    <value>額外功能</value>
+  </data>
+  <data name="VARIOUS" xml:space="preserve">
+    <value>多重數值</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Chat : 簡單溝通</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Mouse : 完整控制遊標</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Symbol : 使用圖片溝通</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>這需要 Alienware 17 遊戲筆電，使用內建的 Tobii 眼動儀。</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>這需要 ITU Gaze Tracking Library，它是能讓您使用現成設備 (例如攝影機、網路攝影機) 的開放原始碼眼動追蹤框架。</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>如果您打算搭配 Irisbond Duo 眼動儀使用 Optikey，請確認您已安裝 Irisbond Duo 驅動程式。它可以從 https://www.irisbond.com/en/producto/irisbond-duo-2 下載。</value>
+  </data>
+  <data name="IRISBOND_HIRU_INFO" xml:space="preserve">
+    <value>如果您打算搭配 Irisbond Hiru 眼動儀使用 Optikey，請確認您已安裝 Irisbond Hiru 驅動程式。它可以從 https://www.irisbond.com/en/producto/irisbond-duo-2 下載。</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>在此模式下 Optikey 會使用滑鼠遊標位置作為輸入而不是直接和眼動儀互動。當您想要測試 Optikey 時，您可能會選擇這個模式，或是您想用其它替代輸入裝置，例如頭部滑鼠或未列入清單中的眼動儀。</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>若要搭配輔助眼動儀來使用 Optikey，您需要安裝新版的 Windows Control 或 Tobii Eye Tracking 引擎。若您需要使用舊版的 Tobii Windows Control 程式 (包含 Tobii Gaze Interaction 設定)，您需要改用滑鼠位置控制 Optikey。</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>此選項適用與任何 Tobii 遊戲眼動儀 (5, 4C, EyeX, Alienware, Steelseries等)</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>唯有在您已安裝 myGaze 客戶端驅動程式時，才支援 Visual Interaction myGaze，但它已經不再提供下載了。若您未安裝該驅動程式，你應改為選擇「滑鼠位置」，並搭配 myGaze EyeMousePlay 程式使用 Optikey 以移動遊標。</value>
+  </data>
+  <data name="OPACITY_LABEL" xml:space="preserve">
+    <value>透明度:</value>
+  </data>
+  <data name="ALLOW_MULTIPLE_INSTANCES" xml:space="preserve">
+    <value>允許同時執行多個 Optikey 程式:</value>
+  </data>
+  <data name="TOP" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="DOCK_POSITION_LABEL" xml:space="preserve">
+    <value>停駐位置:</value>
+  </data>
+  <data name="FLOATING_POSITION_LABEL" xml:space="preserve">
+    <value>漂浮位置 (左, 上, 寬, 高)</value>
+  </data>
+  <data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
+    <value>翻譯目標語言:</value>
+  </data>
+  <data name="ERROR_DURING_TRANSLATION" xml:space="preserve">
+    <value>翻譯文字時發生了錯誤</value>
+  </data>
+  <data name="TRANSLATE" xml:space="preserve">
+    <value>翻譯</value>
+  </data>
+  <data name="ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
+    <value>使用其他的 Yandex 翻譯 API 金鑰？</value>
+  </data>
+  <data name="OVERRIDDEN_TRANSLATION_API_KEY_LABEL" xml:space="preserve">
+    <value>API 金鑰:</value>
+  </data>
+  <data name="ENABLE_TRANSLATION_KEY_LABEL" xml:space="preserve">
+    <value>啟用「翻譯」按鍵: (自動複製譯文)</value>
+  </data>
+  <data name="TOBII_EYE_TRACKER_5" xml:space="preserve">
+    <value>Tobii Eye Tracker 5</value>
+  </data>
+  <data name="GAZE_SMOOTHING_LEVEL" xml:space="preserve">
+    <value>程式滑順度:</value>
+  </data>
+  <data name="HINDI_INDIA" xml:space="preserve">
+    <value>Hindi (India) / हिन्दी (भारत)</value>
+  </data>
+  <data name="HINDI_INDIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Hindi
+(India) /
+हिन्दी
+(भारत)</value>
+  </data>
+  <data name="ENABLE_RESIZE_WITH_MOUSE" xml:space="preserve">
+    <value>啟用滑鼠縮放:</value>
+  </data>
+  <data name="TOBII_PCEYE_5" xml:space="preserve">
+    <value>Tobii PCEye 5</value>
+  </data>
+  <data name="GAZE_INDICATOR_SIZE" xml:space="preserve">
+    <value>注視指示器大小</value>
+  </data>
+  <data name="GAZE_INDICATOR_STYLE" xml:space="preserve">
+    <value>注視指示器樣式</value>
+  </data>
+  <data name="SUPPRESS_TRIGGER_WARNING" xml:space="preserve">
+    <value>隱藏觸發事件時視線消失的警告</value>
+  </data>
+  <data name="GAMEPAD_XINPUT_BUTTON" xml:space="preserve">
+    <value>遊戲搖桿按鈕 (XInput)</value>
+  </data>
+  <data name="GAMEPAD_DIRECTINPUT_BUTTON" xml:space="preserve">
+    <value>遊戲搖桿按鈕 (DirectInput)</value>
+  </data>
+  <data name="KEY_SELECTION_GAMEPAD_BUTTON_LABEL" xml:space="preserve">
+    <value>按鍵選擇搖桿按鈕:</value>
+  </data>
+  <data name="POINT_SELECTION_GAMEPAD_BUTTON_LABEL" xml:space="preserve">
+    <value>指向選擇搖桿按鈕:</value>
+  </data>
+  <data name="KEY_SELECTION_GAMEPAD_SLOT_LABEL" xml:space="preserve">
+    <value>按鍵選擇搖桿:</value>
+  </data>
+  <data name="GAMEPAD_CONNECTED_IN_PARENTHESES" xml:space="preserve">
+    <value>(已連線)</value>
+  </data>
+  <data name="KEY_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
+    <value>按鍵選擇搖桿:</value>
+  </data>
+  <data name="ALL_DIRECTINPUT_CONTROLLERS" xml:space="preserve">
+    <value>所有 DirectInput 搖桿</value>
+  </data>
+  <data name="POINT_SELECTION_GAMEPAD_SLOT_LABEL" xml:space="preserve">
+    <value>指向選擇搖桿:</value>
+  </data>
+  <data name="POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
+    <value>指向選擇搖桿:</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Simplified (Bopomofo) / 中文 (注音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Bopomofo) /
+中文
+(注音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_CANGJIE5" xml:space="preserve">
+    <value>Chinese Simplified (Cangjie v5) / 中文 (仓颉五代-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Cangjie v5) /
+中文
+(仓颉五代-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Simplified (Luna Pinyin) / 中文 (朙月拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Luna Pinyin) /
+中文
+(朙月拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_TERRAPINYIN" xml:space="preserve">
+    <value>Chinese Simplified (Terra Pinyin) / 中文 (地球拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Terra Pinyin) /
+中文
+(地球拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Bopomofo) / 中文 (注音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Bopomofo) /
+中文
+(注音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) (Bopomofo) /
+中文
+(注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_CANGJIE5" xml:space="preserve">
+    <value>Chinese Traditional (Cangjie v5) / 中文 (倉頡五代)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Cangjie v5) /
+中文
+(倉頡五代)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Luna Pinyin) / 中文 (朙月拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Luna Pinyin) /
+中文
+(朙月拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TERRAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Terra Pinyin) / 中文 (地球拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Terra Pinyin) /
+中文
+(地球拼音)</value>
+  </data>
+</root>

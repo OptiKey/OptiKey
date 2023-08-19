@@ -7,6 +7,18 @@ namespace JuliusSweetland.OptiKey.Enums
     public enum Languages
     {
         CatalanSpain,
+        //ChineseSimplified,
+        ChineseSimplifiedBopomofo,
+        ChineseSimplifiedCangjie5,
+        ChineseSimplifiedLunaPinyin,
+        ChineseSimplifiedTerraPinyin,
+        ChineseTaiwanTraditionalLunaPinyin,
+        ChineseTaiwanTraditionalBopomofo,
+        ChineseTraditionalTaiwan,
+        ChineseTraditionalBopomofo,
+        ChineseTraditionalCangjie5,
+        ChineseTraditionalLunaPinyin,
+        ChineseTraditionalTerraPinyin,
         CroatianCroatia,
         CzechCzechRepublic,
         DanishDenmark,
@@ -39,7 +51,6 @@ namespace JuliusSweetland.OptiKey.Enums
         UkrainianUkraine,
         UrduPakistan
     }
-
     public static partial class EnumExtensions
     {
         public static string ToDescription(this Languages language)
@@ -47,6 +58,17 @@ namespace JuliusSweetland.OptiKey.Enums
             switch (language)
             {
                 case Languages.CatalanSpain: return Resources.CATALAN_SPAIN;
+                case Languages.ChineseSimplifiedBopomofo: return Resources.CHINESE_SIMPLIFIED_BOPOMOFO;
+                case Languages.ChineseSimplifiedCangjie5: return Resources.CHINESE_SIMPLIFIED_CANGJIE5;
+                case Languages.ChineseSimplifiedLunaPinyin: return Resources.CHINESE_SIMPLIFIED_LUNAPINYIN;
+                case Languages.ChineseSimplifiedTerraPinyin: return Resources.CHINESE_SIMPLIFIED_TERRAPINYIN;
+                case Languages.ChineseTaiwanTraditionalBopomofo: return Resources.CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO;
+                case Languages.ChineseTaiwanTraditionalLunaPinyin: return Resources.CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN;
+                case Languages.ChineseTraditionalBopomofo: return Resources.CHINESE_TRADITIONAL_BOPOMOFO;
+                case Languages.ChineseTraditionalCangjie5: return Resources.CHINESE_TRADITIONAL_CANGJIE5;
+                case Languages.ChineseTraditionalLunaPinyin: return Resources.CHINESE_TRADITIONAL_LUNAPINYIN;
+                case Languages.ChineseTraditionalTerraPinyin: return Resources.CHINESE_TRADITIONAL_TERRAPINYIN;
+                case Languages.ChineseTraditionalTaiwan: return Resources.CHINESE_TRADITIONAL_TAIWAN;
                 case Languages.CroatianCroatia: return Resources.CROATIAN_CROATIA;
                 case Languages.CzechCzechRepublic: return Resources.CZECH_CZECH_REPUBLIC;
                 case Languages.DanishDenmark: return Resources.DANISH_DENMARK;
@@ -88,6 +110,7 @@ namespace JuliusSweetland.OptiKey.Enums
             switch (language)
             {
                 case Languages.CatalanSpain: return CultureInfo.GetCultureInfo("ca-ES");
+                case Languages.ChineseTraditionalTaiwan: return CultureInfo.GetCultureInfo("zh-TW");
                 case Languages.CroatianCroatia: return CultureInfo.GetCultureInfo("hr-HR");
                 case Languages.CzechCzechRepublic: return CultureInfo.GetCultureInfo("cs-CZ");
                 case Languages.DanishDenmark: return CultureInfo.GetCultureInfo("da-DK");
@@ -133,6 +156,64 @@ namespace JuliusSweetland.OptiKey.Enums
 
                 default:
                     return true;
+            }
+        }
+        public static bool ManagedByRime(this Languages language)
+        {
+            switch (language) {
+                case Languages.ChineseSimplifiedBopomofo:
+                case Languages.ChineseSimplifiedCangjie5:
+                case Languages.ChineseSimplifiedLunaPinyin:
+                case Languages.ChineseSimplifiedTerraPinyin:
+                case Languages.ChineseTaiwanTraditionalBopomofo:
+                case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                case Languages.ChineseTraditionalBopomofo:
+                case Languages.ChineseTraditionalCangjie5:
+                case Languages.ChineseTraditionalLunaPinyin:
+                case Languages.ChineseTraditionalTerraPinyin:
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
+        public static string GetRimeSchemaId(this Languages language) {
+            switch (language) {
+                case Languages.ChineseSimplifiedBopomofo:
+                case Languages.ChineseTraditionalBopomofo:
+                    return "bopomofo";
+                case Languages.ChineseTaiwanTraditionalBopomofo:
+                    return "bopomofo_tw";
+                case Languages.ChineseSimplifiedCangjie5:
+                case Languages.ChineseTraditionalCangjie5:
+                    return "cangjie5";
+                case Languages.ChineseSimplifiedLunaPinyin:
+                    return "luna_pinyin_simp";
+                case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                    return "luna_pinyin_tw";
+                case Languages.ChineseTraditionalLunaPinyin:
+                    return "luna_pinyin";
+                case Languages.ChineseSimplifiedTerraPinyin:
+                case Languages.ChineseTraditionalTerraPinyin:
+                    return "terra_pinyin";
+                default:
+                    return "";
+            }
+        }
+        public static string GetRimeOption(this Languages language) {
+            switch (language) {
+                case Languages.ChineseSimplifiedCangjie5:
+                case Languages.ChineseSimplifiedTerraPinyin:
+                    return "simplification";
+                case Languages.ChineseTraditionalCangjie5:
+                case Languages.ChineseTraditionalTerraPinyin:
+                    return "!simplification";
+                case Languages.ChineseSimplifiedBopomofo:
+                    return "zh_hans";
+                case Languages.ChineseTraditionalBopomofo:
+                    return "zh_hant";
+                default:
+                    return "";
             }
         }
     }

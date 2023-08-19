@@ -2473,13 +2473,112 @@ Magyar
   <data name="LIMIT_BACKONE" xml:space="preserve">
     <value>Limit "BackOne" deletion to a single character</value>
   </data>
+  <data name="CHINESE_SIMPLIFIED_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Simplified (Bopomofo) / 中文 (注音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Bopomofo) /
+中文
+(注音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_CANGJIE5" xml:space="preserve">
+    <value>Chinese Simplified (Cangjie v5) / 中文 (仓颉五代-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Cangjie v5) /
+中文
+(仓颉五代-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Simplified (Luna Pinyin) / 中文 (朙月拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Luna Pinyin) /
+中文
+(朙月拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_TERRAPINYIN" xml:space="preserve">
+    <value>Chinese Simplified (Terra Pinyin) / 中文 (地球拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Terra Pinyin) /
+中文
+(地球拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) (Bopomofo) /
+中文
+(注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) (Luna Pinyin) / 中文 (朙月拼音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) (Luna Pinyin) /
+中文
+(朙月拼音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) / 正體中文 (臺灣)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) /
+正體中文
+(臺灣)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Bopomofo) / 中文 (注音)</value>
+  </data>
   <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
     <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Bopomofo) /
+中文
+(注音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_CANGJIE5" xml:space="preserve">
+    <value>Chinese Traditional (Cangjie v5) / 中文 (倉頡五代)</value>
   </data>
   <data name="ALLOW_REPEATS_LABEL" xml:space="preserve">
     <value>Allow key actions to be repeated when pressing trigger away from keyboard</value>
   </data>
+  <data name="CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Cangjie v5) /
+中文
+(倉頡五代)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Luna Pinyin) / 中文 (朙月拼音)</value>
+  </data>
   <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
     <value>Repeat last key:</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Luna Pinyin) /
+中文
+(朙月拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TERRAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Terra Pinyin) / 中文 (地球拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Terra Pinyin) /
+中文
+(地球拼音)</value>
   </data>
 </root>
