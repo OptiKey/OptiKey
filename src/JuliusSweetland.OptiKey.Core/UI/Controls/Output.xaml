@@ -13,7 +13,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -21,6 +21,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ResourceDictionary>
                     <valueConverters:SuggestionsPaged x:Key="SuggestionsPaged" />
                     <valueConverters:BoolToCustomValues TrueValue="1*" FalseValue="0*" x:Key="BoolToCustomValues" />
+                    <valueConverters:IsGreaterThanToCustomValues TrueValue="1*" FalseValue="0*" x:Key="IsGreaterThanToCustomValues" />
                     <valueConverters:CalculateScratchpadWidth DefaultGridLength="8" x:Key="CalculateScratchpadWidth" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
@@ -52,7 +53,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableCopyAllScratchpadKey, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="{Binding Source={x:Static resx:Settings.Default}, Path=EnableTranslationKey, Converter={StaticResource BoolToCustomValues}}" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" /> 
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0"
@@ -67,6 +68,8 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="{Binding Path=BindableNumberOfSuggestionsDisplayed, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource IsGreaterThanToCustomValues}, ConverterParameter=4, Mode=OneWay}" />
+                <ColumnDefinition Width="{Binding Path=BindableNumberOfSuggestionsDisplayed, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource IsGreaterThanToCustomValues}, ConverterParameter=5, Mode=OneWay}"  />
             </Grid.ColumnDefinitions>
             <controls:Key Grid.Row="0" Grid.Column="0" SharedSizeGroup="KeyWithSuggestion" Case="None"
                           Value="{x:Static models:KeyValues.Suggestion1Key}">
@@ -128,6 +131,36 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </MultiBinding>
                 </controls:Key.Text>
             </controls:Key>
+            <controls:Key Grid.Row="0" Grid.Column="4" SharedSizeGroup="KeyWithSuggestion" Case="None"
+                          Value="{x:Static models:KeyValues.Suggestion5Key}">
+                <controls:Key.Text>
+                    <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
+                        <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding>
+                            <Binding.Source>
+                                <system:Int32>4</system:Int32>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </controls:Key.Text>
+            </controls:Key>
+            <controls:Key Grid.Row="0" Grid.Column="5" SharedSizeGroup="KeyWithSuggestion" Case="None"
+                          Value="{x:Static models:KeyValues.Suggestion6Key}">
+                <controls:Key.Text>
+                    <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
+                        <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding>
+                            <Binding.Source>
+                                <system:Int32>5</system:Int32>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </controls:Key.Text>
+            </controls:Key>
         </Grid>
         <controls:Key Grid.Row="0" Grid.Column="8"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
@@ -170,7 +203,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             </ContentControl.Style>
         </ContentControl>
         <controls:Scratchpad Grid.Row="1" Grid.Column="3" x:Name="Scratchpad"
-                             Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}"
+                             Text="{Binding DataContext.KeyboardOutputService.TextWithRimePreedit, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}"
                              FlowDirection="{Binding Source={x:Static resx:Settings.Default}, Path=UiLanguageFlowDirection}" />
         <ContentControl Grid.Row="1" Grid.Column="4"
                         Visibility="{Binding EnableCommuniKateKeyboardLayout, Source={x:Static resx:Settings.Default}, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >

@@ -1,6 +1,7 @@
 // Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Rime;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
 using Prism.Mvvm;
@@ -32,13 +33,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #region Properties
 
-        public static List<KeyValuePair<string, Languages>> Languages
+        public static List<KeyValuePair<string, Languages>> UiLanguages
         {
             get
             {
                 return new List<KeyValuePair<string, Languages>>
                 {
                     new KeyValuePair<string, Languages>(Resources.CATALAN_SPAIN, Enums.Languages.CatalanSpain),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_TRADITIONAL_TAIWAN, Enums.Languages.ChineseTraditionalTaiwan),
                     new KeyValuePair<string, Languages>(Resources.CROATIAN_CROATIA, Enums.Languages.CroatianCroatia),
                     new KeyValuePair<string, Languages>(Resources.CZECH_CZECH_REPUBLIC, Enums.Languages.CzechCzechRepublic),
                     new KeyValuePair<string, Languages>(Resources.DANISH_DENMARK, Enums.Languages.DanishDenmark),
@@ -70,6 +72,67 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Languages>(Resources.TURKISH_TURKEY, Enums.Languages.TurkishTurkey),
                     new KeyValuePair<string, Languages>(Resources.UKRAINIAN_UKRAINE, Enums.Languages.UkrainianUkraine),
                     new KeyValuePair<string, Languages>(Resources.URDU_PAKISTAN, Enums.Languages.UrduPakistan),
+                };
+            }
+        }
+
+        public static List<KeyValuePair<string, Languages>> KeyboardLanguages {
+            get {
+                return new List<KeyValuePair<string, Languages>>
+                {
+                    new KeyValuePair<string, Languages>(Resources.CATALAN_SPAIN, Enums.Languages.CatalanSpain),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_SIMPLIFIED_BOPOMOFO, Enums.Languages.ChineseSimplifiedBopomofo),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_SIMPLIFIED_CANGJIE5, Enums.Languages.ChineseSimplifiedCangjie5),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_SIMPLIFIED_LUNAPINYIN, Enums.Languages.ChineseSimplifiedLunaPinyin),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_SIMPLIFIED_TERRAPINYIN, Enums.Languages.ChineseSimplifiedTerraPinyin),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO, Enums.Languages.ChineseTaiwanTraditionalBopomofo),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN, Enums.Languages.ChineseTaiwanTraditionalLunaPinyin),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_TRADITIONAL_BOPOMOFO, Enums.Languages.ChineseTraditionalBopomofo),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_TRADITIONAL_CANGJIE5, Enums.Languages.ChineseTraditionalCangjie5),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_TRADITIONAL_LUNAPINYIN, Enums.Languages.ChineseTraditionalLunaPinyin),
+                    new KeyValuePair<string, Languages>(Resources.CHINESE_TRADITIONAL_TERRAPINYIN, Enums.Languages.ChineseTraditionalTerraPinyin),
+                    new KeyValuePair<string, Languages>(Resources.CROATIAN_CROATIA, Enums.Languages.CroatianCroatia),
+                    new KeyValuePair<string, Languages>(Resources.CZECH_CZECH_REPUBLIC, Enums.Languages.CzechCzechRepublic),
+                    new KeyValuePair<string, Languages>(Resources.DANISH_DENMARK, Enums.Languages.DanishDenmark),
+                    new KeyValuePair<string, Languages>(Resources.DUTCH_BELGIUM, Enums.Languages.DutchBelgium),
+                    new KeyValuePair<string, Languages>(Resources.DUTCH_NETHERLANDS, Enums.Languages.DutchNetherlands),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_CANADA, Enums.Languages.EnglishCanada),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_UK, Enums.Languages.EnglishUK),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_US, Enums.Languages.EnglishUS),
+                    new KeyValuePair<string, Languages>(Resources.FINNISH_FINLAND, Enums.Languages.FinnishFinland),
+                    new KeyValuePair<string, Languages>(Resources.FRENCH_CANADA, Enums.Languages.FrenchCanada),
+                    new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, Enums.Languages.FrenchFrance),
+                    new KeyValuePair<string, Languages>(Resources.GEORGIAN_GEORGIA, Enums.Languages.GeorgianGeorgia),
+                    new KeyValuePair<string, Languages>(Resources.GERMAN_GERMANY, Enums.Languages.GermanGermany),
+                    new KeyValuePair<string, Languages>(Resources.GREEK_GREECE, Enums.Languages.GreekGreece),
+                    new KeyValuePair<string, Languages>(Resources.HEBREW_ISRAEL, Enums.Languages.HebrewIsrael),
+                    new KeyValuePair<string, Languages>(Resources.HINDI_INDIA, Enums.Languages.HindiIndia),
+                    new KeyValuePair<string, Languages>(Resources.HUNGARIAN_HUNGARY, Enums.Languages.HungarianHungary),
+                    new KeyValuePair<string, Languages>(Resources.ITALIAN_ITALY, Enums.Languages.ItalianItaly),
+                    new KeyValuePair<string, Languages>(Resources.JAPANESE_JAPAN, Enums.Languages.JapaneseJapan),
+                    new KeyValuePair<string, Languages>(Resources.KOREAN_KOREA, Enums.Languages.KoreanKorea),
+                    new KeyValuePair<string, Languages>(Resources.PERSIAN_IRAN, Enums.Languages.PersianIran),
+                    new KeyValuePair<string, Languages>(Resources.POLISH_POLAND, Enums.Languages.PolishPoland),
+                    new KeyValuePair<string, Languages>(Resources.PORTUGUESE_PORTUGAL, Enums.Languages.PortuguesePortugal),
+                    new KeyValuePair<string, Languages>(Resources.RUSSIAN_RUSSIA, Enums.Languages.RussianRussia),
+                    new KeyValuePair<string, Languages>(Resources.SERBIAN_SERBIA, Enums.Languages.SerbianSerbia),
+                    new KeyValuePair<string, Languages>(Resources.SLOVAK_SLOVAKIA, Enums.Languages.SlovakSlovakia),
+                    new KeyValuePair<string, Languages>(Resources.SLOVENIAN_SLOVENIA, Enums.Languages.SlovenianSlovenia),
+                    new KeyValuePair<string, Languages>(Resources.SPANISH_SPAIN, Enums.Languages.SpanishSpain),
+                    new KeyValuePair<string, Languages>(Resources.TURKISH_TURKEY, Enums.Languages.TurkishTurkey),
+                    new KeyValuePair<string, Languages>(Resources.UKRAINIAN_UKRAINE, Enums.Languages.UkrainianUkraine),
+                    new KeyValuePair<string, Languages>(Resources.URDU_PAKISTAN, Enums.Languages.UrduPakistan),
+                };
+            }
+        }
+
+        public static List<KeyValuePair<string, Languages>> EnglishDictionaries {
+            get {
+                return new List<KeyValuePair<string, Languages>>
+                {
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_CANADA, Enums.Languages.EnglishCanada),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_UK, Enums.Languages.EnglishUK),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_US, Enums.Languages.EnglishUS),
                 };
             }
         }
@@ -128,6 +191,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     KeyboardLayout = KeyboardLayouts.First().Value;
                 }
             }
+        }
+
+        private Languages dictionaryLanguageForRime;
+        public Languages DictionaryLanguageForRime {
+            get { return dictionaryLanguageForRime; }
+            set { SetProperty(ref this.dictionaryLanguageForRime, value); }
         }
 
         private bool displayVoicesWhenChangingKeyboardLanguage;
@@ -311,6 +380,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeyboardAndDictionaryLanguage = Settings.Default.KeyboardAndDictionaryLanguage;
             DisplayVoicesWhenChangingKeyboardLanguage = Settings.Default.DisplayVoicesWhenChangingKeyboardLanguage;
             UiLanguage = Settings.Default.UiLanguage;
+            DictionaryLanguageForRime = Settings.Default.DictionaryLanguageForRime;
             KeyboardLayout = Settings.Default.KeyboardLayout;
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
@@ -331,11 +401,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public void ApplyChanges()
         {
             var reloadDictionary = (Settings.Default.KeyboardAndDictionaryLanguage != KeyboardAndDictionaryLanguage)
-                                   || (Settings.Default.SuggestionMethod != SuggestionMethod);
+                                   || (Settings.Default.SuggestionMethod != SuggestionMethod)
+                                   || (Settings.Default.DictionaryLanguageForRime != DictionaryLanguageForRime);
 
             Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
             Settings.Default.DisplayVoicesWhenChangingKeyboardLanguage = DisplayVoicesWhenChangingKeyboardLanguage;
             Settings.Default.UiLanguage = UiLanguage;
+            Settings.Default.DictionaryLanguageForRime = DictionaryLanguageForRime;
             Settings.Default.KeyboardLayout = KeyboardLayout;
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;          
             // TODO: Remove these bools, the state is tangled.
@@ -358,6 +430,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             if (reloadDictionary)
             {
                 dictionaryService.LoadDictionary();
+                MyRimeApi.SelectSchema();
             }
         }
 

@@ -1,0 +1,145 @@
+# Rime configuration - pinyin
+
+# 參考資料：
+# 【朙月拼音】模糊音定製模板
+# https://gist.github.com/lotem/2320943
+
+# 用法
+usage: |
+  # luna_pinyin.custom.yaml
+  patch:
+    speller/algebra:
+      __patch:
+        - pinyin:/zh_z_bufen
+        - pinyin:/n_l_bufen
+        - pinyin:/r_l_bufen
+        - pinyin:/r_y_bufen
+        - pinyin:/hu_f_buhun
+        - pinyin:/eng_ong_bufen
+        - pinyin:/en_eng_bufen
+        - pinyin:/ziantuan
+        - pinyin:/zhongguan
+        - pinyin:/abbreviation
+        - pinyin:/spelling_correction
+        - pinyin:/key_correction
+    translator/preedit_format/+:
+      __patch:
+        - pinyin:/ziantuan_preedit_format
+        - pinyin:/zhongguan_preedit_format
+
+# 模糊音定義
+
+zh_z_bufen:
+  __append:
+    - derive/^([zcs])h/$1/             # zh, ch, sh => z, c, s
+    - derive/^([zcs])([^h])/$1h$2/     # z, c, s => zh, ch, sh
+
+n_l_bufen:
+  __append:
+    - derive/^n/l/                     # n => l
+    - derive/^l/n/                     # l => n
+
+r_l_bufen:
+  __append:
+    - derive/^r/l/                     # r => l
+
+r_y_bufen:
+  __append:
+    - derive/^ren/yin/                 # ren => yin, reng => ying
+    - derive/^r/y/                     # r => y
+
+hu_f_buhun:
+  __append:
+    - derive/^hu$/fu/                  # hu => fu
+    - derive/^hong$/feng/              # hong => feng
+    - derive/^hu([in])$/fe$1/          # hui => fei, hun => fen
+    - derive/^hu([ao])/f$1/            # hua => fa, ...
+
+    - derive/^fu$/hu/                  # fu => hu
+    - derive/^feng$/hong/              # feng => hong
+    - derive/^fe([in])$/hu$1/          # fei => hui, fen => hun
+    - derive/^f([ao])/hu$1/            # fa => hua, ...
+
+# 韻母部份
+
+eng_ong_bufen:
+  __append:
+    - derive/^([bpmf])eng$/$1ong/      # meng = mong, ...
+
+en_eng_bufen:
+  __append:
+    - derive/([ei])n$/$1ng/            # en => eng, in => ing
+    - derive/([ei])ng$/$1n/            # eng => en, ing => in
+
+# 「反模糊音」？
+# 誰說方言沒有普通話精確；有模糊音，就能有反模糊音。
+# 示例爲分尖團的中原官話。
+# 注意：這個辦法雖從拼寫上做出了區分，然而受拼音詞典制約，候選字仍是混的。
+
+# 強行分尖團
+ziantuan:
+  __append:
+    - derive/^ji$/zii/   # 在《漢語拼音方案》設計者的安排下鳩佔鵲巢，尖音i只好雙寫了
+    - derive/^qi$/cii/
+    - derive/^xi$/sii/
+    - derive/^ji([aoeun])/zi$1/  # jian => zian, ...
+    - derive/^qi([aoeun])/ci$1/
+    - derive/^xi([aoeun])/si$1/
+    - derive/^ju/zv/
+    - derive/^qu/cv/
+    - derive/^xu/sv/
+    - derive/^([zcs])ii/$1yi/  # zii 也可拼作 zyi
+    - derive/^([nlzcs])v/$1yu/  # zv 也可拼作 zyu
+
+# 分尖團後拼式的改寫條件也要相應地擴充
+ziantuan_preedit_format:
+  __append:
+    - xform/([zcs])ii/$1ï/
+    - xform/([zcs])v/$1ü/
+
+# 兼容中原官話（鄭汴洛）韻母，只能從大面上覆蓋
+zhongguan:
+  __append:
+    - derive/^([bpm])o$/$1eh/          # bo => beh, ...
+    - derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge => geh, se => sheh, ...
+    - derive/^([gkh])uo$/$1ueh/        # guo => gueh, ...
+    - derive/ueh$/ue/                  # ueh 也可拼作 ue
+    - derive/eh$/ee/                   # eh 也可拼作 ee
+    - derive/^([gkh])e$/$1uo/          # he => huo, ...
+    - derive/^([jqx])ie$/$1iai/        # jie => jiai, ...
+    - derive/([uv])e$/$1o/             # jue => juo, lve => lvo, ...
+    - derive/^fei$/fi/                 # fei => fi
+    - derive/^wei$/vi/                 # wei => vi
+    - derive/^([nl])ei$/$1ui/          # nei => nui, lei => lui
+    - derive/^([nlzcs])un$/$1vn/       # lun => lvn, zun => zvn, ...
+    - derive/^([nlzcs])ong$/$1iong/    # long => liong, song => siong, ...
+
+# 改寫字母 ê
+zhongguan_preedit_format:
+  __append:
+    - "xform/e[eh]($|[ '])/ê$1/"
+    - "xform/ue($|[ '])/uê$1/"
+
+# 注意：模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音
+abbreviation:
+  __append:
+    - abbrev/^([a-z]).+$/$1/           # 簡拼（首字母）
+    - abbrev/^([zcs]h).+$/$1/          # 簡拼（zh, ch, sh）
+
+# 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正
+spelling_correction:
+  __append:
+    - derive/^([nl])ve$/$1ue/          # nve = nue, lve = lue
+    - derive/^([jqxy])u/$1v/           # ju = jv,
+    - derive/un$/uen/                  # gun = guen,
+    - derive/ui$/uei/                  # gui = guei,
+    - derive/iu$/iou/                  # jiu = jiou,
+
+# 自動糾正一些常見的按鍵錯誤
+key_correction:
+  __append:
+    - derive/([aeiou])ng$/$1gn/        # dagn => dang
+    - derive/([dtngkhrzcs])o(u|ng)$/$1o/  # zho => zhong|zhou
+    - derive/ong$/on/                  # zhonguo => zhong guo
+    - derive/ao$/oa/                   # hoa => hao
+    - derive/([iu])a(o|ng?)$/a$1$2/    # tain => tian

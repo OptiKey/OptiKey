@@ -2,6 +2,7 @@
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Rime;
 using JuliusSweetland.OptiKey.Services;
 using Prism.Mvvm;
 using System;
@@ -130,18 +131,26 @@ namespace JuliusSweetland.OptiKey.Models
 
                 //Key is Previous suggestions, but no suggestions, or on page 1
                 if (keyValue == KeyValues.PreviousSuggestionsKey
-                    && (suggestionService.Suggestions == null
-                        || !suggestionService.Suggestions.Any()
-                        || suggestionService.SuggestionsPage == 0))
+                    && ((!Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                     && (suggestionService.Suggestions == null
+                            || !suggestionService.Suggestions.Any()
+                            || suggestionService.SuggestionsPage == 0))
+                     || (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() &&
+                        (!MyRimeApi.IsComposing 
+                            || (MyRimeApi.IsComposing&& MyRimeApi.IsFirstPage)))))
                 {
                     return false;
                 }
 
                 //Key is Next suggestions but no suggestions, or on last page
                 if (keyValue == KeyValues.NextSuggestionsKey
-                    && (suggestionService.Suggestions == null
+                    && ((!Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                     && (suggestionService.Suggestions == null
                         || !suggestionService.Suggestions.Any()
                         || suggestionService.Suggestions.Count <= ((suggestionService.SuggestionsPage * suggestionService.SuggestionsPerPage) + suggestionService.SuggestionsPerPage)))
+                     || (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() &&
+                        (!MyRimeApi.IsComposing
+                            || (MyRimeApi.IsComposing && MyRimeApi.IsLastPage)))))
                 {
                     return false;
                 }
@@ -191,6 +200,14 @@ namespace JuliusSweetland.OptiKey.Models
                 //Expand/Collapse dock when not docked
                 if ((keyValue == KeyValues.ExpandDockKey || keyValue == KeyValues.CollapseDockKey)
                     && Settings.Default.MainWindowState != WindowStates.Docked)
+                {
+                    return false;
+                }
+
+                //Disable when using Rime and not in ascii mode
+                if (keyValue == KeyValues.AddToDictionaryKey 
+                    && Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                    && !MyRimeApi.IsAsciiMode)
                 {
                     return false;
                 }

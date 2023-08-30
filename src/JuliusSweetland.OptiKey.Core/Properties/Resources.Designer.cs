@@ -594,6 +594,237 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Bopomofo) / 中文 (注音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_BOPOMOFO {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_BOPOMOFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Bopomofo) /
+        ///中文
+        ///(注音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Cangjie v5) / 中文 (仓颉五代-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_CANGJIE5 {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_CANGJIE5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Cangjie v5) /
+        ///中文
+        ///(仓颉五代-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Luna Pinyin) / 中文 (朙月拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Luna Pinyin) /
+        ///中文
+        ///(朙月拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Terra Pinyin) / 中文 (地球拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_TERRAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_TERRAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Terra Pinyin) /
+        ///中文
+        ///(地球拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) / 正體中文 (臺灣).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TAIWAN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) /
+        ///正體中文
+        ///(臺灣).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Bopomofo) / 中文 (注音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_BOPOMOFO {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_BOPOMOFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Bopomofo) /
+        ///中文
+        ///(注音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Cangjie v5) / 中文 (倉頡五代).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_CANGJIE5 {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Cangjie v5) /
+        ///中文
+        ///(倉頡五代).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Luna Pinyin) / 中文 (朙月拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_LUNAPINYIN", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Luna Pinyin) /
+        ///中文
+        ///(朙月拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) (Bopomofo) /
+        ///中文
+        ///(注音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Lyna Pinyin) / 中文 (朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) (Luna Pinyin) /
+        ///中文
+        ///(朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Terra Pinyin) / 中文 (地球拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TERRAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TERRAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Terra Pinyin) /
+        ///中文
+        ///(地球拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CLEAR.
         /// </summary>
         public static string CLEAR {

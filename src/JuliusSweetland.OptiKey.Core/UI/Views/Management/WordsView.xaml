@@ -46,31 +46,40 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}"
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                              ItemsSource="{Binding Languages}"
+                              ItemsSource="{Binding KeyboardLanguages}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding KeyboardAndDictionaryLanguage, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE}"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="English dictionary for Rime"
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="1" Grid.Column="1"
+                    <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                              ItemsSource="{Binding EnglishDictionaries}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding DictionaryLanguageForRime, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.DISPLAY_VOICES_WHEN_CHANGING_KEYBOARD_LANGUAGE}"
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="2" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding DisplayVoicesWhenChangingKeyboardLanguage, Mode=TwoWay}"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.UI_LANGUAGE_LABEL}"
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.UI_LANGUAGE_LABEL}"
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                              ItemsSource="{Binding Languages}"
+                    <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                              ItemsSource="{Binding UiLanguages}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding UiLanguage, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -83,7 +92,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                    <ComboBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                               ItemsSource="{Binding KeyboardLayouts}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
@@ -102,15 +111,15 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
                     
 
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
                                 VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="10" Grid.Column="1"
+                    <CheckBox Grid.Row="11" Grid.Column="1"
                                 VerticalAlignment="Center"
                                 IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.TYPE_DIACRITICS_AFTER_LETTERS}"
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.TYPE_DIACRITICS_AFTER_LETTERS}"
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="11" Grid.Column="1"
+                    <CheckBox Grid.Row="12" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding TypeDiacriticsAfterLetters, Mode=TwoWay}" />
                 </Grid>

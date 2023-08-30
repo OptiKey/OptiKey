@@ -19,6 +19,7 @@ using System.Windows;
 using System.Windows.Controls;
 using JuliusSweetland.OptiKey.UI.Windows;
 using CatalanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Catalan;
+using ChineseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Chinese;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using CroatianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Croatian;
 using CzechViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Czech;
@@ -224,6 +225,22 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.CatalanSpain:
                         newContent = new CatalanViews.Alpha1 { DataContext = Keyboard };
                         break;
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
+                        newContent = new ChineseViews.Bopomofo { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedCangjie5:
+                    case Languages.ChineseTraditionalCangjie5:
+                        newContent = new ChineseViews.Cangjie { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                        newContent = new ChineseViews.Alpha1 { DataContext = Keyboard };
+                        break;
                     case Languages.CroatianCroatia:
                         newContent = new CroatianViews.Alpha1 { DataContext = Keyboard };
                         break;
@@ -335,6 +352,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseSimplifiedCangjie5:
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTraditionalCangjie5:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                        newContent = new ChineseViews.Alpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.HebrewIsrael:
                         newContent = new HebrewViews.Alpha2 { DataContext = Keyboard };
                         break;
@@ -376,6 +405,22 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 {
                     case Languages.CatalanSpain:
                         newContent = new CatalanViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
+                        newContent = new ChineseViews.ConversationBopomofo { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedCangjie5:
+                    case Languages.ChineseTraditionalCangjie5:
+                        newContent = new ChineseViews.ConversationCangjie { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                            newContent = new ChineseViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:
                         newContent = new CroatianViews.ConversationAlpha1 { DataContext = Keyboard };
@@ -486,6 +531,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseSimplifiedCangjie5:
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTraditionalCangjie5:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                        newContent = new ChineseViews.ConversationAlpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.HindiIndia:
                         newContent = new HindiViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
@@ -557,6 +614,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.Language)
             {
                 newContent = new CommonViews.Language { DataContext = Keyboard };
+            }
+            else if (Keyboard is ViewModelKeyboards.Language2)
+            {
+                newContent = new CommonViews.Language2 { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.Voice)
             {

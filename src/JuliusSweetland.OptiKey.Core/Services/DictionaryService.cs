@@ -3,6 +3,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Rime;
 using JuliusSweetland.OptiKey.Services.Suggestions;
 using log4net;
 using System;
@@ -58,6 +59,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             MigrateLegacyDictionaries();
             LoadDictionary();
+            MyRimeApi.SelectSchema();
 
             //Subscribe to changes in the keyboard language to reload the dictionary
             Settings.Default.OnPropertyChanges(settings => settings.KeyboardAndDictionaryLanguage).Subscribe(_ => LoadDictionary());
@@ -134,8 +136,12 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void LoadDictionaryFromLanguageFile()
         {
+            //Keyboards managed by Rime have an English keyboard using selected dictionary
+            var language = Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                ? Settings.Default.DictionaryLanguageForRime
+                : Settings.Default.KeyboardAndDictionaryLanguage;
              //Load the original dictionary
-             var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
+             var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, language, DictionaryFileType));
 
             if (File.Exists(originalDictionaryPath))
             {
@@ -188,8 +194,12 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private static string GetUserDictionaryPath(Languages? language)
+        private static string GetUserDictionaryPath(Languages language)
         {
+            //Keyboards managed by Rime have an English keyboard using selected dictionary
+            language = language.ManagedByRime()
+                ? Settings.Default.DictionaryLanguageForRime
+                : language;
             return GetUserDictionaryPath(string.Format("{0}{1}", language, DictionaryFileType));
         }
 

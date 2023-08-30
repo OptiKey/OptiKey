@@ -1,0 +1,36 @@
+# Rime schema
+# encoding: utf-8
+
+__include: luna_pinyin.schema:/
+
+schema:
+  schema_id: luna_pinyin_simp
+  name: 朙月拼音·简化字
+  version: "0.22"
+  author:
+    - 佛振 <chen.sst@gmail.com>
+  description: |
+    朙月拼音，簡化字輸出模式。
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: zh_simp
+    reset: 1
+    states: [ 漢字, 汉字 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+translator:
+  prism: luna_pinyin_simp
+
+simplifier:
+  option_name: zh_simp
+
+key_binder:
+  bindings/+:
+    - { when: always, accept: Control+Shift+4, toggle: zh_simp }
+    - { when: always, accept: Control+Shift+dollar, toggle: zh_simp }

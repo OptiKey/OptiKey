@@ -1,0 +1,26 @@
+# Rime schema
+# encoding: utf-8
+
+__include: bopomofo.schema:/
+
+schema:
+  schema_id: bopomofo_express
+  name: 注音·快打模式
+  version: '2.3'
+  author:
+    - 佛振 <chen.sst@gmail.com>
+  description: |
+    注音符號輸入，採用「大千式」鍵盤排列。
+
+    本方案採用「無模式」設計，以大寫字母鍵或上下方向鍵、回車鍵選詞；
+    空格鍵輸入第一聲，標記爲「ˉ」。也可省略聲調或韻母部份。
+
+speller:
+  algebra:
+    __patch:
+      - zhuyin:/pinyin_to_zhuyin
+      - zhuyin:/abbreviation
+      - zhuyin:/keymap_bopomofo
+
+translator:
+  prism: bopomofo_express

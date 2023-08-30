@@ -18,16 +18,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public Output()
         {
             InitializeComponent();
-            Loaded += (sender, args) => NumberOfSuggestionsDisplayed = 4;
+            Loaded += (sender, args) => { BindableNumberOfSuggestionsDisplayed = NumberOfSuggestionsDisplayed; };
         }
 
-        public static readonly DependencyProperty NumberOfSuggestionsDisplayedProperty =
-            DependencyProperty.Register("NumberOfSuggestionsDisplayed", typeof (int), typeof (Output), new PropertyMetadata(default(int)));
+        public int NumberOfSuggestionsDisplayed { get; set; } = 4;
 
-        public int NumberOfSuggestionsDisplayed
+        public static readonly DependencyProperty BindableNumberOfSuggestionsDisplayedProperty =
+            DependencyProperty.Register("BindableNumberOfSuggestionsDisplayed", typeof (int), typeof (Output), new PropertyMetadata(default(int)));
+
+        public int BindableNumberOfSuggestionsDisplayed
         {
-            get { return (int) GetValue(NumberOfSuggestionsDisplayedProperty); }
-            set { SetValue(NumberOfSuggestionsDisplayedProperty, value); }
+            get { return (int) GetValue(BindableNumberOfSuggestionsDisplayedProperty); }
+            set { SetValue(BindableNumberOfSuggestionsDisplayedProperty, value); }
         }
 
         public static readonly DependencyProperty ScratchpadWidthInKeysProperty = DependencyProperty.Register(
