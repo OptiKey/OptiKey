@@ -1,23 +1,23 @@
 // Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.Controls;
-using JuliusSweetland.OptiKey.UI.ValueConverters;
-using JuliusSweetland.OptiKey.UI.Windows;
-using log4net;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using System.Windows;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Enums;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Xml;
 using System.Xml.Serialization;
+using System.IO;
+using System;
+using System.Linq;
+using System.Windows.Media;
+using System.Reflection;
+using log4net;
+using System.Xml;
+using System.Windows;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using JuliusSweetland.OptiKey.UI.Windows;
+using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.UI.ValueConverters;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -318,15 +318,26 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             AddRowsToGrid(4);
             AddColsToGrid(4);
 
+            // We hardcode black-on-white text for full visibility
+
             // Top middle two cells are main error message
             {
-                var newKey = new Key {Text = heading};
-                PlaceKeyInPosition(newKey, 0, 1, 1, 2);
-            }
+                var newKey = new Key {
+                    Text = heading,
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
 
+                PlaceKeyInPosition(newKey, 0, 1, 1, 2);                
+            }
             // Middle row is detailed error message
             {
-                var newKey = new Key {Text = content};
+                var newKey = new Key {
+                    Text = content,
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
+
                 PlaceKeyInPosition(newKey, 1, 0, 2, 4);
             }
 
@@ -336,122 +347,60 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 {
                     SymbolGeometry = (Geometry)Application.Current.Resources["BackIcon"],
                     Text = Properties.Resources.BACK,
-                    Value = KeyValues.BackFromKeyboardKey
+                    Value = KeyValues.BackFromKeyboardKey,
+                    ForegroundColourOverride = Brushes.Black,
+                    BackgroundColourOverride = Brushes.White
                 };
                 PlaceKeyInPosition(newKey, 3, 3);
             }
 
             // Fill in empty keys
             {
-                var newKey = new Key();
+                var newKey = new Key {
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 0, 0, 1, 1);
             }
             {
-                var newKey = new Key();
+                var newKey = new Key { 
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 0, 3, 1, 1);
             }
             {
-                var newKey = new Key();
+                var newKey = new Key {
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 3, 0, 1, 1);
             }
             {
-                var newKey = new Key();
+                var newKey = new Key {
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 3, 1, 1, 2);
             }
-        }
 
-        private void DynamicItemError(XmlDynamicItem dynamicItem)
-        {
-            var line1 = "Insufficient space to position item "
-                + (keyboard.Content.Items.IndexOf(dynamicItem) + 1)
-                + " of " + keyboard.Content.Items.Count;
-
-            var line2 = (dynamicItem is XmlDynamicKey dynamicKey)
-                ? (!string.IsNullOrEmpty(dynamicKey.Label)) ? " with label '" + dynamicKey.Label + "'"
-                    : (!string.IsNullOrEmpty(dynamicKey.Symbol)) ? " with symbol '" + dynamicKey.Symbol + "'"
-                    : " with no label or symbol"
-                : (dynamicItem is XmlDynamicScratchpad) ? " with type of Scratchpad"
-                : " with type of Suggestion";
-
-            var line3 = (dynamicItem.Row > -1 && dynamicItem.Col > -1)
-                    ? " at row " + dynamicItem.Row + " column " + dynamicItem.Col
-                    : " having width " + dynamicItem.Width + " and height " + dynamicItem.Height;
-
-            SetupErrorLayout("Invalid keyboard file", line1 + line2 + line3);
-        }
-        
-        private bool ListContainsWidth(List<int> list, int col, int width)
-        {
-            return list.Contains(col) && (width <= 1 || ListContainsWidth(list, col + 1, width - 1));
-        }
-
-        private bool ListContainsWidthAndHeight(List<List<int>> list, int row, int col, int width, int height)
-        {
-            return list[row] != null && ListContainsWidth(list[row], col, width)
-                && ((height <= 1) || ListContainsWidthAndHeight(list, row + 1, col, width, height - 1));
-        }
-
-        private int FindCol(List<List<int>> list, int row, int col, int width, int height)
-        {
-            return list[row] == null || !list[row].Any() || col + width > list[row].Last() + 1 ? -1
-                : ListContainsWidthAndHeight(list, row, col, width, height) ? col
-                : FindCol(list, row, col + 1, width, height);
-        }
-        
-        private int FindRow(List<List<int>> list, int row, int col, int width, int height)
-        {
-            return row + height > list.Count ? -1
-                : ListContainsWidthAndHeight(list, row, col, width, height) ? row
-                : FindRow(list, row + 1, col, width, height);
-        }
-
-        private Tuple<int, int> FindItemPositions(List<List<int>> list, XmlDynamicItem dynamicItem, int row, int col)
-        {
-            if (dynamicItem.Row > -1 && dynamicItem.Row != row)
-            {
-                row = dynamicItem.Row;
-                col = 0;
-            }
-
-            if (dynamicItem.Col > -1)
-                col = dynamicItem.Col;
-
-            if (ListContainsWidthAndHeight(list, row, col, dynamicItem.Width, dynamicItem.Height))
-                return new Tuple<int, int>(row, col);
-
-            if (dynamicItem.Col < 0)
-            {
-                var newCol = FindCol(list, row, col + 1, dynamicItem.Width, dynamicItem.Height);
-                if (newCol > -1)
-                    return new Tuple<int, int>(row, newCol);
-                else if (dynamicItem.Row < 0)
-                {
-                    for (int newRow = row + 1; newRow < list.Count; newRow++)
-                    {
-                        newCol = FindCol(list, newRow, 0, dynamicItem.Width, dynamicItem.Height);
-                        if (newCol > -1)
-                            return new Tuple<int, int>(newRow, newCol);
-                    }
-                }
-            }
-            else if (dynamicItem.Row < 0)
-                return new Tuple<int, int>(FindRow(list, row + 1, col, dynamicItem.Width, dynamicItem.Height), col);
-
-            return new Tuple<int, int>(-1, -1);
+            // Set as default floating window size, i.e. pretty large
+            // This ensures the error message and keys are a reasonable size!            
+            windowManipulationService.OverridePersistedState(false, "Floating",
+                    "Top", "", "60%", "60%", "0", "0"); // Empty strings will allow defaults to be used instead
+            
         }
 
         private bool SetupDynamicItems()
         {
-            var minKeyWidth = keyboard.Content.Items.Select(k => k.Width).Min() > 0
-                ? keyboard.Content.Items.Select(k => k.Width).Min() : 1;
-            var minKeyHeight = keyboard.Content.Items.Select(k => k.Height).Min() > 0
-                ? keyboard.Content.Items.Select(k => k.Height).Min() : 1;
+            var minKeyWidth = keyboard.Content.Items.Select(k => k.Width).Min() > 0 ? keyboard.Content.Items.Select(k => k.Width).Min() : 1;
+            var minKeyHeight = keyboard.Content.Items.Select(k => k.Height).Min() > 0 ? keyboard.Content.Items.Select(k => k.Height).Min() : 1;
 
             //start with a list of all grid cells marked empty
-            var openGrid = new List<List<int>>();
+            List<List<int>> openGrid = new List<List<int>>();
             for (int r = 0; r < keyboard.Grid.Rows; r++)
             {
-                var gridRow = new List<int>();
+                List<int> gridRow = new List<int>();
                 for (int c = 0; c < keyboard.Grid.Cols; c++)
                 {
                     gridRow.Add(c);
@@ -459,32 +408,154 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 openGrid.Add(gridRow);
             }
 
-            //process all items in the order listed in the xml file and place them in position
-            //if an item has a row or column designation it is treated as an
-            //indication to jump to that position and continue from there
-            var itemList = keyboard.Content.Items.ToList();
-            var rowCol = new Tuple<int, int>(0, 0);
-            foreach (XmlDynamicItem dynamicItem in itemList)
+            //begin section 1: processing items with a reserved row and column
+            var itemPosition = keyboard.Content.Items.ToList();
+            foreach (XmlDynamicItem dynamicItem in itemPosition.Where(x => x.Row > -1 && x.Col > -1))
             {
-                rowCol = FindItemPositions(openGrid, dynamicItem, rowCol.Item1, rowCol.Item2);
-
-                //if there is not enough empty space is not found then return an error
-                if (rowCol.Item1 < 0 || rowCol.Item2 < 0)
+                var vIndex = keyboard.Content.Items.IndexOf(dynamicItem);
+                var vLabel = " with type of Suggestion";
+                if (dynamicItem is XmlDynamicKey dynamicKey)
                 {
-                    DynamicItemError(dynamicItem);
-                    return false;
+                    vLabel = (!string.IsNullOrEmpty(dynamicKey.Label)) ? " with label '" + dynamicKey.Label + "'"
+                        : (!string.IsNullOrEmpty(dynamicKey.Symbol)) ? " with symbol '" + dynamicKey.Symbol + "'"
+                        : " with no label or symbol";
+                }
+                else if (dynamicItem is XmlDynamicScratchpad)
+                {
+                    vLabel = " with type of Scratchpad";
                 }
 
-                dynamicItem.Row = rowCol.Item1;
-                dynamicItem.Col = rowCol.Item2;
-                for (int i = dynamicItem.Row; i < dynamicItem.Row + dynamicItem.Height; i++)
+                if (dynamicItem.Col + dynamicItem.Width > keyboard.Grid.Cols || dynamicItem.Row + dynamicItem.Height > keyboard.Grid.Rows)
                 {
-                    openGrid[i].RemoveAll(x => x >= dynamicItem.Col && x < dynamicItem.Col + dynamicItem.Width);
+                    SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
+                        + (vIndex + 1) + " of " + itemPosition.Count + vLabel
+                        + " at row " + dynamicItem.Row + " column " + dynamicItem.Col);
+                    return false;
+                }
+                //find space to allocate and remove it from available
+                for (int row = dynamicItem.Row; row < (dynamicItem.Row + dynamicItem.Height); row++)
+                {
+                    for (int col = dynamicItem.Col; col < (dynamicItem.Col + dynamicItem.Width); col++)
+                    {
+                        if (!openGrid[row].Exists(x => x == col)) //if the column is unavailable
+                        {
+                            SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
+                                + (vIndex + 1) + " of " + itemPosition.Count + vLabel
+                                + " at row " + dynamicItem.Row + " column " + dynamicItem.Col);
+                            return false;
+                        }
+                        else
+                            openGrid[row].Remove(col);
+                    }
+                }
+                SetupDynamicItem(dynamicItem, minKeyWidth, minKeyHeight);
+            }
+            //end section 1: processing items with a reserved row and column
+
+            //begin section 2: processing items that need a row and/or column assigned
+            //the items are processed in the same order they were listed in the xml file
+            //if an item has a row or column designation it is treated as an indication to jump forward 
+            //to that row or column and mark any/all skipped spaces as empty
+            foreach (XmlDynamicItem dynamicItem in itemPosition.Where(x => !(x.Row > -1 && x.Col > -1)))
+            {
+                var vIndex = itemPosition.IndexOf(dynamicItem);
+                var vLabel = " with type of Suggestion";
+                if (dynamicItem is XmlDynamicKey dynamicKey)
+                {
+                    vLabel = (!string.IsNullOrEmpty(dynamicKey.Label)) ? " with label '" + dynamicKey.Label + "'"
+                        : (!string.IsNullOrEmpty(dynamicKey.Symbol)) ? " with symbol '" + dynamicKey.Symbol + "'"
+                        : " with no label or symbol";
+                }
+                else if (dynamicItem is XmlDynamicScratchpad)
+                {
+                    vLabel = " with type of Scratchpad";
+                }
+
+                bool itemPositionConfirmed = false;
+                while (!itemPositionConfirmed)
+                {
+                    var vItemColumn = 0;
+                    var vRowsConfirmed = 0;
+
+                    //set start row to first row with enough available width for the item
+                    var startRow = dynamicItem.Row > -1 ? (openGrid[dynamicItem.Row].Count >= dynamicItem.Width ? dynamicItem.Row : -1)
+                        : openGrid.FindIndex(x => (x.Count >= dynamicItem.Width));
+                    //if a start row with enough empty space is not found then return an error
+                    if (startRow < 0)
+                    {
+                        SetupErrorLayout("Invalid keyboard file", "Insufficient space to position item "
+                            + (vIndex + 1) + " of " + itemPosition.Count + vLabel + " having width "
+                            + dynamicItem.Width + " and height " + dynamicItem.Height);
+                        return false;
+                    }
+                    //block all preceding columns in all preceding rows
+                    for (int row = 0; row < startRow; row++)
+                    {
+                        if (openGrid[row].Any())
+                            openGrid[row].Clear();
+                    }
+                    for (int row = startRow; row < keyboard.Grid.Rows; row++)
+                    {
+                        if (dynamicItem.Col > -1)
+                        {
+                            //if column exists then block all preceding columns in the row
+                            if (openGrid[row].Exists(x => x == dynamicItem.Col))
+                                openGrid[row].RemoveAll(x => x < dynamicItem.Col);
+                            //else block the whole row and check another 
+                            else
+                            {
+                                openGrid[row].Clear();
+                                break;
+                            }
+                        }
+                        //if height > 1 and we are searching subsequent rows then we need to start at the confirmed start column
+                        var vColsConfirmed = 0;
+                        var startColumn = (vRowsConfirmed > 0) ? vItemColumn : (dynamicItem.Col > -1) ? dynamicItem.Col : openGrid[row].First();
+                        while (openGrid[row].Any())
+                        {
+                            //if the next open space is adjacent then increment columns confirmed
+                            if (openGrid[row].First() == startColumn + vColsConfirmed)
+                            {
+                                vColsConfirmed++;
+                                openGrid[row].RemoveAt(0);
+                                //stop searching if we meet the width requirement
+                                if (vColsConfirmed == dynamicItem.Width)
+                                    break;
+                            }
+                            //else if this row does not have enough additional space then block what remains and break
+                            else if (openGrid[row].Count < dynamicItem.Width || dynamicItem.Col > -1)
+                            {
+                                openGrid[row].Clear();
+                                break;
+                            }
+                            //else if the next open space is not adjacent then we need to reset
+                            else
+                            {
+                                vColsConfirmed = 0;
+                                startColumn = openGrid[row].First();
+                            }
+                        }
+
+                        if (vColsConfirmed == dynamicItem.Width)
+                        {
+                            vItemColumn = startColumn;
+                            vRowsConfirmed++;
+
+                            if (vRowsConfirmed == dynamicItem.Height)
+                            {
+                                dynamicItem.Col = vItemColumn;
+                                dynamicItem.Row = 1 + row - dynamicItem.Height;
+                                itemPositionConfirmed = true;
+                                break;
+                            }
+                        }
+                    } //loop back to process the next row
                 }
 
                 SetupDynamicItem(dynamicItem, minKeyWidth, minKeyHeight);
-                rowCol = new Tuple<int, int>(rowCol.Item1, rowCol.Item2 + dynamicItem.Width);
             }
+            //end section 2: processing items that need a row and/or column assigned
+
             return true;
         }
 

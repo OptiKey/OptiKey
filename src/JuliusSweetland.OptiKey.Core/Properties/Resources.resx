@@ -2572,4 +2572,13 @@ Magyar
 中文
 (地球拼音)</value>
   </data>
+  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
+    <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
+  </data>
+  <data name="ALLOW_REPEATS_LABEL" xml:space="preserve">
+    <value>Allow key actions to be repeated when pressing trigger away from keyboard</value>
+  </data>
+  <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
+    <value>Repeat last key:</value>
+  </data>
 </root>

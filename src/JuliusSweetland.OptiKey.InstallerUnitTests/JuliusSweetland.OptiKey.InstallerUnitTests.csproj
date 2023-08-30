@@ -78,8 +78,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="WindowsInput, Version=1.0.6.0, Culture=neutral, PublicKeyToken=de2685b4776e9c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\InputSimulatorPlus.1.0.7\lib\net20\WindowsInput.dll</HintPath>
+    <Reference Include="WindowsInput, Version=1.0.9.0, Culture=neutral, PublicKeyToken=de2685b4776e9c2e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\InputSimulatorPlus2.1.0.9.0\lib\net20\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>

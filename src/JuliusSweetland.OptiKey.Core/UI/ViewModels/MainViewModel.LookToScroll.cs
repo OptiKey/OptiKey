@@ -78,6 +78,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             if (keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown())
             {
+                // Turn off any locked (continuous) mouse actions
+                ResetAndCleanupAfterMouseAction();
+                SetCurrentMouseActionKey(null);
+
                 Log.Info("Look to scroll is now active.");
 
                 lookToScrollLeftoverScrollAmount = new Vector();
@@ -411,6 +415,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 CentreMouseInsideLookToScrollDeadzone();
             }
+
+            SelectionMode = SelectionModes.Keys;
         }
 
         private void CentreMouseInsideLookToScrollDeadzone()
@@ -545,7 +551,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case LookToScrollBounds.ScreenCentred:
                     bounds = IsMainWindowDocked() 
                         ? FindLargestGapBetweenScreenAndMainWindow() 
-                        : GetVirtualScreenBoundsInPixels();
+                        : GetPrimaryScreenBoundsInPixels();
                     break;
 
                 case LookToScrollBounds.Window:
@@ -564,9 +570,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return bounds;
         }
 
+        // Finds the largest rectangular region outside the main window
+        // Used to identify the main screen region remaining after docked app takes up space
         private Rect FindLargestGapBetweenScreenAndMainWindow()
         {
-            Rect screen = GetVirtualScreenBoundsInPixels();
+            Rect screen = GetPrimaryScreenBoundsInPixels();
             Rect window = GetMainWindowBoundsInPixels();
 
             var above = new Rect { X = screen.Left, Y = screen.Top, Width = screen.Width, Height = window.Top >= screen.Top ? window.Top - screen.Top : 0 };
@@ -816,16 +824,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private Rect GetVirtualScreenBoundsInPixels()
+        private Rect GetPrimaryScreenBoundsInPixels()
         {
             return new Rect
             {
                 X = 0,
                 Y = 0,
-                Width = Graphics.VirtualScreenWidthInPixels,
-                Height = Graphics.VirtualScreenHeightInPixels,
+                Width = Graphics.PrimaryScreenWidthInPixels,
+                Height = Graphics.PrimaryScreenHeightInPixels,
             };
         }
+
 
         private Rect GetMainWindowBoundsInPixels()
         {

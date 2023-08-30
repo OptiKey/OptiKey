@@ -238,6 +238,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        private bool allowRepeats;
+        public bool AllowRepeats
+        {
+            get { return allowRepeats; }
+            set { SetProperty(ref allowRepeats, value); }
+        }
+
         private PointsSources pointSource;
         public PointsSources PointsSource
         {
@@ -560,6 +567,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
+            AllowRepeats = Settings.Default.AllowRepeatKeyActionsAwayFromKey;
             PointsSource = Settings.Default.PointsSource;
             TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
             IrisbondProcessingLevel = Settings.Default.IrisbondProcessingLevel;
@@ -598,10 +606,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MultiKeySelectionTriggerStopSignal = Settings.Default.MultiKeySelectionTriggerStopSignal;
             MultiKeySelectionFixationMinDwellTimeInMs = Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds;
             MultiKeySelectionMaxDurationInMs = Settings.Default.MultiKeySelectionMaxDuration.TotalMilliseconds;
+            
         }
 
         public void ApplyChanges()
         {
+            Settings.Default.AllowRepeatKeyActionsAwayFromKey = AllowRepeats;
             Settings.Default.PointsSource = PointsSource;
             Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
             Settings.Default.IrisbondProcessingLevel = IrisbondProcessingLevel;

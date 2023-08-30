@@ -82,7 +82,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             Log.ErrorFormat("Caught exception: {0}", ex);
 
                             //Reset as much as possible
-                            mainViewModel.SelectionMode = SelectionModes.Key;
+                            mainViewModel.SelectionMode = SelectionModes.Keys;
                             mainViewModel.MagnifiedPointSelectionAction = null;
                             mainViewModel.MagnifyAtPoint = null;
                             mainViewModel.MagnifiedPointSelectionAction = null;
