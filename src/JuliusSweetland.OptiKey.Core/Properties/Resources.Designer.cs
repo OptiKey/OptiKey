@@ -1796,6 +1796,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English dictionary.
+        /// </summary>
+        public static string ENGLISH_DICTIONARY {
+            get {
+                return ResourceManager.GetString("ENGLISH_DICTIONARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English (UK).
         /// </summary>
         public static string ENGLISH_UK {

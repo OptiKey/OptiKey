@@ -2653,4 +2653,7 @@ www.optikey.org/supported-eyetrackers</value>
   <data name="TOUCH_DOWNUP_DESCRIPTION" xml:space="preserve">
     <value>Touch</value>
   </data>
+  <data name="ENGLISH_DICTIONARY" xml:space="preserve">
+    <value>English dictionary</value>
+  </data>
 </root>

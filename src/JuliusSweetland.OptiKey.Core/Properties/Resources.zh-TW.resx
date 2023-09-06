@@ -2524,4 +2524,7 @@ Magyar
 中文
 (地球拼音)</value>
   </data>
+  <data name="ENGLISH_DICTIONARY" xml:space="preserve">
+    <value>英語字典</value>
+  </data>
 </root>

@@ -58,7 +58,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               SelectedValuePath="Value"
                               SelectedValue="{Binding KeyboardAndDictionaryLanguage, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="English dictionary for Rime"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.ENGLISH_DICTIONARY}"
                                VerticalAlignment="Center" Margin="5"
                                Visibility="{Binding KeyboardAndDictionaryLanguage, Converter={StaticResource CollapsedIfNotManagedByRime}}"/>
                     <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
