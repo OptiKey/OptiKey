@@ -926,6 +926,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {   // Switching between chinese and english keyboards - clear suggestions and insert a space to start new prediction
                         if (MyRimeApi.IsAsciiMode)
                         {
+                            Log.Info("Using RIME, switching from English to Chinese");
                             keyboardOutputService.ClearSuggestions();
                             var rime = MyRimeApi.rime_get_api();
                             if (rime.set_option(MyRimeApi.GetSession(), "ascii_mode", false))
@@ -941,6 +942,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Info("Changing keyboard to Alpha2.");
                     if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime())
                     {   // Switching from chinese to english keyboard - clear suggestions, switch RIME to ascii and insert a space to start new prediction
+                        Log.Info("Using RIME, switching from Chinese to English");
                         if (!MyRimeApi.IsAsciiMode)
                         {
                             keyboardOutputService.ClearSuggestions();

@@ -386,7 +386,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.cs" />
-    <Compile Include="Rime\RimeApi.cs" />
+    <Compile Include="Resources\Rime\RimeApi.cs" />
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1002,22 +1002,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
-    <None Include="Rime\bopomofo.schema.yaml">
+    <None Include="Resources\Rime\bopomofo.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\bopomofo_express.schema.yaml">
+    <None Include="Resources\Rime\bopomofo_express.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\bopomofo_tw.schema.yaml">
+    <None Include="Resources\Rime\bopomofo_tw.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\cangjie5_express.schema.yaml">
+    <None Include="Resources\Rime\cangjie5_express.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\essay.txt">
+    <None Include="Resources\Rime\essay.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Rime\rime.dll">
+    <Content Include="Resources\Rime\rime.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\ext\IrisBond\avcodec-58.dll">
@@ -1155,25 +1155,25 @@
     <Content Include="Resources\Keyboards\Edge.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Rime\luna_pinyin_fluency.schema.yaml">
+    <None Include="Resources\Rime\luna_pinyin_fluency.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\luna_pinyin_simp.schema.yaml">
+    <None Include="Resources\Rime\luna_pinyin_simp.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\luna_pinyin_tw.schema.yaml">
+    <None Include="Resources\Rime\luna_pinyin_tw.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\luna_quanpin.schema.yaml">
+    <None Include="Resources\Rime\luna_quanpin.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\pinyin.yaml">
+    <None Include="Resources\Rime\pinyin.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\terra_pinyin.dict.yaml">
+    <None Include="Resources\Rime\terra_pinyin.dict.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\terra_pinyin.schema.yaml">
+    <None Include="Resources\Rime\terra_pinyin.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Resources\Keyboards\FullQwerty.xml">
@@ -1208,115 +1208,115 @@
     </Content>
     <EmbeddedResource Include="Properties\Resources.ka-GE.resx" />
     <None Include="packages.config" />
-    <None Include="Rime\cangjie5.dict.yaml">
+    <None Include="Resources\Rime\cangjie5.dict.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\cangjie5.schema.yaml">
+    <None Include="Resources\Rime\cangjie5.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\default.yaml">
+    <None Include="Resources\Rime\default.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\luna_pinyin.dict.yaml">
+    <None Include="Resources\Rime\luna_pinyin.dict.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\luna_pinyin.schema.yaml">
+    <None Include="Resources\Rime\luna_pinyin.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\hk2s.json">
+    <None Include="Resources\Rime\opencc\hk2s.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\hk2t.json">
+    <None Include="Resources\Rime\opencc\hk2t.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\HKVariants.ocd2">
+    <None Include="Resources\Rime\opencc\HKVariants.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\HKVariantsRev.ocd2">
+    <None Include="Resources\Rime\opencc\HKVariantsRev.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\HKVariantsRevPhrases.ocd2">
+    <None Include="Resources\Rime\opencc\HKVariantsRevPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\jp2t.json">
+    <None Include="Resources\Rime\opencc\jp2t.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\JPShinjitaiCharacters.ocd2">
+    <None Include="Resources\Rime\opencc\JPShinjitaiCharacters.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\JPShinjitaiPhrases.ocd2">
+    <None Include="Resources\Rime\opencc\JPShinjitaiPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\JPVariants.ocd2">
+    <None Include="Resources\Rime\opencc\JPVariants.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\JPVariantsRev.ocd2">
+    <None Include="Resources\Rime\opencc\JPVariantsRev.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\s2hk.json">
+    <None Include="Resources\Rime\opencc\s2hk.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\s2t.json">
+    <None Include="Resources\Rime\opencc\s2t.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\s2tw.json">
+    <None Include="Resources\Rime\opencc\s2tw.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\s2twp.json">
+    <None Include="Resources\Rime\opencc\s2twp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\STCharacters.ocd2">
+    <None Include="Resources\Rime\opencc\STCharacters.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\STPhrases.ocd2">
+    <None Include="Resources\Rime\opencc\STPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\t2hk.json">
+    <None Include="Resources\Rime\opencc\t2hk.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\t2jp.json">
+    <None Include="Resources\Rime\opencc\t2jp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\t2s.json">
+    <None Include="Resources\Rime\opencc\t2s.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\t2tw.json">
+    <None Include="Resources\Rime\opencc\t2tw.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TSCharacters.ocd2">
+    <None Include="Resources\Rime\opencc\TSCharacters.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TSPhrases.ocd2">
+    <None Include="Resources\Rime\opencc\TSPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\tw2s.json">
+    <None Include="Resources\Rime\opencc\tw2s.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\tw2sp.json">
+    <None Include="Resources\Rime\opencc\tw2sp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\tw2t.json">
+    <None Include="Resources\Rime\opencc\tw2t.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWPhrases.ocd2">
+    <None Include="Resources\Rime\opencc\TWPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWPhrasesRev.ocd2">
+    <None Include="Resources\Rime\opencc\TWPhrasesRev.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWVariants.ocd2">
+    <None Include="Resources\Rime\opencc\TWVariants.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWVariantsRev.ocd2">
+    <None Include="Resources\Rime\opencc\TWVariantsRev.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\opencc\TWVariantsRevPhrases.ocd2">
+    <None Include="Resources\Rime\opencc\TWVariantsRevPhrases.ocd2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\symbols.yaml">
+    <None Include="Resources\Rime\symbols.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rime\zhuyin.yaml">
+    <None Include="Resources\Rime\zhuyin.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Services\Translation\TranslationAPI.settings">

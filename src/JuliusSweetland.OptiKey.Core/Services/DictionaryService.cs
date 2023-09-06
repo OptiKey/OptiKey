@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -59,14 +60,39 @@ namespace JuliusSweetland.OptiKey.Services
 
             MigrateLegacyDictionaries();
             LoadDictionary();
-            MyRimeApi.SelectSchema();
 
             //Subscribe to changes in the keyboard language to reload the dictionary
             Settings.Default.OnPropertyChanges(settings => settings.KeyboardAndDictionaryLanguage).Subscribe(_ => LoadDictionary());
         }
 
-    #endregion
+        #endregion
 
+        #region Set up for RIME
+
+        public void Setup()
+        {
+            // This set up is withheld from the constructor since it may require error notifying
+            try
+            {
+                MyRimeApi.SelectSchema();
+            }
+            catch (System.Runtime.InteropServices.ExternalException e)
+            {
+                Log.Error($"Exception setting up RIME for Chinese: {e}");
+                Log.Error(Marshal.GetLastWin32Error());
+                if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) 
+                    PublishError(this, e); // only worth publishing if user trying to use RIME
+            }
+            catch (ApplicationException e)
+            {
+                Log.Error($"Exception setting up RIME for Chinese: {e}");
+                if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime())
+                    PublishError(this, e); // only worth publishing if user trying to use RIME
+            }
+        }
+
+        #endregion
+ 
         #region Migrate Legacy User Dictionaries
 
         private static void MigrateLegacyDictionaries()

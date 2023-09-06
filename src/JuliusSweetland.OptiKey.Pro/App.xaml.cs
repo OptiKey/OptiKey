@@ -131,6 +131,8 @@ namespace JuliusSweetland.OptiKey.Pro
 
                 ValidateEyeGestures();
 
+                ValidateRimeLocation();
+
                 ValidateDynamicKeyboardLocation();
 
                 ValidateEyeTrackerResources();
@@ -191,6 +193,7 @@ namespace JuliusSweetland.OptiKey.Pro
                 {
                     mainViewModel.AttachErrorNotifyingServiceHandlers();
                     mainViewModel.AttachInputServiceEventHandlers();
+                    dictionaryService.Setup();
                 };
 
                 mainWindow.AddOnMainViewLoadedAction(postMainViewLoaded);

@@ -1130,6 +1130,12 @@ namespace JuliusSweetland.OptiKey
                               Path.Combine(destPath, Path.GetFileName(file)), 
                               true);
                 }
+
+                // Recursive call for each subdirectory.
+                foreach (string dir in Directory.GetDirectories(sourcePath))
+                {                    
+                    CopyResourcesFirstTime(Path.Combine(subDirectoryName, Path.GetFileName(dir)));
+                }
             }
             
             return destPath;
@@ -1189,6 +1195,15 @@ namespace JuliusSweetland.OptiKey
             {
                 // First time we set to APPDATA location, user may move through settings later
                 Settings.Default.PluginsLocation = CopyResourcesFirstTime("Plugins");
+            }
+        }
+
+        protected static void ValidateRimeLocation()
+        {
+            if (string.IsNullOrEmpty(Settings.Default.RimeLocation))
+            {
+                // First time we set to APPDATA location, user may move through settings later
+                Settings.Default.RimeLocation = CopyResourcesFirstTime("Rime");
             }
         }
 
