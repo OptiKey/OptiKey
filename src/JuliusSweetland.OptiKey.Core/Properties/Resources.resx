@@ -2268,7 +2268,7 @@ Would you like Optikey to automatically set the font to Nafees Web Naskh?</value
 Would you like Optikey to automatically set the UiLanguage to Persian?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
-    <value>We recommend changing the font used in optiKey to one which is fully compatible with Persian.
+    <value>We recommend changing the font used in Optikey to one which is fully compatible with Persian.
 If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
 Would you like Optikey to automatically set the font to Nazli?</value>
   </data>
@@ -2645,7 +2645,7 @@ www.optikey.org/supported-eyetrackers</value>
     <value>Touch input multikey settings</value>
   </data>
   <data name="TOUCH_INPUT_AND_TRIGGER_DESCRIPTION" xml:space="preserve">
-    <value>We recommend changing the Trigger to TouchUpDowns if you want to use touch input for Optikey. Would you like Optikey to automatically set the trigger settings?</value>
+    <value>We recommend changing the Trigger to Touch if you want to use touch input for Optikey. Would you like Optikey to automatically set the trigger settings?</value>
   </data>
   <data name="TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE" xml:space="preserve">
     <value>Touch input isn't using touch as trigger</value>

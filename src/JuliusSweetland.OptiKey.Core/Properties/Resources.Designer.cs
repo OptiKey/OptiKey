@@ -2434,7 +2434,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We recommend changing the font used in optiKey to one which is fully compatible with Persian.
+        ///   Looks up a localized string similar to We recommend changing the font used in Optikey to one which is fully compatible with Persian.
         ///If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
         ///Would you like Optikey to automatically set the font to Nazli?.
         /// </summary>
@@ -6623,7 +6623,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We recommend changing the Trigger to TouchUpDowns if you want to use touch input for Optikey. Would you like Optikey to automatically set the trigger settings?.
+        ///   Looks up a localized string similar to We recommend changing the Trigger to Touch if you want to use touch input for Optikey. Would you like Optikey to automatically set the trigger settings?.
         /// </summary>
         public static string TOUCH_INPUT_AND_TRIGGER_DESCRIPTION {
             get {
