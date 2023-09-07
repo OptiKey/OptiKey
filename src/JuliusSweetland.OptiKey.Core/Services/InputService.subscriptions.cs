@@ -154,6 +154,23 @@ namespace JuliusSweetland.OptiKey.Services
 
         }
 
+        private void ProcessTriggerWithoutPosition()
+        {
+            Settings.Default.TriggerWithoutPositionCount++;
+
+            Log.Error($"TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. "
+                      + $"Discarding trigger as point source is down, or producing stale points. "
+                      + $"Count since warning = {Settings.Default.TriggerWithoutPositionCount}"
+                      );
+
+            if (!Settings.Default.SuppressTriggerWithoutPositionError &&
+                Settings.Default.TriggerWithoutPositionCount > 3)
+            {
+                Log.Info($"Publishing error for {Settings.Default.TriggerWithoutPositionCount} consecutive triggers without positions");
+                PublishError(this, new ApplicationException(Resources.TRIGGER_WITHOUT_POSITION_ERROR));
+                Settings.Default.TriggerWithoutPositionCount = 0;
+            }
+        }
         private async void ProcessKeySelectionTrigger(TriggerSignal triggerSignal)
         {
             if (triggerSignal.Signal >= 1
@@ -163,7 +180,8 @@ namespace JuliusSweetland.OptiKey.Services
                 if (triggerSignal.PointAndKeyValue != null)
                 {
                     Log.Debug("Key selection trigger signal (with relevant PointAndKeyValue) detected.");
-                    
+                    Settings.Default.TriggerWithoutPositionCount = 0; // reset count
+
                     if (triggerSignal.PointAndKeyValue.KeyValue != null
                         && (keyStateService.KeyEnabledStates == null || keyStateService.KeyEnabledStates[triggerSignal.PointAndKeyValue.KeyValue]))
                     {
@@ -249,14 +267,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    Log.Error("TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. "
-                            + "Discarding trigger as point source is down, or producing stale points. "
-                            + "Publishing error instead.");
-
-                    if (!Settings.Default.SuppressTriggerWithoutPositionError)
-                    {
-                        PublishError(this, new ApplicationException(Resources.TRIGGER_WITHOUT_POSITION_ERROR));
-                    }
+                    ProcessTriggerWithoutPosition();                    
                 }
             }
             else if (CapturingMultiKeySelection)
@@ -286,7 +297,8 @@ namespace JuliusSweetland.OptiKey.Services
                 if (triggerSignal.PointAndKeyValue != null)
                 {
                     Log.Debug("Point selection trigger signal (with relevant PointAndKeyValue) detected.");
-                   
+                    Settings.Default.TriggerWithoutPositionCount = 0; // reset count
+
                     PublishSelection(TriggerTypes.Point, triggerSignal.PointAndKeyValue);
 
                     PublishSelectionResult(new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
@@ -296,14 +308,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    Log.Error("TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. "
-                            + "Discarding trigger as point source is down, or producing stale points. "
-                            + "Publishing error instead.");
-
-                    if (!Settings.Default.SuppressTriggerWithoutPositionError)
-                    {
-                        PublishError(this, new ApplicationException(Resources.TRIGGER_WITHOUT_POSITION_ERROR));
-                    }
+                    ProcessTriggerWithoutPosition();
                 }
             }            
         }
@@ -328,6 +333,7 @@ namespace JuliusSweetland.OptiKey.Services
                 if (triggerSignal.PointAndKeyValue != null)
                 {
                     Log.Debug("Gesture trigger signal (with relevant PointAndKeyValue) detected.");
+                    Settings.Default.TriggerWithoutPositionCount = 0; // reset count
 
                     {
                         if (triggerSignal.PointAndKeyValue.KeyValue != null
@@ -352,14 +358,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    Log.Error("TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. "
-                            + "Discarding trigger as point source is down, or producing stale points. "
-                            + "Publishing error instead.");
-
-                    if (!Settings.Default.SuppressTriggerWithoutPositionError)
-                    {
-                        PublishError(this, new ApplicationException(Resources.TRIGGER_WITHOUT_POSITION_ERROR));
-                    }
+                    ProcessTriggerWithoutPosition();
                 }
             }            
         }
