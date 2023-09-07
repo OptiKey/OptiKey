@@ -96,6 +96,9 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}" >
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}" >
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBlock.Style>
@@ -113,7 +116,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}" >
                                     <Setter Property="Visibility" Value="Collapsed" />
                                 </DataTrigger>
-                            </Style.Triggers>
+                                <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}" >
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                </Style.Triggers>
                             </Style>
                         </ComboBox.Style>
                     </ComboBox>
@@ -125,6 +131,9 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}" >
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -139,6 +148,9 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}" >
                                         <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -175,10 +187,32 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </controls:NumericUpDown>
 
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL}" 
-                                VerticalAlignment="Center" Margin="5" />
+                                VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                     <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
-                                            Value="{Binding PointTtlInMs, Mode=TwoWay}" />
+                                            Value="{Binding PointTtlInMs, Mode=TwoWay}" >
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
 
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.HIDE_CURSOR_LABEL}" 
                                 VerticalAlignment="Center" Margin="5">
@@ -673,6 +707,41 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
                     
+
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.ALLOW_REPEATS_LABEL}" 
+                      VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <CheckBox Grid.Row="8" Grid.Column="1" 
+                      VerticalAlignment="Center"
+                      IsChecked="{Binding AllowRepeats, Mode=TwoWay}" >
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+
                     <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.CONTROLLER_ENABLE_REPEATS}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
@@ -865,12 +934,34 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </ComboBox>
 
                     <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_SOURCE_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                     <ComboBox Grid.Row="12" Grid.Column="1" 
                               ItemsSource="{Binding TriggerSources}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding PointSelectionTriggerSource, Mode=TwoWay}" />
+                              SelectedValue="{Binding PointSelectionTriggerSource, Mode=TwoWay}" >
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
 
                     <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_TIME_TO_LOCK_ON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
@@ -880,6 +971,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -895,6 +990,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </controls:NumericUpDown.Style>
@@ -908,6 +1007,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -923,6 +1026,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </controls:NumericUpDown.Style>
@@ -936,6 +1043,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -951,6 +1062,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </controls:NumericUpDown.Style>
@@ -964,6 +1079,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -979,6 +1098,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </controls:NumericUpDown.Style>
@@ -992,6 +1115,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.KeyboardKeyDownsUps}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -1007,6 +1134,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.KeyboardKeyDownsUps}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </ComboBox.Style>
@@ -1020,6 +1151,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -1037,6 +1172,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </ComboBox.Style>
@@ -1051,6 +1190,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -1068,6 +1211,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </ComboBox.Style>
@@ -1081,6 +1228,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -1096,6 +1247,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.XInputButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </ComboBox.Style>
@@ -1111,6 +1266,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBlock.Style>
@@ -1124,6 +1283,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.DirectInputButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -1139,6 +1302,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.MouseButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBlock.Style>
@@ -1152,6 +1319,10 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.MouseButtonDownUps}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <!-- override previous logic if PointsSources is Touch -->
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
