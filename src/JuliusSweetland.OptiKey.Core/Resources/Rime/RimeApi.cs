@@ -56,7 +56,7 @@ namespace JuliusSweetland.OptiKey.Rime {
             bool full_check = true;
             if (rime.start_maintenance(full_check)) {
                 Log.Info("Running RIME maintenance check");
-                rime.join_maintenance_thread(); // exception here
+                rime.join_maintenance_thread(); 
             }
             Log.Info("Ready for RIME");            
             SessionId = rime.create_session();
