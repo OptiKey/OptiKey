@@ -18,6 +18,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <CollectionViewSource x:Key="KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroupsCollectionViewSource" 
                               Source="{Binding KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups}" />
         <valueConverters:BoolToCustomValues TrueValue="Visible" FalseValue="Hidden" x:Key="BooleanToVisible" />
+        <valueConverters:PointSourceIsTouch x:Key="IsTouch" />
     </UserControl.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
@@ -1313,6 +1314,9 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TouchScreenPosition}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBlock.Style>
@@ -1331,6 +1335,9 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
                                         <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource, Converter={StaticResource IsTouch}}" Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -1354,6 +1361,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                         <MultiDataTrigger.Conditions>
                                             <Condition Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}" />
                                             <Condition Binding="{Binding ProgressIndicatorBehaviour}" Value="{x:Static enums:ProgressIndicatorBehaviours.Shrink}" />
+                                            <Condition Binding="{Binding PointsSource, Converter={StaticResource IsTouch}}" Value="False"/>
                                         </MultiDataTrigger.Conditions>
                                         <Setter Property="Visibility" Value="Visible" />
                                     </MultiDataTrigger>
@@ -1380,6 +1388,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                         <MultiDataTrigger.Conditions>
                                             <Condition Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}" />
                                             <Condition Binding="{Binding ProgressIndicatorBehaviour}" Value="{x:Static enums:ProgressIndicatorBehaviours.Shrink}" />
+                                            <Condition Binding="{Binding PointsSource, Converter={StaticResource IsTouch}}" Value="False"/>
                                         </MultiDataTrigger.Conditions>
                                         <Setter Property="Visibility" Value="Visible" />
                                     </MultiDataTrigger>
@@ -1405,6 +1414,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                         <MultiDataTrigger.Conditions>
                                             <Condition Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}" />
                                             <Condition Binding="{Binding ProgressIndicatorBehaviour}" Value="{x:Static enums:ProgressIndicatorBehaviours.Shrink}" />
+                                            <Condition Binding="{Binding PointsSource, Converter={StaticResource IsTouch}}" Value="False"/>
                                         </MultiDataTrigger.Conditions>
                                         <Setter Property="Visibility" Value="Visible" />
                                     </MultiDataTrigger>
@@ -1431,6 +1441,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                         <MultiDataTrigger.Conditions>
                                             <Condition Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}" />
                                             <Condition Binding="{Binding ProgressIndicatorBehaviour}" Value="{x:Static enums:ProgressIndicatorBehaviours.Shrink}" />
+                                            <Condition Binding="{Binding PointsSource, Converter={StaticResource IsTouch}}" Value="False"/>
                                         </MultiDataTrigger.Conditions>
                                         <Setter Property="Visibility" Value="Visible" />
                                     </MultiDataTrigger>
