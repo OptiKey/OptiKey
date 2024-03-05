@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
+using JuliusSweetland.OptiKey.Contracts;
 using log4net;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;

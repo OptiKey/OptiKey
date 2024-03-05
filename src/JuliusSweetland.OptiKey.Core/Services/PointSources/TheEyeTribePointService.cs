@@ -3,6 +3,7 @@ using System;
 using System.Reactive;
 using System.Windows;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 using log4net;
 using TETCSharpClient;
 using TETCSharpClient.Data;

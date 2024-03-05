@@ -2840,7 +2840,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 DisplayPluginError("Plugins are currently disabled");
                 return;
             }
-            if (!PluginEngine.IsPluginAvailable(keyCommand.Value))
+            if (!OptikeyPluginEngine.IsPluginAvailable(keyCommand.Value))
             {
                 DisplayPluginError($"Could not find plugin {keyCommand.Value}");
                 return;
@@ -2850,7 +2850,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Dictionary<string, string> context = BuildPluginContext();
             try
             {
-                PluginEngine.RunDynamicPlugin(context, keyCommand);
+                OptikeyPluginEngine.RunDynamicPlugin(context, keyCommand);
             }
             catch (Exception exception)
             {
@@ -2882,7 +2882,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(XmlPluginKey));
                 StringReader rdr = new StringReader(command);
-                PluginEngine.RunPlugin_Legacy(context, (XmlPluginKey)serializer.Deserialize(rdr));
+                OptikeyPluginEngine.RunPlugin_Legacy(context, (XmlPluginKey)serializer.Deserialize(rdr));
             }
             catch (Exception exception)
             {

@@ -1,0 +1,197 @@
+﻿<mah:MetroWindow
+        x:Class="JuliusSweetland.OptiKey.UI.Views.Management.EyeTrackerPluginsWindow"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+        xmlns:local="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Management"
+        xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
+        mc:Ignorable="d"            
+        Title="{x:Static resx:Resources.PLUGIN_SEARCH_WIZARD}" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/OptiKey;component/Resources/Themes/EyeTrackerPluginsTheme.xaml" />
+                <ResourceDictionary>
+                    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+                    <valueConverters:WidthWithoutScrollbarConverter x:Key="WidthWithoutScrollbar" />
+                    <valueConverters:StringNullOrEmptyToVisibilityConverter x:Key="StringNullOrEmptyToVisibilityConverter" />
+                    <valueConverters:ProgressUnderwayVisibilityConverter x:Key="ProgressUnderwayVisibilityConverter" />
+                    <valueConverters:ProgressUnderwayDisabledConverter x:Key="ProgressUnderwayDisabledConverter" />
+                    <valueConverters:DateTimeToDateStringConverter x:Key="DateTimeToDateStringConverter"/>
+                    <valueConverters:FileNameConverter x:Key="FileNameConverter"/>
+                    <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="LocalRepositoryTemplate">
+                <DockPanel Width="{Binding ActualWidth,  ElementName=scrollViewer, Converter={StaticResource WidthWithoutScrollbar}, ConverterParameter=80}">
+                    <StackPanel Orientation="Vertical" DockPanel.Dock="Right" VerticalAlignment="Center">
+                        <Button Style="{StaticResource ButtonStyle}" Content="{x:Static resx:Resources.OPEN_CONTAINING_FOLDER}" Command="{Binding DataContext.OpenDirectoryCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontSize="16" FontWeight="Bold">
+                            <Run Text="{Binding FilePathDLL, Converter={StaticResource FileNameConverter}}"/>
+                        </TextBlock>
+                        <TextBlock >
+                             <Run Text="{x:Static resx:Resources.FOUND_IN}"/>
+                             <Run Text="{Binding FolderName}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DockPanel>
+            </DataTemplate>
+            <!-- this is the template for listing github repos -->
+            <DataTemplate x:Key="GithubRepositoryTemplate">
+                <DockPanel Width="{Binding ActualWidth,  ElementName=scrollViewer, Converter={StaticResource WidthWithoutScrollbar}, ConverterParameter=80}">
+                    <StackPanel Orientation="Vertical" DockPanel.Dock="Right"  VerticalAlignment="Center">
+                        <Button                             
+                            Command="{Binding DataContext.InstallCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"
+                            IsEnabled="{Binding DownloadProgress, Converter={StaticResource ProgressUnderwayDisabledConverter}}" >
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Setter Property="Content" Value="{x:Static resx:Resources.INSTALL}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding InstallStatus}" Value="UpToDate">
+                                            <Setter Property="Visibility" Value="Hidden"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding InstallStatus}" Value="UpToDate">
+                                            <Setter Property="Content" Value="{x:Static resx:Resources.INSTALL}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding InstallStatus}" Value="UpgradeAvailable">
+                                            <Setter Property="Content" Value="{x:Static resx:Resources.UPGRADE}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <ProgressBar Height="10" Visibility="{Binding DownloadProgress, Converter={StaticResource ProgressUnderwayVisibilityConverter}}"
+                                         Value="{Binding DownloadProgress}"/>
+
+                        <Button Content="{x:Static resx:Resources.UNINSTALL}" Padding="3" Command="{Binding DataContext.UninstallCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding InstallStatus}" Value="NotInstalled">
+                                            <Setter Property="Visibility" Value="Hidden"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="0,0,5,0"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </Grid.Resources>
+                            <TextBlock Grid.Column="0" FontSize="18" FontWeight="Bold">
+                                <Run Text="{Binding Name}"/>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2">
+                                <Run Text="{Binding Stars}" BaselineAlignment="Center"/>
+                                <Run Text="{x:Static resx:Resources.STARS}" BaselineAlignment="Center"/>
+                            </TextBlock>
+                        </Grid>
+                        <TextBlock Text="{Binding Description}" FontSize="14" Foreground="Gray" TextWrapping="Wrap" />
+                        <TextBlock Margin="0,0,0,10">
+                            <Hyperlink NavigateUri="{Binding HtmlUrl}" RequestNavigate="Hyperlink_RequestNavigate">
+                                <Run Text="{Binding HtmlUrl}"/>
+                            </Hyperlink>
+                        </TextBlock>
+
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}: {1} ({2})">
+                                    <Binding Source="{x:Static resx:Resources.LATEST_RELEASE_AVAILABLE}"/>
+                                    <Binding Path="LatestRelease.TagName" />
+                                    <Binding Path="LatestRelease.CreatedAt" Converter="{StaticResource DateTimeToDateStringConverter}" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}: {1}">
+                                    <Binding Source="{x:Static resx:Resources.VERSION_INSTALLED}"/>
+                                    <Binding Path="InstalledReleaseName" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+                </DockPanel>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <ProgressBar Grid.Row="0" Height="20" IsIndeterminate="{Binding IsSearching}" 
+                     Visibility="{Binding IsSearching, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <TextBox Text="{x:Static resx:Resources.AVAILABLE_EYETRACKER_PLUGINS}" Grid.Row="1" FontSize="24"/>
+        <ScrollViewer Grid.Row="2" Name="scrollViewer">
+            <StackPanel Name="stackPanel">
+
+                <Border Name="borderLocalPlugins" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Padding="5" Margin="10" >
+                    <Border.Style>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasGithubPluginsInstalled}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding HasLocalPlugins}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <StackPanel>
+                        <TextBlock Text="{x:Static resx:Resources.INSTALLED_PLUGINS}" FontSize="18" FontWeight="Bold" Padding="5,0,0,15"/>
+                        <TextBlock Text="{x:Static resx:Resources.FROM_GITHUB_COLON}" FontSize="14" Padding="10,0,0,15"/>
+                        <ListBox ItemsSource="{Binding GithubPluginsInstalled}" ItemTemplate="{StaticResource GithubRepositoryTemplate}" 
+                                 AlternationCount="2" ItemContainerStyle="{StaticResource ListBoxStyle}"/>
+                        <!-- spacer between two lists makes up for potential alternation mismatch-->
+                        <Rectangle Height="10"/>
+                        <Line Stroke="Gray" StrokeThickness="2" Opacity="0.3" X2="10000" Margin="5"/>
+                        <TextBlock Text="{x:Static resx:Resources.OTHERS_COLON}" FontSize="14" Padding="10,0,0,15"
+                            Visibility="{Binding HasLocalPlugins, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        <ListBox ItemsSource="{Binding LocallyInstalledPlugins}" ItemTemplate="{StaticResource LocalRepositoryTemplate}" 
+            AlternationCount="2" ItemContainerStyle="{StaticResource ListBoxStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Name="borderGithubAvailable" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Padding="5" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="{x:Static resx:Resources.AVAILABLE_FROM_GITHUB}" FontSize="18" FontWeight="Bold" Padding="5,0,0,15"/>
+                        <ListBox Visibility="{Binding HasGithubPluginsAvailable, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                 ItemsSource="{Binding GithubPluginsAvailable}" ItemTemplate="{StaticResource GithubRepositoryTemplate}" 
+                                 AlternationCount="2" ItemContainerStyle="{StaticResource ListBoxStyle}"/>
+                        <TextBox Visibility="{Binding HasGithubPluginsAvailable, Converter={StaticResource InvertedBoolToVisibilityConverter}}"
+                                Grid.Row="1" FontSize="18" TextWrapping="Wrap" Foreground="DarkGray" 
+                                Text="{x:Static resx:Resources.NO_EYETRACKER_PLUGINS}" Panel.ZIndex="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                        </TextBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</mah:MetroWindow>

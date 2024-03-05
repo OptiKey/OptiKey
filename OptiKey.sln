@@ -5,6 +5,7 @@ VisualStudioVersion = 15.0.28307.1259
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Core", "src\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 	ProjectSection(ProjectDependencies) = postProject
+		{77C8F650-7992-4FF6-B434-1C15B72672E6} = {77C8F650-7992-4FF6-B434-1C15B72672E6}
 		{0C8F0372-2D55-41BC-9730-4ACE3ED67452} = {0C8F0372-2D55-41BC-9730-4ACE3ED67452}
 	EndProjectSection
 EndProject
@@ -57,6 +58,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance.Wpf", "src\SingleInstance.Wpf\SingleInstance.Wpf.csproj", "{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectedControllers", "src\TestControllers\TestConnectedControllers.csproj", "{C19F5A3D-271A-44B4-9F98-628F4534F959}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Contracts", "src\JuliusSweetland.OptiKey.Contracts\JuliusSweetland.OptiKey.Contracts.csproj", "{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.PointSourceUtils", "src\JuliusSweetland.OptiKey.PointSourceUtils\PointSourceUtils\JuliusSweetland.OptiKey.PointSourceUtils.csproj", "{77C8F650-7992-4FF6-B434-1C15B72672E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -154,6 +159,22 @@ Global
 		{C19F5A3D-271A-44B4-9F98-628F4534F959}.DefaultBuild|x64.Build.0 = Debug|x64
 		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Release|x64.ActiveCfg = Release|x64
 		{C19F5A3D-271A-44B4-9F98-628F4534F959}.Release|x64.Build.0 = Release|x64
+		{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}.All|x64.ActiveCfg = Release|Any CPU
+		{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}.All|x64.Build.0 = Release|Any CPU
+		{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}.Debug|x64.ActiveCfg = Debug|x64
+		{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}.Debug|x64.Build.0 = Debug|x64
+		{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}.DefaultBuild|x64.ActiveCfg = Debug|Any CPU
+		{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}.DefaultBuild|x64.Build.0 = Debug|Any CPU
+		{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}.Release|x64.ActiveCfg = Release|x64
+		{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}.Release|x64.Build.0 = Release|x64
+		{77C8F650-7992-4FF6-B434-1C15B72672E6}.All|x64.ActiveCfg = Release|Any CPU
+		{77C8F650-7992-4FF6-B434-1C15B72672E6}.All|x64.Build.0 = Release|Any CPU
+		{77C8F650-7992-4FF6-B434-1C15B72672E6}.Debug|x64.ActiveCfg = Debug|x64
+		{77C8F650-7992-4FF6-B434-1C15B72672E6}.Debug|x64.Build.0 = Debug|x64
+		{77C8F650-7992-4FF6-B434-1C15B72672E6}.DefaultBuild|x64.ActiveCfg = Debug|Any CPU
+		{77C8F650-7992-4FF6-B434-1C15B72672E6}.DefaultBuild|x64.Build.0 = Debug|Any CPU
+		{77C8F650-7992-4FF6-B434-1C15B72672E6}.Release|x64.ActiveCfg = Release|x64
+		{77C8F650-7992-4FF6-B434-1C15B72672E6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

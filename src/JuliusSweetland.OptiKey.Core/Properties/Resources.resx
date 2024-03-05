@@ -535,7 +535,8 @@ UP</value>
     <value>Key text transformation:</value>
   </data>
   <data name="COMPLETION_TIMES_HINT" xml:space="preserve">
-    <value>Enter multiple values separated by commas to speed up/slow down subsequent selections, for example: 1250,750,450,250</value>
+    <value>Enter multiple values separated by commas to speed up/slow down subsequent selections.
+For example: 1250,750,450,250</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Time to complete and repeat a key (ms):</value>
@@ -2502,5 +2503,96 @@ www.optikey.org/supported-eyetrackers</value>
   </data>
   <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
     <value>Repeat last key:</value>
+  </data>
+  <data name="EYETRACKER_DLL_LOCATION_LABEL" xml:space="preserve">
+    <value>DLL file for eye tracker plugin</value>
+  </data>
+  <data name="EXTERNAL_EYETRACKER_DLL" xml:space="preserve">
+    <value>External eye tracker via DLL plugin</value>
+  </data>
+  <data name="EYETRACKER_DLL_NOT_FOUND" xml:space="preserve">
+    <value>Eyetracker DLL file was not found</value>
+  </data>
+  <data name="EYETRACKER_DLL_NOT_VALID" xml:space="preserve">
+    <value>Eyetracker DLL file is not valid</value>
+  </data>
+  <data name="ERROR_LOADING_INPUT_SERVICE" xml:space="preserve">
+    <value>Failed to load input service</value>
+  </data>
+  <data name="EYETRACKER_DLL_INSTALLED_BUT_NOT_INSTANTIATED" xml:space="preserve">
+    <value>Plugin has been installed, but Optikey was unable to start it. Check the log for details. </value>
+  </data>
+  <data name="MANAGE_ET_PLUGINS" xml:space="preserve">
+    <value>Manage eye tracker plugins</value>
+  </data>
+  <data name="AVAILABLE_EYETRACKER_PLUGINS" xml:space="preserve">
+    <value>Available eyetracker plugins</value>
+  </data>
+  <data name="INSTALLED_PLUGINS" xml:space="preserve">
+    <value>Installed plugins</value>
+  </data>
+  <data name="FROM_GITHUB_COLON" xml:space="preserve">
+    <value>From GitHub:</value>
+  </data>
+  <data name="OTHERS_COLON" xml:space="preserve">
+    <value>Others:</value>
+  </data>
+  <data name="AVAILABLE_FROM_GITHUB" xml:space="preserve">
+    <value>Available from GitHub</value>
+  </data>
+  <data name="PLUGIN_SEARCH_WIZARD" xml:space="preserve">
+    <value>Plugin search wizard</value>
+  </data>
+  <data name="OPEN_CONTAINING_FOLDER" xml:space="preserve">
+    <value>Open Containing Folder</value>
+  </data>
+  <data name="INSTALL" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="UPGRADE" xml:space="preserve">
+    <value>Upgrade</value>
+  </data>
+  <data name="UNINSTALL" xml:space="preserve">
+    <value>Uninstall</value>
+  </data>
+  <data name="STARS" xml:space="preserve">
+    <value>stars</value>
+  </data>
+  <data name="LATEST_RELEASE_AVAILABLE" xml:space="preserve">
+    <value>Latest release available</value>
+  </data>
+  <data name="VERSION_INSTALLED" xml:space="preserve">
+    <value>Version installed</value>
+  </data>
+  <data name="FOUND_IN" xml:space="preserve">
+    <value>found in</value>
+  </data>
+  <data name="ERROR_UNINSTALLING_PLUGIN" xml:space="preserve">
+    <value>Error uninstalling plugin</value>
+  </data>
+  <data name="NO_VALID_DLL_FOUND" xml:space="preserve">
+    <value>Could not find valid eyetracker plugin (DLL) file</value>
+  </data>
+  <data name="CONFIRM_UNINSTALL" xml:space="preserve">
+    <value>Confirm Uninstall</value>
+  </data>
+  <data name="ASK_CONFIRM_UNINSTALL" xml:space="preserve">
+    <value>Are you sure you want to remove all versions in:</value>
+  </data>
+  <data name="UNABLE_UNINSTALL" xml:space="preserve">
+    <value>Unable to uninstall currently. Please restart Optikey and try again.</value>
+  </data>
+  <data name="FILES_LOCKED" xml:space="preserve">
+    <value>Files locked</value>
+  </data>
+  <data name="CHANGE_EYETRACKER_CAPTION" xml:space="preserve">
+    <value>Change points source?</value>
+  </data>
+  <data name="CHANGE_EYETRACKER_DETAILS" xml:space="preserve">
+    <value>Do you want to use the newly installed plugin ({0}) as your points source?</value>
+  </data>
+  <data name="NO_EYETRACKER_PLUGINS" xml:space="preserve">
+    <value>No eye tracker plugins found.
+Check your internet connection and wait a few minutes to rescan.</value>
   </data>
 </root>

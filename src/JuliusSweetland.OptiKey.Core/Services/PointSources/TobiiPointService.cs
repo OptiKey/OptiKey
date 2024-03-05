@@ -10,6 +10,7 @@ using System.Threading;
 
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 
 using log4net;
 using System.IO;
