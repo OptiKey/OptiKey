@@ -18,6 +18,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
@@ -689,12 +690,14 @@ namespace JuliusSweetland.OptiKey
             IAudioService audioService,
             ICalibrationService calibrationService,
             ICapturingStateManager capturingStateManager,
-            List<INotifyErrors> errorNotifyingServices)
+            List<INotifyErrors> errorNotifyingServices,
+            out string errorMessage)
         {
             Log.Info("Creating InputService.");
+            errorMessage = null;
 
             //Instantiate point source
-            IPointSource pointSource;
+            IPointSource pointSource = null;            
             switch (Settings.Default.PointsSource)
             {
                 case PointsSources.GazeTracker:
@@ -748,6 +751,45 @@ namespace JuliusSweetland.OptiKey
                         Settings.Default.PointTtl);
                     break;
 
+                case PointsSources.DllIntegration:                    
+                    if (File.Exists(Settings.Default.EyeTrackerDllFilePath)) {
+
+                        var dllServiceAndErrorString = DllLoader.TryInstantiatePointSource(Settings.Default.EyeTrackerDllFilePath);
+                        IPointService dllService = dllServiceAndErrorString.Item1;
+                        errorMessage = dllServiceAndErrorString.Item2;
+
+                        if (dllService != null) { 
+                            errorNotifyingServices.Add(dllService);
+                            pointSource = new PointServiceSource(
+                                Settings.Default.PointTtl,
+                                dllService);
+
+                            Log.Info($"Successfully loaded IPointService from {Settings.Default.EyeTrackerDllFilePath}");
+
+                            // Make sure it's disposed appropriately on app exit
+                            if (dllService is IDisposable)
+                            {
+                                Application.Current.Exit += (sender, args) =>
+                                {
+                                    var disposable = (IDisposable)dllService;
+                                    disposable.Dispose();
+                                };
+                            }
+                        }                                       
+                    }
+                    else
+                    {
+                        Log.ErrorFormat($"Eye tracker DLL: {Settings.Default.EyeTrackerDllFilePath} not found");
+                        errorMessage = OptiKey.Properties.Resources.EYETRACKER_DLL_NOT_FOUND;
+                    }
+                    if (pointSource == null)
+                    {
+                        // Default to mouse position until we are able to surface the error message
+                        pointSource = new MousePositionSource(
+                            Settings.Default.PointTtl);
+                    }
+                    break;
+                
                 default:                    
                     // We may get here if we've got a deprecated tracker enum - we will check that separately                                        
                     pointSource = new MousePositionSource(
@@ -898,7 +940,11 @@ namespace JuliusSweetland.OptiKey
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, DiagnosticInfo.AssemblyVersion));
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION, Settings.Default.KeyboardAndDictionaryLanguage.ToDescription()));
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.UI_LANGUAGE_DESCRIPTION, Settings.Default.UiLanguage.ToDescription()));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
+
+                if (Settings.Default.PointsSource == PointsSources.DllIntegration)
+                    message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Path.GetFileName(Settings.Default.EyeTrackerDllFilePath)));
+                else 
+                    message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();
                 keySelectionSb.Append(Settings.Default.KeySelectionTriggerSource.ToDescription());
@@ -979,11 +1025,22 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
+        #region Check for eyetracker plugins online
+        protected static async Task StartCheckForEyeTrackerPluginsOnline()
+        {  
+            // Instantiate github plugins singleton and load
+            var gh = GithubPluginsSearch.Instance;
+            await gh.TryLoad(3, 60); // try 3 times with minute delay between tries, to allow for lack of web connection at startup.
+        }
+
+        #endregion
+
         #region  Check For Updates
 
         protected static async Task<bool> CheckForUpdates(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
 
             try
             {
@@ -1330,6 +1387,32 @@ namespace JuliusSweetland.OptiKey
                 mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.EYETRACKER_DEPRECATED,
                     string.Format(OptiKey.Properties.Resources.EYETRACKER_DEPRECATED_DETAILS,
                         Settings.Default.SuggestionMethod),
+                    NotificationTypes.Error, () =>
+                    {
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(false);
+                    });
+            }
+            else
+            {
+                taskCompletionSource.SetResult(true);
+            }
+            return await taskCompletionSource.Task;
+        }
+        #endregion
+
+        #region Alert If Input Service Error
+
+        protected static async Task<bool> AlertIfInputServiceError(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel, string errorString)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); // Used to make this method awaitable on the InteractionRequest callback
+
+            if (!String.IsNullOrEmpty(errorString))
+            {
+                inputService.RequestSuspend();
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.ERROR_LOADING_INPUT_SERVICE,
+                    errorString,
                     NotificationTypes.Error, () =>
                     {
                         inputService.RequestResume();

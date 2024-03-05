@@ -13,7 +13,7 @@ using log4net;
 
 namespace JuliusSweetland.OptiKey.Services.PluginEngine
 {
-    public class PluginEngine
+    public class OptikeyPluginEngine
     {
 
         #region Private Member Vars

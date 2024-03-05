@@ -10,6 +10,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.Contracts;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {

@@ -218,7 +218,7 @@
     </Reference>
     <Reference Include="TETCSharpClient">
       <HintPath>..\..\ext\TheEyeTribe\TETCSharpClient.dll</HintPath>
-    </Reference>    
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -228,6 +228,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\TriggerTypes.cs" />
+    <Compile Include="Extensions\FileInfoExtensions.cs" />
+    <Compile Include="Extensions\ZipArchiveExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Models\Gamepads\GamepadButtonEvents.cs" />
     <Compile Include="Models\Gamepads\DirectInputControllerState.cs" />
@@ -383,17 +385,21 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\PluginEngine\DllLoader.cs" />
+    <Compile Include="Services\PluginEngine\EyeTrackerPluginEngine.cs" />
+    <Compile Include="Services\PluginEngine\GithubPluginsSearch.cs" />
+    <Compile Include="Services\PluginEngine\GithubRepoModel.cs" />
+    <Compile Include="Services\PluginEngine\InstalledPluginsSearch.cs" />
+    <Compile Include="Services\PluginEngine\PluginUtils.cs" />
     <Compile Include="Services\PointSources\IrisbondHiruCalibrationService.cs" />
     <Compile Include="Services\PointSources\IrisbondHiruPointService.cs" />
-    <Compile Include="Services\PluginEngine\PluginEngine.cs" />
+    <Compile Include="Services\PluginEngine\OptikeyPluginEngine.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
     <Compile Include="Services\Suggestions\ISuggestions.cs" />
     <Compile Include="Services\Suggestions\NGramAutoComplete.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\IMouseOutputService.cs" />
-    <Compile Include="Services\INotifyErrors.cs" />
-    <Compile Include="Services\IPointService.cs" />
     <Compile Include="Services\IWindowManipulationService.cs" />
     <Compile Include="Services\KeyStateService.cs" />
     <Compile Include="Services\IKeyStateService.cs" />
@@ -461,10 +467,16 @@
       <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
+    <Compile Include="UI\ValueConverters\FileNameConverter .cs" />
     <Compile Include="UI\ValueConverters\CompletionTimesValidation.cs" />
+    <Compile Include="UI\ValueConverters\DateTimeToDateStringConverter.cs" />
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
+    <Compile Include="UI\ValueConverters\ProgressUnderwayEnabledConverter.cs" />
+    <Compile Include="UI\ValueConverters\ProgressUnderwayVisibilityConverter.cs" />
+    <Compile Include="UI\ValueConverters\StringNullOrEmptyToVisibilityConverter.cs" />
+    <Compile Include="UI\ValueConverters\WidthWithoutScrollbarConverter.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\DynamicKeyboard.cs" />
@@ -917,6 +929,9 @@
     </Compile>
     <Compile Include="UI\Controls\GestureEditor.xaml.cs">
       <DependentUpon>GestureEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\EyeTrackerPluginsWindow.xaml.cs">
+      <DependentUpon>EyeTrackerPluginsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Management\GesturesView.xaml.cs">
       <DependentUpon>GesturesView.xaml</DependentUpon>
@@ -1510,6 +1525,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Themes\EyeTrackerPluginsTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Controls\CK20Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -2047,6 +2066,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Management\EyeTrackerPluginsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Views\Management\GesturesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -2140,6 +2163,14 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.Contracts\JuliusSweetland.OptiKey.Contracts.csproj">
+      <Project>{6b7fd101-f21c-4eea-a2e0-4b5cbfbfe719}</Project>
+      <Name>JuliusSweetland.OptiKey.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.PointSourceUtils\PointSourceUtils\JuliusSweetland.OptiKey.PointSourceUtils.csproj">
+      <Project>{77c8f650-7992-4ff6-b434-1c15b72672e6}</Project>
+      <Name>JuliusSweetland.OptiKey.PointSourceUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SingleInstance.Wpf\SingleInstance.Wpf.csproj">
       <Project>{2a8b4ae0-48be-4a49-9c9c-654c195c8ab2}</Project>
       <Name>SingleInstance.Wpf</Name>

@@ -142,9 +142,17 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.Contracts\JuliusSweetland.OptiKey.Contracts.csproj">
+      <Project>{6b7fd101-f21c-4eea-a2e0-4b5cbfbfe719}</Project>
+      <Name>JuliusSweetland.OptiKey.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj">
       <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
       <Name>JuliusSweetland.OptiKey.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.PointSourceUtils\PointSourceUtils\JuliusSweetland.OptiKey.PointSourceUtils.csproj">
+      <Project>{77c8f650-7992-4ff6-b434-1c15b72672e6}</Project>
+      <Name>JuliusSweetland.OptiKey.PointSourceUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

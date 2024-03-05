@@ -8,6 +8,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
+using JuliusSweetland.OptiKey.Contracts;
 using log4net;
 using Prism.Mvvm;
 

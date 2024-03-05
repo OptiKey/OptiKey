@@ -376,7 +376,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get
             {
-                return PluginEngine.GetAllAvailablePlugins();
+                return OptikeyPluginEngine.GetAllAvailablePlugins();
             }
         }
 

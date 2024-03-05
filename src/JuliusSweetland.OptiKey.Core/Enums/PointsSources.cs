@@ -7,9 +7,12 @@ namespace JuliusSweetland.OptiKey.Enums
         [System.Obsolete("Not supported in v4+", true)]
         Alienware17,
 
+        DllIntegration,
+
         GazeTracker,
         IrisbondDuo,
         IrisbondHiru,
+        
         MousePosition,
 
         [System.Obsolete("Not supported in v4+", true)]
@@ -54,6 +57,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.TobiiPcEyeMini: return Resources.TOBII_PCEYE_MINI;
                 case PointsSources.TobiiX2_30: return Resources.TOBII_X2_30;
                 case PointsSources.TobiiX2_60: return Resources.TOBII_X2_60;
+                case PointsSources.DllIntegration: return Resources.EXTERNAL_EYETRACKER_DLL;
             }
 
             return pointSource.ToString();
@@ -74,6 +78,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.TobiiPcEyeMini: return Resources.TOBII_ASSISTIVE_INFO;
                 case PointsSources.TobiiX2_30: return Resources.TOBII_ASSISTIVE_INFO;
                 case PointsSources.TobiiX2_60: return Resources.TOBII_ASSISTIVE_INFO;
+                case PointsSources.DllIntegration: return "";
             }
 
             return pointSource.ToString();

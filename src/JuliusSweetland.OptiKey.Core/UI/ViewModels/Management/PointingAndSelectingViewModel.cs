@@ -4,13 +4,17 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Models.Gamepads;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.PluginEngine;
+using JuliusSweetland.OptiKey.UI.Views.Management;
 using log4net;
+using Prism.Commands;
 using Prism.Mvvm;
 using SharpDX.XInput;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
@@ -20,13 +24,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        #endregion
+        public EyeTrackerPluginEngine eyeTrackerPluginEngine;
+
+        #endregion        
 
         #region Ctor
 
         public PointingAndSelectingViewModel()
         {
             Load();
+
+            // Set up eye tracker plugins
+            eyeTrackerPluginEngine = new EyeTrackerPluginEngine();
 
             //Set up property defaulting logic
             this.OnPropertyChanges(vm => vm.KeySelectionTriggerSource).Subscribe(ts =>
@@ -67,18 +76,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #region Properties
 
-        public static List<KeyValuePair<string, PointsSources>> PointsSources
+        public List<KeyValuePair<string, string>> PointsSources
         {
             get
-            {
-                return new List<KeyValuePair<string, PointsSources>>
+            {                
+                var bundledSources = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.GazeTracker.ToDescription(), Enums.PointsSources.GazeTracker),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisbondDuo.ToDescription(), Enums.PointsSources.IrisbondDuo),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisbondHiru.ToDescription(), Enums.PointsSources.IrisbondHiru),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.MousePosition.ToDescription(), Enums.PointsSources.MousePosition),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe),                    
-                };
+                    new KeyValuePair<string, string>(Enums.PointsSources.GazeTracker.ToDescription(), Enums.PointsSources.GazeTracker.ToString()),
+                    new KeyValuePair<string, string>(Enums.PointsSources.IrisbondDuo.ToDescription(), Enums.PointsSources.IrisbondDuo.ToString()),
+                    new KeyValuePair<string, string>(Enums.PointsSources.IrisbondHiru.ToDescription(), Enums.PointsSources.IrisbondHiru.ToString()),
+                    new KeyValuePair<string, string>(Enums.PointsSources.MousePosition.ToDescription(), Enums.PointsSources.MousePosition.ToString()),
+                    new KeyValuePair<string, string>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe.ToString()),              
+                };                
+
+                var installedSources = new List<KeyValuePair<string, string>>();
+                if (eyeTrackerPluginEngine != null)
+                {
+                    installedSources = eyeTrackerPluginEngine.AllSourcesAvailable;
+                }
+
+                return bundledSources.Concat(installedSources).ToList();
             }
         }
 
@@ -232,11 +249,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref allowRepeats, value); }
         }
 
-        private PointsSources pointSource;
+        private string pointsSourceString;
+        public string PointsSourceString
+        {
+            get { return pointsSourceString; }
+            set { SetProperty(ref pointsSourceString, value); }
+        }
+
         public PointsSources PointsSource
         {
-            get { return pointSource; }
-            set { SetProperty(ref pointSource, value); }
+            get {
+                if (Enum.TryParse(pointsSourceString, out PointsSources pointSource))
+                    return pointSource;
+                else
+                    return Enums.PointsSources.DllIntegration;
+            }
+        }
+
+        public string EyeTrackerDllFilePath
+        {
+            get
+            {
+                if (Enum.TryParse(pointsSourceString, out PointsSources pointSource))
+                    return null;
+                else
+                    return pointsSourceString;
+            }
         }
 
         private DataStreamProcessingLevels tobiiEyeXProcessingLevel;
@@ -499,7 +537,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return multiKeySelectionMaxDurationInMs; }
             set { SetProperty(ref multiKeySelectionMaxDurationInMs, value); }
-        }
+        }        
 
         public bool ChangesRequireRestart
         {
@@ -513,7 +551,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups
                         .SelectMany(g => g.KeyValueAndTimeSpans);
 
-                return Settings.Default.PointsSource != PointsSource
+                return Settings.Default.PointsSource != PointsSource                    
+                    || (Settings.Default.EyeTrackerDllFilePath != EyeTrackerDllFilePath && PointsSource == Enums.PointsSources.DllIntegration)
                     || (Settings.Default.IrisbondProcessingLevel != IrisbondProcessingLevel && (PointsSource == Enums.PointsSources.IrisbondDuo || PointsSource == Enums.PointsSources.IrisbondHiru))
                     || (Settings.Default.PointsMousePositionSampleInterval != TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs) && PointsSource == Enums.PointsSources.MousePosition)
                     || Settings.Default.PointTtl != TimeSpan.FromMilliseconds(PointTtlInMs)
@@ -553,8 +592,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
+            if (Settings.Default.PointsSource == Enums.PointsSources.DllIntegration)
+                PointsSourceString = Settings.Default.EyeTrackerDllFilePath;
+            else
+                PointsSourceString = Settings.Default.PointsSource.ToString();
+
             AllowRepeats = Settings.Default.AllowRepeatKeyActionsAwayFromKey;
-            PointsSource = Settings.Default.PointsSource;
+            
             TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
             IrisbondProcessingLevel = Settings.Default.IrisbondProcessingLevel;
             GazeSmoothingLevel = Settings.Default.GazeSmoothingLevel;
@@ -596,7 +640,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         public void ApplyChanges()
-        {
+        {            
             Settings.Default.AllowRepeatKeyActionsAwayFromKey = AllowRepeats;
             Settings.Default.PointsSource = PointsSource;
             Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
@@ -606,6 +650,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointsMousePositionHideCursor = PointsMousePositionHideCursor;
             Settings.Default.PointTtl = TimeSpan.FromMilliseconds(PointTtlInMs);
+            Settings.Default.EyeTrackerDllFilePath = EyeTrackerDllFilePath;
             Settings.Default.KeySelectionTriggerSource = KeySelectionTriggerSource;
             Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey = KeySelectionTriggerKeyboardKeyDownUpKey;
             Settings.Default.KeySelectionTriggerGamepadXInputController = KeySelectionTriggerGamepadXInputController;
@@ -636,6 +681,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MultiKeySelectionTriggerStopSignal = MultiKeySelectionTriggerStopSignal;
             Settings.Default.MultiKeySelectionFixationMinDwellTime = TimeSpan.FromMilliseconds(MultiKeySelectionFixationMinDwellTimeInMs);
             Settings.Default.MultiKeySelectionMaxDuration = TimeSpan.FromMilliseconds(MultiKeySelectionMaxDurationInMs);
+        }
+
+        public void UpdatePlugins()
+        {            
+            RaisePropertyChanged("PointsSources");
+
+            // If currently-selected source is no longer in list of available sources, default to mouse control
+            if (!PointsSources.Any(x => x.Value == PointsSourceString))
+            {
+                PointsSourceString = Enums.PointsSources.MousePosition.ToString();
+            }
+
+            // If something was installed, ask user if they want to choose it
+            if (eyeTrackerPluginEngine.MostRecentlyInstalledDll != null) {
+                var repo = eyeTrackerPluginEngine.MostRecentlyInstalledDll;
+                var result = MessageBox.Show(String.Format(Resources.CHANGE_EYETRACKER_DETAILS, PluginUtils.GetRepoKey(repo)),
+                    Resources.CHANGE_EYETRACKER_CAPTION, 
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    PointsSourceString = repo.InstalledDllPath;
+                    // Coerce to no smoothing, user can turn back on. 
+                    GazeSmoothingLevel = 0;
+                }
+            }
         }
 
         private List<KeyValueAndTimeSpanGroup> FromSetting(

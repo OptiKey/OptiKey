@@ -199,7 +199,7 @@
     </Reference>
     <Reference Include="TETCSharpClient">
       <HintPath>..\..\ext\TheEyeTribe\TETCSharpClient.dll</HintPath>
-    </Reference>    
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -1010,6 +1010,14 @@
     <ProjectReference Include="..\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj">
       <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
       <Name>JuliusSweetland.OptiKey.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.PointSourceUtils\PointSourceUtils\JuliusSweetland.OptiKey.PointSourceUtils.csproj">
+      <Project>{77c8f650-7992-4ff6-b434-1c15b72672e6}</Project>
+      <Name>JuliusSweetland.OptiKey.PointSourceUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JuliusSweetland.OptiKey.Contracts\JuliusSweetland.OptiKey.Contracts.csproj">
+      <Project>{6b7fd101-f21c-4eea-a2e0-4b5cbfbfe719}</Project>
+      <Name>JuliusSweetland.OptiKey.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj">
       <Project>{0c8f0372-2d55-41bc-9730-4ace3ed67452}</Project>
