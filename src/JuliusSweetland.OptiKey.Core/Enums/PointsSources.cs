@@ -11,6 +11,7 @@ namespace JuliusSweetland.OptiKey.Enums
         IrisbondDuo,
         IrisbondHiru,
         MousePosition,
+        TouchScreenPosition,
 
         [System.Obsolete("Not supported in v4+", true)]
         SteelseriesSentry,
@@ -47,6 +48,8 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.IrisbondDuo: return Resources.IRISBOND_DUO;
                 case PointsSources.IrisbondHiru: return Resources.IRISBOND_HIRU;
                 case PointsSources.MousePosition: return Resources.MOUSE_POSITION;
+                case PointsSources.TouchScreenPosition: return Resources.TOUCHSCREEN_POSITION;
+                
                 case PointsSources.TheEyeTribe: return Resources.THE_EYE_TRIBE;
                 case PointsSources.TobiiPcEyeGo: return Resources.TOBII_PCEYE_GO;
                 case PointsSources.TobiiPcEyeGoPlus: return Resources.TOBII_PCEYE_GO_PLUS;

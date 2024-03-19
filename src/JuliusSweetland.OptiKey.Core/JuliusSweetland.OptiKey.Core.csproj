@@ -293,6 +293,7 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
+    <Compile Include="Models\Gamepads\RepeatableTriggerSignal.cs" />
     <Compile Include="Models\Gamepads\XInputControllerState.cs" />
     <Compile Include="Models\Gamepads\XInputListener.cs" />
     <Compile Include="Models\XmlKeyCommand.cs" />
@@ -371,6 +372,7 @@
     <Compile Include="Native\Common\Structs\RECT.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
+    <Compile Include="Observables\PointSources\TouchScreenPositionSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
     <Compile Include="Observables\TriggerSources\EyeGestureSource.cs" />
@@ -431,6 +433,8 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
     <Compile Include="Services\MouseOutputService.cs" />
+    <Compile Include="Services\MyGazePointService.cs" />
+    <Compile Include="Services\MyGazeCalibrationService.cs" />
     <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
     <Compile Include="Services\PointSources\IrisbondDuoCalibrationService.cs" />
     <Compile Include="Services\PointSources\IrisbondDuoPointService.cs" />
@@ -1076,6 +1080,26 @@
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
     <EmbeddedResource Include="Properties\Resources.uk-UA.resx" />
+    <Content Include="..\..\ext\IrisBond\avcodec-58.dll">
+      <Link>avcodec-58.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avdevice-58.dll">
+      <Link>avdevice-58.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avfilter-7.dll">
+      <Link>avfilter-7.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avformat-58.dll">
+      <Link>avformat-58.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avutil-56.dll">
+      <Link>avutil-56.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\ext\IrisBond\IrisbondHiruAPI.dll">
       <Link>IrisbondHiruAPI.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1085,6 +1109,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.ur-PK.resx" />
+    <Content Include="..\..\ext\IrisBond\swresample-3.dll">
+      <Link>swresample-3.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dictionaries\UrduPakistan.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

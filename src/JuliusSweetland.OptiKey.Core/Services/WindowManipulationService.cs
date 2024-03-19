@@ -1731,9 +1731,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         //If we are using mouse button clicks as a key selection source we should prevent 
         //the window from changing focus so the target window receives the keyboard input.
+        //when using touchscreen, each touch will trigger mouse click so we need to prevent focus steal from active window 
         private void PreventWindowActivation()
         {
-            if (Settings.Default.KeySelectionTriggerSource == TriggerSources.MouseButtonDownUps)
+            if (Settings.Default.KeySelectionTriggerSource == TriggerSources.MouseButtonDownUps || 
+                Settings.Default.PointsSource == PointsSources.TouchScreenPosition)
             {
                 const int WS_EX_APPWINDOW = 0x40000;
                 const int WS_EX_NOACTIVATE = 0x08000000;

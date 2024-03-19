@@ -1034,6 +1034,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trigger repeat presses when held down.
+        /// </summary>
+        public static string CONTROLLER_ENABLE_REPEATS {
+            get {
+                return ResourceManager.GetString("CONTROLLER_ENABLE_REPEATS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time delay for first repeat (ms).
+        /// </summary>
+        public static string CONTROLLER_FIRST_REPEAT_TIME {
+            get {
+                return ResourceManager.GetString("CONTROLLER_FIRST_REPEAT_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time delay for subsequent repeats (ms).
+        /// </summary>
+        public static string CONTROLLER_NEXT_REPEAT_TIME {
+            get {
+                return ResourceManager.GetString("CONTROLLER_NEXT_REPEAT_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CONVERSATION.
         /// </summary>
         public static string CONVERSATION {
@@ -5333,6 +5360,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset mouse position after key is pressed (useful for touchscreens).
+        /// </summary>
+        public static string RESET_MOUSE_POSITION_AFTER_KEY_PRESSED {
+            get {
+                return ResourceManager.GetString("RESET_MOUSE_POSITION_AFTER_KEY_PRESSED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restart.
         /// </summary>
         public static string RESTART {
@@ -6511,6 +6547,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TONE_SOUND_4 {
             get {
                 return ResourceManager.GetString("TONE_SOUND_4", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Touch Screen position.
+        /// </summary>
+        public static string TOUCHSCREEN_POSITION {
+            get {
+                return ResourceManager.GetString("TOUCHSCREEN_POSITION", resourceCulture);
             }
         }
         
