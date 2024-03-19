@@ -433,8 +433,6 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
     <Compile Include="Services\MouseOutputService.cs" />
-    <Compile Include="Services\MyGazePointService.cs" />
-    <Compile Include="Services\MyGazeCalibrationService.cs" />
     <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
     <Compile Include="Services\PointSources\IrisbondDuoCalibrationService.cs" />
     <Compile Include="Services\PointSources\IrisbondDuoPointService.cs" />
