@@ -113,7 +113,7 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             CultureInfo closestCulture = new CultureInfo(closestLanguageCode);
 
             // Get list of available eyetrackers from PointingAndSelectingViewModel
-            List<KeyValuePair<string, PointsSources>> trackers = PointingAndSelectingViewModel.PointsSources;
+            List<KeyValuePair<string, PointsSources>> trackers = PointingAndSelectingViewModel.BundledPointsSources;
 
             string comboData = ""; // we'll append to this as we go
             string defaultTracker = "";

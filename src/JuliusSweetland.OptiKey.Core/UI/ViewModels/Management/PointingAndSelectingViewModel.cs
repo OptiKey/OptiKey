@@ -79,27 +79,38 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #region Properties
 
+
+        public static List<KeyValuePair<string, PointsSources>> BundledPointsSources
+        {
+            get
+            {
+                return new List<KeyValuePair<string, PointsSources>>
+                {
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.GazeTracker.ToDescription(), Enums.PointsSources.GazeTracker),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisbondDuo.ToDescription(), Enums.PointsSources.IrisbondDuo),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisbondHiru.ToDescription(), Enums.PointsSources.IrisbondHiru),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.MousePosition.ToDescription(), Enums.PointsSources.MousePosition),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TouchScreenPosition.ToDescription(), Enums.PointsSources.TouchScreenPosition),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe),
+                };
+            }
+        }
+
         public List<KeyValuePair<string, string>> PointsSources
         {
             get
             {                
-                var bundledSources = new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>(Enums.PointsSources.GazeTracker.ToDescription(), Enums.PointsSources.GazeTracker.ToString()),
-                    new KeyValuePair<string, string>(Enums.PointsSources.IrisbondDuo.ToDescription(), Enums.PointsSources.IrisbondDuo.ToString()),
-                    new KeyValuePair<string, string>(Enums.PointsSources.IrisbondHiru.ToDescription(), Enums.PointsSources.IrisbondHiru.ToString()),
-                    new KeyValuePair<string, string>(Enums.PointsSources.MousePosition.ToDescription(), Enums.PointsSources.MousePosition.ToString()),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TouchScreenPosition.ToDescription(), Enums.PointsSources.TouchScreenPosition),
-                    new KeyValuePair<string, string>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe.ToString()),              
-                };                
-
                 var installedSources = new List<KeyValuePair<string, string>>();
                 if (eyeTrackerPluginEngine != null)
                 {
                     installedSources = eyeTrackerPluginEngine.AllSourcesAvailable;
                 }
 
-                return bundledSources.Concat(installedSources).ToList();
+                var bundledSourcesAsString = BundledPointsSources
+                    .Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value.ToString()))
+                    .ToList();
+
+                return bundledSourcesAsString.Concat(installedSources).ToList();
             }
         }
 
