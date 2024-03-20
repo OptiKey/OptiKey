@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:JuliusSweetland.OptiKey.Resources.Themes">
+    <!-- this template is required to ensure scrolling is captured by outer scrollviewer, not individual listboxes -->
+    <Style TargetType="ListBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ItemsControl">
+                    <Border>
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- this is the style for all list boxes -->
+    <Style x:Key="ListBoxStyle" TargetType="ListBoxItem">
+        <Setter Property="Margin" Value="10,0,10,10" />
+        <Style.Triggers>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                <Setter Property="Background" Value="#FFF6F6F6" />
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                <Setter Property="Background" Value="#FFFFFFFF" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!-- this is the style for all buttons -->
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="Margin" Value="0,3,0,3"/>
+        <Setter Property="Padding" Value="3"/>
+    </Style>
+</ResourceDictionary>

@@ -50,8 +50,15 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               ItemsSource="{Binding PointsSources}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding PointsSource, Mode=TwoWay}" />
-                    
+                              SelectedValue="{Binding PointsSourceString, Mode=TwoWay}" />
+
+                    <Button Grid.Row="1" Grid.Column="1" MinWidth="100" Margin="5,5,5,5" 
+                                VerticalAlignment="Center"  
+                                HorizontalAlignment="Left"
+                                Click="OpenPluginsWindow">
+                        <x:Static Member="resx:Resources.MANAGE_ET_PLUGINS"/>
+                    </Button>
+
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.IRISBOND_DATA_STREAM_PROCESSING_LEVEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>

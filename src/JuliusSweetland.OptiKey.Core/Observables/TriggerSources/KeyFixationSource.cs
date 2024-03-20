@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
+using JuliusSweetland.OptiKey.Contracts;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {

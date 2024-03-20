@@ -18,6 +18,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using JuliusSweetland.OptiKey.Pro.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Static;
@@ -141,7 +142,7 @@ namespace JuliusSweetland.OptiKey.Pro
                 ValidatePluginsLocation();
                 if (Settings.Default.EnablePlugins)
                 {
-                    PluginEngine.LoadAvailablePlugins();
+                    OptikeyPluginEngine.LoadAvailablePlugins();
                 }
 
                 var presageInstallationProblem = PresageInstallationProblemsDetected();
@@ -159,7 +160,7 @@ namespace JuliusSweetland.OptiKey.Pro
                 IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager,
                     lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
                 IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService,
-                    calibrationService, capturingStateManager, errorNotifyingServices);
+                    calibrationService, capturingStateManager, errorNotifyingServices, out string inputServiceErrorMessage);
                 IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService,
                     suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
@@ -220,12 +221,15 @@ namespace JuliusSweetland.OptiKey.Pro
                     await ShowSplashScreen(inputService, audioService, mainViewModel, OptiKey.Properties.Resources.OPTIKEY_PRO_DESCRIPTION);
                     await mainViewModel.RaiseAnyPendingErrorToastNotifications();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
+                    await AlertIfInputServiceError(inputService, audioService, mainViewModel, inputServiceErrorMessage);
                     await AlertIfEyeTrackerDeprecated(inputService, audioService, mainViewModel);
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService,
                         audioService, mainViewModel);
 
                     inputService.RequestResume(); //Start the input service
 
+                    // Github queries happen in the background
+                    await StartCheckForEyeTrackerPluginsOnline(); 
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
 

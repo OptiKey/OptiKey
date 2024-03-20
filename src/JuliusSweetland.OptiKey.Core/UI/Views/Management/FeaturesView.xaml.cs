@@ -70,11 +70,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
 
         private void RefreshAvailablePlugins(object sender, System.Windows.RoutedEventArgs e)
         {            
-            PluginEngine.RefreshAvailablePlugins(txtPluginsLocation.Text);
+            OptikeyPluginEngine.RefreshAvailablePlugins(txtPluginsLocation.Text);
 
             // Force refresh by re-binding the CollectionView source
             // TODO: how should this be done with MVVM properly? we don't have property change notifications for the read-only list of plugins...
-            ((CollectionViewSource)this.Resources["AvailablePluginsCollectionViewSource"]).Source = PluginEngine.GetAllAvailablePlugins(); 
+            ((CollectionViewSource)this.Resources["AvailablePluginsCollectionViewSource"]).Source = OptikeyPluginEngine.GetAllAvailablePlugins(); 
         }
     }
 }

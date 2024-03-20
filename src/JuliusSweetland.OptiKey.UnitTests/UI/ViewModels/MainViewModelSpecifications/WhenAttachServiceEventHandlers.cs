@@ -2,6 +2,7 @@
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 using JuliusSweetland.OptiKey.Services;
 using Moq;
 using NUnit.Framework;

@@ -7,6 +7,7 @@ using log4net;
 using JuliusSweetland.OptiKey.Native.Irisbond.Hiru;
 using JuliusSweetland.OptiKey.Native.Irisbond.Hiru.Enums;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 
 namespace JuliusSweetland.OptiKey.Services
 {

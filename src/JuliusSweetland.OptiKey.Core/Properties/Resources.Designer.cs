@@ -260,6 +260,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove all versions in:.
+        /// </summary>
+        public static string ASK_CONFIRM_UNINSTALL {
+            get {
+                return ResourceManager.GetString("ASK_CONFIRM_UNINSTALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ATTENTION.
         /// </summary>
         public static string ATTENTION {
@@ -310,6 +319,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string AUTO_SPACE_BETWEEN_WORDS_LABEL {
             get {
                 return ResourceManager.GetString("AUTO_SPACE_BETWEEN_WORDS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available eyetracker plugins.
+        /// </summary>
+        public static string AVAILABLE_EYETRACKER_PLUGINS {
+            get {
+                return ResourceManager.GetString("AVAILABLE_EYETRACKER_PLUGINS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available from GitHub.
+        /// </summary>
+        public static string AVAILABLE_FROM_GITHUB {
+            get {
+                return ResourceManager.GetString("AVAILABLE_FROM_GITHUB", resourceCulture);
             }
         }
         
@@ -572,6 +599,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string CATALAN_SPAIN_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("CATALAN_SPAIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change points source?.
+        /// </summary>
+        public static string CHANGE_EYETRACKER_CAPTION {
+            get {
+                return ResourceManager.GetString("CHANGE_EYETRACKER_CAPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to use the newly installed plugin ({0}) as your points source?.
+        /// </summary>
+        public static string CHANGE_EYETRACKER_DETAILS {
+            get {
+                return ResourceManager.GetString("CHANGE_EYETRACKER_DETAILS", resourceCulture);
             }
         }
         
@@ -1016,11 +1061,21 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter multiple values separated by commas to speed up/slow down subsequent selections, for example: 1250,750,450,250.
+        ///   Looks up a localized string similar to Enter multiple values separated by commas to speed up/slow down subsequent selections.
+        ///For example: 1250,750,450,250.
         /// </summary>
         public static string COMPLETION_TIMES_HINT {
             get {
                 return ResourceManager.GetString("COMPLETION_TIMES_HINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Uninstall.
+        /// </summary>
+        public static string CONFIRM_UNINSTALL {
+            get {
+                return ResourceManager.GetString("CONFIRM_UNINSTALL", resourceCulture);
             }
         }
         
@@ -1892,6 +1947,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to load input service.
+        /// </summary>
+        public static string ERROR_LOADING_INPUT_SERVICE {
+            get {
+                return ResourceManager.GetString("ERROR_LOADING_INPUT_SERVICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact Optikey for further support..
         /// </summary>
         public static string ERROR_MAGNIFYING {
@@ -1915,6 +1979,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string ERROR_TITLE {
             get {
                 return ResourceManager.GetString("ERROR_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error uninstalling plugin.
+        /// </summary>
+        public static string ERROR_UNINSTALLING_PLUGIN {
+            get {
+                return ResourceManager.GetString("ERROR_UNINSTALLING_PLUGIN", resourceCulture);
             }
         }
         
@@ -2112,6 +2185,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to External eye tracker via DLL plugin.
+        /// </summary>
+        public static string EXTERNAL_EYETRACKER_DLL {
+            get {
+                return ResourceManager.GetString("EXTERNAL_EYETRACKER_DLL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Extra keys.
         /// </summary>
         public static string EXTRA_KEYS {
@@ -2139,6 +2221,42 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string EYETRACKER_DEPRECATED_DETAILS {
             get {
                 return ResourceManager.GetString("EYETRACKER_DEPRECATED_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plugin has been installed, but Optikey was unable to start it. Check the log for details. .
+        /// </summary>
+        public static string EYETRACKER_DLL_INSTALLED_BUT_NOT_INSTANTIATED {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DLL_INSTALLED_BUT_NOT_INSTANTIATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DLL file for eye tracker plugin.
+        /// </summary>
+        public static string EYETRACKER_DLL_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DLL_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyetracker DLL file was not found.
+        /// </summary>
+        public static string EYETRACKER_DLL_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DLL_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyetracker DLL file is not valid.
+        /// </summary>
+        public static string EYETRACKER_DLL_NOT_VALID {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DLL_NOT_VALID", resourceCulture);
             }
         }
         
@@ -2350,6 +2468,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Files locked.
+        /// </summary>
+        public static string FILES_LOCKED {
+            get {
+                return ResourceManager.GetString("FILES_LOCKED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill Pie.
         /// </summary>
         public static string FILL_PIE {
@@ -2465,6 +2592,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to found in.
+        /// </summary>
+        public static string FOUND_IN {
+            get {
+                return ResourceManager.GetString("FOUND_IN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to French (Canada) / Française (Canada).
         /// </summary>
         public static string FRENCH_CANADA {
@@ -2503,6 +2639,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string FRENCH_FRANCE_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("FRENCH_FRANCE_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From GitHub:.
+        /// </summary>
+        public static string FROM_GITHUB_COLON {
+            get {
+                return ResourceManager.GetString("FROM_GITHUB_COLON", resourceCulture);
             }
         }
         
@@ -2810,6 +2955,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string INS {
             get {
                 return ResourceManager.GetString("INS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install.
+        /// </summary>
+        public static string INSTALL {
+            get {
+                return ResourceManager.GetString("INSTALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installed plugins.
+        /// </summary>
+        public static string INSTALLED_PLUGINS {
+            get {
+                return ResourceManager.GetString("INSTALLED_PLUGINS", resourceCulture);
             }
         }
         
@@ -3349,6 +3512,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Latest release available.
+        /// </summary>
+        public static string LATEST_RELEASE_AVAILABLE {
+            get {
+                return ResourceManager.GetString("LATEST_RELEASE_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Left.
         /// </summary>
         public static string LEFT {
@@ -3693,6 +3865,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL {
             get {
                 return ResourceManager.GetString("MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage eye tracker plugins.
+        /// </summary>
+        public static string MANAGE_ET_PLUGINS {
+            get {
+                return ResourceManager.GetString("MANAGE_ET_PLUGINS", resourceCulture);
             }
         }
         
@@ -4616,6 +4797,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No eye tracker plugins found.
+        ///Check your internet connection and wait a few minutes to rescan..
+        /// </summary>
+        public static string NO_EYETRACKER_PLUGINS {
+            get {
+                return ResourceManager.GetString("NO_EYETRACKER_PLUGINS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No keyboards found.
         /// </summary>
         public static string NO_KEYBOARDS_FOUND {
@@ -4639,6 +4830,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string NO_SOUND {
             get {
                 return ResourceManager.GetString("NO_SOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find valid eyetracker plugin (DLL) file.
+        /// </summary>
+        public static string NO_VALID_DLL_FOUND {
+            get {
+                return ResourceManager.GetString("NO_VALID_DLL_FOUND", resourceCulture);
             }
         }
         
@@ -4817,6 +5017,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Containing Folder.
+        /// </summary>
+        public static string OPEN_CONTAINING_FOLDER {
+            get {
+                return ResourceManager.GetString("OPEN_CONTAINING_FOLDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Optikey Chat : Easy Communication.
         /// </summary>
         public static string OPTIKEY_CHAT_DESCRIPTION {
@@ -4869,6 +5078,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string OTHER_TRACKER {
             get {
                 return ResourceManager.GetString("OTHER_TRACKER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Others:.
+        /// </summary>
+        public static string OTHERS_COLON {
+            get {
+                return ResourceManager.GetString("OTHERS_COLON", resourceCulture);
             }
         }
         
@@ -4992,6 +5210,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string PLAY_SOUND {
             get {
                 return ResourceManager.GetString("PLAY_SOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plugin search wizard.
+        /// </summary>
+        public static string PLUGIN_SEARCH_WIZARD {
+            get {
+                return ResourceManager.GetString("PLUGIN_SEARCH_WIZARD", resourceCulture);
             }
         }
         
@@ -6137,6 +6364,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to stars.
+        /// </summary>
+        public static string STARS {
+            get {
+                return ResourceManager.GetString("STARS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uh-oh! We&apos;ve encountered the following errors during startup:.
         /// </summary>
         public static string STARTUP_CRASH_TITLE {
@@ -6809,6 +7045,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to uninstall currently. Please restart Optikey and try again..
+        /// </summary>
+        public static string UNABLE_UNINSTALL {
+            get {
+                return ResourceManager.GetString("UNABLE_UNINSTALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uninstall.
+        /// </summary>
+        public static string UNINSTALL {
+            get {
+                return ResourceManager.GetString("UNINSTALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something went wrong, but I don&apos;t know what - please check the logs.
         /// </summary>
         public static string UNKNOWN_CALIBRATION_ERROR {
@@ -6851,6 +7105,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string UPDATE_AVAILABLE {
             get {
                 return ResourceManager.GetString("UPDATE_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upgrade.
+        /// </summary>
+        public static string UPGRADE {
+            get {
+                return ResourceManager.GetString("UPGRADE", resourceCulture);
             }
         }
         
@@ -6977,6 +7240,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string VERSION_DESCRIPTION {
             get {
                 return ResourceManager.GetString("VERSION_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version installed.
+        /// </summary>
+        public static string VERSION_INSTALLED {
+            get {
+                return ResourceManager.GetString("VERSION_INSTALLED", resourceCulture);
             }
         }
         
