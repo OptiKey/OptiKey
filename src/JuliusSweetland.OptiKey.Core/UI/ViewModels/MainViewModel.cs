@@ -355,6 +355,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }, keyStateService, keyboardOverride);
                     return;
                 }
+                else
+                {
+                    Log.Error($"Can't find requested file or folder: {keyboardOverride}");                    
+                }
             }
 
             Action backaction = null;

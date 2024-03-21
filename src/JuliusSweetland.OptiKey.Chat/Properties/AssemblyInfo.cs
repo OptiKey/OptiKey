@@ -60,3 +60,4 @@ using System.Windows;
 //MINOR version when you add functionality in a backwards-compatible manner, and
 //PATCH version when you make backwards-compatible bug fixes (in the Version class this is the Build number).
 [assembly: AssemblyVersion("4.0.0")]
+

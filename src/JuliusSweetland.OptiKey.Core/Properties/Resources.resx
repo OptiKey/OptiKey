@@ -2492,33 +2492,7 @@ Magyar
   <data name="LIMIT_BACKONE" xml:space="preserve">
     <value>Limit "BackOne" deletion to a single character</value>
   </data>
-  <data name="TOBII_TRACKER_NOT_FOUND" xml:space="preserve">
-    <value>Could not find a supported Tobii tracker. Check your eye tracker is plugged in and the Tobii service is running</value>
-  </data>
-  <data name="TOBII_NOT_SUPPORTED" xml:space="preserve">
-    <value>Connected Tobii eye tracker is not supported. </value>
-  </data>
-  <data name="OTHER_TRACKER" xml:space="preserve">
-    <value>If your eye tracker is not listed here, or you require a 32 bit version of Optikey, please click the link below for more information. 
-
-If you want to continue with installation, Optikey will be controlled by your mouse position. This allows it to work with alternative inputs such as a head mouse, or any eye tracker that allows you to control the mouse position with your eyes.</value>
-  </data>
-  <data name="EYETRACKER_DEPRECATED" xml:space="preserve">
-    <value>Your eye tracker is no longer supported</value>
-  </data>
-  <data name="EYETRACKER_DEPRECATED_DETAILS" xml:space="preserve">
-    <value>Optikey v4 does not support this eye tracker. Optikey will use mouse position instead. 
-
-For more information about Optikey Classic, which supports more eye trackers, visit:
-
-www.optikey.org/supported-eyetrackers</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Engine cannot be found. Please install the Tobii software and try again.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Engine is not running. Please start the Tobii software and try again.</value>
-  </data>
+  
   <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
     <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
   </data>
@@ -2747,5 +2721,38 @@ www.optikey.org/supported-eyetrackers</value>
   <data name="NO_EYETRACKER_PLUGINS" xml:space="preserve">
     <value>No eye tracker plugins found.
 Check your internet connection and wait a few minutes to rescan.</value>
+  </data>
+  <data name="LIMIT_BACKONE" xml:space="preserve">
+    <value>Limit "BackOne" deletion to a single character</value>
+  </data>
+  <data name="TOBII_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>Could not find a supported Tobii tracker. Check your eye tracker is plugged in and the Tobii service is running</value>
+  </data>
+  <data name="TOBII_NOT_SUPPORTED" xml:space="preserve">
+    <value>Connected Tobii eye tracker is not supported. </value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value>If your eye tracker is not listed here, or you require a 32 bit version of Optikey, please click the link below for more information. 
+
+If you want to continue with installation, Optikey will be controlled by your mouse position. This allows it to work with alternative inputs such as a head mouse, or any eye tracker that allows you to control the mouse position with your eyes.</value>
+  </data>
+  <data name="EYETRACKER_DEPRECATED" xml:space="preserve">
+    <value>Your eye tracker is no longer supported</value>
+  </data>
+  <data name="EYETRACKER_DEPRECATED_DETAILS" xml:space="preserve">
+    <value>Optikey v4 does not support this eye tracker. Optikey will use mouse position instead. 
+
+For more information about Optikey Classic, which supports more eye trackers, visit:
+
+www.optikey.org/supported-eyetrackers</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Engine cannot be found. Please install the Tobii software and try again.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Engine is not running. Please start the Tobii software and try again.</value>
+  </data>
+  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
+    <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
   </data>
 </root>

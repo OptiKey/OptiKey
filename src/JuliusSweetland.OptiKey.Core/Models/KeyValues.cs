@@ -77,7 +77,7 @@ namespace JuliusSweetland.OptiKey.Models
         //public static readonly KeyValue CombiningDevanagariVowelSignU = new KeyValue("\x0941");
         //public static readonly KeyValue CombiningDevanagariVowelSignUU = new KeyValue("\x0942");
         //public static readonly KeyValue CombiningDevanagariVowelSignVocalicR = new KeyValue("\x0943");
-        
+
         public static readonly KeyValue CombiningDiaeresisOrUmlautKey = new KeyValue("\x0308");
         public static readonly KeyValue CombiningDotAboveKey = new KeyValue("\x0307");
         public static readonly KeyValue CombiningDotAboveRightKey = new KeyValue("\x0358");
@@ -314,7 +314,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
 
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
- 
+
         private static List<KeyValue> ToKeyValueCharList(this string allChars)
         {
             return allChars.ToCharArray()
@@ -324,7 +324,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         static KeyValues()
         {
-            var defaultList = "abcdefghijklmnopqrstuvwxyz".ToKeyValueCharList();               
+            var defaultList = "abcdefghijklmnopqrstuvwxyz".ToKeyValueCharList();
 
             multiKeySelectionKeys = new Dictionary<Languages, List<KeyValue>>
             {
@@ -426,9 +426,9 @@ namespace JuliusSweetland.OptiKey.Models
                 var keys = new List<KeyValue>
                 {
                     MouseMoveAndLeftClickKey,
-                    MouseMoveAndRightClickKey, 
-                    MouseMoveAndLeftDoubleClickKey, 
-                    MouseMoveAndMiddleClickKey,  
+                    MouseMoveAndRightClickKey,
+                    MouseMoveAndLeftDoubleClickKey,
+                    MouseMoveAndMiddleClickKey,
                     MouseMoveAndScrollToTopKey,
                     MouseMoveAndScrollToBottomKey,
                     MouseMoveAndScrollToLeftKey,
@@ -438,7 +438,7 @@ namespace JuliusSweetland.OptiKey.Models
             }
         }
 
-        
+
         public static List<KeyValue> KeysWhichCanBePressedDown
         {
             get
@@ -494,7 +494,7 @@ namespace JuliusSweetland.OptiKey.Models
                     MouseMagnifierKey,
                     MouseMiddleDownUpKey,
                     MouseRightDownUpKey,
-                    MultiKeySelectionIsOnKey,                            
+                    MultiKeySelectionIsOnKey,
                     SleepKey
                 };
 
@@ -668,6 +668,7 @@ namespace JuliusSweetland.OptiKey.Models
                     FunctionKeys.MouseLeftDownUp,
                     FunctionKeys.MouseMiddleClick,
                     FunctionKeys.MouseMiddleDownUp,
+                    FunctionKeys.MouseMoveAmountInPixels,
                     FunctionKeys.MouseMoveAndLeftClick,
                     FunctionKeys.MouseMoveAndLeftDoubleClick,
                     FunctionKeys.MouseMoveAndMiddleClick,
