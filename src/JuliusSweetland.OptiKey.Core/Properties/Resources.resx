@@ -2269,7 +2269,7 @@ Would you like Optikey to automatically set the font to Nafees Web Naskh?</value
 Would you like Optikey to automatically set the UiLanguage to Persian?</value>
   </data>
   <data name="FONTFAMILY_IS_NOT_COMPATIBLE_WITH_PERSIAN_LANGUAGE" xml:space="preserve">
-    <value>We recommend changing the font used in optiKey to one which is fully compatible with Persian.
+    <value>We recommend changing the font used in Optikey to one which is fully compatible with Persian.
 If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
 Would you like Optikey to automatically set the font to Nazli?</value>
   </data>
@@ -2299,6 +2299,12 @@ Would you like Optikey to automatically set the font to Nazli?</value>
 (Israel) /
 עברית
 (ישראל)</value>
+  </data>
+  <data name="TOUCHSCREEN_POSITION" xml:space="preserve">
+    <value>Touch screen position</value>
+  </data>
+  <data name="TOUCHSCREEN_POSITION_INFO" xml:space="preserve">
+    <value>In this mode, Optikey will use touch control instead of talking directly to an eye tracker. You might want this if you're testing Optikey out, or if you want to use it for typing on a touch screen.</value>
   </data>
   <data name="HUNGARIAN_HUNGARY" xml:space="preserve">
     <value>Hungarian (Hungary) / Magyar (Magyarország)</value>
@@ -2465,35 +2471,14 @@ Magyar
   <data name="POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
     <value>Point selection gamepad controller</value>
   </data>
-  <data name="LIMIT_BACKONE" xml:space="preserve">
-    <value>Limit "BackOne" deletion to a single character</value>
+  <data name="CONTROLLER_ENABLE_REPEATS" xml:space="preserve">
+    <value>Trigger repeat presses when held down</value>
   </data>
-  <data name="TOBII_TRACKER_NOT_FOUND" xml:space="preserve">
-    <value>Could not find a supported Tobii tracker. Check your eye tracker is plugged in and the Tobii service is running</value>
+  <data name="CONTROLLER_FIRST_REPEAT_TIME" xml:space="preserve">
+    <value>Time delay for first repeat (ms)</value>
   </data>
-  <data name="TOBII_NOT_SUPPORTED" xml:space="preserve">
-    <value>Connected Tobii eye tracker is not supported. </value>
-  </data>
-  <data name="OTHER_TRACKER" xml:space="preserve">
-    <value>If your eye tracker is not listed here, or you require a 32 bit version of Optikey, please click the link below for more information. 
-
-If you want to continue with installation, Optikey will be controlled by your mouse position. This allows it to work with alternative inputs such as a head mouse, or any eye tracker that allows you to control the mouse position with your eyes.</value>
-  </data>
-  <data name="EYETRACKER_DEPRECATED" xml:space="preserve">
-    <value>Your eye tracker is no longer supported</value>
-  </data>
-  <data name="EYETRACKER_DEPRECATED_DETAILS" xml:space="preserve">
-    <value>Optikey v4 does not support this eye tracker. Optikey will use mouse position instead. 
-
-For more information about Optikey Classic, which supports more eye trackers, visit:
-
-www.optikey.org/supported-eyetrackers</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Engine cannot be found. Please install the Tobii software and try again.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Engine is not running. Please start the Tobii software and try again.</value>
+  <data name="CONTROLLER_NEXT_REPEAT_TIME" xml:space="preserve">
+    <value>Time delay for subsequent repeats (ms)</value>
   </data>
   <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
     <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
@@ -2504,7 +2489,149 @@ www.optikey.org/supported-eyetrackers</value>
   <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
     <value>Repeat last key:</value>
   </data>
-  <data name="EYETRACKER_DLL_LOCATION_LABEL" xml:space="preserve">
+  <data name="LIMIT_BACKONE" xml:space="preserve">
+    <value>Limit "BackOne" deletion to a single character</value>
+  </data>
+  
+  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
+    <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
+  </data>
+  <data name="ALLOW_REPEATS_LABEL" xml:space="preserve">
+    <value>Allow key actions to be repeated when pressing trigger away from keyboard</value>
+  </data>
+  <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
+    <value>Repeat last key:</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Simplified (Bopomofo) / 中文 (注音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Bopomofo) /
+中文
+(注音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_CANGJIE5" xml:space="preserve">
+    <value>Chinese Simplified (Cangjie v5) / 中文 (仓颉五代-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Cangjie v5) /
+中文
+(仓颉五代-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Simplified (Luna Pinyin) / 中文 (朙月拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Luna Pinyin) /
+中文
+(朙月拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_TERRAPINYIN" xml:space="preserve">
+    <value>Chinese Simplified (Terra Pinyin) / 中文 (地球拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Simplified
+(Terra Pinyin) /
+中文
+(地球拼音-简化字)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) (Bopomofo) /
+中文
+(注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) (Luna Pinyin) / 中文 (朙月拼音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) (Luna Pinyin) /
+中文
+(朙月拼音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) / 正體中文 (臺灣)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) /
+正體中文
+(臺灣)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Bopomofo) / 中文 (注音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Bopomofo) /
+中文
+(注音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_CANGJIE5" xml:space="preserve">
+    <value>Chinese Traditional (Cangjie v5) / 中文 (倉頡五代)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Cangjie v5) /
+中文
+(倉頡五代)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_LUNAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Luna Pinyin) / 中文 (朙月拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Luna Pinyin) /
+中文
+(朙月拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TERRAPINYIN" xml:space="preserve">
+    <value>Chinese Traditional (Terra Pinyin) / 中文 (地球拼音)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Terra Pinyin) /
+中文
+(地球拼音)</value>
+  </data>
+  <data name="NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>We recommend increasing the multikey "minimum dwell time" for use with eye gaze. Would you like Optikey to automatically change the settings for you?</value>
+  </data>
+  <data name="NONTOUCH_INPUT_AND_MULTIKEY_TITLE" xml:space="preserve">
+    <value>Multikey settings for eye gaze</value>
+  </data>
+  <data name="NONTOUCH_INPUT_AND_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>You have changed from touch to another input but still have at least one trigger setting using touch. Would you like Optikey to automatically set the trigger settings?</value>
+  </data>
+  <data name="NONTOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE" xml:space="preserve">
+    <value>Touch screen still selected as trigger</value>
+  </data>
+  <data name="TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>We recommend reducing the multikey "minimum dwell time" for use with touch input. Would you like Optikey to automatically change the settings for you?</value>
+  </data>
+  <data name="TOUCH_INPUT_AND_MULTIKEY_TITLE" xml:space="preserve">
+    <value>Touch input multikey settings</value>
+  </data>
+  <data name="TOUCH_INPUT_AND_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>We recommend changing the Trigger to Touch if you want to use touch input for Optikey. Would you like Optikey to automatically set the trigger settings?</value>
+  </data>
+  <data name="TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE" xml:space="preserve">
+    <value>Touch input isn't using touch as trigger</value>
+  </data>
+  <data name="TOUCH_DOWNUP_DESCRIPTION" xml:space="preserve">
+    <value>Touch</value>
+  </data>
+  <data name="ENGLISH_DICTIONARY" xml:space="preserve">
+    <value>English dictionary</value>
+  </data>
+<data name="EYETRACKER_DLL_LOCATION_LABEL" xml:space="preserve">
     <value>DLL file for eye tracker plugin</value>
   </data>
   <data name="EXTERNAL_EYETRACKER_DLL" xml:space="preserve">
@@ -2594,5 +2721,38 @@ www.optikey.org/supported-eyetrackers</value>
   <data name="NO_EYETRACKER_PLUGINS" xml:space="preserve">
     <value>No eye tracker plugins found.
 Check your internet connection and wait a few minutes to rescan.</value>
+  </data>
+  <data name="LIMIT_BACKONE" xml:space="preserve">
+    <value>Limit "BackOne" deletion to a single character</value>
+  </data>
+  <data name="TOBII_TRACKER_NOT_FOUND" xml:space="preserve">
+    <value>Could not find a supported Tobii tracker. Check your eye tracker is plugged in and the Tobii service is running</value>
+  </data>
+  <data name="TOBII_NOT_SUPPORTED" xml:space="preserve">
+    <value>Connected Tobii eye tracker is not supported. </value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value>If your eye tracker is not listed here, or you require a 32 bit version of Optikey, please click the link below for more information. 
+
+If you want to continue with installation, Optikey will be controlled by your mouse position. This allows it to work with alternative inputs such as a head mouse, or any eye tracker that allows you to control the mouse position with your eyes.</value>
+  </data>
+  <data name="EYETRACKER_DEPRECATED" xml:space="preserve">
+    <value>Your eye tracker is no longer supported</value>
+  </data>
+  <data name="EYETRACKER_DEPRECATED_DETAILS" xml:space="preserve">
+    <value>Optikey v4 does not support this eye tracker. Optikey will use mouse position instead. 
+
+For more information about Optikey Classic, which supports more eye trackers, visit:
+
+www.optikey.org/supported-eyetrackers</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Engine cannot be found. Please install the Tobii software and try again.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Engine is not running. Please start the Tobii software and try again.</value>
+  </data>
+  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
+    <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
   </data>
 </root>

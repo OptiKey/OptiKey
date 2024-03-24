@@ -173,7 +173,7 @@ namespace JuliusSweetland.OptiKey
                 string presagePath = null;
                 string presageStartMenuFolder = null;
                 string processBitness = DiagnosticInfo.ProcessBitness;
-
+                
                 try
                 {
                     presagePath = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "", string.Empty).ToString();
@@ -224,8 +224,7 @@ namespace JuliusSweetland.OptiKey
 
                 // On Windows 64 bit, 32 bit apps get installed into Program Files (x86) and 64 bit apps into Program Files.
                 // We need to check that Optikey and Presage have the same bitness
-                if (DiagnosticInfo.OperatingSystemBitness.Contains("64"))
-                {
+                if (DiagnosticInfo.OperatingSystemBitness.Contains("64")) {
                     if ((processBitness == "64-Bit" && presagePath != @"C:\Program Files\presage")
                         || (processBitness == "32-Bit" && presagePath != @"C:\Program Files (x86)\presage"))
                     {
@@ -723,6 +722,11 @@ namespace JuliusSweetland.OptiKey
                         irisBondHiruPointService);
                     break;                
 
+                case PointsSources.TouchScreenPosition:
+                    pointSource = new TouchScreenPositionSource(
+                        Settings.Default.PointTtl);                    
+                    break;
+
                 case PointsSources.TheEyeTribe:
                     var theEyeTribePointService = new TheEyeTribePointService();
                     errorNotifyingServices.Add(theEyeTribePointService);
@@ -802,18 +806,22 @@ namespace JuliusSweetland.OptiKey
 
             //Instantiate key trigger source
             ITriggerSource keySelectionTriggerSource;
+
+            //Instantiate point trigger source
+            ITriggerSource pointSelectionTriggerSource;
+
             switch (Settings.Default.KeySelectionTriggerSource)
             {
                 case TriggerSources.Fixations:
                     keySelectionTriggerSource = new KeyFixationSource(
-                       Settings.Default.KeySelectionTriggerFixationLockOnTime,
-                       Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
-                       Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes,
-                       Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
+                        Settings.Default.KeySelectionTriggerFixationLockOnTime,
+                        Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
+                        Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes,
+                        Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
                         : null,
-                       Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
-                       pointSource);
+                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
+                        pointSource);
                     break;
 
                 case TriggerSources.KeyboardKeyDownsUps:
@@ -832,6 +840,9 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new XInputButtonDownUpSource(
                         Settings.Default.KeySelectionTriggerGamepadXInputController,
                         Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
                     break;
 
@@ -839,7 +850,14 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new DirectInputButtonDownUpSource(
                         Settings.Default.KeySelectionTriggerGamepadDirectInputController,
                         Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
+                    break;
+
+                case TriggerSources.TouchDownUps:
+                    keySelectionTriggerSource = new TouchTriggerSource(pointSource);
                     break;
 
                 default:
@@ -847,8 +865,7 @@ namespace JuliusSweetland.OptiKey
                         "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart OptiKey.");
             }
 
-            //Instantiate point trigger source
-            ITriggerSource pointSelectionTriggerSource;
+
             switch (Settings.Default.PointSelectionTriggerSource)
             {
                 case TriggerSources.Fixations:
@@ -876,6 +893,9 @@ namespace JuliusSweetland.OptiKey
                     pointSelectionTriggerSource = new XInputButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerGamepadXInputController,
                         Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
                     break;
 
@@ -883,7 +903,14 @@ namespace JuliusSweetland.OptiKey
                     pointSelectionTriggerSource = new DirectInputButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerGamepadDirectInputController,
                         Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
+                    break;
+
+                case TriggerSources.TouchDownUps:
+                    pointSelectionTriggerSource = new TouchTriggerSource(pointSource);
                     break;
 
                 default:
@@ -891,7 +918,7 @@ namespace JuliusSweetland.OptiKey
                         "'PointSelectionTriggerSource' setting is missing or not recognised! "
                         + "Please correct and restart OptiKey.");
             }
-
+        
             var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
             pointSource, eyeGestureTriggerSource, keySelectionTriggerSource, pointSelectionTriggerSource);
             inputService.RequestSuspend(); //Pause it initially
@@ -1160,6 +1187,12 @@ namespace JuliusSweetland.OptiKey
                               Path.Combine(destPath, Path.GetFileName(file)), 
                               true);
                 }
+
+                // Recursive call for each subdirectory.
+                foreach (string dir in Directory.GetDirectories(sourcePath))
+                {                    
+                    CopyResourcesFirstTime(Path.Combine(subDirectoryName, Path.GetFileName(dir)));
+                }
             }
             
             return destPath;
@@ -1219,6 +1252,15 @@ namespace JuliusSweetland.OptiKey
             {
                 // First time we set to APPDATA location, user may move through settings later
                 Settings.Default.PluginsLocation = CopyResourcesFirstTime("Plugins");
+            }
+        }
+
+        protected static void ValidateRimeLocation()
+        {
+            if (string.IsNullOrEmpty(Settings.Default.RimeLocation))
+            {
+                // First time we set to APPDATA location, user may move through settings later
+                Settings.Default.RimeLocation = CopyResourcesFirstTime("Rime");
             }
         }
 

@@ -23,7 +23,7 @@ namespace InstallerTranslation
                 Console.WriteLine("Extracting internationalised strings...");
 
                 // Get all Optikey languages
-                List<KeyValuePair<string, Languages>> languages = WordsViewModel.Languages;
+                List<KeyValuePair<string, Languages>> languages = WordsViewModel.UiLanguages;
 
                 // Query resources to create multilingual dicts for key installer strings
                 Dictionary<Languages, string> all_ALIENWARE_17_INFO = new Dictionary<Languages, string>();

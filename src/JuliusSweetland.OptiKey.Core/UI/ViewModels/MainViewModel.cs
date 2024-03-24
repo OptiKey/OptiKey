@@ -20,6 +20,7 @@ using Prism.Mvvm;
 using System.Text;
 using System.Net.Http;
 using System.IO;
+using System.Diagnostics;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -204,6 +205,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (SetProperty(ref selectionMode, value))
                 {
                     Log.InfoFormat("SelectionMode changed to {0}", value);
+                    
+                    // touch doesn't support point selection - it shouldn't be possible to get here
+                    if (Settings.Default.PointsSource == PointsSources.TouchScreenPosition &&
+                        (selectionMode == SelectionModes.SinglePoint || selectionMode == SelectionModes.ContinuousPoints))
+                    {
+                        Debug.Assert(true);
+                        Log.Error($"SelectionMode set to {selectionMode} which is not supported with touch input");                        
+                        return;
+                    }                                                        
 
                     ResetSelectionProgress();
 
@@ -344,6 +354,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Menu(() => Keyboard = new Alpha1());
                     }, keyStateService, keyboardOverride);
                     return;
+                }
+                else
+                {
+                    Log.Error($"Can't find requested file or folder: {keyboardOverride}");                    
                 }
             }
 

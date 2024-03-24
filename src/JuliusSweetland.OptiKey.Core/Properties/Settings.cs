@@ -47,6 +47,21 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool KeySelectionTriggerFixationResetMousePositionAfterKeyPressed {
+            get {
+                return ((bool)(this["KeySelectionTriggerFixationResetMousePositionAfterKeyPressed"]));
+            }
+            set {
+                this["KeySelectionTriggerFixationResetMousePositionAfterKeyPressed"] = value;
+            }
+        }
+
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("A")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public GamepadButtonFlags KeySelectionTriggerGamepadXInputButtonDownUpButton
@@ -139,6 +154,54 @@ namespace JuliusSweetland.OptiKey.Properties {
             set
             {
                 this["KeySelectionTriggerGamepadDirectInputButtonDownUpButton"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("false")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool GamepadTriggerHoldToRepeat
+        {
+            get
+            {
+                return ((bool)(this["GamepadTriggerHoldToRepeat"]));
+            }
+            set
+            {
+                this["GamepadTriggerHoldToRepeat"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GamepadTriggerFirstRepeatMilliseconds
+        {
+            get
+            {
+                return ((int)(this["GamepadTriggerFirstRepeatMilliseconds"]));
+            }
+            set
+            {
+                this["GamepadTriggerFirstRepeatMilliseconds"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GamepadTriggerNextRepeatMilliseconds
+        {
+            get
+            {
+                return ((int)(this["GamepadTriggerNextRepeatMilliseconds"]));
+            }
+            set
+            {
+                this["GamepadTriggerNextRepeatMilliseconds"] = value;
             }
         }
 
@@ -1545,6 +1608,19 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("EnglishUS")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.Languages DictionaryLanguageForRime {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["DictionaryLanguageForRime"]));
+            }
+            set {
+                this["DictionaryLanguageForRime"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool PublishVirtualKeyCodesForCharacters {
@@ -2073,6 +2149,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["PluginsLocation"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string RimeLocation
+        {
+            get
+            {
+                return ((string)(this["RimeLocation"]));
+            }
+            set
+            {
+                this["RimeLocation"] = value;
             }
         }
 
@@ -2843,6 +2935,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             set
             {
                 this["AllowRepeatKeyActionsAwayFromKey"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int TriggerWithoutPositionCount
+        {
+            get
+            {
+                return ((int)(this["TriggerWithoutPositionCount"]));
+            }
+            set
+            {
+                this["TriggerWithoutPositionCount"] = value;
             }
         }
 

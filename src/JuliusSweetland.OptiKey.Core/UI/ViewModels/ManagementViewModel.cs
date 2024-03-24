@@ -80,6 +80,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             CoercePersianSettings();
             CoerceUrduSettings();
+            CoerceTouchSettings();
         }
 
         private void CoercePersianSettings()
@@ -177,6 +178,153 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             VisualsViewModel.FontWeight = Enums.FontWeights.Regular;
                         }
                     });
+            }
+        }
+
+        private void CoerceTouchSettings()
+        {
+            // If PointSource has changed from (not Touch) => Touch then check for recommended settings
+            if (PointingAndSelectingViewModel.PointsSource == PointsSources.TouchScreenPosition &&
+                Settings.Default.PointsSource != PointsSources.TouchScreenPosition)
+            {
+
+                // Use touch as trigger also
+                if (PointingAndSelectingViewModel.PointSelectionTriggerSource != TriggerSources.TouchDownUps ||
+                     PointingAndSelectingViewModel.PointSelectionTriggerSource != TriggerSources.TouchDownUps ||
+                     PointingAndSelectingViewModel.KeySelectionTriggerSource != TriggerSources.TouchDownUps ||
+                     PointingAndSelectingViewModel.KeySelectionTriggerSource != TriggerSources.TouchDownUps)
+                {
+                    ConfirmationRequest.Raise(
+                        new Confirmation
+                        {
+                            Title = Resources.TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE,
+                            Content = Resources.TOUCH_INPUT_AND_TRIGGER_DESCRIPTION
+                        }, confirmation =>
+                        {
+                            if (confirmation.Confirmed)
+                            {
+                                Log.Info("Prompting user to change the trigger source to touch");
+                                PointingAndSelectingViewModel.KeySelectionTriggerSource = TriggerSources.TouchDownUps;
+                                PointingAndSelectingViewModel.PointSelectionTriggerSource = TriggerSources.TouchDownUps;
+                            }
+                        });
+                }
+
+                // Turn down minimum dwell time for multikey selection
+                if (PointingAndSelectingViewModel.MultiKeySelectionFixationMinDwellTimeInMs > 100)
+                {
+                    ConfirmationRequest.Raise(
+                        new Confirmation
+                        {
+                            Title = Resources.TOUCH_INPUT_AND_MULTIKEY_TITLE,
+                            Content = Resources.TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION
+                        }, confirmation =>
+                        {
+                            if (confirmation.Confirmed)
+                            {
+                                Log.Info("Prompting user to change the multikey selection minimum dwell time");
+                                PointingAndSelectingViewModel.MultiKeySelectionFixationMinDwellTimeInMs = 50;
+                            }
+                        });
+                }
+            }
+
+            // If PointSource has changed from Touch => (not Touch) then check for recommended settings
+            if (PointingAndSelectingViewModel.PointsSource != PointsSources.TouchScreenPosition &&
+                Settings.Default.PointsSource == PointsSources.TouchScreenPosition)
+            {
+
+                // Don't use touch as trigger 
+                if (PointingAndSelectingViewModel.PointSelectionTriggerSource == TriggerSources.TouchDownUps ||
+                    PointingAndSelectingViewModel.KeySelectionTriggerSource == TriggerSources.TouchDownUps)
+                {
+                    ConfirmationRequest.Raise(
+                        new Confirmation
+                        {
+                            Title = Resources.NONTOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE,
+                            Content = Resources.NONTOUCH_INPUT_AND_TRIGGER_DESCRIPTION
+                        }, confirmation =>
+                        {
+                            if (confirmation.Confirmed)
+                            {
+                                Log.Info("Prompting user to change the trigger source away from touch");
+                                if (PointingAndSelectingViewModel.KeySelectionTriggerSource != TriggerSources.TouchDownUps)
+                                {
+                                    // If they changed point trigger, make key trigger use the same source
+                                    PointingAndSelectingViewModel.PointSelectionTriggerSource = PointingAndSelectingViewModel.KeySelectionTriggerSource;
+                                    // Match sub-option too
+                                    switch (PointingAndSelectingViewModel.KeySelectionTriggerSource)
+                                    {
+                                        case TriggerSources.KeyboardKeyDownsUps:
+                                            PointingAndSelectingViewModel.PointSelectionTriggerKeyboardKeyDownUpKey =
+                                              PointingAndSelectingViewModel.KeySelectionTriggerKeyboardKeyDownUpKey;
+                                            break;
+                                        case TriggerSources.MouseButtonDownUps:
+                                            PointingAndSelectingViewModel.PointSelectionTriggerMouseDownUpButton =
+                                                PointingAndSelectingViewModel.KeySelectionTriggerMouseDownUpButton;
+                                            break;
+                                        case TriggerSources.DirectInputButtonDownUps:
+                                            PointingAndSelectingViewModel.PointSelectionTriggerGamepadDirectInputController =
+                                                PointingAndSelectingViewModel.KeySelectionTriggerGamepadDirectInputController;
+                                            PointingAndSelectingViewModel.PointSelectionTriggerGamepadDirectInputButtonDownUpButton =
+                                                PointingAndSelectingViewModel.KeySelectionTriggerGamepadDirectInputButtonDownUpButton;
+                                            break;
+                                        case TriggerSources.XInputButtonDownUps:
+                                            PointingAndSelectingViewModel.PointSelectionTriggerGamepadXInputController =
+                                                PointingAndSelectingViewModel.KeySelectionTriggerGamepadXInputController;
+                                            PointingAndSelectingViewModel.PointSelectionTriggerGamepadXInputButtonDownUpButton =
+                                                PointingAndSelectingViewModel.KeySelectionTriggerGamepadXInputButtonDownUpButton;
+                                            break;
+                                        case TriggerSources.Fixations:
+                                            PointingAndSelectingViewModel.PointSelectionTriggerFixationLockOnTimeInMs =
+                                                PointingAndSelectingViewModel.KeySelectionTriggerFixationLockOnTimeInMs;
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    // otherwise default to fixations
+                                    PointingAndSelectingViewModel.PointSelectionTriggerSource = TriggerSources.Fixations;
+                                    PointingAndSelectingViewModel.KeySelectionTriggerSource = TriggerSources.Fixations;
+                                }
+                            }
+                        });
+                }
+
+                // Turn up minimum dwell time for multikey selection
+                double defaultMinDwellTimeInMs;
+                string propName = "MultiKeySelectionFixationMinDwellTime";
+                try
+                {
+                    var prop = Properties.Settings.Default.Properties[propName];                    
+                    System.TimeSpan defaultMinDwellTime = System.TimeSpan.Parse((string)prop.DefaultValue);
+                    defaultMinDwellTimeInMs = defaultMinDwellTime.TotalMilliseconds;
+                }
+                catch (System.Exception e)
+                {
+#if DEBUG_MODE                
+                    throw;
+#endif
+                    Log.Error($"Could not read property {propName}");
+                    defaultMinDwellTimeInMs = 250;
+                }
+
+                if (PointingAndSelectingViewModel.MultiKeySelectionFixationMinDwellTimeInMs < defaultMinDwellTimeInMs)
+                {
+                    ConfirmationRequest.Raise(
+                        new Confirmation
+                        {
+                            Title = Resources.NONTOUCH_INPUT_AND_MULTIKEY_TITLE,
+                            Content = Resources.NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION
+                        }, confirmation =>
+                        {
+                            if (confirmation.Confirmed)
+                            {
+                                Log.Info("Prompting user to change the multikey selection minimum dwell time");
+                                PointingAndSelectingViewModel.MultiKeySelectionFixationMinDwellTimeInMs = defaultMinDwellTimeInMs;
+                            }
+                        });
+                }
             }
         }
 

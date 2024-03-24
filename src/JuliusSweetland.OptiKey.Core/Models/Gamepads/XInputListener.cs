@@ -23,16 +23,18 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
 
         public class XInputButtonEventArgs : EventArgs
         {
-            public XInputButtonEventArgs(UserIndex userIndex, EventType type, GamepadButtonFlags button)
+            public XInputButtonEventArgs(UserIndex userIndex, EventType type, GamepadButtonFlags button, bool isRepeat = false)
             {
                 this.userIndex = userIndex;
                 this.eventType = type;
                 this.button = button;
+                this.isRepeat = isRepeat;
             }
 
             public UserIndex userIndex;
             public GamepadButtonFlags button;
-            public EventType eventType;        
+            public EventType eventType;
+            public bool isRepeat;
         }
         
         public event XInputButtonDownEventHandler ButtonDown;
@@ -48,6 +50,11 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
         private BackgroundWorker pollWorker;
         private int pollDelayMs = 20;
 
+        private bool allowRepeats = false;
+        private int repeatDelayFirstMs;
+        private int repeatDelayNextMs;
+        private Dictionary<GamepadButtonFlags, long> repeatTimes;
+
         public static bool IsDeviceAvailable(UserIndex userIndex)
         {           
             return new Controller(userIndex).IsConnected;
@@ -56,11 +63,19 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
         public XInputListener(UserIndex userIndex)
         {            
             this.requestedUserIndex = userIndex;
+            repeatTimes = new Dictionary<GamepadButtonFlags, long>();
 
             pollWorker = new BackgroundWorker();
             pollWorker.DoWork += pollGamepadButtons;
             pollWorker.WorkerSupportsCancellation = true;
             pollWorker.RunWorkerAsync();
+        }
+
+        public void AllowRepeats(bool allow, int firstDelayMs = 400, int nextDelayMs = 200)
+        {
+            allowRepeats = allow;
+            repeatDelayFirstMs = firstDelayMs;
+            repeatDelayNextMs = nextDelayMs;
         }
 
         public void Dispose()
@@ -115,6 +130,33 @@ namespace JuliusSweetland.OptiKey.Models.Gamepads
                                     this.ButtonDown?.Invoke(this, new XInputButtonEventArgs(conn.UserIndex, EventType.DOWN, b));
                                 else
                                     this.ButtonUp?.Invoke(this, new XInputButtonEventArgs(conn.UserIndex, EventType.UP, b));
+                            }
+                        }
+
+                        if (allowRepeats)
+                        {
+                            var currentButtons = conn.CurrentButtons;
+                            long currentTime = new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds();
+
+                            var allButtons = Enum.GetValues(typeof(GamepadButtonFlags))
+                                                    .Cast<GamepadButtonFlags>()
+                                                    .Where(b => b != GamepadButtonFlags.None);
+                            foreach (GamepadButtonFlags b in allButtons)
+                            {
+
+                                if ((currentButtons & b) > 0) // if button is down
+                                {
+                                    if ((changedButtons & b) > 0) // then button is newly down
+                                    {
+                                        repeatTimes[b] = currentTime + repeatDelayFirstMs;
+                                    }
+                                    else if (currentTime > repeatTimes[b])
+                                    {
+                                        this.ButtonUp?.Invoke(this, new XInputButtonEventArgs(conn.UserIndex, EventType.UP, b, isRepeat: true));
+                                        this.ButtonDown?.Invoke(this, new XInputButtonEventArgs(conn.UserIndex, EventType.DOWN, b, isRepeat: true));
+                                        repeatTimes[b] = currentTime + repeatDelayNextMs;
+                                    }
+                                }
                             }
                         }
                     }

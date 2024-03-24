@@ -12,6 +12,7 @@ namespace JuliusSweetland.OptiKey.Services
 {
 	public interface IDictionaryService : INotifyErrors
     {
+        void Setup();
         void LoadDictionary();
         bool ExistsInDictionary(string entryToFind);
         IEnumerable<DictionaryEntry> GetAllEntries();

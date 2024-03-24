@@ -639,6 +639,237 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Bopomofo) / 中文 (注音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_BOPOMOFO {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_BOPOMOFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Bopomofo) /
+        ///中文
+        ///(注音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Cangjie v5) / 中文 (仓颉五代-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_CANGJIE5 {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_CANGJIE5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Cangjie v5) /
+        ///中文
+        ///(仓颉五代-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Luna Pinyin) / 中文 (朙月拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Luna Pinyin) /
+        ///中文
+        ///(朙月拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Terra Pinyin) / 中文 (地球拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_TERRAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_TERRAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Terra Pinyin) /
+        ///中文
+        ///(地球拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) (Bopomofo) /
+        ///中文
+        ///(注音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Luna Pinyin) / 中文 (朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) (Luna Pinyin) /
+        ///中文
+        ///(朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Bopomofo) / 中文 (注音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_BOPOMOFO {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_BOPOMOFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Bopomofo) /
+        ///中文
+        ///(注音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Cangjie v5) / 中文 (倉頡五代).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_CANGJIE5 {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Cangjie v5) /
+        ///中文
+        ///(倉頡五代).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Luna Pinyin) / 中文 (朙月拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Luna Pinyin) /
+        ///中文
+        ///(朙月拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) / 正體中文 (臺灣).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TAIWAN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) /
+        ///正體中文
+        ///(臺灣).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Terra Pinyin) / 中文 (地球拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TERRAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TERRAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Terra Pinyin) /
+        ///中文
+        ///(地球拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CLEAR.
         /// </summary>
         public static string CLEAR {
@@ -854,6 +1085,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string CONTEXTUAL_MENU_KEY {
             get {
                 return ResourceManager.GetString("CONTEXTUAL_MENU_KEY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger repeat presses when held down.
+        /// </summary>
+        public static string CONTROLLER_ENABLE_REPEATS {
+            get {
+                return ResourceManager.GetString("CONTROLLER_ENABLE_REPEATS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time delay for first repeat (ms).
+        /// </summary>
+        public static string CONTROLLER_FIRST_REPEAT_TIME {
+            get {
+                return ResourceManager.GetString("CONTROLLER_FIRST_REPEAT_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time delay for subsequent repeats (ms).
+        /// </summary>
+        public static string CONTROLLER_NEXT_REPEAT_TIME {
+            get {
+                return ResourceManager.GetString("CONTROLLER_NEXT_REPEAT_TIME", resourceCulture);
             }
         }
         
@@ -1593,6 +1851,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English dictionary.
+        /// </summary>
+        public static string ENGLISH_DICTIONARY {
+            get {
+                return ResourceManager.GetString("ENGLISH_DICTIONARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English (UK).
         /// </summary>
         public static string ENGLISH_UK {
@@ -2294,7 +2561,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We recommend changing the font used in optiKey to one which is fully compatible with Persian.
+        ///   Looks up a localized string similar to We recommend changing the font used in Optikey to one which is fully compatible with Persian.
         ///If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
         ///Would you like Optikey to automatically set the font to Nazli?.
         /// </summary>
@@ -4585,6 +4852,42 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We recommend increasing the multikey &quot;minimum dwell time&quot; for use with eye gaze. Would you like Optikey to automatically change the settings for you?.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multikey settings for eye gaze.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_MULTIKEY_TITLE {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_MULTIKEY_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have changed from touch to another input but still have at least one trigger setting using touch. Would you like Optikey to automatically set the trigger settings?.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_TRIGGER_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_TRIGGER_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch screen still selected as trigger.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hmm, nothing new here!.
         /// </summary>
         public static string NOTHING_NEW {
@@ -6525,6 +6828,69 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOP {
             get {
                 return ResourceManager.GetString("TOP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch.
+        /// </summary>
+        public static string TOUCH_DOWNUP_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("TOUCH_DOWNUP_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We recommend reducing the multikey &quot;minimum dwell time&quot; for use with touch input. Would you like Optikey to automatically change the settings for you?.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch input multikey settings.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_MULTIKEY_TITLE {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_MULTIKEY_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We recommend changing the Trigger to Touch if you want to use touch input for Optikey. Would you like Optikey to automatically set the trigger settings?.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_TRIGGER_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_TRIGGER_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch input isn&apos;t using touch as trigger.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch screen position.
+        /// </summary>
+        public static string TOUCHSCREEN_POSITION {
+            get {
+                return ResourceManager.GetString("TOUCHSCREEN_POSITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In this mode, Optikey will use touch control instead of talking directly to an eye tracker. You might want this if you&apos;re testing Optikey out, or if you want to use it for typing on a touch screen..
+        /// </summary>
+        public static string TOUCHSCREEN_POSITION_INFO {
+            get {
+                return ResourceManager.GetString("TOUCHSCREEN_POSITION_INFO", resourceCulture);
             }
         }
         

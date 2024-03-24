@@ -80,7 +80,46 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
                 Assert.That(sentence.InProgressWord(9), Is.EqualTo("a"));
                 Assert.That(sentence.InProgressWord(10), Is.Null);
                 Assert.That(sentence.InProgressWord(11), Is.EqualTo("sentence."));
-            });            
+            });
+
+            sentence = "我該如何說octopus";
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(sentence.InProgressWord(0), Is.Null);
+                Assert.That(sentence.InProgressWord(1), Is.EqualTo("我該如何說"));
+                Assert.That(sentence.InProgressWord(2), Is.EqualTo("我該如何說"));
+                Assert.That(sentence.InProgressWord(3), Is.EqualTo("我該如何說"));
+                Assert.That(sentence.InProgressWord(4), Is.EqualTo("我該如何說"));
+                Assert.That(sentence.InProgressWord(5), Is.EqualTo("我該如何說"));
+                Assert.That(sentence.InProgressWord(6), Is.EqualTo("octopus"));
+                Assert.That(sentence.InProgressWord(7), Is.EqualTo("octopus"));
+                Assert.That(sentence.InProgressWord(8), Is.EqualTo("octopus"));
+                Assert.That(sentence.InProgressWord(9), Is.EqualTo("octopus"));
+                Assert.That(sentence.InProgressWord(10), Is.EqualTo("octopus"));
+                Assert.That(sentence.InProgressWord(11), Is.EqualTo("octopus"));
+                Assert.That(sentence.InProgressWord(12), Is.EqualTo("octopus"));
+            });
+
+            sentence = "Pizza是我最喜欢的食物";
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(sentence.InProgressWord(0), Is.Null);
+                Assert.That(sentence.InProgressWord(1), Is.EqualTo("Pizza"));
+                Assert.That(sentence.InProgressWord(2), Is.EqualTo("Pizza"));
+                Assert.That(sentence.InProgressWord(3), Is.EqualTo("Pizza"));
+                Assert.That(sentence.InProgressWord(4), Is.EqualTo("Pizza"));
+                Assert.That(sentence.InProgressWord(5), Is.EqualTo("Pizza"));
+                Assert.That(sentence.InProgressWord(6), Is.EqualTo("是我最喜欢的食物"));
+                Assert.That(sentence.InProgressWord(7), Is.EqualTo("是我最喜欢的食物"));
+                Assert.That(sentence.InProgressWord(8), Is.EqualTo("是我最喜欢的食物"));
+                Assert.That(sentence.InProgressWord(9), Is.EqualTo("是我最喜欢的食物"));
+                Assert.That(sentence.InProgressWord(10), Is.EqualTo("是我最喜欢的食物"));
+                Assert.That(sentence.InProgressWord(11), Is.EqualTo("是我最喜欢的食物"));
+                Assert.That(sentence.InProgressWord(12), Is.EqualTo("是我最喜欢的食物"));
+                Assert.That(sentence.InProgressWord(12), Is.EqualTo("是我最喜欢的食物"));                
+            });
         }
 
         [Test]

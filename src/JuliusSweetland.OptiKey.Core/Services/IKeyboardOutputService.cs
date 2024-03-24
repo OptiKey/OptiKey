@@ -14,5 +14,6 @@ namespace JuliusSweetland.OptiKey.Services
         void ProcessSingleKeyText(string capturedText);
         Task ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type);
         void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions);
+        void ClearSuggestions();
     }
 }

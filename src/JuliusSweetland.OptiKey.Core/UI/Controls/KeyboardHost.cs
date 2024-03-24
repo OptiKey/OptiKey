@@ -19,6 +19,7 @@ using System.Windows;
 using System.Windows.Controls;
 using JuliusSweetland.OptiKey.UI.Windows;
 using CatalanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Catalan;
+using ChineseViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Chinese;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using CroatianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Croatian;
 using CzechViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Czech;
@@ -63,6 +64,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private IDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
         private IWindowManipulationService windowManipulationService;
         private CompositeDisposable currentKeyboardKeyValueSubscriptions = new CompositeDisposable();
+        private int NumberOfSuggestionsDisplayed;
 
         #endregion
 
@@ -164,6 +166,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             SubscribeToParentWindowMoves(parentWindow);
             SubscribeToParentWindowStateChanges(parentWindow);
 
+            SubscribeToNumberSuggestionsChanges();
+
             Loaded -= OnLoaded; //Ensure this logic only runs once
         }
 
@@ -223,6 +227,22 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 {
                     case Languages.CatalanSpain:
                         newContent = new CatalanViews.Alpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
+                        newContent = new ChineseViews.Bopomofo { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedCangjie5:
+                    case Languages.ChineseTraditionalCangjie5:
+                        newContent = new ChineseViews.Cangjie { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                        newContent = new ChineseViews.Alpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:
                         newContent = new CroatianViews.Alpha1 { DataContext = Keyboard };
@@ -335,6 +355,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseSimplifiedCangjie5:
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTraditionalCangjie5:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                        newContent = new ChineseViews.Alpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.HebrewIsrael:
                         newContent = new HebrewViews.Alpha2 { DataContext = Keyboard };
                         break;
@@ -376,6 +408,22 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 {
                     case Languages.CatalanSpain:
                         newContent = new CatalanViews.ConversationAlpha1 { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
+                        newContent = new ChineseViews.ConversationBopomofo { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedCangjie5:
+                    case Languages.ChineseTraditionalCangjie5:
+                        newContent = new ChineseViews.ConversationCangjie { DataContext = Keyboard };
+                        break;
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                            newContent = new ChineseViews.ConversationAlpha1 { DataContext = Keyboard };
                         break;
                     case Languages.CroatianCroatia:
                         newContent = new CroatianViews.ConversationAlpha1 { DataContext = Keyboard };
@@ -486,6 +534,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.ChineseSimplifiedBopomofo:
+                    case Languages.ChineseSimplifiedCangjie5:
+                    case Languages.ChineseSimplifiedLunaPinyin:
+                    case Languages.ChineseSimplifiedTerraPinyin:
+                    case Languages.ChineseTraditionalBopomofo:
+                    case Languages.ChineseTraditionalCangjie5:
+                    case Languages.ChineseTraditionalLunaPinyin:
+                    case Languages.ChineseTraditionalTerraPinyin:
+                    case Languages.ChineseTaiwanTraditionalBopomofo:
+                    case Languages.ChineseTaiwanTraditionalLunaPinyin:
+                        newContent = new ChineseViews.ConversationAlpha2 { DataContext = Keyboard };
+                        break;
                     case Languages.HindiIndia:
                         newContent = new HindiViews.ConversationAlpha2 { DataContext = Keyboard };
                         break;
@@ -557,6 +617,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             else if (Keyboard is ViewModelKeyboards.Language)
             {
                 newContent = new CommonViews.Language { DataContext = Keyboard };
+            }
+            else if (Keyboard is ViewModelKeyboards.Language2)
+            {
+                newContent = new CommonViews.Language2 { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.Voice)
             {
@@ -673,6 +737,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (keyboardHost != null)
             {
                 keyboardHost.BuildPointToKeyMap();
+                keyboardHost.SubscribeToNumberSuggestionsChanges();
             }
         }
 
@@ -828,6 +893,65 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     Log.Info($"Window's StateChange event detected. New state: {parentWindow.WindowState}.");
                     BuildPointToKeyMap();
                 });
+        }
+
+        #endregion
+
+
+        #region Subscribe To Number of Suggestions Changes
+
+        private void SubscribeToNumberSuggestionsChanges()
+        {
+            Action subscribeToChanges = () =>
+            {
+                var output = VisualAndLogicalTreeHelper.FindVisualChildren<Output>(this).FirstOrDefault();
+                if (output != null)
+                {
+                    // Subscribe to size changes in any key within the Output's suggestion Grid
+                    var grid = output.FindName("SuggestionsGrid") as Grid;
+                    if (grid != null)
+                    {
+                        foreach (var key in VisualAndLogicalTreeHelper.FindVisualChildren<Key>(grid))
+                        {
+                            SizeChangedEventHandler OnSuggestionKeySizeChanged = (s, e) =>
+                            {
+                                if (output.BindableNumberOfSuggestionsDisplayed != NumberOfSuggestionsDisplayed)
+                                {
+                                    Log.Info($"Suggestion grid contents have resized, re-computing PointToKeyValueMap.");
+                                    NumberOfSuggestionsDisplayed = output.BindableNumberOfSuggestionsDisplayed;
+                                    BuildPointToKeyMap();
+                                }
+                                // else it's a resize handled elsewhere, we've already got the memo about the #suggestions
+                            };
+
+                            key.SizeChanged += OnSuggestionKeySizeChanged;
+                            key.Unloaded += (s, e) =>
+                            {
+                                key.SizeChanged -= OnSuggestionKeySizeChanged;
+                            };
+                        }
+                    }
+                }
+            };
+
+            var contentAsFrameworkElement = Content as FrameworkElement;
+            if (contentAsFrameworkElement != null)
+            {
+                if (contentAsFrameworkElement.IsLoaded)
+                {
+                    subscribeToChanges();
+                }
+                else
+                {
+                    RoutedEventHandler loaded = null;
+                    loaded = (sender, args) =>
+                    {                        
+                        subscribeToChanges();
+                        contentAsFrameworkElement.Loaded -= loaded;
+                    };
+                    contentAsFrameworkElement.Loaded += loaded;
+                }
+            }            
         }
 
         #endregion
