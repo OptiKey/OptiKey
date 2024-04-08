@@ -1089,6 +1089,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continue.
+        /// </summary>
+        public static string CONTINUE {
+            get {
+                return ResourceManager.GetString("CONTINUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trigger repeat presses when held down.
         /// </summary>
         public static string CONTROLLER_ENABLE_REPEATS {
@@ -3869,7 +3878,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage eye tracker plugins.
+        ///   Looks up a localized string similar to Find more eye tracker options online.
         /// </summary>
         public static string MANAGE_ET_PLUGINS {
             get {
@@ -5219,6 +5228,43 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string PLUGIN_SEARCH_WIZARD {
             get {
                 return ResourceManager.GetString("PLUGIN_SEARCH_WIZARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I understand.
+        /// </summary>
+        public static string PLUGIN_SECURITY_I_UNDERSTAND {
+            get {
+                return ResourceManager.GetString("PLUGIN_SECURITY_I_UNDERSTAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security warning.
+        /// </summary>
+        public static string PLUGIN_SECURITY_WARNING {
+            get {
+                return ResourceManager.GetString("PLUGIN_SECURITY_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installing plugins involves downloading and executing code from the internet, which always carries some inherent risk.
+        ///Plugins are provided by third parties and have not been verified by the Optikey team. Please check the source of plugins before installing them and use your own judgement..
+        /// </summary>
+        public static string PLUGIN_SECURITY_WARNING_DETAIL {
+            get {
+                return ResourceManager.GetString("PLUGIN_SECURITY_WARNING_DETAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string PLUGIN_SECURITY_WARNING_TITLE {
+            get {
+                return ResourceManager.GetString("PLUGIN_SECURITY_WARNING_TITLE", resourceCulture);
             }
         }
         

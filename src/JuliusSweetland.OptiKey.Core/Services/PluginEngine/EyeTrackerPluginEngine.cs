@@ -15,6 +15,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using System.IO.Compression;
 using Prism.Mvvm;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.UI.Windows;
 
 namespace JuliusSweetland.OptiKey.Services.PluginEngine
 {
@@ -376,6 +377,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
         private void Install(GithubRepoModel repo)
         {
+           
             var folderName = GetInstallFolderName(repo);
 
             EnsureExists(folderName);

@@ -2492,16 +2492,6 @@ Magyar
   <data name="LIMIT_BACKONE" xml:space="preserve">
     <value>Limit "BackOne" deletion to a single character</value>
   </data>
-  
-  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
-    <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
-  </data>
-  <data name="ALLOW_REPEATS_LABEL" xml:space="preserve">
-    <value>Allow key actions to be repeated when pressing trigger away from keyboard</value>
-  </data>
-  <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
-    <value>Repeat last key:</value>
-  </data>
   <data name="CHINESE_SIMPLIFIED_BOPOMOFO" xml:space="preserve">
     <value>Chinese Simplified (Bopomofo) / 中文 (注音-简化字)</value>
   </data>
@@ -2631,7 +2621,7 @@ Magyar
   <data name="ENGLISH_DICTIONARY" xml:space="preserve">
     <value>English dictionary</value>
   </data>
-<data name="EYETRACKER_DLL_LOCATION_LABEL" xml:space="preserve">
+  <data name="EYETRACKER_DLL_LOCATION_LABEL" xml:space="preserve">
     <value>DLL file for eye tracker plugin</value>
   </data>
   <data name="EXTERNAL_EYETRACKER_DLL" xml:space="preserve">
@@ -2650,7 +2640,7 @@ Magyar
     <value>Plugin has been installed, but Optikey was unable to start it. Check the log for details. </value>
   </data>
   <data name="MANAGE_ET_PLUGINS" xml:space="preserve">
-    <value>Manage eye tracker plugins</value>
+    <value>Find more eye tracker options online</value>
   </data>
   <data name="AVAILABLE_EYETRACKER_PLUGINS" xml:space="preserve">
     <value>Available eyetracker plugins</value>
@@ -2722,9 +2712,6 @@ Magyar
     <value>No eye tracker plugins found.
 Check your internet connection and wait a few minutes to rescan.</value>
   </data>
-  <data name="LIMIT_BACKONE" xml:space="preserve">
-    <value>Limit "BackOne" deletion to a single character</value>
-  </data>
   <data name="TOBII_TRACKER_NOT_FOUND" xml:space="preserve">
     <value>Could not find a supported Tobii tracker. Check your eye tracker is plugged in and the Tobii service is running</value>
   </data>
@@ -2752,7 +2739,20 @@ www.optikey.org/supported-eyetrackers</value>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Tobii Engine is not running. Please start the Tobii software and try again.</value>
   </data>
-  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
-    <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
+  <data name="CONTINUE" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="PLUGIN_SECURITY_WARNING" xml:space="preserve">
+    <value>Security warning</value>
+  </data>
+  <data name="PLUGIN_SECURITY_WARNING_DETAIL" xml:space="preserve">
+    <value>Installing plugins involves downloading and executing code from the internet, which always carries some inherent risk.
+Plugins are provided by third parties and have not been verified by the Optikey team. Please check the source of plugins before installing them and use your own judgement.</value>
+  </data>
+  <data name="PLUGIN_SECURITY_WARNING_TITLE" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="PLUGIN_SECURITY_I_UNDERSTAND" xml:space="preserve">
+    <value>I understand</value>
   </data>
 </root>
