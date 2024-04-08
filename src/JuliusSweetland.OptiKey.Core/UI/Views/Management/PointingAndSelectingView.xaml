@@ -915,7 +915,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </ComboBox>
 
                     <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_SOURCE_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" >
+                               VerticalAlignment="Center" Margin="5, 25, 5, 5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Visible" />
@@ -928,6 +928,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </TextBlock.Style>
                     </TextBlock>
                     <ComboBox Grid.Row="12" Grid.Column="1" 
+                              Margin="0, 25, 0, 0"
                               ItemsSource="{Binding TriggerSources}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
