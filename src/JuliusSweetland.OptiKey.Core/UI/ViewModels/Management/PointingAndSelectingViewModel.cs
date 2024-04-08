@@ -331,14 +331,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     return pointsSourceString;
             }
         }
-
-        private DataStreamProcessingLevels tobiiEyeXProcessingLevel;
-        public DataStreamProcessingLevels TobiiEyeXProcessingLevel
-        {
-            get { return tobiiEyeXProcessingLevel; }
-            set { SetProperty(ref tobiiEyeXProcessingLevel, value); }
-        }
-
+        
         private DataStreamProcessingLevels irisBondProcessingLevel;
         public DataStreamProcessingLevels IrisbondProcessingLevel
         {
@@ -666,7 +659,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 PointsSourceString = Settings.Default.PointsSource.ToString();
 
 
-            TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
             IrisbondProcessingLevel = Settings.Default.IrisbondProcessingLevel;
             GazeSmoothingLevel = Settings.Default.GazeSmoothingLevel;
             SmoothWhenChangingGazeTarget = Settings.Default.SmoothWhenChangingGazeTarget;
@@ -719,7 +711,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             
             Settings.Default.PointsSource = PointsSource;
-            Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
             Settings.Default.IrisbondProcessingLevel = IrisbondProcessingLevel;
             Settings.Default.GazeSmoothingLevel = GazeSmoothingLevel;
             Settings.Default.SmoothWhenChangingGazeTarget = SmoothWhenChangingGazeTarget;
