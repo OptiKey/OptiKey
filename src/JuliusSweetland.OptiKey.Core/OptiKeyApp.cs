@@ -1504,15 +1504,15 @@ namespace JuliusSweetland.OptiKey
                     });
             }
             else
-{
-    if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
-    {
-        Log.Info("Presage installation validated.");
-    }
-    taskCompletionSource.SetResult(true);
-}
+            {
+                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+                {
+                    Log.Info("Presage installation validated.");
+                }
+                taskCompletionSource.SetResult(true);
+            }
 
-return await taskCompletionSource.Task;
+            return await taskCompletionSource.Task;
         }
 
         #endregion
