@@ -164,6 +164,7 @@ namespace JuliusSweetland.OptiKey.Symbol
                 {
                     mainViewModel.AttachErrorNotifyingServiceHandlers();
                     mainViewModel.AttachInputServiceEventHandlers();
+                    dictionaryService.Setup();
                 };
 
                 mainWindow.AddOnMainViewLoadedAction(postMainViewLoaded);

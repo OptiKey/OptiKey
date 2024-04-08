@@ -164,6 +164,7 @@ namespace JuliusSweetland.OptiKey.Mouse
                 {
                     mainViewModel.AttachErrorNotifyingServiceHandlers();
                     mainViewModel.AttachInputServiceEventHandlers();
+                    dictionaryService.Setup();
                 };
 
                 mainWindow.AddOnMainViewLoadedAction(postMainViewLoaded);
