@@ -46,19 +46,21 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.SOURCE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="1" Grid.Column="1" 
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+
+                        <ComboBox 
                               ItemsSource="{Binding PointsSources}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding PointsSourceString, Mode=TwoWay}" />
 
-                    <Button Grid.Row="0" Grid.Column="0" MinWidth="100" Margin="5,5,5,5" 
+                        <Button MinWidth="100" Margin="5,0,0,0" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Left"
-                                Background="PaleGoldenrod"
                                 Click="OpenPluginsWindow">
-                        <x:Static Member="resx:Resources.MANAGE_ET_PLUGINS"/>
-                    </Button>
+                            <x:Static Member="resx:Resources.MANAGE_ET_PLUGINS"/>
+                        </Button>
+                    </StackPanel>
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.IRISBOND_DATA_STREAM_PROCESSING_LEVEL}" 
                                VerticalAlignment="Center" Margin="5">

@@ -1,6 +1,7 @@
 // Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
+using JuliusSweetland.OptiKey.UI.Windows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -26,16 +27,23 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
                 viewModel.eyeTrackerPluginEngine.MostRecentlyInstalledDll = null; // reset this state before re-use
                 viewModel.eyeTrackerPluginEngine.Refresh();
 
-                var eyeTrackerPluginsWindow = new EyeTrackerPluginsWindow();
-                eyeTrackerPluginsWindow.DataContext = viewModel.eyeTrackerPluginEngine;
-                eyeTrackerPluginsWindow.Owner = Window.GetWindow(this);
-                eyeTrackerPluginsWindow.Closing += (_, __) =>
-                {
-                    DllLoader.ResetTempDomain(); // release any locks on files
-                    viewModel.UpdatePlugins();
-                };
-                eyeTrackerPluginsWindow.ShowDialog();
+                // Security warning dialog first
+                PluginWarningWindow warningWindow = new PluginWarningWindow();
+                warningWindow.ShowDialog();
 
+                bool? dialogResult = warningWindow.DialogResult;
+                if (dialogResult == true)
+                {
+                    var eyeTrackerPluginsWindow = new EyeTrackerPluginsWindow();
+                    eyeTrackerPluginsWindow.DataContext = viewModel.eyeTrackerPluginEngine;
+                    eyeTrackerPluginsWindow.Owner = Window.GetWindow(this);
+                    eyeTrackerPluginsWindow.Closing += (_, __) =>
+                    {
+                        DllLoader.ResetTempDomain(); // release any locks on files
+                        viewModel.UpdatePlugins();
+                    };
+                    eyeTrackerPluginsWindow.ShowDialog();
+                }                
             }
         }
 
