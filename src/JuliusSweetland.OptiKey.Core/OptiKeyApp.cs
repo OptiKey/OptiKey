@@ -1266,6 +1266,18 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
+        #region Copy over resources to APPDATA if required
+
+        protected static void ValidateAllResourcesCopied()
+        {
+            ValidateEyeGestures();
+            ValidateRimeLocation();
+            ValidateDynamicKeyboardLocation();
+            ValidateEyeTrackerResources();
+        }
+
+        #endregion
+
         #region Clean Up Extracted CommuniKate Files If Staged For Deletion
 
         protected static void CleanupAndPrepareCommuniKateInitialState()

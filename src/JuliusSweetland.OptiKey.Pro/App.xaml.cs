@@ -130,13 +130,7 @@ namespace JuliusSweetland.OptiKey.Pro
 
                 CleanupAndPrepareCommuniKateInitialState();
 
-                ValidateEyeGestures();
-
-                ValidateRimeLocation();
-
-                ValidateDynamicKeyboardLocation();
-
-                ValidateEyeTrackerResources();
+                ValidateAllResourcesCopied();
 
                 // Handle plugins. Validate if directory exists and is accessible and pre-load all plugins, building a in-memory list of available ones.
                 ValidatePluginsLocation();
