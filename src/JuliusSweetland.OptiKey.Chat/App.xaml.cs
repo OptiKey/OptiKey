@@ -164,6 +164,7 @@ namespace JuliusSweetland.OptiKey.Chat
                 {
                     mainViewModel.AttachErrorNotifyingServiceHandlers();
                     mainViewModel.AttachInputServiceEventHandlers();
+                    dictionaryService.Setup();
                 };
 
                 mainWindow.AddOnMainViewLoadedAction(postMainViewLoaded);
