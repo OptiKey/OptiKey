@@ -2,7 +2,7 @@
 <DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="19.2" Modules="enterprise" RootPath="." Language="en" Id="{C55701DB-71B1-4D1B-A086-01F7DA10962C}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
-    <ROW Property="AI_CURRENT_YEAR" Value="2023" ValueLocId="-"/>
+    <ROW Property="AI_CURRENT_YEAR" Value="2024" ValueLocId="-"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
     <ROW Property="AI_PREREQ_REPAIR_ENABLED" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="AI_RUN_AS_ADMIN" Value="0"/>
@@ -44,6 +44,7 @@
     <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
     <ROW Directory="Release_Dir" Directory_Parent="APPDIR" DefaultDir=".:Release"/>
     <ROW Directory="Resources_Dir" Directory_Parent="Release_Dir" DefaultDir="RESOUR~1|Resources"/>
+    <ROW Directory="Rime_Dir" Directory_Parent="Resources_Dir" DefaultDir="Rime"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
     <ROW Directory="Samples_1_Dir" Directory_Parent="Keyboards_Dir" DefaultDir="Samples"/>
     <ROW Directory="Sounds_Dir" Directory_Parent="Resources_Dir" DefaultDir="Sounds"/>
@@ -67,6 +68,7 @@
     <ROW Directory="kaGE_Dir" Directory_Parent="Release_Dir" DefaultDir="ka-GE"/>
     <ROW Directory="koKR_Dir" Directory_Parent="Release_Dir" DefaultDir="ko-KR"/>
     <ROW Directory="nl_Dir" Directory_Parent="Release_Dir" DefaultDir="nl"/>
+    <ROW Directory="opencc_Dir" Directory_Parent="Rime_Dir" DefaultDir="opencc"/>
     <ROW Directory="plPL_Dir" Directory_Parent="Release_Dir" DefaultDir="pl-PL"/>
     <ROW Directory="ptPT_Dir" Directory_Parent="Release_Dir" DefaultDir="pt-PT"/>
     <ROW Directory="ruRU_Dir" Directory_Parent="Release_Dir" DefaultDir="ru-RU"/>
@@ -76,6 +78,7 @@
     <ROW Directory="trTR_Dir" Directory_Parent="Release_Dir" DefaultDir="tr-TR"/>
     <ROW Directory="ukUA_Dir" Directory_Parent="Release_Dir" DefaultDir="uk-UA"/>
     <ROW Directory="urPK_Dir" Directory_Parent="Release_Dir" DefaultDir="ur-PK"/>
+    <ROW Directory="zhTW_Dir" Directory_Parent="Release_Dir" DefaultDir="zh-TW"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="AI_ExePath" ComponentId="{073D123B-F477-4A68-83F4-1CE1C6D2DD68}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
@@ -92,6 +95,7 @@
     <ROW Component="Interop.SpeechLib.dll" ComponentId="{333FCC39-8DEE-4857-81E9-605FE74585D3}" Directory_="Release_Dir" Attributes="256" KeyPath="Interop.SpeechLib.dll"/>
     <ROW Component="IrisbondAPI.dll" ComponentId="{7EA8BF49-87DB-449E-A726-14A731D2D94C}" Directory_="Release_Dir" Attributes="256" KeyPath="IrisbondAPI.dll"/>
     <ROW Component="IrisbondHiruAPI.dll" ComponentId="{01FE18EC-8DCE-49A6-8765-0574181138BE}" Directory_="Release_Dir" Attributes="256" KeyPath="IrisbondHiruAPI.dll"/>
+    <ROW Component="JuliusSweetland.OptiKey.Contracts.dll" ComponentId="{724323D6-621E-482D-82B3-B3186D559247}" Directory_="Release_Dir" Attributes="256" KeyPath="JuliusSweetland.OptiKey.Contracts.dll"/>
     <ROW Component="MahApps.Metro.dll" ComponentId="{3AA3D119-7C30-45E2-A02B-3E2264E2FDE4}" Directory_="Release_Dir" Attributes="0" KeyPath="MahApps.Metro.dll"/>
     <ROW Component="Microsoft.Expression.Interactions.dll" ComponentId="{1771DFE3-36AB-4BA4-993F-B886FE7A0CD3}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Expression.Interactions.dll"/>
     <ROW Component="Microsoft.Practices.ServiceLocation.dll" ComponentId="{12EC59D4-EEA6-4731-B716-5B0F339DC5EA}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Practices.ServiceLocation.dll"/>
@@ -121,6 +125,7 @@
     <ROW Component="OptiKey.resources.dll_25" ComponentId="{D7808661-CDE9-4449-A958-CC039E044D1D}" Directory_="trTR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_25"/>
     <ROW Component="OptiKey.resources.dll_26" ComponentId="{447E3633-F334-4C6F-A79A-267F55E6B229}" Directory_="ukUA_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_26"/>
     <ROW Component="OptiKey.resources.dll_27" ComponentId="{D09C6938-B952-4609-82AE-A5C6631BC62D}" Directory_="urPK_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_27"/>
+    <ROW Component="OptiKey.resources.dll_28" ComponentId="{5E3D9C6F-8E25-4D07-AD98-9DBE67DD106E}" Directory_="zhTW_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_28"/>
     <ROW Component="OptiKey.resources.dll_3" ComponentId="{CA0B63F0-1712-4865-BE64-C7F5FD466DC2}" Directory_="deDE_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_3"/>
     <ROW Component="OptiKey.resources.dll_4" ComponentId="{B8F63A3C-68A8-4935-9F55-2DFFE8B000FF}" Directory_="elGR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_4"/>
     <ROW Component="OptiKey.resources.dll_5" ComponentId="{7A61EB35-0E34-44CE-A2BD-35EF0CF65287}" Directory_="enUS_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_5"/>
@@ -133,6 +138,7 @@
     <ROW Component="Optikey" ComponentId="{BE6421A6-4EF6-45F3-8A32-2E23AFFC6ADB}" Directory_="Optikey_Dir" Attributes="0"/>
     <ROW Component="OptikeyPro.exe" ComponentId="{67A1815C-0F41-4019-926F-5DF7C160A09B}" Directory_="Release_Dir" Attributes="0" KeyPath="OptikeyPro.exe"/>
     <ROW Component="PGRFlyCapture.dll" ComponentId="{DB7FCFCE-6807-4CBF-AA1A-C58CA8D1510D}" Directory_="Release_Dir" Attributes="256" KeyPath="PGRFlyCapture.dll"/>
+    <ROW Component="PointSourceUtils.dll" ComponentId="{36461077-B83C-4150-A111-AA29DDF8E6A0}" Directory_="Release_Dir" Attributes="256" KeyPath="PointSourceUtils.dll"/>
     <ROW Component="Prism.Wpf.dll" ComponentId="{85D25BB4-E637-4640-A01E-7840E22A585D}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.Wpf.dll"/>
     <ROW Component="Prism.dll" ComponentId="{466DE73C-15F5-4D25-BDD9-BF382FF08CFD}" Directory_="Release_Dir" Attributes="0" KeyPath="Prism.dll"/>
     <ROW Component="ProductInformation" ComponentId="{EC5C0B08-3949-40D7-B3B6-8E6826B24A08}" Directory_="APPDIR" Attributes="260" KeyPath="Version"/>
@@ -169,10 +175,13 @@
     <ROW Component="avutil56.dll" ComponentId="{4E11E22B-ABF2-4BCD-BC21-D2EC619DD9F0}" Directory_="Release_Dir" Attributes="256" KeyPath="avutil56.dll"/>
     <ROW Component="back.png" ComponentId="{7785AB14-F801-482D-9211-889EB01209D6}" Directory_="CommuniKate_Dir" Attributes="0" KeyPath="back.png" Type="0"/>
     <ROW Component="bass.dll" ComponentId="{82765289-FCDA-4338-894F-AD58EDBD95E5}" Directory_="Release_Dir" Attributes="256" KeyPath="bass.dll"/>
+    <ROW Component="bopomofo.schema.yaml" ComponentId="{7A0B5A29-B458-4A5B-8BD3-A3898ECECAEA}" Directory_="Rime_Dir" Attributes="0" KeyPath="bopomofo.schema.yaml" Type="0"/>
     <ROW Component="database.zip" ComponentId="{92A454EC-03E0-4552-A646-A3F150B409D7}" Directory_="Presage_Dir" Attributes="0" KeyPath="database.zip" Type="0"/>
+    <ROW Component="hk2s.json" ComponentId="{164DB8C6-9638-482E-BE4F-44EC5B720EA6}" Directory_="opencc_Dir" Attributes="0" KeyPath="hk2s.json" Type="0"/>
     <ROW Component="log4net.dll" ComponentId="{0306B966-EDE0-4E31-8267-78B6A45EAEE9}" Directory_="Release_Dir" Attributes="0" KeyPath="log4net.dll"/>
     <ROW Component="nunit.framework.dll" ComponentId="{87EB8DE7-73E3-4E70-9B79-42141C82175B}" Directory_="Release_Dir" Attributes="0" KeyPath="nunit.framework.dll"/>
     <ROW Component="presage.net.dll" ComponentId="{02594AE2-2DC8-453B-BD74-8114D86BC319}" Directory_="Release_Dir" Attributes="256" KeyPath="presage.net.dll"/>
+    <ROW Component="rime.dll" ComponentId="{C92C54F3-8B41-456C-8A0F-EDE43819F09C}" Directory_="Rime_Dir" Attributes="0" KeyPath="rime.dll"/>
     <ROW Component="swresample3.dll" ComponentId="{8EA694A8-F9ED-4976-975C-F48430F27968}" Directory_="Release_Dir" Attributes="256" KeyPath="swresample3.dll"/>
     <ROW Component="tobiitrackers.txt" ComponentId="{B9AF73D1-2C13-4175-8DAF-91D28FC82948}" Directory_="EyeTrackerSupport_Dir" Attributes="0" KeyPath="tobiitrackers.txt" Type="0"/>
   </COMPONENT>
@@ -386,6 +395,61 @@
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll" FileName="WINDOW~3.PDB|WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.pdb" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Component_="Bass.Net.xml" FileName="WINDOW~2.XML|WindowsRecipes.TaskbarSingleInstance.Wpf.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\WindowsRecipes.TaskbarSingleInstance.Wpf.xml" SelfReg="false"/>
     <ROW File="WindowsRecipes.TaskbarSingleInstance.xml" Component_="Bass.Net.xml" FileName="WINDOW~3.XML|WindowsRecipes.TaskbarSingleInstance.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\WindowsRecipes.TaskbarSingleInstance.xml" SelfReg="false"/>
+    <ROW File="JuliusSweetland.OptiKey.Contracts.dll" Component_="JuliusSweetland.OptiKey.Contracts.dll" FileName="JULIUS~1.DLL|JuliusSweetland.OptiKey.Contracts.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\JuliusSweetland.OptiKey.Contracts.dll" SelfReg="false"/>
+    <ROW File="JuliusSweetland.OptiKey.Contracts.pdb" Component_="JuliusSweetland.OptiKey.Contracts.dll" FileName="JULIUS~1.PDB|JuliusSweetland.OptiKey.Contracts.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\JuliusSweetland.OptiKey.Contracts.pdb" SelfReg="false"/>
+    <ROW File="PointSourceUtils.dll" Component_="PointSourceUtils.dll" FileName="POINTS~1.DLL|PointSourceUtils.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\PointSourceUtils.dll" SelfReg="false"/>
+    <ROW File="PointSourceUtils.pdb" Component_="PointSourceUtils.dll" FileName="POINTS~1.PDB|PointSourceUtils.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\PointSourceUtils.pdb" SelfReg="false"/>
+    <ROW File="bopomofo.schema.yaml" Component_="bopomofo.schema.yaml" FileName="BOPOMO~1.YAM|bopomofo.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\bopomofo.schema.yaml" SelfReg="false"/>
+    <ROW File="bopomofo_express.schema.yaml" Component_="bopomofo.schema.yaml" FileName="BOPOMO~2.YAM|bopomofo_express.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\bopomofo_express.schema.yaml" SelfReg="false"/>
+    <ROW File="bopomofo_tw.schema.yaml" Component_="bopomofo.schema.yaml" FileName="BOPOMO~3.YAM|bopomofo_tw.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\bopomofo_tw.schema.yaml" SelfReg="false"/>
+    <ROW File="cangjie5.dict.yaml" Component_="bopomofo.schema.yaml" FileName="CANGJI~1.YAM|cangjie5.dict.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\cangjie5.dict.yaml" SelfReg="false"/>
+    <ROW File="cangjie5.schema.yaml" Component_="bopomofo.schema.yaml" FileName="CANGJI~2.YAM|cangjie5.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\cangjie5.schema.yaml" SelfReg="false"/>
+    <ROW File="cangjie5_express.schema.yaml" Component_="bopomofo.schema.yaml" FileName="CANGJI~3.YAM|cangjie5_express.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\cangjie5_express.schema.yaml" SelfReg="false"/>
+    <ROW File="default.yaml" Component_="bopomofo.schema.yaml" FileName="DEFAUL~1.YAM|default.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\default.yaml" SelfReg="false"/>
+    <ROW File="essay.txt" Component_="bopomofo.schema.yaml" FileName="essay.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\essay.txt" SelfReg="false"/>
+    <ROW File="luna_pinyin.dict.yaml" Component_="bopomofo.schema.yaml" FileName="LUNA_P~1.YAM|luna_pinyin.dict.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\luna_pinyin.dict.yaml" SelfReg="false"/>
+    <ROW File="luna_pinyin.schema.yaml" Component_="bopomofo.schema.yaml" FileName="LUNA_P~2.YAM|luna_pinyin.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\luna_pinyin.schema.yaml" SelfReg="false"/>
+    <ROW File="luna_pinyin_fluency.schema.yaml" Component_="bopomofo.schema.yaml" FileName="LUNA_P~3.YAM|luna_pinyin_fluency.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\luna_pinyin_fluency.schema.yaml" SelfReg="false"/>
+    <ROW File="luna_pinyin_simp.schema.yaml" Component_="bopomofo.schema.yaml" FileName="LUNA_P~4.YAM|luna_pinyin_simp.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\luna_pinyin_simp.schema.yaml" SelfReg="false"/>
+    <ROW File="luna_pinyin_tw.schema.yaml" Component_="bopomofo.schema.yaml" FileName="LUNA_P~5.YAM|luna_pinyin_tw.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\luna_pinyin_tw.schema.yaml" SelfReg="false"/>
+    <ROW File="luna_quanpin.schema.yaml" Component_="bopomofo.schema.yaml" FileName="LUNA_Q~1.YAM|luna_quanpin.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\luna_quanpin.schema.yaml" SelfReg="false"/>
+    <ROW File="hk2s.json" Component_="hk2s.json" FileName="HK2S~1.JSO|hk2s.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\hk2s.json" SelfReg="false"/>
+    <ROW File="hk2t.json" Component_="hk2s.json" FileName="HK2T~1.JSO|hk2t.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\hk2t.json" SelfReg="false"/>
+    <ROW File="HKVariants.ocd2" Component_="hk2s.json" FileName="HKVARI~1.OCD|HKVariants.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\HKVariants.ocd2" SelfReg="false"/>
+    <ROW File="HKVariantsRev.ocd2" Component_="hk2s.json" FileName="HKVARI~2.OCD|HKVariantsRev.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\HKVariantsRev.ocd2" SelfReg="false"/>
+    <ROW File="HKVariantsRevPhrases.ocd2" Component_="hk2s.json" FileName="HKVARI~3.OCD|HKVariantsRevPhrases.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\HKVariantsRevPhrases.ocd2" SelfReg="false"/>
+    <ROW File="jp2t.json" Component_="hk2s.json" FileName="JP2T~1.JSO|jp2t.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\jp2t.json" SelfReg="false"/>
+    <ROW File="JPShinjitaiCharacters.ocd2" Component_="hk2s.json" FileName="JPSHIN~1.OCD|JPShinjitaiCharacters.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\JPShinjitaiCharacters.ocd2" SelfReg="false"/>
+    <ROW File="JPShinjitaiPhrases.ocd2" Component_="hk2s.json" FileName="JPSHIN~2.OCD|JPShinjitaiPhrases.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\JPShinjitaiPhrases.ocd2" SelfReg="false"/>
+    <ROW File="JPVariants.ocd2" Component_="hk2s.json" FileName="JPVARI~1.OCD|JPVariants.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\JPVariants.ocd2" SelfReg="false"/>
+    <ROW File="JPVariantsRev.ocd2" Component_="hk2s.json" FileName="JPVARI~2.OCD|JPVariantsRev.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\JPVariantsRev.ocd2" SelfReg="false"/>
+    <ROW File="s2hk.json" Component_="hk2s.json" FileName="S2HK~1.JSO|s2hk.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\s2hk.json" SelfReg="false"/>
+    <ROW File="s2t.json" Component_="hk2s.json" FileName="S2T~1.JSO|s2t.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\s2t.json" SelfReg="false"/>
+    <ROW File="s2tw.json" Component_="hk2s.json" FileName="S2TW~1.JSO|s2tw.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\s2tw.json" SelfReg="false"/>
+    <ROW File="s2twp.json" Component_="hk2s.json" FileName="S2TWP~1.JSO|s2twp.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\s2twp.json" SelfReg="false"/>
+    <ROW File="STCharacters.ocd2" Component_="hk2s.json" FileName="STCHAR~1.OCD|STCharacters.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\STCharacters.ocd2" SelfReg="false"/>
+    <ROW File="STPhrases.ocd2" Component_="hk2s.json" FileName="STPHRA~1.OCD|STPhrases.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\STPhrases.ocd2" SelfReg="false"/>
+    <ROW File="t2hk.json" Component_="hk2s.json" FileName="T2HK~1.JSO|t2hk.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\t2hk.json" SelfReg="false"/>
+    <ROW File="t2jp.json" Component_="hk2s.json" FileName="T2JP~1.JSO|t2jp.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\t2jp.json" SelfReg="false"/>
+    <ROW File="t2s.json" Component_="hk2s.json" FileName="T2S~1.JSO|t2s.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\t2s.json" SelfReg="false"/>
+    <ROW File="t2tw.json" Component_="hk2s.json" FileName="T2TW~1.JSO|t2tw.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\t2tw.json" SelfReg="false"/>
+    <ROW File="TSCharacters.ocd2" Component_="hk2s.json" FileName="TSCHAR~1.OCD|TSCharacters.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\TSCharacters.ocd2" SelfReg="false"/>
+    <ROW File="TSPhrases.ocd2" Component_="hk2s.json" FileName="TSPHRA~1.OCD|TSPhrases.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\TSPhrases.ocd2" SelfReg="false"/>
+    <ROW File="tw2s.json" Component_="hk2s.json" FileName="TW2S~1.JSO|tw2s.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\tw2s.json" SelfReg="false"/>
+    <ROW File="tw2sp.json" Component_="hk2s.json" FileName="TW2SP~1.JSO|tw2sp.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\tw2sp.json" SelfReg="false"/>
+    <ROW File="tw2t.json" Component_="hk2s.json" FileName="TW2T~1.JSO|tw2t.json" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\tw2t.json" SelfReg="false"/>
+    <ROW File="TWPhrases.ocd2" Component_="hk2s.json" FileName="TWPHRA~1.OCD|TWPhrases.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\TWPhrases.ocd2" SelfReg="false"/>
+    <ROW File="TWPhrasesRev.ocd2" Component_="hk2s.json" FileName="TWPHRA~2.OCD|TWPhrasesRev.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\TWPhrasesRev.ocd2" SelfReg="false"/>
+    <ROW File="TWVariants.ocd2" Component_="hk2s.json" FileName="TWVARI~1.OCD|TWVariants.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\TWVariants.ocd2" SelfReg="false"/>
+    <ROW File="TWVariantsRev.ocd2" Component_="hk2s.json" FileName="TWVARI~2.OCD|TWVariantsRev.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\TWVariantsRev.ocd2" SelfReg="false"/>
+    <ROW File="TWVariantsRevPhrases.ocd2" Component_="hk2s.json" FileName="TWVARI~3.OCD|TWVariantsRevPhrases.ocd2" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\opencc\TWVariantsRevPhrases.ocd2" SelfReg="false"/>
+    <ROW File="pinyin.yaml" Component_="bopomofo.schema.yaml" FileName="PINYIN~1.YAM|pinyin.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\pinyin.yaml" SelfReg="false"/>
+    <ROW File="rime.dll" Component_="rime.dll" FileName="rime.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\rime.dll" SelfReg="false"/>
+    <ROW File="symbols.yaml" Component_="bopomofo.schema.yaml" FileName="SYMBOL~1.YAM|symbols.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\symbols.yaml" SelfReg="false"/>
+    <ROW File="terra_pinyin.dict.yaml" Component_="bopomofo.schema.yaml" FileName="TERRA_~1.YAM|terra_pinyin.dict.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\terra_pinyin.dict.yaml" SelfReg="false"/>
+    <ROW File="terra_pinyin.schema.yaml" Component_="bopomofo.schema.yaml" FileName="TERRA_~2.YAM|terra_pinyin.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\terra_pinyin.schema.yaml" SelfReg="false"/>
+    <ROW File="zhuyin.yaml" Component_="bopomofo.schema.yaml" FileName="ZHUYIN~1.YAM|zhuyin.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\zhuyin.yaml" SelfReg="false"/>
+    <ROW File="OptiKey.resources.dll_28" Component_="OptiKey.resources.dll_28" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\zh-TW\OptiKey.resources.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -822,6 +886,12 @@
     <ROW Feature_="MainFeature" Component_="WindowsInput.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsRecipes.TaskbarSingleInstance.Wpf.dll"/>
+    <ROW Feature_="MainFeature" Component_="JuliusSweetland.OptiKey.Contracts.dll"/>
+    <ROW Feature_="MainFeature" Component_="PointSourceUtils.dll"/>
+    <ROW Feature_="MainFeature" Component_="bopomofo.schema.yaml"/>
+    <ROW Feature_="MainFeature" Component_="hk2s.json"/>
+    <ROW Feature_="MainFeature" Component_="rime.dll"/>
+    <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_28"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Pro.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\Pro.ico" Index="0"/>

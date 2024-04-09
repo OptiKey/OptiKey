@@ -1266,6 +1266,18 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
+        #region Copy over resources to APPDATA if required
+
+        protected static void ValidateAllResourcesCopied()
+        {
+            ValidateEyeGestures();
+            ValidateRimeLocation();
+            ValidateDynamicKeyboardLocation();
+            ValidateEyeTrackerResources();
+        }
+
+        #endregion
+
         #region Clean Up Extracted CommuniKate Files If Staged For Deletion
 
         protected static void CleanupAndPrepareCommuniKateInitialState()
@@ -1492,15 +1504,15 @@ namespace JuliusSweetland.OptiKey
                     });
             }
             else
-{
-    if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
-    {
-        Log.Info("Presage installation validated.");
-    }
-    taskCompletionSource.SetResult(true);
-}
+            {
+                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+                {
+                    Log.Info("Presage installation validated.");
+                }
+                taskCompletionSource.SetResult(true);
+            }
 
-return await taskCompletionSource.Task;
+            return await taskCompletionSource.Task;
         }
 
         #endregion

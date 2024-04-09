@@ -717,7 +717,8 @@
     <ROW Action="SetPropertyFontFamily" Type="51" Source="SELECTED_FONTFAMILY" Target="/Resources/Fonts/#Roboto"/>
     <ROW Action="SetPropertyFontStretch" Type="51" Source="SELECTED_FONTSTRETCH" Target="Condensed"/>
     <ROW Action="SetPropertyFontWeight" Type="51" Source="SELECTED_FONTWEIGHT" Target="Light"/>
-    <ROW Action="SetPropertyLanguageSelected" Type="51" Source="LANGUAGE_SELECTED" Target="EnglishUK"/>
+    <ROW Action="SetPropertyLanguageSelected" Type="51" Source="KEYBOARD_LANGUAGE_SELECTED" Target="EnglishUK"/>
+    <ROW Action="SetPropertyLanguageSelected_1" Type="51" Source="UI_LANGUAGE_SELECTED" Target="EnglishUK"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="Languages" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg" MsiKey="Languages"/>
@@ -863,6 +864,7 @@
     <ROW Action="SetPropertyFontStretch" Sequence="54"/>
     <ROW Action="OptiKeyProperties" Sequence="51"/>
     <ROW Action="SetNewline" Sequence="56"/>
+    <ROW Action="SetPropertyLanguageSelected_1" Sequence="202"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
@@ -945,9 +947,9 @@
     <ROW XmlElement="setting_2" ParentElement="JuliusSweetland.OptiKey.Chat.Proper" Name="setting" Condition="1" Order="4" Flags="14" UpdateIndexInParent="0"/>
     <ROW XmlElement="setting_3" ParentElement="JuliusSweetland.OptiKey.Chat.Proper" Name="setting" Condition="1" Order="5" Flags="14" UpdateIndexInParent="0"/>
     <ROW XmlElement="userSettings" ParentElement="configuration" Name="userSettings" Condition="1" Order="1" Flags="14" UpdateIndexInParent="0"/>
-    <ROW XmlElement="value" ParentElement="UiLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[LANGUAGE_SELECTED]" UpdateIndexInParent="0"/>
+    <ROW XmlElement="value" ParentElement="UiLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[UI_LANGUAGE_SELECTED]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_1" ParentElement="setting_1" Name="value" Condition="1" Order="0" Flags="14" Text="[EYETRACKER_SELECTED]" UpdateIndexInParent="0"/>
-    <ROW XmlElement="value_2" ParentElement="TypingLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[LANGUAGE_SELECTED]" UpdateIndexInParent="0"/>
+    <ROW XmlElement="value_2" ParentElement="TypingLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[KEYBOARD_LANGUAGE_SELECTED]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_3" ParentElement="setting" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTWEIGHT]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_4" ParentElement="setting_2" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTFAMILY]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_5" ParentElement="setting_3" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTSTRETCH]" UpdateIndexInParent="0"/>

@@ -474,6 +474,7 @@
       <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
+    <Compile Include="UI\ValueConverters\SystemIconConverter.cs" />
     <Compile Include="UI\ValueConverters\CollapsedIfNotManagedByRime.cs" />
     <Compile Include="UI\ValueConverters\FileNameConverter .cs" />
     <Compile Include="UI\ValueConverters\CompletionTimesValidation.cs" />
@@ -991,6 +992,9 @@
     </Compile>
     <Compile Include="UI\Views\Management\WordsView.xaml.cs">
       <DependentUpon>WordsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\PluginWarningWindow.xaml.cs">
+      <DependentUpon>PluginWarningWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\CrashWindow.xaml.cs">
       <DependentUpon>CrashWindow.xaml</DependentUpon>
@@ -2344,6 +2348,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Management\WordsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Windows\PluginWarningWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
