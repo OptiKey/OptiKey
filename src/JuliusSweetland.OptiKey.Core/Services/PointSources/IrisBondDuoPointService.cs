@@ -28,14 +28,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public IrisbondDuoPointService()
         {
-            KalmanFilterSupported = true;
         }
-
-        #endregion
-
-        #region Properties
-
-        public bool KalmanFilterSupported {get; private set; }
 
         #endregion
 

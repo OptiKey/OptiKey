@@ -37,7 +37,10 @@ namespace JuliusSweetland.OptiKey.Services
 
         public TobiiPointService()
         {
-            KalmanFilterSupported = true;
+            /* This is an empty skeleton after we removed
+             * Tobii support from Optikey, as we didn't know if
+             * we were going to reinstate it for Tobii Dynavox
+             */
 
             ConnectAPI();
             ConnectTracker();
@@ -58,12 +61,6 @@ namespace JuliusSweetland.OptiKey.Services
         }
 
         #endregion        
-
-        #region Properties
-
-        public bool KalmanFilterSupported {get; private set; }        
-
-        #endregion
 
         #region Events
 
