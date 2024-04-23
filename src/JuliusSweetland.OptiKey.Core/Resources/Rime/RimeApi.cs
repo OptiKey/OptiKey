@@ -21,7 +21,7 @@ namespace JuliusSweetland.OptiKey.Rime {
     public class MyRimeApi {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        private static uint SessionId = 0;
+        private static UIntPtr SessionId = UIntPtr.Zero;
         public static bool IsAsciiMode = false;
         public static bool IsComposing = false;
         public static bool IsFirstPage = false;
@@ -29,8 +29,8 @@ namespace JuliusSweetland.OptiKey.Rime {
 
         public static RimeNotificationHandler NotificationHandler;
 
-        public static uint GetSession() {
-            if (SessionId != 0) {
+        public static UIntPtr GetSession() {
+            if (SessionId != UIntPtr.Zero) {
                 Log.Info("Session ID " + SessionId);
                 return SessionId;
             }
@@ -60,13 +60,13 @@ namespace JuliusSweetland.OptiKey.Rime {
             }
             Log.Info("Ready for RIME");            
             SessionId = rime.create_session();
-            if (SessionId == 0) {
+            if (SessionId == UIntPtr.Zero) {
                 throw new ApplicationException("Error creating RIME session for Chinese text input");                
             }
             return SessionId;
         }
 
-        public static void on_message(System.IntPtr context_object, uint session_id, string message_type, string message_value)
+        public static void on_message(System.IntPtr context_object, UIntPtr session_id, string message_type, string message_value)
         {
             if (message_type == "failure")
             {
@@ -109,7 +109,7 @@ namespace JuliusSweetland.OptiKey.Rime {
         }
         public static void Clear()
         {
-            if (SessionId != 0)
+            if (SessionId != UIntPtr.Zero)
             {
                 var rime = rime_get_api();
                 rime.clear_composition(SessionId);
@@ -158,13 +158,13 @@ namespace JuliusSweetland.OptiKey.Rime {
             RimeJoinMaintenanceThread();
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint RimeCreateSession();
-        public uint create_session() {
+        public static extern UIntPtr RimeCreateSession();
+        public UIntPtr create_session() {
             return RimeCreateSession();
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeSimulateKeySequence(uint session_id, string key_sequence);
-        public bool simulate_key_sequence(uint session_id, string key_sequence) {
+        public static extern bool RimeSimulateKeySequence(UIntPtr session_id, string key_sequence);
+        public bool simulate_key_sequence(UIntPtr session_id, string key_sequence) {
             return RimeSimulateKeySequence(session_id, key_sequence);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
@@ -178,13 +178,13 @@ namespace JuliusSweetland.OptiKey.Rime {
             RimeFreeSchemaList(ref schema);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeSelectCandidateOnCurrentPage(uint session_id, int index);
-        public bool select_candidate_on_current_page(uint session_id, int index) {
+        public static extern bool RimeSelectCandidateOnCurrentPage(UIntPtr session_id, int index);
+        public bool select_candidate_on_current_page(UIntPtr session_id, int index) {
             return RimeSelectCandidateOnCurrentPage(session_id, index);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeCandidateListBegin(uint session_id, [Out] RimeCandidateListIterator iterator);
-        public bool candidate_list_begin(uint session_id, ref RimeCandidateListIterator iterator) {
+        public static extern bool RimeCandidateListBegin(UIntPtr session_id, [Out] RimeCandidateListIterator iterator);
+        public bool candidate_list_begin(UIntPtr session_id, ref RimeCandidateListIterator iterator) {
             return RimeCandidateListBegin(session_id, iterator);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
@@ -198,13 +198,13 @@ namespace JuliusSweetland.OptiKey.Rime {
             RimeCandidateListEnd(iterator);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeGetCommit(uint session_id, ref RimeCommit commit);
-        public bool get_commit(uint session_id, ref RimeCommit commit) {
+        public static extern bool RimeGetCommit(UIntPtr session_id, ref RimeCommit commit);
+        public bool get_commit(UIntPtr session_id, ref RimeCommit commit) {
             return RimeGetCommit(session_id, ref commit);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeGetCurrentSchema(uint session_id, [Out, MarshalAs(UnmanagedType.LPArray, SizeConst = 100)] char[] schema_id, int buffer_size);
-        public bool get_current_schema(uint session_id, ref char[] schema_id, int buffer_size) {
+        public static extern bool RimeGetCurrentSchema(UIntPtr session_id, [Out, MarshalAs(UnmanagedType.LPArray, SizeConst = 100)] char[] schema_id, int buffer_size);
+        public bool get_current_schema(UIntPtr session_id, ref char[] schema_id, int buffer_size) {
             return RimeGetCurrentSchema(session_id, schema_id, buffer_size);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
@@ -213,13 +213,13 @@ namespace JuliusSweetland.OptiKey.Rime {
             return RimeFreeCommit(ref commit);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeSelectSchema(uint session_id, string schema_id);
-        public bool select_schema(uint session_id, string schema_id) {
+        public static extern bool RimeSelectSchema(UIntPtr session_id, string schema_id);
+        public bool select_schema(UIntPtr session_id, string schema_id) {
             return RimeSelectSchema(session_id, schema_id);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeGetStatus(uint session_id, ref RimeStatus status);
-        public bool get_status(uint session_id, ref RimeStatus status) {
+        public static extern bool RimeGetStatus(UIntPtr session_id, ref RimeStatus status);
+        public bool get_status(UIntPtr session_id, ref RimeStatus status) {
             return RimeGetStatus(session_id, ref status);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
@@ -228,8 +228,8 @@ namespace JuliusSweetland.OptiKey.Rime {
             return RimeFreeStatus(ref status);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeGetContext(uint session_id, ref RimeContext context);
-        public bool get_context(uint session_id, ref RimeContext context) {
+        public static extern bool RimeGetContext(UIntPtr session_id, ref RimeContext context);
+        public bool get_context(UIntPtr session_id, ref RimeContext context) {
             return RimeGetContext(session_id, ref context);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
@@ -249,19 +249,19 @@ namespace JuliusSweetland.OptiKey.Rime {
             RimeFinalize();
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeDestroySession(uint session_id);
-        public bool destroy_session(uint session_id) {
+        public static extern bool RimeDestroySession(UIntPtr session_id);
+        public bool destroy_session(UIntPtr session_id) {
             return RimeDestroySession(session_id);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void RimeClearComposition(uint session_id);
-        public void clear_composition(uint session_id)
+        public static extern void RimeClearComposition(UIntPtr session_id);
+        public void clear_composition(UIntPtr session_id)
         {
             RimeClearComposition(session_id);
         }
         [DllImport("Resources/Rime/rime.dll", SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool RimeSetOption(uint session_id, string option, bool value);
-        public bool set_option(uint session_id, string option, bool value) {
+        public static extern bool RimeSetOption(UIntPtr session_id, string option, bool value);
+        public bool set_option(UIntPtr session_id, string option, bool value) {
             return RimeSetOption(session_id, option, value);
         }
     }
@@ -281,7 +281,7 @@ namespace JuliusSweetland.OptiKey.Rime {
         [MarshalAs(UnmanagedType.LPStr)] public string staging_dir;
     }
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void RimeNotificationHandler(System.IntPtr context_object, uint session_id, string message_type, string message_value);
+    public delegate void RimeNotificationHandler(System.IntPtr context_object, UIntPtr session_id, string message_type, string message_value);
     [StructLayout(LayoutKind.Sequential)]
     public struct RimeComposition {
         public int length;
