@@ -89,7 +89,16 @@ Function LanguageSelected
   lang_enum = Session.Property("LANGUAGE_" + SanitisePropName(selectedLanguage))
 
   ' Store the  enum as a property: we'll need to use this for writing to XML
-  Session.Property("LANGUAGE_SELECTED") = lang_enum
+  Session.Property("KEYBOARD_LANGUAGE_SELECTED") = lang_enum
+
+  ' Special case for chinese - all variants map to ChineseTraditionalTaiwan as the
+  ' UI language
+  If InStr(lang_enum, "Chinese") > 0 Then
+    Session.Property("UI_LANGUAGE_SELECTED") = "ChineseTraditionalTaiwan"
+  Else 
+    Session.Property("UI_LANGUAGE_SELECTED") = lang_enum
+  End If
+  
 
   ' Set accompanying settings
   If StrComp(lang_enum, "PersianIran") = 0 Then
@@ -107,6 +116,7 @@ Function LanguageSelected
   End If    
 
 End  Function
+
 
 
 

@@ -135,6 +135,19 @@ Function UpdateEyeTracker(tracker_enum, tracker_extra_info, tracker_extra_info_e
   ' Store the eyetracker enum as a property: we'll need to use this for writing to XML
   Session.Property("EYETRACKER_SELECTED") = tracker_enum
 
+  ' Coerce associated properties for touch input
+  If StrComp(tracker_enum, "TouchScreenPosition") = 0 Then
+    Session.Property("SELECTED_KEYSELECTIONTRIGGERSOURCE") = "TouchDownUps"
+    Session.Property("SELECTED_POINTSELECTIONTRIGGERSOURCE") = "TouchDownUps"
+    Session.Property("SELECTED_MINDWELLTIMEINMS") = "50"
+    Session.Property("SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL") = "NextLow"
+  Else
+    Session.Property("SELECTED_KEYSELECTIONTRIGGERSOURCE") = "Fixations"
+    Session.Property("SELECTED_POINTSELECTIONTRIGGERSOURCE") = "Fixations"
+    Session.Property("SELECTED_MINDWELLTIMEINMS") = "250"
+    Session.Property("SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL") = "NextHigh"
+  End If  
+
 End Function
 
 ' -----------------------------------------------------------------------------
