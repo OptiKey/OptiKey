@@ -261,7 +261,6 @@
     <ROW File="OptiKey.resources.dll_17" Component_="OptiKey.resources.dll_17" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\ko-KR\OptiKey.resources.dll" SelfReg="false"/>
     <ROW File="LICENSE.txt" Component_="Bass.Net.xml" FileName="LICENSE.txt" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\LICENSE.txt" SelfReg="false"/>
     <ROW File="log4net.config" Component_="Bass.Net.xml" FileName="LOG4NE~1.CON|log4net.config" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\log4net.config" SelfReg="false"/>
-    <ROW File="log4net.xml" Component_="Bass.Net.xml" FileName="log4net.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\log4net.xml" SelfReg="false"/>
     <ROW File="MahApps.Metro.dll" Component_="MahApps.Metro.dll" FileName="MAHAPP~1.DLL|MahApps.Metro.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\MahApps.Metro.dll" SelfReg="false"/>
     <ROW File="MahApps.Metro.pdb" Component_="MahApps.Metro.dll" FileName="MAHAPP~1.PDB|MahApps.Metro.pdb" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\MahApps.Metro.pdb" SelfReg="false"/>
     <ROW File="MahApps.Metro.xml" Component_="Bass.Net.xml" FileName="MAHAPP~1.XML|MahApps.Metro.xml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\MahApps.Metro.xml" SelfReg="false"/>
