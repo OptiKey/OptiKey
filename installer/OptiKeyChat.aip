@@ -717,8 +717,12 @@
     <ROW Action="SetPropertyFontFamily" Type="51" Source="SELECTED_FONTFAMILY" Target="/Resources/Fonts/#Roboto"/>
     <ROW Action="SetPropertyFontStretch" Type="51" Source="SELECTED_FONTSTRETCH" Target="Condensed"/>
     <ROW Action="SetPropertyFontWeight" Type="51" Source="SELECTED_FONTWEIGHT" Target="Light"/>
+    <ROW Action="SetPropertyKeySelectionTriggerSource" Type="51" Source="SELECTED_KEYSELECTIONTRIGGERSOURCE" Target="Fixations"/>
     <ROW Action="SetPropertyLanguageSelected" Type="51" Source="KEYBOARD_LANGUAGE_SELECTED" Target="EnglishUK"/>
     <ROW Action="SetPropertyLanguageSelected_1" Type="51" Source="UI_LANGUAGE_SELECTED" Target="EnglishUK"/>
+    <ROW Action="SetPropertyMultiKeySelectionFixationMinDwellTimeInMs" Type="51" Source="SELECTED_MINDWELLTIMEINMS" Target="250"/>
+    <ROW Action="SetPropertyMultiKeySelectionStopSignal" Type="51" Source="SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL" Target="NextHigh"/>
+    <ROW Action="SetPropertyPointSelectionTriggerSource" Type="51" Source="SELECTED_POINTSELECTIONTRIGGERSOURCE" Target="Fixations"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="Languages" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg" MsiKey="Languages"/>
@@ -851,20 +855,24 @@
     <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
-    <ROW Action="AI_ResolveKnownFolders" Sequence="59"/>
-    <ROW Action="AI_DpiContentScale" Sequence="58"/>
-    <ROW Action="AI_EnableDebugLog" Sequence="57"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="63"/>
+    <ROW Action="AI_DpiContentScale" Sequence="62"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="61"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="SetPropertyLanguageSelected" Sequence="201"/>
-    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="55"/>
+    <ROW Action="SetPropertyEyeTrackerSelected" Sequence="59"/>
     <ROW Action="SetPropertyFontFamily" Sequence="52"/>
-    <ROW Action="SetPropertyFontWeight" Sequence="53"/>
-    <ROW Action="SetPropertyFontStretch" Sequence="54"/>
+    <ROW Action="SetPropertyFontWeight" Sequence="57"/>
+    <ROW Action="SetPropertyFontStretch" Sequence="58"/>
     <ROW Action="OptiKeyProperties" Sequence="51"/>
-    <ROW Action="SetNewline" Sequence="56"/>
+    <ROW Action="SetNewline" Sequence="60"/>
     <ROW Action="SetPropertyLanguageSelected_1" Sequence="202"/>
+    <ROW Action="SetPropertyPointSelectionTriggerSource" Sequence="53"/>
+    <ROW Action="SetPropertyKeySelectionTriggerSource" Sequence="54"/>
+    <ROW Action="SetPropertyMultiKeySelectionFixationMinDwellTimeInMs" Sequence="55"/>
+    <ROW Action="SetPropertyMultiKeySelectionStopSignal" Sequence="56"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
@@ -918,12 +926,16 @@
     <ROW XmlAttribute="allowExeDefinition" XmlElement="section" Name="allowExeDefinition" Flags="14" Order="2" Value="MachineToLocalUser"/>
     <ROW XmlAttribute="name" XmlElement="sectionGroup" Name="name" Flags="15" Order="0" Value="userSettings"/>
     <ROW XmlAttribute="name_1" XmlElement="section" Name="name" Flags="15" Order="0" Value="JuliusSweetland.OptiKey.Chat.Properties.Settings"/>
+    <ROW XmlAttribute="name_10" XmlElement="setting_6" Name="name" Flags="15" Order="0" Value="MultiKeySelectionFixationMinDwellTimeInMs"/>
+    <ROW XmlAttribute="name_11" XmlElement="setting_7" Name="name" Flags="15" Order="0" Value="MultiKeySelectionTriggerStopSignal"/>
     <ROW XmlAttribute="name_2" XmlElement="UiLanguage" Name="name" Flags="15" Order="0" Value="UiLanguage"/>
     <ROW XmlAttribute="name_3" XmlElement="setting_1" Name="name" Flags="15" Order="0" Value="PointsSource"/>
     <ROW XmlAttribute="name_4" XmlElement="TypingLanguage" Name="name" Flags="15" Order="0" Value="KeyboardAndDictionaryLanguage"/>
     <ROW XmlAttribute="name_5" XmlElement="setting" Name="name" Flags="15" Order="0" Value="FontWeight"/>
     <ROW XmlAttribute="name_6" XmlElement="setting_2" Name="name" Flags="15" Order="0" Value="FontFamily"/>
     <ROW XmlAttribute="name_7" XmlElement="setting_3" Name="name" Flags="15" Order="0" Value="FontStretch"/>
+    <ROW XmlAttribute="name_8" XmlElement="setting_4" Name="name" Flags="15" Order="0" Value="PointSelectionTriggerSource"/>
+    <ROW XmlAttribute="name_9" XmlElement="setting_5" Name="name" Flags="15" Order="0" Value="KeySelectionTriggerSource"/>
     <ROW XmlAttribute="requirePermission" XmlElement="section" Name="requirePermission" Flags="14" Order="3" Value="false"/>
     <ROW XmlAttribute="serializeAs" XmlElement="UiLanguage" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="serializeAs_1" XmlElement="setting_1" Name="serializeAs" Flags="14" Order="1" Value="String"/>
@@ -931,6 +943,10 @@
     <ROW XmlAttribute="serializeAs_3" XmlElement="setting" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="serializeAs_4" XmlElement="setting_2" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="serializeAs_5" XmlElement="setting_3" Name="serializeAs" Flags="14" Order="1" Value="String"/>
+    <ROW XmlAttribute="serializeAs_6" XmlElement="setting_4" Name="serializeAs" Flags="14" Order="1" Value="String"/>
+    <ROW XmlAttribute="serializeAs_7" XmlElement="setting_5" Name="serializeAs" Flags="14" Order="1" Value="String"/>
+    <ROW XmlAttribute="serializeAs_8" XmlElement="setting_6" Name="serializeAs" Flags="14" Order="1" Value="String"/>
+    <ROW XmlAttribute="serializeAs_9" XmlElement="setting_7" Name="serializeAs" Flags="14" Order="1" Value="String"/>
     <ROW XmlAttribute="type" XmlElement="sectionGroup" Name="type" Flags="14" Order="1" Value="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     <ROW XmlAttribute="type_1" XmlElement="section" Name="type" Flags="14" Order="1" Value="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
   </COMPONENT>
@@ -946,6 +962,10 @@
     <ROW XmlElement="setting_1" ParentElement="JuliusSweetland.OptiKey.Chat.Proper" Name="setting" Condition="1" Order="0" Flags="14" UpdateIndexInParent="0"/>
     <ROW XmlElement="setting_2" ParentElement="JuliusSweetland.OptiKey.Chat.Proper" Name="setting" Condition="1" Order="4" Flags="14" UpdateIndexInParent="0"/>
     <ROW XmlElement="setting_3" ParentElement="JuliusSweetland.OptiKey.Chat.Proper" Name="setting" Condition="1" Order="5" Flags="14" UpdateIndexInParent="0"/>
+    <ROW XmlElement="setting_4" ParentElement="JuliusSweetland.OptiKey.Chat.Proper" Name="setting" Condition="1" Order="6" Flags="14" UpdateIndexInParent="0"/>
+    <ROW XmlElement="setting_5" ParentElement="JuliusSweetland.OptiKey.Chat.Proper" Name="setting" Condition="1" Order="7" Flags="14" UpdateIndexInParent="0"/>
+    <ROW XmlElement="setting_6" ParentElement="JuliusSweetland.OptiKey.Chat.Proper" Name="setting" Condition="1" Order="8" Flags="14" UpdateIndexInParent="0"/>
+    <ROW XmlElement="setting_7" ParentElement="JuliusSweetland.OptiKey.Chat.Proper" Name="setting" Condition="1" Order="9" Flags="14" UpdateIndexInParent="0"/>
     <ROW XmlElement="userSettings" ParentElement="configuration" Name="userSettings" Condition="1" Order="1" Flags="14" UpdateIndexInParent="0"/>
     <ROW XmlElement="value" ParentElement="UiLanguage" Name="value" Condition="1" Order="0" Flags="14" Text="[UI_LANGUAGE_SELECTED]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_1" ParentElement="setting_1" Name="value" Condition="1" Order="0" Flags="14" Text="[EYETRACKER_SELECTED]" UpdateIndexInParent="0"/>
@@ -953,6 +973,10 @@
     <ROW XmlElement="value_3" ParentElement="setting" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTWEIGHT]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_4" ParentElement="setting_2" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTFAMILY]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_5" ParentElement="setting_3" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTSTRETCH]" UpdateIndexInParent="0"/>
+    <ROW XmlElement="value_6" ParentElement="setting_4" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_POINTSELECTIONTRIGGERSOURCE]" UpdateIndexInParent="0"/>
+    <ROW XmlElement="value_7" ParentElement="setting_5" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_KEYSELECTIONTRIGGERSOURCE]" UpdateIndexInParent="0"/>
+    <ROW XmlElement="value_8" ParentElement="setting_6" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_MINDWELLTIMEINMS]" UpdateIndexInParent="0"/>
+    <ROW XmlElement="value_9" ParentElement="setting_7" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL]" UpdateIndexInParent="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlFileComponent">
     <ROW XmlFile="OptikeyChat.exe.config" FileName="OPTIKE~1.CON|OptikeyChat.exe.config" DirProperty="Release_Dir" Component="APPDIR" RootElement="configuration" Flags="185" Version="1.0" Encoding="UTF-8" IndentUnits="2"/>
