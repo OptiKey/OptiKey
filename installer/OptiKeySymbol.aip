@@ -679,7 +679,7 @@
     <ROW Action="SetPropertyKeySelectionTriggerSource" Type="51" Source="SELECTED_KEYSELECTIONTRIGGERSOURCE" Target="Fixations"/>
     <ROW Action="SetPropertyLanguageSelected" Type="51" Source="KEYBOARD_LANGUAGE_SELECTED" Target="EnglishUK"/>
     <ROW Action="SetPropertyLanguageSelected_1" Type="51" Source="UI_LANGUAGE_SELECTED" Target="EnglishUK"/>
-    <ROW Action="SetPropertyMultiKeySelectionFixationMinDwellTimeInMs" Type="51" Source="SELECTED_MINDWELLTIMEINMS" Target="250"/>
+    <ROW Action="SetPropertyMultiKeySelectionFixationMinDwellTime" Type="51" Source="SELECTED_MINDWELLTIME" Target="250"/>
     <ROW Action="SetPropertyMultiKeySelectionStopSignal" Type="51" Source="SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL" Target="NextHigh"/>
     <ROW Action="SetPropertyPointSelectionTriggerSource" Type="51" Source="SELECTED_POINTSELECTIONTRIGGERSOURCE" Target="Fixations"/>
   </COMPONENT>
@@ -829,7 +829,7 @@
     <ROW Action="SetNewLine" Sequence="99"/>
     <ROW Action="SetPropertyPointSelectionTriggerSource" Sequence="53"/>
     <ROW Action="SetPropertyKeySelectionTriggerSource" Sequence="54"/>
-    <ROW Action="SetPropertyMultiKeySelectionFixationMinDwellTimeInMs" Sequence="55"/>
+    <ROW Action="SetPropertyMultiKeySelectionFixationMinDwellTime" Sequence="55"/>
     <ROW Action="SetPropertyMultiKeySelectionStopSignal" Sequence="56"/>
     <ROW Action="SetPropertyLanguageSelected_1" Sequence="202"/>
   </COMPONENT>
@@ -885,7 +885,7 @@
     <ROW XmlAttribute="allowExeDefinition" XmlElement="section" Name="allowExeDefinition" Flags="14" Order="2" Value="MachineToLocalUser"/>
     <ROW XmlAttribute="name" XmlElement="sectionGroup" Name="name" Flags="15" Order="0" Value="userSettings"/>
     <ROW XmlAttribute="name_1" XmlElement="section" Name="name" Flags="15" Order="0" Value="JuliusSweetland.OptiKey.Symbol.Properties.Settings"/>
-    <ROW XmlAttribute="name_10" XmlElement="setting_8" Name="name" Flags="15" Order="0" Value="MultiKeySelectionFixationMinDwellTimeInMs"/>
+    <ROW XmlAttribute="name_10" XmlElement="setting_8" Name="name" Flags="15" Order="0" Value="MultiKeySelectionFixationMinDwellTime"/>
     <ROW XmlAttribute="name_11" XmlElement="setting_9" Name="name" Flags="15" Order="0" Value="MultiKeySelectionTriggerStopSignal"/>
     <ROW XmlAttribute="name_2" XmlElement="setting" Name="name" Flags="15" Order="0" Value="UiLanguage"/>
     <ROW XmlAttribute="name_3" XmlElement="setting_1" Name="name" Flags="15" Order="0" Value="PointsSource"/>
@@ -934,7 +934,7 @@
     <ROW XmlElement="value_5" ParentElement="setting_5" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_FONTSTRETCH]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_6" ParentElement="setting_6" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_POINTSELECTIONTRIGGERSOURCE]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_7" ParentElement="setting_7" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_KEYSELECTIONTRIGGERSOURCE]" UpdateIndexInParent="0"/>
-    <ROW XmlElement="value_8" ParentElement="setting_8" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_MINDWELLTIMEINMS]" UpdateIndexInParent="0"/>
+    <ROW XmlElement="value_8" ParentElement="setting_8" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_MINDWELLTIME]" UpdateIndexInParent="0"/>
     <ROW XmlElement="value_9" ParentElement="setting_9" Name="value" Condition="1" Order="0" Flags="14" Text="[SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL]" UpdateIndexInParent="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.XmlFileComponent">
