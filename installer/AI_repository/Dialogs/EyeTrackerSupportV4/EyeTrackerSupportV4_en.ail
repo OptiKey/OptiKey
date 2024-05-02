@@ -2,7 +2,7 @@
 <DICTIONARY type="singlelanguage" lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="dictionary.xsd">
   <STRING id="Control.Text.EyeTrackerSupportV4#BannerBitmap" value="[BannerBitmap]"/>
   <STRING id="Control.Text.EyeTrackerSupportV4#Description" value="Changes to Optikey in V4 upgrade"/>
-  <STRING id="Control.Text.EyeTrackerSupportV4#Text_1" value="Moving to Optikey v4 we have removed support for the following eye trackers. [NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Please click the link below for more information. "/>
+  <STRING id="Control.Text.EyeTrackerSupportV4#Text_1" value="Moving to Optikey v4 we have removed support for the following eye trackers. [NEWLINE][NEWLINE]- MyGaze[NEWLINE]- Tobii EyeX[NEWLINE]- Tobii Eye Tracker 5[NEWLINE]- Tobii Eye Tracker 4C[NEWLINE]- Alienware 17[NEWLINE]- Steelseries Sentry[NEWLINE]- Tobii REX[NEWLINE][NEWLINE]Support for more eye trackers is now available via our new plugin system.[NEWLINE]Please click the link below for more information. "/>
   <STRING id="Control.Text.EyeTrackerSupportV4#Title" value="Optikey Version 4 - 64 bit application"/>
   <STRING id="Dialog.WelcomeDlg" value="[ProductName] [Setup]"/>
 </DICTIONARY>
