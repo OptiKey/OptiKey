@@ -10,8 +10,8 @@
     <ROW Dialog_="EyeTrackerSupportV4" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Order="700" TextLocId="Control.Text.EyeTrackerSupportV4#Description"/>
     <ROW Dialog_="EyeTrackerSupportV4" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800" TextLocId="-"/>
     <ROW Dialog_="EyeTrackerSupportV4" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" TextStyle="DlgFontBold8_2325CAB9_3C64_4CDC_A97" Order="900" TextLocId="Control.Text.EyeTrackerSupportV4#Title"/>
-    <ROW Dialog_="EyeTrackerSupportV4" Control="Text_1" Type="Text" X="31" Y="59" Width="322" Height="117" Attributes="65539" Property="TEXT_1_PROP" Order="1000" TextLocId="Control.Text.EyeTrackerSupportV4#Text_1"/>
-    <ROW Dialog_="EyeTrackerSupportV4" Control="Hyperlink_1" Type="Hyperlink" X="31" Y="185" Width="225" Height="26" Attributes="65539" Property="HYPERLINK_1_PROP_1" Text="&lt;a href=&quot;http://optikey.org/help/versions&quot;&gt;Optikey versions&lt;/a&gt;" Order="1100" TextLocId="-"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Text_1" Type="Text" X="31" Y="59" Width="322" Height="146" Attributes="65539" Property="TEXT_1_PROP" Order="1000" TextLocId="Control.Text.EyeTrackerSupportV4#Text_1"/>
+    <ROW Dialog_="EyeTrackerSupportV4" Control="Hyperlink_1" Type="Hyperlink" X="29" Y="205" Width="225" Height="15" Attributes="65539" Property="HYPERLINK_1_PROP_1" Text="&lt;a href=&quot;http://optikey.org/help/versions&quot;&gt;Optikey versions&lt;/a&gt;" Order="1100" TextLocId="-"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="EyeTrackerSupportV4" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
