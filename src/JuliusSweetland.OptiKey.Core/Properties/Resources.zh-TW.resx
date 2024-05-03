@@ -2527,4 +2527,160 @@ Magyar
   <data name="ENGLISH_DICTIONARY" xml:space="preserve">
     <value>英語字典</value>
   </data>
+  <data name="PLUGIN_SECURITY_WARNING_TITLE" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="PLUGIN_SECURITY_WARNING" xml:space="preserve">
+    <value>安全警告</value>
+  </data>
+  <data name="PLUGIN_SECURITY_WARNING_DETAIL" xml:space="preserve">
+    <value>安裝插件涉及從互聯網下載並執行代碼，這總是帶有一些固有的風險。插件由第三方提供，並未經Optikey團隊驗證。請在安裝插件前檢查其來源，並運用您自己的判斷力。</value>
+  </data>
+  <data name="PLUGIN_SECURITY_I_UNDERSTAND" xml:space="preserve">
+    <value>我了解</value>
+  </data>
+  <data name="CONTINUE" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="CONTROLLER_ENABLE_REPEATS" xml:space="preserve">
+    <value>按住按鈕時觸發重複按壓</value>
+  </data>
+  <data name="CONTROLLER_FIRST_REPEAT_TIME" xml:space="preserve">
+    <value>首次重複按壓的時間延遲（ms）</value>
+  </data>
+  <data name="CONTROLLER_NEXT_REPEAT_TIME" xml:space="preserve">
+    <value>之後重複按壓的時間延遲（ms）</value>
+  </data>
+  <data name="ALLOW_REPEATS_LABEL" xml:space="preserve">
+    <value>允許在遠離鍵盤的情況下按下按鈕時重複按鍵操作</value>
+  </data>
+  <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
+    <value>重複上一個鍵：</value>
+  </data>
+  <data name="LIMIT_BACKONE" xml:space="preserve">
+    <value>將「刪除」限制為單一字符</value>
+  </data>
+  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
+    <value> 無法清除剪貼簿。這通常發生在剪貼簿正被另一個程序使用時。</value>
+  </data>
+  <data name="NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>我們建議增加多鍵固定（停留）最小時間以適用於眼動追蹤。您希望Optikey自動為您更改設定嗎？</value>
+  </data>
+  <data name="NONTOUCH_INPUT_AND_MULTIKEY_TITLE" xml:space="preserve">
+    <value> 眼動追蹤的多鍵設定</value>
+  </data>
+  <data name="NONTOUCH_INPUT_AND_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>您已將輸入方式從觸控改為其他，但仍有至少一個觸控觸發設定。您希望Optikey自動設定觸發設定嗎？</value>
+  </data>
+  <data name="NONTOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE" xml:space="preserve">
+    <value>觸控螢幕仍設為觸發器</value>
+  </data>
+  <data name="TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>我們建議減少多鍵固定（停留）最小時間以適用於觸控輸入。您希望Optikey自動為您更改設定嗎？</value>
+  </data>
+  <data name="TOUCH_INPUT_AND_MULTIKEY_TITLE" xml:space="preserve">
+    <value>觸控輸入的多鍵設定</value>
+  </data>
+  <data name="TOUCH_INPUT_AND_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>如果您想使用觸控輸入來操作Optikey，我們建議將觸發器設為觸控。您希望Optikey自動設定觸發設定嗎？</value>
+  </data>
+  <data name="TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE" xml:space="preserve">
+    <value> 觸控輸入未使用觸控作為觸發器</value>
+  </data>
+  <data name="TOUCH_DOWNUP_DESCRIPTION" xml:space="preserve">
+    <value>觸控</value>
+  </data>
+  <data name="EYETRACKER_DLL_LOCATION_LABEL" xml:space="preserve">
+    <value>眼動追蹤器插件的 DLL 檔案</value>
+  </data>
+  <data name="EXTERNAL_EYETRACKER_DLL" xml:space="preserve">
+    <value>透過 DLL 插件的外部眼動追蹤器</value>
+  </data>
+  <data name="EYETRACKER_DLL_NOT_FOUND" xml:space="preserve">
+    <value>未找到眼動追蹤器 DLL 檔案</value>
+  </data>
+  <data name="EYETRACKER_DLL_NOT_VALID" xml:space="preserve">
+    <value>眼動追蹤器 DLL 檔案無效</value>
+  </data>
+  <data name="ERROR_LOADING_INPUT_SERVICE" xml:space="preserve">
+    <value>輸入服務加載失敗</value>
+  </data>
+  <data name="EYETRACKER_DLL_INSTALLED_BUT_NOT_INSTANTIATED" xml:space="preserve">
+    <value>插件已安裝，但 Optikey 無法啟動它。請檢查日誌詳情</value>
+  </data>
+  <data name="MANAGE_ET_PLUGINS" xml:space="preserve">
+    <value>在線尋找更多眼動追蹤器選項</value>
+  </data>
+  <data name="AVAILABLE_EYETRACKER_PLUGINS" xml:space="preserve">
+    <value>可用的眼動追蹤器插件</value>
+  </data>
+  <data name="INSTALLED_PLUGINS" xml:space="preserve">
+    <value>已安裝的插件</value>
+  </data>
+  <data name="FROM_GITHUB_COLON" xml:space="preserve">
+    <value>來自 GitHub</value>
+  </data>
+  <data name="OTHERS_COLON" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="AVAILABLE_FROM_GITHUB" xml:space="preserve">
+    <value>可從 GitHub 獲得</value>
+  </data>
+  <data name="PLUGIN_SEARCH_WIZARD" xml:space="preserve">
+    <value>插件搜索向導</value>
+  </data>
+  <data name="STARS" xml:space="preserve">
+    <value>星星</value>
+  </data>
+  <data name="INSTALL" xml:space="preserve">
+    <value>安裝</value>
+  </data>
+  <data name="UPGRADE" xml:space="preserve">
+    <value>升級</value>
+  </data>
+  <data name="UNINSTALL" xml:space="preserve">
+    <value>解除安裝</value>
+  </data>
+  <data name="OPEN_CONTAINING_FOLDER" xml:space="preserve">
+    <value>打開所在文件夾</value>
+  </data>
+  <data name="LATEST_RELEASE_AVAILABLE" xml:space="preserve">
+    <value>最新版本可用</value>
+  </data>
+  <data name="VERSION_INSTALLED" xml:space="preserve">
+    <value>已安裝版本</value>
+  </data>
+  <data name="ERROR_UNINSTALLING_PLUGIN" xml:space="preserve">
+    <value>解除安裝插件時出錯</value>
+  </data>
+  <data name="NO_VALID_DLL_FOUND" xml:space="preserve">
+    <value>找不到有效的眼動追蹤器插件（DLL）文件</value>
+  </data>
+  <data name="CONFIRM_UNINSTALL" xml:space="preserve">
+    <value>確認解除安裝</value>
+  </data>
+  <data name="ASK_CONFIRM_UNINSTALL" xml:space="preserve">
+    <value>您確定要移除位於以下路徑的所有版本嗎</value>
+  </data>
+  <data name="UNABLE_UNINSTALL" xml:space="preserve">
+    <value>目前無法解除安裝。請重啟 Optikey 並再試一次</value>
+  </data>
+  <data name="FILES_LOCKED" xml:space="preserve">
+    <value>文件已鎖定</value>
+  </data>
+  <data name="CHANGE_EYETRACKER_CAPTION" xml:space="preserve">
+    <value>更改點源 ?</value>
+  </data>
+  <data name="FOUND_IN" xml:space="preserve">
+    <value>找到於</value>
+  </data>
+  <data name="NO_EYETRACKER_PLUGINS" xml:space="preserve">
+    <value> 未找到任何眼動追蹤器插件。請檢查您的網路連線，並稍候幾分鐘後重新掃描。</value>
+  </data>
+  <data name="CHANGE_EYETRACKER_DETAILS" xml:space="preserve">
+    <value>您想要將新安裝的插件（{0}）用作您的點源嗎？</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value>如果您的眼動追蹤器未在此列出，或您需要 Optikey 的 32 位版本，請點擊下方連結以獲取更多資訊。</value>
+  </data>
 </root>
