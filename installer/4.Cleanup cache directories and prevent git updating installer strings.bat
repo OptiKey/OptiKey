@@ -1,3 +1,5 @@
+cp -r ../src/JuliusSweetland.OptiKey.PointSourceUtils/PointSourceUtils/bin/x64/Release SetupFiles/
+
 rd /s /q "OptiKeyChat-cache"
 rd /s /q "OptiKeyMouse-cache"
 rd /s /q "OptiKeyPro-cache"
