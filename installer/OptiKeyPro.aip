@@ -78,6 +78,7 @@
     <ROW Directory="trTR_Dir" Directory_Parent="Release_Dir" DefaultDir="tr-TR"/>
     <ROW Directory="ukUA_Dir" Directory_Parent="Release_Dir" DefaultDir="uk-UA"/>
     <ROW Directory="urPK_Dir" Directory_Parent="Release_Dir" DefaultDir="ur-PK"/>
+    <ROW Directory="zhCN_Dir" Directory_Parent="Release_Dir" DefaultDir="zh-CN"/>
     <ROW Directory="zhTW_Dir" Directory_Parent="Release_Dir" DefaultDir="zh-TW"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
@@ -126,6 +127,7 @@
     <ROW Component="OptiKey.resources.dll_26" ComponentId="{447E3633-F334-4C6F-A79A-267F55E6B229}" Directory_="ukUA_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_26"/>
     <ROW Component="OptiKey.resources.dll_27" ComponentId="{D09C6938-B952-4609-82AE-A5C6631BC62D}" Directory_="urPK_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_27"/>
     <ROW Component="OptiKey.resources.dll_28" ComponentId="{5E3D9C6F-8E25-4D07-AD98-9DBE67DD106E}" Directory_="zhTW_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_28"/>
+    <ROW Component="OptiKey.resources.dll_29" ComponentId="{91AF7C9E-E8C6-4CB9-8A97-9CE5502D3C92}" Directory_="zhCN_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_29"/>
     <ROW Component="OptiKey.resources.dll_3" ComponentId="{CA0B63F0-1712-4865-BE64-C7F5FD466DC2}" Directory_="deDE_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_3"/>
     <ROW Component="OptiKey.resources.dll_4" ComponentId="{B8F63A3C-68A8-4935-9F55-2DFFE8B000FF}" Directory_="elGR_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_4"/>
     <ROW Component="OptiKey.resources.dll_5" ComponentId="{7A61EB35-0E34-44CE-A2BD-35EF0CF65287}" Directory_="enUS_Dir" Attributes="256" KeyPath="OptiKey.resources.dll_5"/>
@@ -449,6 +451,7 @@
     <ROW File="terra_pinyin.schema.yaml" Component_="bopomofo.schema.yaml" FileName="TERRA_~2.YAM|terra_pinyin.schema.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\terra_pinyin.schema.yaml" SelfReg="false"/>
     <ROW File="zhuyin.yaml" Component_="bopomofo.schema.yaml" FileName="ZHUYIN~1.YAM|zhuyin.yaml" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\Resources\Rime\zhuyin.yaml" SelfReg="false"/>
     <ROW File="OptiKey.resources.dll_28" Component_="OptiKey.resources.dll_28" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\zh-TW\OptiKey.resources.dll" SelfReg="false"/>
+    <ROW File="OptiKey.resources.dll_29" Component_="OptiKey.resources.dll_29" FileName="OPTIKE~1.DLL|OptiKey.resources.dll" Attributes="0" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\bin\x64\Release\zh-CN\OptiKey.resources.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -896,6 +899,7 @@
     <ROW Feature_="MainFeature" Component_="hk2s.json"/>
     <ROW Feature_="MainFeature" Component_="rime.dll"/>
     <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_28"/>
+    <ROW Feature_="MainFeature" Component_="OptiKey.resources.dll_29"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Pro.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Pro\Pro.ico" Index="0"/>
