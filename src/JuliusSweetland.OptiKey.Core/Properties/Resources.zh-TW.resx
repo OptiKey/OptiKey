@@ -2335,9 +2335,6 @@ Magyar
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
     <value>如果您打算搭配 Irisbond Duo 眼動儀使用 Optikey，請確認您已安裝 Irisbond Duo 驅動程式。它可以從 https://www.irisbond.com/en/producto/irisbond-duo-2 下載。</value>
   </data>
-  <data name="IRISBOND_HIRU_INFO" xml:space="preserve">
-    <value>如果您打算搭配 Irisbond Hiru 眼動儀使用 Optikey，請確認您已安裝 Irisbond Hiru 驅動程式。它可以從 https://www.irisbond.com/en/producto/irisbond-duo-2 下載。</value>
-  </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
     <value>在此模式下 Optikey 會使用滑鼠遊標位置作為輸入而不是直接和眼動儀互動。當您想要測試 Optikey 時，您可能會選擇這個模式，或是您想用其它替代輸入裝置，例如頭部滑鼠或未列入清單中的眼動儀。</value>
   </data>
