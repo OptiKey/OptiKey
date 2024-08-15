@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using Microsoft.Deployment.WindowsInstaller;
 
@@ -133,11 +134,19 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 string details_english = GetPointsSourceDetails(tracker.Value, new CultureInfo("en-GB"));
                 if (details == details_english)
                 {
-                    details_english = "";
+                    details_english = ""; // don't duplicate english tranlsation
                 }
                 else
                 {
-                    details_english = "Automatically translated from original text:\n" + details_english;
+                    if (details == "")
+                    { // no translation available, use english alone
+                        details = details_english;
+                        details_english = "";
+                    }
+                    else
+                    {
+                        details_english = "Automatically translated from original text:\n" + details_english;
+                    }
                 }
             
                 session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = details;
@@ -161,8 +170,8 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 session["TRACKER_" + SanitisePropName(trackerLabel)] = trackerEnum;
 
                 // also the extended info, translated and original text 
-                string details = InstallerStrings.OTHER_TRACKER[closestCulture];
-                string details_english = InstallerStrings.OTHER_TRACKER[new CultureInfo("en-GB")];
+                string details = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(closestCulture, "");
+                string details_english = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(new CultureInfo("en-GB"), "");
                 if (details == details_english)
                 {
                     details_english = "";
@@ -229,23 +238,27 @@ namespace JuliusSweetland.OptiKey.InstallerActions
 
         private static string GetPointsSourceDetails(PointsSources pointSource, CultureInfo culture)
         {
-            switch (pointSource)
+            try
             {
-                // TODO check for culture not in dict, default empty?
-                case PointsSources.GazeTracker: return InstallerStrings.GAZE_TRACKER_INFO[culture];
-                case PointsSources.IrisbondDuo: return InstallerStrings.IRISBOND_DUO_INFO[culture];
-                case PointsSources.IrisbondHiru: return InstallerStrings.IRISBOND_HIRU_INFO[culture];
-                case PointsSources.MousePosition: return InstallerStrings.MOUSE_POSITION_INFO[culture];
-                case PointsSources.TobiiPcEyeGo: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.TobiiPcEyeGoPlus: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.TobiiPcEyeMini: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.TobiiX2_30: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.TobiiX2_60: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                default: return "";
+                switch (pointSource)
+                {
+                    // TODO check for culture not in dict, default empty?
+                    case PointsSources.GazeTracker: return InstallerStrings.GAZE_TRACKER_INFO[culture];
+                    case PointsSources.IrisbondDuo: return InstallerStrings.IRISBOND_DUO_INFO[culture];
+                    case PointsSources.IrisbondHiru: return InstallerStrings.IRISBOND_HIRU_INFO[culture];
+                    case PointsSources.MousePosition: return InstallerStrings.MOUSE_POSITION_INFO[culture];
+                    case PointsSources.TobiiPcEyeGo: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    case PointsSources.TobiiPcEyeGoPlus: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    case PointsSources.TobiiPcEyeMini: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    case PointsSources.TobiiX2_30: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    case PointsSources.TobiiX2_60: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    default: return "";
+                }
             }
-
-        }
-
-
+            catch(KeyNotFoundException e)
+            {
+                return ""; 
+            }
+        }        
     }
 }
