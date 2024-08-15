@@ -382,6 +382,11 @@
     <Compile Include="Observables\TriggerSources\TouchTriggerSource.cs" />
     <Compile Include="Observables\TriggerSources\XInputButtonDownUpSource.cs" />
     <Compile Include="OptiKeyApp.cs" />
+    <Compile Include="Properties\Resources.zh-CN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.zh-CN.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1067,6 +1072,11 @@
     <Content Include="Resources\EyeTrackerSupport\tobii-trackers.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Properties\Resources.zh-CN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.zh-CN.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
