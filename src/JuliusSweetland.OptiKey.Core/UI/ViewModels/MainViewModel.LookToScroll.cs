@@ -149,23 +149,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 if (point.HasValue)
                 {
-                    Log.InfoFormat("User chose point: {0}.", point.Value);
                     pointLookToScrollBoundsTarget = point.Value;
+                    Log.InfoFormat("User chose point: {0}.", point.Value);
 
-                    IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
+                    if(Settings.Default.LookToScrollBringWindowToFrontWhenActivated)
+                    {
+                        IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
 
-                    if (hWnd == IntPtr.Zero)
-                    {
-                        Log.Info("No valid window at the point to bring to the front.");
+                        if (hWnd == IntPtr.Zero)
+                        {
+                            Log.Info("No valid window at the point to bring to the front.");
+                        }
+                        else if (!PInvoke.SetForegroundWindow(hWnd))
+                        {
+                            Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
+                        }
+                        else
+                        {
+                            Log.InfoFormat("Brought window at the point, {0}, to the front.", hWnd);
+                        }
                     }
-                    else if (!PInvoke.SetForegroundWindow(hWnd))
-                    {
-                        Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
-                    }
-                    else
-                    {
-                        Log.InfoFormat("Brought window at the point, {0}, to the front.", hWnd);
-                    }
+
                 }
 
                 ResetAndCleanupAfterMouseAction();
