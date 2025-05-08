@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <ApplicationManifest Condition="'$(Configuration)'=='Debug'">app.debug.manifest</ApplicationManifest>
+    <ApplicationManifest Condition="'$(Configuration)'=='Release'">app.release.manifest</ApplicationManifest>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -17,6 +19,7 @@
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -1036,6 +1039,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
+    <None Include="app.debug.manifest" />
+    <None Include="app.release.manifest" />
     <None Include="Resources\Rime\bopomofo.schema.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -1488,9 +1493,6 @@
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopLeftBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRight.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRightBoundary.svg" />
-    <None Include="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Resources\Icons\SVG Source Files\AddToDictionary.svg" />
     <None Include="Resources\Icons\SVG Source Files\Back.svg" />
     <None Include="Resources\Icons\SVG Source Files\No.svg" />
