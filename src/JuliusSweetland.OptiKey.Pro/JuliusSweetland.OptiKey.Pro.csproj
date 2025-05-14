@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+    Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -42,7 +43,8 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationManifest>..\JuliusSweetland.OptiKey.Core\app.manifest</ApplicationManifest>
+    <ApplicationManifest Condition="'$(Configuration)'=='Debug'">..\JuliusSweetland.OptiKey.Core\app.debug.manifest</ApplicationManifest>
+    <ApplicationManifest Condition="'$(Configuration)'=='Release'">..\JuliusSweetland.OptiKey.Core\app.release.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -65,38 +67,47 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
+    <Reference
+      Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ext\Bass\Bass.Net.dll</HintPath>
     </Reference>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+    <Reference
+      Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MicrosoftExpressionInteractions.3.0.40218.0\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
+    <Reference
+      Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>
+        ..\..\packages\MicrosoftExpressionInteractions.3.0.40218.0\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference
+      Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>
+        ..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="MouseKeyboardActivityMonitor">
-      <HintPath>..\..\packages\MouseKeyboardActivityMonitor.4.0.5150.10665\lib\net20\MouseKeyboardActivityMonitor.dll</HintPath>
+      <HintPath>
+        ..\..\packages\MouseKeyboardActivityMonitor.4.0.5150.10665\lib\net20\MouseKeyboardActivityMonitor.dll</HintPath>
     </Reference>
     <Reference Include="NBug">
       <HintPath>..\..\packages\NBug.1.2.2\lib\net40-client\NBug.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference
+      Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ext\TheEyeTribe\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+    <Reference
+      Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Octokit, Version=0.24.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -107,43 +118,53 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ext\Presage\presage.net.dll</HintPath>
     </Reference>
-    <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+    <Reference
+      Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Prism.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+    <Reference
+      Include="Prism.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Wpf.6.3.0\lib\net45\Prism.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpVectors.Converters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b532964b8548be77, processorArchitecture=MSIL">
+    <Reference
+      Include="SharpVectors.Converters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b532964b8548be77, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Converters.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpVectors.Core, Version=0.3.1.1588, Culture=neutral, PublicKeyToken=7407205e337c98ef, processorArchitecture=MSIL">
+    <Reference
+      Include="SharpVectors.Core, Version=0.3.1.1588, Culture=neutral, PublicKeyToken=7407205e337c98ef, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpVectors.Css, Version=0.3.1.1590, Culture=neutral, PublicKeyToken=7a46e3f532fdb787, processorArchitecture=MSIL">
+    <Reference
+      Include="SharpVectors.Css, Version=0.3.1.1590, Culture=neutral, PublicKeyToken=7a46e3f532fdb787, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Css.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpVectors.Dom, Version=0.3.1.1589, Culture=neutral, PublicKeyToken=517340b6277b1a7a, processorArchitecture=MSIL">
+    <Reference
+      Include="SharpVectors.Dom, Version=0.3.1.1589, Culture=neutral, PublicKeyToken=517340b6277b1a7a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Dom.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpVectors.Model, Version=0.3.1.1592, Culture=neutral, PublicKeyToken=2236cfc76b505845, processorArchitecture=MSIL">
+    <Reference
+      Include="SharpVectors.Model, Version=0.3.1.1592, Culture=neutral, PublicKeyToken=2236cfc76b505845, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpVectors.Rendering.Gdi, Version=0.3.1.1595, Culture=neutral, PublicKeyToken=03902092284347e3, processorArchitecture=MSIL">
+    <Reference
+      Include="SharpVectors.Rendering.Gdi, Version=0.3.1.1595, Culture=neutral, PublicKeyToken=03902092284347e3, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Rendering.Gdi.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpVectors.Rendering.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d0902381100df30e, processorArchitecture=MSIL">
+    <Reference
+      Include="SharpVectors.Rendering.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d0902381100df30e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Rendering.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpVectors.Runtime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d16e717f0a981fb9, processorArchitecture=MSIL">
+    <Reference
+      Include="SharpVectors.Runtime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d16e717f0a981fb9, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -152,30 +173,37 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression, Version=4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference
+      Include="System.IO.Compression, Version=4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.IO.Compression.4.0.0\lib\net46\System.IO.Compression.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference
+      Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference
+      Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference
+      Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference
+      Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+      <HintPath>
+        ..\..\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Windows.Threading, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference
+      Include="System.Reactive.Windows.Threading, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Rx-Xaml.2.2.5\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
@@ -184,7 +212,8 @@
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference
+      Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
@@ -204,7 +233,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsInput, Version=1.0.9.0, Culture=neutral, PublicKeyToken=de2685b4776e9c2e, processorArchitecture=MSIL">
+    <Reference
+      Include="WindowsInput, Version=1.0.9.0, Culture=neutral, PublicKeyToken=de2685b4776e9c2e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\InputSimulatorPlus2.1.0.9.0\lib\net20\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -231,8 +261,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
     <Resource Include="Pro.ico" />
-    <None Include="..\JuliusSweetland.OptiKey.Core\app.manifest">
-      <Link>app.manifest</Link>
+    <None Include="..\JuliusSweetland.OptiKey.Core\app.debug.manifest">
+      <Link>..\JuliusSweetland.OptiKey.Core\app.debug.manifest</Link>
+    </None>
+    <None Include="..\JuliusSweetland.OptiKey.Core\app.release.manifest">
+      <Link>..\JuliusSweetland.OptiKey.Core\app.release.manifest</Link>
     </None>
     <None Include="App.config" />
     <None Include="log4net.config">
@@ -244,17 +277,20 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\AltAlphaHorizontalKeyboard.xml">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\AltAlphaHorizontalKeyboard.xml">
       <Link>Resources\Keyboards\AltAlphaHorizontalKeyboard.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\AltAlphaVerticalKeyboard.xml">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\AltAlphaVerticalKeyboard.xml">
       <Link>Resources\Keyboards\AltAlphaVerticalKeyboard.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\Demo_Minecraft.xml">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\Demo_Minecraft.xml">
       <Link>Resources\Keyboards\Samples\Demo_Minecraft.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -278,13 +314,16 @@
     <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\B612-licence-epl-v10.html">
       <Link>Resources\Fonts\B612-licence-epl-v10.html</Link>
     </Content>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Nafees Web Naskh License Agreement.txt">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Nafees Web Naskh License Agreement.txt">
       <Link>Resources\Fonts\Nafees Web Naskh License Agreement.txt</Link>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font Info And License Agreement.txt">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font Info And License Agreement.txt">
       <Link>Resources\Fonts\FarsiWeb Font Info And License Agreement.txt</Link>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Roboto Font - Apache License.txt">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Roboto Font - Apache License.txt">
       <Link>Resources\Fonts\Roboto Font - Apache License.txt</Link>
     </Resource>
     <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Sounds\Attention.wav">
@@ -554,64 +593,83 @@
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\3of3.svg">
       <Link>Resources\Icons\SVG Source Files\3of3.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\AccentedLetters.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\AccentedLetters.svg">
       <Link>Resources\Icons\SVG Source Files\AccentedLetters.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\AddToDictionary.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\AddToDictionary.svg">
       <Link>Resources\Icons\SVG Source Files\AddToDictionary.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Alpha.svg">
       <Link>Resources\Icons\SVG Source Files\Alpha.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ApplicationIcon.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ApplicationIcon.svg">
       <Link>Resources\Icons\SVG Source Files\ApplicationIcon.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomLeftBoundary.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomLeftBoundary.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToBottomLeftBoundary.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomRight.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomRight.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToBottomRight.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomRightBoundary.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToBottomRightBoundary.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToBottomRightBoundary.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToLeft.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToLeft.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToLeft.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToLeftBoundary.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToLeftBoundary.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToLeftBoundary.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToRight.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToRight.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToRight.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToRightBoundary.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToRightBoundary.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToRightBoundary.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTop.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTop.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToTop.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopBoundary.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopBoundary.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToTopBoundary.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopLeft.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopLeft.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToTopLeft.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopLeftBoundary.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopLeftBoundary.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToTopLeftBoundary.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopRight.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopRight.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToTopRight.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopRightBoundary.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ArrowPointingToTopRightBoundary.svg">
       <Link>Resources\Icons\SVG Source Files\ArrowPointingToTopRightBoundary.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Back.svg">
@@ -629,13 +687,16 @@
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Clear.svg">
       <Link>Resources\Icons\SVG Source Files\Clear.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\CollapseDock.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\CollapseDock.svg">
       <Link>Resources\Icons\SVG Source Files\CollapseDock.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\CommuniKateTopPage.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\CommuniKateTopPage.svg">
       <Link>Resources\Icons\SVG Source Files\CommuniKateTopPage.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Conversation.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Conversation.svg">
       <Link>Resources\Icons\SVG Source Files\Conversation.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Currencies.svg">
@@ -644,7 +705,8 @@
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Cursor.svg">
       <Link>Resources\Icons\SVG Source Files\Cursor.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\DecreaseOpacity.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\DecreaseOpacity.svg">
       <Link>Resources\Icons\SVG Source Files\DecreaseOpacity.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\DownArrow.svg">
@@ -656,7 +718,8 @@
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ExpandDock.svg">
       <Link>Resources\Icons\SVG Source Files\ExpandDock.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\IncreaseOpacity.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\IncreaseOpacity.svg">
       <Link>Resources\Icons\SVG Source Files\IncreaseOpacity.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Keyboard.svg">
@@ -686,43 +749,56 @@
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\RestartIcon.ico">
       <Link>Resources\Icons\RestartIcon.ico</Link>
     </Resource>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollActive.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollActive.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollActive.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsScreenCentred.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsScreenCentred.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollBoundsScreenCentred.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsScreenPoint.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsScreenPoint.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollBoundsScreenPoint.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsSubwindow.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsSubwindow.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollBoundsSubwindow.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsWindow.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollBoundsWindow.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollBoundsWindow.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollModeCross.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollModeCross.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollModeCross.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollModeFree.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollModeFree.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollModeFree.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollModeHorizontal.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollModeHorizontal.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollModeHorizontal.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollModeVertical.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollModeVertical.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollModeVertical.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollSpeedFast.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollSpeedFast.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollSpeedFast.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollSpeedMedium.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollSpeedMedium.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollSpeedMedium.svg</Link>
     </Content>
-    <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollSpeedSlow.svg">
+    <Content
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\LookToScrollSpeedSlow.svg">
       <Link>Resources\Icons\SVG Source Files\LookToScrollSpeedSlow.svg</Link>
     </Content>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Menu.svg">
@@ -740,67 +816,84 @@
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseDrag.svg">
       <Link>Resources\Icons\SVG Source Files\MouseDrag.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseLeftClick.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseLeftClick.svg">
       <Link>Resources\Icons\SVG Source Files\MouseLeftClick.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseLeftDoubleClick.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseLeftDoubleClick.svg">
       <Link>Resources\Icons\SVG Source Files\MouseLeftDoubleClick.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseLeftDownUp.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseLeftDownUp.svg">
       <Link>Resources\Icons\SVG Source Files\MouseLeftDownUp.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseMagneticCursor.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseMagneticCursor.svg">
       <Link>Resources\Icons\SVG Source Files\MouseMagneticCursor.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseMagnifier.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseMagnifier.svg">
       <Link>Resources\Icons\SVG Source Files\MouseMagnifier.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseMiddleClick.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseMiddleClick.svg">
       <Link>Resources\Icons\SVG Source Files\MouseMiddleClick.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseMiddleDownUp.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseMiddleDownUp.svg">
       <Link>Resources\Icons\SVG Source Files\MouseMiddleDownUp.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseMoveTo.svg">
       <Link>Resources\Icons\SVG Source Files\MouseMoveTo.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseRightClick.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseRightClick.svg">
       <Link>Resources\Icons\SVG Source Files\MouseRightClick.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseRightDownUp.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseRightDownUp.svg">
       <Link>Resources\Icons\SVG Source Files\MouseRightDownUp.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseScrollToBottom.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseScrollToBottom.svg">
       <Link>Resources\Icons\SVG Source Files\MouseScrollToBottom.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseScrollToLeft.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseScrollToLeft.svg">
       <Link>Resources\Icons\SVG Source Files\MouseScrollToLeft.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseScrollToRight.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseScrollToRight.svg">
       <Link>Resources\Icons\SVG Source Files\MouseScrollToRight.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseScrollToTop.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MouseScrollToTop.svg">
       <Link>Resources\Icons\SVG Source Files\MouseScrollToTop.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MultiKeySelection.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\MultiKeySelection.svg">
       <Link>Resources\Icons\SVG Source Files\MultiKeySelection.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\No.svg">
       <Link>Resources\Icons\SVG Source Files\No.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\NumericAndSymbols.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\NumericAndSymbols.svg">
       <Link>Resources\Icons\SVG Source Files\NumericAndSymbols.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Padlock.svg">
       <Link>Resources\Icons\SVG Source Files\Padlock.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\PhysicalKeys.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\PhysicalKeys.svg">
       <Link>Resources\Icons\SVG Source Files\PhysicalKeys.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Quit.svg">
       <Link>Resources\Icons\SVG Source Files\Quit.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg">
       <Link>Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\RightArrow.svg">
@@ -809,7 +902,8 @@
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Shift.svg">
       <Link>Resources\Icons\SVG Source Files\Shift.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\SizeAndPosition.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\SizeAndPosition.svg">
       <Link>Resources\Icons\SVG Source Files\SizeAndPosition.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Sleep.svg">
@@ -821,10 +915,12 @@
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Speak.svg">
       <Link>Resources\Icons\SVG Source Files\Speak.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\SuggestionsLeft.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\SuggestionsLeft.svg">
       <Link>Resources\Icons\SVG Source Files\SuggestionsLeft.svg</Link>
     </None>
-    <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\SuggestionsRight.svg">
+    <None
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\SuggestionsRight.svg">
       <Link>Resources\Icons\SVG Source Files\SuggestionsRight.svg</Link>
     </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\Resources\Icons\SVG Source Files\Tab.svg">
@@ -913,7 +1009,8 @@
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - nazlib.ttf">
       <Link>Resources\Fonts\FarsiWeb Font - nazlib.ttf</Link>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf">
       <Link>Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf</Link>
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Mandatory.ttf">
@@ -922,7 +1019,8 @@
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Nafees Web Naskh.ttf">
       <Link>Resources\Fonts\Nafees Web Naskh.ttf</Link>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Pak Nastaleeq %28Beta Release%29.ttf">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Pak Nastaleeq %28Beta Release%29.ttf">
       <Link>Resources\Fonts\Pak Nastaleeq %28Beta Release%29.ttf</Link>
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Roboto-Black.ttf">
@@ -964,7 +1062,8 @@
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\RobotoCondensed-Bold.ttf">
       <Link>Resources\Fonts\RobotoCondensed-Bold.ttf</Link>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\RobotoCondensed-BoldItalic.ttf">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\RobotoCondensed-BoldItalic.ttf">
       <Link>Resources\Fonts\RobotoCondensed-BoldItalic.ttf</Link>
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\RobotoCondensed-Italic.ttf">
@@ -973,7 +1072,8 @@
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\RobotoCondensed-Light.ttf">
       <Link>Resources\Fonts\RobotoCondensed-Light.ttf</Link>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\RobotoCondensed-LightItalic.ttf">
+    <Resource
+      Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\RobotoCondensed-LightItalic.ttf">
       <Link>Resources\Fonts\RobotoCondensed-LightItalic.ttf</Link>
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\RobotoCondensed-Regular.ttf">
@@ -1002,15 +1102,18 @@
       <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
       <Name>JuliusSweetland.OptiKey.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JuliusSweetland.OptiKey.PointSourceUtils\PointSourceUtils\JuliusSweetland.OptiKey.PointSourceUtils.csproj">
+    <ProjectReference
+      Include="..\JuliusSweetland.OptiKey.PointSourceUtils\PointSourceUtils\JuliusSweetland.OptiKey.PointSourceUtils.csproj">
       <Project>{77c8f650-7992-4ff6-b434-1c15b72672e6}</Project>
       <Name>JuliusSweetland.OptiKey.PointSourceUtils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JuliusSweetland.OptiKey.Contracts\JuliusSweetland.OptiKey.Contracts.csproj">
+    <ProjectReference
+      Include="..\JuliusSweetland.OptiKey.Contracts\JuliusSweetland.OptiKey.Contracts.csproj">
       <Project>{6b7fd101-f21c-4eea-a2e0-4b5cbfbfe719}</Project>
       <Name>JuliusSweetland.OptiKey.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj">
+    <ProjectReference
+      Include="..\JuliusSweetland.OptiKey.StandardPlugins\JuliusSweetland.OptiKey.StandardPlugins.csproj">
       <Project>{0c8f0372-2d55-41bc-9730-4ace3ed67452}</Project>
       <Name>JuliusSweetland.OptiKey.StandardPlugins</Name>
     </ProjectReference>
