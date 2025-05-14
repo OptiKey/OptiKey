@@ -11,610 +11,615 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
-  <UserControl.Resources>
-    <CollectionViewSource x:Key="AvailablePluginsCollectionViewSource" Source="{Binding AvailablePlugins}" />
-    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-    <valueConverters:MultiBoolToVisibilityConverter x:Key="MultiBoolToVisibilityConverter" />
-    <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
-    <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
-    <valueConverters:ColourNameToBrush x:Key="ColourNameToBrush" />
-  </UserControl.Resources>
-  <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-      </Grid.RowDefinitions>
-      <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.MISC}">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="AvailablePluginsCollectionViewSource" Source="{Binding AvailablePlugins}" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <valueConverters:MultiBoolToVisibilityConverter x:Key="MultiBoolToVisibilityConverter" />
+        <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+        <valueConverters:ColourNameToBrush x:Key="ColourNameToBrush" />
+    </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-          </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_QUIT_KEYS_LABEL}" 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.MISC}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_QUIT_KEYS_LABEL}" 
                                IsEnabled="{Binding Source='EnableQuitKeys', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="0" Grid.Column="1" 
+                    <CheckBox Grid.Row="0" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsEnabled="{Binding Source='EnableQuitKeys', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding EnableQuitKeys, Mode=TwoWay}" />
-          <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_ATTENTION_KEY_LABEL}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_ATTENTION_KEY_LABEL}" 
                                IsEnabled="{Binding Source='EnableAttentionKey', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="1" Grid.Column="1" 
+                    <CheckBox Grid.Row="1" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsEnabled="{Binding Source='EnableAttentionKey', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding EnableAttentionKey, Mode=TwoWay}" />
-          <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COPY_SCRATCHPAD_KEY_LABEL}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COPY_SCRATCHPAD_KEY_LABEL}" 
                                IsEnabled="{Binding Source='EnableCopyAllScratchpadKey', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="2" Grid.Column="1" 
+                    <CheckBox Grid.Row="2" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsEnabled="{Binding Source='EnableCopyAllScratchpadKey', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding EnableCopyAllScratchpadKey, Mode=TwoWay}" />
-          <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
                                IsEnabled="{Binding Source='EnableCommuniKateKeyboardLayout', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="3" Grid.Column="1"
+                    <CheckBox Grid.Row="3" Grid.Column="1"
                               VerticalAlignment="Center" 
                               IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" 
                               IsEnabled="{Binding Source='EnableCommuniKateKeyboardLayout', Converter={StaticResource EnabledIfNotOverridden}}"/>
-          <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.ALLOW_MULTIPLE_INSTANCES}"
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.ALLOW_MULTIPLE_INSTANCES}"
                                IsEnabled="{Binding Source='AllowMultipleInstances', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" Visibility="Visible"/>
-          <CheckBox Grid.Row="4" Grid.Column="1"
+                    <CheckBox Grid.Row="4" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding AllowMultipleInstances, Mode=TwoWay}" 
                               IsEnabled="{Binding Source='AllowMultipleInstances', Converter={StaticResource EnabledIfNotOverridden}}"/>
-          <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_TRANSLATION_KEY_LABEL}" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_TRANSLATION_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="5" Grid.Column="1" 
+                    <CheckBox Grid.Row="5" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding EnableTranslationKey, Mode=TwoWay}" />
-          <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.TRANSLATION_TARGET_LANGUAGE_LABEL}"
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.TRANSLATION_TARGET_LANGUAGE_LABEL}"
                                VerticalAlignment="Center" Margin="5"
                                Visibility="{Binding EnableTranslationKey, Converter={StaticResource BooleanToVisibilityConverter}}" />
-          <ComboBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
+                    <ComboBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
                               ItemsSource="{Binding AvailableTranslationTargetLanguages}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding TranslationTargetLanguage, Mode=TwoWay}"
                               IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}"
                               Visibility="{Binding EnableTranslationKey, Converter={StaticResource BooleanToVisibilityConverter}}" />
-          <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL}" 
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_OVERRIDE_TRANSLATION_API_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5"
                                Visibility="{Binding EnableTranslationKey, Converter={StaticResource BooleanToVisibilityConverter}}" />
-          <CheckBox Grid.Row="7" Grid.Column="1" 
+                    <CheckBox Grid.Row="7" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding EnableOverrideTranslationApiKey, Mode=TwoWay}"
                               Visibility="{Binding EnableTranslationKey, Converter={StaticResource BooleanToVisibilityConverter}}" />
-          <TextBlock Grid.Row="8" Grid.Column="0" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" 
                                Text="{x:Static resx:Resources.OVERRIDDEN_TRANSLATION_API_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
-            <TextBlock.Visibility>
-              <MultiBinding Converter="{StaticResource MultiBoolToVisibilityConverter}">
-                <MultiBinding.Bindings>
-                  <Binding Path="EnableTranslationKey" />
-                  <Binding Path="EnableOverrideTranslationApiKey" />
-                </MultiBinding.Bindings>
-              </MultiBinding>
-            </TextBlock.Visibility></TextBlock>
-          <TextBox Grid.Row="8" Grid.Column="1"
+                        <TextBlock.Visibility>
+                            <MultiBinding Converter="{StaticResource MultiBoolToVisibilityConverter}">
+                                <MultiBinding.Bindings>
+                                    <Binding Path="EnableTranslationKey" />
+                                    <Binding Path="EnableOverrideTranslationApiKey" />
+                                </MultiBinding.Bindings>
+                            </MultiBinding>
+                        </TextBlock.Visibility></TextBlock>
+                    <TextBox Grid.Row="8" Grid.Column="1"
                              VerticalAlignment="Center"
                              Text="{Binding OverriddenTranslationApiKey, Mode=TwoWay}"
                              IsEnabled="{Binding Source='EnableTranslationKey', Converter={StaticResource EnabledIfNotOverridden}}">
-            <TextBox.Visibility>
-              <MultiBinding Converter="{StaticResource MultiBoolToVisibilityConverter}">
-                <MultiBinding.Bindings>
-                  <Binding Path="EnableTranslationKey" />
-                  <Binding Path="EnableOverrideTranslationApiKey" />
-                </MultiBinding.Bindings>
-              </MultiBinding>
-            </TextBox.Visibility>
-          </TextBox>
-          <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL}" 
+                        <TextBox.Visibility>
+                            <MultiBinding Converter="{StaticResource MultiBoolToVisibilityConverter}">
+                                <MultiBinding.Bindings>
+                                    <Binding Path="EnableTranslationKey" />
+                                    <Binding Path="EnableOverrideTranslationApiKey" />
+                                </MultiBinding.Bindings>
+                            </MultiBinding>
+                        </TextBox.Visibility>
+                    </TextBox>
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="10" Grid.Column="1" 
+                    <CheckBox Grid.Row="10" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ShowSplashScreen, Mode=TwoWay}" />
-          <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.CHECK_FOR_UPDATES_AT_STARTUP_LABEL}" 
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.CHECK_FOR_UPDATES_AT_STARTUP_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="11" Grid.Column="1" 
+                    <CheckBox Grid.Row="11" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding CheckForUpdates, Mode=TwoWay}" />
-          <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL}" 
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="12" Grid.Column="1" 
+                    <CheckBox Grid.Row="12" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding PublishVirtualKeyCodesForCharacters, Mode=TwoWay}" />
-          <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS}" 
+                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS}" 
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="13" Grid.Column="1" 
+                    <CheckBox Grid.Row="13" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding SuppressModifierKeysForAllMouseActions, Mode=TwoWay}" />
-          <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL}" 
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
-            <TextBlock.Style>
-              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                <Setter Property="Visibility" Value="Collapsed" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding SuppressModifierKeysForAllMouseActions}" Value="False">
-                    <Setter Property="Visibility" Value="Visible" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </TextBlock.Style></TextBlock>
-          <CheckBox Grid.Row="14" Grid.Column="1" 
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SuppressModifierKeysForAllMouseActions}" Value="False">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style></TextBlock>
+                    <CheckBox Grid.Row="14" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}">
-            <CheckBox.Style>
-              <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                <Setter Property="Visibility" Value="Collapsed" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding SuppressModifierKeysForAllMouseActions}" Value="False">
-                    <Setter Property="Visibility" Value="Visible" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </CheckBox.Style>
-          </CheckBox>
-          <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL}" 
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SuppressModifierKeysForAllMouseActions}" Value="False">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL}" 
                                IsEnabled="{Binding Source='MagnifySuppressedForScrollingActions', Converter={StaticResource EnabledIfNotOverridden}}"
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="15" Grid.Column="1" 
+                    <CheckBox Grid.Row="15" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsEnabled="{Binding Source='MagnifySuppressedForScrollingActions', Converter={StaticResource EnabledIfNotOverridden}}"
                               IsChecked="{Binding MagnifySuppressedForScrollingActions, Mode=TwoWay}" />
-          <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_TRIGGER_WARNING}" 
+                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_TRIGGER_WARNING}" 
                               VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="16" Grid.Column="1" 
+                    <CheckBox Grid.Row="16" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding SuppressTriggerWarning, Mode=TwoWay}" />
-          <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
+                    <TextBlock Grid.Row="17" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="17" Grid.Column="1" 
+                    <CheckBox Grid.Row="17" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding Debug, Mode=TwoWay}" />
-        </Grid>
-      </GroupBox>
-      <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.LOOK_TO_SCROLL}">
-        <Grid>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-          </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ENABLED_LABEL}" 
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.LOOK_TO_SCROLL}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_ENABLED_LABEL}" 
                      IsEnabled="{Binding Source='LookToScrollIsDefault', Converter={StaticResource EnabledIfNotOverridden}}"
                      VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="0" Grid.Column="1" 
+                    <CheckBox Grid.Row="0" Grid.Column="1" 
                     VerticalAlignment="Center"
                     IsEnabled="{Binding Source='LookToScrollIsDefault', Converter={StaticResource EnabledIfNotOverridden}}"
                     IsChecked="{Binding LookToScrollIsDefault, Mode=TwoWay}" />
-
-          <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding LookToScrollBringWindowToFrontWhenActivated, Mode=TwoWay}" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL}" 
                      VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                    <CheckBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                               VerticalAlignment="Center"
                               IsChecked="{Binding LookToScrollCentreMouseWhenActivated, Mode=TwoWay}" />
-          <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                    <CheckBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                               VerticalAlignment="Center"
                               IsChecked="{Binding LookToScrollResumeAfterChoosingPointForMouse, Mode=TwoWay}" />
-          <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL}" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                    <CheckBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
                               VerticalAlignment="Center"
                               IsChecked="{Binding LookToScrollDeactivateUponSwitchingKeyboards, Mode=TwoWay}" />
-          <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BOUNDS_LABEL}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BOUNDS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <ComboBox Grid.Row="6" Grid.Column="1"
+                    <ComboBox Grid.Row="6" Grid.Column="1"
                               ItemsSource="{Binding LookToScrollBoundsList}" DisplayMemberPath="Key" SelectedValuePath="Value"
                               SelectedValue="{Binding LookToScrollBounds, Mode=TwoWay}" />
-          <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_MODE_LABEL}" 
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <ComboBox Grid.Row="7" Grid.Column="1"
+                    <ComboBox Grid.Row="7" Grid.Column="1"
                               ItemsSource="{Binding LookToScrollModesList}" DisplayMemberPath="Key" SelectedValuePath="Value"
                               SelectedValue="{Binding LookToScrollMode, Mode=TwoWay}" />
-          <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL}" 
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <ComboBox Grid.Row="9" Grid.Column="1"
+                    <ComboBox Grid.Row="9" Grid.Column="1"
                               ItemsSource="{Binding ColourNames}"
                               SelectedValue="{Binding LookToScrollOverlayBoundsColour, Mode=TwoWay}"  />
-          <Border Grid.Row="9" Grid.Column="2" Grid.RowSpan="2" Margin="5" Width="50"
+                    <Border Grid.Row="9" Grid.Column="2" Grid.RowSpan="2" Margin="5" Width="50"
                             BorderBrush="{Binding LookToScrollOverlayBoundsColour, Converter={StaticResource ColourNameToBrush}}" 
                             BorderThickness="{Binding LookToScrollOverlayBoundsThickness}" />
-          <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL}" 
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <controls:NumericUpDown Grid.Row="10" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="10" Grid.Column="1" TextAlignment="Left"
                                             Minimum="0" Interval="1" StringFormat="###,##0"
                                             Value="{Binding LookToScrollOverlayBoundsThickness, Mode=TwoWay}" />
-          <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL}" 
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <ComboBox Grid.Row="11" Grid.Column="1"
+                    <ComboBox Grid.Row="11" Grid.Column="1"
                               ItemsSource="{Binding ColourNames}"
                               SelectedValue="{Binding LookToScrollOverlayDeadzoneColour, Mode=TwoWay}" />
-          <Border Grid.Row="11" Grid.Column="2" Grid.RowSpan="2" Margin="5" Width="50"
+                    <Border Grid.Row="11" Grid.Column="2" Grid.RowSpan="2" Margin="5" Width="50"
                             BorderBrush="{Binding LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}"
                             BorderThickness="{Binding LookToScrollOverlayDeadzoneThickness}" />
-          <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL}" 
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <controls:NumericUpDown Grid.Row="12" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="12" Grid.Column="1" TextAlignment="Left"
                                             Minimum="0" Interval="1" StringFormat="###,##0"
                                             Value="{Binding LookToScrollOverlayDeadzoneThickness, Mode=TwoWay}" />
-          <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL}" 
+                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <controls:NumericUpDown Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="0" Interval="5" StringFormat="###,##0"
                                             Value="{Binding LookToScrollHorizontalDeadzone, Mode=TwoWay}" />
-          <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL}" 
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <controls:NumericUpDown Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="0" Interval="5" StringFormat="###,##0"
                                             Value="{Binding LookToScrollVerticalDeadzone, Mode=TwoWay}" />
-          <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BASE_SPEED_LABEL}" 
+                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_BASE_SPEED_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-          <ComboBox Grid.Row="16" Grid.Column="1"
+                    <ComboBox Grid.Row="16" Grid.Column="1"
                               ItemsSource="{Binding LookToScrollSpeeds}" DisplayMemberPath="Key" SelectedValuePath="Value"
                               SelectedValue="{Binding LookToScrollSpeed, Mode=TwoWay}" />
-        </Grid>
-      </GroupBox>
-      <GroupBox Grid.Row="3" Header="{x:Static resx:Resources.COMMUNIKATE}"
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="3" Header="{x:Static resx:Resources.COMMUNIKATE}"
                 Visibility="{Binding EnableCommuniKateKeyboardLayout, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
-        <Grid>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-          </Grid.RowDefinitions>
-          <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
                             VerticalAlignment="Center" Margin="5" >
-            <TextBlock.Style>
-              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </TextBlock.Style></TextBlock>
-          <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Click="btnFindCommuniKateTopPageLocation_Click" MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
-              <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
-            </Button>
-            <TextBlock Name="txtCommuniKateTopPageLocation"
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style></TextBlock>
+                    <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Click="btnFindCommuniKateTopPageLocation_Click" MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
+                            <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
+                        </Button>
+                        <TextBlock Name="txtCommuniKateTopPageLocation"
                                 Text="{Binding CommuniKatePagesetLocation, Mode=TwoWay}" 
                                 VerticalAlignment="Center" Margin="5" >
-              <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                  <Setter Property="Visibility" Value="Visible" />
-                  <Style.Triggers>
-                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                      <Setter Property="Visibility" Value="Collapsed" />
-                    </DataTrigger>
-                  </Style.Triggers>
-                </Style>
-              </TextBlock.Style></TextBlock>
-            <StackPanel.Style>
-              <Style TargetType="{x:Type StackPanel}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </StackPanel.Style>
-          </StackPanel>
-          <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SOUND_VOLUME_LABEL}"
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style></TextBlock>
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                    </StackPanel>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SOUND_VOLUME_LABEL}"
                                VerticalAlignment="Center" Margin="5" >
-            <TextBlock.Style>
-              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </TextBlock.Style></TextBlock>
-          <controls:NumericUpDown Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style></TextBlock>
+                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="1" Interval="1" Maximum="100"
                                             Value="{Binding CommuniKateSoundVolume, Mode=TwoWay}" >
-            <controls:NumericUpDown.Style>
-              <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </controls:NumericUpDown.Style>
-          </controls:NumericUpDown>
-          <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_LABEL}"
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_LABEL}"
                                VerticalAlignment="Center" Margin="5" >
-            <TextBlock.Style>
-              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </TextBlock.Style></TextBlock>
-          <CheckBox Grid.Row="7" Grid.Column="1"
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style></TextBlock>
+                    <CheckBox Grid.Row="7" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding CommuniKateSpeakSelected, Mode=TwoWay}" >
-            <CheckBox.Style>
-              <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </CheckBox.Style>
-          </CheckBox>
-          <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL}"
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL}"
                                VerticalAlignment="Center" Margin="5" >
-            <TextBlock.Style>
-              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                  <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </TextBlock.Style></TextBlock>
-          <controls:NumericUpDown Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style></TextBlock>
+                    <controls:NumericUpDown Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="1" Interval="1" Maximum="100"
                                             Value="{Binding CommuniKateSpeakSelectedVolume, Mode=TwoWay}" >
-            <controls:NumericUpDown.Style>
-              <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                  <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </controls:NumericUpDown.Style>
-          </controls:NumericUpDown>
-          <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL}"
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL}"
                                VerticalAlignment="Center" Margin="5" >
-            <TextBlock.Style>
-              <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                  <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </TextBlock.Style></TextBlock>
-          <controls:NumericUpDown Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style></TextBlock>
+                    <controls:NumericUpDown Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="1" Interval="1" Maximum="100"
                                             Value="{Binding CommuniKateSpeakSelectedRate, Mode=TwoWay}" >
-            <controls:NumericUpDown.Style>
-              <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
-                <Setter Property="Visibility" Value="Visible" />
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                  <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </controls:NumericUpDown.Style>
-          </controls:NumericUpDown>
-        </Grid>
-      </GroupBox>
-      <GroupBox Grid.Row="4" Header="{x:Static resx:Resources.PLUGINS_LABEL}">
-        <Grid>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-          </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_PLUGINS}" 
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CommuniKateSpeakSelected}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="4" Header="{x:Static resx:Resources.PLUGINS_LABEL}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_PLUGINS}" 
                                VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="0" Grid.Column="1" 
+                    <CheckBox Grid.Row="0" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding EnablePlugins, Mode=TwoWay}" />
-          <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.PLUGINS_LOCATION_LABEL}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.PLUGINS_LOCATION_LABEL}" 
                                Visibility="{Binding EnablePlugins, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                                VerticalAlignment="Center" Margin="5" ></TextBlock>
-          <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
                                 Visibility="{Binding EnablePlugins, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
-            <TextBlock Name="txtPluginsLocation"
+                        <TextBlock Name="txtPluginsLocation"
                                    Text="{Binding PluginsLocation, Mode=TwoWay}" 
                                    HorizontalAlignment="Left" 
                                    VerticalAlignment="Center"
                                    Margin="5" ></TextBlock>
-            <Button Click="FindPluginsFolder" MinWidth="100" Margin="5,5,5,5" 
+                        <Button Click="FindPluginsFolder" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
-              <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
-            </Button>
-            <Button Click="RefreshAvailablePlugins" MinWidth="100" Margin="5,5,5,5" 
+                            <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
+                        </Button>
+                        <Button Click="RefreshAvailablePlugins" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
-              <x:Static Member="resx:Resources.REFRESH_PLUGINS_BUTTON"/>
-            </Button>
-          </StackPanel>
-        </Grid>
-      </GroupBox>
-      <GroupBox Grid.Row="5" 
+                            <x:Static Member="resx:Resources.REFRESH_PLUGINS_BUTTON"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="5" 
                       Header="{x:Static resx:Resources.AVAILABLE_PLUGINS_LABEL}"
                       Visibility="{Binding EnablePlugins, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" >
-        <Grid>
-          <ItemsControl 
+                <Grid>
+                    <ItemsControl 
                           VirtualizingStackPanel.IsVirtualizing="True"
                           ScrollViewer.CanContentScroll="True"
                           ItemsSource="{Binding Source={StaticResource AvailablePluginsCollectionViewSource}, Mode=OneWay}">
-            <ItemsControl.ItemTemplate>
-              <DataTemplate>
-                <Grid>
-                  <GroupBox Header="{Binding Name}">
-                    <Grid>
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                      </Grid.ColumnDefinitions>
-                      <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                      </Grid.RowDefinitions>
-                      <StackPanel Grid.Column="0" Grid.Row="0">
-                        <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Description}"/>
-                      </StackPanel>
-                      <Grid Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
-                        <Grid.ColumnDefinitions>
-                          <ColumnDefinition Width="100"/>
-                          <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                          <RowDefinition Height="Auto" />
-                          <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <StackPanel Grid.Column="0" Grid.Row="1">
-                          <TextBlock Text="Methods:" />
-                        </StackPanel>
-                        <StackPanel Grid.Column="1" Grid.Row="1">
-                          <ItemsControl ItemsSource="{Binding Methods.Method}">
-                            <ItemsControl.ItemTemplate>
-                              <DataTemplate>
-                                <GroupBox Header="{Binding Name}">
-                                  <Grid>
-                                    <Grid.ColumnDefinitions>
-                                      <ColumnDefinition Width="250"/>
-                                      <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                      <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                      <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Description}" />
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1" Margin="30,0,0,0">
-                                      <TextBlock Text="Arguments:" />
-                                      <ItemsControl ItemsSource="{Binding Arguments.Argument}">
-                                        <ItemsControl.ItemTemplate>
-                                          <DataTemplate>
-                                            <StackPanel VerticalAlignment="Bottom">
-                                              <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text=". " HorizontalAlignment="Left"/>
-                                                <TextBlock FontWeight="Bold" Text="{Binding Name}"/>
-                                                <TextBlock Text=": "/>
-                                                <TextBlock Text="{Binding Description}"/>
-                                                <TextBlock FontWeight="Light" FontStyle="Italic" Text="{Binding ArgumentDescriptionSuffix}"/>
-                                              </StackPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <GroupBox Header="{Binding Name}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <StackPanel Grid.Column="0" Grid.Row="0">
+                                                <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Description}"/>
                                             </StackPanel>
-                                          </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                      </ItemsControl>
-                                      <TextBlock Text="Sample dynamic keyboard config:" Margin="0,15,0,0"/>
-                                      <TextBox IsReadOnly="True" TextWrapping="Wrap" Background="LightGray" FontFamily="Courier New" Text="{Binding SampleConfig}" Margin="0,10,0,0" />
-                                    </StackPanel>
-                                  </Grid>
-                                </GroupBox>
-                              </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                          </ItemsControl>
-                        </StackPanel>
-                      </Grid>
-                    </Grid>
-                  </GroupBox>
+                                            <Grid Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <StackPanel Grid.Column="0" Grid.Row="1">
+                                                    <TextBlock Text="Methods:" />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" Grid.Row="1">
+                                                    <ItemsControl ItemsSource="{Binding Methods.Method}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <GroupBox Header="{Binding Name}">
+                                                                    <Grid>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="250"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="Auto" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <StackPanel Grid.Column="0">
+                                                                            <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Description}" />
+                                                                        </StackPanel>
+                                                                        <StackPanel Grid.Column="1" Margin="30,0,0,0">
+                                                                            <TextBlock Text="Arguments:" />
+                                                                            <ItemsControl ItemsSource="{Binding Arguments.Argument}">
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <StackPanel VerticalAlignment="Bottom">
+                                                                                            <StackPanel Orientation="Horizontal">
+                                                                                                <TextBlock Text=". " HorizontalAlignment="Left"/>
+                                                                                                <TextBlock FontWeight="Bold" Text="{Binding Name}"/>
+                                                                                                <TextBlock Text=": "/>
+                                                                                                <TextBlock Text="{Binding Description}"/>
+                                                                                                <TextBlock FontWeight="Light" FontStyle="Italic" Text="{Binding ArgumentDescriptionSuffix}"/>
+                                                                                            </StackPanel>
+                                                                                        </StackPanel>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                            <TextBlock Text="Sample dynamic keyboard config:" Margin="0,15,0,0"/>
+                                                                            <TextBox IsReadOnly="True" TextWrapping="Wrap" Background="LightGray" FontFamily="Courier New" Text="{Binding SampleConfig}" Margin="0,10,0,0" />
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </GroupBox>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </GroupBox>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </Grid>
-              </DataTemplate>
-            </ItemsControl.ItemTemplate>
-          </ItemsControl>
+            </GroupBox>
         </Grid>
-      </GroupBox>
-    </Grid>
-  </ScrollViewer>
+    </ScrollViewer>
 </UserControl>
