@@ -41,7 +41,8 @@
     <ApplicationIcon>Symbol.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>..\JuliusSweetland.OptiKey.Core\app.manifest</ApplicationManifest>
+    <ApplicationManifest Condition="'$(Configuration)'=='Debug'">..\JuliusSweetland.OptiKey.Core\app.debug.manifest</ApplicationManifest>
+    <ApplicationManifest Condition="'$(Configuration)'=='Release'">..\JuliusSweetland.OptiKey.Core\app.release.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -231,8 +232,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
     <Resource Include="Symbol.ico" />
-    <None Include="..\JuliusSweetland.OptiKey.Core\app.manifest">
-      <Link>app.manifest</Link>
+    <None Include="..\JuliusSweetland.OptiKey.Core\app.debug.manifest">
+      <Link>..\JuliusSweetland.OptiKey.Core\app.debug.manifest</Link>
+    </None>
+    <None Include="..\JuliusSweetland.OptiKey.Core\app.release.manifest">
+      <Link>..\JuliusSweetland.OptiKey.Core\app.release.manifest</Link>
     </None>
     <None Include="App.config" />
     <None Include="log4net.config">
