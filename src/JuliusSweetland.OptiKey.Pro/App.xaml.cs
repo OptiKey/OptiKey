@@ -204,7 +204,11 @@ namespace JuliusSweetland.OptiKey.Pro
                 }
 
                 if (Settings.Default.GazeIndicatorStyle != GazeIndicatorStyles.None)
-                    new OverlayWindow(mainViewModel);
+                {
+                    // Create the Gaze Indicator overlay window and set its owner to the main window.
+                    // This forces the overlay to stay on top of the main window.
+                    new OverlayWindow(mainViewModel).Owner = mainWindow;
+                }
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
                 EventHandler sizeAndPositionInitialised = null;
