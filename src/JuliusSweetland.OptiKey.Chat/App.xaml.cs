@@ -50,9 +50,12 @@ namespace JuliusSweetland.OptiKey.Chat
         {
             using (_manager = SingleInstanceManager.Initialize(GetSingleInstanceManagerSetup()))
             {
+                if (Settings.Default.ShowSplashScreen)
+                {
+                    splashScreen = new SplashScreen("/Resources/Icons/OptikeyChatSplash.png");
+                    splashScreen.Show(false);
+                }
 
-                splashScreen = new SplashScreen("/Resources/Icons/OptikeyChatSplash.png");
-                splashScreen.Show(false);
 
                 var application = new App();
                 application.InitializeComponent();
@@ -91,7 +94,7 @@ namespace JuliusSweetland.OptiKey.Chat
 
                 // We manually close this because automatic closure steals focus from the 
                 // dynamic splash screen. 
-                splashScreen.Close(TimeSpan.FromSeconds(0.5f));
+                splashScreen?.Close(TimeSpan.FromSeconds(0.5f));
 
                 //Apply theme
                 applyTheme();

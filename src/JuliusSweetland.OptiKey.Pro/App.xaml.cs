@@ -55,8 +55,12 @@ namespace JuliusSweetland.OptiKey.Pro
 
             Action runApp = () =>
             {
-                splashScreen = new SplashScreen("/Resources/Icons/OptikeyProSplash.png");
-                splashScreen.Show(false);
+                if (Settings.Default.ShowSplashScreen)
+                {
+                    // Show splash screen
+                    splashScreen = new SplashScreen("/Resources/Icons/OptikeyProSplash.png");
+                    splashScreen.Show(false);
+                }
 
                 var application = new App(args);
                 application.InitializeComponent();
@@ -112,7 +116,7 @@ namespace JuliusSweetland.OptiKey.Pro
 
                 // We manually close this because automatic closure steals focus from the 
                 // dynamic splash screen. 
-                splashScreen.Close(TimeSpan.FromSeconds(0.5f));
+                splashScreen?.Close(TimeSpan.FromSeconds(0.5f));
 
                 //Apply theme
                 applyTheme();
