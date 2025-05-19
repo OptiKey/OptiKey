@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -839,7 +839,10 @@ LK</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>باشه</value>
-  </data>  
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>کنترل کامپیوتر و ارتباطات</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>دیگر</value>
   </data>
@@ -1128,12 +1131,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>کالیبراسیون کامل شده یا احتمالا لغو شده است، اما همه چیز دوباره کار می کند!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Service را نمی توان پیدا کرد. لطفا Tobii software  را نصب کنید و دوباره امتحان کنید.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service در حال اجرا نیست لطفا موتور Tobii service را راه اندازی کنید و دوباره امتحان کنید.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1836,9 +1833,6 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>استفاده از طرح بندی صفحه کلید الفبایی</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>فیلتر کالمن:</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>تغییر حالت دستی</value>
   </data>
@@ -2060,38 +2054,17 @@ Optikey سعی خواهد کرد تا ادامه یابد، اما احتمال 
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
     <value>از روش جایگزین "نگاه به اسکرول" برای پیمایش استفاده کنید:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>جهت اسکرول معکوس:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>کلید مربوطه را برای حفظ نقطه، پنجره یا منطقه ی انتخاب شده پایین نگه دارید،</value>
-  </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>قبل از اسکرول کردن، ماوس را به مرکز deadzone منتقل کنید:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>قبل از اسکرول کردن در داخل پنجره، آن را به جلو بیاورید:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>پس از انتخاب نقطه ی صفحه نمایش، هر پنجره ای را وجود داشت به جلو بیاورید:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>هنگام انتخاب جایی که باید حرکت کنید، اسکرول کردن را متوقف کنید، ماوس را کلیک کنید یا بکشید:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>به طور خودکار بعد از آن اسکرول کردن را ادامه دهید:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>توقف پیمایش در هنگام تغییر کیبورد ها:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>نمایش پنجره پوشش (نیاز به راه اندازی مجدد):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>رنگ مرزهای اسکرول که بر روی پوشش کشیده شده است:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>رنگ راهنماهای deadzone که بر روی پوشش کشیده شده است:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>ضخامت مرزهای اسکرول که بر روی پوشش کشیده شده است:</value>
@@ -2105,93 +2078,9 @@ Optikey سعی خواهد کرد تا ادامه یابد، اما احتمال 
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
     <value>deadzone عمودی (در پیکسل):</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>چرخه از طریق این افزایش اسکرول:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>سرعت پایه 'آهسته' (در cps یا "کلیک" در ثانیه):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>سرعت پایه 'متوسط' (در cps یا "کلیک" در ثانیه):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>سرعت پایه 'سریع' (در cps یا "کلیک" در ثانیه):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>شتاب 'آهسته' (cps در هر پیکسل از deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>شتاب 'متوسط' (cps در هر پیکسل از deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>شتاب 'سریع' (cps در هر پیکسل از deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>نگاه به کلید های اسکرول</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>کنترل اسکرول</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>بعدی</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>نکته بعدی</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>حالت بعدی</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>سرعت بعدی</value>
-  </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value>نگاه به
 اسکرول</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>اسکرول به وسیله {0} واحد چرخ: 
-(120 واحد چرخ = 1 کلیک)|اسکرول بوسیله {0} واحد چرخ:
-(120 واحد چرخ = 1 کلیک)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>صفحه نمایش در
-نقطه</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>صفحه نمایش
-در مرکز</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>پنجره</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>منطقه
-پنجره</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>منطق
-سفارشی</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>عمودی</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>افقی</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value>عبور</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value>آزاد</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>آهسته</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>متوسط</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>سریع</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
     <value>فرانسوی (Canada) / Française (کانادا)</value>
@@ -2343,39 +2232,152 @@ Française
 فارسی
 (ایرانی)</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>ارتباط آسان</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>کنترل نشانگر کامل</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>ارتباط با استفاده از نمادها</value>
+  </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
     <value>این نیاز به یک لپ تاپ از Alienware 17 بازی، با استفاده از ساخته شده است در Tobii ردیاب چشم.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>این امر مستلزم ITU نگاه ردیابی کتابخانه است که چارچوبی برای چشم منبع باز ردیابی با استفاده از خارج از قفسه قطعات، مانند وب کم و دوربین فیلمبرداری.</value>
+    <value>این امر مستلزم ITU نگاه ردیابی کتابخانه است که چارچوبی برای چشم منبع باز ردیابی با استفاده از خارج از قفسه قطعات، مانند وب کم و دوربین فیلمبرداری.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>اگر شما قصد استفاده از Optikey با ردیاب چشم Irisbond اواز یا موسیقی دو پس لطفا مطمئن شوید که شما باید درایور Irisbond اواز یا موسیقی دو نصب شده است. این را می توان از https://www.irisbond.com/en/producto/irisbond-duo-2 دریافت کنید.</value>
+    <value>اگر شما قصد استفاده از Optikey با ردیاب چشم Irisbond اواز یا موسیقی دو پس لطفا مطمئن شوید که شما باید درایور Irisbond اواز یا موسیقی دو نصب شده است. این را می توان از https://www.irisbond.com/en/producto/irisbond-duo-2 دریافت کنید.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>در این حالت، Optikey ماوس را به عنوان ورودی به جای صحبت کردن به طور مستقیم به یک ردیاب چشم استفاده کنید. شما ممکن است این می خواهید اگر شما در حال آزمایش Optikey کردن، و یا اگر شما می خواهید به استفاده از آن با یک دستگاه ورودی های جایگزین مانند یک موش سر و یا هر ردیاب چشم در این لیست است. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>این گزینه با هر Tobii بازی ردیاب چشم (4C، EyeX ها، Alienware، استیل، و غیره) کار خواهد کرد</value>
+    <value>در این حالت، Optikey ماوس را به عنوان ورودی به جای صحبت کردن به طور مستقیم به یک ردیاب چشم استفاده کنید. شما ممکن است این می خواهید اگر شما در حال آزمایش Optikey کردن، و یا اگر شما می خواهید به استفاده از آن با یک دستگاه ورودی های جایگزین مانند یک موش سر و یا هر ردیاب چشم در این لیست است. </value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>ببه منظور استفاده از این نرم افزار Optikey با ردیاب چشم Tobii، شما هم نیاز به نسخه جدید Tobii Windows Control و یا موتور Tobii ردیابی چشم. اگر شما نیاز به استفاده از نسخه های قدیمی نرم Tobii Windows Control (Tobii Gaze Interaction System)، سپس شما نیاز به کنترل Optikey با استفاده از موقعیت ماوس به جای. </value>
+    <value>ببه منظور استفاده از این نرم افزار Optikey با ردیاب چشم Tobii، شما هم نیاز به نسخه جدید Tobii Windows Control و یا موتور Tobii ردیابی چشم. اگر شما نیاز به استفاده از نسخه های قدیمی نرم Tobii Windows Control (Tobii Gaze Interaction System)، سپس شما نیاز به کنترل Optikey با استفاده از موقعیت ماوس به جای. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>این گزینه با هر Tobii بازی ردیاب چشم (4C، EyeX ها، Alienware، استیل، و غیره) کار خواهد کرد</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>myGaze تعامل ویژوال تنها پشتیبانی اگر شما در حال حاضر نصب درایور مشتری myGaze، که دیگر برای دانلود موجود است. اگر شما لازم نیست که این درایور نصب شده است، شما باید با استفاده از 'موقعیت ماوس'' را انتخاب کنید به جای آن، و استفاده از Optikey در ترکیب با نرم افزار myGaze EyeMousePlay به حرکت مکان نما.</value>
+    <value>myGaze تعامل ویژوال تنها پشتیبانی اگر شما در حال حاضر نصب درایور مشتری myGaze، که دیگر برای دانلود موجود است. اگر شما لازم نیست که این درایور نصب شده است، شما باید با استفاده از 'موقعیت ماوس'' را انتخاب کنید به جای آن، و استفاده از Optikey در ترکیب با نرم افزار myGaze EyeMousePlay به حرکت مکان نما.</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>کنترل کامپیوتر و ارتباطات</value>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> اگر ردیاب چشم شما در اینجا ذکر نشده است ، یا به نسخه 32 بیتی Optikey نیاز دارید ، لطفاً برای اطلاعات بیشتر روی پیوند زیر کلیک کنید.
+اگر می خواهید با نصب ادامه دهید ، Optikey توسط موقعیت موش شما کنترل می شود. این اجازه می دهد تا با ورودی های جایگزین مانند ماوس سر یا هر ردیاب چشم که به شما امکان می دهد موقعیت ماوس را با چشم خود کنترل کنید ، کار کند.</value>
   </data>
-  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>ارتباط آسان</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Service را نمی توان پیدا کرد. لطفا Tobii software  را نصب کنید و دوباره امتحان کنید.</value>
   </data>
-  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>کنترل نشانگر کامل</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service در حال اجرا نیست لطفا موتور Tobii service را راه اندازی کنید و دوباره امتحان کنید.</value>
   </data>
-  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>ارتباط با استفاده از نمادها</value>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>فیلتر کالمن:</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> اگر ردیاب چشم شما در اینجا ذکر نشده است ، یا به نسخه 32 بیتی Optikey نیاز دارید ، لطفاً برای اطلاعات بیشتر روی پیوند زیر کلیک کنید.
-اگر می خواهید با نصب ادامه دهید ، Optikey توسط موقعیت موش شما کنترل می شود. این اجازه می دهد تا با ورودی های جایگزین مانند ماوس سر یا هر ردیاب چشم که به شما امکان می دهد موقعیت ماوس را با چشم خود کنترل کنید ، کار کند.</value></data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>جهت اسکرول معکوس:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>کلید مربوطه را برای حفظ نقطه، پنجره یا منطقه ی انتخاب شده پایین نگه دارید،</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>پس از انتخاب نقطه ی صفحه نمایش، هر پنجره ای را وجود داشت به جلو بیاورید:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>هنگام انتخاب جایی که باید حرکت کنید، اسکرول کردن را متوقف کنید، ماوس را کلیک کنید یا بکشید:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>نمایش پنجره پوشش (نیاز به راه اندازی مجدد):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>رنگ مرزهای اسکرول که بر روی پوشش کشیده شده است:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>رنگ راهنماهای deadzone که بر روی پوشش کشیده شده است:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>چرخه از طریق این افزایش اسکرول:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>سرعت پایه 'آهسته' (در cps یا "کلیک" در ثانیه):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>سرعت پایه 'متوسط' (در cps یا "کلیک" در ثانیه):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>سرعت پایه 'سریع' (در cps یا "کلیک" در ثانیه):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>شتاب 'آهسته' (cps در هر پیکسل از deadzone):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>شتاب 'متوسط' (cps در هر پیکسل از deadzone):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>شتاب 'سریع' (cps در هر پیکسل از deadzone):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>نگاه به کلید های اسکرول</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>کنترل اسکرول</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>بعدی</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>نکته بعدی</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>حالت بعدی</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>سرعت بعدی</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>اسکرول به وسیله {0} واحد چرخ: 
+(120 واحد چرخ = 1 کلیک)|اسکرول بوسیله {0} واحد چرخ:
+(120 واحد چرخ = 1 کلیک)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>صفحه نمایش در
+نقطه</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>صفحه نمایش
+در مرکز</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>پنجره</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>منطقه
+پنجره</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>منطق
+سفارشی</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>عمودی</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>افقی</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>عبور</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>آزاد</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>آهسته</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>متوسط</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>سریع</value>
+  </data>
 </root>

@@ -802,6 +802,9 @@ A SYMBOLY</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Počítačové riadenie a komunikácie</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Ostatné</value>
   </data>
@@ -1074,12 +1077,6 @@ a pozícia</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibrácia bola dokončená, alebo možno zrušená, ale všetko opäť funguje!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Nepodarilo sa nájsť Tobii Service. Prosím nainštalujte Tobii software a skúste znova.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service nie je spustený. Prosím spustite Tobii Service a skúste znova.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tón 1</value>
@@ -1573,39 +1570,44 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>JAZYK</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Jednoduchá komunikácia</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Úplné riadenie kurzoru</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Komunikácia s Symboly</value>
+  </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
     <value>To si vyžaduje Alienware 17 herný notebook, pomocou zabudovaného-in TOBI očí tracker.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>To vyžaduje, aby Gaze Tracking knižnicu ITU, čo je framework pre sledovanie pomocou off-the-shelf komponenty, ako sú kamery a videokameru s otvoreným zdrojovým kódom oka.</value>
+    <value>To vyžaduje, aby Gaze Tracking knižnicu ITU, čo je framework pre sledovanie pomocou off-the-shelf komponenty, ako sú kamery a videokameru s otvoreným zdrojovým kódom oka.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Ak máte v pláne používať Optikey s očné tracker Irisbond Duo, potom si prosím skontrolujte, či máte k dispozícii ovládače Irisbond Duo nainštalované. </value>
+    <value>Ak máte v pláne používať Optikey s očné tracker Irisbond Duo, potom si prosím skontrolujte, či máte k dispozícii ovládače Irisbond Duo nainštalované. </value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>V tomto režime bude Optikey použite kurzor myši ako vstup namiesto rozprávanie priamo do očí tracker. Možno budete chcieť to, ak testujete Optikey von, alebo ak chcete použiť alternatívne vstupné zariadenia, ako je napríklad hlava myši alebo akékoľvek očné tracker nie je v tomto zozname. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Táto voľba bude fungovať s akýmkoľvek Tobi Gaming očí tracker (4C, EyeX, Alienware, SteelSeries, etc)</value>
+    <value>V tomto režime bude Optikey použite kurzor myši ako vstup namiesto rozprávanie priamo do očí tracker. Možno budete chcieť to, ak testujete Optikey von, alebo ak chcete použiť alternatívne vstupné zariadenia, ako je napríklad hlava myši alebo akékoľvek očné tracker nie je v tomto zozname. </value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Ak chcete používať Optikey s asistenčnou očí tracker, musíte buď novú verziu systému Windows Control, alebo motora Tobi Eye Tracking. Ak potrebujete použiť starú verziu ovládacieho programu Tobi Windows (vrátane nastavenia Tobi Gaze interakcie), potom sa budete musieť riadiť Optikey pomocou pozíciu myši miesto. </value>
+    <value>Ak chcete používať Optikey s asistenčnou očí tracker, musíte buď novú verziu systému Windows Control, alebo motora Tobi Eye Tracking. Ak potrebujete použiť starú verziu ovládacieho programu Tobi Windows (vrátane nastavenia Tobi Gaze interakcie), potom sa budete musieť riadiť Optikey pomocou pozíciu myši miesto. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Táto voľba bude fungovať s akýmkoľvek Tobi Gaming očí tracker (4C, EyeX, Alienware, SteelSeries, etc)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Visual Interaction myGaze je podporovaná len v prípade, že ste už nainštalovali klientskych ovládačov myGaze, ktoré už nie sú k dispozícii na stiahnutie. Ak nechcete mať nainštalované tieto ovládače, mali by ste zvoliť použitia, pozíciu myši 'miesto, a použitie Optikey v kombinácii s aplikáciou myGaze EyeMousePlay pre pohyb kurzora.</value>
+    <value>Visual Interaction myGaze je podporovaná len v prípade, že ste už nainštalovali klientskych ovládačov myGaze, ktoré už nie sú k dispozícii na stiahnutie. Ak nechcete mať nainštalované tieto ovládače, mali by ste zvoliť použitia, pozíciu myši 'miesto, a použitie Optikey v kombinácii s aplikáciou myGaze EyeMousePlay pre pohyb kurzora.</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Počítačové riadenie a komunikácie</value>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Ak tu nie je uvedený váš sledovač očí alebo potrebujete 32 -bitovú verziu Optikey, kliknite na odkaz nižšie, kde nájdete ďalšie informácie.
+Ak chcete pokračovať v inštalácii, optikey bude ovládaný polohou myši. To mu umožňuje pracovať s alternatívnymi vstupmi, ako je hlava myši alebo akýkoľvek sledovač očí, ktorý vám umožňuje ovládať polohu myši vašimi očami.</value>
   </data>
-  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>Jednoduchá komunikácia</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Nepodarilo sa nájsť Tobii Service. Prosím nainštalujte Tobii software a skúste znova.</value>
   </data>
-  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Úplné riadenie kurzoru</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service nie je spustený. Prosím spustite Tobii Service a skúste znova.</value>
   </data>
-  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Komunikácia s Symboly</value>
-  </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Ak tu nie je uvedený váš sledovač očí alebo potrebujete 32 -bitovú verziu Optikey, kliknite na odkaz nižšie, kde nájdete ďalšie informácie.
-Ak chcete pokračovať v inštalácii, optikey bude ovládaný polohou myši. To mu umožňuje pracovať s alternatívnymi vstupmi, ako je hlava myši alebo akýkoľvek sledovač očí, ktorý vám umožňuje ovládať polohu myši vašimi očami.</value></data>
 </root>

@@ -802,6 +802,9 @@ SIMB</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Nadzor Computer &amp; Communication</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Drugo</value>
   </data>
@@ -1073,12 +1076,6 @@ POZICIJA</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibracija končana ali mogoče prekinjena, ampak vse spet deluje!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Ni možno najti Tobii Service. Prosim namestite Tobii software in poskusite znova.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service ne deluje. Prosim zaženi Tobii service in poskusi znova.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Zvok 1</value>
@@ -1541,11 +1538,11 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Prezri modifikacijske tipke za vse akcije z miško:</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Kalibracija uspešna!</value>
-  </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibracija ni uspela!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibracija uspešna!</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>ČRKE 2</value>
@@ -1565,39 +1562,44 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>JEZIK</value>
   </data>
-  <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>To zahteva Alienware 17 gaming prenosnik, z vgrajeno Tobii oči tracker.</value>
-  </data>
-  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>To zahteva ITU pogled sledenje knjižnice, ki je okvir za odprtokodne oko sledenje uporabo off-the-polici komponent, kot so spletne kamere in videokamere.</value>
-  </data>
-  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Če nameravate uporabljati Optikey z oči tracker Irisbond Duo potem se prepričajte, da imate gonilnike Irisbond Duo namestili. Te lahko prenesete s https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
-  </data>
-  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>V tem načinu bo Optikey uporabite miško kot vhod, namesto da bi govoril neposredno v sledilnik oči. Morda boste to želeli, če ste testiranje Optikey ven, ali če želite, da ga uporabljate z alternativnim vhodne naprave, kot so glave miško ali katere koli oči tracker ni na tem seznamu. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Ta možnost bo delo s katero koli Tobii Gaming oči tracker (4C, EyeX, Alienware, SteelSeries, itd)</value>
-  </data>
-  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Za uporabo Optikey s pomožno oči tracker, ali boste potrebovali novo različico nadzor Tobii Windows Control, ali motor Tobii sledenje oči. Če želite uporabljati staro različico aplikacije za nadzor Tobii Windows Control (Tobii Gaze Interaction Software), potem boste morali za nadzor Optikey namesto uporabe položaj miške.</value>
-  </data>
-  <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Visual Interaction myGaze je podprta le, če ste že namestili gonilnike strank myGaze, ki niso več na voljo za prenos. Če nimate nameščene ti vozniki, morate izbrati uporaba 'položaj miške' namesto, in uporabo Optikey v kombinaciji z uporabo myGaze EyeMousePlay premakniti kazalec.</value>
-  </data>  
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Nadzor Computer &amp; Communication</value>
-  </data>
   <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>Enostavno Sporočilo</value>
+    <value>Enostavno Sporočilo</value>
   </data>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Popoln nadzor kazalca</value>
+    <value>Popoln nadzor kazalca</value>
   </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Komunikacija s simboli</value>
+    <value>Komunikacija s simboli</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Če vaš sledilnik oči ni naveden tukaj ali potrebujete 32 -bitno različico Optikeyja, za več informacij kliknite spodnjo povezavo.
-Če želite nadaljevati z namestitvijo, bo Optikey nadzoroval položaj miške. To mu omogoča, da deluje z alternativnimi vhodi, kot je miška glave ali kateri koli sledilnik oči, ki vam omogoča nadzor nad položajem miške z očmi.</value></data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>To zahteva Alienware 17 gaming prenosnik, z vgrajeno Tobii oči tracker.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>To zahteva ITU pogled sledenje knjižnice, ki je okvir za odprtokodne oko sledenje uporabo off-the-polici komponent, kot so spletne kamere in videokamere.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>Če nameravate uporabljati Optikey z oči tracker Irisbond Duo potem se prepričajte, da imate gonilnike Irisbond Duo namestili. Te lahko prenesete s https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>V tem načinu bo Optikey uporabite miško kot vhod, namesto da bi govoril neposredno v sledilnik oči. Morda boste to želeli, če ste testiranje Optikey ven, ali če želite, da ga uporabljate z alternativnim vhodne naprave, kot so glave miško ali katere koli oči tracker ni na tem seznamu. </value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>Za uporabo Optikey s pomožno oči tracker, ali boste potrebovali novo različico nadzor Tobii Windows Control, ali motor Tobii sledenje oči. Če želite uporabljati staro različico aplikacije za nadzor Tobii Windows Control (Tobii Gaze Interaction Software), potem boste morali za nadzor Optikey namesto uporabe položaj miške.</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Ta možnost bo delo s katero koli Tobii Gaming oči tracker (4C, EyeX, Alienware, SteelSeries, itd)</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>Visual Interaction myGaze je podprta le, če ste že namestili gonilnike strank myGaze, ki niso več na voljo za prenos. Če nimate nameščene ti vozniki, morate izbrati uporaba 'položaj miške' namesto, in uporabo Optikey v kombinaciji z uporabo myGaze EyeMousePlay premakniti kazalec.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Če vaš sledilnik oči ni naveden tukaj ali potrebujete 32 -bitno različico Optikeyja, za več informacij kliknite spodnjo povezavo.
+Če želite nadaljevati z namestitvijo, bo Optikey nadzoroval položaj miške. To mu omogoča, da deluje z alternativnimi vhodi, kot je miška glave ali kateri koli sledilnik oči, ki vam omogoča nadzor nad položajem miške z očmi.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Ni možno najti Tobii Service. Prosim namestite Tobii software in poskusite znova.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service ne deluje. Prosim zaženi Tobii service in poskusi znova.</value>
+  </data>
 </root>
