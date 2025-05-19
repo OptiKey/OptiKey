@@ -4,6 +4,8 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 <Window x:Class="JuliusSweetland.OptiKey.UI.Windows.OverlayWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
+        xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
         AllowsTransparency="True"
         WindowStyle="None"
         Background="Transparent"
@@ -12,33 +14,51 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         IsHitTestVisible="False"
         ShowInTaskbar="False"
         Topmost="True"
+        Width="0"
+        Height="0"
         Visibility="Visible">
   
   <Window.Resources>
-    <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
-  </Window.Resources>
-  <Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition/>
-      <ColumnDefinition/>
-      <ColumnDefinition/>
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-    </Grid.RowDefinitions>
-    <Grid Grid.Column="1" Grid.Row="1" Visibility="{Binding ShowCrosshair, Converter={StaticResource BooleanToVisibility}}">
-      <Path Stroke="White" Fill="Transparent" Stretch="Fill" StrokeThickness="2" Opacity=".5"
-            Data="M3,4 5,4 M4,3 4,5"/>
-      <Path Stroke="Black" Fill="Transparent" Stretch="Fill" StrokeThickness="1" Opacity=".5"
-            Data="M3,4 5,4 M4,3 4,5"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+        <valueConverters:ColourNameToBrush x:Key="ColourNameToBrush"/>
+    </Window.Resources>
+    <Grid>
+        <!-- Viewbox enables easy resizing - contents will scale proportionally -->
+        <Viewbox Stretch="Uniform" Opacity="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayOpacity}">
+            <!-- Canvas with fixed coordinate system for our shapes -->
+            <Canvas Width="100" Height="100">
+                <!-- Cross made of two separate lines with different colors -->
+                <!-- Horizontal line -->
+                <Line x:Name="crossN" X1="12" Y1="50" X2="38" Y2="50"
+                      Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeInnerColour, Converter={StaticResource ColourNameToBrush}}" 
+                      StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
+                      Visibility="{Binding ShowCrosshair, Converter={StaticResource BooleanToVisibility}}"
+                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                <Line x:Name="crossS" X1="62" Y1="50" X2="88" Y2="50"
+                      Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeInnerColour, Converter={StaticResource ColourNameToBrush}}" 
+                      StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
+                      Visibility="{Binding ShowCrosshair, Converter={StaticResource BooleanToVisibility}}"
+                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                <!-- Vertical line -->
+                <Line x:Name="crossE" X1="50" Y1="12" X2="50" Y2="38"
+                      Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeInnerColour, Converter={StaticResource ColourNameToBrush}}" 
+                      StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
+                      Visibility="{Binding ShowCrosshair, Converter={StaticResource BooleanToVisibility}}"
+                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                <Line x:Name="crossW" X1="50" Y1="62" X2="50" Y2="88"
+                      Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeInnerColour, Converter={StaticResource ColourNameToBrush}}" 
+                      StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
+                      Visibility="{Binding ShowCrosshair, Converter={StaticResource BooleanToVisibility}}"
+                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                <!-- Circle with primary color stroke (Red) and secondary color fill (LightBlue) -->
+                <Ellipse x:Name="monicle" Canvas.Left="0" Canvas.Top="0"
+                         Width="100" Height="100" 
+                         Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeOuterColour, Converter={StaticResource ColourNameToBrush}}"
+                         StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
+                         Visibility="{Binding ShowMonical, Converter={StaticResource BooleanToVisibility}}"
+                         Fill="Transparent"/>
+
+            </Canvas>
+        </Viewbox>
     </Grid>
-    <Grid Grid.ColumnSpan="3" Grid.RowSpan="3" Visibility="{Binding ShowMonical, Converter={StaticResource BooleanToVisibility}}">
-      <Path Stroke="White" Fill="Transparent" Stretch="Fill" StrokeThickness="4" Opacity=".5"
-            Data="M0,4 C0,8 8,8 8,4 C8,0 0,0 0,4"/>
-      <Path Stroke="Black" Fill="Transparent" Stretch="Fill" StrokeThickness="2" Opacity=".5"
-            Data="M0,4 C0,8 8,8 8,4 C8,0 0,0 0,4"/>
-    </Grid>
-  </Grid>
 </Window>
