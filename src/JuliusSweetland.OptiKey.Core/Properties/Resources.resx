@@ -2363,7 +2363,8 @@ Magyar
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
     <value>If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
-  <data name="IRISBOND_HIRU_INFO" xml:space="preserve"><value />
+  <data name="IRISBOND_HIRU_INFO" xml:space="preserve">
+    <value />
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
     <value>In this mode, Optikey will use the mouse cursor as input instead of talking directly to an eye tracker. You might want this if you're testing Optikey out, or if you want to use it with an alternative input device such as a head mouse or any eye tracker not in this list.</value>
@@ -2753,5 +2754,17 @@ Plugins are provided by third parties and have not been verified by the Optikey 
   </data>
   <data name="PLUGIN_SECURITY_I_UNDERSTAND" xml:space="preserve">
     <value>I understand</value>
+  </data>
+  <data name="GAZE_INDICATOR_INNER_COLOUR" xml:space="preserve">
+    <value>Gaze Indicator Inner Colour</value>
+  </data>
+  <data name="GAZE_INDICATOR_OUTER_COLOUR" xml:space="preserve">
+    <value>Gaze Indicator Outer Colour</value>
+  </data>
+  <data name="GAZE_INDICATOR_THICKNESS" xml:space="preserve">
+    <value>Gaze Indicator Thickness</value>
+  </data>
+  <data name="GAZE_INDICATOR_OPACITY" xml:space="preserve">
+    <value>Gaze Indicator Opacity</value>
   </data>
 </root>

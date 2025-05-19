@@ -1,14 +1,15 @@
 // Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
 using MahApps.Metro.Controls;
 using Prism.Mvvm;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Media;
 using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
 using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
 
@@ -47,10 +48,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             this.windowManipulationService = windowManipulationService;
             Load();
         }
-        
+
         #endregion
-        
+
         #region Properties
+
+        public List<string> ColourNames
+        {
+            get
+            {
+                // Based on: https://stackoverflow.com/a/26287682/9091159
+                return typeof(Brushes)
+                    .GetProperties()
+                    .Where(pi => pi.PropertyType == typeof(SolidColorBrush))
+                    .Select(pi => pi.Name)
+                    .ToList();
+            }
+        }
 
         private Rect floatingSizeAndPosition;
         public Rect FloatingSizeAndPosition
@@ -496,6 +510,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref gazeIndicatorSize, value); }
         }
 
+        private string gazeIndicatorOverlayStrokeInnerColour;
+        public string GazeIndicatorOverlayStrokeInnerColour
+        {
+            get { return gazeIndicatorOverlayStrokeInnerColour; }
+            set { SetProperty(ref gazeIndicatorOverlayStrokeInnerColour, value); }
+        }
+
+        private string gazeIndicatorOverlayStrokeOuterColour;
+        public string GazeIndicatorOverlayStrokeOuterColour
+        {
+            get { return gazeIndicatorOverlayStrokeOuterColour; }
+            set { SetProperty(ref gazeIndicatorOverlayStrokeOuterColour, value); }
+        }
+
+        private int gazeIndicatorOverlayStrokeThickness;
+        public int GazeIndicatorOverlayStrokeThickness
+        {
+            get { return gazeIndicatorOverlayStrokeThickness; }
+            set { SetProperty(ref gazeIndicatorOverlayStrokeThickness, value); }
+        }
+
+        private int gazeIndicatorOverlayOpacity;
+        public int GazeIndicatorOverlayOpacity
+        {
+            get { return gazeIndicatorOverlayOpacity; }
+            set { SetProperty(ref gazeIndicatorOverlayOpacity, value); }
+        }
+
         private bool magnifierCenterOnScreen;
         public bool MagnifierCenterOnScreen
         {
@@ -645,6 +687,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
             GazeIndicatorStyle = Settings.Default.GazeIndicatorStyle.ToString();
             GazeIndicatorSize = Settings.Default.GazeIndicatorSize;
+            GazeIndicatorOverlayStrokeInnerColour = Settings.Default.GazeIndicatorOverlayStrokeInnerColour;
+            GazeIndicatorOverlayStrokeOuterColour = Settings.Default.GazeIndicatorOverlayStrokeOuterColour;
+            GazeIndicatorOverlayStrokeThickness = Settings.Default.GazeIndicatorOverlayStrokeThickness;
+            GazeIndicatorOverlayOpacity = (int)(100.0f * Settings.Default.GazeIndicatorOverlayOpacity);
             MagnifierCenterOnScreen = Settings.Default.MagnifierCenterOnScreen;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
@@ -679,6 +725,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
             Settings.Default.GazeIndicatorStyle = (GazeIndicatorStyles)Enum.Parse(typeof(GazeIndicatorStyles), GazeIndicatorStyle);
             Settings.Default.GazeIndicatorSize = GazeIndicatorSize;
+            Settings.Default.GazeIndicatorOverlayStrokeInnerColour = GazeIndicatorOverlayStrokeInnerColour;
+            Settings.Default.GazeIndicatorOverlayStrokeOuterColour = GazeIndicatorOverlayStrokeOuterColour;
+            Settings.Default.GazeIndicatorOverlayStrokeThickness = GazeIndicatorOverlayStrokeThickness;
+            Settings.Default.GazeIndicatorOverlayOpacity = (double)GazeIndicatorOverlayOpacity / 100.0f;
             Settings.Default.MagnifierCenterOnScreen = MagnifierCenterOnScreen;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
