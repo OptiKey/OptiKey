@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -837,6 +837,9 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>ОК</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Про: керування та комунікація з комп'ютером</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Інше</value>
   </data>
@@ -1123,12 +1126,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Калібрування завершено або можливо було перервано, але тепер все працює!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>'Tobii Service "не знайдено. Будь ласка інсталюйте 'Tobii software ' та спробуйте знову.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>'Tobii Service' не працює. Будь ласка, запустіть &amp; Tobii service  'та спробуйте знову.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1813,9 +1810,6 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Використовувати алфавітну розкладку клавіатури</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Фільтр Калмана:</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>Переключити Ручний Режим</value>
   </data>
@@ -2027,38 +2021,17 @@ Optikey буде намагатися продовжувати, але існу�
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
     <value>Використовувати альтернативний "Подивитися, щоб прокрутити" метод для прокручування:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>Інвертувати напрям прокручування:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>Закрийти обмеження для збереження обраної точки, вікна чи регіону:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Перед прокручуванням, перемістити мишу в центр мертвої зони:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Перед прокручуванням в середині вікна, перенести його на передній план:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>Після вибору екранної точки, винести будь-яке вікно наперед:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Зупинити прокрутку при виборі куди потрібно рухатися, натиснути або потягти мишу:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>Автоматично відновлювати прокручування:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>Припинити прокручування після перемикання клавіатури:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>Показати перекрите вікно (потрібен перезапуск):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of scroll bounds drawn on the overlay:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of deadzone guides drawn on the overlay:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>Thickness of scroll bounds drawn on the overlay:</value>
@@ -2071,6 +2044,110 @@ Optikey буде намагатися продовжувати, але існу�
   </data>
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
     <value>Вертикальна мертва зона (в пікселях):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
+    <value>Дивитись, щоб
+Прокручувати</value>
+  </data>
+  <data name="FRENCH_CANADA" xml:space="preserve">
+    <value>Французька (Канада) / Française (Canada)</value>
+  </data>
+  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Французька 
+(Канада) /
+Française
+(Canada)</value>
+  </data>
+  <data name="JAPANESE_JAPAN" xml:space="preserve">
+    <value>Японська (Японія) / 日本語 (日本)</value>
+  </data>
+  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Японська
+(Японія) /
+日本語
+(日本)</value>
+  </data>
+  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
+    <value>CommuniKate гучність звуку:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
+    <value>Промовляти CommuniKate текст кнопки коли вибрана:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
+    <value>Темп мови коли CommuniKate вимовляє текст кнопки:</value>
+  </data>
+  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
+    <value>Гучність мови коли CommuniKate вимовляє текст кнопки:</value>
+  </data>
+  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
+    <value>Ви впевнені, що бажаєте перейти в ручний режим?</value>
+  </data>
+  <data name="MANUAL_MODE" xml:space="preserve">
+    <value>РУЧНИЙ РЕЖИМ</value>
+  </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Чат: легка комунікація</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Мишка: повне керування курсором миші</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Символ: комунікація символами</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Це вимагає Alienware 17 ігровий ноутбук, використовуючи вбудований в Tobii очей трекер.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>Це вимагає МСЕ Gaze стеження бібліотека, яка є основою для відкритого вихідного коду відстеження очей за допомогою позашляхових готових компонентів, таких як веб-камер і відеокамерами.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>Якщо ви плануєте використовувати Optikey з очима трекера Irisbond Duo, будь ласка, переконайтеся, що у вас є драйвера Irisbond Duo встановлений. Вони можуть бути завантажені з https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>У цьому режимі, Optikey буде використовувати курсор миші в якості вхідних даних, замість того, щоб говорити безпосередньо з трекером очей. Ви можете захотіти цього, якщо ви тестируете Optikey поза, або якщо ви хочете використовувати його з альтернативним пристроєм введення, такі як головки миші або будь-який очей трекер не в цьому списку.</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>Для того, щоб використовувати Optikey з Tobii реабілітаційним трекером очей, вам необхідно або нову версія Tobii Windows Control  або двигун Tobii відстеження очей. Якщо вам потрібно використовувати стару версію програми Tobii Windows Control  (Tobii Gaze Interaction Software), то вам потрібно буде контролювати Optikey використовуючи положення миші замість цього. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Ця опція буде працювати з будь-яким оком трекера Tobii Gaming (4C, EyeX, Alienware, Steelseries, і т.д.)</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>Візуальне взаємодія myGaze підтримується тільки, якщо ви вже встановили клієнтські драйвери myGaze, які більше не доступні для скачування. Якщо ви не встановили ці драйвера, ви повинні вибрати використовувати «положення миші» замість цього, і використовувати Optikey в поєднанні з додатком myGaze EyeMousePlay для переміщення курсора.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Якщо ваш трекер очей тут не вказаний, або вам потрібна 32 -бітна версія Optikey, натисніть посилання нижче для отримання додаткової інформації.
+Якщо ви хочете продовжувати встановлення, Optikey буде контролюватися вашою мишкою. Це дозволяє йому працювати з альтернативними входами, такими як головна миша, або будь -який трекер очей, який дозволяє керувати положенням миші очима.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>'Tobii Service "не знайдено. Будь ласка інсталюйте 'Tobii software ' та спробуйте знову.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>'Tobii Service' не працює. Будь ласка, запустіть &amp; Tobii service  'та спробуйте знову.</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Фільтр Калмана:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Інвертувати напрям прокручування:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Закрийти обмеження для збереження обраної точки, вікна чи регіону:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>Після вибору екранної точки, винести будь-яке вікно наперед:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Зупинити прокрутку при виборі куди потрібно рухатися, натиснути або потягти мишу:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Показати перекрите вікно (потрібен перезапуск):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of scroll bounds drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of deadzone guides drawn on the overlay:</value>
   </data>
   <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
     <value>Cycle through these scroll increments:</value>
@@ -2110,10 +2187,6 @@ Optikey буде намагатися продовжувати, але існу�
   </data>
   <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
     <value>НАСТУПНА ШВИДКІСТЬ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
-    <value>Дивитись, щоб
-Прокручувати</value>
   </data>
   <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
     <value>Прокрутити на {0} крок:
@@ -2160,75 +2233,4 @@ Optikey буде намагатися продовжувати, але існу�
   <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
     <value>Швидко</value>
   </data>
-  <data name="FRENCH_CANADA" xml:space="preserve">
-    <value>Французька (Канада) / Française (Canada)</value>
-  </data>
-  <data name="FRENCH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Французька 
-(Канада) /
-Française
-(Canada)</value>
-  </data>
-  <data name="JAPANESE_JAPAN" xml:space="preserve">
-    <value>Японська (Японія) / 日本語 (日本)</value>
-  </data>
-  <data name="JAPANESE_JAPAN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Японська
-(Японія) /
-日本語
-(日本)</value>
-  </data>
-  <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
-    <value>CommuniKate гучність звуку:</value>
-  </data>
-  <data name="COMMUNIKATE_SPEAK_SELECTED_LABEL" xml:space="preserve">
-    <value>Промовляти CommuniKate текст кнопки коли вибрана:</value>
-  </data>
-  <data name="COMMUNIKATE_SPEAK_SELECTED_RATE_LABEL" xml:space="preserve">
-    <value>Темп мови коли CommuniKate вимовляє текст кнопки:</value>
-  </data>
-  <data name="COMMUNIKATE_SPEAK_SELECTED_VOLUME_LABEL" xml:space="preserve">
-    <value>Гучність мови коли CommuniKate вимовляє текст кнопки:</value>
-  </data>
-  <data name="MANUAL_MODE_MESSAGE" xml:space="preserve">
-    <value>Ви впевнені, що бажаєте перейти в ручний режим?</value>
-  </data>
-  <data name="MANUAL_MODE" xml:space="preserve">
-    <value>РУЧНИЙ РЕЖИМ</value>
-  </data>
-  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-    <value>Optikey Чат: легка комунікація</value>
-  </data>
-  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-    <value>Optikey Мишка: повне керування курсором миші</value>
-  </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey Про: керування та комунікація з комп'ютером</value>
-  </data>
-  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-    <value>Optikey Символ: комунікація символами</value>
-  </data>
-  <data name="ALIENWARE_17_INFO" xml:space="preserve">
-    <value>Це вимагає Alienware 17 ігровий ноутбук, використовуючи вбудований в Tobii очей трекер.</value>
-  </data>
-  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Це вимагає МСЕ Gaze стеження бібліотека, яка є основою для відкритого вихідного коду відстеження очей за допомогою позашляхових готових компонентів, таких як веб-камер і відеокамерами.</value>
-  </data>
-  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Якщо ви плануєте використовувати Optikey з очима трекера Irisbond Duo, будь ласка, переконайтеся, що у вас є драйвера Irisbond Duo встановлений. Вони можуть бути завантажені з https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
-  </data>
-  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>У цьому режимі, Optikey буде використовувати курсор миші в якості вхідних даних, замість того, щоб говорити безпосередньо з трекером очей. Ви можете захотіти цього, якщо ви тестируете Optikey поза, або якщо ви хочете використовувати його з альтернативним пристроєм введення, такі як головки миші або будь-який очей трекер не в цьому списку.</value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Ця опція буде працювати з будь-яким оком трекера Tobii Gaming (4C, EyeX, Alienware, Steelseries, і т.д.)</value>
-  </data>
-  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Для того, щоб використовувати Optikey з Tobii реабілітаційним трекером очей, вам необхідно або нову версія Tobii Windows Control  або двигун Tobii відстеження очей. Якщо вам потрібно використовувати стару версію програми Tobii Windows Control  (Tobii Gaze Interaction Software), то вам потрібно буде контролювати Optikey використовуючи положення миші замість цього. </value>
-  </data>
-  <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Візуальне взаємодія myGaze підтримується тільки, якщо ви вже встановили клієнтські драйвери myGaze, які більше не доступні для скачування. Якщо ви не встановили ці драйвера, ви повинні вибрати використовувати «положення миші» замість цього, і використовувати Optikey в поєднанні з додатком myGaze EyeMousePlay для переміщення курсора.</value>
-  </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Якщо ваш трекер очей тут не вказаний, або вам потрібна 32 -бітна версія Optikey, натисніть посилання нижче для отримання додаткової інформації.
-Якщо ви хочете продовжувати встановлення, Optikey буде контролюватися вашою мишкою. Це дозволяє йому працювати з альтернативними входами, такими як головна миша, або будь -який трекер очей, який дозволяє керувати положенням миші очима.</value></data>
 </root>

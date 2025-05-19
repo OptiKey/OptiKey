@@ -844,6 +844,9 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>אישור</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>בקרת מחשב ותקשורת</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>אחר</value>
   </data>
@@ -1133,12 +1136,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>כיול נגמר או בוטל, אבל הכל עובד שוב!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>המנוע Tobii Software לא נמצא. אנא התקינו אותו ונסו שוב.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>המנוע Tobii Service לא פועל. אנא הפעילו אותו ונסו שוב.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go </value>
@@ -1845,9 +1842,6 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>השתמש בתבנית אלף-בית</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Kalman Filter:</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>הפעל/כבה מצב ידני</value>
   </data>
@@ -2069,38 +2063,17 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
     <value>השתמש בשיטת "הסתכל כדי לגלול" אחרת לגלילה:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>הפוך כיוון גלילה:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>Lock down bounds key to preserve chosen point, window, or region:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>לפני גלילה, הזז את העכבר למרכז השטח המת:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>לפני גלילה בתוך החלון, הבא את החלון לקידמה:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>אחרי בחירת נקודה במסך, הבא את החלון שבאותה נקודה לקידמת המסך:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>הפסק גלילה כאשר בוחרים לאן להזיז, להקליק או לגרור את העכבר:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>חזרה אוטומטית לגלילה לאחר מכן:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>הפסק גלילה בעת החלפת מקלדות:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>הראה מסך מעל (מצריך התחלה מחדש):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of scroll bounds drawn on the overlay:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of deadzone guides drawn on the overlay:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>Thickness of scroll bounds drawn on the overlay:</value>
@@ -2114,93 +2087,9 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
     <value>שטח מת אנכי (בפיקסלים):</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>בחר בין מהירויות הגלילה האלו:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>מהירות בסיסית "איטית" (בקליקים לשנייה):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>מהירות בסיסית "בינונית" (בקליקים לשנייה):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>מהירות בסיסית "מהירה" (בקליקים לשנייה):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>האצה "איטית" (קליקים לשנייה לפיקסל מהשטח המת):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>האצה "בינונית" (קליקים לשנייה לפיקסל מהשטח המת):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>האצה "מהירה" (קליקים לשנייה לפיקסל מהשטח המת):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>מקשי "הסתכל כדי לגלול":</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>הפעל/כבה גלילה:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT BOUNDS</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT INCREMENT</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT MODE</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT SPEED</value>
-  </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value>הסתכל
 כדי לגלול</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>גלול ב{0} יחידת גלגל:
-(120 יחידות גלגל = קליק אחד)|גלול ב{0} יחידות גלגל:
-(120 יחידות גלגל = קליק אחד)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>מסך
-בנקודה</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>מסך
-ממורכז</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>חלון</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>אזור
-חלון</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>אזור
-מותאם אישית</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>אנכי</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>אופקי</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value>משולב</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value>חופשי</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>איטי</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>בינוני</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>מהיר</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
     <value>צרפתית  (קנדה)/ Française (Canada)</value>
@@ -2352,39 +2241,152 @@ Would you like Optikey to automatically set the font to Nazli?</value>
 فارسی
 (ایرانی)</value>
   </data>
-  <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>זה דורש משחקים ניידים 17 Alienware, באמצעות גשש עין מובנית Tobii.</value>
-  </data>
-  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>זה דורש לספריית מעקב מבט ITU, המהווה מסגרת עין קוד פתוחה מעקב באמצעות ה- off- מדף רכיבים, כגון מצלמות ו למצלמות.</value>
-  </data>
-  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>אם אתם מתכננים להשתמש Optikey עם גשש עין Irisbond Duo אז אנא ודא שיש לך את הנהגים Irisbond Duo מותקן. אלו ניתן להוריד מאתר https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
-  </data>
-  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>במצב זה, Optikey ישתמש סמן העכבר כקלט במקום לדבר ישירות גשש העין. אולי אתה רוצה את זה אם אתה בודק את Optikey, או אם אתה רוצה להשתמש בו עם מכשיר קלט חלופי כגון עכבר ראש או גשש כל עין לא ברשימה זו.</value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>אפשרות זו תעבוד עם גשש כל עין גיימינג Tobii (4C, EyeX, Alienware, Steelseries, וכו ')</value>
-  </data>
-  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>כדי להשתמש Optikey עם גשש Tobii העין ,שאתה צריך את הגרסה החדשה של הבקרה של Tobii Windows Control, או מנוע עקיבת העין Tobii</value>
-  </data>
-  <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>MyGaze האינטראקציה החזותי נתמך רק אם כבר התקין את מנהלי הלקוח myGaze, אשר כבר אינם זמינות להורדה. אם אין לך נהגים אלה מותקנים, אתה צריך לבחור השימוש עמדת העכבר 'במקום, ולהשתמש Optikey בשילוב עם יישום myGaze EyeMousePlay כדי להזיז את הסמן.</value>
-  </data>  
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>בקרת מחשב ותקשורת</value>
-  </data>
   <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>תקשורת קלה</value>
+    <value>תקשורת קלה</value>
   </data>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>בקרת סמן מלאה</value>
+    <value>בקרת סמן מלאה</value>
   </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>תקשורת עם סמלים</value>
+    <value>תקשורת עם סמלים</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> אם גשש העיניים שלך אינו מופיע כאן, או שאתה זקוק לגרסת 32 סיביות של Optikey, אנא לחץ על הקישור למטה למידע נוסף.
-     אם אתה רוצה להמשיך בהתקנה, Optikey ישלט על ידי מיקום העכבר שלך. זה מאפשר לו לעבוד עם תשומות אלטרנטיביות כמו עכבר ראש, או כל גשש עיניים המאפשר לך לשלוט על מיקום העכבר בעיניים.</value></data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>זה דורש משחקים ניידים 17 Alienware, באמצעות גשש עין מובנית Tobii.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>זה דורש לספריית מעקב מבט ITU, המהווה מסגרת עין קוד פתוחה מעקב באמצעות ה- off- מדף רכיבים, כגון מצלמות ו למצלמות.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>אם אתם מתכננים להשתמש Optikey עם גשש עין Irisbond Duo אז אנא ודא שיש לך את הנהגים Irisbond Duo מותקן. אלו ניתן להוריד מאתר https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>במצב זה, Optikey ישתמש סמן העכבר כקלט במקום לדבר ישירות גשש העין. אולי אתה רוצה את זה אם אתה בודק את Optikey, או אם אתה רוצה להשתמש בו עם מכשיר קלט חלופי כגון עכבר ראש או גשש כל עין לא ברשימה זו.</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>כדי להשתמש Optikey עם גשש Tobii העין ,שאתה צריך את הגרסה החדשה של הבקרה של Tobii Windows Control, או מנוע עקיבת העין Tobii</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>אפשרות זו תעבוד עם גשש כל עין גיימינג Tobii (4C, EyeX, Alienware, Steelseries, וכו ')</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>MyGaze האינטראקציה החזותי נתמך רק אם כבר התקין את מנהלי הלקוח myGaze, אשר כבר אינם זמינות להורדה. אם אין לך נהגים אלה מותקנים, אתה צריך לבחור השימוש עמדת העכבר 'במקום, ולהשתמש Optikey בשילוב עם יישום myGaze EyeMousePlay כדי להזיז את הסמן.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> אם גשש העיניים שלך אינו מופיע כאן, או שאתה זקוק לגרסת 32 סיביות של Optikey, אנא לחץ על הקישור למטה למידע נוסף.
+     אם אתה רוצה להמשיך בהתקנה, Optikey ישלט על ידי מיקום העכבר שלך. זה מאפשר לו לעבוד עם תשומות אלטרנטיביות כמו עכבר ראש, או כל גשש עיניים המאפשר לך לשלוט על מיקום העכבר בעיניים.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>המנוע Tobii Software לא נמצא. אנא התקינו אותו ונסו שוב.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>המנוע Tobii Service לא פועל. אנא הפעילו אותו ונסו שוב.</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Kalman Filter:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>הפוך כיוון גלילה:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Lock down bounds key to preserve chosen point, window, or region:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>אחרי בחירת נקודה במסך, הבא את החלון שבאותה נקודה לקידמת המסך:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>הפסק גלילה כאשר בוחרים לאן להזיז, להקליק או לגרור את העכבר:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>הראה מסך מעל (מצריך התחלה מחדש):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of scroll bounds drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of deadzone guides drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>בחר בין מהירויות הגלילה האלו:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>מהירות בסיסית "איטית" (בקליקים לשנייה):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>מהירות בסיסית "בינונית" (בקליקים לשנייה):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>מהירות בסיסית "מהירה" (בקליקים לשנייה):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>האצה "איטית" (קליקים לשנייה לפיקסל מהשטח המת):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>האצה "בינונית" (קליקים לשנייה לפיקסל מהשטח המת):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>האצה "מהירה" (קליקים לשנייה לפיקסל מהשטח המת):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>מקשי "הסתכל כדי לגלול":</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>הפעל/כבה גלילה:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT BOUNDS</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT INCREMENT</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT MODE</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT SPEED</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>גלול ב{0} יחידת גלגל:
+(120 יחידות גלגל = קליק אחד)|גלול ב{0} יחידות גלגל:
+(120 יחידות גלגל = קליק אחד)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>מסך
+בנקודה</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>מסך
+ממורכז</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>חלון</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>אזור
+חלון</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>אזור
+מותאם אישית</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>אנכי</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>אופקי</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>משולב</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>חופשי</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>איטי</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>בינוני</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>מהיר</value>
+  </data>
 </root>

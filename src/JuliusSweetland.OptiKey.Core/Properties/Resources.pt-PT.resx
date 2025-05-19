@@ -839,6 +839,9 @@ E SÍMBOLOS</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Pro : Controlo do Computador &amp; Comunicação</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Outro</value>
   </data>
@@ -1128,12 +1131,6 @@ POSIÇÃO</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibragem finalizada ou cancelada, mas está tudo a funcionar novamente!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Service não encontrado. Por favor, instale o Tobii software e tente novamente.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service não se encontra em execução. Por favor, inicie o Tobii service e tente novamente.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1836,9 +1833,6 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Usar esquema de teclado alfabético</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Filtro Kalman:</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>Alternar modo manual</value>
   </data>
@@ -2060,38 +2054,17 @@ e voz</value>
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
     <value>Usar método alternativo "bloquear para fazer scroll" para fazer scroll:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>Inverter direção de scroll:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>Bloquear tecla de limite para preservar o ponto escolhido, janela ou região:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Antes de fazer scroll, mova o rato para a zona morta:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Antes de fazer scroll dentro da janela, traga-a para a frente:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>Após escolher um ponto do ecrã, traga qualquer janela daí para a frente:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Pare de fazer scroll ao escolher para onde mover, clique ou arraste o rato:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>Continuar automaticamente o scroll depois disso:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>Parar de fazer scroll ao mudar de teclados:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>Mostrar janela de sobreposição (necessário reiniciar):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>Cor dos limites de scroll desenhados na sobreposição:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>Cor das guias da zona morta desenhadas na sobreposição:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>Espessura dos limites de scroll desenhados na sobreposição:</value>
@@ -2105,93 +2078,9 @@ e voz</value>
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
     <value>Zona morta vertical (em pixeis):</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>Ciclo através destes incrementos de scroll:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>Velocidade base 'lento' (em cps ou "cliques" por segundo):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>Velocidade base 'médio' (em cps ou "cliques" por segundo):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>Velocidade base 'rápido' (em cps ou "cliques" por sengundo):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>Aceleração base 'lenta' (cps por pixel na zona morta):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>Aceleração base 'média' (cps por pixel na zona morta):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>Aceleração base 'rápida' (cps por pixel na zona morta):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>BLOQUEAR PARA AS TECLAS DE SCROLL:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>ALTERNAR SCROLL</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>LIMITES SEGUINTES</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>INCREMENTO SEGUINTE</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>MODO SEGUINTE</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>VELOCIDADE SEGUINTE</value>
-  </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value>Bloquear para
 fazer scroll</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Scroll por {0} unidade da roda: 
-(120 unidades da roda = 1 clique)|Scroll por {0} unidades da roda:
-(120 unidades da roda = 1 clique)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>Ecrã no
-ponto</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>Ecrã
-centrado</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>Janela</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>Região da
-janela</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>Região
-personalizada</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>Vertical</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value>Cruzado</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value>Livre</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>Lento</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>Médio</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>Rápido</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
     <value>Francês (Canadá) / Française (Canada)</value>
@@ -2340,33 +2229,146 @@ Gostaria que o Optikey alterasse automaticamente para o tipo de letra Nafees Web
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
     <value>Optikey Mouse : Controlo Completo do Cursor</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey Pro : Controlo do Computador &amp; Comunicação</value>
-  </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
     <value>Optikey Symbol : Comunicação com Símbolos</value>
   </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>Isso requer um notebook para jogos Alienware 17, usando o rastreador olho Tobii embutido.</value>
+    <value>Isso requer um notebook para jogos Alienware 17, usando o rastreador olho Tobii embutido.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Isto requer a ITU Gaze Rastreamento Biblioteca, que é um quadro de olho open source de monitoramento usando componentes off-the-shelf, como webcams e câmeras de vídeo.</value>
+    <value>Isto requer a ITU Gaze Rastreamento Biblioteca, que é um quadro de olho open source de monitoramento usando componentes off-the-shelf, como webcams e câmeras de vídeo.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Se você planeja usar Optikey com o tracker olho Irisbond Duo, por favor, certifique-se de ter os drivers Irisbond Duo instalados. Estes podem ser descarregados a partir https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+    <value>Se você planeja usar Optikey com o tracker olho Irisbond Duo, por favor, certifique-se de ter os drivers Irisbond Duo instalados. Estes podem ser descarregados a partir https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>Neste modo, Optikey vai usar o cursor do mouse como entrada em vez de falar diretamente a um rastreador ocular. Você pode querer isso, se você está testando Optikey para fora, ou se você quiser usá-lo com um dispositivo de entrada alternativo, como um mouse de cabeça ou não qualquer rastreador olho nesta lista. Para mais informações, consulte www.optikey.org/help</value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Esta opção irá funcionar com qualquer rastreador olho Tobii Gaming (4C, EyeX, Alienware, Steelseries, etc)</value>
+    <value>Neste modo, Optikey vai usar o cursor do mouse como entrada em vez de falar diretamente a um rastreador ocular. Você pode querer isso, se você está testando Optikey para fora, ou se você quiser usá-lo com um dispositivo de entrada alternativo, como um mouse de cabeça ou não qualquer rastreador olho nesta lista. Para mais informações, consulte www.optikey.org/help</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Para usar Optikey um gerenciador de visão assistiva, você nem precisa a nova versão do Tobii Windows Control, ou o motor Eye Tracking Tobii. Se você precisa usar a versão antiga do aplicativo de Tobii Windows Control (Tobii Gaze Interaction Software), então você vai precisar para controlar Optikey usando posição do mouse em seu lugar. Para mais informações, consulte www.optikey.org/help</value>
+    <value>Para usar Optikey um gerenciador de visão assistiva, você nem precisa a nova versão do Tobii Windows Control, ou o motor Eye Tracking Tobii. Se você precisa usar a versão antiga do aplicativo de Tobii Windows Control (Tobii Gaze Interaction Software), então você vai precisar para controlar Optikey usando posição do mouse em seu lugar. Para mais informações, consulte www.optikey.org/help</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Esta opção irá funcionar com qualquer rastreador olho Tobii Gaming (4C, EyeX, Alienware, Steelseries, etc)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>O Interaction myGaze Visual é suportado apenas se você já tiver instalado os drivers cliente myGaze, que já não estão disponíveis para download. Se você não tem esses drivers instalados, você deve selecionar o uso 'posição do mouse' em vez, e usar Optikey em combinação com a aplicação myGaze EyeMousePlay para mover o cursor.</value>
-  </data>  
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Se o seu rastreador ocular não estiver listado aqui ou você precisar de uma versão de 32 bits do Optikey, clique no link abaixo para obter mais informações.
-Se você deseja continuar com a instalação, o Optikey será controlado pela posição do seu mouse. Isso permite que ele funcione com entradas alternativas, como um mouse da cabeça ou qualquer rastreador ocular que permita controlar a posição do mouse com os olhos.</value></data>
+    <value>O Interaction myGaze Visual é suportado apenas se você já tiver instalado os drivers cliente myGaze, que já não estão disponíveis para download. Se você não tem esses drivers instalados, você deve selecionar o uso 'posição do mouse' em vez, e usar Optikey em combinação com a aplicação myGaze EyeMousePlay para mover o cursor.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Se o seu rastreador ocular não estiver listado aqui ou você precisar de uma versão de 32 bits do Optikey, clique no link abaixo para obter mais informações.
+Se você deseja continuar com a instalação, o Optikey será controlado pela posição do seu mouse. Isso permite que ele funcione com entradas alternativas, como um mouse da cabeça ou qualquer rastreador ocular que permita controlar a posição do mouse com os olhos.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Service não encontrado. Por favor, instale o Tobii software e tente novamente.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service não se encontra em execução. Por favor, inicie o Tobii service e tente novamente.</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Filtro Kalman:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Inverter direção de scroll:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Bloquear tecla de limite para preservar o ponto escolhido, janela ou região:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>Após escolher um ponto do ecrã, traga qualquer janela daí para a frente:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Pare de fazer scroll ao escolher para onde mover, clique ou arraste o rato:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Mostrar janela de sobreposição (necessário reiniciar):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Cor dos limites de scroll desenhados na sobreposição:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Cor das guias da zona morta desenhadas na sobreposição:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Ciclo através destes incrementos de scroll:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>Velocidade base 'lento' (em cps ou "cliques" por segundo):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>Velocidade base 'médio' (em cps ou "cliques" por segundo):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>Velocidade base 'rápido' (em cps ou "cliques" por sengundo):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>Aceleração base 'lenta' (cps por pixel na zona morta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>Aceleração base 'média' (cps por pixel na zona morta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>Aceleração base 'rápida' (cps por pixel na zona morta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>BLOQUEAR PARA AS TECLAS DE SCROLL:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>ALTERNAR SCROLL</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>LIMITES SEGUINTES</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>INCREMENTO SEGUINTE</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>MODO SEGUINTE</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>VELOCIDADE SEGUINTE</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Scroll por {0} unidade da roda: 
+(120 unidades da roda = 1 clique)|Scroll por {0} unidades da roda:
+(120 unidades da roda = 1 clique)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Ecrã no
+ponto</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Ecrã
+centrado</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Janela</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Região da
+janela</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Região
+personalizada</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>Cruzado</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Livre</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Lento</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Médio</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Rápido</value>
+  </data>
 </root>

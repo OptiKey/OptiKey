@@ -838,6 +838,9 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Komputerowe sterowanie i komunikacja</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Inne</value>
   </data>
@@ -1126,12 +1129,6 @@ ROZMIAR</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibracja powiodła się lub została anulowana, ale wszystko działa ponownie.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Service nie może być znaleziony. Zainstaluj Tobii software i spróbuj ponownie.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service nie jest uruchomiony. Uruchom Tobii service i spróbuj ponownie.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1792,9 +1789,6 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Użyj alfabetycznego układu klawiatury</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Filtr Kalmana</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>Uaktywnij Tryb Ręczny</value>
   </data>
@@ -1923,9 +1917,6 @@ Przy kolejnym starcie aplikacji metoda predykcji zostanie zmieniona na NGram.</v
     <value>Wystąpił problem z Presage</value>
   </data>
   <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
-    <value>Folder zawierający pliki dynamicznych klawiatur: </value>
-  </data>
-  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
     <value>Folder zawierający pliki wtyczki: </value>
   </data>
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
@@ -1978,39 +1969,47 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
   <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Użyj domyślnego układu klawiatury (domyślnie)</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>łatwa komunikacja</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Pełne sterowanie kursorem</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Komunikacja z symboli</value>
+  </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
     <value>Wymaga to Alienware 17 gier laptopa, za pomocą wbudowanego w Tobii oczu trackera.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Wymaga ITU Gaze Tracking biblioteka, która jest szkieletem dla open source śledzenia za pomocą off-the-shelf składników, takich jak kamery internetowe i kamer wideo oka.</value>
+    <value>Wymaga ITU Gaze Tracking biblioteka, która jest szkieletem dla open source śledzenia za pomocą off-the-shelf składników, takich jak kamery internetowe i kamer wideo oka.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Jeśli masz zamiar użyć Optikey okiem trackera Irisbond Duo następnie upewnij się, że masz zainstalowane sterowniki Irisbond Duo. Można je pobrać z https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+    <value>Jeśli masz zamiar użyć Optikey okiem trackera Irisbond Duo następnie upewnij się, że masz zainstalowane sterowniki Irisbond Duo. Można je pobrać z https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>W tym trybie będzie Optikey użyć kursora myszy jako wejście zamiast mówić bezpośrednio do śledzenia oczu. Może chcesz to jeśli testujesz Optikey się, lub jeśli chcesz używać go z alternatywnego urządzenia wejściowego, takich jak mysz głowy ani nie tracker oko w tej liście. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Opcja ta będzie współpracować z dowolnym Tobii Gaming eye tracker (4c, EyeX, Alienware, Steelseries, etc)</value>
+    <value>W tym trybie będzie Optikey użyć kursora myszy jako wejście zamiast mówić bezpośrednio do śledzenia oczu. Może chcesz to jeśli testujesz Optikey się, lub jeśli chcesz używać go z alternatywnego urządzenia wejściowego, takich jak mysz głowy ani nie tracker oko w tej liście. </value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Aby korzystać Optikey z Tobii wspomagających eye tracker, albo trzeba nową wersję Tobii Windows Control lub silnika Tobii Eye Tracking. Jeśli musisz używać starej wersji aplikacji Tobii Windows Control (Tobii Gaze Interaction Software), a następnie trzeba będzie kontrolować Optikey użyciu pozycji myszy zamiast. </value>
+    <value>Aby korzystać Optikey z Tobii wspomagających eye tracker, albo trzeba nową wersję Tobii Windows Control lub silnika Tobii Eye Tracking. Jeśli musisz używać starej wersji aplikacji Tobii Windows Control (Tobii Gaze Interaction Software), a następnie trzeba będzie kontrolować Optikey użyciu pozycji myszy zamiast. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Opcja ta będzie współpracować z dowolnym Tobii Gaming eye tracker (4c, EyeX, Alienware, Steelseries, etc)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Visual Interaction myGaze jest obsługiwana tylko wtedy, gdy masz już zainstalowane sterowniki klienckie myGaze, które nie są już dostępne do pobrania. Jeśli nie masz zainstalowane te sterowniki, należy wybrać pozycję myszy użyć „” zamiast, i używać Optikey w połączeniu z aplikacją myGaze EyeMousePlay aby przesunąć kursor.</value>
+    <value>Visual Interaction myGaze jest obsługiwana tylko wtedy, gdy masz już zainstalowane sterowniki klienckie myGaze, które nie są już dostępne do pobrania. Jeśli nie masz zainstalowane te sterowniki, należy wybrać pozycję myszy użyć „” zamiast, i używać Optikey w połączeniu z aplikacją myGaze EyeMousePlay aby przesunąć kursor.</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Komputerowe sterowanie i komunikacja</value>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Jeśli śledzenie wzroku nie jest tutaj wymienione lub potrzebujesz 32 -bitowej wersji Optikey, kliknij poniższy link, aby uzyskać więcej informacji.
+Jeśli chcesz kontynuować instalację, Optikey będzie kontrolowany przez twoją pozycję myszy. Pozwala to na działanie z alternatywnymi wejściami, takimi jak mysz głowica lub dowolny śledzenie wzroku, który pozwala kontrolować pozycję myszy oczami.</value>
   </data>
-  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>łatwa komunikacja</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Service nie może być znaleziony. Zainstaluj Tobii software i spróbuj ponownie.</value>
   </data>
-  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Pełne sterowanie kursorem</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service nie jest uruchomiony. Uruchom Tobii service i spróbuj ponownie.</value>
   </data>
-  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Komunikacja z symboli</value>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Filtr Kalmana</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Jeśli śledzenie wzroku nie jest tutaj wymienione lub potrzebujesz 32 -bitowej wersji Optikey, kliknij poniższy link, aby uzyskać więcej informacji.
-Jeśli chcesz kontynuować instalację, Optikey będzie kontrolowany przez twoją pozycję myszy. Pozwala to na działanie z alternatywnymi wejściami, takimi jak mysz głowica lub dowolny śledzenie wzroku, który pozwala kontrolować pozycję myszy oczami.</value></data>
 </root>

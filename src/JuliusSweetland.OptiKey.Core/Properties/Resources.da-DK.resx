@@ -819,6 +819,9 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Computer-sikring og kommunikation</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Andet</value>
   </data>
@@ -1093,12 +1096,6 @@ POSITION</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibrering færdig, eller muligvis afbrudt, men alt virker igen!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Service blev ikke fundet. Installer venligst Tobii software  og forsøg igen.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service kører ikke. Start venligst Tobii service n og forsøg igen.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tone 1</value>
@@ -1657,11 +1654,11 @@ Engelsk
 Türkçe
 (Türkiye)</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Kalibrering succesfuld!</value>
-  </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibrering mislykkedes!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibrering succesfuld!</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>BOGSTAVER 2</value>
@@ -1681,39 +1678,44 @@ Türkçe
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>SPROG</value>
   </data>
-  <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>Dette kræver en Alienware 17 gaming laptop, ved hjælp af den indbyggede Tobii øje tracker.</value>
-  </data>
-  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Dette kræver ITU Gaze Tracking Bibliotek, som er en ramme for open source eyetracking hjælp off-the-shelf komponenter, såsom webcams og videokameraer.</value>
-  </data>
-  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Hvis du planlægger at bruge Optikey med Irisbond Duo øje tracker så skal du sørge for at du har de Irisbond Duo drivere installeret. Disse kan downloades fra https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
-  </data>
-  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>I denne tilstand vil Optikey bruge musemarkøren som input i stedet for at tale direkte til et øje tracker. Du vil måske dette, hvis du tester Optikey ud, eller hvis du ønsker at bruge den med en alternativ indgang enhed, såsom et hoved mus eller en hvilken som helst øje tracker ikke på denne liste. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Denne mulighed vil arbejde med alle Tobii Gaming øje tracker (4C, EyeX, Alienware, Steelseries, etc.)</value>
-  </data>
-  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>For at bruge Optikey med et hjælpemiddel øje tracker, du enten har brug for den nye version af Windows Control eller Tobii Eye Tracking motor. Hvis du skal bruge den gamle version af Tobii Windows Control ansøgning (Tobii Gaze Interaction Software), så bliver du nødt til at kontrollere Optikey ved hjælp af musen position i stedet. </value>
-  </data>
-  <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Visual Interaction myGaze understøttes kun, hvis du allerede har installeret de myGaze klient drivere, som ikke længere er tilgængelig for download. Hvis du ikke har disse drivere installeret, skal du vælge anvendelse 'museposition' i stedet, og bruge Optikey i kombination med myGaze EyeMousePlay ansøgning for at flytte markøren.</value>
-  </data>  
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Computer-sikring og kommunikation</value>
-  </data>
   <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>Nem kommunikation</value>
+    <value>Nem kommunikation</value>
   </data>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Fuld Cursor Kontrol</value>
+    <value>Fuld Cursor Kontrol</value>
   </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Kommunikation med symboler</value>
+    <value>Kommunikation med symboler</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Hvis din Eye Tracker ikke er anført her, eller du har brug for en 32 bit version af Optikey, skal du klikke på linket herunder for mere information.
-Hvis du vil fortsætte med installationen, kontrolleres Optikey af din museposition. Dette giver det mulighed for at arbejde med alternative input såsom en hovedmus eller enhver øjenspor, der giver dig mulighed for at kontrollere musepositionen med dine øjne.</value></data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Dette kræver en Alienware 17 gaming laptop, ved hjælp af den indbyggede Tobii øje tracker.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>Dette kræver ITU Gaze Tracking Bibliotek, som er en ramme for open source eyetracking hjælp off-the-shelf komponenter, såsom webcams og videokameraer.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>Hvis du planlægger at bruge Optikey med Irisbond Duo øje tracker så skal du sørge for at du har de Irisbond Duo drivere installeret. Disse kan downloades fra https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>I denne tilstand vil Optikey bruge musemarkøren som input i stedet for at tale direkte til et øje tracker. Du vil måske dette, hvis du tester Optikey ud, eller hvis du ønsker at bruge den med en alternativ indgang enhed, såsom et hoved mus eller en hvilken som helst øje tracker ikke på denne liste. </value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>For at bruge Optikey med et hjælpemiddel øje tracker, du enten har brug for den nye version af Windows Control eller Tobii Eye Tracking motor. Hvis du skal bruge den gamle version af Tobii Windows Control ansøgning (Tobii Gaze Interaction Software), så bliver du nødt til at kontrollere Optikey ved hjælp af musen position i stedet. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Denne mulighed vil arbejde med alle Tobii Gaming øje tracker (4C, EyeX, Alienware, Steelseries, etc.)</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>Visual Interaction myGaze understøttes kun, hvis du allerede har installeret de myGaze klient drivere, som ikke længere er tilgængelig for download. Hvis du ikke har disse drivere installeret, skal du vælge anvendelse 'museposition' i stedet, og bruge Optikey i kombination med myGaze EyeMousePlay ansøgning for at flytte markøren.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Hvis din Eye Tracker ikke er anført her, eller du har brug for en 32 bit version af Optikey, skal du klikke på linket herunder for mere information.
+Hvis du vil fortsætte med installationen, kontrolleres Optikey af din museposition. Dette giver det mulighed for at arbejde med alternative input såsom en hovedmus eller enhver øjenspor, der giver dig mulighed for at kontrollere musepositionen med dine øjne.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Service blev ikke fundet. Installer venligst Tobii software  og forsøg igen.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service kører ikke. Start venligst Tobii service n og forsøg igen.</value>
+  </data>
 </root>
