@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -2697,6 +2697,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Inner Colour.
+        /// </summary>
+        public static string GAZE_INDICATOR_INNER_COLOUR {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_INNER_COLOUR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Opacity.
+        /// </summary>
+        public static string GAZE_INDICATOR_OPACITY {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_OPACITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Outer Colour.
+        /// </summary>
+        public static string GAZE_INDICATOR_OUTER_COLOUR {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_OUTER_COLOUR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gaze Indicator Size.
         /// </summary>
         public static string GAZE_INDICATOR_SIZE {
@@ -2711,6 +2738,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string GAZE_INDICATOR_STYLE {
             get {
                 return ResourceManager.GetString("GAZE_INDICATOR_STYLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Thickness.
+        /// </summary>
+        public static string GAZE_INDICATOR_THICKNESS {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_THICKNESS", resourceCulture);
             }
         }
         

@@ -838,6 +838,9 @@ LK</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>コンピュータ制御・通信</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>その他</value>
   </data>
@@ -1128,12 +1131,6 @@ SCR</value>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>キャリブレーション完了（または失敗）。
 OPtiKey再起動完了</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Softwareが見つかりません。もう一度インストールしなおしてください。</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Serviceは動いていません。もう一度始めてください。</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1807,9 +1804,6 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>アルファベットキーボードレイアウトを使う</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Kalmanフィルター:</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>マニュアルモードの切り替え</value>
   </data>
@@ -1994,39 +1988,47 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
   <data name="USE_DEFAULT_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>デフォルト キーボードレイアウトを使う</value>
   </data>
-  <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>これは、内蔵のトビーのアイトラッカーを使用して、Alienwareの17ゲームのノートパソコンが必要です。</value>
-  </data>
-  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>これは、ウェブカメラやビデオカメラなどの既製コンポーネントを用いて、オープンソースのアイトラッキングのためのフレームワークであるITU視線トラッキングライブラリを必要とします。</value>
-  </data>
-  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>あなたはIrisbondデュオアイトラッカーでOptikey使用する予定の場合、あなたはIrisbondデュオドライバがインストールされていることを確認してください。これらは、https://www.irisbond.com/en/producto/irisbond-duo-2からダウンロードすることができます。</value>
-  </data>
-  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>このモードでは、Optikeyはアイトラッカーに直接話すのではなく、入力として、マウスカーソルを使用します。あなたがOptikeyをテストしている場合は、これをお勧めします、またはあなたは、このようなヘッドマウスなどの代替入力デバイス、または任意のアイトラッカーではない、このリストには、それを使用したい場合。</value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>このオプションは、任意のトビーゲームアイトラッカー（4C、EyeX、エイリアンウェア、SteelSeriesの、など）で動作します</value>
-  </data>
-  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>支援アイトラッカーでOptikey使用するには、次のいずれかは、Windows Control、または Tobii アイトラッキングエンジンの新しいバージョンが必要です。あなたは（Tobii Gaze Interaction Software）、Tobii Windows Control アプリケーションの古いバージョンを使用する必要がある場合は、代わりにマウスの位置を使用してOptikey制御する必要があります。</value>
-  </data>
-  <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>あなたは既に、もはやダウンロードできますmyGazeクライアントドライバをインストールした場合のVisual対話myGazeのみがサポートされています。あなたはこれらのドライバがインストールされていない場合は、代わりに使用「マウスの位置」を選択して、カーソルを移動しmyGaze EyeMousePlayアプリケーションとの組み合わせでOptikey使用する必要があります。</value>
-  </data>  
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>コンピュータ制御・通信</value>
-  </data>
   <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>簡単にコミュニケーション</value>
+    <value>簡単にコミュニケーション</value>
   </data>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>フル・カーソル制御</value>
+    <value>フル・カーソル制御</value>
   </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>シンボルを用いた通信</value>
+    <value>シンボルを用いた通信</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> アイトラッカーがここにリストされていない場合、または32ビットバージョンのOptikeyが必要な場合は、詳細については以下のリンクをクリックしてください。
-インストールを続けたい場合は、Optikeyがマウスの位置によって制御されます。これにより、ヘッドマウスなどの代替入力、または目でマウスの位置を制御できるアイトラッカーで動作できます。</value></data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>これは、内蔵のトビーのアイトラッカーを使用して、Alienwareの17ゲームのノートパソコンが必要です。</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>これは、ウェブカメラやビデオカメラなどの既製コンポーネントを用いて、オープンソースのアイトラッキングのためのフレームワークであるITU視線トラッキングライブラリを必要とします。</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>あなたはIrisbondデュオアイトラッカーでOptikey使用する予定の場合、あなたはIrisbondデュオドライバがインストールされていることを確認してください。これらは、https://www.irisbond.com/en/producto/irisbond-duo-2からダウンロードすることができます。</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>このモードでは、Optikeyはアイトラッカーに直接話すのではなく、入力として、マウスカーソルを使用します。あなたがOptikeyをテストしている場合は、これをお勧めします、またはあなたは、このようなヘッドマウスなどの代替入力デバイス、または任意のアイトラッカーではない、このリストには、それを使用したい場合。</value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>支援アイトラッカーでOptikey使用するには、次のいずれかは、Windows Control、または Tobii アイトラッキングエンジンの新しいバージョンが必要です。あなたは（Tobii Gaze Interaction Software）、Tobii Windows Control アプリケーションの古いバージョンを使用する必要がある場合は、代わりにマウスの位置を使用してOptikey制御する必要があります。</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>このオプションは、任意のトビーゲームアイトラッカー（4C、EyeX、エイリアンウェア、SteelSeriesの、など）で動作します</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>あなたは既に、もはやダウンロードできますmyGazeクライアントドライバをインストールした場合のVisual対話myGazeのみがサポートされています。あなたはこれらのドライバがインストールされていない場合は、代わりに使用「マウスの位置」を選択して、カーソルを移動しmyGaze EyeMousePlayアプリケーションとの組み合わせでOptikey使用する必要があります。</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> アイトラッカーがここにリストされていない場合、または32ビットバージョンのOptikeyが必要な場合は、詳細については以下のリンクをクリックしてください。
+インストールを続けたい場合は、Optikeyがマウスの位置によって制御されます。これにより、ヘッドマウスなどの代替入力、または目でマウスの位置を制御できるアイトラッカーで動作できます。</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Softwareが見つかりません。もう一度インストールしなおしてください。</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Serviceは動いていません。もう一度始めてください。</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Kalmanフィルター:</value>
+  </data>
 </root>

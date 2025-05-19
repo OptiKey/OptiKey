@@ -840,6 +840,9 @@ LK (ہندسوں کو تالا لگانے کی کلید)</value>
   <data name="OK" xml:space="preserve">
     <value>ٹھیک ہے</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>کمپیوٹر کنٹرول اور مواصلاتی</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>دیگر</value>
   </data>
@@ -1129,12 +1132,6 @@ LK (سکرول کو تالا لگانے کی کلید)</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>پیمانہ بندی کا عمَل  مکمل، یا ممکنہ طور پر منسوخ کر دیا، لیکن سب کچھ دوبارہ کام کر رہا ہے!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>بینائی کا انجن Tobii service نہیں مل سکا. براہ مہربانی بینائی کا انجن Tobii software نصب کریں اور دوبارہ کوشش کریں.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>بینائی کا انجن Tobii service نہیں چل رہا ہے. براہ مہربانی بینائی کا انجن service شروع کریں اور دوبارہ کوشش کریں.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>ٹوبی Tobii کمپیوٹری آنکھ چلو</value>
@@ -1826,9 +1823,6 @@ Português
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>حروف تہجی کی تختی کی کلیدی  ترتیب استعمال کریں</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>کلمان فلٹرKalman Filter:</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value> دستی طریقہ اختیار کریں/Toggle</value>
   </data>
@@ -2050,38 +2044,17 @@ Português
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
     <value> "سکرول کرنے کے لئے دیکھنے" کا کوئی اور طریقہ اختیار کریں</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>سکرول کرنے کا رخ مخایف سمت کر دیں</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value> حدود کی کلید کو مقفل کر دیں تا کہ منتخب کیا ہوا نقطہ، دریجہ window یا رقبہ region محفوظ کیا جا سکے:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value> سکرول کرنے سے پہلے کرسر کو سکرین کے وسط میں مردہ پٹی کے مرکزمیں کر دیں:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value> دریچے window کے اندر سکرول کرنے سے پہلے اسے سامنے لے کے آئیں:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>سکرین کا نقطہ چننے کے بعد وہاں موجود دریچے window کو سامنے لے کر آئیں:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value> سکرول کرنا بند کر دیں جب یہ چننا ہو کہ کہاں جانا ہے یا کلک کرنا ہے یا ماؤس کو گھسیٹنا ہے:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>بعد میں خود کار طرز پہ دوبارہ سکرول کرنا شروع کر دیں:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>کلیدی تختیاں بدلتے وقت  سکرول کرنا بند کر دیں:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>سکرین پہ  معلق دریچہ window ، جس میں ہدایات درج ہوں، دکھائیں (پھر سے آغاز کرنا ہو گا):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>سکرول کی حدوں کا رنگ جنہیں معلق دریچے window پر کھہینچا گیا ہے:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value> مردہ پٹی کی حدود جنہیں معلق دریچے window پر کھہینچا گیا ہے</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>سکرول کی حدوں کی چوڑائی جنہیں معلق دریچے window  پر کھہینچا گیا ہے</value>
@@ -2095,93 +2068,9 @@ Português
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
     <value>عمودی مردہ پٹی (پکسل میں)</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value> سکرول کے ان اضافوں سے گزرتے جائیں:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>'مدہم' اساسی رفتار (کلک فی سیکنڈ میں):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>'درمیانی' اساسی رفتار (کلک فی سیکنڈ میں):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>' تیز' اساسی رفتار (کلک فی سیکنڈ میں):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>'مدہم'  اسراع/ سرعت (مردہ پٹی سے 'کلک فی سیکنڈ فی پکسل' میں):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>'درمیانی' اسراع/ سرعت (مردہ پٹی سے 'کلک فی سیکنڈ فی پکسل' میں):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>'تیز' اسراع/ سرعت (مردہ پٹی سے 'کلک فی سیکنڈ فی پکسل' میں):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value> سکرول کی کلیدوں کودیکھیں:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>سکرول کرنا فعال/غیر فعال کریں</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value> اگلی حدود </value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value> اگلا اضافہ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value> اگلا انداز MODE</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value> اگلی رفتار</value>
-  </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value> دیکھیں
 سکرول کرنا</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>اتنا سکرول کریں {0} پہیے کی اکائی:
-(1 کلک = 120 پہئیے کی اکائیاں)|اتنا سکرول کریں {0}  پہیے کی اکائیاں
-(120 پہیے کی اکائیاں = 1 کلک)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>سکرین  اس پر
- نقطہ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value> سکرین
-درمیان میں</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>دریجہ window</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>Window دریجہ 
- رقبہ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>  دستور
- رقبہ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>عمودی</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>افقی</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value> صلیب</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value> آزاد</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value> آہستہ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>درمیانہ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value> تیز </value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
     <value>فرانسیسی (کینیڈا) / (Française (Canada</value>
@@ -2333,39 +2222,152 @@ Française
 فارسی
  (ایران)</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>آرام سے مواصلات</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>مکمل کرسر کنٹرول</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>نشان کے ساتھ مواصلات</value>
+  </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
     <value>یہ بلٹ میں Tobii آنکھ ٹریکر کا استعمال کرتے ہوئے، ایک Alienware کے 17 گیمنگ لیپ ٹاپ کی ضرورت ہے.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>یہ اوپن سورس آنکھ جیسے ویب کیمز اور videocameras بند شیلف کے اجزاء کا استعمال کرتے ہوئے سے باخبر رہنے کے کے لئے ایک فریم ورک ہے جو آئٹییو Gaze کی ٹریکنگ لائبریری، کی ضرورت ہے.</value>
+    <value>یہ اوپن سورس آنکھ جیسے ویب کیمز اور videocameras بند شیلف کے اجزاء کا استعمال کرتے ہوئے سے باخبر رہنے کے کے لئے ایک فریم ورک ہے جو آئٹییو Gaze کی ٹریکنگ لائبریری، کی ضرورت ہے.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>آپ Irisbond جوڑی آنکھ ٹریکر کے ساتھ Optikey استعمال کرنے کا ارادہ ہو تو براہ مہربانی آپ Irisbond جوڑی ڈرائیوروں نصب ہے براہ کرم یقینی بنائیں. یہ https://www.irisbond.com/en/producto/irisbond-duo-2 سے ڈاؤن لوڈ کیا جا سکتا ہے.</value>
+    <value>آپ Irisbond جوڑی آنکھ ٹریکر کے ساتھ Optikey استعمال کرنے کا ارادہ ہو تو براہ مہربانی آپ Irisbond جوڑی ڈرائیوروں نصب ہے براہ کرم یقینی بنائیں. یہ https://www.irisbond.com/en/producto/irisbond-duo-2 سے ڈاؤن لوڈ کیا جا سکتا ہے.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>اس موڈ میں، Optikey ایک آنکھ ٹریکر سے براہ راست بات کرنے کی بجائے ان پٹ کے طور پر ماؤس کرسر کا استعمال کریں گے. تم یہ چاہتے ہو سکتا ہے آپ Optikey باہر کی جانچ کر رہے ہیں، یا اگر آپ اس طرح کے طور پر ایک سر ماؤس یا کسی بھی آنکھ کی اس فہرست میں نہیں ٹریکر ایک متبادل ان پٹ ڈیوائس کے ساتھ اس کا استعمال کرنا چاہتے ہیں.</value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>یہ آپشن کسی بھی Tobii گیمنگ آنکھ ٹریکر (4C، EyeX، Alienware کے SteelSeries ہے، وغیرہ) کے ساتھ کام کریں گے</value>
+    <value>اس موڈ میں، Optikey ایک آنکھ ٹریکر سے براہ راست بات کرنے کی بجائے ان پٹ کے طور پر ماؤس کرسر کا استعمال کریں گے. تم یہ چاہتے ہو سکتا ہے آپ Optikey باہر کی جانچ کر رہے ہیں، یا اگر آپ اس طرح کے طور پر ایک سر ماؤس یا کسی بھی آنکھ کی اس فہرست میں نہیں ٹریکر ایک متبادل ان پٹ ڈیوائس کے ساتھ اس کا استعمال کرنا چاہتے ہیں.</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>ایک معاون آنکھ ٹریکر کے ساتھ Optikey کو استعمال کرنے کے لئے، آپ کو یا تو Tobii Windows Control کے کنٹرول، یا Tobii آنکھ سے باخبر رکھنے کے انجن کا نیا ورژن کی ضرورت ہے. آپ Tobii ونڈوز کے Tobii Windows Control کی درخواست (Tobii Gaze Interaction Software) کے پرانے ورژن استعمال کرنے کے لئے کی ضرورت ہے تو، پھر آپ کو اس کی بجائے ماؤس پوزیشن کو استعمال کرتے ہوئے Optikey کو کنٹرول </value>
+    <value>ایک معاون آنکھ ٹریکر کے ساتھ Optikey کو استعمال کرنے کے لئے، آپ کو یا تو Tobii Windows Control کے کنٹرول، یا Tobii آنکھ سے باخبر رکھنے کے انجن کا نیا ورژن کی ضرورت ہے. آپ Tobii ونڈوز کے Tobii Windows Control کی درخواست (Tobii Gaze Interaction Software) کے پرانے ورژن استعمال کرنے کے لئے کی ضرورت ہے تو، پھر آپ کو اس کی بجائے ماؤس پوزیشن کو استعمال کرتے ہوئے Optikey کو کنٹرول </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>یہ آپشن کسی بھی Tobii گیمنگ آنکھ ٹریکر (4C، EyeX، Alienware کے SteelSeries ہے، وغیرہ) کے ساتھ کام کریں گے</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>آپ نے پہلے ہی myGaze کلائنٹ ڈرائیوروں، جس میں اب کوئی ڈاؤن لوڈ کے لئے دستیاب ہیں نصب ہے تو بصری تعامل myGaze صرف حمایت کی ہے. اگر آپ ان کے ڈرائیوروں نصب نہیں ہے تو، آپ کو استعمال کے 'ماؤس پوزیشن' کو منتخب کرنا چاہئے بجائے، اور کرسر کو منتقل کرنے myGaze EyeMousePlay درخواست کے ساتھ مجموعہ میں Optikey استعمال کرتے ہیں.</value>
+    <value>آپ نے پہلے ہی myGaze کلائنٹ ڈرائیوروں، جس میں اب کوئی ڈاؤن لوڈ کے لئے دستیاب ہیں نصب ہے تو بصری تعامل myGaze صرف حمایت کی ہے. اگر آپ ان کے ڈرائیوروں نصب نہیں ہے تو، آپ کو استعمال کے 'ماؤس پوزیشن' کو منتخب کرنا چاہئے بجائے، اور کرسر کو منتقل کرنے myGaze EyeMousePlay درخواست کے ساتھ مجموعہ میں Optikey استعمال کرتے ہیں.</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>کمپیوٹر کنٹرول اور مواصلاتی</value>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> اگر آپ کے آئی ٹریکر کو یہاں درج نہیں کیا گیا ہے ، یا آپ کو اوپٹکی کے 32 بٹ ورژن کی ضرورت ہے تو ، مزید معلومات کے لئے نیچے دیئے گئے لنک پر کلک کریں۔
+اگر آپ تنصیب کے ساتھ جاری رکھنا چاہتے ہیں تو ، آپٹکی کو آپ کے ماؤس کی پوزیشن کے ذریعہ کنٹرول کیا جائے گا۔ اس سے یہ متبادل آدانوں جیسے ہیڈ ماؤس ، یا کوئی آئی ٹریکر کے ساتھ کام کرنے کی اجازت دیتا ہے جو آپ کو اپنی آنکھوں سے ماؤس کی پوزیشن پر قابو پانے کی اجازت دیتا ہے۔</value>
   </data>
-  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>آرام سے مواصلات</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>بینائی کا انجن Tobii service نہیں مل سکا. براہ مہربانی بینائی کا انجن Tobii software نصب کریں اور دوبارہ کوشش کریں.</value>
   </data>
-  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>مکمل کرسر کنٹرول</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>بینائی کا انجن Tobii service نہیں چل رہا ہے. براہ مہربانی بینائی کا انجن service شروع کریں اور دوبارہ کوشش کریں.</value>
   </data>
-  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>نشان کے ساتھ مواصلات</value>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>کلمان فلٹرKalman Filter:</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> اگر آپ کے آئی ٹریکر کو یہاں درج نہیں کیا گیا ہے ، یا آپ کو اوپٹکی کے 32 بٹ ورژن کی ضرورت ہے تو ، مزید معلومات کے لئے نیچے دیئے گئے لنک پر کلک کریں۔
-اگر آپ تنصیب کے ساتھ جاری رکھنا چاہتے ہیں تو ، آپٹکی کو آپ کے ماؤس کی پوزیشن کے ذریعہ کنٹرول کیا جائے گا۔ اس سے یہ متبادل آدانوں جیسے ہیڈ ماؤس ، یا کوئی آئی ٹریکر کے ساتھ کام کرنے کی اجازت دیتا ہے جو آپ کو اپنی آنکھوں سے ماؤس کی پوزیشن پر قابو پانے کی اجازت دیتا ہے۔</value></data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>سکرول کرنے کا رخ مخایف سمت کر دیں</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value> حدود کی کلید کو مقفل کر دیں تا کہ منتخب کیا ہوا نقطہ، دریجہ window یا رقبہ region محفوظ کیا جا سکے:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>سکرین کا نقطہ چننے کے بعد وہاں موجود دریچے window کو سامنے لے کر آئیں:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value> سکرول کرنا بند کر دیں جب یہ چننا ہو کہ کہاں جانا ہے یا کلک کرنا ہے یا ماؤس کو گھسیٹنا ہے:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>سکرین پہ  معلق دریچہ window ، جس میں ہدایات درج ہوں، دکھائیں (پھر سے آغاز کرنا ہو گا):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>سکرول کی حدوں کا رنگ جنہیں معلق دریچے window پر کھہینچا گیا ہے:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value> مردہ پٹی کی حدود جنہیں معلق دریچے window پر کھہینچا گیا ہے</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value> سکرول کے ان اضافوں سے گزرتے جائیں:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>'مدہم' اساسی رفتار (کلک فی سیکنڈ میں):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>'درمیانی' اساسی رفتار (کلک فی سیکنڈ میں):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>' تیز' اساسی رفتار (کلک فی سیکنڈ میں):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>'مدہم'  اسراع/ سرعت (مردہ پٹی سے 'کلک فی سیکنڈ فی پکسل' میں):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>'درمیانی' اسراع/ سرعت (مردہ پٹی سے 'کلک فی سیکنڈ فی پکسل' میں):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>'تیز' اسراع/ سرعت (مردہ پٹی سے 'کلک فی سیکنڈ فی پکسل' میں):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value> سکرول کی کلیدوں کودیکھیں:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>سکرول کرنا فعال/غیر فعال کریں</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value> اگلی حدود </value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value> اگلا اضافہ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value> اگلا انداز MODE</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value> اگلی رفتار</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>اتنا سکرول کریں {0} پہیے کی اکائی:
+(1 کلک = 120 پہئیے کی اکائیاں)|اتنا سکرول کریں {0}  پہیے کی اکائیاں
+(120 پہیے کی اکائیاں = 1 کلک)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>سکرین  اس پر
+ نقطہ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value> سکرین
+درمیان میں</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>دریجہ window</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Window دریجہ 
+ رقبہ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>  دستور
+ رقبہ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>عمودی</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>افقی</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value> صلیب</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value> آزاد</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value> آہستہ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>درمیانہ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value> تیز </value>
+  </data>
 </root>

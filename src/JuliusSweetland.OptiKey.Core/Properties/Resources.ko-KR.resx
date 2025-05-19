@@ -139,8 +139,8 @@
   <data name="ADJUST_BY" xml:space="preserve">
     <value>{0} pixel씩 조정하기|{0}pixel씩 조정하기</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>글자</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>글자 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -833,6 +833,9 @@ LK</value>
   <data name="OK" xml:space="preserve">
     <value>확인</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>컴퓨터 제어 및 통신</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>기타</value>
   </data>
@@ -1118,12 +1121,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>측정이 완료되었거나 취소되었을 수도 있지만, 모든 것이 다시 동작합니다!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Service을 찾을 수 없습니다. Tobii software 을 설치하시고 다시 시도해 주세요.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service 이 실행하고 있지 않습니다. Tobii service 을 실행하시고 다시 시도해 주세요.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1466,9 +1463,6 @@ Español
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>한번 조정하는데 드는 pixel 수</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>대화 키보드 글자</value>
-  </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>대화 키보드 숫자 &amp; 특수문자</value>
   </data>
@@ -1787,9 +1781,6 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>QWERTY 자판 배열을 알파벳 자판 배열로 바꾸기 :</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>칼만 필터:</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>수동 모드 전환</value>
   </data>
@@ -1926,17 +1917,17 @@ Optikey는 계속 실행 하려고 하지만 곧 중단 될 수 있습니다.
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
     <value>Tobii PCEye Plus</value>
   </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>글자 2</value>
+  </data>
   <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
     <value>모든 설정들이 취소됩니다. 계속하시겠습니까?</value>
   </data>
   <data name="SETTINGS_CHANGED" xml:space="preserve">
     <value>설정 취소</value>
   </data>
-  <data name="ALPHA_1" xml:space="preserve">
-    <value>글자 1</value>
-  </data>
-  <data name="ALPHA_2" xml:space="preserve">
-    <value>글자 2</value>
+  <data name="ALPHA" xml:space="preserve">
+    <value>글자</value>
   </data>
   <data name="LANGUAGE_AND_VOICE" xml:space="preserve">
     <value>언어</value>
@@ -1947,39 +1938,50 @@ Optikey는 계속 실행 하려고 하지만 곧 중단 될 수 있습니다.
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>언어</value>
   </data>
-  <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>이 내장 된 Tobii 눈 추적기를 사용하여, 에이리언웨어 (17) 게이밍 노트북이 필요합니다.</value>
-  </data>
-  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>여기에는 웹캠과 비디오 카메라와 같은 기성 구성 요소를 사용하여 추적 오픈 소스 눈을위한 프레임 워크 인 ITU 시선 추적 라이브러리가 필요합니다.</value>
-  </data>
-  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>당신이 Irisbond 듀오 눈 추적기와 Optikey 사용하려면 다음이 설치 Irisbond 듀오 드라이버가 있는지 확인하십시오. 이들은 https://www.irisbond.com/en/producto/irisbond-duo-2에서 다운로드 할 수 있습니다.</value>
-  </data>
-  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>이 모드에서, Optikey는 눈 추적기에 직접 말하는 대신 입력으로 마우스 커서를 사용합니다. 당신은 당신이 Optikey을 테스트하는 경우이 원하는, 또는 수 당신은 머리 마우스 또는이 목록에없는 어떤 눈 추적 장치 같은 대체 입력 장치와 함께 사용하려는 경우. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>어떤 Tobii 게임 눈 추적기 (4C, EyeX, 에일리언웨어 (Alienware), SteelSeries의 등)와 함께 작동합니다이 옵션</value>
-  </data>
-  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Tobii 보조 안구 추적기와 Optikey 사용하려면,  Tobii Windows Control  윈도우 제어, 또는 Tobii 눈 추적 엔진의 새 버전이 필요합니다. 당신이 (Tobii Gaze Interaction Software) Tobii 윈도우 제어 응용 프로그램의 이전 버전을 사용해야하는 경우, 당신은 대신 마우스 위치를 사용하여 Optikey 제어해야합니다. </value>
-  </data>
-  <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>이미 더 이상 다운로드 할 수있는 myGaze 클라이언트 드라이버를 설치 한 경우 시각적 상호 작용 myGaze에만 지원됩니다. 당신이이 드라이버가 설치되어 있지 않은 경우, 당신은 대신 사용 '마우스 위치'를 선택하고 커서를 이동 myGaze EyeMousePlay 응용 프로그램과 함께 Optikey 사용해야합니다.</value>
-  </data>  
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>컴퓨터 제어 및 통신</value>
-  </data>
   <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>간편한 통신</value>
+    <value>간편한 통신</value>
   </data>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>전체 커서 제어</value>
+    <value>전체 커서 제어</value>
   </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>기호와의 통신</value>
-  </data>  
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> 눈 추적기가 여기에 나열되지 않았거나 32 비트 버전의 Optikey가 필요한 경우 아래 링크를 클릭하여 자세한 내용을보십시오.
-설치를 계속하려면 Optikey는 마우스 위치에 따라 제어됩니다. 이를 통해 헤드 마우스와 같은 대체 입력 또는 눈으로 마우스 위치를 제어 할 수있는 아이 트래커와 함께 작동 할 수 있습니다.</value></data>
+    <value>기호와의 통신</value>
+  </data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>이 내장 된 Tobii 눈 추적기를 사용하여, 에이리언웨어 (17) 게이밍 노트북이 필요합니다.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>여기에는 웹캠과 비디오 카메라와 같은 기성 구성 요소를 사용하여 추적 오픈 소스 눈을위한 프레임 워크 인 ITU 시선 추적 라이브러리가 필요합니다.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>당신이 Irisbond 듀오 눈 추적기와 Optikey 사용하려면 다음이 설치 Irisbond 듀오 드라이버가 있는지 확인하십시오. 이들은 https://www.irisbond.com/en/producto/irisbond-duo-2에서 다운로드 할 수 있습니다.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>이 모드에서, Optikey는 눈 추적기에 직접 말하는 대신 입력으로 마우스 커서를 사용합니다. 당신은 당신이 Optikey을 테스트하는 경우이 원하는, 또는 수 당신은 머리 마우스 또는이 목록에없는 어떤 눈 추적 장치 같은 대체 입력 장치와 함께 사용하려는 경우. </value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>Tobii 보조 안구 추적기와 Optikey 사용하려면,  Tobii Windows Control  윈도우 제어, 또는 Tobii 눈 추적 엔진의 새 버전이 필요합니다. 당신이 (Tobii Gaze Interaction Software) Tobii 윈도우 제어 응용 프로그램의 이전 버전을 사용해야하는 경우, 당신은 대신 마우스 위치를 사용하여 Optikey 제어해야합니다. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>어떤 Tobii 게임 눈 추적기 (4C, EyeX, 에일리언웨어 (Alienware), SteelSeries의 등)와 함께 작동합니다이 옵션</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>이미 더 이상 다운로드 할 수있는 myGaze 클라이언트 드라이버를 설치 한 경우 시각적 상호 작용 myGaze에만 지원됩니다. 당신이이 드라이버가 설치되어 있지 않은 경우, 당신은 대신 사용 '마우스 위치'를 선택하고 커서를 이동 myGaze EyeMousePlay 응용 프로그램과 함께 Optikey 사용해야합니다.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> 눈 추적기가 여기에 나열되지 않았거나 32 비트 버전의 Optikey가 필요한 경우 아래 링크를 클릭하여 자세한 내용을보십시오.
+설치를 계속하려면 Optikey는 마우스 위치에 따라 제어됩니다. 이를 통해 헤드 마우스와 같은 대체 입력 또는 눈으로 마우스 위치를 제어 할 수있는 아이 트래커와 함께 작동 할 수 있습니다.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Service을 찾을 수 없습니다. Tobii software 을 설치하시고 다시 시도해 주세요.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service 이 실행하고 있지 않습니다. Tobii service 을 실행하시고 다시 시도해 주세요.</value>
+  </data>
+  <data name="CONVERSATION_ALPHA" xml:space="preserve">
+    <value>대화 키보드 글자</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>칼만 필터:</value>
+  </data>
 </root>

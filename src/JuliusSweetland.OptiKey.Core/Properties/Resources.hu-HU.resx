@@ -839,8 +839,8 @@ Szimbólumok</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey: Gépelés · Kattintás · Beszéd</value>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Computer Control és kommunikáció</value>
   </data>
   <data name="OTHER" xml:space="preserve">
     <value>Egyéb</value>
@@ -1130,12 +1130,6 @@ POZÍCIÓ</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>A kalibráció elkészült, vagy lehetséges meg lett tagadva, de minden működik újra!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Service nem található. Kérem telepítse az Tobii software -t és próbálja meg újra.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service nem fut. Kérem indítsa el és próbálja meg újra.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1838,9 +1832,6 @@ Slovak
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Betűkiosztású billentyűzet használata</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Kálmán szürő</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>Kapcsoló a manuális módhoz </value>
   </data>
@@ -2059,38 +2050,17 @@ A megjósolt metódus meg lesz változtatva NGram-ra, hogy meggátolja az össze
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
     <value>Használja az alternatív "tekintettel való görgetést" metódust a görgetéshez:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>Fordított görgetési irány</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>Az adott gombok lenyomva tartása a kiválasztott pont, ablak, vagy terület megőrzéséhez:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Mielőtt görgetsz, mozgasd a kurzort a holtsáv közepére</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Mielőtt görgetsz egy ablakban, hozd az előtérbe</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>Miután választasz egy képernyő pontot, húzz oda bámilyen ablakot</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Görgetés leállítása amikor kiválasztja, hogy hova mozogjon, kattintson vagy húzzon az egér:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>Automatikusan folytatja a görgetést:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>Görgetés megállítása bilentyűzet váltáskor</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>Átfedőablak megjelenítése (újraindítás szükséges)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>A görgő határainak színe a rétegen:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>A végpont határainak színe a rétegen:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>A görgő vastagsága a rétegen:</value>
@@ -2104,92 +2074,9 @@ A megjósolt metódus meg lesz változtatva NGram-ra, hogy meggátolja az össze
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
     <value>Függőleges végpont (képpontban)</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>Görgesse át ezeket a görgetési lépéseket:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>Lassú alap sebesség ("kattintás" per másodpercben)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>Közepes alap sebesség ("kattintás" per másodpercben)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>Gyors alap sebesség ("kattintás" per másodpercben)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>Lassú gyorsulás (kattintás per másodpercben / képpont)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>Közepes gyorsulás (kattintás per másodpercben / képpont)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>Gyors gyorsulás (kattintás per másodpercben / képpont)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>Görgető gombok előtérben</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>Görgetés</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>Következő határ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>Következő növekedés</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>Következő mód</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>Következő sebesség</value>
-  </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value>Előtérbe
 Görgető</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Görgessen {0} kerék számot:
-(120 kerék szám = 1 kattintás) Görgessen {0} kerék számot:
-(120 kerék szám = 1 kattintás) </value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>Képernyőn
-Mutatás</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>Középre igazított</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>Ablak</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>Ablak
-Terület</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>Egyedi
-Terület</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>Függőleges</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>Vízszintes</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value>Kereszt</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value>Szabad</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>Lassú</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>Közepes</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>Gyors</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
     <value>Francia (Kanada) / French (Canada)</value>
@@ -2339,39 +2226,154 @@ Szeretné hogy az OptiKey automatikusan a Nazli betűtípust használja?</value>
 Persian
 (Iran)</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Egyszerű közlemény</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Teljes Kurzorvezérlés</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Symbol közleménye</value>
+  </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
     <value>Ez megköveteli egy Alienware 17 játék laptop segítségével a beépített Tobii szemkövetővel.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Ez megköveteli az ITU Gaze Tracking Library, amely keretet nyílt szemmel követés segítségével off-the-shelf alkatrészek, mint például webkamerák és videokamerák.</value>
+    <value>Ez megköveteli az ITU Gaze Tracking Library, amely keretet nyílt szemmel követés segítségével off-the-shelf alkatrészek, mint például webkamerák és videokamerák.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Ha azt tervezi, hogy használja optikey a Irisbond Duo szemkövetővel akkor kérjük, győződjön meg róla, a Irisbond Duo illesztőprogramok telepítése. Ezeket lehet letölteni https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+    <value>Ha azt tervezi, hogy használja optikey a Irisbond Duo szemkövetővel akkor kérjük, győződjön meg róla, a Irisbond Duo illesztőprogramok telepítése. Ezeket lehet letölteni https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>Ebben az üzemmódban Optikey fogja használni a kurzort a beviteli helyett beszél közvetlenül az szemkövetővel. Érdemes ezt, ha tesztelés Optikey ki, vagy ha szeretné használni egy alternatív beviteli eszköz, például egy fej egér vagy szemkövetővel nem szerepel a listában.</value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Ez az opció fog működni minden Tobii Gaming szemkövetővel (4C, EyeX, Alienware, SteelSeries, stb)</value>
+    <value>Ebben az üzemmódban Optikey fogja használni a kurzort a beviteli helyett beszél közvetlenül az szemkövetővel. Érdemes ezt, ha tesztelés Optikey ki, vagy ha szeretné használni egy alternatív beviteli eszköz, például egy fej egér vagy szemkövetővel nem szerepel a listában.</value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Ahhoz, hogy használni Optikey egy segítő szemkövetővel, akkor sem kell az új verzió a Windows Control vagy a Tobii Eye Tracking motort. Ha kell használni a régi verziót a Tobii Windows-vezérlési alkalmazás (beleértve Tobii Gaze Interaction beállítások), akkor meg kell, hogy ellenőrizzék optikey egér segítségével összesen helyett.</value>
+    <value>Ahhoz, hogy használni Optikey egy segítő szemkövetővel, akkor sem kell az új verzió a Windows Control vagy a Tobii Eye Tracking motort. Ha kell használni a régi verziót a Tobii Windows-vezérlési alkalmazás (beleértve Tobii Gaze Interaction beállítások), akkor meg kell, hogy ellenőrizzék optikey egér segítségével összesen helyett.</value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Ez az opció fog működni minden Tobii Gaming szemkövetővel (4C, EyeX, Alienware, SteelSeries, stb)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>A Visual Interaction myGaze csak akkor támogatott, ha már telepítve van a myGaze kliens illesztőprogramokat, amelyek már nem tölthető le. Ha nem rendelkezik a fenti illesztőprogramok telepítve, akkor válassza ki use egér pozíció "helyett, és használat optikey kombinálva myGaze EyeMousePlay alkalmazás mozgatni a kurzort.</value>
-  </data>      
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-      <value>Computer Control és kommunikáció</value>
+    <value>A Visual Interaction myGaze csak akkor támogatott, ha már telepítve van a myGaze kliens illesztőprogramokat, amelyek már nem tölthető le. Ha nem rendelkezik a fenti illesztőprogramok telepítve, akkor válassza ki use egér pozíció "helyett, és használat optikey kombinálva myGaze EyeMousePlay alkalmazás mozgatni a kurzort.</value>
   </data>
-  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>Egyszerű közlemény</value>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Ha a szemkövető nem szerepel itt, vagy szüksége van egy 32 bites verzióra az Optikey -ről, kérjük, kattintson az alábbi linkre.
+Ha folytatni szeretné a telepítést, az Optikey -t az egér pozíciója irányítja. Ez lehetővé teszi, hogy alternatív bemenetekkel, például fej egérrel vagy bármilyen szemkövetővel működjön, amely lehetővé teszi az egér helyzetének a szemével történő irányítását.</value>
   </data>
-  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Teljes Kurzorvezérlés</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Service nem található. Kérem telepítse az Tobii software -t és próbálja meg újra.</value>
   </data>
-  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Symbol közleménye</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service nem fut. Kérem indítsa el és próbálja meg újra.</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Ha a szemkövető nem szerepel itt, vagy szüksége van egy 32 bites verzióra az Optikey -ről, kérjük, kattintson az alábbi linkre.
-Ha folytatni szeretné a telepítést, az Optikey -t az egér pozíciója irányítja. Ez lehetővé teszi, hogy alternatív bemenetekkel, például fej egérrel vagy bármilyen szemkövetővel működjön, amely lehetővé teszi az egér helyzetének a szemével történő irányítását.</value></data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Kálmán szürő</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Fordított görgetési irány</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Az adott gombok lenyomva tartása a kiválasztott pont, ablak, vagy terület megőrzéséhez:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>Miután választasz egy képernyő pontot, húzz oda bámilyen ablakot</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Görgetés leállítása amikor kiválasztja, hogy hova mozogjon, kattintson vagy húzzon az egér:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Átfedőablak megjelenítése (újraindítás szükséges)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>A görgő határainak színe a rétegen:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>A végpont határainak színe a rétegen:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Görgesse át ezeket a görgetési lépéseket:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>Lassú alap sebesség ("kattintás" per másodpercben)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>Közepes alap sebesség ("kattintás" per másodpercben)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>Gyors alap sebesség ("kattintás" per másodpercben)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>Lassú gyorsulás (kattintás per másodpercben / képpont)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>Közepes gyorsulás (kattintás per másodpercben / képpont)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>Gyors gyorsulás (kattintás per másodpercben / képpont)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>Görgető gombok előtérben</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Görgetés</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Következő határ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Következő növekedés</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Következő mód</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>Következő sebesség</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Görgessen {0} kerék számot:
+(120 kerék szám = 1 kattintás) Görgessen {0} kerék számot:
+(120 kerék szám = 1 kattintás) </value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Képernyőn
+Mutatás</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Középre igazított</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Ablak</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Ablak
+Terület</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Egyedi
+Terület</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Függőleges</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Vízszintes</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>Kereszt</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Szabad</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Lassú</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Közepes</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Gyors</value>
+  </data>
+  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>OptiKey: Gépelés · Kattintás · Beszéd</value>
+  </data>
 </root>

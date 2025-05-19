@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <!-- 
     Microsoft ResX Schema 
     
@@ -818,6 +819,9 @@ LK</value>
   <data name="OK" xml:space="preserve">
     <value>ОК</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Компјутерска контрола и комуникације</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Остало</value>
   </data>
@@ -1101,12 +1105,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Калибрација завршена, или могуће отказана, али све ипак опет ради!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii service није пронађен. Молимо инсталирајте Tobii software и покушајте поновно.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii service није покренут. Молимо покрените Tobii service и покушајте поновно.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1638,9 +1636,6 @@ LK</value>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Користи алфабет изглед тастатуре</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Kalman Filter:</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>Toggle Manual Mode</value>
   </data>
@@ -1834,7 +1829,7 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   </data>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>ЈЕЗИК И ГЛАС</value>
-</data>
+  </data>
   <data name="MORE_UPPER_CASE" xml:space="preserve">
     <value>MOREâ€¦</value>
   </data>
@@ -1847,38 +1842,17 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
     <value>Use alternative "look to scroll" method for scrolling:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>Invert scrolling direction:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>Lock down bounds key to preserve chosen point, window, or region:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Before scrolling, move mouse to centre of deadzone:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Before scrolling within window, bring it to the front:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>After choosing screen point, bring any window there to the front:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Stop scrolling when choosing where to move, click or drag the mouse:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>Automatically resume scrolling afterwards:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>Stop scrolling upon switching keyboards:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>Show overlay window (requires restart):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of scroll bounds drawn on the overlay:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of deadzone guides drawn on the overlay:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>Thickness of scroll bounds drawn on the overlay:</value>
@@ -1892,93 +1866,9 @@ such as "DB Browser for SQLite" (which is a free program).</value>
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
     <value>Vertical deadzone (in pixels):</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>Cycle through these scroll increments:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>'Slow' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Medium' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>'Fast' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>'Slow' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Medium' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>'Fast' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>LOOK TO SCROLL KEYS:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>TOGGLE SCROLLING</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT BOUNDS</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT INCREMENT</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT MODE</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT SPEED</value>
-  </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value>Look to
 Scroll</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Scroll by {0} wheel unit: 
-(120 wheel units = 1 click)|Scroll by {0} wheel units:
-(120 wheel units = 1 click)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>Screen at
-Point</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>Screen
-Centred</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>Window</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>Window
-Region</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>Custom
-Region</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>Vertical</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value>Cross</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value>Free</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>Споро</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>Срдње</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>Брзо</value>
   </data>
   <data name="COMMUNIKATE_SOUND_VOLUME_LABEL" xml:space="preserve">
     <value>CommuniKate sound volume:</value>
@@ -2046,39 +1936,152 @@ Region</value>
   <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
     <value>Calibration completed (success or failure), but everything is working again!</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Eаси Комуникација</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Фулл Курсор контрола</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Комуникација са симболима</value>
+  </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
     <value>Ово захтева КСПС 17 играчки лаптоп, користећи уграђени Tobii очи трацкер.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Ово захтева ИТУ поглед праћење библиотеку која је оквир за опен соурце око праћење помоћу офф-тхе-схелф компоненте, као што су камере и видео камере.</value>
+    <value>Ово захтева ИТУ поглед праћење библиотеку која је оквир за опен соурце око праћење помоћу офф-тхе-схелф компоненте, као што су камере и видео камере.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Ако планирате да користите Optikey са Ирисбонд Дуо ока трагач онда пазите да имате Ирисбонд Дуо управљачке програме инсталиране. Они се могу преузети са хттпс://ввв.ирисбонд.цом/продуцтс/довнлоадс.</value>
+    <value>Ако планирате да користите Optikey са Ирисбонд Дуо ока трагач онда пазите да имате Ирисбонд Дуо управљачке програме инсталиране. Они се могу преузети са хттпс://ввв.ирисбонд.цом/продуцтс/довнлоадс.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>У овом режиму, Optikey ће користити курсор миша као улаз уместо да говоримо директно на тракер ока. Можда ћете желети ово ако Optikey тестира, или ако желите да га користите са алтернативним улазног уређаја као што су миш главе или било трагач ока није на овој листи. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Ова опција ће радити са свим Tobii Гаминг ока Трацкер (4Ц, ЕиеКс, Алиенваре, СтеелСериес, итд)</value>
+    <value>У овом режиму, Optikey ће користити курсор миша као улаз уместо да говоримо директно на тракер ока. Можда ћете желети ово ако Optikey тестира, или ако желите да га користите са алтернативним улазног уређаја као што су миш главе или било трагач ока није на овој листи. </value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Да бисте користили Optikey са помоћним очију трагач, ти или треба нову верзију Tobii Windows Control , или софтвер Tobii Eye Tracking. Ако морате да користите стару верзију  Tobii Windows  Control (Tobii Gaze Interaction Software), онда ћете морати да контролишете Optikey користећи позицију миша уместо тога. </value>
+    <value>Да бисте користили Optikey са помоћним очију трагач, ти или треба нову верзију Tobii Windows Control , или софтвер Tobii Eye Tracking. Ако морате да користите стару верзију  Tobii Windows  Control (Tobii Gaze Interaction Software), онда ћете морати да контролишете Optikey користећи позицију миша уместо тога. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Ова опција ће радити са свим Tobii Гаминг ока Трацкер (4Ц, ЕиеКс, Алиенваре, СтеелСериес, итд)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Висуал Интеракција миГазе је подржан само ако сте већ инсталирали клијент драјвере миГазе, које више нису доступни за преузимање. Ако немате те возачи инсталиран, треба да одаберете користити 'позицију миша' уместо тога, и користити Optikey у комбинацији са применом миГазе ЕиеМоусеПлаи за померање курсора.</value>
+    <value>Висуал Интеракција миГазе је подржан само ако сте већ инсталирали клијент драјвере миГазе, које више нису доступни за преузимање. Ако немате те возачи инсталиран, треба да одаберете користити 'позицију миша' уместо тога, и користити Optikey у комбинацији са применом миГазе ЕиеМоусеПлаи за померање курсора.</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Компјутерска контрола и комуникације</value>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Ако ваш трагач за очи овде није наведено, или вам је потребна 32-битна верзија оптикеи, молимо да кликнете на доњу везу за више информација.
+Ако желите да наставите са инсталацијом, оптикеи ће бити под контролом вашег положаја миша. То омогућава да ради са алтернативним улазима као што су главна миш, или било који очни трацкер који вам омогућава да контролишете положај миша са очима.</value>
   </data>
-  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>Eаси Комуникација</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii service није пронађен. Молимо инсталирајте Tobii software и покушајте поновно.</value>
   </data>
-  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Фулл Курсор контрола</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii service није покренут. Молимо покрените Tobii service и покушајте поновно.</value>
   </data>
-  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Комуникација са симболима</value>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Kalman Filter:</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Ако ваш трагач за очи овде није наведено, или вам је потребна 32-битна верзија оптикеи, молимо да кликнете на доњу везу за више информација.
-Ако желите да наставите са инсталацијом, оптикеи ће бити под контролом вашег положаја миша. То омогућава да ради са алтернативним улазима као што су главна миш, или било који очни трацкер који вам омогућава да контролишете положај миша са очима.</value></data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Invert scrolling direction:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Lock down bounds key to preserve chosen point, window, or region:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>After choosing screen point, bring any window there to the front:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Stop scrolling when choosing where to move, click or drag the mouse:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Show overlay window (requires restart):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of scroll bounds drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Colour of deadzone guides drawn on the overlay:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Cycle through these scroll increments:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>'Slow' base speed (in cps or "clicks" per second):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Medium' base speed (in cps or "clicks" per second):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>'Fast' base speed (in cps or "clicks" per second):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>'Slow' acceleration (cps per pixel from deadzone):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Medium' acceleration (cps per pixel from deadzone):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>'Fast' acceleration (cps per pixel from deadzone):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>LOOK TO SCROLL KEYS:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>TOGGLE SCROLLING</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT BOUNDS</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT INCREMENT</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT MODE</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>NEXT SPEED</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Scroll by {0} wheel unit: 
+(120 wheel units = 1 click)|Scroll by {0} wheel units:
+(120 wheel units = 1 click)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Screen at
+Point</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Screen
+Centred</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Window</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Window
+Region</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Custom
+Region</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>Cross</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Споро</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Срдње</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Брзо</value>
+  </data>
 </root>

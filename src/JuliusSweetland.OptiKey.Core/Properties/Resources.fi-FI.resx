@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -839,6 +839,9 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Tietokone Ohjaus &amp; Communication</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Muu</value>
   </data>
@@ -1128,12 +1131,6 @@ SIJAINTI</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibrointi tehty, tai mahdollisesti peruttu, mutta kaikki toimii taas!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Serviceä ei löydy. Asenna Tobii software ja yritä uudelleen.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service ei ole käynnissä. Käynnistä Tobii Service ja yritä uudelleen.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1838,9 +1835,6 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Käytä aakkosnäppäimistölayouttia</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Kalman-suodatin:</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>Vaihda manuaalitila</value>
   </data>
@@ -2062,38 +2056,17 @@ kuten "DB Browser for SQLite" (joka on ilmainen ohjelma).</value>
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
     <value>Käytä vieritykseen vaihtoehtoista Vieritys katseella -tapaa:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>Käänteinen vierityksen suunta:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>Lukitus sitoo näppäimen valitun pisteen, ikkunan tai alueen säilyttämiseksi:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Siirrä hiiri keskelle deadzonea ennen vieritystä:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Tuo ikkuna etualalle ennen ikkunan vieritystä:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>Tuo valitussa pisteessä oleva ikkuna etualalle:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Keskeytä vieritys hiiren toiminnon valinnan ajaksi:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>Jatka vieritystä automaattisesti jälkeenpäin:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>Keskeytä vieritys näppäimistöä vaihdettaessa:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>Näytä peiteikkuna (vaatii uudelleenkäynnistyksen):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>Peiteikkunaan piirrettyjen vieritysrajojen väri:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>Peiteikkunaan piirrettyjen deadzone-opasteiden väri:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>Peiteikkunaan piirrettyjen vieritysrajojen paksuus:</value>
@@ -2107,92 +2080,9 @@ kuten "DB Browser for SQLite" (joka on ilmainen ohjelma).</value>
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
     <value>Pystysuora deadzone (pikseleinä):</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>Käy läpi nämä vierityslisäykset:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>'Hidas' perusnopeus (klikkauksia sekunnissa):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Keski' perusnopeus (klikkauksia sekunnissa):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>'Nopea' perusnopeus (klikkauksia sekunnissa):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>'Hidas' kiihtyvyys (klikkauksia sekunnissa per pikseli deadzonesta):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Keski' kiihtyvyys (klikkauksia sekunnissa per pikseli deadzonesta):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>'Nopea' kiihtyvyys (klikkauksia sekunnissa per pikseli deadzonesta):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>VIERITÄ KATSEELLA -NÄPPÄIMET:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>VAIHDA VIERITYSTÄ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>SEURAAVAT RAJAT</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>SEURAAVA LISÄYS</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>SEURAAVA TILA</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>SEURAAVA NOPEUS</value>
-  </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value>Vieritä
 katseella</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Vieritä {0} pyörän yksikkö:
-(120 pyörän yksikköä = 1 klikkaus)|Vieritä {0} pyörän yksikköä:
-(120 pyörän yksikköä = 1 klikkaus)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>Ruutu
-pisteessä</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>Keskitetty ruutu</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>Ikkuna</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>Ikkunan
-alue</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>Vapaa
-alue</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>Pystysuora</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>Vaakasuora</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value>Risti</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value>Vapaa</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>Hidas</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>Keski</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>Nopea</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
     <value>ranska (Kanada) / Française (Canada)</value>
@@ -2344,39 +2234,151 @@ Haluatko, että Optikey asettaa automaattisesti fontiksi Nazil?</value>
 فارسی
 (ایرانی)</value>
   </data>
-  <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>Tämä edellyttää Alienware 17 pelaamista kannettava tietokone, käyttämällä sisäänrakennettua Tobii silmänseurain.</value>
-  </data>
-  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Tämä edellyttää ITU Gaze -seurantakirjastoa, joka on kehyksen avoimen lähdekoodin katseenseuranta käyttäen suoraan hyllyltä komponentteja, kuten web-kameroita ja videokameroita.</value>
-  </data>
-  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Jos aiot käyttää Optikey kanssa Irisbond Duo silmänseurain niin varmista, että sinulla on Irisbond Duo ajurit asennettu. Nämä voi ladata https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
-  </data>
-  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>Tässä tilassa Optikey käyttää hiiren kursori syötteenä puhumisen sijasta suoraan silmänseurain. Haluat ehkä tämä Jos testaat Optikey pois, tai jos haluat käyttää sitä vaihtoehtoista raaka laite, kuten pään hiiren tai silmänseurain ole luettelossa. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Tämä vaihtoehto toimii kaikilla Tobii Gaming silmänseurain (4C, EyeX, Alienware, Steelseries jne)</value>
-  </data>
-  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Käyttää Optikey kanssa avustavien silmänseurain, sinun täytyy joko uuden Tobii Windows Control tai Tobii Eye Tracking moottori. Jos joudut käyttämään vanhaa versiota Tobii Windows Control (Tobii Gaze Interaction Software), sinun täytyy valvoa Optikey hiirellä asentoon sijasta. </value>
-  </data>
-  <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Visual Interaction myGaze tuetaan vain, jos olet jo asentanut myGaze asiakkaan ohjaimiin, joita ei enää ladattavissa. Jos sinulla ei ole näitä ajurit on asennettu, kannattaa valita käyttöön 'hiiren sijainti' sijaan, ja käyttää Optikey yhdessä myGaze EyeMousePlay sovelluksen siirtää osoitinta.</value>
-  </data>  
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Tietokone Ohjaus &amp; Communication</value>
-  </data>
   <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>Helppo Viestintä</value>
+    <value>Helppo Viestintä</value>
   </data>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Täysi Kohdistimen ohjaus</value>
+    <value>Täysi Kohdistimen ohjaus</value>
   </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Viestintä symbolien</value>
+    <value>Viestintä symbolien</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Jos silmäseurantasi ei ole tässä lueteltu tai tarvitset 32 ​​-bittin version Optikeyistä, napsauta alla olevaa linkkiä saadaksesi lisätietoja.
-Jos haluat jatkaa asennuksen kanssa, Optikey ohjataan hiiren sijainnissasi. Tämän avulla se voi toimia vaihtoehtoisilla tuloilla, kuten päähiirellä, tai millä tahansa silmäseurantalaitteella, jonka avulla voit hallita hiiren sijaintia silmilläsi.</value></data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Tämä edellyttää Alienware 17 pelaamista kannettava tietokone, käyttämällä sisäänrakennettua Tobii silmänseurain.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>Tämä edellyttää ITU Gaze -seurantakirjastoa, joka on kehyksen avoimen lähdekoodin katseenseuranta käyttäen suoraan hyllyltä komponentteja, kuten web-kameroita ja videokameroita.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>Jos aiot käyttää Optikey kanssa Irisbond Duo silmänseurain niin varmista, että sinulla on Irisbond Duo ajurit asennettu. Nämä voi ladata https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>Tässä tilassa Optikey käyttää hiiren kursori syötteenä puhumisen sijasta suoraan silmänseurain. Haluat ehkä tämä Jos testaat Optikey pois, tai jos haluat käyttää sitä vaihtoehtoista raaka laite, kuten pään hiiren tai silmänseurain ole luettelossa. </value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>Käyttää Optikey kanssa avustavien silmänseurain, sinun täytyy joko uuden Tobii Windows Control tai Tobii Eye Tracking moottori. Jos joudut käyttämään vanhaa versiota Tobii Windows Control (Tobii Gaze Interaction Software), sinun täytyy valvoa Optikey hiirellä asentoon sijasta. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Tämä vaihtoehto toimii kaikilla Tobii Gaming silmänseurain (4C, EyeX, Alienware, Steelseries jne)</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>Visual Interaction myGaze tuetaan vain, jos olet jo asentanut myGaze asiakkaan ohjaimiin, joita ei enää ladattavissa. Jos sinulla ei ole näitä ajurit on asennettu, kannattaa valita käyttöön 'hiiren sijainti' sijaan, ja käyttää Optikey yhdessä myGaze EyeMousePlay sovelluksen siirtää osoitinta.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Jos silmäseurantasi ei ole tässä lueteltu tai tarvitset 32 ​​-bittin version Optikeyistä, napsauta alla olevaa linkkiä saadaksesi lisätietoja.
+Jos haluat jatkaa asennuksen kanssa, Optikey ohjataan hiiren sijainnissasi. Tämän avulla se voi toimia vaihtoehtoisilla tuloilla, kuten päähiirellä, tai millä tahansa silmäseurantalaitteella, jonka avulla voit hallita hiiren sijaintia silmilläsi.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Serviceä ei löydy. Asenna Tobii software ja yritä uudelleen.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service ei ole käynnissä. Käynnistä Tobii Service ja yritä uudelleen.</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Kalman-suodatin:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Käänteinen vierityksen suunta:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Lukitus sitoo näppäimen valitun pisteen, ikkunan tai alueen säilyttämiseksi:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>Tuo valitussa pisteessä oleva ikkuna etualalle:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Keskeytä vieritys hiiren toiminnon valinnan ajaksi:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Näytä peiteikkuna (vaatii uudelleenkäynnistyksen):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Peiteikkunaan piirrettyjen vieritysrajojen väri:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Peiteikkunaan piirrettyjen deadzone-opasteiden väri:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Käy läpi nämä vierityslisäykset:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>'Hidas' perusnopeus (klikkauksia sekunnissa):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Keski' perusnopeus (klikkauksia sekunnissa):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>'Nopea' perusnopeus (klikkauksia sekunnissa):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>'Hidas' kiihtyvyys (klikkauksia sekunnissa per pikseli deadzonesta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Keski' kiihtyvyys (klikkauksia sekunnissa per pikseli deadzonesta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>'Nopea' kiihtyvyys (klikkauksia sekunnissa per pikseli deadzonesta):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>VIERITÄ KATSEELLA -NÄPPÄIMET:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>VAIHDA VIERITYSTÄ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>SEURAAVAT RAJAT</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>SEURAAVA LISÄYS</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>SEURAAVA TILA</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>SEURAAVA NOPEUS</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Vieritä {0} pyörän yksikkö:
+(120 pyörän yksikköä = 1 klikkaus)|Vieritä {0} pyörän yksikköä:
+(120 pyörän yksikköä = 1 klikkaus)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Ruutu
+pisteessä</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Keskitetty ruutu</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Ikkuna</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Ikkunan
+alue</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Vapaa
+alue</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Pystysuora</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Vaakasuora</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>Risti</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Vapaa</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Hidas</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Keski</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Nopea</value>
+  </data>
 </root>

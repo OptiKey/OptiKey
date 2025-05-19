@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -843,6 +843,9 @@ LK</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Про : Управление компьютером &amp; общение</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Другое</value>
   </data>
@@ -1133,12 +1136,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Калибровка завершена или возможно была прервана, но теперь все работает! </value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii service не найден. Пожалуйста заинсталлируйте  Tobii software и попробуйте снова.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service не работает. Пожалуйста запустите Tobii service и попробуйте снова.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1840,9 +1837,6 @@ Slovenčina
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Использовать алфавитную раскладку клавиатуры</value>
   </data>
-  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
-    <value>Фильтр Калмана</value>
-  </data>
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>Переключить Ручной Режим</value>
   </data>
@@ -2062,38 +2056,17 @@ Optikey продолжит работу, но есть большая вероя
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
     <value>Использовать альтернативный "посмотреть для прокрутки" метод прокрутки:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>Инверсия направления прокручивания:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>Заблокировать клавишу границ, чтобы сохранить выбранную точку, окно или область:</value>
-  </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Перед прокручиванием перемести мышь в центр мертвой зоны:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
     <value>Перед прокручиванием в окне, перенести его на передний план:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>После выбора точки на экране, перенести туда любое окно на передний план:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Останавливать прокручивание при выборе направления движения, нажатия или перемещения мыши</value>
-  </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
     <value>Автоматически возобновлять прокручивание:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>Прекратить прокрутку при переключении клавиатуры:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>Показать окно оверлея (требуется перезагрузка):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>Цвет границ прокрутки, нарисованных на оверлее:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>Цвет направляющих мертвой зоны, нанесенных на оверлей:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
     <value>Толщина границ прокрутки, нарисованных на оверлее:</value>
@@ -2107,93 +2080,9 @@ Optikey продолжит работу, но есть большая вероя
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
     <value>Вертикальная мертвая зона (в пикселях):</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>Циклически измения этиж значений прокрутки:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>'Медленная' базовая скорость (в cps или "кликах" в секунду)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Средняя' базовая скорость (в cps или "кликах" в секунду)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>'Быстрая' базовая скорость (в cps или "кликах" в секунду)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>«Медленное» ускорение (cps на пиксель из мертвой зоны):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>«Среднее» ускорение (cps на пиксель из мертвой зоны):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>«Быстрое» ускорение (cps на пиксель из мертвой зоны):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>LOOK TO SCROLL KЛАВИШИ:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>ВКЛЮЧИТЬ ПРОКРУТКУ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>СЛЕДУЮЩИЙ ПРЕДЕЛ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>СЛЕДУЮЩЕЕ ВОЗРАСТАНИЕ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>СЛЕДУЮЩИЙ РЕЖИМ</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>СЛЕДУЮЩАЯ СКОРОСТЬ</value>
-  </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value>Look to
 Scroll</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Прокрутить на {0}шаг:
-(120 шагов = 1 клик)|Прокрутить на {0} шагов:
-(120 шагов = 1 клик)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>Экран на
-Курсор</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>Центрировать
-Экран</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>Окно</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>Окно
-Регион</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>Пользовательский
-Регион</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>Вертикальный</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>Горизонтальный</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value>Cross</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value>Свободно</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>Медленно</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>Средний</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>Быстро</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
     <value>Французский (Канада) / Française (Canada)</value>
@@ -2333,33 +2222,146 @@ Française
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
     <value>Optikey Мышь : Полный контроль над курсором</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey Про : Управление компьютером &amp; общение</value>
-  </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
     <value>Optikey Символ : Свободное общение символами</value>
   </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>Это требует Alienware 17 игровой ноутбук, используя встроенный в Tobii глаз трекер.</value>
+    <value>Это требует Alienware 17 игровой ноутбук, используя встроенный в Tobii глаз трекер.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Это требует МСЭ Gaze слежения библиотека, которая является основой для открытого исходного кода отслеживания глаз с помощью внедорожных готовых компонентов, таких как веб-камер и видеокамерами.</value>
+    <value>Это требует МСЭ Gaze слежения библиотека, которая является основой для открытого исходного кода отслеживания глаз с помощью внедорожных готовых компонентов, таких как веб-камер и видеокамерами.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Если вы планируете использовать Optikey с глазами трекера Irisbond Duo, пожалуйста, убедитесь, что у вас есть драйвера Irisbond Duo установлен. Они могут быть загружены с https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+    <value>Если вы планируете использовать Optikey с глазами трекера Irisbond Duo, пожалуйста, убедитесь, что у вас есть драйвера Irisbond Duo установлен. Они могут быть загружены с https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>В этом режиме, Optikey будет использовать курсор мыши в качестве входных данных, вместо того, чтобы говорить непосредственно с трекером глаз. Вы можете захотеть этого, если вы тестируете Optikey вне, или если вы хотите использовать его с альтернативным устройством ввода, такие как головки мыши или любой глаз трекер не в этом списке. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Эта опция будет работать с любым глазом трекера Tobii Gaming (4C, EyeX, Alienware, Steelseries, и т.д.)</value>
+    <value>В этом режиме, Optikey будет использовать курсор мыши в качестве входных данных, вместо того, чтобы говорить непосредственно с трекером глаз. Вы можете захотеть этого, если вы тестируете Optikey вне, или если вы хотите использовать его с альтернативным устройством ввода, такие как головки мыши или любой глаз трекер не в этом списке. </value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Для того, чтобы использовать Optikey с Tobii  реабилитационным трекером глаз, вам необходимо либо новую версия Tobii Windows Control или двигатель Tobii отслеживания глаз. Если вам нужно использовать старую версию приложения Tobii Windows Control  (Tobii Gaze Interaction Software), то вам нужно будет контролировать Optikey используя положение мыши вместо этого. </value>
+    <value>Для того, чтобы использовать Optikey с Tobii  реабилитационным трекером глаз, вам необходимо либо новую версия Tobii Windows Control или двигатель Tobii отслеживания глаз. Если вам нужно использовать старую версию приложения Tobii Windows Control  (Tobii Gaze Interaction Software), то вам нужно будет контролировать Optikey используя положение мыши вместо этого. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Эта опция будет работать с любым глазом трекера Tobii Gaming (4C, EyeX, Alienware, Steelseries, и т.д.)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Визуальное взаимодействие myGaze поддерживается только, если вы уже установили клиентские драйверы myGaze, которые больше не доступны для скачивания. Если вы не установили эти драйвера, вы должны выбрать использовать «положение мыши» вместо этого, и использовать Optikey в сочетании с приложением myGaze EyeMousePlay для перемещения курсора.</value>
-  </data>  
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Если ваш трекер глаз здесь не указан, или вам требуется 32 -битная версия Optikey, пожалуйста, нажмите на ссылку ниже для получения дополнительной информации.
-Если вы хотите продолжить установку, Optikey будет контролироваться положением вашей мыши. Это позволяет ему работать с альтернативными входами, такими как головная мышь, или любые глазные трекер, который позволяет вам управлять положением мыши своими глазами.</value></data>
+    <value>Визуальное взаимодействие myGaze поддерживается только, если вы уже установили клиентские драйверы myGaze, которые больше не доступны для скачивания. Если вы не установили эти драйвера, вы должны выбрать использовать «положение мыши» вместо этого, и использовать Optikey в сочетании с приложением myGaze EyeMousePlay для перемещения курсора.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Если ваш трекер глаз здесь не указан, или вам требуется 32 -битная версия Optikey, пожалуйста, нажмите на ссылку ниже для получения дополнительной информации.
+Если вы хотите продолжить установку, Optikey будет контролироваться положением вашей мыши. Это позволяет ему работать с альтернативными входами, такими как головная мышь, или любые глазные трекер, который позволяет вам управлять положением мыши своими глазами.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii service не найден. Пожалуйста заинсталлируйте  Tobii software и попробуйте снова.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service не работает. Пожалуйста запустите Tobii service и попробуйте снова.</value>
+  </data>
+  <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
+    <value>Фильтр Калмана</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
+    <value>Инверсия направления прокручивания:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
+    <value>Заблокировать клавишу границ, чтобы сохранить выбранную точку, окно или область:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
+    <value>После выбора точки на экране, перенести туда любое окно на передний план:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
+    <value>Останавливать прокручивание при выборе направления движения, нажатия или перемещения мыши</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Показать окно оверлея (требуется перезагрузка):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
+    <value>Цвет границ прокрутки, нарисованных на оверлее:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
+    <value>Цвет направляющих мертвой зоны, нанесенных на оверлей:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
+    <value>Циклически измения этиж значений прокрутки:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
+    <value>'Медленная' базовая скорость (в cps или "кликах" в секунду)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
+    <value>'Средняя' базовая скорость (в cps или "кликах" в секунду)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
+    <value>'Быстрая' базовая скорость (в cps или "кликах" в секунду)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
+    <value>«Медленное» ускорение (cps на пиксель из мертвой зоны):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
+    <value>«Среднее» ускорение (cps на пиксель из мертвой зоны):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
+    <value>«Быстрое» ускорение (cps на пиксель из мертвой зоны):</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
+    <value>LOOK TO SCROLL KЛАВИШИ:</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>ВКЛЮЧИТЬ ПРОКРУТКУ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>СЛЕДУЮЩИЙ ПРЕДЕЛ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>СЛЕДУЮЩЕЕ ВОЗРАСТАНИЕ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>СЛЕДУЮЩИЙ РЕЖИМ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
+    <value>СЛЕДУЮЩАЯ СКОРОСТЬ</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
+    <value>Прокрутить на {0}шаг:
+(120 шагов = 1 клик)|Прокрутить на {0} шагов:
+(120 шагов = 1 клик)</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
+    <value>Экран на
+Курсор</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
+    <value>Центрировать
+Экран</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
+    <value>Окно</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
+    <value>Окно
+Регион</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
+    <value>Пользовательский
+Регион</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
+    <value>Вертикальный</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
+    <value>Горизонтальный</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
+    <value>Cross</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
+    <value>Свободно</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
+    <value>Медленно</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
+    <value>Средний</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
+    <value>Быстро</value>
+  </data>
 </root>
