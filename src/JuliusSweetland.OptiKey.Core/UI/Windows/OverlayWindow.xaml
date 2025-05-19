@@ -21,42 +21,60 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
   <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
         <valueConverters:ColourNameToBrush x:Key="ColourNameToBrush"/>
-    </Window.Resources>
+        <valueConverters:EnumToVisibilityConverter x:Key="EnumToVisibility"/>
+  </Window.Resources>
     <Grid>
         <!-- Viewbox enables easy resizing - contents will scale proportionally -->
         <Viewbox Stretch="Uniform" Opacity="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayOpacity}">
-            <!-- Canvas with fixed coordinate system for our shapes -->
             <Canvas Width="100" Height="100">
-                <!-- Cross made of two separate lines with different colors -->
-                <!-- Horizontal line -->
-                <Line x:Name="crossN" X1="12" Y1="50" X2="38" Y2="50"
+                <!-- Horizontal lines -->
+                <Line X1="12" Y1="50" X2="38" Y2="50"
                       Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeInnerColour, Converter={StaticResource ColourNameToBrush}}" 
                       StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
-                      Visibility="{Binding ShowCrosshair, Converter={StaticResource BooleanToVisibility}}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorStyle, Converter={StaticResource EnumToVisibility}, ConverterParameter='Crosshair, Scope'}"
                       StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
-                <Line x:Name="crossS" X1="62" Y1="50" X2="88" Y2="50"
+                <Line X1="62" Y1="50" X2="88" Y2="50"
                       Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeInnerColour, Converter={StaticResource ColourNameToBrush}}" 
                       StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
-                      Visibility="{Binding ShowCrosshair, Converter={StaticResource BooleanToVisibility}}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorStyle, Converter={StaticResource EnumToVisibility}, ConverterParameter='Crosshair, Scope'}"
                       StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
-                <!-- Vertical line -->
-                <Line x:Name="crossE" X1="50" Y1="12" X2="50" Y2="38"
+                <!-- Vertical lines -->
+                <Line X1="50" Y1="12" X2="50" Y2="38"
                       Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeInnerColour, Converter={StaticResource ColourNameToBrush}}" 
                       StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
-                      Visibility="{Binding ShowCrosshair, Converter={StaticResource BooleanToVisibility}}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorStyle, Converter={StaticResource EnumToVisibility}, ConverterParameter='Scope'}"
                       StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
-                <Line x:Name="crossW" X1="50" Y1="62" X2="50" Y2="88"
+                <Line X1="50" Y1="62" X2="50" Y2="88"
                       Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeInnerColour, Converter={StaticResource ColourNameToBrush}}" 
                       StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
-                      Visibility="{Binding ShowCrosshair, Converter={StaticResource BooleanToVisibility}}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorStyle, Converter={StaticResource EnumToVisibility}, ConverterParameter='Scope'}"
                       StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
-                <!-- Circle with primary color stroke (Red) and secondary color fill (LightBlue) -->
-                <Ellipse x:Name="monicle" Canvas.Left="0" Canvas.Top="0"
+
+                <!-- Vertical lines -->
+                <Line X1="50" Y1="12" X2="50" Y2="38"
+                      Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeOuterColour, Converter={StaticResource ColourNameToBrush}}" 
+                      StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorStyle, Converter={StaticResource EnumToVisibility}, ConverterParameter='Crosshair'}"
+                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                <Line X1="50" Y1="62" X2="50" Y2="88"
+                      Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeOuterColour, Converter={StaticResource ColourNameToBrush}}" 
+                      StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
+                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorStyle, Converter={StaticResource EnumToVisibility}, ConverterParameter='Crosshair'}"
+                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                
+                <!-- Circle -->
+                <Ellipse Canvas.Left="0" Canvas.Top="0"
                          Width="100" Height="100" 
                          Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeOuterColour, Converter={StaticResource ColourNameToBrush}}"
                          StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
-                         Visibility="{Binding ShowMonical, Converter={StaticResource BooleanToVisibility}}"
+                         Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorStyle, Converter={StaticResource EnumToVisibility}, ConverterParameter='Monical, Scope'}"
                          Fill="Transparent"/>
+                <Ellipse Canvas.Left="0" Canvas.Top="0"
+                         Width="100" Height="100" 
+                         Stroke="Transparent"
+                         StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeThickness}"
+                         Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorStyle, Converter={StaticResource EnumToVisibility}, ConverterParameter='Monical'}"
+                         Fill="{Binding Source={x:Static properties:Settings.Default}, Path=GazeIndicatorOverlayStrokeInnerColour, Converter={StaticResource ColourNameToBrush}}"/>
 
             </Canvas>
         </Viewbox>
