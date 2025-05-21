@@ -983,6 +983,34 @@ namespace JuliusSweetland.OptiKey.Services
             
         }
 
+        public void SetFocusable(bool focusable)
+        {
+            if (focusable)
+            {
+                Static.Windows.SetExtendedWindowStyle(windowHandle,
+                Static.Windows.GetExtendedWindowStyle(windowHandle) & ~ExtendedWindowStyles.WS_EX_NOACTIVATE);
+            }
+            else
+            {
+                Static.Windows.SetExtendedWindowStyle(windowHandle,
+                Static.Windows.GetExtendedWindowStyle(windowHandle) | ExtendedWindowStyles.WS_EX_NOACTIVATE);
+            }
+        }
+
+        public void SetShowInTaskbar(bool showInTaskbar)
+        {
+            if (showInTaskbar)
+            {
+                Static.Windows.SetExtendedWindowStyle(windowHandle,
+                Static.Windows.GetExtendedWindowStyle(windowHandle) & ~ExtendedWindowStyles.WS_EX_TOOLWINDOW);
+            }
+            else
+            {
+                Static.Windows.SetExtendedWindowStyle(windowHandle,
+                Static.Windows.GetExtendedWindowStyle(windowHandle) | ExtendedWindowStyles.WS_EX_TOOLWINDOW);
+            }
+        }
+
         #endregion
 
         #region Private Methods

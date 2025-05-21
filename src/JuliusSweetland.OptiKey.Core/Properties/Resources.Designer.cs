@@ -3914,6 +3914,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow keyboard window to gain focus.
+        /// </summary>
+        public static string MAINWINDOW_FOCUSABLE_LABEL {
+            get {
+                return ResourceManager.GetString("MAINWINDOW_FOCUSABLE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Find more eye tracker options online.
         /// </summary>
         public static string MANAGE_ET_PLUGINS {
@@ -6078,6 +6087,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SHIFT {
             get {
                 return ResourceManager.GetString("SHIFT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show keyboard window in alt+tab list.
+        /// </summary>
+        public static string SHOW_MAINWINDOW_IN_ALT_TAB_LIST_LABEL {
+            get {
+                return ResourceManager.GetString("SHOW_MAINWINDOW_IN_ALT_TAB_LIST_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show keyboard window in the taskbar.
+        /// </summary>
+        public static string SHOW_MAINWINDOW_IN_TASKBAR_LABEL {
+            get {
+                return ResourceManager.GetString("SHOW_MAINWINDOW_IN_TASKBAR_LABEL", resourceCulture);
             }
         }
         

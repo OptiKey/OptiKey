@@ -2767,4 +2767,13 @@ Plugins are provided by third parties and have not been verified by the Optikey 
   <data name="GAZE_INDICATOR_OPACITY" xml:space="preserve">
     <value>Gaze Indicator Opacity</value>
   </data>
+  <data name="SHOW_MAINWINDOW_IN_TASKBAR_LABEL" xml:space="preserve">
+    <value>Show keyboard window in the taskbar</value>
+  </data>
+  <data name="MAINWINDOW_FOCUSABLE_LABEL" xml:space="preserve">
+    <value>Allow keyboard window to gain focus</value>
+  </data>
+  <data name="SHOW_MAINWINDOW_IN_ALT_TAB_LIST_LABEL" xml:space="preserve">
+    <value>Show keyboard window in alt+tab list</value>
+  </data>
 </root>
