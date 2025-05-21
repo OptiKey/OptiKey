@@ -615,6 +615,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref enableResizeWithMouse, value); }
         }
 
+        private bool mainWindowFocusable;
+        public bool MainWindowFocusable
+        {
+            get { return mainWindowFocusable; }
+            set { SetProperty(ref mainWindowFocusable, value); }
+        }
+
+        private bool showMainWindowInTaskbar;
+        public bool ShowMainWindowInTaskbar
+        {
+            get { return showMainWindowInTaskbar; }
+            set { SetProperty(ref showMainWindowInTaskbar, value); }
+        }
+
         private Thickness conversationBorderThickness;
         public Thickness ConversationBorderThickness
         {
@@ -708,6 +722,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             DockPosition = Settings.Default.MainWindowDockPosition;
             MainWindowState = Settings.Default.MainWindowState;
             EnableResizeWithMouse = Settings.Default.EnableResizeWithMouse;
+            ShowMainWindowInTaskbar = Settings.Default.ShowMainWindowInTaskbar;
+            MainWindowFocusable = Settings.Default.MainWindowFocusable;
         }
 
         public void ApplyChanges()
@@ -742,6 +758,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
+            Settings.Default.MainWindowFocusable = MainWindowFocusable;
+            Settings.Default.ShowMainWindowInTaskbar = ShowMainWindowInTaskbar;
 
             // We don't apply changes to window/size position if Optikey's state has changed to one in which re-positioning isn't supported
             bool allowReposition = windowManipulationService.GetPersistedState() &&
@@ -770,6 +788,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             windowManipulationService.SetOpacity(Settings.Default.MainWindowOpacity);
             Settings.Default.EnableResizeWithMouse = EnableResizeWithMouse;
             windowManipulationService.SetResizeState();
+
+            windowManipulationService.SetFocusable(Settings.Default.MainWindowFocusable);
+            windowManipulationService.SetShowInTaskbar(Settings.Default.ShowMainWindowInTaskbar);
         }
 
         #endregion

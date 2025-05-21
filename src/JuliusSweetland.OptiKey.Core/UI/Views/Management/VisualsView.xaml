@@ -85,8 +85,14 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -143,29 +149,29 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
           <controls:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding GazeIndicatorSize, Mode=TwoWay}" />
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_INNER_COLOUR}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="7" Grid.Column="1"
-                              ItemsSource="{Binding ColourNames}"
-                              SelectedValue="{Binding GazeIndicatorOverlayStrokeInnerColour, Mode=TwoWay}" />
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_OUTER_COLOUR}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="8" Grid.Column="1"
-                              ItemsSource="{Binding ColourNames}"
-                              SelectedValue="{Binding GazeIndicatorOverlayStrokeOuterColour, Mode=TwoWay}" />
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_THICKNESS}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="9" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="0" Interval="1" StringFormat="###,##0"
-                                            Value="{Binding GazeIndicatorOverlayStrokeThickness, Mode=TwoWay}" />
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_OPACITY}" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="10" Grid.Column="1" TextAlignment="Left"
-                                            StringFormat="{}{0:N1} %"
-                                            Minimum="10" Maximum="100" Interval="10"
-                                            Value="{Binding GazeIndicatorOverlayOpacity, Mode=TwoWay}" />
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SOURCE_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_INNER_COLOUR}" 
+                        VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="7" Grid.Column="1"
+                        ItemsSource="{Binding ColourNames}"
+                        SelectedValue="{Binding GazeIndicatorOverlayStrokeInnerColour, Mode=TwoWay}" />
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_OUTER_COLOUR}" 
+                        VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="8" Grid.Column="1"
+                        ItemsSource="{Binding ColourNames}"
+                        SelectedValue="{Binding GazeIndicatorOverlayStrokeOuterColour, Mode=TwoWay}" />
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_THICKNESS}" 
+                        VerticalAlignment="Center" Margin="5" />
+            <controls:NumericUpDown Grid.Row="9" Grid.Column="1" TextAlignment="Left"
+                                    Minimum="0" Interval="1" StringFormat="###,##0"
+                                    Value="{Binding GazeIndicatorOverlayStrokeThickness, Mode=TwoWay}" />
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.GAZE_INDICATOR_OPACITY}" 
+                        VerticalAlignment="Center" Margin="5" />
+            <controls:NumericUpDown Grid.Row="10" Grid.Column="1" TextAlignment="Left"
+                                    StringFormat="{}{0:N1} %"
+                                    Minimum="10" Maximum="100" Interval="10"
+                                    Value="{Binding GazeIndicatorOverlayOpacity, Mode=TwoWay}" />
+            <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SOURCE_LABEL}" 
+                        VerticalAlignment="Center" Margin="5" />
           <controls:NumericUpDown Grid.Row="12" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="100"  Interval="10"
                                             Value="{Binding MagnifySourcePercentageOfScreen, Mode=TwoWay}" />
@@ -377,6 +383,16 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
           <CheckBox Grid.Row="27" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding EnableResizeWithMouse, Mode=TwoWay}" />
+          <TextBlock Grid.Row="28" Grid.Column="0" Text="{x:Static resx:Resources.MAINWINDOW_FOCUSABLE_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+          <CheckBox Grid.Row="28" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding MainWindowFocusable, Mode=TwoWay}" />
+          <TextBlock Grid.Row="29" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_MAINWINDOW_IN_TASKBAR_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+          <CheckBox Grid.Row="29" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding ShowMainWindowInTaskbar, Mode=TwoWay}" />
         </Grid>
       </GroupBox>
       <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.FONT}">

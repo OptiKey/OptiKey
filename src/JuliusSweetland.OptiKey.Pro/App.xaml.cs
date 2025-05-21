@@ -196,6 +196,9 @@ namespace JuliusSweetland.OptiKey.Pro
                 //Show the main window
                 mainWindow.Show();
 
+                mainWindowManipulationService.SetFocusable(Settings.Default.MainWindowFocusable);
+                mainWindowManipulationService.SetShowInTaskbar(Settings.Default.ShowMainWindowInTaskbar);
+
                 if (Settings.Default.LookToScrollOverlayBoundsThickness > 0
                     || Settings.Default.LookToScrollOverlayDeadzoneThickness > 0)
                 {
