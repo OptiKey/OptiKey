@@ -907,12 +907,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void SetShowInTaskbar(bool showInTaskbar)
         {
-            window.ShowInTaskbar = showInTaskbar;
-        }
-
-        public void SetShowInAltTabList(bool showInAltTabList)
-        {
-            if (showInAltTabList)
+            if (showInTaskbar)
             {
                 Static.Windows.SetExtendedWindowStyle(windowHandle,
                 Static.Windows.GetExtendedWindowStyle(windowHandle) & ~ExtendedWindowStyles.WS_EX_TOOLWINDOW);

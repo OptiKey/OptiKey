@@ -202,7 +202,6 @@ namespace JuliusSweetland.OptiKey.Pro
 
                 mainWindowManipulationService.SetFocusable(Settings.Default.MainWindowFocusable);
                 mainWindowManipulationService.SetShowInTaskbar(Settings.Default.ShowMainWindowInTaskbar);
-                mainWindowManipulationService.SetShowInAltTabList(Settings.Default.ShowMainWindowInAltTabList);
 
                 if (Settings.Default.LookToScrollOverlayBoundsThickness > 0
                     || Settings.Default.LookToScrollOverlayDeadzoneThickness > 0)

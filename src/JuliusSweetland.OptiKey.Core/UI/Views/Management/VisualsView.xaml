@@ -393,11 +393,6 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
           <CheckBox Grid.Row="29" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ShowMainWindowInTaskbar, Mode=TwoWay}" />
-          <TextBlock Grid.Row="30" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_MAINWINDOW_IN_ALT_TAB_LIST_LABEL}" 
-                               VerticalAlignment="Center" Margin="5" />
-          <CheckBox Grid.Row="30" Grid.Column="1" 
-                              VerticalAlignment="Center"
-                              IsChecked="{Binding ShowMainWindowInAltTabList, Mode=TwoWay}" />
         </Grid>
       </GroupBox>
       <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.FONT}">

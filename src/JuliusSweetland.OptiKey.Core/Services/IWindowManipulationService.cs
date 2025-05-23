@@ -38,6 +38,5 @@ namespace JuliusSweetland.OptiKey.Services
         void InvokeMoveWindow(string parameterString);
         void SetFocusable(bool focusable);
         void SetShowInTaskbar(bool showInTaskbar);
-        void SetShowInAltTabList(bool showInAltTabList);
     }
 }

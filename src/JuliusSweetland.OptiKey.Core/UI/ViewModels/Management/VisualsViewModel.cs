@@ -629,13 +629,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref showMainWindowInTaskbar, value); }
         }
 
-        private bool showMainWindowInAltTabList;
-        public bool ShowMainWindowInAltTabList
-        {
-            get { return showMainWindowInAltTabList; }
-            set { SetProperty(ref showMainWindowInAltTabList, value); }
-        }
-
         private Thickness conversationBorderThickness;
         public Thickness ConversationBorderThickness
         {
@@ -730,9 +723,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MainWindowState = Settings.Default.MainWindowState;
             EnableResizeWithMouse = Settings.Default.EnableResizeWithMouse;
             ShowMainWindowInTaskbar = Settings.Default.ShowMainWindowInTaskbar;
-            ShowMainWindowInAltTabList = Settings.Default.ShowMainWindowInAltTabList;
             MainWindowFocusable = Settings.Default.MainWindowFocusable;
-            //windowManipulationService.SetFocusable(Settings.Default.MainWindowFocusable);
         }
 
         public void ApplyChanges()
@@ -769,7 +760,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
             Settings.Default.MainWindowFocusable = MainWindowFocusable;
             Settings.Default.ShowMainWindowInTaskbar = ShowMainWindowInTaskbar;
-            Settings.Default.ShowMainWindowInAltTabList = ShowMainWindowInAltTabList;
 
             // We don't apply changes to window/size position if Optikey's state has changed to one in which re-positioning isn't supported
             bool allowReposition = windowManipulationService.GetPersistedState() &&
@@ -801,7 +791,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
             windowManipulationService.SetFocusable(Settings.Default.MainWindowFocusable);
             windowManipulationService.SetShowInTaskbar(Settings.Default.ShowMainWindowInTaskbar);
-            windowManipulationService.SetShowInAltTabList(Settings.Default.ShowMainWindowInAltTabList);
         }
 
         #endregion
