@@ -373,7 +373,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 Log.Info("Applying management changes");
                 ApplyChanges();
-                //window.Close();
+                window.Close();
             }
         }
 
