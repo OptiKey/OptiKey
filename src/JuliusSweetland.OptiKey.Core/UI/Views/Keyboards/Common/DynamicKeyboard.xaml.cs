@@ -1,23 +1,24 @@
 // Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-using JuliusSweetland.OptiKey.UI.Controls;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Enums;
-using System.Windows.Controls;
-using System.Xml.Serialization;
-using System.IO;
-using System;
-using System.Linq;
-using System.Windows.Media;
-using System.Reflection;
-using log4net;
-using System.Xml;
-using System.Windows;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using JuliusSweetland.OptiKey.UI.Windows;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.UI.ValueConverters;
+using JuliusSweetland.OptiKey.UI.Windows;
+using log4net;
+using System;
+using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -876,11 +877,29 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             if (xmlKey.Symbol != null)
             {
-                Geometry geom = (Geometry)this.Resources[xmlKey.Symbol];
-                if (geom != null)
-                    newKey.SymbolGeometry = geom;
+                Geometry geometry = this.Resources[xmlKey.Symbol] as Geometry;
+
+                if (geometry == null)
+                {
+                    try
+                    {
+                        geometry = Geometry.Parse(xmlKey.Symbol);
+                    }
+                    catch (Exception)
+                    {
+                        geometry = null;
+                    }
+                }
+
+
+                if (geometry != null)
+                {
+                    newKey.SymbolGeometry = geometry;
+                }
                 else
+                {
                     Log.ErrorFormat("Could not parse {0} as symbol geometry", xmlKey.Symbol);
+                }
             }
 
             // Add same symbol margin to all keys
