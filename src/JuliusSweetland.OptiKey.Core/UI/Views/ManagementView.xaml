@@ -79,7 +79,13 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <Button Command="{Binding OkCommand}" 
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
                     MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
-                <x:Static Member="resx:Resources.OK"/></Button>
+                <x:Static Member="resx:Resources.OK"/>
+            </Button>
+            <Button Command="{Binding ApplyCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                    MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
+                <x:Static Member="resx:Resources.APPLY"/>
+            </Button>
             <Button Command="{Binding CancelCommand}" 
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
                     MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">

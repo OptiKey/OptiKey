@@ -260,6 +260,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        public static string APPLY {
+            get {
+                return ResourceManager.GetString("APPLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove all versions in:.
         /// </summary>
         public static string ASK_CONFIRM_UNINSTALL {
@@ -6087,15 +6096,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SHIFT {
             get {
                 return ResourceManager.GetString("SHIFT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Show keyboard window in alt+tab list.
-        /// </summary>
-        public static string SHOW_MAINWINDOW_IN_ALT_TAB_LIST_LABEL {
-            get {
-                return ResourceManager.GetString("SHOW_MAINWINDOW_IN_ALT_TAB_LIST_LABEL", resourceCulture);
             }
         }
         
