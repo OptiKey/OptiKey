@@ -41,6 +41,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ConfirmationRequest = new InteractionRequest<Confirmation>();
             OkCommand = new DelegateCommand<Window>(Ok); //Can always click Ok
             CancelCommand = new DelegateCommand<Window>(Cancel); //Can always click Cancel
+            ApplyCommand = new DelegateCommand<Window>(Apply); //Can always click Cancel
+
         }
         
         #endregion
@@ -71,9 +73,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
         public DelegateCommand<Window> OkCommand { get; private set; }
         public DelegateCommand<Window> CancelCommand { get; private set; }
-        
+        public DelegateCommand<Window> ApplyCommand { get; private set; }
+
         #endregion
-        
+
         #region Methods
 
         private void CoerceValues()
@@ -339,7 +342,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             WordsViewModel.ApplyChanges();
         }
 
-        private void Ok(Window window)
+        private void ProcessChanges(Window window, bool closeWindow)
         {
             CoerceValues();
 
@@ -373,13 +376,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 Log.Info("Applying management changes");
                 ApplyChanges();
-                window.Close();
+                if (closeWindow)
+                {
+                    window.Close();
+                }
             }
+        }
+
+        private void Ok(Window window)
+        {
+            ProcessChanges(window, true);
         }
 
         private static void Cancel(Window window)
         {
             window.Close();
+        }
+
+        private void Apply(Window window)
+        {
+            ProcessChanges(window, false);
         }
 
         #endregion
