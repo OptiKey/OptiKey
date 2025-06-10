@@ -251,6 +251,10 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue QuitKey = new KeyValue(FunctionKeys.Quit);
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue(FunctionKeys.RepeatLastMouseAction);
         public static readonly KeyValue RestartKey = new KeyValue(FunctionKeys.Restart);
+        public static readonly KeyValue RightAltKey = new KeyValue(FunctionKeys.RightAlt);
+        public static readonly KeyValue RightCtrlKey = new KeyValue(FunctionKeys.RightCtrl);
+        public static readonly KeyValue RightShiftKey = new KeyValue(FunctionKeys.RightShift);
+        public static readonly KeyValue RightWinKey = new KeyValue(FunctionKeys.RightWin);
         public static readonly KeyValue RussianRussiaKey = new KeyValue(FunctionKeys.RussianRussia);
         public static readonly KeyValue SerbianSerbiaKey = new KeyValue(FunctionKeys.SerbianSerbia);
         public static readonly KeyValue ScrollLockKey = new KeyValue(FunctionKeys.ScrollLock);
@@ -449,6 +453,10 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftShiftKey,
                     LeftWinKey,
+                    RightAltKey,
+                    RightCtrlKey,
+                    RightShiftKey,
+                    RightWinKey,
                     MouseMagnifierKey,
                     MultiKeySelectionIsOnKey
                 };
@@ -471,8 +479,8 @@ namespace JuliusSweetland.OptiKey.Models
                     //Issue for this bug https://globalmousekeyhook.codeplex.com/workitem/1188
                     //Source for this bug https://globalmousekeyhook.codeplex.com/SourceControl/latest#Main/MouseKeyboardActivityMonitor/KeyEventArgsExt.cs
                     keys.Remove(LeftWinKey);
+                    keys.Remove(RightWinKey);
                 }
-
                 return keys;
             }
         }
@@ -487,6 +495,10 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftShiftKey,
                     LeftWinKey,
+                    RightAltKey,
+                    RightCtrlKey,
+                    RightShiftKey,
+                    RightWinKey,
                     LookToScrollActiveKey,
                     LookToScrollBoundsKey,
                     MouseLeftDownUpKey,
@@ -508,6 +520,7 @@ namespace JuliusSweetland.OptiKey.Models
                     //Issue for this bug https://globalmousekeyhook.codeplex.com/workitem/1188
                     //Source for this bug https://globalmousekeyhook.codeplex.com/SourceControl/latest#Main/MouseKeyboardActivityMonitor/KeyEventArgsExt.cs
                     keys.Remove(LeftWinKey);
+                    keys.Remove(RightWinKey);
                 }
 
                 return keys;
@@ -530,7 +543,10 @@ namespace JuliusSweetland.OptiKey.Models
                 {
                     LeftAltKey,
                     LeftCtrlKey,
-                    LeftWinKey
+                    LeftWinKey,
+                    RightAltKey,
+                    RightCtrlKey,
+                    RightWinKey,
                 };
             }
         }
@@ -605,6 +621,9 @@ namespace JuliusSweetland.OptiKey.Models
                     new KeyValue(FunctionKeys.LeftCtrl),
                     new KeyValue(FunctionKeys.LeftWin),
                     new KeyValue(FunctionKeys.LeftAlt),
+                    new KeyValue(FunctionKeys.RightCtrl),
+                    new KeyValue(FunctionKeys.RightWin),
+                    new KeyValue(FunctionKeys.RightAlt),
                     new KeyValue(FunctionKeys.F1),
                     new KeyValue(FunctionKeys.F2),
                     new KeyValue(FunctionKeys.F3),
@@ -846,6 +865,10 @@ namespace JuliusSweetland.OptiKey.Models
                     FunctionKeys.PreviousSuggestions,
                     FunctionKeys.Quit,
                     FunctionKeys.Restart,
+                    FunctionKeys.RightAlt,
+                    FunctionKeys.RightCtrl,
+                    FunctionKeys.RightShift,
+                    FunctionKeys.RightWin,
                     FunctionKeys.RussianRussia,
                     FunctionKeys.ScrollLock,
                     FunctionKeys.SelectVoice,
