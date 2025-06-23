@@ -743,7 +743,7 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </TextBlock>
                     <CheckBox Grid.Row="8" Grid.Column="1" 
                       VerticalAlignment="Center"
-                      IsChecked="{Binding AllowRepeats, Mode=TwoWay}" >
+                      IsChecked="{Binding AllowRepeatKeyActionsAwayFromKey, Mode=TwoWay}" >
                         <CheckBox.Style>
                             <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
                                 <Setter Property="Visibility" Value="Visible" />
