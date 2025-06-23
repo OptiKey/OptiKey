@@ -30,9 +30,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         public DirectInputButtonDownUpSource(
             Guid controllerGuid,
             int triggerButtonIdx,
-            bool allowRepeats,
-            int firstRepeatMs,
-            int nextRepeatMs,
+            bool holdToRepeat,
+            int holdToRepeatFirstMs,
+            int holdToRepeatNextMs,
             IPointSource pointSource)
         {
             this.triggerButtonIdx = triggerButtonIdx;
@@ -40,7 +40,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             this.controllerGuid = controllerGuid;
 
             directInputListener = DirectInputListener.Instance;
-            directInputListener.AllowRepeats(allowRepeats, firstRepeatMs, nextRepeatMs);
+            directInputListener.AllowRepeats(holdToRepeat, holdToRepeatFirstMs, holdToRepeatNextMs);
         }
 
         #endregion
