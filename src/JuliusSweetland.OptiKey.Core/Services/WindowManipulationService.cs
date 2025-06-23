@@ -22,6 +22,21 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public class WindowManipulationService : IWindowManipulationService
     {
+        public enum GetWindowLongPtrIndex : int
+        {
+            GWL_EXSTYLE = -20,  // Extended window styles
+            GWL_STYLE = -16,  // Window styles  
+            GWL_WNDPROC = -4,   // Window procedure address
+            GWL_HINSTANCE = -6,   // Application instance handle
+            GWL_HWNDPARENT = -8,   // Parent window handle
+            GWL_ID = -12,  // Control identifier
+            GWL_USERDATA = -21,  // User data associated with window
+
+            // Dialog box specific
+            DWL_DLGPROC = 4,    // Dialog procedure address
+            DWL_MSGRESULT = 0,    // Message result
+            DWL_USER = 8     // Application-specific data
+        }
         #region Constants
 
         private const double MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN = 10;
@@ -837,11 +852,29 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        private enum ResizeStrategy { ForceResize, ForceFit, SoftResize, SoftFit, Move }
+
         public void InvokeMoveWindow(string parameterString)
         {
+            // parameter string is one of:
+            // "ma..." to maximise (i.e. could be 'ma' or 'max', or 'maximum', only first 2 chars count)
+            // "mi..." to minimise
+            // "left, top, right, bottom, resizeStrategy"
+            // where left/top/etc are either raw pixels or %, e.g. "400" = 400 pixels, "40%" = 40% of screen dimension
+            // resizeStrategy is one of:
+            // empty: defaults to forceResize for backward compatibility
+            // forceResize: requests the window resize to target rect
+            // softResize:  as 'forceResize' but *only* if window has WS_THICKFRAME style (strong proxy of 'is intended to be resizable')
+            // forceFit:    requests the window is scaled down in any necessary dimension, but not scaled up. The window will be centred
+            //              in any dimension that is smaller than the target rect.
+            // softFit:     as 'forceFit', but *only* if window has WS_THICKFRAME style 
+            // move:        does not resize. Centres the window in the target rect.            
+
             var parameterArray = parameterString.Split(',');
             var handle = PInvoke.GetForegroundWindow();
             if (handle == windowHandle)
+                return;
+            if (parameterString.Length < 2)
                 return;
 
             //SW_MAXIMIZE = 3, SW_MINIMIZE = 6, SW_RESTORE = 9
@@ -850,9 +883,17 @@ namespace JuliusSweetland.OptiKey.Services
             
             PInvoke.ShowWindow(handle, nCmdShow);
 
+            // Return early if only maximise/minimise
             if (nCmdShow != 9)
                 return;
-
+            else
+            {
+                if (parameterArray.Length < 4)
+                {
+                    Log.Error($"Invalid parameter string for MoveWindow");
+                }
+            }
+            
             Func<string, double, double, double> getValue = (param, multiplier, original) =>
             {
                 return string.IsNullOrWhiteSpace(param) ? double.NaN
@@ -860,35 +901,82 @@ namespace JuliusSweetland.OptiKey.Services
                 : multiplier * result / 100;
             };
 
-            var bounds = GetWindowBounds(handle);
-            if (bounds != null)
+            ResizeStrategy resizeStrategy;
+            if (parameterArray.Length < 5)
             {
-                var left = getValue(parameterArray[0], screenBoundsInPx.Width, bounds.Value.Left);
-                var top = getValue(parameterArray[1], screenBoundsInPx.Height, bounds.Value.Top);
-                var right = getValue(parameterArray[2], screenBoundsInPx.Width, bounds.Value.Right);
-                var bottom = getValue(parameterArray[3], screenBoundsInPx.Height, bounds.Value.Bottom);
-
-                if (left == double.NaN)
-                {
-                    left = right == double.NaN ? bounds.Value.Left
-                        : (right - (bounds.Value.Right - bounds.Value.Left)).CoerceToLowerLimit(0);
-                }
-                if (top == double.NaN)
-                {
-                    top = bottom == double.NaN ? bounds.Value.Top
-                        : (bottom - (bounds.Value.Bottom - bounds.Value.Top)).CoerceToLowerLimit(0);
-                }
-                if (right == double.NaN)
-                {
-                    right = (left + (bounds.Value.Right - bounds.Value.Left)).CoerceToUpperLimit(screenBoundsInPx.Width);
-                }
-                if (bottom == double.NaN)
-                {
-                    bottom = (top + (bounds.Value.Bottom - bounds.Value.Top)).CoerceToUpperLimit(screenBoundsInPx.Height);
-                }
-
-                PInvoke.MoveWindow(handle, (int)left, (int)top, (int)(right - left), (int)(bottom - top), true);
+                resizeStrategy = ResizeStrategy.ForceResize;
             }
+            else
+            {
+                var resizeParam = parameterArray[4].ToLower();
+                if (!Enum.TryParse(resizeParam, true, out resizeStrategy)) {
+                    Log.Info($"Couldn't parse MoveWindow resize strategy: {resizeStrategy} ");
+                }
+            }
+
+            var style = Windows.GetWindowStyle(handle);
+            var bounds = GetWindowBounds(handle);
+            if (bounds == null)
+            {
+                Log.Error($"Unable to move window {handle} with invalid bounds ");
+                return;
+            }
+            
+            // Get target rectangle 
+            var left = getValue(parameterArray[0], screenBoundsInPx.Width, bounds.Value.Left);
+            var top = getValue(parameterArray[1], screenBoundsInPx.Height, bounds.Value.Top);
+            var right = getValue(parameterArray[2], screenBoundsInPx.Width, bounds.Value.Right);
+            var bottom = getValue(parameterArray[3], screenBoundsInPx.Height, bounds.Value.Bottom);
+            
+            bool isResizeable = (style & WindowStyles.WS_THICKFRAME) != 0;
+
+            var origWidth = bounds.Value.Width;
+            var origHeight = bounds.Value.Height;
+            var targetWidth = right - left;
+            var targetHeight = bottom - top;
+
+            // Fallback to moving to a centred location
+            var leftFinal = (int)(left + (targetWidth - origWidth) / 2);
+            var topFinal = (int)(top + (targetHeight - origHeight) / 2);
+            var widthFinal = (int)origWidth;
+            var heightFinal = (int)origHeight;
+
+            switch (resizeStrategy)
+            {
+                case ResizeStrategy.ForceResize:
+                case ResizeStrategy.SoftResize:
+                    if (resizeStrategy == ResizeStrategy.ForceResize ||
+                        isResizeable)
+                    {
+                        leftFinal = (int)left;
+                        topFinal = (int)top;
+                        widthFinal = (int)(right - left);
+                        heightFinal = (int)(bottom - top);
+                    }
+                    // else fallback to centred
+                    break;
+
+                case ResizeStrategy.ForceFit:
+                case ResizeStrategy.SoftFit:
+                    if (resizeStrategy == ResizeStrategy.ForceFit ||
+                        isResizeable)
+                    {
+                        widthFinal = (int)Math.Min(targetWidth, origWidth);
+                        heightFinal = (int)Math.Min(targetHeight, origHeight);
+                        leftFinal = (int)(left + (targetWidth - widthFinal) / 2);
+                        topFinal = (int)(top + (targetHeight - heightFinal) / 2);
+                    }
+                    // else fallback to centred
+                    break;
+
+                case ResizeStrategy.Move:
+                    // fallback to centred
+                    break;
+
+            }
+
+            PInvoke.MoveWindow(handle, leftFinal, topFinal, widthFinal, heightFinal, true);
+            
         }
 
         #endregion
