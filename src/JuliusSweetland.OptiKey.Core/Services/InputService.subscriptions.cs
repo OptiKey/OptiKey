@@ -245,8 +245,9 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     else if (triggerSignal.PointAndKeyValue.KeyValue == null &&
                              SelectionMode == SelectionModes.Keys &&
-                             Settings.Default.PointSelectionTriggerMouseDownUpButton != MouseButtons.Left &&
-                             Settings.Default.PointSelectionTriggerSource != TriggerSources.TouchDownUps &&
+                             !(Settings.Default.PointSelectionTriggerSource == TriggerSources.MouseButtonDownUps &&  // don't allow repeat actions for touch / mouse triggers
+                               Settings.Default.PointSelectionTriggerMouseDownUpButton == MouseButtons.Left) &&      
+                             Settings.Default.PointSelectionTriggerSource != TriggerSources.TouchDownUps &&          
                              Settings.Default.AllowRepeatKeyActionsAwayFromKey)
                     {
                         // Trigger without key - may be used to repeat last action. 
