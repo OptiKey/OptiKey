@@ -32,9 +32,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         public XInputButtonDownUpSource(
             UserIndex userIndex,
             GamepadButtonFlags triggerButton,
-            bool allowRepeats,
-            int firstRepeatMs,
-            int nextRepeatMs,
+            bool holdToRepeat,
+            int holdToRepeatFirstMs,
+            int holdToRepeatNextMs,
             IPointSource pointSource)
         {
             Log.Info("Creating XInputButtonDownUpSource");
@@ -43,7 +43,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             this.userIndex = userIndex;
 
             xinputListener = XInputListener.Instance;
-            xinputListener.AllowRepeats(allowRepeats, firstRepeatMs, nextRepeatMs);
+            xinputListener.AllowRepeats(holdToRepeat, holdToRepeatFirstMs, holdToRepeatNextMs);
         }
 
         #endregion
