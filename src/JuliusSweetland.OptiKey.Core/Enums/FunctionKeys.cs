@@ -248,6 +248,7 @@ namespace JuliusSweetland.OptiKey.Enums
         Sleep,
         SlovakSlovakia,
         SlovenianSlovenia,
+        Space,
         SpanishSpain,
         Speak,
         Suggestion1,
