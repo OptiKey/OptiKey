@@ -2444,6 +2444,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     SelectLanguage(Languages.SlovenianSlovenia);
                     break;
 
+                case FunctionKeys.Space:
+                    // Special case for processing space because 
+                    // (a) having the character code in XML is a pain; but
+                    // (b) if you are using word prediction it's essential the
+                    //     processing of space goes through the output service
+                    //     rather than just simulating key presses
+                    KeyboardOutputService.ProcessSingleKeyText(" ");
+                    break;
                 case FunctionKeys.SpanishSpain:
                     SelectLanguage(Languages.SpanishSpain);
                     break;
