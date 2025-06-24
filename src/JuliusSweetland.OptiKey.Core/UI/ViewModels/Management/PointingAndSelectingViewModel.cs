@@ -680,8 +680,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionTriggerFixationDefaultCompleteTimeInMs = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes;
             KeySelectionTriggerFixationCompleteTimesByIndividualKey = Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey;
             KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups = FromSetting(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
+            KeySelectionTriggerFixationResetMousePositionAfterKeyPressed = Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed;
             KeySelectionTriggerIncompleteFixationTtlInMs = Settings.Default.KeySelectionTriggerIncompleteFixationTtl.TotalMilliseconds;
-
+             
             GamepadTriggerHoldToRepeat = Settings.Default.GamepadTriggerHoldToRepeat;
             GamepadTriggerFirstRepeatMilliseconds = Settings.Default.GamepadTriggerFirstRepeatMilliseconds;
             GamepadTriggerNextRepeatMilliseconds = Settings.Default.GamepadTriggerNextRepeatMilliseconds;
