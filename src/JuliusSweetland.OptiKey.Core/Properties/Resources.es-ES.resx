@@ -817,6 +817,9 @@ Y SÍMBOLOS</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value> Control a través del ordenador y comunicación</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Otros</value>
   </data>
@@ -1091,12 +1094,6 @@ POSICIÓN</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibración terminada, o quizás cancelada, ¡pero todo está funcionando de nuevo!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>No fue posible encontrar Tobii Service. Por favor instale Tobii software e inténtelo de nuevo.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service no está activo. Por favor inicie Tobii service e inténtelo de nuevo.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tono 1</value>
@@ -1580,11 +1577,11 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Suprimir teclas modificadoras para todas las acciones del ratón:</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>¡Calibración exitosa!</value>
-  </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Falló la calibración!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>¡Calibración exitosa!</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>LETRAS 2</value>
@@ -1604,39 +1601,44 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>LENGUAJE</value>
   </data>
+  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
+    <value>Comunicación sencilla</value>
+  </data>
+  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
+    <value>Control total del cursor</value>
+  </data>
+  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
+    <value>Comunicación simbólica</value>
+  </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
     <value>Esto requiere una computadora portátil del juego de Alienware 17, mediante el rastreador ocular de Tobii incorporado.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Esto requiere que el Gaze biblioteca de seguimiento UIT, que es un marco para ojo de código abierto de seguimiento utilizando componentes off-the-shelf, tales como webcams y videocámaras.</value>
+    <value>Esto requiere que el Gaze biblioteca de seguimiento UIT, que es un marco para ojo de código abierto de seguimiento utilizando componentes off-the-shelf, tales como webcams y videocámaras.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Si va a utilizar Optikey con el rastreador ocular Irisbond Duo, por favor asegúrese de que tiene los controladores instalados Irisbond Duo. Estos se pueden descargar desde https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+    <value>Si va a utilizar Optikey con el rastreador ocular Irisbond Duo, por favor asegúrese de que tiene los controladores instalados Irisbond Duo. Estos se pueden descargar desde https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>En este modo, Optikey utilizará el cursor del ratón como entrada en lugar de hablar directamente a un seguidor de ojos. Es posible que desee esto si se está probando Optikey a cabo, o si desea utilizarlo con un dispositivo de entrada alternativo, como un ratón de cabeza o cualquier rastreador ocular no en esta lista. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Esta opción funciona con cualquier rastreador ocular de Tobii juego (4C, EyeX, Alienware, Steelseries, etc)</value>
+    <value>En este modo, Optikey utilizará el cursor del ratón como entrada en lugar de hablar directamente a un seguidor de ojos. Es posible que desee esto si se está probando Optikey a cabo, o si desea utilizarlo con un dispositivo de entrada alternativo, como un ratón de cabeza o cualquier rastreador ocular no en esta lista. </value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Para utilizar Optikey con un rastreador ocular de asistencia, ya sea que necesita la nueva versión de Tobii Windows Control, o el motor de Tobii Eye Tracking. Si es necesario utilizar la versión antigua de la aplicación Tobii Windows Control (Tobii Gaze Interaction Software), entonces necesitará para controlar Optikey utilizando la posición del ratón en lugar. </value>
+    <value>Para utilizar Optikey con un rastreador ocular de asistencia, ya sea que necesita la nueva versión de Tobii Windows Control, o el motor de Tobii Eye Tracking. Si es necesario utilizar la versión antigua de la aplicación Tobii Windows Control (Tobii Gaze Interaction Software), entonces necesitará para controlar Optikey utilizando la posición del ratón en lugar. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Esta opción funciona con cualquier rastreador ocular de Tobii juego (4C, EyeX, Alienware, Steelseries, etc)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>La Interacción Visual myGaze sólo se admite si ya ha instalado los controladores de cliente myGaze, que ya no están disponibles para su descarga. Si no ha instalado estos conductores, hay que seleccionar el uso 'posición del ratón' en su lugar, y utilizar Optikey en combinación con la aplicación myGaze EyeMousePlay para mover el cursor.</value>
+    <value>La Interacción Visual myGaze sólo se admite si ya ha instalado los controladores de cliente myGaze, que ya no están disponibles para su descarga. Si no ha instalado estos conductores, hay que seleccionar el uso 'posición del ratón' en su lugar, y utilizar Optikey en combinación con la aplicación myGaze EyeMousePlay para mover el cursor.</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value> Control a través del ordenador y comunicación</value>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Si su rastreador ocular no está en la lista aquí, o necesita una versión de 32 bits de OptikeY, haga clic en el enlace a continuación para obtener más información.
+Si desea continuar con la instalación, OptikeY será controlado por la posición de su mouse. Esto le permite funcionar con entradas alternativas como un mouse de cabeza o cualquier rastreador ocular que le permita controlar la posición del mouse con los ojos.</value>
   </data>
-  <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>Comunicación sencilla</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>No fue posible encontrar Tobii Service. Por favor instale Tobii software e inténtelo de nuevo.</value>
   </data>
-  <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Control total del cursor</value>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service no está activo. Por favor inicie Tobii service e inténtelo de nuevo.</value>
   </data>
-  <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Comunicación simbólica</value>
-  </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Si su rastreador ocular no está en la lista aquí, o necesita una versión de 32 bits de OptikeY, haga clic en el enlace a continuación para obtener más información.
-Si desea continuar con la instalación, OptikeY será controlado por la posición de su mouse. Esto le permite funcionar con entradas alternativas como un mouse de cabeza o cualquier rastreador ocular que le permita controlar la posición del mouse con los ojos.</value></data>
 </root>

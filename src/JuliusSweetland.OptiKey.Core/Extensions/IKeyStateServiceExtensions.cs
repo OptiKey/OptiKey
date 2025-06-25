@@ -15,7 +15,11 @@ namespace JuliusSweetland.OptiKey.Extensions
             var lastLeftCtrlValue = keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
             var lastLeftWinValue = keyStateService.KeyDownStates[KeyValues.LeftWinKey].Value;
             var lastLeftAltValue = keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value;
-            
+            var lastRightShiftValue = keyStateService.KeyDownStates[KeyValues.RightShiftKey].Value;
+            var lastRightCtrlValue = keyStateService.KeyDownStates[KeyValues.RightCtrlKey].Value;
+            var lastRightWinValue = keyStateService.KeyDownStates[KeyValues.RightWinKey].Value;
+            var lastRightAltValue = keyStateService.KeyDownStates[KeyValues.RightAltKey].Value;
+
             log.InfoFormat("Releasing modifiers (shift:{0}, ctrl:{1}, win:{2}, alt:{3})", 
                 lastLeftShiftValue, lastLeftCtrlValue, lastLeftWinValue, lastLeftAltValue);
             

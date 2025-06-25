@@ -205,9 +205,6 @@ Està segur que vol tornar a re-calibrar?</value>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Calibratge aturat per causa desconeguda. Missatge: '{0}</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Exit en el calibratge! Precisió (Mitjana Grau Error = {0})</value>
-  </data>
   <data name="CANCEL" xml:space="preserve">
     <value>CANCEL·LAR</value>
   </data>
@@ -803,7 +800,10 @@ I SÍMBOLS</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
-  </data>  
+  </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Control d'ordinador i Comunicació</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Altres</value>
   </data>
@@ -1075,12 +1075,6 @@ POSICIÓ</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibració completada, o possiblement cancel·lada, però tot torna a funcionar un altre cop!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>No es pot trobar el motor Tobii. Sisplau, instal·la el Tobii software i torna a provar.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>El motor Tobii no està en funcionament. Sisplau, inicia el motor Tobii i torna a provar.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>To 1</value>
@@ -1564,6 +1558,9 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Suprimir les tecles de modificació per totes les accions de ratolí:</value>
   </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Exit en el calibratge! Precisió (Mitjana Grau Error = {0})</value>
+  </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>LLETRES 2</value>
   </data>
@@ -1582,39 +1579,44 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>IDIOMA</value>
   </data>
-  <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>Això requereix un ordinador portàtil del joc de Alienware 17, mitjançant el rastrejador ocular de Tobii incorporat.</value>
-  </data>
-  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Això requereix que el Gaze biblioteca de seguiment UIT, que és un marc per ull de codi obert de seguiment utilitzant components off-the-shelf, com ara càmeres web i càmeres de vídeo.</value>
-  </data>
-  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Si intenteu fer ús Optikey amb el rastrejador ocular Irisbond Duo, si us plau segur de tindre els controladors instal·lats Irisbond Duo. Aquests es poden descarregar des https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
-  </data>
-  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>En aquesta manera, Optikey farà servir el cursor del ratolí com a entrada en lloc de parlar directament a un seguidor d'ulls. És possible que vulgueu això si s'està provant Optikey a terme, o desitja utilitzar-lo amb un dispositiu d'entrada alternatiu, com un ratolí de cap o qualsevol rastrejador ocular no en aquesta llista. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Aquesta opció funciona amb qualsevol Eyetracker de Tobii joc (4C, EyeX, Alienware, SteelSeries, etc.)</value>
-  </data>
-  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Per utilitzar Optikey amb un rastrejador ocular d'assistència, ja sigui que necessita la nova versió de Tobii Windows Control, o el motor de Tobii Eye Tracking. Si cal utilitzar la versió antiga de l'aplicació Tobii Windows Control (Tobii Gaze Interaction Software), aleshores us farà falta per controlar Optikey utilitzant la posició del ratolí en lloc. </value>
-  </data>
-  <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>La Interacció Visual myGaze només s'admet si ja ha instal·lat els controladors de client myGaze, que ja no estan disponibles per a baixar. Si no heu instal·lat aquests conductors, cal seleccionar l'ús 'posició del ratolí' en el seu lloc, i utilitzar Optikey en combinació amb l'aplicació myGaze EyeMousePlay per moure el cursor.</value>
-  </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Control d'ordinador i Comunicació</value>
-  </data>
   <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>fàcil Comunicació</value>
+    <value>fàcil Comunicació</value>
   </data>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Control del cursor completa</value>
+    <value>Control del cursor completa</value>
   </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>La comunicació amb els símbols</value>
+    <value>La comunicació amb els símbols</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Si el vostre rastrejador d’ulls no apareix aquí o necessiteu una versió de 32 bits d’Optikey, feu clic a l’enllaç següent per obtenir més informació.
-Si voleu continuar amb la instal·lació, Optikey estarà controlada per la posició del ratolí. Això li permet treballar amb entrades alternatives com un ratolí de capçal o qualsevol rastrejador d’ulls que permeti controlar la posició del ratolí amb els ulls.</value></data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Això requereix un ordinador portàtil del joc de Alienware 17, mitjançant el rastrejador ocular de Tobii incorporat.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>Això requereix que el Gaze biblioteca de seguiment UIT, que és un marc per ull de codi obert de seguiment utilitzant components off-the-shelf, com ara càmeres web i càmeres de vídeo.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>Si intenteu fer ús Optikey amb el rastrejador ocular Irisbond Duo, si us plau segur de tindre els controladors instal·lats Irisbond Duo. Aquests es poden descarregar des https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>En aquesta manera, Optikey farà servir el cursor del ratolí com a entrada en lloc de parlar directament a un seguidor d'ulls. És possible que vulgueu això si s'està provant Optikey a terme, o desitja utilitzar-lo amb un dispositiu d'entrada alternatiu, com un ratolí de cap o qualsevol rastrejador ocular no en aquesta llista. </value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>Per utilitzar Optikey amb un rastrejador ocular d'assistència, ja sigui que necessita la nova versió de Tobii Windows Control, o el motor de Tobii Eye Tracking. Si cal utilitzar la versió antiga de l'aplicació Tobii Windows Control (Tobii Gaze Interaction Software), aleshores us farà falta per controlar Optikey utilitzant la posició del ratolí en lloc. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Aquesta opció funciona amb qualsevol Eyetracker de Tobii joc (4C, EyeX, Alienware, SteelSeries, etc.)</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>La Interacció Visual myGaze només s'admet si ja ha instal·lat els controladors de client myGaze, que ja no estan disponibles per a baixar. Si no heu instal·lat aquests conductors, cal seleccionar l'ús 'posició del ratolí' en el seu lloc, i utilitzar Optikey en combinació amb l'aplicació myGaze EyeMousePlay per moure el cursor.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Si el vostre rastrejador d’ulls no apareix aquí o necessiteu una versió de 32 bits d’Optikey, feu clic a l’enllaç següent per obtenir més informació.
+Si voleu continuar amb la instal·lació, Optikey estarà controlada per la posició del ratolí. Això li permet treballar amb entrades alternatives com un ratolí de capçal o qualsevol rastrejador d’ulls que permeti controlar la posició del ratolí amb els ulls.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>No es pot trobar el motor Tobii. Sisplau, instal·la el Tobii software i torna a provar.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>El motor Tobii no està en funcionament. Sisplau, inicia el motor Tobii i torna a provar.</value>
+  </data>
 </root>

@@ -1013,6 +1013,70 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string GazeIndicatorOverlayStrokeInnerColour
+        {
+            get
+            {
+                return ((string)(this["GazeIndicatorOverlayStrokeInnerColour"]));
+            }
+            set
+            {
+                this["GazeIndicatorOverlayStrokeInnerColour"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string GazeIndicatorOverlayStrokeOuterColour
+        {
+            get
+            {
+                return ((string)(this["GazeIndicatorOverlayStrokeOuterColour"]));
+            }
+            set
+            {
+                this["GazeIndicatorOverlayStrokeOuterColour"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GazeIndicatorOverlayStrokeThickness
+        {
+            get
+            {
+                return ((int)(this["GazeIndicatorOverlayStrokeThickness"]));
+            }
+            set
+            {
+                this["GazeIndicatorOverlayStrokeThickness"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double GazeIndicatorOverlayOpacity
+        {
+            get
+            {
+                return ((double)(this["GazeIndicatorOverlayOpacity"]));
+            }
+            set
+            {
+                this["GazeIndicatorOverlayOpacity"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double MagnifySourcePercentageOfScreen {
@@ -1381,6 +1445,38 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["MainWindowOpacity"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool MainWindowFocusable
+        {
+            get
+            {
+                return ((bool)(this["MainWindowFocusable"]));
+            }
+            set
+            {
+                this["MainWindowFocusable"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool ShowMainWindowInTaskbar
+        {
+            get
+            {
+                return ((bool)(this["ShowMainWindowInTaskbar"]));
+            }
+            set
+            {
+                this["ShowMainWindowInTaskbar"] = value;
             }
         }
 

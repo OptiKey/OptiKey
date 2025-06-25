@@ -820,6 +820,9 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>ΕΝΤΑΞΕΙ</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Έλεγχος Υπολογιστών &amp; Επικοινωνιών</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Άλλο</value>
   </data>
@@ -1071,9 +1074,6 @@ LK</value>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
     <value>Καταστολή πλήκτρων παραμετροποίησης όταν χρησιμοποιείτε το πληκτρολόγιο ποντικιού:</value>
   </data>
-  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
-    <value>Καταστολή των πλήκτρων τροποποίησης για όλες τις δράσεις του ποντικού:</value>
-  </data>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
@@ -1100,12 +1100,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Η βαθμονόμηση ολοκληρώθηκε, ή πιθανώς ακυρώθηκε, αλλά όλα δουλεύουν πάλι!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Η Μηχανή Tobii software δεν κατέστη δυνατό να βρεθεί. Παρακαλώ εγκαταστήστε την Μηχανή Tobii software και ξαναπροσπαθήστε. </value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Η Μηχανή Tobii Service δεν εκτελείται. Παρακαλώ εκκινήστε την Μηχανή Tobii service και ξαναπροσπαθήστε.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Τόνος 1</value>
@@ -1601,11 +1595,14 @@ Deutsch (Deutschland)</value>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Εξοδος</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Επιτυχία βαθμονόμησης!</value>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Καταστολή των πλήκτρων τροποποίησης για όλες τις δράσεις του ποντικού:</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Αποτυχία βαθμονόμησης!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Επιτυχία βαθμονόμησης!</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>ΓΡΑΜΜΑΤΑ 2</value>
@@ -1625,39 +1622,44 @@ Deutsch (Deutschland)</value>
   <data name="LANGUAGE_AND_VOICE_UPPER_CASE" xml:space="preserve">
     <value>ΓΛΩΣΣΑ</value>
   </data>
-  <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>Αυτό απαιτεί ένα Alienware 17 φορητό gaming, χρησιμοποιώντας την ενσωματωμένη Tobii μάτι tracker.</value>
-  </data>
-  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Αυτό απαιτεί την ITU βλέμμα Tracking Βιβλιοθήκη, η οποία είναι ένα πλαίσιο για ανοικτό μάτι πηγή παρακολούθησης χρησιμοποιώντας off-the-shelf συστατικά, όπως κάμερες και βιντεοκάμερες.</value>
-  </data>
-  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Αν σκοπεύετε να χρησιμοποιήσετε Optikey με το tracker μάτι Irisbond Duo, στη συνέχεια, βεβαιωθείτε ότι έχετε τα προγράμματα οδήγησης Irisbond Duo εγκατασταθεί. Αυτά μπορείτε να το κατεβάσετε από https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
-  </data>
-  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>Σε αυτή τη λειτουργία, Optikey θα χρησιμοποιήσει το δείκτη του ποντικιού ως είσοδο αντί να μιλάμε απευθείας σε ένα ιχνηλάτη οφθαλμού. Μπορεί να θέλετε αυτό, αν είστε δοκιμές Optikey έξω, ή αν θέλετε να το χρησιμοποιήσετε με μια εναλλακτική συσκευή εισόδου, όπως ένα ποντίκι κεφαλής ή όχι κάθε ιχνηλάτη ματιών σε αυτή τη λίστα. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Αυτή η επιλογή θα συνεργαστεί με οποιοδήποτε tracker μάτι Tobii Gaming (4C, EyeX, Alienware, Steelseries, κλπ)</value>
-  </data>
-  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Για να χρησιμοποιήσετε Optikey με βοηθητικές tracker μάτι, θα πρέπει είτε τη νέα έκδοση των Windows Control, ή τον κινητήρα Tobii Eye Tracking. Εάν πρέπει να χρησιμοποιήσετε την παλιά έκδοση της εφαρμογής ελέγχου Tobii Windows Control (Tobii Gaze Interaction Software), τότε θα πρέπει να ελέγχει Optikey χρησιμοποιώντας τη θέση του ποντικιού αντ 'αυτού. </value>
-  </data>
-  <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Η myGaze Visual Αλληλεπίδραση υποστηρίζεται μόνο αν έχετε ήδη εγκαταστήσει τα προγράμματα οδήγησης πελάτη myGaze, η οποία δεν είναι πλέον διαθέσιμο για download. Εάν δεν έχετε εγκαταστήσει αυτά τα προγράμματα οδήγησης, θα πρέπει να επιλέξετε τη χρήση «θέση του ποντικιού» αντ 'αυτού, και η χρήση Optikey σε συνδυασμό με την εφαρμογή myGaze EyeMousePlay για να μετακινήσετε το δρομέα.</value>
-  </data>  
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Έλεγχος Υπολογιστών &amp; Επικοινωνιών</value>
-  </data>
   <data name="OPTIKEY_CHAT_DESCRIPTION" xml:space="preserve">
-      <value>εύκολη Επικοινωνία</value>
+    <value>εύκολη Επικοινωνία</value>
   </data>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
-      <value>Πλήρης έλεγχος του δρομέα</value>
+    <value>Πλήρης έλεγχος του δρομέα</value>
   </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
-      <value>Η επικοινωνία με σύμβολα</value>
+    <value>Η επικοινωνία με σύμβολα</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Εάν ο παρατηρητής ματιών σας δεν αναφέρεται εδώ ή χρειάζεστε μια έκδοση 32 bit του Optikey, κάντε κλικ στον παρακάτω σύνδεσμο για περισσότερες πληροφορίες.
-Εάν θέλετε να συνεχίσετε με την εγκατάσταση, το Optikey θα ελέγχεται από τη θέση του ποντικιού σας. Αυτό του επιτρέπει να λειτουργεί με εναλλακτικές εισόδους, όπως ποντίκι κεφαλής ή οποιοδήποτε ιχνηλάτη που σας επιτρέπει να ελέγχετε τη θέση του ποντικιού με τα μάτια σας.</value></data>
+  <data name="ALIENWARE_17_INFO" xml:space="preserve">
+    <value>Αυτό απαιτεί ένα Alienware 17 φορητό gaming, χρησιμοποιώντας την ενσωματωμένη Tobii μάτι tracker.</value>
+  </data>
+  <data name="GAZE_TRACKER_INFO" xml:space="preserve">
+    <value>Αυτό απαιτεί την ITU βλέμμα Tracking Βιβλιοθήκη, η οποία είναι ένα πλαίσιο για ανοικτό μάτι πηγή παρακολούθησης χρησιμοποιώντας off-the-shelf συστατικά, όπως κάμερες και βιντεοκάμερες.</value>
+  </data>
+  <data name="IRISBOND_DUO_INFO" xml:space="preserve">
+    <value>Αν σκοπεύετε να χρησιμοποιήσετε Optikey με το tracker μάτι Irisbond Duo, στη συνέχεια, βεβαιωθείτε ότι έχετε τα προγράμματα οδήγησης Irisbond Duo εγκατασταθεί. Αυτά μπορείτε να το κατεβάσετε από https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+  </data>
+  <data name="MOUSE_POSITION_INFO" xml:space="preserve">
+    <value>Σε αυτή τη λειτουργία, Optikey θα χρησιμοποιήσει το δείκτη του ποντικιού ως είσοδο αντί να μιλάμε απευθείας σε ένα ιχνηλάτη οφθαλμού. Μπορεί να θέλετε αυτό, αν είστε δοκιμές Optikey έξω, ή αν θέλετε να το χρησιμοποιήσετε με μια εναλλακτική συσκευή εισόδου, όπως ένα ποντίκι κεφαλής ή όχι κάθε ιχνηλάτη ματιών σε αυτή τη λίστα. </value>
+  </data>
+  <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
+    <value>Για να χρησιμοποιήσετε Optikey με βοηθητικές tracker μάτι, θα πρέπει είτε τη νέα έκδοση των Windows Control, ή τον κινητήρα Tobii Eye Tracking. Εάν πρέπει να χρησιμοποιήσετε την παλιά έκδοση της εφαρμογής ελέγχου Tobii Windows Control (Tobii Gaze Interaction Software), τότε θα πρέπει να ελέγχει Optikey χρησιμοποιώντας τη θέση του ποντικιού αντ 'αυτού. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Αυτή η επιλογή θα συνεργαστεί με οποιοδήποτε tracker μάτι Tobii Gaming (4C, EyeX, Alienware, Steelseries, κλπ)</value>
+  </data>
+  <data name="VI_MYGAZE_INFO" xml:space="preserve">
+    <value>Η myGaze Visual Αλληλεπίδραση υποστηρίζεται μόνο αν έχετε ήδη εγκαταστήσει τα προγράμματα οδήγησης πελάτη myGaze, η οποία δεν είναι πλέον διαθέσιμο για download. Εάν δεν έχετε εγκαταστήσει αυτά τα προγράμματα οδήγησης, θα πρέπει να επιλέξετε τη χρήση «θέση του ποντικιού» αντ 'αυτού, και η χρήση Optikey σε συνδυασμό με την εφαρμογή myGaze EyeMousePlay για να μετακινήσετε το δρομέα.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Εάν ο παρατηρητής ματιών σας δεν αναφέρεται εδώ ή χρειάζεστε μια έκδοση 32 bit του Optikey, κάντε κλικ στον παρακάτω σύνδεσμο για περισσότερες πληροφορίες.
+Εάν θέλετε να συνεχίσετε με την εγκατάσταση, το Optikey θα ελέγχεται από τη θέση του ποντικιού σας. Αυτό του επιτρέπει να λειτουργεί με εναλλακτικές εισόδους, όπως ποντίκι κεφαλής ή οποιοδήποτε ιχνηλάτη που σας επιτρέπει να ελέγχετε τη θέση του ποντικιού με τα μάτια σας.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Η Μηχανή Tobii software δεν κατέστη δυνατό να βρεθεί. Παρακαλώ εγκαταστήστε την Μηχανή Tobii software και ξαναπροσπαθήστε. </value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Η Μηχανή Tobii Service δεν εκτελείται. Παρακαλώ εκκινήστε την Μηχανή Tobii service και ξαναπροσπαθήστε.</value>
+  </data>
 </root>

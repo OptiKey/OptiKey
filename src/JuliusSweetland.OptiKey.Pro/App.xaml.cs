@@ -55,8 +55,12 @@ namespace JuliusSweetland.OptiKey.Pro
 
             Action runApp = () =>
             {
-                splashScreen = new SplashScreen("/Resources/Icons/OptikeyProSplash.png");
-                splashScreen.Show(false);
+                if (Settings.Default.ShowSplashScreen)
+                {
+                    // Show splash screen
+                    splashScreen = new SplashScreen("/Resources/Icons/OptikeyProSplash.png");
+                    splashScreen.Show(false);
+                }
 
                 var application = new App(args);
                 application.InitializeComponent();
@@ -112,7 +116,7 @@ namespace JuliusSweetland.OptiKey.Pro
 
                 // We manually close this because automatic closure steals focus from the 
                 // dynamic splash screen. 
-                splashScreen.Close(TimeSpan.FromSeconds(0.5f));
+                splashScreen?.Close(TimeSpan.FromSeconds(0.5f));
 
                 //Apply theme
                 applyTheme();
@@ -196,6 +200,9 @@ namespace JuliusSweetland.OptiKey.Pro
                 //Show the main window
                 mainWindow.Show();
 
+                mainWindowManipulationService.SetFocusable(Settings.Default.MainWindowFocusable);
+                mainWindowManipulationService.SetShowInTaskbar(Settings.Default.ShowMainWindowInTaskbar);
+
                 if (Settings.Default.LookToScrollOverlayBoundsThickness > 0
                     || Settings.Default.LookToScrollOverlayDeadzoneThickness > 0)
                 {
@@ -204,7 +211,11 @@ namespace JuliusSweetland.OptiKey.Pro
                 }
 
                 if (Settings.Default.GazeIndicatorStyle != GazeIndicatorStyles.None)
-                    new OverlayWindow(mainViewModel);
+                {
+                    // Create the Gaze Indicator overlay window and set its owner to the main window.
+                    // This forces the overlay to stay on top of the main window.
+                    new OverlayWindow(mainViewModel).Owner = mainWindow;
+                }
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
                 EventHandler sizeAndPositionInitialised = null;

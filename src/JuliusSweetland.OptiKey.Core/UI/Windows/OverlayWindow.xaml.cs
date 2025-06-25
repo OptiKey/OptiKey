@@ -6,6 +6,7 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using System;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Interop;
 
 namespace JuliusSweetland.OptiKey.UI.Windows
@@ -28,10 +29,31 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 indicatorSize = Settings.Default.GazeIndicatorSize;
             };
             Settings.Default.OnPropertyChanges(s => s.GazeIndicatorSize).Subscribe(_ => applySize());
+            //Settings.Default.OnPropertyChanges(s => s.GazeIndicatorOverlayOpacity).Subscribe(_ => applySize());
+            //Settings.Default.OnPropertyChanges(s => s.GazeIndicatorOverlayStrokeThickness).Subscribe(_ => applySize());
+            //Settings.Default.OnPropertyChanges(s => s.GazeIndicatorOverlayStrokeInnerColour).Subscribe(_ => applySize());
+            //Settings.Default.OnPropertyChanges(s => s.GazeIndicatorOverlayStrokeOuterColour).Subscribe(_ => applySize());
             applySize();
 
             Action applyStyle = () =>
             {
+                //switch (Settings.Default.GazeIndicatorStyle)
+                //{
+                //    case GazeIndicatorStyles.None:
+                //        Width = Height = 0;
+                //        break;
+                //    case GazeIndicatorStyles.Crosshair:
+                //        crossN.StrokeThickness = Settings.Default.GazeIndicatorOverlayStrokeThickness;
+                //        crossN.Opacity = Settings.Default.GazeIndicatorOverlayOpacity;
+                //        crossN.Stroke = (Brush)new BrushConverter().ConvertFromString(Settings.Default.GazeIndicatorOverlayStrokeInnerColour);
+                //        break;
+                //    case GazeIndicatorStyles.Monical:
+                //    case GazeIndicatorStyles.Scope:
+                //        Width = Height = indicatorSize;
+                //        break;
+                //    default:
+                //        throw new ArgumentOutOfRangeException();
+                //}
                 viewModel.ShowCrosshair = Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Crosshair
                     || Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Scope;
                 viewModel.ShowMonical = Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Monical

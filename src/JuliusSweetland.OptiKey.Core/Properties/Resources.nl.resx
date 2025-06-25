@@ -807,6 +807,9 @@ SYM</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Pro : Computerbesturing &amp; Communicatie</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Overige</value>
   </data>
@@ -1078,12 +1081,6 @@ POSITIE</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibratie voltooid of mogelijk geannuleerd, maar alles werkt in ieder geval weer!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii Service kan niet gevonden worden. Installeer de Tobii software en probeer het opnieuw.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii Service draait niet. Start de Tobii service en probeer het opnieuw.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Toon 1</value>
@@ -1558,20 +1555,20 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Specificeer tijden om individuele toetsen te voltooien:</value>
   </data>
-  <data name="QUIT_TITLE_CASE" xml:space="preserve">
-    <value>Afsluiten</value>
-  </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
     <value>Management Console</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Afsluiten</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Onderdruk modifier sleutels voor alle muisacties:</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Kalibratie gelukt!</value>
-  </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibratie mislukt!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibratie gelukt!</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>LETTERS 2</value>
@@ -1597,33 +1594,38 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
     <value>Optikey Mouse : Volledige Cursorbesturing</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey Pro : Computerbesturing &amp; Communicatie</value>
-  </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
     <value>Optikey Symbol : Communicatie op Basis van Symbolen</value>
   </data>
   <data name="ALIENWARE_17_INFO" xml:space="preserve">
-      <value>Dit vereist een Alienware 17 gaming laptop, met behulp van de ingebouwde Tobii eye tracker.</value>
+    <value>Dit vereist een Alienware 17 gaming laptop, met behulp van de ingebouwde Tobii eye tracker.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Dit vereist dat de ITU Gaze Tracking Library, dat is een raamwerk voor open source eye tracking met behulp van off-the-shelf componenten, zoals webcams en videocamera's.</value>
+    <value>Dit vereist dat de ITU Gaze Tracking Library, dat is een raamwerk voor open source eye tracking met behulp van off-the-shelf componenten, zoals webcams en videocamera's.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Als u van plan bent om Optikey gebruiken met de Irisbond Duo eye tracker dan kunt u ervoor zorgen dat u de Irisbond Duo drivers geïnstalleerd. Deze kan worden gedownload van https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+    <value>Als u van plan bent om Optikey gebruiken met de Irisbond Duo eye tracker dan kunt u ervoor zorgen dat u de Irisbond Duo drivers geïnstalleerd. Deze kan worden gedownload van https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>In deze modus zal Optikey de muiscursor als input gebruiken in plaats van rechtstreeks in gesprek met een eye tracker. Je zou dit wilt als je Optikey bent het testen van, of als u het wilt gebruiken met een alternatief invoerapparaat, zoals een kop muis of een eye tracker niet in deze lijst. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Deze optie zal werken met elke Tobii Gaming eye tracker (4C, EyeX, Alienware, Steelseries, etc)</value>
+    <value>In deze modus zal Optikey de muiscursor als input gebruiken in plaats van rechtstreeks in gesprek met een eye tracker. Je zou dit wilt als je Optikey bent het testen van, of als u het wilt gebruiken met een alternatief invoerapparaat, zoals een kop muis of een eye tracker niet in deze lijst. </value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Om gebruik te maken Optikey met een ondersteunende eye tracker, moet u ofwel de nieuwe versie van Tobii Windows Control, of de Tobii Eye Tracking motor nodig. Als u de oude versie van de Tobii Windows Control toepassing (Tobii Gaze Interaction Software) gebruikt, dan zul je nodig hebt om te controleren Optikey met de muis positie plaats. </value>
+    <value>Om gebruik te maken Optikey met een ondersteunende eye tracker, moet u ofwel de nieuwe versie van Tobii Windows Control, of de Tobii Eye Tracking motor nodig. Als u de oude versie van de Tobii Windows Control toepassing (Tobii Gaze Interaction Software) gebruikt, dan zul je nodig hebt om te controleren Optikey met de muis positie plaats. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Deze optie zal werken met elke Tobii Gaming eye tracker (4C, EyeX, Alienware, Steelseries, etc)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>De Visual Interaction myGaze wordt alleen ondersteund als u reeds de myGaze client drivers, die niet meer beschikbaar zijn voor download hebt geïnstalleerd. Als u niet over deze stuurprogramma's zijn geïnstalleerd, moet u gebruik maken 'mouse positie' te selecteren in plaats daarvan, en gebruik Optikey in combinatie met de myGaze EyeMousePlay applicatie om de cursor te verplaatsen.</value>
-  </data>  
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Als uw eye tracker hier niet wordt vermeld of u een 32 -bits versie van Optikey nodig heeft, klikt u op de onderstaande link voor meer informatie.
-     Als u wilt doorgaan met installatie, wordt Optikey bestuurd door uw muispositie. Hierdoor kan het werken met alternatieve ingangen zoals een hoofdmuis of een eye -tracker waarmee u de muispositie met uw ogen kunt regelen.</value></data>
+    <value>De Visual Interaction myGaze wordt alleen ondersteund als u reeds de myGaze client drivers, die niet meer beschikbaar zijn voor download hebt geïnstalleerd. Als u niet over deze stuurprogramma's zijn geïnstalleerd, moet u gebruik maken 'mouse positie' te selecteren in plaats daarvan, en gebruik Optikey in combinatie met de myGaze EyeMousePlay applicatie om de cursor te verplaatsen.</value>
+  </data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Als uw eye tracker hier niet wordt vermeld of u een 32 -bits versie van Optikey nodig heeft, klikt u op de onderstaande link voor meer informatie.
+     Als u wilt doorgaan met installatie, wordt Optikey bestuurd door uw muispositie. Hierdoor kan het werken met alternatieve ingangen zoals een hoofdmuis of een eye -tracker waarmee u de muispositie met uw ogen kunt regelen.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii Service kan niet gevonden worden. Installeer de Tobii software en probeer het opnieuw.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii Service draait niet. Start de Tobii service en probeer het opnieuw.</value>
+  </data>
 </root>

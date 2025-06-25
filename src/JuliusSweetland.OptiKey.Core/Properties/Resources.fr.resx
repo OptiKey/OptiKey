@@ -803,6 +803,9 @@ SYMBOLES</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
+    <value>Optikey Pro : Permet de contrôler de l’ordinateur et de communiquer</value>
+  </data>
   <data name="OTHER" xml:space="preserve">
     <value>Autre</value>
   </data>
@@ -1077,14 +1080,6 @@ Aucune donnée ne sera reçue tant que la calibration ne sera pas terminée.</va
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Le calibrage est terminé, ou peut-être annulé, mais tout fonctionne normallement!</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Aucun moteur Tobii trouvé. 
-Veuillez installer un moteur Tobii software et essayez à nouveau.</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Le moteur Tobii ne fonctionne pas. 
-Veuillez démarrer le moteur Tobii et essayez à nouveau.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Son 1</value>
@@ -1570,11 +1565,11 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Désactive les méta-touches pour toutes les actions de la souris :</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Succès de calibrage!</value>
-  </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Le calibrage a échoué!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Succès de calibrage!</value>
   </data>
   <data name="ALPHA_2" xml:space="preserve">
     <value>LETTRES 2</value>
@@ -1600,9 +1595,6 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="OPTIKEY_MOUSE_DESCRIPTION" xml:space="preserve">
     <value>Optikey Mouse : Contrôler le curseur de la souris</value>
   </data>
-  <data name="OPTIKEY_PRO_DESCRIPTION" xml:space="preserve">
-    <value>Optikey Pro : Permet de contrôler de l’ordinateur et de communiquer</value>
-  </data>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
     <value>Optikey Symbol : Communiquer par symbols</value>
   </data>
@@ -1610,23 +1602,33 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
     <value>Cela nécessite un ordinateur portable de jeu Alienware 17, en utilisant le système de suivi Tobii intégré dans l'œil.</value>
   </data>
   <data name="GAZE_TRACKER_INFO" xml:space="preserve">
-      <value>Cela nécessite la bibliothèque de suivi UIT Gaze, qui est un cadre pour les yeux open source de suivi en utilisant des composants impromptu, tels que les webcams et les caméras vidéo.</value>
+    <value>Cela nécessite la bibliothèque de suivi UIT Gaze, qui est un cadre pour les yeux open source de suivi en utilisant des composants impromptu, tels que les webcams et les caméras vidéo.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Si vous prévoyez d'utiliser Optikey avec le oculomètre Irisbond Duo alors s'il vous plaît assurez-vous que les pilotes Duo Irisbond installés. Ceux-ci peuvent être téléchargés à partir https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+    <value>Si vous prévoyez d'utiliser Optikey avec le oculomètre Irisbond Duo alors s'il vous plaît assurez-vous que les pilotes Duo Irisbond installés. Ceux-ci peuvent être téléchargés à partir https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
-      <value>Dans ce mode, Optikey utilisera le curseur de la souris comme entrée au lieu de parler directement à un oculomètre. Vous voudrez peut-être si vous testez Optikey, ou si vous voulez l'utiliser avec un dispositif d'entrée alternative comme une souris de tête ou tout oculomètre pas dans cette liste. </value>
-  </data>
-  <data name="TOBII_EYEX_INFO" xml:space="preserve">
-      <value>Cette option fonctionne avec tous les Eye tracker Tobii Gaming (4C, EyeX, Alienware, Steelseries, etc.)</value>
+    <value>Dans ce mode, Optikey utilisera le curseur de la souris comme entrée au lieu de parler directement à un oculomètre. Vous voudrez peut-être si vous testez Optikey, ou si vous voulez l'utiliser avec un dispositif d'entrée alternative comme une souris de tête ou tout oculomètre pas dans cette liste. </value>
   </data>
   <data name="TOBII_ASSISTIVE_INFO" xml:space="preserve">
-      <value>Pour utiliser Optikey avec un oculomètre d'assistance, vous devez soit la nouvelle version de Tobii Windows Control, ou le moteur de suivi Tobii Eye. Si vous avez besoin d'utiliser l'ancienne version de Tobii Windows Control (Tobii Gaze Interaction), alors vous devrez contrôler Optikey utilisant la position de la souris à la place. </value>
+    <value>Pour utiliser Optikey avec un oculomètre d'assistance, vous devez soit la nouvelle version de Tobii Windows Control, ou le moteur de suivi Tobii Eye. Si vous avez besoin d'utiliser l'ancienne version de Tobii Windows Control (Tobii Gaze Interaction), alors vous devrez contrôler Optikey utilisant la position de la souris à la place. </value>
+  </data>
+  <data name="TOBII_EYEX_INFO" xml:space="preserve">
+    <value>Cette option fonctionne avec tous les Eye tracker Tobii Gaming (4C, EyeX, Alienware, Steelseries, etc.)</value>
   </data>
   <data name="VI_MYGAZE_INFO" xml:space="preserve">
-      <value>Le myGaze Visual Interaction est pris en charge uniquement si vous avez déjà installé les pilotes clients myGaze, qui ne sont plus disponibles pour téléchargement. Si vous ne disposez pas de ces pilotes installés, vous devez sélectionner l'utilisation « position de la souris » au lieu, et utiliser Optikey en combinaison avec l'application myGaze EyeMousePlay pour déplacer le curseur.</value>
+    <value>Le myGaze Visual Interaction est pris en charge uniquement si vous avez déjà installé les pilotes clients myGaze, qui ne sont plus disponibles pour téléchargement. Si vous ne disposez pas de ces pilotes installés, vous devez sélectionner l'utilisation « position de la souris » au lieu, et utiliser Optikey en combinaison avec l'application myGaze EyeMousePlay pour déplacer le curseur.</value>
   </data>
-  <data name="OTHER_TRACKER" xml:space="preserve"><value> Si votre tracker pour les yeux n'est pas répertorié ici, ou si vous avez besoin d'une version 32 bits d'Optikey, veuillez cliquer sur le lien ci-dessous pour plus d'informations.
-     Si vous souhaitez continuer avec l'installation, Optikey sera contrôlé par la position de votre souris. Cela lui permet de fonctionner avec des entrées alternatives telles qu'une souris de tête ou tout tracker pour les yeux qui vous permet de contrôler la position de la souris avec vos yeux.</value></data>
+  <data name="OTHER_TRACKER" xml:space="preserve">
+    <value> Si votre tracker pour les yeux n'est pas répertorié ici, ou si vous avez besoin d'une version 32 bits d'Optikey, veuillez cliquer sur le lien ci-dessous pour plus d'informations.
+     Si vous souhaitez continuer avec l'installation, Optikey sera contrôlé par la position de votre souris. Cela lui permet de fonctionner avec des entrées alternatives telles qu'une souris de tête ou tout tracker pour les yeux qui vous permet de contrôler la position de la souris avec vos yeux.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Aucun moteur Tobii trouvé. 
+Veuillez installer un moteur Tobii software et essayez à nouveau.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Le moteur Tobii ne fonctionne pas. 
+Veuillez démarrer le moteur Tobii et essayez à nouveau.</value>
+  </data>
 </root>

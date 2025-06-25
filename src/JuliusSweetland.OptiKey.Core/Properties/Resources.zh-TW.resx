@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -1134,12 +1134,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>校正完成或取消了，總之一切都恢復運作了！</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>找不到 Tobii EyeX Engine。請安裝 EyeX Engine 後再試一次。</value>
-  </data>
-  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine 未在執行中。請啟動 EyeX Engine 後再試一次。</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -2440,6 +2434,27 @@ Magyar
   <data name="POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
     <value>指向選擇搖桿:</value>
   </data>
+  <data name="CONTROLLER_ENABLE_REPEATS" xml:space="preserve">
+    <value>按住按鈕時觸發重複按壓</value>
+  </data>
+  <data name="CONTROLLER_FIRST_REPEAT_TIME" xml:space="preserve">
+    <value>首次重複按壓的時間延遲（ms）</value>
+  </data>
+  <data name="CONTROLLER_NEXT_REPEAT_TIME" xml:space="preserve">
+    <value>之後重複按壓的時間延遲（ms）</value>
+  </data>
+  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
+    <value> 無法清除剪貼簿。這通常發生在剪貼簿正被另一個程序使用時。</value>
+  </data>
+  <data name="ALLOW_REPEATS_LABEL" xml:space="preserve">
+    <value>允許在遠離鍵盤的情況下按下按鈕時重複按鍵操作</value>
+  </data>
+  <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
+    <value>重複上一個鍵：</value>
+  </data>
+  <data name="LIMIT_BACKONE" xml:space="preserve">
+    <value>將「刪除」限制為單一字符</value>
+  </data>
   <data name="CHINESE_SIMPLIFIED_BOPOMOFO" xml:space="preserve">
     <value>Chinese Simplified (Bopomofo) / 中文 (注音-简化字)</value>
   </data>
@@ -2485,15 +2500,6 @@ Magyar
 中文
 (注音)</value>
   </data>
-  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO" xml:space="preserve">
-    <value>Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體)</value>
-  </data>
-  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Chinese Traditional
-(Taiwan) (Bopomofo) /
-中文
-(注音-臺灣正體)</value>
-  </data>
   <data name="CHINESE_TRADITIONAL_CANGJIE5" xml:space="preserve">
     <value>Chinese Traditional (Cangjie v5) / 中文 (倉頡五代)</value>
   </data>
@@ -2521,45 +2527,6 @@ Magyar
 中文
 (地球拼音)</value>
   </data>
-  <data name="ENGLISH_DICTIONARY" xml:space="preserve">
-    <value>英語字典</value>
-  </data>
-  <data name="PLUGIN_SECURITY_WARNING_TITLE" xml:space="preserve">
-    <value>警告</value>
-  </data>
-  <data name="PLUGIN_SECURITY_WARNING" xml:space="preserve">
-    <value>安全警告</value>
-  </data>
-  <data name="PLUGIN_SECURITY_WARNING_DETAIL" xml:space="preserve">
-    <value>安裝插件涉及從互聯網下載並執行代碼，這總是帶有一些固有的風險。插件由第三方提供，並未經Optikey團隊驗證。請在安裝插件前檢查其來源，並運用您自己的判斷力。</value>
-  </data>
-  <data name="PLUGIN_SECURITY_I_UNDERSTAND" xml:space="preserve">
-    <value>我了解</value>
-  </data>
-  <data name="CONTINUE" xml:space="preserve">
-    <value>繼續</value>
-  </data>
-  <data name="CONTROLLER_ENABLE_REPEATS" xml:space="preserve">
-    <value>按住按鈕時觸發重複按壓</value>
-  </data>
-  <data name="CONTROLLER_FIRST_REPEAT_TIME" xml:space="preserve">
-    <value>首次重複按壓的時間延遲（ms）</value>
-  </data>
-  <data name="CONTROLLER_NEXT_REPEAT_TIME" xml:space="preserve">
-    <value>之後重複按壓的時間延遲（ms）</value>
-  </data>
-  <data name="ALLOW_REPEATS_LABEL" xml:space="preserve">
-    <value>允許在遠離鍵盤的情況下按下按鈕時重複按鍵操作</value>
-  </data>
-  <data name="REPEAT_SOUND_LABEL" xml:space="preserve">
-    <value>重複上一個鍵：</value>
-  </data>
-  <data name="LIMIT_BACKONE" xml:space="preserve">
-    <value>將「刪除」限制為單一字符</value>
-  </data>
-  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
-    <value> 無法清除剪貼簿。這通常發生在剪貼簿正被另一個程序使用時。</value>
-  </data>
   <data name="NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION" xml:space="preserve">
     <value>我們建議增加多鍵固定（停留）最小時間以適用於眼動追蹤。您希望Optikey自動為您更改設定嗎？</value>
   </data>
@@ -2586,6 +2553,9 @@ Magyar
   </data>
   <data name="TOUCH_DOWNUP_DESCRIPTION" xml:space="preserve">
     <value>觸控</value>
+  </data>
+  <data name="ENGLISH_DICTIONARY" xml:space="preserve">
+    <value>英語字典</value>
   </data>
   <data name="EYETRACKER_DLL_LOCATION_LABEL" xml:space="preserve">
     <value>眼動追蹤器插件的 DLL 檔案</value>
@@ -2626,8 +2596,8 @@ Magyar
   <data name="PLUGIN_SEARCH_WIZARD" xml:space="preserve">
     <value>插件搜索向導</value>
   </data>
-  <data name="STARS" xml:space="preserve">
-    <value>星星</value>
+  <data name="OPEN_CONTAINING_FOLDER" xml:space="preserve">
+    <value>打開所在文件夾</value>
   </data>
   <data name="INSTALL" xml:space="preserve">
     <value>安裝</value>
@@ -2638,14 +2608,17 @@ Magyar
   <data name="UNINSTALL" xml:space="preserve">
     <value>解除安裝</value>
   </data>
-  <data name="OPEN_CONTAINING_FOLDER" xml:space="preserve">
-    <value>打開所在文件夾</value>
+  <data name="STARS" xml:space="preserve">
+    <value>星星</value>
   </data>
   <data name="LATEST_RELEASE_AVAILABLE" xml:space="preserve">
     <value>最新版本可用</value>
   </data>
   <data name="VERSION_INSTALLED" xml:space="preserve">
     <value>已安裝版本</value>
+  </data>
+  <data name="FOUND_IN" xml:space="preserve">
+    <value>找到於</value>
   </data>
   <data name="ERROR_UNINSTALLING_PLUGIN" xml:space="preserve">
     <value>解除安裝插件時出錯</value>
@@ -2668,16 +2641,43 @@ Magyar
   <data name="CHANGE_EYETRACKER_CAPTION" xml:space="preserve">
     <value>更改點源 ?</value>
   </data>
-  <data name="FOUND_IN" xml:space="preserve">
-    <value>找到於</value>
+  <data name="CHANGE_EYETRACKER_DETAILS" xml:space="preserve">
+    <value>您想要將新安裝的插件（{0}）用作您的點源嗎？</value>
   </data>
   <data name="NO_EYETRACKER_PLUGINS" xml:space="preserve">
     <value> 未找到任何眼動追蹤器插件。請檢查您的網路連線，並稍候幾分鐘後重新掃描。</value>
   </data>
-  <data name="CHANGE_EYETRACKER_DETAILS" xml:space="preserve">
-    <value>您想要將新安裝的插件（{0}）用作您的點源嗎？</value>
-  </data>
   <data name="OTHER_TRACKER" xml:space="preserve">
     <value>如果您的眼動追蹤器未在此列出，或您需要 Optikey 的 32 位版本，請點擊下方連結以獲取更多資訊。</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>找不到 Tobii EyeX Engine。請安裝 EyeX Engine 後再試一次。</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii EyeX Engine 未在執行中。請啟動 EyeX Engine 後再試一次。</value>
+  </data>
+  <data name="CONTINUE" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="PLUGIN_SECURITY_WARNING" xml:space="preserve">
+    <value>安全警告</value>
+  </data>
+  <data name="PLUGIN_SECURITY_WARNING_DETAIL" xml:space="preserve">
+    <value>安裝插件涉及從互聯網下載並執行代碼，這總是帶有一些固有的風險。插件由第三方提供，並未經Optikey團隊驗證。請在安裝插件前檢查其來源，並運用您自己的判斷力。</value>
+  </data>
+  <data name="PLUGIN_SECURITY_WARNING_TITLE" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="PLUGIN_SECURITY_I_UNDERSTAND" xml:space="preserve">
+    <value>我了解</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO" xml:space="preserve">
+    <value>Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體)</value>
+  </data>
+  <data name="CHINESE_TRADITIONAL_TAIWAN_BOPOMOFO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Chinese Traditional
+(Taiwan) (Bopomofo) /
+中文
+(注音-臺灣正體)</value>
   </data>
 </root>

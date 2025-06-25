@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -256,6 +256,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string ANDROID_TWO_TONE {
             get {
                 return ResourceManager.GetString("ANDROID_TWO_TONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        public static string APPLY {
+            get {
+                return ResourceManager.GetString("APPLY", resourceCulture);
             }
         }
         
@@ -2697,6 +2706,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Inner Colour.
+        /// </summary>
+        public static string GAZE_INDICATOR_INNER_COLOUR {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_INNER_COLOUR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Opacity.
+        /// </summary>
+        public static string GAZE_INDICATOR_OPACITY {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_OPACITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Outer Colour.
+        /// </summary>
+        public static string GAZE_INDICATOR_OUTER_COLOUR {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_OUTER_COLOUR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gaze Indicator Size.
         /// </summary>
         public static string GAZE_INDICATOR_SIZE {
@@ -2711,6 +2747,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string GAZE_INDICATOR_STYLE {
             get {
                 return ResourceManager.GetString("GAZE_INDICATOR_STYLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Thickness.
+        /// </summary>
+        public static string GAZE_INDICATOR_THICKNESS {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_THICKNESS", resourceCulture);
             }
         }
         
@@ -3874,6 +3919,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL {
             get {
                 return ResourceManager.GetString("MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow keyboard window to gain focus.
+        /// </summary>
+        public static string MAINWINDOW_FOCUSABLE_LABEL {
+            get {
+                return ResourceManager.GetString("MAINWINDOW_FOCUSABLE_LABEL", resourceCulture);
             }
         }
         
@@ -6042,6 +6096,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SHIFT {
             get {
                 return ResourceManager.GetString("SHIFT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show keyboard window in the taskbar.
+        /// </summary>
+        public static string SHOW_MAINWINDOW_IN_TASKBAR_LABEL {
+            get {
+                return ResourceManager.GetString("SHOW_MAINWINDOW_IN_TASKBAR_LABEL", resourceCulture);
             }
         }
         
