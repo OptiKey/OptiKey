@@ -876,18 +876,24 @@ namespace JuliusSweetland.OptiKey.Services
                 return;
             if (parameterString.Length < 2)
                 return;
-
-            //SW_MAXIMIZE = 3, SW_MINIMIZE = 6, SW_RESTORE = 9
-            var nCmdShow = parameterString.Substring(0, 2).ToLower() == "ma"
-                ? 3 : parameterString.Substring(0, 2).ToLower() == "mi" ? 6 : 9;
             
-            PInvoke.ShowWindow(handle, nCmdShow);
+            var showStyle = parameterString.Substring(0, 2).ToLower() == "ma" ? WindowShowStyle.ShowMaximized : 
+                           parameterString.Substring(0, 2).ToLower() == "mi" ? WindowShowStyle.ShowMinimized : 
+                           WindowShowStyle.Restore;
 
-            // Return early if only maximise/minimise
-            if (nCmdShow != 9)
+            // Query current state before changing anything
+            var style = Windows.GetWindowStyle(handle);
+            var bounds = GetWindowBounds(handle);
+
+            // Restore window, then resize after
+            PInvoke.ShowWindow(handle, (int)showStyle);
+
+            if (showStyle == WindowShowStyle.ShowMaximized ||
+                showStyle == WindowShowStyle.ShowMinimized)
                 return;
             else
             {
+                // Else we will have repositioning to do
                 if (parameterArray.Length < 4)
                 {
                     Log.Error($"Invalid parameter string for MoveWindow");
@@ -914,8 +920,6 @@ namespace JuliusSweetland.OptiKey.Services
                 }
             }
 
-            var style = Windows.GetWindowStyle(handle);
-            var bounds = GetWindowBounds(handle);
             if (bounds == null)
             {
                 Log.Error($"Unable to move window {handle} with invalid bounds ");
