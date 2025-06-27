@@ -900,7 +900,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
             }
             
-            Func<string, double, double, double> getValue = (param, multiplier, original) =>
+            Func<string, double, double> getAndScaleValue = (param, multiplier) =>
             {
                 return string.IsNullOrWhiteSpace(param) ? double.NaN
                 : double.TryParse(param.Replace("%", ""), out double result) && !param.Contains("%") ? result
@@ -927,10 +927,10 @@ namespace JuliusSweetland.OptiKey.Services
             }
             
             // Get target rectangle 
-            var left = getValue(parameterArray[0], screenBoundsInPx.Width, bounds.Value.Left);
-            var top = getValue(parameterArray[1], screenBoundsInPx.Height, bounds.Value.Top);
-            var right = getValue(parameterArray[2], screenBoundsInPx.Width, bounds.Value.Right);
-            var bottom = getValue(parameterArray[3], screenBoundsInPx.Height, bounds.Value.Bottom);
+            var left = getAndScaleValue(parameterArray[0], screenBoundsInPx.Width);
+            var top = getAndScaleValue(parameterArray[1], screenBoundsInPx.Height);
+            var right = getAndScaleValue(parameterArray[2], screenBoundsInPx.Width);
+            var bottom = getAndScaleValue(parameterArray[3], screenBoundsInPx.Height);
             
             bool isResizeable = (style & WindowStyles.WS_THICKFRAME) != 0;
 
