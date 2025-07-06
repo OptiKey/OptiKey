@@ -75,20 +75,7 @@ namespace JuliusSweetland.OptiKey.Models
         public bool this[KeyValue keyValue]
         {
             get
-            {
-                // Key has no payload
-                if (keyValue == KeyValues.Suggestion1Key ||
-                    keyValue == KeyValues.Suggestion2Key ||
-                    keyValue == KeyValues.Suggestion3Key ||
-                    keyValue == KeyValues.Suggestion4Key
-                    )
-                {
-
-                }
-                else
-                {
-                    int a = 1;
-                }
+            {                
                 if (keyValue == null || !keyValue.HasContent())
                 {
                     return false;
