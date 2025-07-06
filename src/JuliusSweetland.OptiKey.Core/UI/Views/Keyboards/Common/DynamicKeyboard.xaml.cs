@@ -1346,6 +1346,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 colorBrush = (SolidColorBrush)new BrushConverter().ConvertFrom(color);
                 return true;
             }
+            else
+            {
+                Log.Error($"Cannot parse string {color} as valid color");
+            }
             colorBrush = null;
             return false;
         }
