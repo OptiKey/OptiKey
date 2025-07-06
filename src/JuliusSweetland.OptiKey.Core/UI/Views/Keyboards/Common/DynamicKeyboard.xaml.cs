@@ -561,6 +561,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         private void SetupDynamicItem(XmlDynamicItem dynamicItem, int minKeyWidth, int minKeyHeight)
         {
+            List<XmlKeyGroup> keyGroupList = new List<XmlKeyGroup>();
+            keyGroupList.AddRange(keyboard.KeyGroups.Where(x => x.Name.ToUpper() == "ALL" || dynamicItem.KeyGroups.Exists(y => y.Value == x.Name)));
+
             if (dynamicItem is XmlDynamicKey xmlDynamicKey)
             {
                 AddDynamicKey(xmlDynamicKey, minKeyWidth, minKeyHeight);
@@ -576,7 +579,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
                 if (ValidColor(dynamicItem.BackgroundColor, out var colorBrush))
                     scratchpad.Scratchpad.BackgroundColourOverride = colorBrush;
+                else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.BackgroundColor, out colorBrush)))
+                    scratchpad.Scratchpad.BackgroundColourOverride = colorBrush;
+
                 if (ValidColor(dynamicItem.ForegroundColor, out colorBrush))
+                    scratchpad.Scratchpad.Foreground = colorBrush;
+                else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.ForegroundColor, out colorBrush)))
                     scratchpad.Scratchpad.Foreground = colorBrush;
 
                 if (!string.IsNullOrEmpty(dynamicItem.Opacity) && double.TryParse(dynamicItem.Opacity, out var opacity))
@@ -593,6 +601,23 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     Grid.SetRow(suggestionGrid, dynamicItem.Row);
                     Grid.SetColumnSpan(suggestionGrid, dynamicItem.Width);
                     Grid.SetRowSpan(suggestionGrid, dynamicItem.Height);
+
+                    if (!string.IsNullOrEmpty(dynamicItem.Opacity) && double.TryParse(dynamicItem.Opacity, out var opacity))
+                        suggestionGrid.Opacity = opacity;
+
+                    // Apply colors to all keys within the grid
+                    foreach (var child in suggestionGrid.MainGrid.Children.OfType<Key>())
+                    {
+                        if (ValidColor(dynamicItem.BackgroundColor, out var colorBrush))
+                            child.BackgroundColourOverride = colorBrush;
+                        else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.BackgroundColor, out colorBrush)))
+                            child.BackgroundColourOverride = colorBrush;
+
+                        if (ValidColor(dynamicItem.ForegroundColor, out colorBrush))
+                            child.ForegroundColourOverride = colorBrush;
+                        else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.ForegroundColor, out colorBrush)))
+                            child.ForegroundColourOverride = colorBrush;
+                    }
                 }
 
                 if (dynamicItem is XmlDynamicSuggestionRow)
@@ -604,16 +629,22 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     Grid.SetColumnSpan(suggestionRow, dynamicItem.Width);
                     Grid.SetRowSpan(suggestionRow, dynamicItem.Height);
 
-                    if (ValidColor(dynamicItem.BackgroundColor, out var colorBrush))
-                    {
-                        suggestionRow.Background = colorBrush;
-                        suggestionRow.DisabledBackgroundColourOverride = colorBrush;
-                    }
-                    if (ValidColor(dynamicItem.ForegroundColor, out colorBrush))
-                        suggestionRow.Foreground = colorBrush;
-
                     if (!string.IsNullOrEmpty(dynamicItem.Opacity) && double.TryParse(dynamicItem.Opacity, out var opacity))
                         suggestionRow.OpacityOverride = opacity;
+
+                    // Apply colors to all keys within the row
+                    foreach (var child in suggestionRow.Content is Grid _grid ? _grid.Children.OfType<Key>() : Enumerable.Empty<Key>())
+                    {
+                        if (ValidColor(dynamicItem.BackgroundColor, out var colorBrush))
+                            child.BackgroundColourOverride = colorBrush;
+                        else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.BackgroundColor, out colorBrush)))
+                            child.BackgroundColourOverride = colorBrush;
+
+                        if (ValidColor(dynamicItem.ForegroundColor, out colorBrush))
+                            child.ForegroundColourOverride = colorBrush;
+                        else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.ForegroundColor, out colorBrush)))
+                            child.ForegroundColourOverride = colorBrush;
+                    }
                 }
                 else if (dynamicItem is XmlDynamicSuggestionCol)
                 {
@@ -629,7 +660,15 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         suggestionCol.Background = colorBrush;
                         suggestionCol.DisabledBackgroundColourOverride = colorBrush;
                     }
+                    else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.BackgroundColor, out colorBrush)))
+                    {
+                        suggestionCol.Background = colorBrush;
+                        suggestionCol.DisabledBackgroundColourOverride = colorBrush;
+                    }
+
                     if (ValidColor(dynamicItem.ForegroundColor, out colorBrush))
+                        suggestionCol.Foreground = colorBrush;
+                    else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.ForegroundColor, out colorBrush)))
                         suggestionCol.Foreground = colorBrush;
 
                     if (!string.IsNullOrEmpty(dynamicItem.Opacity) && double.TryParse(dynamicItem.Opacity, out var suggestionColOpacity))
