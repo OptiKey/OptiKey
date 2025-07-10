@@ -899,6 +899,7 @@ namespace JuliusSweetland.OptiKey.Models
                     FunctionKeys.Suggestion4,
                     FunctionKeys.Suggestion5,
                     FunctionKeys.Suggestion6,
+                    FunctionKeys.SuggestionN,
                     FunctionKeys.ToggleCaseOfPreviousCharacter,
                     FunctionKeys.Translation,
                     FunctionKeys.TurkishTurkey,
