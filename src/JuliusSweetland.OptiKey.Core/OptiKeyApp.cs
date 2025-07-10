@@ -202,21 +202,19 @@ namespace JuliusSweetland.OptiKey
                 if (string.IsNullOrEmpty(presagePath)
                     || string.IsNullOrEmpty(presageStartMenuFolder))
                 {
-                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    string msg = "Invalid Presage installation detected (path(s) missing).\n";
-                    msg += $"Must install '{ String.Join("' or '", presageOptions.ToArray()) }'. Changed SuggestionMethod to NGram.";
-                    Log.Error(msg);
-                    return true;
+                    // Log warning but don't force NGram - the actual Presage constructor test below is definitive
+                    string msg = "Presage registry paths incomplete - this may indicate an installation problem.\n";
+                    msg += $"Expected install of '{ String.Join("' or '", presageOptions.ToArray()) }'.";
+                    Log.Warn(msg);
                 }
 
                 if (presageStartMenuFolder != "presage-0.9.2~beta20150909"
                     && presageStartMenuFolder != "presage-0.9.1")
                 {
-                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    string msg = "Invalid Presage installation detected (valid version not detected).\n";
-                    msg += $"Must install '{ String.Join("' or '", presageOptions.ToArray()) }'. Changed SuggestionMethod to NGram.";
-                    Log.Error(msg);
-                    return true;
+                    // Log warning but don't force NGram - the actual Presage constructor test below is definitive
+                    string msg = $"Presage version '{presageStartMenuFolder}' not in expected list.\n";
+                    msg += $"Expected '{ String.Join("' or '", presageOptions.ToArray()) }'. Will attempt to use anyway.";
+                    Log.Warn(msg);
                 }
 
                 // On Windows 32 bit, we will only be able to install 32 bit Presage and 32 bit Optikey so don't need to check bitness.
@@ -228,17 +226,15 @@ namespace JuliusSweetland.OptiKey
                     if ((processBitness == "64-Bit" && presagePath != @"C:\Program Files\presage")
                         || (processBitness == "32-Bit" && presagePath != @"C:\Program Files (x86)\presage"))
                     {
-                        Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                        Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
-                        return true;
+                        // Log warning but don't force NGram - the actual Presage constructor test below is definitive
+                        Log.Warn($"Presage install path '{presagePath}' may not match expected bitness for {processBitness} process. Will attempt to use anyway.");
                     }
                 }
 
                 if (!Directory.Exists(presagePath))
                 {
-                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (install directory does not exist). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
-                    return true;
+                    // Log warning but don't force NGram - the actual Presage constructor test below is definitive
+                    Log.Warn($"Presage install directory '{presagePath}' does not exist. Will attempt to use anyway.");
                 }
 
                 //2.Ensure the presage db exists at the setting location
@@ -285,13 +281,13 @@ namespace JuliusSweetland.OptiKey
                     //If the installed version of Presage is the wrong format (i.e. 64 bit) then a BadImageFormatException can occur.
                     //If Presage has been deleted, corrupted, or another problem, then a DllLoadException can occur.
                     //These causes an additional problem as the Presage object will probably be non-deterministically
-                    //finalised, which will cause this exception again and crash OptiKey. The workaround is to suppress finalisation 
+                    //finalised, which will cause this exception again and crash OptiKey. The workaround is to suppress finalisation
                     //if an object is available (which it generally won't be!), or to warn the user and react.
 
                     //Set the suggestion method to NGram so that the IDictionaryService can be instantiated without crashing OptiKey
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
                     Settings.Default.Save(); //Save as OptiKey can crash as soon as the finaliser is called by the GC
-                    Log.Error("Presage failed to bootstrap - attempting to suppress finalisation. The suggestion method has been changed to NGram", ex);
+                    Log.Error("Presage constructor failed - falling back to NGram suggestion method.", ex);
 
                     //Attempt to suppress finalisation on the presage instance, or just warn the user
                     if (presageTestInstance != null)
@@ -1490,8 +1486,8 @@ namespace JuliusSweetland.OptiKey
 
             if (presageInstallationProblem)
             {
-                Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                Log.Error("Invalid Presage installation, or problem starting Presage. Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                // NGram fallback already set in PresageInstallationProblemsDetected when constructor failed
+                Log.Error("Presage could not be initialized - using NGram suggestion method instead.");
                 inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                 mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.PRESAGE_UNAVAILABLE,
