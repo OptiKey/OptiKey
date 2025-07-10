@@ -25,6 +25,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(BackgroundColourOverrideProperty, value); }
         }
 
+        public static readonly DependencyProperty ForegroundColourOverrideProperty =
+            DependencyProperty.Register("ForegroundColourOverride", typeof(Brush), typeof(Scratchpad), new PropertyMetadata(default(Brush)));
+
+        public Brush ForegroundColourOverride
+        {
+            get { return (Brush)GetValue(ForegroundColourOverrideProperty); }
+            set { SetValue(ForegroundColourOverrideProperty, value); }
+        }
+
         public static readonly DependencyProperty OpacityOverrideProperty =
             DependencyProperty.Register("OpacityOverride", typeof(double), typeof(Scratchpad), new PropertyMetadata(defaultValue: 1.0));
 

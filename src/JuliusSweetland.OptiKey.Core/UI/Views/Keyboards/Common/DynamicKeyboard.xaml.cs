@@ -583,9 +583,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     scratchpad.Scratchpad.BackgroundColourOverride = colorBrush;
 
                 if (ValidColor(dynamicItem.ForegroundColor, out colorBrush))
-                    scratchpad.Scratchpad.Foreground = colorBrush;
+                    scratchpad.Scratchpad.ForegroundColourOverride = colorBrush;
                 else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.ForegroundColor, out colorBrush)))
-                    scratchpad.Scratchpad.Foreground = colorBrush;
+                    scratchpad.Scratchpad.ForegroundColourOverride = colorBrush;
 
                 if (!string.IsNullOrEmpty(dynamicItem.Opacity) && double.TryParse(dynamicItem.Opacity, out var opacity))
                     scratchpad.Scratchpad.OpacityOverride = opacity;
