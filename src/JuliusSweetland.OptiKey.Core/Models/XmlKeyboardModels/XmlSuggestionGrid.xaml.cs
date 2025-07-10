@@ -28,7 +28,7 @@ namespace JuliusSweetland.OptiKey.Models
                 Mode = BindingMode.TwoWay //This MUST be TwoWay to detect changes to the DataContext used in the binding path
             };
 
-        public XmlSuggestionGrid(int numRows, int numCols)
+        public XmlSuggestionGrid(int numRows, int numCols, bool rightToLeft = false, bool bottomToTop = false)
         {
             InitializeComponent();
 
@@ -46,6 +46,10 @@ namespace JuliusSweetland.OptiKey.Models
                 {
                     int i = r * cols + c;
 
+                    // Calculate display position based on ordering
+                    int displayRow = bottomToTop ? (rows - 1 - r) : r;
+                    int displayCol = rightToLeft ? (cols - 1 - c) : c;
+
                     var newKey = new Key {
                         Value = new KeyValue(Enums.FunctionKeys.SuggestionN, i.ToString()),
                         Case = Enums.Case.None
@@ -53,7 +57,7 @@ namespace JuliusSweetland.OptiKey.Models
                     newKey.SetBinding(Key.TextProperty, getStringBinding(i));
                     //newKey.SetBinding(Key.ValueProperty, getValueBinding(i));
                         
-                    PlaceKeyInPosition(newKey, r, c, 1, 1);
+                    PlaceKeyInPosition(newKey, displayRow, displayCol, 1, 1);
                 }
             }
         }

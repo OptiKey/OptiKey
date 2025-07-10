@@ -594,7 +594,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 if (dynamicItem is XmlDynamicSuggestionGrid grid)
                 {
-                    var suggestionGrid = new XmlSuggestionGrid(grid.NumRows, grid.NumCols);
+                    var suggestionGrid = new XmlSuggestionGrid(grid.NumRows, grid.NumCols, grid.RightToLeft, grid.BottomToTop);
                     suggestionGrid.DataContext = this.DataContext;
                     MainGrid.Children.Add(suggestionGrid);
                     Grid.SetColumn(suggestionGrid, dynamicItem.Col);
