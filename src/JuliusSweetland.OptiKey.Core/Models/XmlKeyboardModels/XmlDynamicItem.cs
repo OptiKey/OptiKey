@@ -60,5 +60,7 @@ namespace JuliusSweetland.OptiKey.Models
     public class XmlDynamicSuggestionGrid : XmlDynamicItem {
         [XmlAttribute] public int NumRows { get; set; } = 1;
         [XmlAttribute] public int NumCols { get; set; } = 1;
+        [XmlAttribute] public bool RightToLeft { get; set; } = false;
+        [XmlAttribute] public bool BottomToTop { get; set; } = false;
     }
 }
