@@ -763,6 +763,15 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                     <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}" />
                                                     <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}" />
                                                     <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=BackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
+                                                            <Setter Property="Background" Value="{Binding Path=BackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=ForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
+                                                            <Setter Property="Foreground" Value="{Binding Path=ForegroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=OpacityOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
+                                                            <Setter Property="Opacity" Value="{Binding Path=OpacityOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
+                                                        </DataTrigger>
                                                         <DataTrigger Binding="{Binding DataContext.ScratchpadIsDisabled, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="True">
                                                             <Setter Property="Foreground" Value="{StaticResource ScratchpadDisabledForegroundBrush}" />
                                                             <Setter Property="Background" Value="{StaticResource ScratchpadDisabledBackgroundBrush}" />
