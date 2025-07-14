@@ -139,6 +139,17 @@ namespace JuliusSweetland.OptiKey.Models
             set { this.IsShiftAware = XmlUtils.ConvertToBoolean(value); }
         }
 
+        [XmlIgnore]
+        public bool ClearScratchpadOnLoad
+        { get; set; } = true; // Default to existing behavior
+
+        [XmlElement("ClearScratchpadOnLoad")]
+        public string ClearScratchpadOnLoadAsString
+        {
+            get { return this.ClearScratchpadOnLoad ? "True" : "False"; }
+            set { this.ClearScratchpadOnLoad = XmlUtils.ConvertToBoolean(value); }
+        }
+
         public static XmlKeyboard ReadFromFile(string inputFilename)
         {
             XmlKeyboard keyboard;

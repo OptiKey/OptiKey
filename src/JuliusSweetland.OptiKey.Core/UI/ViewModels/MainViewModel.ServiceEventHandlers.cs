@@ -423,9 +423,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     keyValue.KeyboardFilename, initialKeyStates);
                 Keyboard = newDynKeyboard;
 
-                // Clear the scratchpad when launching a dynamic keyboard.
-                // (scratchpad only supported on single dynamic keyboard currently)
-                keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                // Clear the scratchpad when launching a dynamic keyboard if configured to do so
+                // We default to 'true' to match legacy behaviour
+                if (keyboard?.ClearScratchpadOnLoad ?? true) 
+                {
+                    keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                }
             }
         }
 
