@@ -99,10 +99,33 @@ namespace JuliusSweetland.OptiKey.Extensions
                 return CharCategories.OtherLetter;
             }
 
-            if (char.IsLetterOrDigit(c) || char.IsSymbol(c) || char.IsPunctuation(c) 
-                || CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.NonSpacingMark)
+            var category = CharUnicodeInfo.GetUnicodeCategory(c);
+
+            // Word separators - split words but may continue prediction
+            if (category == UnicodeCategory.DashPunctuation ||        // hyphens: - – —
+                category == UnicodeCategory.ConnectorPunctuation ||   // underscores: _
+                c == '/')                                             // forward slash: /
             {
-                return CharCategories.LetterOrDigitOrSymbolOrPunctuation;
+                return CharCategories.WordSeparator;
+            }
+
+            // Word characters - group together for BackMany and word prediction
+            // Add to WordCharacter section:
+            if (char.IsLetter(c) ||                                   // all letters
+                char.IsDigit(c) ||                                    // digits: 0-9
+                c == '\'' || c == '’' ||                              // apostrophe variants, u+0027, u+2019
+                c == '·' ||                                           // Catalan middle dot
+                category == UnicodeCategory.NonSpacingMark ||         // diacritics/accents
+                category == UnicodeCategory.SpacingCombiningMark ||   // spacing diacritics  
+                category == UnicodeCategory.ModifierLetter)           // modifier letters
+            {
+                return CharCategories.WordCharacter;
+            }
+
+            // Symbols - everything else that was previously categorized
+            if (char.IsSymbol(c) || char.IsPunctuation(c))
+            {
+                return CharCategories.OtherSymbol;
             }
 
             return CharCategories.SomethingElse;

@@ -290,17 +290,19 @@ namespace JuliusSweetland.OptiKey.Extensions
             return sb.ToString();
         }
 
-        public static int CountBackToLastCharCategoryBoundary(this string input, bool ignoreSingleTrailingSpace = true)
+        public static int CountBackToLastCharCategoryBoundary(this string input, bool ignoreSingleTrailingSpaceOrSeparator = true)
         {
             int count = 0;
 
             if (string.IsNullOrEmpty(input)) return count;
 
-            // Special case - LetterOrDigitOrSymbolOrPunctuation followed by single space - remove the final space before we start
-            if (ignoreSingleTrailingSpace
+            // Special case - WordCharacter followed by single space or word separator -
+            // remove the final charactor before we start
+            if (ignoreSingleTrailingSpaceOrSeparator
                 && input.Length >= 2
-                && input[input.Length - 1].ToCharCategory() == CharCategories.Space
-                && input[input.Length - 2].ToCharCategory() == CharCategories.LetterOrDigitOrSymbolOrPunctuation)
+                && (input[input.Length - 1].ToCharCategory() == CharCategories.Space ||
+                    input[input.Length - 1].ToCharCategory() == CharCategories.WordSeparator)
+                && input[input.Length - 2].ToCharCategory()  == CharCategories.WordCharacter )
             {
                 count = 1;
             }
