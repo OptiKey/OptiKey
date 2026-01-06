@@ -772,10 +772,31 @@ Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                                         <DataTrigger Binding="{Binding Path=OpacityOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
                                                             <Setter Property="Opacity" Value="{Binding Path=OpacityOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
                                                         </DataTrigger>
+                                                        <!-- Default disabled state (when no override provided) -->
                                                         <DataTrigger Binding="{Binding DataContext.ScratchpadIsDisabled, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="True">
                                                             <Setter Property="Foreground" Value="{StaticResource ScratchpadDisabledForegroundBrush}" />
                                                             <Setter Property="Background" Value="{StaticResource ScratchpadDisabledBackgroundBrush}" />
                                                         </DataTrigger>
+                                                        <!-- Custom disabled foreground override -->
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding Path=DisabledForegroundBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True" />
+                                                                <Condition Binding="{Binding DataContext.ScratchpadIsDisabled, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="True" />
+                                                            </MultiDataTrigger.Conditions>
+                                                            <MultiDataTrigger.Setters>
+                                                                <Setter Property="Foreground" Value="{Binding Path=DisabledForegroundBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
+                                                            </MultiDataTrigger.Setters>
+                                                        </MultiDataTrigger>
+                                                        <!-- Custom disabled background override -->
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding Path=DisabledBackgroundBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True" />
+                                                                <Condition Binding="{Binding DataContext.ScratchpadIsDisabled, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="True" />
+                                                            </MultiDataTrigger.Conditions>
+                                                            <MultiDataTrigger.Setters>
+                                                                <Setter Property="Background" Value="{Binding Path=DisabledBackgroundBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:Scratchpad}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
+                                                            </MultiDataTrigger.Setters>
+                                                        </MultiDataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
                                             </TextBox.Style>

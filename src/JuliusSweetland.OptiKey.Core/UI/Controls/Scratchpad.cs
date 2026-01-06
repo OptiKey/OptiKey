@@ -42,5 +42,23 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (double)GetValue(OpacityOverrideProperty); }
             set { SetValue(OpacityOverrideProperty, value); }
         }
+
+        public static readonly DependencyProperty DisabledForegroundBrushProperty =
+            DependencyProperty.Register("DisabledForegroundBrush", typeof(Brush), typeof(Scratchpad), new PropertyMetadata(default(Brush)));
+
+        public Brush DisabledForegroundBrush
+        {
+            get { return (Brush)GetValue(DisabledForegroundBrushProperty); }
+            set { SetValue(DisabledForegroundBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisabledBackgroundBrushProperty =
+            DependencyProperty.Register("DisabledBackgroundBrush", typeof(Brush), typeof(Scratchpad), new PropertyMetadata(default(Brush)));
+
+        public Brush DisabledBackgroundBrush
+        {
+            get { return (Brush)GetValue(DisabledBackgroundBrushProperty); }
+            set { SetValue(DisabledBackgroundBrushProperty, value); }
+        }
     }
 }
