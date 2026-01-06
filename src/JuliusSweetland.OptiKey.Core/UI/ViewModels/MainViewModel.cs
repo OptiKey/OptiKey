@@ -348,11 +348,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 else if (File.Exists(keyboardOverride))
                 {
                     Log.Info($"Loading keyboard from requested file: {keyboardOverride}");
-                    Keyboard = new DynamicKeyboard(() =>
+                    var dynKeyboard = new DynamicKeyboard(() =>
                     {
                         mainWindowManipulationService.Restore();
                         Keyboard = new Menu(() => Keyboard = new Alpha1());
                     }, keyStateService, keyboardOverride);
+                    
+                    try
+                    {
+                        var keyboard = XmlKeyboard.ReadFromFile(keyboardOverride);
+                        dynKeyboard.ApplyXmlKeyboardSettings(keyboard);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.DebugFormat("Could not read XML keyboard settings from {0}: {1}", keyboardOverride, ex.Message);
+                    }
+                    
+                    Keyboard = dynKeyboard;
                     return;
                 }
                 else
@@ -438,7 +450,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.CustomKeyboardFile:
-                    Keyboard = new DynamicKeyboard(backAction, keyStateService, Settings.Default.StartupKeyboardFile);
+                    {
+                        var dynKeyboard = new DynamicKeyboard(backAction, keyStateService, Settings.Default.StartupKeyboardFile);
+                        try
+                        {
+                            var keyboard = XmlKeyboard.ReadFromFile(Settings.Default.StartupKeyboardFile);
+                            dynKeyboard.ApplyXmlKeyboardSettings(keyboard);
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.DebugFormat("Could not read XML keyboard settings from {0}: {1}", Settings.Default.StartupKeyboardFile, ex.Message);
+                        }
+                        Keyboard = dynKeyboard;
+                    }
                     break;
 
                 case Enums.Keyboards.Diacritics1:

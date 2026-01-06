@@ -9,7 +9,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base
             MultiKeySelectionSupported = multiKeySelectionSupported;
         }
 
-        public bool SimulateKeyStrokes { get; private set; }
+        public bool SimulateKeyStrokes { get; set; }
         public bool MultiKeySelectionSupported { get; private set; }
 
         public virtual void OnEnter() { }

@@ -421,6 +421,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, keyStateService,
                     keyValue.KeyboardFilename, initialKeyStates);
+                newDynKeyboard.ApplyXmlKeyboardSettings(keyboard);
                 Keyboard = newDynKeyboard;
 
                 // Clear the scratchpad when launching a dynamic keyboard if configured to do so

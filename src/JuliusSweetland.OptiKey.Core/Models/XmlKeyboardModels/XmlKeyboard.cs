@@ -57,6 +57,17 @@ namespace JuliusSweetland.OptiKey.Models
             set { this.PersistNewState = XmlUtils.ConvertToBoolean(value); }
         }
 
+        [XmlIgnore]
+        public bool SimulateKeyStrokes
+        { get; set; } = true; // Default to true to maintain current behavior
+
+        [XmlElement("SimulateKeyStrokes")]
+        public string SimulateKeyStrokesBoolAsString
+        {
+            get { return this.SimulateKeyStrokes ? "True" : "False"; }
+            set { this.SimulateKeyStrokes = XmlUtils.ConvertToBoolean(value); }
+        }
+
         public string WindowState
         { get; set; }
 
