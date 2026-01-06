@@ -191,8 +191,14 @@ namespace JuliusSweetland.OptiKey.Extensions
                 case FunctionKeys.End:
                     return VirtualKeyCode.END;
 
+                case FunctionKeys.Enter:
+                    return VirtualKeyCode.RETURN;
+
                 case FunctionKeys.Escape:
                     return VirtualKeyCode.ESCAPE;
+
+                case FunctionKeys.Tab:
+                    return VirtualKeyCode.TAB;
 
                 default:
                     return null;

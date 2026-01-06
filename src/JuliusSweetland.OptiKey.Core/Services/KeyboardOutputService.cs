@@ -485,6 +485,32 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     goto default;
 
+                case FunctionKeys.Enter:
+                    // Add newline to scratchpad text and publish the key press
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode)
+                    {
+                        ProcessTextWithRime("\n");
+                    }
+                    else
+                    {
+                        ProcessText("\n", true);
+                    }
+                    lastProcessedTextWasSuggestion = false;
+                    break;
+
+                case FunctionKeys.Tab:
+                    // Add tab to scratchpad text and publish the key press
+                    if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() && !MyRimeApi.IsAsciiMode)
+                    {
+                        ProcessTextWithRime("\t");
+                    }
+                    else
+                    {
+                        ProcessText("\t", true);
+                    }
+                    lastProcessedTextWasSuggestion = false;
+                    break;
+
                 case FunctionKeys.ToggleCaseOfPreviousCharacter:
                     {
                         var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
