@@ -1426,8 +1426,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
                     if (!Settings.Default.SuggestNextWords || !lastProcessedTextWasSuggestion && 
-                        !string.IsNullOrEmpty(inProgressWord) &&
-                        inProgressWord.Last().ToCharCategory() == CharCategories.WordCharacter)
+                        !string.IsNullOrEmpty(inProgressWord))
                     {
                         //We are auto-completing a word with a suggestion
                         SwapText(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
