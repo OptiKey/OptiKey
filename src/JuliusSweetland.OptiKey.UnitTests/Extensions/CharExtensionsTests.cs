@@ -24,9 +24,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
                 Assert.That('\n'.ToCharCategory(), Is.EqualTo(CharCategories.NewLine));
                 Assert.That(' '.ToCharCategory(), Is.EqualTo(CharCategories.Space));
                 Assert.That('\t'.ToCharCategory(), Is.EqualTo(CharCategories.Tab));
-                Assert.That('s'.ToCharCategory(), Is.EqualTo(CharCategories.LetterOrDigitOrSymbolOrPunctuation));
-                Assert.That('5'.ToCharCategory(), Is.EqualTo(CharCategories.LetterOrDigitOrSymbolOrPunctuation));
-                Assert.That('!'.ToCharCategory(), Is.EqualTo(CharCategories.LetterOrDigitOrSymbolOrPunctuation));
+                Assert.That('s'.ToCharCategory(), Is.EqualTo(CharCategories.WordCharacter));
+                Assert.That('5'.ToCharCategory(), Is.EqualTo(CharCategories.WordCharacter));
+                Assert.That('!'.ToCharCategory(), Is.EqualTo(CharCategories.OtherSymbol));
                 Assert.That('\a'.ToCharCategory(), Is.EqualTo(CharCategories.SomethingElse));
                 Assert.That('\r'.ToCharCategory(), Is.EqualTo(CharCategories.SomethingElse));
             });            

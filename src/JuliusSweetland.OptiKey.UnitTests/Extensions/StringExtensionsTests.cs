@@ -79,7 +79,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
                 Assert.That(sentence.InProgressWord(8), Is.Null);
                 Assert.That(sentence.InProgressWord(9), Is.EqualTo("a"));
                 Assert.That(sentence.InProgressWord(10), Is.Null);
-                Assert.That(sentence.InProgressWord(11), Is.EqualTo("sentence."));
+                Assert.That(sentence.InProgressWord(11), Is.EqualTo("sentence"));
             });
 
             sentence = "我該如何說octopus";
