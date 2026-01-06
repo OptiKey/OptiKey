@@ -589,6 +589,17 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
                 if (!string.IsNullOrEmpty(dynamicItem.Opacity) && double.TryParse(dynamicItem.Opacity, out var opacity))
                     scratchpad.Scratchpad.OpacityOverride = opacity;
+
+                // Support for disabled state overrides
+                if (ValidColor(dynamicItem.KeyDisabledForeground, out colorBrush))
+                    scratchpad.Scratchpad.DisabledForegroundBrush = colorBrush;
+                else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.KeyDisabledForeground, out colorBrush)))
+                    scratchpad.Scratchpad.DisabledForegroundBrush = colorBrush;
+
+                if (ValidColor(dynamicItem.KeyDisabledBackground, out colorBrush))
+                    scratchpad.Scratchpad.DisabledBackgroundBrush = colorBrush;
+                else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.KeyDisabledBackground, out colorBrush)))
+                    scratchpad.Scratchpad.DisabledBackgroundBrush = colorBrush;
             }
             else
             {
