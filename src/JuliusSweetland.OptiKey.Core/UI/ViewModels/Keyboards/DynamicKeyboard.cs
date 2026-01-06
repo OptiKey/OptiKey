@@ -3,6 +3,7 @@ using System;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using System.Collections.Generic;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Models;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
@@ -25,6 +26,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
             this.link = link;
             this.keyStateService = keyStateService;
             this.overrideKeyStates = overrideKeyStates;
+        }
+
+        public void ApplyXmlKeyboardSettings(XmlKeyboard xmlKeyboard)
+        {
+            if (xmlKeyboard != null)
+            {
+                SimulateKeyStrokes = xmlKeyboard.SimulateKeyStrokes;
+                Log.DebugFormat("Applied XML keyboard settings: SimulateKeyStrokes={0}", SimulateKeyStrokes);
+            }
         }
 
         public override void OnEnter()
