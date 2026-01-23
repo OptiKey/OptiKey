@@ -2,6 +2,7 @@
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Rime;
 using JuliusSweetland.OptiKey.Services;
 using Prism.Mvvm;
 using System;
@@ -130,18 +131,26 @@ namespace JuliusSweetland.OptiKey.Models
 
                 //Key is Previous suggestions, but no suggestions, or on page 1
                 if (keyValue == KeyValues.PreviousSuggestionsKey
-                    && (suggestionService.Suggestions == null
-                        || !suggestionService.Suggestions.Any()
-                        || suggestionService.SuggestionsPage == 0))
+                    && ((!Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                     && (suggestionService.Suggestions == null
+                            || !suggestionService.Suggestions.Any()
+                            || suggestionService.SuggestionsPage == 0))
+                     || (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() &&
+                        (!MyRimeApi.IsComposing 
+                            || (MyRimeApi.IsComposing&& MyRimeApi.IsFirstPage)))))
                 {
                     return false;
                 }
 
                 //Key is Next suggestions but no suggestions, or on last page
                 if (keyValue == KeyValues.NextSuggestionsKey
-                    && (suggestionService.Suggestions == null
+                    && ((!Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                     && (suggestionService.Suggestions == null
                         || !suggestionService.Suggestions.Any()
                         || suggestionService.Suggestions.Count <= ((suggestionService.SuggestionsPage * suggestionService.SuggestionsPerPage) + suggestionService.SuggestionsPerPage)))
+                     || (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime() &&
+                        (!MyRimeApi.IsComposing
+                            || (MyRimeApi.IsComposing && MyRimeApi.IsLastPage)))))
                 {
                     return false;
                 }
@@ -193,6 +202,37 @@ namespace JuliusSweetland.OptiKey.Models
                     && Settings.Default.MainWindowState != WindowStates.Docked)
                 {
                     return false;
+                }
+
+                //Disable when using Rime and not in ascii mode
+                if (keyValue == KeyValues.AddToDictionaryKey 
+                    && Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                    && !MyRimeApi.IsAsciiMode)
+                {
+                    return false;
+                }
+
+                // Mouse-related keys are not available in Touch mode
+                if (Settings.Default.PointsSource == PointsSources.TouchScreenPosition)
+                {
+                    if (keyValue.FunctionKey.HasValue &&
+                        KeyValues.FunctionKeysUsingPointSource.Contains(keyValue.FunctionKey.Value))
+                    {
+                        return false;
+                    }
+
+                    // Prevent dynamic key that contains any of these forbidden functions
+                    if (keyValue.Commands != null && keyValue.Commands.Any())
+                    {
+                        foreach (var command in keyValue.Commands)
+                        {
+                            if (command.Name == KeyCommands.Function)
+                            {
+                                if (Enum.TryParse(command.Value, out FunctionKeys fk) && KeyValues.FunctionKeysUsingPointSource.Contains(fk))
+                                    return false;
+                            }
+                        }
+                    }
                 }
 
                 //Move & Resize keys when docked
@@ -323,9 +363,17 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Multi-key capture is disabled because the current language does not support the concept
+                // Multi-key capture is disabled because there are no valid keys for the current language
                 if (keyValue == KeyValues.MultiKeySelectionIsOnKey
-                    && new[] { Languages.KoreanKorea }.Contains(Settings.Default.KeyboardAndDictionaryLanguage))
+                    && !KeyValues.MultiKeySelectionKeys.Any())
+                {
+                    return false;
+                }
+                
+                // Multi-key capture is disabled because we are using Chinese but not in ascii mode (where multikey is supported)
+                if (keyValue == KeyValues.MultiKeySelectionIsOnKey
+                    && Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                    && !MyRimeApi.IsAsciiMode)
                 {
                     return false;
                 }

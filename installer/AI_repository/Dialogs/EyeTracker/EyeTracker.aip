@@ -4,30 +4,38 @@
     <ROW Name="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" SourcePath="PopulateComboboxes.vbs"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="EyeTracker" Control="EyeTrackerDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" MsiKey="EyeTracker#EyeTrackerDialogInitializer" ExtDataLocId="-"/>
+    <ROW Dialog_="EyeTracker" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" TextLocId="-" Options="1"/>
+    <ROW Dialog_="EyeTracker" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" Options="1"/>
+    <ROW Dialog_="EyeTracker" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" TextLocId="-" Options="1"/>
     <ROW Dialog_="EyeTracker" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Order="400" TextLocId="Control.Text.EyeTracker#BannerBitmap"/>
     <ROW Dialog_="EyeTracker" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="500"/>
     <ROW Dialog_="EyeTracker" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="600"/>
     <ROW Dialog_="EyeTracker" Control="Description" Type="Text" X="25" Y="23" Width="294" Height="21" Attributes="196611" Order="700" TextLocId="Control.Text.EyeTracker#Description"/>
-    <ROW Dialog_="EyeTracker" Control="Logo" Type="Text" Text="Advanced Installer" X="4" Y="228" Width="70" Height="12" Attributes="1" Order="800" TextLocId="-" MsiKey="Languages#Logo"/>
+    <ROW Dialog_="EyeTracker" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="Advanced Installer" Order="800" TextLocId="-"/>
     <ROW Dialog_="EyeTracker" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" TextStyle="DlgFontBold8_3C91A0DD_328D_4BC3_BF7" Order="900" TextLocId="Control.Text.EyeTracker#Title"/>
-    <ROW Dialog_="EyeTracker" Control="MyComboBox" Type="ComboBox" X="25" Y="61" Width="279" Height="16" Attributes="3" Property="COMBO_EYE_TRACKER" Order="1000" TextLocId="Control.Text.EyeTracker#MyComboBox"/>
+    <ROW Dialog_="EyeTracker" Control="MyComboBox" Type="ComboBox" X="25" Y="61" Width="279" Height="16" Attributes="65539" Property="COMBO_EYE_TRACKER" Order="1000" TextLocId="Control.Text.EyeTracker#MyComboBox"/>
     <ROW Dialog_="EyeTracker" Control="Text_1" Type="Text" X="31" Y="89" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT" Text="[EYETRACKER_TEXT]" Order="1100" TextLocId="-"/>
-    <ROW Dialog_="EyeTracker" Control="Hyperlink_1" Type="Hyperlink" X="236" Y="218" Width="124" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP" Order="1200" TextLocId="Control.Text.EyeTracker#Hyperlink_1"/>
-    <ROW Dialog_="EyeTracker" Control="Text_2" Type="Text" X="31" Y="150" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT_EN" Text="[EYETRACKER_TEXT_EN]" Order="1300" TextLocId="-"/>
-    <ROW Dialog_="EyeTracker" Control="Line_1" Type="Line" X="31" Y="150" Width="316" Height="2" Attributes="1" Order="1400"/>
-    <ROW Dialog_="EyeTracker" Control="EyeTrackerDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
-    <ROW Dialog_="EyeTracker" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" MsiKey="EyeTracker#Next" Options="1"/>
-    <ROW Dialog_="EyeTracker" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" MsiKey="EyeTracker#Cancel" Options="1"/>
-    <ROW Dialog_="EyeTracker" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" MsiKey="EyeTracker#Back" Options="1"/>
+    <ROW Dialog_="EyeTracker" Control="Text_2" Type="Text" X="31" Y="150" Width="315" Height="62" Attributes="65539" Property="EYETRACKER_TEXT_EN" Text="[EYETRACKER_TEXT_EN]" Order="1200" TextLocId="-"/>
+    <ROW Dialog_="EyeTracker" Control="Line_1" Type="Line" X="29" Y="145" Width="314" Height="2" Attributes="1" Order="1300"/>
+    <ROW Dialog_="EyeTracker" Control="Hyperlink_1" Type="Hyperlink" X="29" Y="215" Width="223" Height="20" Attributes="65539" Property="HYPERLINK_1_PROP_1_1" Order="1400" TextLocId="Control.Text.EyeTracker#Hyperlink_1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="EyeTracker" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="2"/>
-    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="DoAction" Argument="EyeTrackerComboSelected_3C91A0DD__1" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="DoAction" Argument="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_7" Condition="AI_INSTALL" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="EyeTrackerComboSelected_3C91A0DD_32" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD_32"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B81C" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B81C"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_1" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_1"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_2" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_2"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_3" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_3"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_4" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_4"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_5" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_5"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_6" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_6"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_7" Type="6" Source="PopulateComboboxes.vbs_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerSelected" WithoutSeq="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="EyeTracker" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg"/>

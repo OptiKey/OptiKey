@@ -3,6 +3,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Rime;
 using JuliusSweetland.OptiKey.Services.Suggestions;
 using log4net;
 using System;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -63,8 +65,34 @@ namespace JuliusSweetland.OptiKey.Services
             Settings.Default.OnPropertyChanges(settings => settings.KeyboardAndDictionaryLanguage).Subscribe(_ => LoadDictionary());
         }
 
-    #endregion
+        #endregion
 
+        #region Set up for RIME
+
+        public void Setup()
+        {
+            // This set up is withheld from the constructor since it may require error notifying
+            try
+            {
+                MyRimeApi.SelectSchema();
+            }
+            catch (System.Runtime.InteropServices.ExternalException e)
+            {
+                Log.Error($"Exception setting up RIME for Chinese: {e}");
+                Log.Error(Marshal.GetLastWin32Error());
+                if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()) 
+                    PublishError(this, e); // only worth publishing if user trying to use RIME
+            }
+            catch (ApplicationException e)
+            {
+                Log.Error($"Exception setting up RIME for Chinese: {e}");
+                if (Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime())
+                    PublishError(this, e); // only worth publishing if user trying to use RIME
+            }
+        }
+
+        #endregion
+ 
         #region Migrate Legacy User Dictionaries
 
         private static void MigrateLegacyDictionaries()
@@ -134,8 +162,12 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void LoadDictionaryFromLanguageFile()
         {
+            //Keyboards managed by Rime have an English keyboard using selected dictionary
+            var language = Settings.Default.KeyboardAndDictionaryLanguage.ManagedByRime()
+                ? Settings.Default.DictionaryLanguageForRime
+                : Settings.Default.KeyboardAndDictionaryLanguage;
              //Load the original dictionary
-             var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
+             var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, language, DictionaryFileType));
 
             if (File.Exists(originalDictionaryPath))
             {
@@ -188,8 +220,12 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private static string GetUserDictionaryPath(Languages? language)
+        private static string GetUserDictionaryPath(Languages language)
         {
+            //Keyboards managed by Rime have an English keyboard using selected dictionary
+            language = language.ManagedByRime()
+                ? Settings.Default.DictionaryLanguageForRime
+                : language;
             return GetUserDictionaryPath(string.Format("{0}{1}", language, DictionaryFileType));
         }
 

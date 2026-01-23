@@ -1993,7 +1993,7 @@ A megjósolt metódus meg lesz változtatva NGram-ra, hogy meggátolja az össze
     <value>Beállítások visszavonása</value>
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
-    <value>Az előjel szótár nem szerkeszthető innen. Az alap helye C:\Program Files (x86)\presage\share\presage\database_en.db". Olyan programmal szerkeszthető amely tud SQLite 3 formátumú fáljokat mint "DB Browser for SQLite" (ami ingyenes program)</value>
+    <value>Az előjel szótár nem szerkeszthető innen. Az alap helye C:\Program Files\presage\share\presage\database_en.db". Olyan programmal szerkeszthető amely tud SQLite 3 formátumú fáljokat mint "DB Browser for SQLite" (ami ingyenes program)</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
     <value>BETŰK</value>
@@ -2372,4 +2372,6 @@ Persian
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Symbol közleménye</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Ha a szemkövető nem szerepel itt, vagy szüksége van egy 32 bites verzióra az Optikey -ről, kérjük, kattintson az alábbi linkre.
+Ha folytatni szeretné a telepítést, az Optikey -t az egér pozíciója irányítja. Ez lehetővé teszi, hogy alternatív bemenetekkel, például fej egérrel vagy bármilyen szemkövetővel működjön, amely lehetővé teszi az egér helyzetének a szemével történő irányítását.</value></data>
 </root>

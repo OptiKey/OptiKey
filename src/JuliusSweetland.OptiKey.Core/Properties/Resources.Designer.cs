@@ -260,6 +260,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove all versions in:.
+        /// </summary>
+        public static string ASK_CONFIRM_UNINSTALL {
+            get {
+                return ResourceManager.GetString("ASK_CONFIRM_UNINSTALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ATTENTION.
         /// </summary>
         public static string ATTENTION {
@@ -310,6 +319,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string AUTO_SPACE_BETWEEN_WORDS_LABEL {
             get {
                 return ResourceManager.GetString("AUTO_SPACE_BETWEEN_WORDS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available eyetracker plugins.
+        /// </summary>
+        public static string AVAILABLE_EYETRACKER_PLUGINS {
+            get {
+                return ResourceManager.GetString("AVAILABLE_EYETRACKER_PLUGINS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available from GitHub.
+        /// </summary>
+        public static string AVAILABLE_FROM_GITHUB {
+            get {
+                return ResourceManager.GetString("AVAILABLE_FROM_GITHUB", resourceCulture);
             }
         }
         
@@ -576,6 +603,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change points source?.
+        /// </summary>
+        public static string CHANGE_EYETRACKER_CAPTION {
+            get {
+                return ResourceManager.GetString("CHANGE_EYETRACKER_CAPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to use the newly installed plugin ({0}) as your points source?.
+        /// </summary>
+        public static string CHANGE_EYETRACKER_DETAILS {
+            get {
+                return ResourceManager.GetString("CHANGE_EYETRACKER_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CHANGE KEYBOARD KEYS:.
         /// </summary>
         public static string CHANGE_KEYBOARD_KEY_GROUP {
@@ -590,6 +635,237 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string CHECK_FOR_UPDATES_AT_STARTUP_LABEL {
             get {
                 return ResourceManager.GetString("CHECK_FOR_UPDATES_AT_STARTUP_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Bopomofo) / 中文 (注音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_BOPOMOFO {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_BOPOMOFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Bopomofo) /
+        ///中文
+        ///(注音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Cangjie v5) / 中文 (仓颉五代-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_CANGJIE5 {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_CANGJIE5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Cangjie v5) /
+        ///中文
+        ///(仓颉五代-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_CANGJIE5_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Luna Pinyin) / 中文 (朙月拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Luna Pinyin) /
+        ///中文
+        ///(朙月拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified (Terra Pinyin) / 中文 (地球拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_TERRAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_TERRAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Simplified
+        ///(Terra Pinyin) /
+        ///中文
+        ///(地球拼音-简化字).
+        /// </summary>
+        public static string CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_SIMPLIFIED_TERRAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Bopomofo) / 中文 (注音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) (Bopomofo) /
+        ///中文
+        ///(注音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) (Luna Pinyin) / 中文 (朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) (Luna Pinyin) /
+        ///中文
+        ///(朙月拼音-臺灣正體).
+        /// </summary>
+        public static string CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TAIWAN_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Bopomofo) / 中文 (注音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_BOPOMOFO {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_BOPOMOFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Bopomofo) /
+        ///中文
+        ///(注音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_BOPOMOFO_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Cangjie v5) / 中文 (倉頡五代).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_CANGJIE5 {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Cangjie v5) /
+        ///中文
+        ///(倉頡五代).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_CANGJIE5_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Luna Pinyin) / 中文 (朙月拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_LUNAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_LUNAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Luna Pinyin) /
+        ///中文
+        ///(朙月拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_LUNAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Taiwan) / 正體中文 (臺灣).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TAIWAN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Taiwan) /
+        ///正體中文
+        ///(臺灣).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TAIWAN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional (Terra Pinyin) / 中文 (地球拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TERRAPINYIN {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TERRAPINYIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese Traditional
+        ///(Terra Pinyin) /
+        ///中文
+        ///(地球拼音).
+        /// </summary>
+        public static string CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CHINESE_TRADITIONAL_TERRAPINYIN_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
@@ -785,11 +1061,21 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter multiple values separated by commas to speed up/slow down subsequent selections, for example: 1250,750,450,250.
+        ///   Looks up a localized string similar to Enter multiple values separated by commas to speed up/slow down subsequent selections.
+        ///For example: 1250,750,450,250.
         /// </summary>
         public static string COMPLETION_TIMES_HINT {
             get {
                 return ResourceManager.GetString("COMPLETION_TIMES_HINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Uninstall.
+        /// </summary>
+        public static string CONFIRM_UNINSTALL {
+            get {
+                return ResourceManager.GetString("CONFIRM_UNINSTALL", resourceCulture);
             }
         }
         
@@ -799,6 +1085,42 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string CONTEXTUAL_MENU_KEY {
             get {
                 return ResourceManager.GetString("CONTEXTUAL_MENU_KEY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue.
+        /// </summary>
+        public static string CONTINUE {
+            get {
+                return ResourceManager.GetString("CONTINUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger repeat presses when held down.
+        /// </summary>
+        public static string CONTROLLER_ENABLE_REPEATS {
+            get {
+                return ResourceManager.GetString("CONTROLLER_ENABLE_REPEATS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time delay for first repeat (ms).
+        /// </summary>
+        public static string CONTROLLER_FIRST_REPEAT_TIME {
+            get {
+                return ResourceManager.GetString("CONTROLLER_FIRST_REPEAT_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time delay for subsequent repeats (ms).
+        /// </summary>
+        public static string CONTROLLER_NEXT_REPEAT_TIME {
+            get {
+                return ResourceManager.GetString("CONTROLLER_NEXT_REPEAT_TIME", resourceCulture);
             }
         }
         
@@ -1247,7 +1569,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to The Presage dictionary cannot be edited from here.
-        ///It&apos;s default location is &quot;C:\Program Files (x86)\presage\share\presage\database_en.db&quot;.
+        ///It&apos;s default location is &quot;C:\Program Files\presage\share\presage\database_en.db&quot;.
         ///It can be edited with a program which can read SQLite format 3 files
         ///such as &quot;DB Browser for SQLite&quot; (which is a free program)..
         /// </summary>
@@ -1538,6 +1860,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English dictionary.
+        /// </summary>
+        public static string ENGLISH_DICTIONARY {
+            get {
+                return ResourceManager.GetString("ENGLISH_DICTIONARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English (UK).
         /// </summary>
         public static string ENGLISH_UK {
@@ -1625,6 +1956,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to load input service.
+        /// </summary>
+        public static string ERROR_LOADING_INPUT_SERVICE {
+            get {
+                return ResourceManager.GetString("ERROR_LOADING_INPUT_SERVICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error has occurred during the magnification process. Please disable magnification and contact Optikey for further support..
         /// </summary>
         public static string ERROR_MAGNIFYING {
@@ -1648,6 +1988,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string ERROR_TITLE {
             get {
                 return ResourceManager.GetString("ERROR_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error uninstalling plugin.
+        /// </summary>
+        public static string ERROR_UNINSTALLING_PLUGIN {
+            get {
+                return ResourceManager.GetString("ERROR_UNINSTALLING_PLUGIN", resourceCulture);
             }
         }
         
@@ -1845,11 +2194,78 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to External eye tracker via DLL plugin.
+        /// </summary>
+        public static string EXTERNAL_EYETRACKER_DLL {
+            get {
+                return ResourceManager.GetString("EXTERNAL_EYETRACKER_DLL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Extra keys.
         /// </summary>
         public static string EXTRA_KEYS {
             get {
                 return ResourceManager.GetString("EXTRA_KEYS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your eye tracker is no longer supported.
+        /// </summary>
+        public static string EYETRACKER_DEPRECATED {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DEPRECATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Optikey v4 does not support this eye tracker. Optikey will use mouse position instead. 
+        ///
+        ///For more information about Optikey Classic, which supports more eye trackers, visit:
+        ///
+        ///www.optikey.org/supported-eyetrackers.
+        /// </summary>
+        public static string EYETRACKER_DEPRECATED_DETAILS {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DEPRECATED_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plugin has been installed, but Optikey was unable to start it. Check the log for details. .
+        /// </summary>
+        public static string EYETRACKER_DLL_INSTALLED_BUT_NOT_INSTANTIATED {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DLL_INSTALLED_BUT_NOT_INSTANTIATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DLL file for eye tracker plugin.
+        /// </summary>
+        public static string EYETRACKER_DLL_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DLL_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyetracker DLL file was not found.
+        /// </summary>
+        public static string EYETRACKER_DLL_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DLL_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyetracker DLL file is not valid.
+        /// </summary>
+        public static string EYETRACKER_DLL_NOT_VALID {
+            get {
+                return ResourceManager.GetString("EYETRACKER_DLL_NOT_VALID", resourceCulture);
             }
         }
         
@@ -2061,6 +2477,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Files locked.
+        /// </summary>
+        public static string FILES_LOCKED {
+            get {
+                return ResourceManager.GetString("FILES_LOCKED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill Pie.
         /// </summary>
         public static string FILL_PIE {
@@ -2145,7 +2570,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We recommend changing the font used in optiKey to one which is fully compatible with Persian.
+        ///   Looks up a localized string similar to We recommend changing the font used in Optikey to one which is fully compatible with Persian.
         ///If a font is used which is not Persian specific then text, and especially numbers, may display incorrectly.
         ///Would you like Optikey to automatically set the font to Nazli?.
         /// </summary>
@@ -2172,6 +2597,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string FORCE_CAPS_LOCK {
             get {
                 return ResourceManager.GetString("FORCE_CAPS_LOCK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to found in.
+        /// </summary>
+        public static string FOUND_IN {
+            get {
+                return ResourceManager.GetString("FOUND_IN", resourceCulture);
             }
         }
         
@@ -2214,6 +2648,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string FRENCH_FRANCE_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("FRENCH_FRANCE_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From GitHub:.
+        /// </summary>
+        public static string FROM_GITHUB_COLON {
+            get {
+                return ResourceManager.GetString("FROM_GITHUB_COLON", resourceCulture);
             }
         }
         
@@ -2525,6 +2968,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Install.
+        /// </summary>
+        public static string INSTALL {
+            get {
+                return ResourceManager.GetString("INSTALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installed plugins.
+        /// </summary>
+        public static string INSTALLED_PLUGINS {
+            get {
+                return ResourceManager.GetString("INSTALLED_PLUGINS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ...but intelligently suppress auto-caps where it is probably unhelpful:.
         /// </summary>
         public static string INTELLIGENTLY_SUPPRESS_AUTO_CAPS {
@@ -2588,7 +3049,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Hiru eye tracker then please make sure you have the Irisbond Hiru drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2..
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string IRISBOND_HIRU_INFO {
             get {
@@ -3060,6 +3521,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Latest release available.
+        /// </summary>
+        public static string LATEST_RELEASE_AVAILABLE {
+            get {
+                return ResourceManager.GetString("LATEST_RELEASE_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Left.
         /// </summary>
         public static string LEFT {
@@ -3404,6 +3874,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL {
             get {
                 return ResourceManager.GetString("MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find more eye tracker options online.
+        /// </summary>
+        public static string MANAGE_ET_PLUGINS {
+            get {
+                return ResourceManager.GetString("MANAGE_ET_PLUGINS", resourceCulture);
             }
         }
         
@@ -4327,6 +4806,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No eye tracker plugins found.
+        ///Check your internet connection and wait a few minutes to rescan..
+        /// </summary>
+        public static string NO_EYETRACKER_PLUGINS {
+            get {
+                return ResourceManager.GetString("NO_EYETRACKER_PLUGINS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No keyboards found.
         /// </summary>
         public static string NO_KEYBOARDS_FOUND {
@@ -4354,11 +4843,56 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find valid eyetracker plugin (DLL) file.
+        /// </summary>
+        public static string NO_VALID_DLL_FOUND {
+            get {
+                return ResourceManager.GetString("NO_VALID_DLL_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to None.
         /// </summary>
         public static string NONE {
             get {
                 return ResourceManager.GetString("NONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We recommend increasing the multikey &quot;minimum dwell time&quot; for use with eye gaze. Would you like Optikey to automatically change the settings for you?.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_MULTIKEY_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multikey settings for eye gaze.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_MULTIKEY_TITLE {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_MULTIKEY_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have changed from touch to another input but still have at least one trigger setting using touch. Would you like Optikey to automatically set the trigger settings?.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_TRIGGER_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_TRIGGER_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch screen still selected as trigger.
+        /// </summary>
+        public static string NONTOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE {
+            get {
+                return ResourceManager.GetString("NONTOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE", resourceCulture);
             }
         }
         
@@ -4492,6 +5026,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Containing Folder.
+        /// </summary>
+        public static string OPEN_CONTAINING_FOLDER {
+            get {
+                return ResourceManager.GetString("OPEN_CONTAINING_FOLDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Optikey Chat : Easy Communication.
         /// </summary>
         public static string OPTIKEY_CHAT_DESCRIPTION {
@@ -4533,6 +5076,26 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string OTHER {
             get {
                 return ResourceManager.GetString("OTHER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If your eye tracker is not listed here, or you require a 32 bit version of Optikey, please click the link below for more information. 
+        ///
+        ///If you want to continue with installation, Optikey will be controlled by your mouse position. This allows it to work with alternative inputs such as a head mouse, or any eye tracker that allows you to control the mouse position with your eyes..
+        /// </summary>
+        public static string OTHER_TRACKER {
+            get {
+                return ResourceManager.GetString("OTHER_TRACKER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Others:.
+        /// </summary>
+        public static string OTHERS_COLON {
+            get {
+                return ResourceManager.GetString("OTHERS_COLON", resourceCulture);
             }
         }
         
@@ -4656,6 +5219,52 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string PLAY_SOUND {
             get {
                 return ResourceManager.GetString("PLAY_SOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plugin search wizard.
+        /// </summary>
+        public static string PLUGIN_SEARCH_WIZARD {
+            get {
+                return ResourceManager.GetString("PLUGIN_SEARCH_WIZARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I understand.
+        /// </summary>
+        public static string PLUGIN_SECURITY_I_UNDERSTAND {
+            get {
+                return ResourceManager.GetString("PLUGIN_SECURITY_I_UNDERSTAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security warning.
+        /// </summary>
+        public static string PLUGIN_SECURITY_WARNING {
+            get {
+                return ResourceManager.GetString("PLUGIN_SECURITY_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installing plugins involves downloading and executing code from the internet, which always carries some inherent risk.
+        ///Plugins are provided by third parties and have not been verified by the Optikey team. Please check the source of plugins before installing them and use your own judgement..
+        /// </summary>
+        public static string PLUGIN_SECURITY_WARNING_DETAIL {
+            get {
+                return ResourceManager.GetString("PLUGIN_SECURITY_WARNING_DETAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string PLUGIN_SECURITY_WARNING_TITLE {
+            get {
+                return ResourceManager.GetString("PLUGIN_SECURITY_WARNING_TITLE", resourceCulture);
             }
         }
         
@@ -5801,6 +6410,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to stars.
+        /// </summary>
+        public static string STARS {
+            get {
+                return ResourceManager.GetString("STARS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uh-oh! We&apos;ve encountered the following errors during startup:.
         /// </summary>
         public static string STARTUP_CRASH_TITLE {
@@ -6098,7 +6716,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again..
+        ///   Looks up a localized string similar to Tobii Engine cannot be found. Please install the Tobii software and try again..
         /// </summary>
         public static string TOBII_EYEX_ENGINE_NOT_FOUND {
             get {
@@ -6107,7 +6725,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tobii EyeX Engine is not running. Please start the EyeX Engine and try again..
+        ///   Looks up a localized string similar to Tobii Engine is not running. Please start the Tobii software and try again..
         /// </summary>
         public static string TOBII_EYEX_ENGINE_NOT_RUNNING {
             get {
@@ -6121,6 +6739,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOBII_EYEX_INFO {
             get {
                 return ResourceManager.GetString("TOBII_EYEX_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connected Tobii eye tracker is not supported. .
+        /// </summary>
+        public static string TOBII_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("TOBII_NOT_SUPPORTED", resourceCulture);
             }
         }
         
@@ -6166,6 +6793,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOBII_REX {
             get {
                 return ResourceManager.GetString("TOBII_REX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find a supported Tobii tracker. Check your eye tracker is plugged in and the Tobii service is running.
+        /// </summary>
+        public static string TOBII_TRACKER_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("TOBII_TRACKER_NOT_FOUND", resourceCulture);
             }
         }
         
@@ -6238,6 +6874,69 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOP {
             get {
                 return ResourceManager.GetString("TOP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch.
+        /// </summary>
+        public static string TOUCH_DOWNUP_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("TOUCH_DOWNUP_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We recommend reducing the multikey &quot;minimum dwell time&quot; for use with touch input. Would you like Optikey to automatically change the settings for you?.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_MULTIKEY_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch input multikey settings.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_MULTIKEY_TITLE {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_MULTIKEY_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We recommend changing the Trigger to Touch if you want to use touch input for Optikey. Would you like Optikey to automatically set the trigger settings?.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_TRIGGER_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_TRIGGER_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch input isn&apos;t using touch as trigger.
+        /// </summary>
+        public static string TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE {
+            get {
+                return ResourceManager.GetString("TOUCH_INPUT_AND_TRIGGER_DIFFER_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch screen position.
+        /// </summary>
+        public static string TOUCHSCREEN_POSITION {
+            get {
+                return ResourceManager.GetString("TOUCHSCREEN_POSITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In this mode, Optikey will use touch control instead of talking directly to an eye tracker. You might want this if you&apos;re testing Optikey out, or if you want to use it for typing on a touch screen..
+        /// </summary>
+        public static string TOUCHSCREEN_POSITION_INFO {
+            get {
+                return ResourceManager.GetString("TOUCHSCREEN_POSITION_INFO", resourceCulture);
             }
         }
         
@@ -6392,6 +7091,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to uninstall currently. Please restart Optikey and try again..
+        /// </summary>
+        public static string UNABLE_UNINSTALL {
+            get {
+                return ResourceManager.GetString("UNABLE_UNINSTALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uninstall.
+        /// </summary>
+        public static string UNINSTALL {
+            get {
+                return ResourceManager.GetString("UNINSTALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something went wrong, but I don&apos;t know what - please check the logs.
         /// </summary>
         public static string UNKNOWN_CALIBRATION_ERROR {
@@ -6434,6 +7151,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string UPDATE_AVAILABLE {
             get {
                 return ResourceManager.GetString("UPDATE_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upgrade.
+        /// </summary>
+        public static string UPGRADE {
+            get {
+                return ResourceManager.GetString("UPGRADE", resourceCulture);
             }
         }
         
@@ -6560,6 +7286,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string VERSION_DESCRIPTION {
             get {
                 return ResourceManager.GetString("VERSION_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version installed.
+        /// </summary>
+        public static string VERSION_INSTALLED {
+            get {
+                return ResourceManager.GetString("VERSION_INSTALLED", resourceCulture);
             }
         }
         

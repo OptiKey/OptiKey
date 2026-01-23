@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using Microsoft.Deployment.WindowsInstaller;
 
@@ -55,11 +56,12 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             {
                 { "en", "en-GB" },
                 { "fr", "fr-FR" },
-                { "nl", "nl-NL" }
+                { "nl", "nl-NL" },
+                { "zh", "zh-CN" },
             };
 
             // Get list of available languages to choose from, as language tag in parts (e.g. en-GB gives ['en', 'GB'])
-            List<KeyValuePair<string, Languages>> languagePairs = WordsViewModel.Languages;
+            List<KeyValuePair<string, Languages>> languagePairs = WordsViewModel.KeyboardLanguages;
             List<string[]> languages = (from kvp in languagePairs select kvp.Value.ToCultureInfo().Name.Split('-')).ToList();
 
             string sysLanguageCode = cultureInfo.Name; //  (e.g. en-GB)
@@ -112,7 +114,7 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             CultureInfo closestCulture = new CultureInfo(closestLanguageCode);
 
             // Get list of available eyetrackers from PointingAndSelectingViewModel
-            List<KeyValuePair<string, PointsSources>> trackers = PointingAndSelectingViewModel.PointsSources;
+            List<KeyValuePair<string, PointsSources>> trackers = PointingAndSelectingViewModel.BundledPointsSources;
 
             string comboData = ""; // we'll append to this as we go
             string defaultTracker = "";
@@ -132,11 +134,19 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 string details_english = GetPointsSourceDetails(tracker.Value, new CultureInfo("en-GB"));
                 if (details == details_english)
                 {
-                    details_english = "";
+                    details_english = ""; // don't duplicate english tranlsation
                 }
                 else
                 {
-                    details_english = "Automatically translated from original text:\n" + details_english;
+                    if (details == "")
+                    { // no translation available, use english alone
+                        details = details_english;
+                        details_english = "";
+                    }
+                    else
+                    {
+                        details_english = "Automatically translated from original text:\n" + details_english;
+                    }
                 }
             
                 session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = details;
@@ -147,6 +157,36 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                     defaultTracker = trackerLabel;
                 }
             }
+
+            // Add manual entry for "not listed"
+            {
+                string trackerLabel = "Other eye tracker (not listed)"; // FIXME: translated??
+                string trackerEnum = PointsSources.MousePosition.ToString();
+
+                // add to combobox prop
+                comboData = AppendItemToComboData(comboData, trackerLabel);
+
+                // save the mapping from label to enum in an installer property
+                session["TRACKER_" + SanitisePropName(trackerLabel)] = trackerEnum;
+
+                // also the extended info, translated and original text 
+                string details = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(closestCulture, "");
+                string details_english = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(new CultureInfo("en-GB"), "");
+                if (details == details_english)
+                {
+                    details_english = "";
+                }
+                else
+                {
+                    details_english = details_english.Replace("\r\n", " "); // remove newlines - there isn't enough space                    
+                    details_english = "Automatically translated from original text: \t" + details_english;
+                }
+
+                session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = details;
+                session["TRACKERINFO_EN_" + SanitisePropName(trackerLabel)] = details_english;
+
+            }
+
 
             // Set combobox data
             session["EYETRACKER_COMBO_DATA"] = comboData;
@@ -160,8 +200,9 @@ namespace JuliusSweetland.OptiKey.InstallerActions
         {
             session.Log("Begin PopulateLanguagesCombo");
 
-            // Get list of available languages from WordsViewModel
-            List<KeyValuePair<string, Languages>> languages = WordsViewModel.Languages;
+            // Get list of available languages from WordsViewModel - here we have the longer list
+            // of Keyboard languages which includes all chinese input methods
+            List<KeyValuePair<string, Languages>> languages = WordsViewModel.KeyboardLanguages;
 
             // Try to match default language to system language
             string defaultLanguageCode = GetDefaultLanguageCode(CultureInfo.CurrentCulture);
@@ -197,29 +238,27 @@ namespace JuliusSweetland.OptiKey.InstallerActions
 
         private static string GetPointsSourceDetails(PointsSources pointSource, CultureInfo culture)
         {
-            switch (pointSource)
+            try
             {
-                // TODO check for culture not in dict, default empty?
-                case PointsSources.Alienware17: return InstallerStrings.ALIENWARE_17_INFO[culture];
-                case PointsSources.GazeTracker: return InstallerStrings.GAZE_TRACKER_INFO[culture];
-                case PointsSources.IrisbondDuo: return InstallerStrings.IRISBOND_DUO_INFO[culture];
-                case PointsSources.IrisbondHiru: return InstallerStrings.IRISBOND_HIRU_INFO[culture];
-                case PointsSources.MousePosition: return InstallerStrings.MOUSE_POSITION_INFO[culture];
-                case PointsSources.TobiiEyeX: return InstallerStrings.TOBII_EYEX_INFO[culture];
-                case PointsSources.TobiiEyeTracker4C: return InstallerStrings.TOBII_EYEX_INFO[culture];
-                case PointsSources.TobiiEyeTracker5: return InstallerStrings.TOBII_EYEX_INFO[culture];
-                case PointsSources.TobiiRex: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.TobiiPcEyeGo: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.TobiiPcEyeGoPlus: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.TobiiPcEyeMini: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.TobiiX2_30: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.TobiiX2_60: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                case PointsSources.VisualInteractionMyGaze: return InstallerStrings.VI_MYGAZE_INFO[culture];
-                default: return "";
+                switch (pointSource)
+                {
+                    // TODO check for culture not in dict, default empty?
+                    case PointsSources.GazeTracker: return InstallerStrings.GAZE_TRACKER_INFO[culture];
+                    case PointsSources.IrisbondDuo: return InstallerStrings.IRISBOND_DUO_INFO[culture];
+                    case PointsSources.IrisbondHiru: return InstallerStrings.IRISBOND_HIRU_INFO[culture];
+                    case PointsSources.MousePosition: return InstallerStrings.MOUSE_POSITION_INFO[culture];
+                    case PointsSources.TobiiPcEyeGo: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    case PointsSources.TobiiPcEyeGoPlus: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    case PointsSources.TobiiPcEyeMini: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    case PointsSources.TobiiX2_30: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    case PointsSources.TobiiX2_60: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    default: return "";
+                }
             }
-
-        }
-
-
+            catch(KeyNotFoundException e)
+            {
+                return ""; 
+            }
+        }        
     }
 }

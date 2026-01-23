@@ -2440,7 +2440,8 @@ Magyar
     <value>Bunun için web kamerası ve video kameralar gibi kullanıma hazır bileşenleri kullanarak açık kaynaklı göz takibi için bir çerçeve olan ITU Bakış İzleme Kitaplığı gereklidir.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-    <value>Optikey'i Irisbond Duo göz takip cihazı ile kullanmayı planlıyorsanız, lütfen Irisbond Duo sürücülerinin kurulu olduğundan emin olun. https://www.irisbond.com/products/downloads</value>
+    <value>Optikey'i Irisbond Duo göz takip cihazı ile kullanmayı planlıyorsanız, lütfen Irisbond Duo sürücülerinin kurulu olduğundan emin olun.
+https://www.irisbond.com/products/downloads</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
     <value>Bu modda Optikey, doğrudan bir göz izleyici yerine fare imlecini girdi olarak kullanacaktır. Optikey'i test ediyorsanız veya kafa faresi veya bu listede olmayan herhangi bir göz izleyici gibi alternatif bir giriş cihazı ile kullanmak istiyorsanız bunu isteyebilirsiniz.</value>

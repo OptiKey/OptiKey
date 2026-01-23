@@ -1637,4 +1637,6 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Comunicación simbólica</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Si su rastreador ocular no está en la lista aquí, o necesita una versión de 32 bits de OptikeY, haga clic en el enlace a continuación para obtener más información.
+Si desea continuar con la instalación, OptikeY será controlado por la posición de su mouse. Esto le permite funcionar con entradas alternativas como un mouse de cabeza o cualquier rastreador ocular que le permita controlar la posición del mouse con los ojos.</value></data>
 </root>

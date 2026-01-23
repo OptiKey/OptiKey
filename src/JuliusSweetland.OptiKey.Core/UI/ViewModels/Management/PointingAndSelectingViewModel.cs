@@ -4,13 +4,17 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Models.Gamepads;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.PluginEngine;
+using JuliusSweetland.OptiKey.UI.Views.Management;
 using log4net;
+using Prism.Commands;
 using Prism.Mvvm;
 using SharpDX.XInput;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
@@ -20,13 +24,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        #endregion
+        public EyeTrackerPluginEngine eyeTrackerPluginEngine;
+
+        #endregion        
 
         #region Ctor
 
         public PointingAndSelectingViewModel()
         {
             Load();
+
+            // Set up eye tracker plugins
+            eyeTrackerPluginEngine = new EyeTrackerPluginEngine();
 
             //Set up property defaulting logic
             this.OnPropertyChanges(vm => vm.KeySelectionTriggerSource).Subscribe(ts =>
@@ -39,6 +48,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
                     case Enums.TriggerSources.KeyboardKeyDownsUps:
                     case Enums.TriggerSources.MouseButtonDownUps:
+                    case Enums.TriggerSources.XInputButtonDownUps:
+                    case Enums.TriggerSources.DirectInputButtonDownUps:
+                    case Enums.TriggerSources.TouchDownUps:
                         MultiKeySelectionTriggerStopSignal = Enums.TriggerStopSignals.NextLow;
                         break;
                 }
@@ -67,31 +79,38 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #region Properties
 
-        public static List<KeyValuePair<string, PointsSources>> PointsSources
+
+        public static List<KeyValuePair<string, PointsSources>> BundledPointsSources
         {
             get
             {
                 return new List<KeyValuePair<string, PointsSources>>
                 {
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.Alienware17.ToDescription(), Enums.PointsSources.Alienware17),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.GazeTracker.ToDescription(), Enums.PointsSources.GazeTracker),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisbondDuo.ToDescription(), Enums.PointsSources.IrisbondDuo),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.IrisbondHiru.ToDescription(), Enums.PointsSources.IrisbondHiru),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.MousePosition.ToDescription(), Enums.PointsSources.MousePosition),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.SteelseriesSentry.ToDescription(), Enums.PointsSources.SteelseriesSentry),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TouchScreenPosition.ToDescription(), Enums.PointsSources.TouchScreenPosition),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeTracker4C.ToDescription(), Enums.PointsSources.TobiiEyeTracker4C),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeTracker5.ToDescription(), Enums.PointsSources.TobiiEyeTracker5),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeX.ToDescription(), Enums.PointsSources.TobiiEyeX),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiPcEyeGo.ToDescription(), Enums.PointsSources.TobiiPcEyeGo),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiPcEyeGoPlus.ToDescription(), Enums.PointsSources.TobiiPcEyeGoPlus),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiPcEye5.ToDescription(), Enums.PointsSources.TobiiPcEye5),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiPcEyeMini.ToDescription(), Enums.PointsSources.TobiiPcEyeMini),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiRex.ToDescription(), Enums.PointsSources.TobiiRex),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiX2_30.ToDescription(), Enums.PointsSources.TobiiX2_30),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiX2_60.ToDescription(), Enums.PointsSources.TobiiX2_60),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.VisualInteractionMyGaze.ToDescription(), Enums.PointsSources.VisualInteractionMyGaze)
                 };
+            }
+        }
+
+        public List<KeyValuePair<string, string>> PointsSources
+        {
+            get
+            {                
+                var installedSources = new List<KeyValuePair<string, string>>();
+                if (eyeTrackerPluginEngine != null)
+                {
+                    installedSources = eyeTrackerPluginEngine.AllSourcesAvailable;
+                }
+
+                var bundledSourcesAsString = BundledPointsSources
+                    .Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value.ToString()))
+                    .ToList();
+
+                return bundledSourcesAsString.Concat(installedSources).ToList();
             }
         }
 
@@ -102,6 +121,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return new List<KeyValuePair<string, TriggerSources>>
                 {
                     new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.Fixations.ToDescription(), Enums.TriggerSources.Fixations),
+                    new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.TouchDownUps.ToDescription(), Enums.TriggerSources.TouchDownUps),
                     new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.KeyboardKeyDownsUps.ToDescription(), Enums.TriggerSources.KeyboardKeyDownsUps),
                     new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.MouseButtonDownUps.ToDescription(), Enums.TriggerSources.MouseButtonDownUps),
                     new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.XInputButtonDownUps.ToDescription(), Enums.TriggerSources.XInputButtonDownUps),
@@ -238,27 +258,80 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
-        private bool allowRepeats;
-        public bool AllowRepeats
+	// FIXME: variable naming collision: this is for translating a held down
+	// button into a repeating click. The other variables are for allowing a 
+	// click outside a key to repeat the last key that was clicked.
+        // Need to think about how these interact
+        private bool allowRepeatKeyActionsAwayFromKey;
+        public bool AllowRepeatKeyActionsAwayFromKey
         {
-            get { return allowRepeats; }
-            set { SetProperty(ref allowRepeats, value); }
+            get { return allowRepeatKeyActionsAwayFromKey; }
+            set { SetProperty(ref allowRepeatKeyActionsAwayFromKey, value); }
         }
 
-        private PointsSources pointSource;
+        private bool gamepadTriggerHoldToRepeat;
+        public bool GamepadTriggerHoldToRepeat
+        {
+            get { return gamepadTriggerHoldToRepeat; }
+            set { SetProperty(ref gamepadTriggerHoldToRepeat, value); }
+        }
+
+        private int pointSelectionTriggerGamepadFirstRepeatMilliseconds;
+        public int PointSelectionTriggerGamepadFirstRepeatMilliseconds
+        {
+            get { return pointSelectionTriggerGamepadFirstRepeatMilliseconds; }
+            set { SetProperty(ref pointSelectionTriggerGamepadFirstRepeatMilliseconds, value); }
+        }
+
+        private int pointSelectionTriggerGamepadNextRepeatMilliseconds;
+        public int PointSelectionTriggerGamepadNextRepeatMilliseconds
+        {
+            get { return pointSelectionTriggerGamepadNextRepeatMilliseconds; }
+            set { SetProperty(ref pointSelectionTriggerGamepadNextRepeatMilliseconds, value); }
+        }
+
+        private int keySelectionTriggerGamepadFirstRepeatMilliseconds;
+        public int GamepadTriggerFirstRepeatMilliseconds
+        {
+            get { return keySelectionTriggerGamepadFirstRepeatMilliseconds; }
+            set { SetProperty(ref keySelectionTriggerGamepadFirstRepeatMilliseconds, value); }
+        }
+
+        private int keySelectionTriggerGamepadNextRepeatMilliseconds;
+        public int GamepadTriggerNextRepeatMilliseconds
+        {
+            get { return keySelectionTriggerGamepadNextRepeatMilliseconds; }
+            set { SetProperty(ref keySelectionTriggerGamepadNextRepeatMilliseconds, value); }
+        }
+
+        private string pointsSourceString;
+        public string PointsSourceString
+        {
+            get { return pointsSourceString; }
+            set { SetProperty(ref pointsSourceString, value); }
+        }
+
         public PointsSources PointsSource
         {
-            get { return pointSource; }
-            set { SetProperty(ref pointSource, value); }
+            get {
+                if (Enum.TryParse(pointsSourceString, out PointsSources pointSource))
+                    return pointSource;
+                else
+                    return Enums.PointsSources.DllIntegration;
+            }
         }
 
-        private DataStreamProcessingLevels tobiiEyeXProcessingLevel;
-        public DataStreamProcessingLevels TobiiEyeXProcessingLevel
+        public string EyeTrackerDllFilePath
         {
-            get { return tobiiEyeXProcessingLevel; }
-            set { SetProperty(ref tobiiEyeXProcessingLevel, value); }
+            get
+            {
+                if (Enum.TryParse(pointsSourceString, out PointsSources pointSource))
+                    return null;
+                else
+                    return pointsSourceString;
+            }
         }
-
+        
         private DataStreamProcessingLevels irisBondProcessingLevel;
         public DataStreamProcessingLevels IrisbondProcessingLevel
         {
@@ -363,6 +436,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return keySelectionTriggerFixationResumeRequiresLockOn; }
             set { SetProperty(ref keySelectionTriggerFixationResumeRequiresLockOn, value); }
         }
+
+	private bool keySelectionTriggerFixationResetMousePositionAfterKeyPressed;
+        public bool KeySelectionTriggerFixationResetMousePositionAfterKeyPressed
+        {
+            get { return keySelectionTriggerFixationResetMousePositionAfterKeyPressed; }
+            set { SetProperty(ref keySelectionTriggerFixationResetMousePositionAfterKeyPressed, value); }
+        }
+
         public bool CompletionTimesShowHint
         {
             get { return !(Regex.IsMatch(keySelectionTriggerFixationDefaultCompleteTimeInMs
@@ -512,7 +593,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return multiKeySelectionMaxDurationInMs; }
             set { SetProperty(ref multiKeySelectionMaxDurationInMs, value); }
-        }
+        }        
 
         public bool ChangesRequireRestart
         {
@@ -526,8 +607,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups
                         .SelectMany(g => g.KeyValueAndTimeSpans);
 
-                return Settings.Default.PointsSource != PointsSource
-                    || (Settings.Default.TobiiEyeXProcessingLevel != TobiiEyeXProcessingLevel && PointsSource == Enums.PointsSources.TobiiEyeX)
+                return Settings.Default.PointsSource != PointsSource                    
+                    || (Settings.Default.EyeTrackerDllFilePath != EyeTrackerDllFilePath && PointsSource == Enums.PointsSources.DllIntegration)
                     || (Settings.Default.IrisbondProcessingLevel != IrisbondProcessingLevel && (PointsSource == Enums.PointsSources.IrisbondDuo || PointsSource == Enums.PointsSources.IrisbondHiru))
                     || (Settings.Default.PointsMousePositionSampleInterval != TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs) && PointsSource == Enums.PointsSources.MousePosition)
                     || Settings.Default.PointTtl != TimeSpan.FromMilliseconds(PointTtlInMs)
@@ -537,6 +618,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     || (Settings.Default.KeySelectionTriggerGamepadXInputController != KeySelectionTriggerGamepadXInputController && KeySelectionTriggerSource == Enums.TriggerSources.DirectInputButtonDownUps)
                     || (Settings.Default.KeySelectionTriggerGamepadDirectInputController != KeySelectionTriggerGamepadDirectInputController && KeySelectionTriggerSource == Enums.TriggerSources.DirectInputButtonDownUps)                     
                     || (Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton != KeySelectionTriggerGamepadDirectInputButtonDownUpButton && KeySelectionTriggerSource == Enums.TriggerSources.XInputButtonDownUps)
+                    || (Settings.Default.GamepadTriggerHoldToRepeat != GamepadTriggerHoldToRepeat && KeySelectionTriggerSource == Enums.TriggerSources.XInputButtonDownUps)
+                    || (Settings.Default.GamepadTriggerFirstRepeatMilliseconds != GamepadTriggerFirstRepeatMilliseconds && KeySelectionTriggerSource == Enums.TriggerSources.XInputButtonDownUps)
+                    || (Settings.Default.GamepadTriggerFirstRepeatMilliseconds != GamepadTriggerFirstRepeatMilliseconds && KeySelectionTriggerSource == Enums.TriggerSources.DirectInputButtonDownUps)
+                    || (Settings.Default.GamepadTriggerNextRepeatMilliseconds != GamepadTriggerNextRepeatMilliseconds && KeySelectionTriggerSource == Enums.TriggerSources.XInputButtonDownUps)
+                    || (Settings.Default.GamepadTriggerNextRepeatMilliseconds != GamepadTriggerNextRepeatMilliseconds && KeySelectionTriggerSource == Enums.TriggerSources.DirectInputButtonDownUps)
                     || (Settings.Default.KeySelectionTriggerMouseDownUpButton != KeySelectionTriggerMouseDownUpButton && KeySelectionTriggerSource == Enums.TriggerSources.MouseButtonDownUps)
                     || (Settings.Default.KeySelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn != KeySelectionTriggerFixationResumeRequiresLockOn && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
@@ -567,15 +653,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
-            AllowRepeats = Settings.Default.AllowRepeatKeyActionsAwayFromKey;
-            PointsSource = Settings.Default.PointsSource;
-            TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
+            if (Settings.Default.PointsSource == Enums.PointsSources.DllIntegration)
+                PointsSourceString = Settings.Default.EyeTrackerDllFilePath;
+            else
+                PointsSourceString = Settings.Default.PointsSource.ToString();
+
+
             IrisbondProcessingLevel = Settings.Default.IrisbondProcessingLevel;
             GazeSmoothingLevel = Settings.Default.GazeSmoothingLevel;
             SmoothWhenChangingGazeTarget = Settings.Default.SmoothWhenChangingGazeTarget;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
             PointsMousePositionHideCursor = Settings.Default.PointsMousePositionHideCursor;
             PointTtlInMs = Settings.Default.PointTtl.TotalMilliseconds;
+
+            AllowRepeatKeyActionsAwayFromKey = Settings.Default.AllowRepeatKeyActionsAwayFromKey;
+
             KeySelectionTriggerSource = Settings.Default.KeySelectionTriggerSource;
             KeySelectionTriggerKeyboardKeyDownUpKey = Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey;
             KeySelectionTriggerGamepadXInputController = Settings.Default.KeySelectionTriggerGamepadXInputController;
@@ -589,6 +681,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionTriggerFixationCompleteTimesByIndividualKey = Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey;
             KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups = FromSetting(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
             KeySelectionTriggerIncompleteFixationTtlInMs = Settings.Default.KeySelectionTriggerIncompleteFixationTtl.TotalMilliseconds;
+
+            GamepadTriggerHoldToRepeat = Settings.Default.GamepadTriggerHoldToRepeat;
+            GamepadTriggerFirstRepeatMilliseconds = Settings.Default.GamepadTriggerFirstRepeatMilliseconds;
+            GamepadTriggerNextRepeatMilliseconds = Settings.Default.GamepadTriggerNextRepeatMilliseconds;
+
             PointSelectionTriggerSource = Settings.Default.PointSelectionTriggerSource;
             PointSelectionTriggerKeyboardKeyDownUpKey = Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey;
             PointSelectionTriggerGamepadXInputController = Settings.Default.PointSelectionTriggerGamepadXInputController;
@@ -599,7 +696,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             PointSelectionTriggerFixationLockOnTimeInMs = Settings.Default.PointSelectionTriggerFixationLockOnTime.TotalMilliseconds;
             PointSelectionTriggerFixationCompleteTimeInMs = Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds;
             PointSelectionTriggerLockOnRadiusInPixels = Settings.Default.PointSelectionTriggerLockOnRadiusInPixels;
-            PointSelectionTriggerFixationRadiusInPixels = Settings.Default.PointSelectionTriggerFixationRadiusInPixels;
+            PointSelectionTriggerFixationRadiusInPixels = Settings.Default.PointSelectionTriggerFixationRadiusInPixels;            
+
             ProgressIndicatorBehaviour = Settings.Default.ProgressIndicatorBehaviour;
             ProgressIndicatorResizeStartProportion = Settings.Default.ProgressIndicatorResizeStartProportion;
             ProgressIndicatorResizeEndProportion = Settings.Default.ProgressIndicatorResizeEndProportion;
@@ -611,15 +709,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            Settings.Default.AllowRepeatKeyActionsAwayFromKey = AllowRepeats;
+            
             Settings.Default.PointsSource = PointsSource;
-            Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
             Settings.Default.IrisbondProcessingLevel = IrisbondProcessingLevel;
             Settings.Default.GazeSmoothingLevel = GazeSmoothingLevel;
             Settings.Default.SmoothWhenChangingGazeTarget = SmoothWhenChangingGazeTarget;
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointsMousePositionHideCursor = PointsMousePositionHideCursor;
             Settings.Default.PointTtl = TimeSpan.FromMilliseconds(PointTtlInMs);
+            Settings.Default.EyeTrackerDllFilePath = EyeTrackerDllFilePath;
+
+            Settings.Default.AllowRepeatKeyActionsAwayFromKey = AllowRepeatKeyActionsAwayFromKey;
+
             Settings.Default.KeySelectionTriggerSource = KeySelectionTriggerSource;
             Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey = KeySelectionTriggerKeyboardKeyDownUpKey;
             Settings.Default.KeySelectionTriggerGamepadXInputController = KeySelectionTriggerGamepadXInputController;
@@ -629,10 +730,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeySelectionTriggerMouseDownUpButton = KeySelectionTriggerMouseDownUpButton;
             Settings.Default.KeySelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs);
             Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn = KeySelectionTriggerFixationResumeRequiresLockOn;
-            Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes = KeySelectionTriggerFixationDefaultCompleteTimeInMs;
+            Settings.Default.KeySelectionTriggerFixationResetMousePositionAfterKeyPressed = KeySelectionTriggerFixationResetMousePositionAfterKeyPressed;
             Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey = KeySelectionTriggerFixationCompleteTimesByIndividualKey;
             Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues = ToSetting(KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups);
             Settings.Default.KeySelectionTriggerIncompleteFixationTtl = TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs);
+
+            Settings.Default.GamepadTriggerHoldToRepeat = GamepadTriggerHoldToRepeat;
+            Settings.Default.GamepadTriggerFirstRepeatMilliseconds = GamepadTriggerFirstRepeatMilliseconds;
+            Settings.Default.GamepadTriggerNextRepeatMilliseconds = GamepadTriggerNextRepeatMilliseconds;
+
             Settings.Default.PointSelectionTriggerSource = PointSelectionTriggerSource;
             Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey = PointSelectionTriggerKeyboardKeyDownUpKey;
             Settings.Default.PointSelectionTriggerGamepadXInputController = PointSelectionTriggerGamepadXInputController;
@@ -644,12 +750,39 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.PointSelectionTriggerFixationCompleteTime = TimeSpan.FromMilliseconds(PointSelectionTriggerFixationCompleteTimeInMs);
             Settings.Default.PointSelectionTriggerLockOnRadiusInPixels = PointSelectionTriggerLockOnRadiusInPixels;
             Settings.Default.PointSelectionTriggerFixationRadiusInPixels = PointSelectionTriggerFixationRadiusInPixels;
+
             Settings.Default.ProgressIndicatorBehaviour = ProgressIndicatorBehaviour;
             Settings.Default.ProgressIndicatorResizeStartProportion = ProgressIndicatorResizeStartProportion;
             Settings.Default.ProgressIndicatorResizeEndProportion = ProgressIndicatorResizeEndProportion;
             Settings.Default.MultiKeySelectionTriggerStopSignal = MultiKeySelectionTriggerStopSignal;
             Settings.Default.MultiKeySelectionFixationMinDwellTime = TimeSpan.FromMilliseconds(MultiKeySelectionFixationMinDwellTimeInMs);
             Settings.Default.MultiKeySelectionMaxDuration = TimeSpan.FromMilliseconds(MultiKeySelectionMaxDurationInMs);
+        }
+
+        public void UpdatePlugins()
+        {            
+            RaisePropertyChanged("PointsSources");
+
+            // If currently-selected source is no longer in list of available sources, default to mouse control
+            if (!PointsSources.Any(x => x.Value == PointsSourceString))
+            {
+                PointsSourceString = Enums.PointsSources.MousePosition.ToString();
+            }
+
+            // If something was installed, ask user if they want to choose it
+            if (eyeTrackerPluginEngine.MostRecentlyInstalledDll != null) {
+                var repo = eyeTrackerPluginEngine.MostRecentlyInstalledDll;
+                var result = MessageBox.Show(String.Format(Resources.CHANGE_EYETRACKER_DETAILS, PluginUtils.GetRepoKey(repo)),
+                    Resources.CHANGE_EYETRACKER_CAPTION, 
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    PointsSourceString = repo.InstalledDllPath;
+                    // Coerce to no smoothing, user can turn back on. 
+                    GazeSmoothingLevel = 0;
+                }
+            }
         }
 
         private List<KeyValueAndTimeSpanGroup> FromSetting(

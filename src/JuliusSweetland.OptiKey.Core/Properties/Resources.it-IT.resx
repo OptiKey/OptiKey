@@ -2072,7 +2072,7 @@ Il metodo di suggerimento sarà cambiato a NGram per evitare il blocco al prossi
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>Il dizionario di Presage non può essere editato da qui.
-Il suo percorso di default é "C:\Program Files (x86)\presage\share\presage\database_en.db".
+Il suo percorso di default é "C:\Program Files\presage\share\presage\database_en.db".
 Può essere editato con un programma in grado di leggere file in formato SQLite 3
 tipo "DB Browser for SQLite" (che è un programma libero).</value>
   </data>
@@ -2555,4 +2555,6 @@ Magyar
 हिन्दी
 (भारत)</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Se il tuo eye tracker non è elencato qui o hai bisogno di una versione di Optikey a 32 bit, fai clic sul link in basso per ulteriori informazioni.
+Se vuoi continuare con l'installazione, Optikey sarà controllato dalla posizione del mouse. Ciò gli consente di funzionare con input alternativi come un topo per la testa o qualsiasi tracker oculare che ti consente di controllare la posizione del mouse con gli occhi.</value></data>
 </root>

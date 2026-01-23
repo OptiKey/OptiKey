@@ -1960,7 +1960,7 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>辞書はここでは編集できません。
-デフォルトパスは "C:\Program Files (x86)\presage\share\presage\database_en.db" です。
+デフォルトパスは "C:\Program Files\presage\share\presage\database_en.db" です。
 SQLite形式の3ファイルを読み込めるソフトウェアにより編集が可能です。
 (フリーソフトの "DB Browser for SQLite" 等でご利用いただけます。)</value>
   </data>
@@ -2027,5 +2027,6 @@ SQLite形式の3ファイルを読み込めるソフトウェアにより編集�
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>シンボルを用いた通信</value>
   </data>
-
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> アイトラッカーがここにリストされていない場合、または32ビットバージョンのOptikeyが必要な場合は、詳細については以下のリンクをクリックしてください。
+インストールを続けたい場合は、Optikeyがマウスの位置によって制御されます。これにより、ヘッドマウスなどの代替入力、または目でマウスの位置を制御できるアイトラッカーで動作できます。</value></data>
 </root>

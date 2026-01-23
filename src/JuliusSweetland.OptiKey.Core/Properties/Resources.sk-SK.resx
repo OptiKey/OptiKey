@@ -1606,4 +1606,6 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Komunikácia s Symboly</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Ak tu nie je uvedený váš sledovač očí alebo potrebujete 32 -bitovú verziu Optikey, kliknite na odkaz nižšie, kde nájdete ďalšie informácie.
+Ak chcete pokračovať v inštalácii, optikey bude ovládaný polohou myši. To mu umožňuje pracovať s alternatívnymi vstupmi, ako je hlava myši alebo akýkoľvek sledovač očí, ktorý vám umožňuje ovládať polohu myši vašimi očami.</value></data>
 </root>

@@ -3,6 +3,7 @@ using System;
 using System.Reactive;
 using System.Windows;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 using log4net;
 using TETCSharpClient;
 using TETCSharpClient.Data;
@@ -23,8 +24,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         public TheEyeTribePointService()
         {
-            KalmanFilterSupported = true;
-
             //Disconnect (deactivate) from the TET server on shutdown - otherwise the process can hang
             Application.Current.Exit += (sender, args) =>
             {
@@ -35,12 +34,6 @@ namespace JuliusSweetland.OptiKey.Services
                 }
             };
         }
-
-        #endregion
-
-        #region Properties
-
-        public bool KalmanFilterSupported { get; private set; }
 
         #endregion
 

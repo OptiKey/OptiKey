@@ -92,12 +92,12 @@ shutil.copy2(deploy_file, orig_file)
 
 # Build all projects
 # FYI if you're running this directly in git bash, you need to escape the forward slashes in the options (e.g. //Rebuild)
-clean = 'devenv.com OptiKeyDeployment.sln /Clean "Release|Any CPU"'
+clean = 'devenv.com OptiKeyDeployment.sln /Clean "Release|x64"'
 if not safeProcess(clean):
     print("Error cleaning project")
     safeExit()
 
-build = 'devenv.com OptiKeyDeployment.sln /Rebuild "Release|Any CPU"'
+build = 'devenv.com OptiKeyDeployment.sln /Rebuild "Release|x64"'
 if not safeProcess(build):
     print("Error building project")
     safeExit()

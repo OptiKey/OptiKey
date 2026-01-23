@@ -8,6 +8,7 @@ using JuliusSweetland.OptiKey.Native.Irisbond;
 using JuliusSweetland.OptiKey.Native.Irisbond.Duo;
 using JuliusSweetland.OptiKey.Native.Irisbond.Duo.Enums;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -27,14 +28,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public IrisbondDuoPointService()
         {
-            KalmanFilterSupported = true;
         }
-
-        #endregion
-
-        #region Properties
-
-        public bool KalmanFilterSupported {get; private set; }
 
         #endregion
 

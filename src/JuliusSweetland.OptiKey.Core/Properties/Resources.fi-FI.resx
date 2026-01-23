@@ -1994,7 +1994,7 @@ Ennustamismenetelmä muutetaan NGramiksi kaatumisen estämiseksi.</value>
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>Presage-sanakirjaa ei voi muokata tästä.
-Sen oletussijainti on "C:\Program Files (x86)\presage\share\presage\database_en.db".
+Sen oletussijainti on "C:\Program Files\presage\share\presage\database_en.db".
 Sitä voi muokata ohjelmilla, jotka tukevat SQLLite format 3 -tiedostoja,
 kuten "DB Browser for SQLite" (joka on ilmainen ohjelma).</value>
   </data>
@@ -2377,4 +2377,6 @@ Haluatko, että Optikey asettaa automaattisesti fontiksi Nazil?</value>
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Viestintä symbolien</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Jos silmäseurantasi ei ole tässä lueteltu tai tarvitset 32 ​​-bittin version Optikeyistä, napsauta alla olevaa linkkiä saadaksesi lisätietoja.
+Jos haluat jatkaa asennuksen kanssa, Optikey ohjataan hiiren sijainnissasi. Tämän avulla se voi toimia vaihtoehtoisilla tuloilla, kuten päähiirellä, tai millä tahansa silmäseurantalaitteella, jonka avulla voit hallita hiiren sijaintia silmilläsi.</value></data>
 </root>

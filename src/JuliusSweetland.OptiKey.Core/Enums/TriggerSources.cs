@@ -9,6 +9,7 @@ namespace JuliusSweetland.OptiKey.Enums
         MouseButtonDownUps,
         XInputButtonDownUps,
         DirectInputButtonDownUps,
+        TouchDownUps,
     }
 
     public static partial class EnumExtensions
@@ -22,6 +23,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case TriggerSources.MouseButtonDownUps: return Resources.MOUSE_BUTTON;
                 case TriggerSources.XInputButtonDownUps: return Resources.GAMEPAD_XINPUT_BUTTON;
                 case TriggerSources.DirectInputButtonDownUps: return Resources.GAMEPAD_DIRECTINPUT_BUTTON;
+                case TriggerSources.TouchDownUps: return Resources.TOUCH_DOWNUP_DESCRIPTION;
             }
 
             return triggerSources.ToString();

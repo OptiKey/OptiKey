@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
+using System.Windows.Forms;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {

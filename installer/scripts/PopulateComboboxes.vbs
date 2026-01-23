@@ -89,7 +89,16 @@ Function LanguageSelected
   lang_enum = Session.Property("LANGUAGE_" + SanitisePropName(selectedLanguage))
 
   ' Store the  enum as a property: we'll need to use this for writing to XML
-  Session.Property("LANGUAGE_SELECTED") = lang_enum
+  Session.Property("KEYBOARD_LANGUAGE_SELECTED") = lang_enum
+
+  ' Special case for chinese - all variants map to ChineseTraditionalTaiwan as the
+  ' UI language
+  If InStr(lang_enum, "Chinese") > 0 Then
+    Session.Property("UI_LANGUAGE_SELECTED") = "ChineseTraditionalTaiwan"
+  Else 
+    Session.Property("UI_LANGUAGE_SELECTED") = lang_enum
+  End If
+  
 
   ' Set accompanying settings
   If StrComp(lang_enum, "PersianIran") = 0 Then
@@ -125,6 +134,19 @@ Function UpdateEyeTracker(tracker_enum, tracker_extra_info, tracker_extra_info_e
 
   ' Store the eyetracker enum as a property: we'll need to use this for writing to XML
   Session.Property("EYETRACKER_SELECTED") = tracker_enum
+
+  ' Coerce associated properties for touch input
+  If StrComp(tracker_enum, "TouchScreenPosition") = 0 Then
+    Session.Property("SELECTED_KEYSELECTIONTRIGGERSOURCE") = "TouchDownUps"
+    Session.Property("SELECTED_POINTSELECTIONTRIGGERSOURCE") = "TouchDownUps"
+    Session.Property("SELECTED_MINDWELLTIME") = "50"
+    Session.Property("SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL") = "NextLow"
+  Else
+    Session.Property("SELECTED_KEYSELECTIONTRIGGERSOURCE") = "Fixations"
+    Session.Property("SELECTED_POINTSELECTIONTRIGGERSOURCE") = "Fixations"
+    Session.Property("SELECTED_MINDWELLTIME") = "250"
+    Session.Property("SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL") = "NextHigh"
+  End If  
 
 End Function
 

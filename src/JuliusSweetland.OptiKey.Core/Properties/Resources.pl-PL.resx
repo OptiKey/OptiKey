@@ -1945,7 +1945,7 @@ Przy kolejnym starcie aplikacji metoda predykcji zostanie zmieniona na NGram.</v
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>Słownik Presage nie może być edytowany z poziomu tej aplikacji
-Domyślna lokalizacja pliku słownika to "C:\Program Files (x86)\presage\share\presage\database_en.db"."
+Domyślna lokalizacja pliku słownika to "C:\Program Files\presage\share\presage\database_en.db"."
 Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3, przykładowo darmowego  "DB Browser for SQLite" .</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
@@ -2011,4 +2011,6 @@ Można edytować go z użyciem dowolnego programu wspierającego SQLite format 3
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>Komunikacja z symboli</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Jeśli śledzenie wzroku nie jest tutaj wymienione lub potrzebujesz 32 -bitowej wersji Optikey, kliknij poniższy link, aby uzyskać więcej informacji.
+Jeśli chcesz kontynuować instalację, Optikey będzie kontrolowany przez twoją pozycję myszy. Pozwala to na działanie z alternatywnymi wejściami, takimi jak mysz głowica lub dowolny śledzenie wzroku, który pozwala kontrolować pozycję myszy oczami.</value></data>
 </root>

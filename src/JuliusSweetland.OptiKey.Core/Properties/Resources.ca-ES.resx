@@ -1615,4 +1615,6 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
   <data name="OPTIKEY_SYMBOL_DESCRIPTION" xml:space="preserve">
       <value>La comunicació amb els símbols</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Si el vostre rastrejador d’ulls no apareix aquí o necessiteu una versió de 32 bits d’Optikey, feu clic a l’enllaç següent per obtenir més informació.
+Si voleu continuar amb la instal·lació, Optikey estarà controlada per la posició del ratolí. Això li permet treballar amb entrades alternatives com un ratolí de capçal o qualsevol rastrejador d’ulls que permeti controlar la posició del ratolí amb els ulls.</value></data>
 </root>

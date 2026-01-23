@@ -1,0 +1,22 @@
+# Rime schema
+# encoding: utf-8
+
+__include: luna_pinyin.schema:/
+
+schema:
+  schema_id: luna_quanpin
+  name: 全拼
+  version: '0.2'
+  author:
+    - 佛振 <chen.sst@gmail.com>
+  description: |
+    所謂「全拼」，其實是去除聲調的漢語拼音。
+    供形碼用作拼音反查。
+
+speller:
+  algebra:
+    __patch:
+      - pinyin:/spelling_correction
+
+translator:
+  prism: luna_quanpin

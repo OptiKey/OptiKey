@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
+using System.Globalization;
 
 namespace InstallerTranslation
 {
@@ -22,34 +24,40 @@ namespace InstallerTranslation
 
                 Console.WriteLine("Extracting internationalised strings...");
 
-                // Get all Optikey languages
-                List<KeyValuePair<string, Languages>> languages = WordsViewModel.Languages;
-
-                // Query resources to create multilingual dicts for key installer strings
+                // Create multilingual dicts for key installer strings
                 Dictionary<Languages, string> all_ALIENWARE_17_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_GAZE_TRACKER_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_IRISBOND_DUO_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_IRISBOND_HIRU_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_MOUSE_POSITION_INFO = new Dictionary<Languages, string>();
                 Dictionary<Languages, string> all_TOBII_EYEX_INFO = new Dictionary<Languages, string>();
-                Dictionary<Languages, string> all_TOBII_ASSISTIVE_INFO = new Dictionary<Languages, string>();
-                Dictionary<Languages, string> all_VI_MYGAZE_INFO = new Dictionary<Languages, string>();
+                Dictionary<Languages, string> all_TOBII_ASSISTIVE_INFO = new Dictionary<Languages, string>();                
                 Dictionary<Languages, string> all_MOUSE_POSITION = new Dictionary<Languages, string>();
+                Dictionary<Languages, string> all_OTHER_TRACKER = new Dictionary<Languages, string>();
 
-                foreach (KeyValuePair<string, Languages> entry in languages)
+                // Get all Optikey languages
+                var languages = Enum.GetValues(typeof(Languages)).Cast<Languages>().ToList();
+                HashSet<CultureInfo> translatedCultures = new HashSet<CultureInfo>();
+
+                // Look up translations for each culture present
+                foreach (Languages language in languages)
                 {
-                    Languages language = entry.Value;
-                    JuliusSweetland.OptiKey.Properties.Resources.Culture = language.ToCultureInfo();
+                    var culture = language.ToCultureInfo();
+                    JuliusSweetland.OptiKey.Properties.Resources.Culture = culture;
 
-                    all_ALIENWARE_17_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.ALIENWARE_17_INFO);
-                    all_GAZE_TRACKER_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.GAZE_TRACKER_INFO);
-                    all_IRISBOND_DUO_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.IRISBOND_DUO_INFO);
-                    all_IRISBOND_HIRU_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.IRISBOND_HIRU_INFO);
-                    all_MOUSE_POSITION_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.MOUSE_POSITION_INFO);
-                    all_TOBII_EYEX_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.TOBII_EYEX_INFO);
-                    all_TOBII_ASSISTIVE_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.TOBII_ASSISTIVE_INFO);
-                    all_VI_MYGAZE_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.VI_MYGAZE_INFO);
-                    all_MOUSE_POSITION.Add(language, JuliusSweetland.OptiKey.Properties.Resources.MOUSE_POSITION);
+                    if (!translatedCultures.Contains(culture)) {
+                        all_ALIENWARE_17_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.ALIENWARE_17_INFO);
+                        all_GAZE_TRACKER_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.GAZE_TRACKER_INFO);
+                        all_IRISBOND_DUO_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.IRISBOND_DUO_INFO);
+                        all_IRISBOND_HIRU_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.IRISBOND_HIRU_INFO);
+                        all_MOUSE_POSITION_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.MOUSE_POSITION_INFO);
+                        all_TOBII_EYEX_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.TOBII_EYEX_INFO);
+                        all_TOBII_ASSISTIVE_INFO.Add(language, JuliusSweetland.OptiKey.Properties.Resources.TOBII_ASSISTIVE_INFO);
+                        all_MOUSE_POSITION.Add(language, JuliusSweetland.OptiKey.Properties.Resources.MOUSE_POSITION);
+                        all_OTHER_TRACKER.Add(language, JuliusSweetland.OptiKey.Properties.Resources.OTHER_TRACKER);
+
+                        translatedCultures.Add(culture);
+                    }
                 }
 
                 // pre-amble
@@ -71,7 +79,7 @@ namespace InstallerTranslation
                 WriteDictInitialiser(file, all_MOUSE_POSITION_INFO, "MOUSE_POSITION_INFO");
                 WriteDictInitialiser(file, all_TOBII_EYEX_INFO, "TOBII_EYEX_INFO");
                 WriteDictInitialiser(file, all_TOBII_ASSISTIVE_INFO, "TOBII_ASSISTIVE_INFO");
-                WriteDictInitialiser(file, all_VI_MYGAZE_INFO, "VI_MYGAZE_INFO");
+                WriteDictInitialiser(file, all_OTHER_TRACKER, "OTHER_TRACKER");
 
                 // post-amble
                 file.WriteLine("\t}");
@@ -95,6 +103,7 @@ namespace InstallerTranslation
             {
                 string value = entry.Value;
                 value = value.Replace("\"", "\\\""); // escape any double quotes
+                value = value.Replace("\r\n", "\\r\\n"); // escape newline 
                 file.WriteLine(entryString, entry.Key, value);
             }
             file.WriteLine("\t\t};");

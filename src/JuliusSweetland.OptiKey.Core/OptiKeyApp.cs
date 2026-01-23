@@ -18,6 +18,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
@@ -240,7 +241,39 @@ namespace JuliusSweetland.OptiKey
                     return true;
                 }
 
-                //2.Attempt to construct a Presage object, which can fail for a few reasons, including BadImageFormatExceptions (64-bit version installed)
+                //2.Ensure the presage db exists at the setting location
+                if (!File.Exists(Settings.Default.PresageDatabaseLocation))
+                {
+                    try
+                    {
+                        string ApplicationDataSubPath = @"OptiKey\OptiKey";
+                        var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
+                        var database = Path.Combine(path, @"Presage\database.db");
+                        if (!File.Exists(database))
+                        {
+                            try
+                            {
+                                using (ZipArchive archive = ZipFile.Open(@".\Resources\Presage\database.zip", ZipArchiveMode.Read, Encoding.UTF8))
+                                {
+                                    archive.ExtractToDirectory(path);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Log.ErrorFormat("Unpacking the Presage database failed with the following exception: \n{0}", e);
+                            }
+                        }
+
+                        Settings.Default.PresageDatabaseLocation = database;
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("Presage failed to bootstrap. The database (database.db file) was not found, and the database.zip file could not be extracted!", ex);
+                        return true;
+                    }
+                }
+
+                //3.Attempt to construct a Presage object, which can fail for a few reasons, including BadImageFormatExceptions (64-bit version installed)
                 Presage presageTestInstance = null;
                 try
                 {
@@ -276,43 +309,9 @@ namespace JuliusSweetland.OptiKey
 
                     return true;
                 }
-                // set the config
-                if (File.Exists(Settings.Default.PresageDatabaseLocation))
-                {
-                    presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
-                }
-                else
-                {
-                    try
-                    {
-                        string ApplicationDataSubPath = @"OptiKey\OptiKey";
-                        var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
-                        var database = Path.Combine(path, @"Presage\database.db");
-                        if (!File.Exists(database))
-                        {
-                            try
-                            {
-                                using (ZipArchive archive = ZipFile.Open(@".\Resources\Presage\database.zip", ZipArchiveMode.Read, Encoding.UTF8))
-                                {
-                                    archive.ExtractToDirectory(path);
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                Log.ErrorFormat("Unpacking the Presage database failed with the following exception: \n{0}", e);
-                            }
-                        }
 
-                        Settings.Default.PresageDatabaseLocation = database;
-                        presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error("Presage failed to bootstrap. The database (database.db file) was not found, and the database.zip file could not be extracted!", ex);
-                        return true;
-                    }
-                }
-
+                //Setup the presage config
+                presageTestInstance.set_config("Presage.Predictors.DefaultSmoothedNgramPredictor.DBFILENAME", Path.GetFullPath(Settings.Default.PresageDatabaseLocation));
                 presageTestInstance.set_config("Presage.Selector.REPEAT_SUGGESTIONS", "yes");
                 presageTestInstance.set_config("Presage.Selector.SUGGESTIONS", Settings.Default.PresageNumberOfSuggestions.ToString());
                 presageTestInstance.save_config();
@@ -670,22 +669,15 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.IrisbondHiru:
                     return new IrisbondHiruCalibrationService();
 
-                case PointsSources.Alienware17:
-                case PointsSources.SteelseriesSentry:
-                case PointsSources.TobiiEyeX:
-                case PointsSources.TobiiEyeTracker4C:
-                case PointsSources.TobiiEyeTracker5:
-                case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
                 case PointsSources.TobiiPcEye5:
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
-                    return new TobiiEyeXCalibrationService();
-
-                case PointsSources.VisualInteractionMyGaze:
-                    return new MyGazeCalibrationService();
+                    // TODO: consider calling out to external calibration EXE
+                    //return new TobiiEyeXCalibrationService();
+                    break;
             }
 
             return null;
@@ -697,12 +689,14 @@ namespace JuliusSweetland.OptiKey
             IAudioService audioService,
             ICalibrationService calibrationService,
             ICapturingStateManager capturingStateManager,
-            List<INotifyErrors> errorNotifyingServices)
+            List<INotifyErrors> errorNotifyingServices,
+            out string errorMessage)
         {
             Log.Info("Creating InputService.");
+            errorMessage = null;
 
             //Instantiate point source
-            IPointSource pointSource;
+            IPointSource pointSource = null;            
             switch (Settings.Default.PointsSource)
             {
                 case PointsSources.GazeTracker:
@@ -726,11 +720,11 @@ namespace JuliusSweetland.OptiKey
                     pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
                         irisBondHiruPointService);
-                    break;
+                    break;                
 
-                case PointsSources.MousePosition:
-                    pointSource = new MousePositionSource(
-                        Settings.Default.PointTtl);
+                case PointsSources.TouchScreenPosition:
+                    pointSource = new TouchScreenPositionSource(
+                        Settings.Default.PointTtl);                    
                     break;
 
                 case PointsSources.TheEyeTribe:
@@ -741,58 +735,93 @@ namespace JuliusSweetland.OptiKey
                         theEyeTribePointService);
                     break;
 
-                case PointsSources.Alienware17:
-                case PointsSources.SteelseriesSentry:
-                case PointsSources.TobiiEyeX:
-                case PointsSources.TobiiEyeTracker4C:
-                case PointsSources.TobiiEyeTracker5:
-                case PointsSources.TobiiRex:
+                
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
                 case PointsSources.TobiiPcEye5:
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
-                    var tobiiEyeXPointService = new TobiiEyeXPointService();
-                    var tobiiEyeXCalibrationService = calibrationService as TobiiEyeXCalibrationService;
-                    if (tobiiEyeXCalibrationService != null)
-                    {
-                        tobiiEyeXCalibrationService.EyeXHost = tobiiEyeXPointService.EyeXHost;
+                    var tobiiPointService = new TobiiPointService();
+                 
+                    errorNotifyingServices.Add(tobiiPointService);
+                    pointSource = new PointServiceSource(
+                        Settings.Default.PointTtl,
+                        tobiiPointService);
+                    break;
+
+                case PointsSources.MousePosition:
+                    pointSource = new MousePositionSource(
+                        Settings.Default.PointTtl);
+                    break;
+
+                case PointsSources.DllIntegration:                    
+                    if (File.Exists(Settings.Default.EyeTrackerDllFilePath)) {
+
+                        var dllServiceAndErrorString = DllLoader.TryInstantiatePointSource(Settings.Default.EyeTrackerDllFilePath);
+                        IPointService dllService = dllServiceAndErrorString.Item1;
+                        errorMessage = dllServiceAndErrorString.Item2;
+
+                        if (dllService != null) { 
+                            errorNotifyingServices.Add(dllService);
+                            pointSource = new PointServiceSource(
+                                Settings.Default.PointTtl,
+                                dllService);
+
+                            Log.Info($"Successfully loaded IPointService from {Settings.Default.EyeTrackerDllFilePath}");
+
+                            // Make sure it's disposed appropriately on app exit
+                            if (dllService is IDisposable)
+                            {
+                                Application.Current.Exit += (sender, args) =>
+                                {
+                                    var disposable = (IDisposable)dllService;
+                                    disposable.Dispose();
+                                };
+                            }
+                        }                                       
                     }
-                    errorNotifyingServices.Add(tobiiEyeXPointService);
-                    pointSource = new PointServiceSource(
-                        Settings.Default.PointTtl,
-                        tobiiEyeXPointService);
+                    else
+                    {
+                        Log.ErrorFormat($"Eye tracker DLL: {Settings.Default.EyeTrackerDllFilePath} not found");
+                        errorMessage = OptiKey.Properties.Resources.EYETRACKER_DLL_NOT_FOUND;
+                    }
+                    if (pointSource == null)
+                    {
+                        // Default to mouse position until we are able to surface the error message
+                        pointSource = new MousePositionSource(
+                            Settings.Default.PointTtl);
+                    }
                     break;
+                
+                default:                    
+                    // We may get here if we've got a deprecated tracker enum - we will check that separately                                        
+                    pointSource = new MousePositionSource(
+                        Settings.Default.PointTtl);                    
 
-                case PointsSources.VisualInteractionMyGaze:
-                    var myGazePointService = new MyGazePointService();
-                    errorNotifyingServices.Add(myGazePointService);
-                    pointSource = new PointServiceSource(
-                        Settings.Default.PointTtl,
-                        myGazePointService);
                     break;
-
-                default:
-                    throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
             }
 
             ITriggerSource eyeGestureTriggerSource = new EyeGestureSource(pointSource);
 
             //Instantiate key trigger source
             ITriggerSource keySelectionTriggerSource;
+
+            //Instantiate point trigger source
+            ITriggerSource pointSelectionTriggerSource;
+
             switch (Settings.Default.KeySelectionTriggerSource)
             {
                 case TriggerSources.Fixations:
                     keySelectionTriggerSource = new KeyFixationSource(
-                       Settings.Default.KeySelectionTriggerFixationLockOnTime,
-                       Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
-                       Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes,
-                       Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
+                        Settings.Default.KeySelectionTriggerFixationLockOnTime,
+                        Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
+                        Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes,
+                        Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
                         : null,
-                       Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
-                       pointSource);
+                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
+                        pointSource);
                     break;
 
                 case TriggerSources.KeyboardKeyDownsUps:
@@ -811,6 +840,9 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new XInputButtonDownUpSource(
                         Settings.Default.KeySelectionTriggerGamepadXInputController,
                         Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
                     break;
 
@@ -818,7 +850,14 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new DirectInputButtonDownUpSource(
                         Settings.Default.KeySelectionTriggerGamepadDirectInputController,
                         Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
+                    break;
+
+                case TriggerSources.TouchDownUps:
+                    keySelectionTriggerSource = new TouchTriggerSource(pointSource);
                     break;
 
                 default:
@@ -826,8 +865,7 @@ namespace JuliusSweetland.OptiKey
                         "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart OptiKey.");
             }
 
-            //Instantiate point trigger source
-            ITriggerSource pointSelectionTriggerSource;
+
             switch (Settings.Default.PointSelectionTriggerSource)
             {
                 case TriggerSources.Fixations:
@@ -855,6 +893,9 @@ namespace JuliusSweetland.OptiKey
                     pointSelectionTriggerSource = new XInputButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerGamepadXInputController,
                         Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
                     break;
 
@@ -862,7 +903,14 @@ namespace JuliusSweetland.OptiKey
                     pointSelectionTriggerSource = new DirectInputButtonDownUpSource(
                         Settings.Default.PointSelectionTriggerGamepadDirectInputController,
                         Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton,
+                        Settings.Default.GamepadTriggerHoldToRepeat,
+                        Settings.Default.GamepadTriggerFirstRepeatMilliseconds,
+                        Settings.Default.GamepadTriggerNextRepeatMilliseconds,
                         pointSource);
+                    break;
+
+                case TriggerSources.TouchDownUps:
+                    pointSelectionTriggerSource = new TouchTriggerSource(pointSource);
                     break;
 
                 default:
@@ -870,7 +918,7 @@ namespace JuliusSweetland.OptiKey
                         "'PointSelectionTriggerSource' setting is missing or not recognised! "
                         + "Please correct and restart OptiKey.");
             }
-
+        
             var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
             pointSource, eyeGestureTriggerSource, keySelectionTriggerSource, pointSelectionTriggerSource);
             inputService.RequestSuspend(); //Pause it initially
@@ -919,7 +967,11 @@ namespace JuliusSweetland.OptiKey
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, DiagnosticInfo.AssemblyVersion));
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION, Settings.Default.KeyboardAndDictionaryLanguage.ToDescription()));
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.UI_LANGUAGE_DESCRIPTION, Settings.Default.UiLanguage.ToDescription()));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
+
+                if (Settings.Default.PointsSource == PointsSources.DllIntegration)
+                    message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Path.GetFileName(Settings.Default.EyeTrackerDllFilePath)));
+                else 
+                    message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();
                 keySelectionSb.Append(Settings.Default.KeySelectionTriggerSource.ToDescription());
@@ -1000,11 +1052,22 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
+        #region Check for eyetracker plugins online
+        protected static async Task StartCheckForEyeTrackerPluginsOnline()
+        {  
+            // Instantiate github plugins singleton and load
+            var gh = GithubPluginsSearch.Instance;
+            await gh.TryLoad(3, 60); // try 3 times with minute delay between tries, to allow for lack of web connection at startup.
+        }
+
+        #endregion
+
         #region  Check For Updates
 
         protected static async Task<bool> CheckForUpdates(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
 
             try
             {
@@ -1031,9 +1094,8 @@ namespace JuliusSweetland.OptiKey
                             {
                                 if (currentVersion.Major < 4 && latestAvailableVersion.Major >= 4)
                                 {
-                                    //There should be no update prompt to upgrade from v3 (or earlier) to v4 (or later) due to a breaking change that means that v4 is not
-                                    //a suitable choice for many users on earlier version of Optikey (v4 removes supports for Tobii gaming devices).
-                                    Log.InfoFormat("An update is available, BUT this update could remove support for the user's current input device. The user will not be notified. " +
+                                    //There should be no update prompt to upgrade from v3 (or earlier) to v4 (or later) due to breaking changes
+                                    Log.InfoFormat("An update is available, but with major breaking changes. The user will not be notified. " +
                                                    "Current version is {0}. Latest version on GitHub repo is {1}", currentVersion, latestAvailableVersion);
                                 }
                                 else
@@ -1125,6 +1187,12 @@ namespace JuliusSweetland.OptiKey
                               Path.Combine(destPath, Path.GetFileName(file)), 
                               true);
                 }
+
+                // Recursive call for each subdirectory.
+                foreach (string dir in Directory.GetDirectories(sourcePath))
+                {                    
+                    CopyResourcesFirstTime(Path.Combine(subDirectoryName, Path.GetFileName(dir)));
+                }
             }
             
             return destPath;
@@ -1173,6 +1241,11 @@ namespace JuliusSweetland.OptiKey
             }
         } 
 
+        protected static void ValidateEyeTrackerResources()
+        {
+            CopyResourcesFirstTime("EyeTrackerSupport");
+        }
+
         protected static void ValidatePluginsLocation()
         {
             if (string.IsNullOrEmpty(Settings.Default.PluginsLocation))
@@ -1180,6 +1253,27 @@ namespace JuliusSweetland.OptiKey
                 // First time we set to APPDATA location, user may move through settings later
                 Settings.Default.PluginsLocation = CopyResourcesFirstTime("Plugins");
             }
+        }
+
+        protected static void ValidateRimeLocation()
+        {
+            if (string.IsNullOrEmpty(Settings.Default.RimeLocation))
+            {
+                // First time we set to APPDATA location, user may move through settings later
+                Settings.Default.RimeLocation = CopyResourcesFirstTime("Rime");
+            }
+        }
+
+        #endregion
+
+        #region Copy over resources to APPDATA if required
+
+        protected static void ValidateAllResourcesCopied()
+        {
+            ValidateEyeGestures();
+            ValidateRimeLocation();
+            ValidateDynamicKeyboardLocation();
+            ValidateEyeTrackerResources();
         }
 
         #endregion
@@ -1333,6 +1427,59 @@ namespace JuliusSweetland.OptiKey
         }
 
         #endregion
+        
+        #region Alert If Eye Tracker Deprecated
+
+        protected static async Task<bool> AlertIfEyeTrackerDeprecated(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
+            if (Settings.Default.PointsSource.IsObsolete())
+            {
+                inputService.RequestSuspend();
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.EYETRACKER_DEPRECATED,
+                    string.Format(OptiKey.Properties.Resources.EYETRACKER_DEPRECATED_DETAILS,
+                        Settings.Default.SuggestionMethod),
+                    NotificationTypes.Error, () =>
+                    {
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(false);
+                    });
+            }
+            else
+            {
+                taskCompletionSource.SetResult(true);
+            }
+            return await taskCompletionSource.Task;
+        }
+        #endregion
+
+        #region Alert If Input Service Error
+
+        protected static async Task<bool> AlertIfInputServiceError(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel, string errorString)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); // Used to make this method awaitable on the InteractionRequest callback
+
+            if (!String.IsNullOrEmpty(errorString))
+            {
+                inputService.RequestSuspend();
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.ERROR_LOADING_INPUT_SERVICE,
+                    errorString,
+                    NotificationTypes.Error, () =>
+                    {
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(false);
+                    });
+            }
+            else
+            {
+                taskCompletionSource.SetResult(true);
+            }
+            return await taskCompletionSource.Task;
+        }
+        #endregion
 
         #region Alert If Presage Bitness Or Bootstrap Or Version Failure
 
@@ -1357,15 +1504,15 @@ namespace JuliusSweetland.OptiKey
                     });
             }
             else
-{
-    if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
-    {
-        Log.Info("Presage installation validated.");
-    }
-    taskCompletionSource.SetResult(true);
-}
+            {
+                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+                {
+                    Log.Info("Presage installation validated.");
+                }
+                taskCompletionSource.SetResult(true);
+            }
 
-return await taskCompletionSource.Task;
+            return await taskCompletionSource.Task;
         }
 
         #endregion

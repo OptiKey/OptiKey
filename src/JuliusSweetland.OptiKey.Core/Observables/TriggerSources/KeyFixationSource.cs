@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
+using JuliusSweetland.OptiKey.Contracts;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
@@ -30,6 +31,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         private readonly TimeSpan defaultLockOnTime;
         private readonly bool resumeRequiresLockOn;
+        private readonly bool resetMousePositionAfterKeyPressed;
         private readonly string defaultTimeToCompleteTrigger;
         private readonly IDictionary<KeyValue, string> timeToCompleteTriggerByKey;
         private readonly ConcurrentDictionary<KeyValue, TimeSpanOverrides> overrideTimesByKey;
@@ -49,7 +51,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             bool resumeRequiresLockOn,
             string defaultTimeToCompleteTrigger,
             IDictionary<KeyValue, string> timeToCompleteTriggerByKey,
-            TimeSpan incompleteFixationTtl,
+            TimeSpan incompleteFixationTtl,            
             IPointSource pointSource)
         {
             this.defaultLockOnTime = defaultLockOnTime;
@@ -58,6 +60,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey ?? new Dictionary<KeyValue, string>();
             this.incompleteFixationTtl = incompleteFixationTtl;
             this.overrideTimesByKey = new ConcurrentDictionary<KeyValue, TimeSpanOverrides>();
+            this.resetMousePositionAfterKeyPressed = resetMousePositionAfterKeyPressed;
             this.pointSource = pointSource;
 
             incompleteFixationProgress = new ConcurrentDictionary<KeyValue, long>();

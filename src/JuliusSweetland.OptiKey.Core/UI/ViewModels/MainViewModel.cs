@@ -8,6 +8,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Contracts;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.Static;
@@ -19,6 +20,7 @@ using Prism.Mvvm;
 using System.Text;
 using System.Net.Http;
 using System.IO;
+using System.Diagnostics;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -49,17 +51,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private EventHandler<Tuple<TriggerTypes, PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
         private EventHandler<Tuple<TriggerTypes, PointAndKeyValue>> inputServiceSelectionHandler;
         private EventHandler<Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
+
         private SelectionModes selectionMode;
         private Point currentPositionPoint;
         private KeyValue currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
+
         private bool showCursor;
         private bool showCrosshair;
         private bool showMonical;
         private bool showSuggestions;
         private bool suspendCommands;
         private bool manualModeEnabled;
+
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
@@ -200,6 +205,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (SetProperty(ref selectionMode, value))
                 {
                     Log.InfoFormat("SelectionMode changed to {0}", value);
+                    
+                    // touch doesn't support point selection - it shouldn't be possible to get here
+                    if (Settings.Default.PointsSource == PointsSources.TouchScreenPosition &&
+                        (selectionMode == SelectionModes.SinglePoint || selectionMode == SelectionModes.ContinuousPoints))
+                    {
+                        Debug.Assert(true);
+                        Log.Error($"SelectionMode set to {selectionMode} which is not supported with touch input");                        
+                        return;
+                    }                                                        
 
                     ResetSelectionProgress();
 

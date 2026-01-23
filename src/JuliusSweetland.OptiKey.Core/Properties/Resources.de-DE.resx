@@ -2037,7 +2037,7 @@ Die Vorhesage Methode wird auf NGram umgestell, um beim nächstem Programmstart 
   </data>
   <data name="DICTIONARY_IS_PRESAGE" xml:space="preserve">
     <value>Das Presage Wörterbuch kann hier nicht bearbeitet werden.
-Es ist standardmäßig unter "C:\Program Files (x86)\presage\share\presage\database_en.db" zu finden.
+Es ist standardmäßig unter "C:\Program Files\presage\share\presage\database_en.db" zu finden.
 Es kann mit einem Programm für SQLite Version 3 bearbeitet werden,
 wie zum Beispiel "DB Browser for SQLite" (das ist eine Freie-Software).</value>
   </data>
@@ -2520,4 +2520,6 @@ Magyar
 हिन्दी
 (भारत)</value>
   </data>
+  <data name="OTHER_TRACKER" xml:space="preserve"><value> Wenn Ihr Eye Tracker hier nicht aufgeführt ist oder Sie eine 32 -Bit -Version von Optikey benötigen, klicken Sie bitte auf den Link unten, um weitere Informationen zu erhalten.
+Wenn Sie die Installation fortsetzen möchten, wird Optikey von Ihrer Mausposition gesteuert. Auf diese Weise können Sie mit alternativen Eingaben wie einer Kopfmaus oder einem Augenverfolger arbeiten, mit dem Sie die Mausposition mit Ihren Augen steuern können.</value></data>
 </root>

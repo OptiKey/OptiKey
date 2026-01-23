@@ -47,6 +47,21 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool KeySelectionTriggerFixationResetMousePositionAfterKeyPressed {
+            get {
+                return ((bool)(this["KeySelectionTriggerFixationResetMousePositionAfterKeyPressed"]));
+            }
+            set {
+                this["KeySelectionTriggerFixationResetMousePositionAfterKeyPressed"] = value;
+            }
+        }
+
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("A")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public GamepadButtonFlags KeySelectionTriggerGamepadXInputButtonDownUpButton
@@ -144,6 +159,54 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("false")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool GamepadTriggerHoldToRepeat
+        {
+            get
+            {
+                return ((bool)(this["GamepadTriggerHoldToRepeat"]));
+            }
+            set
+            {
+                this["GamepadTriggerHoldToRepeat"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GamepadTriggerFirstRepeatMilliseconds
+        {
+            get
+            {
+                return ((int)(this["GamepadTriggerFirstRepeatMilliseconds"]));
+            }
+            set
+            {
+                this["GamepadTriggerFirstRepeatMilliseconds"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GamepadTriggerNextRepeatMilliseconds
+        {
+            get
+            {
+                return ((int)(this["GamepadTriggerNextRepeatMilliseconds"]));
+            }
+            set
+            {
+                this["GamepadTriggerNextRepeatMilliseconds"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NextHigh")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Enums.TriggerStopSignals MultiKeySelectionTriggerStopSignal {
@@ -233,6 +296,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["PointsMousePositionHideCursor"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string EyeTrackerDllFilePath
+        {
+            get
+            {
+                return ((string)(this["EyeTrackerDllFilePath"]));
+            }
+            set
+            {
+                this["EyeTrackerDllFilePath"] = value;
             }
         }
 
@@ -1500,6 +1579,7 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
         }
 
+        [System.Obsolete("No longer used with Tobii StreamEngine")]
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Medium")]
@@ -1523,6 +1603,19 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["KeyboardAndDictionaryLanguage"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("EnglishUS")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.Languages DictionaryLanguageForRime {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["DictionaryLanguageForRime"]));
+            }
+            set {
+                this["DictionaryLanguageForRime"] = value;
             }
         }
 
@@ -1762,7 +1855,7 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int GazeSmoothingLevel {
             get {
@@ -2056,6 +2149,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["PluginsLocation"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string RimeLocation
+        {
+            get
+            {
+                return ((string)(this["RimeLocation"]));
+            }
+            set
+            {
+                this["RimeLocation"] = value;
             }
         }
 
@@ -2826,6 +2935,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             set
             {
                 this["AllowRepeatKeyActionsAwayFromKey"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int TriggerWithoutPositionCount
+        {
+            get
+            {
+                return ((int)(this["TriggerWithoutPositionCount"]));
+            }
+            set
+            {
+                this["TriggerWithoutPositionCount"] = value;
             }
         }
 
