@@ -13,13 +13,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
+      # Restore against the solution so the classic ./packages folder is populated and HintPath references resolve.
+      - name: NuGet restore (packages.config)
+        shell: pwsh
+        run: |
+          nuget restore .\OptiKey.sln -NonInteractive
+          
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
       - name: Build unsigned application (.NET Framework 4.6)
         run: |
-          msbuild src/JuliusSweetland.OptiKey.Pro/JuliusSweetland.OptiKey.Pro.csproj /p:Configuration=Release /p:TargetFrameworkVersion=v4.6 /t:Restore /p:OutputPath=out
+          msbuild Optikey.sln /m /p:Configuration=Release /p:Platform=x64 /p:TargetFrameworkVersion=v4.6 /p:OutputPath=out
 
       # required for the artifact to be available on the GitHub server
       - name: upload-unsigned-artifact
