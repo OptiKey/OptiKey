@@ -19,7 +19,7 @@ jobs:
 
       - name: Build unsigned application (.NET Framework 4.6)
         run: |
-          msbuild src/JuliusSweetland.OptiKey.Pro/JuliusSweetland.OptiKey.Pro.csproj /p:Configuration=Release /p:TargetFrameworkVersion=v4.6 /p:OutputPath=out
+          msbuild src/JuliusSweetland.OptiKey.Pro/JuliusSweetland.OptiKey.Pro.csproj /p:Configuration=Release /p:TargetFrameworkVersion=v4.6 /t:Restore /p:OutputPath=out
 
       # required for the artifact to be available on the GitHub server
       - name: upload-unsigned-artifact
