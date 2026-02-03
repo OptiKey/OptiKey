@@ -50,7 +50,7 @@ jobs:
       - name: Setup Advanced Installer
         uses: caphyon/advinst-github-action@main
         with:
-          advinst-version: '21.0'
+          advinst-version: '21.4'
           advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
           advinst-enable-automation: 'true'
 
@@ -59,7 +59,7 @@ jobs:
         run: |
           $repoPath = Join-Path ${{ github.workspace }} "installer"
           Write-Host "Setting repository path to: $repoPath"
-          & "C:\Program Files (x86)\Caphyon\Advanced Installer 21.0\bin\x86\AdvancedInstaller.com" `
+          & "C:\Program Files (x86)\Caphyon\Advanced Installer 21.4\bin\x86\AdvancedInstaller.com" `
             /SetRepositoryPath "$repoPath"
           if ($LASTEXITCODE -ne 0) {
             throw "Failed to set repository path"
@@ -68,7 +68,7 @@ jobs:
       - name: Build OptiKey Pro Installer
         shell: pwsh
         run: |
-          $advinstPath = "C:\Program Files (x86)\Caphyon\Advanced Installer 21.0\bin\x86\AdvancedInstaller.com"
+          $advinstPath = "C:\Program Files (x86)\Caphyon\Advanced Installer 21.4\bin\x86\AdvancedInstaller.com"
           Write-Host "Building OptiKeyPro installer..."
           & $advinstPath /build "installer\OptiKeyPro.aip"
           if ($LASTEXITCODE -ne 0) {
