@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SignPath Artifact Configuration for OptiKey Pro Installer
+
+  This configuration defines how SignPath should sign the OptiKey Pro installer.
+  GitHub Actions packages artifacts as ZIP files, so the root element must be <zip-file>.
+
+  For more information, see: https://docs.signpath.io/artifact-configuration/
+-->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <!-- The OptiKey Pro installer executable -->
+    <pe-file path="OptiKeyPro.exe">
+      <authenticode-sign/>
+    </pe-file>
+  </zip-file>
+</artifact-configuration>

@@ -55,93 +55,44 @@ jobs:
           }
           Write-Host "Build completed successfully"
 
-      # Upload the artifact to the GitHub server
-      - name: Upload OptiKey Pro Installer
+      # Upload the unsigned installer to GitHub artifacts
+      - name: Upload unsigned installer
+        id: upload-unsigned-artifact
         uses: actions/upload-artifact@v4
         with:
           name: optikey-pro-installer-unsigned
           path: installer/SetupFiles/OptiKeyPro.exe
           if-no-files-found: error
-      
-      ## ALL THE FOLLOWING STEPS ARE TBC... 
 
-      # - id: submit-signing-request
-      #   uses: signpath/github-action-submit-signing-request@v2
-      #   with:
-      #     api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
-      #     organization-id: '1f9940a3-1cdf-4429-a544-76ee316b7255'
-      #     project-slug: 'OptiKey'
-      #     artifact-configuration-slug: 'OptikeyProApp'
-      #     signing-policy-slug: 'test-signing'
-      #     github-artifact-id: '${{ steps.upload-unsigned-artifact.outputs.artifact-id }}'
-      #     wait-for-completion: true
-      #     output-artifact-directory: '/path/to/signed/artifact/directory'
+      # Submit the installer to SignPath for code signing
+      - name: Submit signing request to SignPath
+        id: submit-signing-request
+        uses: signpath/github-action-submit-signing-request@v2
+        with:
+          api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
+          organization-id: '1f9940a3-1cdf-4429-a544-76ee316b7255'
+          project-slug: 'OptiKey'
+          artifact-configuration-slug: 'OptikeyProApp'
+          signing-policy-slug: 'test-signing'
+          github-artifact-id: '${{ steps.upload-unsigned-artifact.outputs.artifact-id }}'
+          wait-for-completion: true
+          output-artifact-directory: 'signed-installer'
 
+      # Upload the signed installer as a GitHub artifact
+      - name: Upload signed installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: optikey-pro-installer-signed
+          path: signed-installer/OptiKeyPro.exe
+          if-no-files-found: error
 
-#      - name: Submit unsigned EXE to SignPath
-#        shell: pwsh
-#        run: |
-#          $exe = "out/MyApp.exe"
-#          $org = "1f9940a3-1cdf-4429-a544-76ee316b7255"
-#          $project = "OptiKey"
-#          $config = "OptikeyProApp"
-#          $token = "${{ secrets.SIGNPATH_API_TOKEN }}"
-#
-#          $url = "https://app.signpath.io/API/v1/organizations/$org/projects/$project/artifact-configurations/$config/signing-requests"
-#
-#          curl -X POST $url `
-#            -H "Authorization: Bearer $token" `
-#            -F "Artifact=@$exe" `
-#            -o app-signing-request.json
-#
-#      - name: Download signed EXE
-#        shell: pwsh
-#        run: |
-#          $requestId = (Get-Content app-signing-request.json | ConvertFrom-Json).SigningRequestId
-#          $downloadUrl = "https://app.signpath.io/API/v1/signing-requests/$requestId/artifacts/signed"
-#
-#          curl -L $downloadUrl `
-#            -H "Authorization: Bearer ${{ secrets.SIGNPATH_API_TOKEN }}" `
-#            -o MyApp-signed.exe
-#
-#      - name: Build installer using signed EXE
-#        shell: pwsh
-#        run: |
-#          Copy-Item "MyApp-signed.exe" "installer-input/MyApp.exe" -Force
-#
-#          & "C:\Program Files (x86)\Caphyon\Advanced Installer 21.0\bin\x86\AdvancedInstaller.com" `
-#            /build installer/MyInstaller.aip
-#
-#      - name: Submit unsigned installer to SignPath
-#        shell: pwsh
-#        run: |
-#          $installer = "installer/MyInstaller.exe"
-#          $org = "${{ secrets.SIGNPATH_ORGANIZATION_ID }}"
-#          $project = "${{ secrets.SIGNPATH_PROJECT_ID }}"
-#          $config = "${{ secrets.SIGNPATH_ARTIFACT_CONFIG_INSTALLER }}"
-#          $token = "${{ secrets.SIGNPATH_API_TOKEN }}"
-#
-#          $url = "https://app.signpath.io/API/v1/organizations/$org/projects/$project/artifact-configurations/$config/signing-requests"
-#
-#          curl -X POST $url `
-#            -H "Authorization: Bearer $token" `
-#            -F "Artifact=@$installer" `
-#            -o installer-signing-request.json
-#
-#      - name: Download signed installer
-#        shell: pwsh
-#        run: |
-#          $token = "${{ secrets.SIGNPATH_API_TOKEN }}"
-#          $requestId = (Get-Content installer-signing-request.json | ConvertFrom-Json).SigningRequestId
-#          $downloadUrl = "https://app.signpath.io/API/v1/signing-requests/$requestId/artifacts/signed"
-#
-#          curl -L $downloadUrl `
-#            -H "Authorization: Bearer $token" `
-#            -o MyInstaller-signed.exe
-#
-#      - name: Publish signed installer to GitHub Release
-#        uses: softprops/action-gh-release@v2
-#        with:
-#          files: MyInstaller-signed.exe
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Create a GitHub release with the signed installer (only for tagged releases)
+      - name: Publish signed installer to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: signed-installer/OptiKeyPro.exe
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
