@@ -1,5 +1,8 @@
 name: Optikey Pro - Build, Sign, and Release
 
+env:
+  INSTALLER_VERSION: "4.2.0"
+
 on:
   push:
     tags:
@@ -35,6 +38,8 @@ jobs:
           advinst-version: '21.4'
           advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
           advinst-enable-automation: 'true'
+          aip-commands: |
+            SetVersion $INSTALLER_VERSION
 
       - name: Configure Advanced Installer Repository Path and Build
         shell: pwsh
@@ -72,7 +77,7 @@ jobs:
           api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
           organization-id: '1f9940a3-1cdf-4429-a544-76ee316b7255'
           project-slug: 'OptiKey'
-          artifact-configuration-slug: 'OptikeyProApp'
+          artifact-configuration-slug: 'OptikeyPro'
           signing-policy-slug: 'test-signing'
           github-artifact-id: '${{ steps.upload-unsigned-artifact.outputs.artifact-id }}'
           wait-for-completion: true
@@ -92,7 +97,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: signed-installer/OptiKeyPro.exe
-          draft: false
-          prerelease: false
+          draft: true
+          prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
