@@ -25,7 +25,7 @@ jobs:
 
       - name: Build unsigned application (.NET Framework 4.6)
         run: |
-          msbuild OptiKeyDeployment.sln /m /p:Configuration=Release /p:Platform=x64 /p:TargetFrameworkVersion=v4.6
+          msbuild OptiKeyDeployment.sln /m /t:Rebuild /p:Configuration=Release /p:Platform=x64
 
       # required for the artifact to be available on the GitHub server
       - name: upload-unsigned-artifact
