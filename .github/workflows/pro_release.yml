@@ -18,21 +18,21 @@ jobs:
       - name: NuGet restore (packages.config)
         shell: pwsh
         run: |
-          nuget restore .\OptiKey.sln -NonInteractive
+          nuget restore .\OptiKeyDeployment.sln -NonInteractive
           
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
       - name: Build unsigned application (.NET Framework 4.6)
         run: |
-          msbuild Optikey.sln /m /p:Configuration=Release /p:Platform=x64 /p:TargetFrameworkVersion=v4.6 /p:OutputPath=out
+          msbuild OptiKeyDeployment.sln /m /t:Rebuild /p:Configuration=Release /p:Platform=x64
 
       # required for the artifact to be available on the GitHub server
       - name: upload-unsigned-artifact
         id: upload-unsigned-artifact
         uses: actions/upload-artifact@v4
-        with: 
-          path: out/
+        with:
+          path: src/JuliusSweetland.OptiKey.Pro/bin/x64/Release/
       
       - id: submit-signing-request
         uses: signpath/github-action-submit-signing-request@v2
