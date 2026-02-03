@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RuntimeFrameworkVersion>2.1.0</RuntimeFrameworkVersion>
+    <TargetFramework>net48</TargetFramework>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ApplicationIcon />
     <StartupObject />
@@ -19,7 +18,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="dotnet $(TargetPath) &amp;&amp; xcopy /f /y &quot;$(ProjectDir)InstallerStrings.cs&quot; &quot;$(SolutionDir)src\JuliusSweetland.OptiKey.InstallerActions\&quot;&#xD;&#xA;" />
+    <Exec Command="&quot;$(TargetPath)&quot; &amp;&amp; xcopy /f /y &quot;$(ProjectDir)InstallerStrings.cs&quot; &quot;$(SolutionDir)src\JuliusSweetland.OptiKey.InstallerActions\&quot;&#xD;&#xA;" />
   </Target>
 
 </Project>
