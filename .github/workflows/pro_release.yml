@@ -27,24 +27,24 @@ jobs:
         run: |
           msbuild OptiKeyDeployment.sln /m /t:Rebuild /p:Configuration=Release /p:Platform=x64
 
-      # required for the artifact to be available on the GitHub server
-      - name: upload-unsigned-artifact
-        id: upload-unsigned-artifact
-        uses: actions/upload-artifact@v4
-        with:
-          path: src/JuliusSweetland.OptiKey.Pro/bin/x64/Release/
+      # # required for the artifact to be available on the GitHub server
+      # - name: upload-unsigned-artifact
+      #   id: upload-unsigned-artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     path: src/JuliusSweetland.OptiKey.Pro/bin/x64/Release/
       
-      - id: submit-signing-request
-        uses: signpath/github-action-submit-signing-request@v2
-        with:
-          api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
-          organization-id: '1f9940a3-1cdf-4429-a544-76ee316b7255'
-          project-slug: 'OptiKey'
-          artifact-configuration-slug: 'OptikeyProApp'
-          signing-policy-slug: 'test-signing'
-          github-artifact-id: '${{ steps.upload-unsigned-artifact.outputs.artifact-id }}'
-          wait-for-completion: true
-          output-artifact-directory: '/path/to/signed/artifact/directory'
+      # - id: submit-signing-request
+      #   uses: signpath/github-action-submit-signing-request@v2
+      #   with:
+      #     api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
+      #     organization-id: '1f9940a3-1cdf-4429-a544-76ee316b7255'
+      #     project-slug: 'OptiKey'
+      #     artifact-configuration-slug: 'OptikeyProApp'
+      #     signing-policy-slug: 'test-signing'
+      #     github-artifact-id: '${{ steps.upload-unsigned-artifact.outputs.artifact-id }}'
+      #     wait-for-completion: true
+      #     output-artifact-directory: '/path/to/signed/artifact/directory'
 
       # Advanced Installer Setup
       - name: Setup Advanced Installer
