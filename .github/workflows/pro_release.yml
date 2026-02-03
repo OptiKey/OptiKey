@@ -45,6 +45,43 @@ jobs:
           github-artifact-id: '${{ steps.upload-unsigned-artifact.outputs.artifact-id }}'
           wait-for-completion: true
           output-artifact-directory: '/path/to/signed/artifact/directory'
+
+      # Advanced Installer Setup
+      - name: Setup Advanced Installer
+        uses: caphyon/advinst-github-action@main
+        with:
+          advinst-version: '21.0'
+          advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
+          advinst-enable-automation: 'true'
+
+      - name: Configure Advanced Installer Repository Path
+        shell: pwsh
+        run: |
+          $repoPath = Join-Path ${{ github.workspace }} "installer"
+          Write-Host "Setting repository path to: $repoPath"
+          & "C:\Program Files (x86)\Caphyon\Advanced Installer 21.0\bin\x86\AdvancedInstaller.com" `
+            /SetRepositoryPath "$repoPath"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to set repository path"
+          }
+
+      - name: Build OptiKey Pro Installer
+        shell: pwsh
+        run: |
+          $advinstPath = "C:\Program Files (x86)\Caphyon\Advanced Installer 21.0\bin\x86\AdvancedInstaller.com"
+          Write-Host "Building OptiKeyPro installer..."
+          & $advinstPath /build "installer\OptiKeyPro.aip"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to build OptiKeyPro installer"
+          }
+          Write-Host "Build completed successfully"
+
+      - name: Upload OptiKey Pro Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: optikey-pro-installer-unsigned
+          path: installer/OptiKeyPro-SetupFiles/*.exe
+          if-no-files-found: error
       
       
 #      - name: Submit unsigned EXE to SignPath
