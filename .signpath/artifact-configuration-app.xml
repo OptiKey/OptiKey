@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SignPath Artifact Configuration for OptiKey Pro Application (Stage 1)
+
+  This configuration signs the main application executable before it gets packaged
+  into the installer. This is Stage 1 of the two-stage signing process:
+
+  1. Sign application EXE (this configuration)
+  2. Build installer with signed EXE, then sign installer
+
+  GitHub Actions packages artifacts as ZIP files, so the root element must be <zip-file>.
+-->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <!-- Main OptiKey Pro application executable -->
+    <pe-file path="OptikeyPro.exe">
+      <authenticode-sign/>
+    </pe-file>
+  </zip-file>
+</artifact-configuration>
