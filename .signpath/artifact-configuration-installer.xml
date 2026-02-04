@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SignPath Artifact Configuration for OptiKey Pro Installer (Stage 2)
+
+  This configuration signs the final Advanced Installer EXE bootstrapper
+  after it has been rebuilt with the signed application executable.
+
+  This is Stage 2 of the two-stage signing process:
+  1. Sign application EXE
+  2. Build installer with signed EXE, then sign installer (this configuration)
+
+  GitHub Actions packages artifacts as ZIP files, so the root element must be <zip-file>.
+-->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <!-- The OptiKey Pro installer executable (Advanced Installer bootstrapper) -->
+    <pe-file path="OptiKeyPro.exe">
+      <authenticode-sign/>
+    </pe-file>
+  </zip-file>
+</artifact-configuration>

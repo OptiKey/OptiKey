@@ -36,7 +36,50 @@ jobs:
         run: |
           msbuild OptiKeyDeployment.sln /m /t:Rebuild /p:Configuration=Release /p:Platform=x64
 
-      # Build the unsigned Advanced Installer project
+      # ============================================================
+      # STAGE 1: Sign Application EXE
+      # ============================================================
+
+      # Upload unsigned application executable
+      - name: Upload unsigned application EXE
+        id: upload-unsigned-app
+        uses: actions/upload-artifact@v4
+        with:
+          name: optikey-pro-app-unsigned
+          path: src/JuliusSweetland.OptiKey.Pro/bin/x64/Release/OptikeyPro.exe
+          if-no-files-found: error
+
+      # Submit application EXE to SignPath (Stage 1)
+      - name: Submit application EXE for signing (Stage 1)
+        id: sign-application
+        uses: signpath/github-action-submit-signing-request@v2
+        with:
+          api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
+          organization-id: '1f9940a3-1cdf-4429-a544-76ee316b7255'
+          project-slug: 'OptiKey'
+          artifact-configuration-slug: 'OptikeyProApp'
+          signing-policy-slug: 'test-signing'
+          github-artifact-id: '${{ steps.upload-unsigned-app.outputs.artifact-id }}'
+          wait-for-completion: true
+          output-artifact-directory: 'app-signed'
+
+      # Copy signed EXE back to build output
+      - name: Copy signed EXE to build output
+        shell: pwsh
+        run: |
+          $releaseDir = "src\JuliusSweetland.OptiKey.Pro\bin\x64\Release"
+          Write-Host "Copying signed OptikeyPro.exe to $releaseDir"
+          Copy-Item "app-signed\OptikeyPro.exe" "$releaseDir\OptikeyPro.exe" -Force
+
+          # Verify signature
+          $sig = Get-AuthenticodeSignature "$releaseDir\OptikeyPro.exe"
+          Write-Host "Application signature status: $($sig.Status)"
+
+      # ============================================================
+      # STAGE 2: Build and Sign Installer
+      # ============================================================
+
+      # Setup Advanced Installer
       - name: Setup Advanced Installer
         uses: caphyon/advinst-github-action@main
         with:
@@ -46,7 +89,8 @@ jobs:
           aip-commands: |
             SetVersion $INSTALLER_VERSION
 
-      - name: Configure Advanced Installer Repository Path and Build
+      # Build installer with signed application EXE
+      - name: Build installer with signed EXE
         shell: pwsh
         run: |
           # Set repository path
@@ -58,43 +102,50 @@ jobs:
           }
 
           # Build installer
-          Write-Host "Building OptiKeyPro installer..."
+          Write-Host "Building OptiKeyPro installer with signed application..."
           AdvancedInstaller.com /build "${{ github.workspace }}\installer\OptiKeyPro.aip"
           if ($LASTEXITCODE -ne 0) {
             throw "Failed to build OptiKeyPro installer"
           }
-          Write-Host "Build completed successfully"
+          Write-Host "Installer build completed successfully"
 
-      # Upload the unsigned installer to GitHub artifacts
+      # Upload unsigned installer (contains signed app EXE)
       - name: Upload unsigned installer
-        id: upload-unsigned-artifact
+        id: upload-unsigned-installer
         uses: actions/upload-artifact@v4
         with:
           name: optikey-pro-installer-unsigned
           path: installer/SetupFiles/OptiKeyPro.exe
           if-no-files-found: error
 
-      # Submit the installer to SignPath for code signing
-      - name: Submit signing request to SignPath
-        id: submit-signing-request
+      # Submit installer to SignPath (Stage 2)
+      - name: Submit installer for signing (Stage 2)
+        id: sign-installer
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
           organization-id: '1f9940a3-1cdf-4429-a544-76ee316b7255'
           project-slug: 'OptiKey'
-          artifact-configuration-slug: 'OptikeyPro'
+          artifact-configuration-slug: 'OptikeyProInstaller'
           signing-policy-slug: 'test-signing'
-          github-artifact-id: '${{ steps.upload-unsigned-artifact.outputs.artifact-id }}'
+          github-artifact-id: '${{ steps.upload-unsigned-installer.outputs.artifact-id }}'
           wait-for-completion: true
-          output-artifact-directory: 'signed-installer'
+          output-artifact-directory: 'installer-signed'
 
       # Upload the signed installer as a GitHub artifact
       - name: Upload signed installer
         uses: actions/upload-artifact@v4
         with:
           name: optikey-pro-installer-signed
-          path: signed-installer/OptiKeyPro.exe
+          path: installer-signed/OptiKeyPro.exe
           if-no-files-found: error
+
+      # Verify final installer signature
+      - name: Verify installer signature
+        shell: pwsh
+        run: |
+          $sig = Get-AuthenticodeSignature "installer-signed\OptiKeyPro.exe"
+          Write-Host "Installer signature status: $($sig.Status)"
 
       # Create a GitHub release with the signed installer (only for tagged releases)
       - name: Publish signed installer to GitHub Release
