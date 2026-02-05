@@ -23,11 +23,6 @@ jobs:
         run: |
           nuget restore .\OptiKeyDeployment.sln -NonInteractive
 
-      # Restore SDK-style projects (like InstallerTranslations) to generate project.assets.json
-      - name: Dotnet restore (SDK-style projects)
-        run: |
-          dotnet restore .\OptiKeyDeployment.sln
-
       # Build the unsigned application
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
