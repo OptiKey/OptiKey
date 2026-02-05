@@ -16,6 +16,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      # Output github.ref to help debug when no matching Release tag is found
+      - name: Print ref
+        run: echo "github.ref is ${{ github.ref }}"
         
       # Restore against the solution so the classic ./packages folder is populated and HintPath references resolve.
       - name: NuGet restore (packages.config)
