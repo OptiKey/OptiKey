@@ -1,0 +1,181 @@
+name: Version Bump and Tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version increment type'
+        required: true
+        type: choice
+        options:
+          - revision
+          - minor
+          - major
+      dry_run:
+        description: 'Dry run (do not commit or tag)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  bump-version:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Need to fetch all history for proper git operations
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Read current version and calculate new version
+        id: version
+        shell: pwsh
+        run: |
+          # Read current version from Core AssemblyInfo.cs
+          $assemblyInfoPath = "src/JuliusSweetland.OptiKey.Core/Properties/AssemblyInfo.cs"
+          $content = Get-Content $assemblyInfoPath -Raw
+
+          if ($content -match '\[assembly:\s*AssemblyVersion\("(\d+)\.(\d+)\.(\d+)"\)\]') {
+            $major = [int]$matches[1]
+            $minor = [int]$matches[2]
+            $revision = [int]$matches[3]
+
+            Write-Host "Current version: $major.$minor.$revision"
+
+            # Increment based on type
+            switch ("${{ inputs.version_type }}") {
+              "major" {
+                $major++
+                $minor = 0
+                $revision = 0
+              }
+              "minor" {
+                $minor++
+                $revision = 0
+              }
+              "revision" {
+                $revision++
+              }
+            }
+
+            $newVersion = "$major.$minor.$revision"
+            Write-Host "New version: $newVersion"
+
+            echo "NEW_VERSION=$newVersion" >> $env:GITHUB_ENV
+            echo "OLD_VERSION=$major.$minor.$revision" >> $env:GITHUB_OUTPUT
+          } else {
+            Write-Error "Could not find version in $assemblyInfoPath"
+            exit 1
+          }
+
+      - name: Update AssemblyInfo.cs files
+        shell: pwsh
+        run: |
+          $newVersion = $env:NEW_VERSION
+          $assemblies = @("Core", "Chat", "Pro", "Mouse", "Symbol")
+
+          foreach ($assembly in $assemblies) {
+            $file = "src/JuliusSweetland.OptiKey.$assembly/Properties/AssemblyInfo.cs"
+            Write-Host "Updating $file to version $newVersion"
+
+            $content = Get-Content $file -Raw
+            $content = $content -replace '\[assembly:\s*AssemblyVersion\("[\d.]+"\)\]', "[assembly: AssemblyVersion(`"$newVersion`")]"
+            $content = $content -replace '\[assembly:\s*AssemblyFileVersion\("[\d.]+"\)\]', "[assembly: AssemblyFileVersion(`"$newVersion`")]"
+            Set-Content $file -Value $content -NoNewline
+
+            Write-Host "✓ Updated $file"
+          }
+
+      - name: Setup Advanced Installer
+        uses: caphyon/advinst-github-action@main
+        with:
+          advinst-version: '21.4'
+          advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
+          advinst-enable-automation: 'true'
+
+      - name: Update Advanced Installer project versions
+        shell: pwsh
+        run: |
+          $newVersion = $env:NEW_VERSION
+
+          # Set repository path (required for Advanced Installer to find resources)
+          $repoPath = Join-Path ${{ github.workspace }} "installer"
+          Write-Host "Setting Advanced Installer repository path to: $repoPath"
+          AdvancedInstaller.com /SetRepositoryPath "$repoPath"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to set repository path"
+          }
+
+          # Update version for all installer projects
+          $installers = @("OptiKeyPro.aip", "OptiKeyMouse.aip", "OptiKeySymbol.aip", "OptiKeyChat.aip")
+
+          foreach ($installer in $installers) {
+            $installerPath = "installer/$installer"
+            Write-Host "Updating $installerPath to version $newVersion"
+
+            AdvancedInstaller.com /edit $installerPath /SetVersion $newVersion
+            if ($LASTEXITCODE -ne 0) {
+              Write-Error "Failed to update version for $installerPath"
+              exit 1
+            }
+
+            Write-Host "✓ Updated $installerPath"
+          }
+
+      - name: Show changes
+        shell: pwsh
+        run: |
+          Write-Host "`n=== Git Status ==="
+          git status
+          Write-Host "`n=== Git Diff ==="
+          git diff
+
+      - name: Commit version changes
+        if: ${{ !inputs.dry_run }}
+        shell: pwsh
+        run: |
+          $newVersion = $env:NEW_VERSION
+
+          # Stage all modified files
+          git add src/JuliusSweetland.OptiKey.*/Properties/AssemblyInfo.cs
+          git add installer/*.aip
+
+          # Commit
+          git commit -m "Update version to $newVersion"
+
+          Write-Host "✓ Committed version changes"
+
+      - name: Create and push tag
+        if: ${{ !inputs.dry_run }}
+        shell: pwsh
+        run: |
+          $newVersion = $env:NEW_VERSION
+          $tag = "v$newVersion"
+
+          Write-Host "Creating tag: $tag"
+          git tag $tag
+
+          Write-Host "Pushing commit and tag..."
+          git push origin HEAD:${{ github.ref_name }}
+          git push origin $tag
+
+          Write-Host "✓ Pushed commit and tag $tag"
+          Write-Host "`nVersion bump complete! Now manually run the 'Optikey Pro - Build, Sign, and Release' workflow to build and release."
+
+      - name: Dry run summary
+        if: ${{ inputs.dry_run }}
+        shell: pwsh
+        run: |
+          $newVersion = $env:NEW_VERSION
+          Write-Host "`n========================================="
+          Write-Host "DRY RUN - No changes were committed or tagged"
+          Write-Host "========================================="
+          Write-Host "New version would be: v$newVersion"
+          Write-Host "To apply these changes, run without dry_run"
