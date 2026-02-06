@@ -151,8 +151,8 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: signed-installer/OptiKeyPro.exe
+          files: installer-signed/OptiKeyPro.exe
           draft: true
-          prerelease: true
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
