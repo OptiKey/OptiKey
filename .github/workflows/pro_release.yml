@@ -1,8 +1,5 @@
 name: Optikey Pro - Build, Sign, and Release
 
-env:
-  INSTALLER_VERSION: "4.2.0"
-
 on:
   push:
     tags:
@@ -85,8 +82,6 @@ jobs:
           advinst-version: '21.4'
           advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
           advinst-enable-automation: 'true'
-          aip-commands: |
-            SetVersion $INSTALLER_VERSION
 
       # Build installer with signed application EXE
       - name: Build installer with signed EXE
