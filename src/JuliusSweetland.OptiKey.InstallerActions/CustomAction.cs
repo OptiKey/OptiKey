@@ -257,8 +257,96 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             }
             catch(KeyNotFoundException e)
             {
-                return ""; 
+                return "";
             }
-        }        
+        }
+
+        [CustomAction]
+        public static ActionResult EyeTrackerComboSelected(Session session)
+        {
+            string selected = session["COMBO_EYE_TRACKER"];
+            string sanitised = SanitisePropName(selected);
+
+            string trackerEnum  = session["TRACKER_" + sanitised];
+            string infoText     = session["TRACKERINFO_" + sanitised].Replace("\\n", "\n");
+            string infoTextEn   = session["TRACKERINFO_EN_" + sanitised].Replace("\\n", "\n");
+
+            session["EYETRACKER_TEXT"]    = infoText;
+            session["EYETRACKER_TEXT_EN"] = infoTextEn;
+            session["EYETRACKER_SELECTED"] = trackerEnum;
+
+            if (trackerEnum == "TouchScreenPosition")
+            {
+                session["SELECTED_KEYSELECTIONTRIGGERSOURCE"]          = "TouchDownUps";
+                session["SELECTED_POINTSELECTIONTRIGGERSOURCE"]        = "TouchDownUps";
+                session["SELECTED_MINDWELLTIME"]                       = "00:00:00.0500000";
+                session["SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL"] = "NextLow";
+            }
+            else
+            {
+                session["SELECTED_KEYSELECTIONTRIGGERSOURCE"]          = "Fixations";
+                session["SELECTED_POINTSELECTIONTRIGGERSOURCE"]        = "Fixations";
+                session["SELECTED_MINDWELLTIME"]                       = "00:00:00.2500000";
+                session["SELECTED_MULTIKEYSELECTIONTRIGGERSTOPSIGNAL"] = "NextHigh";
+            }
+            return ActionResult.Success;
+        }
+
+        [CustomAction]
+        public static ActionResult LanguageComboSelected(Session session)
+        {
+            const string defaultFontFamily  = "/Resources/Fonts/#Roboto";
+            const string defaultFontStretch = "Condensed";
+            const string defaultFontWeight  = "Light";
+
+            string selected  = session["COMBO_LANGUAGE"];
+            string sanitised = SanitisePropName(selected.Split('/')[0]);
+            string langEnum  = session["LANGUAGE_" + sanitised];
+
+            session["KEYBOARD_LANGUAGE_SELECTED"] = langEnum;
+            session["UI_LANGUAGE_SELECTED"] = langEnum.Contains("Chinese")
+                ? "ChineseTraditionalTaiwan"
+                : langEnum;
+
+            if (langEnum == "PersianIran")
+            {
+                session["SELECTED_FONTFAMILY"]  = "/Resources/Fonts/#Nafees Web Naskh";
+                session["SELECTED_FONTSTRETCH"] = "Normal";
+                session["SELECTED_FONTWEIGHT"]  = "Regular";
+            }
+            else if (langEnum == "UrduPakistan")
+            {
+                session["SELECTED_FONTFAMILY"]  = "/Resources/Fonts/#Nazli";
+                session["SELECTED_FONTSTRETCH"] = "Normal";
+                session["SELECTED_FONTWEIGHT"]  = "Regular";
+            }
+            else
+            {
+                session["SELECTED_FONTFAMILY"]  = defaultFontFamily;
+                session["SELECTED_FONTSTRETCH"] = defaultFontStretch;
+                session["SELECTED_FONTWEIGHT"]  = defaultFontWeight;
+            }
+            return ActionResult.Success;
+        }
+
+        [CustomAction]
+        public static ActionResult PopulateEyeTrackerComboUI(Session session)
+        {
+            if (!string.IsNullOrEmpty(session["COMBO_EYE_TRACKER"])) return ActionResult.Success;
+            session["AI_COMBOBOX_DATA"] = "COMBO_EYE_TRACKER" + session["EYETRACKER_COMBO_DATA"];
+            session["COMBO_EYE_TRACKER"] = session["EYETRACKER_COMBO_DEFAULT"];
+            session.DoAction("PopulateComboBox");
+            return EyeTrackerComboSelected(session);
+        }
+
+        [CustomAction]
+        public static ActionResult PopulateLanguagesComboUI(Session session)
+        {
+            if (!string.IsNullOrEmpty(session["COMBO_LANGUAGE"])) return ActionResult.Success;
+            session["AI_COMBOBOX_DATA"] = "COMBO_LANGUAGE" + session["LANGUAGE_COMBO_DATA"];
+            session["COMBO_LANGUAGE"] = session["LANGUAGE_COMBO_DEFAULT"];
+            session.DoAction("PopulateComboBox");
+            return LanguageComboSelected(session);
+        }
     }
 }
