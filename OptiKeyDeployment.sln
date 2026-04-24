@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Core", "src\JuliusSweetland.OptiKey.Core\JuliusSweetland.OptiKey.Core.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0C8F0372-2D55-41BC-9730-4ACE3ED67452} = {0C8F0372-2D55-41BC-9730-4ACE3ED67452}
+		{77C8F650-7992-4FF6-B434-1C15B72672E6} = {77C8F650-7992-4FF6-B434-1C15B72672E6}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{117E0D45-AA2F-4A2B-AAD5-C3101E1CBCA8}"
@@ -79,6 +80,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Contracts", "src\JuliusSweetland.OptiKey.Contracts\JuliusSweetland.OptiKey.Contracts.csproj", "{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.PointSourceUtils", "src\JuliusSweetland.OptiKey.PointSourceUtils\PointSourceUtils\JuliusSweetland.OptiKey.PointSourceUtils.csproj", "{77C8F650-7992-4FF6-B434-1C15B72672E6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719} = {6B7FD101-F21C-4EEA-A2E0-4B5CBFBFE719}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
