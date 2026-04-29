@@ -152,46 +152,90 @@ namespace InstallerTranslation
         {
             // Add a ControlEvent on EyeTrackerDialogInitializer so that EyeTrackerComboSelected
             // fires when the dialog opens (populating the info-text for the default selection).
-            db.Execute(
-                "DELETE FROM `ControlEvent` WHERE `Dialog_` = ? AND `Control_` = ? AND `Event` = ? AND `Argument` = ?",
-                "EyeTracker", "EyeTrackerDialogInitializer", "DoAction", EyeTrackerActionName);
-            db.Execute(
-                "INSERT INTO `ControlEvent` (`Dialog_`, `Control_`, `Event`, `Argument`, `Condition`, `Ordering`) VALUES (?, ?, ?, ?, ?, ?)",
-                "EyeTracker", "EyeTrackerDialogInitializer", "DoAction", EyeTrackerActionName, "AI_INSTALL", 1);
+            const string dialog  = "EyeTracker";
+            const string control = "EyeTrackerDialogInitializer";
+            const string evt     = "DoAction";
+
+            using (var del = db.OpenView(
+                "SELECT `Dialog_`, `Control_`, `Event`, `Argument`, `Condition`, `Ordering` " +
+                "FROM `ControlEvent` WHERE `Dialog_` = ? AND `Control_` = ? AND `Event` = ? AND `Argument` = ?"))
+            {
+                del.Execute(new Record(dialog, control, evt, EyeTrackerActionName));
+                Record row;
+                while ((row = del.Fetch()) != null)
+                    del.Modify(ViewModifyMode.Delete, row);
+            }
+            using (var ins = db.OpenView(
+                "SELECT `Dialog_`, `Control_`, `Event`, `Argument`, `Condition`, `Ordering` FROM `ControlEvent`"))
+            {
+                ins.Execute();
+                var record = new Record(6);
+                record.SetString(1, dialog);
+                record.SetString(2, control);
+                record.SetString(3, evt);
+                record.SetString(4, EyeTrackerActionName);
+                record.SetString(5, "AI_INSTALL");
+                record.SetInteger(6, 1);
+                ins.Modify(ViewModifyMode.Insert, record);
+            }
         }
 
         static void PatchProperty(Database db, string property, string value)
         {
-            db.Execute("DELETE FROM `Property` WHERE `Property` = ?", property);
-            db.Execute("INSERT INTO `Property` (`Property`, `Value`) VALUES (?, ?)", property, value);
+            using (var del = db.OpenView("SELECT `Property`, `Value` FROM `Property` WHERE `Property` = ?"))
+            {
+                del.Execute(new Record(property));
+                Record row;
+                while ((row = del.Fetch()) != null)
+                    del.Modify(ViewModifyMode.Delete, row);
+            }
+            using (var ins = db.OpenView("SELECT `Property`, `Value` FROM `Property`"))
+            {
+                ins.Execute();
+                var record = new Record(2);
+                record.SetString(1, property);
+                record.SetString(2, value);
+                ins.Modify(ViewModifyMode.Insert, record);
+            }
         }
 
         static void PatchComboItems(Database db, string property,
             List<(string Text, string Value)> items)
         {
             // AI doesn't generate the ComboBox table if no items are defined in the .aip.
-            // Create it if absent before inserting.
-            try
-            {
-                db.Execute("DELETE FROM `ComboBox` WHERE `Property` = ?", property);
-            }
-            catch (InstallerException)
+            // Create it if absent, otherwise delete existing rows for this property.
+            if (!db.Tables.Contains("ComboBox"))
             {
                 db.Execute(
-                    "CREATE TABLE `ComboBox` (" +
-                    "`Property` CHAR(72) NOT NULL, " +
-                    "`Order` SHORT NOT NULL, " +
-                    "`Value` CHAR(64) NOT NULL, " +
-                    "`Text` CHAR(64) " +
-                    "PRIMARY KEY `Property`, `Order`)");
+                    "CREATE TABLE `ComboBox` (`Property` CHAR(72) NOT NULL, `Order` SHORT NOT NULL, " +
+                    "`Value` CHAR(64) NOT NULL, `Text` CHAR(64) PRIMARY KEY `Property`, `Order`)");
+            }
+            else
+            {
+                // Delete via SELECT view + Modify(Delete) — more reliable than DELETE SQL in MSI.
+                using (var del = db.OpenView("SELECT `Property`, `Order`, `Value`, `Text` FROM `ComboBox` WHERE `Property` = ?"))
+                {
+                    del.Execute(new Record(property));
+                    Record row;
+                    while ((row = del.Fetch()) != null)
+                        del.Modify(ViewModifyMode.Delete, row);
+                }
             }
 
-            int order = 1;
-            foreach (var item in items)
+            // Insert via SELECT view + Modify(Insert) — MSI SQL INSERT VALUES is not supported.
+            using (var ins = db.OpenView("SELECT `Property`, `Order`, `Value`, `Text` FROM `ComboBox`"))
             {
-                db.Execute(
-                    "INSERT INTO `ComboBox` (`Property`, `Order`, `Value`, `Text`) VALUES (?, ?, ?, ?)",
-                    property, order++, item.Value, item.Text);
+                ins.Execute();
+                int order = 1;
+                foreach (var item in items)
+                {
+                    var record = new Record(4);
+                    record.SetString(1, property);
+                    record.SetInteger(2, order++);
+                    record.SetString(3, item.Value);
+                    record.SetString(4, item.Text);
+                    ins.Modify(ViewModifyMode.Insert, record);
+                }
             }
         }
 
