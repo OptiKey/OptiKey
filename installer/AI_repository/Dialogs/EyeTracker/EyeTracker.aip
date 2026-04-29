@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <FRAGMENT Type="ReadOnly" CreateVersion="16.3" RootPath="." Language="en">
-<COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="EyeTracker" Control="EyeTrackerDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" MsiKey="EyeTracker#EyeTrackerDialogInitializer" ExtDataLocId="-"/>
     <ROW Dialog_="EyeTracker" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" TextLocId="-" Options="1"/>
     <ROW Dialog_="EyeTracker" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" Options="1"/>

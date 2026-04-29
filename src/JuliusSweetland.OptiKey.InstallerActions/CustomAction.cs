@@ -2,21 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using Microsoft.Deployment.WindowsInstaller;
 
 namespace JuliusSweetland.OptiKey.InstallerActions
 {
     public class CustomActions
     {
-        // Find best match in Optikey for a particular culture
+        // Culture codes for all OptiKey-supported languages, derived from Languages.ToCultureInfo().
+        // Update this list whenever a new language is added to the Languages enum.
+        private static readonly string[] SupportedCultureCodes =
+        {
+            "ca-ES", "zh-CN", "zh-TW", "hr-HR", "cs-CZ", "da-DK",
+            "nl-BE", "nl-NL", "en-CA", "en-GB", "en-US", "fi-FI",
+            "fr-CA", "fr-FR", "ka-GE", "de-DE", "el-GR", "he-IL",
+            "hi-IN", "hu-HU", "it-IT", "ja-JP", "ko-KR", "fa-IR",
+            "pl-PL", "pt-PT", "ru-RU", "sr-Cyrl-RS", "sk-SK", "sl-SI",
+            "es-ES", "tr-TR", "uk-UA", "ur-PK",
+        };
+
+        // Find the best matching OptiKey culture code for the given system culture.
         public static string GetDefaultLanguageCode(CultureInfo cultureInfo)
         {
-            // Some hard-coded defaults for language flavours to use if language matches but country doesn't
-            // (these are the languages we have multi-country support for)
-            Dictionary<string, string> countryDefaults = new Dictionary<string, string>
+            // Hard-coded defaults for language families with multiple regional variants.
+            var countryDefaults = new Dictionary<string, string>
             {
                 { "en", "en-GB" },
                 { "fr", "fr-FR" },
@@ -24,11 +32,10 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 { "zh", "zh-CN" },
             };
 
-            // Get list of available languages to choose from, as language tag in parts (e.g. en-GB gives ['en', 'GB'])
-            List<KeyValuePair<string, Languages>> languagePairs = WordsViewModel.KeyboardLanguages;
-            List<string[]> languages = (from kvp in languagePairs select kvp.Value.ToCultureInfo().Name.Split('-')).ToList();
+            // All supported cultures as split parts (e.g. "en-GB" → ["en", "GB"]).
+            List<string[]> languages = SupportedCultureCodes.Select(c => c.Split('-')).ToList();
 
-            string sysLanguageCode = cultureInfo.Name; // (e.g. en-GB)
+            string sysLanguageCode = cultureInfo.Name;
             string[] sysLanguageParts = sysLanguageCode.Split('-');
 
             List<string[]> matchingLanguages = languages;
@@ -49,9 +56,9 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 case 1:
                     return String.Join("-", languages[0]);
                 default:
-                    string sysCountry = sysLanguageParts[0];
-                    if (countryDefaults.ContainsKey(sysCountry))
-                        return countryDefaults[sysCountry];
+                    string sysLanguage = sysLanguageParts[0];
+                    if (countryDefaults.ContainsKey(sysLanguage))
+                        return countryDefaults[sysLanguage];
                     else
                         return String.Join("-", languages[0]);
             }
@@ -60,43 +67,39 @@ namespace JuliusSweetland.OptiKey.InstallerActions
         [CustomAction]
         public static ActionResult EyeTrackerComboSelected(Session session)
         {
-            // The combo box Value is now the enum string directly (set at build time by
-            // InstallerTranslations --patch-msi), so no runtime label-to-enum lookup is needed.
-            string trackerEnum = session["COMBO_EYE_TRACKER"];
+            // The combo box Value is the PointsSources enum name (set at build time by
+            // InstallerTranslations --patch-msi), or "OtherEyeTracker" for unlisted devices.
+            string trackerValue = session["COMBO_EYE_TRACKER"];
 
             string closestCode = GetDefaultLanguageCode(CultureInfo.CurrentCulture);
             CultureInfo closestCulture = new CultureInfo(closestCode);
 
             string infoText = "";
             string infoTextEn = "";
-            string enumForConfig = trackerEnum;
+            string enumForConfig = trackerValue;
 
-            if (trackerEnum == "OtherEyeTracker")
+            if (trackerValue == "OtherEyeTracker")
             {
                 // Sentinel value used in the combo for "not listed" — show OTHER_TRACKER info
                 // text but write MousePosition to config so OptiKey at least starts.
-                enumForConfig = PointsSources.MousePosition.ToString();
+                enumForConfig = "MousePosition";
                 infoText   = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(closestCulture, "").Replace("\\n", "\n");
                 infoTextEn = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(new CultureInfo("en-GB"), "").Replace("\\n", "\n");
                 if (infoText == infoTextEn) infoTextEn = "";
             }
-            else
+            else if (!string.IsNullOrEmpty(trackerValue))
             {
-                PointsSources pointSource;
-                if (Enum.TryParse(trackerEnum, out pointSource))
-                {
-                    infoText   = GetPointsSourceDetails(pointSource, closestCulture).Replace("\\n", "\n");
-                    infoTextEn = GetPointsSourceDetails(pointSource, new CultureInfo("en-GB")).Replace("\\n", "\n");
-                    if (infoText == infoTextEn)
-                        infoTextEn = "";
-                }
+                infoText   = GetPointsSourceDetails(trackerValue, closestCulture).Replace("\\n", "\n");
+                infoTextEn = GetPointsSourceDetails(trackerValue, new CultureInfo("en-GB")).Replace("\\n", "\n");
+                if (infoText == infoTextEn)
+                    infoTextEn = "";
             }
 
             session["EYETRACKER_TEXT"]     = infoText;
             session["EYETRACKER_TEXT_EN"]  = infoTextEn;
             session["EYETRACKER_SELECTED"] = enumForConfig;
 
-            if (trackerEnum == "TouchScreenPosition")
+            if (trackerValue == "TouchScreenPosition")
             {
                 session["SELECTED_KEYSELECTIONTRIGGERSOURCE"]          = "TouchDownUps";
                 session["SELECTED_POINTSELECTIONTRIGGERSOURCE"]        = "TouchDownUps";
@@ -150,22 +153,22 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             return ActionResult.Success;
         }
 
-        private static string GetPointsSourceDetails(PointsSources pointSource, CultureInfo culture)
+        private static string GetPointsSourceDetails(string trackerValue, CultureInfo culture)
         {
             try
             {
-                switch (pointSource)
+                switch (trackerValue)
                 {
-                    case PointsSources.GazeTracker:    return InstallerStrings.GAZE_TRACKER_INFO[culture];
-                    case PointsSources.IrisbondDuo:    return InstallerStrings.IRISBOND_DUO_INFO[culture];
-                    case PointsSources.IrisbondHiru:   return InstallerStrings.IRISBOND_HIRU_INFO[culture];
-                    case PointsSources.MousePosition:  return InstallerStrings.MOUSE_POSITION_INFO[culture];
-                    case PointsSources.TobiiPcEyeGo:
-                    case PointsSources.TobiiPcEyeGoPlus:
-                    case PointsSources.TobiiPcEyeMini:
-                    case PointsSources.TobiiX2_30:
-                    case PointsSources.TobiiX2_60:     return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                    default:                            return "";
+                    case "GazeTracker":      return InstallerStrings.GAZE_TRACKER_INFO[culture];
+                    case "IrisbondDuo":      return InstallerStrings.IRISBOND_DUO_INFO[culture];
+                    case "IrisbondHiru":     return InstallerStrings.IRISBOND_HIRU_INFO[culture];
+                    case "MousePosition":    return InstallerStrings.MOUSE_POSITION_INFO[culture];
+                    case "TobiiPcEyeGo":
+                    case "TobiiPcEyeGoPlus":
+                    case "TobiiPcEyeMini":
+                    case "TobiiX2_30":
+                    case "TobiiX2_60":       return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    default:                 return "";
                 }
             }
             catch (KeyNotFoundException)
