@@ -69,6 +69,7 @@
          InstallerStrings.cs before InstallerActions compiles it. -->
     <ProjectReference Include="..\JuliusSweetland.OptiKey.InstallerTranslations\JuliusSweetland.OptiKey.InstallerTranslations.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
