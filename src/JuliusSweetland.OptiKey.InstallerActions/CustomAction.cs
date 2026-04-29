@@ -83,14 +83,14 @@ namespace JuliusSweetland.OptiKey.InstallerActions
                 // Sentinel value used in the combo for "not listed" — show OTHER_TRACKER info
                 // text but write MousePosition to config so OptiKey at least starts.
                 enumForConfig = "MousePosition";
-                infoText   = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(closestCulture, "").Replace("\\n", "\n");
-                infoTextEn = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(new CultureInfo("en-GB"), "").Replace("\\n", "\n");
+                infoText   = GetLocalised(InstallerStrings.OTHER_TRACKER, closestCulture);
+                infoTextEn = GetLocalised(InstallerStrings.OTHER_TRACKER, new CultureInfo("en-GB"));
                 if (infoText == infoTextEn) infoTextEn = "";
             }
             else if (!string.IsNullOrEmpty(trackerValue))
             {
-                infoText   = GetPointsSourceDetails(trackerValue, closestCulture).Replace("\\n", "\n");
-                infoTextEn = GetPointsSourceDetails(trackerValue, new CultureInfo("en-GB")).Replace("\\n", "\n");
+                infoText   = GetPointsSourceDetails(trackerValue, closestCulture);
+                infoTextEn = GetPointsSourceDetails(trackerValue, new CultureInfo("en-GB"));
                 if (infoText == infoTextEn)
                     infoTextEn = "";
             }
@@ -153,28 +153,29 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             return ActionResult.Success;
         }
 
+        private static string GetLocalised(Dictionary<CultureInfo, string> dict, CultureInfo culture)
+        {
+            string value;
+            return dict.TryGetValue(culture, out value) ? value.Replace("\\n", "\n") : "";
+        }
+
         private static string GetPointsSourceDetails(string trackerValue, CultureInfo culture)
         {
-            try
+            Dictionary<CultureInfo, string> dict;
+            switch (trackerValue)
             {
-                switch (trackerValue)
-                {
-                    case "GazeTracker":      return InstallerStrings.GAZE_TRACKER_INFO[culture];
-                    case "IrisbondDuo":      return InstallerStrings.IRISBOND_DUO_INFO[culture];
-                    case "IrisbondHiru":     return InstallerStrings.IRISBOND_HIRU_INFO[culture];
-                    case "MousePosition":    return InstallerStrings.MOUSE_POSITION_INFO[culture];
-                    case "TobiiPcEyeGo":
-                    case "TobiiPcEyeGoPlus":
-                    case "TobiiPcEyeMini":
-                    case "TobiiX2_30":
-                    case "TobiiX2_60":       return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                    default:                 return "";
-                }
+                case "GazeTracker":      dict = InstallerStrings.GAZE_TRACKER_INFO;    break;
+                case "IrisbondDuo":      dict = InstallerStrings.IRISBOND_DUO_INFO;    break;
+                case "IrisbondHiru":     dict = InstallerStrings.IRISBOND_HIRU_INFO;   break;
+                case "MousePosition":    dict = InstallerStrings.MOUSE_POSITION_INFO;  break;
+                case "TobiiPcEyeGo":
+                case "TobiiPcEyeGoPlus":
+                case "TobiiPcEyeMini":
+                case "TobiiX2_30":
+                case "TobiiX2_60":       dict = InstallerStrings.TOBII_ASSISTIVE_INFO; break;
+                default:                 return "";
             }
-            catch (KeyNotFoundException)
-            {
-                return "";
-            }
+            return GetLocalised(dict, culture);
         }
     }
 }

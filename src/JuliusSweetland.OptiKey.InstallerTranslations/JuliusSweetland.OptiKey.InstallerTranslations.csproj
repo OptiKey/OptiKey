@@ -14,9 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Resolved from the WiX Toolset GAC install (pre-installed on windows-latest).
-         Not a NuGet package — avoids restore issues with SDK-style projects. -->
-    <Reference Include="Microsoft.Deployment.WindowsInstaller" />
+    <!-- Resolved from the WiX Toolset installation. $(WIX) is set by the WiX installer
+         (e.g. C:\Program Files (x86)\WiX Toolset v3.11\). WiX 3.11 is pre-installed on
+         windows-latest and is required to build InstallerActions anyway. -->
+    <Reference Include="Microsoft.Deployment.WindowsInstaller">
+      <HintPath>$(WIX)bin\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
