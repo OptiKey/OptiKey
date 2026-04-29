@@ -208,6 +208,8 @@ namespace InstallerTranslation
 
         static void PatchProperty(Database db, string property, string value)
         {
+            // MSI rejects Property rows with empty-string values (treated as "not set").
+            // Delete any existing row; only re-insert if the value is non-empty.
             using (var del = db.OpenView("SELECT `Property`, `Value` FROM `Property` WHERE `Property` = ?"))
             {
                 del.Execute(new Record(property));
@@ -215,6 +217,7 @@ namespace InstallerTranslation
                 while ((row = del.Fetch()) != null)
                     del.Modify(ViewModifyMode.Delete, row);
             }
+            if (string.IsNullOrEmpty(value)) return;
             using (var ins = db.OpenView("SELECT `Property`, `Value` FROM `Property`"))
             {
                 ins.Execute();
