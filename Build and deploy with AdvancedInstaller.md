@@ -1,3 +1,22 @@
+# MSI Build Pipeline Overview
+
+The MSI build is a two-pass process:
+
+1. **Build the MSI** — Advanced Installer compiles the `.aip` project into an MSI. The installer dialogs (eye tracker selection, language selection) have combo box controls whose data is **not** populated at this stage.
+
+2. **Patch combo box data** — `InstallerTranslations.exe --patch-msi <path-to.msi>` reads the available eye trackers and keyboard languages from the OptiKey core assemblies and writes them directly into the MSI's `ComboBox` table. This replaces the old approach of running custom actions at install time to populate the combos.
+
+The `InstallerTranslations` tool is built as part of `OptikeyDeployment.sln` and its output is at:
+```
+src/JuliusSweetland.OptiKey.InstallerTranslations/bin/x64/Release/net48/JuliusSweetland.OptiKey.InstallerTranslations.exe
+```
+
+If you build and test an MSI locally **without** running the patch step, the eye tracker and language combo boxes will appear empty during installation.
+
+The CI workflow (`build_pro_msi_unsigned.yml`) runs both steps automatically.
+
+---
+
 # Build pre-requisites
 - AdvancedInstaller (license required)
 	- Once installed run Advanced Installer

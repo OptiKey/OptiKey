@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <FRAGMENT Type="ReadOnly" CreateVersion="16.3" RootPath="." Language="en">
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
-    <ROW Name="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" SourcePath="..\..\..\..\src\JuliusSweetland.OptiKey.InstallerActions\bin\x64\Release\JuliusSweetland.OptiKey.InstallerActions.CA.dll"/>
-  </COMPONENT>
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+<COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="EyeTracker" Control="EyeTrackerDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" MsiKey="EyeTracker#EyeTrackerDialogInitializer" ExtDataLocId="-"/>
     <ROW Dialog_="EyeTracker" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" TextLocId="-" Options="1"/>
     <ROW Dialog_="EyeTracker" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" Options="1"/>
@@ -22,20 +19,20 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="EyeTracker" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="2"/>
+    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL AND AI_BOOTSTRAPPER" Ordering="2"/>
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="DoAction" Argument="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_7" Condition="AI_INSTALL" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD_32" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD_32"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B81C" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B81C"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_1" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_1"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_2" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_2"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_3" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_3"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_4" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_4"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_5" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_5"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_6" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_6"/>
-    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_7" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_3C91A0DD_328D_4BC3_BF74_8D6DB358" Target="EyeTrackerComboSelected" WithoutSeq="true"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD_32" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD_32"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B81C" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B81C"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_1" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_1"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_2" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_2"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_3" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_3"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_4" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_4"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_5" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_5"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_6" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_6"/>
+    <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_7" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="EyeTracker" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg"/>

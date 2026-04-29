@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
@@ -13,43 +11,9 @@ namespace JuliusSweetland.OptiKey.InstallerActions
 {
     public class CustomActions
     {
-
-        private static string AppendItemToComboData(string combodata, string item)
-        {
-            const string sep1 = "|";
-            const string sep2 = "#";
-            combodata += sep1 + item + sep2 + item;
-            return combodata;
-        }
-
-        [CustomAction]
-        public static ActionResult LoadOptikeyProperties(Session session)
-        {
-            // Load Optikey installer options into installer properties
-            // Calling this DLL is quite expensive (slow) because it depends on all of Optikey,
-            // so this one action gets everything out the way in one go and caches in installer
-            // properties
-
-            session.Log("Begin LoadOptikeyProperties");
-
-            PopulateEyetrackersCombo(session);
-            PopulateLanguagesCombo(session);
-
-            return ActionResult.Success;
-        }
-
-        public static string SanitisePropName(string prop_name)
-        {
-            prop_name = prop_name.Replace(" ", "");
-            prop_name = prop_name.Replace(")", "");
-            prop_name = prop_name.Replace("(", "");
-            return prop_name;
-        }
-
         // Find best match in Optikey for a particular culture
         public static string GetDefaultLanguageCode(CultureInfo cultureInfo)
         {
-
             // Some hard-coded defaults for language flavours to use if language matches but country doesn't
             // (these are the languages we have multi-country support for)
             Dictionary<string, string> countryDefaults = new Dictionary<string, string>
@@ -64,216 +28,73 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             List<KeyValuePair<string, Languages>> languagePairs = WordsViewModel.KeyboardLanguages;
             List<string[]> languages = (from kvp in languagePairs select kvp.Value.ToCultureInfo().Name.Split('-')).ToList();
 
-            string sysLanguageCode = cultureInfo.Name; //  (e.g. en-GB)
+            string sysLanguageCode = cultureInfo.Name; // (e.g. en-GB)
             string[] sysLanguageParts = sysLanguageCode.Split('-');
 
-            // We'll remove non-matching languages at increasing specificity
-            // e.g. language first, then country and any other specifiers
             List<string[]> matchingLanguages = languages;
             int idx = 0;
             while (matchingLanguages.Count > 0 && idx < sysLanguageParts.Length)
             {
                 Predicate<string[]> matches = (parts) => (parts.Length > idx) && parts[idx].Equals(sysLanguageParts[idx]);
                 matchingLanguages = new List<string[]>(languages.FindAll(matches));
-                if (idx == 0 || matchingLanguages.Count > 0) // after idx == 0, previous pass is acceptable if nothing matches current pass
+                if (idx == 0 || matchingLanguages.Count > 0)
                     languages = matchingLanguages;
                 idx++;
             }
 
-            // Now languages list contains zero, one or more viable options. 
             switch (languages.Count)
             {
                 case 0:
-                    // Fall-back is English if nothing matches at all
                     return "en-GB";
                 case 1:
                     return String.Join("-", languages[0]);
                 default:
-                    //Ambiguous match
                     string sysCountry = sysLanguageParts[0];
                     if (countryDefaults.ContainsKey(sysCountry))
-                    {
-                        // We've hardcoded a preference for this language
                         return countryDefaults[sysCountry];
-                    }
                     else
-                    {
-                        // Still ambiguous, just take first match
                         return String.Join("-", languages[0]);
-                    }
-            }
-        }
-
-
-        [CustomAction]
-        public static ActionResult PopulateEyetrackersCombo(Session session)
-        {
-            session.Log("Begin PopulateEyetrackersCombo");
-
-            string closestLanguageCode = GetDefaultLanguageCode(CultureInfo.CurrentCulture);
-            CultureInfo closestCulture = new CultureInfo(closestLanguageCode);
-
-            // Get list of available eyetrackers from PointingAndSelectingViewModel
-            List<KeyValuePair<string, PointsSources>> trackers = PointingAndSelectingViewModel.BundledPointsSources;
-
-            string comboData = ""; // we'll append to this as we go
-            string defaultTracker = "";
-            foreach (KeyValuePair<string, PointsSources> tracker in trackers)
-            {
-                string trackerLabel = tracker.Key;
-                string trackerEnum = tracker.Value.ToString();
-
-                // add to combobox prop
-                comboData = AppendItemToComboData(comboData, trackerLabel);
-
-                // save the mapping from label to enum in an installer property
-                session["TRACKER_" + SanitisePropName(trackerLabel)] = trackerEnum;
-
-                // also the extended info, translated and original text 
-                string details = GetPointsSourceDetails(tracker.Value, closestCulture);
-                string details_english = GetPointsSourceDetails(tracker.Value, new CultureInfo("en-GB"));
-                if (details == details_english)
-                {
-                    details_english = ""; // don't duplicate english tranlsation
-                }
-                else
-                {
-                    if (details == "")
-                    { // no translation available, use english alone
-                        details = details_english;
-                        details_english = "";
-                    }
-                    else
-                    {
-                        details_english = "Automatically translated from original text:\n" + details_english;
-                    }
-                }
-            
-                session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = details;
-                session["TRACKERINFO_EN_" + SanitisePropName(trackerLabel)] = details_english;
-
-                if (trackerLabel.Contains("Mouse"))
-                {
-                    defaultTracker = trackerLabel;
-                }
-            }
-
-            // Add manual entry for "not listed"
-            {
-                string trackerLabel = "Other eye tracker (not listed)"; // FIXME: translated??
-                string trackerEnum = PointsSources.MousePosition.ToString();
-
-                // add to combobox prop
-                comboData = AppendItemToComboData(comboData, trackerLabel);
-
-                // save the mapping from label to enum in an installer property
-                session["TRACKER_" + SanitisePropName(trackerLabel)] = trackerEnum;
-
-                // also the extended info, translated and original text 
-                string details = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(closestCulture, "");
-                string details_english = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(new CultureInfo("en-GB"), "");
-                if (details == details_english)
-                {
-                    details_english = "";
-                }
-                else
-                {
-                    details_english = details_english.Replace("\r\n", " "); // remove newlines - there isn't enough space                    
-                    details_english = "Automatically translated from original text: \t" + details_english;
-                }
-
-                session["TRACKERINFO_" + SanitisePropName(trackerLabel)] = details;
-                session["TRACKERINFO_EN_" + SanitisePropName(trackerLabel)] = details_english;
-
-            }
-
-
-            // Set combobox data
-            session["EYETRACKER_COMBO_DATA"] = comboData;
-            session["EYETRACKER_COMBO_DEFAULT"] = defaultTracker;
-
-            return ActionResult.Success;
-        }
-
-        [CustomAction]
-        public static ActionResult PopulateLanguagesCombo(Session session)
-        {
-            session.Log("Begin PopulateLanguagesCombo");
-
-            // Get list of available languages from WordsViewModel - here we have the longer list
-            // of Keyboard languages which includes all chinese input methods
-            List<KeyValuePair<string, Languages>> languages = WordsViewModel.KeyboardLanguages;
-
-            // Try to match default language to system language
-            string defaultLanguageCode = GetDefaultLanguageCode(CultureInfo.CurrentCulture);
-            string defaultLanguage = "";
-
-            // Construct property for combo data. 
-            string comboData = ""; // we'll append to this as we go
-            foreach (KeyValuePair<string, Languages> language in languages)
-            {
-                string languageLabel = language.Key; // includes "english description (location) / native description (location)"
-                string languageEnum = language.Value.ToString();
-
-                // add to combobox prop
-                comboData = AppendItemToComboData(comboData, languageLabel);
-
-                // save the mapping from label to enum in an installer property
-                string languageLabelEnglish = languageLabel.Split('/')[0];
-                session["LANGUAGE_" + SanitisePropName(languageLabelEnglish)] = languageEnum;
-
-                // is default?
-                if (language.Value.ToCultureInfo().Name.Equals(defaultLanguageCode))
-                {
-                    defaultLanguage = languageLabel;
-                }
-            }
-
-            // Set combobox data
-            session["LANGUAGE_COMBO_DATA"] = comboData;
-            session["LANGUAGE_COMBO_DEFAULT"] = defaultLanguage;
-
-            return ActionResult.Success;
-        }
-
-        private static string GetPointsSourceDetails(PointsSources pointSource, CultureInfo culture)
-        {
-            try
-            {
-                switch (pointSource)
-                {
-                    // TODO check for culture not in dict, default empty?
-                    case PointsSources.GazeTracker: return InstallerStrings.GAZE_TRACKER_INFO[culture];
-                    case PointsSources.IrisbondDuo: return InstallerStrings.IRISBOND_DUO_INFO[culture];
-                    case PointsSources.IrisbondHiru: return InstallerStrings.IRISBOND_HIRU_INFO[culture];
-                    case PointsSources.MousePosition: return InstallerStrings.MOUSE_POSITION_INFO[culture];
-                    case PointsSources.TobiiPcEyeGo: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                    case PointsSources.TobiiPcEyeGoPlus: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                    case PointsSources.TobiiPcEyeMini: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                    case PointsSources.TobiiX2_30: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                    case PointsSources.TobiiX2_60: return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
-                    default: return "";
-                }
-            }
-            catch(KeyNotFoundException e)
-            {
-                return "";
             }
         }
 
         [CustomAction]
         public static ActionResult EyeTrackerComboSelected(Session session)
         {
-            string selected = session["COMBO_EYE_TRACKER"];
-            string sanitised = SanitisePropName(selected);
+            // The combo box Value is now the enum string directly (set at build time by
+            // InstallerTranslations --patch-msi), so no runtime label-to-enum lookup is needed.
+            string trackerEnum = session["COMBO_EYE_TRACKER"];
 
-            string trackerEnum  = session["TRACKER_" + sanitised];
-            string infoText     = session["TRACKERINFO_" + sanitised].Replace("\\n", "\n");
-            string infoTextEn   = session["TRACKERINFO_EN_" + sanitised].Replace("\\n", "\n");
+            string closestCode = GetDefaultLanguageCode(CultureInfo.CurrentCulture);
+            CultureInfo closestCulture = new CultureInfo(closestCode);
 
-            session["EYETRACKER_TEXT"]    = infoText;
-            session["EYETRACKER_TEXT_EN"] = infoTextEn;
-            session["EYETRACKER_SELECTED"] = trackerEnum;
+            string infoText = "";
+            string infoTextEn = "";
+            string enumForConfig = trackerEnum;
+
+            if (trackerEnum == "OtherEyeTracker")
+            {
+                // Sentinel value used in the combo for "not listed" — show OTHER_TRACKER info
+                // text but write MousePosition to config so OptiKey at least starts.
+                enumForConfig = PointsSources.MousePosition.ToString();
+                infoText   = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(closestCulture, "").Replace("\\n", "\n");
+                infoTextEn = InstallerStrings.OTHER_TRACKER.GetValueOrDefault(new CultureInfo("en-GB"), "").Replace("\\n", "\n");
+                if (infoText == infoTextEn) infoTextEn = "";
+            }
+            else
+            {
+                PointsSources pointSource;
+                if (Enum.TryParse(trackerEnum, out pointSource))
+                {
+                    infoText   = GetPointsSourceDetails(pointSource, closestCulture).Replace("\\n", "\n");
+                    infoTextEn = GetPointsSourceDetails(pointSource, new CultureInfo("en-GB")).Replace("\\n", "\n");
+                    if (infoText == infoTextEn)
+                        infoTextEn = "";
+                }
+            }
+
+            session["EYETRACKER_TEXT"]     = infoText;
+            session["EYETRACKER_TEXT_EN"]  = infoTextEn;
+            session["EYETRACKER_SELECTED"] = enumForConfig;
 
             if (trackerEnum == "TouchScreenPosition")
             {
@@ -299,9 +120,9 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             const string defaultFontStretch = "Condensed";
             const string defaultFontWeight  = "Light";
 
-            string selected  = session["COMBO_LANGUAGE"];
-            string sanitised = SanitisePropName(selected.Split('/')[0]);
-            string langEnum  = session["LANGUAGE_" + sanitised];
+            // The combo box Value is now the enum string directly (set at build time by
+            // InstallerTranslations --patch-msi), so no runtime label-to-enum lookup is needed.
+            string langEnum = session["COMBO_LANGUAGE"];
 
             session["KEYBOARD_LANGUAGE_SELECTED"] = langEnum;
             session["UI_LANGUAGE_SELECTED"] = langEnum.Contains("Chinese")
@@ -329,24 +150,28 @@ namespace JuliusSweetland.OptiKey.InstallerActions
             return ActionResult.Success;
         }
 
-        [CustomAction]
-        public static ActionResult PopulateEyeTrackerComboUI(Session session)
+        private static string GetPointsSourceDetails(PointsSources pointSource, CultureInfo culture)
         {
-            if (!string.IsNullOrEmpty(session["COMBO_EYE_TRACKER"])) return ActionResult.Success;
-            session["AI_COMBOBOX_DATA"] = "COMBO_EYE_TRACKER" + session["EYETRACKER_COMBO_DATA"];
-            session["COMBO_EYE_TRACKER"] = session["EYETRACKER_COMBO_DEFAULT"];
-            session.DoAction("PopulateComboBox");
-            return EyeTrackerComboSelected(session);
-        }
-
-        [CustomAction]
-        public static ActionResult PopulateLanguagesComboUI(Session session)
-        {
-            if (!string.IsNullOrEmpty(session["COMBO_LANGUAGE"])) return ActionResult.Success;
-            session["AI_COMBOBOX_DATA"] = "COMBO_LANGUAGE" + session["LANGUAGE_COMBO_DATA"];
-            session["COMBO_LANGUAGE"] = session["LANGUAGE_COMBO_DEFAULT"];
-            session.DoAction("PopulateComboBox");
-            return LanguageComboSelected(session);
+            try
+            {
+                switch (pointSource)
+                {
+                    case PointsSources.GazeTracker:    return InstallerStrings.GAZE_TRACKER_INFO[culture];
+                    case PointsSources.IrisbondDuo:    return InstallerStrings.IRISBOND_DUO_INFO[culture];
+                    case PointsSources.IrisbondHiru:   return InstallerStrings.IRISBOND_HIRU_INFO[culture];
+                    case PointsSources.MousePosition:  return InstallerStrings.MOUSE_POSITION_INFO[culture];
+                    case PointsSources.TobiiPcEyeGo:
+                    case PointsSources.TobiiPcEyeGoPlus:
+                    case PointsSources.TobiiPcEyeMini:
+                    case PointsSources.TobiiX2_30:
+                    case PointsSources.TobiiX2_60:     return InstallerStrings.TOBII_ASSISTIVE_INFO[culture];
+                    default:                            return "";
+                }
+            }
+            catch (KeyNotFoundException)
+            {
+                return "";
+            }
         }
     }
 }

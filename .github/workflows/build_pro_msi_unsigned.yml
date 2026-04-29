@@ -66,6 +66,15 @@ jobs:
           AdvancedInstaller.com /build "${{ github.workspace }}\installer\OptiKeyPro.aip"
           if ($LASTEXITCODE -ne 0) { throw "Failed to build Pro MSI installer" }
 
+      - name: Patch combo box data into MSI
+        shell: pwsh
+        run: |
+          $tool = "${{ github.workspace }}\src\JuliusSweetland.OptiKey.InstallerTranslations\bin\x64\Release\net48\JuliusSweetland.OptiKey.InstallerTranslations.exe"
+          $msi  = "${{ github.workspace }}\installer\SetupFiles\OptiKeyPro.msi"
+          Write-Host "Patching combo boxes into MSI..."
+          & $tool --patch-msi $msi
+          if ($LASTEXITCODE -ne 0) { throw "Failed to patch combo box data into MSI" }
+
       - name: Log MSI output
         shell: pwsh
         run: |

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <FRAGMENT Type="ReadOnly" CreateVersion="16.3" RootPath="." Language="en">
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
-    <ROW Name="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1AF024D1_2FE7_45A3_9606_257FA4DC" SourcePath="..\..\..\..\src\JuliusSweetland.OptiKey.InstallerActions\bin\x64\Release\JuliusSweetland.OptiKey.InstallerActions.CA.dll"/>
-  </COMPONENT>
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+<COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="Languages" Control="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" TextLocId="-" Options="1"/>
     <ROW Dialog_="Languages" Control="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" Options="1"/>
     <ROW Dialog_="Languages" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="300" TextLocId="-" Options="1"/>
@@ -18,14 +15,14 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="Languages" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="DoAction" Argument="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_3" Condition="AI_INSTALL" Ordering="0"/>
-    <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL AND AI_BOOTSTRAPPER" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
-    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1AF024D1_2FE7_45A3_9606_257FA4DC" Target="LanguageComboSelected" WithoutSeq="true" MsiKey="LanguageSelected_1AF024D1_2FE7_45A3"/>
-    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618EDC" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1AF024D1_2FE7_45A3_9606_257FA4DC" Target="LanguageComboSelected" WithoutSeq="true" MsiKey="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618EDC"/>
-    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_1" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1AF024D1_2FE7_45A3_9606_257FA4DC" Target="LanguageComboSelected" WithoutSeq="true" MsiKey="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_1"/>
-    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_2" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1AF024D1_2FE7_45A3_9606_257FA4DC" Target="LanguageComboSelected" WithoutSeq="true" MsiKey="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_2"/>
-    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_3" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1AF024D1_2FE7_45A3_9606_257FA4DC" Target="LanguageComboSelected" WithoutSeq="true"/>
+    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LanguageComboSelected" WithoutSeq="true" MsiKey="LanguageSelected_1AF024D1_2FE7_45A3"/>
+    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618EDC" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LanguageComboSelected" WithoutSeq="true" MsiKey="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618EDC"/>
+    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_1" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LanguageComboSelected" WithoutSeq="true" MsiKey="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_1"/>
+    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_2" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LanguageComboSelected" WithoutSeq="true" MsiKey="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_2"/>
+    <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_3" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LanguageComboSelected" WithoutSeq="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
     <ROW Dialog="Languages" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg"/>

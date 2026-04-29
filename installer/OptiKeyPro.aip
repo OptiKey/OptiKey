@@ -658,7 +658,7 @@
     <ROW Action="AI_XmlUninstall" Description="Generating actions to configure XML files" DescriptionLocId="ActionText.Description.AI_XmlUninstall"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
-    <ROW Name="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActions\bin\x64\Release\JuliusSweetland.OptiKey.InstallerActions.CA.dll"/>
+    <ROW Name="JuliusSweetland.OptiKey.InstallerActions.CA.dll" SourcePath="..\src\JuliusSweetland.OptiKey.InstallerActions\bin\x64\Release\JuliusSweetland.OptiKey.InstallerActions.CA.dll"/>
 
     <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
@@ -717,10 +717,7 @@
     <ROW Dialog_="PrerequisitesDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="PrerequisitesDlg" Control_="Back" Event="NewDialog" Argument="WelcomePrereqDlg" Condition="AI_BOOTSTRAPPER" Ordering="1"/>
     <ROW Dialog_="NewSeqDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="PrepareDlg" Control_="Next" Event="DoAction" Argument="PopulateComboBox" Condition="AI_INSTALL" Ordering="0"/>
     <ROW Dialog_="NewDialog" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="EyeTracker" Control_="EyeTrackerDialogInitializer" Event="DoAction" Argument="PopulateEyeTrackerComboUI" Condition="1 AND ( AI_COMBOBOX_DATA &lt;&gt; &quot;SUCCESS&quot; )" Ordering="2"/>
-    <ROW Dialog_="Languages" Control_="LanguagesDialogInitializer" Event="DoAction" Argument="PopulateLanguagesCombo" Condition="AI_INSTALL" Ordering="3"/>
     <ROW Dialog_="EyeTrackerSupportV4" Control_="Next" Event="NewDialog" Argument="ReadmeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="EyeTrackerSupportV4" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="EyeTrackerSupportV4" Control_="Next" Event="NewDialog" Argument="EyeTracker" Condition="AI_INSTALL AND NOT OLDPRODUCTS" Ordering="2"/>
@@ -781,12 +778,9 @@
     <ROW Action="AI_XmlRemove" Type="11265" Source="xmlCfg.dll" Target="OnXmlRemove" WithoutSeq="true"/>
     <ROW Action="AI_XmlRollback" Type="11521" Source="xmlCfg.dll" Target="OnXmlRollback" WithoutSeq="true"/>
     <ROW Action="AI_XmlUninstall" Type="1" Source="xmlCfg.dll" Target="OnXmlUninstall" AdditionalSeq="AI_DATA_SETTER_2"/>
-    <ROW Action="EyeTrackerComboSelected" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1" Target="EyeTrackerComboSelected" WithoutSeq="true"/>
-    <ROW Action="LanguageSelected" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1" Target="LanguageComboSelected" WithoutSeq="true"/>
-    <ROW Action="OptiKeyProperties" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1" Target="LoadOptikeyProperties"/>
+    <ROW Action="EyeTrackerComboSelected" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true"/>
+    <ROW Action="LanguageSelected" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LanguageComboSelected" WithoutSeq="true"/>
     <ROW Action="PopulateComboBox" Type="1" Source="aicustact.dll" Target="PopulateComboBox" WithoutSeq="true" Options="1"/>
-    <ROW Action="PopulateEyeTrackerComboUI" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1" Target="PopulateEyeTrackerComboUI" WithoutSeq="true"/>
-    <ROW Action="PopulateLanguagesCombo" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll_1" Target="PopulateLanguagesComboUI" WithoutSeq="true"/>
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFiles64Folder][ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
@@ -940,7 +934,6 @@
     <ROW Action="SetPropertyFontFamily" Sequence="52"/>
     <ROW Action="SetPropertyFontWeight" Sequence="57"/>
     <ROW Action="SetPropertyFontStretch" Sequence="58"/>
-    <ROW Action="OptiKeyProperties" Sequence="51"/>
     <ROW Action="SetNewline" Sequence="60"/>
     <ROW Action="SetPropertyLanguageSelected_1" Sequence="202"/>
     <ROW Action="SetPropertyPointSelectionTriggerSource" Sequence="53"/>
