@@ -169,7 +169,23 @@ namespace InstallerTranslation
         static void PatchComboItems(Database db, string property,
             List<(string Text, string Value)> items)
         {
-            db.Execute("DELETE FROM `ComboBox` WHERE `Property` = ?", property);
+            // AI doesn't generate the ComboBox table if no items are defined in the .aip.
+            // Create it if absent before inserting.
+            try
+            {
+                db.Execute("DELETE FROM `ComboBox` WHERE `Property` = ?", property);
+            }
+            catch (InstallerException)
+            {
+                db.Execute(
+                    "CREATE TABLE `ComboBox` (" +
+                    "`Property` CHAR(72) NOT NULL, " +
+                    "`Order` SHORT NOT NULL, " +
+                    "`Value` CHAR(64) NOT NULL, " +
+                    "`Text` CHAR(64) " +
+                    "PRIMARY KEY `Property`, `Order`)");
+            }
+
             int order = 1;
             foreach (var item in items)
             {
