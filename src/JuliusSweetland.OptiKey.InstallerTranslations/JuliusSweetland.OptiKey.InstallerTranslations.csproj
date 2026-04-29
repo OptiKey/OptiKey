@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Deployment.WindowsInstaller" Version="3.11.2" />
+    <!-- Resolved from the WiX Toolset GAC install (pre-installed on windows-latest).
+         Not a NuGet package — avoids restore issues with SDK-style projects. -->
+    <Reference Include="Microsoft.Deployment.WindowsInstaller" />
   </ItemGroup>
 
   <ItemGroup>
