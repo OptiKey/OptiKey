@@ -126,41 +126,67 @@ namespace InstallerTranslation
             // OTHER_TRACKER info text, then map it to MousePosition when writing config.
             eyeTrackers.Add(("Other eye tracker (not listed)", "OtherEyeTracker"));
 
+            string defaultTracker = eyeTrackers[0].Value;
+            string defaultTrackerText = GetEnglishTrackerText(defaultTracker);
+
             using (var db = new Database(msiPath, DatabaseOpenMode.Transact))
             {
                 PatchComboItems(db, "COMBO_LANGUAGE",    languages);
                 PatchComboItems(db, "COMBO_EYE_TRACKER", eyeTrackers);
 
-                // Set defaults so the combo shows a selection when the dialog first opens.
+                // Set defaults so combos show a selection when dialogs first open.
                 PatchProperty(db, "COMBO_LANGUAGE",    languages[0].Value);
-                PatchProperty(db, "COMBO_EYE_TRACKER", eyeTrackers[0].Value);
+                PatchProperty(db, "COMBO_EYE_TRACKER", defaultTracker);
 
-                // Wire EyeTrackerDialogInitializer to call EyeTrackerComboSelected on open,
-                // so the info text is populated for the default selection.
-                PatchEyeTrackerDialogInit(db, eyeTrackers[0].Value);
+                // Pre-set the info text for the default eye tracker so it is visible immediately
+                // when the dialog opens, without needing any custom action to run first.
+                PatchProperty(db, "EYETRACKER_TEXT",    defaultTrackerText);
+                PatchProperty(db, "EYETRACKER_TEXT_EN", "");
+
+                // Add an [AiRefreshDlg] event on the combo that fires for all installs (not just
+                // AI_BOOTSTRAPPER) so the info-text area redraws after EyeTrackerComboSelected runs.
+                PatchEyeTrackerRefreshEvent(db);
 
                 db.Commit();
             }
         }
 
-        // The action name Advanced Installer generated for EyeTrackerComboSelected in EyeTracker.aip.
-        // This must match what is in the MSI CustomAction table (same as the Argument in ControlEvent).
-        const string EyeTrackerActionName =
-            "EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_7";
-
-        static void PatchEyeTrackerDialogInit(Database db, string defaultTrackerValue)
+        static string GetEnglishTrackerText(string trackerEnum)
         {
-            // Add a ControlEvent on EyeTrackerDialogInitializer so that EyeTrackerComboSelected
-            // fires when the dialog opens (populating the info-text for the default selection).
-            const string dialog  = "EyeTracker";
-            const string control = "EyeTrackerDialogInitializer";
-            const string evt     = "DoAction";
+            // Resources.Culture is already set to en-GB by the caller.
+            var r = JuliusSweetland.OptiKey.Properties.Resources.ResourceManager;
+            string key;
+            switch (trackerEnum)
+            {
+                case "GazeTracker":      key = "GAZE_TRACKER_INFO";    break;
+                case "IrisbondDuo":      key = "IRISBOND_DUO_INFO";    break;
+                case "IrisbondHiru":     key = "IRISBOND_HIRU_INFO";   break;
+                case "MousePosition":    key = "MOUSE_POSITION_INFO";  break;
+                case "TobiiPcEyeGo":
+                case "TobiiPcEyeGoPlus":
+                case "TobiiPcEyeMini":
+                case "TobiiX2_30":
+                case "TobiiX2_60":       key = "TOBII_ASSISTIVE_INFO"; break;
+                default:                 return "";
+            }
+            return r.GetString(key, new CultureInfo("en-GB")) ?? "";
+        }
+
+        static void PatchEyeTrackerRefreshEvent(Database db)
+        {
+            // The existing [AiRefreshDlg] event on MyComboBox only fires when AI_BOOTSTRAPPER
+            // is set, which is never the case for a plain MSI install. Add an unconditional
+            // (AI_INSTALL only) refresh so the info-text area redraws after the selection CA runs.
+            const string dialog    = "EyeTracker";
+            const string control   = "MyComboBox";
+            const string evt       = "[AiRefreshDlg]";
+            const string condition = "AI_INSTALL";
 
             using (var del = db.OpenView(
                 "SELECT `Dialog_`, `Control_`, `Event`, `Argument`, `Condition`, `Ordering` " +
-                "FROM `ControlEvent` WHERE `Dialog_` = ? AND `Control_` = ? AND `Event` = ? AND `Argument` = ?"))
+                "FROM `ControlEvent` WHERE `Dialog_` = ? AND `Control_` = ? AND `Event` = ? AND `Condition` = ?"))
             {
-                del.Execute(new Record(dialog, control, evt, EyeTrackerActionName));
+                del.Execute(new Record(dialog, control, evt, condition));
                 Record row;
                 while ((row = del.Fetch()) != null)
                     del.Modify(ViewModifyMode.Delete, row);
@@ -173,9 +199,9 @@ namespace InstallerTranslation
                 record.SetString(1, dialog);
                 record.SetString(2, control);
                 record.SetString(3, evt);
-                record.SetString(4, EyeTrackerActionName);
-                record.SetString(5, "AI_INSTALL");
-                record.SetInteger(6, 1);
+                record.SetString(4, "0");
+                record.SetString(5, condition);
+                record.SetInteger(6, 3);
                 ins.Modify(ViewModifyMode.Insert, record);
             }
         }
