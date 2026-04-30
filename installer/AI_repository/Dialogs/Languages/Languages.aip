@@ -15,7 +15,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="Languages" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
     <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="DoAction" Argument="LanguageSelected_1AF024D1_2FE7_45A3_28831AEE_9A35_4BCF_8D01_A1F260618E_3" Condition="AI_INSTALL" Ordering="0"/>
-    <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="Languages" Control_="ComboBox_Language" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL AND AI_BOOTSTRAPPER" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="LanguageSelected_1AF024D1_2FE7_45A3" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="LanguageComboSelected" WithoutSeq="true" MsiKey="LanguageSelected_1AF024D1_2FE7_45A3"/>

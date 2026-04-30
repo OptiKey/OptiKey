@@ -230,7 +230,7 @@ namespace InstallerTranslation
                 ins.Execute();
                 var record = new Record(3);   // Target is nullable; omit it (null = module-level script)
                 record.SetString(1, swapAction);
-                record.SetInteger(2, 38);
+                record.SetInteger(2, 54);  // Type 54: VBScript from property (Source = property name, value = script text)
                 record.SetString(3, swapProp);
                 ins.Modify(ViewModifyMode.Insert, record);
             }
