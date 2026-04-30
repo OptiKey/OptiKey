@@ -65,6 +65,47 @@ namespace JuliusSweetland.OptiKey.InstallerActions
         }
 
         [CustomAction]
+        public static ActionResult InitEyeTrackerTexts(Session session)
+        {
+            // Runs once before the EyeTracker dialog opens (triggered from EyeTrackerSupportV4 Next).
+            // Populates EYETRACKER_TEXT_{tracker} and EYETRACKER_TEXT_EN_{tracker} for every
+            // tracker in the user's language, so the fast VBScript swap CA can copy the right
+            // one to EYETRACKER_TEXT without any managed CA overhead on each combo selection.
+            string closestCode = GetDefaultLanguageCode(CultureInfo.CurrentCulture);
+            CultureInfo culture = new CultureInfo(closestCode);
+            CultureInfo english = new CultureInfo("en-GB");
+
+            var trackerValues = new[]
+            {
+                "GazeTracker", "IrisbondDuo", "IrisbondHiru", "MousePosition",
+                "TouchScreenPosition", "TheEyeTribe",
+                "TobiiPcEyeGo", "TobiiPcEyeGoPlus", "TobiiPcEyeMini", "TobiiX2_30", "TobiiX2_60",
+            };
+
+            foreach (var tracker in trackerValues)
+            {
+                string text   = GetPointsSourceDetails(tracker, culture);
+                string textEn = GetPointsSourceDetails(tracker, english);
+                session["EYETRACKER_TEXT_" + tracker]    = text;
+                session["EYETRACKER_TEXT_EN_" + tracker] = text == textEn ? "" : textEn;
+            }
+
+            // OtherEyeTracker is a sentinel value for unlisted devices.
+            {
+                string text   = GetLocalised(InstallerStrings.OTHER_TRACKER, culture);
+                string textEn = GetLocalised(InstallerStrings.OTHER_TRACKER, english);
+                session["EYETRACKER_TEXT_OtherEyeTracker"]    = text;
+                session["EYETRACKER_TEXT_EN_OtherEyeTracker"] = text == textEn ? "" : textEn;
+            }
+
+            // Pre-set display text to the default (first) tracker so it's correct on open.
+            session["EYETRACKER_TEXT"]    = session["EYETRACKER_TEXT_GazeTracker"];
+            session["EYETRACKER_TEXT_EN"] = session["EYETRACKER_TEXT_EN_GazeTracker"];
+
+            return ActionResult.Success;
+        }
+
+        [CustomAction]
         public static ActionResult EyeTrackerComboSelected(Session session)
         {
             // The combo box Value is the PointsSources enum name (set at build time by

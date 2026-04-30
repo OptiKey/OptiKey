@@ -19,10 +19,11 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="EyeTracker" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
-    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL AND AI_BOOTSTRAPPER" Ordering="2"/>
+    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="2"/>
     <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="DoAction" Argument="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B8_7" Condition="AI_INSTALL" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="InitEyeTrackerTexts" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="InitEyeTrackerTexts" WithoutSeq="true" MsiKey="InitEyeTrackerTexts"/>
     <ROW Action="EyeTrackerComboSelected_3C91A0DD_32" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD_32"/>
     <ROW Action="EyeTrackerComboSelected_3C91A0DD__1" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1"/>
     <ROW Action="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B81C" Type="1" Source="JuliusSweetland.OptiKey.InstallerActions.CA.dll" Target="EyeTrackerComboSelected" WithoutSeq="true" MsiKey="EyeTrackerComboSelected_3C91A0DD__1_2797DD9D_AE59_4839_8B66_70AB5FC1B81C"/>
