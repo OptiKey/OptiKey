@@ -732,7 +732,7 @@
     <ROW Dialog_="ExitDialog" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="302"/>
     <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="105"/>
     <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="102"/>
-    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="2" MsiKey="EyeTracker#MyComboBox#[AiRefreshDlg]#0#AI_INSTALL AND AI_BOOTSTRAPPER"/>
+    <ROW Dialog_="EyeTracker" Control_="MyComboBox" Event="[AiRefreshDlg]" Argument="0" Condition="AI_INSTALL" Ordering="2" MsiKey="EyeTracker#MyComboBox#[AiRefreshDlg]#0#AI_INSTALL"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
