@@ -38,3 +38,10 @@ To ask a question, or to discuss information that is not on the [**OptiKey Wiki*
 # Sponsors 
 
 ![SignPath.io logo](https://avatars.githubusercontent.com/u/34448643?s=48&v=4)Free code signing on Windows provided by [**SignPath.io**](http://SignPath.io), certificate by [**SignPath Foundation**](https://signpath.org/)  
+
+
+# Other recommended software
+
+Play Minecraft with eye movement (a fork of Optikey!) - [**EyeMine**](https://www.specialeffect.org.uk/how-we-can-help/eyemine)
+
+Type sentences and speak using only an eye or facial gesture or a helper’s tap - [**BlinkTalk**](https://blinktalk.app/)
