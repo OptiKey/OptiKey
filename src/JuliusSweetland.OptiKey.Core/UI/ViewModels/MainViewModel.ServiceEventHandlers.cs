@@ -1747,6 +1747,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                         mouseOutputService.LeftButtonClick();
                         reinstateModifiers();
+                        ResetPredictionContextAfterMouseClick();
                     };
                     lastMouseActionStateManager.LastMouseAction = () => performLeftClick();
                     performLeftClick();
@@ -1767,6 +1768,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
                         mouseOutputService.LeftButtonDoubleClick();
                         reinstateModifiers();
+                        ResetPredictionContextAfterMouseClick();
                     };
                     lastMouseActionStateManager.LastMouseAction = () => performLeftDoubleClick();
                     performLeftDoubleClick();
@@ -1864,6 +1866,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                             mouseOutputService.MoveAndLeftClick(fp, true);
+                            ResetPredictionContextAfterMouseClick();
                         });
                     break;
 
@@ -1874,6 +1877,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         (fp) => {
                             audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
                             mouseOutputService.MoveAndLeftDoubleClick(fp, true);
+                            ResetPredictionContextAfterMouseClick();
                         });
                     break;
 
@@ -2606,6 +2610,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
             {
                 keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; 
+            }
+        }
+
+        private void ResetPredictionContextAfterMouseClick()
+        {
+            // A click can move the caret anywhere in an external application. The
+            // scratchpad can no longer represent the text next to that caret, so reset
+            // its prediction context without sending any keystrokes to the application.
+            if (keyStateService.SimulateKeyStrokes)
+            {
+                keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
             }
         }
 

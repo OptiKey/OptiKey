@@ -120,6 +120,16 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
                 Assert.That(sentence.InProgressWord(12), Is.EqualTo("是我最喜欢的食物"));
                 Assert.That(sentence.InProgressWord(12), Is.EqualTo("是我最喜欢的食物"));                
             });
+
+            Assert.Multiple(() =>
+            {
+                Assert.That("'word".InProgressWord(5), Is.EqualTo("word"));
+                Assert.That("’word".InProgressWord(5), Is.EqualTo("word"));
+                Assert.That("don't".InProgressWord(5), Is.EqualTo("don't"));
+                Assert.That("(word".InProgressWord(5), Is.EqualTo("word"));
+                Assert.That("path/to".InProgressWord(7), Is.EqualTo("to"));
+                Assert.That("snake_case".InProgressWord(10), Is.EqualTo("case"));
+            });
         }
 
         [Test]

@@ -349,7 +349,9 @@ namespace JuliusSweetland.OptiKey.Extensions
                     endIndex++;
                 }
 
-                return input.Substring(startIndex, endIndex - startIndex);
+                // Apostrophes belong inside words (for example "don't"), but a leading
+                // quote is punctuation rather than part of the prediction root.
+                return input.Substring(startIndex, endIndex - startIndex).TrimStart('\'', '’');
             }
 
             return null;

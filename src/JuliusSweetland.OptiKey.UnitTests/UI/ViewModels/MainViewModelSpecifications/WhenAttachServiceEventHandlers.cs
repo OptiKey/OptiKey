@@ -324,6 +324,21 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         }
 
         [Test]
+        public void GivenLeftMouseClickThenPredictionContextShouldBeReset()
+        {
+            KeyStateService.Setup(s => s.SimulateKeyStrokes).Returns(true);
+            MouseOutputService.Setup(s => s.GetCursorPosition()).Returns(new Point());
+
+            var selection = new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                TriggerTypes.Key, new List<Point>(), KeyValues.MouseLeftClickKey, new List<string>());
+
+            InputService.Raise(s => s.SelectionResult += null, this, selection);
+
+            KeyboardOutputService.Verify(
+                s => s.ProcessFunctionKey(FunctionKeys.ClearScratchpad), Times.Once());
+        }
+
+        [Test]
         public void GivenMultiKeySelectionThenSelectionResultEventHandlerShouldBeAttachedToInputService()
         {
             var points = new List<Point>();
